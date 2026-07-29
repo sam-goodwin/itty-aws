@@ -1608,7 +1608,7 @@ export const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteAudioTrackResponse = string;
 export const DeleteAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAudioTrackResponse",
 }) as any as S.Schema<DeleteAudioTrackResponse>;
@@ -1641,7 +1641,7 @@ export const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteCaptionLanguageResponse = string;
 export const DeleteCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCaptionLanguageResponse",
 }) as any as S.Schema<DeleteCaptionLanguageResponse>;
@@ -1671,7 +1671,7 @@ export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDownloadResponse = string;
 export const DeleteDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDownloadResponse",
 }) as any as S.Schema<DeleteDownloadResponse>;
@@ -1701,7 +1701,7 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteKeyResponse = string;
 export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteKeyResponse",
 }) as any as S.Schema<DeleteKeyResponse>;
@@ -1824,7 +1824,7 @@ export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteWatermarkResponse = string;
 export const DeleteWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWatermarkResponse",
 }) as any as S.Schema<DeleteWatermarkResponse>;
@@ -1851,7 +1851,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteWebhookResponse = string;
 export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWebhookResponse",
 }) as any as S.Schema<DeleteWebhookResponse>;

@@ -3326,7 +3326,10 @@ export const SettingsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetSettingResponse = SettingsGetResult;
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  SettingsGetResult.pipe(T.EnvelopePayloadRoot()),
+  SettingsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetSettingResponse",
 }) as any as S.Schema<GetSettingResponse>;
@@ -6579,7 +6582,10 @@ export const SettingsEditResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PatchSettingResponse = SettingsEditResult;
 export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  SettingsEditResult.pipe(T.EnvelopePayloadRoot()),
+  SettingsEditResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PatchSettingResponse",
 }) as any as S.Schema<PatchSettingResponse>;
@@ -11376,7 +11382,10 @@ export const SettingsBulkEditResultList = /*@__PURE__*/ S.Array(
 
 export type SettingsBulkEditResponse = SettingsBulkEditResultList;
 export const SettingsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
-  SettingsBulkEditResultList.pipe(T.EnvelopePayloadRoot()),
+  SettingsBulkEditResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SettingsBulkEditResponse",
 }) as any as S.Schema<SettingsBulkEditResponse>;
@@ -13518,7 +13527,10 @@ export const SettingsListResultList = /*@__PURE__*/ S.Array(
 
 export type SettingsListResponse = SettingsListResultList;
 export const SettingsListResponse = /*@__PURE__*/ S.suspend(() =>
-  SettingsListResultList.pipe(T.EnvelopePayloadRoot()),
+  SettingsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SettingsListResponse",
 }) as any as S.Schema<SettingsListResponse>;

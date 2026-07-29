@@ -1251,7 +1251,7 @@ export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateInvestigateReclassifyResponse = unknown;
 export const CreateInvestigateReclassifyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateReclassifyResponse",
 }) as any as S.Schema<CreateInvestigateReclassifyResponse>;

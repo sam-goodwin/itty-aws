@@ -4796,7 +4796,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export type ListPageRulesResponse = ListResultList;
 export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListResultList.pipe(T.EnvelopePayloadRoot()),
+  ListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPageRulesResponse",
 }) as any as S.Schema<ListPageRulesResponse>;

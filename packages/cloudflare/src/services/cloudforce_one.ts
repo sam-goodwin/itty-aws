@@ -1556,7 +1556,7 @@ export const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteScanConfigResponse = unknown;
 export const DeleteScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScanConfigResponse",
 }) as any as S.Schema<DeleteScanConfigResponse>;
@@ -2538,7 +2538,10 @@ export const ThreatEventsCountriesListResultList = /*@__PURE__*/ S.Array(
 export type ListThreatEventCountriesResponse =
   ThreatEventsCountriesListResultList;
 export const ListThreatEventCountriesResponse = /*@__PURE__*/ S.suspend(() =>
-  ThreatEventsCountriesListResultList.pipe(T.EnvelopePayloadRoot()),
+  ThreatEventsCountriesListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListThreatEventCountriesResponse",
 }) as any as S.Schema<ListThreatEventCountriesResponse>;
@@ -3440,7 +3443,10 @@ export const RequestsAssetsGetResultList = /*@__PURE__*/ S.Array(
 
 export type RequestsAssetsGetResponse = RequestsAssetsGetResultList;
 export const RequestsAssetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  RequestsAssetsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  RequestsAssetsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "RequestsAssetsGetResponse",
 }) as any as S.Schema<RequestsAssetsGetResponse>;
@@ -3689,7 +3695,10 @@ export const RequestsListResultList = /*@__PURE__*/ S.Array(
 
 export type RequestsListResponse = RequestsListResultList;
 export const RequestsListResponse = /*@__PURE__*/ S.suspend(() =>
-  RequestsListResultList.pipe(T.EnvelopePayloadRoot()),
+  RequestsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "RequestsListResponse",
 }) as any as S.Schema<RequestsListResponse>;
@@ -3762,7 +3771,7 @@ export const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RequestsTypesResponse = unknown;
 export const RequestsTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsTypesResponse",
 }) as any as S.Schema<RequestsTypesResponse>;

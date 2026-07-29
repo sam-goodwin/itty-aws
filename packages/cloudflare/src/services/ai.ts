@@ -1306,7 +1306,7 @@ export const RunResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type RunAiResponse = RunResult;
 export const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
-  RunResult.pipe(T.EnvelopePayloadRoot()),
+  RunResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RunAiResponse" }) as any as S.Schema<RunAiResponse>;
 
 export interface SupportedToMarkdownRequest {
@@ -1408,7 +1408,10 @@ export const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
 
 export type TransformToMarkdownResponse = ToMarkdownTransformResultList;
 export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  ToMarkdownTransformResultList.pipe(T.EnvelopePayloadRoot()),
+  ToMarkdownTransformResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
 }) as any as S.Schema<TransformToMarkdownResponse>;

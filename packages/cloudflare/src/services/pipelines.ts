@@ -2087,7 +2087,7 @@ export const DeleteSinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteSinkResponse = unknown;
 export const DeleteSinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSinkResponse",
 }) as any as S.Schema<DeleteSinkResponse>;
@@ -2120,7 +2120,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteStreamResponse = unknown;
 export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStreamResponse",
 }) as any as S.Schema<DeleteStreamResponse>;
@@ -2150,7 +2150,7 @@ export const DeleteV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteV1PipelineResponse = unknown;
 export const DeleteV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1PipelineResponse",
 }) as any as S.Schema<DeleteV1PipelineResponse>;

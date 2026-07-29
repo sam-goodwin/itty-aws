@@ -676,7 +676,10 @@ export const ScriptsSecretsBulkUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type BulkUpdateScriptSecretsResponse = ScriptsSecretsBulkUpdateResult;
 export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  ScriptsSecretsBulkUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  ScriptsSecretsBulkUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "BulkUpdateScriptSecretsResponse",
 }) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
@@ -10535,7 +10538,7 @@ export const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteScriptResponse = unknown;
 export const DeleteScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptResponse",
 }) as any as S.Schema<DeleteScriptResponse>;
@@ -10603,7 +10606,7 @@ export const DeleteScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteScriptSecretResponse = unknown;
 export const DeleteScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptSecretResponse",
 }) as any as S.Schema<DeleteScriptSecretResponse>;
@@ -17744,7 +17747,10 @@ export const ScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetScriptSecretResponse = ScriptsSecretsGetResult;
 export const GetScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  ScriptsSecretsGetResult.pipe(T.EnvelopePayloadRoot()),
+  ScriptsSecretsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetScriptSecretResponse",
 }) as any as S.Schema<GetScriptSecretResponse>;
@@ -24135,7 +24141,7 @@ export const LiveTailHeartbeatObservabilityTelemetryRequest =
 export type LiveTailHeartbeatObservabilityTelemetryResponse = unknown;
 export const LiveTailHeartbeatObservabilityTelemetryResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Unknown.pipe(T.EnvelopePayloadRoot()),
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "LiveTailHeartbeatObservabilityTelemetryResponse",
   }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
@@ -29355,7 +29361,10 @@ export const ScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PutScriptSecretResponse = ScriptsSecretsUpdateResult;
 export const PutScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  ScriptsSecretsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  ScriptsSecretsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PutScriptSecretResponse",
 }) as any as S.Schema<PutScriptSecretResponse>;
@@ -32242,7 +32251,10 @@ export const ScriptsSearchResultList = /*@__PURE__*/ S.Array(
 
 export type SearchScriptResponse = ScriptsSearchResultList;
 export const SearchScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  ScriptsSearchResultList.pipe(T.EnvelopePayloadRoot()),
+  ScriptsSearchResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SearchScriptResponse",
 }) as any as S.Schema<SearchScriptResponse>;

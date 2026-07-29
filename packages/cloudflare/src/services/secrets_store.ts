@@ -128,7 +128,7 @@ export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BulkDeleteStoreSecretsResponse = unknown;
 export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteStoreSecretsResponse",
 }) as any as S.Schema<BulkDeleteStoreSecretsResponse>;
@@ -331,7 +331,7 @@ export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteStoreResponse = unknown;
 export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreResponse",
 }) as any as S.Schema<DeleteStoreResponse>;
@@ -364,7 +364,7 @@ export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteStoreSecretResponse = unknown;
 export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreSecretResponse",
 }) as any as S.Schema<DeleteStoreSecretResponse>;

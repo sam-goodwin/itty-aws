@@ -114,7 +114,7 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateCredentialResponse = unknown;
 export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCredentialResponse",
 }) as any as S.Schema<CreateCredentialResponse>;

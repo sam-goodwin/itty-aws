@@ -3193,7 +3193,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteProjectResponse = unknown;
 export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectResponse",
 }) as any as S.Schema<DeleteProjectResponse>;
@@ -3229,7 +3229,7 @@ export const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteProjectDeploymentResponse = unknown;
 export const DeleteProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDeploymentResponse",
 }) as any as S.Schema<DeleteProjectDeploymentResponse>;
@@ -3262,7 +3262,7 @@ export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteProjectDomainResponse = unknown;
 export const DeleteProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDomainResponse",
 }) as any as S.Schema<DeleteProjectDomainResponse>;
@@ -9912,7 +9912,7 @@ export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PurgeBuildCacheProjectResponse = unknown;
 export const PurgeBuildCacheProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeBuildCacheProjectResponse",
 }) as any as S.Schema<PurgeBuildCacheProjectResponse>;

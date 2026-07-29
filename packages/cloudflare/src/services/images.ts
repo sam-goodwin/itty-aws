@@ -330,7 +330,7 @@ export const DeleteV1Request = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteV1Response = unknown;
 export const DeleteV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1Response",
 }) as any as S.Schema<DeleteV1Response>;
@@ -413,7 +413,7 @@ export const DeleteV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteV1VariantResponse = unknown;
 export const DeleteV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1VariantResponse",
 }) as any as S.Schema<DeleteV1VariantResponse>;

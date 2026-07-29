@@ -484,7 +484,10 @@ export const DirectoryServicesCreateResult = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDirectoryServiceResponse = DirectoryServicesCreateResult;
 export const CreateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  DirectoryServicesCreateResult.pipe(T.EnvelopePayloadRoot()),
+  DirectoryServicesCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateDirectoryServiceResponse",
 }) as any as S.Schema<CreateDirectoryServiceResponse>;
@@ -750,7 +753,10 @@ export const DirectoryServicesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 export type GetDirectoryServiceResponse = DirectoryServicesGetResult;
 export const GetDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  DirectoryServicesGetResult.pipe(T.EnvelopePayloadRoot()),
+  DirectoryServicesGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDirectoryServiceResponse",
 }) as any as S.Schema<GetDirectoryServiceResponse>;
@@ -1433,7 +1439,10 @@ export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateDirectoryServiceResponse = DirectoryServicesUpdateResult;
 export const UpdateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  DirectoryServicesUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  DirectoryServicesUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateDirectoryServiceResponse",
 }) as any as S.Schema<UpdateDirectoryServiceResponse>;

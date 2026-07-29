@@ -8106,7 +8106,10 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateRecordResponse = RecordsCreateResult;
 export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  RecordsCreateResult.pipe(T.EnvelopePayloadRoot()),
+  RecordsCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateRecordResponse",
 }) as any as S.Schema<CreateRecordResponse>;
@@ -8237,7 +8240,7 @@ export const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateZoneTransferForceAxfrResponse = unknown;
 export const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferForceAxfrResponse",
 }) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
@@ -8502,7 +8505,7 @@ export const DeleteDnssecRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDnssecResponse = string;
 export const DeleteDnssecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnssecResponse",
 }) as any as S.Schema<DeleteDnssecResponse>;
@@ -8761,7 +8764,7 @@ export const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DisableZoneTransferOutgoingResponse = unknown;
 export const DisableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableZoneTransferOutgoingResponse",
 }) as any as S.Schema<DisableZoneTransferOutgoingResponse>;
@@ -8787,7 +8790,7 @@ export const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type EnableZoneTransferOutgoingResponse = unknown;
 export const EnableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableZoneTransferOutgoingResponse",
 }) as any as S.Schema<EnableZoneTransferOutgoingResponse>;
@@ -8841,7 +8844,7 @@ export const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(
 
 export type ForceNotifyZoneTransferOutgoingResponse = string;
 export const ForceNotifyZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(
-  () => S.String.pipe(T.EnvelopePayloadRoot()),
+  () => S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ForceNotifyZoneTransferOutgoingResponse",
 }) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>;
@@ -11608,7 +11611,10 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetRecordResponse = RecordsGetResult;
 export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  RecordsGetResult.pipe(T.EnvelopePayloadRoot()),
+  RecordsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetRecordResponse",
 }) as any as S.Schema<GetRecordResponse>;
@@ -12209,7 +12215,7 @@ export const GetZoneTransferOutgoingStatusRequest = /*@__PURE__*/ S.suspend(
 
 export type GetZoneTransferOutgoingStatusResponse = string;
 export const GetZoneTransferOutgoingStatusResponse = /*@__PURE__*/ S.suspend(
-  () => S.String.pipe(T.EnvelopePayloadRoot()),
+  () => S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferOutgoingStatusResponse",
 }) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>;
@@ -18078,7 +18084,10 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PatchRecordResponse = RecordsEditResult;
 export const PatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  RecordsEditResult.pipe(T.EnvelopePayloadRoot()),
+  RecordsEditResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PatchRecordResponse",
 }) as any as S.Schema<PatchRecordResponse>;
@@ -27589,7 +27598,10 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateRecordResponse = RecordsUpdateResult;
 export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  RecordsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  RecordsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateRecordResponse",
 }) as any as S.Schema<UpdateRecordResponse>;

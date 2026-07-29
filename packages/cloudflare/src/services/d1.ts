@@ -266,7 +266,7 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDatabaseResponse = unknown;
 export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;

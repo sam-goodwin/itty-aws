@@ -3098,7 +3098,10 @@ export const PcapsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreatePcapResponse = PcapsCreateResult;
 export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
-  PcapsCreateResult.pipe(T.EnvelopePayloadRoot()),
+  PcapsCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreatePcapResponse",
 }) as any as S.Schema<CreatePcapResponse>;
@@ -8936,7 +8939,7 @@ export const PcapsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetPcapResponse = PcapsGetResult;
 export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
-  PcapsGetResult.pipe(T.EnvelopePayloadRoot()),
+  PcapsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapResponse",
 }) as any as S.Schema<GetPcapResponse>;
@@ -15731,7 +15734,10 @@ export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 export type SitesAppConfigurationCreateResponse =
   SitesAppConfigurationCreateResult;
 export const SitesAppConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  SitesAppConfigurationCreateResult.pipe(T.EnvelopePayloadRoot()),
+  SitesAppConfigurationCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SitesAppConfigurationCreateResponse",
 }) as any as S.Schema<SitesAppConfigurationCreateResponse>;
@@ -15853,7 +15859,10 @@ export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.Unknown.pipe(
 export type SitesAppConfigurationDeleteResponse =
   SitesAppConfigurationDeleteResult;
 export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  SitesAppConfigurationDeleteResult.pipe(T.EnvelopePayloadRoot()),
+  SitesAppConfigurationDeleteResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SitesAppConfigurationDeleteResponse",
 }) as any as S.Schema<SitesAppConfigurationDeleteResponse>;
@@ -15999,7 +16008,10 @@ export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type SitesAppConfigurationEditResponse = SitesAppConfigurationEditResult;
 export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
-  SitesAppConfigurationEditResult.pipe(T.EnvelopePayloadRoot()),
+  SitesAppConfigurationEditResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SitesAppConfigurationEditResponse",
 }) as any as S.Schema<SitesAppConfigurationEditResponse>;
@@ -16124,7 +16136,10 @@ export const SitesAppConfigurationListResultList = /*@__PURE__*/ S.Array(
 export type SitesAppConfigurationListResponse =
   SitesAppConfigurationListResultList;
 export const SitesAppConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
-  SitesAppConfigurationListResultList.pipe(T.EnvelopePayloadRoot()),
+  SitesAppConfigurationListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SitesAppConfigurationListResponse",
 }) as any as S.Schema<SitesAppConfigurationListResponse>;
@@ -16271,7 +16286,10 @@ export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 export type SitesAppConfigurationUpdateResponse =
   SitesAppConfigurationUpdateResult;
 export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  SitesAppConfigurationUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  SitesAppConfigurationUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "SitesAppConfigurationUpdateResponse",
 }) as any as S.Schema<SitesAppConfigurationUpdateResponse>;

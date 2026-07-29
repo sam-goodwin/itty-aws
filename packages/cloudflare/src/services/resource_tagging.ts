@@ -1201,7 +1201,10 @@ export const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetAccountTagResponse = AccountTagsGetResult;
 export const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
-  AccountTagsGetResult.pipe(T.EnvelopePayloadRoot()),
+  AccountTagsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetAccountTagResponse",
 }) as any as S.Schema<GetAccountTagResponse>;
@@ -2262,7 +2265,10 @@ export const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetZoneTagResponse = ZoneTagsGetResult;
 export const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
-  ZoneTagsGetResult.pipe(T.EnvelopePayloadRoot()),
+  ZoneTagsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetZoneTagResponse",
 }) as any as S.Schema<GetZoneTagResponse>;
@@ -4625,7 +4631,10 @@ export const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PutAccountTagResponse = AccountTagsUpdateResult;
 export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
-  AccountTagsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  AccountTagsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PutAccountTagResponse",
 }) as any as S.Schema<PutAccountTagResponse>;
@@ -5731,7 +5740,10 @@ export const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PutZoneTagResponse = ZoneTagsUpdateResult;
 export const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
-  ZoneTagsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  ZoneTagsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PutZoneTagResponse",
 }) as any as S.Schema<PutZoneTagResponse>;

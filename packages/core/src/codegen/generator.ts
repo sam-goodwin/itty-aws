@@ -745,6 +745,16 @@ export const generateService = (
           : undefined;
       if (soleMemberRoot) {
         const [, m] = memberEntriesAll[0]! as [string, any];
+        // Alias responses are op roots too — they must carry the service
+        // key dictionary so opaque content (union cases, freeform maps)
+        // nested in the payload decodes with the same wire mapping as
+        // struct-form roots.
+        const rootPipes = [
+          soleMemberRoot.rootPipe,
+          ...(spec.rootKeyDictionary && opIoShapes.has(id)
+            ? [`T.KeyDictionary(KEY_DICTIONARY)`]
+            : []),
+        ];
         out.push(`export type ${name} = ${tsRef(m.target)};`);
         out.push(
           suspendConst({
@@ -752,7 +762,7 @@ export const generateService = (
             pure,
             multiline: true,
             annotateIdentifier: true,
-            expr: `${ref(m.target, i)}.pipe(${soleMemberRoot.rootPipe})`,
+            expr: `${ref(m.target, i)}.pipe(${rootPipes.join(", ")})`,
           }),
         );
         return;

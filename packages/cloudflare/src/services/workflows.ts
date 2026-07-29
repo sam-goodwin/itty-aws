@@ -393,7 +393,7 @@ export const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateInstanceEventResponse = unknown;
 export const CreateInstanceEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceEventResponse",
 }) as any as S.Schema<CreateInstanceEventResponse>;

@@ -213,7 +213,7 @@ export const CreateAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateAnalyzeResponse = unknown;
 export const CreateAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAnalyzeResponse",
 }) as any as S.Schema<CreateAnalyzeResponse>;
@@ -1304,7 +1304,10 @@ export const VerificationGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetVerificationResponse = VerificationGetResultList;
 export const GetVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  VerificationGetResultList.pipe(T.EnvelopePayloadRoot()),
+  VerificationGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetVerificationResponse",
 }) as any as S.Schema<GetVerificationResponse>;

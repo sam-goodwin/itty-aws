@@ -571,7 +571,10 @@ export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetListBulkOperationResponse = ListsBulkOperationsGetResult;
 export const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListsBulkOperationsGetResult.pipe(T.EnvelopePayloadRoot()),
+  ListsBulkOperationsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetListBulkOperationResponse",
 }) as any as S.Schema<GetListBulkOperationResponse>;
@@ -779,7 +782,10 @@ export const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetListItemResponse = ListsItemsGetResult;
 export const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
-  ListsItemsGetResult.pipe(T.EnvelopePayloadRoot()),
+  ListsItemsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetListItemResponse",
 }) as any as S.Schema<GetListItemResponse>;

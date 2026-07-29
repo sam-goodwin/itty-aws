@@ -674,7 +674,10 @@ export const ConsumersCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateConsumerResponse = ConsumersCreateResult;
 export const CreateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  ConsumersCreateResult.pipe(T.EnvelopePayloadRoot()),
+  ConsumersCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateConsumerResponse",
 }) as any as S.Schema<CreateConsumerResponse>;
@@ -1974,7 +1977,10 @@ export const ConsumersGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetConsumerResponse = ConsumersGetResult;
 export const GetConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  ConsumersGetResult.pipe(T.EnvelopePayloadRoot()),
+  ConsumersGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetConsumerResponse",
 }) as any as S.Schema<GetConsumerResponse>;
@@ -4729,7 +4735,10 @@ export const ConsumersUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateConsumerResponse = ConsumersUpdateResult;
 export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  ConsumersUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  ConsumersUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateConsumerResponse",
 }) as any as S.Schema<UpdateConsumerResponse>;

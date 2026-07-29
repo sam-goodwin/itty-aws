@@ -445,7 +445,10 @@ export const BillingUsageGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetBillingUsageResponse = BillingUsageGetResultList;
 export const GetBillingUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  BillingUsageGetResultList.pipe(T.EnvelopePayloadRoot()),
+  BillingUsageGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetBillingUsageResponse",
 }) as any as S.Schema<GetBillingUsageResponse>;
@@ -1790,7 +1793,10 @@ export const MembersListResultList = /*@__PURE__*/ S.Array(
 
 export type MembersListResponse = MembersListResultList;
 export const MembersListResponse = /*@__PURE__*/ S.suspend(() =>
-  MembersListResultList.pipe(T.EnvelopePayloadRoot()),
+  MembersListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "MembersListResponse",
 }) as any as S.Schema<MembersListResponse>;
@@ -1940,7 +1946,10 @@ export const OrganizationAccountsGetResultList = /*@__PURE__*/ S.Array(
 
 export type OrganizationAccountsGetResponse = OrganizationAccountsGetResultList;
 export const OrganizationAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  OrganizationAccountsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  OrganizationAccountsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "OrganizationAccountsGetResponse",
 }) as any as S.Schema<OrganizationAccountsGetResponse>;

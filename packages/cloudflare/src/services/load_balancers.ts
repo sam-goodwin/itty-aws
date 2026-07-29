@@ -3999,7 +3999,10 @@ export const PreviewsGetResultMap = /*@__PURE__*/ S.Record(
 
 export type GetPreviewResponse = PreviewsGetResultMap;
 export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  PreviewsGetResultMap.pipe(T.EnvelopePayloadRoot()),
+  PreviewsGetResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetPreviewResponse",
 }) as any as S.Schema<GetPreviewResponse>;
@@ -4045,7 +4048,7 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetRegionResponse = unknown;
 export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionResponse",
 }) as any as S.Schema<GetRegionResponse>;
@@ -5143,7 +5146,7 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListRegionsResponse = unknown;
 export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;

@@ -143,7 +143,10 @@ export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityTxtResponse = SecurityTxtFile;
 export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
-  SecurityTxtFile.pipe(T.EnvelopePayloadRoot()),
+  SecurityTxtFile.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetSecurityTxtResponse",
 }) as any as S.Schema<GetSecurityTxtResponse>;

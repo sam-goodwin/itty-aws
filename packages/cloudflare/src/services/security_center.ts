@@ -225,7 +225,10 @@ export const InsightsClassGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetInsightClassResponse = InsightsClassGetResultList;
 export const GetInsightClassResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsClassGetResultList.pipe(T.EnvelopePayloadRoot()),
+  InsightsClassGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetInsightClassResponse",
 }) as any as S.Schema<GetInsightClassResponse>;
@@ -318,7 +321,10 @@ export const InsightsContextGetResultMap = /*@__PURE__*/ S.Record(
 
 export type GetInsightContextResponse = InsightsContextGetResultMap;
 export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsContextGetResultMap.pipe(T.EnvelopePayloadRoot()),
+  InsightsContextGetResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetInsightContextResponse",
 }) as any as S.Schema<GetInsightContextResponse>;
@@ -457,7 +463,10 @@ export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetInsightSeverityResponse = InsightsSeverityGetResultList;
 export const GetInsightSeverityResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsSeverityGetResultList.pipe(T.EnvelopePayloadRoot()),
+  InsightsSeverityGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetInsightSeverityResponse",
 }) as any as S.Schema<GetInsightSeverityResponse>;
@@ -650,7 +659,10 @@ export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetInsightTypeResponse = InsightsTypeGetResultList;
 export const GetInsightTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsTypeGetResultList.pipe(T.EnvelopePayloadRoot()),
+  InsightsTypeGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetInsightTypeResponse",
 }) as any as S.Schema<GetInsightTypeResponse>;

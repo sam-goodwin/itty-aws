@@ -2684,7 +2684,7 @@ export const GetWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetWafPackageGroupResponse = unknown;
 export const GetWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageGroupResponse",
 }) as any as S.Schema<GetWafPackageGroupResponse>;
@@ -2717,7 +2717,7 @@ export const GetWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetWafPackageRuleResponse = unknown;
 export const GetWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageRuleResponse",
 }) as any as S.Schema<GetWafPackageRuleResponse>;
@@ -4761,7 +4761,7 @@ export const PatchWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PatchWafPackageGroupResponse = unknown;
 export const PatchWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageGroupResponse",
 }) as any as S.Schema<PatchWafPackageGroupResponse>;
@@ -5030,7 +5030,10 @@ export const WafPackagesRulesEditResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PatchWafPackageRuleResponse = WafPackagesRulesEditResult;
 export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  WafPackagesRulesEditResult.pipe(T.EnvelopePayloadRoot()),
+  WafPackagesRulesEditResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PatchWafPackageRuleResponse",
 }) as any as S.Schema<PatchWafPackageRuleResponse>;

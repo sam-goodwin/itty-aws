@@ -2527,7 +2527,10 @@ export const TokensPermissionGroupsGetResultList = /*@__PURE__*/ S.Array(
 export type GetTokenPermissionGroupResponse =
   TokensPermissionGroupsGetResultList;
 export const GetTokenPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  TokensPermissionGroupsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  TokensPermissionGroupsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetTokenPermissionGroupResponse",
 }) as any as S.Schema<GetTokenPermissionGroupResponse>;
@@ -4232,7 +4235,7 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutTokenValueResponse = unknown;
 export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;
@@ -4330,7 +4333,10 @@ export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
 export type TokensPermissionGroupsListResponse =
   TokensPermissionGroupsListResultList;
 export const TokensPermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  TokensPermissionGroupsListResultList.pipe(T.EnvelopePayloadRoot()),
+  TokensPermissionGroupsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "TokensPermissionGroupsListResponse",
 }) as any as S.Schema<TokensPermissionGroupsListResponse>;

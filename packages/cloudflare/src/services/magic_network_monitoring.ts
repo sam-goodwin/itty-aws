@@ -390,7 +390,7 @@ export const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateVpcFlowTokenResponse = string;
 export const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVpcFlowTokenResponse",
 }) as any as S.Schema<CreateVpcFlowTokenResponse>;

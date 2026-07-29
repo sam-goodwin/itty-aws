@@ -508,7 +508,7 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateContentResponse = string;
 export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateContentResponse",
 }) as any as S.Schema<CreateContentResponse>;
@@ -1010,7 +1010,7 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateCrawlResponse = string;
 export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCrawlResponse",
 }) as any as S.Schema<CreateCrawlResponse>;
@@ -1527,7 +1527,10 @@ export const JsonCreateResultMap = /*@__PURE__*/ S.Record(
 
 export type CreateJsonResponse = JsonCreateResultMap;
 export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
-  JsonCreateResultMap.pipe(T.EnvelopePayloadRoot()),
+  JsonCreateResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateJsonResponse",
 }) as any as S.Schema<CreateJsonResponse>;
@@ -1895,7 +1898,10 @@ export const LinksCreateResultList = /*@__PURE__*/ S.Array(
 
 export type CreateLinkResponse = LinksCreateResultList;
 export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  LinksCreateResultList.pipe(T.EnvelopePayloadRoot()),
+  LinksCreateResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateLinkResponse",
 }) as any as S.Schema<CreateLinkResponse>;
@@ -2277,7 +2283,7 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateMarkdownResponse = string;
 export const CreateMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMarkdownResponse",
 }) as any as S.Schema<CreateMarkdownResponse>;
@@ -3202,7 +3208,10 @@ export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
 
 export type CreateScrapeResponse = ScrapeCreateResultList;
 export const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
-  ScrapeCreateResultList.pipe(T.EnvelopePayloadRoot()),
+  ScrapeCreateResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateScrapeResponse",
 }) as any as S.Schema<CreateScrapeResponse>;

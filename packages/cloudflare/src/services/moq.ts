@@ -169,7 +169,7 @@ export const DeleteRelayRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteRelayResponse = unknown;
 export const DeleteRelayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRelayResponse",
 }) as any as S.Schema<DeleteRelayResponse>;

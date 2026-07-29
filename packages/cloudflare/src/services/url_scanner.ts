@@ -110,7 +110,7 @@ export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BulkCreateScansResponse = string;
 export const BulkCreateScansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateScansResponse",
 }) as any as S.Schema<BulkCreateScansResponse>;
@@ -384,7 +384,7 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateScanResponse = string;
 export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScanResponse",
 }) as any as S.Schema<CreateScanResponse>;

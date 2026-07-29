@@ -97754,7 +97754,10 @@ export const AiToMarkdownCreateResultList = /*@__PURE__*/ S.Array(
 
 export type TransformToMarkdownResponse = AiToMarkdownCreateResultList;
 export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  AiToMarkdownCreateResultList.pipe(T.EnvelopePayloadRoot()),
+  AiToMarkdownCreateResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
 }) as any as S.Schema<TransformToMarkdownResponse>;

@@ -531,7 +531,7 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteConfigResponse = unknown;
 export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigResponse",
 }) as any as S.Schema<DeleteConfigResponse>;

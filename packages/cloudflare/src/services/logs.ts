@@ -292,7 +292,7 @@ export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteControlCmbConfigResponse = unknown;
 export const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteControlCmbConfigResponse",
 }) as any as S.Schema<DeleteControlCmbConfigResponse>;

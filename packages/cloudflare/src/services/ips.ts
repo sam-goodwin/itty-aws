@@ -122,7 +122,7 @@ export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type ListIpsResponse = ListResult;
 export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListResult.pipe(T.EnvelopePayloadRoot()),
+  ListResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIpsResponse",
 }) as any as S.Schema<ListIpsResponse>;

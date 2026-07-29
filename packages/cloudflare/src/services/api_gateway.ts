@@ -1212,7 +1212,11 @@ export const DiscoveryOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
 export type BulkPatchDiscoveryOperationsResponse =
   DiscoveryOperationsBulkEditResultMap;
 export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(
-  () => DiscoveryOperationsBulkEditResultMap.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    DiscoveryOperationsBulkEditResultMap.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "BulkPatchDiscoveryOperationsResponse",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;

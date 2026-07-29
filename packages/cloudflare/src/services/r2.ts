@@ -195,7 +195,7 @@ export const AbortAllSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AbortAllSuperSlurperJobResponse = string;
 export const AbortAllSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortAllSuperSlurperJobResponse",
 }) as any as S.Schema<AbortAllSuperSlurperJobResponse>;
@@ -223,7 +223,7 @@ export const AbortSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AbortSuperSlurperJobResponse = string;
 export const AbortSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortSuperSlurperJobResponse",
 }) as any as S.Schema<AbortSuperSlurperJobResponse>;
@@ -788,7 +788,7 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteBucketResponse = unknown;
 export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketResponse",
 }) as any as S.Schema<DeleteBucketResponse>;
@@ -831,7 +831,7 @@ export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteBucketCorsResponse = unknown;
 export const DeleteBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketCorsResponse",
 }) as any as S.Schema<DeleteBucketCorsResponse>;
@@ -936,7 +936,8 @@ export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
 
 export type DeleteBucketEventNotificationResponse = unknown;
 export const DeleteBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketEventNotificationResponse",
 }) as any as S.Schema<DeleteBucketEventNotificationResponse>;
@@ -1080,7 +1081,7 @@ export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteObjectsResponse = unknown;
 export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteObjectsResponse",
 }) as any as S.Schema<DeleteObjectsResponse>;
@@ -3569,7 +3570,7 @@ export const PauseSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PauseSuperSlurperJobResponse = string;
 export const PauseSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PauseSuperSlurperJobResponse",
 }) as any as S.Schema<PauseSuperSlurperJobResponse>;
@@ -3749,7 +3750,7 @@ export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutBucketCorsResponse = unknown;
 export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketCorsResponse",
 }) as any as S.Schema<PutBucketCorsResponse>;
@@ -3908,7 +3909,7 @@ export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutBucketEventNotificationResponse = unknown;
 export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketEventNotificationResponse",
 }) as any as S.Schema<PutBucketEventNotificationResponse>;
@@ -4194,7 +4195,7 @@ export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutBucketLifecycleResponse = unknown;
 export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLifecycleResponse",
 }) as any as S.Schema<PutBucketLifecycleResponse>;
@@ -4333,7 +4334,7 @@ export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutBucketLockResponse = unknown;
 export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
@@ -4632,7 +4633,7 @@ export const ResumeSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ResumeSuperSlurperJobResponse = string;
 export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResumeSuperSlurperJobResponse",
 }) as any as S.Schema<ResumeSuperSlurperJobResponse>;

@@ -63,7 +63,10 @@ export const BulkDeleteResultList = /*@__PURE__*/ S.Array(
 
 export type BulkDeleteFiltersResponse = BulkDeleteResultList;
 export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  BulkDeleteResultList.pipe(T.EnvelopePayloadRoot()),
+  BulkDeleteResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "BulkDeleteFiltersResponse",
 }) as any as S.Schema<BulkDeleteFiltersResponse>;

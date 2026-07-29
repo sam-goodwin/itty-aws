@@ -1322,7 +1322,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteRuleResponse = unknown;
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;

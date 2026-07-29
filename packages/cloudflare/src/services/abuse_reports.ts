@@ -343,7 +343,7 @@ export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateAbuseReportResponse = string;
 export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAbuseReportResponse",
 }) as any as S.Schema<CreateAbuseReportResponse>;

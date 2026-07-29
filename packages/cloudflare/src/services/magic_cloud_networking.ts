@@ -8512,7 +8512,11 @@ export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
 export type InitialSetupCloudIntegrationResponse =
   CloudIntegrationsInitialSetupResult;
 export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () => CloudIntegrationsInitialSetupResult.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    CloudIntegrationsInitialSetupResult.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "InitialSetupCloudIntegrationResponse",
 }) as any as S.Schema<InitialSetupCloudIntegrationResponse>;
@@ -16836,7 +16840,7 @@ export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PolicyPreviewResourceResponse = string;
 export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
@@ -16909,7 +16913,7 @@ export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RefreshCatalogSyncResponse = string;
 export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshCatalogSyncResponse",
 }) as any as S.Schema<RefreshCatalogSyncResponse>;

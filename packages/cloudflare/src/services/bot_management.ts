@@ -813,7 +813,7 @@ export const GetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetBotManagementResponse = GetResult;
 export const GetBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
-  GetResult.pipe(T.EnvelopePayloadRoot()),
+  GetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBotManagementResponse",
 }) as any as S.Schema<GetBotManagementResponse>;
@@ -1685,7 +1685,7 @@ export const UpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PutBotManagementResponse = UpdateResult;
 export const PutBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateResult.pipe(T.EnvelopePayloadRoot()),
+  UpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBotManagementResponse",
 }) as any as S.Schema<PutBotManagementResponse>;

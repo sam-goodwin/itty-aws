@@ -1134,7 +1134,10 @@ export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
 
 export type GetDestinationEligibleResponse = DestinationsEligibleGetResultMap;
 export const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
-  DestinationsEligibleGetResultMap.pipe(T.EnvelopePayloadRoot()),
+  DestinationsEligibleGetResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDestinationEligibleResponse",
 }) as any as S.Schema<GetDestinationEligibleResponse>;
@@ -2118,7 +2121,10 @@ export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
 
 export type ListAvailableAlertsResponse = AvailableAlertsListResultMap;
 export const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  AvailableAlertsListResultMap.pipe(T.EnvelopePayloadRoot()),
+  AvailableAlertsListResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListAvailableAlertsResponse",
 }) as any as S.Schema<ListAvailableAlertsResponse>;

@@ -875,7 +875,7 @@ export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetDatasetFieldResponse = unknown;
 export const GetDatasetFieldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetFieldResponse",
 }) as any as S.Schema<GetDatasetFieldResponse>;

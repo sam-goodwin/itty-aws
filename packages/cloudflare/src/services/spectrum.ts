@@ -558,7 +558,10 @@ export const AppsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateAppResponse = AppsCreateResult;
 export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  AppsCreateResult.pipe(T.EnvelopePayloadRoot()),
+  AppsCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
@@ -659,7 +662,10 @@ export const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
 export type GetAnalyticAggregateCurrentResponse =
   AnalyticsAggregatesCurrentsGetResultList;
 export const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
-  AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  AnalyticsAggregatesCurrentsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetAnalyticAggregateCurrentResponse",
 }) as any as S.Schema<GetAnalyticAggregateCurrentResponse>;
@@ -1571,7 +1577,7 @@ export const AppsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetAppResponse = AppsGetResult;
 export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
-  AppsGetResult.pipe(T.EnvelopePayloadRoot()),
+  AppsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export type AppsListRequestDirection = "asc" | "desc";
@@ -2382,7 +2388,10 @@ export const AppsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateAppResponse = AppsUpdateResult;
 export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  AppsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  AppsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateAppResponse",
 }) as any as S.Schema<UpdateAppResponse>;

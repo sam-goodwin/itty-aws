@@ -192,7 +192,7 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetDomainResponse = unknown;
 export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDomainResponse",
 }) as any as S.Schema<GetDomainResponse>;
@@ -667,7 +667,7 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PutDomainResponse = unknown;
 export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDomainResponse",
 }) as any as S.Schema<PutDomainResponse>;
@@ -1135,7 +1135,10 @@ export const RegistrationsListResultList = /*@__PURE__*/ S.Array(
 
 export type RegistrationsListResponse = RegistrationsListResultList;
 export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  RegistrationsListResultList.pipe(T.EnvelopePayloadRoot()),
+  RegistrationsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;

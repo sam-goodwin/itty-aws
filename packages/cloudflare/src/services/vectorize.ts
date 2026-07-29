@@ -330,7 +330,7 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteIndexResponse = unknown;
 export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndexResponse",
 }) as any as S.Schema<DeleteIndexResponse>;
@@ -405,7 +405,7 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetByIdsIndexResponse = unknown;
 export const GetByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetByIdsIndexResponse",
 }) as any as S.Schema<GetByIdsIndexResponse>;

@@ -513,7 +513,10 @@ export const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
 export type ListEndpointHealthchecksResponse =
   ListEndpointHealthchecksItemsList;
 export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEndpointHealthchecksItemsList.pipe(T.EnvelopePayloadRoot()),
+  ListEndpointHealthchecksItemsList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;

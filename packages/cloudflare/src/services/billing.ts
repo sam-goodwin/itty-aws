@@ -394,7 +394,10 @@ export const UsageGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetUsageResponse = UsageGetResultList;
 export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  UsageGetResultList.pipe(T.EnvelopePayloadRoot()),
+  UsageGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetUsageResponse",
 }) as any as S.Schema<GetUsageResponse>;
@@ -490,7 +493,10 @@ export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
 
 export type PaygoUsageResponse = UsagePaygoResultList;
 export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  UsagePaygoResultList.pipe(T.EnvelopePayloadRoot()),
+  UsagePaygoResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PaygoUsageResponse",
 }) as any as S.Schema<PaygoUsageResponse>;

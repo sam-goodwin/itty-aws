@@ -344,7 +344,11 @@ export const AttackSurfaceReportIssuesClassResultList = /*@__PURE__*/ S.Array(
 export type ClassAttackSurfaceReportIssueResponse =
   AttackSurfaceReportIssuesClassResultList;
 export const ClassAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
-  () => AttackSurfaceReportIssuesClassResultList.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    AttackSurfaceReportIssuesClassResultList.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "ClassAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<ClassAttackSurfaceReportIssueResponse>;
@@ -678,7 +682,7 @@ export const GetAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetAsnResponse = unknown;
 export const GetAsnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAsnResponse" }) as any as S.Schema<GetAsnResponse>;
 
 export interface GetAsnSubnetRequest {
@@ -1242,7 +1246,10 @@ export const DomainsBulksGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetDomainBulkResponse = DomainsBulksGetResultList;
 export const GetDomainBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  DomainsBulksGetResultList.pipe(T.EnvelopePayloadRoot()),
+  DomainsBulksGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDomainBulkResponse",
 }) as any as S.Schema<GetDomainBulkResponse>;
@@ -1337,7 +1344,10 @@ export const DomainHistoryGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetDomainHistoryResponse = DomainHistoryGetResultList;
 export const GetDomainHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  DomainHistoryGetResultList.pipe(T.EnvelopePayloadRoot()),
+  DomainHistoryGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDomainHistoryResponse",
 }) as any as S.Schema<GetDomainHistoryResponse>;
@@ -1631,7 +1641,10 @@ export const IpsGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetIpResponse = IpsGetResultList;
 export const GetIpResponse = /*@__PURE__*/ S.suspend(() =>
-  IpsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  IpsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({ identifier: "GetIpResponse" }) as any as S.Schema<GetIpResponse>;
 
 export interface GetWhoiRequest {
@@ -2407,7 +2420,11 @@ export const IndicatorFeedsPermissionsListResultList = /*@__PURE__*/ S.Array(
 export type ListIndicatorFeedPermissionsResponse =
   IndicatorFeedsPermissionsListResultList;
 export const ListIndicatorFeedPermissionsResponse = /*@__PURE__*/ S.suspend(
-  () => IndicatorFeedsPermissionsListResultList.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    IndicatorFeedsPermissionsListResultList.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "ListIndicatorFeedPermissionsResponse",
 }) as any as S.Schema<ListIndicatorFeedPermissionsResponse>;
@@ -2775,7 +2792,10 @@ export type SeverityAttackSurfaceReportIssueResponse =
   AttackSurfaceReportIssuesSeverityResultList;
 export const SeverityAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
   () =>
-    AttackSurfaceReportIssuesSeverityResultList.pipe(T.EnvelopePayloadRoot()),
+    AttackSurfaceReportIssuesSeverityResultList.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "SeverityAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<SeverityAttackSurfaceReportIssueResponse>;
@@ -2941,7 +2961,11 @@ export const AttackSurfaceReportIssuesTypeResultList = /*@__PURE__*/ S.Array(
 export type TypeAttackSurfaceReportIssueResponse =
   AttackSurfaceReportIssuesTypeResultList;
 export const TypeAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
-  () => AttackSurfaceReportIssuesTypeResultList.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    AttackSurfaceReportIssuesTypeResultList.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "TypeAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<TypeAttackSurfaceReportIssueResponse>;

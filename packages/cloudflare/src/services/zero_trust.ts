@@ -1117,7 +1117,8 @@ export const BulkDeleteDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(
 
 export type BulkDeleteDeviceRegistrationsResponse = unknown;
 export const BulkDeleteDeviceRegistrationsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteDeviceRegistrationsResponse",
 }) as any as S.Schema<BulkDeleteDeviceRegistrationsResponse>;
@@ -27091,7 +27092,10 @@ export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateAccessApplicationResponse = AccessApplicationsCreateResult;
 export const CreateAccessApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  AccessApplicationsCreateResult.pipe(T.EnvelopePayloadRoot()),
+  AccessApplicationsCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateAccessApplicationResponse",
 }) as any as S.Schema<CreateAccessApplicationResponse>;
@@ -40292,7 +40296,7 @@ export const CreateDeviceRevokeRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDeviceRevokeResponse = unknown;
 export const CreateDeviceRevokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceRevokeResponse",
 }) as any as S.Schema<CreateDeviceRevokeResponse>;
@@ -40326,7 +40330,7 @@ export const CreateDeviceUnrevokeRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDeviceUnrevokeResponse = unknown;
 export const CreateDeviceUnrevokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceUnrevokeResponse",
 }) as any as S.Schema<CreateDeviceUnrevokeResponse>;
@@ -44470,7 +44474,10 @@ export const DlpProfilesCustomCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateDlpProfileCustomResponse = DlpProfilesCustomCreateResult;
 export const CreateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpProfilesCustomCreateResult.pipe(T.EnvelopePayloadRoot()),
+  DlpProfilesCustomCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateDlpProfileCustomResponse",
 }) as any as S.Schema<CreateDlpProfileCustomResponse>;
@@ -45533,7 +45540,10 @@ export const GatewayProxyEndpointsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 export type CreateGatewayProxyEndpointResponse =
   GatewayProxyEndpointsCreateResult;
 export const CreateGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  GatewayProxyEndpointsCreateResult.pipe(T.EnvelopePayloadRoot()),
+  GatewayProxyEndpointsCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateGatewayProxyEndpointResponse",
 }) as any as S.Schema<CreateGatewayProxyEndpointResponse>;
@@ -49981,7 +49991,10 @@ export const IdentityProvidersCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type CreateIdentityProviderResponse = IdentityProvidersCreateResult;
 export const CreateIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  IdentityProvidersCreateResult.pipe(T.EnvelopePayloadRoot()),
+  IdentityProvidersCreateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "CreateIdentityProviderResponse",
 }) as any as S.Schema<CreateIdentityProviderResponse>;
@@ -51378,7 +51391,7 @@ export const CreateTunnelCloudflaredManagementRequest = /*@__PURE__*/ S.suspend(
 export type CreateTunnelCloudflaredManagementResponse = string;
 export const CreateTunnelCloudflaredManagementResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.String.pipe(T.EnvelopePayloadRoot()),
+    S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateTunnelCloudflaredManagementResponse",
   }) as any as S.Schema<CreateTunnelCloudflaredManagementResponse>;
@@ -52533,7 +52546,7 @@ export const DeleteAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteAccessUserResponse = unknown;
 export const DeleteAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessUserResponse",
 }) as any as S.Schema<DeleteAccessUserResponse>;
@@ -52595,7 +52608,7 @@ export const DeleteDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDeviceDevicesResponse = unknown;
 export const DeleteDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDevicesResponse",
 }) as any as S.Schema<DeleteDeviceDevicesResponse>;
@@ -53385,7 +53398,8 @@ export const DeleteDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(
 
 export type DeleteDevicePostureIntegrationResponse = unknown;
 export const DeleteDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePostureIntegrationResponse",
 }) as any as S.Schema<DeleteDevicePostureIntegrationResponse>;
@@ -53413,7 +53427,7 @@ export const DeleteDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDeviceRegistrationResponse = unknown;
 export const DeleteDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceRegistrationResponse",
 }) as any as S.Schema<DeleteDeviceRegistrationResponse>;
@@ -53517,7 +53531,7 @@ export const DeleteDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDexRuleResponse = boolean;
 export const DeleteDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.EnvelopePayloadRoot()),
+  S.Boolean.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDexRuleResponse",
 }) as any as S.Schema<DeleteDexRuleResponse>;
@@ -53545,7 +53559,7 @@ export const DeleteDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpCustomPromptTopicResponse = unknown;
 export const DeleteDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpCustomPromptTopicResponse",
 }) as any as S.Schema<DeleteDlpCustomPromptTopicResponse>;
@@ -53573,7 +53587,7 @@ export const DeleteDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpDataClassResponse = unknown;
 export const DeleteDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataClassResponse",
 }) as any as S.Schema<DeleteDlpDataClassResponse>;
@@ -53629,7 +53643,7 @@ export const DeleteDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpDataTagCategoryResponse = unknown;
 export const DeleteDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryResponse>;
@@ -53660,7 +53674,8 @@ export const DeleteDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
 
 export type DeleteDlpDataTagCategoryDataTagResponse = unknown;
 export const DeleteDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryDataTagResponse>;
@@ -53804,7 +53819,7 @@ export const DeleteDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpEntryResponse = unknown;
 export const DeleteDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryResponse",
 }) as any as S.Schema<DeleteDlpEntryResponse>;
@@ -53832,7 +53847,7 @@ export const DeleteDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpEntryIntegrationResponse = unknown;
 export const DeleteDlpEntryIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryIntegrationResponse",
 }) as any as S.Schema<DeleteDlpEntryIntegrationResponse>;
@@ -53860,7 +53875,7 @@ export const DeleteDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpEntryPredefinedResponse = unknown;
 export const DeleteDlpEntryPredefinedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryPredefinedResponse",
 }) as any as S.Schema<DeleteDlpEntryPredefinedResponse>;
@@ -53888,7 +53903,7 @@ export const DeleteDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpProfileCustomResponse = unknown;
 export const DeleteDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfileCustomResponse",
 }) as any as S.Schema<DeleteDlpProfileCustomResponse>;
@@ -53916,7 +53931,7 @@ export const DeleteDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpProfilePredefinedResponse = unknown;
 export const DeleteDlpProfilePredefinedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfilePredefinedResponse",
 }) as any as S.Schema<DeleteDlpProfilePredefinedResponse>;
@@ -53944,7 +53959,7 @@ export const DeleteDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteDlpSensitivityGroupResponse = unknown;
 export const DeleteDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupResponse>;
@@ -53975,7 +53990,8 @@ export const DeleteDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
 
 export type DeleteDlpSensitivityGroupLevelResponse = unknown;
 export const DeleteDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupLevelResponse>;
@@ -54154,7 +54170,7 @@ export const DeleteGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteGatewayListResponse = unknown;
 export const DeleteGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayListResponse",
 }) as any as S.Schema<DeleteGatewayListResponse>;
@@ -54182,7 +54198,7 @@ export const DeleteGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteGatewayLocationResponse = unknown;
 export const DeleteGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayLocationResponse",
 }) as any as S.Schema<DeleteGatewayLocationResponse>;
@@ -54210,7 +54226,7 @@ export const DeleteGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteGatewayPacfileResponse = unknown;
 export const DeleteGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayPacfileResponse",
 }) as any as S.Schema<DeleteGatewayPacfileResponse>;
@@ -54238,7 +54254,7 @@ export const DeleteGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteGatewayProxyEndpointResponse = unknown;
 export const DeleteGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayProxyEndpointResponse",
 }) as any as S.Schema<DeleteGatewayProxyEndpointResponse>;
@@ -54267,7 +54283,7 @@ export const DeleteGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteGatewayRuleResponse = unknown;
 export const DeleteGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayRuleResponse",
 }) as any as S.Schema<DeleteGatewayRuleResponse>;
@@ -54682,7 +54698,8 @@ export const DeleteRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteRiskScoringIntegrationResponse = unknown;
 export const DeleteRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRiskScoringIntegrationResponse",
 }) as any as S.Schema<DeleteRiskScoringIntegrationResponse>;
@@ -54868,7 +54885,7 @@ export const DeleteTunnelCloudflaredConnectionRequest = /*@__PURE__*/ S.suspend(
 export type DeleteTunnelCloudflaredConnectionResponse = unknown;
 export const DeleteTunnelCloudflaredConnectionResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Unknown.pipe(T.EnvelopePayloadRoot()),
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteTunnelCloudflaredConnectionResponse",
   }) as any as S.Schema<DeleteTunnelCloudflaredConnectionResponse>;
@@ -55127,7 +55144,7 @@ export const DlpEntriesCustomDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DlpEntriesCustomDeleteResponse = unknown;
 export const DlpEntriesCustomDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomDeleteResponse",
 }) as any as S.Schema<DlpEntriesCustomDeleteResponse>;
@@ -55808,7 +55825,10 @@ export const DlpEntriesCustomGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type DlpEntriesCustomGetResponse = DlpEntriesCustomGetResult;
 export const DlpEntriesCustomGetResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpEntriesCustomGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpEntriesCustomGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "DlpEntriesCustomGetResponse",
 }) as any as S.Schema<DlpEntriesCustomGetResponse>;
@@ -57042,7 +57062,10 @@ export const DlpEntriesIntegrationGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type DlpEntriesIntegrationGetResponse = DlpEntriesIntegrationGetResult;
 export const DlpEntriesIntegrationGetResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpEntriesIntegrationGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpEntriesIntegrationGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "DlpEntriesIntegrationGetResponse",
 }) as any as S.Schema<DlpEntriesIntegrationGetResponse>;
@@ -58297,7 +58320,10 @@ export const DlpEntriesPredefinedGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type DlpEntriesPredefinedGetResponse = DlpEntriesPredefinedGetResult;
 export const DlpEntriesPredefinedGetResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpEntriesPredefinedGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpEntriesPredefinedGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "DlpEntriesPredefinedGetResponse",
 }) as any as S.Schema<DlpEntriesPredefinedGetResponse>;
@@ -78627,7 +78653,10 @@ export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetAccessApplicationResponse = AccessApplicationsGetResult;
 export const GetAccessApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  AccessApplicationsGetResult.pipe(T.EnvelopePayloadRoot()),
+  AccessApplicationsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetAccessApplicationResponse",
 }) as any as S.Schema<GetAccessApplicationResponse>;
@@ -89653,7 +89682,10 @@ export const DexWarpChangeEventsGetResultList = /*@__PURE__*/ S.Array(
 
 export type GetDexWarpChangeEventResponse = DexWarpChangeEventsGetResultList;
 export const GetDexWarpChangeEventResponse = /*@__PURE__*/ S.suspend(() =>
-  DexWarpChangeEventsGetResultList.pipe(T.EnvelopePayloadRoot()),
+  DexWarpChangeEventsGetResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDexWarpChangeEventResponse",
 }) as any as S.Schema<GetDexWarpChangeEventResponse>;
@@ -90893,7 +90925,10 @@ export const DlpEntriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetDlpEntryResponse = DlpEntriesGetResult;
 export const GetDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpEntriesGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpEntriesGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDlpEntryResponse",
 }) as any as S.Schema<GetDlpEntryResponse>;
@@ -93187,7 +93222,10 @@ export const DlpProfilesGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetDlpProfileResponse = DlpProfilesGetResult;
 export const GetDlpProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpProfilesGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpProfilesGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDlpProfileResponse",
 }) as any as S.Schema<GetDlpProfileResponse>;
@@ -95452,7 +95490,10 @@ export const DlpProfilesCustomGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetDlpProfileCustomResponse = DlpProfilesCustomGetResult;
 export const GetDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpProfilesCustomGetResult.pipe(T.EnvelopePayloadRoot()),
+  DlpProfilesCustomGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetDlpProfileCustomResponse",
 }) as any as S.Schema<GetDlpProfileCustomResponse>;
@@ -97397,7 +97438,10 @@ export const GatewayProxyEndpointsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetGatewayProxyEndpointResponse = GatewayProxyEndpointsGetResult;
 export const GetGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  GatewayProxyEndpointsGetResult.pipe(T.EnvelopePayloadRoot()),
+  GatewayProxyEndpointsGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetGatewayProxyEndpointResponse",
 }) as any as S.Schema<GetGatewayProxyEndpointResponse>;
@@ -100423,7 +100467,10 @@ export const IdentityProvidersGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type GetIdentityProviderResponse = IdentityProvidersGetResult;
 export const GetIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  IdentityProvidersGetResult.pipe(T.EnvelopePayloadRoot()),
+  IdentityProvidersGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetIdentityProviderResponse",
 }) as any as S.Schema<GetIdentityProviderResponse>;
@@ -102104,7 +102151,7 @@ export const GetTunnelCloudflaredTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetTunnelCloudflaredTokenResponse = string;
 export const GetTunnelCloudflaredTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredTokenResponse",
 }) as any as S.Schema<GetTunnelCloudflaredTokenResponse>;
@@ -102677,7 +102724,7 @@ export const GetTunnelWarpConnectorTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetTunnelWarpConnectorTokenResponse = string;
 export const GetTunnelWarpConnectorTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorTokenResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenResponse>;
@@ -126573,7 +126620,11 @@ export const AccessIdpFederationGrantsListResultList = /*@__PURE__*/ S.Array(
 export type ListAccessIdpFederationGrantsResponse =
   AccessIdpFederationGrantsListResultList;
 export const ListAccessIdpFederationGrantsResponse = /*@__PURE__*/ S.suspend(
-  () => AccessIdpFederationGrantsListResultList.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    AccessIdpFederationGrantsListResultList.pipe(
+      T.EnvelopePayloadRoot(),
+      T.KeyDictionary(KEY_DICTIONARY),
+    ),
 ).annotate({
   identifier: "ListAccessIdpFederationGrantsResponse",
 }) as any as S.Schema<ListAccessIdpFederationGrantsResponse>;
@@ -126988,7 +127039,10 @@ export const AccessLogsAccessRequestsListResultList = /*@__PURE__*/ S.Array(
 export type ListAccessLogAccessRequestsResponse =
   AccessLogsAccessRequestsListResultList;
 export const ListAccessLogAccessRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  AccessLogsAccessRequestsListResultList.pipe(T.EnvelopePayloadRoot()),
+  AccessLogsAccessRequestsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListAccessLogAccessRequestsResponse",
 }) as any as S.Schema<ListAccessLogAccessRequestsResponse>;
@@ -148557,7 +148611,10 @@ export const GatewayProxyEndpointsEditResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PatchGatewayProxyEndpointResponse = GatewayProxyEndpointsEditResult;
 export const PatchGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  GatewayProxyEndpointsEditResult.pipe(T.EnvelopePayloadRoot()),
+  GatewayProxyEndpointsEditResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "PatchGatewayProxyEndpointResponse",
 }) as any as S.Schema<PatchGatewayProxyEndpointResponse>;
@@ -153405,7 +153462,8 @@ export const PutTunnelWarpConnectorFailoverRequest = /*@__PURE__*/ S.suspend(
 
 export type PutTunnelWarpConnectorFailoverResponse = unknown;
 export const PutTunnelWarpConnectorFailoverResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTunnelWarpConnectorFailoverResponse",
 }) as any as S.Schema<PutTunnelWarpConnectorFailoverResponse>;
@@ -154801,7 +154859,7 @@ export const ResetRiskScoringRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ResetRiskScoringResponse = unknown;
 export const ResetRiskScoringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResetRiskScoringResponse",
 }) as any as S.Schema<ResetRiskScoringResponse>;
@@ -154829,7 +154887,7 @@ export const RevokeDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RevokeDeviceDevicesResponse = unknown;
 export const RevokeDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceDevicesResponse",
 }) as any as S.Schema<RevokeDeviceDevicesResponse>;
@@ -154863,7 +154921,7 @@ export const RevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RevokeDeviceRegistrationResponse = unknown;
 export const RevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceRegistrationResponse",
 }) as any as S.Schema<RevokeDeviceRegistrationResponse>;
@@ -154894,7 +154952,8 @@ export const RevokeTokensAccessApplicationForAccountRequest =
 
 export type RevokeTokensAccessApplicationResponse = unknown;
 export const RevokeTokensAccessApplicationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  () =>
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeTokensAccessApplicationResponse",
 }) as any as S.Schema<RevokeTokensAccessApplicationResponse>;
@@ -154960,7 +155019,7 @@ export const RevokeUsersOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type RevokeUsersOrganizationResponse = boolean;
 export const RevokeUsersOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.EnvelopePayloadRoot()),
+  S.Boolean.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeUsersOrganizationResponse",
 }) as any as S.Schema<RevokeUsersOrganizationResponse>;
@@ -155312,7 +155371,7 @@ export const UnrevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UnrevokeDeviceRegistrationResponse = unknown;
 export const UnrevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UnrevokeDeviceRegistrationResponse",
 }) as any as S.Schema<UnrevokeDeviceRegistrationResponse>;
@@ -179120,7 +179179,10 @@ export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateAccessApplicationResponse = AccessApplicationsUpdateResult;
 export const UpdateAccessApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  AccessApplicationsUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  AccessApplicationsUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateAccessApplicationResponse",
 }) as any as S.Schema<UpdateAccessApplicationResponse>;
@@ -190584,7 +190646,10 @@ export const DlpEntriesUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateDlpEntryResponse = DlpEntriesUpdateResult;
 export const UpdateDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpEntriesUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  DlpEntriesUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateDlpEntryResponse",
 }) as any as S.Schema<UpdateDlpEntryResponse>;
@@ -193327,7 +193392,10 @@ export const DlpProfilesCustomUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateDlpProfileCustomResponse = DlpProfilesCustomUpdateResult;
 export const UpdateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  DlpProfilesCustomUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  DlpProfilesCustomUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateDlpProfileCustomResponse",
 }) as any as S.Schema<UpdateDlpProfileCustomResponse>;
@@ -198602,7 +198670,10 @@ export const IdentityProvidersUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type UpdateIdentityProviderResponse = IdentityProvidersUpdateResult;
 export const UpdateIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  IdentityProvidersUpdateResult.pipe(T.EnvelopePayloadRoot()),
+  IdentityProvidersUpdateResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "UpdateIdentityProviderResponse",
 }) as any as S.Schema<UpdateIdentityProviderResponse>;

@@ -291,7 +291,10 @@ export const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type BulkGetNamespacesResponse = NamespacesBulkGetResult;
 export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
-  NamespacesBulkGetResult.pipe(T.EnvelopePayloadRoot()),
+  NamespacesBulkGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "BulkGetNamespacesResponse",
 }) as any as S.Schema<BulkGetNamespacesResponse>;
@@ -561,7 +564,7 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetNamespaceMetadataResponse = unknown;
 export const GetNamespaceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceMetadataResponse",
 }) as any as S.Schema<GetNamespaceMetadataResponse>;
@@ -936,7 +939,10 @@ export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
 
 export type NamespacesKeysBulkGetResponse = NamespacesKeysBulkGetResult;
 export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
-  NamespacesKeysBulkGetResult.pipe(T.EnvelopePayloadRoot()),
+  NamespacesKeysBulkGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "NamespacesKeysBulkGetResponse",
 }) as any as S.Schema<NamespacesKeysBulkGetResponse>;

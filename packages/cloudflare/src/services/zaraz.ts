@@ -62,7 +62,7 @@ export const CreatePublishRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreatePublishResponse = string;
 export const CreatePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot()),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePublishResponse",
 }) as any as S.Schema<CreatePublishResponse>;
@@ -1135,7 +1135,10 @@ export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
 
 export type GetHistoryConfigResponse = HistoryConfigsGetResultMap;
 export const GetHistoryConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  HistoryConfigsGetResultMap.pipe(T.EnvelopePayloadRoot()),
+  HistoryConfigsGetResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetHistoryConfigResponse",
 }) as any as S.Schema<GetHistoryConfigResponse>;
@@ -1165,7 +1168,10 @@ export const WorkflowGetResult = /*@__PURE__*/ S.String;
 
 export type GetWorkflowResponse = WorkflowGetResult;
 export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  WorkflowGetResult.pipe(T.EnvelopePayloadRoot()),
+  WorkflowGetResult.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "GetWorkflowResponse",
 }) as any as S.Schema<GetWorkflowResponse>;
@@ -2235,7 +2241,7 @@ export const UpdateResult = /*@__PURE__*/ S.String;
 
 export type PutZarazResponse = UpdateResult;
 export const PutZarazResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateResult.pipe(T.EnvelopePayloadRoot()),
+  UpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutZarazResponse",
 }) as any as S.Schema<PutZarazResponse>;

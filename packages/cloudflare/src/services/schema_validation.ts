@@ -172,7 +172,10 @@ export const SettingsOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
 export type BulkPatchSettingOperationsResponse =
   SettingsOperationsBulkEditResultMap;
 export const BulkPatchSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  SettingsOperationsBulkEditResultMap.pipe(T.EnvelopePayloadRoot()),
+  SettingsOperationsBulkEditResultMap.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "BulkPatchSettingOperationsResponse",
 }) as any as S.Schema<BulkPatchSettingOperationsResponse>;
