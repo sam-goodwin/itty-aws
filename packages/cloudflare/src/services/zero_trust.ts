@@ -96286,23 +96286,461 @@ export const GetGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGatewayConfigurationRequest",
 }) as any as S.Schema<GetGatewayConfigurationRequest>;
 
-export type UntypedSettingsMap = { [key: string]: unknown | undefined };
-export const UntypedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UntypedSettingsMap>;
+export interface GatewayConfigurationsGetResponseSettingsActivityLog {
+  /** Specify whether to log activity. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsActivityLog =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsActivityLog",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsActivityLog>;
+
+export interface GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings {
+  /** Specify whether to enable notifications. */
+  enabled?: boolean | null;
+  /** Specify whether to include context information as query parameters. */
+  includeContext?: boolean | null;
+  /** Specify the message to show in the notification. */
+  msg?: string | null;
+  /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
+  supportUrl?: string | null;
+}
+export const GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      msg: S.optional(S.NullOr(S.String)),
+      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings>;
+
+export interface GatewayConfigurationsGetResponseSettingsAntivirus {
+  /** Specify whether to enable anti-virus scanning on downloads. */
+  enabledDownloadPhase?: boolean | null;
+  /** Specify whether to enable anti-virus scanning on uploads. */
+  enabledUploadPhase?: boolean | null;
+  /** Specify whether to block requests for unscannable files. */
+  failClosed?: boolean | null;
+  /** Configure the message the user's device shows during an antivirus scan. */
+  notificationSettings?: GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings | null;
+}
+export const GatewayConfigurationsGetResponseSettingsAntivirus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledDownloadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_download_phase")),
+      ),
+      enabledUploadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_upload_phase")),
+      ),
+      failClosed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_closed"))),
+      notificationSettings: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsAntivirusNotificationSettings,
+        ).pipe(T.Body("notification_settings")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsAntivirus",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsAntivirus>;
+
+export type GatewayConfigurationsGetResponseSettingsBlockPageMode =
+  | ""
+  | "customized_block_page"
+  | "redirect_uri";
+export const GatewayConfigurationsGetResponseSettingsBlockPageMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsGetResponseSettingsBlockPage {
+  /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
+  backgroundColor?: string | null;
+  /** Specify whether to enable the custom block page. */
+  enabled?: boolean | null;
+  /** Specify the block page footer text when the mode is customized_block_page. */
+  footerText?: string | null;
+  /** Specify the block page header text when the mode is customized_block_page. */
+  headerText?: string | null;
+  /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
+  includeContext?: boolean | null;
+  /** Specify the full URL to the logo file when the mode is customized_block_page. */
+  logoPath?: string | null;
+  /** Specify the admin email for users to contact when the mode is customized_block_page. */
+  mailtoAddress?: string | null;
+  /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
+  mailtoSubject?: string | null;
+  /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
+  mode?: GatewayConfigurationsGetResponseSettingsBlockPageMode | null;
+  /** Specify the block page title when the mode is customized_block_page. */
+  name?: string | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
+  suppressFooter?: boolean | null;
+  /** Specify the URI to redirect users to when the mode is redirect_uri. */
+  targetUri?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsGetResponseSettingsBlockPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backgroundColor: S.optional(
+        S.NullOr(S.String).pipe(T.Body("background_color")),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_address")),
+      ),
+      mailtoSubject: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_subject")),
+      ),
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsBlockPageMode),
+      ),
+      name: S.optional(S.NullOr(S.String)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      suppressFooter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("suppress_footer")),
+      ),
+      targetUri: S.optional(S.NullOr(S.String).pipe(T.Body("target_uri"))),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsBlockPage",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsBlockPage>;
+
+export type GatewayConfigurationsGetResponseSettingsBodyScanningInspectionMode =
+  "deep" | "shallow";
+export const GatewayConfigurationsGetResponseSettingsBodyScanningInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsGetResponseSettingsBodyScanning {
+  /** Specify the inspection mode as either `deep` or `shallow`. */
+  inspectionMode?: GatewayConfigurationsGetResponseSettingsBodyScanningInspectionMode | null;
+}
+export const GatewayConfigurationsGetResponseSettingsBodyScanning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inspectionMode: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsBodyScanningInspectionMode,
+        ).pipe(T.Body("inspection_mode")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsBodyScanning",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsBodyScanning>;
+
+export interface GatewayConfigurationsGetResponseSettingsBrowserIsolation {
+  /** Specify whether to enable non-identity onramp support for Browser Isolation. */
+  nonIdentityEnabled?: boolean | null;
+  /** Specify whether to enable Clientless Browser Isolation. */
+  urlBrowserIsolationEnabled?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsBrowserIsolation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nonIdentityEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("non_identity_enabled")),
+      ),
+      urlBrowserIsolationEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("url_browser_isolation_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsBrowserIsolation",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsBrowserIsolation>;
+
+export interface GatewayConfigurationsGetResponseSettingsCertificate {
+  /** Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA. */
+  id: string;
+}
+export const GatewayConfigurationsGetResponseSettingsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsCertificate",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsCertificate>;
+
+export interface GatewayConfigurationsGetResponseSettingsCustomCertificate {
+  /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
+  enabled: boolean;
+  /** Specify the UUID of the certificate (ID from MTLS certificate store). */
+  id?: string | null;
+  /** Indicate the internal certificate status. */
+  bindingStatus?: string | null;
+  updatedAt?: string | null;
+}
+export const GatewayConfigurationsGetResponseSettingsCustomCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      id: S.optional(S.NullOr(S.String)),
+      bindingStatus: S.optional(
+        S.NullOr(S.String).pipe(T.Body("binding_status")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsCustomCertificate",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsCustomCertificate>;
+
+export interface GatewayConfigurationsGetResponseSettingsExtendedEmailMatching {
+  /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
+  enabled?: boolean | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsGetResponseSettingsExtendedEmailMatching =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsExtendedEmailMatching",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsExtendedEmailMatching>;
+
+export interface GatewayConfigurationsGetResponseSettingsFips {
+  /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
+  tls?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsFips =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tls: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsFips",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsFips>;
+
+export interface GatewayConfigurationsGetResponseSettingsHostSelector {
+  /** Specify whether to enable filtering via hosts for egress policies. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsHostSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsHostSelector",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsHostSelector>;
+
+export type GatewayConfigurationsGetResponseSettingsInspectionMode =
+  | "static"
+  | "dynamic";
+export const GatewayConfigurationsGetResponseSettingsInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsGetResponseSettingsInspection {
+  /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
+  mode?: GatewayConfigurationsGetResponseSettingsInspectionMode | null;
+}
+export const GatewayConfigurationsGetResponseSettingsInspection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsInspectionMode),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsInspection",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsInspection>;
+
+export interface GatewayConfigurationsGetResponseSettingsProtocolDetection {
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsProtocolDetection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsProtocolDetection",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsProtocolDetection>;
+
+export type GatewayConfigurationsGetResponseSettingsSandboxFallbackAction =
+  | "allow"
+  | "block";
+export const GatewayConfigurationsGetResponseSettingsSandboxFallbackAction =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsGetResponseSettingsSandbox {
+  /** Specify whether to enable the sandbox. */
+  enabled?: boolean | null;
+  /** Specify the action to take when the system cannot scan the file. */
+  fallbackAction?: GatewayConfigurationsGetResponseSettingsSandboxFallbackAction | null;
+}
+export const GatewayConfigurationsGetResponseSettingsSandbox =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      fallbackAction: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsSandboxFallbackAction,
+        ).pipe(T.Body("fallback_action")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsSandbox",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsSandbox>;
+
+export interface GatewayConfigurationsGetResponseSettingsTlsDecrypt {
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsGetResponseSettingsTlsDecrypt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsGetResponseSettingsTlsDecrypt",
+  }) as any as S.Schema<GatewayConfigurationsGetResponseSettingsTlsDecrypt>;
+
+export interface GatewayConfigurationsGetResponseSettings {
+  /** Specify activity log settings. */
+  activityLog?: GatewayConfigurationsGetResponseSettingsActivityLog | null;
+  /** Specify anti-virus settings. */
+  antivirus?: GatewayConfigurationsGetResponseSettingsAntivirus | null;
+  /** Specify block page layout settings. */
+  blockPage?: GatewayConfigurationsGetResponseSettingsBlockPage | null;
+  /** Specify the DLP inspection mode. */
+  bodyScanning?: GatewayConfigurationsGetResponseSettingsBodyScanning | null;
+  /** Specify Clientless Browser Isolation settings. */
+  browserIsolation?: GatewayConfigurationsGetResponseSettingsBrowserIsolation | null;
+  /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
+  certificate?: GatewayConfigurationsGetResponseSettingsCertificate | null;
+  /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
+  customCertificate?: GatewayConfigurationsGetResponseSettingsCustomCertificate | null;
+  /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
+  extendedEmailMatching?: GatewayConfigurationsGetResponseSettingsExtendedEmailMatching | null;
+  /** Specify FIPS settings. */
+  fips?: GatewayConfigurationsGetResponseSettingsFips | null;
+  /** Enable host selection in egress policies. */
+  hostSelector?: GatewayConfigurationsGetResponseSettingsHostSelector | null;
+  /** Define the proxy inspection mode. */
+  inspection?: GatewayConfigurationsGetResponseSettingsInspection | null;
+  /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
+  maxTtlSecs?: number | null;
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  protocolDetection?: GatewayConfigurationsGetResponseSettingsProtocolDetection | null;
+  /** Specify whether to enable the sandbox. */
+  sandbox?: GatewayConfigurationsGetResponseSettingsSandbox | null;
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  tlsDecrypt?: GatewayConfigurationsGetResponseSettingsTlsDecrypt | null;
+}
+export const GatewayConfigurationsGetResponseSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      activityLog: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsActivityLog).pipe(
+          T.Body("activity_log"),
+        ),
+      ),
+      antivirus: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsAntivirus),
+      ),
+      blockPage: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsBlockPage).pipe(
+          T.Body("block_page"),
+        ),
+      ),
+      bodyScanning: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsBodyScanning).pipe(
+          T.Body("body_scanning"),
+        ),
+      ),
+      browserIsolation: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsBrowserIsolation).pipe(
+          T.Body("browser_isolation"),
+        ),
+      ),
+      certificate: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsCertificate),
+      ),
+      customCertificate: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsCustomCertificate,
+        ).pipe(T.Body("custom_certificate")),
+      ),
+      extendedEmailMatching: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsExtendedEmailMatching,
+        ).pipe(T.Body("extended_email_matching")),
+      ),
+      fips: S.optional(S.NullOr(GatewayConfigurationsGetResponseSettingsFips)),
+      hostSelector: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsHostSelector).pipe(
+          T.Body("host_selector"),
+        ),
+      ),
+      inspection: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsInspection),
+      ),
+      maxTtlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl_secs"))),
+      protocolDetection: S.optional(
+        S.NullOr(
+          GatewayConfigurationsGetResponseSettingsProtocolDetection,
+        ).pipe(T.Body("protocol_detection")),
+      ),
+      sandbox: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsSandbox),
+      ),
+      tlsDecrypt: S.optional(
+        S.NullOr(GatewayConfigurationsGetResponseSettingsTlsDecrypt).pipe(
+          T.Body("tls_decrypt"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "GatewayConfigurationsGetResponseSettings",
+}) as any as S.Schema<GatewayConfigurationsGetResponseSettings>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: UntypedSettingsMap | null;
+  settings?: GatewayConfigurationsGetResponseSettings | null;
   updatedAt?: string | null;
 }
 export const GetGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(UntypedSettingsMap)),
+    settings: S.optional(S.NullOr(GatewayConfigurationsGetResponseSettings)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -146984,15 +147422,437 @@ export const PatchDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDlpSettingResponse",
 }) as any as S.Schema<PatchDlpSettingResponse>;
 
+export interface GatewayConfigurationsEditRequestSettingsActivityLog {
+  /** Specify whether to log activity. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsActivityLog =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsActivityLog",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsActivityLog>;
+
+export interface GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings {
+  /** Specify whether to enable notifications. */
+  enabled?: boolean;
+  /** Specify whether to include context information as query parameters. */
+  includeContext?: boolean;
+  /** Specify the message to show in the notification. */
+  msg?: string;
+  /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
+  supportUrl?: string;
+}
+export const GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings>;
+
+export interface GatewayConfigurationsEditRequestSettingsAntivirus {
+  /** Specify whether to enable anti-virus scanning on downloads. */
+  enabledDownloadPhase?: boolean;
+  /** Specify whether to enable anti-virus scanning on uploads. */
+  enabledUploadPhase?: boolean;
+  /** Specify whether to block requests for unscannable files. */
+  failClosed?: boolean;
+  /** Configure the message the user's device shows during an antivirus scan. */
+  notificationSettings?: GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings;
+}
+export const GatewayConfigurationsEditRequestSettingsAntivirus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledDownloadPhase: S.optional(
+        S.Boolean.pipe(T.Body("enabled_download_phase")),
+      ),
+      enabledUploadPhase: S.optional(
+        S.Boolean.pipe(T.Body("enabled_upload_phase")),
+      ),
+      failClosed: S.optional(S.Boolean.pipe(T.Body("fail_closed"))),
+      notificationSettings: S.optional(
+        GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsAntivirus",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsAntivirus>;
+
+export type GatewayConfigurationsEditRequestSettingsBlockPageMode =
+  | ""
+  | "customized_block_page"
+  | "redirect_uri";
+export const GatewayConfigurationsEditRequestSettingsBlockPageMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditRequestSettingsBlockPage {
+  /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
+  backgroundColor?: string;
+  /** Specify whether to enable the custom block page. */
+  enabled?: boolean;
+  /** Specify the block page footer text when the mode is customized_block_page. */
+  footerText?: string;
+  /** Specify the block page header text when the mode is customized_block_page. */
+  headerText?: string;
+  /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
+  includeContext?: boolean;
+  /** Specify the full URL to the logo file when the mode is customized_block_page. */
+  logoPath?: string;
+  /** Specify the admin email for users to contact when the mode is customized_block_page. */
+  mailtoAddress?: string;
+  /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
+  mailtoSubject?: string;
+  /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
+  mode?: GatewayConfigurationsEditRequestSettingsBlockPageMode | (string & {});
+  /** Specify the block page title when the mode is customized_block_page. */
+  name?: string;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string;
+  /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
+  suppressFooter?: boolean;
+  /** Specify the URI to redirect users to when the mode is redirect_uri. */
+  targetUri?: string;
+  /** Indicate the version number of the setting. */
+  version?: number;
+}
+export const GatewayConfigurationsEditRequestSettingsBlockPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      enabled: S.optional(S.Boolean),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(S.String.pipe(T.Body("mailto_address"))),
+      mailtoSubject: S.optional(S.String.pipe(T.Body("mailto_subject"))),
+      mode: S.optional(GatewayConfigurationsEditRequestSettingsBlockPageMode),
+      name: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      suppressFooter: S.optional(S.Boolean.pipe(T.Body("suppress_footer"))),
+      targetUri: S.optional(S.String.pipe(T.Body("target_uri"))),
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsBlockPage",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsBlockPage>;
+
+export type GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode =
+  "deep" | "shallow";
+export const GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditRequestSettingsBodyScanning {
+  /** Specify the inspection mode as either `deep` or `shallow`. */
+  inspectionMode?:
+    | GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode
+    | (string & {});
+}
+export const GatewayConfigurationsEditRequestSettingsBodyScanning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inspectionMode: S.optional(
+        GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode.pipe(
+          T.Body("inspection_mode"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsBodyScanning",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsBodyScanning>;
+
+export interface GatewayConfigurationsEditRequestSettingsBrowserIsolation {
+  /** Specify whether to enable non-identity onramp support for Browser Isolation. */
+  nonIdentityEnabled?: boolean;
+  /** Specify whether to enable Clientless Browser Isolation. */
+  urlBrowserIsolationEnabled?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsBrowserIsolation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nonIdentityEnabled: S.optional(
+        S.Boolean.pipe(T.Body("non_identity_enabled")),
+      ),
+      urlBrowserIsolationEnabled: S.optional(
+        S.Boolean.pipe(T.Body("url_browser_isolation_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsBrowserIsolation",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsBrowserIsolation>;
+
+export interface GatewayConfigurationsEditRequestSettingsCertificate {
+  /** Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA. */
+  id: string;
+}
+export const GatewayConfigurationsEditRequestSettingsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsCertificate",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsCertificate>;
+
+export interface GatewayConfigurationsEditRequestSettingsCustomCertificate {
+  /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
+  enabled: boolean;
+  /** Specify the UUID of the certificate (ID from MTLS certificate store). */
+  id?: string;
+  /** Indicate the internal certificate status. */
+  bindingStatus?: string;
+  updatedAt?: string;
+}
+export const GatewayConfigurationsEditRequestSettingsCustomCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      id: S.optional(S.String),
+      bindingStatus: S.optional(S.String.pipe(T.Body("binding_status"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsCustomCertificate",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsCustomCertificate>;
+
+export interface GatewayConfigurationsEditRequestSettingsExtendedEmailMatching {
+  /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
+  enabled?: boolean;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string;
+  /** Indicate the version number of the setting. */
+  version?: number;
+}
+export const GatewayConfigurationsEditRequestSettingsExtendedEmailMatching =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsExtendedEmailMatching",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsExtendedEmailMatching>;
+
+export interface GatewayConfigurationsEditRequestSettingsFips {
+  /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
+  tls?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsFips =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tls: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsFips",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsFips>;
+
+export interface GatewayConfigurationsEditRequestSettingsHostSelector {
+  /** Specify whether to enable filtering via hosts for egress policies. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsHostSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsHostSelector",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsHostSelector>;
+
+export type GatewayConfigurationsEditRequestSettingsInspectionMode =
+  | "static"
+  | "dynamic";
+export const GatewayConfigurationsEditRequestSettingsInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditRequestSettingsInspection {
+  /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
+  mode?: GatewayConfigurationsEditRequestSettingsInspectionMode | (string & {});
+}
+export const GatewayConfigurationsEditRequestSettingsInspection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(GatewayConfigurationsEditRequestSettingsInspectionMode),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsInspection",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsInspection>;
+
+export interface GatewayConfigurationsEditRequestSettingsProtocolDetection {
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsProtocolDetection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsProtocolDetection",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsProtocolDetection>;
+
+export type GatewayConfigurationsEditRequestSettingsSandboxFallbackAction =
+  | "allow"
+  | "block";
+export const GatewayConfigurationsEditRequestSettingsSandboxFallbackAction =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditRequestSettingsSandbox {
+  /** Specify whether to enable the sandbox. */
+  enabled?: boolean;
+  /** Specify the action to take when the system cannot scan the file. */
+  fallbackAction?:
+    | GatewayConfigurationsEditRequestSettingsSandboxFallbackAction
+    | (string & {});
+}
+export const GatewayConfigurationsEditRequestSettingsSandbox =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      fallbackAction: S.optional(
+        GatewayConfigurationsEditRequestSettingsSandboxFallbackAction.pipe(
+          T.Body("fallback_action"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsSandbox",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsSandbox>;
+
+export interface GatewayConfigurationsEditRequestSettingsTlsDecrypt {
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsEditRequestSettingsTlsDecrypt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditRequestSettingsTlsDecrypt",
+  }) as any as S.Schema<GatewayConfigurationsEditRequestSettingsTlsDecrypt>;
+
+export interface GatewayConfigurationsEditRequestSettings {
+  /** Specify activity log settings. */
+  activityLog?: GatewayConfigurationsEditRequestSettingsActivityLog;
+  /** Specify anti-virus settings. */
+  antivirus?: GatewayConfigurationsEditRequestSettingsAntivirus;
+  /** Specify block page layout settings. */
+  blockPage?: GatewayConfigurationsEditRequestSettingsBlockPage;
+  /** Specify the DLP inspection mode. */
+  bodyScanning?: GatewayConfigurationsEditRequestSettingsBodyScanning;
+  /** Specify Clientless Browser Isolation settings. */
+  browserIsolation?: GatewayConfigurationsEditRequestSettingsBrowserIsolation;
+  /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
+  certificate?: GatewayConfigurationsEditRequestSettingsCertificate;
+  /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
+  customCertificate?: GatewayConfigurationsEditRequestSettingsCustomCertificate;
+  /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
+  extendedEmailMatching?: GatewayConfigurationsEditRequestSettingsExtendedEmailMatching;
+  /** Specify FIPS settings. */
+  fips?: GatewayConfigurationsEditRequestSettingsFips;
+  /** Enable host selection in egress policies. */
+  hostSelector?: GatewayConfigurationsEditRequestSettingsHostSelector;
+  /** Define the proxy inspection mode. */
+  inspection?: GatewayConfigurationsEditRequestSettingsInspection;
+  /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
+  maxTtlSecs?: number;
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  protocolDetection?: GatewayConfigurationsEditRequestSettingsProtocolDetection;
+  /** Specify whether to enable the sandbox. */
+  sandbox?: GatewayConfigurationsEditRequestSettingsSandbox;
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  tlsDecrypt?: GatewayConfigurationsEditRequestSettingsTlsDecrypt;
+}
+export const GatewayConfigurationsEditRequestSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      activityLog: S.optional(
+        GatewayConfigurationsEditRequestSettingsActivityLog.pipe(
+          T.Body("activity_log"),
+        ),
+      ),
+      antivirus: S.optional(GatewayConfigurationsEditRequestSettingsAntivirus),
+      blockPage: S.optional(
+        GatewayConfigurationsEditRequestSettingsBlockPage.pipe(
+          T.Body("block_page"),
+        ),
+      ),
+      bodyScanning: S.optional(
+        GatewayConfigurationsEditRequestSettingsBodyScanning.pipe(
+          T.Body("body_scanning"),
+        ),
+      ),
+      browserIsolation: S.optional(
+        GatewayConfigurationsEditRequestSettingsBrowserIsolation.pipe(
+          T.Body("browser_isolation"),
+        ),
+      ),
+      certificate: S.optional(
+        GatewayConfigurationsEditRequestSettingsCertificate,
+      ),
+      customCertificate: S.optional(
+        GatewayConfigurationsEditRequestSettingsCustomCertificate.pipe(
+          T.Body("custom_certificate"),
+        ),
+      ),
+      extendedEmailMatching: S.optional(
+        GatewayConfigurationsEditRequestSettingsExtendedEmailMatching.pipe(
+          T.Body("extended_email_matching"),
+        ),
+      ),
+      fips: S.optional(GatewayConfigurationsEditRequestSettingsFips),
+      hostSelector: S.optional(
+        GatewayConfigurationsEditRequestSettingsHostSelector.pipe(
+          T.Body("host_selector"),
+        ),
+      ),
+      inspection: S.optional(
+        GatewayConfigurationsEditRequestSettingsInspection,
+      ),
+      maxTtlSecs: S.optional(S.Number.pipe(T.Body("max_ttl_secs"))),
+      protocolDetection: S.optional(
+        GatewayConfigurationsEditRequestSettingsProtocolDetection.pipe(
+          T.Body("protocol_detection"),
+        ),
+      ),
+      sandbox: S.optional(GatewayConfigurationsEditRequestSettingsSandbox),
+      tlsDecrypt: S.optional(
+        GatewayConfigurationsEditRequestSettingsTlsDecrypt.pipe(
+          T.Body("tls_decrypt"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "GatewayConfigurationsEditRequestSettings",
+}) as any as S.Schema<GatewayConfigurationsEditRequestSettings>;
+
 export interface PatchGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: UntypedSettingsMap;
+  settings?: GatewayConfigurationsEditRequestSettings;
 }
 export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(UntypedSettingsMap),
+    settings: S.optional(GatewayConfigurationsEditRequestSettings),
   })
     .pipe(
       T.Http({
@@ -147006,17 +147866,462 @@ export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchGatewayConfigurationRequest",
 }) as any as S.Schema<PatchGatewayConfigurationRequest>;
 
+export interface GatewayConfigurationsEditResponseSettingsActivityLog {
+  /** Specify whether to log activity. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsActivityLog =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsActivityLog",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsActivityLog>;
+
+export interface GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings {
+  /** Specify whether to enable notifications. */
+  enabled?: boolean | null;
+  /** Specify whether to include context information as query parameters. */
+  includeContext?: boolean | null;
+  /** Specify the message to show in the notification. */
+  msg?: string | null;
+  /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
+  supportUrl?: string | null;
+}
+export const GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      msg: S.optional(S.NullOr(S.String)),
+      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings>;
+
+export interface GatewayConfigurationsEditResponseSettingsAntivirus {
+  /** Specify whether to enable anti-virus scanning on downloads. */
+  enabledDownloadPhase?: boolean | null;
+  /** Specify whether to enable anti-virus scanning on uploads. */
+  enabledUploadPhase?: boolean | null;
+  /** Specify whether to block requests for unscannable files. */
+  failClosed?: boolean | null;
+  /** Configure the message the user's device shows during an antivirus scan. */
+  notificationSettings?: GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings | null;
+}
+export const GatewayConfigurationsEditResponseSettingsAntivirus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledDownloadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_download_phase")),
+      ),
+      enabledUploadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_upload_phase")),
+      ),
+      failClosed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_closed"))),
+      notificationSettings: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsAntivirusNotificationSettings,
+        ).pipe(T.Body("notification_settings")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsAntivirus",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsAntivirus>;
+
+export type GatewayConfigurationsEditResponseSettingsBlockPageMode =
+  | ""
+  | "customized_block_page"
+  | "redirect_uri";
+export const GatewayConfigurationsEditResponseSettingsBlockPageMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditResponseSettingsBlockPage {
+  /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
+  backgroundColor?: string | null;
+  /** Specify whether to enable the custom block page. */
+  enabled?: boolean | null;
+  /** Specify the block page footer text when the mode is customized_block_page. */
+  footerText?: string | null;
+  /** Specify the block page header text when the mode is customized_block_page. */
+  headerText?: string | null;
+  /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
+  includeContext?: boolean | null;
+  /** Specify the full URL to the logo file when the mode is customized_block_page. */
+  logoPath?: string | null;
+  /** Specify the admin email for users to contact when the mode is customized_block_page. */
+  mailtoAddress?: string | null;
+  /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
+  mailtoSubject?: string | null;
+  /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
+  mode?: GatewayConfigurationsEditResponseSettingsBlockPageMode | null;
+  /** Specify the block page title when the mode is customized_block_page. */
+  name?: string | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
+  suppressFooter?: boolean | null;
+  /** Specify the URI to redirect users to when the mode is redirect_uri. */
+  targetUri?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsEditResponseSettingsBlockPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backgroundColor: S.optional(
+        S.NullOr(S.String).pipe(T.Body("background_color")),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_address")),
+      ),
+      mailtoSubject: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_subject")),
+      ),
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsBlockPageMode),
+      ),
+      name: S.optional(S.NullOr(S.String)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      suppressFooter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("suppress_footer")),
+      ),
+      targetUri: S.optional(S.NullOr(S.String).pipe(T.Body("target_uri"))),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsBlockPage",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsBlockPage>;
+
+export type GatewayConfigurationsEditResponseSettingsBodyScanningInspectionMode =
+  "deep" | "shallow";
+export const GatewayConfigurationsEditResponseSettingsBodyScanningInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditResponseSettingsBodyScanning {
+  /** Specify the inspection mode as either `deep` or `shallow`. */
+  inspectionMode?: GatewayConfigurationsEditResponseSettingsBodyScanningInspectionMode | null;
+}
+export const GatewayConfigurationsEditResponseSettingsBodyScanning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inspectionMode: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsBodyScanningInspectionMode,
+        ).pipe(T.Body("inspection_mode")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsBodyScanning",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsBodyScanning>;
+
+export interface GatewayConfigurationsEditResponseSettingsBrowserIsolation {
+  /** Specify whether to enable non-identity onramp support for Browser Isolation. */
+  nonIdentityEnabled?: boolean | null;
+  /** Specify whether to enable Clientless Browser Isolation. */
+  urlBrowserIsolationEnabled?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsBrowserIsolation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nonIdentityEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("non_identity_enabled")),
+      ),
+      urlBrowserIsolationEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("url_browser_isolation_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsBrowserIsolation",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsBrowserIsolation>;
+
+export interface GatewayConfigurationsEditResponseSettingsCertificate {
+  /** Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA. */
+  id: string;
+}
+export const GatewayConfigurationsEditResponseSettingsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsCertificate",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsCertificate>;
+
+export interface GatewayConfigurationsEditResponseSettingsCustomCertificate {
+  /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
+  enabled: boolean;
+  /** Specify the UUID of the certificate (ID from MTLS certificate store). */
+  id?: string | null;
+  /** Indicate the internal certificate status. */
+  bindingStatus?: string | null;
+  updatedAt?: string | null;
+}
+export const GatewayConfigurationsEditResponseSettingsCustomCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      id: S.optional(S.NullOr(S.String)),
+      bindingStatus: S.optional(
+        S.NullOr(S.String).pipe(T.Body("binding_status")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsCustomCertificate",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsCustomCertificate>;
+
+export interface GatewayConfigurationsEditResponseSettingsExtendedEmailMatching {
+  /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
+  enabled?: boolean | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsEditResponseSettingsExtendedEmailMatching =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsEditResponseSettingsExtendedEmailMatching",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsExtendedEmailMatching>;
+
+export interface GatewayConfigurationsEditResponseSettingsFips {
+  /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
+  tls?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsFips =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tls: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsFips",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsFips>;
+
+export interface GatewayConfigurationsEditResponseSettingsHostSelector {
+  /** Specify whether to enable filtering via hosts for egress policies. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsHostSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsHostSelector",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsHostSelector>;
+
+export type GatewayConfigurationsEditResponseSettingsInspectionMode =
+  | "static"
+  | "dynamic";
+export const GatewayConfigurationsEditResponseSettingsInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditResponseSettingsInspection {
+  /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
+  mode?: GatewayConfigurationsEditResponseSettingsInspectionMode | null;
+}
+export const GatewayConfigurationsEditResponseSettingsInspection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsInspectionMode),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsInspection",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsInspection>;
+
+export interface GatewayConfigurationsEditResponseSettingsProtocolDetection {
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsProtocolDetection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsProtocolDetection",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsProtocolDetection>;
+
+export type GatewayConfigurationsEditResponseSettingsSandboxFallbackAction =
+  | "allow"
+  | "block";
+export const GatewayConfigurationsEditResponseSettingsSandboxFallbackAction =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsEditResponseSettingsSandbox {
+  /** Specify whether to enable the sandbox. */
+  enabled?: boolean | null;
+  /** Specify the action to take when the system cannot scan the file. */
+  fallbackAction?: GatewayConfigurationsEditResponseSettingsSandboxFallbackAction | null;
+}
+export const GatewayConfigurationsEditResponseSettingsSandbox =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      fallbackAction: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsSandboxFallbackAction,
+        ).pipe(T.Body("fallback_action")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsSandbox",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsSandbox>;
+
+export interface GatewayConfigurationsEditResponseSettingsTlsDecrypt {
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsEditResponseSettingsTlsDecrypt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettingsTlsDecrypt",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettingsTlsDecrypt>;
+
+export interface GatewayConfigurationsEditResponseSettings {
+  /** Specify activity log settings. */
+  activityLog?: GatewayConfigurationsEditResponseSettingsActivityLog | null;
+  /** Specify anti-virus settings. */
+  antivirus?: GatewayConfigurationsEditResponseSettingsAntivirus | null;
+  /** Specify block page layout settings. */
+  blockPage?: GatewayConfigurationsEditResponseSettingsBlockPage | null;
+  /** Specify the DLP inspection mode. */
+  bodyScanning?: GatewayConfigurationsEditResponseSettingsBodyScanning | null;
+  /** Specify Clientless Browser Isolation settings. */
+  browserIsolation?: GatewayConfigurationsEditResponseSettingsBrowserIsolation | null;
+  /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
+  certificate?: GatewayConfigurationsEditResponseSettingsCertificate | null;
+  /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
+  customCertificate?: GatewayConfigurationsEditResponseSettingsCustomCertificate | null;
+  /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
+  extendedEmailMatching?: GatewayConfigurationsEditResponseSettingsExtendedEmailMatching | null;
+  /** Specify FIPS settings. */
+  fips?: GatewayConfigurationsEditResponseSettingsFips | null;
+  /** Enable host selection in egress policies. */
+  hostSelector?: GatewayConfigurationsEditResponseSettingsHostSelector | null;
+  /** Define the proxy inspection mode. */
+  inspection?: GatewayConfigurationsEditResponseSettingsInspection | null;
+  /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
+  maxTtlSecs?: number | null;
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  protocolDetection?: GatewayConfigurationsEditResponseSettingsProtocolDetection | null;
+  /** Specify whether to enable the sandbox. */
+  sandbox?: GatewayConfigurationsEditResponseSettingsSandbox | null;
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  tlsDecrypt?: GatewayConfigurationsEditResponseSettingsTlsDecrypt | null;
+}
+export const GatewayConfigurationsEditResponseSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      activityLog: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsActivityLog).pipe(
+          T.Body("activity_log"),
+        ),
+      ),
+      antivirus: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsAntivirus),
+      ),
+      blockPage: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsBlockPage).pipe(
+          T.Body("block_page"),
+        ),
+      ),
+      bodyScanning: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsBodyScanning).pipe(
+          T.Body("body_scanning"),
+        ),
+      ),
+      browserIsolation: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsBrowserIsolation,
+        ).pipe(T.Body("browser_isolation")),
+      ),
+      certificate: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsCertificate),
+      ),
+      customCertificate: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsCustomCertificate,
+        ).pipe(T.Body("custom_certificate")),
+      ),
+      extendedEmailMatching: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsExtendedEmailMatching,
+        ).pipe(T.Body("extended_email_matching")),
+      ),
+      fips: S.optional(S.NullOr(GatewayConfigurationsEditResponseSettingsFips)),
+      hostSelector: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsHostSelector).pipe(
+          T.Body("host_selector"),
+        ),
+      ),
+      inspection: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsInspection),
+      ),
+      maxTtlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl_secs"))),
+      protocolDetection: S.optional(
+        S.NullOr(
+          GatewayConfigurationsEditResponseSettingsProtocolDetection,
+        ).pipe(T.Body("protocol_detection")),
+      ),
+      sandbox: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsSandbox),
+      ),
+      tlsDecrypt: S.optional(
+        S.NullOr(GatewayConfigurationsEditResponseSettingsTlsDecrypt).pipe(
+          T.Body("tls_decrypt"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsEditResponseSettings",
+  }) as any as S.Schema<GatewayConfigurationsEditResponseSettings>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: UntypedSettingsMap | null;
+  settings?: GatewayConfigurationsEditResponseSettings | null;
   updatedAt?: string | null;
 }
 export const PatchGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(UntypedSettingsMap)),
+    settings: S.optional(S.NullOr(GatewayConfigurationsEditResponseSettings)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -150125,15 +151430,446 @@ export const PutGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutGatewayAuditSshSettingResponse",
 }) as any as S.Schema<PutGatewayAuditSshSettingResponse>;
 
+export interface GatewayConfigurationsUpdateRequestSettingsActivityLog {
+  /** Specify whether to log activity. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsActivityLog =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsActivityLog",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsActivityLog>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings {
+  /** Specify whether to enable notifications. */
+  enabled?: boolean;
+  /** Specify whether to include context information as query parameters. */
+  includeContext?: boolean;
+  /** Specify the message to show in the notification. */
+  msg?: string;
+  /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
+  supportUrl?: string;
+}
+export const GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsAntivirus {
+  /** Specify whether to enable anti-virus scanning on downloads. */
+  enabledDownloadPhase?: boolean;
+  /** Specify whether to enable anti-virus scanning on uploads. */
+  enabledUploadPhase?: boolean;
+  /** Specify whether to block requests for unscannable files. */
+  failClosed?: boolean;
+  /** Configure the message the user's device shows during an antivirus scan. */
+  notificationSettings?: GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings;
+}
+export const GatewayConfigurationsUpdateRequestSettingsAntivirus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledDownloadPhase: S.optional(
+        S.Boolean.pipe(T.Body("enabled_download_phase")),
+      ),
+      enabledUploadPhase: S.optional(
+        S.Boolean.pipe(T.Body("enabled_upload_phase")),
+      ),
+      failClosed: S.optional(S.Boolean.pipe(T.Body("fail_closed"))),
+      notificationSettings: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsAntivirus",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsAntivirus>;
+
+export type GatewayConfigurationsUpdateRequestSettingsBlockPageMode =
+  | ""
+  | "customized_block_page"
+  | "redirect_uri";
+export const GatewayConfigurationsUpdateRequestSettingsBlockPageMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateRequestSettingsBlockPage {
+  /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
+  backgroundColor?: string;
+  /** Specify whether to enable the custom block page. */
+  enabled?: boolean;
+  /** Specify the block page footer text when the mode is customized_block_page. */
+  footerText?: string;
+  /** Specify the block page header text when the mode is customized_block_page. */
+  headerText?: string;
+  /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
+  includeContext?: boolean;
+  /** Specify the full URL to the logo file when the mode is customized_block_page. */
+  logoPath?: string;
+  /** Specify the admin email for users to contact when the mode is customized_block_page. */
+  mailtoAddress?: string;
+  /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
+  mailtoSubject?: string;
+  /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
+  mode?:
+    | GatewayConfigurationsUpdateRequestSettingsBlockPageMode
+    | (string & {});
+  /** Specify the block page title when the mode is customized_block_page. */
+  name?: string;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string;
+  /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
+  suppressFooter?: boolean;
+  /** Specify the URI to redirect users to when the mode is redirect_uri. */
+  targetUri?: string;
+  /** Indicate the version number of the setting. */
+  version?: number;
+}
+export const GatewayConfigurationsUpdateRequestSettingsBlockPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      enabled: S.optional(S.Boolean),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(S.String.pipe(T.Body("mailto_address"))),
+      mailtoSubject: S.optional(S.String.pipe(T.Body("mailto_subject"))),
+      mode: S.optional(GatewayConfigurationsUpdateRequestSettingsBlockPageMode),
+      name: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      suppressFooter: S.optional(S.Boolean.pipe(T.Body("suppress_footer"))),
+      targetUri: S.optional(S.String.pipe(T.Body("target_uri"))),
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsBlockPage",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsBlockPage>;
+
+export type GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode =
+  "deep" | "shallow";
+export const GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateRequestSettingsBodyScanning {
+  /** Specify the inspection mode as either `deep` or `shallow`. */
+  inspectionMode?:
+    | GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode
+    | (string & {});
+}
+export const GatewayConfigurationsUpdateRequestSettingsBodyScanning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inspectionMode: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode.pipe(
+          T.Body("inspection_mode"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsBodyScanning",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsBodyScanning>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsBrowserIsolation {
+  /** Specify whether to enable non-identity onramp support for Browser Isolation. */
+  nonIdentityEnabled?: boolean;
+  /** Specify whether to enable Clientless Browser Isolation. */
+  urlBrowserIsolationEnabled?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsBrowserIsolation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nonIdentityEnabled: S.optional(
+        S.Boolean.pipe(T.Body("non_identity_enabled")),
+      ),
+      urlBrowserIsolationEnabled: S.optional(
+        S.Boolean.pipe(T.Body("url_browser_isolation_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsBrowserIsolation",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsBrowserIsolation>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsCertificate {
+  /** Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA. */
+  id: string;
+}
+export const GatewayConfigurationsUpdateRequestSettingsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsCertificate",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsCertificate>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsCustomCertificate {
+  /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
+  enabled: boolean;
+  /** Specify the UUID of the certificate (ID from MTLS certificate store). */
+  id?: string;
+  /** Indicate the internal certificate status. */
+  bindingStatus?: string;
+  updatedAt?: string;
+}
+export const GatewayConfigurationsUpdateRequestSettingsCustomCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      id: S.optional(S.String),
+      bindingStatus: S.optional(S.String.pipe(T.Body("binding_status"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsCustomCertificate",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsCustomCertificate>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching {
+  /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
+  enabled?: boolean;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string;
+  /** Indicate the version number of the setting. */
+  version?: number;
+}
+export const GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsFips {
+  /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
+  tls?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsFips =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tls: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsFips",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsFips>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsHostSelector {
+  /** Specify whether to enable filtering via hosts for egress policies. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsHostSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsHostSelector",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsHostSelector>;
+
+export type GatewayConfigurationsUpdateRequestSettingsInspectionMode =
+  | "static"
+  | "dynamic";
+export const GatewayConfigurationsUpdateRequestSettingsInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateRequestSettingsInspection {
+  /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
+  mode?:
+    | GatewayConfigurationsUpdateRequestSettingsInspectionMode
+    | (string & {});
+}
+export const GatewayConfigurationsUpdateRequestSettingsInspection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsInspectionMode,
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsInspection",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsInspection>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsProtocolDetection {
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsProtocolDetection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsProtocolDetection",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsProtocolDetection>;
+
+export type GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction =
+  | "allow"
+  | "block";
+export const GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateRequestSettingsSandbox {
+  /** Specify whether to enable the sandbox. */
+  enabled?: boolean;
+  /** Specify the action to take when the system cannot scan the file. */
+  fallbackAction?:
+    | GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction
+    | (string & {});
+}
+export const GatewayConfigurationsUpdateRequestSettingsSandbox =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      fallbackAction: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction.pipe(
+          T.Body("fallback_action"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsSandbox",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsSandbox>;
+
+export interface GatewayConfigurationsUpdateRequestSettingsTlsDecrypt {
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  enabled?: boolean;
+}
+export const GatewayConfigurationsUpdateRequestSettingsTlsDecrypt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettingsTlsDecrypt",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettingsTlsDecrypt>;
+
+export interface GatewayConfigurationsUpdateRequestSettings {
+  /** Specify activity log settings. */
+  activityLog?: GatewayConfigurationsUpdateRequestSettingsActivityLog;
+  /** Specify anti-virus settings. */
+  antivirus?: GatewayConfigurationsUpdateRequestSettingsAntivirus;
+  /** Specify block page layout settings. */
+  blockPage?: GatewayConfigurationsUpdateRequestSettingsBlockPage;
+  /** Specify the DLP inspection mode. */
+  bodyScanning?: GatewayConfigurationsUpdateRequestSettingsBodyScanning;
+  /** Specify Clientless Browser Isolation settings. */
+  browserIsolation?: GatewayConfigurationsUpdateRequestSettingsBrowserIsolation;
+  /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
+  certificate?: GatewayConfigurationsUpdateRequestSettingsCertificate;
+  /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
+  customCertificate?: GatewayConfigurationsUpdateRequestSettingsCustomCertificate;
+  /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
+  extendedEmailMatching?: GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching;
+  /** Specify FIPS settings. */
+  fips?: GatewayConfigurationsUpdateRequestSettingsFips;
+  /** Enable host selection in egress policies. */
+  hostSelector?: GatewayConfigurationsUpdateRequestSettingsHostSelector;
+  /** Define the proxy inspection mode. */
+  inspection?: GatewayConfigurationsUpdateRequestSettingsInspection;
+  /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
+  maxTtlSecs?: number;
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  protocolDetection?: GatewayConfigurationsUpdateRequestSettingsProtocolDetection;
+  /** Specify whether to enable the sandbox. */
+  sandbox?: GatewayConfigurationsUpdateRequestSettingsSandbox;
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  tlsDecrypt?: GatewayConfigurationsUpdateRequestSettingsTlsDecrypt;
+}
+export const GatewayConfigurationsUpdateRequestSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      activityLog: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsActivityLog.pipe(
+          T.Body("activity_log"),
+        ),
+      ),
+      antivirus: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsAntivirus,
+      ),
+      blockPage: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsBlockPage.pipe(
+          T.Body("block_page"),
+        ),
+      ),
+      bodyScanning: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsBodyScanning.pipe(
+          T.Body("body_scanning"),
+        ),
+      ),
+      browserIsolation: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsBrowserIsolation.pipe(
+          T.Body("browser_isolation"),
+        ),
+      ),
+      certificate: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsCertificate,
+      ),
+      customCertificate: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsCustomCertificate.pipe(
+          T.Body("custom_certificate"),
+        ),
+      ),
+      extendedEmailMatching: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching.pipe(
+          T.Body("extended_email_matching"),
+        ),
+      ),
+      fips: S.optional(GatewayConfigurationsUpdateRequestSettingsFips),
+      hostSelector: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsHostSelector.pipe(
+          T.Body("host_selector"),
+        ),
+      ),
+      inspection: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsInspection,
+      ),
+      maxTtlSecs: S.optional(S.Number.pipe(T.Body("max_ttl_secs"))),
+      protocolDetection: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsProtocolDetection.pipe(
+          T.Body("protocol_detection"),
+        ),
+      ),
+      sandbox: S.optional(GatewayConfigurationsUpdateRequestSettingsSandbox),
+      tlsDecrypt: S.optional(
+        GatewayConfigurationsUpdateRequestSettingsTlsDecrypt.pipe(
+          T.Body("tls_decrypt"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateRequestSettings",
+  }) as any as S.Schema<GatewayConfigurationsUpdateRequestSettings>;
+
 export interface PutGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: UntypedSettingsMap;
+  settings?: GatewayConfigurationsUpdateRequestSettings;
 }
 export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(UntypedSettingsMap),
+    settings: S.optional(GatewayConfigurationsUpdateRequestSettings),
   })
     .pipe(
       T.Http({
@@ -150147,17 +151883,464 @@ export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutGatewayConfigurationRequest",
 }) as any as S.Schema<PutGatewayConfigurationRequest>;
 
+export interface GatewayConfigurationsUpdateResponseSettingsActivityLog {
+  /** Specify whether to log activity. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsActivityLog =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsActivityLog",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsActivityLog>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings {
+  /** Specify whether to enable notifications. */
+  enabled?: boolean | null;
+  /** Specify whether to include context information as query parameters. */
+  includeContext?: boolean | null;
+  /** Specify the message to show in the notification. */
+  msg?: string | null;
+  /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
+  supportUrl?: string | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      msg: S.optional(S.NullOr(S.String)),
+      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsAntivirus {
+  /** Specify whether to enable anti-virus scanning on downloads. */
+  enabledDownloadPhase?: boolean | null;
+  /** Specify whether to enable anti-virus scanning on uploads. */
+  enabledUploadPhase?: boolean | null;
+  /** Specify whether to block requests for unscannable files. */
+  failClosed?: boolean | null;
+  /** Configure the message the user's device shows during an antivirus scan. */
+  notificationSettings?: GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsAntivirus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledDownloadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_download_phase")),
+      ),
+      enabledUploadPhase: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enabled_upload_phase")),
+      ),
+      failClosed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_closed"))),
+      notificationSettings: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsAntivirusNotificationSettings,
+        ).pipe(T.Body("notification_settings")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsAntivirus",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsAntivirus>;
+
+export type GatewayConfigurationsUpdateResponseSettingsBlockPageMode =
+  | ""
+  | "customized_block_page"
+  | "redirect_uri";
+export const GatewayConfigurationsUpdateResponseSettingsBlockPageMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateResponseSettingsBlockPage {
+  /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
+  backgroundColor?: string | null;
+  /** Specify whether to enable the custom block page. */
+  enabled?: boolean | null;
+  /** Specify the block page footer text when the mode is customized_block_page. */
+  footerText?: string | null;
+  /** Specify the block page header text when the mode is customized_block_page. */
+  headerText?: string | null;
+  /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
+  includeContext?: boolean | null;
+  /** Specify the full URL to the logo file when the mode is customized_block_page. */
+  logoPath?: string | null;
+  /** Specify the admin email for users to contact when the mode is customized_block_page. */
+  mailtoAddress?: string | null;
+  /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
+  mailtoSubject?: string | null;
+  /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
+  mode?: GatewayConfigurationsUpdateResponseSettingsBlockPageMode | null;
+  /** Specify the block page title when the mode is customized_block_page. */
+  name?: string | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
+  suppressFooter?: boolean | null;
+  /** Specify the URI to redirect users to when the mode is redirect_uri. */
+  targetUri?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsBlockPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backgroundColor: S.optional(
+        S.NullOr(S.String).pipe(T.Body("background_color")),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
+      includeContext: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
+      ),
+      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_address")),
+      ),
+      mailtoSubject: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mailto_subject")),
+      ),
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsBlockPageMode),
+      ),
+      name: S.optional(S.NullOr(S.String)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      suppressFooter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("suppress_footer")),
+      ),
+      targetUri: S.optional(S.NullOr(S.String).pipe(T.Body("target_uri"))),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsBlockPage",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsBlockPage>;
+
+export type GatewayConfigurationsUpdateResponseSettingsBodyScanningInspectionMode =
+  "deep" | "shallow";
+export const GatewayConfigurationsUpdateResponseSettingsBodyScanningInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateResponseSettingsBodyScanning {
+  /** Specify the inspection mode as either `deep` or `shallow`. */
+  inspectionMode?: GatewayConfigurationsUpdateResponseSettingsBodyScanningInspectionMode | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsBodyScanning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inspectionMode: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsBodyScanningInspectionMode,
+        ).pipe(T.Body("inspection_mode")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsBodyScanning",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsBodyScanning>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsBrowserIsolation {
+  /** Specify whether to enable non-identity onramp support for Browser Isolation. */
+  nonIdentityEnabled?: boolean | null;
+  /** Specify whether to enable Clientless Browser Isolation. */
+  urlBrowserIsolationEnabled?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsBrowserIsolation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nonIdentityEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("non_identity_enabled")),
+      ),
+      urlBrowserIsolationEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("url_browser_isolation_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsBrowserIsolation",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsBrowserIsolation>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsCertificate {
+  /** Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA. */
+  id: string;
+}
+export const GatewayConfigurationsUpdateResponseSettingsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsCertificate",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsCertificate>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsCustomCertificate {
+  /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
+  enabled: boolean;
+  /** Specify the UUID of the certificate (ID from MTLS certificate store). */
+  id?: string | null;
+  /** Indicate the internal certificate status. */
+  bindingStatus?: string | null;
+  updatedAt?: string | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsCustomCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      id: S.optional(S.NullOr(S.String)),
+      bindingStatus: S.optional(
+        S.NullOr(S.String).pipe(T.Body("binding_status")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsCustomCertificate",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsCustomCertificate>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching {
+  /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
+  enabled?: boolean | null;
+  /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
+  readOnly?: boolean | null;
+  /** Indicate the account tag of the account that shared this setting. */
+  sourceAccount?: string | null;
+  /** Indicate the version number of the setting. */
+  version?: number | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(
+        S.NullOr(S.String).pipe(T.Body("source_account")),
+      ),
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier:
+      "GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsFips {
+  /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
+  tls?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsFips =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tls: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsFips",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsFips>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsHostSelector {
+  /** Specify whether to enable filtering via hosts for egress policies. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsHostSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsHostSelector",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsHostSelector>;
+
+export type GatewayConfigurationsUpdateResponseSettingsInspectionMode =
+  | "static"
+  | "dynamic";
+export const GatewayConfigurationsUpdateResponseSettingsInspectionMode =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateResponseSettingsInspection {
+  /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
+  mode?: GatewayConfigurationsUpdateResponseSettingsInspectionMode | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsInspection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsInspectionMode),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsInspection",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsInspection>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsProtocolDetection {
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsProtocolDetection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsProtocolDetection",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsProtocolDetection>;
+
+export type GatewayConfigurationsUpdateResponseSettingsSandboxFallbackAction =
+  | "allow"
+  | "block";
+export const GatewayConfigurationsUpdateResponseSettingsSandboxFallbackAction =
+  /*@__PURE__*/ S.String;
+
+export interface GatewayConfigurationsUpdateResponseSettingsSandbox {
+  /** Specify whether to enable the sandbox. */
+  enabled?: boolean | null;
+  /** Specify the action to take when the system cannot scan the file. */
+  fallbackAction?: GatewayConfigurationsUpdateResponseSettingsSandboxFallbackAction | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsSandbox =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      fallbackAction: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsSandboxFallbackAction,
+        ).pipe(T.Body("fallback_action")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsSandbox",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsSandbox>;
+
+export interface GatewayConfigurationsUpdateResponseSettingsTlsDecrypt {
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  enabled?: boolean | null;
+}
+export const GatewayConfigurationsUpdateResponseSettingsTlsDecrypt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettingsTlsDecrypt",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettingsTlsDecrypt>;
+
+export interface GatewayConfigurationsUpdateResponseSettings {
+  /** Specify activity log settings. */
+  activityLog?: GatewayConfigurationsUpdateResponseSettingsActivityLog | null;
+  /** Specify anti-virus settings. */
+  antivirus?: GatewayConfigurationsUpdateResponseSettingsAntivirus | null;
+  /** Specify block page layout settings. */
+  blockPage?: GatewayConfigurationsUpdateResponseSettingsBlockPage | null;
+  /** Specify the DLP inspection mode. */
+  bodyScanning?: GatewayConfigurationsUpdateResponseSettingsBodyScanning | null;
+  /** Specify Clientless Browser Isolation settings. */
+  browserIsolation?: GatewayConfigurationsUpdateResponseSettingsBrowserIsolation | null;
+  /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
+  certificate?: GatewayConfigurationsUpdateResponseSettingsCertificate | null;
+  /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
+  customCertificate?: GatewayConfigurationsUpdateResponseSettingsCustomCertificate | null;
+  /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
+  extendedEmailMatching?: GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching | null;
+  /** Specify FIPS settings. */
+  fips?: GatewayConfigurationsUpdateResponseSettingsFips | null;
+  /** Enable host selection in egress policies. */
+  hostSelector?: GatewayConfigurationsUpdateResponseSettingsHostSelector | null;
+  /** Define the proxy inspection mode. */
+  inspection?: GatewayConfigurationsUpdateResponseSettingsInspection | null;
+  /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
+  maxTtlSecs?: number | null;
+  /** Specify whether to detect protocols from the initial bytes of client traffic. */
+  protocolDetection?: GatewayConfigurationsUpdateResponseSettingsProtocolDetection | null;
+  /** Specify whether to enable the sandbox. */
+  sandbox?: GatewayConfigurationsUpdateResponseSettingsSandbox | null;
+  /** Specify whether to inspect encrypted HTTP traffic. */
+  tlsDecrypt?: GatewayConfigurationsUpdateResponseSettingsTlsDecrypt | null;
+}
+export const GatewayConfigurationsUpdateResponseSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      activityLog: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsActivityLog).pipe(
+          T.Body("activity_log"),
+        ),
+      ),
+      antivirus: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsAntivirus),
+      ),
+      blockPage: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsBlockPage).pipe(
+          T.Body("block_page"),
+        ),
+      ),
+      bodyScanning: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsBodyScanning).pipe(
+          T.Body("body_scanning"),
+        ),
+      ),
+      browserIsolation: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsBrowserIsolation,
+        ).pipe(T.Body("browser_isolation")),
+      ),
+      certificate: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsCertificate),
+      ),
+      customCertificate: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsCustomCertificate,
+        ).pipe(T.Body("custom_certificate")),
+      ),
+      extendedEmailMatching: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsExtendedEmailMatching,
+        ).pipe(T.Body("extended_email_matching")),
+      ),
+      fips: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsFips),
+      ),
+      hostSelector: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsHostSelector).pipe(
+          T.Body("host_selector"),
+        ),
+      ),
+      inspection: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsInspection),
+      ),
+      maxTtlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl_secs"))),
+      protocolDetection: S.optional(
+        S.NullOr(
+          GatewayConfigurationsUpdateResponseSettingsProtocolDetection,
+        ).pipe(T.Body("protocol_detection")),
+      ),
+      sandbox: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsSandbox),
+      ),
+      tlsDecrypt: S.optional(
+        S.NullOr(GatewayConfigurationsUpdateResponseSettingsTlsDecrypt).pipe(
+          T.Body("tls_decrypt"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GatewayConfigurationsUpdateResponseSettings",
+  }) as any as S.Schema<GatewayConfigurationsUpdateResponseSettings>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: UntypedSettingsMap | null;
+  settings?: GatewayConfigurationsUpdateResponseSettings | null;
   updatedAt?: string | null;
 }
 export const PutGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(UntypedSettingsMap)),
+    settings: S.optional(S.NullOr(GatewayConfigurationsUpdateResponseSettings)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

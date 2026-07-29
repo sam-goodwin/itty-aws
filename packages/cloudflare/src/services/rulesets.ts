@@ -325,10 +325,6 @@ export const RulesCreateRequestBodyChallengeRuleRatelimit =
   }) as any as S.Schema<RulesCreateRequestBodyChallengeRuleRatelimit>;
 
 export interface RulesCreateRequestBodyChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -356,8 +352,6 @@ export interface RulesCreateRequestBodyChallengeRule {
 }
 export const RulesCreateRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(RulesCreateRequestBodyChallengeRuleAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -765,10 +759,6 @@ export const RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit =
   }) as any as S.Schema<RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit>;
 
 export interface RulesCreateRequestBodyJavaScriptChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -797,8 +787,6 @@ export interface RulesCreateRequestBodyJavaScriptChallengeRule {
 export const RulesCreateRequestBodyJavaScriptChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesCreateRequestBodyJavaScriptChallengeRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -2370,10 +2358,6 @@ export const RulesCreateRequestBodySetCacheControlRuleRatelimit =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleRatelimit>;
 
 export interface RulesCreateRequestBodySetCacheControlRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -2402,8 +2386,6 @@ export interface RulesCreateRequestBodySetCacheControlRule {
 export const RulesCreateRequestBodySetCacheControlRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesCreateRequestBodySetCacheControlRuleAction),
       actionParameters: S.optional(
@@ -2816,10 +2798,6 @@ export const RulesCreateRequestBodySetCacheTagsRuleRatelimit =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleRatelimit>;
 
 export interface RulesCreateRequestBodySetCacheTagsRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -2848,8 +2826,6 @@ export interface RulesCreateRequestBodySetCacheTagsRule {
 export const RulesCreateRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesCreateRequestBodySetCacheTagsRuleAction),
       actionParameters: S.optional(
@@ -3148,10 +3124,6 @@ export const RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit =
   }) as any as S.Schema<RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit>;
 
 export interface RulesCreateRequestBodyTransformResponseHTMLRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -3182,8 +3154,6 @@ export interface RulesCreateRequestBodyTransformResponseHTMLRule {
 export const RulesCreateRequestBodyTransformResponseHTMLRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesCreateRequestBodyTransformResponseHTMLRuleAction),
       actionParameters: S.optional(
@@ -3241,8 +3211,6 @@ export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -3261,8 +3229,6 @@ export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -3285,8 +3251,6 @@ export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -3302,8 +3266,6 @@ export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -3320,8 +3282,6 @@ export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -9989,10 +9949,6 @@ export const CreateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemBlockRuleRatelimit>;
 
 export interface CreateRequestRulesItemBlockRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10018,8 +9974,6 @@ export interface CreateRequestRulesItemBlockRule {
 }
 export const CreateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemBlockRuleAction),
     actionParameters: S.optional(
@@ -10122,10 +10076,6 @@ export const CreateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemChallengeRatelimit>;
 
 export interface CreateRequestRulesItemChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10151,8 +10101,6 @@ export interface CreateRequestRulesItemChallenge {
 }
 export const CreateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemChallengeAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -10299,10 +10247,6 @@ export const CreateRequestRulesItemCompressResponseRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemCompressResponseRuleRatelimit>;
 
 export interface CreateRequestRulesItemCompressResponseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10329,8 +10273,6 @@ export interface CreateRequestRulesItemCompressResponseRule {
 export const CreateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemCompressResponseRuleAction),
       actionParameters: S.optional(
@@ -10438,10 +10380,6 @@ export const CreateRequestRulesItemDDoSDynamicRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemDDoSDynamicRuleRatelimit>;
 
 export interface CreateRequestRulesItemDDoSDynamicRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10468,8 +10406,6 @@ export interface CreateRequestRulesItemDDoSDynamicRule {
 export const CreateRequestRulesItemDDoSDynamicRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemDDoSDynamicRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -10733,10 +10669,6 @@ export const CreateRequestRulesItemExecuteRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemExecuteRuleRatelimit>;
 
 export interface CreateRequestRulesItemExecuteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10762,8 +10694,6 @@ export interface CreateRequestRulesItemExecuteRule {
 }
 export const CreateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemExecuteRuleAction),
     actionParameters: S.optional(
@@ -10870,10 +10800,6 @@ export const CreateRequestRulesItemForceConnectionCloseRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemForceConnectionCloseRuleRatelimit>;
 
 export interface CreateRequestRulesItemForceConnectionCloseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -10900,8 +10826,6 @@ export interface CreateRequestRulesItemForceConnectionCloseRule {
 export const CreateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemForceConnectionCloseRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -11004,10 +10928,6 @@ export const CreateRequestRulesItemJSChallengeRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemJSChallengeRatelimit>;
 
 export interface CreateRequestRulesItemJSChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -11033,8 +10953,6 @@ export interface CreateRequestRulesItemJSChallenge {
 }
 export const CreateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemJSChallengeAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -11133,10 +11051,6 @@ export const CreateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemLogRuleRatelimit>;
 
 export interface CreateRequestRulesItemLogRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -11162,8 +11076,6 @@ export interface CreateRequestRulesItemLogRule {
 }
 export const CreateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemLogRuleAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -11425,10 +11337,6 @@ export const CreateRequestRulesItemLogCustomFieldRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleRatelimit>;
 
 export interface CreateRequestRulesItemLogCustomFieldRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -11455,8 +11363,6 @@ export interface CreateRequestRulesItemLogCustomFieldRule {
 export const CreateRequestRulesItemLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
@@ -11565,10 +11471,6 @@ export const CreateRequestRulesItemManagedChallengeRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemManagedChallengeRuleRatelimit>;
 
 export interface CreateRequestRulesItemManagedChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -11595,8 +11497,6 @@ export interface CreateRequestRulesItemManagedChallengeRule {
 export const CreateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemManagedChallengeRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -11791,10 +11691,6 @@ export const CreateRequestRulesItemRedirectRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemRedirectRuleRatelimit>;
 
 export interface CreateRequestRulesItemRedirectRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -11820,8 +11716,6 @@ export interface CreateRequestRulesItemRedirectRule {
 }
 export const CreateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemRedirectRuleAction),
     actionParameters: S.optional(
@@ -12148,10 +12042,6 @@ export const CreateRequestRulesItemRewriteRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemRewriteRuleRatelimit>;
 
 export interface CreateRequestRulesItemRewriteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -12177,8 +12067,6 @@ export interface CreateRequestRulesItemRewriteRule {
 }
 export const CreateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemRewriteRuleAction),
     actionParameters: S.optional(
@@ -12329,10 +12217,6 @@ export const CreateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemRouteRuleRatelimit>;
 
 export interface CreateRequestRulesItemRouteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -12358,8 +12242,6 @@ export interface CreateRequestRulesItemRouteRule {
 }
 export const CreateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemRouteRuleAction),
     actionParameters: S.optional(
@@ -12475,10 +12357,6 @@ export const CreateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemScoreRuleRatelimit>;
 
 export interface CreateRequestRulesItemScoreRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -12504,8 +12382,6 @@ export interface CreateRequestRulesItemScoreRule {
 }
 export const CreateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemScoreRuleAction),
     actionParameters: S.optional(
@@ -12682,10 +12558,6 @@ export const CreateRequestRulesItemServeErrorRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemServeErrorRuleRatelimit>;
 
 export interface CreateRequestRulesItemServeErrorRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -12712,8 +12584,6 @@ export interface CreateRequestRulesItemServeErrorRule {
 export const CreateRequestRulesItemServeErrorRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
@@ -13743,10 +13613,6 @@ export const CreateRequestRulesItemSetCacheControlRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheControlRatelimit>;
 
 export interface CreateRequestRulesItemSetCacheControl {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -13773,8 +13639,6 @@ export interface CreateRequestRulesItemSetCacheControl {
 export const CreateRequestRulesItemSetCacheControl = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
@@ -14518,10 +14382,6 @@ export const CreateRequestRulesItemSetCacheSettingsRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleRatelimit>;
 
 export interface CreateRequestRulesItemSetCacheSettingsRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -14548,8 +14408,6 @@ export interface CreateRequestRulesItemSetCacheSettingsRule {
 export const CreateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemSetCacheSettingsRuleAction),
       actionParameters: S.optional(
@@ -14849,10 +14707,6 @@ export const CreateRequestRulesItemSetCacheTagsRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheTagsRatelimit>;
 
 export interface CreateRequestRulesItemSetCacheTags {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -14878,8 +14732,6 @@ export interface CreateRequestRulesItemSetCacheTags {
 }
 export const CreateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemSetCacheTagsAction),
     actionParameters: S.optional(
@@ -15150,10 +15002,6 @@ export const CreateRequestRulesItemSetConfigRuleRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemSetConfigRuleRatelimit>;
 
 export interface CreateRequestRulesItemSetConfigRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -15179,8 +15027,6 @@ export interface CreateRequestRulesItemSetConfigRule {
 }
 export const CreateRequestRulesItemSetConfigRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemSetConfigRuleAction),
     actionParameters: S.optional(
@@ -15409,10 +15255,6 @@ export const CreateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemSkipRuleRatelimit>;
 
 export interface CreateRequestRulesItemSkipRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -15438,8 +15280,6 @@ export interface CreateRequestRulesItemSkipRule {
 }
 export const CreateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(CreateRequestRulesItemSkipRuleAction),
     actionParameters: S.optional(
@@ -15559,10 +15399,6 @@ export const CreateRequestRulesItemTransformResponseHTMLRatelimit =
   }) as any as S.Schema<CreateRequestRulesItemTransformResponseHTMLRatelimit>;
 
 export interface CreateRequestRulesItemTransformResponseHTML {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -15589,8 +15425,6 @@ export interface CreateRequestRulesItemTransformResponseHTML {
 export const CreateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(CreateRequestRulesItemTransformResponseHTMLAction),
       actionParameters: S.optional(
@@ -15644,8 +15478,6 @@ export type CreateRequestRulesItem =
 export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15659,8 +15491,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15674,8 +15504,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15689,8 +15517,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15704,8 +15530,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15719,8 +15543,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15734,8 +15556,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15749,8 +15569,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15764,8 +15582,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15779,8 +15595,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15794,8 +15608,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15809,8 +15621,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15824,8 +15634,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15839,8 +15647,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15854,8 +15660,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15869,8 +15673,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15884,8 +15686,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15899,8 +15699,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15914,8 +15712,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15929,8 +15725,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -15944,8 +15738,6 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -55354,10 +55146,6 @@ export const RulesEditRequestBodyChallengeRuleRatelimit =
   }) as any as S.Schema<RulesEditRequestBodyChallengeRuleRatelimit>;
 
 export interface RulesEditRequestBodyChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -55385,8 +55173,6 @@ export interface RulesEditRequestBodyChallengeRule {
 }
 export const RulesEditRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(RulesEditRequestBodyChallengeRuleAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -55790,10 +55576,6 @@ export const RulesEditRequestBodyJavaScriptChallengeRuleRatelimit =
   }) as any as S.Schema<RulesEditRequestBodyJavaScriptChallengeRuleRatelimit>;
 
 export interface RulesEditRequestBodyJavaScriptChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -55822,8 +55604,6 @@ export interface RulesEditRequestBodyJavaScriptChallengeRule {
 export const RulesEditRequestBodyJavaScriptChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesEditRequestBodyJavaScriptChallengeRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -57383,10 +57163,6 @@ export const RulesEditRequestBodySetCacheControlRuleRatelimit =
   }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleRatelimit>;
 
 export interface RulesEditRequestBodySetCacheControlRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -57415,8 +57191,6 @@ export interface RulesEditRequestBodySetCacheControlRule {
 export const RulesEditRequestBodySetCacheControlRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesEditRequestBodySetCacheControlRuleAction),
       actionParameters: S.optional(
@@ -57826,10 +57600,6 @@ export const RulesEditRequestBodySetCacheTagsRuleRatelimit =
   }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleRatelimit>;
 
 export interface RulesEditRequestBodySetCacheTagsRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -57858,8 +57628,6 @@ export interface RulesEditRequestBodySetCacheTagsRule {
 export const RulesEditRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesEditRequestBodySetCacheTagsRuleAction),
       actionParameters: S.optional(
@@ -58155,10 +57923,6 @@ export const RulesEditRequestBodyTransformResponseHTMLRuleRatelimit =
   }) as any as S.Schema<RulesEditRequestBodyTransformResponseHTMLRuleRatelimit>;
 
 export interface RulesEditRequestBodyTransformResponseHTMLRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -58187,8 +57951,6 @@ export interface RulesEditRequestBodyTransformResponseHTMLRule {
 export const RulesEditRequestBodyTransformResponseHTMLRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(RulesEditRequestBodyTransformResponseHTMLRuleAction),
       actionParameters: S.optional(
@@ -58246,8 +58008,6 @@ export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -58266,8 +58026,6 @@ export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -58290,8 +58048,6 @@ export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -58307,8 +58063,6 @@ export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -58325,8 +58079,6 @@ export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
     ["position"],
     ["position"],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -64891,10 +64643,6 @@ export const PhasesUpdateRequestRulesItemBlockRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemBlockRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemBlockRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -64921,8 +64669,6 @@ export interface PhasesUpdateRequestRulesItemBlockRule {
 export const PhasesUpdateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemBlockRuleAction),
       actionParameters: S.optional(
@@ -65028,10 +64774,6 @@ export const PhasesUpdateRequestRulesItemChallengeRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemChallengeRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65058,8 +64800,6 @@ export interface PhasesUpdateRequestRulesItemChallenge {
 export const PhasesUpdateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemChallengeAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -65209,10 +64949,6 @@ export const PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemCompressResponseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65241,8 +64977,6 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRule {
 export const PhasesUpdateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(
         PhasesUpdateRequestRulesItemCompressResponseRuleAction,
@@ -65354,10 +65088,6 @@ export const PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemDDoSDynamicRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65384,8 +65114,6 @@ export interface PhasesUpdateRequestRulesItemDDoSDynamicRule {
 export const PhasesUpdateRequestRulesItemDDoSDynamicRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemDDoSDynamicRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -65655,10 +65383,6 @@ export const PhasesUpdateRequestRulesItemExecuteRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemExecuteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65685,8 +65409,6 @@ export interface PhasesUpdateRequestRulesItemExecuteRule {
 export const PhasesUpdateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemExecuteRuleAction),
       actionParameters: S.optional(
@@ -65795,10 +65517,6 @@ export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemForceConnectionCloseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65827,8 +65545,6 @@ export interface PhasesUpdateRequestRulesItemForceConnectionCloseRule {
 export const PhasesUpdateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(
         PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction,
@@ -65935,10 +65651,6 @@ export const PhasesUpdateRequestRulesItemJSChallengeRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemJSChallengeRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemJSChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -65965,8 +65677,6 @@ export interface PhasesUpdateRequestRulesItemJSChallenge {
 export const PhasesUpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemJSChallengeAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -66067,10 +65777,6 @@ export const PhasesUpdateRequestRulesItemLogRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemLogRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -66096,8 +65802,6 @@ export interface PhasesUpdateRequestRulesItemLogRule {
 }
 export const PhasesUpdateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(PhasesUpdateRequestRulesItemLogRuleAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -66361,10 +66065,6 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemLogCustomFieldRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -66391,8 +66091,6 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRule {
 export const PhasesUpdateRequestRulesItemLogCustomFieldRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
@@ -66503,10 +66201,6 @@ export const PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemManagedChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -66535,8 +66229,6 @@ export interface PhasesUpdateRequestRulesItemManagedChallengeRule {
 export const PhasesUpdateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(
         PhasesUpdateRequestRulesItemManagedChallengeRuleAction,
@@ -66738,10 +66430,6 @@ export const PhasesUpdateRequestRulesItemRedirectRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRedirectRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemRedirectRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -66768,8 +66456,6 @@ export interface PhasesUpdateRequestRulesItemRedirectRule {
 export const PhasesUpdateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemRedirectRuleAction),
       actionParameters: S.optional(
@@ -67105,10 +66791,6 @@ export const PhasesUpdateRequestRulesItemRewriteRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemRewriteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -67135,8 +66817,6 @@ export interface PhasesUpdateRequestRulesItemRewriteRule {
 export const PhasesUpdateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemRewriteRuleAction),
       actionParameters: S.optional(
@@ -67292,10 +66972,6 @@ export const PhasesUpdateRequestRulesItemRouteRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRouteRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemRouteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -67322,8 +66998,6 @@ export interface PhasesUpdateRequestRulesItemRouteRule {
 export const PhasesUpdateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemRouteRuleAction),
       actionParameters: S.optional(
@@ -67442,10 +67116,6 @@ export const PhasesUpdateRequestRulesItemScoreRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemScoreRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemScoreRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -67472,8 +67142,6 @@ export interface PhasesUpdateRequestRulesItemScoreRule {
 export const PhasesUpdateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemScoreRuleAction),
       actionParameters: S.optional(
@@ -67654,10 +67322,6 @@ export const PhasesUpdateRequestRulesItemServeErrorRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemServeErrorRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -67684,8 +67348,6 @@ export interface PhasesUpdateRequestRulesItemServeErrorRule {
 export const PhasesUpdateRequestRulesItemServeErrorRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
@@ -68720,10 +68382,6 @@ export const PhasesUpdateRequestRulesItemSetCacheControlRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemSetCacheControl {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -68750,8 +68408,6 @@ export interface PhasesUpdateRequestRulesItemSetCacheControl {
 export const PhasesUpdateRequestRulesItemSetCacheControl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
@@ -69498,10 +69154,6 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -69530,8 +69182,6 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRule {
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(
         PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction,
@@ -69836,10 +69486,6 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemSetCacheTags {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -69866,8 +69512,6 @@ export interface PhasesUpdateRequestRulesItemSetCacheTags {
 export const PhasesUpdateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemSetCacheTagsAction),
       actionParameters: S.optional(
@@ -70143,10 +69787,6 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetConfigRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemSetConfigRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -70173,8 +69813,6 @@ export interface PhasesUpdateRequestRulesItemSetConfigRule {
 export const PhasesUpdateRequestRulesItemSetConfigRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemSetConfigRuleAction),
       actionParameters: S.optional(
@@ -70418,10 +70056,6 @@ export const PhasesUpdateRequestRulesItemSkipRuleRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemSkipRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -70448,8 +70082,6 @@ export interface PhasesUpdateRequestRulesItemSkipRule {
 export const PhasesUpdateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(PhasesUpdateRequestRulesItemSkipRuleAction),
       actionParameters: S.optional(
@@ -70572,10 +70204,6 @@ export const PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit>;
 
 export interface PhasesUpdateRequestRulesItemTransformResponseHTML {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -70604,8 +70232,6 @@ export interface PhasesUpdateRequestRulesItemTransformResponseHTML {
 export const PhasesUpdateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(
         PhasesUpdateRequestRulesItemTransformResponseHTMLAction,
@@ -70661,8 +70287,6 @@ export type PhasesUpdateRequestRulesItem =
 export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70676,8 +70300,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70691,8 +70313,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70706,8 +70326,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70721,8 +70339,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70736,8 +70352,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70751,8 +70365,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70766,8 +70378,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70781,8 +70391,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70796,8 +70404,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70811,8 +70417,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70826,8 +70430,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70841,8 +70443,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70856,8 +70456,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70871,8 +70469,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70886,8 +70482,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70901,8 +70495,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70916,8 +70508,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70931,8 +70521,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70946,8 +70534,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -70961,8 +70547,6 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -77674,10 +77258,6 @@ export const UpdateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemBlockRuleRatelimit>;
 
 export interface UpdateRequestRulesItemBlockRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -77703,8 +77283,6 @@ export interface UpdateRequestRulesItemBlockRule {
 }
 export const UpdateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemBlockRuleAction),
     actionParameters: S.optional(
@@ -77807,10 +77385,6 @@ export const UpdateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemChallengeRatelimit>;
 
 export interface UpdateRequestRulesItemChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -77836,8 +77410,6 @@ export interface UpdateRequestRulesItemChallenge {
 }
 export const UpdateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemChallengeAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -77984,10 +77556,6 @@ export const UpdateRequestRulesItemCompressResponseRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleRatelimit>;
 
 export interface UpdateRequestRulesItemCompressResponseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78014,8 +77582,6 @@ export interface UpdateRequestRulesItemCompressResponseRule {
 export const UpdateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemCompressResponseRuleAction),
       actionParameters: S.optional(
@@ -78123,10 +77689,6 @@ export const UpdateRequestRulesItemDDoSDynamicRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemDDoSDynamicRuleRatelimit>;
 
 export interface UpdateRequestRulesItemDDoSDynamicRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78153,8 +77715,6 @@ export interface UpdateRequestRulesItemDDoSDynamicRule {
 export const UpdateRequestRulesItemDDoSDynamicRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemDDoSDynamicRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -78418,10 +77978,6 @@ export const UpdateRequestRulesItemExecuteRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleRatelimit>;
 
 export interface UpdateRequestRulesItemExecuteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78447,8 +78003,6 @@ export interface UpdateRequestRulesItemExecuteRule {
 }
 export const UpdateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemExecuteRuleAction),
     actionParameters: S.optional(
@@ -78555,10 +78109,6 @@ export const UpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemForceConnectionCloseRuleRatelimit>;
 
 export interface UpdateRequestRulesItemForceConnectionCloseRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78585,8 +78135,6 @@ export interface UpdateRequestRulesItemForceConnectionCloseRule {
 export const UpdateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemForceConnectionCloseRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -78689,10 +78237,6 @@ export const UpdateRequestRulesItemJSChallengeRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemJSChallengeRatelimit>;
 
 export interface UpdateRequestRulesItemJSChallenge {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78718,8 +78262,6 @@ export interface UpdateRequestRulesItemJSChallenge {
 }
 export const UpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemJSChallengeAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -78818,10 +78360,6 @@ export const UpdateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemLogRuleRatelimit>;
 
 export interface UpdateRequestRulesItemLogRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -78847,8 +78385,6 @@ export interface UpdateRequestRulesItemLogRule {
 }
 export const UpdateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemLogRuleAction),
     actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -79110,10 +78646,6 @@ export const UpdateRequestRulesItemLogCustomFieldRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleRatelimit>;
 
 export interface UpdateRequestRulesItemLogCustomFieldRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -79140,8 +78672,6 @@ export interface UpdateRequestRulesItemLogCustomFieldRule {
 export const UpdateRequestRulesItemLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
@@ -79250,10 +78780,6 @@ export const UpdateRequestRulesItemManagedChallengeRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemManagedChallengeRuleRatelimit>;
 
 export interface UpdateRequestRulesItemManagedChallengeRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -79280,8 +78806,6 @@ export interface UpdateRequestRulesItemManagedChallengeRule {
 export const UpdateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemManagedChallengeRuleAction),
       actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
@@ -79476,10 +79000,6 @@ export const UpdateRequestRulesItemRedirectRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemRedirectRuleRatelimit>;
 
 export interface UpdateRequestRulesItemRedirectRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -79505,8 +79025,6 @@ export interface UpdateRequestRulesItemRedirectRule {
 }
 export const UpdateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemRedirectRuleAction),
     actionParameters: S.optional(
@@ -79833,10 +79351,6 @@ export const UpdateRequestRulesItemRewriteRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleRatelimit>;
 
 export interface UpdateRequestRulesItemRewriteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -79862,8 +79376,6 @@ export interface UpdateRequestRulesItemRewriteRule {
 }
 export const UpdateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemRewriteRuleAction),
     actionParameters: S.optional(
@@ -80014,10 +79526,6 @@ export const UpdateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemRouteRuleRatelimit>;
 
 export interface UpdateRequestRulesItemRouteRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -80043,8 +79551,6 @@ export interface UpdateRequestRulesItemRouteRule {
 }
 export const UpdateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemRouteRuleAction),
     actionParameters: S.optional(
@@ -80160,10 +79666,6 @@ export const UpdateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemScoreRuleRatelimit>;
 
 export interface UpdateRequestRulesItemScoreRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -80189,8 +79691,6 @@ export interface UpdateRequestRulesItemScoreRule {
 }
 export const UpdateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemScoreRuleAction),
     actionParameters: S.optional(
@@ -80367,10 +79867,6 @@ export const UpdateRequestRulesItemServeErrorRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemServeErrorRuleRatelimit>;
 
 export interface UpdateRequestRulesItemServeErrorRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -80397,8 +79893,6 @@ export interface UpdateRequestRulesItemServeErrorRule {
 export const UpdateRequestRulesItemServeErrorRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
@@ -81428,10 +80922,6 @@ export const UpdateRequestRulesItemSetCacheControlRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlRatelimit>;
 
 export interface UpdateRequestRulesItemSetCacheControl {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -81458,8 +80948,6 @@ export interface UpdateRequestRulesItemSetCacheControl {
 export const UpdateRequestRulesItemSetCacheControl = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
@@ -82203,10 +81691,6 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleRatelimit>;
 
 export interface UpdateRequestRulesItemSetCacheSettingsRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -82233,8 +81717,6 @@ export interface UpdateRequestRulesItemSetCacheSettingsRule {
 export const UpdateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemSetCacheSettingsRuleAction),
       actionParameters: S.optional(
@@ -82534,10 +82016,6 @@ export const UpdateRequestRulesItemSetCacheTagsRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsRatelimit>;
 
 export interface UpdateRequestRulesItemSetCacheTags {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -82563,8 +82041,6 @@ export interface UpdateRequestRulesItemSetCacheTags {
 }
 export const UpdateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemSetCacheTagsAction),
     actionParameters: S.optional(
@@ -82835,10 +82311,6 @@ export const UpdateRequestRulesItemSetConfigRuleRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemSetConfigRuleRatelimit>;
 
 export interface UpdateRequestRulesItemSetConfigRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -82864,8 +82336,6 @@ export interface UpdateRequestRulesItemSetConfigRule {
 }
 export const UpdateRequestRulesItemSetConfigRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemSetConfigRuleAction),
     actionParameters: S.optional(
@@ -83094,10 +82564,6 @@ export const UpdateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemSkipRuleRatelimit>;
 
 export interface UpdateRequestRulesItemSkipRule {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -83123,8 +82589,6 @@ export interface UpdateRequestRulesItemSkipRule {
 }
 export const UpdateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    version: S.String,
     id: S.optional(S.String),
     action: S.optional(UpdateRequestRulesItemSkipRuleAction),
     actionParameters: S.optional(
@@ -83244,10 +82708,6 @@ export const UpdateRequestRulesItemTransformResponseHTMLRatelimit =
   }) as any as S.Schema<UpdateRequestRulesItemTransformResponseHTMLRatelimit>;
 
 export interface UpdateRequestRulesItemTransformResponseHTML {
-  /** The timestamp of when the rule was last modified. */
-  lastUpdated: string;
-  /** The version of the rule. */
-  version: string;
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
@@ -83274,8 +82734,6 @@ export interface UpdateRequestRulesItemTransformResponseHTML {
 export const UpdateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.String.pipe(T.Body("last_updated")),
-      version: S.String,
       id: S.optional(S.String),
       action: S.optional(UpdateRequestRulesItemTransformResponseHTMLAction),
       actionParameters: S.optional(
@@ -83329,8 +82787,6 @@ export type UpdateRequestRulesItem =
 export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83344,8 +82800,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83359,8 +82813,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83374,8 +82826,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83389,8 +82839,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83404,8 +82852,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83419,8 +82865,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83434,8 +82878,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83449,8 +82891,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83464,8 +82904,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83479,8 +82917,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83494,8 +82930,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83509,8 +82943,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83524,8 +82956,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83539,8 +82969,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83554,8 +82982,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83569,8 +82995,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83584,8 +83008,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83599,8 +83021,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83614,8 +83034,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",
@@ -83629,8 +83047,6 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
       "ref",
     ],
     [
-      "lastUpdated",
-      "version",
       "id",
       "action",
       "actionParameters",

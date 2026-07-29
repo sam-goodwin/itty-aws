@@ -439,6 +439,12 @@ export const DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings =
       "DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings",
   }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings>;
 
+export type DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
+  | "postgresql"
+  | "mysql";
+export const DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesCreateResultInfraHTTPServiceConfig {
   host: DirectoryServicesCreateResultInfraHTTPServiceConfigHost;
   name: string;
@@ -450,6 +456,8 @@ export interface DirectoryServicesCreateResultInfraHTTPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  tcpPort?: number | null;
+  appProtocol?: DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol | null;
 }
 export const DirectoryServicesCreateResultInfraHTTPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -467,6 +475,12 @@ export const DirectoryServicesCreateResultInfraHTTPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+      appProtocol: S.optional(
+        S.NullOr(
+          DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol,
+        ).pipe(T.Body("app_protocol")),
+      ),
     }),
   ).annotate({
     identifier: "DirectoryServicesCreateResultInfraHTTPServiceConfig",
@@ -626,12 +640,6 @@ export type DirectoryServicesCreateResultInfraTCPServiceConfigType =
 export const DirectoryServicesCreateResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
-export type DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
 export interface DirectoryServicesCreateResultInfraTCPServiceConfigTlsSettings {
   /** TLS certificate verification mode for the connection to the origin. */
   certVerificationMode: string;
@@ -656,6 +664,8 @@ export interface DirectoryServicesCreateResultInfraTCPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesCreateResultInfraTCPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  httpPort?: number | null;
+  httpsPort?: number | null;
 }
 export const DirectoryServicesCreateResultInfraTCPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -677,6 +687,8 @@ export const DirectoryServicesCreateResultInfraTCPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
+      httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     }),
   ).annotate({
     identifier: "DirectoryServicesCreateResultInfraTCPServiceConfig",
@@ -697,6 +709,8 @@ export const DirectoryServicesCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "serviceId",
       "tlsSettings",
       "updatedAt",
+      "tcpPort",
+      "appProtocol",
     ],
     [
       "host",
@@ -708,6 +722,8 @@ export const DirectoryServicesCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "tcpPort",
       "tlsSettings",
       "updatedAt",
+      "httpPort",
+      "httpsPort",
     ],
   ]),
 );
@@ -935,6 +951,12 @@ export const DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings =
     identifier: "DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings",
   }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings>;
 
+export type DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
+  | "postgresql"
+  | "mysql";
+export const DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesGetResultInfraHTTPServiceConfig {
   host: DirectoryServicesGetResultInfraHTTPServiceConfigHost;
   name: string;
@@ -946,6 +968,8 @@ export interface DirectoryServicesGetResultInfraHTTPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  tcpPort?: number | null;
+  appProtocol?: DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol | null;
 }
 export const DirectoryServicesGetResultInfraHTTPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -963,6 +987,12 @@ export const DirectoryServicesGetResultInfraHTTPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+      appProtocol: S.optional(
+        S.NullOr(
+          DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol,
+        ).pipe(T.Body("app_protocol")),
+      ),
     }),
   ).annotate({
     identifier: "DirectoryServicesGetResultInfraHTTPServiceConfig",
@@ -1122,12 +1152,6 @@ export type DirectoryServicesGetResultInfraTCPServiceConfigType =
 export const DirectoryServicesGetResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
-export type DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
 export interface DirectoryServicesGetResultInfraTCPServiceConfigTlsSettings {
   /** TLS certificate verification mode for the connection to the origin. */
   certVerificationMode: string;
@@ -1152,6 +1176,8 @@ export interface DirectoryServicesGetResultInfraTCPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesGetResultInfraTCPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  httpPort?: number | null;
+  httpsPort?: number | null;
 }
 export const DirectoryServicesGetResultInfraTCPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1173,6 +1199,8 @@ export const DirectoryServicesGetResultInfraTCPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
+      httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     }),
   ).annotate({
     identifier: "DirectoryServicesGetResultInfraTCPServiceConfig",
@@ -1193,6 +1221,8 @@ export const DirectoryServicesGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "serviceId",
       "tlsSettings",
       "updatedAt",
+      "tcpPort",
+      "appProtocol",
     ],
     [
       "host",
@@ -1204,6 +1234,8 @@ export const DirectoryServicesGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "tcpPort",
       "tlsSettings",
       "updatedAt",
+      "httpPort",
+      "httpsPort",
     ],
   ]),
 );
@@ -1414,6 +1446,12 @@ export const DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings =
       "DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings",
   }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings>;
 
+export type DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
+  | "postgresql"
+  | "mysql";
+export const DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesListResultItemInfraHTTPServiceConfig {
   host: DirectoryServicesListResultItemInfraHTTPServiceConfigHost;
   name: string;
@@ -1425,6 +1463,8 @@ export interface DirectoryServicesListResultItemInfraHTTPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  tcpPort?: number | null;
+  appProtocol?: DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol | null;
 }
 export const DirectoryServicesListResultItemInfraHTTPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1442,6 +1482,12 @@ export const DirectoryServicesListResultItemInfraHTTPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+      appProtocol: S.optional(
+        S.NullOr(
+          DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol,
+        ).pipe(T.Body("app_protocol")),
+      ),
     }),
   ).annotate({
     identifier: "DirectoryServicesListResultItemInfraHTTPServiceConfig",
@@ -1601,12 +1647,6 @@ export type DirectoryServicesListResultItemInfraTCPServiceConfigType =
 export const DirectoryServicesListResultItemInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
-export type DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
 export interface DirectoryServicesListResultItemInfraTCPServiceConfigTlsSettings {
   /** TLS certificate verification mode for the connection to the origin. */
   certVerificationMode: string;
@@ -1632,6 +1672,8 @@ export interface DirectoryServicesListResultItemInfraTCPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesListResultItemInfraTCPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  httpPort?: number | null;
+  httpsPort?: number | null;
 }
 export const DirectoryServicesListResultItemInfraTCPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1653,6 +1695,8 @@ export const DirectoryServicesListResultItemInfraTCPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
+      httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     }),
   ).annotate({
     identifier: "DirectoryServicesListResultItemInfraTCPServiceConfig",
@@ -1673,6 +1717,8 @@ export const DirectoryServicesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "serviceId",
       "tlsSettings",
       "updatedAt",
+      "tcpPort",
+      "appProtocol",
     ],
     [
       "host",
@@ -1684,6 +1730,8 @@ export const DirectoryServicesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tcpPort",
       "tlsSettings",
       "updatedAt",
+      "httpPort",
+      "httpsPort",
     ],
   ]),
 );
@@ -2079,6 +2127,12 @@ export const DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings =
       "DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings",
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings>;
 
+export type DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
+  | "postgresql"
+  | "mysql";
+export const DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesUpdateResultInfraHTTPServiceConfig {
   host: DirectoryServicesUpdateResultInfraHTTPServiceConfigHost;
   name: string;
@@ -2090,6 +2144,8 @@ export interface DirectoryServicesUpdateResultInfraHTTPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  tcpPort?: number | null;
+  appProtocol?: DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol | null;
 }
 export const DirectoryServicesUpdateResultInfraHTTPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -2107,6 +2163,12 @@ export const DirectoryServicesUpdateResultInfraHTTPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+      appProtocol: S.optional(
+        S.NullOr(
+          DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol,
+        ).pipe(T.Body("app_protocol")),
+      ),
     }),
   ).annotate({
     identifier: "DirectoryServicesUpdateResultInfraHTTPServiceConfig",
@@ -2266,12 +2328,6 @@ export type DirectoryServicesUpdateResultInfraTCPServiceConfigType =
 export const DirectoryServicesUpdateResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
-export type DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
 export interface DirectoryServicesUpdateResultInfraTCPServiceConfigTlsSettings {
   /** TLS certificate verification mode for the connection to the origin. */
   certVerificationMode: string;
@@ -2296,6 +2352,8 @@ export interface DirectoryServicesUpdateResultInfraTCPServiceConfig {
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesUpdateResultInfraTCPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
+  httpPort?: number | null;
+  httpsPort?: number | null;
 }
 export const DirectoryServicesUpdateResultInfraTCPServiceConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -2317,6 +2375,8 @@ export const DirectoryServicesUpdateResultInfraTCPServiceConfig =
         ).pipe(T.Body("tls_settings")),
       ),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
+      httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     }),
   ).annotate({
     identifier: "DirectoryServicesUpdateResultInfraTCPServiceConfig",
@@ -2337,6 +2397,8 @@ export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "serviceId",
       "tlsSettings",
       "updatedAt",
+      "tcpPort",
+      "appProtocol",
     ],
     [
       "host",
@@ -2348,6 +2410,8 @@ export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "tcpPort",
       "tlsSettings",
       "updatedAt",
+      "httpPort",
+      "httpsPort",
     ],
   ]),
 );

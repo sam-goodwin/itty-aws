@@ -5790,6 +5790,14 @@ export const RecordsCreateResultARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultARecordMeta",
 }) as any as S.Schema<RecordsCreateResultARecordMeta>;
 
+export type DnsRecordTypeA = "A";
+export const DnsRecordTypeA = /*@__PURE__*/ S.String;
+
+export type DnsRecordTagsList = Array<string>;
+export const DnsRecordTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DnsRecordTagsList>;
+
 export interface RecordsCreateResultARecord {
   /** Identifier. */
   id: string;
@@ -5805,6 +5813,16 @@ export interface RecordsCreateResultARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5819,6 +5837,16 @@ export const RecordsCreateResultARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultARecord",
@@ -5857,6 +5885,9 @@ export const RecordsCreateResultAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultAAAARecordMeta",
 }) as any as S.Schema<RecordsCreateResultAAAARecordMeta>;
 
+export type DnsRecordTypeAAAA = "AAAA";
+export const DnsRecordTypeAAAA = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultAAAARecord {
   /** Identifier. */
   id: string;
@@ -5872,6 +5903,16 @@ export interface RecordsCreateResultAAAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeAAAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5886,6 +5927,16 @@ export const RecordsCreateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeAAAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultAAAARecord",
@@ -5924,6 +5975,9 @@ export const RecordsCreateResultCNAMERecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCNAMERecordMeta",
 }) as any as S.Schema<RecordsCreateResultCNAMERecordMeta>;
 
+export type DnsRecordTypeCNAME = "CNAME";
+export const DnsRecordTypeCNAME = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultCNAMERecord {
   /** Identifier. */
   id: string;
@@ -5939,6 +5993,16 @@ export interface RecordsCreateResultCNAMERecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCNAME;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5953,6 +6017,16 @@ export const RecordsCreateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCNAME,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultCNAMERecord",
@@ -5991,6 +6065,9 @@ export const RecordsCreateResultMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultMXRecordMeta",
 }) as any as S.Schema<RecordsCreateResultMXRecordMeta>;
 
+export type DnsRecordTypeMX = "MX";
+export const DnsRecordTypeMX = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultMXRecord {
   /** Identifier. */
   id: string;
@@ -6006,6 +6083,16 @@ export interface RecordsCreateResultMXRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeMX;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6020,6 +6107,16 @@ export const RecordsCreateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeMX,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultMXRecord",
@@ -6058,6 +6155,9 @@ export const RecordsCreateResultNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultNSRecordMeta",
 }) as any as S.Schema<RecordsCreateResultNSRecordMeta>;
 
+export type DnsRecordTypeNS = "NS";
+export const DnsRecordTypeNS = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultNSRecord {
   /** Identifier. */
   id: string;
@@ -6073,6 +6173,16 @@ export interface RecordsCreateResultNSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6087,6 +6197,16 @@ export const RecordsCreateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultNSRecord",
@@ -6243,6 +6363,9 @@ export const RecordsCreateResultPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultPTRRecordMeta",
 }) as any as S.Schema<RecordsCreateResultPTRRecordMeta>;
 
+export type DnsRecordTypePTR = "PTR";
+export const DnsRecordTypePTR = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultPTRRecord {
   /** Identifier. */
   id: string;
@@ -6258,6 +6381,16 @@ export interface RecordsCreateResultPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypePTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6272,6 +6405,16 @@ export const RecordsCreateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypePTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultPTRRecord",
@@ -6310,6 +6453,9 @@ export const RecordsCreateResultTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultTXTRecordMeta",
 }) as any as S.Schema<RecordsCreateResultTXTRecordMeta>;
 
+export type DnsRecordTypeTXT = "TXT";
+export const DnsRecordTypeTXT = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultTXTRecord {
   /** Identifier. */
   id: string;
@@ -6325,6 +6471,16 @@ export interface RecordsCreateResultTXTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTXT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6339,6 +6495,16 @@ export const RecordsCreateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTXT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultTXTRecord",
@@ -6377,6 +6543,9 @@ export const RecordsCreateResultCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCAARecordMeta",
 }) as any as S.Schema<RecordsCreateResultCAARecordMeta>;
 
+export type DnsRecordTypeCAA = "CAA";
+export const DnsRecordTypeCAA = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultCAARecord {
   /** Identifier. */
   id: string;
@@ -6392,6 +6561,16 @@ export interface RecordsCreateResultCAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6406,6 +6585,16 @@ export const RecordsCreateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultCAARecord",
@@ -6444,6 +6633,9 @@ export const RecordsCreateResultCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCERTRecordMeta",
 }) as any as S.Schema<RecordsCreateResultCERTRecordMeta>;
 
+export type DnsRecordTypeCERT = "CERT";
+export const DnsRecordTypeCERT = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultCERTRecord {
   /** Identifier. */
   id: string;
@@ -6459,6 +6651,16 @@ export interface RecordsCreateResultCERTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCERT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6473,6 +6675,16 @@ export const RecordsCreateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCERT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultCERTRecord",
@@ -6511,6 +6723,9 @@ export const RecordsCreateResultDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultDNSKEYRecordMeta",
 }) as any as S.Schema<RecordsCreateResultDNSKEYRecordMeta>;
 
+export type DnsRecordTypeDNSKEY = "DNSKEY";
+export const DnsRecordTypeDNSKEY = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultDNSKEYRecord {
   /** Identifier. */
   id: string;
@@ -6526,6 +6741,16 @@ export interface RecordsCreateResultDNSKEYRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDNSKEY;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6540,6 +6765,16 @@ export const RecordsCreateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDNSKEY,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultDNSKEYRecord",
@@ -6578,6 +6813,9 @@ export const RecordsCreateResultDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultDSRecordMeta",
 }) as any as S.Schema<RecordsCreateResultDSRecordMeta>;
 
+export type DnsRecordTypeDS = "DS";
+export const DnsRecordTypeDS = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultDSRecord {
   /** Identifier. */
   id: string;
@@ -6593,6 +6831,16 @@ export interface RecordsCreateResultDSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6607,6 +6855,16 @@ export const RecordsCreateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultDSRecord",
@@ -6645,6 +6903,9 @@ export const RecordsCreateResultHTTPSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultHTTPSRecordMeta",
 }) as any as S.Schema<RecordsCreateResultHTTPSRecordMeta>;
 
+export type DnsRecordTypeHTTPS = "HTTPS";
+export const DnsRecordTypeHTTPS = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultHTTPSRecord {
   /** Identifier. */
   id: string;
@@ -6660,6 +6921,16 @@ export interface RecordsCreateResultHTTPSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeHTTPS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6674,6 +6945,16 @@ export const RecordsCreateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeHTTPS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultHTTPSRecord",
@@ -6712,6 +6993,9 @@ export const RecordsCreateResultLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultLOCRecordMeta",
 }) as any as S.Schema<RecordsCreateResultLOCRecordMeta>;
 
+export type DnsRecordTypeLOC = "LOC";
+export const DnsRecordTypeLOC = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultLOCRecord {
   /** Identifier. */
   id: string;
@@ -6727,6 +7011,16 @@ export interface RecordsCreateResultLOCRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeLOC;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6741,6 +7035,16 @@ export const RecordsCreateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeLOC,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultLOCRecord",
@@ -6779,6 +7083,9 @@ export const RecordsCreateResultNAPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultNAPTRRecordMeta",
 }) as any as S.Schema<RecordsCreateResultNAPTRRecordMeta>;
 
+export type DnsRecordTypeNAPTR = "NAPTR";
+export const DnsRecordTypeNAPTR = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultNAPTRRecord {
   /** Identifier. */
   id: string;
@@ -6794,6 +7101,16 @@ export interface RecordsCreateResultNAPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNAPTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6808,6 +7125,16 @@ export const RecordsCreateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNAPTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultNAPTRRecord",
@@ -6846,6 +7173,9 @@ export const RecordsCreateResultSMIMEARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSMIMEARecordMeta",
 }) as any as S.Schema<RecordsCreateResultSMIMEARecordMeta>;
 
+export type DnsRecordTypeSMIMEA = "SMIMEA";
+export const DnsRecordTypeSMIMEA = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultSMIMEARecord {
   /** Identifier. */
   id: string;
@@ -6861,6 +7191,16 @@ export interface RecordsCreateResultSMIMEARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSMIMEA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6875,6 +7215,16 @@ export const RecordsCreateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSMIMEA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultSMIMEARecord",
@@ -6913,6 +7263,9 @@ export const RecordsCreateResultSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSRVRecordMeta",
 }) as any as S.Schema<RecordsCreateResultSRVRecordMeta>;
 
+export type DnsRecordTypeSRV = "SRV";
+export const DnsRecordTypeSRV = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultSRVRecord {
   /** Identifier. */
   id: string;
@@ -6928,6 +7281,16 @@ export interface RecordsCreateResultSRVRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSRV;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6942,6 +7305,16 @@ export const RecordsCreateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSRV,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultSRVRecord",
@@ -6980,6 +7353,9 @@ export const RecordsCreateResultSSHFPRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSSHFPRecordMeta",
 }) as any as S.Schema<RecordsCreateResultSSHFPRecordMeta>;
 
+export type DnsRecordTypeSSHFP = "SSHFP";
+export const DnsRecordTypeSSHFP = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultSSHFPRecord {
   /** Identifier. */
   id: string;
@@ -6995,6 +7371,16 @@ export interface RecordsCreateResultSSHFPRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSSHFP;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7009,6 +7395,16 @@ export const RecordsCreateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSSHFP,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultSSHFPRecord",
@@ -7047,6 +7443,9 @@ export const RecordsCreateResultSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSVCBRecordMeta",
 }) as any as S.Schema<RecordsCreateResultSVCBRecordMeta>;
 
+export type DnsRecordTypeSVCB = "SVCB";
+export const DnsRecordTypeSVCB = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultSVCBRecord {
   /** Identifier. */
   id: string;
@@ -7062,6 +7461,16 @@ export interface RecordsCreateResultSVCBRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSVCB;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7076,6 +7485,16 @@ export const RecordsCreateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSVCB,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultSVCBRecord",
@@ -7114,6 +7533,9 @@ export const RecordsCreateResultTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultTLSARecordMeta",
 }) as any as S.Schema<RecordsCreateResultTLSARecordMeta>;
 
+export type DnsRecordTypeTLSA = "TLSA";
+export const DnsRecordTypeTLSA = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultTLSARecord {
   /** Identifier. */
   id: string;
@@ -7129,6 +7551,16 @@ export interface RecordsCreateResultTLSARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTLSA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7143,6 +7575,16 @@ export const RecordsCreateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTLSA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultTLSARecord",
@@ -7181,6 +7623,9 @@ export const RecordsCreateResultURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultURIRecordMeta",
 }) as any as S.Schema<RecordsCreateResultURIRecordMeta>;
 
+export type DnsRecordTypeURI = "URI";
+export const DnsRecordTypeURI = /*@__PURE__*/ S.String;
+
 export interface RecordsCreateResultURIRecord {
   /** Identifier. */
   id: string;
@@ -7196,6 +7641,16 @@ export interface RecordsCreateResultURIRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeURI;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsCreateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7210,6 +7665,16 @@ export const RecordsCreateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeURI,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsCreateResultURIRecord",
@@ -7247,6 +7712,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7256,6 +7731,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7265,6 +7750,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7274,6 +7769,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7283,6 +7788,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7309,6 +7824,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7318,6 +7843,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7327,6 +7862,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7336,6 +7881,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7345,6 +7900,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7354,6 +7919,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7363,6 +7938,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7372,6 +7957,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7381,6 +7976,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7390,6 +7995,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7399,6 +8014,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7408,6 +8033,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7417,6 +8052,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7426,6 +8071,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -7435,6 +8090,16 @@ export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
@@ -8712,6 +9377,16 @@ export interface RecordsGetResultARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8726,6 +9401,16 @@ export const RecordsGetResultARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultARecord",
@@ -8779,6 +9464,16 @@ export interface RecordsGetResultAAAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeAAAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8793,6 +9488,16 @@ export const RecordsGetResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeAAAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultAAAARecord",
@@ -8846,6 +9551,16 @@ export interface RecordsGetResultCNAMERecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCNAME;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8860,6 +9575,16 @@ export const RecordsGetResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCNAME,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultCNAMERecord",
@@ -8912,6 +9637,16 @@ export interface RecordsGetResultMXRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeMX;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8926,6 +9661,16 @@ export const RecordsGetResultMXRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeMX,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultMXRecord",
@@ -8978,6 +9723,16 @@ export interface RecordsGetResultNSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8992,6 +9747,16 @@ export const RecordsGetResultNSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultNSRecord",
@@ -9161,6 +9926,16 @@ export interface RecordsGetResultPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypePTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9175,6 +9950,16 @@ export const RecordsGetResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypePTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultPTRRecord",
@@ -9228,6 +10013,16 @@ export interface RecordsGetResultTXTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTXT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9242,6 +10037,16 @@ export const RecordsGetResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTXT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultTXTRecord",
@@ -9295,6 +10100,16 @@ export interface RecordsGetResultCAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9309,6 +10124,16 @@ export const RecordsGetResultCAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultCAARecord",
@@ -9362,6 +10187,16 @@ export interface RecordsGetResultCERTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCERT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9376,6 +10211,16 @@ export const RecordsGetResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCERT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultCERTRecord",
@@ -9429,6 +10274,16 @@ export interface RecordsGetResultDNSKEYRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDNSKEY;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9443,6 +10298,16 @@ export const RecordsGetResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDNSKEY,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultDNSKEYRecord",
@@ -9495,6 +10360,16 @@ export interface RecordsGetResultDSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9509,6 +10384,16 @@ export const RecordsGetResultDSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultDSRecord",
@@ -9562,6 +10447,16 @@ export interface RecordsGetResultHTTPSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeHTTPS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9576,6 +10471,16 @@ export const RecordsGetResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeHTTPS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultHTTPSRecord",
@@ -9629,6 +10534,16 @@ export interface RecordsGetResultLOCRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeLOC;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9643,6 +10558,16 @@ export const RecordsGetResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeLOC,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultLOCRecord",
@@ -9696,6 +10621,16 @@ export interface RecordsGetResultNAPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNAPTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9710,6 +10645,16 @@ export const RecordsGetResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNAPTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultNAPTRRecord",
@@ -9763,6 +10708,16 @@ export interface RecordsGetResultSMIMEARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSMIMEA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9777,6 +10732,16 @@ export const RecordsGetResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSMIMEA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultSMIMEARecord",
@@ -9830,6 +10795,16 @@ export interface RecordsGetResultSRVRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSRV;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9844,6 +10819,16 @@ export const RecordsGetResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSRV,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultSRVRecord",
@@ -9897,6 +10882,16 @@ export interface RecordsGetResultSSHFPRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSSHFP;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9911,6 +10906,16 @@ export const RecordsGetResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSSHFP,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultSSHFPRecord",
@@ -9964,6 +10969,16 @@ export interface RecordsGetResultSVCBRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSVCB;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9978,6 +10993,16 @@ export const RecordsGetResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSVCB,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultSVCBRecord",
@@ -10031,6 +11056,16 @@ export interface RecordsGetResultTLSARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTLSA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10045,6 +11080,16 @@ export const RecordsGetResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTLSA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultTLSARecord",
@@ -10098,6 +11143,16 @@ export interface RecordsGetResultURIRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeURI;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsGetResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10112,6 +11167,16 @@ export const RecordsGetResultURIRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeURI,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsGetResultURIRecord",
@@ -10149,6 +11214,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10158,6 +11233,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10167,6 +11252,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10176,6 +11271,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10185,6 +11290,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10211,6 +11326,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10220,6 +11345,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10229,6 +11364,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10238,6 +11383,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10247,6 +11402,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10256,6 +11421,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10265,6 +11440,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10274,6 +11459,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10283,6 +11478,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10292,6 +11497,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10301,6 +11516,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10310,6 +11535,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10319,6 +11554,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10328,6 +11573,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -10337,6 +11592,16 @@ export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
@@ -11328,6 +12593,14 @@ export interface RecordsListResultItemARecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemARecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11344,6 +12617,14 @@ export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemARecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemARecord",
@@ -11404,6 +12685,14 @@ export interface RecordsListResultItemAAAARecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemAAAARecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11420,6 +12709,14 @@ export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemAAAARecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemAAAARecord",
@@ -11481,6 +12778,14 @@ export interface RecordsListResultItemCNAMERecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemCNAMERecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11497,6 +12802,14 @@ export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemCNAMERecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemCNAMERecord",
@@ -11557,6 +12870,14 @@ export interface RecordsListResultItemMXRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemMXRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11573,6 +12894,14 @@ export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemMXRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemMXRecord",
@@ -11633,6 +12962,14 @@ export interface RecordsListResultItemNSRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemNSRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11649,6 +12986,14 @@ export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemNSRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemNSRecord",
@@ -11828,6 +13173,14 @@ export interface RecordsListResultItemPTRRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemPTRRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11844,6 +13197,14 @@ export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemPTRRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemPTRRecord",
@@ -11904,6 +13265,14 @@ export interface RecordsListResultItemTXTRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemTXTRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11920,6 +13289,14 @@ export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemTXTRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemTXTRecord",
@@ -11980,6 +13357,14 @@ export interface RecordsListResultItemCAARecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemCAARecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11996,6 +13381,14 @@ export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemCAARecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemCAARecord",
@@ -12056,6 +13449,14 @@ export interface RecordsListResultItemCERTRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemCERTRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12072,6 +13473,14 @@ export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemCERTRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemCERTRecord",
@@ -12133,6 +13542,14 @@ export interface RecordsListResultItemDNSKEYRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemDNSKEYRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12149,6 +13566,14 @@ export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemDNSKEYRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemDNSKEYRecord",
@@ -12209,6 +13634,14 @@ export interface RecordsListResultItemDSRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemDSRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12225,6 +13658,14 @@ export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemDSRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemDSRecord",
@@ -12286,6 +13727,14 @@ export interface RecordsListResultItemHTTPSRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemHTTPSRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12302,6 +13751,14 @@ export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemHTTPSRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemHTTPSRecord",
@@ -12362,6 +13819,14 @@ export interface RecordsListResultItemLOCRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemLOCRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12378,6 +13843,14 @@ export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemLOCRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemLOCRecord",
@@ -12439,6 +13912,14 @@ export interface RecordsListResultItemNAPTRRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemNAPTRRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12455,6 +13936,14 @@ export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemNAPTRRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemNAPTRRecord",
@@ -12516,6 +14005,14 @@ export interface RecordsListResultItemSMIMEARecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemSMIMEARecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12532,6 +14029,14 @@ export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemSMIMEARecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemSMIMEARecord",
@@ -12592,6 +14097,14 @@ export interface RecordsListResultItemSRVRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemSRVRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12608,6 +14121,14 @@ export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemSRVRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemSRVRecord",
@@ -12669,6 +14190,14 @@ export interface RecordsListResultItemSSHFPRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemSSHFPRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12685,6 +14214,14 @@ export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemSSHFPRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemSSHFPRecord",
@@ -12745,6 +14282,14 @@ export interface RecordsListResultItemSVCBRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemSVCBRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12761,6 +14306,14 @@ export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemSVCBRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemSVCBRecord",
@@ -12821,6 +14374,14 @@ export interface RecordsListResultItemTLSARecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemTLSARecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12837,6 +14398,14 @@ export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemTLSARecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemTLSARecord",
@@ -12897,6 +14466,14 @@ export interface RecordsListResultItemURIRecord {
   name: string;
   /** Record type. */
   type: RecordsListResultItemURIRecordType;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12913,6 +14490,14 @@ export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: RecordsListResultItemURIRecordType,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsListResultItemURIRecord",
@@ -12952,6 +14537,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -12963,6 +14556,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -12974,6 +14575,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -12985,6 +14594,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -12996,6 +14613,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13024,6 +14649,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13035,6 +14668,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13046,6 +14687,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13057,6 +14706,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13068,6 +14725,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13079,6 +14744,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13090,6 +14763,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13101,6 +14782,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13112,6 +14801,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13123,6 +14820,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13134,6 +14839,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13145,6 +14858,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13156,6 +14877,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13167,6 +14896,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -13178,6 +14915,14 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "tagsModifiedOn",
       "name",
       "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
@@ -14099,6 +15844,16 @@ export interface RecordsEditResultARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14113,6 +15868,16 @@ export const RecordsEditResultARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultARecord",
@@ -14166,6 +15931,16 @@ export interface RecordsEditResultAAAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeAAAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14180,6 +15955,16 @@ export const RecordsEditResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeAAAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultAAAARecord",
@@ -14233,6 +16018,16 @@ export interface RecordsEditResultCNAMERecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCNAME;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14247,6 +16042,16 @@ export const RecordsEditResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCNAME,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultCNAMERecord",
@@ -14300,6 +16105,16 @@ export interface RecordsEditResultMXRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeMX;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14314,6 +16129,16 @@ export const RecordsEditResultMXRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeMX,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultMXRecord",
@@ -14367,6 +16192,16 @@ export interface RecordsEditResultNSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14381,6 +16216,16 @@ export const RecordsEditResultNSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultNSRecord",
@@ -14550,6 +16395,16 @@ export interface RecordsEditResultPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypePTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14564,6 +16419,16 @@ export const RecordsEditResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypePTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultPTRRecord",
@@ -14617,6 +16482,16 @@ export interface RecordsEditResultTXTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTXT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14631,6 +16506,16 @@ export const RecordsEditResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTXT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultTXTRecord",
@@ -14684,6 +16569,16 @@ export interface RecordsEditResultCAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14698,6 +16593,16 @@ export const RecordsEditResultCAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultCAARecord",
@@ -14751,6 +16656,16 @@ export interface RecordsEditResultCERTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCERT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14765,6 +16680,16 @@ export const RecordsEditResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCERT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultCERTRecord",
@@ -14818,6 +16743,16 @@ export interface RecordsEditResultDNSKEYRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDNSKEY;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14832,6 +16767,16 @@ export const RecordsEditResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDNSKEY,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultDNSKEYRecord",
@@ -14885,6 +16830,16 @@ export interface RecordsEditResultDSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14899,6 +16854,16 @@ export const RecordsEditResultDSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultDSRecord",
@@ -14952,6 +16917,16 @@ export interface RecordsEditResultHTTPSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeHTTPS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14966,6 +16941,16 @@ export const RecordsEditResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeHTTPS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultHTTPSRecord",
@@ -15019,6 +17004,16 @@ export interface RecordsEditResultLOCRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeLOC;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15033,6 +17028,16 @@ export const RecordsEditResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeLOC,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultLOCRecord",
@@ -15086,6 +17091,16 @@ export interface RecordsEditResultNAPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNAPTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15100,6 +17115,16 @@ export const RecordsEditResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNAPTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultNAPTRRecord",
@@ -15153,6 +17178,16 @@ export interface RecordsEditResultSMIMEARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSMIMEA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15167,6 +17202,16 @@ export const RecordsEditResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSMIMEA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultSMIMEARecord",
@@ -15220,6 +17265,16 @@ export interface RecordsEditResultSRVRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSRV;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15234,6 +17289,16 @@ export const RecordsEditResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSRV,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultSRVRecord",
@@ -15287,6 +17352,16 @@ export interface RecordsEditResultSSHFPRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSSHFP;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15301,6 +17376,16 @@ export const RecordsEditResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSSHFP,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultSSHFPRecord",
@@ -15354,6 +17439,16 @@ export interface RecordsEditResultSVCBRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSVCB;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15368,6 +17463,16 @@ export const RecordsEditResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSVCB,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultSVCBRecord",
@@ -15421,6 +17526,16 @@ export interface RecordsEditResultTLSARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTLSA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15435,6 +17550,16 @@ export const RecordsEditResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTLSA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultTLSARecord",
@@ -15488,6 +17613,16 @@ export interface RecordsEditResultURIRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeURI;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsEditResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15502,6 +17637,16 @@ export const RecordsEditResultURIRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeURI,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsEditResultURIRecord",
@@ -15539,6 +17684,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15548,6 +17703,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15557,6 +17722,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15566,6 +17741,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15575,6 +17760,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15601,6 +17796,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15610,6 +17815,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15619,6 +17834,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15628,6 +17853,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15637,6 +17872,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15646,6 +17891,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15655,6 +17910,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15664,6 +17929,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15673,6 +17948,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15682,6 +17967,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15691,6 +17986,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15700,6 +18005,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15709,6 +18024,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15718,6 +18043,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -15727,6 +18062,16 @@ export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
@@ -16389,6 +18734,16 @@ export interface RecordsScanListResultItemARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16403,6 +18758,16 @@ export const RecordsScanListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemARecord",
@@ -16458,6 +18823,16 @@ export interface RecordsScanListResultItemAAAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeAAAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16472,6 +18847,16 @@ export const RecordsScanListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeAAAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemAAAARecord",
@@ -16527,6 +18912,16 @@ export interface RecordsScanListResultItemCNAMERecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCNAME;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -16542,6 +18937,16 @@ export const RecordsScanListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeCNAME,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemCNAMERecord",
@@ -16596,6 +19001,16 @@ export interface RecordsScanListResultItemMXRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeMX;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16610,6 +19025,16 @@ export const RecordsScanListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeMX,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemMXRecord",
@@ -16664,6 +19089,16 @@ export interface RecordsScanListResultItemNSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16678,6 +19113,16 @@ export const RecordsScanListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemNSRecord",
@@ -16853,6 +19298,16 @@ export interface RecordsScanListResultItemPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypePTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16867,6 +19322,16 @@ export const RecordsScanListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypePTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemPTRRecord",
@@ -16922,6 +19387,16 @@ export interface RecordsScanListResultItemTXTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTXT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16936,6 +19411,16 @@ export const RecordsScanListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTXT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemTXTRecord",
@@ -16991,6 +19476,16 @@ export interface RecordsScanListResultItemCAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17005,6 +19500,16 @@ export const RecordsScanListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemCAARecord",
@@ -17060,6 +19565,16 @@ export interface RecordsScanListResultItemCERTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCERT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17074,6 +19589,16 @@ export const RecordsScanListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCERT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemCERTRecord",
@@ -17129,6 +19654,16 @@ export interface RecordsScanListResultItemDNSKEYRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDNSKEY;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -17144,6 +19679,16 @@ export const RecordsScanListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeDNSKEY,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemDNSKEYRecord",
@@ -17198,6 +19743,16 @@ export interface RecordsScanListResultItemDSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17212,6 +19767,16 @@ export const RecordsScanListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemDSRecord",
@@ -17267,6 +19832,16 @@ export interface RecordsScanListResultItemHTTPSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeHTTPS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -17282,6 +19857,16 @@ export const RecordsScanListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeHTTPS,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemHTTPSRecord",
@@ -17337,6 +19922,16 @@ export interface RecordsScanListResultItemLOCRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeLOC;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17351,6 +19946,16 @@ export const RecordsScanListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeLOC,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemLOCRecord",
@@ -17406,6 +20011,16 @@ export interface RecordsScanListResultItemNAPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNAPTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -17421,6 +20036,16 @@ export const RecordsScanListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeNAPTR,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemNAPTRRecord",
@@ -17476,6 +20101,16 @@ export interface RecordsScanListResultItemSMIMEARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSMIMEA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -17491,6 +20126,16 @@ export const RecordsScanListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeSMIMEA,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemSMIMEARecord",
@@ -17546,6 +20191,16 @@ export interface RecordsScanListResultItemSRVRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSRV;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17560,6 +20215,16 @@ export const RecordsScanListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSRV,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemSRVRecord",
@@ -17615,6 +20280,16 @@ export interface RecordsScanListResultItemSSHFPRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSSHFP;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(
   () =>
@@ -17630,6 +20305,16 @@ export const RecordsScanListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(
       tagsModifiedOn: S.optional(
         S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
       ),
+      name: S.String,
+      type: DnsRecordTypeSSHFP,
+      ttl: S.Number,
+      content: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.NullOr(S.String)),
+      proxied: S.optional(S.NullOr(S.Boolean)),
+      priority: S.optional(S.NullOr(S.Number)),
+      tags: S.optional(S.NullOr(DnsRecordTagsList)),
+      settings: S.optional(S.NullOr(S.Unknown)),
+      data: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "RecordsScanListResultItemSSHFPRecord",
@@ -17685,6 +20370,16 @@ export interface RecordsScanListResultItemSVCBRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSVCB;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17699,6 +20394,16 @@ export const RecordsScanListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSVCB,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemSVCBRecord",
@@ -17754,6 +20459,16 @@ export interface RecordsScanListResultItemTLSARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTLSA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17768,6 +20483,16 @@ export const RecordsScanListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTLSA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemTLSARecord",
@@ -17823,6 +20548,16 @@ export interface RecordsScanListResultItemURIRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeURI;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsScanListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17837,6 +20572,16 @@ export const RecordsScanListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeURI,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsScanListResultItemURIRecord",
@@ -17874,6 +20619,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17883,6 +20638,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17892,6 +20657,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17901,6 +20676,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17910,6 +20695,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17936,6 +20731,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17945,6 +20750,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17954,6 +20769,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17963,6 +20788,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17972,6 +20807,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17981,6 +20826,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17990,6 +20845,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -17999,6 +20864,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18008,6 +20883,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18017,6 +20902,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18026,6 +20921,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18035,6 +20940,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18044,6 +20959,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18053,6 +20978,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -18062,6 +20997,16 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
@@ -22408,6 +25353,16 @@ export interface RecordsUpdateResultARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22422,6 +25377,16 @@ export const RecordsUpdateResultARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultARecord",
@@ -22475,6 +25440,16 @@ export interface RecordsUpdateResultAAAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeAAAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22489,6 +25464,16 @@ export const RecordsUpdateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeAAAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultAAAARecord",
@@ -22542,6 +25527,16 @@ export interface RecordsUpdateResultCNAMERecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCNAME;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22556,6 +25551,16 @@ export const RecordsUpdateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCNAME,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultCNAMERecord",
@@ -22609,6 +25614,16 @@ export interface RecordsUpdateResultMXRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeMX;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22623,6 +25638,16 @@ export const RecordsUpdateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeMX,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultMXRecord",
@@ -22676,6 +25701,16 @@ export interface RecordsUpdateResultNSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22690,6 +25725,16 @@ export const RecordsUpdateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultNSRecord",
@@ -22861,6 +25906,16 @@ export interface RecordsUpdateResultPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypePTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22875,6 +25930,16 @@ export const RecordsUpdateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypePTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultPTRRecord",
@@ -22928,6 +25993,16 @@ export interface RecordsUpdateResultTXTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTXT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22942,6 +26017,16 @@ export const RecordsUpdateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTXT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultTXTRecord",
@@ -22995,6 +26080,16 @@ export interface RecordsUpdateResultCAARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCAA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23009,6 +26104,16 @@ export const RecordsUpdateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCAA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultCAARecord",
@@ -23062,6 +26167,16 @@ export interface RecordsUpdateResultCERTRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeCERT;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23076,6 +26191,16 @@ export const RecordsUpdateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeCERT,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultCERTRecord",
@@ -23129,6 +26254,16 @@ export interface RecordsUpdateResultDNSKEYRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDNSKEY;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23143,6 +26278,16 @@ export const RecordsUpdateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDNSKEY,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultDNSKEYRecord",
@@ -23196,6 +26341,16 @@ export interface RecordsUpdateResultDSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeDS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23210,6 +26365,16 @@ export const RecordsUpdateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeDS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultDSRecord",
@@ -23263,6 +26428,16 @@ export interface RecordsUpdateResultHTTPSRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeHTTPS;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23277,6 +26452,16 @@ export const RecordsUpdateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeHTTPS,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultHTTPSRecord",
@@ -23330,6 +26515,16 @@ export interface RecordsUpdateResultLOCRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeLOC;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23344,6 +26539,16 @@ export const RecordsUpdateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeLOC,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultLOCRecord",
@@ -23397,6 +26602,16 @@ export interface RecordsUpdateResultNAPTRRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeNAPTR;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23411,6 +26626,16 @@ export const RecordsUpdateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeNAPTR,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultNAPTRRecord",
@@ -23464,6 +26689,16 @@ export interface RecordsUpdateResultSMIMEARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSMIMEA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23478,6 +26713,16 @@ export const RecordsUpdateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSMIMEA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultSMIMEARecord",
@@ -23531,6 +26776,16 @@ export interface RecordsUpdateResultSRVRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSRV;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23545,6 +26800,16 @@ export const RecordsUpdateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSRV,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultSRVRecord",
@@ -23598,6 +26863,16 @@ export interface RecordsUpdateResultSSHFPRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSSHFP;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23612,6 +26887,16 @@ export const RecordsUpdateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSSHFP,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultSSHFPRecord",
@@ -23665,6 +26950,16 @@ export interface RecordsUpdateResultSVCBRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeSVCB;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23679,6 +26974,16 @@ export const RecordsUpdateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeSVCB,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultSVCBRecord",
@@ -23732,6 +27037,16 @@ export interface RecordsUpdateResultTLSARecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeTLSA;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23746,6 +27061,16 @@ export const RecordsUpdateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeTLSA,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultTLSARecord",
@@ -23799,6 +27124,16 @@ export interface RecordsUpdateResultURIRecord {
   commentModifiedOn?: string | null;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
+  name: string;
+  type: DnsRecordTypeURI;
+  ttl: number;
+  content?: string | null;
+  comment?: string | null;
+  proxied?: boolean | null;
+  priority?: number | null;
+  tags?: DnsRecordTagsList | null;
+  settings?: unknown | null;
+  data?: unknown | null;
 }
 export const RecordsUpdateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23813,6 +27148,16 @@ export const RecordsUpdateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
     tagsModifiedOn: S.optional(
       S.NullOr(S.String).pipe(T.Body("tags_modified_on")),
     ),
+    name: S.String,
+    type: DnsRecordTypeURI,
+    ttl: S.Number,
+    content: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.NullOr(S.String)),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    priority: S.optional(S.NullOr(S.Number)),
+    tags: S.optional(S.NullOr(DnsRecordTagsList)),
+    settings: S.optional(S.NullOr(S.Unknown)),
+    data: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "RecordsUpdateResultURIRecord",
@@ -23850,6 +27195,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23859,6 +27214,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23868,6 +27233,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23877,6 +27252,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23886,6 +27271,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23912,6 +27307,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23921,6 +27326,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23930,6 +27345,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23939,6 +27364,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23948,6 +27383,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23957,6 +27402,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23966,6 +27421,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23975,6 +27440,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23984,6 +27459,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -23993,6 +27478,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -24002,6 +27497,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -24011,6 +27516,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -24020,6 +27535,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -24029,6 +27554,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
     [
       "id",
@@ -24038,6 +27573,16 @@ export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
+      "ttl",
+      "content",
+      "comment",
+      "proxied",
+      "priority",
+      "tags",
+      "settings",
+      "data",
     ],
   ]),
 );
