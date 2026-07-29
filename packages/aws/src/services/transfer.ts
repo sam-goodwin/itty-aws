@@ -579,7 +579,7 @@ export interface ProtocolDetails {
   PassiveIp?: string;
   TlsSessionResumptionMode?: TlsSessionResumptionMode | (string & {});
   SetStatOption?: SetStatOption | (string & {});
-  As2Transports?: As2Transport[];
+  As2Transports?: (As2Transport | (string & {}))[];
 }
 export const ProtocolDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -647,7 +647,7 @@ export interface CreateServerRequest {
   LoggingRole?: string;
   PostAuthenticationLoginBanner?: string;
   PreAuthenticationLoginBanner?: string;
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
   ProtocolDetails?: ProtocolDetails;
   SecurityPolicyName?: string;
   Tags?: Tag[];
@@ -3340,7 +3340,7 @@ export interface UpdateServerRequest {
   LoggingRole?: string;
   PostAuthenticationLoginBanner?: string;
   PreAuthenticationLoginBanner?: string;
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
   SecurityPolicyName?: string;
   ServerId: string;
   WorkflowDetails?: WorkflowDetails;

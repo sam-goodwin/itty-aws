@@ -7340,7 +7340,7 @@ export interface CreateAccessApplicationForAccountRequest {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -7443,9 +7443,7 @@ export const CreateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(AccessApplicationsCreateRequestTagsList),
@@ -9854,7 +9852,7 @@ export interface AccessApplicationsCreateResultSelfHostedApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateResultSelfHostedApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -9952,9 +9950,7 @@ export const AccessApplicationsCreateResultSelfHostedApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -13250,7 +13246,7 @@ export interface AccessApplicationsCreateResultBrowserSSHApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateResultBrowserSSHApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -13348,9 +13344,7 @@ export const AccessApplicationsCreateResultBrowserSSHApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -14957,7 +14951,7 @@ export interface AccessApplicationsCreateResultBrowserVNCApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateResultBrowserVNCApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -15055,9 +15049,7 @@ export const AccessApplicationsCreateResultBrowserVNCApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -22992,7 +22984,7 @@ export interface AccessApplicationsCreateResultBrowserRDPApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateResultBrowserRDPApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -23094,9 +23086,7 @@ export const AccessApplicationsCreateResultBrowserRDPApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -26326,7 +26316,7 @@ export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -26377,7 +26367,7 @@ export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -26413,7 +26403,7 @@ export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -26524,7 +26514,7 @@ export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -26681,7 +26671,7 @@ export interface CreateAccessApplicationForZoneRequest {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -26784,9 +26774,7 @@ export const CreateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(AccessApplicationsCreateRequestTagsList),
@@ -41620,7 +41608,7 @@ export interface DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry {
   enabled: boolean;
   name: string;
   pattern: DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern;
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry =
   /*@__PURE__*/ S.suspend(() =>
@@ -41629,7 +41617,7 @@ export const DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry =
       name: S.String,
       pattern:
         DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry",
@@ -60725,7 +60713,7 @@ export interface AccessApplicationsGetResultSelfHostedApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsGetResultSelfHostedApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -60823,9 +60811,7 @@ export const AccessApplicationsGetResultSelfHostedApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -64117,7 +64103,7 @@ export interface AccessApplicationsGetResultBrowserSSHApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsGetResultBrowserSSHApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -64215,9 +64201,7 @@ export const AccessApplicationsGetResultBrowserSSHApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -65823,7 +65807,7 @@ export interface AccessApplicationsGetResultBrowserVNCApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsGetResultBrowserVNCApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -65921,9 +65905,7 @@ export const AccessApplicationsGetResultBrowserVNCApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -73854,7 +73836,7 @@ export interface AccessApplicationsGetResultBrowserRDPApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsGetResultBrowserRDPApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -73956,9 +73938,7 @@ export const AccessApplicationsGetResultBrowserRDPApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -77185,7 +77165,7 @@ export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -77236,7 +77216,7 @@ export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -77272,7 +77252,7 @@ export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -77383,7 +77363,7 @@ export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -105774,7 +105754,7 @@ export interface AccessApplicationsListResultItemSelfHostedApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsListResultItemSelfHostedApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -105872,9 +105852,7 @@ export const AccessApplicationsListResultItemSelfHostedApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -109174,7 +109152,7 @@ export interface AccessApplicationsListResultItemBrowserSSHApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsListResultItemBrowserSSHApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -109272,9 +109250,7 @@ export const AccessApplicationsListResultItemBrowserSSHApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -110883,7 +110859,7 @@ export interface AccessApplicationsListResultItemBrowserVNCApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsListResultItemBrowserVNCApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -110981,9 +110957,7 @@ export const AccessApplicationsListResultItemBrowserVNCApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -118923,7 +118897,7 @@ export interface AccessApplicationsListResultItemBrowserRDPApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsListResultItemBrowserRDPApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -119025,9 +118999,7 @@ export const AccessApplicationsListResultItemBrowserRDPApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -122258,7 +122230,7 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -122309,7 +122281,7 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -122345,7 +122317,7 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -122456,7 +122428,7 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -156787,7 +156759,7 @@ export interface UpdateAccessApplicationForAccountRequest {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -156891,9 +156863,7 @@ export const UpdateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(AccessApplicationsUpdateRequestTagsList),
@@ -159302,7 +159272,7 @@ export interface AccessApplicationsUpdateResultSelfHostedApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateResultSelfHostedApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -159400,9 +159370,7 @@ export const AccessApplicationsUpdateResultSelfHostedApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -162698,7 +162666,7 @@ export interface AccessApplicationsUpdateResultBrowserSSHApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateResultBrowserSSHApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -162796,9 +162764,7 @@ export const AccessApplicationsUpdateResultBrowserSSHApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -164405,7 +164371,7 @@ export interface AccessApplicationsUpdateResultBrowserVNCApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateResultBrowserVNCApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -164503,9 +164469,7 @@ export const AccessApplicationsUpdateResultBrowserVNCApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -172440,7 +172404,7 @@ export interface AccessApplicationsUpdateResultBrowserRDPApplication {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateResultBrowserRDPApplicationSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -172542,9 +172506,7 @@ export const AccessApplicationsUpdateResultBrowserRDPApplication =
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(
@@ -175774,7 +175736,7 @@ export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -175825,7 +175787,7 @@ export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -175861,7 +175823,7 @@ export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -175972,7 +175934,7 @@ export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
       "sameSiteCookieAttribute",
       "scimConfig",
       "selfHostedDomains",
-      "serviceAuth401Redirect",
+      "service_auth_401_redirect",
       "sessionDuration",
       "skipInterstitial",
       "tags",
@@ -176131,7 +176093,7 @@ export interface UpdateAccessApplicationForZoneRequest {
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth401Redirect?: boolean;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
@@ -176235,9 +176197,7 @@ export const UpdateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
           T.Body("self_hosted_domains"),
         ),
       ),
-      serviceAuth401Redirect: S.optional(
-        S.Boolean.pipe(T.Body("service_auth_401_redirect")),
-      ),
+      service_auth_401_redirect: S.optional(S.Boolean),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
       tags: S.optional(AccessApplicationsUpdateRequestTagsList),
@@ -187747,7 +187707,7 @@ export interface DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithI
   entryId: string;
   name: string;
   pattern: DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern;
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithID =
   /*@__PURE__*/ S.suspend(() =>
@@ -187757,7 +187717,7 @@ export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithID =
       name: S.String,
       pattern:
         DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -187768,7 +187728,7 @@ export interface DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry {
   enabled: boolean;
   name: string;
   pattern: DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern;
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry =
   /*@__PURE__*/ S.suspend(() =>
@@ -187777,7 +187737,7 @@ export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry =
       name: S.String,
       pattern:
         DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry",

@@ -1177,7 +1177,7 @@ export const SslProtocolsList = /*@__PURE__*/ S.Array(
 );
 export interface OriginSslProtocols {
   Quantity: number;
-  Items: SslProtocol[];
+  Items: (SslProtocol | (string & {}))[];
 }
 export const OriginSslProtocols = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, Items: SslProtocolsList }),
@@ -1412,14 +1412,14 @@ export const MethodsList = /*@__PURE__*/ S.Array(
 );
 export interface CachedMethods {
   Quantity: number;
-  Items: Method[];
+  Items: (Method | (string & {}))[];
 }
 export const CachedMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, Items: MethodsList }),
 ).annotate({ identifier: "CachedMethods" }) as any as S.Schema<CachedMethods>;
 export interface AllowedMethods {
   Quantity: number;
-  Items: Method[];
+  Items: (Method | (string & {}))[];
   CachedMethods?: CachedMethods;
 }
 export const AllowedMethods = /*@__PURE__*/ S.suspend(() =>
@@ -4030,7 +4030,10 @@ export const AccessControlAllowMethodsList = /*@__PURE__*/ S.Array(
 );
 export interface ResponseHeadersPolicyAccessControlAllowMethods {
   Quantity: number;
-  Items: ResponseHeadersPolicyAccessControlAllowMethodsValues[];
+  Items: (
+    | ResponseHeadersPolicyAccessControlAllowMethodsValues
+    | (string & {})
+  )[];
 }
 export const ResponseHeadersPolicyAccessControlAllowMethods =
   /*@__PURE__*/ S.suspend(() =>

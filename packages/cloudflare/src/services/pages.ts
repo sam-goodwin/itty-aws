@@ -241,28 +241,13 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList
     S.String,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
 
-export interface ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -368,29 +353,13 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap 
     ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewLimits {
@@ -468,31 +437,13 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap =
     ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
@@ -767,29 +718,13 @@ export const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsL
     S.String,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
-export interface ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -896,29 +831,13 @@ export const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsM
     ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionLimits {
@@ -998,32 +917,13 @@ export const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap =
     ProjectsCreateRequestDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateRequestDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionServicesValue {
@@ -1938,29 +1838,13 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -2014,29 +1898,13 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap
     ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreviewLimits {
@@ -2115,31 +1983,13 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap =
     ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
@@ -2458,29 +2308,13 @@ export const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -2534,29 +2368,13 @@ export const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindings
     ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsProductionLimits {
@@ -2636,32 +2454,13 @@ export const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap 
     ProjectsCreateResponseDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsCreateResponseDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsProductionServicesValue {
@@ -4307,28 +4106,13 @@ export const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -4381,28 +4165,13 @@ export const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
     ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsPreviewLimits {
@@ -4480,31 +4249,13 @@ export const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap =
     ProjectsGetResponseDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsPreviewServicesValue {
@@ -4821,29 +4572,13 @@ export const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionBrowsersMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -4897,29 +4632,13 @@ export const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap
     ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsProductionLimits {
@@ -4998,31 +4717,13 @@ export const ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap =
     ProjectsGetResponseDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsGetResponseDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsProductionServicesValue {
@@ -7193,29 +6894,13 @@ export const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -7269,29 +6954,13 @@ export const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap
     ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsPreviewLimits {
@@ -7370,31 +7039,13 @@ export const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap =
     ProjectsListResultItemDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsPreviewServicesValue {
@@ -7713,29 +7364,13 @@ export const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionBrowsersMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -7789,29 +7424,13 @@ export const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindings
     ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsProductionLimits {
@@ -7891,32 +7510,13 @@ export const ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap 
     ProjectsListResultItemDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsListResultItemDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsProductionServicesValue {
@@ -8451,28 +8051,13 @@ export const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
     S.String,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
 
-export interface ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -8576,28 +8161,13 @@ export const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
     ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewLimits {
@@ -8675,31 +8245,13 @@ export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap =
     ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewServicesValue {
@@ -8972,29 +8524,13 @@ export const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsLis
     S.String,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
-export interface ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -9101,29 +8637,13 @@ export const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap
     ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionLimits {
@@ -9202,31 +8722,13 @@ export const ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap =
     ProjectsEditRequestDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditRequestDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionServicesValue {
@@ -10139,28 +9641,13 @@ export const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue>;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesValue {
@@ -10214,28 +9701,13 @@ export const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
     ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue>;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsPreviewLimits {
@@ -10313,31 +9785,13 @@ export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap =
     ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue>;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsPreviewR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsPreviewServicesValue {
@@ -10655,29 +10109,13 @@ export const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap =
     S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionBrowsersMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue {
-  /** UUID of the D1 database. */
-  id: string;
-}
-export const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue>;
-
 export type ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsProductionD1DatabasesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesValue {
@@ -10731,29 +10169,13 @@ export const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMa
     ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsValue,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue {
-  /** ID of the KV namespace. */
-  namespaceId: string;
-}
-export const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue>;
-
 export type ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsProductionKvNamespacesValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsProductionLimits {
@@ -10832,31 +10254,13 @@ export const ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap =
     ProjectsEditResponseDeploymentConfigsProductionQueueProducersValue,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap>;
 
-export interface ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue {
-  /** Name of the R2 bucket. */
-  name: string;
-  /** Jurisdiction of the R2 bucket. */
-  jurisdiction?: string;
-}
-export const ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      jurisdiction: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue>;
-
 export type ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap = {
-  [key: string]:
-    | ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ProjectsEditResponseDeploymentConfigsProductionR2BucketsValue,
+    S.Unknown,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsProductionServicesValue {

@@ -170,8 +170,8 @@ export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
 );
 export interface NotificationFilterConfig {
-  Severities?: InsightSeverity[];
-  MessageTypes?: NotificationMessageType[];
+  Severities?: (InsightSeverity | (string & {}))[];
+  MessageTypes?: (NotificationMessageType | (string & {}))[];
 }
 export const NotificationFilterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1555,7 +1555,7 @@ export type ListAnomaliesForInsightMaxResults = number;
 export type ServiceNames = (ServiceName | (string & {}))[];
 export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
 export interface ServiceCollection {
-  ServiceNames?: ServiceName[];
+  ServiceNames?: (ServiceName | (string & {}))[];
 }
 export const ServiceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServiceNames: S.optional(ServiceNames) }),
@@ -2108,7 +2108,7 @@ export type ResourceTypeFilters = (ResourceTypeFilter | (string & {}))[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
 export interface ListMonitoredResourcesFilters {
   ResourcePermission: ResourcePermission | (string & {});
-  ResourceTypeFilters: ResourceTypeFilter[];
+  ResourceTypeFilters: (ResourceTypeFilter | (string & {}))[];
 }
 export const ListMonitoredResourcesFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2558,8 +2558,8 @@ export const RemoveNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export type InsightStatuses = (InsightStatus | (string & {}))[];
 export const InsightStatuses = /*@__PURE__*/ S.Array(InsightStatus);
 export interface SearchInsightsFilters {
-  Severities?: InsightSeverity[];
-  Statuses?: InsightStatus[];
+  Severities?: (InsightSeverity | (string & {}))[];
+  Statuses?: (InsightStatus | (string & {}))[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
@@ -2618,8 +2618,8 @@ export const SearchInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SearchInsightsAccountIdList = string[];
 export const SearchInsightsAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchOrganizationInsightsFilters {
-  Severities?: InsightSeverity[];
-  Statuses?: InsightStatus[];
+  Severities?: (InsightSeverity | (string & {}))[];
+  Statuses?: (InsightStatus | (string & {}))[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }

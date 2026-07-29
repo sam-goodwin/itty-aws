@@ -1,0 +1,15 @@
+{
+  "description": "worker consumers carry script_name on the wire (the docs omit it; consumer-proven)",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#ConsumersListResultItemWorker/members/script_name",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#documentation": "Name of the consumer Worker script."
+        }
+      }
+    }
+  ]
+}

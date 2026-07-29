@@ -1257,8 +1257,8 @@ export interface ListOperationsRequest {
   SubmittedSince?: Date;
   Marker?: string;
   MaxItems?: number;
-  Status?: OperationStatus[];
-  Type?: OperationType[];
+  Status?: (OperationStatus | (string & {}))[];
+  Type?: (OperationType | (string & {}))[];
   SortBy?: ListOperationsSortAttributeName | (string & {});
   SortOrder?: SortOrder | (string & {});
 }

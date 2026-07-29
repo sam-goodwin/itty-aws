@@ -197,9 +197,9 @@ export type MaxResults = number;
 export type NextToken = string;
 export interface GetEstimatedCarbonEmissionsRequest {
   TimePeriod: TimePeriod;
-  GroupBy?: Dimension[];
+  GroupBy?: (Dimension | (string & {}))[];
   FilterBy?: FilterExpression;
-  EmissionsTypes?: EmissionsType[];
+  EmissionsTypes?: (EmissionsType | (string & {}))[];
   Granularity?: TimeGranularity | (string & {});
   GranularityConfiguration?: GranularityConfiguration;
   MaxResults?: number;
@@ -283,7 +283,7 @@ export const GetEstimatedCarbonEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEstimatedCarbonEmissionsResponse>;
 export interface GetEstimatedCarbonEmissionsDimensionValuesRequest {
   TimePeriod: TimePeriod;
-  Dimensions: Dimension[];
+  Dimensions: (Dimension | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }

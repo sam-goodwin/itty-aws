@@ -759,7 +759,7 @@ export interface CreateGrantRequest {
   KeyId: string;
   GranteePrincipal?: string;
   RetiringPrincipal?: string;
-  Operations: GrantOperation[];
+  Operations: (GrantOperation | (string & {}))[];
   Constraints?: GrantConstraints;
   GrantTokens?: string[];
   Name?: string;
@@ -1108,7 +1108,7 @@ export interface DecryptRequest {
   EncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
   Recipient?: RecipientInfo;
   DryRun?: boolean;
-  DryRunModifiers?: DryRunModifierType[];
+  DryRunModifiers?: (DryRunModifierType | (string & {}))[];
 }
 export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2579,7 +2579,7 @@ export interface ReEncryptRequest {
   DestinationEncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
   GrantTokens?: string[];
   DryRun?: boolean;
-  DryRunModifiers?: DryRunModifierType[];
+  DryRunModifiers?: (DryRunModifierType | (string & {}))[];
 }
 export const ReEncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

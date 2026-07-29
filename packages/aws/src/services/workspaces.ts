@@ -1023,7 +1023,7 @@ export interface WorkspaceProperties {
   RootVolumeSizeGib?: number;
   UserVolumeSizeGib?: number;
   ComputeTypeName?: Compute | (string & {});
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
   OperatingSystemName?: OperatingSystemName | (string & {});
   GlobalAccelerator?: GlobalAcceleratorForWorkSpace;
 }
@@ -1520,7 +1520,7 @@ export type ClientDeviceTypeList = (ClientDeviceType | (string & {}))[];
 export const ClientDeviceTypeList = /*@__PURE__*/ S.Array(ClientDeviceType);
 export interface DeleteClientBrandingRequest {
   ResourceId: string;
-  Platforms: ClientDeviceType[];
+  Platforms: (ClientDeviceType | (string & {}))[];
 }
 export const DeleteClientBrandingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceId: S.String, Platforms: ClientDeviceTypeList }).pipe(
@@ -1872,7 +1872,10 @@ export interface DescribeApplicationAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
   ApplicationId: string;
-  AssociatedResourceTypes: ApplicationAssociatedResourceType[];
+  AssociatedResourceTypes: (
+    | ApplicationAssociatedResourceType
+    | (string & {})
+  )[];
 }
 export const DescribeApplicationAssociationsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1950,9 +1953,9 @@ export const OperatingSystemNameList =
 export type WorkSpaceApplicationOwner = string;
 export interface DescribeApplicationsRequest {
   ApplicationIds?: string[];
-  ComputeTypeNames?: Compute[];
+  ComputeTypeNames?: (Compute | (string & {}))[];
   LicenseType?: WorkSpaceApplicationLicenseType | (string & {});
-  OperatingSystemNames?: OperatingSystemName[];
+  OperatingSystemNames?: (OperatingSystemName | (string & {}))[];
   Owner?: string;
   MaxResults?: number;
   NextToken?: string;
@@ -2040,7 +2043,7 @@ export const BundleAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeBundleAssociationsRequest {
   BundleId: string;
-  AssociatedResourceTypes: BundleAssociatedResourceType[];
+  AssociatedResourceTypes: (BundleAssociatedResourceType | (string & {}))[];
 }
 export const DescribeBundleAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2571,7 +2574,7 @@ export const ImageAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeImageAssociationsRequest {
   ImageId: string;
-  AssociatedResourceTypes: ImageAssociatedResourceType[];
+  AssociatedResourceTypes: (ImageAssociatedResourceType | (string & {}))[];
 }
 export const DescribeImageAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2716,7 +2719,7 @@ export const WorkSpaceAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeWorkspaceAssociationsRequest {
   WorkspaceId: string;
-  AssociatedResourceTypes: WorkSpaceAssociatedResourceType[];
+  AssociatedResourceTypes: (WorkSpaceAssociatedResourceType | (string & {}))[];
 }
 export const DescribeWorkspaceAssociationsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2924,7 +2927,7 @@ export const InternetFallbackProtocolList = /*@__PURE__*/ S.Array(
 );
 export interface AccessEndpointConfig {
   AccessEndpoints: AccessEndpoint[];
-  InternetFallbackProtocols?: InternetFallbackProtocol[];
+  InternetFallbackProtocols?: (InternetFallbackProtocol | (string & {}))[];
 }
 export const AccessEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4034,7 +4037,7 @@ export interface ImportWorkspaceImageRequest {
   ImageName: string;
   ImageDescription: string;
   Tags?: Tag[];
-  Applications?: Application[];
+  Applications?: (Application | (string & {}))[];
 }
 export const ImportWorkspaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4071,7 +4074,7 @@ export const LinkStatusFilterList = /*@__PURE__*/ S.Array(
   AccountLinkStatusEnum,
 );
 export interface ListAccountLinksRequest {
-  LinkStatusFilter?: AccountLinkStatusEnum[];
+  LinkStatusFilter?: (AccountLinkStatusEnum | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -4227,7 +4230,10 @@ export const DeletableCertificateBasedAuthPropertiesList =
 export interface ModifyCertificateBasedAuthPropertiesRequest {
   ResourceId: string;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
-  PropertiesToDelete?: DeletableCertificateBasedAuthProperty[];
+  PropertiesToDelete?: (
+    | DeletableCertificateBasedAuthProperty
+    | (string & {})
+  )[];
 }
 export const ModifyCertificateBasedAuthPropertiesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4326,7 +4332,7 @@ export const DeletableSamlPropertiesList = /*@__PURE__*/ S.Array(
 export interface ModifySamlPropertiesRequest {
   ResourceId: string;
   SamlProperties?: SamlProperties;
-  PropertiesToDelete?: DeletableSamlProperty[];
+  PropertiesToDelete?: (DeletableSamlProperty | (string & {}))[];
 }
 export const ModifySamlPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

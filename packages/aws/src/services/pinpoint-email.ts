@@ -299,7 +299,7 @@ export const PinpointDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PinpointDestination>;
 export interface EventDestinationDefinition {
   Enabled?: boolean;
-  MatchingEventTypes?: EventType[];
+  MatchingEventTypes?: (EventType | (string & {}))[];
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   CloudWatchDestination?: CloudWatchDestination;
   SnsDestination?: SnsDestination;

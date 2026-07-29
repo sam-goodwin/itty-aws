@@ -528,7 +528,7 @@ export interface CreateProxySessionRequest {
   ParticipantPhoneNumbers: (string | redacted.Redacted<string>)[];
   Name?: string | redacted.Redacted<string>;
   ExpiryMinutes?: number;
-  Capabilities: Capability[];
+  Capabilities: (Capability | (string & {}))[];
   NumberSelectionBehavior?: NumberSelectionBehavior | (string & {});
   GeoMatchLevel?: GeoMatchLevel | (string & {});
   GeoMatchParams?: GeoMatchParams;
@@ -3440,8 +3440,11 @@ export const PutVoiceConnectorEmergencyCallingConfigurationResponse =
   }) as any as S.Schema<PutVoiceConnectorEmergencyCallingConfigurationResponse>;
 export interface PutVoiceConnectorExternalSystemsConfigurationRequest {
   VoiceConnectorId: string;
-  SessionBorderControllerTypes?: SessionBorderControllerType[];
-  ContactCenterSystemTypes?: ContactCenterSystemType[];
+  SessionBorderControllerTypes?: (
+    | SessionBorderControllerType
+    | (string & {})
+  )[];
+  ContactCenterSystemTypes?: (ContactCenterSystemType | (string & {}))[];
 }
 export const PutVoiceConnectorExternalSystemsConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4043,7 +4046,7 @@ export const UpdatePhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProxySessionRequest {
   VoiceConnectorId: string;
   ProxySessionId: string;
-  Capabilities: Capability[];
+  Capabilities: (Capability | (string & {}))[];
   ExpiryMinutes?: number;
 }
 export const UpdateProxySessionRequest = /*@__PURE__*/ S.suspend(() =>

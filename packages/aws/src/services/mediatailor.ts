@@ -129,7 +129,7 @@ export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface ConfigureLogsForChannelRequest {
   ChannelName: string;
-  LogTypes: LogType[];
+  LogTypes: (LogType | (string & {}))[];
 }
 export const ConfigureLogsForChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelName: S.String, LogTypes: LogTypes }).pipe(
@@ -230,8 +230,11 @@ export const __adsInteractionExcludeEventTypesList = /*@__PURE__*/ S.Array(
   AdsInteractionExcludeEventType,
 );
 export interface AdsInteractionLog {
-  PublishOptInEventTypes?: AdsInteractionPublishOptInEventType[];
-  ExcludeEventTypes?: AdsInteractionExcludeEventType[];
+  PublishOptInEventTypes?: (
+    | AdsInteractionPublishOptInEventType
+    | (string & {})
+  )[];
+  ExcludeEventTypes?: (AdsInteractionExcludeEventType | (string & {}))[];
 }
 export const AdsInteractionLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -299,8 +302,11 @@ export const __manifestServiceExcludeEventTypesList = /*@__PURE__*/ S.Array(
   ManifestServiceExcludeEventType,
 );
 export interface ManifestServiceInteractionLog {
-  PublishOptInEventTypes?: ManifestServicePublishOptInEventType[];
-  ExcludeEventTypes?: ManifestServiceExcludeEventType[];
+  PublishOptInEventTypes?: (
+    | ManifestServicePublishOptInEventType
+    | (string & {})
+  )[];
+  ExcludeEventTypes?: (ManifestServiceExcludeEventType | (string & {}))[];
 }
 export const ManifestServiceInteractionLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -315,7 +321,7 @@ export const ManifestServiceInteractionLog = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigureLogsForPlaybackConfigurationRequest {
   PercentEnabled: number;
   PlaybackConfigurationName: string;
-  EnabledLoggingStrategies?: LoggingStrategy[];
+  EnabledLoggingStrategies?: (LoggingStrategy | (string & {}))[];
   AdsInteractionLog?: AdsInteractionLog;
   ManifestServiceInteractionLog?: ManifestServiceInteractionLog;
 }
@@ -392,7 +398,7 @@ export type AdMarkupTypes = (AdMarkupType | (string & {}))[];
 export const AdMarkupTypes = /*@__PURE__*/ S.Array(AdMarkupType);
 export interface HlsPlaylistSettings {
   ManifestWindowSeconds?: number;
-  AdMarkupType?: AdMarkupType[];
+  AdMarkupType?: (AdMarkupType | (string & {}))[];
 }
 export const HlsPlaylistSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

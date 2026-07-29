@@ -864,7 +864,7 @@ export const TriggerEventTypeList = /*@__PURE__*/ S.Array(TriggerEventType);
 export interface TriggerConfig {
   triggerName?: string;
   triggerTargetArn?: string;
-  triggerEvents?: TriggerEventType[];
+  triggerEvents?: (TriggerEventType | (string & {}))[];
 }
 export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -908,7 +908,7 @@ export type AutoRollbackEventsList = (AutoRollbackEvent | (string & {}))[];
 export const AutoRollbackEventsList = /*@__PURE__*/ S.Array(AutoRollbackEvent);
 export interface AutoRollbackConfiguration {
   enabled?: boolean;
-  events?: AutoRollbackEvent[];
+  events?: (AutoRollbackEvent | (string & {}))[];
 }
 export const AutoRollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2645,8 +2645,8 @@ export const InstanceTypeList = /*@__PURE__*/ S.Array(InstanceType);
 export interface ListDeploymentInstancesInput {
   deploymentId: string;
   nextToken?: string;
-  instanceStatusFilter?: InstanceStatus[];
-  instanceTypeFilter?: InstanceType[];
+  instanceStatusFilter?: (InstanceStatus | (string & {}))[];
+  instanceTypeFilter?: (InstanceType | (string & {}))[];
 }
 export const ListDeploymentInstancesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2696,7 +2696,7 @@ export interface ListDeploymentsInput {
   applicationName?: string;
   deploymentGroupName?: string;
   externalId?: string;
-  includeOnlyStatuses?: DeploymentStatus[];
+  includeOnlyStatuses?: (DeploymentStatus | (string & {}))[];
   createTimeRange?: TimeRange;
   nextToken?: string;
 }

@@ -238,7 +238,7 @@ export interface EntityFilter {
   entityValues?: string[];
   lastUpdatedTimes?: DateTimeRange[];
   tags?: { [key: string]: string | undefined }[];
-  statusCodes?: EntityStatusCode[];
+  statusCodes?: (EntityStatusCode | (string & {}))[];
 }
 export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -333,7 +333,7 @@ export const OrganizationEntityFiltersList =
 export interface EntityAccountFilter {
   eventArn: string;
   awsAccountId?: string;
-  statusCodes?: EntityStatusCode[];
+  statusCodes?: (EntityStatusCode | (string & {}))[];
 }
 export const EntityAccountFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -558,7 +558,7 @@ export const EventPersona = /*@__PURE__*/ S.String;
 export type EventPersonaList = (EventPersona | (string & {}))[];
 export const EventPersonaList = /*@__PURE__*/ S.Array(EventPersona);
 export interface EventFilter {
-  actionabilities?: EventActionability[];
+  actionabilities?: (EventActionability | (string & {}))[];
   eventArns?: string[];
   eventTypeCodes?: string[];
   services?: string[];
@@ -569,10 +569,10 @@ export interface EventFilter {
   lastUpdatedTimes?: DateTimeRange[];
   entityArns?: string[];
   entityValues?: string[];
-  eventTypeCategories?: EventTypeCategory[];
+  eventTypeCategories?: (EventTypeCategory | (string & {}))[];
   tags?: { [key: string]: string | undefined }[];
-  eventStatusCodes?: EventStatusCode[];
-  personas?: EventPersona[];
+  eventStatusCodes?: (EventStatusCode | (string & {}))[];
+  personas?: (EventPersona | (string & {}))[];
 }
 export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -851,7 +851,7 @@ export const DescribeEventsResponse = /*@__PURE__*/ S.suspend(() =>
 export type AwsAccountIdsList = string[];
 export const AwsAccountIdsList = /*@__PURE__*/ S.Array(S.String);
 export interface OrganizationEventFilter {
-  actionabilities?: EventActionability[];
+  actionabilities?: (EventActionability | (string & {}))[];
   eventTypeCodes?: string[];
   awsAccountIds?: string[];
   services?: string[];
@@ -861,9 +861,9 @@ export interface OrganizationEventFilter {
   lastUpdatedTime?: DateTimeRange;
   entityArns?: string[];
   entityValues?: string[];
-  eventTypeCategories?: EventTypeCategory[];
-  eventStatusCodes?: EventStatusCode[];
-  personas?: EventPersona[];
+  eventTypeCategories?: (EventTypeCategory | (string & {}))[];
+  eventStatusCodes?: (EventStatusCode | (string & {}))[];
+  personas?: (EventPersona | (string & {}))[];
 }
 export const OrganizationEventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -977,9 +977,9 @@ export const EventTypePersonaList = /*@__PURE__*/ S.Array(EventTypePersona);
 export interface EventTypeFilter {
   eventTypeCodes?: string[];
   services?: string[];
-  eventTypeCategories?: EventTypeCategory[];
-  actionabilities?: EventTypeActionability[];
-  personas?: EventTypePersona[];
+  eventTypeCategories?: (EventTypeCategory | (string & {}))[];
+  actionabilities?: (EventTypeActionability | (string & {}))[];
+  personas?: (EventTypePersona | (string & {}))[];
 }
 export const EventTypeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -1460,7 +1460,7 @@ export const ConfigurationCheckTypeList = /*@__PURE__*/ S.Array(
 );
 export interface StartConfigurationChecksInput {
   ApplicationId: string;
-  ConfigurationCheckIds?: ConfigurationCheckType[];
+  ConfigurationCheckIds?: (ConfigurationCheckType | (string & {}))[];
 }
 export const StartConfigurationChecksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

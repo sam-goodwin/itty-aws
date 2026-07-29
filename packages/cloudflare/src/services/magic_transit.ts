@@ -3346,8 +3346,8 @@ export interface CreateSiteAclRequest {
   accountId: string;
   /** Identifier */
   siteId: string;
-  lan1: SitesAclsCreateRequestLan1;
-  lan2: SitesAclsCreateRequestLan1;
+  lan_1: SitesAclsCreateRequestLan1;
+  lan_2: SitesAclsCreateRequestLan1;
   /** The name of the ACL. */
   name: string;
   /** Description for the ACL. */
@@ -3362,8 +3362,8 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    lan1: SitesAclsCreateRequestLan1.pipe(T.Body("lan_1")),
-    lan2: SitesAclsCreateRequestLan1.pipe(T.Body("lan_2")),
+    lan_1: SitesAclsCreateRequestLan1,
+    lan_2: SitesAclsCreateRequestLan1,
     name: S.String,
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
@@ -3440,8 +3440,8 @@ export interface CreateSiteAclResponse {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsCreateResponseLan1;
-  lan2?: SitesAclsCreateResponseLan1;
+  lan_1?: SitesAclsCreateResponseLan1;
+  lan_2?: SitesAclsCreateResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsCreateResponseProtocolsList;
@@ -3453,8 +3453,8 @@ export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsCreateResponseLan1),
+    lan_2: S.optional(SitesAclsCreateResponseLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsCreateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -3565,12 +3565,12 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansCreateRequestStaticAddressingDhcpServer {
@@ -3793,11 +3793,11 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
-  { [key: string]: string | undefined };
+  { [key: string]: unknown | undefined };
 export const SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
@@ -5310,8 +5310,8 @@ export interface DeleteSiteAclResponse {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsDeleteResponseLan1;
-  lan2?: SitesAclsDeleteResponseLan1;
+  lan_1?: SitesAclsDeleteResponseLan1;
+  lan_2?: SitesAclsDeleteResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsDeleteResponseProtocolsList;
@@ -5323,8 +5323,8 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsDeleteResponseLan1),
+    lan_2: S.optional(SitesAclsDeleteResponseLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsDeleteResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -5459,12 +5459,12 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
@@ -7168,11 +7168,11 @@ export interface GetConnectorSnapshotResponse {
   /** Count of processors/cores */
   cpuCount?: number;
   /** Percentage of time over a 10 second window that tasks were stalled */
-  cpuPressure10s?: number;
+  cpu_pressure_10s?: number;
   /** Percentage of time over a 5 minute window that tasks were stalled */
-  cpuPressure300s?: number;
+  cpu_pressure_300s?: number;
   /** Percentage of time over a 1 minute window that tasks were stalled */
-  cpuPressure60s?: number;
+  cpu_pressure_60s?: number;
   /** Total stall time (microseconds) */
   cpuPressureTotalUs?: number;
   /** Time spent running a virtual CPU or guest OS (milliseconds) */
@@ -7207,19 +7207,19 @@ export interface GetConnectorSnapshotResponse {
   haValue?: number;
   interfaces?: ConnectorsSnapshotsGetResponseInterfacesList;
   /** Percentage of time over a 10 second window that all tasks were stalled */
-  ioPressureFull10s?: number;
+  io_pressure_full_10s?: number;
   /** Percentage of time over a 5 minute window that all tasks were stalled */
-  ioPressureFull300s?: number;
+  io_pressure_full_300s?: number;
   /** Percentage of time over a 1 minute window that all tasks were stalled */
-  ioPressureFull60s?: number;
+  io_pressure_full_60s?: number;
   /** Total stall time (microseconds) */
   ioPressureFullTotalUs?: number;
   /** Percentage of time over a 10 second window that some tasks were stalled */
-  ioPressureSome10s?: number;
+  io_pressure_some_10s?: number;
   /** Percentage of time over a 3 minute window that some tasks were stalled */
-  ioPressureSome300s?: number;
+  io_pressure_some_300s?: number;
   /** Percentage of time over a 1 minute window that some tasks were stalled */
-  ioPressureSome60s?: number;
+  io_pressure_some_60s?: number;
   /** Total stall time (microseconds) */
   ioPressureSomeTotalUs?: number;
   /** Boot time (seconds since Unix epoch) */
@@ -7233,11 +7233,11 @@ export interface GetConnectorSnapshotResponse {
   /** Number of processes in runnable state */
   kernelProcessesRunning?: number;
   /** The fifteen-minute load average */
-  loadAverage15m?: number;
+  load_average_15m?: number;
   /** The one-minute load average */
-  loadAverage1m?: number;
+  load_average_1m?: number;
   /** The five-minute load average */
-  loadAverage5m?: number;
+  load_average_5m?: number;
   /** Number of currently runnable kernel scheduling entities */
   loadAverageCur?: number;
   /** Number of kernel scheduling entities that currently exist on the system */
@@ -7299,19 +7299,19 @@ export interface GetConnectorSnapshotResponse {
   /** Memory allocated to the per-cpu alloctor used to back per-cpu allocations */
   memoryPerCpuBytes?: number;
   /** Percentage of time over a 10 second window that all tasks were stalled */
-  memoryPressureFull10s?: number;
+  memory_pressure_full_10s?: number;
   /** Percentage of time over a 5 minute window that all tasks were stalled */
-  memoryPressureFull300s?: number;
+  memory_pressure_full_300s?: number;
   /** Percentage of time over a 1 minute window that all tasks were stalled */
-  memoryPressureFull60s?: number;
+  memory_pressure_full_60s?: number;
   /** Total stall time (microseconds) */
   memoryPressureFullTotalUs?: number;
   /** Percentage of time over a 10 second window that some tasks were stalled */
-  memoryPressureSome10s?: number;
+  memory_pressure_some_10s?: number;
   /** Percentage of time over a 5 minute window that some tasks were stalled */
-  memoryPressureSome300s?: number;
+  memory_pressure_some_300s?: number;
   /** Percentage of time over a 1 minute window that some tasks were stalled */
-  memoryPressureSome60s?: number;
+  memory_pressure_some_60s?: number;
   /** Total stall time (microseconds) */
   memoryPressureSomeTotalUs?: number;
   /** Part of slab that can be reclaimed on memory pressure */
@@ -7501,9 +7501,9 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     v: S.String,
     bonds: S.optional(ConnectorsSnapshotsGetResponseBondsList),
     cpuCount: S.optional(S.Number.pipe(T.Body("cpu_count"))),
-    cpuPressure10s: S.optional(S.Number.pipe(T.Body("cpu_pressure_10s"))),
-    cpuPressure300s: S.optional(S.Number.pipe(T.Body("cpu_pressure_300s"))),
-    cpuPressure60s: S.optional(S.Number.pipe(T.Body("cpu_pressure_60s"))),
+    cpu_pressure_10s: S.optional(S.Number),
+    cpu_pressure_300s: S.optional(S.Number),
+    cpu_pressure_60s: S.optional(S.Number),
     cpuPressureTotalUs: S.optional(
       S.Number.pipe(T.Body("cpu_pressure_total_us")),
     ),
@@ -7528,27 +7528,15 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     haState: S.optional(S.String.pipe(T.Body("ha_state"))),
     haValue: S.optional(S.Number.pipe(T.Body("ha_value"))),
     interfaces: S.optional(ConnectorsSnapshotsGetResponseInterfacesList),
-    ioPressureFull10s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_full_10s")),
-    ),
-    ioPressureFull300s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_full_300s")),
-    ),
-    ioPressureFull60s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_full_60s")),
-    ),
+    io_pressure_full_10s: S.optional(S.Number),
+    io_pressure_full_300s: S.optional(S.Number),
+    io_pressure_full_60s: S.optional(S.Number),
     ioPressureFullTotalUs: S.optional(
       S.Number.pipe(T.Body("io_pressure_full_total_us")),
     ),
-    ioPressureSome10s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_some_10s")),
-    ),
-    ioPressureSome300s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_some_300s")),
-    ),
-    ioPressureSome60s: S.optional(
-      S.Number.pipe(T.Body("io_pressure_some_60s")),
-    ),
+    io_pressure_some_10s: S.optional(S.Number),
+    io_pressure_some_300s: S.optional(S.Number),
+    io_pressure_some_60s: S.optional(S.Number),
     ioPressureSomeTotalUs: S.optional(
       S.Number.pipe(T.Body("io_pressure_some_total_us")),
     ),
@@ -7561,9 +7549,9 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     kernelProcessesRunning: S.optional(
       S.Number.pipe(T.Body("kernel_processes_running")),
     ),
-    loadAverage15m: S.optional(S.Number.pipe(T.Body("load_average_15m"))),
-    loadAverage1m: S.optional(S.Number.pipe(T.Body("load_average_1m"))),
-    loadAverage5m: S.optional(S.Number.pipe(T.Body("load_average_5m"))),
+    load_average_15m: S.optional(S.Number),
+    load_average_1m: S.optional(S.Number),
+    load_average_5m: S.optional(S.Number),
     loadAverageCur: S.optional(S.Number.pipe(T.Body("load_average_cur"))),
     loadAverageMax: S.optional(S.Number.pipe(T.Body("load_average_max"))),
     memoryActiveBytes: S.optional(S.Number.pipe(T.Body("memory_active_bytes"))),
@@ -7638,27 +7626,15 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     memoryPerCpuBytes: S.optional(
       S.Number.pipe(T.Body("memory_per_cpu_bytes")),
     ),
-    memoryPressureFull10s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_full_10s")),
-    ),
-    memoryPressureFull300s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_full_300s")),
-    ),
-    memoryPressureFull60s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_full_60s")),
-    ),
+    memory_pressure_full_10s: S.optional(S.Number),
+    memory_pressure_full_300s: S.optional(S.Number),
+    memory_pressure_full_60s: S.optional(S.Number),
     memoryPressureFullTotalUs: S.optional(
       S.Number.pipe(T.Body("memory_pressure_full_total_us")),
     ),
-    memoryPressureSome10s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_some_10s")),
-    ),
-    memoryPressureSome300s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_some_300s")),
-    ),
-    memoryPressureSome60s: S.optional(
-      S.Number.pipe(T.Body("memory_pressure_some_60s")),
-    ),
+    memory_pressure_some_10s: S.optional(S.Number),
+    memory_pressure_some_300s: S.optional(S.Number),
+    memory_pressure_some_60s: S.optional(S.Number),
     memoryPressureSomeTotalUs: S.optional(
       S.Number.pipe(T.Body("memory_pressure_some_total_us")),
     ),
@@ -8954,8 +8930,8 @@ export interface GetSiteAclResponse {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsGetResponseLan1;
-  lan2?: SitesAclsGetResponseLan1;
+  lan_1?: SitesAclsGetResponseLan1;
+  lan_2?: SitesAclsGetResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsGetResponseProtocolsList;
@@ -8967,8 +8943,8 @@ export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsGetResponseLan1),
+    lan_2: S.optional(SitesAclsGetResponseLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsGetResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -9107,12 +9083,12 @@ export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansGetResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansGetResponseStaticAddressingDhcpServer {
@@ -11045,11 +11021,11 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   /** Count of processors/cores */
   cpuCount?: number;
   /** Percentage of time over a 10 second window that tasks were stalled */
-  cpuPressure10s?: number;
+  cpu_pressure_10s?: number;
   /** Percentage of time over a 5 minute window that tasks were stalled */
-  cpuPressure300s?: number;
+  cpu_pressure_300s?: number;
   /** Percentage of time over a 1 minute window that tasks were stalled */
-  cpuPressure60s?: number;
+  cpu_pressure_60s?: number;
   /** Total stall time (microseconds) */
   cpuPressureTotalUs?: number;
   /** Time spent running a virtual CPU or guest OS (milliseconds) */
@@ -11084,19 +11060,19 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   haValue?: number;
   interfaces?: ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList;
   /** Percentage of time over a 10 second window that all tasks were stalled */
-  ioPressureFull10s?: number;
+  io_pressure_full_10s?: number;
   /** Percentage of time over a 5 minute window that all tasks were stalled */
-  ioPressureFull300s?: number;
+  io_pressure_full_300s?: number;
   /** Percentage of time over a 1 minute window that all tasks were stalled */
-  ioPressureFull60s?: number;
+  io_pressure_full_60s?: number;
   /** Total stall time (microseconds) */
   ioPressureFullTotalUs?: number;
   /** Percentage of time over a 10 second window that some tasks were stalled */
-  ioPressureSome10s?: number;
+  io_pressure_some_10s?: number;
   /** Percentage of time over a 3 minute window that some tasks were stalled */
-  ioPressureSome300s?: number;
+  io_pressure_some_300s?: number;
   /** Percentage of time over a 1 minute window that some tasks were stalled */
-  ioPressureSome60s?: number;
+  io_pressure_some_60s?: number;
   /** Total stall time (microseconds) */
   ioPressureSomeTotalUs?: number;
   /** Boot time (seconds since Unix epoch) */
@@ -11110,11 +11086,11 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   /** Number of processes in runnable state */
   kernelProcessesRunning?: number;
   /** The fifteen-minute load average */
-  loadAverage15m?: number;
+  load_average_15m?: number;
   /** The one-minute load average */
-  loadAverage1m?: number;
+  load_average_1m?: number;
   /** The five-minute load average */
-  loadAverage5m?: number;
+  load_average_5m?: number;
   /** Number of currently runnable kernel scheduling entities */
   loadAverageCur?: number;
   /** Number of kernel scheduling entities that currently exist on the system */
@@ -11176,19 +11152,19 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   /** Memory allocated to the per-cpu alloctor used to back per-cpu allocations */
   memoryPerCpuBytes?: number;
   /** Percentage of time over a 10 second window that all tasks were stalled */
-  memoryPressureFull10s?: number;
+  memory_pressure_full_10s?: number;
   /** Percentage of time over a 5 minute window that all tasks were stalled */
-  memoryPressureFull300s?: number;
+  memory_pressure_full_300s?: number;
   /** Percentage of time over a 1 minute window that all tasks were stalled */
-  memoryPressureFull60s?: number;
+  memory_pressure_full_60s?: number;
   /** Total stall time (microseconds) */
   memoryPressureFullTotalUs?: number;
   /** Percentage of time over a 10 second window that some tasks were stalled */
-  memoryPressureSome10s?: number;
+  memory_pressure_some_10s?: number;
   /** Percentage of time over a 5 minute window that some tasks were stalled */
-  memoryPressureSome300s?: number;
+  memory_pressure_some_300s?: number;
   /** Percentage of time over a 1 minute window that some tasks were stalled */
-  memoryPressureSome60s?: number;
+  memory_pressure_some_60s?: number;
   /** Total stall time (microseconds) */
   memoryPressureSomeTotalUs?: number;
   /** Part of slab that can be reclaimed on memory pressure */
@@ -11381,9 +11357,9 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
         ConnectorsSnapshotsLatestListResponseItemsItemBondsList,
       ),
       cpuCount: S.optional(S.Number.pipe(T.Body("cpu_count"))),
-      cpuPressure10s: S.optional(S.Number.pipe(T.Body("cpu_pressure_10s"))),
-      cpuPressure300s: S.optional(S.Number.pipe(T.Body("cpu_pressure_300s"))),
-      cpuPressure60s: S.optional(S.Number.pipe(T.Body("cpu_pressure_60s"))),
+      cpu_pressure_10s: S.optional(S.Number),
+      cpu_pressure_300s: S.optional(S.Number),
+      cpu_pressure_60s: S.optional(S.Number),
       cpuPressureTotalUs: S.optional(
         S.Number.pipe(T.Body("cpu_pressure_total_us")),
       ),
@@ -11416,27 +11392,15 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
       interfaces: S.optional(
         ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList,
       ),
-      ioPressureFull10s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_full_10s")),
-      ),
-      ioPressureFull300s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_full_300s")),
-      ),
-      ioPressureFull60s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_full_60s")),
-      ),
+      io_pressure_full_10s: S.optional(S.Number),
+      io_pressure_full_300s: S.optional(S.Number),
+      io_pressure_full_60s: S.optional(S.Number),
       ioPressureFullTotalUs: S.optional(
         S.Number.pipe(T.Body("io_pressure_full_total_us")),
       ),
-      ioPressureSome10s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_some_10s")),
-      ),
-      ioPressureSome300s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_some_300s")),
-      ),
-      ioPressureSome60s: S.optional(
-        S.Number.pipe(T.Body("io_pressure_some_60s")),
-      ),
+      io_pressure_some_10s: S.optional(S.Number),
+      io_pressure_some_300s: S.optional(S.Number),
+      io_pressure_some_60s: S.optional(S.Number),
       ioPressureSomeTotalUs: S.optional(
         S.Number.pipe(T.Body("io_pressure_some_total_us")),
       ),
@@ -11449,9 +11413,9 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
       kernelProcessesRunning: S.optional(
         S.Number.pipe(T.Body("kernel_processes_running")),
       ),
-      loadAverage15m: S.optional(S.Number.pipe(T.Body("load_average_15m"))),
-      loadAverage1m: S.optional(S.Number.pipe(T.Body("load_average_1m"))),
-      loadAverage5m: S.optional(S.Number.pipe(T.Body("load_average_5m"))),
+      load_average_15m: S.optional(S.Number),
+      load_average_1m: S.optional(S.Number),
+      load_average_5m: S.optional(S.Number),
       loadAverageCur: S.optional(S.Number.pipe(T.Body("load_average_cur"))),
       loadAverageMax: S.optional(S.Number.pipe(T.Body("load_average_max"))),
       memoryActiveBytes: S.optional(
@@ -11534,27 +11498,15 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
       memoryPerCpuBytes: S.optional(
         S.Number.pipe(T.Body("memory_per_cpu_bytes")),
       ),
-      memoryPressureFull10s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_full_10s")),
-      ),
-      memoryPressureFull300s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_full_300s")),
-      ),
-      memoryPressureFull60s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_full_60s")),
-      ),
+      memory_pressure_full_10s: S.optional(S.Number),
+      memory_pressure_full_300s: S.optional(S.Number),
+      memory_pressure_full_60s: S.optional(S.Number),
       memoryPressureFullTotalUs: S.optional(
         S.Number.pipe(T.Body("memory_pressure_full_total_us")),
       ),
-      memoryPressureSome10s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_some_10s")),
-      ),
-      memoryPressureSome300s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_some_300s")),
-      ),
-      memoryPressureSome60s: S.optional(
-        S.Number.pipe(T.Body("memory_pressure_some_60s")),
-      ),
+      memory_pressure_some_10s: S.optional(S.Number),
+      memory_pressure_some_300s: S.optional(S.Number),
+      memory_pressure_some_60s: S.optional(S.Number),
       memoryPressureSomeTotalUs: S.optional(
         S.Number.pipe(T.Body("memory_pressure_some_total_us")),
       ),
@@ -12834,8 +12786,8 @@ export interface SitesAclsListResultItem {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsListResultItemLan1;
-  lan2?: SitesAclsListResultItemLan1;
+  lan_1?: SitesAclsListResultItemLan1;
+  lan_2?: SitesAclsListResultItemLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsListResultItemProtocolsList;
@@ -12847,8 +12799,8 @@ export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsListResultItemLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsListResultItemLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsListResultItemLan1),
+    lan_2: S.optional(SitesAclsListResultItemLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsListResultItemProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -13000,12 +12952,12 @@ export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansListResultItemStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansListResultItemStaticAddressingDhcpServer {
@@ -13866,8 +13818,8 @@ export interface PatchSiteAclRequest {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsEditRequestLan1;
-  lan2?: SitesAclsEditRequestLan1;
+  lan_1?: SitesAclsEditRequestLan1;
+  lan_2?: SitesAclsEditRequestLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsEditRequestProtocolsList;
@@ -13881,8 +13833,8 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     aclId: S.String.pipe(T.Label("acl_id")),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsEditRequestLan1),
+    lan_2: S.optional(SitesAclsEditRequestLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -13957,8 +13909,8 @@ export interface PatchSiteAclResponse {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsEditResponseLan1;
-  lan2?: SitesAclsEditResponseLan1;
+  lan_1?: SitesAclsEditResponseLan1;
+  lan_2?: SitesAclsEditResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsEditResponseProtocolsList;
@@ -13970,8 +13922,8 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsEditResponseLan1),
+    lan_2: S.optional(SitesAclsEditResponseLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -14086,12 +14038,12 @@ export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditRequestStaticAddressingDhcpServer {
@@ -14314,12 +14266,12 @@ export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansEditResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditResponseStaticAddressingDhcpServer {
@@ -17128,8 +17080,8 @@ export interface UpdateSiteAclRequest {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsUpdateRequestLan1;
-  lan2?: SitesAclsUpdateRequestLan1;
+  lan_1?: SitesAclsUpdateRequestLan1;
+  lan_2?: SitesAclsUpdateRequestLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsUpdateRequestProtocolsList;
@@ -17143,8 +17095,8 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     aclId: S.String.pipe(T.Label("acl_id")),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsUpdateRequestLan1),
+    lan_2: S.optional(SitesAclsUpdateRequestLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -17219,8 +17171,8 @@ export interface UpdateSiteAclResponse {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsUpdateResponseLan1;
-  lan2?: SitesAclsUpdateResponseLan1;
+  lan_1?: SitesAclsUpdateResponseLan1;
+  lan_2?: SitesAclsUpdateResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsUpdateResponseProtocolsList;
@@ -17232,8 +17184,8 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_2"))),
+    lan_1: S.optional(SitesAclsUpdateResponseLan1),
+    lan_2: S.optional(SitesAclsUpdateResponseLan1),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -17344,12 +17296,12 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpServer {
@@ -17572,12 +17524,12 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateResponseStaticAddressingDhcpServer {

@@ -205,7 +205,7 @@ export const S3Permission = /*@__PURE__*/ S.String;
 
 export type S3Permissions = (S3Permission | (string & {}))[];
 export const S3Permissions = /*@__PURE__*/ S.Array(S3Permission);
-export type Permissions = { s3: S3Permission[] };
+export type Permissions = { s3: (S3Permission | (string & {}))[] };
 export const Permissions = /*@__PURE__*/ S.Union([
   S.Struct({ s3: S3Permissions }),
 ]);
@@ -2518,7 +2518,7 @@ export interface GlueConnectionInput {
   connectionType?: GlueConnectionType | (string & {});
   matchCriteria?: string;
   validateCredentials?: boolean;
-  validateForComputeEnvironments?: ComputeEnvironments[];
+  validateForComputeEnvironments?: (ComputeEnvironments | (string & {}))[];
   sparkProperties?: { [key: string]: string | undefined };
   athenaProperties?: { [key: string]: string | undefined };
   pythonProperties?: { [key: string]: string | undefined };
@@ -5094,7 +5094,7 @@ export interface CreateGlossaryInput {
   owningProjectIdentifier: string;
   description?: string | redacted.Redacted<string>;
   status?: GlossaryStatus | (string & {});
-  usageRestrictions?: GlossaryUsageRestriction[];
+  usageRestrictions?: (GlossaryUsageRestriction | (string & {}))[];
   clientToken?: string;
 }
 export const CreateGlossaryInput = /*@__PURE__*/ S.suspend(() =>
@@ -13920,7 +13920,7 @@ export interface SearchInput {
   searchIn?: SearchInItem[];
   filters?: FilterClause;
   sort?: SearchSort;
-  additionalAttributes?: SearchOutputAdditionalAttribute[];
+  additionalAttributes?: (SearchOutputAdditionalAttribute | (string & {}))[];
 }
 export const SearchInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14294,7 +14294,7 @@ export interface SearchListingsInput {
   filters?: FilterClause;
   aggregations?: AggregationListItem[];
   sort?: SearchSort;
-  additionalAttributes?: SearchOutputAdditionalAttribute[];
+  additionalAttributes?: (SearchOutputAdditionalAttribute | (string & {}))[];
 }
 export const SearchListingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14805,7 +14805,7 @@ export const StartDataSourceRunOutput = /*@__PURE__*/ S.suspend(() =>
 export interface StartMetadataGenerationRunInput {
   domainIdentifier: string;
   type?: MetadataGenerationRunType | (string & {});
-  types?: MetadataGenerationRunType[];
+  types?: (MetadataGenerationRunType | (string & {}))[];
   target: MetadataGenerationRunTarget;
   clientToken?: string;
   owningProjectIdentifier: string;

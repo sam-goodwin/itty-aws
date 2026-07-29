@@ -951,7 +951,7 @@ export const RenditionConfigurationRenditionList = /*@__PURE__*/ S.Array(
 );
 export interface RenditionConfiguration {
   renditionSelection?: string;
-  renditions?: RenditionConfigurationRendition[];
+  renditions?: (RenditionConfigurationRendition | (string & {}))[];
 }
 export const RenditionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

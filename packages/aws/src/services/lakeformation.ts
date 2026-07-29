@@ -514,9 +514,9 @@ export interface BatchPermissionsRequestEntry {
   Id: string;
   Principal?: DataLakePrincipal;
   Resource?: Resource;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
   Condition?: Condition;
-  PermissionsWithGrantOption?: Permission[];
+  PermissionsWithGrantOption?: (Permission | (string & {}))[];
 }
 export const BatchPermissionsRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1348,7 +1348,7 @@ export const GetDataLakeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDataLakeSettingsRequest>;
 export interface PrincipalPermissions {
   Principal?: DataLakePrincipal;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
 }
 export const PrincipalPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1873,10 +1873,10 @@ export const PermissionTypeList = /*@__PURE__*/ S.Array(PermissionType);
 export interface GetTemporaryGluePartitionCredentialsRequest {
   TableArn: string;
   Partition: PartitionValueList;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
   DurationSeconds?: number;
   AuditContext?: AuditContext;
-  SupportedPermissionTypes?: PermissionType[];
+  SupportedPermissionTypes?: (PermissionType | (string & {}))[];
 }
 export const GetTemporaryGluePartitionCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1949,10 +1949,10 @@ export const QuerySessionContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuerySessionContext>;
 export interface GetTemporaryGlueTableCredentialsRequest {
   TableArn: string;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
   DurationSeconds?: number;
   AuditContext?: AuditContext;
-  SupportedPermissionTypes?: PermissionType[];
+  SupportedPermissionTypes?: (PermissionType | (string & {}))[];
   S3Path?: string;
   QuerySessionContext?: QuerySessionContext;
 }
@@ -2095,9 +2095,9 @@ export interface GrantPermissionsRequest {
   CatalogId?: string;
   Principal: DataLakePrincipal;
   Resource: Resource;
-  Permissions: Permission[];
+  Permissions: (Permission | (string & {}))[];
   Condition?: Condition;
-  PermissionsWithGrantOption?: Permission[];
+  PermissionsWithGrantOption?: (Permission | (string & {}))[];
 }
 export const GrantPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2661,9 +2661,9 @@ export interface RevokePermissionsRequest {
   CatalogId?: string;
   Principal: DataLakePrincipal;
   Resource: Resource;
-  Permissions: Permission[];
+  Permissions: (Permission | (string & {}))[];
   Condition?: Condition;
-  PermissionsWithGrantOption?: Permission[];
+  PermissionsWithGrantOption?: (Permission | (string & {}))[];
 }
 export const RevokePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

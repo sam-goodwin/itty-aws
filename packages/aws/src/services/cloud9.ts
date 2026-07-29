@@ -300,7 +300,7 @@ export type MaxResults = number;
 export interface DescribeEnvironmentMembershipsRequest {
   userArn?: string;
   environmentId?: string;
-  permissions?: Permissions[];
+  permissions?: (Permissions | (string & {}))[];
   nextToken?: string;
   maxResults?: number;
 }

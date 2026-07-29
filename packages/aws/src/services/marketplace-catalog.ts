@@ -595,7 +595,7 @@ export const DataProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   DataProductVisibilityString,
 );
 export interface DataProductVisibilityFilter {
-  ValueList?: DataProductVisibilityString[];
+  ValueList?: (DataProductVisibilityString | (string & {}))[];
 }
 export const DataProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(DataProductVisibilityFilterValueList) }),
@@ -684,7 +684,7 @@ export const SaaSProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   SaaSProductVisibilityString,
 );
 export interface SaaSProductVisibilityFilter {
-  ValueList?: SaaSProductVisibilityString[];
+  ValueList?: (SaaSProductVisibilityString | (string & {}))[];
 }
 export const SaaSProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(SaaSProductVisibilityFilterValueList) }),
@@ -796,7 +796,7 @@ export const AmiProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   AmiProductVisibilityString,
 );
 export interface AmiProductVisibilityFilter {
-  ValueList?: AmiProductVisibilityString[];
+  ValueList?: (AmiProductVisibilityString | (string & {}))[];
 }
 export const AmiProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(AmiProductVisibilityFilterValueList) }),
@@ -928,7 +928,7 @@ export type OfferStateFilterValueList = (OfferStateString | (string & {}))[];
 export const OfferStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferStateString);
 export interface OfferStateFilter {
-  ValueList?: OfferStateString[];
+  ValueList?: (OfferStateString | (string & {}))[];
 }
 export const OfferStateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferStateFilterValueList) }),
@@ -949,7 +949,7 @@ export type OfferTargetingFilterValueList = (
 export const OfferTargetingFilterValueList =
   /*@__PURE__*/ S.Array(OfferTargetingString);
 export interface OfferTargetingFilter {
-  ValueList?: OfferTargetingString[];
+  ValueList?: (OfferTargetingString | (string & {}))[];
 }
 export const OfferTargetingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferTargetingFilterValueList) }),
@@ -1085,7 +1085,7 @@ export const ContainerProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   ContainerProductVisibilityString,
 );
 export interface ContainerProductVisibilityFilter {
-  ValueList?: ContainerProductVisibilityString[];
+  ValueList?: (ContainerProductVisibilityString | (string & {}))[];
 }
 export const ContainerProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1331,7 +1331,7 @@ export const ResaleAuthorizationStatusFilterValueList = /*@__PURE__*/ S.Array(
   ResaleAuthorizationStatusString,
 );
 export interface ResaleAuthorizationStatusFilter {
-  ValueList?: ResaleAuthorizationStatusString[];
+  ValueList?: (ResaleAuthorizationStatusString | (string & {}))[];
 }
 export const ResaleAuthorizationStatusFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(ResaleAuthorizationStatusFilterValueList) }),
@@ -1493,7 +1493,7 @@ export type MachineLearningProductVisibilityFilterValueList = (
 export const MachineLearningProductVisibilityFilterValueList =
   /*@__PURE__*/ S.Array(MachineLearningProductVisibilityString);
 export interface MachineLearningProductVisibilityFilter {
-  ValueList?: MachineLearningProductVisibilityString[];
+  ValueList?: (MachineLearningProductVisibilityString | (string & {}))[];
 }
 export const MachineLearningProductVisibilityFilter = /*@__PURE__*/ S.suspend(
   () =>
@@ -1551,7 +1551,7 @@ export type OfferSetStateFilterValueList = (
 export const OfferSetStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferSetStateString);
 export interface OfferSetStateFilter {
-  ValueList?: OfferSetStateString[];
+  ValueList?: (OfferSetStateString | (string & {}))[];
 }
 export const OfferSetStateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferSetStateFilterValueList) }),

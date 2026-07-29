@@ -492,7 +492,7 @@ export interface TaskDetails {
   WebsiteUrl: string;
   LogoUrl: string;
   PrimarySolutionType: PrimarySolutionType | (string & {});
-  IndustrySegments: IndustrySegment[];
+  IndustrySegments: (IndustrySegment | (string & {}))[];
   TranslationSourceLocale: string;
   LocalizedContents?: LocalizedContent[];
 }

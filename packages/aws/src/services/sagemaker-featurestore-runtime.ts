@@ -277,7 +277,7 @@ export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
 export interface BatchWriteRecordEntry {
   FeatureGroupName?: string;
   Record?: FeatureValue[];
-  TargetStores?: TargetStore[];
+  TargetStores?: (TargetStore | (string & {}))[];
   TtlDuration?: TtlDuration;
 }
 export const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
@@ -374,7 +374,7 @@ export interface DeleteRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
   EventTime?: string;
-  TargetStores?: TargetStore[];
+  TargetStores?: (TargetStore | (string & {}))[];
   DeletionMode?: DeletionMode | (string & {});
 }
 export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
@@ -490,7 +490,7 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutRecordRequest {
   FeatureGroupName: string;
   Record?: FeatureValue[];
-  TargetStores?: TargetStore[];
+  TargetStores?: (TargetStore | (string & {}))[];
   TtlDuration?: TtlDuration;
 }
 export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>

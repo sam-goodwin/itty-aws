@@ -2288,7 +2288,10 @@ export const StringAttributeValueBoosting = /*@__PURE__*/ S.Record(
 export interface StringAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel | (string & {});
   attributeValueBoosting?: {
-    [key: string]: StringAttributeValueBoostingLevel | undefined;
+    [key: string]:
+      | StringAttributeValueBoostingLevel
+      | (string & {})
+      | undefined;
   };
 }
 export const StringAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(

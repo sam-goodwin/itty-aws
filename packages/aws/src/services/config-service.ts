@@ -855,7 +855,7 @@ export type ResourceTypeList = (ResourceType | (string & {}))[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export interface AssociateResourceTypesRequest {
   ConfigurationRecorderArn: string;
-  ResourceTypes: ResourceType[];
+  ResourceTypes: (ResourceType | (string & {}))[];
 }
 export const AssociateResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -879,7 +879,7 @@ export type RecorderName = string;
 export type AllSupported = boolean;
 export type IncludeGlobalResourceTypes = boolean;
 export interface ExclusionByResourceTypes {
-  resourceTypes?: ResourceType[];
+  resourceTypes?: (ResourceType | (string & {}))[];
 }
 export const ExclusionByResourceTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceTypes: S.optional(ResourceTypeList) }),
@@ -903,7 +903,7 @@ export const RecordingStrategy = /*@__PURE__*/ S.suspend(() =>
 export interface RecordingGroup {
   allSupported?: boolean;
   includeGlobalResourceTypes?: boolean;
-  resourceTypes?: ResourceType[];
+  resourceTypes?: (ResourceType | (string & {}))[];
   exclusionByResourceTypes?: ExclusionByResourceTypes;
   recordingStrategy?: RecordingStrategy;
 }
@@ -925,7 +925,7 @@ export const RecordingModeResourceTypesList =
   /*@__PURE__*/ S.Array(ResourceType);
 export interface RecordingModeOverride {
   description?: string;
-  resourceTypes: ResourceType[];
+  resourceTypes: (ResourceType | (string & {}))[];
   recordingFrequency: RecordingFrequency | (string & {});
 }
 export const RecordingModeOverride = /*@__PURE__*/ S.suspend(() =>
@@ -1928,7 +1928,7 @@ export type ComplianceTypes = (ComplianceType | (string & {}))[];
 export const ComplianceTypes = /*@__PURE__*/ S.Array(ComplianceType);
 export interface DescribeComplianceByConfigRuleRequest {
   ConfigRuleNames?: string[];
-  ComplianceTypes?: ComplianceType[];
+  ComplianceTypes?: (ComplianceType | (string & {}))[];
   NextToken?: string;
 }
 export const DescribeComplianceByConfigRuleRequest = /*@__PURE__*/ S.suspend(
@@ -1984,7 +1984,7 @@ export type BaseResourceId = string;
 export interface DescribeComplianceByResourceRequest {
   ResourceType?: string;
   ResourceId?: string;
-  ComplianceTypes?: ComplianceType[];
+  ComplianceTypes?: (ComplianceType | (string & {}))[];
   Limit?: number;
   NextToken?: string;
 }
@@ -2492,7 +2492,7 @@ export const AggregatedSourceStatusTypeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeConfigurationAggregatorSourcesStatusRequest {
   ConfigurationAggregatorName: string;
-  UpdateStatus?: AggregatedSourceStatusType[];
+  UpdateStatus?: (AggregatedSourceStatusType | (string & {}))[];
   NextToken?: string;
   Limit?: number;
 }
@@ -3167,7 +3167,10 @@ export const OrganizationConfigRuleTriggerTypes = /*@__PURE__*/ S.Array(
 export interface OrganizationCustomRuleMetadata {
   Description?: string;
   LambdaFunctionArn: string;
-  OrganizationConfigRuleTriggerTypes: OrganizationConfigRuleTriggerType[];
+  OrganizationConfigRuleTriggerTypes: (
+    | OrganizationConfigRuleTriggerType
+    | (string & {})
+  )[];
   InputParameters?: string;
   MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
   ResourceTypesScope?: string[];
@@ -3896,7 +3899,7 @@ export const DescribeRetentionConfigurationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeRetentionConfigurationsResponse>;
 export interface DisassociateResourceTypesRequest {
   ConfigurationRecorderArn: string;
-  ResourceTypes: ResourceType[];
+  ResourceTypes: (ResourceType | (string & {}))[];
 }
 export const DisassociateResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4410,7 +4413,7 @@ export const GetAggregateResourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAggregateResourceConfigResponse>;
 export interface GetComplianceDetailsByConfigRuleRequest {
   ConfigRuleName: string;
-  ComplianceTypes?: ComplianceType[];
+  ComplianceTypes?: (ComplianceType | (string & {}))[];
   Limit?: number;
   NextToken?: string;
 }
@@ -4477,7 +4480,7 @@ export const GetComplianceDetailsByConfigRuleResponse = /*@__PURE__*/ S.suspend(
 export interface GetComplianceDetailsByResourceRequest {
   ResourceType?: string;
   ResourceId?: string;
-  ComplianceTypes?: ComplianceType[];
+  ComplianceTypes?: (ComplianceType | (string & {}))[];
   NextToken?: string;
   ResourceEvaluationId?: string;
 }
@@ -5976,7 +5979,10 @@ export const PutExternalEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutExternalEvaluationResponse>;
 export interface OrganizationCustomPolicyRuleMetadata {
   Description?: string;
-  OrganizationConfigRuleTriggerTypes?: OrganizationConfigRuleTriggerTypeNoSN[];
+  OrganizationConfigRuleTriggerTypes?: (
+    | OrganizationConfigRuleTriggerTypeNoSN
+    | (string & {})
+  )[];
   InputParameters?: string;
   MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
   ResourceTypesScope?: string[];

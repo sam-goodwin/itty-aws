@@ -1931,8 +1931,8 @@ export interface GuardrailContentFilterConfig {
   type: GuardrailContentFilterType | (string & {});
   inputStrength: GuardrailFilterStrength | (string & {});
   outputStrength: GuardrailFilterStrength | (string & {});
-  inputModalities?: GuardrailModality[];
-  outputModalities?: GuardrailModality[];
+  inputModalities?: (GuardrailModality | (string & {}))[];
+  outputModalities?: (GuardrailModality | (string & {}))[];
   inputAction?: GuardrailContentFilterAction | (string & {});
   outputAction?: GuardrailContentFilterAction | (string & {});
   inputEnabled?: boolean;

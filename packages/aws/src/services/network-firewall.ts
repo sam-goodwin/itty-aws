@@ -459,7 +459,7 @@ export interface CreateFirewallRequest {
   Description?: string;
   Tags?: Tag[];
   EncryptionConfiguration?: EncryptionConfiguration;
-  EnabledAnalysisTypes?: EnabledAnalysisType[];
+  EnabledAnalysisTypes?: (EnabledAnalysisType | (string & {}))[];
   TransitGatewayId?: string;
   AvailabilityZoneMappings?: AvailabilityZoneMapping[];
   AvailabilityZoneChangeProtection?: boolean;
@@ -1315,7 +1315,7 @@ export const GeneratedRulesType = /*@__PURE__*/ S.String;
 
 export interface RulesSourceList {
   Targets: string[];
-  TargetTypes: TargetType[];
+  TargetTypes: (TargetType | (string & {}))[];
   GeneratedRulesType: GeneratedRulesType | (string & {});
 }
 export const RulesSourceList = /*@__PURE__*/ S.suspend(() =>
@@ -1441,8 +1441,8 @@ export const TCPFlag = /*@__PURE__*/ S.String;
 export type Flags = (TCPFlag | (string & {}))[];
 export const Flags = /*@__PURE__*/ S.Array(TCPFlag);
 export interface TCPFlagField {
-  Flags: TCPFlag[];
-  Masks?: TCPFlag[];
+  Flags: (TCPFlag | (string & {}))[];
+  Masks?: (TCPFlag | (string & {}))[];
 }
 export const TCPFlagField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Flags: Flags, Masks: S.optional(Flags) }),
@@ -1552,7 +1552,7 @@ export const SummaryRuleOption = /*@__PURE__*/ S.String;
 export type SummaryRuleOptions = (SummaryRuleOption | (string & {}))[];
 export const SummaryRuleOptions = /*@__PURE__*/ S.Array(SummaryRuleOption);
 export interface SummaryConfiguration {
-  RuleOptions?: SummaryRuleOption[];
+  RuleOptions?: (SummaryRuleOption | (string & {}))[];
 }
 export const SummaryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RuleOptions: S.optional(SummaryRuleOptions) }),
@@ -3749,7 +3749,7 @@ export const UpdateAvailabilityZoneChangeProtectionResponse =
     identifier: "UpdateAvailabilityZoneChangeProtectionResponse",
   }) as any as S.Schema<UpdateAvailabilityZoneChangeProtectionResponse>;
 export interface UpdateFirewallAnalysisSettingsRequest {
-  EnabledAnalysisTypes?: EnabledAnalysisType[];
+  EnabledAnalysisTypes?: (EnabledAnalysisType | (string & {}))[];
   FirewallArn?: string;
   FirewallName?: string;
   UpdateToken?: string;

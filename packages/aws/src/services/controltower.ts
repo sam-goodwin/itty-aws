@@ -149,7 +149,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 export type Manifest = unknown;
 export interface CreateLandingZoneInput {
   version: string;
-  remediationTypes?: RemediationType[];
+  remediationTypes?: (RemediationType | (string & {}))[];
   tags?: { [key: string]: string | undefined };
   manifest?: any;
 }
@@ -917,8 +917,8 @@ export interface ControlOperationFilter {
   controlIdentifiers?: string[];
   targetIdentifiers?: string[];
   enabledControlIdentifiers?: string[];
-  statuses?: ControlOperationStatus[];
-  controlOperationTypes?: ControlOperationType[];
+  statuses?: (ControlOperationStatus | (string & {}))[];
+  controlOperationTypes?: (ControlOperationType | (string & {}))[];
 }
 export const ControlOperationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1023,8 +1023,8 @@ export interface EnabledBaselineFilter {
   targetIdentifiers?: string[];
   baselineIdentifiers?: string[];
   parentIdentifiers?: string[];
-  statuses?: EnablementStatus[];
-  inheritanceDriftStatuses?: EnabledBaselineDriftStatus[];
+  statuses?: (EnablementStatus | (string & {}))[];
+  inheritanceDriftStatuses?: (EnabledBaselineDriftStatus | (string & {}))[];
 }
 export const EnabledBaselineFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1109,11 +1109,11 @@ export type ParentIdentifiers = string[];
 export const ParentIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export interface EnabledControlFilter {
   controlIdentifiers?: string[];
-  statuses?: EnablementStatus[];
-  driftStatuses?: DriftStatus[];
+  statuses?: (EnablementStatus | (string & {}))[];
+  driftStatuses?: (DriftStatus | (string & {}))[];
   parentIdentifiers?: string[];
-  inheritanceDriftStatuses?: DriftStatus[];
-  resourceDriftStatuses?: DriftStatus[];
+  inheritanceDriftStatuses?: (DriftStatus | (string & {}))[];
+  resourceDriftStatuses?: (DriftStatus | (string & {}))[];
 }
 export const EnabledControlFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1203,8 +1203,8 @@ export const LandingZoneOperationStatuses = /*@__PURE__*/ S.Array(
   LandingZoneOperationStatus,
 );
 export interface LandingZoneOperationFilter {
-  types?: LandingZoneOperationType[];
-  statuses?: LandingZoneOperationStatus[];
+  types?: (LandingZoneOperationType | (string & {}))[];
+  statuses?: (LandingZoneOperationStatus | (string & {}))[];
 }
 export const LandingZoneOperationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1530,7 +1530,7 @@ export const UpdateEnabledControlOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnabledControlOutput>;
 export interface UpdateLandingZoneInput {
   version: string;
-  remediationTypes?: RemediationType[];
+  remediationTypes?: (RemediationType | (string & {}))[];
   landingZoneIdentifier: string;
   manifest?: any;
 }

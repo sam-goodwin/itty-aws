@@ -765,7 +765,7 @@ export const RenderRecommendationTypeList = /*@__PURE__*/ S.Array(
 export interface CreateRecommendationTemplateRequest {
   recommendationIds?: string[];
   format?: TemplateFormat | (string & {});
-  recommendationTypes?: RenderRecommendationType[];
+  recommendationTypes?: (RenderRecommendationType | (string & {}))[];
   assessmentArn: string;
   name: string;
   clientToken?: string;
@@ -2204,7 +2204,7 @@ export const AssessmentStatusList = /*@__PURE__*/ S.Array(AssessmentStatus);
 export interface ListAppAssessmentsRequest {
   appArn?: string;
   assessmentName?: string;
-  assessmentStatus?: AssessmentStatus[];
+  assessmentStatus?: (AssessmentStatus | (string & {}))[];
   complianceStatus?: ComplianceStatus | (string & {});
   invoker?: AssessmentInvoker | (string & {});
   reverseOrder?: boolean;
@@ -2883,7 +2883,7 @@ export const RecommendationTemplateStatusList = /*@__PURE__*/ S.Array(
 export interface ListRecommendationTemplatesRequest {
   assessmentArn?: string;
   reverseOrder?: boolean;
-  status?: RecommendationTemplateStatus[];
+  status?: (RecommendationTemplateStatus | (string & {}))[];
   recommendationTemplateArn?: string;
   name?: string;
   nextToken?: string;

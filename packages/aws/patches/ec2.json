@@ -5299,6 +5299,9 @@
         "expired",
         "partial"
       ]
+    },
+    "AttachmentStatus": {
+      "add": ["available"]
     }
   }
 }

@@ -36,11 +36,6 @@
         "items": "result",
         "pageSize": "perPage"
       }
-    },
-    {
-      "op": "move",
-      "from": "/shapes/com.cloudflare.r2#ListBucketObjectsRequest/members/cf_r2_jurisdiction",
-      "path": "/shapes/com.cloudflare.r2#ListBucketObjectsRequest/members/jurisdiction"
     }
   ]
 }

@@ -2849,7 +2849,7 @@ export interface PutMailboxPermissionsRequest {
   OrganizationId: string;
   EntityId: string;
   GranteeId: string;
-  PermissionValues: PermissionType[];
+  PermissionValues: (PermissionType | (string & {}))[];
 }
 export const PutMailboxPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

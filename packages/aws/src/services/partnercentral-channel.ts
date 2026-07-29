@@ -714,7 +714,7 @@ export const AssociatedResourceIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export type ServicePeriodTypeList = (ServicePeriodType | (string & {}))[];
 export const ServicePeriodTypeList = /*@__PURE__*/ S.Array(ServicePeriodType);
 export interface StartServicePeriodTypeFilters {
-  servicePeriodTypes?: ServicePeriodType[];
+  servicePeriodTypes?: (ServicePeriodType | (string & {}))[];
 }
 export const StartServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ servicePeriodTypes: S.optional(ServicePeriodTypeList) }),
@@ -722,7 +722,7 @@ export const StartServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartServicePeriodTypeFilters",
 }) as any as S.Schema<StartServicePeriodTypeFilters>;
 export interface RevokeServicePeriodTypeFilters {
-  servicePeriodTypes?: ServicePeriodType[];
+  servicePeriodTypes?: (ServicePeriodType | (string & {}))[];
 }
 export const RevokeServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ servicePeriodTypes: S.optional(ServicePeriodTypeList) }),
@@ -732,7 +732,7 @@ export const RevokeServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
 export type ProgramList = (Program | (string & {}))[];
 export const ProgramList = /*@__PURE__*/ S.Array(Program);
 export interface ProgramManagementAccountTypeFilters {
-  programs?: Program[];
+  programs?: (Program | (string & {}))[];
 }
 export const ProgramManagementAccountTypeFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ programs: S.optional(ProgramList) }),
@@ -833,7 +833,7 @@ export interface ListChannelHandshakesRequest {
   catalog: string;
   participantType: ParticipantType | (string & {});
   maxResults?: number;
-  statuses?: HandshakeStatus[];
+  statuses?: (HandshakeStatus | (string & {}))[];
   associatedResourceIdentifiers?: string[];
   handshakeTypeFilters?: ListChannelHandshakesTypeFilters;
   handshakeTypeSort?: ListChannelHandshakesTypeSort;
@@ -1031,9 +1031,9 @@ export interface ListProgramManagementAccountsRequest {
   catalog: string;
   maxResults?: number;
   displayNames?: string[];
-  programs?: Program[];
+  programs?: (Program | (string & {}))[];
   accountIds?: string[];
-  statuses?: ProgramManagementAccountStatus[];
+  statuses?: (ProgramManagementAccountStatus | (string & {}))[];
   sort?: ListProgramManagementAccountsSortBase;
   nextToken?: string;
 }
@@ -1139,7 +1139,7 @@ export interface ListRelationshipsRequest {
   catalog: string;
   maxResults?: number;
   associatedAccountIds?: string[];
-  associationTypes?: AssociationType[];
+  associationTypes?: (AssociationType | (string & {}))[];
   displayNames?: string[];
   programManagementAccountIdentifiers?: string[];
   sort?: ListRelationshipsSortBase;

@@ -1402,7 +1402,7 @@ export interface DescribeConfigurationTemplatesRequest {
   service?: string;
   logTypes?: string[];
   resourceTypes?: string[];
-  deliveryDestinationTypes?: DeliveryDestinationType[];
+  deliveryDestinationTypes?: (DeliveryDestinationType | (string & {}))[];
   nextToken?: string;
   limit?: number;
 }
@@ -1966,7 +1966,7 @@ export type ImportStatusList = (ImportStatus | (string & {}))[];
 export const ImportStatusList = /*@__PURE__*/ S.Array(ImportStatus);
 export interface DescribeImportTaskBatchesRequest {
   importId: string;
-  batchImportStatus?: ImportStatus[];
+  batchImportStatus?: (ImportStatus | (string & {}))[];
   limit?: number;
   nextToken?: string;
 }
@@ -3831,7 +3831,7 @@ export interface GetScheduledQueryHistoryRequest {
   identifier: string;
   startTime: number;
   endTime: number;
-  executionStatuses?: ExecutionStatus[];
+  executionStatuses?: (ExecutionStatus | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }

@@ -2016,7 +2016,7 @@ export type AllowedUserActions = (AllowedUserAction | (string & {}))[];
 export const AllowedUserActions = /*@__PURE__*/ S.Array(AllowedUserAction);
 export interface Preview {
   PostAcceptTimeoutConfig: PostAcceptTimeoutConfig;
-  AllowedUserActions: AllowedUserAction[];
+  AllowedUserActions: (AllowedUserAction | (string & {}))[];
 }
 export const Preview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11964,7 +11964,7 @@ export type ValidationTestTypes = string[];
 export const ValidationTestTypes = /*@__PURE__*/ S.Array(S.String);
 export interface Filters {
   Queues?: string[];
-  Channels?: Channel[];
+  Channels?: (Channel | (string & {}))[];
   RoutingProfiles?: string[];
   RoutingStepExpressions?: string[];
   AgentStatuses?: string[];
@@ -12051,7 +12051,7 @@ export const CurrentMetricSortCriteriaMaxOne = /*@__PURE__*/ S.Array(
 export interface GetCurrentMetricDataRequest {
   InstanceId: string;
   Filters: Filters;
-  Groupings?: Grouping[];
+  Groupings?: (Grouping | (string & {}))[];
   CurrentMetrics: CurrentMetric[];
   NextToken?: string;
   MaxResults?: number;
@@ -12185,7 +12185,7 @@ export const ContactState = /*@__PURE__*/ S.String;
 export type ContactStates = (ContactState | (string & {}))[];
 export const ContactStates = /*@__PURE__*/ S.Array(ContactState);
 export interface ContactFilter {
-  ContactStates?: ContactState[];
+  ContactStates?: (ContactState | (string & {}))[];
 }
 export const ContactFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContactStates: S.optional(ContactStates) }),
@@ -12723,7 +12723,7 @@ export interface GetMetricDataRequest {
   StartTime: Date;
   EndTime: Date;
   Filters: Filters;
-  Groupings?: Grouping[];
+  Groupings?: (Grouping | (string & {}))[];
   HistoricalMetrics: HistoricalMetric[];
   NextToken?: string;
   MaxResults?: number;
@@ -13309,7 +13309,7 @@ export interface ListAgentStatusRequest {
   InstanceId: string;
   NextToken?: string;
   MaxResults?: number;
-  AgentStatusTypes?: AgentStatusType[];
+  AgentStatusTypes?: (AgentStatusType | (string & {}))[];
 }
 export const ListAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14093,7 +14093,7 @@ export type ContactFlowTypes = (ContactFlowType | (string & {}))[];
 export const ContactFlowTypes = /*@__PURE__*/ S.Array(ContactFlowType);
 export interface ListContactFlowsRequest {
   InstanceId: string;
-  ContactFlowTypes?: ContactFlowType[];
+  ContactFlowTypes?: (ContactFlowType | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -14215,7 +14215,7 @@ export const ReferenceTypes = /*@__PURE__*/ S.Array(ReferenceType);
 export interface ListContactReferencesRequest {
   InstanceId: string;
   ContactId: string;
-  ReferenceTypes: ReferenceType[];
+  ReferenceTypes: (ReferenceType | (string & {}))[];
   NextToken?: string;
 }
 export const ListContactReferencesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15445,8 +15445,8 @@ export const PhoneNumberCountryCodes = /*@__PURE__*/ S.Array(
 );
 export interface ListPhoneNumbersRequest {
   InstanceId: string;
-  PhoneNumberTypes?: PhoneNumberType[];
-  PhoneNumberCountryCodes?: PhoneNumberCountryCode[];
+  PhoneNumberTypes?: (PhoneNumberType | (string & {}))[];
+  PhoneNumberCountryCodes?: (PhoneNumberCountryCode | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -15513,8 +15513,8 @@ export interface ListPhoneNumbersV2Request {
   InstanceId?: string;
   MaxResults?: number;
   NextToken?: string;
-  PhoneNumberCountryCodes?: PhoneNumberCountryCode[];
-  PhoneNumberTypes?: PhoneNumberType[];
+  PhoneNumberCountryCodes?: (PhoneNumberCountryCode | (string & {}))[];
+  PhoneNumberTypes?: (PhoneNumberType | (string & {}))[];
   PhoneNumberPrefix?: string;
 }
 export const ListPhoneNumbersV2Request = /*@__PURE__*/ S.suspend(() =>
@@ -15833,7 +15833,7 @@ export type QueueTypes = (QueueType | (string & {}))[];
 export const QueueTypes = /*@__PURE__*/ S.Array(QueueType);
 export interface ListQueuesRequest {
   InstanceId: string;
-  QueueTypes?: QueueType[];
+  QueueTypes?: (QueueType | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -15897,7 +15897,7 @@ export interface ListQuickConnectsRequest {
   InstanceId: string;
   NextToken?: string;
   MaxResults?: number;
-  QuickConnectTypes?: QuickConnectType[];
+  QuickConnectTypes?: (QuickConnectType | (string & {}))[];
 }
 export const ListQuickConnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15957,7 +15957,7 @@ export interface ListRealtimeContactAnalysisSegmentsV2Request {
   MaxResults?: number;
   NextToken?: string;
   OutputType: RealTimeContactAnalysisOutputType | (string & {});
-  SegmentTypes: RealTimeContactAnalysisSegmentType[];
+  SegmentTypes: (RealTimeContactAnalysisSegmentType | (string & {}))[];
 }
 export const ListRealtimeContactAnalysisSegmentsV2Request =
   /*@__PURE__*/ S.suspend(() =>
@@ -17851,7 +17851,7 @@ export interface MonitorContactRequest {
   InstanceId: string;
   ContactId: string;
   UserId: string;
-  AllowedMonitorCapabilities?: MonitorCapability[];
+  AllowedMonitorCapabilities?: (MonitorCapability | (string & {}))[];
   ClientToken?: string;
 }
 export const MonitorContactRequest = /*@__PURE__*/ S.suspend(() =>
@@ -19124,9 +19124,9 @@ export interface SearchCriteria {
   Name?: NameCriteria;
   AgentIds?: string[];
   AgentHierarchyGroups?: AgentHierarchyGroups;
-  Channels?: Channel[];
+  Channels?: (Channel | (string & {}))[];
   ContactAnalysis?: ContactAnalysis;
-  InitiationMethods?: ContactInitiationMethod[];
+  InitiationMethods?: (ContactInitiationMethod | (string & {}))[];
   QueueIds?: string[];
   RoutingCriteria?: SearchableRoutingCriteria;
   AdditionalTimeRange?: SearchContactsAdditionalTimeRange;
@@ -21603,7 +21603,10 @@ export interface StartChatContactRequest {
   RelatedContactId?: string;
   SegmentAttributes?: { [key: string]: SegmentAttributeValue | undefined };
   CustomerId?: string | redacted.Redacted<string>;
-  DisconnectOnCustomerExit?: DisconnectOnCustomerExitParticipantType[];
+  DisconnectOnCustomerExit?: (
+    | DisconnectOnCustomerExitParticipantType
+    | (string & {})
+  )[];
 }
 export const StartChatContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

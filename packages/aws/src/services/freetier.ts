@@ -296,7 +296,7 @@ export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
   Key: Dimension | (string & {});
   Values: string[];
-  MatchOptions: MatchOption[];
+  MatchOptions: (MatchOption | (string & {}))[];
 }
 export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: Dimension, Values: Values, MatchOptions: MatchOptions }),
@@ -383,7 +383,7 @@ export const GetFreeTierUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export type FilterActivityStatuses = (ActivityStatus | (string & {}))[];
 export const FilterActivityStatuses = /*@__PURE__*/ S.Array(ActivityStatus);
 export interface ListAccountActivitiesRequest {
-  filterActivityStatuses?: ActivityStatus[];
+  filterActivityStatuses?: (ActivityStatus | (string & {}))[];
   nextToken?: string;
   maxResults?: number;
   languageCode?: LanguageCode | (string & {});

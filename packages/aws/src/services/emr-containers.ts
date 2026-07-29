@@ -1263,7 +1263,7 @@ export interface ListJobRunsRequest {
   createdBefore?: Date;
   createdAfter?: Date;
   name?: string;
-  states?: JobRunState[];
+  states?: (JobRunState | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }
@@ -1359,7 +1359,7 @@ export interface ListManagedEndpointsRequest {
   createdBefore?: Date;
   createdAfter?: Date;
   types?: string[];
-  states?: EndpointState[];
+  states?: (EndpointState | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }
@@ -1484,7 +1484,7 @@ export interface ListVirtualClustersRequest {
   containerProviderType?: ContainerProviderType | (string & {});
   createdAfter?: Date;
   createdBefore?: Date;
-  states?: VirtualClusterState[];
+  states?: (VirtualClusterState | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
   eksAccessEntryIntegrated?: boolean;

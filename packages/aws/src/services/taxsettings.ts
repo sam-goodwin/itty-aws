@@ -366,7 +366,7 @@ export const MalaysiaServiceTaxCodesList = /*@__PURE__*/ S.Array(
 export type TaxInformationNumber = string;
 export type BusinessRegistrationNumber = string;
 export interface MalaysiaAdditionalInfo {
-  serviceTaxCodes?: MalaysiaServiceTaxCode[];
+  serviceTaxCodes?: (MalaysiaServiceTaxCode | (string & {}))[];
   taxInformationNumber?: string;
   businessRegistrationNumber?: string;
 }

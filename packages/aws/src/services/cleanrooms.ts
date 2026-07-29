@@ -1254,7 +1254,7 @@ export const CustomMLMemberAbilities = /*@__PURE__*/ S.Array(
   CustomMLMemberAbility,
 );
 export interface MLMemberAbilities {
-  customMLMemberAbilities: CustomMLMemberAbility[];
+  customMLMemberAbilities: (CustomMLMemberAbility | (string & {}))[];
 }
 export const MLMemberAbilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customMLMemberAbilities: CustomMLMemberAbilities }),
@@ -1332,7 +1332,7 @@ export const PaymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentConfiguration>;
 export interface MemberSpecification {
   accountId: string;
-  memberAbilities: MemberAbility[];
+  memberAbilities: (MemberAbility | (string & {}))[];
   mlMemberAbilities?: MLMemberAbilities;
   displayName: string;
   paymentConfiguration?: PaymentConfiguration;
@@ -1432,7 +1432,7 @@ export interface CreateCollaborationInput {
   members: MemberSpecification[];
   name: string;
   description: string;
-  creatorMemberAbilities: MemberAbility[];
+  creatorMemberAbilities: (MemberAbility | (string & {}))[];
   creatorMLMemberAbilities?: MLMemberAbilities;
   creatorDisplayName: string;
   dataEncryptionMetadata?: DataEncryptionMetadata;
@@ -1441,8 +1441,8 @@ export interface CreateCollaborationInput {
   tags?: { [key: string]: string | undefined };
   creatorPaymentConfiguration?: PaymentConfiguration;
   analyticsEngine?: AnalyticsEngine | (string & {});
-  autoApprovedChangeRequestTypes?: AutoApprovedChangeType[];
-  allowedResultRegions?: SupportedS3Region[];
+  autoApprovedChangeRequestTypes?: (AutoApprovedChangeType | (string & {}))[];
+  allowedResultRegions?: (SupportedS3Region | (string & {}))[];
   isMetricsEnabled?: boolean;
 }
 export const CreateCollaborationInput = /*@__PURE__*/ S.suspend(() =>
@@ -1531,7 +1531,7 @@ export const ChangeSpecificationType = /*@__PURE__*/ S.String;
 
 export interface MemberChangeSpecification {
   accountId: string;
-  memberAbilities: MemberAbility[];
+  memberAbilities: (MemberAbility | (string & {}))[];
   mlMemberAbilities?: MLMemberAbilities;
   paymentConfiguration?: PaymentConfiguration;
   displayName?: string;
@@ -1548,7 +1548,7 @@ export const MemberChangeSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "MemberChangeSpecification",
 }) as any as S.Schema<MemberChangeSpecification>;
 export interface CollaborationChangeSpecification {
-  autoApprovedChangeTypes?: AutoApprovedChangeType[];
+  autoApprovedChangeTypes?: (AutoApprovedChangeType | (string & {}))[];
 }
 export const CollaborationChangeSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ autoApprovedChangeTypes: S.optional(AutoApprovedChangeTypeList) }),
@@ -1904,7 +1904,7 @@ export interface CreateConfiguredTableInput {
   tableReference: TableReference;
   allowedColumns: string[];
   analysisMethod: AnalysisMethod | (string & {});
-  selectedAnalysisMethods?: SelectedAnalysisMethod[];
+  selectedAnalysisMethods?: (SelectedAnalysisMethod | (string & {}))[];
   tags?: { [key: string]: string | undefined };
 }
 export const CreateConfiguredTableInput = /*@__PURE__*/ S.suspend(() =>
@@ -6524,7 +6524,7 @@ export interface UpdateConfiguredTableInput {
   tableReference?: TableReference;
   allowedColumns?: string[];
   analysisMethod?: AnalysisMethod | (string & {});
-  selectedAnalysisMethods?: SelectedAnalysisMethod[];
+  selectedAnalysisMethods?: (SelectedAnalysisMethod | (string & {}))[];
 }
 export const UpdateConfiguredTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

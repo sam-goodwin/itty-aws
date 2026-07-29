@@ -1392,17 +1392,12 @@ export const awsSpec = (
     return names;
   })();
 
-  /**
-   * The inline open arm for an enum-targeted reference, if any.
-   * Single-value enums stay closed — they are discriminant literals,
-   * not open value sets (v0 parity).
-   */
+  /** The inline open arm for an enum-targeted reference, if any. */
   const openEnumArm = (target: string): string | undefined => {
-    const d = shapes[target];
-    if (Object.keys(d?.members ?? {}).length < 2) return undefined;
-    return d?.type === "enum"
+    const t = shapes[target]?.type;
+    return t === "enum"
       ? "(string & {})"
-      : d?.type === "intEnum"
+      : t === "intEnum"
         ? "(number & {})"
         : undefined;
   };
@@ -1410,11 +1405,23 @@ export const awsSpec = (
   /**
    * TS type of a member/element reference as seen from inside the shape
    * named `ownerName`: enum references from request-reachable shapes gain
-   * the inline open arm; everything else is the plain (closed) alias.
+   * the inline open arm — including enums reached through inlined list
+   * elements and map values; everything else is the plain (closed) alias.
    */
   const tsTypeAt = (target: string, ownerName: string): string => {
+    if (!requestReachableNames.has(ownerName)) return tsTypeOf(target);
+    const shape = shapes[target];
+    if (shape?.type === "list") {
+      const elementType = tsTypeAt(shape.member.target, ownerName);
+      return elementType.includes("|")
+        ? `(${elementType})[]`
+        : `${elementType}[]`;
+    }
+    if (shape?.type === "map") {
+      const valueType = tsTypeAt(shape.value.target, ownerName);
+      return `{ [key: string]: ${valueType} | undefined }`;
+    }
     const base = tsTypeOf(target);
-    if (!requestReachableNames.has(ownerName)) return base;
     const arm = openEnumArm(target);
     return arm ? `${base} | ${arm}` : base;
   };

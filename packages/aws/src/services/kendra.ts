@@ -1117,7 +1117,7 @@ export type SalesforceCustomKnowledgeArticleTypeConfigurationList =
 export const SalesforceCustomKnowledgeArticleTypeConfigurationList =
   /*@__PURE__*/ S.Array(SalesforceCustomKnowledgeArticleTypeConfiguration);
 export interface SalesforceKnowledgeArticleConfiguration {
-  IncludedStates: SalesforceKnowledgeArticleState[];
+  IncludedStates: (SalesforceKnowledgeArticleState | (string & {}))[];
   StandardKnowledgeArticleTypeConfiguration?: SalesforceStandardKnowledgeArticleTypeConfiguration;
   CustomKnowledgeArticleTypeConfigurations?: SalesforceCustomKnowledgeArticleTypeConfiguration[];
 }
@@ -1151,7 +1151,10 @@ export interface SalesforceChatterFeedConfiguration {
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
   FieldMappings?: DataSourceToIndexFieldMapping[];
-  IncludeFilterTypes?: SalesforceChatterFeedIncludeFilterType[];
+  IncludeFilterTypes?: (
+    | SalesforceChatterFeedIncludeFilterType
+    | (string & {})
+  )[];
 }
 export const SalesforceChatterFeedConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1736,7 +1739,7 @@ export interface SlackConfiguration {
   TeamId: string;
   SecretArn: string;
   VpcConfiguration?: DataSourceVpcConfiguration;
-  SlackEntityList: SlackEntity[];
+  SlackEntityList: (SlackEntity | (string & {}))[];
   UseChangeLog?: boolean;
   CrawlBotMessage?: boolean;
   ExcludeArchived?: boolean;
@@ -1858,7 +1861,7 @@ export interface JiraConfiguration {
   Project?: string[];
   IssueType?: string[];
   Status?: string[];
-  IssueSubEntityFilter?: IssueSubEntity[];
+  IssueSubEntityFilter?: (IssueSubEntity | (string & {}))[];
   AttachmentFieldMappings?: DataSourceToIndexFieldMapping[];
   CommentFieldMappings?: DataSourceToIndexFieldMapping[];
   IssueFieldMappings?: DataSourceToIndexFieldMapping[];
@@ -2025,7 +2028,7 @@ export interface AlfrescoConfiguration {
   SslCertificateS3Path: S3Path;
   CrawlSystemFolders?: boolean;
   CrawlComments?: boolean;
-  EntityFilter?: AlfrescoEntity[];
+  EntityFilter?: (AlfrescoEntity | (string & {}))[];
   DocumentLibraryFieldMappings?: DataSourceToIndexFieldMapping[];
   BlogFieldMappings?: DataSourceToIndexFieldMapping[];
   WikiFieldMappings?: DataSourceToIndexFieldMapping[];
@@ -3549,7 +3552,7 @@ export interface GetQuerySuggestionsRequest {
   IndexId: string;
   QueryText: string;
   MaxSuggestionsCount?: number;
-  SuggestionTypes?: SuggestionType[];
+  SuggestionTypes?: (SuggestionType | (string & {}))[];
   AttributeSuggestionsConfig?: AttributeSuggestionsGetConfig;
 }
 export const GetQuerySuggestionsRequest = /*@__PURE__*/ S.suspend(() =>

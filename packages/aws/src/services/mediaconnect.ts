@@ -5972,7 +5972,7 @@ export type RouterInputFilter =
       NameContains?: never;
       RegionNames?: never;
       NetworkInterfaceArns?: never;
-      RoutingScopes: RoutingScope[];
+      RoutingScopes: (RoutingScope | (string & {}))[];
       InputTypes?: never;
     }
   | {
@@ -5980,7 +5980,7 @@ export type RouterInputFilter =
       RegionNames?: never;
       NetworkInterfaceArns?: never;
       RoutingScopes?: never;
-      InputTypes: RouterInputType[];
+      InputTypes: (RouterInputType | (string & {}))[];
     };
 export const RouterInputFilter = /*@__PURE__*/ S.Union([
   S.Struct({ NameContains: StringList }),
@@ -6106,7 +6106,7 @@ export type RouterNetworkInterfaceFilter =
     }
   | {
       RegionNames?: never;
-      NetworkInterfaceTypes: RouterNetworkInterfaceType[];
+      NetworkInterfaceTypes: (RouterNetworkInterfaceType | (string & {}))[];
       NameContains?: never;
     }
   | {
@@ -6232,7 +6232,7 @@ export type RouterOutputFilter =
   | {
       RegionNames?: never;
       NetworkInterfaceArns?: never;
-      RoutingScopes: RoutingScope[];
+      RoutingScopes: (RoutingScope | (string & {}))[];
       OutputTypes?: never;
       RoutedInputArns?: never;
       NameContains?: never;
@@ -6241,7 +6241,7 @@ export type RouterOutputFilter =
       RegionNames?: never;
       NetworkInterfaceArns?: never;
       RoutingScopes?: never;
-      OutputTypes: RouterOutputType[];
+      OutputTypes: (RouterOutputType | (string & {}))[];
       RoutedInputArns?: never;
       NameContains?: never;
     }

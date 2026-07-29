@@ -5789,7 +5789,7 @@ export const EncryptionTypeList = /*@__PURE__*/ S.Array(
   EncryptionType.pipe(T.XmlName("EncryptionType")),
 );
 export interface BlockedEncryptionTypes {
-  EncryptionType?: EncryptionType[];
+  EncryptionType?: (EncryptionType | (string & {}))[];
 }
 export const BlockedEncryptionTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6089,7 +6089,7 @@ export interface InventoryConfiguration {
   Filter?: InventoryFilter;
   Id: string;
   IncludedObjectVersions: InventoryIncludedObjectVersions | (string & {});
-  OptionalFields?: InventoryOptionalField[];
+  OptionalFields?: (InventoryOptionalField | (string & {}))[];
   Schedule: InventorySchedule;
 }
 export const InventoryConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6876,7 +6876,7 @@ export const NotificationConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
 export interface TopicConfiguration {
   Id?: string;
   TopicArn: string;
-  Events: Event[];
+  Events: (Event | (string & {}))[];
   Filter?: NotificationConfigurationFilter;
 }
 export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6895,7 +6895,7 @@ export type QueueArn = string;
 export interface QueueConfiguration {
   Id?: string;
   QueueArn: string;
-  Events: Event[];
+  Events: (Event | (string & {}))[];
   Filter?: NotificationConfigurationFilter;
 }
 export const QueueConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6914,7 +6914,7 @@ export type LambdaFunctionArn = string;
 export interface LambdaFunctionConfiguration {
   Id?: string;
   LambdaFunctionArn: string;
-  Events: Event[];
+  Events: (Event | (string & {}))[];
   Filter?: NotificationConfigurationFilter;
 }
 export const LambdaFunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -8039,7 +8039,7 @@ export interface GetObjectAttributesRequest {
   SSECustomerKeyMD5?: string;
   RequestPayer?: RequestPayer | (string & {});
   ExpectedBucketOwner?: string;
-  ObjectAttributes: ObjectAttributes[];
+  ObjectAttributes: (ObjectAttributes | (string & {}))[];
 }
 export const GetObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9421,7 +9421,7 @@ export interface ListObjectsRequest {
   Prefix?: string;
   RequestPayer?: RequestPayer | (string & {});
   ExpectedBucketOwner?: string;
-  OptionalObjectAttributes?: OptionalObjectAttributes[];
+  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
 }
 export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9557,7 +9557,7 @@ export interface ListObjectsV2Request {
   StartAfter?: string;
   RequestPayer?: RequestPayer | (string & {});
   ExpectedBucketOwner?: string;
-  OptionalObjectAttributes?: OptionalObjectAttributes[];
+  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
 }
 export const ListObjectsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9645,7 +9645,7 @@ export interface ListObjectVersionsRequest {
   VersionIdMarker?: string;
   ExpectedBucketOwner?: string;
   RequestPayer?: RequestPayer | (string & {});
-  OptionalObjectAttributes?: OptionalObjectAttributes[];
+  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
 }
 export const ListObjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

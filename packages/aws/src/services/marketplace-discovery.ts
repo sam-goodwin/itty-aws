@@ -1958,7 +1958,7 @@ export const FacetTypeList = /*@__PURE__*/ S.Array(SearchFacetType);
 export interface SearchFacetsInput {
   searchText?: string;
   filters?: SearchFilter[];
-  facetTypes?: SearchFacetType[];
+  facetTypes?: (SearchFacetType | (string & {}))[];
   nextToken?: string;
 }
 export const SearchFacetsInput = /*@__PURE__*/ S.suspend(() =>

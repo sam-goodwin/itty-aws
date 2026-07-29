@@ -525,7 +525,7 @@ export interface DashPackage {
   Encryption?: DashEncryption;
   IncludeEncoderConfigurationInSegments?: boolean;
   IncludeIframeOnlyStream?: boolean;
-  PeriodTriggers?: __PeriodTriggersElement[];
+  PeriodTriggers?: (__PeriodTriggersElement | (string & {}))[];
   SegmentDurationSeconds?: number;
   SegmentTemplateFormat?: SegmentTemplateFormat | (string & {});
 }

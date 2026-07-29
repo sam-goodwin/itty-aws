@@ -1393,7 +1393,7 @@ export const PathPrefixHierarchy = /*@__PURE__*/ S.Array(PathPrefix);
 export interface PrefixConfig {
   prefixType?: PrefixType | (string & {});
   prefixFormat?: PrefixFormat | (string & {});
-  pathPrefixHierarchy?: PathPrefix[];
+  pathPrefixHierarchy?: (PathPrefix | (string & {}))[];
 }
 export const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3019,7 +3019,7 @@ export const DescribeConnectorProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectorProfilesResponse",
 }) as any as S.Schema<DescribeConnectorProfilesResponse>;
 export interface DescribeConnectorsRequest {
-  connectorTypes?: ConnectorType[];
+  connectorTypes?: (ConnectorType | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }

@@ -190,7 +190,7 @@ export interface MaintenanceWindow {
   startTimeMinute?: number;
   endTimeHour?: number;
   endTimeMinute?: number;
-  daysOfTheWeek?: DayOfWeek[];
+  daysOfTheWeek?: (DayOfWeek | (string & {}))[];
   applyTimeOf?: ApplyTimeOf | (string & {});
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>

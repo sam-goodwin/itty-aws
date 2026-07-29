@@ -1961,14 +1961,8 @@ export interface UpdateAppRequest {
   zoneId: string;
   /** App identifier. */
   appId: string;
-  /** App identifier. */
-  id: string;
-  /** When the Application was created. */
-  createdOn: string;
   /** The name and type of DNS record for the Spectrum application. */
   dns: AppsUpdateRequestDnsSpectrumConfigAppConfig;
-  /** When the Application was last modified. */
-  modifiedOn: string;
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
@@ -1996,10 +1990,7 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
     dns: AppsUpdateRequestDnsSpectrumConfigAppConfig,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
     protocol: S.String,
     trafficType: S.optional(
       AppsUpdateRequestTrafficType.pipe(T.Body("traffic_type")),

@@ -604,14 +604,12 @@ export const AiTimeseriesGroupsSummaryResponseSummary0Map =
 export interface AiTimeseriesGroupsSummaryResponse {
   /** Metadata for the results. */
   meta: AiTimeseriesGroupsSummaryResponseMeta;
-  summary0: AiTimeseriesGroupsSummaryResponseSummary0Map;
+  summary_0: AiTimeseriesGroupsSummaryResponseSummary0Map;
 }
 export const AiTimeseriesGroupsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiTimeseriesGroupsSummaryResponseMeta,
-    summary0: AiTimeseriesGroupsSummaryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AiTimeseriesGroupsSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AiTimeseriesGroupsSummaryResponse",
@@ -1552,15 +1550,13 @@ export const AiTimeseriesGroupsTimeseriesGroupsResponseSerie0 =
 export interface AiTimeseriesGroupsTimeseriesGroupsResponse {
   /** Metadata for the results. */
   meta: AiTimeseriesGroupsTimeseriesGroupsResponseMeta;
-  serie0: AiTimeseriesGroupsTimeseriesGroupsResponseSerie0;
+  serie_0: AiTimeseriesGroupsTimeseriesGroupsResponseSerie0;
 }
 export const AiTimeseriesGroupsTimeseriesGroupsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AiTimeseriesGroupsTimeseriesGroupsResponseMeta,
-      serie0: AiTimeseriesGroupsTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AiTimeseriesGroupsTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "AiTimeseriesGroupsTimeseriesGroupsResponse",
@@ -1902,12 +1898,12 @@ export const EmailRoutingSummaryArcResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface ArcEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryArcResponseMeta;
-  summary0: EmailRoutingSummaryArcResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const ArcEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryArcResponseMeta,
-    summary0: EmailRoutingSummaryArcResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ArcEmailRoutingSummaryResponse",
@@ -2329,15 +2325,13 @@ export const EmailRoutingTimeseriesGroupsArcResponseSerie0 =
 export interface ArcEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsArcResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsArcResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsArcResponseSerie0;
 }
 export const ArcEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsArcResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsArcResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsArcResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ArcEmailRoutingTimeseriesGroupResponse",
@@ -2669,12 +2663,12 @@ export const EmailSecuritySummaryArcResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface ArcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryArcResponseMeta;
-  summary0: EmailSecuritySummaryArcResponseSummary0;
+  summary_0: EmailSecuritySummaryArcResponseSummary0;
 }
 export const ArcEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryArcResponseMeta,
-    summary0: EmailSecuritySummaryArcResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: EmailSecuritySummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ArcEmailSecuritySummaryResponse",
@@ -3085,15 +3079,13 @@ export const EmailSecurityTimeseriesGroupsArcResponseSerie0 =
 export interface ArcEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsArcResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsArcResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsArcResponseSerie0;
 }
 export const ArcEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsArcResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsArcResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsArcResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ArcEmailSecurityTimeseriesGroupResponse",
@@ -3133,14 +3125,14 @@ export const AsesBgpIpTopRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface BgpIpsTopAsesResponseAsnsItem {
   asn: number;
-  v424s: number;
-  v648s: number;
+  v4_24s: number;
+  v6_48s: number;
 }
 export const BgpIpsTopAsesResponseAsnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.Number,
-    v424s: S.Number.pipe(T.Body("v4_24s")),
-    v648s: S.Number.pipe(T.Body("v6_48s")),
+    v4_24s: S.Number,
+    v6_48s: S.Number,
   }),
 ).annotate({
   identifier: "BgpIpsTopAsesResponseAsnsItem",
@@ -3812,12 +3804,12 @@ export const DnsTopAsesResponseTop0List = /*@__PURE__*/ S.Array(
 export interface AsesDnsTopResponse {
   /** Metadata for the results. */
   meta: DnsTopAsesResponseMeta;
-  top0: DnsTopAsesResponseTop0List;
+  top_0: DnsTopAsesResponseTop0List;
 }
 export const AsesDnsTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTopAsesResponseMeta,
-    top0: DnsTopAsesResponseTop0List.pipe(T.Body("top_0")),
+    top_0: DnsTopAsesResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AsesDnsTopResponse",
@@ -4109,12 +4101,12 @@ export const NetflowsTopAsesResponseTop0List = /*@__PURE__*/ S.Array(
 export interface AsesNetflowTopResponse {
   /** Metadata for the results. */
   meta: NetflowsTopAsesResponseMeta;
-  top0: NetflowsTopAsesResponseTop0List;
+  top_0: NetflowsTopAsesResponseTop0List;
 }
 export const AsesNetflowTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsTopAsesResponseMeta,
-    top0: NetflowsTopAsesResponseTop0List.pipe(T.Body("top_0")),
+    top_0: NetflowsTopAsesResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AsesNetflowTopResponse",
@@ -4422,12 +4414,12 @@ export const QualitySpeedTopAsesResponseTop0List = /*@__PURE__*/ S.Array(
 export interface AsesQualitySpeedTopResponse {
   /** Metadata for the results. */
   meta: QualitySpeedTopAsesResponseMeta;
-  top0: QualitySpeedTopAsesResponseTop0List;
+  top_0: QualitySpeedTopAsesResponseTop0List;
 }
 export const AsesQualitySpeedTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: QualitySpeedTopAsesResponseMeta,
-    top0: QualitySpeedTopAsesResponseTop0List.pipe(T.Body("top_0")),
+    top_0: QualitySpeedTopAsesResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AsesQualitySpeedTopResponse",
@@ -4897,12 +4889,12 @@ export const AttacksLayer3TopAttacksResponseTop0List = /*@__PURE__*/ S.Array(
 export interface AttacksAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TopAttacksResponseMeta;
-  top0: AttacksLayer3TopAttacksResponseTop0List;
+  top_0: AttacksLayer3TopAttacksResponseTop0List;
 }
 export const AttacksAttackLayer3TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3TopAttacksResponseMeta,
-    top0: AttacksLayer3TopAttacksResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer3TopAttacksResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AttacksAttackLayer3TopResponse",
@@ -5261,12 +5253,12 @@ export const AttacksLayer7TopAttacksResponseTop0List = /*@__PURE__*/ S.Array(
 export interface AttacksAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopAttacksResponseMeta;
-  top0: AttacksLayer7TopAttacksResponseTop0List;
+  top_0: AttacksLayer7TopAttacksResponseTop0List;
 }
 export const AttacksAttackLayer7TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7TopAttacksResponseMeta,
-    top0: AttacksLayer7TopAttacksResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer7TopAttacksResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AttacksAttackLayer7TopResponse",
@@ -5593,24 +5585,24 @@ export const AttacksLayer3SummaryBitrateResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface AttacksLayer3SummaryBitrateResponseSummary0 {
   /** A numeric string. */
-  "1GBPSTO10GBPS": string;
+  _1_GBPS_TO_10_GBPS: string;
   /** A numeric string. */
-  "10GBPSTO100GBPS": string;
+  _10_GBPS_TO_100_GBPS: string;
   /** A numeric string. */
-  "500MBPSTO1GBPS": string;
+  _500_MBPS_TO_1_GBPS: string;
   /** A numeric string. */
-  OVER100GBPS: string;
+  OVER_100_GBPS: string;
   /** A numeric string. */
-  UNDER500MBPS: string;
+  UNDER_500_MBPS: string;
 }
 export const AttacksLayer3SummaryBitrateResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1GBPSTO10GBPS": S.String.pipe(T.Body("_1_GBPS_TO_10_GBPS")),
-      "10GBPSTO100GBPS": S.String.pipe(T.Body("_10_GBPS_TO_100_GBPS")),
-      "500MBPSTO1GBPS": S.String.pipe(T.Body("_500_MBPS_TO_1_GBPS")),
-      OVER100GBPS: S.String.pipe(T.Body("OVER_100_GBPS")),
-      UNDER500MBPS: S.String.pipe(T.Body("UNDER_500_MBPS")),
+      _1_GBPS_TO_10_GBPS: S.String,
+      _10_GBPS_TO_100_GBPS: S.String,
+      _500_MBPS_TO_1_GBPS: S.String,
+      OVER_100_GBPS: S.String,
+      UNDER_500_MBPS: S.String,
     }),
   ).annotate({
     identifier: "AttacksLayer3SummaryBitrateResponseSummary0",
@@ -5620,14 +5612,12 @@ export const AttacksLayer3SummaryBitrateResponseSummary0 =
 export interface BitrateAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryBitrateResponseMeta;
-  summary0: AttacksLayer3SummaryBitrateResponseSummary0;
+  summary_0: AttacksLayer3SummaryBitrateResponseSummary0;
 }
 export const BitrateAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryBitrateResponseMeta,
-    summary0: AttacksLayer3SummaryBitrateResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryBitrateResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BitrateAttackLayer3SummaryResponse",
@@ -6062,38 +6052,28 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList 
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList>;
 
 export interface AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 {
-  "1GBPSTO10GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList;
-  "10GBPSTO100GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList;
-  "500MBPSTO1GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList;
-  OVER100GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList;
+  _1_GBPS_TO_10_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList;
+  _10_GBPS_TO_100_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList;
+  _500_MBPS_TO_1_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList;
+  OVER_100_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList;
   timestamps: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0TimestampsList;
-  UNDER500MBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList;
+  UNDER_500_MBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList;
 }
 export const AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1GBPSTO10GBPS":
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList.pipe(
-          T.Body("_1_GBPS_TO_10_GBPS"),
-        ),
-      "10GBPSTO100GBPS":
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList.pipe(
-          T.Body("_10_GBPS_TO_100_GBPS"),
-        ),
-      "500MBPSTO1GBPS":
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList.pipe(
-          T.Body("_500_MBPS_TO_1_GBPS"),
-        ),
-      OVER100GBPS:
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList.pipe(
-          T.Body("OVER_100_GBPS"),
-        ),
+      _1_GBPS_TO_10_GBPS:
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList,
+      _10_GBPS_TO_100_GBPS:
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList,
+      _500_MBPS_TO_1_GBPS:
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList,
+      OVER_100_GBPS:
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList,
       timestamps:
         AttacksLayer3TimeseriesGroupsBitrateResponseSerie0TimestampsList,
-      UNDER500MBPS:
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList.pipe(
-          T.Body("UNDER_500_MBPS"),
-        ),
+      UNDER_500_MBPS:
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList,
     }),
   ).annotate({
     identifier: "AttacksLayer3TimeseriesGroupsBitrateResponseSerie0",
@@ -6103,15 +6083,13 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 =
 export interface BitrateAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsBitrateResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0;
 }
 export const BitrateAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsBitrateResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BitrateAttackLayer3TimeseriesGroupResponse",
@@ -6535,12 +6513,12 @@ export const HttpSummaryBotClassResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface BotClassHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryBotClassResponseMeta;
-  summary0: HttpSummaryBotClassResponseSummary0;
+  summary_0: HttpSummaryBotClassResponseSummary0;
 }
 export const BotClassHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryBotClassResponseMeta,
-    summary0: HttpSummaryBotClassResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryBotClassResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BotClassHttpSummaryResponse",
@@ -7039,12 +7017,12 @@ export const HttpTimeseriesGroupsBotClassResponseSerie0 =
 export interface BotClassHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsBotClassResponseMeta;
-  serie0: HttpTimeseriesGroupsBotClassResponseSerie0;
+  serie_0: HttpTimeseriesGroupsBotClassResponseSerie0;
 }
 export const BotClassHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTimeseriesGroupsBotClassResponseMeta,
-    serie0: HttpTimeseriesGroupsBotClassResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: HttpTimeseriesGroupsBotClassResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BotClassHttpTimeseriesGroupResponse",
@@ -7345,15 +7323,13 @@ export const LeakedCredentialsSummaryBotClassResponseSummary0 =
 export interface BotClassLeakedCredentialSummaryResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsSummaryBotClassResponseMeta;
-  summary0: LeakedCredentialsSummaryBotClassResponseSummary0;
+  summary_0: LeakedCredentialsSummaryBotClassResponseSummary0;
 }
 export const BotClassLeakedCredentialSummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: LeakedCredentialsSummaryBotClassResponseMeta,
-      summary0: LeakedCredentialsSummaryBotClassResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: LeakedCredentialsSummaryBotClassResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BotClassLeakedCredentialSummaryResponse",
@@ -7728,15 +7704,13 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseSerie0 =
 export interface BotClassLeakedCredentialTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsTimeseriesGroupsBotClassResponseMeta;
-  serie0: LeakedCredentialsTimeseriesGroupsBotClassResponseSerie0;
+  serie_0: LeakedCredentialsTimeseriesGroupsBotClassResponseSerie0;
 }
 export const BotClassLeakedCredentialTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: LeakedCredentialsTimeseriesGroupsBotClassResponseMeta,
-      serie0: LeakedCredentialsTimeseriesGroupsBotClassResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: LeakedCredentialsTimeseriesGroupsBotClassResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BotClassLeakedCredentialTimeseriesGroupResponse",
@@ -8162,12 +8136,12 @@ export const VerifiedBotsTopBotsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface BotsVerifiedBotTopResponse {
   /** Metadata for the results. */
   meta: VerifiedBotsTopBotsResponseMeta;
-  top0: VerifiedBotsTopBotsResponseTop0List;
+  top_0: VerifiedBotsTopBotsResponseTop0List;
 }
 export const BotsVerifiedBotTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: VerifiedBotsTopBotsResponseMeta,
-    top0: VerifiedBotsTopBotsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: VerifiedBotsTopBotsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BotsVerifiedBotTopResponse",
@@ -8671,15 +8645,13 @@ export const HttpTimeseriesGroupsBrowserFamilyResponseSerie0 =
 export interface BrowserFamilyHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsBrowserFamilyResponseMeta;
-  serie0: HttpTimeseriesGroupsBrowserFamilyResponseSerie0;
+  serie_0: HttpTimeseriesGroupsBrowserFamilyResponseSerie0;
 }
 export const BrowserFamilyHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsBrowserFamilyResponseMeta,
-      serie0: HttpTimeseriesGroupsBrowserFamilyResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsBrowserFamilyResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BrowserFamilyHttpTimeseriesGroupResponse",
@@ -9110,12 +9082,12 @@ export const HttpTopBrowserFamilyResponseTop0List = /*@__PURE__*/ S.Array(
 export interface BrowserFamilyHttpTopResponse {
   /** Metadata for the results. */
   meta: HttpTopBrowserFamilyResponseMeta;
-  top0: HttpTopBrowserFamilyResponseTop0List;
+  top_0: HttpTopBrowserFamilyResponseTop0List;
 }
 export const BrowserFamilyHttpTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTopBrowserFamilyResponseMeta,
-    top0: HttpTopBrowserFamilyResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpTopBrowserFamilyResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BrowserFamilyHttpTopResponse",
@@ -9619,12 +9591,12 @@ export const HttpTimeseriesGroupsBrowserResponseSerie0 =
 export interface BrowserHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsBrowserResponseMeta;
-  serie0: HttpTimeseriesGroupsBrowserResponseSerie0;
+  serie_0: HttpTimeseriesGroupsBrowserResponseSerie0;
 }
 export const BrowserHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTimeseriesGroupsBrowserResponseMeta,
-    serie0: HttpTimeseriesGroupsBrowserResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: HttpTimeseriesGroupsBrowserResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BrowserHttpTimeseriesGroupResponse",
@@ -10038,12 +10010,12 @@ export const HttpTopBrowserResponseTop0List = /*@__PURE__*/ S.Array(
 export interface BrowserHttpTopResponse {
   /** Metadata for the results. */
   meta: HttpTopBrowserResponseMeta;
-  top0: HttpTopBrowserResponseTop0List;
+  top_0: HttpTopBrowserResponseTop0List;
 }
 export const BrowserHttpTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTopBrowserResponseMeta,
-    top0: HttpTopBrowserResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpTopBrowserResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BrowserHttpTopResponse",
@@ -10493,12 +10465,12 @@ export const DnsSummaryCacheHitResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface CacheHitDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryCacheHitResponseMeta;
-  summary0: DnsSummaryCacheHitResponseSummary0;
+  summary_0: DnsSummaryCacheHitResponseSummary0;
 }
 export const CacheHitDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryCacheHitResponseMeta,
-    summary0: DnsSummaryCacheHitResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryCacheHitResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CacheHitDnsSummaryResponse",
@@ -11022,12 +10994,12 @@ export const DnsTimeseriesGroupsCacheHitResponseSerie0 =
 export interface CacheHitDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsCacheHitResponseMeta;
-  serie0: DnsTimeseriesGroupsCacheHitResponseSerie0;
+  serie_0: DnsTimeseriesGroupsCacheHitResponseSerie0;
 }
 export const CacheHitDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsCacheHitResponseMeta,
-    serie0: DnsTimeseriesGroupsCacheHitResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsCacheHitResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CacheHitDnsTimeseriesGroupResponse",
@@ -11106,15 +11078,12 @@ export const RankingInternetServicesCategoriesResponseCategories0List =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CategoriesRankingInternetServiceResponse {
-  categories0: RankingInternetServicesCategoriesResponseCategories0List;
+  categories_0: RankingInternetServicesCategoriesResponseCategories0List;
 }
 export const CategoriesRankingInternetServiceResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      categories0:
-        RankingInternetServicesCategoriesResponseCategories0List.pipe(
-          T.Body("categories_0"),
-        ),
+      categories_0: RankingInternetServicesCategoriesResponseCategories0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CategoriesRankingInternetServiceResponse",
@@ -11424,12 +11393,12 @@ export const VerifiedBotsTopCategoriesResponseTop0List = /*@__PURE__*/ S.Array(
 export interface CategoriesVerifiedBotTopResponse {
   /** Metadata for the results. */
   meta: VerifiedBotsTopCategoriesResponseMeta;
-  top0: VerifiedBotsTopCategoriesResponseTop0List;
+  top_0: VerifiedBotsTopCategoriesResponseTop0List;
 }
 export const CategoriesVerifiedBotTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: VerifiedBotsTopCategoriesResponseMeta,
-    top0: VerifiedBotsTopCategoriesResponseTop0List.pipe(T.Body("top_0")),
+    top_0: VerifiedBotsTopCategoriesResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CategoriesVerifiedBotTopResponse",
@@ -11486,11 +11455,11 @@ export const BgpRpkiAspaChangesResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaChangesResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaChangesResponseAsnInfo {
-  "13335": BgpRpkiAspaChangesResponseAsnInfo13335;
+  _13335: BgpRpkiAspaChangesResponseAsnInfo13335;
 }
 export const BgpRpkiAspaChangesResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    "13335": BgpRpkiAspaChangesResponseAsnInfo13335,
+    _13335: BgpRpkiAspaChangesResponseAsnInfo13335.pipe(T.Body("13335")),
   }),
 ).annotate({
   identifier: "BgpRpkiAspaChangesResponseAsnInfo",
@@ -11899,15 +11868,13 @@ export const LeakedCredentialsSummaryCompromisedResponseSummary0 =
 export interface CompromisedLeakedCredentialSummaryResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsSummaryCompromisedResponseMeta;
-  summary0: LeakedCredentialsSummaryCompromisedResponseSummary0;
+  summary_0: LeakedCredentialsSummaryCompromisedResponseSummary0;
 }
 export const CompromisedLeakedCredentialSummaryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: LeakedCredentialsSummaryCompromisedResponseMeta,
-      summary0: LeakedCredentialsSummaryCompromisedResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: LeakedCredentialsSummaryCompromisedResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CompromisedLeakedCredentialSummaryResponse",
@@ -12282,15 +12249,13 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0 =
 export interface CompromisedLeakedCredentialTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsTimeseriesGroupsCompromisedResponseMeta;
-  serie0: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0;
+  serie_0: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0;
 }
 export const CompromisedLeakedCredentialTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: LeakedCredentialsTimeseriesGroupsCompromisedResponseMeta,
-      serie0: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CompromisedLeakedCredentialTimeseriesGroupResponse",
@@ -12723,12 +12688,12 @@ export const HttpSummaryDeviceTypeResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface DeviceTypeHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryDeviceTypeResponseMeta;
-  summary0: HttpSummaryDeviceTypeResponseSummary0;
+  summary_0: HttpSummaryDeviceTypeResponseSummary0;
 }
 export const DeviceTypeHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryDeviceTypeResponseMeta,
-    summary0: HttpSummaryDeviceTypeResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryDeviceTypeResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeviceTypeHttpSummaryResponse",
@@ -13249,15 +13214,13 @@ export const HttpTimeseriesGroupsDeviceTypeResponseSerie0 =
 export interface DeviceTypeHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsDeviceTypeResponseMeta;
-  serie0: HttpTimeseriesGroupsDeviceTypeResponseSerie0;
+  serie_0: HttpTimeseriesGroupsDeviceTypeResponseSerie0;
 }
 export const DeviceTypeHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsDeviceTypeResponseMeta,
-      serie0: HttpTimeseriesGroupsDeviceTypeResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsDeviceTypeResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeviceTypeHttpTimeseriesGroupResponse",
@@ -13560,15 +13523,13 @@ export const RobotsTxtTopUserAgentsDirectiveResponseTop0List =
 export interface DirectiveRobotsTxtTopUserAgentResponse {
   /** Metadata for the results. */
   meta: RobotsTxtTopUserAgentsDirectiveResponseMeta;
-  top0: RobotsTxtTopUserAgentsDirectiveResponseTop0List;
+  top_0: RobotsTxtTopUserAgentsDirectiveResponseTop0List;
 }
 export const DirectiveRobotsTxtTopUserAgentResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: RobotsTxtTopUserAgentsDirectiveResponseMeta,
-      top0: RobotsTxtTopUserAgentsDirectiveResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: RobotsTxtTopUserAgentsDirectiveResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DirectiveRobotsTxtTopUserAgentResponse",
@@ -13914,12 +13875,12 @@ export const EmailRoutingSummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface DkimEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryDkimResponseMeta;
-  summary0: EmailRoutingSummaryDkimResponseSummary0;
+  summary_0: EmailRoutingSummaryDkimResponseSummary0;
 }
 export const DkimEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryDkimResponseMeta,
-    summary0: EmailRoutingSummaryDkimResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: EmailRoutingSummaryDkimResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailRoutingSummaryResponse",
@@ -14345,15 +14306,13 @@ export const EmailRoutingTimeseriesGroupsDkimResponseSerie0 =
 export interface DkimEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsDkimResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsDkimResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsDkimResponseSerie0;
 }
 export const DkimEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsDkimResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsDkimResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsDkimResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailRoutingTimeseriesGroupResponse",
@@ -14686,14 +14645,12 @@ export const EmailSecuritySummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface DkimEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryDkimResponseMeta;
-  summary0: EmailSecuritySummaryDkimResponseSummary0;
+  summary_0: EmailSecuritySummaryDkimResponseSummary0;
 }
 export const DkimEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryDkimResponseMeta,
-    summary0: EmailSecuritySummaryDkimResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailSecuritySummaryDkimResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailSecuritySummaryResponse",
@@ -15104,15 +15061,13 @@ export const EmailSecurityTimeseriesGroupsDkimResponseSerie0 =
 export interface DkimEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsDkimResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsDkimResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsDkimResponseSerie0;
 }
 export const DkimEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsDkimResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsDkimResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsDkimResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailSecurityTimeseriesGroupResponse",
@@ -15459,14 +15414,12 @@ export const EmailRoutingSummaryDmarcResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface DmarcEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryDmarcResponseMeta;
-  summary0: EmailRoutingSummaryDmarcResponseSummary0;
+  summary_0: EmailRoutingSummaryDmarcResponseSummary0;
 }
 export const DmarcEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryDmarcResponseMeta,
-    summary0: EmailRoutingSummaryDmarcResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailRoutingSummaryDmarcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DmarcEmailRoutingSummaryResponse",
@@ -15892,15 +15845,13 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseSerie0 =
 export interface DmarcEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsDmarcResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsDmarcResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsDmarcResponseSerie0;
 }
 export const DmarcEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsDmarcResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsDmarcResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsDmarcResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DmarcEmailRoutingTimeseriesGroupResponse",
@@ -16235,14 +16186,12 @@ export const EmailSecuritySummaryDmarcResponseSummary0 =
 export interface DmarcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryDmarcResponseMeta;
-  summary0: EmailSecuritySummaryDmarcResponseSummary0;
+  summary_0: EmailSecuritySummaryDmarcResponseSummary0;
 }
 export const DmarcEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryDmarcResponseMeta,
-    summary0: EmailSecuritySummaryDmarcResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailSecuritySummaryDmarcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DmarcEmailSecuritySummaryResponse",
@@ -16655,15 +16604,13 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseSerie0 =
 export interface DmarcEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsDmarcResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsDmarcResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsDmarcResponseSerie0;
 }
 export const DmarcEmailSecurityTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsDmarcResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsDmarcResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsDmarcResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DmarcEmailSecurityTimeseriesGroupResponse",
@@ -17089,12 +17036,12 @@ export const As112SummaryDnssecResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface DnssecAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryDnssecResponseMeta;
-  summary0: As112SummaryDnssecResponseSummary0;
+  summary_0: As112SummaryDnssecResponseSummary0;
 }
 export const DnssecAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryDnssecResponseMeta,
-    summary0: As112SummaryDnssecResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: As112SummaryDnssecResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAs112SummaryResponse",
@@ -17594,12 +17541,12 @@ export const As112TimeseriesGroupsDnssecResponseSerie0 =
 export interface DnssecAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsDnssecResponseMeta;
-  serie0: As112TimeseriesGroupsDnssecResponseSerie0;
+  serie_0: As112TimeseriesGroupsDnssecResponseSerie0;
 }
 export const DnssecAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TimeseriesGroupsDnssecResponseMeta,
-    serie0: As112TimeseriesGroupsDnssecResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: As112TimeseriesGroupsDnssecResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAs112TimeseriesGroupResponse",
@@ -17886,12 +17833,12 @@ export const As112TopDnssecResponseTop0List = /*@__PURE__*/ S.Array(
 export interface DnssecAs112TopResponse {
   /** Metadata for the results. */
   meta: As112TopDnssecResponseMeta;
-  top0: As112TopDnssecResponseTop0List;
+  top_0: As112TopDnssecResponseTop0List;
 }
 export const DnssecAs112TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TopDnssecResponseMeta,
-    top0: As112TopDnssecResponseTop0List.pipe(T.Body("top_0")),
+    top_0: As112TopDnssecResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAs112TopResponse",
@@ -18359,12 +18306,12 @@ export const DnsSummaryDnssecAwareResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface DnssecAwareDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryDnssecAwareResponseMeta;
-  summary0: DnsSummaryDnssecAwareResponseSummary0;
+  summary_0: DnsSummaryDnssecAwareResponseSummary0;
 }
 export const DnssecAwareDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryDnssecAwareResponseMeta,
-    summary0: DnsSummaryDnssecAwareResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryDnssecAwareResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAwareDnsSummaryResponse",
@@ -18902,15 +18849,13 @@ export const DnsTimeseriesGroupsDnssecAwareResponseSerie0 =
 export interface DnssecAwareDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsDnssecAwareResponseMeta;
-  serie0: DnsTimeseriesGroupsDnssecAwareResponseSerie0;
+  serie_0: DnsTimeseriesGroupsDnssecAwareResponseSerie0;
 }
 export const DnssecAwareDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: DnsTimeseriesGroupsDnssecAwareResponseMeta,
-      serie0: DnsTimeseriesGroupsDnssecAwareResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: DnsTimeseriesGroupsDnssecAwareResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAwareDnsTimeseriesGroupResponse",
@@ -19356,12 +19301,12 @@ export const DnsSummaryDnssecResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface DnssecDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryDnssecResponseMeta;
-  summary0: DnsSummaryDnssecResponseSummary0;
+  summary_0: DnsSummaryDnssecResponseSummary0;
 }
 export const DnssecDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryDnssecResponseMeta,
-    summary0: DnsSummaryDnssecResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryDnssecResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecDnsSummaryResponse",
@@ -19892,12 +19837,12 @@ export const DnsTimeseriesGroupsDnssecResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface DnssecDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsDnssecResponseMeta;
-  serie0: DnsTimeseriesGroupsDnssecResponseSerie0;
+  serie_0: DnsTimeseriesGroupsDnssecResponseSerie0;
 }
 export const DnssecDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsDnssecResponseMeta,
-    serie0: DnsTimeseriesGroupsDnssecResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsDnssecResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecDnsTimeseriesGroupResponse",
@@ -20359,12 +20304,12 @@ export const DnsSummaryDnssecE2eResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface DnssecE2EDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryDnssecE2eResponseMeta;
-  summary0: DnsSummaryDnssecE2eResponseSummary0;
+  summary_0: DnsSummaryDnssecE2eResponseSummary0;
 }
 export const DnssecE2EDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryDnssecE2eResponseMeta,
-    summary0: DnsSummaryDnssecE2eResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryDnssecE2eResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecE2EDnsSummaryResponse",
@@ -20889,12 +20834,12 @@ export const DnsTimeseriesGroupsDnssecE2eResponseSerie0 =
 export interface DnssecE2EDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsDnssecE2eResponseMeta;
-  serie0: DnsTimeseriesGroupsDnssecE2eResponseSerie0;
+  serie_0: DnsTimeseriesGroupsDnssecE2eResponseSerie0;
 }
 export const DnssecE2EDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsDnssecE2eResponseMeta,
-    serie0: DnsTimeseriesGroupsDnssecE2eResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsDnssecE2eResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecE2EDnsTimeseriesGroupResponse",
@@ -21166,13 +21111,13 @@ export const RobotsTxtTopDomainCategoriesResponseTop0List =
 export interface DomainCategoriesRobotsTxtTopResponse {
   /** Metadata for the results. */
   meta: RobotsTxtTopDomainCategoriesResponseMeta;
-  top0: RobotsTxtTopDomainCategoriesResponseTop0List;
+  top_0: RobotsTxtTopDomainCategoriesResponseTop0List;
 }
 export const DomainCategoriesRobotsTxtTopResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: RobotsTxtTopDomainCategoriesResponseMeta,
-      top0: RobotsTxtTopDomainCategoriesResponseTop0List.pipe(T.Body("top_0")),
+      top_0: RobotsTxtTopDomainCategoriesResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DomainCategoriesRobotsTxtTopResponse",
@@ -21544,27 +21489,27 @@ export const AttacksLayer3SummaryDurationResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface AttacksLayer3SummaryDurationResponseSummary0 {
   /** A numeric string. */
-  "1HOURTO3HOURS": string;
+  _1_HOUR_TO_3_HOURS: string;
   /** A numeric string. */
-  "10MINSTO20MINS": string;
+  _10_MINS_TO_20_MINS: string;
   /** A numeric string. */
-  "20MINSTO40MINS": string;
+  _20_MINS_TO_40_MINS: string;
   /** A numeric string. */
-  "40MINSTO1HOUR": string;
+  _40_MINS_TO_1_HOUR: string;
   /** A numeric string. */
-  OVER3HOURS: string;
+  OVER_3_HOURS: string;
   /** A numeric string. */
-  UNDER10MINS: string;
+  UNDER_10_MINS: string;
 }
 export const AttacksLayer3SummaryDurationResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1HOURTO3HOURS": S.String.pipe(T.Body("_1_HOUR_TO_3_HOURS")),
-      "10MINSTO20MINS": S.String.pipe(T.Body("_10_MINS_TO_20_MINS")),
-      "20MINSTO40MINS": S.String.pipe(T.Body("_20_MINS_TO_40_MINS")),
-      "40MINSTO1HOUR": S.String.pipe(T.Body("_40_MINS_TO_1_HOUR")),
-      OVER3HOURS: S.String.pipe(T.Body("OVER_3_HOURS")),
-      UNDER10MINS: S.String.pipe(T.Body("UNDER_10_MINS")),
+      _1_HOUR_TO_3_HOURS: S.String,
+      _10_MINS_TO_20_MINS: S.String,
+      _20_MINS_TO_40_MINS: S.String,
+      _40_MINS_TO_1_HOUR: S.String,
+      OVER_3_HOURS: S.String,
+      UNDER_10_MINS: S.String,
     }),
   ).annotate({
     identifier: "AttacksLayer3SummaryDurationResponseSummary0",
@@ -21574,14 +21519,12 @@ export const AttacksLayer3SummaryDurationResponseSummary0 =
 export interface DurationAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryDurationResponseMeta;
-  summary0: AttacksLayer3SummaryDurationResponseSummary0;
+  summary_0: AttacksLayer3SummaryDurationResponseSummary0;
 }
 export const DurationAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryDurationResponseMeta,
-    summary0: AttacksLayer3SummaryDurationResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryDurationResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DurationAttackLayer3SummaryResponse",
@@ -22029,43 +21972,31 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList 
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList>;
 
 export interface AttacksLayer3TimeseriesGroupsDurationResponseSerie0 {
-  "1HOURTO3HOURS": AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList;
-  "10MINSTO20MINS": AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList;
-  "20MINSTO40MINS": AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList;
-  "40MINSTO1HOUR": AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList;
-  OVER3HOURS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList;
+  _1_HOUR_TO_3_HOURS: AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList;
+  _10_MINS_TO_20_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList;
+  _20_MINS_TO_40_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList;
+  _40_MINS_TO_1_HOUR: AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList;
+  OVER_3_HOURS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList;
   timestamps: AttacksLayer3TimeseriesGroupsDurationResponseSerie0TimestampsList;
-  UNDER10MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList;
+  UNDER_10_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList;
 }
 export const AttacksLayer3TimeseriesGroupsDurationResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1HOURTO3HOURS":
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList.pipe(
-          T.Body("_1_HOUR_TO_3_HOURS"),
-        ),
-      "10MINSTO20MINS":
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList.pipe(
-          T.Body("_10_MINS_TO_20_MINS"),
-        ),
-      "20MINSTO40MINS":
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList.pipe(
-          T.Body("_20_MINS_TO_40_MINS"),
-        ),
-      "40MINSTO1HOUR":
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList.pipe(
-          T.Body("_40_MINS_TO_1_HOUR"),
-        ),
-      OVER3HOURS:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList.pipe(
-          T.Body("OVER_3_HOURS"),
-        ),
+      _1_HOUR_TO_3_HOURS:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList,
+      _10_MINS_TO_20_MINS:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList,
+      _20_MINS_TO_40_MINS:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList,
+      _40_MINS_TO_1_HOUR:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList,
+      OVER_3_HOURS:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList,
       timestamps:
         AttacksLayer3TimeseriesGroupsDurationResponseSerie0TimestampsList,
-      UNDER10MINS:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList.pipe(
-          T.Body("UNDER_10_MINS"),
-        ),
+      UNDER_10_MINS:
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList,
     }),
   ).annotate({
     identifier: "AttacksLayer3TimeseriesGroupsDurationResponseSerie0",
@@ -22075,15 +22006,13 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseSerie0 =
 export interface DurationAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsDurationResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsDurationResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsDurationResponseSerie0;
 }
 export const DurationAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsDurationResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsDurationResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsDurationResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DurationAttackLayer3TimeseriesGroupResponse",
@@ -22499,12 +22428,12 @@ export const As112SummaryEdnsResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface EdnsAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryEdnsResponseMeta;
-  summary0: As112SummaryEdnsResponseSummary0;
+  summary_0: As112SummaryEdnsResponseSummary0;
 }
 export const EdnsAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryEdnsResponseMeta,
-    summary0: As112SummaryEdnsResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: As112SummaryEdnsResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EdnsAs112SummaryResponse",
@@ -22998,12 +22927,12 @@ export const As112TimeseriesGroupsEdnsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface EdnsAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsEdnsResponseMeta;
-  serie0: As112TimeseriesGroupsEdnsResponseSerie0;
+  serie_0: As112TimeseriesGroupsEdnsResponseSerie0;
 }
 export const EdnsAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TimeseriesGroupsEdnsResponseMeta,
-    serie0: As112TimeseriesGroupsEdnsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: As112TimeseriesGroupsEdnsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EdnsAs112TimeseriesGroupResponse",
@@ -23288,12 +23217,12 @@ export const As112TopEdnsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface EdnsAs112TopResponse {
   /** Metadata for the results. */
   meta: As112TopEdnsResponseMeta;
-  top0: As112TopEdnsResponseTop0List;
+  top_0: As112TopEdnsResponseTop0List;
 }
 export const EdnsAs112TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TopEdnsResponseMeta,
-    top0: As112TopEdnsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: As112TopEdnsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EdnsAs112TopResponse",
@@ -23645,15 +23574,13 @@ export const EmailRoutingSummaryEncryptedResponseSummary0 =
 export interface EncryptedEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryEncryptedResponseMeta;
-  summary0: EmailRoutingSummaryEncryptedResponseSummary0;
+  summary_0: EmailRoutingSummaryEncryptedResponseSummary0;
 }
 export const EncryptedEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingSummaryEncryptedResponseMeta,
-      summary0: EmailRoutingSummaryEncryptedResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: EmailRoutingSummaryEncryptedResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EncryptedEmailRoutingSummaryResponse",
@@ -24088,15 +24015,13 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseSerie0 =
 export interface EncryptedEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsEncryptedResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0;
 }
 export const EncryptedEmailRoutingTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsEncryptedResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "EncryptedEmailRoutingTimeseriesGroupResponse",
@@ -24464,12 +24389,12 @@ export const BgpTopAsesGetResponseTop0List = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBgpTopAsResponse {
   meta: BgpTopAsesGetResponseMeta;
-  top0: BgpTopAsesGetResponseTop0List;
+  top_0: BgpTopAsesGetResponseTop0List;
 }
 export const GetBgpTopAsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpTopAsesGetResponseMeta,
-    top0: BgpTopAsesGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: BgpTopAsesGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBgpTopAsResponse",
@@ -25318,12 +25243,12 @@ export const EmailSecurityTopTldsGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetEmailSecurityTopTldResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTopTldsGetResponseMeta;
-  top0: EmailSecurityTopTldsGetResponseTop0List;
+  top_0: EmailSecurityTopTldsGetResponseTop0List;
 }
 export const GetEmailSecurityTopTldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecurityTopTldsGetResponseMeta,
-    top0: EmailSecurityTopTldsGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: EmailSecurityTopTldsGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailSecurityTopTldResponse",
@@ -25739,15 +25664,13 @@ export const EmailSecurityTopTldsMaliciousGetResponseTop0List =
 export interface GetEmailSecurityTopTldMaliciousResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTopTldsMaliciousGetResponseMeta;
-  top0: EmailSecurityTopTldsMaliciousGetResponseTop0List;
+  top_0: EmailSecurityTopTldsMaliciousGetResponseTop0List;
 }
 export const GetEmailSecurityTopTldMaliciousResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTopTldsMaliciousGetResponseMeta,
-      top0: EmailSecurityTopTldsMaliciousGetResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: EmailSecurityTopTldsMaliciousGetResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailSecurityTopTldMaliciousResponse",
@@ -26127,12 +26050,12 @@ export const EmailSecurityTopTldsSpamGetResponseTop0List =
 export interface GetEmailSecurityTopTldSpamResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTopTldsSpamGetResponseMeta;
-  top0: EmailSecurityTopTldsSpamGetResponseTop0List;
+  top_0: EmailSecurityTopTldsSpamGetResponseTop0List;
 }
 export const GetEmailSecurityTopTldSpamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecurityTopTldsSpamGetResponseMeta,
-    top0: EmailSecurityTopTldsSpamGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: EmailSecurityTopTldsSpamGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailSecurityTopTldSpamResponse",
@@ -26514,12 +26437,12 @@ export const EmailSecurityTopTldsSpoofGetResponseTop0List =
 export interface GetEmailSecurityTopTldSpoofResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTopTldsSpoofGetResponseMeta;
-  top0: EmailSecurityTopTldsSpoofGetResponseTop0List;
+  top_0: EmailSecurityTopTldsSpoofGetResponseTop0List;
 }
 export const GetEmailSecurityTopTldSpoofResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecurityTopTldsSpoofGetResponseMeta,
-    top0: EmailSecurityTopTldsSpoofGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: EmailSecurityTopTldsSpoofGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailSecurityTopTldSpoofResponse",
@@ -27326,12 +27249,12 @@ export const HttpAsesGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsResponse {
   /** Metadata for the results. */
   meta: HttpAsesGetResponseMeta;
-  top0: HttpAsesGetResponseTop0List;
+  top_0: HttpAsesGetResponseTop0List;
 }
 export const GetHttpAsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesGetResponseMeta,
-    top0: HttpAsesGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsResponse",
@@ -27773,12 +27696,12 @@ export const HttpAsesBotClassGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsBotClassResponse {
   /** Metadata for the results. */
   meta: HttpAsesBotClassGetResponseMeta;
-  top0: HttpAsesBotClassGetResponseTop0List;
+  top_0: HttpAsesBotClassGetResponseTop0List;
 }
 export const GetHttpAsBotClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesBotClassGetResponseMeta,
-    top0: HttpAsesBotClassGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesBotClassGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsBotClassResponse",
@@ -28241,12 +28164,12 @@ export const HttpAsesBrowserFamilyGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsBrowserFamilyResponse {
   /** Metadata for the results. */
   meta: HttpAsesBrowserFamilyGetResponseMeta;
-  top0: HttpAsesBrowserFamilyGetResponseTop0List;
+  top_0: HttpAsesBrowserFamilyGetResponseTop0List;
 }
 export const GetHttpAsBrowserFamilyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesBrowserFamilyGetResponseMeta,
-    top0: HttpAsesBrowserFamilyGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesBrowserFamilyGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsBrowserFamilyResponse",
@@ -28697,12 +28620,12 @@ export const HttpAsesDeviceTypeGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsDeviceTypeResponse {
   /** Metadata for the results. */
   meta: HttpAsesDeviceTypeGetResponseMeta;
-  top0: HttpAsesDeviceTypeGetResponseTop0List;
+  top_0: HttpAsesDeviceTypeGetResponseTop0List;
 }
 export const GetHttpAsDeviceTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesDeviceTypeGetResponseMeta,
-    top0: HttpAsesDeviceTypeGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesDeviceTypeGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsDeviceTypeResponse",
@@ -29152,12 +29075,12 @@ export const HttpAsesHttpMethodGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsHttpMethodResponse {
   /** Metadata for the results. */
   meta: HttpAsesHttpMethodGetResponseMeta;
-  top0: HttpAsesHttpMethodGetResponseTop0List;
+  top_0: HttpAsesHttpMethodGetResponseTop0List;
 }
 export const GetHttpAsHttpMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesHttpMethodGetResponseMeta,
-    top0: HttpAsesHttpMethodGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesHttpMethodGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsHttpMethodResponse",
@@ -29616,12 +29539,12 @@ export const HttpAsesHttpProtocolGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsHttpProtocolResponse {
   /** Metadata for the results. */
   meta: HttpAsesHttpProtocolGetResponseMeta;
-  top0: HttpAsesHttpProtocolGetResponseTop0List;
+  top_0: HttpAsesHttpProtocolGetResponseTop0List;
 }
 export const GetHttpAsHttpProtocolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesHttpProtocolGetResponseMeta,
-    top0: HttpAsesHttpProtocolGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesHttpProtocolGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsHttpProtocolResponse",
@@ -30066,12 +29989,12 @@ export const HttpAsesIpVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsIpVersionResponse {
   /** Metadata for the results. */
   meta: HttpAsesIpVersionGetResponseMeta;
-  top0: HttpAsesIpVersionGetResponseTop0List;
+  top_0: HttpAsesIpVersionGetResponseTop0List;
 }
 export const GetHttpAsIpVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesIpVersionGetResponseMeta,
-    top0: HttpAsesIpVersionGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesIpVersionGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsIpVersionResponse",
@@ -30483,12 +30406,12 @@ export const HttpAsesOsGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsOsResponse {
   /** Metadata for the results. */
   meta: HttpAsesOsGetResponseMeta;
-  top0: HttpAsesOsGetResponseTop0List;
+  top_0: HttpAsesOsGetResponseTop0List;
 }
 export const GetHttpAsOsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesOsGetResponseMeta,
-    top0: HttpAsesOsGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesOsGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsOsResponse",
@@ -30939,12 +30862,12 @@ export const HttpAsesTlsVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpAsTlsVersionResponse {
   /** Metadata for the results. */
   meta: HttpAsesTlsVersionGetResponseMeta;
-  top0: HttpAsesTlsVersionGetResponseTop0List;
+  top_0: HttpAsesTlsVersionGetResponseTop0List;
 }
 export const GetHttpAsTlsVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpAsesTlsVersionGetResponseMeta,
-    top0: HttpAsesTlsVersionGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpAsesTlsVersionGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpAsTlsVersionResponse",
@@ -31370,12 +31293,12 @@ export const HttpLocationsGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationResponse {
   /** Metadata for the results. */
   meta: HttpLocationsGetResponseMeta;
-  top0: HttpLocationsGetResponseTop0List;
+  top_0: HttpLocationsGetResponseTop0List;
 }
 export const GetHttpLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsGetResponseMeta,
-    top0: HttpLocationsGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationResponse",
@@ -31838,12 +31761,12 @@ export const HttpLocationsBotClassGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationBotClassResponse {
   /** Metadata for the results. */
   meta: HttpLocationsBotClassGetResponseMeta;
-  top0: HttpLocationsBotClassGetResponseTop0List;
+  top_0: HttpLocationsBotClassGetResponseTop0List;
 }
 export const GetHttpLocationBotClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsBotClassGetResponseMeta,
-    top0: HttpLocationsBotClassGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsBotClassGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationBotClassResponse",
@@ -32326,13 +32249,13 @@ export const HttpLocationsBrowserFamilyGetResponseTop0List =
 export interface GetHttpLocationBrowserFamilyResponse {
   /** Metadata for the results. */
   meta: HttpLocationsBrowserFamilyGetResponseMeta;
-  top0: HttpLocationsBrowserFamilyGetResponseTop0List;
+  top_0: HttpLocationsBrowserFamilyGetResponseTop0List;
 }
 export const GetHttpLocationBrowserFamilyResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpLocationsBrowserFamilyGetResponseMeta,
-      top0: HttpLocationsBrowserFamilyGetResponseTop0List.pipe(T.Body("top_0")),
+      top_0: HttpLocationsBrowserFamilyGetResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationBrowserFamilyResponse",
@@ -32801,12 +32724,12 @@ export const HttpLocationsDeviceTypeGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationDeviceTypeResponse {
   /** Metadata for the results. */
   meta: HttpLocationsDeviceTypeGetResponseMeta;
-  top0: HttpLocationsDeviceTypeGetResponseTop0List;
+  top_0: HttpLocationsDeviceTypeGetResponseTop0List;
 }
 export const GetHttpLocationDeviceTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsDeviceTypeGetResponseMeta,
-    top0: HttpLocationsDeviceTypeGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsDeviceTypeGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationDeviceTypeResponse",
@@ -33275,12 +33198,12 @@ export const HttpLocationsHttpMethodGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationHttpMethodResponse {
   /** Metadata for the results. */
   meta: HttpLocationsHttpMethodGetResponseMeta;
-  top0: HttpLocationsHttpMethodGetResponseTop0List;
+  top_0: HttpLocationsHttpMethodGetResponseTop0List;
 }
 export const GetHttpLocationHttpMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsHttpMethodGetResponseMeta,
-    top0: HttpLocationsHttpMethodGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsHttpMethodGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationHttpMethodResponse",
@@ -33757,12 +33680,12 @@ export const HttpLocationsHttpProtocolGetResponseTop0List =
 export interface GetHttpLocationHttpProtocolResponse {
   /** Metadata for the results. */
   meta: HttpLocationsHttpProtocolGetResponseMeta;
-  top0: HttpLocationsHttpProtocolGetResponseTop0List;
+  top_0: HttpLocationsHttpProtocolGetResponseTop0List;
 }
 export const GetHttpLocationHttpProtocolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsHttpProtocolGetResponseMeta,
-    top0: HttpLocationsHttpProtocolGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsHttpProtocolGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationHttpProtocolResponse",
@@ -34230,12 +34153,12 @@ export const HttpLocationsIpVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationIpVersionResponse {
   /** Metadata for the results. */
   meta: HttpLocationsIpVersionGetResponseMeta;
-  top0: HttpLocationsIpVersionGetResponseTop0List;
+  top_0: HttpLocationsIpVersionGetResponseTop0List;
 }
 export const GetHttpLocationIpVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsIpVersionGetResponseMeta,
-    top0: HttpLocationsIpVersionGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsIpVersionGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationIpVersionResponse",
@@ -34674,12 +34597,12 @@ export const HttpLocationsOsGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationOsResponse {
   /** Metadata for the results. */
   meta: HttpLocationsOsGetResponseMeta;
-  top0: HttpLocationsOsGetResponseTop0List;
+  top_0: HttpLocationsOsGetResponseTop0List;
 }
 export const GetHttpLocationOsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsOsGetResponseMeta,
-    top0: HttpLocationsOsGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsOsGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationOsResponse",
@@ -35148,12 +35071,12 @@ export const HttpLocationsTlsVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
 export interface GetHttpLocationTlsVersionResponse {
   /** Metadata for the results. */
   meta: HttpLocationsTlsVersionGetResponseMeta;
-  top0: HttpLocationsTlsVersionGetResponseTop0List;
+  top_0: HttpLocationsTlsVersionGetResponseTop0List;
 }
 export const GetHttpLocationTlsVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpLocationsTlsVersionGetResponseMeta,
-    top0: HttpLocationsTlsVersionGetResponseTop0List.pipe(T.Body("top_0")),
+    top_0: HttpLocationsTlsVersionGetResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHttpLocationTlsVersionResponse",
@@ -35319,12 +35242,12 @@ export const RankingDomainGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRankingDomainResponse {
-  details0: RankingDomainGetResponseDetails0;
+  details_0: RankingDomainGetResponseDetails0;
   meta: RankingDomainGetResponseMeta;
 }
 export const GetRankingDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    details0: RankingDomainGetResponseDetails0.pipe(T.Body("details_0")),
+    details_0: RankingDomainGetResponseDetails0,
     meta: RankingDomainGetResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -36020,15 +35943,13 @@ export const QualitySpeedHistogramResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HistogramQualitySpeedResponse {
-  histogram0: QualitySpeedHistogramResponseHistogram0;
+  histogram_0: QualitySpeedHistogramResponseHistogram0;
   /** Metadata for the results. */
   meta: QualitySpeedHistogramResponseMeta;
 }
 export const HistogramQualitySpeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    histogram0: QualitySpeedHistogramResponseHistogram0.pipe(
-      T.Body("histogram_0"),
-    ),
+    histogram_0: QualitySpeedHistogramResponseHistogram0,
     meta: QualitySpeedHistogramResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -36400,15 +36321,13 @@ export const AttacksLayer7SummaryHttpMethodResponseSummary0Map =
 export interface HttpMethodAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryHttpMethodResponseMeta;
-  summary0: AttacksLayer7SummaryHttpMethodResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryHttpMethodResponseSummary0Map;
 }
 export const HttpMethodAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7SummaryHttpMethodResponseMeta,
-      summary0: AttacksLayer7SummaryHttpMethodResponseSummary0Map.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer7SummaryHttpMethodResponseSummary0Map,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpMethodAttackLayer7SummaryResponse",
@@ -36868,15 +36787,13 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodResponseSerie0 =
 export interface HttpMethodAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsHttpMethodResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsHttpMethodResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsHttpMethodResponseSerie0;
 }
 export const HttpMethodAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsHttpMethodResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsHttpMethodResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsHttpMethodResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "HttpMethodAttackLayer7TimeseriesGroupResponse",
@@ -37316,12 +37233,12 @@ export const HttpSummaryHttpProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface HttpProtocolHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryHttpProtocolResponseMeta;
-  summary0: HttpSummaryHttpProtocolResponseSummary0;
+  summary_0: HttpSummaryHttpProtocolResponseSummary0;
 }
 export const HttpProtocolHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryHttpProtocolResponseMeta,
-    summary0: HttpSummaryHttpProtocolResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryHttpProtocolResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpProtocolHttpSummaryResponse",
@@ -37840,15 +37757,13 @@ export const HttpTimeseriesGroupsHttpProtocolResponseSerie0 =
 export interface HttpProtocolHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsHttpProtocolResponseMeta;
-  serie0: HttpTimeseriesGroupsHttpProtocolResponseSerie0;
+  serie_0: HttpTimeseriesGroupsHttpProtocolResponseSerie0;
 }
 export const HttpProtocolHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsHttpProtocolResponseMeta,
-      serie0: HttpTimeseriesGroupsHttpProtocolResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsHttpProtocolResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpProtocolHttpTimeseriesGroupResponse",
@@ -38247,16 +38162,16 @@ export const AttacksLayer7SummaryHttpVersionResponseMeta =
   }) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMeta>;
 
 export interface AttacksLayer7SummaryHttpVersionResponseSummary0 {
-  HTTP1X: string;
-  HTTP2: string;
-  HTTP3: string;
+  HTTP_1_x: string;
+  HTTP_2: string;
+  HTTP_3: string;
 }
 export const AttacksLayer7SummaryHttpVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X: S.String.pipe(T.Body("HTTP/1.x")),
-      HTTP2: S.String.pipe(T.Body("HTTP/2")),
-      HTTP3: S.String.pipe(T.Body("HTTP/3")),
+      HTTP_1_x: S.String.pipe(T.Body("HTTP/1.x")),
+      HTTP_2: S.String.pipe(T.Body("HTTP/2")),
+      HTTP_3: S.String.pipe(T.Body("HTTP/3")),
     }),
   ).annotate({
     identifier: "AttacksLayer7SummaryHttpVersionResponseSummary0",
@@ -38266,15 +38181,13 @@ export const AttacksLayer7SummaryHttpVersionResponseSummary0 =
 export interface HttpVersionAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryHttpVersionResponseMeta;
-  summary0: AttacksLayer7SummaryHttpVersionResponseSummary0;
+  summary_0: AttacksLayer7SummaryHttpVersionResponseSummary0;
 }
 export const HttpVersionAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7SummaryHttpVersionResponseMeta,
-      summary0: AttacksLayer7SummaryHttpVersionResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer7SummaryHttpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpVersionAttackLayer7SummaryResponse",
@@ -38782,23 +38695,23 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsLis
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsList>;
 
 export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0 {
-  HTTP1X: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
-  HTTP2: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
-  HTTP3: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
+  HTTP_1_x: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
+  HTTP_2: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
+  HTTP_3: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
   timestamps: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsList;
 }
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X:
+      HTTP_1_x:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
           T.Body("HTTP/1.x"),
         ),
-      HTTP2:
+      HTTP_2:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
           T.Body("HTTP/2"),
         ),
-      HTTP3:
+      HTTP_3:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
           T.Body("HTTP/3"),
         ),
@@ -38813,15 +38726,13 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0 =
 export interface HttpVersionAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsHttpVersionResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0;
 }
 export const HttpVersionAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsHttpVersionResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "HttpVersionAttackLayer7TimeseriesGroupResponse",
@@ -39236,18 +39147,18 @@ export const HttpSummaryHttpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryHttpVersionResponseSummary0 {
   /** A numeric string. */
-  HTTP1X: string;
+  HTTP_1_x: string;
   /** A numeric string. */
-  HTTP2: string;
+  HTTP_2: string;
   /** A numeric string. */
-  HTTP3: string;
+  HTTP_3: string;
 }
 export const HttpSummaryHttpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      HTTP1X: S.String.pipe(T.Body("HTTP/1.x")),
-      HTTP2: S.String.pipe(T.Body("HTTP/2")),
-      HTTP3: S.String.pipe(T.Body("HTTP/3")),
+      HTTP_1_x: S.String.pipe(T.Body("HTTP/1.x")),
+      HTTP_2: S.String.pipe(T.Body("HTTP/2")),
+      HTTP_3: S.String.pipe(T.Body("HTTP/3")),
     }),
 ).annotate({
   identifier: "HttpSummaryHttpVersionResponseSummary0",
@@ -39257,12 +39168,12 @@ export const HttpSummaryHttpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface HttpVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryHttpVersionResponseMeta;
-  summary0: HttpSummaryHttpVersionResponseSummary0;
+  summary_0: HttpSummaryHttpVersionResponseSummary0;
 }
 export const HttpVersionHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryHttpVersionResponseMeta,
-    summary0: HttpSummaryHttpVersionResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryHttpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpVersionHttpSummaryResponse",
@@ -39762,21 +39673,21 @@ export const HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList =
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList>;
 
 export interface HttpTimeseriesGroupsHttpVersionResponseSerie0 {
-  HTTP1X: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
-  HTTP2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
-  HTTP3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
+  HTTP_1_x: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
+  HTTP_2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
+  HTTP_3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
   timestamps: HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList;
 }
 export const HttpTimeseriesGroupsHttpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
+      HTTP_1_x: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
         T.Body("HTTP/1.x"),
       ),
-      HTTP2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
+      HTTP_2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
         T.Body("HTTP/2"),
       ),
-      HTTP3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
+      HTTP_3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
         T.Body("HTTP/3"),
       ),
       timestamps: HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList,
@@ -39789,15 +39700,13 @@ export const HttpTimeseriesGroupsHttpVersionResponseSerie0 =
 export interface HttpVersionHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsHttpVersionResponseMeta;
-  serie0: HttpTimeseriesGroupsHttpVersionResponseSerie0;
+  serie_0: HttpTimeseriesGroupsHttpVersionResponseSerie0;
 }
 export const HttpVersionHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsHttpVersionResponseMeta,
-      serie0: HttpTimeseriesGroupsHttpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsHttpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HttpVersionHttpTimeseriesGroupResponse",
@@ -40139,14 +40048,12 @@ export const AttacksLayer3SummaryIndustryResponseSummary0Map =
 export interface IndustryAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryIndustryResponseMeta;
-  summary0: AttacksLayer3SummaryIndustryResponseSummary0Map;
+  summary_0: AttacksLayer3SummaryIndustryResponseSummary0Map;
 }
 export const IndustryAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryIndustryResponseMeta,
-    summary0: AttacksLayer3SummaryIndustryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryIndustryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IndustryAttackLayer3SummaryResponse",
@@ -40571,15 +40478,13 @@ export const AttacksLayer3TimeseriesGroupsIndustryResponseSerie0 =
 export interface IndustryAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsIndustryResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsIndustryResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsIndustryResponseSerie0;
 }
 export const IndustryAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsIndustryResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsIndustryResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsIndustryResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "IndustryAttackLayer3TimeseriesGroupResponse",
@@ -40915,12 +40820,12 @@ export const AttacksLayer3TopIndustryResponseTop0List = /*@__PURE__*/ S.Array(
 export interface IndustryAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TopIndustryResponseMeta;
-  top0: AttacksLayer3TopIndustryResponseTop0List;
+  top_0: AttacksLayer3TopIndustryResponseTop0List;
 }
 export const IndustryAttackLayer3TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3TopIndustryResponseMeta,
-    top0: AttacksLayer3TopIndustryResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer3TopIndustryResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IndustryAttackLayer3TopResponse",
@@ -41347,14 +41252,12 @@ export const AttacksLayer7SummaryIndustryResponseSummary0Map =
 export interface IndustryAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryIndustryResponseMeta;
-  summary0: AttacksLayer7SummaryIndustryResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryIndustryResponseSummary0Map;
 }
 export const IndustryAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7SummaryIndustryResponseMeta,
-    summary0: AttacksLayer7SummaryIndustryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer7SummaryIndustryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IndustryAttackLayer7SummaryResponse",
@@ -41869,15 +41772,13 @@ export const AttacksLayer7TimeseriesGroupsIndustryResponseSerie0 =
 export interface IndustryAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsIndustryResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsIndustryResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsIndustryResponseSerie0;
 }
 export const IndustryAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsIndustryResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsIndustryResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsIndustryResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "IndustryAttackLayer7TimeseriesGroupResponse",
@@ -42307,12 +42208,12 @@ export const AttacksLayer7TopIndustryResponseTop0List = /*@__PURE__*/ S.Array(
 export interface IndustryAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopIndustryResponseMeta;
-  top0: AttacksLayer7TopIndustryResponseTop0List;
+  top_0: AttacksLayer7TopIndustryResponseTop0List;
 }
 export const IndustryAttackLayer7TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7TopIndustryResponseMeta,
-    top0: AttacksLayer7TopIndustryResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer7TopIndustryResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IndustryAttackLayer7TopResponse",
@@ -42882,12 +42783,12 @@ export const As112SummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface IpVersionAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryIpVersionResponseMeta;
-  summary0: As112SummaryIpVersionResponseSummary0;
+  summary_0: As112SummaryIpVersionResponseSummary0;
 }
 export const IpVersionAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryIpVersionResponseMeta,
-    summary0: As112SummaryIpVersionResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: As112SummaryIpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAs112SummaryResponse",
@@ -43389,15 +43290,13 @@ export const As112TimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsIpVersionResponseMeta;
-  serie0: As112TimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: As112TimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: As112TimeseriesGroupsIpVersionResponseMeta,
-      serie0: As112TimeseriesGroupsIpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: As112TimeseriesGroupsIpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAs112TimeseriesGroupResponse",
@@ -43692,12 +43591,12 @@ export const As112TopIpVersionResponseTop0List = /*@__PURE__*/ S.Array(
 export interface IpVersionAs112TopResponse {
   /** Metadata for the results. */
   meta: As112TopIpVersionResponseMeta;
-  top0: As112TopIpVersionResponseTop0List;
+  top_0: As112TopIpVersionResponseTop0List;
 }
 export const IpVersionAs112TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TopIpVersionResponseMeta,
-    top0: As112TopIpVersionResponseTop0List.pipe(T.Body("top_0")),
+    top_0: As112TopIpVersionResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAs112TopResponse",
@@ -44027,15 +43926,13 @@ export const AttacksLayer3SummaryIpVersionResponseSummary0 =
 export interface IpVersionAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryIpVersionResponseMeta;
-  summary0: AttacksLayer3SummaryIpVersionResponseSummary0;
+  summary_0: AttacksLayer3SummaryIpVersionResponseSummary0;
 }
 export const IpVersionAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer3SummaryIpVersionResponseMeta,
-      summary0: AttacksLayer3SummaryIpVersionResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer3SummaryIpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAttackLayer3SummaryResponse",
@@ -44462,15 +44359,13 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsIpVersionResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsIpVersionResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "IpVersionAttackLayer3TimeseriesGroupResponse",
@@ -44886,15 +44781,13 @@ export const AttacksLayer7SummaryIpVersionResponseSummary0 =
 export interface IpVersionAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryIpVersionResponseMeta;
-  summary0: AttacksLayer7SummaryIpVersionResponseSummary0;
+  summary_0: AttacksLayer7SummaryIpVersionResponseSummary0;
 }
 export const IpVersionAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7SummaryIpVersionResponseMeta,
-      summary0: AttacksLayer7SummaryIpVersionResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer7SummaryIpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAttackLayer7SummaryResponse",
@@ -45413,15 +45306,13 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsIpVersionResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsIpVersionResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "IpVersionAttackLayer7TimeseriesGroupResponse",
@@ -45883,12 +45774,12 @@ export const DnsSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface IpVersionDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryIpVersionResponseMeta;
-  summary0: DnsSummaryIpVersionResponseSummary0;
+  summary_0: DnsSummaryIpVersionResponseSummary0;
 }
 export const IpVersionDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryIpVersionResponseMeta,
-    summary0: DnsSummaryIpVersionResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryIpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionDnsSummaryResponse",
@@ -46411,12 +46302,12 @@ export const DnsTimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsIpVersionResponseMeta;
-  serie0: DnsTimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: DnsTimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsIpVersionResponseMeta,
-    serie0: DnsTimeseriesGroupsIpVersionResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsIpVersionResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionDnsTimeseriesGroupResponse",
@@ -46770,15 +46661,13 @@ export const EmailRoutingSummaryIpVersionResponseSummary0 =
 export interface IpVersionEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryIpVersionResponseMeta;
-  summary0: EmailRoutingSummaryIpVersionResponseSummary0;
+  summary_0: EmailRoutingSummaryIpVersionResponseSummary0;
 }
 export const IpVersionEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingSummaryIpVersionResponseMeta,
-      summary0: EmailRoutingSummaryIpVersionResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: EmailRoutingSummaryIpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionEmailRoutingSummaryResponse",
@@ -47209,15 +47098,13 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsIpVersionResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionEmailRoutingTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsIpVersionResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "IpVersionEmailRoutingTimeseriesGroupResponse",
@@ -47646,12 +47533,12 @@ export const HttpSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface IpVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryIpVersionResponseMeta;
-  summary0: HttpSummaryIpVersionResponseSummary0;
+  summary_0: HttpSummaryIpVersionResponseSummary0;
 }
 export const IpVersionHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryIpVersionResponseMeta,
-    summary0: HttpSummaryIpVersionResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryIpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionHttpSummaryResponse",
@@ -48156,15 +48043,13 @@ export const HttpTimeseriesGroupsIpVersionResponseSerie0 =
 export interface IpVersionHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsIpVersionResponseMeta;
-  serie0: HttpTimeseriesGroupsIpVersionResponseSerie0;
+  serie_0: HttpTimeseriesGroupsIpVersionResponseSerie0;
 }
 export const IpVersionHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsIpVersionResponseMeta,
-      serie0: HttpTimeseriesGroupsIpVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsIpVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionHttpTimeseriesGroupResponse",
@@ -49857,12 +49742,12 @@ export const As112TopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface LocationsAs112TopResponse {
   /** Metadata for the results. */
   meta: As112TopLocationsResponseMeta;
-  top0: As112TopLocationsResponseTop0List;
+  top_0: As112TopLocationsResponseTop0List;
 }
 export const LocationsAs112TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TopLocationsResponseMeta,
-    top0: As112TopLocationsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: As112TopLocationsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LocationsAs112TopResponse",
@@ -50411,12 +50296,12 @@ export const DnsTopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface LocationsDnsTopResponse {
   /** Metadata for the results. */
   meta: DnsTopLocationsResponseMeta;
-  top0: DnsTopLocationsResponseTop0List;
+  top_0: DnsTopLocationsResponseTop0List;
 }
 export const LocationsDnsTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTopLocationsResponseMeta,
-    top0: DnsTopLocationsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: DnsTopLocationsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LocationsDnsTopResponse",
@@ -50726,12 +50611,12 @@ export const NetflowsTopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface LocationsNetflowTopResponse {
   /** Metadata for the results. */
   meta: NetflowsTopLocationsResponseMeta;
-  top0: NetflowsTopLocationsResponseTop0List;
+  top_0: NetflowsTopLocationsResponseTop0List;
 }
 export const LocationsNetflowTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsTopLocationsResponseMeta,
-    top0: NetflowsTopLocationsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: NetflowsTopLocationsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LocationsNetflowTopResponse",
@@ -51048,12 +50933,12 @@ export const QualitySpeedTopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
 export interface LocationsQualitySpeedTopResponse {
   /** Metadata for the results. */
   meta: QualitySpeedTopLocationsResponseMeta;
-  top0: QualitySpeedTopLocationsResponseTop0List;
+  top_0: QualitySpeedTopLocationsResponseTop0List;
 }
 export const LocationsQualitySpeedTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: QualitySpeedTopLocationsResponseMeta,
-    top0: QualitySpeedTopLocationsResponseTop0List.pipe(T.Body("top_0")),
+    top_0: QualitySpeedTopLocationsResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LocationsQualitySpeedTopResponse",
@@ -51420,15 +51305,13 @@ export const EmailSecuritySummaryMaliciousResponseSummary0 =
 export interface MaliciousEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryMaliciousResponseMeta;
-  summary0: EmailSecuritySummaryMaliciousResponseSummary0;
+  summary_0: EmailSecuritySummaryMaliciousResponseSummary0;
 }
 export const MaliciousEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecuritySummaryMaliciousResponseMeta,
-      summary0: EmailSecuritySummaryMaliciousResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: EmailSecuritySummaryMaliciousResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MaliciousEmailSecuritySummaryResponse",
@@ -51873,15 +51756,13 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseSerie0 =
 export interface MaliciousEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsMaliciousResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0;
 }
 export const MaliciousEmailSecurityTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsMaliciousResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "MaliciousEmailSecurityTimeseriesGroupResponse",
@@ -52320,15 +52201,13 @@ export const AttacksLayer7SummaryManagedRulesResponseSummary0Map =
 export interface ManagedRulesAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryManagedRulesResponseMeta;
-  summary0: AttacksLayer7SummaryManagedRulesResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryManagedRulesResponseSummary0Map;
 }
 export const ManagedRulesAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7SummaryManagedRulesResponseMeta,
-      summary0: AttacksLayer7SummaryManagedRulesResponseSummary0Map.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer7SummaryManagedRulesResponseSummary0Map,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ManagedRulesAttackLayer7SummaryResponse",
@@ -52860,15 +52739,13 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseSerie0 =
 export interface ManagedRulesAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsManagedRulesResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsManagedRulesResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsManagedRulesResponseSerie0;
 }
 export const ManagedRulesAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsManagedRulesResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsManagedRulesResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsManagedRulesResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ManagedRulesAttackLayer7TimeseriesGroupResponse",
@@ -53347,14 +53224,12 @@ export const DnsSummaryMatchingAnswerResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface MatchingAnswerDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryMatchingAnswerResponseMeta;
-  summary0: DnsSummaryMatchingAnswerResponseSummary0;
+  summary_0: DnsSummaryMatchingAnswerResponseSummary0;
 }
 export const MatchingAnswerDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryMatchingAnswerResponseMeta,
-    summary0: DnsSummaryMatchingAnswerResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: DnsSummaryMatchingAnswerResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MatchingAnswerDnsSummaryResponse",
@@ -53896,15 +53771,13 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseSerie0 =
 export interface MatchingAnswerDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsMatchingAnswerResponseMeta;
-  serie0: DnsTimeseriesGroupsMatchingAnswerResponseSerie0;
+  serie_0: DnsTimeseriesGroupsMatchingAnswerResponseSerie0;
 }
 export const MatchingAnswerDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: DnsTimeseriesGroupsMatchingAnswerResponseMeta,
-      serie0: DnsTimeseriesGroupsMatchingAnswerResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: DnsTimeseriesGroupsMatchingAnswerResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MatchingAnswerDnsTimeseriesGroupResponse",
@@ -54338,15 +54211,13 @@ export const AttacksLayer7SummaryMitigationProductResponseSummary0Map =
 export interface MitigationProductAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryMitigationProductResponseMeta;
-  summary0: AttacksLayer7SummaryMitigationProductResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryMitigationProductResponseSummary0Map;
 }
 export const MitigationProductAttackLayer7SummaryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7SummaryMitigationProductResponseMeta,
-      summary0: AttacksLayer7SummaryMitigationProductResponseSummary0Map.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: AttacksLayer7SummaryMitigationProductResponseSummary0Map,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "MitigationProductAttackLayer7SummaryResponse",
@@ -54853,15 +54724,13 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductResponseSerie0 =
 export interface MitigationProductAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsMitigationProductResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsMitigationProductResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsMitigationProductResponseSerie0;
 }
 export const MitigationProductAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsMitigationProductResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsMitigationProductResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsMitigationProductResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "MitigationProductAttackLayer7TimeseriesGroupResponse",
@@ -55222,14 +55091,12 @@ export const AiInferenceSummaryModelResponseSummary0Map =
 export interface ModelAiInferenceSummaryResponse {
   /** Metadata for the results. */
   meta: AiInferenceSummaryModelResponseMeta;
-  summary0: AiInferenceSummaryModelResponseSummary0Map;
+  summary_0: AiInferenceSummaryModelResponseSummary0Map;
 }
 export const ModelAiInferenceSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiInferenceSummaryModelResponseMeta,
-    summary0: AiInferenceSummaryModelResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AiInferenceSummaryModelResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ModelAiInferenceSummaryResponse",
@@ -55562,15 +55429,13 @@ export const AiInferenceTimeseriesGroupsSummaryModelResponseSerie0 =
 export interface ModelAiInferenceTimeseriesGroupSummaryResponse {
   /** Metadata for the results. */
   meta: AiInferenceTimeseriesGroupsSummaryModelResponseMeta;
-  serie0: AiInferenceTimeseriesGroupsSummaryModelResponseSerie0;
+  serie_0: AiInferenceTimeseriesGroupsSummaryModelResponseSerie0;
 }
 export const ModelAiInferenceTimeseriesGroupSummaryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AiInferenceTimeseriesGroupsSummaryModelResponseMeta,
-      serie0: AiInferenceTimeseriesGroupsSummaryModelResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AiInferenceTimeseriesGroupsSummaryModelResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ModelAiInferenceTimeseriesGroupSummaryResponse",
@@ -55921,15 +55786,13 @@ export const AttacksLayer3TopLocationsOriginResponseTop0List =
 export interface OriginAttackLayer3TopLocationResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TopLocationsOriginResponseMeta;
-  top0: AttacksLayer3TopLocationsOriginResponseTop0List;
+  top_0: AttacksLayer3TopLocationsOriginResponseTop0List;
 }
 export const OriginAttackLayer3TopLocationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer3TopLocationsOriginResponseMeta,
-      top0: AttacksLayer3TopLocationsOriginResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: AttacksLayer3TopLocationsOriginResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginAttackLayer3TopLocationResponse",
@@ -56358,12 +56221,12 @@ export const AttacksLayer7TopAsesOriginResponseTop0List = /*@__PURE__*/ S.Array(
 export interface OriginAttackLayer7TopAsResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopAsesOriginResponseMeta;
-  top0: AttacksLayer7TopAsesOriginResponseTop0List;
+  top_0: AttacksLayer7TopAsesOriginResponseTop0List;
 }
 export const OriginAttackLayer7TopAsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7TopAsesOriginResponseMeta,
-    top0: AttacksLayer7TopAsesOriginResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer7TopAsesOriginResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginAttackLayer7TopAsResponse",
@@ -56802,15 +56665,13 @@ export const AttacksLayer7TopLocationsOriginResponseTop0List =
 export interface OriginAttackLayer7TopLocationResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopLocationsOriginResponseMeta;
-  top0: AttacksLayer7TopLocationsOriginResponseTop0List;
+  top_0: AttacksLayer7TopLocationsOriginResponseTop0List;
 }
 export const OriginAttackLayer7TopLocationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7TopLocationsOriginResponseMeta,
-      top0: AttacksLayer7TopLocationsOriginResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: AttacksLayer7TopLocationsOriginResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginAttackLayer7TopLocationResponse",
@@ -57253,12 +57114,12 @@ export const OriginsSummaryResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface OriginsSummaryResponse {
   /** Metadata for the results. */
   meta: OriginsSummaryResponseMeta;
-  summary0: OriginsSummaryResponseSummary0Map;
+  summary_0: OriginsSummaryResponseSummary0Map;
 }
 export const OriginsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: OriginsSummaryResponseMeta,
-    summary0: OriginsSummaryResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: OriginsSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginsSummaryResponse",
@@ -57920,12 +57781,12 @@ export const OriginsTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface OriginsTimeseriesGroupsResponse {
   /** Metadata for the results. */
   meta: OriginsTimeseriesGroupsResponseMeta;
-  serie0: OriginsTimeseriesGroupsResponseSerie0;
+  serie_0: OriginsTimeseriesGroupsResponseSerie0;
 }
 export const OriginsTimeseriesGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: OriginsTimeseriesGroupsResponseMeta,
-    serie0: OriginsTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: OriginsTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginsTimeseriesGroupsResponse",
@@ -58312,12 +58173,12 @@ export const HttpSummaryOsResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface OsHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryOsResponseMeta;
-  summary0: HttpSummaryOsResponseSummary0;
+  summary_0: HttpSummaryOsResponseSummary0;
 }
 export const OsHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryOsResponseMeta,
-    summary0: HttpSummaryOsResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryOsResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OsHttpSummaryResponse",
@@ -58775,12 +58636,12 @@ export const HttpTimeseriesGroupsOsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface OsHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsOsResponseMeta;
-  serie0: HttpTimeseriesGroupsOsResponseSerie0;
+  serie_0: HttpTimeseriesGroupsOsResponseSerie0;
 }
 export const OsHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTimeseriesGroupsOsResponseMeta,
-    serie0: HttpTimeseriesGroupsOsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: HttpTimeseriesGroupsOsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OsHttpTimeseriesGroupResponse",
@@ -59318,12 +59179,12 @@ export const HttpSummaryPostQuantumResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface PostQuantumHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryPostQuantumResponseMeta;
-  summary0: HttpSummaryPostQuantumResponseSummary0;
+  summary_0: HttpSummaryPostQuantumResponseSummary0;
 }
 export const PostQuantumHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryPostQuantumResponseMeta,
-    summary0: HttpSummaryPostQuantumResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryPostQuantumResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PostQuantumHttpSummaryResponse",
@@ -59858,15 +59719,13 @@ export const HttpTimeseriesGroupsPostQuantumResponseSerie0 =
 export interface PostQuantumHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsPostQuantumResponseMeta;
-  serie0: HttpTimeseriesGroupsPostQuantumResponseSerie0;
+  serie_0: HttpTimeseriesGroupsPostQuantumResponseSerie0;
 }
 export const PostQuantumHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsPostQuantumResponseMeta,
-      serie0: HttpTimeseriesGroupsPostQuantumResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsPostQuantumResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PostQuantumHttpTimeseriesGroupResponse",
@@ -60001,12 +59860,12 @@ export const BgpTopPrefixesResponseTop0List = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesBgpTopResponse {
   meta: BgpTopPrefixesResponseMeta;
-  top0: BgpTopPrefixesResponseTop0List;
+  top_0: BgpTopPrefixesResponseTop0List;
 }
 export const PrefixesBgpTopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpTopPrefixesResponseMeta,
-    top0: BgpTopPrefixesResponseTop0List.pipe(T.Body("top_0")),
+    top_0: BgpTopPrefixesResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PrefixesBgpTopResponse",
@@ -60511,12 +60370,12 @@ export const As112SummaryProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface ProtocolAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryProtocolResponseMeta;
-  summary0: As112SummaryProtocolResponseSummary0;
+  summary_0: As112SummaryProtocolResponseSummary0;
 }
 export const ProtocolAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryProtocolResponseMeta,
-    summary0: As112SummaryProtocolResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: As112SummaryProtocolResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolAs112SummaryResponse",
@@ -61009,15 +60868,13 @@ export const As112TimeseriesGroupsProtocolResponseSerie0 =
 export interface ProtocolAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsProtocolResponseMeta;
-  serie0: As112TimeseriesGroupsProtocolResponseSerie0;
+  serie_0: As112TimeseriesGroupsProtocolResponseSerie0;
 }
 export const ProtocolAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: As112TimeseriesGroupsProtocolResponseMeta,
-      serie0: As112TimeseriesGroupsProtocolResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: As112TimeseriesGroupsProtocolResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolAs112TimeseriesGroupResponse",
@@ -61348,14 +61205,12 @@ export const AttacksLayer3SummaryProtocolResponseSummary0 =
 export interface ProtocolAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryProtocolResponseMeta;
-  summary0: AttacksLayer3SummaryProtocolResponseSummary0;
+  summary_0: AttacksLayer3SummaryProtocolResponseSummary0;
 }
 export const ProtocolAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryProtocolResponseMeta,
-    summary0: AttacksLayer3SummaryProtocolResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryProtocolResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolAttackLayer3SummaryResponse",
@@ -61790,15 +61645,13 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseSerie0 =
 export interface ProtocolAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsProtocolResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0;
 }
 export const ProtocolAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsProtocolResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ProtocolAttackLayer3TimeseriesGroupResponse",
@@ -62241,12 +62094,12 @@ export const DnsSummaryProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface ProtocolDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryProtocolResponseMeta;
-  summary0: DnsSummaryProtocolResponseSummary0;
+  summary_0: DnsSummaryProtocolResponseSummary0;
 }
 export const ProtocolDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryProtocolResponseMeta,
-    summary0: DnsSummaryProtocolResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryProtocolResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDnsSummaryResponse",
@@ -62763,12 +62616,12 @@ export const DnsTimeseriesGroupsProtocolResponseSerie0 =
 export interface ProtocolDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsProtocolResponseMeta;
-  serie0: DnsTimeseriesGroupsProtocolResponseSerie0;
+  serie_0: DnsTimeseriesGroupsProtocolResponseSerie0;
 }
 export const ProtocolDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsProtocolResponseMeta,
-    serie0: DnsTimeseriesGroupsProtocolResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsProtocolResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDnsTimeseriesGroupResponse",
@@ -63104,14 +62957,12 @@ export const As112SummaryQueryTypeResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface QueryTypeAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryQueryTypeResponseMeta;
-  summary0: As112SummaryQueryTypeResponseSummary0Map;
+  summary_0: As112SummaryQueryTypeResponseSummary0Map;
 }
 export const QueryTypeAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryQueryTypeResponseMeta,
-    summary0: As112SummaryQueryTypeResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: As112SummaryQueryTypeResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryTypeAs112SummaryResponse",
@@ -63502,15 +63353,13 @@ export const As112TimeseriesGroupsQueryTypeResponseSerie0 =
 export interface QueryTypeAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsQueryTypeResponseMeta;
-  serie0: As112TimeseriesGroupsQueryTypeResponseSerie0;
+  serie_0: As112TimeseriesGroupsQueryTypeResponseSerie0;
 }
 export const QueryTypeAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: As112TimeseriesGroupsQueryTypeResponseMeta,
-      serie0: As112TimeseriesGroupsQueryTypeResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: As112TimeseriesGroupsQueryTypeResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryTypeAs112TimeseriesGroupResponse",
@@ -63865,12 +63714,12 @@ export const DnsSummaryQueryTypeResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface QueryTypeDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryQueryTypeResponseMeta;
-  summary0: DnsSummaryQueryTypeResponseSummary0Map;
+  summary_0: DnsSummaryQueryTypeResponseSummary0Map;
 }
 export const QueryTypeDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryQueryTypeResponseMeta,
-    summary0: DnsSummaryQueryTypeResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryQueryTypeResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryTypeDnsSummaryResponse",
@@ -64284,12 +64133,12 @@ export const DnsTimeseriesGroupsQueryTypeResponseSerie0 =
 export interface QueryTypeDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsQueryTypeResponseMeta;
-  serie0: DnsTimeseriesGroupsQueryTypeResponseSerie0;
+  serie_0: DnsTimeseriesGroupsQueryTypeResponseSerie0;
 }
 export const QueryTypeDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsQueryTypeResponseMeta,
-    serie0: DnsTimeseriesGroupsQueryTypeResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsQueryTypeResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryTypeDnsTimeseriesGroupResponse",
@@ -65011,14 +64860,12 @@ export const DnsSummaryResponseCodeResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface ResponseCodeDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryResponseCodeResponseMeta;
-  summary0: DnsSummaryResponseCodeResponseSummary0Map;
+  summary_0: DnsSummaryResponseCodeResponseSummary0Map;
 }
 export const ResponseCodeDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryResponseCodeResponseMeta,
-    summary0: DnsSummaryResponseCodeResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: DnsSummaryResponseCodeResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseCodeDnsSummaryResponse",
@@ -65511,15 +65358,13 @@ export const DnsTimeseriesGroupsResponseCodeResponseSerie0 =
 export interface ResponseCodeDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsResponseCodeResponseMeta;
-  serie0: DnsTimeseriesGroupsResponseCodeResponseSerie0;
+  serie_0: DnsTimeseriesGroupsResponseCodeResponseSerie0;
 }
 export const ResponseCodeDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: DnsTimeseriesGroupsResponseCodeResponseMeta,
-      serie0: DnsTimeseriesGroupsResponseCodeResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: DnsTimeseriesGroupsResponseCodeResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseCodeDnsTimeseriesGroupResponse",
@@ -65933,14 +65778,12 @@ export const As112SummaryResponseCodesResponseSummary0Map =
 export interface ResponseCodesAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryResponseCodesResponseMeta;
-  summary0: As112SummaryResponseCodesResponseSummary0Map;
+  summary_0: As112SummaryResponseCodesResponseSummary0Map;
 }
 export const ResponseCodesAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryResponseCodesResponseMeta,
-    summary0: As112SummaryResponseCodesResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: As112SummaryResponseCodesResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseCodesAs112SummaryResponse",
@@ -66408,15 +66251,13 @@ export const As112TimeseriesGroupsResponseCodesResponseSerie0 =
 export interface ResponseCodesAs112TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsResponseCodesResponseMeta;
-  serie0: As112TimeseriesGroupsResponseCodesResponseSerie0;
+  serie_0: As112TimeseriesGroupsResponseCodesResponseSerie0;
 }
 export const ResponseCodesAs112TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: As112TimeseriesGroupsResponseCodesResponseMeta,
-      serie0: As112TimeseriesGroupsResponseCodesResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: As112TimeseriesGroupsResponseCodesResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ResponseCodesAs112TimeseriesGroupResponse",
@@ -66866,30 +66707,30 @@ export const DnsSummaryResponseTtlResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryResponseTtlResponseSummary0 {
   /** A numeric string. */
-  gt15mLte1h: string;
+  gt_15m_lte_1h: string;
   /** A numeric string. */
-  gt1dLte1w: string;
+  gt_1d_lte_1w: string;
   /** A numeric string. */
-  gt1hLte1d: string;
+  gt_1h_lte_1d: string;
   /** A numeric string. */
-  gt1mLte5m: string;
+  gt_1m_lte_5m: string;
   /** A numeric string. */
-  gt1w: string;
+  gt_1w: string;
   /** A numeric string. */
-  gt5mLte15m: string;
+  gt_5m_lte_15m: string;
   /** A numeric string. */
-  lte1m: string;
+  lte_1m: string;
 }
 export const DnsSummaryResponseTtlResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      gt15mLte1h: S.String.pipe(T.Body("gt_15m_lte_1h")),
-      gt1dLte1w: S.String.pipe(T.Body("gt_1d_lte_1w")),
-      gt1hLte1d: S.String.pipe(T.Body("gt_1h_lte_1d")),
-      gt1mLte5m: S.String.pipe(T.Body("gt_1m_lte_5m")),
-      gt1w: S.String.pipe(T.Body("gt_1w")),
-      gt5mLte15m: S.String.pipe(T.Body("gt_5m_lte_15m")),
-      lte1m: S.String.pipe(T.Body("lte_1m")),
+      gt_15m_lte_1h: S.String,
+      gt_1d_lte_1w: S.String,
+      gt_1h_lte_1d: S.String,
+      gt_1m_lte_5m: S.String,
+      gt_1w: S.String,
+      gt_5m_lte_15m: S.String,
+      lte_1m: S.String,
     }),
 ).annotate({
   identifier: "DnsSummaryResponseTtlResponseSummary0",
@@ -66899,12 +66740,12 @@ export const DnsSummaryResponseTtlResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface ResponseTTLDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryResponseTtlResponseMeta;
-  summary0: DnsSummaryResponseTtlResponseSummary0;
+  summary_0: DnsSummaryResponseTtlResponseSummary0;
 }
 export const ResponseTTLDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryResponseTtlResponseMeta,
-    summary0: DnsSummaryResponseTtlResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryResponseTtlResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseTTLDnsSummaryResponse",
@@ -67457,40 +67298,24 @@ export const DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList =
   ) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList>;
 
 export interface DnsTimeseriesGroupsResponseTtlResponseSerie0 {
-  gt15mLte1h: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt15mLte1hList;
-  gt1dLte1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1dLte1wList;
-  gt1hLte1d: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1hLte1dList;
-  gt1mLte5m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1mLte5mList;
-  gt1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1wList;
-  gt5mLte15m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt5mLte15mList;
-  lte1m: DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList;
+  gt_15m_lte_1h: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt15mLte1hList;
+  gt_1d_lte_1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1dLte1wList;
+  gt_1h_lte_1d: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1hLte1dList;
+  gt_1m_lte_5m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1mLte5mList;
+  gt_1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1wList;
+  gt_5m_lte_15m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt5mLte15mList;
+  lte_1m: DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList;
 }
 export const DnsTimeseriesGroupsResponseTtlResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      gt15mLte1h:
-        DnsTimeseriesGroupsResponseTtlResponseSerie0Gt15mLte1hList.pipe(
-          T.Body("gt_15m_lte_1h"),
-        ),
-      gt1dLte1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1dLte1wList.pipe(
-        T.Body("gt_1d_lte_1w"),
-      ),
-      gt1hLte1d: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1hLte1dList.pipe(
-        T.Body("gt_1h_lte_1d"),
-      ),
-      gt1mLte5m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1mLte5mList.pipe(
-        T.Body("gt_1m_lte_5m"),
-      ),
-      gt1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1wList.pipe(
-        T.Body("gt_1w"),
-      ),
-      gt5mLte15m:
-        DnsTimeseriesGroupsResponseTtlResponseSerie0Gt5mLte15mList.pipe(
-          T.Body("gt_5m_lte_15m"),
-        ),
-      lte1m: DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList.pipe(
-        T.Body("lte_1m"),
-      ),
+      gt_15m_lte_1h: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt15mLte1hList,
+      gt_1d_lte_1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1dLte1wList,
+      gt_1h_lte_1d: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1hLte1dList,
+      gt_1m_lte_5m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1mLte5mList,
+      gt_1w: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt1wList,
+      gt_5m_lte_15m: DnsTimeseriesGroupsResponseTtlResponseSerie0Gt5mLte15mList,
+      lte_1m: DnsTimeseriesGroupsResponseTtlResponseSerie0Lte1mList,
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsResponseTtlResponseSerie0",
@@ -67500,15 +67325,13 @@ export const DnsTimeseriesGroupsResponseTtlResponseSerie0 =
 export interface ResponseTTLDnsTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsResponseTtlResponseMeta;
-  serie0: DnsTimeseriesGroupsResponseTtlResponseSerie0;
+  serie_0: DnsTimeseriesGroupsResponseTtlResponseSerie0;
 }
 export const ResponseTTLDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: DnsTimeseriesGroupsResponseTtlResponseMeta,
-      serie0: DnsTimeseriesGroupsResponseTtlResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: DnsTimeseriesGroupsResponseTtlResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseTTLDnsTimeseriesGroupResponse",
@@ -67569,11 +67392,11 @@ export const BgpRpkiAspaSnapshotResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaSnapshotResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaSnapshotResponseAsnInfo {
-  "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335;
+  _13335: BgpRpkiAspaSnapshotResponseAsnInfo13335;
 }
 export const BgpRpkiAspaSnapshotResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335,
+    _13335: BgpRpkiAspaSnapshotResponseAsnInfo13335.pipe(T.Body("13335")),
   }),
 ).annotate({
   identifier: "BgpRpkiAspaSnapshotResponseAsnInfo",
@@ -67978,14 +67801,12 @@ export const EmailSecuritySummarySpamResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface SpamEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummarySpamResponseMeta;
-  summary0: EmailSecuritySummarySpamResponseSummary0;
+  summary_0: EmailSecuritySummarySpamResponseSummary0;
 }
 export const SpamEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummarySpamResponseMeta,
-    summary0: EmailSecuritySummarySpamResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailSecuritySummarySpamResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpamEmailSecuritySummaryResponse",
@@ -68409,15 +68230,13 @@ export const EmailSecurityTimeseriesGroupsSpamResponseSerie0 =
 export interface SpamEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsSpamResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsSpamResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsSpamResponseSerie0;
 }
 export const SpamEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsSpamResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsSpamResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsSpamResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpamEmailSecurityTimeseriesGroupResponse",
@@ -68759,12 +68578,12 @@ export const EmailRoutingSummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface SpfEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummarySpfResponseMeta;
-  summary0: EmailRoutingSummarySpfResponseSummary0;
+  summary_0: EmailRoutingSummarySpfResponseSummary0;
 }
 export const SpfEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummarySpfResponseMeta,
-    summary0: EmailRoutingSummarySpfResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: EmailRoutingSummarySpfResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailRoutingSummaryResponse",
@@ -69186,15 +69005,13 @@ export const EmailRoutingTimeseriesGroupsSpfResponseSerie0 =
 export interface SpfEmailRoutingTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsSpfResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsSpfResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsSpfResponseSerie0;
 }
 export const SpfEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsSpfResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsSpfResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsSpfResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailRoutingTimeseriesGroupResponse",
@@ -69526,12 +69343,12 @@ export const EmailSecuritySummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface SpfEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummarySpfResponseMeta;
-  summary0: EmailSecuritySummarySpfResponseSummary0;
+  summary_0: EmailSecuritySummarySpfResponseSummary0;
 }
 export const SpfEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummarySpfResponseMeta,
-    summary0: EmailSecuritySummarySpfResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: EmailSecuritySummarySpfResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailSecuritySummaryResponse",
@@ -69942,15 +69759,13 @@ export const EmailSecurityTimeseriesGroupsSpfResponseSerie0 =
 export interface SpfEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsSpfResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsSpfResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsSpfResponseSerie0;
 }
 export const SpfEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsSpfResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsSpfResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsSpfResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailSecurityTimeseriesGroupResponse",
@@ -70297,14 +70112,12 @@ export const EmailSecuritySummarySpoofResponseSummary0 =
 export interface SpoofEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummarySpoofResponseMeta;
-  summary0: EmailSecuritySummarySpoofResponseSummary0;
+  summary_0: EmailSecuritySummarySpoofResponseSummary0;
 }
 export const SpoofEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummarySpoofResponseMeta,
-    summary0: EmailSecuritySummarySpoofResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailSecuritySummarySpoofResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpoofEmailSecuritySummaryResponse",
@@ -70731,15 +70544,13 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseSerie0 =
 export interface SpoofEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsSpoofResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsSpoofResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsSpoofResponseSerie0;
 }
 export const SpoofEmailSecurityTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsSpoofResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsSpoofResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsSpoofResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "SpoofEmailSecurityTimeseriesGroupResponse",
@@ -70989,14 +70800,12 @@ export const AgentReadinessSummaryResponseSummary0Map = /*@__PURE__*/ S.Record(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SummaryAgentReadinessResponse {
   meta: AgentReadinessSummaryResponseMeta;
-  summary0: AgentReadinessSummaryResponseSummary0Map;
+  summary_0: AgentReadinessSummaryResponseSummary0Map;
 }
 export const SummaryAgentReadinessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AgentReadinessSummaryResponseMeta,
-    summary0: AgentReadinessSummaryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AgentReadinessSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryAgentReadinessResponse",
@@ -71265,14 +71074,12 @@ export const AiMarkdownForAgentsSummaryResponseSummary0 =
 export interface SummaryAiMarkdownForAgentResponse {
   /** Metadata for the results. */
   meta: AiMarkdownForAgentsSummaryResponseMeta;
-  summary0: AiMarkdownForAgentsSummaryResponseSummary0;
+  summary_0: AiMarkdownForAgentsSummaryResponseSummary0;
 }
 export const SummaryAiMarkdownForAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiMarkdownForAgentsSummaryResponseMeta,
-    summary0: AiMarkdownForAgentsSummaryResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AiMarkdownForAgentsSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryAiMarkdownForAgentResponse",
@@ -71658,12 +71465,12 @@ export const AiBotsSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryAiTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AiBotsSummaryV2ResponseMeta;
-  summary0: AiBotsSummaryV2ResponseSummary0Map;
+  summary_0: AiBotsSummaryV2ResponseSummary0Map;
 }
 export const SummaryAiTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiBotsSummaryV2ResponseMeta,
-    summary0: AiBotsSummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: AiBotsSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryAiTimeseriesGroupResponse",
@@ -72020,12 +71827,12 @@ export const BotsSummaryResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryBotResponse {
   /** Metadata for the results. */
   meta: BotsSummaryResponseMeta;
-  summary0: BotsSummaryResponseSummary0Map;
+  summary_0: BotsSummaryResponseSummary0Map;
 }
 export const SummaryBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BotsSummaryResponseMeta,
-    summary0: BotsSummaryResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: BotsSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryBotResponse",
@@ -72386,14 +72193,12 @@ export const BotsWebCrawlersSummaryResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryBotWebCrawlerResponse {
   /** Metadata for the results. */
   meta: BotsWebCrawlersSummaryResponseMeta;
-  summary0: BotsWebCrawlersSummaryResponseSummary0Map;
+  summary_0: BotsWebCrawlersSummaryResponseSummary0Map;
 }
 export const SummaryBotWebCrawlerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BotsWebCrawlersSummaryResponseMeta,
-    summary0: BotsWebCrawlersSummaryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: BotsWebCrawlersSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryBotWebCrawlerResponse",
@@ -72871,21 +72676,21 @@ export const CtSummaryResponseSummary0Case1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CtSummaryResponseSummary0Case1>;
 
 export interface CtSummaryResponseSummary0Case2 {
-  gt121d: string;
-  gt16dLte31d: string;
-  gt31dLte91d: string;
-  gt3dLte16d: string;
-  gt91dLte121d: string;
-  lte3d: string;
+  gt_121d: string;
+  gt_16d_lte_31d: string;
+  gt_31d_lte_91d: string;
+  gt_3d_lte_16d: string;
+  gt_91d_lte_121d: string;
+  lte_3d: string;
 }
 export const CtSummaryResponseSummary0Case2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    gt121d: S.String.pipe(T.Body("gt_121d")),
-    gt16dLte31d: S.String.pipe(T.Body("gt_16d_lte_31d")),
-    gt31dLte91d: S.String.pipe(T.Body("gt_31d_lte_91d")),
-    gt3dLte16d: S.String.pipe(T.Body("gt_3d_lte_16d")),
-    gt91dLte121d: S.String.pipe(T.Body("gt_91d_lte_121d")),
-    lte3d: S.String.pipe(T.Body("lte_3d")),
+    gt_121d: S.String,
+    gt_16d_lte_31d: S.String,
+    gt_31d_lte_91d: S.String,
+    gt_3d_lte_16d: S.String,
+    gt_91d_lte_121d: S.String,
+    lte_3d: S.String,
   }),
 ).annotate({
   identifier: "CtSummaryResponseSummary0Case2",
@@ -72976,12 +72781,12 @@ export const CtSummaryResponseSummary0 = /*@__PURE__*/ S.Unknown.pipe(
     [],
     ["rfc6962", "static"],
     [
-      "gt121d",
-      "gt16dLte31d",
-      "gt31dLte91d",
-      "gt3dLte16d",
-      "gt91dLte121d",
-      "lte3d",
+      "gt_121d",
+      "gt_16d_lte_31d",
+      "gt_31d_lte_91d",
+      "gt_3d_lte_16d",
+      "gt_91d_lte_121d",
+      "lte_3d",
     ],
     ["CERTIFICATE", "PRECERTIFICATE"],
     ["EXPIRED", "VALID"],
@@ -72995,12 +72800,12 @@ export const CtSummaryResponseSummary0 = /*@__PURE__*/ S.Unknown.pipe(
 export interface SummaryCtResponse {
   /** Metadata for the results. */
   meta: CtSummaryResponseMeta;
-  summary0: CtSummaryResponseSummary0;
+  summary_0: CtSummaryResponseSummary0;
 }
 export const SummaryCtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: CtSummaryResponseMeta,
-    summary0: CtSummaryResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: CtSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryCtResponse",
@@ -73282,12 +73087,12 @@ export const NetflowsSummaryResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface SummaryNetflowResponse {
   /** Metadata for the results. */
   meta: NetflowsSummaryResponseMeta;
-  summary0: NetflowsSummaryResponseSummary0;
+  summary_0: NetflowsSummaryResponseSummary0;
 }
 export const SummaryNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsSummaryResponseMeta,
-    summary0: NetflowsSummaryResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: NetflowsSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryNetflowResponse",
@@ -73557,14 +73362,12 @@ export const PostQuantumOriginSummaryResponseSummary0Map =
 export interface SummaryPostQuantumOriginResponse {
   /** Metadata for the results. */
   meta: PostQuantumOriginSummaryResponseMeta;
-  summary0: PostQuantumOriginSummaryResponseSummary0Map;
+  summary_0: PostQuantumOriginSummaryResponseSummary0Map;
 }
 export const SummaryPostQuantumOriginResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: PostQuantumOriginSummaryResponseMeta,
-    summary0: PostQuantumOriginSummaryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: PostQuantumOriginSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryPostQuantumOriginResponse",
@@ -73853,12 +73656,12 @@ export const QualityIqiSummaryResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface SummaryQualityIqiResponse {
   /** Metadata for the results. */
   meta: QualityIqiSummaryResponseMeta;
-  summary0: QualityIqiSummaryResponseSummary0;
+  summary_0: QualityIqiSummaryResponseSummary0;
 }
 export const SummaryQualityIqiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: QualityIqiSummaryResponseMeta,
-    summary0: QualityIqiSummaryResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: QualityIqiSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryQualityIqiResponse",
@@ -74132,12 +73935,12 @@ export const QualitySpeedSummaryResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
 export interface SummaryQualitySpeedResponse {
   /** Metadata for the results. */
   meta: QualitySpeedSummaryResponseMeta;
-  summary0: QualitySpeedSummaryResponseSummary0;
+  summary_0: QualitySpeedSummaryResponseSummary0;
 }
 export const SummaryQualitySpeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: QualitySpeedSummaryResponseMeta,
-    summary0: QualitySpeedSummaryResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: QualitySpeedSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryQualitySpeedResponse",
@@ -74447,14 +74250,12 @@ export const TcpResetsTimeoutsSummaryResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface SummaryTcpResetsTimeoutResponse {
   /** Metadata for the results. */
   meta: TcpResetsTimeoutsSummaryResponseMeta;
-  summary0: TcpResetsTimeoutsSummaryResponseSummary0;
+  summary_0: TcpResetsTimeoutsSummaryResponseSummary0;
 }
 export const SummaryTcpResetsTimeoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: TcpResetsTimeoutsSummaryResponseMeta,
-    summary0: TcpResetsTimeoutsSummaryResponseSummary0.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: TcpResetsTimeoutsSummaryResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryTcpResetsTimeoutResponse",
@@ -74747,12 +74548,12 @@ export const AiInferenceSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2AiInferenceResponse {
   /** Metadata for the results. */
   meta: AiInferenceSummaryV2ResponseMeta;
-  summary0: AiInferenceSummaryV2ResponseSummary0Map;
+  summary_0: AiInferenceSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2AiInferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiInferenceSummaryV2ResponseMeta,
-    summary0: AiInferenceSummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: AiInferenceSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2AiInferenceResponse",
@@ -75179,12 +74980,12 @@ export const As112SummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2As112Response {
   /** Metadata for the results. */
   meta: As112SummaryV2ResponseMeta;
-  summary0: As112SummaryV2ResponseSummary0Map;
+  summary_0: As112SummaryV2ResponseSummary0Map;
 }
 export const SummaryV2As112Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryV2ResponseMeta,
-    summary0: As112SummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: As112SummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2As112Response",
@@ -75522,14 +75323,12 @@ export const AttacksLayer3SummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2AttackLayer3Response {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryV2ResponseMeta;
-  summary0: AttacksLayer3SummaryV2ResponseSummary0Map;
+  summary_0: AttacksLayer3SummaryV2ResponseSummary0Map;
 }
 export const SummaryV2AttackLayer3Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryV2ResponseMeta,
-    summary0: AttacksLayer3SummaryV2ResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2AttackLayer3Response",
@@ -75953,14 +75752,12 @@ export const AttacksLayer7SummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2AttackLayer7Response {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryV2ResponseMeta;
-  summary0: AttacksLayer7SummaryV2ResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryV2ResponseSummary0Map;
 }
 export const SummaryV2AttackLayer7Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7SummaryV2ResponseMeta,
-    summary0: AttacksLayer7SummaryV2ResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer7SummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2AttackLayer7Response",
@@ -76507,12 +76304,12 @@ export const DnsSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2DnsResponse {
   /** Metadata for the results. */
   meta: DnsSummaryV2ResponseMeta;
-  summary0: DnsSummaryV2ResponseSummary0Map;
+  summary_0: DnsSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2DnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryV2ResponseMeta,
-    summary0: DnsSummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: DnsSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2DnsResponse",
@@ -76870,14 +76667,12 @@ export const EmailRoutingSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2EmailRoutingResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryV2ResponseMeta;
-  summary0: EmailRoutingSummaryV2ResponseSummary0Map;
+  summary_0: EmailRoutingSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2EmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryV2ResponseMeta,
-    summary0: EmailRoutingSummaryV2ResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailRoutingSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2EmailRoutingResponse",
@@ -77227,14 +77022,12 @@ export const EmailSecuritySummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2EmailSecurityResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryV2ResponseMeta;
-  summary0: EmailSecuritySummaryV2ResponseSummary0Map;
+  summary_0: EmailSecuritySummaryV2ResponseSummary0Map;
 }
 export const SummaryV2EmailSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryV2ResponseMeta,
-    summary0: EmailSecuritySummaryV2ResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: EmailSecuritySummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2EmailSecurityResponse",
@@ -77689,12 +77482,12 @@ export const HttpSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2HttpResponse {
   /** Metadata for the results. */
   meta: HttpSummaryV2ResponseMeta;
-  summary0: HttpSummaryV2ResponseSummary0Map;
+  summary_0: HttpSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2HttpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryV2ResponseMeta,
-    summary0: HttpSummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2HttpResponse",
@@ -78038,14 +77831,12 @@ export const LeakedCredentialsSummaryV2ResponseSummary0Map =
 export interface SummaryV2LeakedCredentialResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsSummaryV2ResponseMeta;
-  summary0: LeakedCredentialsSummaryV2ResponseSummary0Map;
+  summary_0: LeakedCredentialsSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2LeakedCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: LeakedCredentialsSummaryV2ResponseMeta,
-    summary0: LeakedCredentialsSummaryV2ResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: LeakedCredentialsSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2LeakedCredentialResponse",
@@ -78359,12 +78150,12 @@ export const NetflowsSummaryV2ResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface SummaryV2NetflowResponse {
   /** Metadata for the results. */
   meta: NetflowsSummaryV2ResponseMeta;
-  summary0: NetflowsSummaryV2ResponseSummary0Map;
+  summary_0: NetflowsSummaryV2ResponseSummary0Map;
 }
 export const SummaryV2NetflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsSummaryV2ResponseMeta,
-    summary0: NetflowsSummaryV2ResponseSummary0Map.pipe(T.Body("summary_0")),
+    summary_0: NetflowsSummaryV2ResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SummaryV2NetflowResponse",
@@ -78777,15 +78568,13 @@ export const AttacksLayer3TopLocationsTargetResponseTop0List =
 export interface TargetAttackLayer3TopLocationResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TopLocationsTargetResponseMeta;
-  top0: AttacksLayer3TopLocationsTargetResponseTop0List;
+  top_0: AttacksLayer3TopLocationsTargetResponseTop0List;
 }
 export const TargetAttackLayer3TopLocationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer3TopLocationsTargetResponseMeta,
-      top0: AttacksLayer3TopLocationsTargetResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: AttacksLayer3TopLocationsTargetResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TargetAttackLayer3TopLocationResponse",
@@ -79113,15 +78902,13 @@ export const AttacksLayer7TopLocationsTargetResponseTop0List =
 export interface TargetAttackLayer7TopLocationResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopLocationsTargetResponseMeta;
-  top0: AttacksLayer7TopLocationsTargetResponseTop0List;
+  top_0: AttacksLayer7TopLocationsTargetResponseTop0List;
 }
 export const TargetAttackLayer7TopLocationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7TopLocationsTargetResponseMeta,
-      top0: AttacksLayer7TopLocationsTargetResponseTop0List.pipe(
-        T.Body("top_0"),
-      ),
+      top_0: AttacksLayer7TopLocationsTargetResponseTop0List,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TargetAttackLayer7TopLocationResponse",
@@ -79384,14 +79171,12 @@ export const AiInferenceSummaryTaskResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface TaskAiInferenceSummaryResponse {
   /** Metadata for the results. */
   meta: AiInferenceSummaryTaskResponseMeta;
-  summary0: AiInferenceSummaryTaskResponseSummary0Map;
+  summary_0: AiInferenceSummaryTaskResponseSummary0Map;
 }
 export const TaskAiInferenceSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiInferenceSummaryTaskResponseMeta,
-    summary0: AiInferenceSummaryTaskResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AiInferenceSummaryTaskResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TaskAiInferenceSummaryResponse",
@@ -79724,15 +79509,13 @@ export const AiInferenceTimeseriesGroupsSummaryTaskResponseSerie0 =
 export interface TaskAiInferenceTimeseriesGroupSummaryResponse {
   /** Metadata for the results. */
   meta: AiInferenceTimeseriesGroupsSummaryTaskResponseMeta;
-  serie0: AiInferenceTimeseriesGroupsSummaryTaskResponseSerie0;
+  serie_0: AiInferenceTimeseriesGroupsSummaryTaskResponseSerie0;
 }
 export const TaskAiInferenceTimeseriesGroupSummaryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AiInferenceTimeseriesGroupsSummaryTaskResponseMeta,
-      serie0: AiInferenceTimeseriesGroupsSummaryTaskResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AiInferenceTimeseriesGroupsSummaryTaskResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TaskAiInferenceTimeseriesGroupSummaryResponse",
@@ -80123,15 +79906,13 @@ export const EmailSecuritySummaryThreatCategoryResponseSummary0 =
 export interface ThreatCategoryEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryThreatCategoryResponseMeta;
-  summary0: EmailSecuritySummaryThreatCategoryResponseSummary0;
+  summary_0: EmailSecuritySummaryThreatCategoryResponseSummary0;
 }
 export const ThreatCategoryEmailSecuritySummaryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecuritySummaryThreatCategoryResponseMeta,
-      summary0: EmailSecuritySummaryThreatCategoryResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: EmailSecuritySummaryThreatCategoryResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ThreatCategoryEmailSecuritySummaryResponse",
@@ -80605,15 +80386,13 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0 =
 export interface ThreatCategoryEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsThreatCategoryResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0;
 }
 export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsThreatCategoryResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ThreatCategoryEmailSecurityTimeseriesGroupResponse",
@@ -82539,12 +82318,12 @@ export const AttacksLayer7TimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesAttackLayer7Response {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesResponseMeta;
-  serie0: AttacksLayer7TimeseriesResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesResponseSerie0;
 }
 export const TimeseriesAttackLayer7Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7TimeseriesResponseMeta,
-    serie0: AttacksLayer7TimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: AttacksLayer7TimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesAttackLayer7Response",
@@ -82803,12 +82582,12 @@ export const BgpTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesBgpResponse {
   meta: BgpTimeseriesResponseMeta;
-  serie0: BgpTimeseriesResponseSerie0;
+  serie_0: BgpTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpTimeseriesResponseMeta,
-    serie0: BgpTimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: BgpTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesBgpResponse",
@@ -83206,12 +82985,12 @@ export const BgpIpsTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 export interface TimeseriesBgpIpResponse {
   /** Metadata for the results. */
   meta: BgpIpsTimeseriesResponseMeta;
-  serie0: BgpIpsTimeseriesResponseSerie0;
+  serie_0: BgpIpsTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpIpsTimeseriesResponseMeta,
-    serie0: BgpIpsTimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: BgpIpsTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesBgpIpResponse",
@@ -83325,12 +83104,12 @@ export const BgpRpkiAspaTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesBgpRpkiAspaResponse {
   meta: BgpRpkiAspaTimeseriesResponseMeta;
-  serie0: BgpRpkiAspaTimeseriesResponseSerie0;
+  serie_0: BgpRpkiAspaTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpRpkiAspaTimeseriesResponseMeta,
-    serie0: BgpRpkiAspaTimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: BgpRpkiAspaTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesBgpRpkiAspaResponse",
@@ -83446,12 +83225,12 @@ export const BgpRpkiRoasTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesBgpRpkiRoaResponse {
   meta: BgpRpkiRoasTimeseriesResponseMeta;
-  serie0: BgpRpkiRoasTimeseriesResponseSerie0;
+  serie_0: BgpRpkiRoasTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpRpkiRoaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BgpRpkiRoasTimeseriesResponseMeta,
-    serie0: BgpRpkiRoasTimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: BgpRpkiRoasTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesBgpRpkiRoaResponse",
@@ -85248,12 +85027,12 @@ export const AiBotsTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsAiBotResponse {
   /** Metadata for the results. */
   meta: AiBotsTimeseriesGroupsResponseMeta;
-  serie0: AiBotsTimeseriesGroupsResponseSerie0;
+  serie_0: AiBotsTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsAiBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiBotsTimeseriesGroupsResponseMeta,
-    serie0: AiBotsTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: AiBotsTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsAiBotResponse",
@@ -85657,12 +85436,12 @@ export const BotsTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 export interface TimeseriesGroupsBotResponse {
   /** Metadata for the results. */
   meta: BotsTimeseriesGroupsResponseMeta;
-  serie0: BotsTimeseriesGroupsResponseSerie0;
+  serie_0: BotsTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: BotsTimeseriesGroupsResponseMeta,
-    serie0: BotsTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: BotsTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsBotResponse",
@@ -86099,15 +85878,13 @@ export const BotsWebCrawlersTimeseriesGroupsResponseSerie0 =
 export interface TimeseriesGroupsBotWebCrawlerResponse {
   /** Metadata for the results. */
   meta: BotsWebCrawlersTimeseriesGroupsResponseMeta;
-  serie0: BotsWebCrawlersTimeseriesGroupsResponseSerie0;
+  serie_0: BotsWebCrawlersTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsBotWebCrawlerResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: BotsWebCrawlersTimeseriesGroupsResponseMeta,
-      serie0: BotsWebCrawlersTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: BotsWebCrawlersTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsBotWebCrawlerResponse",
@@ -86701,34 +86478,22 @@ export const CtTimeseriesGroupsResponseSerie0Case2Lte3dList =
   ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case2Lte3dList>;
 
 export interface CtTimeseriesGroupsResponseSerie0Case2 {
-  gt121d: CtTimeseriesGroupsResponseSerie0Case2Gt121dList;
-  gt16dLte31d: CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList;
-  gt31dLte91d: CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList;
-  gt3dLte16d: CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList;
-  gt91dLte121d: CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList;
-  lte3d: CtTimeseriesGroupsResponseSerie0Case2Lte3dList;
+  gt_121d: CtTimeseriesGroupsResponseSerie0Case2Gt121dList;
+  gt_16d_lte_31d: CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList;
+  gt_31d_lte_91d: CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList;
+  gt_3d_lte_16d: CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList;
+  gt_91d_lte_121d: CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList;
+  lte_3d: CtTimeseriesGroupsResponseSerie0Case2Lte3dList;
 }
 export const CtTimeseriesGroupsResponseSerie0Case2 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      gt121d: CtTimeseriesGroupsResponseSerie0Case2Gt121dList.pipe(
-        T.Body("gt_121d"),
-      ),
-      gt16dLte31d: CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList.pipe(
-        T.Body("gt_16d_lte_31d"),
-      ),
-      gt31dLte91d: CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList.pipe(
-        T.Body("gt_31d_lte_91d"),
-      ),
-      gt3dLte16d: CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList.pipe(
-        T.Body("gt_3d_lte_16d"),
-      ),
-      gt91dLte121d: CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList.pipe(
-        T.Body("gt_91d_lte_121d"),
-      ),
-      lte3d: CtTimeseriesGroupsResponseSerie0Case2Lte3dList.pipe(
-        T.Body("lte_3d"),
-      ),
+      gt_121d: CtTimeseriesGroupsResponseSerie0Case2Gt121dList,
+      gt_16d_lte_31d: CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList,
+      gt_31d_lte_91d: CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList,
+      gt_3d_lte_16d: CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList,
+      gt_91d_lte_121d: CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList,
+      lte_3d: CtTimeseriesGroupsResponseSerie0Case2Lte3dList,
     }),
 ).annotate({
   identifier: "CtTimeseriesGroupsResponseSerie0Case2",
@@ -86905,12 +86670,12 @@ export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
     ["timestamps"],
     ["rfc6962", "static"],
     [
-      "gt121d",
-      "gt16dLte31d",
-      "gt31dLte91d",
-      "gt3dLte16d",
-      "gt91dLte121d",
-      "lte3d",
+      "gt_121d",
+      "gt_16d_lte_31d",
+      "gt_31d_lte_91d",
+      "gt_3d_lte_16d",
+      "gt_91d_lte_121d",
+      "lte_3d",
     ],
     ["CERTIFICATE", "PRECERTIFICATE"],
     ["EXPIRED", "VALID"],
@@ -86924,12 +86689,12 @@ export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
 export interface TimeseriesGroupsCtResponse {
   /** Metadata for the results. */
   meta: CtTimeseriesGroupsResponseMeta;
-  serie0: CtTimeseriesGroupsResponseSerie0;
+  serie_0: CtTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsCtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: CtTimeseriesGroupsResponseMeta,
-    serie0: CtTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: CtTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsCtResponse",
@@ -87306,12 +87071,12 @@ export const NetflowsTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsNetflowResponse {
   /** Metadata for the results. */
   meta: NetflowsTimeseriesGroupsResponseMeta;
-  serie0: NetflowsTimeseriesGroupsResponseSerie0;
+  serie_0: NetflowsTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsTimeseriesGroupsResponseMeta,
-    serie0: NetflowsTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: NetflowsTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsNetflowResponse",
@@ -87617,15 +87382,13 @@ export const PostQuantumOriginTimeseriesGroupsResponseSerie0 =
 export interface TimeseriesGroupsPostQuantumOriginResponse {
   /** Metadata for the results. */
   meta: PostQuantumOriginTimeseriesGroupsResponseMeta;
-  serie0: PostQuantumOriginTimeseriesGroupsResponseSerie0;
+  serie_0: PostQuantumOriginTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsPostQuantumOriginResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: PostQuantumOriginTimeseriesGroupsResponseMeta,
-      serie0: PostQuantumOriginTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: PostQuantumOriginTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TimeseriesGroupsPostQuantumOriginResponse",
@@ -87967,12 +87730,12 @@ export const QualityIqiTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsQualityIqiResponse {
   /** Metadata for the results. */
   meta: QualityIqiTimeseriesGroupsResponseMeta;
-  serie0: QualityIqiTimeseriesGroupsResponseSerie0;
+  serie_0: QualityIqiTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsQualityIqiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: QualityIqiTimeseriesGroupsResponseMeta,
-    serie0: QualityIqiTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: QualityIqiTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsQualityIqiResponse",
@@ -88301,12 +88064,12 @@ export const RankingTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsRankingResponse {
   /** Metadata for the results. */
   meta: RankingTimeseriesGroupsResponseMeta;
-  serie0: RankingTimeseriesGroupsResponseSerie0;
+  serie_0: RankingTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsRankingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: RankingTimeseriesGroupsResponseMeta,
-    serie0: RankingTimeseriesGroupsResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: RankingTimeseriesGroupsResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsRankingResponse",
@@ -88636,15 +88399,13 @@ export const RankingInternetServicesTimeseriesGroupsResponseSerie0 =
 export interface TimeseriesGroupsRankingInternetServiceResponse {
   /** Metadata for the results. */
   meta: RankingInternetServicesTimeseriesGroupsResponseMeta;
-  serie0: RankingInternetServicesTimeseriesGroupsResponseSerie0;
+  serie_0: RankingInternetServicesTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsRankingInternetServiceResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: RankingInternetServicesTimeseriesGroupsResponseMeta,
-      serie0: RankingInternetServicesTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: RankingInternetServicesTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TimeseriesGroupsRankingInternetServiceResponse",
@@ -89047,15 +88808,13 @@ export const TcpResetsTimeoutsTimeseriesGroupsResponseSerie0 =
 export interface TimeseriesGroupsTcpResetsTimeoutResponse {
   /** Metadata for the results. */
   meta: TcpResetsTimeoutsTimeseriesGroupsResponseMeta;
-  serie0: TcpResetsTimeoutsTimeseriesGroupsResponseSerie0;
+  serie_0: TcpResetsTimeoutsTimeseriesGroupsResponseSerie0;
 }
 export const TimeseriesGroupsTcpResetsTimeoutResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: TcpResetsTimeoutsTimeseriesGroupsResponseMeta,
-      serie0: TcpResetsTimeoutsTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: TcpResetsTimeoutsTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsTcpResetsTimeoutResponse",
@@ -89418,15 +89177,13 @@ export const AiInferenceTimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2AiInferenceResponse {
   /** Metadata for the results. */
   meta: AiInferenceTimeseriesGroupsV2ResponseMeta;
-  serie0: AiInferenceTimeseriesGroupsV2ResponseSerie0;
+  serie_0: AiInferenceTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2AiInferenceResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AiInferenceTimeseriesGroupsV2ResponseMeta,
-      serie0: AiInferenceTimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AiInferenceTimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2AiInferenceResponse",
@@ -89917,12 +89674,12 @@ export const As112TimeseriesGroupsV2ResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsV2As112Response {
   /** Metadata for the results. */
   meta: As112TimeseriesGroupsV2ResponseMeta;
-  serie0: As112TimeseriesGroupsV2ResponseSerie0;
+  serie_0: As112TimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2As112Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112TimeseriesGroupsV2ResponseMeta,
-    serie0: As112TimeseriesGroupsV2ResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: As112TimeseriesGroupsV2ResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2As112Response",
@@ -90334,15 +90091,13 @@ export const AttacksLayer3TimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2AttackLayer3Response {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsV2ResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsV2ResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2AttackLayer3Response = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsV2ResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2AttackLayer3Response",
@@ -90842,15 +90597,13 @@ export const AttacksLayer7TimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2AttackLayer7Response {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsV2ResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsV2ResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2AttackLayer7Response = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsV2ResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2AttackLayer7Response",
@@ -91481,12 +91234,12 @@ export const DnsTimeseriesGroupsV2ResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 export interface TimeseriesGroupsV2DnsResponse {
   /** Metadata for the results. */
   meta: DnsTimeseriesGroupsV2ResponseMeta;
-  serie0: DnsTimeseriesGroupsV2ResponseSerie0;
+  serie_0: DnsTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2DnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsTimeseriesGroupsV2ResponseMeta,
-    serie0: DnsTimeseriesGroupsV2ResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: DnsTimeseriesGroupsV2ResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2DnsResponse",
@@ -91918,15 +91671,13 @@ export const EmailRoutingTimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2EmailRoutingResponse {
   /** Metadata for the results. */
   meta: EmailRoutingTimeseriesGroupsV2ResponseMeta;
-  serie0: EmailRoutingTimeseriesGroupsV2ResponseSerie0;
+  serie_0: EmailRoutingTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2EmailRoutingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingTimeseriesGroupsV2ResponseMeta,
-      serie0: EmailRoutingTimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailRoutingTimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2EmailRoutingResponse",
@@ -92355,15 +92106,13 @@ export const EmailSecurityTimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2EmailSecurityResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsV2ResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsV2ResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2EmailSecurityResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsV2ResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2EmailSecurityResponse",
@@ -92903,12 +92652,12 @@ export const HttpTimeseriesGroupsV2ResponseSerie0 = /*@__PURE__*/ S.suspend(
 export interface TimeseriesGroupsV2HttpResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsV2ResponseMeta;
-  serie0: HttpTimeseriesGroupsV2ResponseSerie0;
+  serie_0: HttpTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2HttpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpTimeseriesGroupsV2ResponseMeta,
-    serie0: HttpTimeseriesGroupsV2ResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: HttpTimeseriesGroupsV2ResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesGroupsV2HttpResponse",
@@ -93351,15 +93100,13 @@ export const LeakedCredentialsTimeseriesGroupsV2ResponseSerie0 =
 export interface TimeseriesGroupsV2LeakedCredentialResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsTimeseriesGroupsV2ResponseMeta;
-  serie0: LeakedCredentialsTimeseriesGroupsV2ResponseSerie0;
+  serie_0: LeakedCredentialsTimeseriesGroupsV2ResponseSerie0;
 }
 export const TimeseriesGroupsV2LeakedCredentialResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: LeakedCredentialsTimeseriesGroupsV2ResponseMeta,
-      serie0: LeakedCredentialsTimeseriesGroupsV2ResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: LeakedCredentialsTimeseriesGroupsV2ResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TimeseriesGroupsV2LeakedCredentialResponse",
@@ -94168,12 +93915,12 @@ export const NetflowsTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 export interface TimeseriesNetflowResponse {
   /** Metadata for the results. */
   meta: NetflowsTimeseriesResponseMeta;
-  serie0: NetflowsTimeseriesResponseSerie0;
+  serie_0: NetflowsTimeseriesResponseSerie0;
 }
 export const TimeseriesNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: NetflowsTimeseriesResponseMeta,
-    serie0: NetflowsTimeseriesResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: NetflowsTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TimeseriesNetflowResponse",
@@ -94599,14 +94346,12 @@ export const TldsPerformanceSummaryResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface TldsPerformanceSummaryResponse {
   /** Metadata for the results. */
   meta: TldsPerformanceSummaryResponseMeta;
-  summary0: TldsPerformanceSummaryResponseSummary0Map;
+  summary_0: TldsPerformanceSummaryResponseSummary0Map;
 }
 export const TldsPerformanceSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: TldsPerformanceSummaryResponseMeta,
-    summary0: TldsPerformanceSummaryResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: TldsPerformanceSummaryResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TldsPerformanceSummaryResponse",
@@ -94966,15 +94711,13 @@ export const TldsPerformanceTimeseriesGroupsResponseSerie0 =
 export interface TldsPerformanceTimeseriesGroupsResponse {
   /** Metadata for the results. */
   meta: TldsPerformanceTimeseriesGroupsResponseMeta;
-  serie0: TldsPerformanceTimeseriesGroupsResponseSerie0;
+  serie_0: TldsPerformanceTimeseriesGroupsResponseSerie0;
 }
 export const TldsPerformanceTimeseriesGroupsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: TldsPerformanceTimeseriesGroupsResponseMeta,
-      serie0: TldsPerformanceTimeseriesGroupsResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: TldsPerformanceTimeseriesGroupsResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TldsPerformanceTimeseriesGroupsResponse",
@@ -95306,21 +95049,21 @@ export const EmailSecuritySummaryTlsVersionResponseMeta =
 
 export interface EmailSecuritySummaryTlsVersionResponseSummary0 {
   /** A numeric string. */
-  TLS10: string;
+  TLS_1_0: string;
   /** A numeric string. */
-  TLS11: string;
+  TLS_1_1: string;
   /** A numeric string. */
-  TLS12: string;
+  TLS_1_2: string;
   /** A numeric string. */
-  TLS13: string;
+  TLS_1_3: string;
 }
 export const EmailSecuritySummaryTlsVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS10: S.String.pipe(T.Body("TLS 1.0")),
-      TLS11: S.String.pipe(T.Body("TLS 1.1")),
-      TLS12: S.String.pipe(T.Body("TLS 1.2")),
-      TLS13: S.String.pipe(T.Body("TLS 1.3")),
+      TLS_1_0: S.String.pipe(T.Body("TLS 1.0")),
+      TLS_1_1: S.String.pipe(T.Body("TLS 1.1")),
+      TLS_1_2: S.String.pipe(T.Body("TLS 1.2")),
+      TLS_1_3: S.String.pipe(T.Body("TLS 1.3")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummaryTlsVersionResponseSummary0",
@@ -95330,15 +95073,13 @@ export const EmailSecuritySummaryTlsVersionResponseSummary0 =
 export interface TlsVersionEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryTlsVersionResponseMeta;
-  summary0: EmailSecuritySummaryTlsVersionResponseSummary0;
+  summary_0: EmailSecuritySummaryTlsVersionResponseSummary0;
 }
 export const TlsVersionEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailSecuritySummaryTlsVersionResponseMeta,
-      summary0: EmailSecuritySummaryTlsVersionResponseSummary0.pipe(
-        T.Body("summary_0"),
-      ),
+      summary_0: EmailSecuritySummaryTlsVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TlsVersionEmailSecuritySummaryResponse",
@@ -95753,27 +95494,27 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List>;
 
 export interface EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0 {
-  TLS10: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
-  TLS11: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
-  TLS12: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
-  TLS13: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
+  TLS_1_0: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
+  TLS_1_1: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
+  TLS_1_2: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
+  TLS_1_3: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
 }
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS10:
+      TLS_1_0:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
           T.Body("TLS 1.0"),
         ),
-      TLS11:
+      TLS_1_1:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
           T.Body("TLS 1.1"),
         ),
-      TLS12:
+      TLS_1_2:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
           T.Body("TLS 1.2"),
         ),
-      TLS13:
+      TLS_1_3:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
           T.Body("TLS 1.3"),
         ),
@@ -95786,15 +95527,13 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0 =
 export interface TlsVersionEmailSecurityTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: EmailSecurityTimeseriesGroupsTlsVersionResponseMeta;
-  serie0: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0;
+  serie_0: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0;
 }
 export const TlsVersionEmailSecurityTimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: EmailSecurityTimeseriesGroupsTlsVersionResponseMeta,
-      serie0: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TlsVersionEmailSecurityTimeseriesGroupResponse",
@@ -96204,23 +95943,23 @@ export const HttpSummaryTlsVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryTlsVersionResponseSummary0 {
   /** A numeric string. */
-  TLS10: string;
+  TLS_1_0: string;
   /** A numeric string. */
-  TLS11: string;
+  TLS_1_1: string;
   /** A numeric string. */
-  TLS12: string;
+  TLS_1_2: string;
   /** A numeric string. */
-  TLS13: string;
+  TLS_1_3: string;
   /** A numeric string. */
   TLSQUIC: string;
 }
 export const HttpSummaryTlsVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      TLS10: S.String.pipe(T.Body("TLS 1.0")),
-      TLS11: S.String.pipe(T.Body("TLS 1.1")),
-      TLS12: S.String.pipe(T.Body("TLS 1.2")),
-      TLS13: S.String.pipe(T.Body("TLS 1.3")),
+      TLS_1_0: S.String.pipe(T.Body("TLS 1.0")),
+      TLS_1_1: S.String.pipe(T.Body("TLS 1.1")),
+      TLS_1_2: S.String.pipe(T.Body("TLS 1.2")),
+      TLS_1_3: S.String.pipe(T.Body("TLS 1.3")),
       TLSQUIC: S.String.pipe(T.Body("TLS QUIC")),
     }),
 ).annotate({
@@ -96231,12 +95970,12 @@ export const HttpSummaryTlsVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
 export interface TlsVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryTlsVersionResponseMeta;
-  summary0: HttpSummaryTlsVersionResponseSummary0;
+  summary_0: HttpSummaryTlsVersionResponseSummary0;
 }
 export const TlsVersionHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryTlsVersionResponseMeta,
-    summary0: HttpSummaryTlsVersionResponseSummary0.pipe(T.Body("summary_0")),
+    summary_0: HttpSummaryTlsVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TlsVersionHttpSummaryResponse",
@@ -96749,26 +96488,26 @@ export const HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList =
 
 export interface HttpTimeseriesGroupsTlsVersionResponseSerie0 {
   timestamps: HttpTimeseriesGroupsTlsVersionResponseSerie0TimestampsList;
-  TLS10: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
-  TLS11: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
-  TLS12: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
-  TLS13: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
+  TLS_1_0: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
+  TLS_1_1: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
+  TLS_1_2: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
+  TLS_1_3: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
   TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList;
 }
 export const HttpTimeseriesGroupsTlsVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timestamps: HttpTimeseriesGroupsTlsVersionResponseSerie0TimestampsList,
-      TLS10: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
+      TLS_1_0: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
         T.Body("TLS 1.0"),
       ),
-      TLS11: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
+      TLS_1_1: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
         T.Body("TLS 1.1"),
       ),
-      TLS12: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
+      TLS_1_2: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
         T.Body("TLS 1.2"),
       ),
-      TLS13: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
+      TLS_1_3: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
         T.Body("TLS 1.3"),
       ),
       TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList.pipe(
@@ -96783,15 +96522,13 @@ export const HttpTimeseriesGroupsTlsVersionResponseSerie0 =
 export interface TlsVersionHttpTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: HttpTimeseriesGroupsTlsVersionResponseMeta;
-  serie0: HttpTimeseriesGroupsTlsVersionResponseSerie0;
+  serie_0: HttpTimeseriesGroupsTlsVersionResponseSerie0;
 }
 export const TlsVersionHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: HttpTimeseriesGroupsTlsVersionResponseMeta,
-      serie0: HttpTimeseriesGroupsTlsVersionResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: HttpTimeseriesGroupsTlsVersionResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TlsVersionHttpTimeseriesGroupResponse",
@@ -97080,12 +96817,12 @@ export const RankingTopResponseTop0List = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TopRankingResponse {
   meta: RankingTopResponseMeta;
-  top0: RankingTopResponseTop0List;
+  top_0: RankingTopResponseTop0List;
 }
 export const TopRankingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: RankingTopResponseMeta,
-    top0: RankingTopResponseTop0List.pipe(T.Body("top_0")),
+    top_0: RankingTopResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TopRankingResponse",
@@ -97350,12 +97087,12 @@ export const RankingInternetServicesTopResponseTop0List = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TopRankingInternetServiceResponse {
   meta: RankingInternetServicesTopResponseMeta;
-  top0: RankingInternetServicesTopResponseTop0List;
+  top_0: RankingInternetServicesTopResponseTop0List;
 }
 export const TopRankingInternetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: RankingInternetServicesTopResponseMeta,
-    top0: RankingInternetServicesTopResponseTop0List.pipe(T.Body("top_0")),
+    top_0: RankingInternetServicesTopResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TopRankingInternetServiceResponse",
@@ -97696,14 +97433,12 @@ export const AiBotsSummaryUserAgentResponseSummary0Map = /*@__PURE__*/ S.Record(
 export interface UserAgentAiBotSummaryResponse {
   /** Metadata for the results. */
   meta: AiBotsSummaryUserAgentResponseMeta;
-  summary0: AiBotsSummaryUserAgentResponseSummary0Map;
+  summary_0: AiBotsSummaryUserAgentResponseSummary0Map;
 }
 export const UserAgentAiBotSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiBotsSummaryUserAgentResponseMeta,
-    summary0: AiBotsSummaryUserAgentResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AiBotsSummaryUserAgentResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UserAgentAiBotSummaryResponse",
@@ -98040,12 +97775,12 @@ export const AiTimeseriesGroupsUserAgentResponseSerie0 =
 export interface UserAgentAiTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AiTimeseriesGroupsUserAgentResponseMeta;
-  serie0: AiTimeseriesGroupsUserAgentResponseSerie0;
+  serie_0: AiTimeseriesGroupsUserAgentResponseSerie0;
 }
 export const UserAgentAiTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AiTimeseriesGroupsUserAgentResponseMeta,
-    serie0: AiTimeseriesGroupsUserAgentResponseSerie0.pipe(T.Body("serie_0")),
+    serie_0: AiTimeseriesGroupsUserAgentResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UserAgentAiTimeseriesGroupResponse",
@@ -98381,14 +98116,12 @@ export const AttacksLayer3SummaryVectorResponseSummary0Map =
 export interface VectorAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryVectorResponseMeta;
-  summary0: AttacksLayer3SummaryVectorResponseSummary0Map;
+  summary_0: AttacksLayer3SummaryVectorResponseSummary0Map;
 }
 export const VectorAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryVectorResponseMeta,
-    summary0: AttacksLayer3SummaryVectorResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryVectorResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VectorAttackLayer3SummaryResponse",
@@ -98796,15 +98529,13 @@ export const AttacksLayer3TimeseriesGroupsVectorResponseSerie0 =
 export interface VectorAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsVectorResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsVectorResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsVectorResponseSerie0;
 }
 export const VectorAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsVectorResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsVectorResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsVectorResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "VectorAttackLayer3TimeseriesGroupResponse",
@@ -99146,14 +98877,12 @@ export const AttacksLayer3SummaryVerticalResponseSummary0Map =
 export interface VerticalAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryVerticalResponseMeta;
-  summary0: AttacksLayer3SummaryVerticalResponseSummary0Map;
+  summary_0: AttacksLayer3SummaryVerticalResponseSummary0Map;
 }
 export const VerticalAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3SummaryVerticalResponseMeta,
-    summary0: AttacksLayer3SummaryVerticalResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer3SummaryVerticalResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerticalAttackLayer3SummaryResponse",
@@ -99578,15 +99307,13 @@ export const AttacksLayer3TimeseriesGroupsVerticalResponseSerie0 =
 export interface VerticalAttackLayer3TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TimeseriesGroupsVerticalResponseMeta;
-  serie0: AttacksLayer3TimeseriesGroupsVerticalResponseSerie0;
+  serie_0: AttacksLayer3TimeseriesGroupsVerticalResponseSerie0;
 }
 export const VerticalAttackLayer3TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer3TimeseriesGroupsVerticalResponseMeta,
-      serie0: AttacksLayer3TimeseriesGroupsVerticalResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer3TimeseriesGroupsVerticalResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "VerticalAttackLayer3TimeseriesGroupResponse",
@@ -99922,12 +99649,12 @@ export const AttacksLayer3TopVerticalResponseTop0List = /*@__PURE__*/ S.Array(
 export interface VerticalAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3TopVerticalResponseMeta;
-  top0: AttacksLayer3TopVerticalResponseTop0List;
+  top_0: AttacksLayer3TopVerticalResponseTop0List;
 }
 export const VerticalAttackLayer3TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer3TopVerticalResponseMeta,
-    top0: AttacksLayer3TopVerticalResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer3TopVerticalResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerticalAttackLayer3TopResponse",
@@ -100354,14 +100081,12 @@ export const AttacksLayer7SummaryVerticalResponseSummary0Map =
 export interface VerticalAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7SummaryVerticalResponseMeta;
-  summary0: AttacksLayer7SummaryVerticalResponseSummary0Map;
+  summary_0: AttacksLayer7SummaryVerticalResponseSummary0Map;
 }
 export const VerticalAttackLayer7SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7SummaryVerticalResponseMeta,
-    summary0: AttacksLayer7SummaryVerticalResponseSummary0Map.pipe(
-      T.Body("summary_0"),
-    ),
+    summary_0: AttacksLayer7SummaryVerticalResponseSummary0Map,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerticalAttackLayer7SummaryResponse",
@@ -100876,15 +100601,13 @@ export const AttacksLayer7TimeseriesGroupsVerticalResponseSerie0 =
 export interface VerticalAttackLayer7TimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TimeseriesGroupsVerticalResponseMeta;
-  serie0: AttacksLayer7TimeseriesGroupsVerticalResponseSerie0;
+  serie_0: AttacksLayer7TimeseriesGroupsVerticalResponseSerie0;
 }
 export const VerticalAttackLayer7TimeseriesGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       meta: AttacksLayer7TimeseriesGroupsVerticalResponseMeta,
-      serie0: AttacksLayer7TimeseriesGroupsVerticalResponseSerie0.pipe(
-        T.Body("serie_0"),
-      ),
+      serie_0: AttacksLayer7TimeseriesGroupsVerticalResponseSerie0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "VerticalAttackLayer7TimeseriesGroupResponse",
@@ -101314,12 +101037,12 @@ export const AttacksLayer7TopVerticalResponseTop0List = /*@__PURE__*/ S.Array(
 export interface VerticalAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: AttacksLayer7TopVerticalResponseMeta;
-  top0: AttacksLayer7TopVerticalResponseTop0List;
+  top_0: AttacksLayer7TopVerticalResponseTop0List;
 }
 export const VerticalAttackLayer7TopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: AttacksLayer7TopVerticalResponseMeta,
-    top0: AttacksLayer7TopVerticalResponseTop0List.pipe(T.Body("top_0")),
+    top_0: AttacksLayer7TopVerticalResponseTop0List,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerticalAttackLayer7TopResponse",

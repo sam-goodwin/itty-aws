@@ -500,10 +500,10 @@ export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(
 export interface InstanceRequirementsRequest {
   vCpuCount: VCpuCountRangeRequest;
   memoryMiB: MemoryMiBRequest;
-  cpuManufacturers?: CpuManufacturer[];
+  cpuManufacturers?: (CpuManufacturer | (string & {}))[];
   memoryGiBPerVCpu?: MemoryGiBPerVCpuRequest;
   excludedInstanceTypes?: string[];
-  instanceGenerations?: InstanceGeneration[];
+  instanceGenerations?: (InstanceGeneration | (string & {}))[];
   spotMaxPricePercentageOverLowestPrice?: number;
   onDemandMaxPricePercentageOverLowestPrice?: number;
   bareMetal?: BareMetal | (string & {});
@@ -511,13 +511,13 @@ export interface InstanceRequirementsRequest {
   requireHibernateSupport?: boolean;
   networkInterfaceCount?: NetworkInterfaceCountRequest;
   localStorage?: LocalStorage | (string & {});
-  localStorageTypes?: LocalStorageType[];
+  localStorageTypes?: (LocalStorageType | (string & {}))[];
   totalLocalStorageGB?: TotalLocalStorageGBRequest;
   baselineEbsBandwidthMbps?: BaselineEbsBandwidthMbpsRequest;
-  acceleratorTypes?: AcceleratorType[];
+  acceleratorTypes?: (AcceleratorType | (string & {}))[];
   acceleratorCount?: AcceleratorCountRequest;
-  acceleratorManufacturers?: AcceleratorManufacturer[];
-  acceleratorNames?: AcceleratorName[];
+  acceleratorManufacturers?: (AcceleratorManufacturer | (string & {}))[];
+  acceleratorNames?: (AcceleratorName | (string & {}))[];
   acceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiBRequest;
   networkBandwidthGbps?: NetworkBandwidthGbpsRequest;
   allowedInstanceTypes?: string[];
@@ -1456,7 +1456,7 @@ export interface DeploymentLifecycleHook {
   targetType?: DeploymentLifecycleHookTargetType | (string & {});
   hookTargetArn?: string;
   roleArn?: string;
-  lifecycleStages?: DeploymentLifecycleHookStage[];
+  lifecycleStages?: (DeploymentLifecycleHookStage | (string & {}))[];
   hookDetails?: any;
   timeoutConfiguration?: DeploymentLifecycleHookTimeoutConfiguration;
 }
@@ -2690,7 +2690,7 @@ export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
 export interface Device {
   hostPath: string;
   containerPath?: string;
-  permissions?: DeviceCgroupPermission[];
+  permissions?: (DeviceCgroupPermission | (string & {}))[];
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3522,7 +3522,7 @@ export const CapacityProviderFieldList = /*@__PURE__*/ S.Array(
 export interface DescribeCapacityProvidersRequest {
   capacityProviders?: string[];
   cluster?: string;
-  include?: CapacityProviderField[];
+  include?: (CapacityProviderField | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }
@@ -3575,7 +3575,7 @@ export type ClusterFieldList = (ClusterField | (string & {}))[];
 export const ClusterFieldList = /*@__PURE__*/ S.Array(ClusterField);
 export interface DescribeClustersRequest {
   clusters?: string[];
-  include?: ClusterField[];
+  include?: (ClusterField | (string & {}))[];
 }
 export const DescribeClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3622,7 +3622,7 @@ export const ContainerInstanceFieldList = /*@__PURE__*/ S.Array(
 export interface DescribeContainerInstancesRequest {
   cluster?: string;
   containerInstances: string[];
-  include?: ContainerInstanceField[];
+  include?: (ContainerInstanceField | (string & {}))[];
 }
 export const DescribeContainerInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4165,7 +4165,7 @@ export const ExpressGatewayServiceIncludeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeExpressGatewayServiceRequest {
   serviceArn: string;
-  include?: ExpressGatewayServiceInclude[];
+  include?: (ExpressGatewayServiceInclude | (string & {}))[];
 }
 export const DescribeExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4792,7 +4792,7 @@ export const ServiceFieldList = /*@__PURE__*/ S.Array(ServiceField);
 export interface DescribeServicesRequest {
   cluster?: string;
   services: string[];
-  include?: ServiceField[];
+  include?: (ServiceField | (string & {}))[];
 }
 export const DescribeServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4835,7 +4835,7 @@ export const TaskDefinitionFieldList =
   /*@__PURE__*/ S.Array(TaskDefinitionField);
 export interface DescribeTaskDefinitionRequest {
   taskDefinition: string;
-  include?: TaskDefinitionField[];
+  include?: (TaskDefinitionField | (string & {}))[];
 }
 export const DescribeTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4875,7 +4875,7 @@ export const TaskFieldList = /*@__PURE__*/ S.Array(TaskField);
 export interface DescribeTasksRequest {
   cluster?: string;
   tasks: string[];
-  include?: TaskField[];
+  include?: (TaskField | (string & {}))[];
 }
 export const DescribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5189,7 +5189,7 @@ export interface DescribeTaskSetsRequest {
   cluster: string;
   service: string;
   taskSets?: string[];
-  include?: TaskSetField[];
+  include?: (TaskSetField | (string & {}))[];
 }
 export const DescribeTaskSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5552,7 +5552,7 @@ export const CreatedAt = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatedAt" }) as any as S.Schema<CreatedAt>;
 export interface ListDaemonDeploymentsRequest {
   daemonArn: string;
-  status?: DaemonDeploymentStatus[];
+  status?: (DaemonDeploymentStatus | (string & {}))[];
   createdAt?: CreatedAt;
   maxResults?: number;
   nextToken?: string;
@@ -5766,7 +5766,7 @@ export const ServiceDeploymentStatusList = /*@__PURE__*/ S.Array(
 export interface ListServiceDeploymentsRequest {
   service: string;
   cluster?: string;
-  status?: ServiceDeploymentStatus[];
+  status?: (ServiceDeploymentStatus | (string & {}))[];
   createdAt?: CreatedAt;
   nextToken?: string;
   maxResults?: number;
@@ -6301,7 +6301,7 @@ export interface RegisterTaskDefinitionRequest {
   containerDefinitions: ContainerDefinition[];
   volumes?: Volume[];
   placementConstraints?: TaskDefinitionPlacementConstraint[];
-  requiresCompatibilities?: Compatibility[];
+  requiresCompatibilities?: (Compatibility | (string & {}))[];
   cpu?: string;
   memory?: string;
   tags?: Tag[];

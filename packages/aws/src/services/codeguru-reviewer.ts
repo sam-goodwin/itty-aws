@@ -410,7 +410,7 @@ export type AnalysisTypes = (AnalysisType | (string & {}))[];
 export const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
 export interface CodeReviewType {
   RepositoryAnalysis: RepositoryAnalysis;
-  AnalysisTypes?: AnalysisType[];
+  AnalysisTypes?: (AnalysisType | (string & {}))[];
 }
 export const CodeReviewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -679,8 +679,8 @@ export const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
 export type ListCodeReviewsMaxResults = number;
 export type NextToken = string;
 export interface ListCodeReviewsRequest {
-  ProviderTypes?: ProviderType[];
-  States?: JobState[];
+  ProviderTypes?: (ProviderType | (string & {}))[];
+  States?: (JobState | (string & {}))[];
   RepositoryNames?: string[];
   Type: Type | (string & {});
   MaxResults?: number;
@@ -962,8 +962,8 @@ export const Names = /*@__PURE__*/ S.Array(S.String);
 export type Owners = string[];
 export const Owners = /*@__PURE__*/ S.Array(S.String);
 export interface ListRepositoryAssociationsRequest {
-  ProviderTypes?: ProviderType[];
-  States?: RepositoryAssociationState[];
+  ProviderTypes?: (ProviderType | (string & {}))[];
+  States?: (RepositoryAssociationState | (string & {}))[];
   Names?: string[];
   Owners?: string[];
   MaxResults?: number;
@@ -1060,7 +1060,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutRecommendationFeedbackRequest {
   CodeReviewArn: string;
   RecommendationId: string;
-  Reactions: Reaction[];
+  Reactions: (Reaction | (string & {}))[];
 }
 export const PutRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -1026,7 +1026,7 @@ export type ChannelRole = "MASTER" | "VIEWER";
 export const ChannelRole = /*@__PURE__*/ S.String;
 
 export interface SingleMasterChannelEndpointConfiguration {
-  Protocols?: ChannelProtocol[];
+  Protocols?: (ChannelProtocol | (string & {}))[];
   Role?: ChannelRole | (string & {});
 }
 export const SingleMasterChannelEndpointConfiguration = /*@__PURE__*/ S.suspend(

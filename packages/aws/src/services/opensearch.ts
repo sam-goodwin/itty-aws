@@ -4908,7 +4908,7 @@ export type ApplicationStatuses = (ApplicationStatus | (string & {}))[];
 export const ApplicationStatuses = /*@__PURE__*/ S.Array(ApplicationStatus);
 export interface ListApplicationsRequest {
   nextToken?: string;
-  statuses?: ApplicationStatus[];
+  statuses?: (ApplicationStatus | (string & {}))[];
   maxResults?: number;
 }
 export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>

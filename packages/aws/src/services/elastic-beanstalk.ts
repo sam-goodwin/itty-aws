@@ -1598,7 +1598,7 @@ export const EnvironmentHealthAttributes = /*@__PURE__*/ S.Array(
 export interface DescribeEnvironmentHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
-  AttributeNames?: EnvironmentHealthAttribute[];
+  AttributeNames?: (EnvironmentHealthAttribute | (string & {}))[];
 }
 export const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2155,7 +2155,7 @@ export type NextToken = string;
 export interface DescribeInstancesHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
-  AttributeNames?: InstancesHealthAttribute[];
+  AttributeNames?: (InstancesHealthAttribute | (string & {}))[];
   NextToken?: string;
 }
 export const DescribeInstancesHealthRequest = /*@__PURE__*/ S.suspend(() =>

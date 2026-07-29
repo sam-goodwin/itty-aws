@@ -184,7 +184,7 @@ export interface EventDestinationDefinition {
   CloudWatchLogsDestination?: CloudWatchLogsDestination;
   Enabled?: boolean;
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
-  MatchingEventTypes?: EventType[];
+  MatchingEventTypes?: (EventType | (string & {}))[];
   SnsDestination?: SnsDestination;
 }
 export const EventDestinationDefinition = /*@__PURE__*/ S.suspend(() =>

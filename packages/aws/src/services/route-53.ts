@@ -1267,7 +1267,7 @@ export interface HealthCheckConfig {
   HealthThreshold?: number;
   ChildHealthChecks?: string[];
   EnableSNI?: boolean;
-  Regions?: HealthCheckRegion[];
+  Regions?: (HealthCheckRegion | (string & {}))[];
   AlarmIdentifier?: AlarmIdentifier;
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus | (string & {});
   RoutingControlArn?: string;
@@ -4008,10 +4008,10 @@ export interface UpdateHealthCheckRequest {
   HealthThreshold?: number;
   ChildHealthChecks?: string[];
   EnableSNI?: boolean;
-  Regions?: HealthCheckRegion[];
+  Regions?: (HealthCheckRegion | (string & {}))[];
   AlarmIdentifier?: AlarmIdentifier;
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus | (string & {});
-  ResetElements?: ResettableElementName[];
+  ResetElements?: (ResettableElementName | (string & {}))[];
 }
 export const UpdateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

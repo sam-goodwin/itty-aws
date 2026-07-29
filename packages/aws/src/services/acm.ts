@@ -633,9 +633,9 @@ export const KeyUsageFilterList = /*@__PURE__*/ S.Array(KeyUsageName);
 export type KeyAlgorithmList = (KeyAlgorithm | (string & {}))[];
 export const KeyAlgorithmList = /*@__PURE__*/ S.Array(KeyAlgorithm);
 export interface Filters {
-  extendedKeyUsage?: ExtendedKeyUsageName[];
-  keyUsage?: KeyUsageName[];
-  keyTypes?: KeyAlgorithm[];
+  extendedKeyUsage?: (ExtendedKeyUsageName | (string & {}))[];
+  keyUsage?: (KeyUsageName | (string & {}))[];
+  keyTypes?: (KeyAlgorithm | (string & {}))[];
   exportOption?: CertificateExport | (string & {});
   managedBy?: CertificateManagedBy | (string & {});
 }
@@ -657,7 +657,7 @@ export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListCertificatesRequest {
-  CertificateStatuses?: CertificateStatus[];
+  CertificateStatuses?: (CertificateStatus | (string & {}))[];
   Includes?: Filters;
   NextToken?: string;
   MaxItems?: number;

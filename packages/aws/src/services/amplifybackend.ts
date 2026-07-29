@@ -477,7 +477,7 @@ export const MfaTypesElement = /*@__PURE__*/ S.String;
 export type ListOfMfaTypesElement = (MfaTypesElement | (string & {}))[];
 export const ListOfMfaTypesElement = /*@__PURE__*/ S.Array(MfaTypesElement);
 export interface Settings {
-  MfaTypes?: MfaTypesElement[];
+  MfaTypes?: (MfaTypesElement | (string & {}))[];
   SmsMessage?: string;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
@@ -570,7 +570,7 @@ export const SocialProviderSettings = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBackendAuthOAuthConfig {
   DomainPrefix?: string;
   OAuthGrantType?: OAuthGrantType | (string & {});
-  OAuthScopes?: OAuthScopesElement[];
+  OAuthScopes?: (OAuthScopesElement | (string & {}))[];
   RedirectSignInURIs?: string[];
   RedirectSignOutURIs?: string[];
   SocialProviderSettings?: SocialProviderSettings;
@@ -611,7 +611,7 @@ export const ListOfAdditionalConstraintsElement = /*@__PURE__*/ S.Array(
   AdditionalConstraintsElement,
 );
 export interface CreateBackendAuthPasswordPolicyConfig {
-  AdditionalConstraints?: AdditionalConstraintsElement[];
+  AdditionalConstraints?: (AdditionalConstraintsElement | (string & {}))[];
   MinimumLength?: number;
 }
 export const CreateBackendAuthPasswordPolicyConfig = /*@__PURE__*/ S.suspend(
@@ -688,7 +688,10 @@ export interface CreateBackendAuthUserPoolConfig {
   Mfa?: CreateBackendAuthMFAConfig;
   OAuth?: CreateBackendAuthOAuthConfig;
   PasswordPolicy?: CreateBackendAuthPasswordPolicyConfig;
-  RequiredSignUpAttributes?: RequiredSignUpAttributesElement[];
+  RequiredSignUpAttributes?: (
+    | RequiredSignUpAttributesElement
+    | (string & {})
+  )[];
   SignInMethod?: SignInMethod | (string & {});
   UserPoolName?: string;
   VerificationMessage?: CreateBackendAuthVerificationMessageConfig;
@@ -869,8 +872,8 @@ export const ListOfUnAuthenticatedElement = /*@__PURE__*/ S.Array(
   UnAuthenticatedElement,
 );
 export interface BackendStoragePermissions {
-  Authenticated?: AuthenticatedElement[];
-  UnAuthenticated?: UnAuthenticatedElement[];
+  Authenticated?: (AuthenticatedElement | (string & {}))[];
+  UnAuthenticated?: (UnAuthenticatedElement | (string & {}))[];
 }
 export const BackendStoragePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2240,7 +2243,7 @@ export const UpdateBackendAuthMFAConfig = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBackendAuthOAuthConfig {
   DomainPrefix?: string;
   OAuthGrantType?: OAuthGrantType | (string & {});
-  OAuthScopes?: OAuthScopesElement[];
+  OAuthScopes?: (OAuthScopesElement | (string & {}))[];
   RedirectSignInURIs?: string[];
   RedirectSignOutURIs?: string[];
   SocialProviderSettings?: SocialProviderSettings;
@@ -2267,7 +2270,7 @@ export const UpdateBackendAuthOAuthConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBackendAuthOAuthConfig",
 }) as any as S.Schema<UpdateBackendAuthOAuthConfig>;
 export interface UpdateBackendAuthPasswordPolicyConfig {
-  AdditionalConstraints?: AdditionalConstraintsElement[];
+  AdditionalConstraints?: (AdditionalConstraintsElement | (string & {}))[];
   MinimumLength?: number;
 }
 export const UpdateBackendAuthPasswordPolicyConfig = /*@__PURE__*/ S.suspend(

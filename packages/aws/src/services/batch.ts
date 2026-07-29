@@ -1300,7 +1300,7 @@ export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
 export interface Device {
   hostPath?: string;
   containerPath?: string;
-  permissions?: DeviceCgroupPermission[];
+  permissions?: (DeviceCgroupPermission | (string & {}))[];
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4193,7 +4193,7 @@ export interface RegisterJobDefinitionRequest {
   propagateTags?: boolean;
   timeout?: JobTimeout;
   tags?: { [key: string]: string | undefined };
-  platformCapabilities?: PlatformCapability[];
+  platformCapabilities?: (PlatformCapability | (string & {}))[];
   eksProperties?: EksProperties;
   ecsProperties?: EcsProperties;
   consumableResourceProperties?: ConsumableResourceProperties;

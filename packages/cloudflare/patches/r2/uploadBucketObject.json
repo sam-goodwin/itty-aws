@@ -28,13 +28,18 @@
     },
     {
       "op": "move",
-      "from": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/cf_r2_jurisdiction",
-      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/jurisdiction"
+      "from": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/cf_r2_storage_class",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/cfR2StorageClass"
     },
     {
       "op": "move",
-      "from": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/cf_r2_storage_class",
-      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/cfR2StorageClass"
+      "from": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/object_key",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest/members/object_name"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject/traits/smithy.api#http/uri",
+      "value": "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}"
     }
   ]
 }

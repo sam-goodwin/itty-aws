@@ -3148,9 +3148,9 @@ export const TaskTypeList = /*@__PURE__*/ S.Array(TaskType);
 export interface TaskFilter {
   createdAfter?: Date;
   createdBefore?: Date;
-  priority?: Priority[];
-  status?: TaskStatus[];
-  taskType?: TaskType[];
+  priority?: (Priority | (string & {}))[];
+  status?: (TaskStatus | (string & {}))[];
+  taskType?: (TaskType | (string & {}))[];
   primaryTaskId?: string;
 }
 export const TaskFilter = /*@__PURE__*/ S.suspend(() =>

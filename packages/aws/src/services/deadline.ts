@@ -2640,7 +2640,7 @@ export const CustomFleetAttributeCapabilities = /*@__PURE__*/ S.Array(
 export interface CustomerManagedWorkerCapabilities {
   vCpuCount: VCpuCountRange;
   memoryMiB: MemoryMiBRange;
-  acceleratorTypes?: AcceleratorType[];
+  acceleratorTypes?: (AcceleratorType | (string & {}))[];
   acceleratorCount?: AcceleratorCountRange;
   acceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiBRange;
   osFamily: CustomerManagedFleetOperatingSystemFamily | (string & {});
@@ -7957,8 +7957,8 @@ export interface StartSessionsStatisticsAggregationRequest {
   endTime: Date;
   timezone?: string;
   period?: Period | (string & {});
-  groupBy: UsageGroupByField[];
-  statistics: UsageStatistic[];
+  groupBy: (UsageGroupByField | (string & {}))[];
+  statistics: (UsageStatistic | (string & {}))[];
 }
 export const StartSessionsStatisticsAggregationRequest =
   /*@__PURE__*/ S.suspend(() =>

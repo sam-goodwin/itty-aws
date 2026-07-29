@@ -467,7 +467,7 @@ export type UrlPattern = string | redacted.Redacted<string>;
 export type UrlPatternList = (string | redacted.Redacted<string>)[];
 export const UrlPatternList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface WebContentFilteringPolicy {
-  blockedCategories?: Category[];
+  blockedCategories?: (Category | (string & {}))[];
   allowedUrls?: (string | redacted.Redacted<string>)[];
   blockedUrls?: (string | redacted.Redacted<string>)[];
 }
@@ -849,7 +849,7 @@ export type Events = (Event | (string & {}))[];
 export const Events = /*@__PURE__*/ S.Array(Event);
 export type EventFilter =
   | { all: Record<string, never>; include?: never }
-  | { all?: never; include: Event[] };
+  | { all?: never; include: (Event | (string & {}))[] };
 export const EventFilter = /*@__PURE__*/ S.Union([
   S.Struct({ all: S.Struct({}) }),
   S.Struct({ include: Events }),

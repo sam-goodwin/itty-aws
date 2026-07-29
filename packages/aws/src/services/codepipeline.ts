@@ -865,7 +865,7 @@ export const GitPullRequestEventTypeList = /*@__PURE__*/ S.Array(
   GitPullRequestEventType,
 );
 export interface GitPullRequestFilter {
-  events?: GitPullRequestEventType[];
+  events?: (GitPullRequestEventType | (string & {}))[];
   branches?: GitBranchFilterCriteria;
   filePaths?: GitFilePathFilterCriteria;
 }

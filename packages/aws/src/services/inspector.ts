@@ -1128,8 +1128,8 @@ export const AgentHealthCode = /*@__PURE__*/ S.String;
 export type AgentHealthCodeList = (AgentHealthCode | (string & {}))[];
 export const AgentHealthCodeList = /*@__PURE__*/ S.Array(AgentHealthCode);
 export interface AgentFilter {
-  agentHealths: AgentHealth[];
-  agentHealthCodes: AgentHealthCode[];
+  agentHealths: (AgentHealth | (string & {}))[];
+  agentHealthCodes: (AgentHealthCode | (string & {}))[];
 }
 export const AgentFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1220,7 +1220,7 @@ export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
 export interface AssessmentRunFilter {
   namePattern?: string;
-  states?: AssessmentRunState[];
+  states?: (AssessmentRunState | (string & {}))[];
   durationRange?: DurationRange;
   rulesPackageArns?: string[];
   startTimeRange?: TimestampRange;
@@ -1450,7 +1450,7 @@ export interface FindingFilter {
   agentIds?: string[];
   autoScalingGroups?: string[];
   ruleNames?: string[];
-  severities?: Severity[];
+  severities?: (Severity | (string & {}))[];
   rulesPackageArns?: string[];
   attributes?: Attribute[];
   userAttributes?: Attribute[];

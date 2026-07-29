@@ -806,7 +806,7 @@ export interface CreateApplicationRequest {
   LaunchPath?: string;
   WorkingDirectory?: string;
   LaunchParameters?: string;
-  Platforms?: PlatformType[];
+  Platforms?: (PlatformType | (string & {}))[];
   InstanceFamilies?: string[];
   AppBlockArn?: string;
   Tags?: { [key: string]: string | undefined };
@@ -3850,7 +3850,7 @@ export interface UpdateAppBlockBuilderRequest {
   EnableDefaultInternetAccess?: boolean;
   IamRoleArn?: string;
   AccessEndpoints?: AccessEndpoint[];
-  AttributesToDelete?: AppBlockBuilderAttribute[];
+  AttributesToDelete?: (AppBlockBuilderAttribute | (string & {}))[];
   DisableIMDSV1?: boolean;
 }
 export const UpdateAppBlockBuilderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3903,7 +3903,7 @@ export interface UpdateApplicationRequest {
   WorkingDirectory?: string;
   LaunchParameters?: string;
   AppBlockArn?: string;
-  AttributesToDelete?: ApplicationAttribute[];
+  AttributesToDelete?: (ApplicationAttribute | (string & {}))[];
 }
 export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4027,7 +4027,7 @@ export interface UpdateFleetRequest {
   EnableDefaultInternetAccess?: boolean;
   DomainJoinInfo?: DomainJoinInfo;
   IdleDisconnectTimeoutInSeconds?: number;
-  AttributesToDelete?: FleetAttribute[];
+  AttributesToDelete?: (FleetAttribute | (string & {}))[];
   IamRoleArn?: string;
   StreamView?: StreamView | (string & {});
   Platform?: PlatformType | (string & {});
@@ -4154,7 +4154,7 @@ export interface UpdateStackRequest {
   DeleteStorageConnectors?: boolean;
   RedirectURL?: string;
   FeedbackURL?: string;
-  AttributesToDelete?: StackAttribute[];
+  AttributesToDelete?: (StackAttribute | (string & {}))[];
   UserSettings?: UserSetting[];
   ApplicationSettings?: ApplicationSettings;
   AccessEndpoints?: AccessEndpoint[];
@@ -4225,7 +4225,7 @@ export interface UpdateThemeForStackRequest {
   OrganizationLogoS3Location?: S3Location;
   FaviconS3Location?: S3Location;
   State?: ThemeState | (string & {});
-  AttributesToDelete?: ThemeAttribute[];
+  AttributesToDelete?: (ThemeAttribute | (string & {}))[];
 }
 export const UpdateThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

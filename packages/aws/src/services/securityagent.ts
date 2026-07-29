@@ -2498,13 +2498,13 @@ export interface CreatePentestInput {
   title: string;
   agentSpaceId: string;
   assets?: Assets;
-  excludeRiskTypes?: RiskType[];
+  excludeRiskTypes?: (RiskType | (string & {}))[];
   serviceRole?: string;
   logConfig?: CloudWatchLog;
   vpcConfig?: VpcConfig;
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy | (string & {});
-  disableManagedSkills?: SkillType[];
+  disableManagedSkills?: (SkillType | (string & {}))[];
 }
 export const CreatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2796,7 +2796,7 @@ export interface CreateThreatInput {
   statement?: string;
   severity?: ThreatSeverity | (string & {});
   comments?: string;
-  stride?: StrideCategory[];
+  stride?: (StrideCategory | (string & {}))[];
   threatSource?: string;
   prerequisites?: string;
   threatAction?: string;
@@ -5796,13 +5796,13 @@ export interface UpdatePentestInput {
   agentSpaceId: string;
   title?: string;
   assets?: Assets;
-  excludeRiskTypes?: RiskType[];
+  excludeRiskTypes?: (RiskType | (string & {}))[];
   serviceRole?: string;
   logConfig?: CloudWatchLog;
   vpcConfig?: VpcConfig;
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy | (string & {});
-  disableManagedSkills?: SkillType[];
+  disableManagedSkills?: (SkillType | (string & {}))[];
 }
 export const UpdatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

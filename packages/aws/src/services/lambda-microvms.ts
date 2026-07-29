@@ -361,7 +361,7 @@ export interface CreateMicrovmImageRequest {
   egressNetworkConnectors?: string[];
   cpuConfigurations?: CpuConfiguration[];
   resources?: Resources[];
-  additionalOsCapabilities?: Capability[];
+  additionalOsCapabilities?: (Capability | (string & {}))[];
   hooks?: Hooks;
   environmentVariables?: { [key: string]: string | undefined };
   name: string;
@@ -1477,7 +1477,7 @@ export interface UpdateMicrovmImageRequest {
   egressNetworkConnectors?: string[];
   cpuConfigurations?: CpuConfiguration[];
   resources?: Resources[];
-  additionalOsCapabilities?: Capability[];
+  additionalOsCapabilities?: (Capability | (string & {}))[];
   hooks?: Hooks;
   environmentVariables?: { [key: string]: string | undefined };
   imageIdentifier: string;

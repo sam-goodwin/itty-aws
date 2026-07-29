@@ -1462,7 +1462,7 @@ export const ScopePermissionList = /*@__PURE__*/ S.Array(
 );
 export interface Scope {
   Prefixes?: string[];
-  Permissions?: ScopePermission[];
+  Permissions?: (ScopePermission | (string & {}))[];
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1573,7 +1573,7 @@ export const ObjectLambdaContentTransformation = /*@__PURE__*/ S.Union([
   S.Struct({ AwsLambda: AwsLambdaTransformation }),
 ]);
 export interface ObjectLambdaTransformationConfiguration {
-  Actions: ObjectLambdaTransformationConfigurationAction[];
+  Actions: (ObjectLambdaTransformationConfigurationAction | (string & {}))[];
   ContentTransformation: ObjectLambdaContentTransformation;
 }
 export const ObjectLambdaTransformationConfiguration = /*@__PURE__*/ S.suspend(
@@ -1596,7 +1596,7 @@ export const ObjectLambdaTransformationConfigurationsList =
 export interface ObjectLambdaConfiguration {
   SupportingAccessPoint: string;
   CloudWatchMetricsEnabled?: boolean;
-  AllowedFeatures?: ObjectLambdaAllowedFeature[];
+  AllowedFeatures?: (ObjectLambdaAllowedFeature | (string & {}))[];
   TransformationConfigurations: ObjectLambdaTransformationConfiguration[];
 }
 export const ObjectLambdaConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2207,7 +2207,7 @@ export type JobManifestFieldList = (JobManifestFieldName | (string & {}))[];
 export const JobManifestFieldList = /*@__PURE__*/ S.Array(JobManifestFieldName);
 export interface JobManifestSpec {
   Format: JobManifestFormat | (string & {});
-  Fields?: JobManifestFieldName[];
+  Fields?: (JobManifestFieldName | (string & {}))[];
 }
 export const JobManifestSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2420,11 +2420,11 @@ export interface JobManifestGeneratorFilter {
   EligibleForReplication?: boolean;
   CreatedAfter?: Date;
   CreatedBefore?: Date;
-  ObjectReplicationStatuses?: ReplicationStatus[];
+  ObjectReplicationStatuses?: (ReplicationStatus | (string & {}))[];
   KeyNameConstraint?: KeyNameConstraint;
   ObjectSizeGreaterThanBytes?: number;
   ObjectSizeLessThanBytes?: number;
-  MatchAnyStorageClass?: S3StorageClass[];
+  MatchAnyStorageClass?: (S3StorageClass | (string & {}))[];
   MatchAnyObjectEncryption?: ObjectEncryptionFilter[];
 }
 export const JobManifestGeneratorFilter = /*@__PURE__*/ S.suspend(() =>
@@ -6318,7 +6318,7 @@ export const JobStatusList = /*@__PURE__*/ S.Array(JobStatus);
 export type StringForNextToken = string;
 export interface ListJobsRequest {
   AccountId: string;
-  JobStatuses?: JobStatus[];
+  JobStatuses?: (JobStatus | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }

@@ -727,7 +727,7 @@ export const ListOfDocumentReadFeatureTypes = /*@__PURE__*/ S.Array(
 export interface DocumentReaderConfig {
   DocumentReadAction: DocumentReadAction | (string & {});
   DocumentReadMode?: DocumentReadMode | (string & {});
-  FeatureTypes?: DocumentReadFeatureTypes[];
+  FeatureTypes?: (DocumentReadFeatureTypes | (string & {}))[];
 }
 export const DocumentReaderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2463,7 +2463,7 @@ export const PiiEntitiesDetectionMaskMode = /*@__PURE__*/ S.String;
 
 export type MaskCharacter = string;
 export interface RedactionConfig {
-  PiiEntityTypes?: PiiEntityType[];
+  PiiEntityTypes?: (PiiEntityType | (string & {}))[];
   MaskMode?: PiiEntitiesDetectionMaskMode | (string & {});
   MaskCharacter?: string;
 }

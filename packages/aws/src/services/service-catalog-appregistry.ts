@@ -175,7 +175,7 @@ export interface AssociateResourceRequest {
   application: string;
   resourceType: ResourceType | (string & {});
   resource: string;
-  options?: AssociationOption[];
+  options?: (AssociationOption | (string & {}))[];
 }
 export const AssociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -625,7 +625,7 @@ export interface GetAssociatedResourceRequest {
   resourceType: ResourceType | (string & {});
   resource: string;
   nextToken?: string;
-  resourceTagStatus?: ResourceItemStatus[];
+  resourceTagStatus?: (ResourceItemStatus | (string & {}))[];
   maxResults?: number;
 }
 export const GetAssociatedResourceRequest = /*@__PURE__*/ S.suspend(() =>

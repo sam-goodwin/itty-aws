@@ -942,7 +942,7 @@ export type InsightStateList = (InsightState | (string & {}))[];
 export const InsightStateList = /*@__PURE__*/ S.Array(InsightState);
 export type GetInsightSummariesMaxResults = number;
 export interface GetInsightSummariesRequest {
-  States?: InsightState[];
+  States?: (InsightState | (string & {}))[];
   GroupARN?: string;
   GroupName?: string;
   StartTime: Date;

@@ -1071,7 +1071,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export type ProvisionStates = (ProvisionStateEnum | (string & {}))[];
 export const ProvisionStates = /*@__PURE__*/ S.Array(ProvisionStateEnum);
 export interface ListWorkspaceInstancesRequest {
-  ProvisionStates?: ProvisionStateEnum[];
+  ProvisionStates?: (ProvisionStateEnum | (string & {}))[];
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }

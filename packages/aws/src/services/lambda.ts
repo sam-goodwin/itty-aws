@@ -904,7 +904,7 @@ export type InstanceType = string;
 export type InstanceTypeSet = string[];
 export const InstanceTypeSet = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceRequirements {
-  Architectures?: Architecture[];
+  Architectures?: (Architecture | (string & {}))[];
   AllowedInstanceTypes?: string[];
   ExcludedInstanceTypes?: string[];
 }
@@ -1157,7 +1157,7 @@ export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(
   EventSourceMappingMetric,
 );
 export interface EventSourceMappingMetricsConfig {
-  Metrics?: EventSourceMappingMetric[];
+  Metrics?: (EventSourceMappingMetric | (string & {}))[];
 }
 export const EventSourceMappingMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Metrics: S.optional(EventSourceMappingMetricList) }),
@@ -1414,7 +1414,7 @@ export interface CreateEventSourceMappingRequest {
   Queues?: string[];
   SourceAccessConfigurations?: SourceAccessConfiguration[];
   SelfManagedEventSource?: SelfManagedEventSource;
-  FunctionResponseTypes?: FunctionResponseType[];
+  FunctionResponseTypes?: (FunctionResponseType | (string & {}))[];
   AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
   SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
@@ -1845,7 +1845,7 @@ export interface CreateFunctionRequest {
   FileSystemConfigs?: FileSystemConfig[];
   CodeSigningConfigArn?: string;
   ImageConfig?: ImageConfig;
-  Architectures?: Architecture[];
+  Architectures?: (Architecture | (string & {}))[];
   EphemeralStorage?: EphemeralStorage;
   SnapStart?: SnapStart;
   LoggingConfig?: LoggingConfig;
@@ -4223,7 +4223,7 @@ export interface ListDurableExecutionsByFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
   DurableExecutionName?: string;
-  Statuses?: ExecutionStatus[];
+  Statuses?: (ExecutionStatus | (string & {}))[];
   StartedAfter?: Date;
   StartedBefore?: Date;
   ReverseOrder?: boolean;
@@ -4870,8 +4870,8 @@ export interface PublishLayerVersionRequest {
   LayerName: string;
   Description?: string;
   Content: LayerVersionContentInput;
-  CompatibleArchitectures?: Architecture[];
-  CompatibleRuntimes?: Runtime[];
+  CompatibleArchitectures?: (Architecture | (string & {}))[];
+  CompatibleRuntimes?: (Runtime | (string & {}))[];
   LicenseInfo?: string;
 }
 export const PublishLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5566,7 +5566,7 @@ export interface UpdateEventSourceMappingRequest {
   MaximumRetryAttempts?: number;
   TumblingWindowInSeconds?: number;
   SourceAccessConfigurations?: SourceAccessConfiguration[];
-  FunctionResponseTypes?: FunctionResponseType[];
+  FunctionResponseTypes?: (FunctionResponseType | (string & {}))[];
   AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
   SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
@@ -5624,7 +5624,7 @@ export interface UpdateFunctionCodeRequest {
   S3ObjectVersion?: string;
   S3ObjectStorageMode?: S3ObjectStorageMode | (string & {});
   ImageUri?: string;
-  Architectures?: Architecture[];
+  Architectures?: (Architecture | (string & {}))[];
   Publish?: boolean;
   PublishTo?: FunctionVersionLatestPublished | (string & {});
   DryRun?: boolean;

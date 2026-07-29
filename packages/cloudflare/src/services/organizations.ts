@@ -89,12 +89,12 @@ export class OrganizationNotFound extends T.applyErrorMatchers(
 
 export interface CreateRequestParent {
   id: string;
-  name: string;
+  name?: string;
 }
 export const CreateRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    name: S.String,
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestParent",
@@ -1954,12 +1954,12 @@ export const PutOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestParent {
   id: string;
-  name: string;
+  name?: string;
 }
 export const UpdateRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    name: S.String,
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestParent",

@@ -826,7 +826,7 @@ export interface ListSigningProfilesRequest {
   maxResults?: number;
   nextToken?: string;
   platformId?: string;
-  statuses?: SigningProfileStatus[];
+  statuses?: (SigningProfileStatus | (string & {}))[];
 }
 export const ListSigningProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -8631,16 +8631,24 @@ export const CreateScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptSubdomainResponse",
 }) as any as S.Schema<CreateScriptSubdomainResponse>;
 
+export type CreateScriptTailFiltersList = Array<unknown>;
+export const CreateScriptTailFiltersList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateScriptTailFiltersList>;
+
 export interface CreateScriptTailRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
+  /** Tail event filters; an empty list tails everything. */
+  filters?: CreateScriptTailFiltersList;
 }
 export const CreateScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
+    filters: S.optional(CreateScriptTailFiltersList),
   })
     .pipe(
       T.Http({

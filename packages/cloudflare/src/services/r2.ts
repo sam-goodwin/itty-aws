@@ -951,26 +951,28 @@ export interface DeleteBucketObjectRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** The key (name) of the object to delete. May contain slashes for path-like keys. */
-  objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsDeleteRequestCfR2Jurisdiction | (string & {});
+  cfR2Jurisdiction?:
+    | BucketsObjectsDeleteRequestCfR2Jurisdiction
+    | (string & {});
+  /** The key (name) of the object to delete. May contain slashes for path-like keys. */
+  objectName: string;
 }
 export const DeleteBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    objectKey: S.String.pipe(T.Label("object_key")),
-    jurisdiction: S.optional(
+    cfR2Jurisdiction: S.optional(
       BucketsObjectsDeleteRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
       ),
     ),
+    objectName: S.String.pipe(T.Label("object_name")),
   })
     .pipe(
       T.Http({
         method: "DELETE",
-        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}",
         code: 200,
       }),
     )
@@ -1051,16 +1053,16 @@ export interface DeleteObjectsRequest {
   /** Name of the R2 bucket. */
   bucketName: string;
   prefix?: string;
-  "cf-r2-jurisdiction"?: string;
   body?: DeleteObjectsKeyList;
+  cfR2Jurisdiction?: string;
 }
 export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     prefix: S.optional(S.String.pipe(T.Query())),
-    "cf-r2-jurisdiction": S.optional(S.String.pipe(T.Header())),
     body: S.optional(DeleteObjectsKeyList.pipe(T.HttpBody())),
+    cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
   })
     .pipe(
       T.Http({
@@ -1948,32 +1950,32 @@ export interface GetBucketObjectRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** The key (name) of the object to retrieve. May contain slashes for path-like keys. */
-  objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsGetRequestCfR2Jurisdiction | (string & {});
+  cfR2Jurisdiction?: BucketsObjectsGetRequestCfR2Jurisdiction | (string & {});
   /** Returns the object only if it has been modified since the specified time. */
   ifModifiedSince?: string;
   /** Returns the object only if its ETag does not match the given value. */
   ifNoneMatch?: string;
+  /** The key (name) of the object to retrieve. May contain slashes for path-like keys. */
+  objectName: string;
 }
 export const GetBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    objectKey: S.String.pipe(T.Label("object_key")),
-    jurisdiction: S.optional(
+    cfR2Jurisdiction: S.optional(
       BucketsObjectsGetRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
       ),
     ),
     ifModifiedSince: S.optional(S.String.pipe(T.Header("If-Modified-Since"))),
     ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
+    objectName: S.String.pipe(T.Label("object_name")),
   })
     .pipe(
       T.Http({
         method: "GET",
-        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}",
         code: 200,
       }),
     )
@@ -2841,7 +2843,7 @@ export interface ListBucketObjectsRequest {
   /** Returns objects with keys that come after the specified key in lexicographic order. */
   startAfter?: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction | (string & {});
+  cfR2Jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction | (string & {});
 }
 export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2852,7 +2854,7 @@ export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     prefix: S.optional(S.String.pipe(T.Query())),
     startAfter: S.optional(S.String.pipe(T.Query("start_after"))),
-    jurisdiction: S.optional(
+    cfR2Jurisdiction: S.optional(
       BucketsObjectsListRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
       ),
@@ -4888,16 +4890,18 @@ export interface UploadBucketObjectRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** The key (name) to assign to the object. May contain slashes for path-like keys. */
-  objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  jurisdiction?: BucketsObjectsUploadRequestCfR2Jurisdiction | (string & {});
+  cfR2Jurisdiction?:
+    | BucketsObjectsUploadRequestCfR2Jurisdiction
+    | (string & {});
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   cfR2StorageClass?:
     | BucketsObjectsUploadRequestCfR2StorageClass
     | (string & {});
+  /** The key (name) to assign to the object. May contain slashes for path-like keys. */
+  objectName: string;
   /** The object content — sent verbatim as the request body. */
-  body?: string;
+  body?: Blob | Uint8Array | ArrayBuffer | string;
   /** MIME type stored with the object. */
   contentType?: string;
 }
@@ -4905,8 +4909,7 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    objectKey: S.String.pipe(T.Label("object_key")),
-    jurisdiction: S.optional(
+    cfR2Jurisdiction: S.optional(
       BucketsObjectsUploadRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
       ),
@@ -4916,14 +4919,16 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header("cf-r2-storage-class"),
       ),
     ),
+    objectName: S.String.pipe(T.Label("object_name")),
     body: S.optional(S.String.pipe(T.HttpBody())),
     contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
   })
     .pipe(
       T.Http({
         method: "PUT",
-        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}",
         code: 200,
+        bodyMediaType: "application/octet-stream",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

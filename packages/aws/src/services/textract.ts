@@ -207,7 +207,7 @@ export const ContentClassifier = /*@__PURE__*/ S.String;
 export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
-  ContentClassifiers?: ContentClassifier[];
+  ContentClassifiers?: (ContentClassifier | (string & {}))[];
 }
 export const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
@@ -279,7 +279,7 @@ export const AdaptersConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdaptersConfig" }) as any as S.Schema<AdaptersConfig>;
 export interface AnalyzeDocumentRequest {
   Document: Document;
-  FeatureTypes: FeatureType[];
+  FeatureTypes: (FeatureType | (string & {}))[];
   HumanLoopConfig?: HumanLoopConfig;
   QueriesConfig?: QueriesConfig;
   AdaptersConfig?: AdaptersConfig;
@@ -713,7 +713,7 @@ export interface CreateAdapterRequest {
   AdapterName: string;
   ClientRequestToken?: string;
   Description?: string;
-  FeatureTypes: FeatureType[];
+  FeatureTypes: (FeatureType | (string & {}))[];
   AutoUpdate?: AutoUpdate | (string & {});
   Tags?: { [key: string]: string | undefined };
 }
@@ -1480,7 +1480,7 @@ export const NotificationChannel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationChannel>;
 export interface StartDocumentAnalysisRequest {
   DocumentLocation: DocumentLocation;
-  FeatureTypes: FeatureType[];
+  FeatureTypes: (FeatureType | (string & {}))[];
   ClientRequestToken?: string;
   JobTag?: string;
   NotificationChannel?: NotificationChannel;

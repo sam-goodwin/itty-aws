@@ -1071,7 +1071,7 @@ export const EnvironmentStateList = /*@__PURE__*/ S.Array(EnvironmentState);
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
-  state?: EnvironmentState[];
+  state?: (EnvironmentState | (string & {}))[];
 }
 export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -2229,7 +2229,7 @@ export type ProfileTypeValues = (ProfileType | (string & {}))[];
 export const ProfileTypeValues = /*@__PURE__*/ S.Array(ProfileType);
 export interface ProfileTypeDimension {
   DimensionType: ProfileTypeDimensionType | (string & {});
-  Values: ProfileType[];
+  Values: (ProfileType | (string & {}))[];
 }
 export const ProfileTypeDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3165,7 +3165,7 @@ export const StandardIdentifierList = /*@__PURE__*/ S.Array(StandardIdentifier);
 export type FieldNameList = string[];
 export const FieldNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ObjectTypeKey {
-  StandardIdentifiers?: StandardIdentifier[];
+  StandardIdentifiers?: (StandardIdentifier | (string & {}))[];
   FieldNames?: string[];
 }
 export const ObjectTypeKey = /*@__PURE__*/ S.suspend(() =>

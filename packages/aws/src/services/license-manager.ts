@@ -503,7 +503,7 @@ export interface CreateGrantRequest {
   LicenseArn: string;
   Principals: string[];
   HomeRegion: string;
-  AllowedOperations: AllowedOperation[];
+  AllowedOperations: (AllowedOperation | (string & {}))[];
   Tags?: Tag[];
 }
 export const CreateGrantRequest = /*@__PURE__*/ S.suspend(() =>
@@ -561,7 +561,7 @@ export interface CreateGrantVersionRequest {
   ClientToken: string;
   GrantArn: string;
   GrantName?: string;
-  AllowedOperations?: AllowedOperation[];
+  AllowedOperations?: (AllowedOperation | (string & {}))[];
   Status?: GrantStatus | (string & {});
   StatusReason?: string;
   SourceVersion?: string;
@@ -1192,7 +1192,7 @@ export const ReportFrequency = /*@__PURE__*/ S.suspend(() =>
 export type ClientRequestToken = string;
 export interface CreateLicenseManagerReportGeneratorRequest {
   ReportGeneratorName: string;
-  Type: ReportType[];
+  Type: (ReportType | (string & {}))[];
   ReportContext: ReportContext;
   ReportFrequency: ReportFrequency;
   ClientToken: string;
@@ -3557,7 +3557,7 @@ export const UpdateLicenseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLicenseManagerReportGeneratorRequest {
   LicenseManagerReportGeneratorArn: string;
   ReportGeneratorName: string;
-  Type: ReportType[];
+  Type: (ReportType | (string & {}))[];
   ReportContext: ReportContext;
   ReportFrequency: ReportFrequency;
   ClientToken: string;

@@ -2533,6 +2533,8 @@ export interface ConsumersListResultItemWorker {
   type?: ConsumersListResultItemWorkerType;
   /** Name of a Worker */
   script?: string;
+  /** Name of the consumer Worker script. */
+  scriptName?: string;
 }
 export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2543,6 +2545,7 @@ export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
     settings: S.optional(ConsumersListResultItemWorkerSettings),
     type: S.optional(ConsumersListResultItemWorkerType),
     script: S.optional(S.String),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemWorker",
@@ -2611,6 +2614,7 @@ export const ConsumersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "settings",
       "type",
       "script",
+      "scriptName",
     ],
     [
       "consumerId",

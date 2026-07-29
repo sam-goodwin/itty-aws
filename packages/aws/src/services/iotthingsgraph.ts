@@ -934,7 +934,7 @@ export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
 export type EntityFilters = EntityFilter[];
 export const EntityFilters = /*@__PURE__*/ S.Array(EntityFilter);
 export interface SearchEntitiesRequest {
-  entityTypes: EntityType[];
+  entityTypes: (EntityType | (string & {}))[];
   filters?: EntityFilter[];
   nextToken?: string;
   maxResults?: number;

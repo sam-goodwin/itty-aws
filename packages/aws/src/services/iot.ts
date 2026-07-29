@@ -1133,7 +1133,7 @@ export const CertificateProviderAccountDefaultForOperations =
 export interface CreateCertificateProviderRequest {
   certificateProviderName: string;
   lambdaFunctionArn: string;
-  accountDefaultForOperations: CertificateProviderOperation[];
+  accountDefaultForOperations: (CertificateProviderOperation | (string & {}))[];
   clientToken?: string;
   tags?: Tag[];
 }
@@ -2523,7 +2523,7 @@ export interface CreateOTAUpdateRequest {
   otaUpdateId: string;
   description?: string;
   targets: string[];
-  protocols?: Protocol[];
+  protocols?: (Protocol | (string & {}))[];
   targetSelection?: TargetSelection | (string & {});
   awsJobExecutionsRolloutConfig?: AwsJobExecutionsRolloutConfig;
   awsJobPresignedUrlConfig?: AwsJobPresignedUrlConfig;
@@ -8296,7 +8296,7 @@ export const FleetIndexingApi = /*@__PURE__*/ S.String;
 export type FleetIndexingApiList = (FleetIndexingApi | (string & {}))[];
 export const FleetIndexingApiList = /*@__PURE__*/ S.Array(FleetIndexingApi);
 export interface ConnectivityFilter {
-  includeSocketInformation?: FleetIndexingApi[];
+  includeSocketInformation?: (FleetIndexingApi | (string & {}))[];
 }
 export const ConnectivityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ includeSocketInformation: S.optional(FleetIndexingApiList) }),
@@ -13802,7 +13802,10 @@ export const UpdateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCertificateProviderRequest {
   certificateProviderName: string;
   lambdaFunctionArn?: string;
-  accountDefaultForOperations?: CertificateProviderOperation[];
+  accountDefaultForOperations?: (
+    | CertificateProviderOperation
+    | (string & {})
+  )[];
 }
 export const UpdateCertificateProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

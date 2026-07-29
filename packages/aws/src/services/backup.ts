@@ -968,7 +968,7 @@ export interface RestoreTestingRecoveryPointSelection {
   Algorithm?: RestoreTestingRecoveryPointSelectionAlgorithm | (string & {});
   ExcludeVaults?: string[];
   IncludeVaults?: string[];
-  RecoveryPointTypes?: RestoreTestingRecoveryPointType[];
+  RecoveryPointTypes?: (RestoreTestingRecoveryPointType | (string & {}))[];
   SelectionWindowDays?: number;
 }
 export const RestoreTestingRecoveryPointSelection = /*@__PURE__*/ S.suspend(
@@ -5591,7 +5591,7 @@ export const PutBackupVaultLockConfigurationResponse = /*@__PURE__*/ S.suspend(
 export interface PutBackupVaultNotificationsInput {
   BackupVaultName: string;
   SNSTopicArn: string;
-  BackupVaultEvents: BackupVaultEvent[];
+  BackupVaultEvents: (BackupVaultEvent | (string & {}))[];
 }
 export const PutBackupVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

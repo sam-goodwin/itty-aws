@@ -547,7 +547,7 @@ export type IpAddressType = "ipv4" | "dualstack";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface EndpointConfiguration {
-  types?: EndpointType[];
+  types?: (EndpointType | (string & {}))[];
   ipAddressType?: IpAddressType | (string & {});
   vpcEndpointIds?: string[];
 }

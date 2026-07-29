@@ -1175,7 +1175,7 @@ export interface CreateRepositoryCreationTemplateRequest {
   imageTagMutabilityExclusionFilters?: ImageTagMutabilityExclusionFilter[];
   repositoryPolicy?: string;
   lifecyclePolicy?: string;
-  appliedFor: RCTAppliedFor[];
+  appliedFor: (RCTAppliedFor | (string & {}))[];
   customRoleArn?: string;
 }
 export const CreateRepositoryCreationTemplateRequest = /*@__PURE__*/ S.suspend(
@@ -3778,7 +3778,7 @@ export interface UpdateRepositoryCreationTemplateRequest {
   imageTagMutabilityExclusionFilters?: ImageTagMutabilityExclusionFilter[];
   repositoryPolicy?: string;
   lifecyclePolicy?: string;
-  appliedFor?: RCTAppliedFor[];
+  appliedFor?: (RCTAppliedFor | (string & {}))[];
   customRoleArn?: string;
 }
 export const UpdateRepositoryCreationTemplateRequest = /*@__PURE__*/ S.suspend(

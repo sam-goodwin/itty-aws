@@ -708,7 +708,7 @@ export interface ListAvailableResourceDimensionsRequest {
   Metrics: string[];
   MaxResults?: number;
   NextToken?: string;
-  AuthorizedActions?: FineGrainedAction[];
+  AuthorizedActions?: (FineGrainedAction | (string & {}))[];
 }
 export const ListAvailableResourceDimensionsRequest = /*@__PURE__*/ S.suspend(
   () =>

@@ -909,7 +909,7 @@ export const FindingType = /*@__PURE__*/ S.String;
 export type __listOfFindingType = (FindingType | (string & {}))[];
 export const __listOfFindingType = /*@__PURE__*/ S.Array(FindingType);
 export interface CreateSampleFindingsRequest {
-  findingTypes?: FindingType[];
+  findingTypes?: (FindingType | (string & {}))[];
 }
 export const CreateSampleFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingTypes: S.optional(__listOfFindingType) }).pipe(

@@ -367,7 +367,7 @@ export interface CreateAutomationRuleRequest {
   ruleType: RuleType | (string & {});
   organizationConfiguration?: OrganizationConfiguration;
   priority?: string;
-  recommendedActionTypes: RecommendedActionType[];
+  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
   criteria?: Criteria;
   schedule: Schedule;
   status: RuleStatus | (string & {});
@@ -968,7 +968,7 @@ export const OrganizationScope = /*@__PURE__*/ S.suspend(() =>
 export interface ListAutomationRulePreviewRequest {
   ruleType: RuleType | (string & {});
   organizationScope?: OrganizationScope;
-  recommendedActionTypes: RecommendedActionType[];
+  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
   criteria?: Criteria;
   maxResults?: number;
   nextToken?: string;
@@ -1066,7 +1066,7 @@ export const ListAutomationRulePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAutomationRulePreviewSummariesRequest {
   ruleType: RuleType | (string & {});
   organizationScope?: OrganizationScope;
-  recommendedActionTypes: RecommendedActionType[];
+  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
   criteria?: Criteria;
   maxResults?: number;
   nextToken?: string;
@@ -1468,7 +1468,7 @@ export interface UpdateAutomationRuleRequest {
   ruleType?: RuleType | (string & {});
   organizationConfiguration?: OrganizationConfiguration;
   priority?: string;
-  recommendedActionTypes?: RecommendedActionType[];
+  recommendedActionTypes?: (RecommendedActionType | (string & {}))[];
   criteria?: Criteria;
   schedule?: Schedule;
   status?: RuleStatus | (string & {});

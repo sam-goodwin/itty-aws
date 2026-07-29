@@ -1582,7 +1582,7 @@ export const ExportPreferences = /*@__PURE__*/ S.Union([
   }),
 ]);
 export interface StartExportTaskRequest {
-  exportDataFormat?: ExportDataFormat[];
+  exportDataFormat?: (ExportDataFormat | (string & {}))[];
   filters?: ExportFilter[];
   startTime?: Date;
   endTime?: Date;

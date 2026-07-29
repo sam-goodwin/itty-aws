@@ -370,7 +370,7 @@ export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
   Key?: Dimension | (string & {});
   Values?: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -385,7 +385,7 @@ export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const TagValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -398,7 +398,7 @@ export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3201,7 +3201,7 @@ export const SavingsPlansDataTypes =
 export interface GetSavingsPlansUtilizationDetailsRequest {
   TimePeriod: DateInterval;
   Filter?: Expression;
-  DataType?: SavingsPlansDataType[];
+  DataType?: (SavingsPlansDataType | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
   SortBy?: SortDefinition;

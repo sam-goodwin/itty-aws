@@ -2393,7 +2393,7 @@ export const ServiceUpdateStatusList =
 export interface DescribeServiceUpdatesRequest {
   ServiceUpdateName?: string;
   ClusterNames?: string[];
-  Status?: ServiceUpdateStatus[];
+  Status?: (ServiceUpdateStatus | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }

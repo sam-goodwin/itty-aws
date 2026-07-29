@@ -538,7 +538,7 @@ export interface CreatePermissionRequest {
   CertificateAuthorityArn: string;
   Principal: string;
   SourceAccount?: string;
-  Actions: ActionType[];
+  Actions: (ActionType | (string & {}))[];
 }
 export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

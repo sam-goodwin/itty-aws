@@ -930,7 +930,7 @@ export type DaysList = (Day | (string & {}))[];
 export const DaysList = /*@__PURE__*/ S.Array(Day);
 export interface WeeklySchedule {
   startTime: Time;
-  days: Day[];
+  days: (Day | (string & {}))[];
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startTime: Time, days: DaysList }),
@@ -1136,7 +1136,7 @@ export const ContinuousIntegrationScanSupportedEvents = /*@__PURE__*/ S.Array(
   ContinuousIntegrationScanEvent,
 );
 export interface ContinuousIntegrationScanConfiguration {
-  supportedEvents: ContinuousIntegrationScanEvent[];
+  supportedEvents: (ContinuousIntegrationScanEvent | (string & {}))[];
 }
 export const ContinuousIntegrationScanConfiguration = /*@__PURE__*/ S.suspend(
   () => S.Struct({ supportedEvents: ContinuousIntegrationScanSupportedEvents }),
@@ -1151,7 +1151,7 @@ export const RuleSetCategories = /*@__PURE__*/ S.Array(RuleSetCategory);
 export interface CodeSecurityScanConfiguration {
   periodicScanConfiguration?: PeriodicScanConfiguration;
   continuousIntegrationScanConfiguration?: ContinuousIntegrationScanConfiguration;
-  ruleSetCategories: RuleSetCategory[];
+  ruleSetCategories: (RuleSetCategory | (string & {}))[];
 }
 export const CodeSecurityScanConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

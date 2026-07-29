@@ -32,9 +32,11 @@ const makeCfSpec = (
   opAliases?: Array<{ alias: string; target: string }>,
 ): SdkSpec => ({
   // Docs wire names are snake_case; the TS surface is camelCase.
-  // Dashed member names stay verbatim (emitted quoted) — v0 surface for
-  // keys like "cve-2021-44228"; everything else camelizes.
-  memberName: (n: string) => (n.includes("-") ? n : camel(n)),
+  // Verbatim (emitted quoted) when camelizing would mangle the v0 surface:
+  // dashed keys ("cve-2021-44228"), digit segments ("lan_1", "tls_1_3"),
+  // and $-prefixed keys ("$metadata"); everything else camelizes.
+  memberName: (n: string) =>
+    n.includes("-") || /_\d/.test(n) || n.startsWith("$") ? n : camel(n),
   nullableTrait: NULLABLE_TRAIT,
   errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 
@@ -69,6 +71,13 @@ const makeCfSpec = (
     // (`account.id=…`) by core's buildRequest; value = wire base name.
     [DEEP_QUERY_TRAIT]: "T.DeepQuery",
   },
+
+  // A Blob-targeted whole-body member is a raw object upload — accept
+  // every binary-ish payload form (v0 surface).
+  memberTsType: (m) =>
+    m.binding === "rawBody" && m.target === "smithy.api#Blob"
+      ? "Blob | Uint8Array | ArrayBuffer | string"
+      : undefined,
 
   sourceNote: ".generated-specs",
 

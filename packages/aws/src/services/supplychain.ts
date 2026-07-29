@@ -1496,7 +1496,7 @@ export interface ListInstancesRequest {
   nextToken?: string;
   maxResults?: number;
   instanceNameFilter?: string[];
-  instanceStateFilter?: InstanceState[];
+  instanceStateFilter?: (InstanceState | (string & {}))[];
 }
 export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

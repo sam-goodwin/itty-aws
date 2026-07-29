@@ -12602,7 +12602,7 @@ export type ColumnTagNames = (ColumnTagName | (string & {}))[];
 export const ColumnTagNames = /*@__PURE__*/ S.Array(ColumnTagName);
 export interface UntagColumnOperation {
   ColumnName: string;
-  TagNames: ColumnTagName[];
+  TagNames: (ColumnTagName | (string & {}))[];
 }
 export const UntagColumnOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ColumnName: S.String, TagNames: ColumnTagNames }),
@@ -17284,8 +17284,8 @@ export interface TopicColumn {
   ComparativeOrder?: ComparativeOrder;
   SemanticType?: SemanticType;
   TimeGranularity?: TopicTimeGranularity | (string & {});
-  AllowedAggregations?: AuthorSpecifiedAggregation[];
-  NotAllowedAggregations?: AuthorSpecifiedAggregation[];
+  AllowedAggregations?: (AuthorSpecifiedAggregation | (string & {}))[];
+  NotAllowedAggregations?: (AuthorSpecifiedAggregation | (string & {}))[];
   DefaultFormatting?: DefaultFormatting;
   NeverAggregateInFilter?: boolean;
   CellValueSynonyms?: CellValueSynonym[];
@@ -17327,8 +17327,8 @@ export interface TopicCalculatedField {
   Aggregation?: DefaultAggregation | (string & {});
   ComparativeOrder?: ComparativeOrder;
   SemanticType?: SemanticType;
-  AllowedAggregations?: AuthorSpecifiedAggregation[];
-  NotAllowedAggregations?: AuthorSpecifiedAggregation[];
+  AllowedAggregations?: (AuthorSpecifiedAggregation | (string & {}))[];
+  NotAllowedAggregations?: (AuthorSpecifiedAggregation | (string & {}))[];
   NeverAggregateInFilter?: boolean;
   CellValueSynonyms?: CellValueSynonym[];
   NonAdditive?: boolean;
@@ -20118,7 +20118,10 @@ export const AssetBundleExportJobVPCConnectionPropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobVPCConnectionPropertyToOverride);
 export interface AssetBundleExportJobVPCConnectionOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobVPCConnectionPropertyToOverride[];
+  Properties: (
+    | AssetBundleExportJobVPCConnectionPropertyToOverride
+    | (string & {})
+  )[];
 }
 export const AssetBundleExportJobVPCConnectionOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20146,7 +20149,10 @@ export const AssetBundleExportJobRefreshSchedulePropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobRefreshSchedulePropertyToOverride);
 export interface AssetBundleExportJobRefreshScheduleOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobRefreshSchedulePropertyToOverride[];
+  Properties: (
+    | AssetBundleExportJobRefreshSchedulePropertyToOverride
+    | (string & {})
+  )[];
 }
 export const AssetBundleExportJobRefreshScheduleOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20191,7 +20197,10 @@ export const AssetBundleExportJobDataSourcePropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDataSourcePropertyToOverride);
 export interface AssetBundleExportJobDataSourceOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobDataSourcePropertyToOverride[];
+  Properties: (
+    | AssetBundleExportJobDataSourcePropertyToOverride
+    | (string & {})
+  )[];
 }
 export const AssetBundleExportJobDataSourceOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20220,7 +20229,7 @@ export const AssetBundleExportJobDataSetPropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDataSetPropertyToOverride);
 export interface AssetBundleExportJobDataSetOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobDataSetPropertyToOverride[];
+  Properties: (AssetBundleExportJobDataSetPropertyToOverride | (string & {}))[];
 }
 export const AssetBundleExportJobDataSetOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20247,7 +20256,7 @@ export const AssetBundleExportJobThemePropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobThemePropertyToOverride);
 export interface AssetBundleExportJobThemeOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobThemePropertyToOverride[];
+  Properties: (AssetBundleExportJobThemePropertyToOverride | (string & {}))[];
 }
 export const AssetBundleExportJobThemeOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20274,7 +20283,10 @@ export const AssetBundleExportJobAnalysisPropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobAnalysisPropertyToOverride);
 export interface AssetBundleExportJobAnalysisOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobAnalysisPropertyToOverride[];
+  Properties: (
+    | AssetBundleExportJobAnalysisPropertyToOverride
+    | (string & {})
+  )[];
 }
 export const AssetBundleExportJobAnalysisOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20301,7 +20313,10 @@ export const AssetBundleExportJobDashboardPropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDashboardPropertyToOverride);
 export interface AssetBundleExportJobDashboardOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobDashboardPropertyToOverride[];
+  Properties: (
+    | AssetBundleExportJobDashboardPropertyToOverride
+    | (string & {})
+  )[];
 }
 export const AssetBundleExportJobDashboardOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -20330,7 +20345,7 @@ export const AssetBundleExportJobFolderPropertyToOverrideList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobFolderPropertyToOverride);
 export interface AssetBundleExportJobFolderOverrideProperties {
   Arn: string;
-  Properties: AssetBundleExportJobFolderPropertyToOverride[];
+  Properties: (AssetBundleExportJobFolderPropertyToOverride | (string & {}))[];
 }
 export const AssetBundleExportJobFolderOverrideProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -22238,11 +22253,11 @@ export const DataSourceErrorInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceErrorInfo",
 }) as any as S.Schema<DataSourceErrorInfo>;
 export interface DataSource {
-  Arn?: string;
-  DataSourceId?: string;
-  Name?: string;
-  Type?: DataSourceType;
-  Status?: ResourceStatus;
+  Arn: string;
+  DataSourceId: string;
+  Name: string;
+  Type: DataSourceType;
+  Status: ResourceStatus;
   CreatedTime?: Date;
   LastUpdatedTime?: Date;
   DataSourceParameters?: DataSourceParameters;
@@ -22254,11 +22269,11 @@ export interface DataSource {
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Arn: S.optional(S.String),
-    DataSourceId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Type: S.optional(DataSourceType),
-    Status: S.optional(ResourceStatus),
+    Arn: S.String,
+    DataSourceId: S.String,
+    Name: S.String,
+    Type: DataSourceType,
+    Status: ResourceStatus,
     CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     LastUpdatedTime: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -24673,8 +24688,14 @@ export const AnonymousUserDashboardFeatureConfigurations =
   }) as any as S.Schema<AnonymousUserDashboardFeatureConfigurations>;
 export interface AnonymousUserDashboardEmbeddingConfiguration {
   InitialDashboardId: string;
-  EnabledFeatures?: AnonymousUserDashboardEmbeddingConfigurationEnabledFeature[];
-  DisabledFeatures?: AnonymousUserDashboardEmbeddingConfigurationDisabledFeature[];
+  EnabledFeatures?: (
+    | AnonymousUserDashboardEmbeddingConfigurationEnabledFeature
+    | (string & {})
+  )[];
+  DisabledFeatures?: (
+    | AnonymousUserDashboardEmbeddingConfigurationDisabledFeature
+    | (string & {})
+  )[];
   FeatureConfigurations?: AnonymousUserDashboardFeatureConfigurations;
 }
 export const AnonymousUserDashboardEmbeddingConfiguration =

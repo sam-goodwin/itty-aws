@@ -1135,7 +1135,7 @@ export interface CreateResolverEndpointRequest {
   PreferredInstanceType?: string;
   Tags?: Tag[];
   ResolverEndpointType?: ResolverEndpointType | (string & {});
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
   RniEnhancedMetricsEnabled?: boolean;
   TargetNameServerMetricsEnabled?: boolean;
   Dns64Enabled?: boolean;
@@ -2969,7 +2969,7 @@ export interface UpdateResolverEndpointRequest {
   Name?: string;
   ResolverEndpointType?: ResolverEndpointType | (string & {});
   UpdateIpAddresses?: UpdateIpAddress[];
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
   RniEnhancedMetricsEnabled?: boolean;
   TargetNameServerMetricsEnabled?: boolean;
   Dns64Enabled?: boolean;

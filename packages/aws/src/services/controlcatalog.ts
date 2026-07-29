@@ -342,7 +342,7 @@ export const MappingTypeFilterList = /*@__PURE__*/ S.Array(MappingType);
 export interface ControlMappingFilter {
   ControlArns?: string[];
   CommonControlArns?: string[];
-  MappingTypes?: MappingType[];
+  MappingTypes?: (MappingType | (string & {}))[];
 }
 export const ControlMappingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

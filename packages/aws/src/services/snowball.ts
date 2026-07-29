@@ -435,7 +435,7 @@ export type JobStateList = (JobState | (string & {}))[];
 export const JobStateList = /*@__PURE__*/ S.Array(JobState);
 export interface Notification {
   SnsTopicARN?: string;
-  JobStatesToNotify?: JobState[];
+  JobStatesToNotify?: (JobState | (string & {}))[];
   NotifyAll?: boolean;
   DevicePickupSnsTopicARN?: string;
 }

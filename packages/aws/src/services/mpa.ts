@@ -1434,7 +1434,7 @@ export interface UpdateApprovalTeamRequest {
   Approvers?: ApprovalTeamRequestApprover[];
   Description?: string | redacted.Redacted<string>;
   Arn: string;
-  UpdateActions?: UpdateAction[];
+  UpdateActions?: (UpdateAction | (string & {}))[];
 }
 export const UpdateApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

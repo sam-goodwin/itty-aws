@@ -563,7 +563,7 @@ export const ThumbnailRecordingMode = /*@__PURE__*/ S.String;
 
 export interface ParticipantThumbnailConfiguration {
   targetIntervalSeconds?: number;
-  storage?: ThumbnailStorageType[];
+  storage?: (ThumbnailStorageType | (string & {}))[];
   recordingMode?: ThumbnailRecordingMode | (string & {});
 }
 export const ParticipantThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -588,7 +588,7 @@ export const ParticipantRecordingHlsConfiguration = /*@__PURE__*/ S.suspend(
 export type RecordParticipantReplicas = boolean;
 export interface AutoParticipantRecordingConfiguration {
   storageConfigurationArn: string;
-  mediaTypes?: ParticipantRecordingMediaType[];
+  mediaTypes?: (ParticipantRecordingMediaType | (string & {}))[];
   thumbnailConfiguration?: ParticipantThumbnailConfiguration;
   recordingReconnectWindowSeconds?: number;
   hlsConfiguration?: ParticipantRecordingHlsConfiguration;
@@ -1033,7 +1033,7 @@ export const RecordingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordingConfiguration>;
 export interface CompositionThumbnailConfiguration {
   targetIntervalSeconds?: number;
-  storage?: ThumbnailStorageType[];
+  storage?: (ThumbnailStorageType | (string & {}))[];
 }
 export const CompositionThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

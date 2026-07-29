@@ -306,7 +306,7 @@ export interface CreateConfiguredAudienceModelRequest {
   audienceModelArn: string;
   outputConfig: ConfiguredAudienceModelOutputConfig;
   description?: string;
-  sharedAudienceMetrics: SharedAudienceMetrics[];
+  sharedAudienceMetrics: (SharedAudienceMetrics | (string & {}))[];
   minMatchingSeedSize?: number;
   audienceSizeConfig?: AudienceSizeConfig;
   tags?: { [key: string]: string | undefined };
@@ -456,7 +456,7 @@ export const CustomEntityConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomEntityConfig",
 }) as any as S.Schema<CustomEntityConfig>;
 export interface LogRedactionConfiguration {
-  entitiesToRedact: EntityType[];
+  entitiesToRedact: (EntityType | (string & {}))[];
   customEntityConfig?: CustomEntityConfig;
 }
 export const LogRedactionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -550,7 +550,7 @@ export const TrainedModelExportFileTypeList = /*@__PURE__*/ S.Array(
 );
 export interface TrainedModelExportsConfigurationPolicy {
   maxSize: TrainedModelExportsMaxSize;
-  filesToExport: TrainedModelExportFileType[];
+  filesToExport: (TrainedModelExportFileType | (string & {}))[];
 }
 export const TrainedModelExportsConfigurationPolicy = /*@__PURE__*/ S.suspend(
   () =>
@@ -1096,7 +1096,7 @@ export type ColumnTypeList = (ColumnType | (string & {}))[];
 export const ColumnTypeList = /*@__PURE__*/ S.Array(ColumnType);
 export interface ColumnSchema {
   columnName: string;
-  columnTypes: ColumnType[];
+  columnTypes: (ColumnType | (string & {}))[];
 }
 export const ColumnSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnName: S.String, columnTypes: ColumnTypeList }),
@@ -4310,7 +4310,7 @@ export interface UpdateConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
   outputConfig?: ConfiguredAudienceModelOutputConfig;
   audienceModelArn?: string;
-  sharedAudienceMetrics?: SharedAudienceMetrics[];
+  sharedAudienceMetrics?: (SharedAudienceMetrics | (string & {}))[];
   minMatchingSeedSize?: number;
   audienceSizeConfig?: AudienceSizeConfig;
   description?: string;

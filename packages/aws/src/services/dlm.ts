@@ -185,7 +185,7 @@ export type ExecuteOperationOnScriptFailure = boolean;
 export type ScriptExecutionTimeout = number;
 export type ScriptMaximumRetryCount = number;
 export interface Script {
-  Stages?: StageValues[];
+  Stages?: (StageValues | (string & {}))[];
   ExecutionHandlerService?: ExecutionHandlerServiceValues | (string & {});
   ExecutionHandler?: string;
   ExecuteOperationOnScriptFailure?: boolean;
@@ -531,8 +531,8 @@ export const Exclusions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Exclusions" }) as any as S.Schema<Exclusions>;
 export interface PolicyDetails {
   PolicyType?: PolicyTypeValues | (string & {});
-  ResourceTypes?: ResourceTypeValues[];
-  ResourceLocations?: ResourceLocationValues[];
+  ResourceTypes?: (ResourceTypeValues | (string & {}))[];
+  ResourceLocations?: (ResourceLocationValues | (string & {}))[];
   TargetTags?: Tag[];
   Schedules?: Schedule[];
   Parameters?: Parameters;
@@ -666,7 +666,7 @@ export const DefaultPoliciesTypeValues = /*@__PURE__*/ S.String;
 export interface GetLifecyclePoliciesRequest {
   PolicyIds?: string[];
   State?: GettablePolicyStateValues | (string & {});
-  ResourceTypes?: ResourceTypeValues[];
+  ResourceTypes?: (ResourceTypeValues | (string & {}))[];
   TargetTags?: string[];
   TagsToAdd?: string[];
   DefaultPolicyType?: DefaultPoliciesTypeValues | (string & {});

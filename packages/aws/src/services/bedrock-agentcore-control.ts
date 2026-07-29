@@ -1581,7 +1581,7 @@ export const InterceptorInputConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterceptorInputConfiguration>;
 export interface GatewayInterceptorConfiguration {
   interceptor: InterceptorConfiguration;
-  interceptionPoints: GatewayInterceptionPoint[];
+  interceptionPoints: (GatewayInterceptionPoint | (string & {}))[];
   inputConfiguration?: InterceptorInputConfiguration;
 }
 export const GatewayInterceptorConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2135,7 +2135,7 @@ export type RestApiMethods = (RestApiMethod | (string & {}))[];
 export const RestApiMethods = /*@__PURE__*/ S.Array(RestApiMethod);
 export interface ApiGatewayToolFilter {
   filterPath: string;
-  methods: RestApiMethod[];
+  methods: (RestApiMethod | (string & {}))[];
 }
 export const ApiGatewayToolFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ filterPath: S.String, methods: RestApiMethods }),
@@ -3140,7 +3140,7 @@ export const HarnessManagedMemoryStrategyList = /*@__PURE__*/ S.Array(
 );
 export interface HarnessManagedMemoryConfiguration {
   arn?: string;
-  strategies?: HarnessManagedMemoryStrategyType[];
+  strategies?: (HarnessManagedMemoryStrategyType | (string & {}))[];
   eventExpiryDuration?: number;
   encryptionKeyArn?: string;
 }
@@ -5241,7 +5241,7 @@ export type ClusteringFrequencyList = (ClusteringFrequency | (string & {}))[];
 export const ClusteringFrequencyList =
   /*@__PURE__*/ S.Array(ClusteringFrequency);
 export interface ClusteringConfig {
-  frequencies: ClusteringFrequency[];
+  frequencies: (ClusteringFrequency | (string & {}))[];
 }
 export const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ frequencies: ClusteringFrequencyList }),

@@ -22,6 +22,11 @@
           "smithy.api#documentation": "MIME type stored with the object."
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject/traits/smithy.api#http/bodyMediaType",
+      "value": "application/octet-stream"
     }
   ]
 }

@@ -56,7 +56,7 @@ export interface TracesCreateRequestContextGeoloc {
   longitude?: number;
   postalCode?: string;
   regionCode?: string;
-  subdivision2IsoCode?: string;
+  subdivision_2_iso_code?: string;
   timezone?: string;
 }
 export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
@@ -69,9 +69,7 @@ export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
     longitude: S.optional(S.Number),
     postalCode: S.optional(S.String.pipe(T.Body("postal_code"))),
     regionCode: S.optional(S.String.pipe(T.Body("region_code"))),
-    subdivision2IsoCode: S.optional(
-      S.String.pipe(T.Body("subdivision_2_iso_code")),
-    ),
+    subdivision_2_iso_code: S.optional(S.String),
     timezone: S.optional(S.String),
   }),
 ).annotate({

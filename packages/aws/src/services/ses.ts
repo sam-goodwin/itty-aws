@@ -563,7 +563,7 @@ export const SNSDestination = /*@__PURE__*/ S.suspend(() =>
 export interface EventDestination {
   Name: string;
   Enabled?: boolean;
-  MatchingEventTypes: EventType[];
+  MatchingEventTypes: (EventType | (string & {}))[];
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   CloudWatchDestination?: CloudWatchDestination;
   SNSDestination?: SNSDestination;
@@ -1309,7 +1309,10 @@ export const ConfigurationSetAttributeList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeConfigurationSetRequest {
   ConfigurationSetName: string;
-  ConfigurationSetAttributeNames?: ConfigurationSetAttribute[];
+  ConfigurationSetAttributeNames?: (
+    | ConfigurationSetAttribute
+    | (string & {})
+  )[];
 }
 export const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

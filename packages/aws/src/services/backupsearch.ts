@@ -158,7 +158,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 ).pipe(T.Sparse());
 export interface SearchScope {
-  BackupResourceTypes: ResourceType[];
+  BackupResourceTypes: (ResourceType | (string & {}))[];
   BackupResourceCreationTime?: BackupCreationTimeFilter;
   SourceResourceArns?: string[];
   BackupResourceArns?: string[];

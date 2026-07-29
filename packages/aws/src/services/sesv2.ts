@@ -471,7 +471,7 @@ export const SuppressionValidationOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuppressionValidationOptions",
 }) as any as S.Schema<SuppressionValidationOptions>;
 export interface SuppressionOptions {
-  SuppressedReasons?: SuppressionListReason[];
+  SuppressedReasons?: (SuppressionListReason | (string & {}))[];
   SuppressionScope?: SuppressionListScope | (string & {});
   ValidationOptions?: SuppressionValidationOptions;
 }
@@ -642,7 +642,7 @@ export const PinpointDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PinpointDestination>;
 export interface EventDestinationDefinition {
   Enabled?: boolean;
-  MatchingEventTypes?: EventType[];
+  MatchingEventTypes?: (EventType | (string & {}))[];
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   CloudWatchDestination?: CloudWatchDestination;
   SnsDestination?: SnsDestination;
@@ -1321,8 +1321,8 @@ export interface MessageInsightsFilters {
   Destination?: (string | redacted.Redacted<string>)[];
   Subject?: (string | redacted.Redacted<string>)[];
   Isp?: string[];
-  LastDeliveryEvent?: DeliveryEventType[];
-  LastEngagementEvent?: EngagementEventType[];
+  LastDeliveryEvent?: (DeliveryEventType | (string & {}))[];
+  LastEngagementEvent?: (EngagementEventType | (string & {}))[];
 }
 export const MessageInsightsFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1539,7 +1539,7 @@ export const CreateMultiRegionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMultiRegionEndpointResponse>;
 export type TenantName = string;
 export interface TenantSuppressionAttributes {
-  SuppressedReasons?: SuppressionListReason[];
+  SuppressedReasons?: (SuppressionListReason | (string & {}))[];
   SuppressionScope?: SuppressionListScope | (string & {});
 }
 export const TenantSuppressionAttributes = /*@__PURE__*/ S.suspend(() =>
@@ -4491,7 +4491,7 @@ export const ListResourceTenantsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceTenantsResponse>;
 export interface ListSuppressedDestinationsRequest {
   TenantName?: string;
-  Reasons?: SuppressionListReason[];
+  Reasons?: (SuppressionListReason | (string & {}))[];
   StartDate?: Date;
   EndDate?: Date;
   NextToken?: string;
@@ -4782,7 +4782,7 @@ export const PutAccountSendingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAccountSendingAttributesResponse",
 }) as any as S.Schema<PutAccountSendingAttributesResponse>;
 export interface PutAccountSuppressionAttributesRequest {
-  SuppressedReasons?: SuppressionListReason[];
+  SuppressedReasons?: (SuppressionListReason | (string & {}))[];
   ValidationAttributes?: SuppressionValidationAttributes;
 }
 export const PutAccountSuppressionAttributesRequest = /*@__PURE__*/ S.suspend(
@@ -4960,7 +4960,7 @@ export const PutConfigurationSetSendingOptionsResponse =
 export interface PutConfigurationSetSuppressionOptionsRequest {
   ConfigurationSetName: string;
   SuppressionScope?: SuppressionListScope | (string & {});
-  SuppressedReasons?: SuppressionListReason[];
+  SuppressedReasons?: (SuppressionListReason | (string & {}))[];
   ValidationOptions?: SuppressionValidationOptions;
 }
 export const PutConfigurationSetSuppressionOptionsRequest =
@@ -5363,7 +5363,7 @@ export const PutSuppressedDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSuppressedDestinationResponse>;
 export interface PutTenantSuppressionAttributesRequest {
   TenantName: string;
-  SuppressedReasons?: SuppressionListReason[];
+  SuppressedReasons?: (SuppressionListReason | (string & {}))[];
   SuppressionScope?: SuppressionListScope | (string & {});
 }
 export const PutTenantSuppressionAttributesRequest = /*@__PURE__*/ S.suspend(

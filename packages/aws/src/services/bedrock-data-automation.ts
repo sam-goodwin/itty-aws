@@ -397,7 +397,7 @@ export const DocumentExtractionGranularityTypes = /*@__PURE__*/ S.Array(
   DocumentExtractionGranularityType,
 );
 export interface DocumentExtractionGranularity {
-  types?: DocumentExtractionGranularityType[];
+  types?: (DocumentExtractionGranularityType | (string & {}))[];
 }
 export const DocumentExtractionGranularity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ types: S.optional(DocumentExtractionGranularityTypes) }),
@@ -450,7 +450,7 @@ export const DocumentOutputTextFormatTypes = /*@__PURE__*/ S.Array(
   DocumentOutputTextFormatType,
 );
 export interface DocumentOutputTextFormat {
-  types?: DocumentOutputTextFormatType[];
+  types?: (DocumentOutputTextFormatType | (string & {}))[];
 }
 export const DocumentOutputTextFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ types: S.optional(DocumentOutputTextFormatTypes) }),
@@ -506,7 +506,7 @@ export const ImageExtractionCategoryTypes = /*@__PURE__*/ S.Array(
 );
 export interface ImageExtractionCategory {
   state: State | (string & {});
-  types?: ImageExtractionCategoryType[];
+  types?: (ImageExtractionCategoryType | (string & {}))[];
 }
 export const ImageExtractionCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State, types: S.optional(ImageExtractionCategoryTypes) }),
@@ -545,7 +545,7 @@ export const ImageStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
 );
 export interface ImageStandardGenerativeField {
   state: State | (string & {});
-  types?: ImageStandardGenerativeFieldType[];
+  types?: (ImageStandardGenerativeFieldType | (string & {}))[];
 }
 export const ImageStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -583,7 +583,7 @@ export const VideoExtractionCategoryTypes = /*@__PURE__*/ S.Array(
 );
 export interface VideoExtractionCategory {
   state: State | (string & {});
-  types?: VideoExtractionCategoryType[];
+  types?: (VideoExtractionCategoryType | (string & {}))[];
 }
 export const VideoExtractionCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State, types: S.optional(VideoExtractionCategoryTypes) }),
@@ -625,7 +625,7 @@ export const VideoStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
 );
 export interface VideoStandardGenerativeField {
   state: State | (string & {});
-  types?: VideoStandardGenerativeFieldType[];
+  types?: (VideoStandardGenerativeFieldType | (string & {}))[];
 }
 export const VideoStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -698,7 +698,7 @@ export const AudioExtractionCategoryTypeConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AudioExtractionCategoryTypeConfiguration>;
 export interface AudioExtractionCategory {
   state: State | (string & {});
-  types?: AudioExtractionCategoryType[];
+  types?: (AudioExtractionCategoryType | (string & {}))[];
   typeConfiguration?: AudioExtractionCategoryTypeConfiguration;
 }
 export const AudioExtractionCategory = /*@__PURE__*/ S.suspend(() =>
@@ -733,7 +733,7 @@ export const AudioStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
 );
 export interface AudioStandardGenerativeField {
   state: State | (string & {});
-  types?: AudioStandardGenerativeFieldType[];
+  types?: (AudioStandardGenerativeFieldType | (string & {}))[];
 }
 export const AudioStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -879,7 +879,7 @@ export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE";
 export const PIIRedactionMaskMode = /*@__PURE__*/ S.String;
 
 export interface PIIEntitiesConfiguration {
-  piiEntityTypes?: PIIEntityType[];
+  piiEntityTypes?: (PIIEntityType | (string & {}))[];
   redactionMaskMode?: PIIRedactionMaskMode | (string & {});
 }
 export const PIIEntitiesConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -892,7 +892,7 @@ export const PIIEntitiesConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PIIEntitiesConfiguration>;
 export interface SensitiveDataConfiguration {
   detectionMode: SensitiveDataDetectionMode | (string & {});
-  detectionScope?: SensitiveDataDetectionScopeType[];
+  detectionScope?: (SensitiveDataDetectionScopeType | (string & {}))[];
   piiEntitiesConfiguration?: PIIEntitiesConfiguration;
 }
 export const SensitiveDataConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -962,7 +962,7 @@ export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN";
 export const AudioGenerativeOutputLanguage = /*@__PURE__*/ S.String;
 
 export interface AudioLanguageConfiguration {
-  inputLanguages?: Language[];
+  inputLanguages?: (Language | (string & {}))[];
   generativeOutputLanguage?: AudioGenerativeOutputLanguage | (string & {});
   identifyMultipleLanguages?: boolean;
 }

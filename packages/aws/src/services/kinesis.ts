@@ -1300,7 +1300,7 @@ export const DescribeStreamSummaryOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeStreamSummaryOutput>;
 export interface DisableEnhancedMonitoringInput {
   StreamName?: string;
-  ShardLevelMetrics: MetricsName[];
+  ShardLevelMetrics: (MetricsName | (string & {}))[];
   StreamARN?: string;
   StreamId?: string;
 }
@@ -1343,7 +1343,7 @@ export const EnhancedMonitoringOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnhancedMonitoringOutput>;
 export interface EnableEnhancedMonitoringInput {
   StreamName?: string;
-  ShardLevelMetrics: MetricsName[];
+  ShardLevelMetrics: (MetricsName | (string & {}))[];
   StreamARN?: string;
   StreamId?: string;
 }

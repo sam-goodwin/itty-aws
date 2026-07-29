@@ -1164,7 +1164,7 @@ export const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectDetails" }) as any as S.Schema<ProjectDetails>;
 export interface OpportunityInvitationPayload {
   SenderContacts?: SenderContact[];
-  ReceiverResponsibilities: ReceiverResponsibility[];
+  ReceiverResponsibilities: (ReceiverResponsibility | (string & {}))[];
   Customer: EngagementCustomer;
   Project: ProjectDetails;
 }
@@ -1421,7 +1421,7 @@ export type AwsPartition = "aws-eusc";
 export const AwsPartition = /*@__PURE__*/ S.String;
 
 export interface Project {
-  DeliveryModels?: DeliveryModel[];
+  DeliveryModels?: (DeliveryModel | (string & {}))[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
   ExpectedContractDuration?: ExpectedContractDuration;
   Title?: string | redacted.Redacted<string>;
@@ -1429,7 +1429,7 @@ export interface Project {
   CustomerBusinessProblem?: string | redacted.Redacted<string>;
   CustomerUseCase?: string;
   RelatedOpportunityIdentifier?: string;
-  SalesActivities?: SalesActivity[];
+  SalesActivities?: (SalesActivity | (string & {}))[];
   CompetitorName?: CompetitorName | (string & {});
   OtherCompetitorNames?: string;
   OtherSolutionDescription?: string | redacted.Redacted<string>;
@@ -1487,7 +1487,7 @@ export interface Marketing {
   CampaignName?: string;
   Source?: MarketingSource | (string & {});
   UseCases?: string[];
-  Channels?: Channel[];
+  Channels?: (Channel | (string & {}))[];
   AwsFundingUsed?: AwsFundingUsed | (string & {});
 }
 export const Marketing = /*@__PURE__*/ S.suspend(() =>
@@ -1620,7 +1620,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateOpportunityRequest {
   Catalog: string;
-  PrimaryNeedsFromAws?: PrimaryNeedFromAws[];
+  PrimaryNeedsFromAws?: (PrimaryNeedFromAws | (string & {}))[];
   NationalSecurity?: NationalSecurity | (string & {});
   PartnerOpportunityIdentifier?: string;
   Customer?: Customer;
@@ -2775,7 +2775,7 @@ export interface ListEngagementByAcceptingInvitationTasksRequest {
   NextToken?: string;
   Sort?: ListTasksSortBase;
   Catalog: string;
-  TaskStatus?: TaskStatus[];
+  TaskStatus?: (TaskStatus | (string & {}))[];
   OpportunityIdentifier?: string[];
   EngagementInvitationIdentifier?: string[];
   TaskIdentifier?: string[];
@@ -2890,7 +2890,7 @@ export interface ListEngagementFromOpportunityTasksRequest {
   NextToken?: string;
   Sort?: ListTasksSortBase;
   Catalog: string;
-  TaskStatus?: TaskStatus[];
+  TaskStatus?: (TaskStatus | (string & {}))[];
   TaskIdentifier?: string[];
   OpportunityIdentifier?: string[];
   EngagementIdentifier?: string[];
@@ -3001,9 +3001,9 @@ export interface ListEngagementInvitationsRequest {
   MaxResults?: number;
   NextToken?: string;
   Sort?: OpportunityEngagementInvitationSort;
-  PayloadType?: EngagementInvitationPayloadType[];
+  PayloadType?: (EngagementInvitationPayloadType | (string & {}))[];
   ParticipantType: ParticipantType | (string & {});
-  Status?: InvitationStatus[];
+  Status?: (InvitationStatus | (string & {}))[];
   EngagementIdentifier?: string[];
   SenderAwsAccountId?: (string | redacted.Redacted<string>)[];
 }
@@ -3233,8 +3233,8 @@ export interface ListEngagementsRequest {
   Catalog: string;
   CreatedBy?: (string | redacted.Redacted<string>)[];
   ExcludeCreatedBy?: (string | redacted.Redacted<string>)[];
-  ContextTypes?: EngagementContextType[];
-  ExcludeContextTypes?: EngagementContextType[];
+  ContextTypes?: (EngagementContextType | (string & {}))[];
+  ExcludeContextTypes?: (EngagementContextType | (string & {}))[];
   Sort?: EngagementSort;
   MaxResults?: number;
   NextToken?: string;
@@ -3382,8 +3382,8 @@ export interface ListOpportunitiesRequest {
   Sort?: OpportunitySort;
   LastModifiedDate?: LastModifiedDate;
   Identifier?: string[];
-  LifeCycleStage?: Stage[];
-  LifeCycleReviewStatus?: ReviewStatus[];
+  LifeCycleStage?: (Stage | (string & {}))[];
+  LifeCycleReviewStatus?: (ReviewStatus | (string & {}))[];
   CustomerCompanyName?: string[];
   CreatedDate?: CreatedDateFilter;
   TargetCloseDate?: TargetCloseDateFilter;
@@ -3526,7 +3526,7 @@ export interface ListOpportunityFromEngagementTasksRequest {
   NextToken?: string;
   Sort?: ListTasksSortBase;
   Catalog: string;
-  TaskStatus?: TaskStatus[];
+  TaskStatus?: (TaskStatus | (string & {}))[];
   TaskIdentifier?: string[];
   OpportunityIdentifier?: string[];
   EngagementIdentifier?: string[];
@@ -3873,7 +3873,7 @@ export interface ListSolutionsRequest {
   MaxResults?: number;
   NextToken?: string;
   Sort?: SolutionSort;
-  Status?: SolutionStatus[];
+  Status?: (SolutionStatus | (string & {}))[];
   Identifier?: string[];
   Category?: string[];
 }
@@ -4479,7 +4479,7 @@ export const UpdateEngagementContextResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEngagementContextResponse>;
 export interface UpdateOpportunityRequest {
   Catalog: string;
-  PrimaryNeedsFromAws?: PrimaryNeedFromAws[];
+  PrimaryNeedsFromAws?: (PrimaryNeedFromAws | (string & {}))[];
   NationalSecurity?: NationalSecurity | (string & {});
   PartnerOpportunityIdentifier?: string;
   Customer?: Customer;

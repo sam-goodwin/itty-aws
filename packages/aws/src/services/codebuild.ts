@@ -328,7 +328,7 @@ export const ProjectCacheModes = /*@__PURE__*/ S.Array(CacheMode);
 export interface ProjectCache {
   type: CacheType | (string & {});
   location?: string;
-  modes?: CacheMode[];
+  modes?: (CacheMode | (string & {}))[];
   cacheNamespace?: string;
 }
 export const ProjectCache = /*@__PURE__*/ S.suspend(() =>
@@ -1361,7 +1361,7 @@ export const PullRequestBuildApproverRoles = /*@__PURE__*/ S.Array(
 );
 export interface PullRequestBuildPolicy {
   requiresCommentApproval: PullRequestBuildCommentApproval | (string & {});
-  approverRoles?: PullRequestBuildApproverRole[];
+  approverRoles?: (PullRequestBuildApproverRole | (string & {}))[];
 }
 export const PullRequestBuildPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

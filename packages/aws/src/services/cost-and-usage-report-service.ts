@@ -227,11 +227,11 @@ export interface ReportDefinition {
   TimeUnit: TimeUnit | (string & {});
   Format: ReportFormat | (string & {});
   Compression: CompressionFormat | (string & {});
-  AdditionalSchemaElements: SchemaElement[];
+  AdditionalSchemaElements: (SchemaElement | (string & {}))[];
   S3Bucket: string;
   S3Prefix: string;
   S3Region: AWSRegion | (string & {});
-  AdditionalArtifacts?: AdditionalArtifact[];
+  AdditionalArtifacts?: (AdditionalArtifact | (string & {}))[];
   RefreshClosedReports?: boolean;
   ReportVersioning?: ReportVersioning | (string & {});
   BillingViewArn?: string;

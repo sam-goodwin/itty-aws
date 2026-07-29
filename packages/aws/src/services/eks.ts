@@ -1087,7 +1087,7 @@ export const LogType = /*@__PURE__*/ S.String;
 export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogSetup {
-  types?: LogType[];
+  types?: (LogType | (string & {}))[];
   enabled?: boolean;
 }
 export const LogSetup = /*@__PURE__*/ S.suspend(() =>
@@ -3754,7 +3754,7 @@ export const EksAnywhereSubscriptionStatusValues = /*@__PURE__*/ S.Array(
 export interface ListEksAnywhereSubscriptionsRequest {
   maxResults?: number;
   nextToken?: string;
-  includeStatus?: EksAnywhereSubscriptionStatus[];
+  includeStatus?: (EksAnywhereSubscriptionStatus | (string & {}))[];
 }
 export const ListEksAnywhereSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3880,9 +3880,9 @@ export const CategoryList = /*@__PURE__*/ S.Array(Category);
 export type InsightStatusValueList = (InsightStatusValue | (string & {}))[];
 export const InsightStatusValueList = /*@__PURE__*/ S.Array(InsightStatusValue);
 export interface InsightsFilter {
-  categories?: Category[];
+  categories?: (Category | (string & {}))[];
   kubernetesVersions?: string[];
-  statuses?: InsightStatusValue[];
+  statuses?: (InsightStatusValue | (string & {}))[];
 }
 export const InsightsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

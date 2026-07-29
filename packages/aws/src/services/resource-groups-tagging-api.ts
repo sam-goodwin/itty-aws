@@ -167,7 +167,7 @@ export interface GetComplianceSummaryInput {
   RegionFilters?: string[];
   ResourceTypeFilters?: string[];
   TagKeyFilters?: string[];
-  GroupBy?: GroupByAttribute[];
+  GroupBy?: (GroupByAttribute | (string & {}))[];
   MaxResults?: number;
   PaginationToken?: string;
 }

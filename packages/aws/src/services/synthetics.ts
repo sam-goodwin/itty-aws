@@ -355,7 +355,7 @@ export interface CreateCanaryRequest {
   FailureRetentionPeriodInDays?: number;
   RuntimeVersion: string;
   VpcConfig?: VpcConfigInput;
-  ResourcesToReplicateTags?: ResourceToTag[];
+  ResourcesToReplicateTags?: (ResourceToTag | (string & {}))[];
   ProvisionedResourceCleanup?:
     | ProvisionedResourceCleanupSetting
     | (string & {});

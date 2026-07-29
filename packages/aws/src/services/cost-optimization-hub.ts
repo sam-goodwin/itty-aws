@@ -2007,11 +2007,11 @@ export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
   restartNeeded?: boolean;
   rollbackPossible?: boolean;
-  implementationEfforts?: ImplementationEffort[];
+  implementationEfforts?: (ImplementationEffort | (string & {}))[];
   accountIds?: string[];
   regions?: string[];
-  resourceTypes?: ResourceType[];
-  actionTypes?: ActionType[];
+  resourceTypes?: (ResourceType | (string & {}))[];
+  actionTypes?: (ActionType | (string & {}))[];
   tags?: Tag[];
   resourceIds?: string[];
   resourceArns?: string[];
@@ -2125,7 +2125,7 @@ export interface ListRecommendationSummariesRequest {
   filter?: Filter;
   groupBy: string;
   maxResults?: number;
-  metrics?: SummaryMetrics[];
+  metrics?: (SummaryMetrics | (string & {}))[];
   nextToken?: string;
 }
 export const ListRecommendationSummariesRequest = /*@__PURE__*/ S.suspend(() =>

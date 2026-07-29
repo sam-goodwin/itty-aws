@@ -548,10 +548,21 @@ export const buildRequest = ({
     );
   } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
     // Whole-body member (raw arrays/scalars) — sent as the body itself.
-    // With a bodyMediaType, the member is a preserialized payload (string /
-    // bytes) sent verbatim under that media type (e.g. application/x-ndjson
-    // for Vectorize insert/upsert); otherwise it's JSON.
-    if (http.bodyMediaType) {
+    // Binary payloads (Blob / ArrayBuffer / Uint8Array) send verbatim
+    // (raw object uploads — the Content-Type header member, when modeled,
+    // rides alongside). With a bodyMediaType, the member is a
+    // preserialized payload (string / bytes) sent verbatim under that
+    // media type (e.g. application/x-ndjson for Vectorize
+    // insert/upsert); otherwise it's JSON.
+    if (rawBody instanceof Blob || rawBody instanceof ArrayBuffer) {
+      request = request.pipe(HttpClientRequest.setBody(HttpBody.raw(rawBody)));
+    } else if (rawBody instanceof Uint8Array) {
+      request = request.pipe(
+        HttpClientRequest.setBody(
+          HttpBody.uint8Array(rawBody, http.bodyMediaType),
+        ),
+      );
+    } else if (http.bodyMediaType) {
       request = request.pipe(
         HttpClientRequest.setBody(
           typeof rawBody === "string"

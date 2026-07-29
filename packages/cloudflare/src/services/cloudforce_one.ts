@@ -1997,11 +1997,11 @@ export const ScansResultsGetResponse1111List = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScanResultResponse {
-  "1111": ScansResultsGetResponse1111List;
+  _1_1_1_1: ScansResultsGetResponse1111List;
 }
 export const GetScanResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    "1111": ScansResultsGetResponse1111List.pipe(T.Body("1.1.1.1")),
+    _1_1_1_1: ScansResultsGetResponse1111List.pipe(T.Body("1.1.1.1")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScanResultResponse",

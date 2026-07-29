@@ -2344,7 +2344,7 @@ export const CoverageStatisticsTypeList = /*@__PURE__*/ S.Array(
 export interface GetCoverageStatisticsRequest {
   DetectorId: string;
   FilterCriteria?: CoverageFilterCriteria;
-  StatisticsType?: CoverageStatisticsType[];
+  StatisticsType?: (CoverageStatisticsType | (string & {}))[];
 }
 export const GetCoverageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5759,7 +5759,7 @@ export const GroupByType = /*@__PURE__*/ S.String;
 export type MaxResults100 = number;
 export interface GetFindingsStatisticsRequest {
   DetectorId: string;
-  FindingStatisticTypes?: FindingStatisticType[];
+  FindingStatisticTypes?: (FindingStatisticType | (string & {}))[];
   FindingCriteria?: FindingCriteria;
   GroupBy?: GroupByType | (string & {});
   OrderBy?: OrderBy | (string & {});
@@ -7487,9 +7487,9 @@ export type UsageFeatureList = (UsageFeature | (string & {}))[];
 export const UsageFeatureList = /*@__PURE__*/ S.Array(UsageFeature);
 export interface UsageCriteria {
   AccountIds?: string[];
-  DataSources?: DataSource[];
+  DataSources?: (DataSource | (string & {}))[];
   Resources?: string[];
-  Features?: UsageFeature[];
+  Features?: (UsageFeature | (string & {}))[];
 }
 export const UsageCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -416,7 +416,7 @@ export const SessionSummaryConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionSummaryConfiguration",
 }) as any as S.Schema<SessionSummaryConfiguration>;
 export interface MemoryConfiguration {
-  enabledMemoryTypes: MemoryType[];
+  enabledMemoryTypes: (MemoryType | (string & {}))[];
   storageDays?: number;
   sessionSummaryConfiguration?: SessionSummaryConfiguration;
 }

@@ -474,7 +474,7 @@ export interface AddClusterNodeSpecification {
   InstanceGroupName: string;
   IncrementTargetCountBy: number;
   AvailabilityZones?: string[];
-  InstanceTypes?: ClusterInstanceType[];
+  InstanceTypes?: (ClusterInstanceType | (string & {}))[];
 }
 export const AddClusterNodeSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1292,8 +1292,11 @@ export type ResponseMIMETypes = string[];
 export const ResponseMIMETypes = /*@__PURE__*/ S.Array(S.String);
 export interface InferenceSpecification {
   Containers?: ModelPackageContainerDefinition[];
-  SupportedTransformInstanceTypes?: TransformInstanceType[];
-  SupportedRealtimeInferenceInstanceTypes?: ProductionVariantInstanceType[];
+  SupportedTransformInstanceTypes?: (TransformInstanceType | (string & {}))[];
+  SupportedRealtimeInferenceInstanceTypes?: (
+    | ProductionVariantInstanceType
+    | (string & {})
+  )[];
   SupportedContentTypes?: string[];
   SupportedResponseMIMETypes?: string[];
 }
@@ -1978,7 +1981,7 @@ export const AICapacityReservationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AICapacityReservationConfig",
 }) as any as S.Schema<AICapacityReservationConfig>;
 export interface AIRecommendationComputeSpec {
-  InstanceTypes?: AIRecommendationInstanceType[];
+  InstanceTypes?: (AIRecommendationInstanceType | (string & {}))[];
   CapacityReservationConfig?: AICapacityReservationConfig;
 }
 export const AIRecommendationComputeSpec = /*@__PURE__*/ S.suspend(() =>
@@ -2383,8 +2386,8 @@ export interface ChannelSpecification {
   Description?: string;
   IsRequired?: boolean;
   SupportedContentTypes?: string[];
-  SupportedCompressionTypes?: CompressionType[];
-  SupportedInputModes?: TrainingInputMode[];
+  SupportedCompressionTypes?: (CompressionType | (string & {}))[];
+  SupportedInputModes?: (TrainingInputMode | (string & {}))[];
 }
 export const ChannelSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2425,7 +2428,7 @@ export interface TrainingSpecification {
   TrainingImage?: string;
   TrainingImageDigest?: string;
   SupportedHyperParameters?: HyperParameterSpecification[];
-  SupportedTrainingInstanceTypes?: TrainingInstanceType[];
+  SupportedTrainingInstanceTypes?: (TrainingInstanceType | (string & {}))[];
   SupportsDistributedTraining?: boolean;
   MetricDefinitions?: MetricDefinition[];
   TrainingChannels?: ChannelSpecification[];
@@ -3486,7 +3489,7 @@ export const AutoMLAlgorithm = /*@__PURE__*/ S.String;
 export type AutoMLAlgorithms = (AutoMLAlgorithm | (string & {}))[];
 export const AutoMLAlgorithms = /*@__PURE__*/ S.Array(AutoMLAlgorithm);
 export interface AutoMLAlgorithmConfig {
-  AutoMLAlgorithms?: AutoMLAlgorithm[];
+  AutoMLAlgorithms?: (AutoMLAlgorithm | (string & {}))[];
 }
 export const AutoMLAlgorithmConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutoMLAlgorithms: S.optional(AutoMLAlgorithms) }),
@@ -3694,7 +3697,9 @@ export interface TimeSeriesTransformations {
   Filling?: {
     [key: string]: { [key: string]: string | undefined } | undefined;
   };
-  Aggregation?: { [key: string]: AggregationTransformationValue | undefined };
+  Aggregation?: {
+    [key: string]: AggregationTransformationValue | (string & {}) | undefined;
+  };
 }
 export const TimeSeriesTransformations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3932,7 +3937,7 @@ export const CreateAutoMLJobV2Response = /*@__PURE__*/ S.suspend(() =>
 export type ClusterName = string;
 export type ClusterInstanceCount = number;
 export interface ClusterInstanceRequirements {
-  InstanceTypes?: ClusterInstanceType[];
+  InstanceTypes?: (ClusterInstanceType | (string & {}))[];
 }
 export const ClusterInstanceRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceTypes: S.optional(ClusterInstanceTypes) }),
@@ -4229,7 +4234,7 @@ export interface ClusterInstanceGroupSpecification {
   ExecutionRole?: string;
   ThreadsPerCore?: number;
   InstanceStorageConfigs?: ClusterInstanceStorageConfig[];
-  OnStartDeepHealthChecks?: DeepHealthCheckType[];
+  OnStartDeepHealthChecks?: (DeepHealthCheckType | (string & {}))[];
   TrainingPlanArn?: string;
   OverrideVpcConfig?: VpcConfig;
   ScheduledUpdateConfig?: ScheduledUpdateConfig;
@@ -4301,7 +4306,7 @@ export interface ClusterRestrictedInstanceGroupSpecification {
   ExecutionRole?: string;
   ThreadsPerCore?: number;
   InstanceStorageConfigs?: ClusterInstanceStorageConfig[];
-  OnStartDeepHealthChecks?: DeepHealthCheckType[];
+  OnStartDeepHealthChecks?: (DeepHealthCheckType | (string & {}))[];
   TrainingPlanArn?: string;
   OverrideVpcConfig?: VpcConfig;
   ScheduledUpdateConfig?: ScheduledUpdateConfig;
@@ -5979,9 +5984,9 @@ export type ExecutionRoleSessionNameMode = "STATIC" | "USER_IDENTITY";
 export const ExecutionRoleSessionNameMode = /*@__PURE__*/ S.String;
 
 export interface StudioWebPortalSettings {
-  HiddenMlTools?: MlTools[];
-  HiddenAppTypes?: AppType[];
-  HiddenInstanceTypes?: AppInstanceType[];
+  HiddenMlTools?: (MlTools | (string & {}))[];
+  HiddenAppTypes?: (AppType | (string & {}))[];
+  HiddenInstanceTypes?: (AppInstanceType | (string & {}))[];
   HiddenSageMakerImageVersionAliases?: HiddenSageMakerImage[];
   ExecutionRoleSessionNameMode?: ExecutionRoleSessionNameMode | (string & {});
 }
@@ -6824,7 +6829,7 @@ export const AsyncNotificationTopicTypeList = /*@__PURE__*/ S.Array(
 export interface AsyncInferenceNotificationConfig {
   SuccessTopic?: string;
   ErrorTopic?: string;
-  IncludeInferenceResponseIn?: AsyncNotificationTopicTypes[];
+  IncludeInferenceResponseIn?: (AsyncNotificationTopicTypes | (string & {}))[];
 }
 export const AsyncInferenceNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6893,7 +6898,7 @@ export interface ClarifyInferenceConfig {
   LabelAttribute?: string;
   LabelHeaders?: string[];
   FeatureHeaders?: string[];
-  FeatureTypes?: ClarifyFeatureType[];
+  FeatureTypes?: (ClarifyFeatureType | (string & {}))[];
 }
 export const ClarifyInferenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9023,7 +9028,7 @@ export const ContentClassifier = /*@__PURE__*/ S.String;
 export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface LabelingJobDataAttributes {
-  ContentClassifiers?: ContentClassifier[];
+  ContentClassifiers?: (ContentClassifier | (string & {}))[];
 }
 export const LabelingJobDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
@@ -9926,8 +9931,11 @@ export interface AdditionalInferenceSpecificationDefinition {
   Name?: string;
   Description?: string;
   Containers?: ModelPackageContainerDefinition[];
-  SupportedTransformInstanceTypes?: TransformInstanceType[];
-  SupportedRealtimeInferenceInstanceTypes?: ProductionVariantInstanceType[];
+  SupportedTransformInstanceTypes?: (TransformInstanceType | (string & {}))[];
+  SupportedRealtimeInferenceInstanceTypes?: (
+    | ProductionVariantInstanceType
+    | (string & {})
+  )[];
   SupportedContentTypes?: string[];
   SupportedResponseMIMETypes?: string[];
 }
@@ -10607,7 +10615,7 @@ export interface CreateNotebookInstanceInput {
   LifecycleConfigName?: string;
   DirectInternetAccess?: DirectInternetAccess | (string & {});
   VolumeSizeInGB?: number;
-  AcceleratorTypes?: NotebookInstanceAcceleratorType[];
+  AcceleratorTypes?: (NotebookInstanceAcceleratorType | (string & {}))[];
   DefaultCodeRepository?: string;
   AdditionalCodeRepositories?: string[];
   RootAccess?: RootAccess | (string & {});
@@ -32460,7 +32468,7 @@ export const QueryProperties = /*@__PURE__*/ S.Record(
 );
 export interface QueryFilters {
   Types?: string[];
-  LineageTypes?: LineageType[];
+  LineageTypes?: (LineageType | (string & {}))[];
   CreatedBefore?: Date;
   CreatedAfter?: Date;
   ModifiedBefore?: Date;
@@ -34920,7 +34928,7 @@ export interface SearchTrainingPlanOfferingsRequest {
   StartTimeAfter?: Date;
   EndTimeBefore?: Date;
   DurationHours?: number;
-  TargetResources?: SageMakerResourceName[];
+  TargetResources?: (SageMakerResourceName | (string & {}))[];
   TrainingPlanArn?: string;
 }
 export const SearchTrainingPlanOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -35141,7 +35149,7 @@ export const DeepHealthChecks = /*@__PURE__*/ S.Array(DeepHealthCheckType);
 export interface InstanceGroupHealthCheckConfiguration {
   InstanceGroupName: string;
   InstanceIds?: string[];
-  DeepHealthChecks: DeepHealthCheckType[];
+  DeepHealthChecks: (DeepHealthCheckType | (string & {}))[];
 }
 export const InstanceGroupHealthCheckConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -35587,7 +35595,9 @@ export const InferenceExperimentStopDesiredState = /*@__PURE__*/ S.String;
 
 export interface StopInferenceExperimentRequest {
   Name?: string;
-  ModelVariantActions?: { [key: string]: ModelVariantAction | undefined };
+  ModelVariantActions?: {
+    [key: string]: ModelVariantAction | (string & {}) | undefined;
+  };
   DesiredModelVariants?: ModelVariantConfig[];
   DesiredState?: InferenceExperimentStopDesiredState | (string & {});
   Reason?: string;
@@ -37225,7 +37235,7 @@ export interface UpdateNotebookInstanceInput {
   VolumeSizeInGB?: number;
   DefaultCodeRepository?: string;
   AdditionalCodeRepositories?: string[];
-  AcceleratorTypes?: NotebookInstanceAcceleratorType[];
+  AcceleratorTypes?: (NotebookInstanceAcceleratorType | (string & {}))[];
   DisassociateAcceleratorTypes?: boolean;
   DisassociateDefaultCodeRepository?: boolean;
   DisassociateAdditionalCodeRepositories?: boolean;

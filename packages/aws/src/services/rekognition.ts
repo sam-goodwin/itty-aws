@@ -1406,7 +1406,7 @@ export interface DescribeProjectsRequest {
   NextToken?: string;
   MaxResults?: number;
   ProjectNames?: string[];
-  Features?: CustomizationFeature[];
+  Features?: (CustomizationFeature | (string & {}))[];
 }
 export const DescribeProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1747,7 +1747,7 @@ export type Attributes = (Attribute | (string & {}))[];
 export const Attributes = /*@__PURE__*/ S.Array(Attribute);
 export interface DetectFacesRequest {
   Image: Image;
-  Attributes?: Attribute[];
+  Attributes?: (Attribute | (string & {}))[];
 }
 export const DetectFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Image: Image, Attributes: S.optional(Attributes) }).pipe(
@@ -1942,7 +1942,7 @@ export interface DetectLabelsRequest {
   Image: Image;
   MaxLabels?: number;
   MinConfidence?: number;
-  Features?: DetectLabelsFeatureName[];
+  Features?: (DetectLabelsFeatureName | (string & {}))[];
   Settings?: DetectLabelsSettings;
 }
 export const DetectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2118,7 +2118,7 @@ export const ContentClassifier = /*@__PURE__*/ S.String;
 export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
-  ContentClassifiers?: ContentClassifier[];
+  ContentClassifiers?: (ContentClassifier | (string & {}))[];
 }
 export const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
@@ -2238,7 +2238,7 @@ export const ProtectiveEquipmentTypes = /*@__PURE__*/ S.Array(
 );
 export interface ProtectiveEquipmentSummarizationAttributes {
   MinConfidence: number;
-  RequiredEquipmentTypes: ProtectiveEquipmentType[];
+  RequiredEquipmentTypes: (ProtectiveEquipmentType | (string & {}))[];
 }
 export const ProtectiveEquipmentSummarizationAttributes =
   /*@__PURE__*/ S.suspend(() =>
@@ -3490,7 +3490,7 @@ export interface IndexFacesRequest {
   CollectionId: string;
   Image: Image;
   ExternalImageId?: string;
-  DetectionAttributes?: Attribute[];
+  DetectionAttributes?: (Attribute | (string & {}))[];
   MaxFaces?: number;
   QualityFilter?: QualityFilter | (string & {});
 }
@@ -4371,7 +4371,7 @@ export interface StartLabelDetectionRequest {
   MinConfidence?: number;
   NotificationChannel?: NotificationChannel;
   JobTag?: string;
-  Features?: LabelDetectionFeatureName[];
+  Features?: (LabelDetectionFeatureName | (string & {}))[];
   Settings?: LabelDetectionSettings;
 }
 export const StartLabelDetectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4529,7 +4529,7 @@ export interface StartSegmentDetectionRequest {
   NotificationChannel?: NotificationChannel;
   JobTag?: string;
   Filters?: StartSegmentDetectionFilters;
-  SegmentTypes: SegmentType[];
+  SegmentTypes: (SegmentType | (string & {}))[];
 }
 export const StartSegmentDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4783,7 +4783,7 @@ export interface UpdateStreamProcessorRequest {
   SettingsForUpdate?: StreamProcessorSettingsForUpdate;
   RegionsOfInterestForUpdate?: RegionOfInterest[];
   DataSharingPreferenceForUpdate?: StreamProcessorDataSharingPreference;
-  ParametersToDelete?: StreamProcessorParameterToDelete[];
+  ParametersToDelete?: (StreamProcessorParameterToDelete | (string & {}))[];
 }
 export const UpdateStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

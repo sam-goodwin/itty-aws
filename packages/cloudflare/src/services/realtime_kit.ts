@@ -1884,40 +1884,40 @@ export const PresetsCreateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestUiDesignTokensColorsBackground {
-  "1000": string;
-  "600": string;
-  "700": string;
-  "800": string;
-  "900": string;
+  _1000: string;
+  _600: string;
+  _700: string;
+  _800: string;
+  _900: string;
 }
 export const PresetsCreateRequestUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.String,
-      "600": S.String,
-      "700": S.String,
-      "800": S.String,
-      "900": S.String,
+      _1000: S.String.pipe(T.Body("1000")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
+      _800: S.String.pipe(T.Body("800")),
+      _900: S.String.pipe(T.Body("900")),
     }),
   ).annotate({
     identifier: "PresetsCreateRequestUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsCreateRequestUiDesignTokensColorsBackground>;
 
 export interface PresetsCreateRequestUiDesignTokensColorsBrand {
-  "300": string;
-  "400": string;
-  "500": string;
-  "600": string;
-  "700": string;
+  _300: string;
+  _400: string;
+  _500: string;
+  _600: string;
+  _700: string;
 }
 export const PresetsCreateRequestUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.String,
-      "400": S.String,
-      "500": S.String,
-      "600": S.String,
-      "700": S.String,
+      _300: S.String.pipe(T.Body("300")),
+      _400: S.String.pipe(T.Body("400")),
+      _500: S.String.pipe(T.Body("500")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
     }),
   ).annotate({
     identifier: "PresetsCreateRequestUiDesignTokensColorsBrand",
@@ -2544,40 +2544,40 @@ export const PresetsCreateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateResponseDataUiDesignTokensColorsBackground {
-  "1000": string;
-  "600": string;
-  "700": string;
-  "800": string;
-  "900": string;
+  _1000: string;
+  _600: string;
+  _700: string;
+  _800: string;
+  _900: string;
 }
 export const PresetsCreateResponseDataUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.String,
-      "600": S.String,
-      "700": S.String,
-      "800": S.String,
-      "900": S.String,
+      _1000: S.String.pipe(T.Body("1000")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
+      _800: S.String.pipe(T.Body("800")),
+      _900: S.String.pipe(T.Body("900")),
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsCreateResponseDataUiDesignTokensColorsBackground>;
 
 export interface PresetsCreateResponseDataUiDesignTokensColorsBrand {
-  "300": string;
-  "400": string;
-  "500": string;
-  "600": string;
-  "700": string;
+  _300: string;
+  _400: string;
+  _500: string;
+  _600: string;
+  _700: string;
 }
 export const PresetsCreateResponseDataUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.String,
-      "400": S.String,
-      "500": S.String,
-      "600": S.String,
-      "700": S.String,
+      _300: S.String.pipe(T.Body("300")),
+      _400: S.String.pipe(T.Body("400")),
+      _500: S.String.pipe(T.Body("500")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataUiDesignTokensColorsBrand",
@@ -3419,40 +3419,40 @@ export const PresetsDeleteResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsDeleteResponseDataUiDesignTokensColorsBackground {
-  "1000": string;
-  "600": string;
-  "700": string;
-  "800": string;
-  "900": string;
+  _1000: string;
+  _600: string;
+  _700: string;
+  _800: string;
+  _900: string;
 }
 export const PresetsDeleteResponseDataUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.String,
-      "600": S.String,
-      "700": S.String,
-      "800": S.String,
-      "900": S.String,
+      _1000: S.String.pipe(T.Body("1000")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
+      _800: S.String.pipe(T.Body("800")),
+      _900: S.String.pipe(T.Body("900")),
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsDeleteResponseDataUiDesignTokensColorsBackground>;
 
 export interface PresetsDeleteResponseDataUiDesignTokensColorsBrand {
-  "300": string;
-  "400": string;
-  "500": string;
-  "600": string;
-  "700": string;
+  _300: string;
+  _400: string;
+  _500: string;
+  _600: string;
+  _700: string;
 }
 export const PresetsDeleteResponseDataUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.String,
-      "400": S.String,
-      "500": S.String,
-      "600": S.String,
-      "700": S.String,
+      _300: S.String.pipe(T.Body("300")),
+      _400: S.String.pipe(T.Body("400")),
+      _500: S.String.pipe(T.Body("500")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataUiDesignTokensColorsBrand",
@@ -7434,21 +7434,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7459,25 +7459,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7577,25 +7577,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7625,21 +7625,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7732,21 +7732,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7757,25 +7757,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7875,25 +7875,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -7923,21 +7923,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8097,21 +8097,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8122,25 +8122,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8383,25 +8383,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8431,21 +8431,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8631,21 +8631,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8656,25 +8656,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8917,25 +8917,25 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
+  _10_or_greater_event_fraction?: number;
+  _25_or_greater_event_fraction?: number;
+  _5_or_greater_event_fraction?: number;
+  _50_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "10OrGreaterEventFraction": S.optional(
+      _10_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("10_or_greater_event_fraction")),
       ),
-      "25OrGreaterEventFraction": S.optional(
+      _25_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("25_or_greater_event_fraction")),
       ),
-      "5OrGreaterEventFraction": S.optional(
+      _5_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("5_or_greater_event_fraction")),
       ),
-      "50OrGreaterEventFraction": S.optional(
+      _50_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("50_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -8965,21 +8965,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
+  _100ms_or_greater_event_fraction?: number;
+  _250ms_or_greater_event_fraction?: number;
+  _500ms_or_greater_event_fraction?: number;
   avg?: number;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "100msOrGreaterEventFraction": S.optional(
+      _100ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
-      "250msOrGreaterEventFraction": S.optional(
+      _250ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
-      "500msOrGreaterEventFraction": S.optional(
+      _500ms_or_greater_event_fraction: S.optional(
         S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
       avg: S.optional(S.Number),
@@ -9900,20 +9900,20 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground {
-  "1000": string;
-  "600": string;
-  "700": string;
-  "800": string;
-  "900": string;
+  _1000: string;
+  _600: string;
+  _700: string;
+  _800: string;
+  _900: string;
 }
 export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.String,
-      "600": S.String,
-      "700": S.String,
-      "800": S.String,
-      "900": S.String,
+      _1000: S.String.pipe(T.Body("1000")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
+      _800: S.String.pipe(T.Body("800")),
+      _900: S.String.pipe(T.Body("900")),
     }),
   ).annotate({
     identifier:
@@ -9921,20 +9921,20 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground =
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground>;
 
 export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand {
-  "300": string;
-  "400": string;
-  "500": string;
-  "600": string;
-  "700": string;
+  _300: string;
+  _400: string;
+  _500: string;
+  _600: string;
+  _700: string;
 }
 export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.String,
-      "400": S.String,
-      "500": S.String,
-      "600": S.String,
-      "700": S.String,
+      _300: S.String.pipe(T.Body("300")),
+      _400: S.String.pipe(T.Body("400")),
+      _500: S.String.pipe(T.Body("500")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand",
@@ -12546,40 +12546,40 @@ export const PresetsUpdateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
-  "1000"?: string;
-  "600"?: string;
-  "700"?: string;
-  "800"?: string;
-  "900"?: string;
+  _1000?: string;
+  _600?: string;
+  _700?: string;
+  _800?: string;
+  _900?: string;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.optional(S.String),
-      "600": S.optional(S.String),
-      "700": S.optional(S.String),
-      "800": S.optional(S.String),
-      "900": S.optional(S.String),
+      _1000: S.optional(S.String.pipe(T.Body("1000"))),
+      _600: S.optional(S.String.pipe(T.Body("600"))),
+      _700: S.optional(S.String.pipe(T.Body("700"))),
+      _800: S.optional(S.String.pipe(T.Body("800"))),
+      _900: S.optional(S.String.pipe(T.Body("900"))),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
-  "300"?: string;
-  "400"?: string;
-  "500"?: string;
-  "600"?: string;
-  "700"?: string;
+  _300?: string;
+  _400?: string;
+  _500?: string;
+  _600?: string;
+  _700?: string;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.optional(S.String),
-      "400": S.optional(S.String),
-      "500": S.optional(S.String),
-      "600": S.optional(S.String),
-      "700": S.optional(S.String),
+      _300: S.optional(S.String.pipe(T.Body("300"))),
+      _400: S.optional(S.String.pipe(T.Body("400"))),
+      _500: S.optional(S.String.pipe(T.Body("500"))),
+      _600: S.optional(S.String.pipe(T.Body("600"))),
+      _700: S.optional(S.String.pipe(T.Body("700"))),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
@@ -13214,40 +13214,40 @@ export const PresetsUpdateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateResponseDataUiDesignTokensColorsBackground {
-  "1000": string;
-  "600": string;
-  "700": string;
-  "800": string;
-  "900": string;
+  _1000: string;
+  _600: string;
+  _700: string;
+  _800: string;
+  _900: string;
 }
 export const PresetsUpdateResponseDataUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.String,
-      "600": S.String,
-      "700": S.String,
-      "800": S.String,
-      "900": S.String,
+      _1000: S.String.pipe(T.Body("1000")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
+      _800: S.String.pipe(T.Body("800")),
+      _900: S.String.pipe(T.Body("900")),
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColorsBackground>;
 
 export interface PresetsUpdateResponseDataUiDesignTokensColorsBrand {
-  "300": string;
-  "400": string;
-  "500": string;
-  "600": string;
-  "700": string;
+  _300: string;
+  _400: string;
+  _500: string;
+  _600: string;
+  _700: string;
 }
 export const PresetsUpdateResponseDataUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.String,
-      "400": S.String,
-      "500": S.String,
-      "600": S.String,
-      "700": S.String,
+      _300: S.String.pipe(T.Body("300")),
+      _400: S.String.pipe(T.Body("400")),
+      _500: S.String.pipe(T.Body("500")),
+      _600: S.String.pipe(T.Body("600")),
+      _700: S.String.pipe(T.Body("700")),
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBrand",

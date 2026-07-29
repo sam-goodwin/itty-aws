@@ -872,7 +872,7 @@ export interface JdbcTarget {
   ConnectionName?: string;
   Path?: string;
   Exclusions?: string[];
-  EnableAdditionalMetadata?: JdbcMetadataEntry[];
+  EnableAdditionalMetadata?: (JdbcMetadataEntry | (string & {}))[];
 }
 export const JdbcTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1868,7 +1868,9 @@ export interface JDBCConnectorOptions {
   NumPartitions?: number;
   JobBookmarkKeys?: string[];
   JobBookmarkKeysSortOrder?: string;
-  DataTypeMapping?: { [key: string]: GlueRecordType | undefined };
+  DataTypeMapping?: {
+    [key: string]: GlueRecordType | (string & {}) | undefined;
+  };
 }
 export const JDBCConnectorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5741,7 +5743,7 @@ export type PermissionList = (Permission | (string & {}))[];
 export const PermissionList = /*@__PURE__*/ S.Array(Permission);
 export interface PrincipalPermissions {
   Principal?: DataLakePrincipal;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
 }
 export const PrincipalPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6288,7 +6290,7 @@ export interface ConnectionInput {
   PhysicalConnectionRequirements?: PhysicalConnectionRequirements;
   AuthenticationConfiguration?: AuthenticationConfigurationInput;
   ValidateCredentials?: boolean;
-  ValidateForComputeEnvironments?: ComputeEnvironment[];
+  ValidateForComputeEnvironments?: (ComputeEnvironment | (string & {}))[];
 }
 export const ConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11048,7 +11050,7 @@ export interface GetDatabasesRequest {
   NextToken?: string;
   MaxResults?: number;
   ResourceShareType?: ResourceShareType | (string & {});
-  AttributesToGet?: DatabaseAttributes[];
+  AttributesToGet?: (DatabaseAttributes | (string & {}))[];
 }
 export const GetDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13154,7 +13156,7 @@ export interface GetTableRequest {
   QueryAsOfTime?: Date;
   AuditContext?: AuditContext;
   IncludeStatusDetails?: boolean;
-  AttributesToGet?: TableAttributes[];
+  AttributesToGet?: (TableAttributes | (string & {}))[];
 }
 export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13458,7 +13460,7 @@ export interface GetTablesRequest {
   QueryAsOfTime?: Date;
   AuditContext?: AuditContext;
   IncludeStatusDetails?: boolean;
-  AttributesToGet?: TableAttributes[];
+  AttributesToGet?: (TableAttributes | (string & {}))[];
 }
 export const GetTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13643,7 +13645,7 @@ export interface GetUnfilteredPartitionMetadataRequest {
   TableName: string;
   PartitionValues: string[];
   AuditContext?: AuditContext;
-  SupportedPermissionTypes: PermissionType[];
+  SupportedPermissionTypes: (PermissionType | (string & {}))[];
   QuerySessionContext?: QuerySessionContext;
 }
 export const GetUnfilteredPartitionMetadataRequest = /*@__PURE__*/ S.suspend(
@@ -13685,7 +13687,7 @@ export interface GetUnfilteredPartitionsMetadataRequest {
   TableName: string;
   Expression?: string;
   AuditContext?: AuditContext;
-  SupportedPermissionTypes: PermissionType[];
+  SupportedPermissionTypes: (PermissionType | (string & {}))[];
   NextToken?: string;
   Segment?: Segment;
   MaxResults?: number;
@@ -13759,11 +13761,11 @@ export interface GetUnfilteredTableMetadataRequest {
   DatabaseName: string;
   Name: string;
   AuditContext?: AuditContext;
-  SupportedPermissionTypes: PermissionType[];
+  SupportedPermissionTypes: (PermissionType | (string & {}))[];
   ParentResourceArn?: string;
   RootResourceArn?: string;
   SupportedDialect?: SupportedDialect;
-  Permissions?: Permission[];
+  Permissions?: (Permission | (string & {}))[];
   QuerySessionContext?: QuerySessionContext;
 }
 export const GetUnfilteredTableMetadataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16228,7 +16230,7 @@ export const CustomAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAuthenticationProperties",
 }) as any as S.Schema<CustomAuthenticationProperties>;
 export interface ConnectorAuthenticationConfiguration {
-  AuthenticationTypes: AuthenticationType[];
+  AuthenticationTypes: (AuthenticationType | (string & {}))[];
   OAuth2Properties?: ConnectorOAuth2Properties;
   BasicAuthenticationProperties?: BasicAuthenticationProperties;
   CustomAuthenticationProperties?: CustomAuthenticationProperties;

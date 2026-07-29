@@ -691,7 +691,7 @@ export const ScanBy = /*@__PURE__*/ S.String;
 export interface DescribeAlarmHistoryInput {
   AlarmName?: string;
   AlarmContributorId?: string;
-  AlarmTypes?: AlarmType[];
+  AlarmTypes?: (AlarmType | (string & {}))[];
   HistoryItemType?: HistoryItemType | (string & {});
   StartDate?: Date;
   EndDate?: Date;
@@ -772,7 +772,7 @@ export type ActionPrefix = string;
 export interface DescribeAlarmsInput {
   AlarmNames?: string[];
   AlarmNamePrefix?: string;
-  AlarmTypes?: AlarmType[];
+  AlarmTypes?: (AlarmType | (string & {}))[];
   ChildrenOfAlarmName?: string;
   ParentsOfAlarmName?: string;
   StateValue?: StateValue | (string & {});
@@ -1223,7 +1223,7 @@ export interface DescribeAnomalyDetectorsInput {
   Namespace?: string;
   MetricName?: string;
   Dimensions?: Dimension[];
-  AnomalyDetectorTypes?: AnomalyDetectorType[];
+  AnomalyDetectorTypes?: (AnomalyDetectorType | (string & {}))[];
 }
 export const DescribeAnomalyDetectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1942,7 +1942,7 @@ export interface GetMetricStatisticsInput {
   StartTime?: Date;
   EndTime?: Date;
   Period?: number;
-  Statistics?: Statistic[];
+  Statistics?: (Statistic | (string & {}))[];
   ExtendedStatistics?: string[];
   Unit?: StandardUnit | (string & {});
 }
@@ -2197,7 +2197,7 @@ export type AlarmMuteRuleStatuses = (AlarmMuteRuleStatus | (string & {}))[];
 export const AlarmMuteRuleStatuses = /*@__PURE__*/ S.Array(AlarmMuteRuleStatus);
 export interface ListAlarmMuteRulesInput {
   AlarmName?: string;
-  Statuses?: AlarmMuteRuleStatus[];
+  Statuses?: (AlarmMuteRuleStatus | (string & {}))[];
   MaxRecords?: number;
   NextToken?: string;
 }

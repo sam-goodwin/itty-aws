@@ -7453,7 +7453,7 @@ export const NotificationType = /*@__PURE__*/ S.String;
 
 export interface NotificationConfig {
   NotificationArn?: string;
-  NotificationEvents?: NotificationEvent[];
+  NotificationEvents?: (NotificationEvent | (string & {}))[];
   NotificationType?: NotificationType | (string & {});
 }
 export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>

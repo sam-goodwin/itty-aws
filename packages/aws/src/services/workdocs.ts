@@ -2447,7 +2447,7 @@ export type SearchPrincipalRoleList = (PrincipalRoleType | (string & {}))[];
 export const SearchPrincipalRoleList = /*@__PURE__*/ S.Array(PrincipalRoleType);
 export interface SearchPrincipalType {
   Id: string;
-  Roles?: PrincipalRoleType[];
+  Roles?: (PrincipalRoleType | (string & {}))[];
 }
 export const SearchPrincipalType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String, Roles: S.optional(SearchPrincipalRoleList) }),
@@ -2488,13 +2488,13 @@ export const DateRangeType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DateRangeType" }) as any as S.Schema<DateRangeType>;
 export interface Filters {
-  TextLocales?: LanguageCodeType[];
-  ContentCategories?: ContentCategoryType[];
-  ResourceTypes?: SearchResourceType[];
+  TextLocales?: (LanguageCodeType | (string & {}))[];
+  ContentCategories?: (ContentCategoryType | (string & {}))[];
+  ResourceTypes?: (SearchResourceType | (string & {}))[];
   Labels?: string[];
   Principals?: SearchPrincipalType[];
   AncestorIds?: string[];
-  SearchCollectionTypes?: SearchCollectionType[];
+  SearchCollectionTypes?: (SearchCollectionType | (string & {}))[];
   SizeRange?: LongRangeType;
   CreatedRange?: DateRangeType;
   ModifiedRange?: DateRangeType;
@@ -2543,9 +2543,9 @@ export type NextMarkerType = string;
 export interface SearchResourcesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   QueryText?: string | redacted.Redacted<string>;
-  QueryScopes?: SearchQueryScopeType[];
+  QueryScopes?: (SearchQueryScopeType | (string & {}))[];
   OrganizationId?: string;
-  AdditionalResponseFields?: AdditionalResponseFieldType[];
+  AdditionalResponseFields?: (AdditionalResponseFieldType | (string & {}))[];
   Filters?: Filters;
   OrderBy?: SearchSortResult[];
   Limit?: number;

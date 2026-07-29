@@ -3036,7 +3036,7 @@ export type HlsTimedMetadataId3Frame = "NONE" | "PRIV" | "TDRL";
 export const HlsTimedMetadataId3Frame = /*@__PURE__*/ S.String;
 
 export interface HlsGroupSettings {
-  AdMarkers?: HlsAdMarkers[];
+  AdMarkers?: (HlsAdMarkers | (string & {}))[];
   AdditionalManifests?: HlsAdditionalManifest[];
   AudioOnlyHeader?: HlsAudioOnlyHeader | (string & {});
   BaseUrl?: string;
@@ -3252,7 +3252,7 @@ export interface OutputGroupSettings {
   FileGroupSettings?: FileGroupSettings;
   HlsGroupSettings?: HlsGroupSettings;
   MsSmoothGroupSettings?: MsSmoothGroupSettings;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   Type?: OutputGroupType | (string & {});
 }
 export const OutputGroupSettings = /*@__PURE__*/ S.suspend(() =>
@@ -3313,7 +3313,7 @@ export type __listOfAudioChannelTag = (AudioChannelTag | (string & {}))[];
 export const __listOfAudioChannelTag = /*@__PURE__*/ S.Array(AudioChannelTag);
 export interface AudioChannelTaggingSettings {
   ChannelTag?: AudioChannelTag | (string & {});
-  ChannelTags?: AudioChannelTag[];
+  ChannelTags?: (AudioChannelTag | (string & {}))[];
 }
 export const AudioChannelTaggingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4617,7 +4617,7 @@ export type __listOfTeletextPageType = (TeletextPageType | (string & {}))[];
 export const __listOfTeletextPageType = /*@__PURE__*/ S.Array(TeletextPageType);
 export interface TeletextDestinationSettings {
   PageNumber?: string;
-  PageTypes?: TeletextPageType[];
+  PageTypes?: (TeletextPageType | (string & {}))[];
 }
 export const TeletextDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5624,7 +5624,7 @@ export interface Av1Settings {
   GopSize?: number;
   MaxBitrate?: number;
   NumberBFramesBetweenReferenceFrames?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   QvbrSettings?: Av1QvbrSettings;
   RateControlMode?: Av1RateControlMode | (string & {});
   Slices?: number;
@@ -5728,7 +5728,7 @@ export interface AvcIntraSettings {
   FramerateDenominator?: number;
   FramerateNumerator?: number;
   InterlaceMode?: AvcIntraInterlaceMode | (string & {});
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   ScanTypeConversionMode?: AvcIntraScanTypeConversionMode | (string & {});
   SlowPal?: AvcIntraSlowPal | (string & {});
   Telecine?: AvcIntraTelecine | (string & {});
@@ -6046,7 +6046,7 @@ export interface H264Settings {
   ParControl?: H264ParControl | (string & {});
   ParDenominator?: number;
   ParNumerator?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   QualityTuningLevel?: H264QualityTuningLevel | (string & {});
   QvbrSettings?: H264QvbrSettings;
   RateControlMode?: H264RateControlMode | (string & {});
@@ -6363,7 +6363,7 @@ export interface H265Settings {
   ParControl?: H265ParControl | (string & {});
   ParDenominator?: number;
   ParNumerator?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   QualityTuningLevel?: H265QualityTuningLevel | (string & {});
   QvbrSettings?: H265QvbrSettings;
   RateControlMode?: H265RateControlMode | (string & {});
@@ -6600,7 +6600,7 @@ export interface Mpeg2Settings {
   ParControl?: Mpeg2ParControl | (string & {});
   ParDenominator?: number;
   ParNumerator?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   QualityTuningLevel?: Mpeg2QualityTuningLevel | (string & {});
   RateControlMode?: Mpeg2RateControlMode | (string & {});
   ScanTypeConversionMode?: Mpeg2ScanTypeConversionMode | (string & {});
@@ -6770,7 +6770,7 @@ export interface ProresSettings {
   ParControl?: ProresParControl | (string & {});
   ParDenominator?: number;
   ParNumerator?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   ScanTypeConversionMode?: ProresScanTypeConversionMode | (string & {});
   SlowPal?: ProresSlowPal | (string & {});
   Telecine?: ProresTelecine | (string & {});
@@ -7298,7 +7298,7 @@ export interface XavcSettings {
     | (string & {});
   FramerateDenominator?: number;
   FramerateNumerator?: number;
-  PerFrameMetrics?: FrameMetricType[];
+  PerFrameMetrics?: (FrameMetricType | (string & {}))[];
   Profile?: XavcProfile | (string & {});
   SlowPal?: XavcSlowPal | (string & {});
   Softness?: number;

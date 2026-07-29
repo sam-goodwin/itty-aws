@@ -555,9 +555,9 @@ export const CustomAdType = /*@__PURE__*/ S.String;
 export type CustomAdTypeList = (CustomAdType | (string & {}))[];
 export const CustomAdTypeList = /*@__PURE__*/ S.Array(CustomAdType);
 export interface Scte {
-  ScteFilter?: ScteFilter[];
+  ScteFilter?: (ScteFilter | (string & {}))[];
   ScteInSegments?: ScteInSegments | (string & {});
-  CustomAdTypes?: CustomAdType[];
+  CustomAdTypes?: (CustomAdType | (string & {}))[];
 }
 export const Scte = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -635,7 +635,7 @@ export const DrmSystems = /*@__PURE__*/ S.Array(DrmSystem);
 export interface SpekeKeyProvider {
   EncryptionContractConfiguration: EncryptionContractConfiguration;
   ResourceId: string;
-  DrmSystems: DrmSystem[];
+  DrmSystems: (DrmSystem | (string & {}))[];
   RoleArn: string;
   Url: string;
   CertificateArn?: string;
@@ -962,11 +962,11 @@ export interface CreateDashManifestConfiguration {
   MinBufferTimeSeconds?: number;
   SuggestedPresentationDelaySeconds?: number;
   SegmentTemplateFormat?: DashSegmentTemplateFormat | (string & {});
-  PeriodTriggers?: DashPeriodTrigger[];
+  PeriodTriggers?: (DashPeriodTrigger | (string & {}))[];
   ScteDash?: ScteDash;
   DrmSignaling?: DashDrmSignaling | (string & {});
   UtcTiming?: DashUtcTiming;
-  Profiles?: DashProfile[];
+  Profiles?: (DashProfile | (string & {}))[];
   BaseUrls?: DashBaseUrl[];
   ProgramInformation?: DashProgramInformation;
   DvbSettings?: DashDvbSettings;
@@ -1046,7 +1046,7 @@ export const EndpointErrorConditions = /*@__PURE__*/ S.Array(
   EndpointErrorCondition,
 );
 export interface ForceEndpointErrorConfiguration {
-  EndpointErrorConditions?: EndpointErrorCondition[];
+  EndpointErrorConditions?: (EndpointErrorCondition | (string & {}))[];
 }
 export const ForceEndpointErrorConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EndpointErrorConditions: S.optional(EndpointErrorConditions) }),

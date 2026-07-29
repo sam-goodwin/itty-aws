@@ -2394,9 +2394,9 @@ export const UpdateBillScenarioResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBillScenarioResponse",
 }) as any as S.Schema<UpdateBillScenarioResponse>;
 export interface UpdatePreferencesRequest {
-  managementAccountRateTypeSelections?: RateType[];
-  memberAccountRateTypeSelections?: RateType[];
-  standaloneAccountRateTypeSelections?: RateType[];
+  managementAccountRateTypeSelections?: (RateType | (string & {}))[];
+  memberAccountRateTypeSelections?: (RateType | (string & {}))[];
+  standaloneAccountRateTypeSelections?: (RateType | (string & {}))[];
 }
 export const UpdatePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -379,7 +379,7 @@ export type ExposeHeaders = string[];
 export const ExposeHeaders = /*@__PURE__*/ S.Array(S.String);
 export interface CorsRule {
   AllowedOrigins: string[];
-  AllowedMethods?: MethodName[];
+  AllowedMethods?: (MethodName | (string & {}))[];
   AllowedHeaders: string[];
   MaxAgeSeconds?: number;
   ExposeHeaders?: string[];

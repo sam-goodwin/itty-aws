@@ -197,7 +197,7 @@ export const LinkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkConfiguration>;
 export interface CreateLinkInput {
   LabelTemplate: string;
-  ResourceTypes: ResourceType[];
+  ResourceTypes: (ResourceType | (string & {}))[];
   SinkIdentifier: string;
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
@@ -693,7 +693,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceOutput>;
 export interface UpdateLinkInput {
   Identifier: string;
-  ResourceTypes: ResourceType[];
+  ResourceTypes: (ResourceType | (string & {}))[];
   LinkConfiguration?: LinkConfiguration;
   IncludeTags?: boolean;
 }

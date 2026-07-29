@@ -140,7 +140,7 @@ export const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(
 export interface ResponderErrorMaskingForHttpCode {
   httpCode: string;
   action: ResponderErrorMaskingAction | (string & {});
-  loggingTypes: ResponderErrorMaskingLoggingType[];
+  loggingTypes: (ResponderErrorMaskingLoggingType | (string & {}))[];
   responseLoggingPercentage?: number;
 }
 export const ResponderErrorMaskingForHttpCode = /*@__PURE__*/ S.suspend(() =>
@@ -773,7 +773,7 @@ export const Protocol = /*@__PURE__*/ S.String;
 export type ProtocolList = (Protocol | (string & {}))[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export interface ListenerConfig {
-  protocols: Protocol[];
+  protocols: (Protocol | (string & {}))[];
 }
 export const ListenerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ protocols: ProtocolList }),

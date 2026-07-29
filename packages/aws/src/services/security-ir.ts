@@ -434,7 +434,7 @@ export interface IncidentResponder {
   name: string | redacted.Redacted<string>;
   jobTitle: string | redacted.Redacted<string>;
   email: string | redacted.Redacted<string>;
-  communicationPreferences?: CommunicationType[];
+  communicationPreferences?: (CommunicationType | (string & {}))[];
 }
 export const IncidentResponder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

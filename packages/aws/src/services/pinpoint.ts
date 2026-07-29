@@ -233,7 +233,7 @@ export const ListOf__EndpointTypesElement = /*@__PURE__*/ S.Array(
 );
 export interface CustomDeliveryConfiguration {
   DeliveryUri?: string;
-  EndpointTypes?: __EndpointTypesElement[];
+  EndpointTypes?: (__EndpointTypesElement | (string & {}))[];
 }
 export const CustomDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1419,7 +1419,7 @@ export const JourneyCustomMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JourneyCustomMessage>;
 export interface CustomMessageActivity {
   DeliveryUri?: string;
-  EndpointTypes?: __EndpointTypesElement[];
+  EndpointTypes?: (__EndpointTypesElement | (string & {}))[];
   MessageConfig?: JourneyCustomMessage;
   NextActivity?: string;
   TemplateName?: string;
@@ -2001,7 +2001,10 @@ export interface WriteJourneyRequest {
   SendingSchedule?: boolean;
   OpenHours?: OpenHours;
   ClosedDays?: ClosedDays;
-  TimezoneEstimationMethods?: __TimezoneEstimationMethodsElement[];
+  TimezoneEstimationMethods?: (
+    | __TimezoneEstimationMethodsElement
+    | (string & {})
+  )[];
 }
 export const WriteJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

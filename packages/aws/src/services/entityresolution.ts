@@ -475,9 +475,9 @@ export const RecordMatchingModelList =
   /*@__PURE__*/ S.Array(RecordMatchingModel);
 export interface NamespaceRuleBasedProperties {
   rules?: Rule[];
-  ruleDefinitionTypes?: IdMappingWorkflowRuleDefinitionType[];
+  ruleDefinitionTypes?: (IdMappingWorkflowRuleDefinitionType | (string & {}))[];
   attributeMatchingModel?: AttributeMatchingModel | (string & {});
-  recordMatchingModels?: RecordMatchingModel[];
+  recordMatchingModels?: (RecordMatchingModel | (string & {}))[];
 }
 export const NamespaceRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

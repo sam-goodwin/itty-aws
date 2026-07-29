@@ -206,7 +206,7 @@ export const ConnectionType = /*@__PURE__*/ S.String;
 export type ConnectionTypeList = (ConnectionType | (string & {}))[];
 export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType);
 export interface CreateParticipantConnectionRequest {
-  Type?: ConnectionType[];
+  Type?: (ConnectionType | (string & {}))[];
   ParticipantToken: string;
   ConnectParticipant?: boolean;
 }

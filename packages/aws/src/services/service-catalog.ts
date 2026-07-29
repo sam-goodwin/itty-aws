@@ -409,7 +409,7 @@ export interface CopyProductInput {
   SourceProvisioningArtifactIdentifiers?: {
     [key: string]: string | undefined;
   }[];
-  CopyOptions?: CopyOption[];
+  CopyOptions?: (CopyOption | (string & {}))[];
   IdempotencyToken: string;
 }
 export const CopyProductInput = /*@__PURE__*/ S.suspend(() =>

@@ -419,7 +419,7 @@ export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface ExpressionDimensionValues {
   Key: Dimension | (string & {});
   Values: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const ExpressionDimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -434,7 +434,7 @@ export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const TagValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -447,7 +447,7 @@ export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
-  MatchOptions?: MatchOption[];
+  MatchOptions?: (MatchOption | (string & {}))[];
 }
 export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -535,7 +535,7 @@ export interface Budget {
   LastUpdatedTime?: Date;
   AutoAdjustData?: AutoAdjustData;
   FilterExpression?: Expression;
-  Metrics?: Metric[];
+  Metrics?: (Metric | (string & {}))[];
   BillingViewArn?: string;
   HealthStatus?: HealthStatus;
 }

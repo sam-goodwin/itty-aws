@@ -1003,7 +1003,7 @@ export interface StartSpeechSynthesisTaskInput {
   OutputS3KeyPrefix?: string;
   SampleRate?: string;
   SnsTopicArn?: string;
-  SpeechMarkTypes?: SpeechMarkType[];
+  SpeechMarkTypes?: (SpeechMarkType | (string & {}))[];
   Text: string;
   TextType?: TextType | (string & {});
   VoiceId: VoiceId | (string & {});
@@ -1050,7 +1050,7 @@ export interface SynthesizeSpeechInput {
   LexiconNames?: string[];
   OutputFormat: OutputFormat | (string & {});
   SampleRate?: string;
-  SpeechMarkTypes?: SpeechMarkType[];
+  SpeechMarkTypes?: (SpeechMarkType | (string & {}))[];
   Text: string;
   TextType?: TextType | (string & {});
   VoiceId: VoiceId | (string & {});

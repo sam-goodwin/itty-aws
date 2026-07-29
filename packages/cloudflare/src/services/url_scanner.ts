@@ -4467,12 +4467,12 @@ export const ScansGetResponseStatsTlsStatsItemIpsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
 
 export interface ScansGetResponseStatsTlsStatsItemProtocols {
-  TLS13AES128GCM: number;
+  TLS_1_3___AES_128_GCM: number;
 }
 export const ScansGetResponseStatsTlsStatsItemProtocols =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS13AES128GCM: S.Number.pipe(T.Body("TLS 1.3 / AES_128_GCM")),
+      TLS_1_3___AES_128_GCM: S.Number.pipe(T.Body("TLS 1.3 / AES_128_GCM")),
     }),
   ).annotate({
     identifier: "ScansGetResponseStatsTlsStatsItemProtocols",

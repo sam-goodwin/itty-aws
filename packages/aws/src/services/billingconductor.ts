@@ -523,7 +523,7 @@ export const AttributeValueList = /*@__PURE__*/ S.Array(S.String);
 export interface LineItemFilter {
   Attribute: LineItemFilterAttributeName | (string & {});
   MatchOption: MatchOption | (string & {});
-  Values?: LineItemFilterValue[];
+  Values?: (LineItemFilterValue | (string & {}))[];
   AttributeValues?: string[];
 }
 export const LineItemFilter = /*@__PURE__*/ S.suspend(() =>
@@ -917,7 +917,7 @@ export type Token = string;
 export interface GetBillingGroupCostReportInput {
   Arn: string;
   BillingPeriodRange?: BillingPeriodRange;
-  GroupBy?: GroupByAttributeName[];
+  GroupBy?: (GroupByAttributeName | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1175,10 +1175,10 @@ export const ResponsibilityTransferArnsList = /*@__PURE__*/ S.Array(S.String);
 export interface ListBillingGroupsFilter {
   Arns?: string[];
   PricingPlan?: string;
-  Statuses?: BillingGroupStatus[];
+  Statuses?: (BillingGroupStatus | (string & {}))[];
   AutoAssociate?: boolean;
   PrimaryAccountIds?: string[];
-  BillingGroupTypes?: BillingGroupType[];
+  BillingGroupTypes?: (BillingGroupType | (string & {}))[];
   Names?: StringSearch[];
   ResponsibilityTransferArns?: string[];
 }

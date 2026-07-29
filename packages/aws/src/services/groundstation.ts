@@ -687,7 +687,7 @@ export interface EndpointDetails {
   uplinkAwsGroundStationAgentEndpoint?: UplinkAwsGroundStationAgentEndpointDetails;
   downlinkAwsGroundStationAgentEndpoint?: DownlinkAwsGroundStationAgentEndpointDetails;
   healthStatus?: CapabilityHealth | (string & {});
-  healthReasons?: CapabilityHealthReason[];
+  healthReasons?: (CapabilityHealthReason | (string & {}))[];
 }
 export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2044,7 +2044,7 @@ export const EphemerisFilter = /*@__PURE__*/ S.Union([
 export interface ListContactsRequest {
   maxResults?: number;
   nextToken?: string;
-  statusList: ContactStatus[];
+  statusList: (ContactStatus | (string & {}))[];
   startTime: Date;
   endTime: Date;
   groundStation?: string;
@@ -2231,7 +2231,7 @@ export interface ListEphemeridesRequest {
   ephemerisType?: EphemerisType | (string & {});
   startTime: Date;
   endTime: Date;
-  statusList?: EphemerisStatus[];
+  statusList?: (EphemerisStatus | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }
@@ -2302,7 +2302,7 @@ export interface ListGroundStationReservationsRequest {
   groundStationId: string;
   startTime: Date;
   endTime: Date;
-  reservationTypes?: ReservationType[];
+  reservationTypes?: (ReservationType | (string & {}))[];
   maxResults?: number;
   nextToken?: string;
 }

@@ -2523,7 +2523,10 @@ export interface UpdatePackageGroupOriginConfigurationRequest {
   domainOwner?: string;
   packageGroup: string;
   restrictions?: {
-    [key: string]: PackageGroupOriginRestrictionMode | undefined;
+    [key: string]:
+      | PackageGroupOriginRestrictionMode
+      | (string & {})
+      | undefined;
   };
   addAllowedRepositories?: PackageGroupAllowedRepository[];
   removeAllowedRepositories?: PackageGroupAllowedRepository[];

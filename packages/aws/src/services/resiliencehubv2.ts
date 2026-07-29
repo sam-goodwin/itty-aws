@@ -2200,7 +2200,7 @@ export type ServiceEventTypeList = (ServiceEventType | (string & {}))[];
 export const ServiceEventTypeList = /*@__PURE__*/ S.Array(ServiceEventType);
 export interface ListServiceEventsRequest {
   serviceArn: string;
-  eventTypes?: ServiceEventType[];
+  eventTypes?: (ServiceEventType | (string & {}))[];
   startTime?: Date;
   endTime?: Date;
   maxResults?: number;
@@ -3165,7 +3165,7 @@ export type SystemEventTypeList = (SystemEventType | (string & {}))[];
 export const SystemEventTypeList = /*@__PURE__*/ S.Array(SystemEventType);
 export interface ListSystemEventsRequest {
   systemArn: string;
-  eventTypes?: SystemEventType[];
+  eventTypes?: (SystemEventType | (string & {}))[];
   startTime?: Date;
   endTime?: Date;
   maxResults?: number;

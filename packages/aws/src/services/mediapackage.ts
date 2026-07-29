@@ -538,7 +538,7 @@ export const PlaylistType = /*@__PURE__*/ S.String;
 
 export interface HlsManifestCreateOrUpdateParameters {
   AdMarkers?: AdMarkers | (string & {});
-  AdTriggers?: __AdTriggersElement[];
+  AdTriggers?: (__AdTriggersElement | (string & {}))[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions | (string & {});
   Id?: string;
   IncludeIframeOnlyStream?: boolean;
@@ -671,7 +671,7 @@ export type UtcTiming = "NONE" | "HTTP-HEAD" | "HTTP-ISO" | "HTTP-XSDATE";
 export const UtcTiming = /*@__PURE__*/ S.String;
 
 export interface DashPackage {
-  AdTriggers?: __AdTriggersElement[];
+  AdTriggers?: (__AdTriggersElement | (string & {}))[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions | (string & {});
   Encryption?: DashEncryption;
   IncludeIframeOnlyStream?: boolean;
@@ -679,7 +679,7 @@ export interface DashPackage {
   ManifestWindowSeconds?: number;
   MinBufferTimeSeconds?: number;
   MinUpdatePeriodSeconds?: number;
-  PeriodTriggers?: __PeriodTriggersElement[];
+  PeriodTriggers?: (__PeriodTriggersElement | (string & {}))[];
   Profile?: Profile | (string & {});
   SegmentDurationSeconds?: number;
   SegmentTemplateFormat?: SegmentTemplateFormat | (string & {});
@@ -756,7 +756,7 @@ export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HlsEncryption" }) as any as S.Schema<HlsEncryption>;
 export interface HlsPackage {
   AdMarkers?: AdMarkers | (string & {});
-  AdTriggers?: __AdTriggersElement[];
+  AdTriggers?: (__AdTriggersElement | (string & {}))[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions | (string & {});
   Encryption?: HlsEncryption;
   IncludeDvbSubtitles?: boolean;

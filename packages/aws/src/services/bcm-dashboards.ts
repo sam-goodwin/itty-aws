@@ -208,7 +208,7 @@ export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
   key: Dimension | (string & {});
   values: string[];
-  matchOptions?: MatchOption[];
+  matchOptions?: (MatchOption | (string & {}))[];
 }
 export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -222,7 +222,7 @@ export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
 export interface TagValues {
   key?: string;
   values?: string[];
-  matchOptions?: MatchOption[];
+  matchOptions?: (MatchOption | (string & {}))[];
 }
 export const TagValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -234,7 +234,7 @@ export const TagValues = /*@__PURE__*/ S.suspend(() =>
 export interface CostCategoryValues {
   key?: string;
   values?: string[];
-  matchOptions?: MatchOption[];
+  matchOptions?: (MatchOption | (string & {}))[];
 }
 export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -272,7 +272,7 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
 export interface CostAndUsageQuery {
-  metrics: MetricName[];
+  metrics: (MetricName | (string & {}))[];
   timeRange: DateTimeRange;
   granularity: Granularity | (string & {});
   groupBy?: GroupDefinition[];
@@ -291,7 +291,7 @@ export const CostAndUsageQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostAndUsageQuery>;
 export interface SavingsPlansCoverageQuery {
   timeRange: DateTimeRange;
-  metrics?: MetricName[];
+  metrics?: (MetricName | (string & {}))[];
   granularity?: Granularity | (string & {});
   groupBy?: GroupDefinition[];
   filter?: Expression;
@@ -326,7 +326,7 @@ export interface ReservationCoverageQuery {
   groupBy?: GroupDefinition[];
   granularity?: Granularity | (string & {});
   filter?: Expression;
-  metrics?: MetricName[];
+  metrics?: (MetricName | (string & {}))[];
 }
 export const ReservationCoverageQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -280,7 +280,7 @@ export interface CreateBenefitApplicationInput {
   Name?: string;
   Description?: string;
   BenefitIdentifier: string;
-  FulfillmentTypes?: FulfillmentType[];
+  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
   BenefitApplicationDetails?: any;
   Tags?: Tag[];
   AssociatedResources?: string[];
@@ -838,10 +838,10 @@ export const BenefitAllocationStatusList = /*@__PURE__*/ S.Array(
 );
 export interface ListBenefitAllocationsInput {
   Catalog: string;
-  FulfillmentTypes?: FulfillmentType[];
+  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
   BenefitIdentifiers?: string[];
   BenefitApplicationIdentifiers?: string[];
-  Status?: BenefitAllocationStatus[];
+  Status?: (BenefitAllocationStatus | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -948,9 +948,9 @@ export const AssociatedResources = /*@__PURE__*/ S.Array(AssociatedResource);
 export interface ListBenefitApplicationsInput {
   Catalog: string;
   Programs?: string[];
-  FulfillmentTypes?: FulfillmentType[];
+  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
   BenefitIdentifiers?: string[];
-  Status?: BenefitApplicationStatus[];
+  Status?: (BenefitApplicationStatus | (string & {}))[];
   Stages?: string[];
   AssociatedResources?: AssociatedResource[];
   AssociatedResourceArns?: string[];
@@ -1046,8 +1046,8 @@ export const BenefitStatuses = /*@__PURE__*/ S.Array(BenefitStatus);
 export interface ListBenefitsInput {
   Catalog: string;
   Programs?: string[];
-  FulfillmentTypes?: FulfillmentType[];
-  Status?: BenefitStatus[];
+  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
+  Status?: (BenefitStatus | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }

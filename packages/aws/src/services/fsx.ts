@@ -1669,7 +1669,7 @@ export interface CopySnapshotAndUpdateVolumeRequest {
   VolumeId?: string;
   SourceSnapshotARN?: string;
   CopyStrategy?: OpenZFSCopyStrategy | (string & {});
-  Options?: UpdateOpenZFSVolumeOption[];
+  Options?: (UpdateOpenZFSVolumeOption | (string & {}))[];
 }
 export const CopySnapshotAndUpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2141,7 +2141,7 @@ export const EventType = /*@__PURE__*/ S.String;
 export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface AutoImportPolicy {
-  Events?: EventType[];
+  Events?: (EventType | (string & {}))[];
 }
 export const AutoImportPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Events: S.optional(EventTypes) }),
@@ -2149,7 +2149,7 @@ export const AutoImportPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoImportPolicy",
 }) as any as S.Schema<AutoImportPolicy>;
 export interface AutoExportPolicy {
-  Events?: EventType[];
+  Events?: (EventType | (string & {}))[];
 }
 export const AutoExportPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Events: S.optional(EventTypes) }),
@@ -3695,7 +3695,7 @@ export const DeleteFileSystemOpenZFSOptions = /*@__PURE__*/ S.Array(
 export interface DeleteFileSystemOpenZFSConfiguration {
   SkipFinalBackup?: boolean;
   FinalBackupTags?: Tag[];
-  Options?: DeleteFileSystemOpenZFSOption[];
+  Options?: (DeleteFileSystemOpenZFSOption | (string & {}))[];
 }
 export const DeleteFileSystemOpenZFSConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -3864,7 +3864,7 @@ export const DeleteOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(
   DeleteOpenZFSVolumeOption,
 );
 export interface DeleteVolumeOpenZFSConfiguration {
-  Options?: DeleteOpenZFSVolumeOption[];
+  Options?: (DeleteOpenZFSVolumeOption | (string & {}))[];
 }
 export const DeleteVolumeOpenZFSConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.optional(DeleteOpenZFSVolumeOptions) }),
@@ -4931,7 +4931,7 @@ export interface RestoreVolumeFromSnapshotRequest {
   ClientRequestToken?: string;
   VolumeId?: string;
   SnapshotId?: string;
-  Options?: RestoreOpenZFSVolumeOption[];
+  Options?: (RestoreOpenZFSVolumeOption | (string & {}))[];
 }
 export const RestoreVolumeFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

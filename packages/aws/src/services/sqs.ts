@@ -676,7 +676,7 @@ export type AttributeNameList = (QueueAttributeName | (string & {}))[];
 export const AttributeNameList = /*@__PURE__*/ S.Array(QueueAttributeName);
 export interface GetQueueAttributesRequest {
   QueueUrl: string;
-  AttributeNames?: QueueAttributeName[];
+  AttributeNames?: (QueueAttributeName | (string & {}))[];
 }
 export const GetQueueAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -905,8 +905,8 @@ export type MessageAttributeNameList = string[];
 export const MessageAttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ReceiveMessageRequest {
   QueueUrl: string;
-  AttributeNames?: QueueAttributeName[];
-  MessageSystemAttributeNames?: MessageSystemAttributeName[];
+  AttributeNames?: (QueueAttributeName | (string & {}))[];
+  MessageSystemAttributeNames?: (MessageSystemAttributeName | (string & {}))[];
   MessageAttributeNames?: string[];
   MaxNumberOfMessages?: number;
   VisibilityTimeout?: number;

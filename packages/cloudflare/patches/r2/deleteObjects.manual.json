@@ -39,16 +39,16 @@
               "smithy.api#httpQuery": "prefix"
             }
           },
-          "cf-r2-jurisdiction": {
-            "target": "smithy.api#String",
-            "traits": {
-              "smithy.api#httpHeader": "cf-r2-jurisdiction"
-            }
-          },
           "body": {
             "target": "com.cloudflare.r2#DeleteObjectsKeyList",
             "traits": {
               "smithy.api#httpPayload": {}
+            }
+          },
+          "cf_r2_jurisdiction": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#httpHeader": "cf-r2-jurisdiction"
             }
           }
         },

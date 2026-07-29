@@ -1192,7 +1192,9 @@ export interface Container {
   image?: string;
   command?: string[];
   environment?: { [key: string]: string | undefined };
-  ports?: { [key: string]: ContainerServiceProtocol | undefined };
+  ports?: {
+    [key: string]: ContainerServiceProtocol | (string & {}) | undefined;
+  };
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1746,7 +1748,7 @@ export type HeaderForwardList = (HeaderEnum | (string & {}))[];
 export const HeaderForwardList = /*@__PURE__*/ S.Array(HeaderEnum);
 export interface HeaderObject {
   option?: ForwardValues | (string & {});
-  headersAllowList?: HeaderEnum[];
+  headersAllowList?: (HeaderEnum | (string & {}))[];
 }
 export const HeaderObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3746,7 +3748,7 @@ export interface GetBucketMetricDataRequest {
   startTime: Date;
   endTime: Date;
   period: number;
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
   unit: MetricUnit | (string & {});
 }
 export const GetBucketMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3955,7 +3957,7 @@ export type CertificateStatusList = (CertificateStatus | (string & {}))[];
 export const CertificateStatusList = /*@__PURE__*/ S.Array(CertificateStatus);
 export type IncludeCertificateDetails = boolean;
 export interface GetCertificatesRequest {
-  certificateStatuses?: CertificateStatus[];
+  certificateStatuses?: (CertificateStatus | (string & {}))[];
   includeCertificateDetails?: boolean;
   certificateName?: string;
   pageToken?: string;
@@ -4089,7 +4091,7 @@ export const GetCloudFormationStackRecordsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCloudFormationStackRecordsResult",
 }) as any as S.Schema<GetCloudFormationStackRecordsResult>;
 export interface GetContactMethodsRequest {
-  protocols?: ContactProtocol[];
+  protocols?: (ContactProtocol | (string & {}))[];
 }
 export const GetContactMethodsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4333,7 +4335,7 @@ export interface GetContainerServiceMetricDataRequest {
   startTime: Date;
   endTime: Date;
   period: number;
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
 }
 export const GetContainerServiceMetricDataRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4868,7 +4870,7 @@ export interface GetDistributionMetricDataRequest {
   endTime: Date;
   period: number;
   unit: MetricUnit | (string & {});
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
 }
 export const GetDistributionMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5504,7 +5506,7 @@ export interface GetInstanceMetricDataRequest {
   startTime: Date;
   endTime: Date;
   unit: MetricUnit | (string & {});
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
 }
 export const GetInstanceMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5990,7 +5992,7 @@ export interface GetLoadBalancerMetricDataRequest {
   startTime: Date;
   endTime: Date;
   unit: MetricUnit | (string & {});
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
 }
 export const GetLoadBalancerMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6964,7 +6966,7 @@ export interface GetRelationalDatabaseMetricDataRequest {
   startTime: Date;
   endTime: Date;
   unit: MetricUnit | (string & {});
-  statistics: MetricStatistic[];
+  statistics: (MetricStatistic | (string & {}))[];
 }
 export const GetRelationalDatabaseMetricDataRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7512,8 +7514,8 @@ export interface PutAlarmRequest {
   evaluationPeriods: number;
   datapointsToAlarm?: number;
   treatMissingData?: TreatMissingData | (string & {});
-  contactProtocols?: ContactProtocol[];
-  notificationTriggers?: AlarmState[];
+  contactProtocols?: (ContactProtocol | (string & {}))[];
+  notificationTriggers?: (AlarmState | (string & {}))[];
   notificationEnabled?: boolean;
   tags?: Tag[];
 }

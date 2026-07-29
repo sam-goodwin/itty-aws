@@ -1405,7 +1405,9 @@ export const LogTypeMap = /*@__PURE__*/ S.Record(
   LogUploadPolicyValue.pipe(S.optional),
 );
 export interface S3LoggingConfiguration {
-  LogTypeUploadPolicy?: { [key: string]: LogUploadPolicyValue | undefined };
+  LogTypeUploadPolicy?: {
+    [key: string]: LogUploadPolicyValue | (string & {}) | undefined;
+  };
 }
 export const S3LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogTypeUploadPolicy: S.optional(LogTypeMap) }),
@@ -1547,7 +1549,7 @@ export interface DescribeJobFlowsInput {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
   JobFlowIds?: string[];
-  JobFlowStates?: JobFlowExecutionState[];
+  JobFlowStates?: (JobFlowExecutionState | (string & {}))[];
 }
 export const DescribeJobFlowsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2996,7 +2998,7 @@ export const ClusterStateList = /*@__PURE__*/ S.Array(ClusterState);
 export interface ListClustersInput {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
-  ClusterStates?: ClusterState[];
+  ClusterStates?: (ClusterState | (string & {}))[];
   Marker?: string;
 }
 export const ListClustersInput = /*@__PURE__*/ S.suspend(() =>
@@ -3492,10 +3494,10 @@ export const InstanceStateList = /*@__PURE__*/ S.Array(InstanceState);
 export interface ListInstancesInput {
   ClusterId?: string;
   InstanceGroupId?: string;
-  InstanceGroupTypes?: InstanceGroupType[];
+  InstanceGroupTypes?: (InstanceGroupType | (string & {}))[];
   InstanceFleetId?: string;
   InstanceFleetType?: InstanceFleetType | (string & {});
-  InstanceStates?: InstanceState[];
+  InstanceStates?: (InstanceState | (string & {}))[];
   Marker?: string;
 }
 export const ListInstancesInput = /*@__PURE__*/ S.suspend(() =>
@@ -3789,7 +3791,7 @@ export type SessionStateList = (SessionState | (string & {}))[];
 export const SessionStateList = /*@__PURE__*/ S.Array(SessionState);
 export interface ListSessionsInput {
   ClusterId?: string;
-  SessionStates?: SessionState[];
+  SessionStates?: (SessionState | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -3836,7 +3838,7 @@ export type StepStateList = (StepState | (string & {}))[];
 export const StepStateList = /*@__PURE__*/ S.Array(StepState);
 export interface ListStepsInput {
   ClusterId?: string;
-  StepStates?: StepState[];
+  StepStates?: (StepState | (string & {}))[];
   StepIds?: string[];
   Marker?: string;
 }

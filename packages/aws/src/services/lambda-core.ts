@@ -147,7 +147,7 @@ export interface NetworkConnectorVpcEgressConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
   NetworkProtocol?: NetworkProtocol | (string & {});
-  AssociatedComputeResourceTypes?: ComputeResourceType[];
+  AssociatedComputeResourceTypes?: (ComputeResourceType | (string & {}))[];
 }
 export const NetworkConnectorVpcEgressConfiguration = /*@__PURE__*/ S.suspend(
   () =>

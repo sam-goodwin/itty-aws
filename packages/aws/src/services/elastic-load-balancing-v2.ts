@@ -2685,7 +2685,7 @@ export const ListOfDescribeTargetHealthIncludeOptions = /*@__PURE__*/ S.Array(
 export interface DescribeTargetHealthInput {
   TargetGroupArn?: string;
   Targets?: TargetDescription[];
-  Include?: DescribeTargetHealthInputIncludeEnum[];
+  Include?: (DescribeTargetHealthInputIncludeEnum | (string & {}))[];
 }
 export const DescribeTargetHealthInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3113,7 +3113,7 @@ export const RemoveIpamPools = /*@__PURE__*/ S.Array(RemoveIpamPoolEnum);
 export interface ModifyIpPoolsInput {
   LoadBalancerArn?: string;
   IpamPools?: IpamPools;
-  RemoveIpamPools?: RemoveIpamPoolEnum[];
+  RemoveIpamPools?: (RemoveIpamPoolEnum | (string & {}))[];
 }
 export const ModifyIpPoolsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

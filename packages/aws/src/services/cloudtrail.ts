@@ -1951,7 +1951,7 @@ export type EventCategoryAggregation = "Data";
 export const EventCategoryAggregation = /*@__PURE__*/ S.String;
 
 export interface AggregationConfiguration {
-  Templates: Template[];
+  Templates: (Template | (string & {}))[];
   EventCategory: EventCategoryAggregation | (string & {});
 }
 export const AggregationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2245,7 +2245,7 @@ export type SourceEventCategories = (SourceEventCategory | (string & {}))[];
 export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
 export interface InsightSelector {
   InsightType?: InsightType | (string & {});
-  EventCategories?: SourceEventCategory[];
+  EventCategories?: (SourceEventCategory | (string & {}))[];
 }
 export const InsightSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

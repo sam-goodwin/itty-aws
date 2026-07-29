@@ -199,7 +199,7 @@ export type FilterInstanceStatuses = (FilterInstanceStatus | (string & {}))[];
 export const FilterInstanceStatuses =
   /*@__PURE__*/ S.Array(FilterInstanceStatus);
 export interface ClaimFilterOption {
-  InstanceStatuses?: FilterInstanceStatus[];
+  InstanceStatuses?: (FilterInstanceStatus | (string & {}))[];
 }
 export const ClaimFilterOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceStatuses: S.optional(FilterInstanceStatuses) }),
@@ -879,7 +879,7 @@ export const LinuxCapability = /*@__PURE__*/ S.String;
 export type LinuxCapabilityList = (LinuxCapability | (string & {}))[];
 export const LinuxCapabilityList = /*@__PURE__*/ S.Array(LinuxCapability);
 export interface LinuxCapabilities {
-  Include?: LinuxCapability[];
+  Include?: (LinuxCapability | (string & {}))[];
 }
 export const LinuxCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Include: S.optional(LinuxCapabilityList) }),
@@ -2441,7 +2441,7 @@ export const PriorityType = /*@__PURE__*/ S.String;
 export type PriorityTypeList = (PriorityType | (string & {}))[];
 export const PriorityTypeList = /*@__PURE__*/ S.Array(PriorityType);
 export interface PriorityConfiguration {
-  PriorityOrder?: PriorityType[];
+  PriorityOrder?: (PriorityType | (string & {}))[];
   LocationOrder?: string[];
 }
 export const PriorityConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6309,7 +6309,7 @@ export type LocationFilterList = (LocationFilter | (string & {}))[];
 export const LocationFilterList = /*@__PURE__*/ S.Array(LocationFilter);
 export type ListLocationsLimit = number;
 export interface ListLocationsInput {
-  Filters?: LocationFilter[];
+  Filters?: (LocationFilter | (string & {}))[];
   Limit?: number;
   NextToken?: string;
 }
@@ -6592,7 +6592,7 @@ export const ResolveAliasOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolveAliasOutput>;
 export interface ResumeGameServerGroupInput {
   GameServerGroupName?: string;
-  ResumeActions?: GameServerGroupAction[];
+  ResumeActions?: (GameServerGroupAction | (string & {}))[];
 }
 export const ResumeGameServerGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6675,7 +6675,7 @@ export const SearchGameSessionsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchGameSessionsOutput>;
 export interface StartFleetActionsInput {
   FleetId?: string;
-  Actions?: FleetAction[];
+  Actions?: (FleetAction | (string & {}))[];
   Location?: string;
 }
 export const StartFleetActionsInput = /*@__PURE__*/ S.suspend(() =>
@@ -6844,7 +6844,7 @@ export const StartMatchmakingOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartMatchmakingOutput>;
 export interface StopFleetActionsInput {
   FleetId?: string;
-  Actions?: FleetAction[];
+  Actions?: (FleetAction | (string & {}))[];
   Location?: string;
 }
 export const StopFleetActionsInput = /*@__PURE__*/ S.suspend(() =>
@@ -6938,7 +6938,7 @@ export const StopMatchmakingOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopMatchmakingOutput>;
 export interface SuspendGameServerGroupInput {
   GameServerGroupName?: string;
-  SuspendActions?: GameServerGroupAction[];
+  SuspendActions?: (GameServerGroupAction | (string & {}))[];
 }
 export const SuspendGameServerGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7159,7 +7159,7 @@ export interface UpdateContainerFleetInput {
   NewGameSessionProtectionPolicy?: ProtectionPolicy | (string & {});
   GameSessionCreationLimitPolicy?: GameSessionCreationLimitPolicy;
   LogConfiguration?: LogConfiguration;
-  RemoveAttributes?: ContainerFleetRemoveAttribute[];
+  RemoveAttributes?: (ContainerFleetRemoveAttribute | (string & {}))[];
 }
 export const UpdateContainerFleetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

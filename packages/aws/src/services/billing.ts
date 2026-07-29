@@ -524,7 +524,7 @@ export type PageToken = string;
 export interface ListBillingViewsRequest {
   activeTimeRange?: ActiveTimeRange;
   arns?: string[];
-  billingViewTypes?: BillingViewType[];
+  billingViewTypes?: (BillingViewType | (string & {}))[];
   names?: StringSearch[];
   ownerAccountId?: string;
   sourceAccountId?: string;

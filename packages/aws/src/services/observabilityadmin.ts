@@ -666,7 +666,7 @@ export const LogType = /*@__PURE__*/ S.String;
 export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogDeliveryParameters {
-  LogTypes?: LogType[];
+  LogTypes?: (LogType | (string & {}))[];
 }
 export const LogDeliveryParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogTypes: S.optional(LogTypes) }),
@@ -720,7 +720,7 @@ export type AllRegions = boolean;
 export interface TelemetryRule {
   ResourceType?: ResourceType | (string & {});
   TelemetryType: TelemetryType | (string & {});
-  TelemetrySourceTypes?: TelemetrySourceType[];
+  TelemetrySourceTypes?: (TelemetrySourceType | (string & {}))[];
   DestinationConfiguration?: TelemetryDestinationConfiguration;
   Scope?: string;
   SelectionCriteria?: string;
@@ -1394,8 +1394,10 @@ export const TelemetryConfigurationState = /*@__PURE__*/ S.Record(
 export type ListResourceTelemetryMaxResults = number;
 export interface ListResourceTelemetryInput {
   ResourceIdentifierPrefix?: string;
-  ResourceTypes?: ResourceType[];
-  TelemetryConfigurationState?: { [key: string]: TelemetryState | undefined };
+  ResourceTypes?: (ResourceType | (string & {}))[];
+  TelemetryConfigurationState?: {
+    [key: string]: TelemetryState | (string & {}) | undefined;
+  };
   ResourceTags?: { [key: string]: string | undefined };
   MaxResults?: number;
   NextToken?: string;
@@ -1466,8 +1468,10 @@ export type ListResourceTelemetryForOrganizationMaxResults = number;
 export interface ListResourceTelemetryForOrganizationInput {
   AccountIdentifiers?: string[];
   ResourceIdentifierPrefix?: string;
-  ResourceTypes?: ResourceType[];
-  TelemetryConfigurationState?: { [key: string]: TelemetryState | undefined };
+  ResourceTypes?: (ResourceType | (string & {}))[];
+  TelemetryConfigurationState?: {
+    [key: string]: TelemetryState | (string & {}) | undefined;
+  };
   ResourceTags?: { [key: string]: string | undefined };
   MaxResults?: number;
   NextToken?: string;

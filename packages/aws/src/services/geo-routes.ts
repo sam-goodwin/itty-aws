@@ -555,7 +555,7 @@ export interface IsolineTruckOptions {
   AxleCount?: number;
   EngineType?: IsolineEngineType | (string & {});
   GrossWeight?: number;
-  HazardousCargos?: IsolineHazardousCargoType[];
+  HazardousCargos?: (IsolineHazardousCargoType | (string & {}))[];
   Height?: number;
   HeightAboveFirstAxle?: number;
   KpraLength?: number;
@@ -1061,7 +1061,7 @@ export const RouteMatrixTruckType = /*@__PURE__*/ S.String;
 export interface RouteMatrixTruckOptions {
   AxleCount?: number;
   GrossWeight?: number;
-  HazardousCargos?: RouteMatrixHazardousCargoType[];
+  HazardousCargos?: (RouteMatrixHazardousCargoType | (string & {}))[];
   Height?: number;
   KpraLength?: number;
   Length?: number;
@@ -1602,7 +1602,7 @@ export interface RouteTruckOptions {
   AxleCount?: number;
   EngineType?: RouteEngineType | (string & {});
   GrossWeight?: number;
-  HazardousCargos?: RouteHazardousCargoType[];
+  HazardousCargos?: (RouteHazardousCargoType | (string & {}))[];
   Height?: number;
   HeightAboveFirstAxle?: number;
   KpraLength?: number;
@@ -1683,9 +1683,9 @@ export const RouteIntermodalEnabledLegsList = /*@__PURE__*/ S.Array(
   RouteIntermodalEnabledLegs,
 );
 export interface RouteIntermodalRentalOptions {
-  AllowedModes?: RouteRentalMode[];
-  EnabledFor?: RouteIntermodalEnabledLegs[];
-  ExcludedModes?: RouteRentalMode[];
+  AllowedModes?: (RouteRentalMode | (string & {}))[];
+  EnabledFor?: (RouteIntermodalEnabledLegs | (string & {}))[];
+  ExcludedModes?: (RouteRentalMode | (string & {}))[];
 }
 export const RouteIntermodalRentalOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1702,9 +1702,9 @@ export const RouteTaxiMode = /*@__PURE__*/ S.String;
 export type RouteTaxiModeList = (RouteTaxiMode | (string & {}))[];
 export const RouteTaxiModeList = /*@__PURE__*/ S.Array(RouteTaxiMode);
 export interface RouteIntermodalTaxiOptions {
-  AllowedModes?: RouteTaxiMode[];
-  EnabledFor?: RouteIntermodalEnabledLegs[];
-  ExcludedModes?: RouteTaxiMode[];
+  AllowedModes?: (RouteTaxiMode | (string & {}))[];
+  EnabledFor?: (RouteIntermodalEnabledLegs | (string & {}))[];
+  ExcludedModes?: (RouteTaxiMode | (string & {}))[];
 }
 export const RouteIntermodalTaxiOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1737,9 +1737,9 @@ export const RouteTransitMode = /*@__PURE__*/ S.String;
 export type RouteTransitModeList = (RouteTransitMode | (string & {}))[];
 export const RouteTransitModeList = /*@__PURE__*/ S.Array(RouteTransitMode);
 export interface RouteIntermodalTransitOptions {
-  AllowedModes?: RouteTransitMode[];
-  EnabledFor?: RouteIntermodalEnabledLegs[];
-  ExcludedModes?: RouteTransitMode[];
+  AllowedModes?: (RouteTransitMode | (string & {}))[];
+  EnabledFor?: (RouteIntermodalEnabledLegs | (string & {}))[];
+  ExcludedModes?: (RouteTransitMode | (string & {}))[];
 }
 export const RouteIntermodalTransitOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1756,9 +1756,9 @@ export const RouteVehicleMode = /*@__PURE__*/ S.String;
 export type RouteVehicleModeList = (RouteVehicleMode | (string & {}))[];
 export const RouteVehicleModeList = /*@__PURE__*/ S.Array(RouteVehicleMode);
 export interface RouteIntermodalVehicleOptions {
-  AllowedModes?: RouteVehicleMode[];
-  EnabledFor?: RouteIntermodalEnabledLegs[];
-  ExcludedModes?: RouteVehicleMode[];
+  AllowedModes?: (RouteVehicleMode | (string & {}))[];
+  EnabledFor?: (RouteIntermodalEnabledLegs | (string & {}))[];
+  ExcludedModes?: (RouteVehicleMode | (string & {}))[];
 }
 export const RouteIntermodalVehicleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1770,7 +1770,7 @@ export const RouteIntermodalVehicleOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteIntermodalVehicleOptions",
 }) as any as S.Schema<RouteIntermodalVehicleOptions>;
 export interface RouteIntermodalOptions {
-  AccessibilityAttributes?: RouteAccessibilityAttribute[];
+  AccessibilityAttributes?: (RouteAccessibilityAttribute | (string & {}))[];
   MaxTransfers?: number;
   Pedestrian?: RouteIntermodalPedestrianOptions;
   Rental?: RouteIntermodalRentalOptions;
@@ -1801,9 +1801,9 @@ export const RouteTransitPedestrianOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteTransitPedestrianOptions",
 }) as any as S.Schema<RouteTransitPedestrianOptions>;
 export interface RouteTransitOptions {
-  AccessibilityAttributes?: RouteAccessibilityAttribute[];
-  AllowedModes?: RouteTransitMode[];
-  ExcludedModes?: RouteTransitMode[];
+  AccessibilityAttributes?: (RouteAccessibilityAttribute | (string & {}))[];
+  AllowedModes?: (RouteTransitMode | (string & {}))[];
+  ExcludedModes?: (RouteTransitMode | (string & {}))[];
   MaxTransfers?: number;
   Pedestrian?: RouteTransitPedestrianOptions;
 }
@@ -1878,13 +1878,13 @@ export interface CalculateRoutesRequest {
   InstructionsMeasurementSystem?: MeasurementSystem | (string & {});
   Key?: string | redacted.Redacted<string>;
   Languages?: string[];
-  LegAdditionalFeatures?: RouteLegAdditionalFeature[];
+  LegAdditionalFeatures?: (RouteLegAdditionalFeature | (string & {}))[];
   LegGeometryFormat?: GeometryFormat | (string & {});
   MaxAlternatives?: number;
   OptimizeRoutingFor?: RoutingObjective | (string & {});
   Origin: number[];
   OriginOptions?: RouteOriginOptions;
-  SpanAdditionalFeatures?: RouteSpanAdditionalFeature[];
+  SpanAdditionalFeatures?: (RouteSpanAdditionalFeature | (string & {}))[];
   Tolls?: RouteTollOptions;
   Traffic?: RouteTrafficOptions;
   TravelMode?: RouteTravelMode | (string & {});
@@ -4770,7 +4770,7 @@ export const WaypointOptimizationTruckType = /*@__PURE__*/ S.String;
 
 export interface WaypointOptimizationTruckOptions {
   GrossWeight?: number;
-  HazardousCargos?: WaypointOptimizationHazardousCargoType[];
+  HazardousCargos?: (WaypointOptimizationHazardousCargoType | (string & {}))[];
   Height?: number;
   Length?: number;
   Trailer?: WaypointOptimizationTrailerOptions;
@@ -5074,7 +5074,7 @@ export const RoadSnapTrailerOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoadSnapTrailerOptions>;
 export interface RoadSnapTruckOptions {
   GrossWeight?: number;
-  HazardousCargos?: RoadSnapHazardousCargoType[];
+  HazardousCargos?: (RoadSnapHazardousCargoType | (string & {}))[];
   Height?: number;
   Length?: number;
   Trailer?: RoadSnapTrailerOptions;

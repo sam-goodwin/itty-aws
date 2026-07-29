@@ -5199,7 +5199,8 @@ export type AttachmentStatus =
   | "attaching"
   | "attached"
   | "detaching"
-  | "detached";
+  | "detached"
+  | "available";
 export const AttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface VpcAttachment {
@@ -10891,7 +10892,7 @@ export const ReservationTypeListRequest = /*@__PURE__*/ S.Array(
   FleetReservationType.pipe(T.XmlName("ReservationType")),
 );
 export interface ReservedCapacityOptionsRequest {
-  ReservationTypes?: FleetReservationType[];
+  ReservationTypes?: (FleetReservationType | (string & {}))[];
 }
 export const ReservedCapacityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11237,10 +11238,10 @@ export const BaselinePerformanceFactorsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceRequirementsRequest {
   VCpuCount?: VCpuCountRangeRequest;
   MemoryMiB?: MemoryMiBRequest;
-  CpuManufacturers?: CpuManufacturer[];
+  CpuManufacturers?: (CpuManufacturer | (string & {}))[];
   MemoryGiBPerVCpu?: MemoryGiBPerVCpuRequest;
   ExcludedInstanceTypes?: string[];
-  InstanceGenerations?: InstanceGeneration[];
+  InstanceGenerations?: (InstanceGeneration | (string & {}))[];
   SpotMaxPricePercentageOverLowestPrice?: number;
   OnDemandMaxPricePercentageOverLowestPrice?: number;
   BareMetal?: BareMetal | (string & {});
@@ -11248,13 +11249,13 @@ export interface InstanceRequirementsRequest {
   RequireHibernateSupport?: boolean;
   NetworkInterfaceCount?: NetworkInterfaceCountRequest;
   LocalStorage?: LocalStorage | (string & {});
-  LocalStorageTypes?: LocalStorageType[];
+  LocalStorageTypes?: (LocalStorageType | (string & {}))[];
   TotalLocalStorageGB?: TotalLocalStorageGBRequest;
   BaselineEbsBandwidthMbps?: BaselineEbsBandwidthMbpsRequest;
-  AcceleratorTypes?: AcceleratorType[];
+  AcceleratorTypes?: (AcceleratorType | (string & {}))[];
   AcceleratorCount?: AcceleratorCountRequest;
-  AcceleratorManufacturers?: AcceleratorManufacturer[];
-  AcceleratorNames?: AcceleratorName[];
+  AcceleratorManufacturers?: (AcceleratorManufacturer | (string & {}))[];
+  AcceleratorNames?: (AcceleratorName | (string & {}))[];
   AcceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiBRequest;
   NetworkBandwidthGbps?: NetworkBandwidthGbpsRequest;
   AllowedInstanceTypes?: string[];
@@ -11647,10 +11648,10 @@ export const BaselinePerformanceFactors = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceRequirements {
   VCpuCount?: VCpuCountRange;
   MemoryMiB?: MemoryMiB;
-  CpuManufacturers?: CpuManufacturer[];
+  CpuManufacturers?: (CpuManufacturer | (string & {}))[];
   MemoryGiBPerVCpu?: MemoryGiBPerVCpu;
   ExcludedInstanceTypes?: string[];
-  InstanceGenerations?: InstanceGeneration[];
+  InstanceGenerations?: (InstanceGeneration | (string & {}))[];
   SpotMaxPricePercentageOverLowestPrice?: number;
   OnDemandMaxPricePercentageOverLowestPrice?: number;
   BareMetal?: BareMetal | (string & {});
@@ -11658,13 +11659,13 @@ export interface InstanceRequirements {
   RequireHibernateSupport?: boolean;
   NetworkInterfaceCount?: NetworkInterfaceCount;
   LocalStorage?: LocalStorage | (string & {});
-  LocalStorageTypes?: LocalStorageType[];
+  LocalStorageTypes?: (LocalStorageType | (string & {}))[];
   TotalLocalStorageGB?: TotalLocalStorageGB;
   BaselineEbsBandwidthMbps?: BaselineEbsBandwidthMbps;
-  AcceleratorTypes?: AcceleratorType[];
+  AcceleratorTypes?: (AcceleratorType | (string & {}))[];
   AcceleratorCount?: AcceleratorCount;
-  AcceleratorManufacturers?: AcceleratorManufacturer[];
-  AcceleratorNames?: AcceleratorName[];
+  AcceleratorManufacturers?: (AcceleratorManufacturer | (string & {}))[];
+  AcceleratorNames?: (AcceleratorName | (string & {}))[];
   AcceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiB;
   NetworkBandwidthGbps?: NetworkBandwidthGbps;
   AllowedInstanceTypes?: string[];
@@ -18108,7 +18109,7 @@ export interface PacketHeaderStatementRequest {
   DestinationPorts?: string[];
   SourcePrefixLists?: string[];
   DestinationPrefixLists?: string[];
-  Protocols?: Protocol[];
+  Protocols?: (Protocol | (string & {}))[];
 }
 export const PacketHeaderStatementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -31006,7 +31007,7 @@ export const AccountAttributeNameStringList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeAccountAttributesRequest {
   DryRun?: boolean;
-  AttributeNames?: AccountAttributeName[];
+  AttributeNames?: (AccountAttributeName | (string & {}))[];
 }
 export const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40966,7 +40967,7 @@ export type DITMaxResults = number;
 export type IncludeUnsupportedInRegion = boolean;
 export interface DescribeInstanceTypesRequest {
   DryRun?: boolean;
-  InstanceTypes?: InstanceType[];
+  InstanceTypes?: (InstanceType | (string & {}))[];
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
@@ -49806,7 +49807,7 @@ export interface DescribeSpotPriceHistoryRequest {
   DryRun?: boolean;
   StartTime?: Date;
   EndTime?: Date;
-  InstanceTypes?: InstanceType[];
+  InstanceTypes?: (InstanceType | (string & {}))[];
   ProductDescriptions?: string[];
   Filters?: Filter[];
   AvailabilityZone?: string;
@@ -58070,11 +58071,11 @@ export const CapacityManagerConditionSet = /*@__PURE__*/ S.Array(
 );
 export type MaxResults = number;
 export interface GetCapacityManagerMetricDataRequest {
-  MetricNames?: Metric[];
+  MetricNames?: (Metric | (string & {}))[];
   StartTime?: Date;
   EndTime?: Date;
   Period?: number;
-  GroupBy?: GroupBy[];
+  GroupBy?: (GroupBy | (string & {}))[];
   FilterBy?: CapacityManagerCondition[];
   MaxResults?: number;
   NextToken?: string;
@@ -58312,11 +58313,11 @@ export const GetCapacityManagerMetricDataResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCapacityManagerMetricDataResult",
 }) as any as S.Schema<GetCapacityManagerMetricDataResult>;
 export interface GetCapacityManagerMetricDimensionsRequest {
-  GroupBy?: GroupBy[];
+  GroupBy?: (GroupBy | (string & {}))[];
   FilterBy?: CapacityManagerCondition[];
   StartTime?: Date;
   EndTime?: Date;
-  MetricNames?: Metric[];
+  MetricNames?: (Metric | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
   DryRun?: boolean;
@@ -59593,8 +59594,8 @@ export const VirtualizationTypeSet = /*@__PURE__*/ S.Array(
 );
 export interface GetInstanceTypesFromInstanceRequirementsRequest {
   DryRun?: boolean;
-  ArchitectureTypes?: ArchitectureType[];
-  VirtualizationTypes?: VirtualizationType[];
+  ArchitectureTypes?: (ArchitectureType | (string & {}))[];
+  VirtualizationTypes?: (VirtualizationType | (string & {}))[];
   InstanceRequirements?: InstanceRequirementsRequest;
   MaxResults?: number;
   NextToken?: string;
@@ -62041,8 +62042,8 @@ export type SpotPlacementScoresTargetCapacity = number;
 export type RegionNames = string[];
 export const RegionNames = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceRequirementsWithMetadataRequest {
-  ArchitectureTypes?: ArchitectureType[];
-  VirtualizationTypes?: VirtualizationType[];
+  ArchitectureTypes?: (ArchitectureType | (string & {}))[];
+  VirtualizationTypes?: (VirtualizationType | (string & {}))[];
   InstanceRequirements?: InstanceRequirementsRequest;
 }
 export const InstanceRequirementsWithMetadataRequest = /*@__PURE__*/ S.suspend(
@@ -67027,8 +67028,8 @@ export const ModifySubnetAttributeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifySubnetAttributeResponse>;
 export interface ModifyTrafficMirrorFilterNetworkServicesRequest {
   TrafficMirrorFilterId?: string;
-  AddNetworkServices?: TrafficMirrorNetworkService[];
-  RemoveNetworkServices?: TrafficMirrorNetworkService[];
+  AddNetworkServices?: (TrafficMirrorNetworkService | (string & {}))[];
+  RemoveNetworkServices?: (TrafficMirrorNetworkService | (string & {}))[];
   DryRun?: boolean;
 }
 export const ModifyTrafficMirrorFilterNetworkServicesRequest =
@@ -67097,7 +67098,7 @@ export interface ModifyTrafficMirrorFilterRuleRequest {
   DestinationCidrBlock?: string;
   SourceCidrBlock?: string;
   Description?: string;
-  RemoveFields?: TrafficMirrorFilterRuleField[];
+  RemoveFields?: (TrafficMirrorFilterRuleField | (string & {}))[];
   DryRun?: boolean;
 }
 export const ModifyTrafficMirrorFilterRuleRequest = /*@__PURE__*/ S.suspend(
@@ -67167,7 +67168,7 @@ export interface ModifyTrafficMirrorSessionRequest {
   SessionNumber?: number;
   VirtualNetworkId?: number;
   Description?: string;
-  RemoveFields?: TrafficMirrorSessionField[];
+  RemoveFields?: (TrafficMirrorSessionField | (string & {}))[];
   DryRun?: boolean;
 }
 export const ModifyTrafficMirrorSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -70890,7 +70891,7 @@ export interface ReportInstanceStatusRequest {
   Status?: ReportStatusType | (string & {});
   StartTime?: Date;
   EndTime?: Date;
-  ReasonCodes?: ReportInstanceReasonCodes[];
+  ReasonCodes?: (ReportInstanceReasonCodes | (string & {}))[];
   Description?: string | redacted.Redacted<string>;
 }
 export const ReportInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>

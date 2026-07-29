@@ -226,7 +226,7 @@ export const SentimentValue = /*@__PURE__*/ S.String;
 export type SentimentValueList = (SentimentValue | (string & {}))[];
 export const SentimentValueList = /*@__PURE__*/ S.Array(SentimentValue);
 export interface SentimentFilter {
-  Sentiments: SentimentValue[];
+  Sentiments: (SentimentValue | (string & {}))[];
   AbsoluteTimeRange?: AbsoluteTimeRange;
   RelativeTimeRange?: RelativeTimeRange;
   ParticipantRole?: ParticipantRole | (string & {});
@@ -1143,7 +1143,7 @@ export const PiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export interface ContentRedaction {
   RedactionType: RedactionType | (string & {});
   RedactionOutput: RedactionOutput | (string & {});
-  PiiEntityTypes?: PiiEntityType[];
+  PiiEntityTypes?: (PiiEntityType | (string & {}))[];
 }
 export const ContentRedaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1189,7 +1189,7 @@ export interface CallAnalyticsJobSettings {
   VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
   LanguageModelName?: string;
   ContentRedaction?: ContentRedaction;
-  LanguageOptions?: LanguageCode[];
+  LanguageOptions?: (LanguageCode | (string & {}))[];
   LanguageIdSettings?: { [key: string]: LanguageIdSettings | undefined };
   Summarization?: Summarization;
 }
@@ -1682,7 +1682,7 @@ export const ToxicityCategory = /*@__PURE__*/ S.String;
 export type ToxicityCategories = (ToxicityCategory | (string & {}))[];
 export const ToxicityCategories = /*@__PURE__*/ S.Array(ToxicityCategory);
 export interface ToxicityDetectionSettings {
-  ToxicityCategories: ToxicityCategory[];
+  ToxicityCategories: (ToxicityCategory | (string & {}))[];
 }
 export const ToxicityDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ToxicityCategories: ToxicityCategories }),
@@ -2560,7 +2560,7 @@ export const StartMedicalTranscriptionJobResponse = /*@__PURE__*/ S.suspend(
   identifier: "StartMedicalTranscriptionJobResponse",
 }) as any as S.Schema<StartMedicalTranscriptionJobResponse>;
 export interface Subtitles {
-  Formats?: SubtitleFormat[];
+  Formats?: (SubtitleFormat | (string & {}))[];
   OutputStartIndex?: number;
 }
 export const Subtitles = /*@__PURE__*/ S.suspend(() =>
@@ -2585,7 +2585,7 @@ export interface StartTranscriptionJobRequest {
   ContentRedaction?: ContentRedaction;
   IdentifyLanguage?: boolean;
   IdentifyMultipleLanguages?: boolean;
-  LanguageOptions?: LanguageCode[];
+  LanguageOptions?: (LanguageCode | (string & {}))[];
   Subtitles?: Subtitles;
   Tags?: Tag[];
   LanguageIdSettings?: { [key: string]: LanguageIdSettings | undefined };

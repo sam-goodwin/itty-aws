@@ -542,7 +542,7 @@ export interface WorkloadDiscoveryConfig {
   TrustedAdvisorIntegrationStatus?:
     | TrustedAdvisorIntegrationStatus
     | (string & {});
-  WorkloadResourceDefinition?: DefinitionType[];
+  WorkloadResourceDefinition?: (DefinitionType | (string & {}))[];
 }
 export const WorkloadDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

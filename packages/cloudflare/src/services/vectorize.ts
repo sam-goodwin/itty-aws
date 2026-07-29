@@ -530,7 +530,7 @@ export interface InsertIndexRequest {
   /** Behavior for ndjson parse failures. */
   unparsableBehavior?: IndexesInsertRequestUnparsableBehavior | (string & {});
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
-  body: string;
+  body: Blob | Uint8Array | ArrayBuffer | string;
 }
 export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -899,7 +899,7 @@ export interface UpsertIndexRequest {
   /** Behavior for ndjson parse failures. */
   unparsableBehavior?: IndexesUpsertRequestUnparsableBehavior | (string & {});
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
-  body: string;
+  body: Blob | Uint8Array | ArrayBuffer | string;
 }
 export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

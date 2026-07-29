@@ -90,11 +90,11 @@ export class SaasQuotaNotAllocated extends T.applyErrorMatchers(
 ) {}
 
 export type CreateRequestCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<CreateRequestCustomMetadataMap>;
 
 export type CreateRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
@@ -163,7 +163,7 @@ export interface CreateRequestSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: CreateRequestSslSettingsMinTlsVersion | (string & {});
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: CreateRequestSslSettingsTls13 | (string & {});
+  tls_1_3?: CreateRequestSslSettingsTls13 | (string & {});
 }
 export const CreateRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -175,7 +175,7 @@ export const CreateRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       CreateRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(CreateRequestSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(CreateRequestSslSettingsTls13),
   }),
 ).annotate({
   identifier: "CreateRequestSslSettings",
@@ -268,11 +268,11 @@ export const CreateCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomHostnameRequest>;
 
 export type CreateResponseCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<CreateResponseCustomMetadataMap>;
 
 export type CreateResponseOwnershipVerificationType = "txt";
@@ -407,7 +407,7 @@ export interface CreateResponseSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: CreateResponseSslSettingsMinTlsVersion;
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: CreateResponseSslSettingsTls13;
+  tls_1_3?: CreateResponseSslSettingsTls13;
 }
 export const CreateResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -419,7 +419,7 @@ export const CreateResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       CreateResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(CreateResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(CreateResponseSslSettingsTls13),
   }),
 ).annotate({
   identifier: "CreateResponseSslSettings",
@@ -841,11 +841,11 @@ export const GetCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomHostnameRequest>;
 
 export type GetResponseCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const GetResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<GetResponseCustomMetadataMap>;
 
 export type GetResponseOwnershipVerificationType = "txt";
@@ -976,7 +976,7 @@ export interface GetResponseSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: GetResponseSslSettingsMinTlsVersion;
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: GetResponseSslSettingsTls13;
+  tls_1_3?: GetResponseSslSettingsTls13;
 }
 export const GetResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -988,7 +988,7 @@ export const GetResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       GetResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(GetResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(GetResponseSslSettingsTls13),
   }),
 ).annotate({
   identifier: "GetResponseSslSettings",
@@ -1433,11 +1433,11 @@ export const ListCustomHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomHostnamesRequest>;
 
 export type ListResultItemCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemCustomMetadataMap>;
 
 export type ListResultItemOwnershipVerificationType = "txt";
@@ -1572,7 +1572,7 @@ export interface ListResultItemSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: ListResultItemSslSettingsMinTlsVersion;
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: ListResultItemSslSettingsTls13;
+  tls_1_3?: ListResultItemSslSettingsTls13;
 }
 export const ListResultItemSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1584,7 +1584,7 @@ export const ListResultItemSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       ListResultItemSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(ListResultItemSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(ListResultItemSslSettingsTls13),
   }),
 ).annotate({
   identifier: "ListResultItemSslSettings",
@@ -1861,11 +1861,11 @@ export const ListCustomHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomHostnamesResponse>;
 
 export type EditRequestCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<EditRequestCustomMetadataMap>;
 
 export type EditRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
@@ -1929,7 +1929,7 @@ export interface EditRequestSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: EditRequestSslSettingsMinTlsVersion | (string & {});
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: EditRequestSslSettingsTls13 | (string & {});
+  tls_1_3?: EditRequestSslSettingsTls13 | (string & {});
 }
 export const EditRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1941,7 +1941,7 @@ export const EditRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       EditRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(EditRequestSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(EditRequestSslSettingsTls13),
   }),
 ).annotate({
   identifier: "EditRequestSslSettings",
@@ -2038,11 +2038,11 @@ export const PatchCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCustomHostnameRequest>;
 
 export type EditResponseCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<EditResponseCustomMetadataMap>;
 
 export type EditResponseOwnershipVerificationType = "txt";
@@ -2177,7 +2177,7 @@ export interface EditResponseSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: EditResponseSslSettingsMinTlsVersion;
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: EditResponseSslSettingsTls13;
+  tls_1_3?: EditResponseSslSettingsTls13;
 }
 export const EditResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2189,7 +2189,7 @@ export const EditResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
     minTlsVersion: S.optional(
       EditResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls13: S.optional(EditResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
+    tls_1_3: S.optional(EditResponseSslSettingsTls13),
   }),
 ).annotate({
   identifier: "EditResponseSslSettings",
@@ -2480,12 +2480,12 @@ export const PutCertificatePackCertificateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutCertificatePackCertificateRequest>;
 
 export type CertificatePackCertificatesUpdateResponseCustomMetadataMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CertificatePackCertificatesUpdateResponseCustomMetadataMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseCustomMetadataMap>;
 
 export type CertificatePackCertificatesUpdateResponseOwnershipVerificationType =
@@ -2655,7 +2655,7 @@ export interface CertificatePackCertificatesUpdateResponseSslSettings {
   /** The minimum TLS version supported. */
   minTlsVersion?: CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion;
   /** Whether or not TLS 1.3 is enabled. */
-  tls13?: CertificatePackCertificatesUpdateResponseSslSettingsTls13;
+  tls_1_3?: CertificatePackCertificatesUpdateResponseSslSettingsTls13;
 }
 export const CertificatePackCertificatesUpdateResponseSslSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -2676,10 +2676,8 @@ export const CertificatePackCertificatesUpdateResponseSslSettings =
           T.Body("min_tls_version"),
         ),
       ),
-      tls13: S.optional(
-        CertificatePackCertificatesUpdateResponseSslSettingsTls13.pipe(
-          T.Body("tls_1_3"),
-        ),
+      tls_1_3: S.optional(
+        CertificatePackCertificatesUpdateResponseSslSettingsTls13,
       ),
     }),
   ).annotate({

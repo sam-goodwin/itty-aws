@@ -506,8 +506,8 @@ export interface CreateQuoteInput {
   CountryCode: string;
   RequestedCapacities: QuoteCapacity[];
   RequestedConstraints?: QuoteConstraint[];
-  RequestedPaymentOptions?: PaymentOption[];
-  RequestedPaymentTerms?: PaymentTerm[];
+  RequestedPaymentOptions?: (PaymentOption | (string & {}))[];
+  RequestedPaymentTerms?: (PaymentTerm | (string & {}))[];
   Description?: string | redacted.Redacted<string>;
 }
 export const CreateQuoteInput = /*@__PURE__*/ S.suspend(() =>
@@ -1166,7 +1166,7 @@ export const AWSServiceNameList = /*@__PURE__*/ S.Array(AWSServiceName);
 export interface InstancesToExclude {
   Instances?: string[];
   AccountIds?: string[];
-  Services?: AWSServiceName[];
+  Services?: (AWSServiceName | (string & {}))[];
 }
 export const InstancesToExclude = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1717,7 +1717,7 @@ export interface ListAssetInstancesInput {
   AssetIdFilter?: string[];
   InstanceTypeFilter?: string[];
   AccountIdFilter?: string[];
-  AwsServiceFilter?: AWSServiceName[];
+  AwsServiceFilter?: (AWSServiceName | (string & {}))[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1805,8 +1805,8 @@ export interface ListAssetsInput {
   HostIdFilter?: string[];
   MaxResults?: number;
   NextToken?: string;
-  StatusFilter?: AssetState[];
-  AssetTypeFilter?: AssetType[];
+  StatusFilter?: (AssetState | (string & {}))[];
+  AssetTypeFilter?: (AssetType | (string & {}))[];
 }
 export const ListAssetsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1973,7 +1973,7 @@ export interface ListCapacityTasksInput {
   OutpostIdentifierFilter?: string;
   MaxResults?: number;
   NextToken?: string;
-  CapacityTaskStatusFilter?: CapacityTaskStatus[];
+  CapacityTaskStatusFilter?: (CapacityTaskStatus | (string & {}))[];
 }
 export const ListCapacityTasksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2048,8 +2048,8 @@ export const EC2FamilyList = /*@__PURE__*/ S.Array(S.String);
 export interface ListCatalogItemsInput {
   NextToken?: string;
   MaxResults?: number;
-  ItemClassFilter?: CatalogItemClass[];
-  SupportedStorageFilter?: SupportedStorageEnum[];
+  ItemClassFilter?: (CatalogItemClass | (string & {}))[];
+  SupportedStorageFilter?: (SupportedStorageEnum | (string & {}))[];
   EC2FamilyFilter?: string[];
 }
 export const ListCatalogItemsInput = /*@__PURE__*/ S.suspend(() =>
@@ -2698,8 +2698,8 @@ export interface UpdateQuoteInput {
   CountryCode?: string;
   RequestedCapacities?: QuoteCapacity[];
   RequestedConstraints?: QuoteConstraint[];
-  RequestedPaymentOptions?: PaymentOption[];
-  RequestedPaymentTerms?: PaymentTerm[];
+  RequestedPaymentOptions?: (PaymentOption | (string & {}))[];
+  RequestedPaymentTerms?: (PaymentTerm | (string & {}))[];
   Description?: string | redacted.Redacted<string>;
 }
 export const UpdateQuoteInput = /*@__PURE__*/ S.suspend(() =>

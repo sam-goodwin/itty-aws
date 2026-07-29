@@ -2062,7 +2062,7 @@ export const ListChildrenResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateAccountStates = (CreateAccountState | (string & {}))[];
 export const CreateAccountStates = /*@__PURE__*/ S.Array(CreateAccountState);
 export interface ListCreateAccountStatusRequest {
-  States?: CreateAccountState[];
+  States?: (CreateAccountState | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }

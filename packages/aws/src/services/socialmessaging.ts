@@ -351,7 +351,7 @@ export type MetaFlowId = string;
 export interface CreateWhatsAppFlowInput {
   id: string;
   flowName: string;
-  categories: MetaFlowCategory[];
+  categories: (MetaFlowCategory | (string & {}))[];
   flowJson?: Uint8Array;
   publish?: boolean;
   cloneFlowId?: string;
@@ -1615,7 +1615,7 @@ export interface UpdateWhatsAppFlowInput {
   id: string;
   flowId: string;
   flowName?: string;
-  categories?: MetaFlowCategory[];
+  categories?: (MetaFlowCategory | (string & {}))[];
 }
 export const UpdateWhatsAppFlowInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

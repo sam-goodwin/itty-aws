@@ -2110,7 +2110,7 @@ export interface ListServiceLevelObjectivesInput {
   DependencyConfig?: DependencyConfig;
   MaxResults?: number;
   NextToken?: string;
-  MetricSourceTypes?: MetricSourceType[];
+  MetricSourceTypes?: (MetricSourceType | (string & {}))[];
   IncludeLinkedAccounts?: boolean;
   SloOwnerAwsAccountId?: string;
   MetricSource?: MetricSource;

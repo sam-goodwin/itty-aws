@@ -173,7 +173,10 @@ export const RecommendationPreferenceNames = /*@__PURE__*/ S.Array(
 export interface DeleteRecommendationPreferencesRequest {
   resourceType: ResourceType | (string & {});
   scope?: Scope;
-  recommendationPreferenceNames: RecommendationPreferenceName[];
+  recommendationPreferenceNames: (
+    | RecommendationPreferenceName
+    | (string & {})
+  )[];
 }
 export const DeleteRecommendationPreferencesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -431,7 +434,7 @@ export const CpuVendorArchitectures = /*@__PURE__*/ S.Array(
   CpuVendorArchitecture,
 );
 export interface RecommendationPreferences {
-  cpuVendorArchitectures?: CpuVendorArchitecture[];
+  cpuVendorArchitectures?: (CpuVendorArchitecture | (string & {}))[];
 }
 export const RecommendationPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cpuVendorArchitectures: S.optional(CpuVendorArchitectures) }),
@@ -441,7 +444,7 @@ export const RecommendationPreferences = /*@__PURE__*/ S.suspend(() =>
 export interface ExportAutoScalingGroupRecommendationsRequest {
   accountIds?: string[];
   filters?: Filter[];
-  fieldsToExport?: ExportableAutoScalingGroupField[];
+  fieldsToExport?: (ExportableAutoScalingGroupField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -539,7 +542,7 @@ export const ExportableVolumeFields = /*@__PURE__*/ S.Array(
 export interface ExportEBSVolumeRecommendationsRequest {
   accountIds?: string[];
   filters?: EBSFilter[];
-  fieldsToExport?: ExportableVolumeField[];
+  fieldsToExport?: (ExportableVolumeField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -656,7 +659,7 @@ export const ExportableInstanceFields = /*@__PURE__*/ S.Array(
 export interface ExportEC2InstanceRecommendationsRequest {
   accountIds?: string[];
   filters?: Filter[];
-  fieldsToExport?: ExportableInstanceField[];
+  fieldsToExport?: (ExportableInstanceField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -754,7 +757,7 @@ export const ExportableECSServiceFields = /*@__PURE__*/ S.Array(
 export interface ExportECSServiceRecommendationsRequest {
   accountIds?: string[];
   filters?: ECSServiceRecommendationFilter[];
-  fieldsToExport?: ExportableECSServiceField[];
+  fieldsToExport?: (ExportableECSServiceField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -853,7 +856,7 @@ export const ExportableIdleFields = /*@__PURE__*/ S.Array(ExportableIdleField);
 export interface ExportIdleRecommendationsRequest {
   accountIds?: string[];
   filters?: IdleRecommendationFilter[];
-  fieldsToExport?: ExportableIdleField[];
+  fieldsToExport?: (ExportableIdleField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -950,7 +953,7 @@ export const ExportableLambdaFunctionFields = /*@__PURE__*/ S.Array(
 export interface ExportLambdaFunctionRecommendationsRequest {
   accountIds?: string[];
   filters?: LambdaFunctionRecommendationFilter[];
-  fieldsToExport?: ExportableLambdaFunctionField[];
+  fieldsToExport?: (ExportableLambdaFunctionField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -1039,7 +1042,7 @@ export const ExportableLicenseFields = /*@__PURE__*/ S.Array(
 export interface ExportLicenseRecommendationsRequest {
   accountIds?: string[];
   filters?: LicenseRecommendationFilter[];
-  fieldsToExport?: ExportableLicenseField[];
+  fieldsToExport?: (ExportableLicenseField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;
@@ -1186,7 +1189,7 @@ export const ExportableRDSDBFields =
 export interface ExportRDSDatabaseRecommendationsRequest {
   accountIds?: string[];
   filters?: RDSDBRecommendationFilter[];
-  fieldsToExport?: ExportableRDSDBField[];
+  fieldsToExport?: (ExportableRDSDBField | (string & {}))[];
   s3DestinationConfig: S3DestinationConfig;
   fileFormat?: FileFormat | (string & {});
   includeMemberAccounts?: boolean;

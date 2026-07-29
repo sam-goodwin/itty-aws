@@ -381,8 +381,14 @@ export type ConnectionTestingMethod =
 export const ConnectionTestingMethod = /*@__PURE__*/ S.String;
 
 export interface EinvoiceDeliveryPreference {
-  EinvoiceDeliveryDocumentTypes: EinvoiceDeliveryDocumentType[];
-  EinvoiceDeliveryAttachmentTypes?: EinvoiceDeliveryAttachmentType[];
+  EinvoiceDeliveryDocumentTypes: (
+    | EinvoiceDeliveryDocumentType
+    | (string & {})
+  )[];
+  EinvoiceDeliveryAttachmentTypes?: (
+    | EinvoiceDeliveryAttachmentType
+    | (string & {})
+  )[];
   Protocol: Protocol | (string & {});
   PurchaseOrderDataSources: PurchaseOrderDataSource[];
   ConnectionTestingMethod: ConnectionTestingMethod | (string & {});

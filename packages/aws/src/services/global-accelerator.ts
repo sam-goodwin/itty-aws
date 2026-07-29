@@ -648,7 +648,7 @@ export const CustomRoutingProtocols = /*@__PURE__*/ S.Array(
 export interface CustomRoutingDestinationConfiguration {
   FromPort: number;
   ToPort: number;
-  Protocols: CustomRoutingProtocol[];
+  Protocols: (CustomRoutingProtocol | (string & {}))[];
 }
 export const CustomRoutingDestinationConfiguration = /*@__PURE__*/ S.suspend(
   () =>

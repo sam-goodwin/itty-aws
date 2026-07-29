@@ -582,7 +582,7 @@ export interface CreateSubscriberRequest {
   subscriberName: string;
   subscriberDescription?: string;
   sources: LogSourceResource[];
-  accessTypes?: AccessType[];
+  accessTypes?: (AccessType | (string & {}))[];
   tags?: Tag[];
 }
 export const CreateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>

@@ -6391,7 +6391,7 @@ export interface ExportMetadataModelAssessmentMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
   FileName?: string;
-  AssessmentReportTypes?: AssessmentReportType[];
+  AssessmentReportTypes?: (AssessmentReportType | (string & {}))[];
 }
 export const ExportMetadataModelAssessmentMessage = /*@__PURE__*/ S.suspend(
   () =>

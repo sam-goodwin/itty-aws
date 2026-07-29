@@ -3487,8 +3487,8 @@ export interface GetNetworkRoutesRequest {
   SubnetOfMatches?: string[];
   SupernetOfMatches?: string[];
   PrefixListIds?: string[];
-  States?: RouteState[];
-  Types?: RouteType[];
+  States?: (RouteState | (string & {}))[];
+  Types?: (RouteType | (string & {}))[];
   DestinationFilters?: { [key: string]: string[] | undefined };
 }
 export const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>

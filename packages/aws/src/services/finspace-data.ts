@@ -456,7 +456,7 @@ export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
 export interface CreatePermissionGroupRequest {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
-  applicationPermissions: ApplicationPermission[];
+  applicationPermissions: (ApplicationPermission | (string & {}))[];
   clientToken?: string;
 }
 export const CreatePermissionGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1720,7 +1720,7 @@ export interface UpdatePermissionGroupRequest {
   permissionGroupId: string;
   name?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
-  applicationPermissions?: ApplicationPermission[];
+  applicationPermissions?: (ApplicationPermission | (string & {}))[];
   clientToken?: string;
 }
 export const UpdatePermissionGroupRequest = /*@__PURE__*/ S.suspend(() =>

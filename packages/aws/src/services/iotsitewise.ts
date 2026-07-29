@@ -338,11 +338,11 @@ export interface BatchGetAssetPropertyAggregatesEntry {
   assetId?: string;
   propertyId?: string;
   propertyAlias?: string;
-  aggregateTypes: AggregateType[];
+  aggregateTypes: (AggregateType | (string & {}))[];
   resolution: string;
   startDate: Date;
   endDate: Date;
-  qualities?: Quality[];
+  qualities?: (Quality | (string & {}))[];
   timeOrdering?: TimeOrdering | (string & {});
 }
 export const BatchGetAssetPropertyAggregatesEntry = /*@__PURE__*/ S.suspend(
@@ -715,7 +715,7 @@ export interface BatchGetAssetPropertyValueHistoryEntry {
   propertyAlias?: string;
   startDate?: Date;
   endDate?: Date;
-  qualities?: Quality[];
+  qualities?: (Quality | (string & {}))[];
   timeOrdering?: TimeOrdering | (string & {});
 }
 export const BatchGetAssetPropertyValueHistoryEntry = /*@__PURE__*/ S.suspend(
@@ -1585,7 +1585,7 @@ export const ColumnName = /*@__PURE__*/ S.String;
 export type ColumnNames = (ColumnName | (string & {}))[];
 export const ColumnNames = /*@__PURE__*/ S.Array(ColumnName);
 export interface Csv {
-  columnNames: ColumnName[];
+  columnNames: (ColumnName | (string & {}))[];
 }
 export const Csv = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnNames: ColumnNames }),
@@ -4349,9 +4349,9 @@ export interface GetAssetPropertyAggregatesRequest {
   assetId?: string;
   propertyId?: string;
   propertyAlias?: string;
-  aggregateTypes: AggregateType[];
+  aggregateTypes: (AggregateType | (string & {}))[];
   resolution: string;
-  qualities?: Quality[];
+  qualities?: (Quality | (string & {}))[];
   startDate: Date;
   endDate: Date;
   timeOrdering?: TimeOrdering | (string & {});
@@ -4438,7 +4438,7 @@ export interface GetAssetPropertyValueHistoryRequest {
   propertyAlias?: string;
   startDate?: Date;
   endDate?: Date;
-  qualities?: Quality[];
+  qualities?: (Quality | (string & {}))[];
   timeOrdering?: TimeOrdering | (string & {});
   nextToken?: string;
   maxResults?: number;
@@ -5078,7 +5078,7 @@ export const ListAssetModelPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAssetModelsTypeFilter = (AssetModelType | (string & {}))[];
 export const ListAssetModelsTypeFilter = /*@__PURE__*/ S.Array(AssetModelType);
 export interface ListAssetModelsRequest {
-  assetModelTypes?: AssetModelType[];
+  assetModelTypes?: (AssetModelType | (string & {}))[];
   nextToken?: string;
   maxResults?: number;
   assetModelVersion?: string;

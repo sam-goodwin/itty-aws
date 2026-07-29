@@ -4078,7 +4078,7 @@ export const ServiceUpdateStatusList =
   /*@__PURE__*/ S.Array(ServiceUpdateStatus);
 export interface DescribeServiceUpdatesMessage {
   ServiceUpdateName?: string;
-  ServiceUpdateStatus?: ServiceUpdateStatus[];
+  ServiceUpdateStatus?: (ServiceUpdateStatus | (string & {}))[];
   MaxRecords?: number;
   Marker?: string;
 }
@@ -4231,9 +4231,9 @@ export interface DescribeUpdateActionsMessage {
   ReplicationGroupIds?: string[];
   CacheClusterIds?: string[];
   Engine?: string;
-  ServiceUpdateStatus?: ServiceUpdateStatus[];
+  ServiceUpdateStatus?: (ServiceUpdateStatus | (string & {}))[];
   ServiceUpdateTimeRange?: TimeRangeFilter;
-  UpdateActionStatus?: UpdateActionStatus[];
+  UpdateActionStatus?: (UpdateActionStatus | (string & {}))[];
   ShowNodeLevelUpdateStatus?: boolean;
   MaxRecords?: number;
   Marker?: string;

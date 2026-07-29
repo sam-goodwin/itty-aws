@@ -2146,7 +2146,7 @@ export interface AudioDescription {
   Name?: string;
   RemixSettings?: RemixSettings;
   StreamName?: string;
-  AudioDashRoles?: DashRoleAudio[];
+  AudioDashRoles?: (DashRoleAudio | (string & {}))[];
   DvbDashAccessibility?: DvbDashAccessibility | (string & {});
 }
 export const AudioDescription = /*@__PURE__*/ S.suspend(() =>
@@ -2761,7 +2761,7 @@ export interface CaptionDescription {
   LanguageCode?: string;
   LanguageDescription?: string;
   Name?: string;
-  CaptionDashRoles?: DashRoleCaption[];
+  CaptionDashRoles?: (DashRoleCaption | (string & {}))[];
   DvbDashAccessibility?: DvbDashAccessibility | (string & {});
 }
 export const CaptionDescription = /*@__PURE__*/ S.suspend(() =>
@@ -3423,7 +3423,7 @@ export type HlsTsFileMode = "SEGMENTED_FILES" | "SINGLE_FILE";
 export const HlsTsFileMode = /*@__PURE__*/ S.String;
 
 export interface HlsGroupSettings {
-  AdMarkers?: HlsAdMarkers[];
+  AdMarkers?: (HlsAdMarkers | (string & {}))[];
   BaseUrlContent?: string;
   BaseUrlContent1?: string;
   BaseUrlManifest?: string;
@@ -3801,7 +3801,7 @@ export type IncludeFillerNalUnits = "AUTO" | "DROP" | "INCLUDE";
 export const IncludeFillerNalUnits = /*@__PURE__*/ S.String;
 
 export interface RtmpGroupSettings {
-  AdMarkers?: RtmpAdMarkers[];
+  AdMarkers?: (RtmpAdMarkers | (string & {}))[];
   AuthenticationScheme?: AuthenticationScheme | (string & {});
   CacheFullBehavior?: RtmpCacheFullBehavior | (string & {});
   CacheLength?: number;
@@ -15871,7 +15871,7 @@ export const __listOfChannelPipelineIdToRestart = /*@__PURE__*/ S.Array(
 );
 export interface RestartChannelPipelinesRequest {
   ChannelId: string;
-  PipelineIds?: ChannelPipelineIdToRestart[];
+  PipelineIds?: (ChannelPipelineIdToRestart | (string & {}))[];
 }
 export const RestartChannelPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

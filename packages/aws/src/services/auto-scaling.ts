@@ -738,10 +738,10 @@ export const BaselinePerformanceFactorsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceRequirements {
   VCpuCount?: VCpuCountRequest;
   MemoryMiB?: MemoryMiBRequest;
-  CpuManufacturers?: CpuManufacturer[];
+  CpuManufacturers?: (CpuManufacturer | (string & {}))[];
   MemoryGiBPerVCpu?: MemoryGiBPerVCpuRequest;
   ExcludedInstanceTypes?: string[];
-  InstanceGenerations?: InstanceGeneration[];
+  InstanceGenerations?: (InstanceGeneration | (string & {}))[];
   SpotMaxPricePercentageOverLowestPrice?: number;
   MaxSpotPriceAsPercentageOfOptimalOnDemandPrice?: number;
   OnDemandMaxPricePercentageOverLowestPrice?: number;
@@ -750,13 +750,13 @@ export interface InstanceRequirements {
   RequireHibernateSupport?: boolean;
   NetworkInterfaceCount?: NetworkInterfaceCountRequest;
   LocalStorage?: LocalStorage | (string & {});
-  LocalStorageTypes?: LocalStorageType[];
+  LocalStorageTypes?: (LocalStorageType | (string & {}))[];
   TotalLocalStorageGB?: TotalLocalStorageGBRequest;
   BaselineEbsBandwidthMbps?: BaselineEbsBandwidthMbpsRequest;
-  AcceleratorTypes?: AcceleratorType[];
+  AcceleratorTypes?: (AcceleratorType | (string & {}))[];
   AcceleratorCount?: AcceleratorCountRequest;
-  AcceleratorManufacturers?: AcceleratorManufacturer[];
-  AcceleratorNames?: AcceleratorName[];
+  AcceleratorManufacturers?: (AcceleratorManufacturer | (string & {}))[];
+  AcceleratorNames?: (AcceleratorName | (string & {}))[];
   AcceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiBRequest;
   NetworkBandwidthGbps?: NetworkBandwidthGbpsRequest;
   AllowedInstanceTypes?: string[];

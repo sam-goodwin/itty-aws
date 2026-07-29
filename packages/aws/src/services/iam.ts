@@ -2662,7 +2662,7 @@ export const EntityListType = /*@__PURE__*/ S.Array(EntityType);
 export type MaxItemsType = number;
 export type MarkerType = string;
 export interface GetAccountAuthorizationDetailsRequest {
-  Filter?: EntityType[];
+  Filter?: (EntityType | (string & {}))[];
   MaxItems?: number;
   Marker?: string;
 }

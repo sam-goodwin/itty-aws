@@ -1311,9 +1311,9 @@ export const ProtectionGroupAggregationFilters = /*@__PURE__*/ S.Array(
 );
 export interface InclusionProtectionGroupFilters {
   ProtectionGroupIds?: string[];
-  Patterns?: ProtectionGroupPattern[];
-  ResourceTypes?: ProtectedResourceType[];
-  Aggregations?: ProtectionGroupAggregation[];
+  Patterns?: (ProtectionGroupPattern | (string & {}))[];
+  ResourceTypes?: (ProtectedResourceType | (string & {}))[];
+  Aggregations?: (ProtectionGroupAggregation | (string & {}))[];
 }
 export const InclusionProtectionGroupFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1370,7 +1370,7 @@ export const ProtectionNameFilters = /*@__PURE__*/ S.Array(S.String);
 export interface InclusionProtectionFilters {
   ResourceArns?: string[];
   ProtectionNames?: string[];
-  ResourceTypes?: ProtectedResourceType[];
+  ResourceTypes?: (ProtectedResourceType | (string & {}))[];
 }
 export const InclusionProtectionFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

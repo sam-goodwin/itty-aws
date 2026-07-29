@@ -3437,7 +3437,7 @@ export interface RepositoryTrigger {
   destinationArn: string;
   customData?: string;
   branches?: string[];
-  events: RepositoryTriggerEventEnum[];
+  events: (RepositoryTriggerEventEnum | (string & {}))[];
 }
 export const RepositoryTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

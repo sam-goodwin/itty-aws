@@ -976,7 +976,7 @@ export interface ListAssignmentsForHITRequest {
   HITId: string;
   NextToken?: string;
   MaxResults?: number;
-  AssignmentStatuses?: AssignmentStatus[];
+  AssignmentStatuses?: (AssignmentStatus | (string & {}))[];
 }
 export const ListAssignmentsForHITRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1304,7 +1304,7 @@ export type ReviewPolicyLevelList = (ReviewPolicyLevel | (string & {}))[];
 export const ReviewPolicyLevelList = /*@__PURE__*/ S.Array(ReviewPolicyLevel);
 export interface ListReviewPolicyResultsForHITRequest {
   HITId: string;
-  PolicyLevels?: ReviewPolicyLevel[];
+  PolicyLevels?: (ReviewPolicyLevel | (string & {}))[];
   RetrieveActions?: boolean;
   RetrieveResults?: boolean;
   NextToken?: string;
@@ -1676,7 +1676,7 @@ export interface NotificationSpecification {
   Destination: string;
   Transport: NotificationTransport | (string & {});
   Version: string;
-  EventTypes: EventType[];
+  EventTypes: (EventType | (string & {}))[];
 }
 export const NotificationSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -1495,7 +1495,7 @@ export type DatasourcePackageList = (DatasourcePackage | (string & {}))[];
 export const DatasourcePackageList = /*@__PURE__*/ S.Array(DatasourcePackage);
 export interface UpdateDatasourcePackagesRequest {
   GraphArn: string;
-  DatasourcePackages: DatasourcePackage[];
+  DatasourcePackages: (DatasourcePackage | (string & {}))[];
 }
 export const UpdateDatasourcePackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -175,7 +175,7 @@ export const GuardrailContentQualifierList = /*@__PURE__*/ S.Array(
 );
 export interface GuardrailTextBlock {
   text: string;
-  qualifiers?: GuardrailContentQualifier[];
+  qualifiers?: (GuardrailContentQualifier | (string & {}))[];
 }
 export const GuardrailTextBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1316,7 +1316,7 @@ export const GuardrailConverseContentQualifierList = /*@__PURE__*/ S.Array(
 );
 export interface GuardrailConverseTextBlock {
   text: string;
-  qualifiers?: GuardrailConverseContentQualifier[];
+  qualifiers?: (GuardrailConverseContentQualifier | (string & {}))[];
 }
 export const GuardrailConverseTextBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

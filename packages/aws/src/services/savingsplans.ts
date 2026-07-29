@@ -465,7 +465,7 @@ export interface DescribeSavingsPlansRequest {
   savingsPlanIds?: string[];
   nextToken?: string;
   maxResults?: number;
-  states?: SavingsPlanState[];
+  states?: (SavingsPlanState | (string & {}))[];
   filters?: SavingsPlanFilter[];
 }
 export const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
@@ -625,10 +625,10 @@ export const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ S.Array(
 export type PageSize = number;
 export interface DescribeSavingsPlansOfferingRatesRequest {
   savingsPlanOfferingIds?: string[];
-  savingsPlanPaymentOptions?: SavingsPlanPaymentOption[];
-  savingsPlanTypes?: SavingsPlanType[];
-  products?: SavingsPlanProductType[];
-  serviceCodes?: SavingsPlanRateServiceCode[];
+  savingsPlanPaymentOptions?: (SavingsPlanPaymentOption | (string & {}))[];
+  savingsPlanTypes?: (SavingsPlanType | (string & {}))[];
+  products?: (SavingsPlanProductType | (string & {}))[];
+  serviceCodes?: (SavingsPlanRateServiceCode | (string & {}))[];
   usageTypes?: string[];
   operations?: string[];
   filters?: SavingsPlanOfferingRateFilterElement[];
@@ -775,11 +775,11 @@ export const SavingsPlanOfferingFiltersList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeSavingsPlansOfferingsRequest {
   offeringIds?: string[];
-  paymentOptions?: SavingsPlanPaymentOption[];
+  paymentOptions?: (SavingsPlanPaymentOption | (string & {}))[];
   productType?: SavingsPlanProductType | (string & {});
-  planTypes?: SavingsPlanType[];
+  planTypes?: (SavingsPlanType | (string & {}))[];
   durations?: number[];
-  currencies?: CurrencyCode[];
+  currencies?: (CurrencyCode | (string & {}))[];
   descriptions?: string[];
   serviceCodes?: string[];
   usageTypes?: string[];

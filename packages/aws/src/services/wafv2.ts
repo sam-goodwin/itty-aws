@@ -793,7 +793,7 @@ export const ForwardedIPConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForwardedIPConfig",
 }) as any as S.Schema<ForwardedIPConfig>;
 export interface GeoMatchStatement {
-  CountryCodes?: CountryCode[];
+  CountryCodes?: (CountryCode | (string & {}))[];
   ForwardedIPConfig?: ForwardedIPConfig;
 }
 export const GeoMatchStatement = /*@__PURE__*/ S.suspend(() =>

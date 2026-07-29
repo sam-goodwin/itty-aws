@@ -703,7 +703,7 @@ export const RuleVerdictValueList = /*@__PURE__*/ S.Array(RuleVerdict);
 export interface RuleVerdictExpression {
   Evaluate: RuleVerdictToEvaluate;
   Operator: RuleVerdictOperator | (string & {});
-  Values: RuleVerdict[];
+  Values: (RuleVerdict | (string & {}))[];
 }
 export const RuleVerdictExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -724,7 +724,7 @@ export type RuleDmarcValueList = (RuleDmarcPolicy | (string & {}))[];
 export const RuleDmarcValueList = /*@__PURE__*/ S.Array(RuleDmarcPolicy);
 export interface RuleDmarcExpression {
   Operator: RuleDmarcOperator | (string & {});
-  Values: RuleDmarcPolicy[];
+  Values: (RuleDmarcPolicy | (string & {}))[];
 }
 export const RuleDmarcExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Operator: RuleDmarcOperator, Values: RuleDmarcValueList }),

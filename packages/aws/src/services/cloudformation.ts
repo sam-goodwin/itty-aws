@@ -782,7 +782,7 @@ export interface CreateChangeSetInput {
   TemplateURL?: string;
   UsePreviousTemplate?: boolean;
   Parameters?: Parameter[];
-  Capabilities?: Capability[];
+  Capabilities?: (Capability | (string & {}))[];
   ResourceTypes?: string[];
   RoleARN?: string;
   RollbackConfiguration?: RollbackConfiguration;
@@ -935,7 +935,7 @@ export interface CreateStackInput {
   RollbackConfiguration?: RollbackConfiguration;
   TimeoutInMinutes?: number;
   NotificationARNs?: string[];
-  Capabilities?: Capability[];
+  Capabilities?: (Capability | (string & {}))[];
   ResourceTypes?: string[];
   RoleARN?: string;
   OnFailure?: OnFailure | (string & {});
@@ -1221,7 +1221,7 @@ export interface CreateStackSetInput {
   TemplateURL?: string;
   StackId?: string;
   Parameters?: Parameter[];
-  Capabilities?: Capability[];
+  Capabilities?: (Capability | (string & {}))[];
   Tags?: Tag[];
   AdministrationRoleARN?: string;
   ExecutionRoleName?: string;
@@ -2890,7 +2890,10 @@ export const StackResourceDriftStatusFilters = /*@__PURE__*/ S.Array(
 export type BoxedMaxResults = number;
 export interface DescribeStackResourceDriftsInput {
   StackName?: string;
-  StackResourceDriftStatusFilters?: StackResourceDriftStatus[];
+  StackResourceDriftStatusFilters?: (
+    | StackResourceDriftStatus
+    | (string & {})
+  )[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -4779,7 +4782,10 @@ export interface ListStackInstanceResourceDriftsInput {
   StackSetName?: string;
   NextToken?: string;
   MaxResults?: number;
-  StackInstanceResourceDriftStatuses?: StackResourceDriftStatus[];
+  StackInstanceResourceDriftStatuses?: (
+    | StackResourceDriftStatus
+    | (string & {})
+  )[];
   StackInstanceAccount?: string;
   StackInstanceRegion?: string;
   OperationId?: string;
@@ -5073,7 +5079,7 @@ export const StackRefactorExecutionStatusFilter = /*@__PURE__*/ S.Array(
   StackRefactorExecutionStatus,
 );
 export interface ListStackRefactorsInput {
-  ExecutionStatusFilter?: StackRefactorExecutionStatus[];
+  ExecutionStatusFilter?: (StackRefactorExecutionStatus | (string & {}))[];
   NextToken?: string;
   MaxResults?: number;
 }
@@ -5221,7 +5227,7 @@ export type StackStatusFilter = (StackStatus | (string & {}))[];
 export const StackStatusFilter = /*@__PURE__*/ S.Array(StackStatus);
 export interface ListStacksInput {
   NextToken?: string;
-  StackStatusFilter?: StackStatus[];
+  StackStatusFilter?: (StackStatus | (string & {}))[];
 }
 export const ListStacksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6316,7 +6322,7 @@ export interface UpdateStackInput {
   StackPolicyDuringUpdateBody?: string;
   StackPolicyDuringUpdateURL?: string;
   Parameters?: Parameter[];
-  Capabilities?: Capability[];
+  Capabilities?: (Capability | (string & {}))[];
   ResourceTypes?: string[];
   RoleARN?: string;
   RollbackConfiguration?: RollbackConfiguration;
@@ -6423,7 +6429,7 @@ export interface UpdateStackSetInput {
   TemplateURL?: string;
   UsePreviousTemplate?: boolean;
   Parameters?: Parameter[];
-  Capabilities?: Capability[];
+  Capabilities?: (Capability | (string & {}))[];
   Tags?: Tag[];
   OperationPreferences?: StackSetOperationPreferences;
   AdministrationRoleARN?: string;

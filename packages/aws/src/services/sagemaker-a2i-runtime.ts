@@ -290,7 +290,7 @@ export const ContentClassifier = /*@__PURE__*/ S.String;
 export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
-  ContentClassifiers?: ContentClassifier[];
+  ContentClassifiers?: (ContentClassifier | (string & {}))[];
 }
 export const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),

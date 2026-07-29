@@ -620,7 +620,7 @@ export interface AdminCreateUserRequest {
   TemporaryPassword?: string | redacted.Redacted<string>;
   ForceAliasCreation?: boolean;
   MessageAction?: MessageActionType | (string & {});
-  DesiredDeliveryMediums?: DeliveryMediumType[];
+  DesiredDeliveryMediums?: (DeliveryMediumType | (string & {}))[];
   ClientMetadata?: { [key: string]: string | undefined };
 }
 export const AdminCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2548,7 +2548,7 @@ export type AllowedFirstAuthFactorsListType = (
 export const AllowedFirstAuthFactorsListType =
   /*@__PURE__*/ S.Array(AuthFactorType);
 export interface SignInPolicyType {
-  AllowedFirstAuthFactors?: AuthFactorType[];
+  AllowedFirstAuthFactors?: (AuthFactorType | (string & {}))[];
 }
 export const SignInPolicyType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2737,7 +2737,10 @@ export type AttributesRequireVerificationBeforeUpdateType = (
 export const AttributesRequireVerificationBeforeUpdateType =
   /*@__PURE__*/ S.Array(VerifiedAttributeType);
 export interface UserAttributeUpdateSettingsType {
-  AttributesRequireVerificationBeforeUpdate?: VerifiedAttributeType[];
+  AttributesRequireVerificationBeforeUpdate?: (
+    | VerifiedAttributeType
+    | (string & {})
+  )[];
 }
 export const UserAttributeUpdateSettingsType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2936,9 +2939,9 @@ export interface CreateUserPoolRequest {
   Policies?: UserPoolPolicyType;
   DeletionProtection?: DeletionProtectionType | (string & {});
   LambdaConfig?: LambdaConfigType;
-  AutoVerifiedAttributes?: VerifiedAttributeType[];
-  AliasAttributes?: AliasAttributeType[];
-  UsernameAttributes?: UsernameAttributeType[];
+  AutoVerifiedAttributes?: (VerifiedAttributeType | (string & {}))[];
+  AliasAttributes?: (AliasAttributeType | (string & {}))[];
+  UsernameAttributes?: (UsernameAttributeType | (string & {}))[];
   SmsVerificationMessage?: string;
   EmailVerificationMessage?: string;
   EmailVerificationSubject?: string;
@@ -3204,12 +3207,12 @@ export interface CreateUserPoolClientRequest {
   TokenValidityUnits?: TokenValidityUnitsType;
   ReadAttributes?: string[];
   WriteAttributes?: string[];
-  ExplicitAuthFlows?: ExplicitAuthFlowsType[];
+  ExplicitAuthFlows?: (ExplicitAuthFlowsType | (string & {}))[];
   SupportedIdentityProviders?: string[];
   CallbackURLs?: string[];
   LogoutURLs?: string[];
   DefaultRedirectURI?: string;
-  AllowedOAuthFlows?: OAuthFlowType[];
+  AllowedOAuthFlows?: (OAuthFlowType | (string & {}))[];
   AllowedOAuthScopes?: string[];
   AllowedOAuthFlowsUserPoolClient?: boolean;
   AnalyticsConfiguration?: AnalyticsConfigurationType;
@@ -3956,7 +3959,7 @@ export const CompromisedCredentialsActionsType = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompromisedCredentialsActionsType",
 }) as any as S.Schema<CompromisedCredentialsActionsType>;
 export interface CompromisedCredentialsRiskConfigurationType {
-  EventFilter?: EventFilterType[];
+  EventFilter?: (EventFilterType | (string & {}))[];
   Actions: CompromisedCredentialsActionsType;
 }
 export const CompromisedCredentialsRiskConfigurationType =
@@ -6389,7 +6392,7 @@ export interface UpdateUserPoolRequest {
   Policies?: UserPoolPolicyType;
   DeletionProtection?: DeletionProtectionType | (string & {});
   LambdaConfig?: LambdaConfigType;
-  AutoVerifiedAttributes?: VerifiedAttributeType[];
+  AutoVerifiedAttributes?: (VerifiedAttributeType | (string & {}))[];
   SmsVerificationMessage?: string;
   EmailVerificationMessage?: string;
   EmailVerificationSubject?: string;
@@ -6464,12 +6467,12 @@ export interface UpdateUserPoolClientRequest {
   TokenValidityUnits?: TokenValidityUnitsType;
   ReadAttributes?: string[];
   WriteAttributes?: string[];
-  ExplicitAuthFlows?: ExplicitAuthFlowsType[];
+  ExplicitAuthFlows?: (ExplicitAuthFlowsType | (string & {}))[];
   SupportedIdentityProviders?: string[];
   CallbackURLs?: string[];
   LogoutURLs?: string[];
   DefaultRedirectURI?: string;
-  AllowedOAuthFlows?: OAuthFlowType[];
+  AllowedOAuthFlows?: (OAuthFlowType | (string & {}))[];
   AllowedOAuthScopes?: string[];
   AllowedOAuthFlowsUserPoolClient?: boolean;
   AnalyticsConfiguration?: AnalyticsConfigurationType;

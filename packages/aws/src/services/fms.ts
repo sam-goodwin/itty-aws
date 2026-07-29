@@ -441,7 +441,7 @@ export type SecurityServiceTypeList = (SecurityServiceType | (string & {}))[];
 export const SecurityServiceTypeList =
   /*@__PURE__*/ S.Array(SecurityServiceType);
 export interface PolicyTypeScope {
-  PolicyTypes?: SecurityServiceType[];
+  PolicyTypes?: (SecurityServiceType | (string & {}))[];
   AllPolicyTypesEnabled?: boolean;
 }
 export const PolicyTypeScope = /*@__PURE__*/ S.suspend(() =>
