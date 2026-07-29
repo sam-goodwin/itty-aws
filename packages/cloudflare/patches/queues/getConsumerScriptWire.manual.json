@@ -1,10 +1,15 @@
 {
-  "description": "the get-consumer response names the worker script `script` on the wire, while create/list/update use `script_name` — the API is inconsistent; each shape mirrors its own wire",
+  "description": "consumer worker responses are inconsistent on the wire: create/update echo script_name, get/list return script — each shape mirrors its own op (live-wire verified)",
   "patches": [
     {
       "op": "move",
       "from": "/shapes/com.cloudflare.queues#ConsumersGetResultWorker/members/script_name",
       "path": "/shapes/com.cloudflare.queues#ConsumersGetResultWorker/members/script"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#ConsumersListResultItemWorker/members/script_name",
+      "path": "/shapes/com.cloudflare.queues#ConsumersListResultItemWorker/members/script"
     }
   ]
 }

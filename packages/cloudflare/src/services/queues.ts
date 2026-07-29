@@ -2637,10 +2637,10 @@ export interface ConsumersListResultItemWorker {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  /** Name of a Worker */
-  scriptName?: string | null;
   settings?: ConsumersListResultItemWorkerSettings | null;
   type?: ConsumersListResultItemWorkerType | null;
+  /** Name of a Worker */
+  script?: string | null;
 }
 export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2650,9 +2650,9 @@ export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     settings: S.optional(S.NullOr(ConsumersListResultItemWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersListResultItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemWorker",
@@ -2720,9 +2720,9 @@ export const ConsumersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "createdOn",
       "deadLetterQueue",
       "queueName",
-      "scriptName",
       "settings",
       "type",
+      "script",
     ],
     [
       "consumerId",
