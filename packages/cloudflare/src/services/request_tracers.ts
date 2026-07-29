@@ -31,46 +31,46 @@ const KEY_DICTIONARY: Record<string, string> = {
 
 export interface TracesCreateRequestBody {
   /** Base64 encoded request body */
-  base64?: string;
+  base64?: string | null;
   /** Arbitrary json as request body */
-  json?: unknown;
+  json?: unknown | null;
   /** Request body as plain text */
-  plainText?: string;
+  plainText?: string | null;
 }
 export const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    base64: S.optional(S.String),
-    json: S.optional(S.Unknown),
-    plainText: S.optional(S.String.pipe(T.Body("plain_text"))),
+    base64: S.optional(S.NullOr(S.String)),
+    json: S.optional(S.NullOr(S.Unknown)),
+    plainText: S.optional(S.NullOr(S.String).pipe(T.Body("plain_text"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestBody",
 }) as any as S.Schema<TracesCreateRequestBody>;
 
 export interface TracesCreateRequestContextGeoloc {
-  city?: string;
-  continent?: string;
-  isEuCountry?: boolean;
-  isoCode?: string;
-  latitude?: number;
-  longitude?: number;
-  postalCode?: string;
-  regionCode?: string;
-  subdivision_2_iso_code?: string;
-  timezone?: string;
+  city?: string | null;
+  continent?: string | null;
+  isEuCountry?: boolean | null;
+  isoCode?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  postalCode?: string | null;
+  regionCode?: string | null;
+  subdivision_2_iso_code?: string | null;
+  timezone?: string | null;
 }
 export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    city: S.optional(S.String),
-    continent: S.optional(S.String),
-    isEuCountry: S.optional(S.Boolean.pipe(T.Body("is_eu_country"))),
-    isoCode: S.optional(S.String.pipe(T.Body("iso_code"))),
-    latitude: S.optional(S.Number),
-    longitude: S.optional(S.Number),
-    postalCode: S.optional(S.String.pipe(T.Body("postal_code"))),
-    regionCode: S.optional(S.String.pipe(T.Body("region_code"))),
-    subdivision_2_iso_code: S.optional(S.String),
-    timezone: S.optional(S.String),
+    city: S.optional(S.NullOr(S.String)),
+    continent: S.optional(S.NullOr(S.String)),
+    isEuCountry: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_eu_country"))),
+    isoCode: S.optional(S.NullOr(S.String).pipe(T.Body("iso_code"))),
+    latitude: S.optional(S.NullOr(S.Number)),
+    longitude: S.optional(S.NullOr(S.Number)),
+    postalCode: S.optional(S.NullOr(S.String).pipe(T.Body("postal_code"))),
+    regionCode: S.optional(S.NullOr(S.String).pipe(T.Body("region_code"))),
+    subdivision_2_iso_code: S.optional(S.NullOr(S.String)),
+    timezone: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "TracesCreateRequestContextGeoloc",
@@ -78,20 +78,22 @@ export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
 
 export interface TracesCreateRequestContext {
   /** Bot score used for evaluating tracing request processing */
-  botScore?: number;
+  botScore?: number | null;
   /** Geodata for tracing request */
-  geoloc?: TracesCreateRequestContextGeoloc;
+  geoloc?: TracesCreateRequestContextGeoloc | null;
   /** Whether to skip any challenges for tracing request (e.g.: captcha) */
-  skipChallenge?: boolean;
+  skipChallenge?: boolean | null;
   /** Threat score used for evaluating tracing request processing */
-  threatScore?: number;
+  threatScore?: number | null;
 }
 export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    botScore: S.optional(S.Number.pipe(T.Body("bot_score"))),
-    geoloc: S.optional(TracesCreateRequestContextGeoloc),
-    skipChallenge: S.optional(S.Boolean.pipe(T.Body("skip_challenge"))),
-    threatScore: S.optional(S.Number.pipe(T.Body("threat_score"))),
+    botScore: S.optional(S.NullOr(S.Number).pipe(T.Body("bot_score"))),
+    geoloc: S.optional(S.NullOr(TracesCreateRequestContextGeoloc)),
+    skipChallenge: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("skip_challenge")),
+    ),
+    threatScore: S.optional(S.NullOr(S.Number).pipe(T.Body("threat_score"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestContext",
@@ -120,29 +122,29 @@ export interface CreateTraceRequest {
   method: string;
   /** URL to which perform tracing request */
   url: string;
-  body?: TracesCreateRequestBody;
+  body?: TracesCreateRequestBody | null;
   /** Additional request parameters */
-  context?: TracesCreateRequestContext;
+  context?: TracesCreateRequestContext | null;
   /** Cookies added to tracing request */
-  cookies?: TracesCreateRequestCookiesMap;
+  cookies?: TracesCreateRequestCookiesMap | null;
   /** Headers added to tracing request */
-  headers?: TracesCreateRequestHeadersMap;
+  headers?: TracesCreateRequestHeadersMap | null;
   /** HTTP Protocol of tracing request */
-  protocol?: string;
+  protocol?: string | null;
   /** Skip sending the request to the Origin server after all rules evaluation */
-  skipResponse?: boolean;
+  skipResponse?: boolean | null;
 }
 export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     method: S.String,
     url: S.String,
-    body: S.optional(TracesCreateRequestBody),
-    context: S.optional(TracesCreateRequestContext),
-    cookies: S.optional(TracesCreateRequestCookiesMap),
-    headers: S.optional(TracesCreateRequestHeadersMap),
-    protocol: S.optional(S.String),
-    skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
+    body: S.optional(S.NullOr(TracesCreateRequestBody)),
+    context: S.optional(S.NullOr(TracesCreateRequestContext)),
+    cookies: S.optional(S.NullOr(TracesCreateRequestCookiesMap)),
+    headers: S.optional(S.NullOr(TracesCreateRequestHeadersMap)),
+    protocol: S.optional(S.NullOr(S.String)),
+    skipResponse: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_response"))),
   })
     .pipe(
       T.Http({
@@ -159,13 +161,13 @@ export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTraceResponse {
   /** HTTP Status code of zone response */
-  statusCode?: number;
-  trace?: unknown;
+  statusCode?: number | null;
+  trace?: unknown | null;
 }
 export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    trace: S.optional(S.Unknown),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+    trace: S.optional(S.NullOr(S.Unknown)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTraceResponse",

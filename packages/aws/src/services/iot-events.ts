@@ -156,13 +156,14 @@ export type ComparisonOperator =
   | "LESS"
   | "LESS_OR_EQUAL"
   | "EQUAL"
-  | "NOT_EQUAL";
+  | "NOT_EQUAL"
+  | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type Threshold = string;
 export interface SimpleRule {
   inputProperty: string;
-  comparisonOperator: ComparisonOperator | (string & {});
+  comparisonOperator: ComparisonOperator;
   threshold: string;
 }
 export const SimpleRule = /*@__PURE__*/ S.suspend(() =>
@@ -179,12 +180,12 @@ export const AlarmRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ simpleRule: S.optional(SimpleRule) }),
 ).annotate({ identifier: "AlarmRule" }) as any as S.Schema<AlarmRule>;
 export type ContentExpression = string;
-export type PayloadType = "STRING" | "JSON";
+export type PayloadType = "STRING" | "JSON" | (string & {});
 export const PayloadType = /*@__PURE__*/ S.String;
 
 export interface Payload {
   contentExpression: string;
-  type: PayloadType | (string & {});
+  type: PayloadType;
 }
 export const Payload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contentExpression: S.String, type: PayloadType }),
@@ -573,7 +574,8 @@ export type AlarmModelVersionStatus =
   | "ACTIVE"
   | "ACTIVATING"
   | "INACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AlarmModelVersionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateAlarmModelResponse {
@@ -759,7 +761,7 @@ export const DetectorModelDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectorModelDefinition",
 }) as any as S.Schema<DetectorModelDefinition>;
 export type DetectorModelDescription = string;
-export type EvaluationMethod = "BATCH" | "SERIAL";
+export type EvaluationMethod = "BATCH" | "SERIAL" | (string & {});
 export const EvaluationMethod = /*@__PURE__*/ S.String;
 
 export interface CreateDetectorModelRequest {
@@ -769,7 +771,7 @@ export interface CreateDetectorModelRequest {
   key?: string;
   roleArn: string;
   tags?: Tag[];
-  evaluationMethod?: EvaluationMethod | (string & {});
+  evaluationMethod?: EvaluationMethod;
 }
 export const CreateDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -802,7 +804,8 @@ export type DetectorModelVersionStatus =
   | "DEPRECATED"
   | "DRAFT"
   | "PAUSED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DetectorModelVersionStatus = /*@__PURE__*/ S.String;
 
 export interface DetectorModelConfiguration {
@@ -886,7 +889,12 @@ export const CreateInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInputRequest",
 }) as any as S.Schema<CreateInputRequest>;
 export type InputArn = string;
-export type InputStatus = "CREATING" | "UPDATING" | "ACTIVE" | "DELETING";
+export type InputStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "ACTIVE"
+  | "DELETING"
+  | (string & {});
 export const InputStatus = /*@__PURE__*/ S.String;
 
 export interface InputConfiguration {
@@ -1111,7 +1119,7 @@ export const DescribeDetectorModelAnalysisRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeDetectorModelAnalysisRequest",
 }) as any as S.Schema<DescribeDetectorModelAnalysisRequest>;
-export type AnalysisStatus = "RUNNING" | "COMPLETE" | "FAILED";
+export type AnalysisStatus = "RUNNING" | "COMPLETE" | "FAILED" | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeDetectorModelAnalysisResponse {
@@ -1172,7 +1180,7 @@ export const DescribeLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLoggingOptionsRequest",
 }) as any as S.Schema<DescribeLoggingOptionsRequest>;
-export type LoggingLevel = "ERROR" | "INFO" | "DEBUG";
+export type LoggingLevel = "ERROR" | "INFO" | "DEBUG" | (string & {});
 export const LoggingLevel = /*@__PURE__*/ S.String;
 
 export type LoggingEnabled = boolean;
@@ -1190,7 +1198,7 @@ export type DetectorDebugOptions = DetectorDebugOption[];
 export const DetectorDebugOptions = /*@__PURE__*/ S.Array(DetectorDebugOption);
 export interface LoggingOptions {
   roleArn: string;
-  level: LoggingLevel | (string & {});
+  level: LoggingLevel;
   enabled: boolean;
   detectorDebugOptions?: DetectorDebugOption[];
 }
@@ -1240,7 +1248,7 @@ export const GetDetectorModelAnalysisResultsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDetectorModelAnalysisResultsRequest",
 }) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>;
 export type AnalysisType = string;
-export type AnalysisResultLevel = "INFO" | "WARNING" | "ERROR";
+export type AnalysisResultLevel = "INFO" | "WARNING" | "ERROR" | (string & {});
 export const AnalysisResultLevel = /*@__PURE__*/ S.String;
 
 export type AnalysisMessage = string;
@@ -1840,7 +1848,7 @@ export interface UpdateDetectorModelRequest {
   detectorModelDefinition: DetectorModelDefinition;
   detectorModelDescription?: string;
   roleArn: string;
-  evaluationMethod?: EvaluationMethod | (string & {});
+  evaluationMethod?: EvaluationMethod;
 }
 export const UpdateDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

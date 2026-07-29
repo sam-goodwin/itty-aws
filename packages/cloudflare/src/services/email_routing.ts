@@ -83,26 +83,26 @@ export const AddressesEditRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressesEditResponse {
   /** Destination address identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string;
+  tag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
-  verified?: string;
+  verified?: string | null;
 }
 export const AddressesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    email: S.optional(S.String),
-    modified: S.optional(S.String),
-    tag: S.optional(S.String),
-    verified: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddressesEditResponse",
@@ -134,26 +134,26 @@ export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAddressResponse {
   /** Destination address identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string;
+  tag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
-  verified?: string;
+  verified?: string | null;
 }
 export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    email: S.optional(S.String),
-    modified: S.optional(S.String),
-    tag: S.optional(S.String),
-    verified: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAddressResponse",
@@ -163,12 +163,12 @@ export interface CreateDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string;
+  name?: string | null;
 }
 export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -199,29 +199,31 @@ export interface CreateDnsResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: DnsCreateResponseStatus;
+  status?: DnsCreateResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(DnsCreateResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(DnsCreateResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsResponse",
@@ -238,12 +240,12 @@ export const RulesCreateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesCreateRequestActionsItem {
   /** Type of supported action. */
   type: RulesCreateRequestActionsItemType | (string & {});
-  value?: RulesCreateRequestActionsItemValueList;
+  value?: RulesCreateRequestActionsItemValueList | null;
 }
 export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestActionsItemType,
-    value: S.optional(RulesCreateRequestActionsItemValueList),
+    value: S.optional(S.NullOr(RulesCreateRequestActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesCreateRequestActionsItem",
@@ -265,15 +267,15 @@ export interface RulesCreateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesCreateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesCreateRequestMatchersItemField | (string & {});
+  field?: RulesCreateRequestMatchersItemField | (string & {}) | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestMatchersItemType,
-    field: S.optional(RulesCreateRequestMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesCreateRequestMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesCreateRequestMatchersItem",
@@ -296,26 +298,28 @@ export interface CreateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesCreateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string;
+  ownerWorkerTag?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCreateRequestSource | (string & {});
+  source?: RulesCreateRequestSource | (string & {}) | null;
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCreateRequestActionsList,
     matchers: RulesCreateRequestMatchersList,
-    enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesCreateRequestSource),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.NullOr(S.String)),
+    ownerWorkerTag: S.optional(
+      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesCreateRequestSource)),
   })
     .pipe(
       T.Http({
@@ -340,12 +344,12 @@ export const RulesCreateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesCreateResponseActionsItem {
   /** Type of supported action. */
   type: RulesCreateResponseActionsItemType;
-  value?: RulesCreateResponseActionsItemValueList;
+  value?: RulesCreateResponseActionsItemValueList | null;
 }
 export const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateResponseActionsItemType,
-    value: S.optional(RulesCreateResponseActionsItemValueList),
+    value: S.optional(S.NullOr(RulesCreateResponseActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesCreateResponseActionsItem",
@@ -367,15 +371,15 @@ export interface RulesCreateResponseMatchersItem {
   /** Type of matcher. */
   type: RulesCreateResponseMatchersItemType;
   /** Field for type matcher. */
-  field?: RulesCreateResponseMatchersItemField;
+  field?: RulesCreateResponseMatchersItemField | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesCreateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateResponseMatchersItemType,
-    field: S.optional(RulesCreateResponseMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesCreateResponseMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesCreateResponseMatchersItem",
@@ -393,32 +397,32 @@ export const RulesCreateResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions patterns. */
-  actions?: RulesCreateResponseActionsList;
+  actions?: RulesCreateResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Matching patterns to forward to your actions. */
-  matchers?: RulesCreateResponseMatchersList;
+  matchers?: RulesCreateResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCreateResponseSource;
+  source?: RulesCreateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesCreateResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesCreateResponseMatchersList),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesCreateResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesCreateResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesCreateResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesCreateResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -452,26 +456,26 @@ export const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAddressResponse {
   /** Destination address identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string;
+  tag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
-  verified?: string;
+  verified?: string | null;
 }
 export const DeleteAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    email: S.optional(S.String),
-    modified: S.optional(S.String),
-    tag: S.optional(S.String),
-    verified: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAddressResponse",
@@ -539,12 +543,12 @@ export const RulesDeleteResponseActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesDeleteResponseActionsItem {
   /** Type of supported action. */
   type: RulesDeleteResponseActionsItemType;
-  value?: RulesDeleteResponseActionsItemValueList;
+  value?: RulesDeleteResponseActionsItemValueList | null;
 }
 export const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesDeleteResponseActionsItemType,
-    value: S.optional(RulesDeleteResponseActionsItemValueList),
+    value: S.optional(S.NullOr(RulesDeleteResponseActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesDeleteResponseActionsItem",
@@ -566,15 +570,15 @@ export interface RulesDeleteResponseMatchersItem {
   /** Type of matcher. */
   type: RulesDeleteResponseMatchersItemType;
   /** Field for type matcher. */
-  field?: RulesDeleteResponseMatchersItemField;
+  field?: RulesDeleteResponseMatchersItemField | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesDeleteResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesDeleteResponseMatchersItemType,
-    field: S.optional(RulesDeleteResponseMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesDeleteResponseMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesDeleteResponseMatchersItem",
@@ -592,32 +596,32 @@ export const RulesDeleteResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions patterns. */
-  actions?: RulesDeleteResponseActionsList;
+  actions?: RulesDeleteResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Matching patterns to forward to your actions. */
-  matchers?: RulesDeleteResponseMatchersList;
+  matchers?: RulesDeleteResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesDeleteResponseSource;
+  source?: RulesDeleteResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesDeleteResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesDeleteResponseMatchersList),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesDeleteResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesDeleteResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesDeleteResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesDeleteResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
@@ -660,29 +664,31 @@ export interface DisableEmailRoutingResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: DisableResponseStatus;
+  status?: DisableResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(DisableResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(DisableResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableEmailRoutingResponse",
@@ -725,29 +731,31 @@ export interface EnableEmailRoutingResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: EnableResponseStatus;
+  status?: EnableResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(EnableResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(EnableResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableEmailRoutingResponse",
@@ -781,26 +789,26 @@ export const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAddressResponse {
   /** Destination address identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string;
+  tag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
-  verified?: string;
+  verified?: string | null;
 }
 export const GetAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    email: S.optional(S.String),
-    modified: S.optional(S.String),
-    tag: S.optional(S.String),
-    verified: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAddressResponse",
@@ -870,29 +878,31 @@ export interface GetEmailRoutingResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: GetResponseStatus;
+  status?: GetResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(GetResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(GetResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailRoutingResponse",
@@ -930,12 +940,12 @@ export const RulesGetResponseActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesGetResponseActionsItem {
   /** Type of supported action. */
   type: RulesGetResponseActionsItemType;
-  value?: RulesGetResponseActionsItemValueList;
+  value?: RulesGetResponseActionsItemValueList | null;
 }
 export const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesGetResponseActionsItemType,
-    value: S.optional(RulesGetResponseActionsItemValueList),
+    value: S.optional(S.NullOr(RulesGetResponseActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesGetResponseActionsItem",
@@ -956,15 +966,15 @@ export interface RulesGetResponseMatchersItem {
   /** Type of matcher. */
   type: RulesGetResponseMatchersItemType;
   /** Field for type matcher. */
-  field?: RulesGetResponseMatchersItemField;
+  field?: RulesGetResponseMatchersItemField | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesGetResponseMatchersItemType,
-    field: S.optional(RulesGetResponseMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesGetResponseMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesGetResponseMatchersItem",
@@ -981,32 +991,32 @@ export const RulesGetResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions patterns. */
-  actions?: RulesGetResponseActionsList;
+  actions?: RulesGetResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Matching patterns to forward to your actions. */
-  matchers?: RulesGetResponseMatchersList;
+  matchers?: RulesGetResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesGetResponseSource;
+  source?: RulesGetResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesGetResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesGetResponseMatchersList),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesGetResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesGetResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesGetResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesGetResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
@@ -1047,13 +1057,15 @@ export const RulesCatchAllsGetResponseActionsItemValueList =
 export interface RulesCatchAllsGetResponseActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsGetResponseActionsItemType;
-  value?: RulesCatchAllsGetResponseActionsItemValueList;
+  value?: RulesCatchAllsGetResponseActionsItemValueList | null;
 }
 export const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: RulesCatchAllsGetResponseActionsItemType,
-      value: S.optional(RulesCatchAllsGetResponseActionsItemValueList),
+      value: S.optional(
+        S.NullOr(RulesCatchAllsGetResponseActionsItemValueList),
+      ),
     }),
 ).annotate({
   identifier: "RulesCatchAllsGetResponseActionsItem",
@@ -1093,29 +1105,29 @@ export const RulesCatchAllsGetResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleCatchAllResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions for the catch-all routing rule. */
-  actions?: RulesCatchAllsGetResponseActionsList;
+  actions?: RulesCatchAllsGetResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** List of matchers for the catch-all routing rule. */
-  matchers?: RulesCatchAllsGetResponseMatchersList;
+  matchers?: RulesCatchAllsGetResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCatchAllsGetResponseSource;
+  source?: RulesCatchAllsGetResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesCatchAllsGetResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesCatchAllsGetResponseMatchersList),
-    name: S.optional(S.String),
-    source: S.optional(RulesCatchAllsGetResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesCatchAllsGetResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesCatchAllsGetResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(RulesCatchAllsGetResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleCatchAllResponse",
@@ -1158,26 +1170,26 @@ export const ListAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AddressesListResultItem {
   /** Destination address identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string;
+  tag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
-  verified?: string;
+  verified?: string | null;
 }
 export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    email: S.optional(S.String),
-    modified: S.optional(S.String),
-    tag: S.optional(S.String),
-    verified: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AddressesListResultItem",
@@ -1254,12 +1266,12 @@ export interface PatchDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string;
+  name?: string | null;
 }
 export const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1290,29 +1302,31 @@ export interface PatchDnsResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: DnsEditResponseStatus;
+  status?: DnsEditResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(DnsEditResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(DnsEditResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsResponse",
@@ -1334,13 +1348,15 @@ export const RulesCatchAllsUpdateRequestActionsItemValueList =
 export interface RulesCatchAllsUpdateRequestActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsUpdateRequestActionsItemType | (string & {});
-  value?: RulesCatchAllsUpdateRequestActionsItemValueList;
+  value?: RulesCatchAllsUpdateRequestActionsItemValueList | null;
 }
 export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: RulesCatchAllsUpdateRequestActionsItemType,
-      value: S.optional(RulesCatchAllsUpdateRequestActionsItemValueList),
+      value: S.optional(
+        S.NullOr(RulesCatchAllsUpdateRequestActionsItemValueList),
+      ),
     }),
 ).annotate({
   identifier: "RulesCatchAllsUpdateRequestActionsItem",
@@ -1386,23 +1402,25 @@ export interface PutRuleCatchAllRequest {
   /** List of matchers for the catch-all routing rule. */
   matchers: RulesCatchAllsUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string;
+  ownerWorkerTag?: string | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCatchAllsUpdateRequestSource | (string & {});
+  source?: RulesCatchAllsUpdateRequestSource | (string & {}) | null;
 }
 export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCatchAllsUpdateRequestActionsList,
     matchers: RulesCatchAllsUpdateRequestMatchersList,
-    enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
-    source: S.optional(RulesCatchAllsUpdateRequestSource),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.NullOr(S.String)),
+    ownerWorkerTag: S.optional(
+      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
+    ),
+    source: S.optional(S.NullOr(RulesCatchAllsUpdateRequestSource)),
   })
     .pipe(
       T.Http({
@@ -1432,13 +1450,15 @@ export const RulesCatchAllsUpdateResponseActionsItemValueList =
 export interface RulesCatchAllsUpdateResponseActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsUpdateResponseActionsItemType;
-  value?: RulesCatchAllsUpdateResponseActionsItemValueList;
+  value?: RulesCatchAllsUpdateResponseActionsItemValueList | null;
 }
 export const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: RulesCatchAllsUpdateResponseActionsItemType,
-      value: S.optional(RulesCatchAllsUpdateResponseActionsItemValueList),
+      value: S.optional(
+        S.NullOr(RulesCatchAllsUpdateResponseActionsItemValueList),
+      ),
     }),
 ).annotate({
   identifier: "RulesCatchAllsUpdateResponseActionsItem",
@@ -1479,29 +1499,29 @@ export const RulesCatchAllsUpdateResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutRuleCatchAllResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions for the catch-all routing rule. */
-  actions?: RulesCatchAllsUpdateResponseActionsList;
+  actions?: RulesCatchAllsUpdateResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** List of matchers for the catch-all routing rule. */
-  matchers?: RulesCatchAllsUpdateResponseMatchersList;
+  matchers?: RulesCatchAllsUpdateResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCatchAllsUpdateResponseSource;
+  source?: RulesCatchAllsUpdateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesCatchAllsUpdateResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesCatchAllsUpdateResponseMatchersList),
-    name: S.optional(S.String),
-    source: S.optional(RulesCatchAllsUpdateResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesCatchAllsUpdateResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesCatchAllsUpdateResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(RulesCatchAllsUpdateResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRuleCatchAllResponse",
@@ -1511,12 +1531,12 @@ export interface UnlockRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string;
+  name?: string | null;
 }
 export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1545,29 +1565,31 @@ export interface UnlockResponse {
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
-  created?: string;
+  created?: string | null;
   /** The date and time the settings have been modified. */
-  modified?: string;
+  modified?: string | null;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: boolean;
+  skipWizard?: boolean | null;
   /** Show the state of your account, and the type or configuration error. */
-  status?: UnlockResponseStatus;
+  status?: UnlockResponseStatus | null;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: boolean;
+  supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
     name: S.String,
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(UnlockResponseStatus),
-    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(UnlockResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
 
@@ -1582,12 +1604,12 @@ export const RulesUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesUpdateRequestActionsItem {
   /** Type of supported action. */
   type: RulesUpdateRequestActionsItemType | (string & {});
-  value?: RulesUpdateRequestActionsItemValueList;
+  value?: RulesUpdateRequestActionsItemValueList | null;
 }
 export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateRequestActionsItemType,
-    value: S.optional(RulesUpdateRequestActionsItemValueList),
+    value: S.optional(S.NullOr(RulesUpdateRequestActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestActionsItem",
@@ -1609,15 +1631,15 @@ export interface RulesUpdateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesUpdateRequestMatchersItemField | (string & {});
+  field?: RulesUpdateRequestMatchersItemField | (string & {}) | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateRequestMatchersItemType,
-    field: S.optional(RulesUpdateRequestMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesUpdateRequestMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestMatchersItem",
@@ -1642,15 +1664,15 @@ export interface UpdateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string;
+  ownerWorkerTag?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesUpdateRequestSource | (string & {});
+  source?: RulesUpdateRequestSource | (string & {}) | null;
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1658,11 +1680,13 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
     actions: RulesUpdateRequestActionsList,
     matchers: RulesUpdateRequestMatchersList,
-    enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesUpdateRequestSource),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.NullOr(S.String)),
+    ownerWorkerTag: S.optional(
+      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesUpdateRequestSource)),
   })
     .pipe(
       T.Http({
@@ -1687,12 +1711,12 @@ export const RulesUpdateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesUpdateResponseActionsItem {
   /** Type of supported action. */
   type: RulesUpdateResponseActionsItemType;
-  value?: RulesUpdateResponseActionsItemValueList;
+  value?: RulesUpdateResponseActionsItemValueList | null;
 }
 export const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateResponseActionsItemType,
-    value: S.optional(RulesUpdateResponseActionsItemValueList),
+    value: S.optional(S.NullOr(RulesUpdateResponseActionsItemValueList)),
   }),
 ).annotate({
   identifier: "RulesUpdateResponseActionsItem",
@@ -1714,15 +1738,15 @@ export interface RulesUpdateResponseMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateResponseMatchersItemType;
   /** Field for type matcher. */
-  field?: RulesUpdateResponseMatchersItemField;
+  field?: RulesUpdateResponseMatchersItemField | null;
   /** Value for matcher. */
-  value?: string;
+  value?: string | null;
 }
 export const RulesUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateResponseMatchersItemType,
-    field: S.optional(RulesUpdateResponseMatchersItemField),
-    value: S.optional(S.String),
+    field: S.optional(S.NullOr(RulesUpdateResponseMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesUpdateResponseMatchersItem",
@@ -1740,32 +1764,32 @@ export const RulesUpdateResponseSource = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** Routing rule identifier. */
-  id?: string;
+  id?: string | null;
   /** List actions patterns. */
-  actions?: RulesUpdateResponseActionsList;
+  actions?: RulesUpdateResponseActionsList | null;
   /** Routing rule status. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Matching patterns to forward to your actions. */
-  matchers?: RulesUpdateResponseMatchersList;
+  matchers?: RulesUpdateResponseMatchersList | null;
   /** Routing rule name. */
-  name?: string;
+  name?: string | null;
   /** Priority of the routing rule. */
-  priority?: number;
+  priority?: number | null;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesUpdateResponseSource;
+  source?: RulesUpdateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string;
+  tag?: string | null;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(RulesUpdateResponseActionsList),
-    enabled: S.optional(S.Boolean),
-    matchers: S.optional(RulesUpdateResponseMatchersList),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    source: S.optional(RulesUpdateResponseSource),
-    tag: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesUpdateResponseActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesUpdateResponseMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesUpdateResponseSource)),
+    tag: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",

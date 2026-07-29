@@ -384,7 +384,12 @@ export const BatchGetChannelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetChannelRequest>;
 export type ChannelName = string;
 export type ChannelLatencyMode = string;
-export type ChannelType = "BASIC" | "STANDARD" | "ADVANCED_SD" | "ADVANCED_HD";
+export type ChannelType =
+  | "BASIC"
+  | "STANDARD"
+  | "ADVANCED_SD"
+  | "ADVANCED_HD"
+  | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
 
 export type ChannelRecordingConfigurationArn = string;
@@ -398,7 +403,8 @@ export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type InsecureIngest = boolean;
 export type TranscodePreset =
   | "HIGHER_BANDWIDTH_DELIVERY"
-  | "CONSTRAINED_BANDWIDTH_DELIVERY";
+  | "CONSTRAINED_BANDWIDTH_DELIVERY"
+  | (string & {});
 export const TranscodePreset = /*@__PURE__*/ S.String;
 
 export type SrtEndpoint = string;
@@ -415,16 +421,20 @@ export const Srt = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Srt" }) as any as S.Schema<Srt>;
 export type ChannelPlaybackRestrictionPolicyArn = string;
 export type IsMultitrackInputEnabled = boolean;
-export type MultitrackPolicy = "ALLOW" | "REQUIRE";
+export type MultitrackPolicy = "ALLOW" | "REQUIRE" | (string & {});
 export const MultitrackPolicy = /*@__PURE__*/ S.String;
 
-export type MultitrackMaximumResolution = "SD" | "HD" | "FULL_HD";
+export type MultitrackMaximumResolution =
+  | "SD"
+  | "HD"
+  | "FULL_HD"
+  | (string & {});
 export const MultitrackMaximumResolution = /*@__PURE__*/ S.String;
 
 export interface MultitrackInputConfiguration {
   enabled?: boolean;
-  policy?: MultitrackPolicy | (string & {});
-  maximumResolution?: MultitrackMaximumResolution | (string & {});
+  policy?: MultitrackPolicy;
+  maximumResolution?: MultitrackMaximumResolution;
 }
 export const MultitrackInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -767,12 +777,12 @@ export const CreateAdConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChannelRequest {
   name?: string;
   latencyMode?: string;
-  type?: ChannelType | (string & {});
+  type?: ChannelType;
   authorized?: boolean;
   recordingConfigurationArn?: string;
   tags?: { [key: string]: string | undefined };
   insecureIngest?: boolean;
-  preset?: TranscodePreset | (string & {});
+  preset?: TranscodePreset;
   playbackRestrictionPolicyArn?: string;
   multitrackInputConfiguration?: MultitrackInputConfiguration;
   containerFormat?: string;
@@ -909,7 +919,8 @@ export type ThumbnailConfigurationResolution =
   | "SD"
   | "HD"
   | "FULL_HD"
-  | "LOWEST_RESOLUTION";
+  | "LOWEST_RESOLUTION"
+  | (string & {});
 export const ThumbnailConfigurationResolution = /*@__PURE__*/ S.String;
 
 export type ThumbnailConfigurationStorage = string;
@@ -920,7 +931,7 @@ export const ThumbnailConfigurationStorageList = /*@__PURE__*/ S.Array(
 export interface ThumbnailConfiguration {
   recordingMode?: string;
   targetIntervalSeconds?: number;
-  resolution?: ThumbnailConfigurationResolution | (string & {});
+  resolution?: ThumbnailConfigurationResolution;
   storage?: string[];
 }
 export const ThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -939,19 +950,18 @@ export type RenditionConfigurationRendition =
   | "SD"
   | "HD"
   | "FULL_HD"
-  | "LOWEST_RESOLUTION";
+  | "LOWEST_RESOLUTION"
+  | (string & {});
 export const RenditionConfigurationRendition = /*@__PURE__*/ S.String;
 
-export type RenditionConfigurationRenditionList = (
-  | RenditionConfigurationRendition
-  | (string & {})
-)[];
+export type RenditionConfigurationRenditionList =
+  RenditionConfigurationRendition[];
 export const RenditionConfigurationRenditionList = /*@__PURE__*/ S.Array(
   RenditionConfigurationRendition,
 );
 export interface RenditionConfiguration {
   renditionSelection?: string;
-  renditions?: (RenditionConfigurationRendition | (string & {}))[];
+  renditions?: RenditionConfigurationRendition[];
 }
 export const RenditionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2267,11 +2277,11 @@ export interface UpdateChannelRequest {
   arn: string;
   name?: string;
   latencyMode?: string;
-  type?: ChannelType | (string & {});
+  type?: ChannelType;
   authorized?: boolean;
   recordingConfigurationArn?: string;
   insecureIngest?: boolean;
-  preset?: TranscodePreset | (string & {});
+  preset?: TranscodePreset;
   playbackRestrictionPolicyArn?: string;
   multitrackInputConfiguration?: MultitrackInputConfiguration;
   containerFormat?: string;

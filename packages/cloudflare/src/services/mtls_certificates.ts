@@ -58,17 +58,17 @@ export interface CreateMtlsCertificateRequest {
   /** The uploaded root CA certificate. */
   certificates: string;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ca: S.Boolean,
     certificates: S.String,
-    name: S.optional(S.String),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    name: S.optional(S.NullOr(S.String)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   })
     .pipe(
       T.Http({
@@ -91,41 +91,41 @@ export const CreateResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMtlsCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** Indicates whether the certificate is a CA or leaf certificate. */
-  ca?: boolean;
+  ca?: boolean | null;
   /** The uploaded root CA certificate. */
-  certificates?: string;
+  certificates?: string | null;
   /** When the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** The certificate serial number. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: CreateResponseType;
+  type?: CreateResponseType | null;
   /** This is the time the certificate was updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** This is the time the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const CreateMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    ca: S.optional(S.Boolean),
-    certificates: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    name: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    type: S.optional(CreateResponseType),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    ca: S.optional(S.NullOr(S.Boolean)),
+    certificates: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(CreateResponseType)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMtlsCertificateResponse",
@@ -163,38 +163,38 @@ export const DeleteResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMtlsCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** Indicates whether the certificate is a CA or leaf certificate. */
-  ca?: boolean;
+  ca?: boolean | null;
   /** The uploaded root CA certificate. */
-  certificates?: string;
+  certificates?: string | null;
   /** When the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** The certificate serial number. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: DeleteResponseType;
+  type?: DeleteResponseType | null;
   /** This is the time the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const DeleteMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    ca: S.optional(S.Boolean),
-    certificates: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    name: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    type: S.optional(DeleteResponseType),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    ca: S.optional(S.NullOr(S.Boolean)),
+    certificates: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(DeleteResponseType)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMtlsCertificateResponse",
@@ -225,14 +225,14 @@ export const GetAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AssociationsGetResultItem {
   /** The service using the certificate. */
-  service?: string;
+  service?: string | null;
   /** Certificate deployment status for the given service. */
-  status?: string;
+  status?: string | null;
 }
 export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    service: S.optional(S.String),
-    status: S.optional(S.String),
+    service: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AssociationsGetResultItem",
@@ -287,38 +287,38 @@ export const GetResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMtlsCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** Indicates whether the certificate is a CA or leaf certificate. */
-  ca?: boolean;
+  ca?: boolean | null;
   /** The uploaded root CA certificate. */
-  certificates?: string;
+  certificates?: string | null;
   /** When the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** The certificate serial number. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: GetResponseType;
+  type?: GetResponseType | null;
   /** This is the time the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    ca: S.optional(S.Boolean),
-    certificates: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    name: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    type: S.optional(GetResponseType),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    ca: S.optional(S.NullOr(S.Boolean)),
+    certificates: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(GetResponseType)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMtlsCertificateResponse",
@@ -363,38 +363,38 @@ export const ListResultItemType = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** Indicates whether the certificate is a CA or leaf certificate. */
-  ca?: boolean;
+  ca?: boolean | null;
   /** The uploaded root CA certificate. */
-  certificates?: string;
+  certificates?: string | null;
   /** When the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** The certificate serial number. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: ListResultItemType;
+  type?: ListResultItemType | null;
   /** This is the time the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    ca: S.optional(S.Boolean),
-    certificates: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    name: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    type: S.optional(ListResultItemType),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    ca: S.optional(S.NullOr(S.Boolean)),
+    certificates: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(ListResultItemType)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 

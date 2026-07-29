@@ -248,7 +248,7 @@ export const BatchAssociateProjectAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchAssociateProjectAssetsRequest",
 }) as any as S.Schema<BatchAssociateProjectAssetsRequest>;
-export type AssetErrorCode = "INTERNAL_FAILURE";
+export type AssetErrorCode = "INTERNAL_FAILURE" | (string & {});
 export const AssetErrorCode = /*@__PURE__*/ S.String;
 
 export type AssetErrorMessage = string;
@@ -319,18 +319,19 @@ export type AggregateType =
   | "MAXIMUM"
   | "MINIMUM"
   | "SUM"
-  | "STANDARD_DEVIATION";
+  | "STANDARD_DEVIATION"
+  | (string & {});
 export const AggregateType = /*@__PURE__*/ S.String;
 
-export type AggregateTypes = (AggregateType | (string & {}))[];
+export type AggregateTypes = AggregateType[];
 export const AggregateTypes = /*@__PURE__*/ S.Array(AggregateType);
 export type Resolution = string;
-export type Quality = "GOOD" | "BAD" | "UNCERTAIN";
+export type Quality = "GOOD" | "BAD" | "UNCERTAIN" | (string & {});
 export const Quality = /*@__PURE__*/ S.String;
 
-export type Qualities = (Quality | (string & {}))[];
+export type Qualities = Quality[];
 export const Qualities = /*@__PURE__*/ S.Array(Quality);
-export type TimeOrdering = "ASCENDING" | "DESCENDING";
+export type TimeOrdering = "ASCENDING" | "DESCENDING" | (string & {});
 export const TimeOrdering = /*@__PURE__*/ S.String;
 
 export interface BatchGetAssetPropertyAggregatesEntry {
@@ -338,12 +339,12 @@ export interface BatchGetAssetPropertyAggregatesEntry {
   assetId?: string;
   propertyId?: string;
   propertyAlias?: string;
-  aggregateTypes: (AggregateType | (string & {}))[];
+  aggregateTypes: AggregateType[];
   resolution: string;
   startDate: Date;
   endDate: Date;
-  qualities?: (Quality | (string & {}))[];
-  timeOrdering?: TimeOrdering | (string & {});
+  qualities?: Quality[];
+  timeOrdering?: TimeOrdering;
 }
 export const BatchGetAssetPropertyAggregatesEntry = /*@__PURE__*/ S.suspend(
   () =>
@@ -396,7 +397,8 @@ export const BatchGetAssetPropertyAggregatesRequest = /*@__PURE__*/ S.suspend(
 export type BatchGetAssetPropertyAggregatesErrorCode =
   | "ResourceNotFoundException"
   | "InvalidRequestException"
-  | "AccessDeniedException";
+  | "AccessDeniedException"
+  | (string & {});
 export const BatchGetAssetPropertyAggregatesErrorCode = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -468,7 +470,7 @@ export type BatchGetAssetPropertyAggregatesSuccessEntries =
   BatchGetAssetPropertyAggregatesSuccessEntry[];
 export const BatchGetAssetPropertyAggregatesSuccessEntries =
   /*@__PURE__*/ S.Array(BatchGetAssetPropertyAggregatesSuccessEntry);
-export type BatchEntryCompletionStatus = "SUCCESS" | "ERROR";
+export type BatchEntryCompletionStatus = "SUCCESS" | "ERROR" | (string & {});
 export const BatchEntryCompletionStatus = /*@__PURE__*/ S.String;
 
 export interface BatchGetAssetPropertyAggregatesErrorInfo {
@@ -565,7 +567,8 @@ export const BatchGetAssetPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetAssetPropertyValueErrorCode =
   | "ResourceNotFoundException"
   | "InvalidRequestException"
-  | "AccessDeniedException";
+  | "AccessDeniedException"
+  | (string & {});
 export const BatchGetAssetPropertyValueErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchGetAssetPropertyValueErrorEntry {
@@ -592,11 +595,11 @@ export type PropertyValueStringValue = string;
 export type PropertyValueIntegerValue = number;
 export type PropertyValueDoubleValue = number;
 export type PropertyValueBooleanValue = boolean;
-export type RawValueType = "D" | "B" | "S" | "I" | "U";
+export type RawValueType = "D" | "B" | "S" | "I" | "U" | (string & {});
 export const RawValueType = /*@__PURE__*/ S.String;
 
 export interface PropertyValueNullValue {
-  valueType: RawValueType | (string & {});
+  valueType: RawValueType;
 }
 export const PropertyValueNullValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ valueType: RawValueType }),
@@ -631,7 +634,7 @@ export const TimeInNanos = /*@__PURE__*/ S.suspend(() =>
 export interface AssetPropertyValue {
   value: Variant;
   timestamp: TimeInNanos;
-  quality?: Quality | (string & {});
+  quality?: Quality;
 }
 export const AssetPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -715,8 +718,8 @@ export interface BatchGetAssetPropertyValueHistoryEntry {
   propertyAlias?: string;
   startDate?: Date;
   endDate?: Date;
-  qualities?: (Quality | (string & {}))[];
-  timeOrdering?: TimeOrdering | (string & {});
+  qualities?: Quality[];
+  timeOrdering?: TimeOrdering;
 }
 export const BatchGetAssetPropertyValueHistoryEntry = /*@__PURE__*/ S.suspend(
   () =>
@@ -766,7 +769,8 @@ export const BatchGetAssetPropertyValueHistoryRequest = /*@__PURE__*/ S.suspend(
 export type BatchGetAssetPropertyValueHistoryErrorCode =
   | "ResourceNotFoundException"
   | "InvalidRequestException"
-  | "AccessDeniedException";
+  | "AccessDeniedException"
+  | (string & {});
 export const BatchGetAssetPropertyValueHistoryErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -912,7 +916,8 @@ export type BatchPutAssetPropertyValueErrorCode =
   | "LimitExceededException"
   | "ConflictingOperationException"
   | "TimestampOutOfRangeException"
-  | "AccessDeniedException";
+  | "AccessDeniedException"
+  | (string & {});
 export const BatchPutAssetPropertyValueErrorCode = /*@__PURE__*/ S.String;
 
 export type Timestamps = TimeInNanos[];
@@ -1025,7 +1030,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     project: S.optional(ProjectResource),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-export type Permission = "ADMINISTRATOR" | "VIEWER";
+export type Permission = "ADMINISTRATOR" | "VIEWER" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -1038,7 +1043,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 export interface CreateAccessPolicyRequest {
   accessPolicyIdentity: Identity;
   accessPolicyResource: Resource;
-  accessPolicyPermission: Permission | (string & {});
+  accessPolicyPermission: Permission;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -1111,15 +1116,17 @@ export type AssetState =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AssetState = /*@__PURE__*/ S.String;
 
-export type ErrorCode = "VALIDATION_ERROR" | "INTERNAL_FAILURE";
+export type ErrorCode = "VALIDATION_ERROR" | "INTERNAL_FAILURE" | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export type DetailedErrorCode =
   | "INCOMPATIBLE_COMPUTE_LOCATION"
-  | "INCOMPATIBLE_FORWARDING_CONFIGURATION";
+  | "INCOMPATIBLE_FORWARDING_CONFIGURATION"
+  | (string & {});
 export const DetailedErrorCode = /*@__PURE__*/ S.String;
 
 export type DetailedErrorMessage = string;
@@ -1161,7 +1168,11 @@ export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssetResponse",
 }) as any as S.Schema<CreateAssetResponse>;
-export type AssetModelType = "ASSET_MODEL" | "COMPONENT_MODEL" | "INTERFACE";
+export type AssetModelType =
+  | "ASSET_MODEL"
+  | "COMPONENT_MODEL"
+  | "INTERFACE"
+  | (string & {});
 export const AssetModelType = /*@__PURE__*/ S.String;
 
 export type PropertyDataType =
@@ -1169,7 +1180,8 @@ export type PropertyDataType =
   | "INTEGER"
   | "DOUBLE"
   | "BOOLEAN"
-  | "STRUCT";
+  | "STRUCT"
+  | (string & {});
 export const PropertyDataType = /*@__PURE__*/ S.String;
 
 export type PropertyUnit = string;
@@ -1180,11 +1192,11 @@ export interface Attribute {
 export const Attribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ defaultValue: S.optional(S.String) }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
-export type ForwardingConfigState = "DISABLED" | "ENABLED";
+export type ForwardingConfigState = "DISABLED" | "ENABLED" | (string & {});
 export const ForwardingConfigState = /*@__PURE__*/ S.String;
 
 export interface ForwardingConfig {
-  state: ForwardingConfigState | (string & {});
+  state: ForwardingConfigState;
 }
 export const ForwardingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: ForwardingConfigState }),
@@ -1244,11 +1256,11 @@ export const ExpressionVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressionVariable>;
 export type ExpressionVariables = ExpressionVariable[];
 export const ExpressionVariables = /*@__PURE__*/ S.Array(ExpressionVariable);
-export type ComputeLocation = "EDGE" | "CLOUD";
+export type ComputeLocation = "EDGE" | "CLOUD" | (string & {});
 export const ComputeLocation = /*@__PURE__*/ S.String;
 
 export interface TransformProcessingConfig {
-  computeLocation: ComputeLocation | (string & {});
+  computeLocation: ComputeLocation;
   forwardingConfig?: ForwardingConfig;
 }
 export const TransformProcessingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1287,7 +1299,7 @@ export const MetricWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tumbling: S.optional(TumblingWindow) }),
 ).annotate({ identifier: "MetricWindow" }) as any as S.Schema<MetricWindow>;
 export interface MetricProcessingConfig {
-  computeLocation: ComputeLocation | (string & {});
+  computeLocation: ComputeLocation;
 }
 export const MetricProcessingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ computeLocation: ComputeLocation }),
@@ -1326,7 +1338,7 @@ export interface AssetModelPropertyDefinition {
   id?: string;
   externalId?: string;
   name: string;
-  dataType: PropertyDataType | (string & {});
+  dataType: PropertyDataType;
   dataTypeSpec?: string;
   unit?: string;
   type: PropertyType;
@@ -1395,7 +1407,7 @@ export const AssetModelCompositeModelDefinitions = /*@__PURE__*/ S.Array(
 );
 export interface CreateAssetModelRequest {
   assetModelName: string;
-  assetModelType?: AssetModelType | (string & {});
+  assetModelType?: AssetModelType;
   assetModelId?: string;
   assetModelExternalId?: string;
   assetModelDescription?: string;
@@ -1436,7 +1448,8 @@ export type AssetModelState =
   | "UPDATING"
   | "PROPAGATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AssetModelState = /*@__PURE__*/ S.String;
 
 export interface AssetModelStatus {
@@ -1464,7 +1477,7 @@ export const CreateAssetModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAssetModelResponse>;
 export type ETag = string;
 export type SelectAll = string;
-export type AssetModelVersionType = "LATEST" | "ACTIVE";
+export type AssetModelVersionType = "LATEST" | "ACTIVE" | (string & {});
 export const AssetModelVersionType = /*@__PURE__*/ S.String;
 
 export interface CreateAssetModelCompositeModelRequest {
@@ -1480,7 +1493,7 @@ export interface CreateAssetModelCompositeModelRequest {
   assetModelCompositeModelProperties?: AssetModelPropertyDefinition[];
   ifMatch?: string;
   ifNoneMatch?: string;
-  matchForVersionType?: AssetModelVersionType | (string & {});
+  matchForVersionType?: AssetModelVersionType;
 }
 export const CreateAssetModelCompositeModelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1579,13 +1592,14 @@ export type ColumnName =
   | "TIMESTAMP_SECONDS"
   | "TIMESTAMP_NANO_OFFSET"
   | "QUALITY"
-  | "VALUE";
+  | "VALUE"
+  | (string & {});
 export const ColumnName = /*@__PURE__*/ S.String;
 
-export type ColumnNames = (ColumnName | (string & {}))[];
+export type ColumnNames = ColumnName[];
 export const ColumnNames = /*@__PURE__*/ S.Array(ColumnName);
 export interface Csv {
-  columnNames: (ColumnName | (string & {}))[];
+  columnNames: ColumnName[];
 }
 export const Csv = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnNames: ColumnNames }),
@@ -1648,7 +1662,8 @@ export type JobStatus =
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
-  | "COMPLETED_WITH_FAILURES";
+  | "COMPLETED_WITH_FAILURES"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface CreateBulkImportJobResponse {
@@ -1777,7 +1792,8 @@ export type ComputationModelState =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ComputationModelState = /*@__PURE__*/ S.String;
 
 export interface ComputationModelStatus {
@@ -1842,10 +1858,10 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
-export type DatasetSourceType = "KENDRA";
+export type DatasetSourceType = "KENDRA" | (string & {});
 export const DatasetSourceType = /*@__PURE__*/ S.String;
 
-export type DatasetSourceFormat = "KNOWLEDGE_BASE";
+export type DatasetSourceFormat = "KNOWLEDGE_BASE" | (string & {});
 export const DatasetSourceFormat = /*@__PURE__*/ S.String;
 
 export interface KendraSourceDetail {
@@ -1864,8 +1880,8 @@ export const SourceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kendra: S.optional(KendraSourceDetail) }),
 ).annotate({ identifier: "SourceDetail" }) as any as S.Schema<SourceDetail>;
 export interface DatasetSource {
-  sourceType: DatasetSourceType | (string & {});
-  sourceFormat: DatasetSourceFormat | (string & {});
+  sourceType: DatasetSourceType;
+  sourceFormat: DatasetSourceFormat;
   sourceDetail?: SourceDetail;
 }
 export const DatasetSource = /*@__PURE__*/ S.suspend(() =>
@@ -1909,7 +1925,8 @@ export type DatasetState =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DatasetState = /*@__PURE__*/ S.String;
 
 export interface DatasetStatus {
@@ -1944,12 +1961,13 @@ export type CoreDeviceThingName = string;
 export type CoreDeviceOperatingSystem =
   | "LINUX_AARCH64"
   | "LINUX_AMD64"
-  | "WINDOWS_AMD64";
+  | "WINDOWS_AMD64"
+  | (string & {});
 export const CoreDeviceOperatingSystem = /*@__PURE__*/ S.String;
 
 export interface GreengrassV2 {
   coreDeviceThingName: string;
-  coreDeviceOperatingSystem?: CoreDeviceOperatingSystem | (string & {});
+  coreDeviceOperatingSystem?: CoreDeviceOperatingSystem;
 }
 export const GreengrassV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2015,17 +2033,17 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGatewayResponse>;
 export type Email = string | redacted.Redacted<string>;
 export type ImageFileData = Uint8Array;
-export type ImageFileType = "PNG";
+export type ImageFileType = "PNG" | (string & {});
 export const ImageFileType = /*@__PURE__*/ S.String;
 
 export interface ImageFile {
   data: Uint8Array;
-  type: ImageFileType | (string & {});
+  type: ImageFileType;
 }
 export const ImageFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ data: T.Blob, type: ImageFileType }),
 ).annotate({ identifier: "ImageFile" }) as any as S.Schema<ImageFile>;
-export type AuthMode = "IAM" | "SSO";
+export type AuthMode = "IAM" | "SSO" | (string & {});
 export const AuthMode = /*@__PURE__*/ S.String;
 
 export interface Alarms {
@@ -2038,7 +2056,10 @@ export const Alarms = /*@__PURE__*/ S.suspend(() =>
     notificationLambdaArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "Alarms" }) as any as S.Schema<Alarms>;
-export type PortalType = "SITEWISE_PORTAL_V1" | "SITEWISE_PORTAL_V2";
+export type PortalType =
+  | "SITEWISE_PORTAL_V1"
+  | "SITEWISE_PORTAL_V2"
+  | (string & {});
 export const PortalType = /*@__PURE__*/ S.String;
 
 export type PortalTypeKey = string;
@@ -2067,10 +2088,10 @@ export interface CreatePortalRequest {
   portalLogoImageFile?: ImageFile;
   roleArn: string;
   tags?: { [key: string]: string | undefined };
-  portalAuthMode?: AuthMode | (string & {});
+  portalAuthMode?: AuthMode;
   notificationSenderEmail?: string | redacted.Redacted<string>;
   alarms?: Alarms;
-  portalType?: PortalType | (string & {});
+  portalType?: PortalType;
   portalTypeConfiguration?: { [key: string]: PortalTypeEntry | undefined };
 }
 export const CreatePortalRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2107,13 +2128,15 @@ export type PortalState =
   | "UPDATING"
   | "DELETING"
   | "ACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const PortalState = /*@__PURE__*/ S.String;
 
 export type MonitorErrorCode =
   | "INTERNAL_FAILURE"
   | "VALIDATION_ERROR"
-  | "LIMIT_EXCEEDED";
+  | "LIMIT_EXCEEDED"
+  | (string & {});
 export const MonitorErrorCode = /*@__PURE__*/ S.String;
 
 export type MonitorErrorMessage = string;
@@ -2258,7 +2281,7 @@ export interface DeleteAssetModelRequest {
   clientToken?: string;
   ifMatch?: string;
   ifNoneMatch?: string;
-  matchForVersionType?: AssetModelVersionType | (string & {});
+  matchForVersionType?: AssetModelVersionType;
 }
 export const DeleteAssetModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2299,7 +2322,7 @@ export interface DeleteAssetModelCompositeModelRequest {
   clientToken?: string;
   ifMatch?: string;
   ifNoneMatch?: string;
-  matchForVersionType?: AssetModelVersionType | (string & {});
+  matchForVersionType?: AssetModelVersionType;
 }
 export const DeleteAssetModelCompositeModelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2729,7 +2752,7 @@ export const DescribeAssetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAssetRequest",
 }) as any as S.Schema<DescribeAssetRequest>;
 export type PropertyNotificationTopic = string;
-export type PropertyNotificationState = "ENABLED" | "DISABLED";
+export type PropertyNotificationState = "ENABLED" | "DISABLED" | (string & {});
 export const PropertyNotificationState = /*@__PURE__*/ S.String;
 
 export interface PropertyNotification {
@@ -2987,7 +3010,7 @@ export interface AssetModelProperty {
   id?: string;
   externalId?: string;
   name: string;
-  dataType: PropertyDataType | (string & {});
+  dataType: PropertyDataType;
   dataTypeSpec?: string;
   unit?: string;
   type: PropertyType;
@@ -3479,12 +3502,12 @@ export const DescribeComputationModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComputationModelResponse",
 }) as any as S.Schema<DescribeComputationModelResponse>;
-export type ResolveToResourceType = "ASSET";
+export type ResolveToResourceType = "ASSET" | (string & {});
 export const ResolveToResourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeComputationModelExecutionSummaryRequest {
   computationModelId: string;
-  resolveToResourceType?: ResolveToResourceType | (string & {});
+  resolveToResourceType?: ResolveToResourceType;
   resolveToResourceId?: string;
 }
 export const DescribeComputationModelExecutionSummaryRequest =
@@ -3639,13 +3662,15 @@ export const DescribeDefaultEncryptionConfigurationRequest =
   }) as any as S.Schema<DescribeDefaultEncryptionConfigurationRequest>;
 export type EncryptionType =
   | "SITEWISE_DEFAULT_ENCRYPTION"
-  | "KMS_BASED_ENCRYPTION";
+  | "KMS_BASED_ENCRYPTION"
+  | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type ConfigurationState =
   | "ACTIVE"
   | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 export interface ConfigurationErrorDetails {
@@ -3701,7 +3726,7 @@ export const DescribeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExecutionRequest",
 }) as any as S.Schema<DescribeExecutionRequest>;
-export type ExecutionState = "RUNNING" | "COMPLETED" | "FAILED";
+export type ExecutionState = "RUNNING" | "COMPLETED" | "FAILED" | (string & {});
 export const ExecutionState = /*@__PURE__*/ S.String;
 
 export interface ExecutionStatus {
@@ -3781,7 +3806,8 @@ export type CapabilitySyncStatus =
   | "OUT_OF_SYNC"
   | "SYNC_FAILED"
   | "UNKNOWN"
-  | "NOT_APPLICABLE";
+  | "NOT_APPLICABLE"
+  | (string & {});
 export const CapabilitySyncStatus = /*@__PURE__*/ S.String;
 
 export interface GatewayCapabilitySummary {
@@ -3882,11 +3908,11 @@ export const DescribeLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLoggingOptionsRequest",
 }) as any as S.Schema<DescribeLoggingOptionsRequest>;
-export type LoggingLevel = "ERROR" | "INFO" | "OFF";
+export type LoggingLevel = "ERROR" | "INFO" | "OFF" | (string & {});
 export const LoggingLevel = /*@__PURE__*/ S.String;
 
 export interface LoggingOptions {
-  level: LoggingLevel | (string & {});
+  level: LoggingLevel;
 }
 export const LoggingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ level: LoggingLevel }),
@@ -4020,7 +4046,10 @@ export const DescribeStorageConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStorageConfigurationRequest",
 }) as any as S.Schema<DescribeStorageConfigurationRequest>;
-export type StorageType = "SITEWISE_DEFAULT_STORAGE" | "MULTI_LAYER_STORAGE";
+export type StorageType =
+  | "SITEWISE_DEFAULT_STORAGE"
+  | "MULTI_LAYER_STORAGE"
+  | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
 
 export interface CustomerManagedS3Storage {
@@ -4040,7 +4069,10 @@ export const MultiLayerStorage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MultiLayerStorage",
 }) as any as S.Schema<MultiLayerStorage>;
-export type DisassociatedDataStorageState = "ENABLED" | "DISABLED";
+export type DisassociatedDataStorageState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const DisassociatedDataStorageState = /*@__PURE__*/ S.String;
 
 export type NumberOfDays = number;
@@ -4057,7 +4089,7 @@ export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetentionPeriod",
 }) as any as S.Schema<RetentionPeriod>;
-export type WarmTierState = "ENABLED" | "DISABLED";
+export type WarmTierState = "ENABLED" | "DISABLED" | (string & {});
 export const WarmTierState = /*@__PURE__*/ S.String;
 
 export interface WarmTierRetentionPeriod {
@@ -4277,7 +4309,13 @@ export const ExecuteQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteQueryRequest",
 }) as any as S.Schema<ExecuteQueryRequest>;
-export type ScalarType = "BOOLEAN" | "INT" | "DOUBLE" | "TIMESTAMP" | "STRING";
+export type ScalarType =
+  | "BOOLEAN"
+  | "INT"
+  | "DOUBLE"
+  | "TIMESTAMP"
+  | "STRING"
+  | (string & {});
 export const ScalarType = /*@__PURE__*/ S.String;
 
 export interface ColumnType {
@@ -4349,12 +4387,12 @@ export interface GetAssetPropertyAggregatesRequest {
   assetId?: string;
   propertyId?: string;
   propertyAlias?: string;
-  aggregateTypes: (AggregateType | (string & {}))[];
+  aggregateTypes: AggregateType[];
   resolution: string;
-  qualities?: (Quality | (string & {}))[];
+  qualities?: Quality[];
   startDate: Date;
   endDate: Date;
-  timeOrdering?: TimeOrdering | (string & {});
+  timeOrdering?: TimeOrdering;
   nextToken?: string;
   maxResults?: number;
 }
@@ -4438,8 +4476,8 @@ export interface GetAssetPropertyValueHistoryRequest {
   propertyAlias?: string;
   startDate?: Date;
   endDate?: Date;
-  qualities?: (Quality | (string & {}))[];
-  timeOrdering?: TimeOrdering | (string & {});
+  qualities?: Quality[];
+  timeOrdering?: TimeOrdering;
   nextToken?: string;
   maxResults?: number;
 }
@@ -4496,7 +4534,7 @@ export interface GetInterpolatedAssetPropertyValuesRequest {
   startTimeOffsetInNanos?: number;
   endTimeInSeconds: number;
   endTimeOffsetInNanos?: number;
-  quality: Quality | (string & {});
+  quality: Quality;
   intervalInSeconds: number;
   nextToken?: string;
   maxResults?: number;
@@ -4804,17 +4842,17 @@ export const InvokeAssistantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeAssistantResponse",
 }) as any as S.Schema<InvokeAssistantResponse>;
-export type IdentityType = "USER" | "GROUP" | "IAM";
+export type IdentityType = "USER" | "GROUP" | "IAM" | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
-export type ResourceType = "PORTAL" | "PROJECT";
+export type ResourceType = "PORTAL" | "PROJECT" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
 export interface ListAccessPoliciesRequest {
-  identityType?: IdentityType | (string & {});
+  identityType?: IdentityType;
   identityId?: string;
-  resourceType?: ResourceType | (string & {});
+  resourceType?: ResourceType;
   resourceId?: string;
   iamArn?: string;
   nextToken?: string;
@@ -4876,15 +4914,15 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessPoliciesResponse",
 }) as any as S.Schema<ListAccessPoliciesResponse>;
-export type TargetResourceType = "ASSET" | "COMPUTATION_MODEL";
+export type TargetResourceType = "ASSET" | "COMPUTATION_MODEL" | (string & {});
 export const TargetResourceType = /*@__PURE__*/ S.String;
 
 export interface ListActionsRequest {
-  targetResourceType: TargetResourceType | (string & {});
+  targetResourceType: TargetResourceType;
   targetResourceId: string;
   nextToken?: string;
   maxResults?: number;
-  resolveToResourceType?: ResolveToResourceType | (string & {});
+  resolveToResourceType?: ResolveToResourceType;
   resolveToResourceId?: string;
 }
 export const ListActionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4983,14 +5021,14 @@ export const ListAssetModelCompositeModelsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAssetModelCompositeModelsResponse",
 }) as any as S.Schema<ListAssetModelCompositeModelsResponse>;
-export type ListAssetModelPropertiesFilter = "ALL" | "BASE";
+export type ListAssetModelPropertiesFilter = "ALL" | "BASE" | (string & {});
 export const ListAssetModelPropertiesFilter = /*@__PURE__*/ S.String;
 
 export interface ListAssetModelPropertiesRequest {
   assetModelId: string;
   nextToken?: string;
   maxResults?: number;
-  filter?: ListAssetModelPropertiesFilter | (string & {});
+  filter?: ListAssetModelPropertiesFilter;
   assetModelVersion?: string;
 }
 export const ListAssetModelPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5075,10 +5113,10 @@ export const ListAssetModelPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetModelPropertiesResponse",
 }) as any as S.Schema<ListAssetModelPropertiesResponse>;
-export type ListAssetModelsTypeFilter = (AssetModelType | (string & {}))[];
+export type ListAssetModelsTypeFilter = AssetModelType[];
 export const ListAssetModelsTypeFilter = /*@__PURE__*/ S.Array(AssetModelType);
 export interface ListAssetModelsRequest {
-  assetModelTypes?: (AssetModelType | (string & {}))[];
+  assetModelTypes?: AssetModelType[];
   nextToken?: string;
   maxResults?: number;
   assetModelVersion?: string;
@@ -5148,14 +5186,14 @@ export const ListAssetModelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetModelsResponse",
 }) as any as S.Schema<ListAssetModelsResponse>;
-export type ListAssetPropertiesFilter = "ALL" | "BASE";
+export type ListAssetPropertiesFilter = "ALL" | "BASE" | (string & {});
 export const ListAssetPropertiesFilter = /*@__PURE__*/ S.String;
 
 export interface ListAssetPropertiesRequest {
   assetId: string;
   nextToken?: string;
   maxResults?: number;
-  filter?: ListAssetPropertiesFilter | (string & {});
+  filter?: ListAssetPropertiesFilter;
 }
 export const ListAssetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5213,12 +5251,12 @@ export const ListAssetPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetPropertiesResponse",
 }) as any as S.Schema<ListAssetPropertiesResponse>;
-export type TraversalType = "PATH_TO_ROOT";
+export type TraversalType = "PATH_TO_ROOT" | (string & {});
 export const TraversalType = /*@__PURE__*/ S.String;
 
 export interface ListAssetRelationshipsRequest {
   assetId: string;
-  traversalType: TraversalType | (string & {});
+  traversalType: TraversalType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -5253,7 +5291,7 @@ export const AssetHierarchyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetHierarchyInfo",
 }) as any as S.Schema<AssetHierarchyInfo>;
-export type AssetRelationshipType = "HIERARCHY";
+export type AssetRelationshipType = "HIERARCHY" | (string & {});
 export const AssetRelationshipType = /*@__PURE__*/ S.String;
 
 export interface AssetRelationshipSummary {
@@ -5284,14 +5322,14 @@ export const ListAssetRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetRelationshipsResponse",
 }) as any as S.Schema<ListAssetRelationshipsResponse>;
-export type ListAssetsFilter = "ALL" | "TOP_LEVEL";
+export type ListAssetsFilter = "ALL" | "TOP_LEVEL" | (string & {});
 export const ListAssetsFilter = /*@__PURE__*/ S.String;
 
 export interface ListAssetsRequest {
   nextToken?: string;
   maxResults?: number;
   assetModelId?: string;
-  filter?: ListAssetsFilter | (string & {});
+  filter?: ListAssetsFilter;
 }
 export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5349,13 +5387,13 @@ export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetsResponse",
 }) as any as S.Schema<ListAssetsResponse>;
-export type TraversalDirection = "PARENT" | "CHILD";
+export type TraversalDirection = "PARENT" | "CHILD" | (string & {});
 export const TraversalDirection = /*@__PURE__*/ S.String;
 
 export interface ListAssociatedAssetsRequest {
   assetId: string;
   hierarchyId?: string;
-  traversalDirection?: TraversalDirection | (string & {});
+  traversalDirection?: TraversalDirection;
   nextToken?: string;
   maxResults?: number;
 }
@@ -5432,13 +5470,14 @@ export type ListBulkImportJobsFilter =
   | "CANCELLED"
   | "FAILED"
   | "COMPLETED_WITH_FAILURES"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const ListBulkImportJobsFilter = /*@__PURE__*/ S.String;
 
 export interface ListBulkImportJobsRequest {
   nextToken?: string;
   maxResults?: number;
-  filter?: ListBulkImportJobsFilter | (string & {});
+  filter?: ListBulkImportJobsFilter;
 }
 export const ListBulkImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5718,11 +5757,11 @@ export const ListComputationModelResolveToResourcesResponse =
   ).annotate({
     identifier: "ListComputationModelResolveToResourcesResponse",
   }) as any as S.Schema<ListComputationModelResolveToResourcesResponse>;
-export type ComputationModelType = "ANOMALY_DETECTION";
+export type ComputationModelType = "ANOMALY_DETECTION" | (string & {});
 export const ComputationModelType = /*@__PURE__*/ S.String;
 
 export interface ListComputationModelsRequest {
-  computationModelType?: ComputationModelType | (string & {});
+  computationModelType?: ComputationModelType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -5844,7 +5883,7 @@ export const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDashboardsResponse",
 }) as any as S.Schema<ListDashboardsResponse>;
 export interface ListDatasetsRequest {
-  sourceType: DatasetSourceType | (string & {});
+  sourceType: DatasetSourceType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -5901,9 +5940,9 @@ export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatasetsResponse",
 }) as any as S.Schema<ListDatasetsResponse>;
 export interface ListExecutionsRequest {
-  targetResourceType: TargetResourceType | (string & {});
+  targetResourceType: TargetResourceType;
   targetResourceId: string;
-  resolveToResourceType?: ResolveToResourceType | (string & {});
+  resolveToResourceType?: ResolveToResourceType;
   resolveToResourceId?: string;
   nextToken?: string;
   maxResults?: number;
@@ -6256,7 +6295,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type ListTimeSeriesType = "ASSOCIATED" | "DISASSOCIATED";
+export type ListTimeSeriesType = "ASSOCIATED" | "DISASSOCIATED" | (string & {});
 export const ListTimeSeriesType = /*@__PURE__*/ S.String;
 
 export interface ListTimeSeriesRequest {
@@ -6264,7 +6303,7 @@ export interface ListTimeSeriesRequest {
   maxResults?: number;
   assetId?: string;
   aliasPrefix?: string;
-  timeSeriesType?: ListTimeSeriesType | (string & {});
+  timeSeriesType?: ListTimeSeriesType;
 }
 export const ListTimeSeriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6394,7 +6433,7 @@ export const PutAssetModelInterfaceRelationshipResponse =
   }) as any as S.Schema<PutAssetModelInterfaceRelationshipResponse>;
 export type KmsKeyId = string;
 export interface PutDefaultEncryptionConfigurationRequest {
-  encryptionType: EncryptionType | (string & {});
+  encryptionType: EncryptionType;
   kmsKeyId?: string;
 }
 export const PutDefaultEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
@@ -6454,11 +6493,11 @@ export const PutLoggingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutLoggingOptionsResponse",
 }) as any as S.Schema<PutLoggingOptionsResponse>;
 export interface PutStorageConfigurationRequest {
-  storageType: StorageType | (string & {});
+  storageType: StorageType;
   multiLayerStorage?: MultiLayerStorage;
-  disassociatedDataStorage?: DisassociatedDataStorageState | (string & {});
+  disassociatedDataStorage?: DisassociatedDataStorageState;
   retentionPeriod?: RetentionPeriod;
-  warmTier?: WarmTierState | (string & {});
+  warmTier?: WarmTierState;
   warmTierRetentionPeriod?: WarmTierRetentionPeriod;
   disallowIngestNullNaN?: boolean;
 }
@@ -6568,7 +6607,7 @@ export interface UpdateAccessPolicyRequest {
   accessPolicyId: string;
   accessPolicyIdentity: Identity;
   accessPolicyResource: Resource;
-  accessPolicyPermission: Permission | (string & {});
+  accessPolicyPermission: Permission;
   clientToken?: string;
 }
 export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6643,7 +6682,7 @@ export interface UpdateAssetModelRequest {
   clientToken?: string;
   ifMatch?: string;
   ifNoneMatch?: string;
-  matchForVersionType?: AssetModelVersionType | (string & {});
+  matchForVersionType?: AssetModelVersionType;
 }
 export const UpdateAssetModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6691,7 +6730,7 @@ export interface UpdateAssetModelCompositeModelRequest {
   assetModelCompositeModelProperties?: AssetModelProperty[];
   ifMatch?: string;
   ifNoneMatch?: string;
-  matchForVersionType?: AssetModelVersionType | (string & {});
+  matchForVersionType?: AssetModelVersionType;
 }
 export const UpdateAssetModelCompositeModelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6743,7 +6782,7 @@ export interface UpdateAssetPropertyRequest {
   assetId: string;
   propertyId: string;
   propertyAlias?: string;
-  propertyNotificationState?: PropertyNotificationState | (string & {});
+  propertyNotificationState?: PropertyNotificationState;
   clientToken?: string;
   propertyUnit?: string;
 }
@@ -6977,7 +7016,7 @@ export interface UpdatePortalRequest {
   clientToken?: string;
   notificationSenderEmail?: string | redacted.Redacted<string>;
   alarms?: Alarms;
-  portalType?: PortalType | (string & {});
+  portalType?: PortalType;
   portalTypeConfiguration?: { [key: string]: PortalTypeEntry | undefined };
 }
 export const UpdatePortalRequest = /*@__PURE__*/ S.suspend(() =>

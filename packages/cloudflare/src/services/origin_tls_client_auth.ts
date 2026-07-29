@@ -203,32 +203,32 @@ export const HostnameCertificatesCreateResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** The date when the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** The serial number on the uploaded certificate. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the certificate or the association. */
-  status?: HostnameCertificatesCreateResponseStatus;
+  status?: HostnameCertificatesCreateResponseStatus | null;
   /** The time when the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    status: S.optional(HostnameCertificatesCreateResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnameCertificatesCreateResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameCertificateResponse",
@@ -263,30 +263,30 @@ export const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginTlsClientAuthResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
-  expiresOn?: string;
-  issuer?: string;
-  signature?: string;
-  status?: string;
-  uploadedOn?: string;
+  privateKey?: string | null;
+  expiresOn?: string | null;
+  issuer?: string | null;
+  signature?: string | null;
+  status?: string | null;
+  uploadedOn?: string | null;
 }
 export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    signature: S.optional(S.String),
-    status: S.optional(S.String),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginTlsClientAuthResponse",
@@ -328,32 +328,32 @@ export const HostnameCertificatesDeleteResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteHostnameCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** The date when the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** The serial number on the uploaded certificate. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the certificate or the association. */
-  status?: HostnameCertificatesDeleteResponseStatus;
+  status?: HostnameCertificatesDeleteResponseStatus | null;
   /** The time when the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const DeleteHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    status: S.optional(HostnameCertificatesDeleteResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnameCertificatesDeleteResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHostnameCertificateResponse",
@@ -385,20 +385,20 @@ export const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginTlsClientAuthResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const DeleteOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsClientAuthResponse",
@@ -450,52 +450,56 @@ export const HostnamesGetResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameResponse {
   /** Identifier. */
-  certId?: string;
+  certId?: string | null;
   /** Status of the certificate or the association. */
-  certStatus?: HostnamesGetResponseCertStatus;
+  certStatus?: HostnamesGetResponseCertStatus | null;
   /** The time when the certificate was updated. */
-  certUpdatedAt?: string;
+  certUpdatedAt?: string | null;
   /** The time when the certificate was uploaded. */
-  certUploadedOn?: string;
+  certUploadedOn?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** The time when the certificate was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The date when the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
-  hostname?: string;
+  hostname?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** The serial number on the uploaded certificate. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the certificate or the association. */
-  status?: HostnamesGetResponseStatus;
+  status?: HostnamesGetResponseStatus | null;
   /** The time when the certificate was updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certId: S.optional(S.String.pipe(T.Body("cert_id"))),
+    certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
     certStatus: S.optional(
-      HostnamesGetResponseCertStatus.pipe(T.Body("cert_status")),
+      S.NullOr(HostnamesGetResponseCertStatus).pipe(T.Body("cert_status")),
     ),
-    certUpdatedAt: S.optional(S.String.pipe(T.Body("cert_updated_at"))),
-    certUploadedOn: S.optional(S.String.pipe(T.Body("cert_uploaded_on"))),
-    certificate: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    enabled: S.optional(S.Boolean),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    hostname: S.optional(S.String),
-    issuer: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    status: S.optional(HostnamesGetResponseStatus),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    certUpdatedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("cert_updated_at")),
+    ),
+    certUploadedOn: S.optional(
+      S.NullOr(S.String).pipe(T.Body("cert_uploaded_on")),
+    ),
+    certificate: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    hostname: S.optional(S.NullOr(S.String)),
+    issuer: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnamesGetResponseStatus)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameResponse",
@@ -537,32 +541,32 @@ export const HostnameCertificatesGetResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** The date when the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** The serial number on the uploaded certificate. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the certificate or the association. */
-  status?: HostnameCertificatesGetResponseStatus;
+  status?: HostnameCertificatesGetResponseStatus | null;
   /** The time when the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const GetHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    status: S.optional(HostnameCertificatesGetResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnameCertificatesGetResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameCertificateResponse",
@@ -594,30 +598,30 @@ export const GetOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginTlsClientAuthResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
-  expiresOn?: string;
-  issuer?: string;
-  signature?: string;
-  status?: string;
-  uploadedOn?: string;
+  privateKey?: string | null;
+  expiresOn?: string | null;
+  issuer?: string | null;
+  signature?: string | null;
+  status?: string | null;
+  uploadedOn?: string | null;
 }
 export const GetOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    signature: S.optional(S.String),
-    status: S.optional(S.String),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsClientAuthResponse",
@@ -646,11 +650,11 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
@@ -688,32 +692,32 @@ export const HostnameCertificatesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface HostnameCertificatesListResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** The date when the certificate expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
+  issuer?: string | null;
   /** The serial number on the uploaded certificate. */
-  serialNumber?: string;
+  serialNumber?: string | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the certificate or the association. */
-  status?: HostnameCertificatesListResultItemStatus;
+  status?: HostnameCertificatesListResultItemStatus | null;
   /** The time when the certificate was uploaded. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    signature: S.optional(S.String),
-    status: S.optional(HostnameCertificatesListResultItemStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnameCertificatesListResultItemStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({
   identifier: "HostnameCertificatesListResultItem",
@@ -762,30 +766,30 @@ export const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
-  expiresOn?: string;
-  issuer?: string;
-  signature?: string;
-  status?: string;
-  uploadedOn?: string;
+  privateKey?: string | null;
+  expiresOn?: string | null;
+  issuer?: string | null;
+  signature?: string | null;
+  status?: string | null;
+  uploadedOn?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.String),
-    signature: S.optional(S.String),
-    status: S.optional(S.String),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.NullOr(S.String)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -811,17 +815,17 @@ export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface HostnamesUpdateRequestConfigItem {
   /** Certificate identifier tag. */
-  certId?: string;
+  certId?: string | null;
   /** Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
-  hostname?: string;
+  hostname?: string | null;
 }
 export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certId: S.optional(S.String.pipe(T.Body("cert_id"))),
-    enabled: S.optional(S.Boolean),
-    hostname: S.optional(S.String),
+    certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    hostname: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HostnamesUpdateRequestConfigItem",
@@ -857,26 +861,26 @@ export const PutHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface HostnamesUpdateResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** Identifier. */
-  certId?: string;
+  certId?: string | null;
   /** The hostname certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
-  hostname?: string;
+  hostname?: string | null;
   /** The hostname certificate's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certId: S.optional(S.String.pipe(T.Body("cert_id"))),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    hostname: S.optional(S.String),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    hostname: S.optional(S.NullOr(S.String)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }),
 ).annotate({
   identifier: "HostnamesUpdateResultItem",
@@ -928,11 +932,11 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingResponse",
@@ -967,20 +971,20 @@ export const ZoneCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneCertificatesCreateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const ZoneCertificatesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesCreateResponse",
@@ -1012,20 +1016,20 @@ export const ZoneCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneCertificatesDeleteResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const ZoneCertificatesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesDeleteResponse",
@@ -1057,20 +1061,20 @@ export const ZoneCertificatesGetRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneCertificatesGetResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const ZoneCertificatesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesGetResponse",
@@ -1098,20 +1102,20 @@ export const ZoneCertificatesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ZoneCertificatesListResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The zone's leaf certificate. */
-  certificate?: string;
+  certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The zone's private key. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const ZoneCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   }),
 ).annotate({
   identifier: "ZoneCertificatesListResultItem",

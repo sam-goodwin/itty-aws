@@ -608,13 +608,18 @@ export type SymmetricKeyAlgorithm =
   | "HMAC_SHA256"
   | "HMAC_SHA384"
   | "HMAC_SHA512"
-  | "HMAC_SHA224";
+  | "HMAC_SHA224"
+  | (string & {});
 export const SymmetricKeyAlgorithm = /*@__PURE__*/ S.String;
 
-export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963";
+export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963" | (string & {});
 export const KeyDerivationFunction = /*@__PURE__*/ S.String;
 
-export type KeyDerivationHashAlgorithm = "SHA_256" | "SHA_384" | "SHA_512";
+export type KeyDerivationHashAlgorithm =
+  | "SHA_256"
+  | "SHA_384"
+  | "SHA_512"
+  | (string & {});
 export const KeyDerivationHashAlgorithm = /*@__PURE__*/ S.String;
 
 export type SharedInformation = string;
@@ -626,9 +631,9 @@ export interface ExportDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
   PublicKeyCertificate: string;
-  DeriveKeyAlgorithm: SymmetricKeyAlgorithm | (string & {});
-  KeyDerivationFunction: KeyDerivationFunction | (string & {});
-  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm | (string & {});
+  DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
+  KeyDerivationFunction: KeyDerivationFunction;
+  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm;
   DerivationData: DiffieHellmanDerivationData;
   KeyBlockHeaders?: KeyBlockHeaders;
 }
@@ -650,12 +655,13 @@ export type As2805KeyVariant =
   | "TERMINAL_MAJOR_KEY_VARIANT_00"
   | "PIN_ENCRYPTION_KEY_VARIANT_28"
   | "MESSAGE_AUTHENTICATION_KEY_VARIANT_24"
-  | "DATA_ENCRYPTION_KEY_VARIANT_22";
+  | "DATA_ENCRYPTION_KEY_VARIANT_22"
+  | (string & {});
 export const As2805KeyVariant = /*@__PURE__*/ S.String;
 
 export interface ExportAs2805KeyCryptogram {
   WrappingKeyIdentifier: string;
-  As2805KeyVariant: As2805KeyVariant | (string & {});
+  As2805KeyVariant: As2805KeyVariant;
 }
 export const ExportAs2805KeyCryptogram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1077,9 +1083,9 @@ export interface ImportDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
   PublicKeyCertificate: string;
-  DeriveKeyAlgorithm: SymmetricKeyAlgorithm | (string & {});
-  KeyDerivationFunction: KeyDerivationFunction | (string & {});
-  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm | (string & {});
+  DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
+  KeyDerivationFunction: KeyDerivationFunction;
+  KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm;
   DerivationData: DiffieHellmanDerivationData;
   WrappedKeyBlock: string | redacted.Redacted<string>;
 }
@@ -1098,7 +1104,7 @@ export const ImportDiffieHellmanTr31KeyBlock = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportDiffieHellmanTr31KeyBlock",
 }) as any as S.Schema<ImportDiffieHellmanTr31KeyBlock>;
 export interface ImportAs2805KeyCryptogram {
-  As2805KeyVariant: As2805KeyVariant | (string & {});
+  As2805KeyVariant: As2805KeyVariant;
   KeyModesOfUse: KeyModesOfUse;
   KeyAlgorithm: string;
   Exportable: boolean;

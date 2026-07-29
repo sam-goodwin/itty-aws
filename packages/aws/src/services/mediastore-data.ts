@@ -253,7 +253,7 @@ export const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListItemsRequest",
 }) as any as S.Schema<ListItemsRequest>;
 export type ItemName = string;
-export type ItemType = "OBJECT" | "FOLDER";
+export type ItemType = "OBJECT" | "FOLDER" | (string & {});
 export const ItemType = /*@__PURE__*/ S.String;
 
 export interface Item {
@@ -288,10 +288,10 @@ export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListItemsResponse",
 }) as any as S.Schema<ListItemsResponse>;
-export type StorageClass = "TEMPORAL";
+export type StorageClass = "TEMPORAL" | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
 
-export type UploadAvailability = "STANDARD" | "STREAMING";
+export type UploadAvailability = "STANDARD" | "STREAMING" | (string & {});
 export const UploadAvailability = /*@__PURE__*/ S.String;
 
 export interface PutObjectRequest {
@@ -299,8 +299,8 @@ export interface PutObjectRequest {
   Path: string;
   ContentType?: string;
   CacheControl?: string;
-  StorageClass?: StorageClass | (string & {});
-  UploadAvailability?: UploadAvailability | (string & {});
+  StorageClass?: StorageClass;
+  UploadAvailability?: UploadAvailability;
 }
 export const PutObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

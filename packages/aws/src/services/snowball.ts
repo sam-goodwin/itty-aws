@@ -166,7 +166,7 @@ export const CancelJobResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelJobResult",
 }) as any as S.Schema<CancelJobResult>;
 export type AddressId = string;
-export type AddressType = "CUST_PICKUP" | "AWS_SHIP";
+export type AddressType = "CUST_PICKUP" | "AWS_SHIP" | (string & {});
 export const AddressType = /*@__PURE__*/ S.String;
 
 export interface Address {
@@ -184,7 +184,7 @@ export interface Address {
   PostalCode?: string;
   PhoneNumber?: string;
   IsRestricted?: boolean;
-  Type?: AddressType | (string & {});
+  Type?: AddressType;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -223,7 +223,7 @@ export const CreateAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAddressResult",
 }) as any as S.Schema<CreateAddressResult>;
-export type JobType = "IMPORT" | "EXPORT" | "LOCAL_USE";
+export type JobType = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 export type ResourceARN = string;
@@ -239,15 +239,16 @@ export const KeyRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRange" }) as any as S.Schema<KeyRange>;
 export type DeviceServiceName =
   | "NFS_ON_DEVICE_SERVICE"
-  | "S3_ON_DEVICE_SERVICE";
+  | "S3_ON_DEVICE_SERVICE"
+  | (string & {});
 export const DeviceServiceName = /*@__PURE__*/ S.String;
 
-export type TransferOption = "IMPORT" | "EXPORT" | "LOCAL_USE";
+export type TransferOption = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
 export const TransferOption = /*@__PURE__*/ S.String;
 
 export interface TargetOnDeviceService {
-  ServiceName?: DeviceServiceName | (string & {});
-  TransferOption?: TransferOption | (string & {});
+  ServiceName?: DeviceServiceName;
+  TransferOption?: TransferOption;
 }
 export const TargetOnDeviceService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -322,12 +323,12 @@ export const JobResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobResource" }) as any as S.Schema<JobResource>;
 export type StorageLimit = number;
-export type StorageUnit = "TB";
+export type StorageUnit = "TB" | (string & {});
 export const StorageUnit = /*@__PURE__*/ S.String;
 
 export interface NFSOnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit | (string & {});
+  StorageUnit?: StorageUnit;
 }
 export const NFSOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -339,7 +340,7 @@ export const NFSOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NFSOnDeviceServiceConfiguration>;
 export interface TGWOnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit | (string & {});
+  StorageUnit?: StorageUnit;
 }
 export const TGWOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -366,7 +367,7 @@ export type ServiceSize = number;
 export type NodeFaultTolerance = number;
 export interface S3OnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit | (string & {});
+  StorageUnit?: StorageUnit;
   ServiceSize?: number;
   FaultTolerance?: number;
 }
@@ -408,10 +409,16 @@ export type SnowballType =
   | "SNC1_SSD"
   | "V3_5C"
   | "V3_5S"
-  | "RACK_5U_C";
+  | "RACK_5U_C"
+  | (string & {});
 export const SnowballType = /*@__PURE__*/ S.String;
 
-export type ShippingOption = "SECOND_DAY" | "NEXT_DAY" | "EXPRESS" | "STANDARD";
+export type ShippingOption =
+  | "SECOND_DAY"
+  | "NEXT_DAY"
+  | "EXPRESS"
+  | "STANDARD"
+  | (string & {});
 export const ShippingOption = /*@__PURE__*/ S.String;
 
 export type SnsTopicARN = string;
@@ -428,14 +435,15 @@ export type JobState =
   | "Complete"
   | "Cancelled"
   | "Listing"
-  | "Pending";
+  | "Pending"
+  | (string & {});
 export const JobState = /*@__PURE__*/ S.String;
 
-export type JobStateList = (JobState | (string & {}))[];
+export type JobStateList = JobState[];
 export const JobStateList = /*@__PURE__*/ S.Array(JobState);
 export interface Notification {
   SnsTopicARN?: string;
-  JobStatesToNotify?: (JobState | (string & {}))[];
+  JobStatesToNotify?: JobState[];
   NotifyAll?: boolean;
   DevicePickupSnsTopicARN?: string;
 }
@@ -465,7 +473,8 @@ export const TaxDocuments = /*@__PURE__*/ S.suspend(() =>
 export type RemoteManagement =
   | "INSTALLED_ONLY"
   | "INSTALLED_AUTOSTART"
-  | "NOT_INSTALLED";
+  | "NOT_INSTALLED"
+  | (string & {});
 export const RemoteManagement = /*@__PURE__*/ S.String;
 
 export type InitialClusterSize = number;
@@ -483,27 +492,28 @@ export type SnowballCapacity =
   | "T32"
   | "NoPreference"
   | "T240"
-  | "T13";
+  | "T13"
+  | (string & {});
 export const SnowballCapacity = /*@__PURE__*/ S.String;
 
 export interface CreateClusterRequest {
-  JobType: JobType | (string & {});
+  JobType: JobType;
   Resources?: JobResource;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
   Description?: string;
   AddressId: string;
   KmsKeyARN?: string;
   RoleARN?: string;
-  SnowballType: SnowballType | (string & {});
-  ShippingOption: ShippingOption | (string & {});
+  SnowballType: SnowballType;
+  ShippingOption: ShippingOption;
   Notification?: Notification;
   ForwardingAddressId?: string;
   TaxDocuments?: TaxDocuments;
-  RemoteManagement?: RemoteManagement | (string & {});
+  RemoteManagement?: RemoteManagement;
   InitialClusterSize?: number;
   ForceCreateJobs?: boolean;
   LongTermPricingIds?: string[];
-  SnowballCapacityPreference?: SnowballCapacity | (string & {});
+  SnowballCapacityPreference?: SnowballCapacity;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -590,7 +600,13 @@ export const DeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceConfiguration",
 }) as any as S.Schema<DeviceConfiguration>;
-export type ImpactLevel = "IL2" | "IL4" | "IL5" | "IL6" | "IL99";
+export type ImpactLevel =
+  | "IL2"
+  | "IL4"
+  | "IL5"
+  | "IL6"
+  | "IL99"
+  | (string & {});
 export const ImpactLevel = /*@__PURE__*/ S.String;
 
 export type PhoneNumber = string | redacted.Redacted<string>;
@@ -619,24 +635,24 @@ export const PickupDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PickupDetails" }) as any as S.Schema<PickupDetails>;
 export interface CreateJobRequest {
-  JobType?: JobType | (string & {});
+  JobType?: JobType;
   Resources?: JobResource;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
   Description?: string;
   AddressId?: string;
   KmsKeyARN?: string;
   RoleARN?: string;
-  SnowballCapacityPreference?: SnowballCapacity | (string & {});
-  ShippingOption?: ShippingOption | (string & {});
+  SnowballCapacityPreference?: SnowballCapacity;
+  ShippingOption?: ShippingOption;
   Notification?: Notification;
   ClusterId?: string;
-  SnowballType?: SnowballType | (string & {});
+  SnowballType?: SnowballType;
   ForwardingAddressId?: string;
   TaxDocuments?: TaxDocuments;
   DeviceConfiguration?: DeviceConfiguration;
-  RemoteManagement?: RemoteManagement | (string & {});
+  RemoteManagement?: RemoteManagement;
   LongTermPricingId?: string;
-  ImpactLevel?: ImpactLevel | (string & {});
+  ImpactLevel?: ImpactLevel;
   PickupDetails?: PickupDetails;
 }
 export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
@@ -674,14 +690,18 @@ export const CreateJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobResult",
 }) as any as S.Schema<CreateJobResult>;
-export type LongTermPricingType = "OneYear" | "ThreeYear" | "OneMonth";
+export type LongTermPricingType =
+  | "OneYear"
+  | "ThreeYear"
+  | "OneMonth"
+  | (string & {});
 export const LongTermPricingType = /*@__PURE__*/ S.String;
 
 export type JavaBoolean = boolean;
 export interface CreateLongTermPricingRequest {
-  LongTermPricingType: LongTermPricingType | (string & {});
+  LongTermPricingType: LongTermPricingType;
   IsLongTermPricingAutoRenew?: boolean;
-  SnowballType: SnowballType | (string & {});
+  SnowballType: SnowballType;
 }
 export const CreateLongTermPricingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -704,7 +724,7 @@ export const CreateLongTermPricingResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLongTermPricingResult>;
 export interface CreateReturnShippingLabelRequest {
   JobId: string;
-  ShippingOption?: ShippingOption | (string & {});
+  ShippingOption?: ShippingOption;
 }
 export const CreateReturnShippingLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -720,7 +740,8 @@ export type ShippingLabelStatus =
   | "InProgress"
   | "TimedOut"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ShippingLabelStatus = /*@__PURE__*/ S.String;
 
 export interface CreateReturnShippingLabelResult {
@@ -793,7 +814,8 @@ export type ClusterState =
   | "Pending"
   | "InUse"
   | "Complete"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
 
 export interface ClusterMetadata {
@@ -1295,7 +1317,7 @@ export const ListPickupLocationsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPickupLocationsResult",
 }) as any as S.Schema<ListPickupLocationsResult>;
-export type ServiceName = "KUBERNETES" | "EKS_ANYWHERE";
+export type ServiceName = "KUBERNETES" | "EKS_ANYWHERE" | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
 
 export interface ServiceVersion {
@@ -1305,7 +1327,7 @@ export const ServiceVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Version: S.optional(S.String) }),
 ).annotate({ identifier: "ServiceVersion" }) as any as S.Schema<ServiceVersion>;
 export interface DependentService {
-  ServiceName?: ServiceName | (string & {});
+  ServiceName?: ServiceName;
   ServiceVersion?: ServiceVersion;
 }
 export const DependentService = /*@__PURE__*/ S.suspend(() =>
@@ -1319,7 +1341,7 @@ export const DependentService = /*@__PURE__*/ S.suspend(() =>
 export type DependentServiceList = DependentService[];
 export const DependentServiceList = /*@__PURE__*/ S.Array(DependentService);
 export interface ListServiceVersionsRequest {
-  ServiceName: ServiceName | (string & {});
+  ServiceName: ServiceName;
   DependentServices?: DependentService[];
   MaxResults?: number;
   NextToken?: string;
@@ -1361,7 +1383,7 @@ export interface UpdateClusterRequest {
   Resources?: JobResource;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
   AddressId?: string;
-  ShippingOption?: ShippingOption | (string & {});
+  ShippingOption?: ShippingOption;
   Notification?: Notification;
   ForwardingAddressId?: string;
 }
@@ -1395,9 +1417,9 @@ export interface UpdateJobRequest {
   Resources?: JobResource;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
   AddressId?: string;
-  ShippingOption?: ShippingOption | (string & {});
+  ShippingOption?: ShippingOption;
   Description?: string;
-  SnowballCapacityPreference?: SnowballCapacity | (string & {});
+  SnowballCapacityPreference?: SnowballCapacity;
   ForwardingAddressId?: string;
   PickupDetails?: PickupDetails;
 }
@@ -1426,12 +1448,12 @@ export const UpdateJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateJobResult",
 }) as any as S.Schema<UpdateJobResult>;
-export type ShipmentState = "RECEIVED" | "RETURNED";
+export type ShipmentState = "RECEIVED" | "RETURNED" | (string & {});
 export const ShipmentState = /*@__PURE__*/ S.String;
 
 export interface UpdateJobShipmentStateRequest {
   JobId: string;
-  ShipmentState: ShipmentState | (string & {});
+  ShipmentState: ShipmentState;
 }
 export const UpdateJobShipmentStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ JobId: S.String, ShipmentState: ShipmentState }).pipe(

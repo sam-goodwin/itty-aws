@@ -560,7 +560,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionRuleRequest {
   /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
   /** The type of mitigation. Must be one of 'challenge' or 'retransmit'. Optional. Defaults to 'challenge'. */
-  mitigationType?: string;
+  mitigationType?: string | null;
 }
 export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -571,7 +571,9 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-      mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
+      mitigationType: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mitigation_type")),
+      ),
     })
       .pipe(
         T.Http({
@@ -1838,17 +1840,17 @@ export interface PatchAdvancedTcpProtectionAllowlistItemRequest {
   /** UUID. */
   prefixId: string;
   /** A comment describing the allowlist prefix. Optional. */
-  comment?: string;
+  comment?: string | null;
   /** Whether to enable the allowlist prefix into effect. Optional. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const PatchAdvancedTcpProtectionAllowlistItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-      comment: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
+      comment: S.optional(S.NullOr(S.String)),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     })
       .pipe(
         T.Http({
@@ -1897,17 +1899,17 @@ export interface PatchAdvancedTcpProtectionPrefixItemRequest {
   /** UUID. */
   prefixId: string;
   /** A new comment for the prefix. Optional. */
-  comment?: string;
+  comment?: string | null;
   /** Whether to exclude the prefix from protection. Optional. */
-  excluded?: boolean;
+  excluded?: boolean | null;
 }
 export const PatchAdvancedTcpProtectionPrefixItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-      comment: S.optional(S.String),
-      excluded: S.optional(S.Boolean),
+      comment: S.optional(S.NullOr(S.String)),
+      excluded: S.optional(S.NullOr(S.Boolean)),
     })
       .pipe(
         T.Http({
@@ -1993,17 +1995,17 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
   /** UUID. */
   filterId: string;
   /** The new filter expression. Optional. */
-  expression?: string;
+  expression?: string | null;
   /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
-  mode?: string;
+  mode?: string | null;
 }
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-      expression: S.optional(S.String),
-      mode: S.optional(S.String),
+      expression: S.optional(S.NullOr(S.String)),
+      mode: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -2049,23 +2051,29 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
   /** UUID. */
   ruleId: string;
   /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
-  burstSensitivity?: string;
+  burstSensitivity?: string | null;
   /** The new mitigation type. Optional. Must be one of 'challenge' or 'retransmit'. */
-  mitigationType?: string;
+  mitigationType?: string | null;
   /** The new mode for SYN Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
-  mode?: string;
+  mode?: string | null;
   /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
-  rateSensitivity?: string;
+  rateSensitivity?: string | null;
 }
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-      burstSensitivity: S.optional(S.String.pipe(T.Body("burst_sensitivity"))),
-      mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
-      mode: S.optional(S.String),
-      rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
+      burstSensitivity: S.optional(
+        S.NullOr(S.String).pipe(T.Body("burst_sensitivity")),
+      ),
+      mitigationType: S.optional(
+        S.NullOr(S.String).pipe(T.Body("mitigation_type")),
+      ),
+      mode: S.optional(S.NullOr(S.String)),
+      rateSensitivity: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rate_sensitivity")),
+      ),
     })
       .pipe(
         T.Http({
@@ -2123,17 +2131,17 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   /** UUID. */
   filterId: string;
   /** The new filter expression. Optional. */
-  expression?: string;
+  expression?: string | null;
   /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
-  mode?: string;
+  mode?: string | null;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-      expression: S.optional(S.String),
-      mode: S.optional(S.String),
+      expression: S.optional(S.NullOr(S.String)),
+      mode: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -2179,20 +2187,24 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
   /** UUID. */
   ruleId: string;
   /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
-  burstSensitivity?: string;
+  burstSensitivity?: string | null;
   /** The new mode for TCP Flow Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
-  mode?: string;
+  mode?: string | null;
   /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
-  rateSensitivity?: string;
+  rateSensitivity?: string | null;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-      burstSensitivity: S.optional(S.String.pipe(T.Body("burst_sensitivity"))),
-      mode: S.optional(S.String),
-      rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
+      burstSensitivity: S.optional(
+        S.NullOr(S.String).pipe(T.Body("burst_sensitivity")),
+      ),
+      mode: S.optional(S.NullOr(S.String)),
+      rateSensitivity: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rate_sensitivity")),
+      ),
     })
       .pipe(
         T.Http({

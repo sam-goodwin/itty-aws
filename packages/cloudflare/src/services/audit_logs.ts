@@ -21,11 +21,11 @@ const KEY_DICTIONARY: Record<string, string> = {
 
 export interface ListRequestAction {
   /** Filters by the action type. */
-  type?: string;
+  type?: string | null;
 }
 export const ListRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.String),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListRequestAction",
@@ -33,14 +33,14 @@ export const ListRequestAction = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListRequestActor {
   /** Filters by the email address of the actor that made the change. */
-  email?: string;
+  email?: string | null;
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
-  ip?: string;
+  ip?: string | null;
 }
 export const ListRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.String),
-    ip: S.optional(S.String),
+    email: S.optional(S.NullOr(S.String)),
+    ip: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListRequestActor",
@@ -51,11 +51,11 @@ export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListRequestZone {
   /** Filters by the name of the zone associated to the change. */
-  name?: string;
+  name?: string | null;
 }
 export const ListRequestZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListRequestZone",
@@ -66,8 +66,8 @@ export interface ListAuditLogsRequest {
   accountId: string;
   /** Finds a specific log by its ID. */
   id?: string;
-  action?: ListRequestAction;
-  actor?: ListRequestActor;
+  action?: ListRequestAction | null;
+  actor?: ListRequestActor | null;
   /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: string;
   /** Changes the direction of the chronological sorting. */
@@ -82,14 +82,14 @@ export interface ListAuditLogsRequest {
   perPage?: number;
   /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: string;
-  zone?: ListRequestZone;
+  zone?: ListRequestZone | null;
 }
 export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(ListRequestAction.pipe(T.DeepQuery("action"))),
-    actor: S.optional(ListRequestActor.pipe(T.DeepQuery("actor"))),
+    action: S.optional(S.NullOr(ListRequestAction).pipe(T.DeepQuery("action"))),
+    actor: S.optional(S.NullOr(ListRequestActor).pipe(T.DeepQuery("actor"))),
     before: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
     export: S.optional(S.Boolean.pipe(T.Query())),
@@ -97,7 +97,7 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-    zone: S.optional(ListRequestZone.pipe(T.DeepQuery("zone"))),
+    zone: S.optional(S.NullOr(ListRequestZone).pipe(T.DeepQuery("zone"))),
   })
     .pipe(
       T.Http({

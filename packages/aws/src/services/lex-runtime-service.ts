@@ -238,7 +238,11 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type ConfirmationStatus = "None" | "Confirmed" | "Denied";
+export type ConfirmationStatus =
+  | "None"
+  | "Confirmed"
+  | "Denied"
+  | (string & {});
 export const ConfirmationStatus = /*@__PURE__*/ S.String;
 
 export type DialogActionType =
@@ -246,19 +250,24 @@ export type DialogActionType =
   | "ConfirmIntent"
   | "ElicitSlot"
   | "Close"
-  | "Delegate";
+  | "Delegate"
+  | (string & {});
 export const DialogActionType = /*@__PURE__*/ S.String;
 
-export type FulfillmentState = "Fulfilled" | "Failed" | "ReadyForFulfillment";
+export type FulfillmentState =
+  | "Fulfilled"
+  | "Failed"
+  | "ReadyForFulfillment"
+  | (string & {});
 export const FulfillmentState = /*@__PURE__*/ S.String;
 
 export interface IntentSummary {
   intentName?: string;
   checkpointLabel?: string;
   slots?: { [key: string]: string | undefined };
-  confirmationStatus?: ConfirmationStatus | (string & {});
-  dialogActionType: DialogActionType | (string & {});
-  fulfillmentState?: FulfillmentState | (string & {});
+  confirmationStatus?: ConfirmationStatus;
+  dialogActionType: DialogActionType;
+  fulfillmentState?: FulfillmentState;
   slotToElicit?: string;
 }
 export const IntentSummary = /*@__PURE__*/ S.suspend(() =>
@@ -279,17 +288,18 @@ export type MessageFormatType =
   | "PlainText"
   | "CustomPayload"
   | "SSML"
-  | "Composite";
+  | "Composite"
+  | (string & {});
 export const MessageFormatType = /*@__PURE__*/ S.String;
 
 export interface DialogAction {
-  type: DialogActionType | (string & {});
+  type: DialogActionType;
   intentName?: string;
   slots?: { [key: string]: string | undefined };
   slotToElicit?: string;
-  fulfillmentState?: FulfillmentState | (string & {});
+  fulfillmentState?: FulfillmentState;
   message?: string | redacted.Redacted<string>;
-  messageFormat?: MessageFormatType | (string & {});
+  messageFormat?: MessageFormatType;
 }
 export const DialogAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -417,7 +427,8 @@ export type DialogState =
   | "ElicitSlot"
   | "Fulfilled"
   | "ReadyForFulfillment"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const DialogState = /*@__PURE__*/ S.String;
 
 export type SensitiveStringUnbounded = string | redacted.Redacted<string>;
@@ -566,7 +577,9 @@ export const SentimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SentimentResponse",
 }) as any as S.Schema<SentimentResponse>;
-export type ContentType = "application/vnd.amazonaws.card.generic";
+export type ContentType =
+  | "application/vnd.amazonaws.card.generic"
+  | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
 export type StringWithLength = string;

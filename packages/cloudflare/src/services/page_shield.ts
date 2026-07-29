@@ -240,12 +240,12 @@ export interface GetConnectionResponse {
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
-  domainReportedMalicious?: boolean;
-  firstPageUrl?: string;
-  maliciousDomainCategories?: ConnectionsGetResponseMaliciousDomainCategoriesList;
-  maliciousUrlCategories?: ConnectionsGetResponseMaliciousUrlCategoriesList;
-  pageUrls?: ConnectionsGetResponsePageUrlsList;
-  urlReportedMalicious?: boolean;
+  domainReportedMalicious?: boolean | null;
+  firstPageUrl?: string | null;
+  maliciousDomainCategories?: ConnectionsGetResponseMaliciousDomainCategoriesList | null;
+  maliciousUrlCategories?: ConnectionsGetResponseMaliciousUrlCategoriesList | null;
+  pageUrls?: ConnectionsGetResponsePageUrlsList | null;
+  urlReportedMalicious?: boolean | null;
 }
 export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -257,24 +257,24 @@ export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
     url: S.String,
     urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
     domainReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
     ),
-    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
     maliciousDomainCategories: S.optional(
-      ConnectionsGetResponseMaliciousDomainCategoriesList.pipe(
+      S.NullOr(ConnectionsGetResponseMaliciousDomainCategoriesList).pipe(
         T.Body("malicious_domain_categories"),
       ),
     ),
     maliciousUrlCategories: S.optional(
-      ConnectionsGetResponseMaliciousUrlCategoriesList.pipe(
+      S.NullOr(ConnectionsGetResponseMaliciousUrlCategoriesList).pipe(
         T.Body("malicious_url_categories"),
       ),
     ),
     pageUrls: S.optional(
-      ConnectionsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(ConnectionsGetResponsePageUrlsList).pipe(T.Body("page_urls")),
     ),
     urlReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("url_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -324,14 +324,14 @@ export interface GetCookyResponse {
   lastSeenAt: string;
   name: string;
   type: CookiesGetResponseType;
-  domainAttribute?: string;
-  expiresAttribute?: string;
-  httpOnlyAttribute?: boolean;
-  maxAgeAttribute?: number;
-  pageUrls?: CookiesGetResponsePageUrlsList;
-  pathAttribute?: string;
-  sameSiteAttribute?: CookiesGetResponseSameSiteAttribute;
-  secureAttribute?: boolean;
+  domainAttribute?: string | null;
+  expiresAttribute?: string | null;
+  httpOnlyAttribute?: boolean | null;
+  maxAgeAttribute?: number | null;
+  pageUrls?: CookiesGetResponsePageUrlsList | null;
+  pathAttribute?: string | null;
+  sameSiteAttribute?: CookiesGetResponseSameSiteAttribute | null;
+  secureAttribute?: boolean | null;
 }
 export const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -341,20 +341,32 @@ export const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     name: S.String,
     type: CookiesGetResponseType,
-    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
-    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
+    domainAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("domain_attribute")),
+    ),
+    expiresAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expires_attribute")),
+    ),
     httpOnlyAttribute: S.optional(
-      S.Boolean.pipe(T.Body("http_only_attribute")),
+      S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute")),
     ),
-    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
+    maxAgeAttribute: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_age_attribute")),
+    ),
     pageUrls: S.optional(
-      CookiesGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(CookiesGetResponsePageUrlsList).pipe(T.Body("page_urls")),
     ),
-    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
+    pathAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("path_attribute")),
+    ),
     sameSiteAttribute: S.optional(
-      CookiesGetResponseSameSiteAttribute.pipe(T.Body("same_site_attribute")),
+      S.NullOr(CookiesGetResponseSameSiteAttribute).pipe(
+        T.Body("same_site_attribute"),
+      ),
     ),
-    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
+    secureAttribute: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("secure_attribute")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCookyResponse",
@@ -499,32 +511,42 @@ export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
 
 export interface ScriptsGetResponseVersionsItem {
   /** The cryptomining score of the JavaScript content. */
-  cryptominingScore?: number;
+  cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number;
+  dataflowScore?: number | null;
   /** The timestamp of when the script was last fetched. */
-  fetchedAt?: string;
+  fetchedAt?: string | null;
   /** The computed hash of the analyzed script. */
-  hash?: string;
+  hash?: string | null;
   /** The integrity score of the JavaScript content. */
-  jsIntegrityScore?: number;
+  jsIntegrityScore?: number | null;
   /** The magecart score of the JavaScript content. */
-  magecartScore?: number;
+  magecartScore?: number | null;
   /** The malware score of the JavaScript content. */
-  malwareScore?: number;
+  malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number;
+  obfuscationScore?: number | null;
 }
 export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
-    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
-    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
-    hash: S.optional(S.String),
-    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
-    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
-    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    cryptominingScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
+    ),
+    dataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    ),
+    fetchedAt: S.optional(S.NullOr(S.String).pipe(T.Body("fetched_at"))),
+    hash: S.optional(S.NullOr(S.String)),
+    jsIntegrityScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("js_integrity_score")),
+    ),
+    magecartScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("magecart_score")),
+    ),
+    malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsGetResponseVersionsItem",
@@ -547,28 +569,28 @@ export interface GetScriptResponse {
   url: string;
   urlContainsCdnCgiPath: boolean;
   /** The cryptomining score of the JavaScript content. */
-  cryptominingScore?: number;
+  cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number;
-  domainReportedMalicious?: boolean;
+  dataflowScore?: number | null;
+  domainReportedMalicious?: boolean | null;
   /** The timestamp of when the script was last fetched. */
-  fetchedAt?: string;
-  firstPageUrl?: string;
+  fetchedAt?: string | null;
+  firstPageUrl?: string | null;
   /** The computed hash of the analyzed script. */
-  hash?: string;
+  hash?: string | null;
   /** The integrity score of the JavaScript content. */
-  jsIntegrityScore?: number;
+  jsIntegrityScore?: number | null;
   /** The magecart score of the JavaScript content. */
-  magecartScore?: number;
-  maliciousDomainCategories?: ScriptsGetResponseMaliciousDomainCategoriesList;
-  maliciousUrlCategories?: ScriptsGetResponseMaliciousUrlCategoriesList;
+  magecartScore?: number | null;
+  maliciousDomainCategories?: ScriptsGetResponseMaliciousDomainCategoriesList | null;
+  maliciousUrlCategories?: ScriptsGetResponseMaliciousUrlCategoriesList | null;
   /** The malware score of the JavaScript content. */
-  malwareScore?: number;
+  malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number;
-  pageUrls?: ScriptsGetResponsePageUrlsList;
-  urlReportedMalicious?: boolean;
-  versions?: ScriptsGetResponseVersionsList;
+  obfuscationScore?: number | null;
+  pageUrls?: ScriptsGetResponsePageUrlsList | null;
+  urlReportedMalicious?: boolean | null;
+  versions?: ScriptsGetResponseVersionsList | null;
 }
 export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -579,35 +601,45 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     url: S.String,
     urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
-    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
-    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
-    domainReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    cryptominingScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
     ),
-    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
-    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
-    hash: S.optional(S.String),
-    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
-    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    dataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    ),
+    domainReportedMalicious: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
+    ),
+    fetchedAt: S.optional(S.NullOr(S.String).pipe(T.Body("fetched_at"))),
+    firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
+    hash: S.optional(S.NullOr(S.String)),
+    jsIntegrityScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("js_integrity_score")),
+    ),
+    magecartScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("magecart_score")),
+    ),
     maliciousDomainCategories: S.optional(
-      ScriptsGetResponseMaliciousDomainCategoriesList.pipe(
+      S.NullOr(ScriptsGetResponseMaliciousDomainCategoriesList).pipe(
         T.Body("malicious_domain_categories"),
       ),
     ),
     maliciousUrlCategories: S.optional(
-      ScriptsGetResponseMaliciousUrlCategoriesList.pipe(
+      S.NullOr(ScriptsGetResponseMaliciousUrlCategoriesList).pipe(
         T.Body("malicious_url_categories"),
       ),
     ),
-    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    ),
     pageUrls: S.optional(
-      ScriptsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(ScriptsGetResponsePageUrlsList).pipe(T.Body("page_urls")),
     ),
     urlReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("url_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
     ),
-    versions: S.optional(ScriptsGetResponseVersionsList),
+    versions: S.optional(S.NullOr(ScriptsGetResponseVersionsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptResponse",
@@ -709,12 +741,12 @@ export interface ConnectionsListResultItem {
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
-  domainReportedMalicious?: boolean;
-  firstPageUrl?: string;
-  maliciousDomainCategories?: ConnectionsListResultItemMaliciousDomainCategoriesList;
-  maliciousUrlCategories?: ConnectionsListResultItemMaliciousUrlCategoriesList;
-  pageUrls?: ConnectionsListResultItemPageUrlsList;
-  urlReportedMalicious?: boolean;
+  domainReportedMalicious?: boolean | null;
+  firstPageUrl?: string | null;
+  maliciousDomainCategories?: ConnectionsListResultItemMaliciousDomainCategoriesList | null;
+  maliciousUrlCategories?: ConnectionsListResultItemMaliciousUrlCategoriesList | null;
+  pageUrls?: ConnectionsListResultItemPageUrlsList | null;
+  urlReportedMalicious?: boolean | null;
 }
 export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -726,24 +758,24 @@ export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
     url: S.String,
     urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
     domainReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
     ),
-    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
     maliciousDomainCategories: S.optional(
-      ConnectionsListResultItemMaliciousDomainCategoriesList.pipe(
+      S.NullOr(ConnectionsListResultItemMaliciousDomainCategoriesList).pipe(
         T.Body("malicious_domain_categories"),
       ),
     ),
     maliciousUrlCategories: S.optional(
-      ConnectionsListResultItemMaliciousUrlCategoriesList.pipe(
+      S.NullOr(ConnectionsListResultItemMaliciousUrlCategoriesList).pipe(
         T.Body("malicious_url_categories"),
       ),
     ),
     pageUrls: S.optional(
-      ConnectionsListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(ConnectionsListResultItemPageUrlsList).pipe(T.Body("page_urls")),
     ),
     urlReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("url_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
     ),
   }),
 ).annotate({
@@ -866,14 +898,14 @@ export interface CookiesListResultItem {
   lastSeenAt: string;
   name: string;
   type: CookiesListResultItemType;
-  domainAttribute?: string;
-  expiresAttribute?: string;
-  httpOnlyAttribute?: boolean;
-  maxAgeAttribute?: number;
-  pageUrls?: CookiesListResultItemPageUrlsList;
-  pathAttribute?: string;
-  sameSiteAttribute?: CookiesListResultItemSameSiteAttribute;
-  secureAttribute?: boolean;
+  domainAttribute?: string | null;
+  expiresAttribute?: string | null;
+  httpOnlyAttribute?: boolean | null;
+  maxAgeAttribute?: number | null;
+  pageUrls?: CookiesListResultItemPageUrlsList | null;
+  pathAttribute?: string | null;
+  sameSiteAttribute?: CookiesListResultItemSameSiteAttribute | null;
+  secureAttribute?: boolean | null;
 }
 export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -883,22 +915,32 @@ export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
     lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     name: S.String,
     type: CookiesListResultItemType,
-    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
-    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
+    domainAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("domain_attribute")),
+    ),
+    expiresAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expires_attribute")),
+    ),
     httpOnlyAttribute: S.optional(
-      S.Boolean.pipe(T.Body("http_only_attribute")),
+      S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute")),
     ),
-    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
+    maxAgeAttribute: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_age_attribute")),
+    ),
     pageUrls: S.optional(
-      CookiesListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(CookiesListResultItemPageUrlsList).pipe(T.Body("page_urls")),
     ),
-    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
+    pathAttribute: S.optional(
+      S.NullOr(S.String).pipe(T.Body("path_attribute")),
+    ),
     sameSiteAttribute: S.optional(
-      CookiesListResultItemSameSiteAttribute.pipe(
+      S.NullOr(CookiesListResultItemSameSiteAttribute).pipe(
         T.Body("same_site_attribute"),
       ),
     ),
-    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
+    secureAttribute: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("secure_attribute")),
+    ),
   }),
 ).annotate({
   identifier: "CookiesListResultItem",
@@ -1096,27 +1138,27 @@ export interface ScriptsListResultItem {
   url: string;
   urlContainsCdnCgiPath: boolean;
   /** The cryptomining score of the JavaScript content. */
-  cryptominingScore?: number;
+  cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number;
-  domainReportedMalicious?: boolean;
+  dataflowScore?: number | null;
+  domainReportedMalicious?: boolean | null;
   /** The timestamp of when the script was last fetched. */
-  fetchedAt?: string;
-  firstPageUrl?: string;
+  fetchedAt?: string | null;
+  firstPageUrl?: string | null;
   /** The computed hash of the analyzed script. */
-  hash?: string;
+  hash?: string | null;
   /** The integrity score of the JavaScript content. */
-  jsIntegrityScore?: number;
+  jsIntegrityScore?: number | null;
   /** The magecart score of the JavaScript content. */
-  magecartScore?: number;
-  maliciousDomainCategories?: ScriptsListResultItemMaliciousDomainCategoriesList;
-  maliciousUrlCategories?: ScriptsListResultItemMaliciousUrlCategoriesList;
+  magecartScore?: number | null;
+  maliciousDomainCategories?: ScriptsListResultItemMaliciousDomainCategoriesList | null;
+  maliciousUrlCategories?: ScriptsListResultItemMaliciousUrlCategoriesList | null;
   /** The malware score of the JavaScript content. */
-  malwareScore?: number;
+  malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number;
-  pageUrls?: ScriptsListResultItemPageUrlsList;
-  urlReportedMalicious?: boolean;
+  obfuscationScore?: number | null;
+  pageUrls?: ScriptsListResultItemPageUrlsList | null;
+  urlReportedMalicious?: boolean | null;
 }
 export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1127,33 +1169,43 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
     lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     url: S.String,
     urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
-    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
-    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
-    domainReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    cryptominingScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
     ),
-    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
-    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
-    hash: S.optional(S.String),
-    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
-    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    dataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    ),
+    domainReportedMalicious: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
+    ),
+    fetchedAt: S.optional(S.NullOr(S.String).pipe(T.Body("fetched_at"))),
+    firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
+    hash: S.optional(S.NullOr(S.String)),
+    jsIntegrityScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("js_integrity_score")),
+    ),
+    magecartScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("magecart_score")),
+    ),
     maliciousDomainCategories: S.optional(
-      ScriptsListResultItemMaliciousDomainCategoriesList.pipe(
+      S.NullOr(ScriptsListResultItemMaliciousDomainCategoriesList).pipe(
         T.Body("malicious_domain_categories"),
       ),
     ),
     maliciousUrlCategories: S.optional(
-      ScriptsListResultItemMaliciousUrlCategoriesList.pipe(
+      S.NullOr(ScriptsListResultItemMaliciousUrlCategoriesList).pipe(
         T.Body("malicious_url_categories"),
       ),
     ),
-    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    ),
     pageUrls: S.optional(
-      ScriptsListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+      S.NullOr(ScriptsListResultItemPageUrlsList).pipe(T.Body("page_urls")),
     ),
     urlReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("url_reported_malicious")),
+      S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
     ),
   }),
 ).annotate({
@@ -1184,21 +1236,21 @@ export interface PutPageShieldRequest {
   /** Identifier */
   zoneId: string;
   /** When true, indicates that Page Shield is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
-  useCloudflareReportingEndpoint?: boolean;
+  useCloudflareReportingEndpoint?: boolean | null;
   /** When true, the paths associated with connections URLs will also be analyzed. */
-  useConnectionUrlPath?: boolean;
+  useConnectionUrlPath?: boolean | null;
 }
 export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     useCloudflareReportingEndpoint: S.optional(
-      S.Boolean.pipe(T.Body("use_cloudflare_reporting_endpoint")),
+      S.NullOr(S.Boolean).pipe(T.Body("use_cloudflare_reporting_endpoint")),
     ),
     useConnectionUrlPath: S.optional(
-      S.Boolean.pipe(T.Body("use_connection_url_path")),
+      S.NullOr(S.Boolean).pipe(T.Body("use_connection_url_path")),
     ),
   })
     .pipe(
@@ -1245,25 +1297,25 @@ export interface UpdatePolicyRequest {
   /** Identifier */
   policyId: string;
   /** The action to take if the expression matches */
-  action?: PoliciesUpdateRequestAction | (string & {});
+  action?: PoliciesUpdateRequestAction | (string & {}) | null;
   /** A description for the policy */
-  description?: string;
+  description?: string | null;
   /** Whether the policy is enabled */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression?: string;
+  expression?: string | null;
   /** The policy which will be applied */
-  value?: string;
+  value?: string | null;
 }
 export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    action: S.optional(PoliciesUpdateRequestAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    value: S.optional(S.String),
+    action: S.optional(S.NullOr(PoliciesUpdateRequestAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({

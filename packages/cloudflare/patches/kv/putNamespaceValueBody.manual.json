@@ -10,7 +10,7 @@
       "op": "add",
       "path": "/shapes/com.cloudflare.kv#PutNamespaceValueRequest/members/value",
       "value": {
-        "target": "smithy.api#String",
+        "target": "smithy.api#Blob",
         "traits": {
           "smithy.api#required": {},
           "smithy.api#documentation": "A byte sequence to be stored, up to 25 MiB in length."

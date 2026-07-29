@@ -176,6 +176,14 @@ export interface SdkSpec {
   /** Trait id marking a member nullable (`S.NullOr` + `| null`). */
   readonly nullableTrait?: string;
   /**
+   * Blanket-nullable optionals: every optional body member types and
+   * decodes as `X | null` in addition to being omittable (`?: X | null`,
+   * `S.optional(S.NullOr(X))`). The cloudflare docs pipeline sets this —
+   * the v4 API freely returns explicit nulls for absent optional fields,
+   * and the v0 SDK surface modeled every optional that way.
+   */
+  readonly optionalsNullable?: boolean;
+  /**
    * Member traits emitted as pipes when present: trait id → pipe builder
    * name in the SDK's traits module. The trait's value is JSON-inlined as
    * the argument (e.g. `"…#keyDictionary": "T.KeyDictionary"` →
@@ -506,7 +514,13 @@ export const generateService = (
         ...base,
         binding,
         wire: smithyWireName(traits, base.name, wireKind(binding)),
-        nullable: spec.nullableTrait ? spec.nullableTrait in traits : false,
+        nullable:
+          (spec.nullableTrait ? spec.nullableTrait in traits : false) ||
+          // Blanket-nullable optionals (v0 surface): every optional BODY
+          // member accepts/announces null in addition to being omittable.
+          (spec.optionalsNullable === true &&
+            !base.required &&
+            binding === "body"),
       };
     });
 
@@ -800,7 +814,7 @@ export const generateService = (
         out.push(...spec.union({ name, caseTargets, caseKeys, tsRef }));
       } else if (spec.unionStyle === "opaque-cases") {
         out.push(
-          `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
+          `export type ${name} = ${caseTargets.map((t) => tsRefAt(t, id)).join(" | ") || "unknown"};`,
           `export const ${name} = ${pure}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
         );
       } else {

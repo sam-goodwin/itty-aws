@@ -47,15 +47,17 @@ export const CreateRelayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRelayRequest>;
 
 export interface RelaysCreateResponseConfigLingeringSubscribe {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number;
+  maxTimeoutMs?: number | null;
 }
 export const RelaysCreateResponseConfigLingeringSubscribe =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      maxTimeoutMs: S.optional(S.Number.pipe(T.Body("max_timeout_ms"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      maxTimeoutMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_timeout_ms")),
+      ),
     }),
   ).annotate({
     identifier: "RelaysCreateResponseConfigLingeringSubscribe",
@@ -63,12 +65,12 @@ export const RelaysCreateResponseConfigLingeringSubscribe =
 
 export interface RelaysCreateResponseConfigUpstreamsUpstreamsItem {
   /** Upstream MOQT server publisher URL. */
-  url?: string;
+  url?: string | null;
 }
 export const RelaysCreateResponseConfigUpstreamsUpstreamsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RelaysCreateResponseConfigUpstreamsUpstreamsItem",
@@ -82,32 +84,34 @@ export const RelaysCreateResponseConfigUpstreamsUpstreamsList =
   ) as any as S.Schema<RelaysCreateResponseConfigUpstreamsUpstreamsList>;
 
 export interface RelaysCreateResponseConfigUpstreams {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an */
-  upstreams?: RelaysCreateResponseConfigUpstreamsUpstreamsList;
+  upstreams?: RelaysCreateResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysCreateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    upstreams: S.optional(RelaysCreateResponseConfigUpstreamsUpstreamsList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    upstreams: S.optional(
+      S.NullOr(RelaysCreateResponseConfigUpstreamsUpstreamsList),
+    ),
   }),
 ).annotate({
   identifier: "RelaysCreateResponseConfigUpstreams",
 }) as any as S.Schema<RelaysCreateResponseConfigUpstreams>;
 
 export interface RelaysCreateResponseConfig {
-  lingeringSubscribe?: RelaysCreateResponseConfigLingeringSubscribe;
+  lingeringSubscribe?: RelaysCreateResponseConfigLingeringSubscribe | null;
   /** Upstreams are external MOQT server publishers that a relay falls back */
-  upstreams?: RelaysCreateResponseConfigUpstreams;
+  upstreams?: RelaysCreateResponseConfigUpstreams | null;
 }
 export const RelaysCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lingeringSubscribe: S.optional(
-      RelaysCreateResponseConfigLingeringSubscribe.pipe(
+      S.NullOr(RelaysCreateResponseConfigLingeringSubscribe).pipe(
         T.Body("lingering_subscribe"),
       ),
     ),
-    upstreams: S.optional(RelaysCreateResponseConfigUpstreams),
+    upstreams: S.optional(S.NullOr(RelaysCreateResponseConfigUpstreams)),
   }),
 ).annotate({
   identifier: "RelaysCreateResponseConfig",
@@ -193,15 +197,17 @@ export const GetRelayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRelayRequest>;
 
 export interface RelaysGetResponseConfigLingeringSubscribe {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number;
+  maxTimeoutMs?: number | null;
 }
 export const RelaysGetResponseConfigLingeringSubscribe =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      maxTimeoutMs: S.optional(S.Number.pipe(T.Body("max_timeout_ms"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      maxTimeoutMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_timeout_ms")),
+      ),
     }),
   ).annotate({
     identifier: "RelaysGetResponseConfigLingeringSubscribe",
@@ -209,12 +215,12 @@ export const RelaysGetResponseConfigLingeringSubscribe =
 
 export interface RelaysGetResponseConfigUpstreamsUpstreamsItem {
   /** Upstream MOQT server publisher URL. */
-  url?: string;
+  url?: string | null;
 }
 export const RelaysGetResponseConfigUpstreamsUpstreamsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RelaysGetResponseConfigUpstreamsUpstreamsItem",
@@ -228,32 +234,34 @@ export const RelaysGetResponseConfigUpstreamsUpstreamsList =
   ) as any as S.Schema<RelaysGetResponseConfigUpstreamsUpstreamsList>;
 
 export interface RelaysGetResponseConfigUpstreams {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an */
-  upstreams?: RelaysGetResponseConfigUpstreamsUpstreamsList;
+  upstreams?: RelaysGetResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysGetResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    upstreams: S.optional(RelaysGetResponseConfigUpstreamsUpstreamsList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    upstreams: S.optional(
+      S.NullOr(RelaysGetResponseConfigUpstreamsUpstreamsList),
+    ),
   }),
 ).annotate({
   identifier: "RelaysGetResponseConfigUpstreams",
 }) as any as S.Schema<RelaysGetResponseConfigUpstreams>;
 
 export interface RelaysGetResponseConfig {
-  lingeringSubscribe?: RelaysGetResponseConfigLingeringSubscribe;
+  lingeringSubscribe?: RelaysGetResponseConfigLingeringSubscribe | null;
   /** Upstreams are external MOQT server publishers that a relay falls back */
-  upstreams?: RelaysGetResponseConfigUpstreams;
+  upstreams?: RelaysGetResponseConfigUpstreams | null;
 }
 export const RelaysGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lingeringSubscribe: S.optional(
-      RelaysGetResponseConfigLingeringSubscribe.pipe(
+      S.NullOr(RelaysGetResponseConfigLingeringSubscribe).pipe(
         T.Body("lingering_subscribe"),
       ),
     ),
-    upstreams: S.optional(RelaysGetResponseConfigUpstreams),
+    upstreams: S.optional(S.NullOr(RelaysGetResponseConfigUpstreams)),
   }),
 ).annotate({
   identifier: "RelaysGetResponseConfig",
@@ -271,7 +279,7 @@ export interface GetRelayResponse {
   name: string;
   uid: string;
   /** "connected" when active, omitted otherwise. */
-  status?: RelaysGetResponseStatus;
+  status?: RelaysGetResponseStatus | null;
 }
 export const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -280,7 +288,7 @@ export const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     uid: S.String,
-    status: S.optional(RelaysGetResponseStatus),
+    status: S.optional(S.NullOr(RelaysGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRelayResponse",
@@ -402,15 +410,17 @@ export const RotateRelayTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateRelayTokenResponse>;
 
 export interface RelaysUpdateRequestConfigLingeringSubscribe {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number;
+  maxTimeoutMs?: number | null;
 }
 export const RelaysUpdateRequestConfigLingeringSubscribe =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      maxTimeoutMs: S.optional(S.Number.pipe(T.Body("max_timeout_ms"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      maxTimeoutMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_timeout_ms")),
+      ),
     }),
   ).annotate({
     identifier: "RelaysUpdateRequestConfigLingeringSubscribe",
@@ -418,12 +428,12 @@ export const RelaysUpdateRequestConfigLingeringSubscribe =
 
 export interface RelaysUpdateRequestConfigUpstreamsUpstreamsItem {
   /** Upstream MOQT server publisher URL. */
-  url?: string;
+  url?: string | null;
 }
 export const RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RelaysUpdateRequestConfigUpstreamsUpstreamsItem",
@@ -437,32 +447,34 @@ export const RelaysUpdateRequestConfigUpstreamsUpstreamsList =
   ) as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsList>;
 
 export interface RelaysUpdateRequestConfigUpstreams {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an */
-  upstreams?: RelaysUpdateRequestConfigUpstreamsUpstreamsList;
+  upstreams?: RelaysUpdateRequestConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysUpdateRequestConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    upstreams: S.optional(RelaysUpdateRequestConfigUpstreamsUpstreamsList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    upstreams: S.optional(
+      S.NullOr(RelaysUpdateRequestConfigUpstreamsUpstreamsList),
+    ),
   }),
 ).annotate({
   identifier: "RelaysUpdateRequestConfigUpstreams",
 }) as any as S.Schema<RelaysUpdateRequestConfigUpstreams>;
 
 export interface RelaysUpdateRequestConfig {
-  lingeringSubscribe?: RelaysUpdateRequestConfigLingeringSubscribe;
+  lingeringSubscribe?: RelaysUpdateRequestConfigLingeringSubscribe | null;
   /** Upstreams are external MOQT server publishers that a relay falls back */
-  upstreams?: RelaysUpdateRequestConfigUpstreams;
+  upstreams?: RelaysUpdateRequestConfigUpstreams | null;
 }
 export const RelaysUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lingeringSubscribe: S.optional(
-      RelaysUpdateRequestConfigLingeringSubscribe.pipe(
+      S.NullOr(RelaysUpdateRequestConfigLingeringSubscribe).pipe(
         T.Body("lingering_subscribe"),
       ),
     ),
-    upstreams: S.optional(RelaysUpdateRequestConfigUpstreams),
+    upstreams: S.optional(S.NullOr(RelaysUpdateRequestConfigUpstreams)),
   }),
 ).annotate({
   identifier: "RelaysUpdateRequestConfig",
@@ -473,15 +485,15 @@ export interface UpdateRelayRequest {
   accountId: string;
   relayId: string;
   /** upstreams and lingering_subscribe are mutually exclusive. */
-  config?: RelaysUpdateRequestConfig;
-  name?: string;
+  config?: RelaysUpdateRequestConfig | null;
+  name?: string | null;
 }
 export const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     relayId: S.String.pipe(T.Label("relay_id")),
-    config: S.optional(RelaysUpdateRequestConfig),
-    name: S.optional(S.String),
+    config: S.optional(S.NullOr(RelaysUpdateRequestConfig)),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -496,15 +508,17 @@ export const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRelayRequest>;
 
 export interface RelaysUpdateResponseConfigLingeringSubscribe {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number;
+  maxTimeoutMs?: number | null;
 }
 export const RelaysUpdateResponseConfigLingeringSubscribe =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      maxTimeoutMs: S.optional(S.Number.pipe(T.Body("max_timeout_ms"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      maxTimeoutMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_timeout_ms")),
+      ),
     }),
   ).annotate({
     identifier: "RelaysUpdateResponseConfigLingeringSubscribe",
@@ -512,12 +526,12 @@ export const RelaysUpdateResponseConfigLingeringSubscribe =
 
 export interface RelaysUpdateResponseConfigUpstreamsUpstreamsItem {
   /** Upstream MOQT server publisher URL. */
-  url?: string;
+  url?: string | null;
 }
 export const RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RelaysUpdateResponseConfigUpstreamsUpstreamsItem",
@@ -531,32 +545,34 @@ export const RelaysUpdateResponseConfigUpstreamsUpstreamsList =
   ) as any as S.Schema<RelaysUpdateResponseConfigUpstreamsUpstreamsList>;
 
 export interface RelaysUpdateResponseConfigUpstreams {
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an */
-  upstreams?: RelaysUpdateResponseConfigUpstreamsUpstreamsList;
+  upstreams?: RelaysUpdateResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysUpdateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    upstreams: S.optional(RelaysUpdateResponseConfigUpstreamsUpstreamsList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    upstreams: S.optional(
+      S.NullOr(RelaysUpdateResponseConfigUpstreamsUpstreamsList),
+    ),
   }),
 ).annotate({
   identifier: "RelaysUpdateResponseConfigUpstreams",
 }) as any as S.Schema<RelaysUpdateResponseConfigUpstreams>;
 
 export interface RelaysUpdateResponseConfig {
-  lingeringSubscribe?: RelaysUpdateResponseConfigLingeringSubscribe;
+  lingeringSubscribe?: RelaysUpdateResponseConfigLingeringSubscribe | null;
   /** Upstreams are external MOQT server publishers that a relay falls back */
-  upstreams?: RelaysUpdateResponseConfigUpstreams;
+  upstreams?: RelaysUpdateResponseConfigUpstreams | null;
 }
 export const RelaysUpdateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lingeringSubscribe: S.optional(
-      RelaysUpdateResponseConfigLingeringSubscribe.pipe(
+      S.NullOr(RelaysUpdateResponseConfigLingeringSubscribe).pipe(
         T.Body("lingering_subscribe"),
       ),
     ),
-    upstreams: S.optional(RelaysUpdateResponseConfigUpstreams),
+    upstreams: S.optional(S.NullOr(RelaysUpdateResponseConfigUpstreams)),
   }),
 ).annotate({
   identifier: "RelaysUpdateResponseConfig",
@@ -574,7 +590,7 @@ export interface UpdateRelayResponse {
   name: string;
   uid: string;
   /** "connected" when active, omitted otherwise. */
-  status?: RelaysUpdateResponseStatus;
+  status?: RelaysUpdateResponseStatus | null;
 }
 export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -583,7 +599,7 @@ export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     uid: S.String,
-    status: S.optional(RelaysUpdateResponseStatus),
+    status: S.optional(S.NullOr(RelaysUpdateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRelayResponse",

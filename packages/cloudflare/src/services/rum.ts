@@ -80,19 +80,19 @@ export const RulesBulkCreateRequestRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface RulesBulkCreateRequestRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  host?: string;
-  inclusive?: boolean;
-  isPaused?: boolean;
-  paths?: RulesBulkCreateRequestRulesItemPathsList;
+  id?: string | null;
+  host?: string | null;
+  inclusive?: boolean | null;
+  isPaused?: boolean | null;
+  paths?: RulesBulkCreateRequestRulesItemPathsList | null;
 }
 export const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesBulkCreateRequestRulesItemPathsList),
+    id: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesBulkCreateRequestRulesItemPathsList)),
   }),
 ).annotate({
   identifier: "RulesBulkCreateRequestRulesItem",
@@ -110,18 +110,20 @@ export interface BulkCreateRulesRequest {
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
   /** A list of rule identifiers to delete. */
-  deleteRules?: RulesBulkCreateRequestDeleteRulesList;
+  deleteRules?: RulesBulkCreateRequestDeleteRulesList | null;
   /** A list of rules to create or update. */
-  rules?: RulesBulkCreateRequestRulesList;
+  rules?: RulesBulkCreateRequestRulesList | null;
 }
 export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     deleteRules: S.optional(
-      RulesBulkCreateRequestDeleteRulesList.pipe(T.Body("delete_rules")),
+      S.NullOr(RulesBulkCreateRequestDeleteRulesList).pipe(
+        T.Body("delete_rules"),
+      ),
     ),
-    rules: S.optional(RulesBulkCreateRequestRulesList),
+    rules: S.optional(S.NullOr(RulesBulkCreateRequestRulesList)),
   })
     .pipe(
       T.Http({
@@ -142,27 +144,27 @@ export const RulesBulkCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface RulesBulkCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: RulesBulkCreateResponseRulesItemPathsList;
-  priority?: number;
+  paths?: RulesBulkCreateResponseRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesBulkCreateResponseRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "RulesBulkCreateResponseRulesItem",
@@ -176,19 +178,19 @@ export const RulesBulkCreateResponseRulesList = /*@__PURE__*/ S.Array(
 
 export interface RulesBulkCreateResponseRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const RulesBulkCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "RulesBulkCreateResponseRuleset",
@@ -197,13 +199,13 @@ export const RulesBulkCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkCreateRulesResponse {
   /** A list of rules. */
-  rules?: RulesBulkCreateResponseRulesList;
-  ruleset?: RulesBulkCreateResponseRuleset;
+  rules?: RulesBulkCreateResponseRulesList | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
 }
 export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    rules: S.optional(RulesBulkCreateResponseRulesList),
-    ruleset: S.optional(RulesBulkCreateResponseRuleset),
+    rules: S.optional(S.NullOr(RulesBulkCreateResponseRulesList)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesResponse",
@@ -219,21 +221,21 @@ export interface CreateRuleRequest {
   accountId: string;
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
-  paths?: RulesCreateRequestPathsList;
+  isPaused?: boolean | null;
+  paths?: RulesCreateRequestPathsList | null;
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesCreateRequestPathsList),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesCreateRequestPathsList)),
   })
     .pipe(
       T.Http({
@@ -255,27 +257,27 @@ export const RulesCreateResponsePathsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: RulesCreateResponsePathsList;
-  priority?: number;
+  paths?: RulesCreateResponsePathsList | null;
+  priority?: number | null;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesCreateResponsePathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesCreateResponsePathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -285,18 +287,18 @@ export interface CreateSiteInfoRequest {
   /** Identifier. */
   accountId: string;
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
+  autoInstall?: boolean | null;
   /** The hostname to use for gray-clouded sites. */
-  host?: string;
+  host?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    host: S.optional(S.String),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    host: S.optional(S.NullOr(S.String)),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   })
     .pipe(
       T.Http({
@@ -317,27 +319,27 @@ export const SiteInfoCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: SiteInfoCreateResponseRulesItemPathsList;
-  priority?: number;
+  paths?: SiteInfoCreateResponseRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const SiteInfoCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(SiteInfoCreateResponseRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(SiteInfoCreateResponseRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "SiteInfoCreateResponseRulesItem",
@@ -351,19 +353,19 @@ export const SiteInfoCreateResponseRulesList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoCreateResponseRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const SiteInfoCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "SiteInfoCreateResponseRuleset",
@@ -372,30 +374,30 @@ export const SiteInfoCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
-  created?: string;
+  autoInstall?: boolean | null;
+  created?: string | null;
   /** A list of rules. */
-  rules?: SiteInfoCreateResponseRulesList;
-  ruleset?: SiteInfoCreateResponseRuleset;
+  rules?: SiteInfoCreateResponseRulesList | null;
+  ruleset?: SiteInfoCreateResponseRuleset | null;
   /** The Web Analytics site identifier. */
-  siteTag?: string;
+  siteTag?: string | null;
   /** The Web Analytics site token. */
-  siteToken?: string;
+  siteToken?: string | null;
   /** Encoded JavaScript snippet. */
-  snippet?: string;
+  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
-  host?: string;
+  host?: string | null;
 }
 export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    created: S.optional(S.String),
-    rules: S.optional(SiteInfoCreateResponseRulesList),
-    ruleset: S.optional(SiteInfoCreateResponseRuleset),
-    siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
-    snippet: S.optional(S.String),
-    host: S.optional(S.String),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    created: S.optional(S.NullOr(S.String)),
+    rules: S.optional(S.NullOr(SiteInfoCreateResponseRulesList)),
+    ruleset: S.optional(S.NullOr(SiteInfoCreateResponseRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteInfoResponse",
@@ -430,11 +432,11 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** The Web Analytics rule identifier. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
@@ -466,11 +468,11 @@ export const DeleteSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSiteInfoResponse {
   /** The Web Analytics site identifier. */
-  siteTag?: string;
+  siteTag?: string | null;
 }
 export const DeleteSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteInfoResponse",
@@ -506,27 +508,27 @@ export const SiteInfoGetResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoGetResponseRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: SiteInfoGetResponseRulesItemPathsList;
-  priority?: number;
+  paths?: SiteInfoGetResponseRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const SiteInfoGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(SiteInfoGetResponseRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(SiteInfoGetResponseRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "SiteInfoGetResponseRulesItem",
@@ -539,19 +541,19 @@ export const SiteInfoGetResponseRulesList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoGetResponseRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const SiteInfoGetResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "SiteInfoGetResponseRuleset",
@@ -560,30 +562,30 @@ export const SiteInfoGetResponseRuleset = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
-  created?: string;
+  autoInstall?: boolean | null;
+  created?: string | null;
   /** A list of rules. */
-  rules?: SiteInfoGetResponseRulesList;
-  ruleset?: SiteInfoGetResponseRuleset;
+  rules?: SiteInfoGetResponseRulesList | null;
+  ruleset?: SiteInfoGetResponseRuleset | null;
   /** The Web Analytics site identifier. */
-  siteTag?: string;
+  siteTag?: string | null;
   /** The Web Analytics site token. */
-  siteToken?: string;
+  siteToken?: string | null;
   /** Encoded JavaScript snippet. */
-  snippet?: string;
+  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
-  host?: string;
+  host?: string | null;
 }
 export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    created: S.optional(S.String),
-    rules: S.optional(SiteInfoGetResponseRulesList),
-    ruleset: S.optional(SiteInfoGetResponseRuleset),
-    siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
-    snippet: S.optional(S.String),
-    host: S.optional(S.String),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    created: S.optional(S.NullOr(S.String)),
+    rules: S.optional(S.NullOr(SiteInfoGetResponseRulesList)),
+    ruleset: S.optional(S.NullOr(SiteInfoGetResponseRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteInfoResponse",
@@ -619,27 +621,27 @@ export const RulesListResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface RulesListResponseRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: RulesListResponseRulesItemPathsList;
-  priority?: number;
+  paths?: RulesListResponseRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const RulesListResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesListResponseRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesListResponseRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "RulesListResponseRulesItem",
@@ -652,19 +654,19 @@ export const RulesListResponseRulesList = /*@__PURE__*/ S.Array(
 
 export interface RulesListResponseRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const RulesListResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "RulesListResponseRuleset",
@@ -673,13 +675,13 @@ export const RulesListResponseRuleset = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRulesResponse {
   /** A list of rules. */
-  rules?: RulesListResponseRulesList;
-  ruleset?: RulesListResponseRuleset;
+  rules?: RulesListResponseRulesList | null;
+  ruleset?: RulesListResponseRuleset | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    rules: S.optional(RulesListResponseRulesList),
-    ruleset: S.optional(RulesListResponseRuleset),
+    rules: S.optional(S.NullOr(RulesListResponseRulesList)),
+    ruleset: S.optional(S.NullOr(RulesListResponseRuleset)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -724,27 +726,27 @@ export const SiteInfoListResultItemRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoListResultItemRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: SiteInfoListResultItemRulesItemPathsList;
-  priority?: number;
+  paths?: SiteInfoListResultItemRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const SiteInfoListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(SiteInfoListResultItemRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(SiteInfoListResultItemRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "SiteInfoListResultItemRulesItem",
@@ -758,19 +760,19 @@ export const SiteInfoListResultItemRulesList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoListResultItemRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const SiteInfoListResultItemRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "SiteInfoListResultItemRuleset",
@@ -778,30 +780,30 @@ export const SiteInfoListResultItemRuleset = /*@__PURE__*/ S.suspend(() =>
 
 export interface SiteInfoListResultItem {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
-  created?: string;
+  autoInstall?: boolean | null;
+  created?: string | null;
   /** A list of rules. */
-  rules?: SiteInfoListResultItemRulesList;
-  ruleset?: SiteInfoListResultItemRuleset;
+  rules?: SiteInfoListResultItemRulesList | null;
+  ruleset?: SiteInfoListResultItemRuleset | null;
   /** The Web Analytics site identifier. */
-  siteTag?: string;
+  siteTag?: string | null;
   /** The Web Analytics site token. */
-  siteToken?: string;
+  siteToken?: string | null;
   /** Encoded JavaScript snippet. */
-  snippet?: string;
+  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
-  host?: string;
+  host?: string | null;
 }
 export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    created: S.optional(S.String),
-    rules: S.optional(SiteInfoListResultItemRulesList),
-    ruleset: S.optional(SiteInfoListResultItemRuleset),
-    siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
-    snippet: S.optional(S.String),
-    host: S.optional(S.String),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    created: S.optional(S.NullOr(S.String)),
+    rules: S.optional(S.NullOr(SiteInfoListResultItemRulesList)),
+    ruleset: S.optional(S.NullOr(SiteInfoListResultItemRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SiteInfoListResultItem",
@@ -839,22 +841,22 @@ export interface UpdateRuleRequest {
   rulesetId: string;
   /** The Web Analytics rule identifier. */
   ruleId: string;
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
-  paths?: RulesUpdateRequestPathsList;
+  isPaused?: boolean | null;
+  paths?: RulesUpdateRequestPathsList | null;
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesUpdateRequestPathsList),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesUpdateRequestPathsList)),
   })
     .pipe(
       T.Http({
@@ -876,27 +878,27 @@ export const RulesUpdateResponsePathsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: RulesUpdateResponsePathsList;
-  priority?: number;
+  paths?: RulesUpdateResponsePathsList | null;
+  priority?: number | null;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(RulesUpdateResponsePathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(RulesUpdateResponsePathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
@@ -908,25 +910,25 @@ export interface UpdateSiteInfoRequest {
   /** Identifier. */
   siteId: string;
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
+  autoInstall?: boolean | null;
   /** Enables or disables RUM. This option can be used only when auto_install is set to true. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The hostname to use for gray-clouded sites. */
-  host?: string;
+  host?: string | null;
   /** If enabled, the JavaScript snippet will not be injected for visitors from the EU. */
-  lite?: boolean;
+  lite?: boolean | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    enabled: S.optional(S.Boolean),
-    host: S.optional(S.String),
-    lite: S.optional(S.Boolean),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    host: S.optional(S.NullOr(S.String)),
+    lite: S.optional(S.NullOr(S.Boolean)),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   })
     .pipe(
       T.Http({
@@ -947,27 +949,27 @@ export const SiteInfoUpdateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoUpdateResponseRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string;
-  created?: string;
+  id?: string | null;
+  created?: string | null;
   /** The hostname the rule will be applied to. */
-  host?: string;
+  host?: string | null;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean;
+  inclusive?: boolean | null;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean;
+  isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
-  paths?: SiteInfoUpdateResponseRulesItemPathsList;
-  priority?: number;
+  paths?: SiteInfoUpdateResponseRulesItemPathsList | null;
+  priority?: number | null;
 }
 export const SiteInfoUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    host: S.optional(S.String),
-    inclusive: S.optional(S.Boolean),
-    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-    paths: S.optional(SiteInfoUpdateResponseRulesItemPathsList),
-    priority: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
+    inclusive: S.optional(S.NullOr(S.Boolean)),
+    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+    paths: S.optional(S.NullOr(SiteInfoUpdateResponseRulesItemPathsList)),
+    priority: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "SiteInfoUpdateResponseRulesItem",
@@ -981,19 +983,19 @@ export const SiteInfoUpdateResponseRulesList = /*@__PURE__*/ S.Array(
 
 export interface SiteInfoUpdateResponseRuleset {
   /** The Web Analytics ruleset identifier. */
-  id?: string;
+  id?: string | null;
   /** Whether the ruleset is enabled. */
-  enabled?: boolean;
-  zoneName?: string;
+  enabled?: boolean | null;
+  zoneName?: string | null;
   /** The zone identifier. */
-  zoneTag?: string;
+  zoneTag?: string | null;
 }
 export const SiteInfoUpdateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
   }),
 ).annotate({
   identifier: "SiteInfoUpdateResponseRuleset",
@@ -1002,30 +1004,30 @@ export const SiteInfoUpdateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean;
-  created?: string;
+  autoInstall?: boolean | null;
+  created?: string | null;
   /** A list of rules. */
-  rules?: SiteInfoUpdateResponseRulesList;
-  ruleset?: SiteInfoUpdateResponseRuleset;
+  rules?: SiteInfoUpdateResponseRulesList | null;
+  ruleset?: SiteInfoUpdateResponseRuleset | null;
   /** The Web Analytics site identifier. */
-  siteTag?: string;
+  siteTag?: string | null;
   /** The Web Analytics site token. */
-  siteToken?: string;
+  siteToken?: string | null;
   /** Encoded JavaScript snippet. */
-  snippet?: string;
+  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
-  host?: string;
+  host?: string | null;
 }
 export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-    created: S.optional(S.String),
-    rules: S.optional(SiteInfoUpdateResponseRulesList),
-    ruleset: S.optional(SiteInfoUpdateResponseRuleset),
-    siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
-    snippet: S.optional(S.String),
-    host: S.optional(S.String),
+    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+    created: S.optional(S.NullOr(S.String)),
+    rules: S.optional(S.NullOr(SiteInfoUpdateResponseRulesList)),
+    ruleset: S.optional(S.NullOr(SiteInfoUpdateResponseRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteInfoResponse",

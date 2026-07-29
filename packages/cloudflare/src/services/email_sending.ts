@@ -85,26 +85,30 @@ export interface CreateSubdomainResponse {
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
+  dkimSelector?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
+  previewEnabled?: boolean | null;
   /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
+  returnPathDomain?: string | null;
 }
 export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
     tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+    created: S.optional(S.NullOr(S.String)),
+    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.NullOr(S.String)),
+    previewEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
+    ),
+    returnPathDomain: S.optional(
+      S.NullOr(S.String).pipe(T.Body("return_path_domain")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubdomainResponse",
@@ -172,26 +176,30 @@ export interface GetSubdomainResponse {
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
+  dkimSelector?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
+  previewEnabled?: boolean | null;
   /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
+  returnPathDomain?: string | null;
 }
 export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
     tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+    created: S.optional(S.NullOr(S.String)),
+    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.NullOr(S.String)),
+    previewEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
+    ),
+    returnPathDomain: S.optional(
+      S.NullOr(S.String).pipe(T.Body("return_path_domain")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainResponse",
@@ -243,23 +251,23 @@ export const SubdomainsDnsGetResultItemType = /*@__PURE__*/ S.String;
 
 export interface SubdomainsDnsGetResultItem {
   /** DNS record content. */
-  content?: string;
+  content?: string | null;
   /** DNS record name (or @ for the zone apex). */
-  name?: string;
+  name?: string | null;
   /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number;
+  priority?: number | null;
   /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: number;
+  ttl?: number | null;
   /** DNS record type. */
-  type?: SubdomainsDnsGetResultItemType;
+  type?: SubdomainsDnsGetResultItemType | null;
 }
 export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    content: S.optional(S.String),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    ttl: S.optional(S.Number),
-    type: S.optional(SubdomainsDnsGetResultItemType),
+    content: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(SubdomainsDnsGetResultItemType)),
   }),
 ).annotate({
   identifier: "SubdomainsDnsGetResultItem",
@@ -313,26 +321,30 @@ export interface SubdomainsListResultItem {
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
-  created?: string;
+  created?: string | null;
   /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
+  dkimSelector?: string | null;
   /** The date and time the destination address was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
+  previewEnabled?: boolean | null;
   /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
+  returnPathDomain?: string | null;
 }
 export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
     tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+    created: S.optional(S.NullOr(S.String)),
+    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.NullOr(S.String)),
+    previewEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
+    ),
+    returnPathDomain: S.optional(
+      S.NullOr(S.String).pipe(T.Body("return_path_domain")),
+    ),
   }),
 ).annotate({
   identifier: "SubdomainsListResultItem",
@@ -362,13 +374,13 @@ export interface SendRequestFromEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestFromEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestFromEmailSendingEmailAddressObject",
@@ -454,13 +466,13 @@ export interface SendRequestBccEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestBccEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestBccEmailSendingEmailAddressObject",
@@ -470,13 +482,13 @@ export interface SendRequestBccCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestBccCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestBccCase2ItemEmailSendingEmailAddressObject",
@@ -506,13 +518,13 @@ export interface SendRequestCcEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestCcEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestCcEmailSendingEmailAddressObject",
@@ -522,13 +534,13 @@ export interface SendRequestCcCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestCcCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestCcCase2ItemEmailSendingEmailAddressObject",
@@ -564,13 +576,13 @@ export interface SendRequestReplyToEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestReplyToEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestReplyToEmailSendingEmailAddressObject",
@@ -587,13 +599,13 @@ export interface SendRequestToEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestToEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestToEmailSendingEmailAddressObject",
@@ -603,13 +615,13 @@ export interface SendRequestToCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
+  name?: string | null;
 }
 export const SendRequestToCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SendRequestToCase2ItemEmailSendingEmailAddressObject",
@@ -643,35 +655,35 @@ export interface SendEmailSendingRequest {
   /** Email subject line. */
   subject: string;
   /** File attachments and inline images. */
-  attachments?: SendRequestAttachmentsList;
+  attachments?: SendRequestAttachmentsList | null;
   /** BCC recipient(s). A single email string, a named address object, or an array of either. */
-  bcc?: SendRequestBcc;
+  bcc?: SendRequestBcc | null;
   /** CC recipient(s). A single email string, a named address object, or an array of either. */
-  cc?: SendRequestCc;
+  cc?: SendRequestCc | null;
   /** Custom email headers as key-value pairs. */
-  headers?: SendRequestHeadersMap;
+  headers?: SendRequestHeadersMap | null;
   /** HTML body of the email. At least one of text or html must be provided (non-empty). */
-  html?: string;
+  html?: string | null;
   /** Reply-to address. Either a plain string or an object with address and name. */
-  replyTo?: SendRequestReplyTo;
+  replyTo?: SendRequestReplyTo | null;
   /** Plain text body of the email. At least one of text or html must be provided (non-empty). */
-  text?: string;
+  text?: string | null;
   /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
-  to?: SendRequestTo;
+  to?: SendRequestTo | null;
 }
 export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: SendRequestFrom,
     subject: S.String,
-    attachments: S.optional(SendRequestAttachmentsList),
-    bcc: S.optional(SendRequestBcc),
-    cc: S.optional(SendRequestCc),
-    headers: S.optional(SendRequestHeadersMap),
-    html: S.optional(S.String),
-    replyTo: S.optional(SendRequestReplyTo.pipe(T.Body("reply_to"))),
-    text: S.optional(S.String),
-    to: S.optional(SendRequestTo),
+    attachments: S.optional(S.NullOr(SendRequestAttachmentsList)),
+    bcc: S.optional(S.NullOr(SendRequestBcc)),
+    cc: S.optional(S.NullOr(SendRequestCc)),
+    headers: S.optional(S.NullOr(SendRequestHeadersMap)),
+    html: S.optional(S.NullOr(S.String)),
+    replyTo: S.optional(S.NullOr(SendRequestReplyTo).pipe(T.Body("reply_to"))),
+    text: S.optional(S.NullOr(S.String)),
+    to: S.optional(S.NullOr(SendRequestTo)),
   })
     .pipe(
       T.Http({

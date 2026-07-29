@@ -160,14 +160,15 @@ export type FilterNameStringType =
   | "tag-value"
   | "primary-region"
   | "owning-service"
-  | "all";
+  | "all"
+  | (string & {});
 export const FilterNameStringType = /*@__PURE__*/ S.String;
 
 export type FilterValueStringType = string;
 export type FilterValuesStringList = string[];
 export const FilterValuesStringList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
-  Key?: FilterNameStringType | (string & {});
+  Key?: FilterNameStringType;
   Values?: string[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -344,7 +345,7 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSecretRequest",
 }) as any as S.Schema<CreateSecretRequest>;
-export type StatusType = "InSync" | "Failed" | "InProgress";
+export type StatusType = "InSync" | "Failed" | "InProgress" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 export type StatusMessageType = string;
@@ -665,14 +666,15 @@ export const GetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSecretValueResponse",
 }) as any as S.Schema<GetSecretValueResponse>;
 export type MaxResultsType = number;
-export type SortOrderType = "asc" | "desc";
+export type SortOrderType = "asc" | "desc" | (string & {});
 export const SortOrderType = /*@__PURE__*/ S.String;
 
 export type SortByType =
   | "created-date"
   | "last-accessed-date"
   | "last-changed-date"
-  | "name";
+  | "name"
+  | (string & {});
 export const SortByType = /*@__PURE__*/ S.String;
 
 export interface ListSecretsRequest {
@@ -680,8 +682,8 @@ export interface ListSecretsRequest {
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
-  SortOrder?: SortOrderType | (string & {});
-  SortBy?: SortByType | (string & {});
+  SortOrder?: SortOrderType;
+  SortBy?: SortByType;
 }
 export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

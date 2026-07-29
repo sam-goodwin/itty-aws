@@ -66,17 +66,17 @@ export interface CreateHostnameRequest {
   /** Specify the target gateway of the hostname. */
   target: HostnamesCreateRequestTarget | (string & {});
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
+  dnslink?: string | null;
 }
 export const CreateHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     target: HostnamesCreateRequestTarget,
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -106,30 +106,30 @@ export const HostnamesCreateResponseTarget = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
-  modifiedOn?: string;
+  dnslink?: string | null;
+  modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
-  name?: string;
+  name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: HostnamesCreateResponseStatus;
+  status?: HostnamesCreateResponseStatus | null;
   /** Specify the target gateway of the hostname. */
-  target?: HostnamesCreateResponseTarget;
+  target?: HostnamesCreateResponseTarget | null;
 }
 export const CreateHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    status: S.optional(HostnamesCreateResponseStatus),
-    target: S.optional(HostnamesCreateResponseTarget),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnamesCreateResponseStatus)),
+    target: S.optional(S.NullOr(HostnamesCreateResponseTarget)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameResponse",
@@ -153,7 +153,7 @@ export interface CreateHostnameIpfsUniversalPathContentListEntryRequest {
     | HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType
     | (string & {});
   /** Specify an optional description of the content list entry. */
-  description?: string;
+  description?: string | null;
 }
 export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -162,7 +162,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
       identifier: S.String.pipe(T.Label()),
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -185,26 +185,28 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
+  id?: string | null;
   /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
+  content?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
+  description?: string | null;
+  modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType;
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType | null;
 }
 export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      id: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.NullOr(S.String)),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType,
+        S.NullOr(
+          HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType,
+        ),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -329,30 +331,30 @@ export const HostnamesGetResponseTarget = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
-  modifiedOn?: string;
+  dnslink?: string | null;
+  modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
-  name?: string;
+  name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: HostnamesGetResponseStatus;
+  status?: HostnamesGetResponseStatus | null;
   /** Specify the target gateway of the hostname. */
-  target?: HostnamesGetResponseTarget;
+  target?: HostnamesGetResponseTarget | null;
 }
 export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    status: S.optional(HostnamesGetResponseStatus),
-    target: S.optional(HostnamesGetResponseTarget),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnamesGetResponseStatus)),
+    target: S.optional(S.NullOr(HostnamesGetResponseTarget)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameResponse",
@@ -389,13 +391,13 @@ export const HostnamesIpfsUniversalPathsContentListsGetResponseAction =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameIpfsUniversalPathContentListResponse {
   /** Behavior of the content list. */
-  action?: HostnamesIpfsUniversalPathsContentListsGetResponseAction;
+  action?: HostnamesIpfsUniversalPathsContentListsGetResponseAction | null;
 }
 export const GetHostnameIpfsUniversalPathContentListResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.optional(
-        HostnamesIpfsUniversalPathsContentListsGetResponseAction,
+        S.NullOr(HostnamesIpfsUniversalPathsContentListsGetResponseAction),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -440,26 +442,26 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
+  id?: string | null;
   /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
+  content?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
+  description?: string | null;
+  modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType;
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType | null;
 }
 export const GetHostnameIpfsUniversalPathContentListEntryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      id: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.NullOr(S.String)),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType,
+        S.NullOr(HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -497,26 +499,28 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesIt
 
 export interface HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem {
   /** Specify the identifier of the hostname. */
-  id?: string;
+  id?: string | null;
   /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
+  content?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
+  description?: string | null;
+  modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType;
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType | null;
 }
 export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      id: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.NullOr(S.String)),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType,
+        S.NullOr(
+          HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType,
+        ),
       ),
     }),
   ).annotate({
@@ -534,13 +538,15 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesLi
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListHostnameIpfsUniversalPathContentListEntriesResponse {
   /** Provides content list entries. */
-  entries?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList;
+  entries?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList | null;
 }
 export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entries: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList,
+        S.NullOr(
+          HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList,
+        ),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -582,30 +588,30 @@ export const HostnamesListResultItemTarget = /*@__PURE__*/ S.String;
 
 export interface HostnamesListResultItem {
   /** Specify the identifier of the hostname. */
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
-  modifiedOn?: string;
+  dnslink?: string | null;
+  modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
-  name?: string;
+  name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: HostnamesListResultItemStatus;
+  status?: HostnamesListResultItemStatus | null;
   /** Specify the target gateway of the hostname. */
-  target?: HostnamesListResultItemTarget;
+  target?: HostnamesListResultItemTarget | null;
 }
 export const HostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    status: S.optional(HostnamesListResultItemStatus),
-    target: S.optional(HostnamesListResultItemTarget),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnamesListResultItemStatus)),
+    target: S.optional(S.NullOr(HostnamesListResultItemTarget)),
   }),
 ).annotate({
   identifier: "HostnamesListResultItem",
@@ -637,16 +643,16 @@ export interface PatchHostnameRequest {
   /** Specify the identifier of the hostname. */
   identifier: string;
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
+  dnslink?: string | null;
 }
 export const PatchHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -676,30 +682,30 @@ export const HostnamesEditResponseTarget = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchHostnameResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the hostname. */
-  description?: string;
+  description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
-  modifiedOn?: string;
+  dnslink?: string | null;
+  modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
-  name?: string;
+  name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: HostnamesEditResponseStatus;
+  status?: HostnamesEditResponseStatus | null;
   /** Specify the target gateway of the hostname. */
-  target?: HostnamesEditResponseTarget;
+  target?: HostnamesEditResponseTarget | null;
 }
 export const PatchHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    status: S.optional(HostnamesEditResponseStatus),
-    target: S.optional(HostnamesEditResponseTarget),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    dnslink: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(HostnamesEditResponseStatus)),
+    target: S.optional(S.NullOr(HostnamesEditResponseTarget)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHostnameResponse",
@@ -717,28 +723,31 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType
 
 export interface HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem {
   /** Specify the identifier of the hostname. */
-  id?: string;
+  id?: string | null;
   /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
+  content?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
+  description?: string | null;
+  modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
   type?:
     | HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      id: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.NullOr(S.String)),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
+        S.NullOr(
+          HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
+        ),
       ),
     }),
   ).annotate({
@@ -793,13 +802,13 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHostnameIpfsUniversalPathContentListResponse {
   /** Behavior of the content list. */
-  action?: HostnamesIpfsUniversalPathsContentListsUpdateResponseAction;
+  action?: HostnamesIpfsUniversalPathsContentListsUpdateResponseAction | null;
 }
 export const PutHostnameIpfsUniversalPathContentListResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.optional(
-        HostnamesIpfsUniversalPathsContentListsUpdateResponseAction,
+        S.NullOr(HostnamesIpfsUniversalPathsContentListsUpdateResponseAction),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -826,7 +835,7 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryRequest {
     | HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType
     | (string & {});
   /** Specify an optional description of the content list entry. */
-  description?: string;
+  description?: string | null;
 }
 export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -838,7 +847,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
       ),
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -861,26 +870,28 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
+  id?: string | null;
   /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
+  content?: string | null;
+  createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
+  description?: string | null;
+  modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType;
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType | null;
 }
 export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      id: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.NullOr(S.String)),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType,
+        S.NullOr(
+          HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType,
+        ),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({

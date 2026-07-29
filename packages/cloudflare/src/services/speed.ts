@@ -83,13 +83,13 @@ export interface CreatePageTestRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: PagesTestsCreateRequestRegion | (string & {});
+  region?: PagesTestsCreateRequestRegion | (string & {}) | null;
 }
 export const CreatePageTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     url: S.String.pipe(T.Label()),
-    region: S.optional(PagesTestsCreateRequestRegion),
+    region: S.optional(S.NullOr(PagesTestsCreateRequestRegion)),
   })
     .pipe(
       T.Http({
@@ -120,18 +120,20 @@ export const PagesTestsCreateResponseDesktopReportErrorCode =
 
 export interface PagesTestsCreateResponseDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: PagesTestsCreateResponseDesktopReportErrorCode;
+  code?: PagesTestsCreateResponseDesktopReportErrorCode | null;
   /** Detailed error message. */
-  detail?: string;
+  detail?: string | null;
   /** The final URL displayed to the user. */
-  finalDisplayedUrl?: string;
+  finalDisplayedUrl?: string | null;
 }
 export const PagesTestsCreateResponseDesktopReportError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      code: S.optional(PagesTestsCreateResponseDesktopReportErrorCode),
-      detail: S.optional(S.String),
-      finalDisplayedUrl: S.optional(S.String),
+      code: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PagesTestsCreateResponseDesktopReportError",
@@ -146,44 +148,46 @@ export const PagesTestsCreateResponseDesktopReportState =
 
 export interface PagesTestsCreateResponseDesktopReport {
   /** Cumulative Layout Shift. */
-  cls?: number;
+  cls?: number | null;
   /** The type of device. */
-  deviceType?: PagesTestsCreateResponseDesktopReportDeviceType;
-  error?: PagesTestsCreateResponseDesktopReportError;
+  deviceType?: PagesTestsCreateResponseDesktopReportDeviceType | null;
+  error?: PagesTestsCreateResponseDesktopReportError | null;
   /** First Contentful Paint. */
-  fcp?: number;
+  fcp?: number | null;
   /** The URL to the full Lighthouse JSON report. */
-  jsonReportUrl?: string;
+  jsonReportUrl?: string | null;
   /** Largest Contentful Paint. */
-  lcp?: number;
+  lcp?: number | null;
   /** The Lighthouse performance score. */
-  performanceScore?: number;
+  performanceScore?: number | null;
   /** Speed Index. */
-  si?: number;
+  si?: number | null;
   /** The state of the Lighthouse report. */
-  state?: PagesTestsCreateResponseDesktopReportState;
+  state?: PagesTestsCreateResponseDesktopReportState | null;
   /** Total Blocking Time. */
-  tbt?: number;
+  tbt?: number | null;
   /** Time To First Byte. */
-  ttfb?: number;
+  ttfb?: number | null;
   /** Time To Interactive. */
-  tti?: number;
+  tti?: number | null;
 }
 export const PagesTestsCreateResponseDesktopReport = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cls: S.optional(S.Number),
-      deviceType: S.optional(PagesTestsCreateResponseDesktopReportDeviceType),
-      error: S.optional(PagesTestsCreateResponseDesktopReportError),
-      fcp: S.optional(S.Number),
-      jsonReportUrl: S.optional(S.String),
-      lcp: S.optional(S.Number),
-      performanceScore: S.optional(S.Number),
-      si: S.optional(S.Number),
-      state: S.optional(PagesTestsCreateResponseDesktopReportState),
-      tbt: S.optional(S.Number),
-      ttfb: S.optional(S.Number),
-      tti: S.optional(S.Number),
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportDeviceType),
+      ),
+      error: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportError)),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportState)),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "PagesTestsCreateResponseDesktopReport",
@@ -214,14 +218,14 @@ export type PagesTestsCreateResponseRegionValue =
 export const PagesTestsCreateResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsCreateResponseRegion {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: PagesTestsCreateResponseRegionValue;
+  value?: PagesTestsCreateResponseRegionValue | null;
 }
 export const PagesTestsCreateResponseRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(S.String),
-    value: S.optional(PagesTestsCreateResponseRegionValue),
+    label: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(PagesTestsCreateResponseRegionValue)),
   }),
 ).annotate({
   identifier: "PagesTestsCreateResponseRegion",
@@ -233,28 +237,30 @@ export const PagesTestsCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePageTestResponse {
   /** UUID. */
-  id?: string;
-  date?: string;
+  id?: string | null;
+  date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: PagesTestsCreateResponseDesktopReport;
+  desktopReport?: PagesTestsCreateResponseDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: PagesTestsCreateResponseDesktopReport;
+  mobileReport?: PagesTestsCreateResponseDesktopReport | null;
   /** A test region with a label. */
-  region?: PagesTestsCreateResponseRegion;
+  region?: PagesTestsCreateResponseRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsCreateResponseScheduleFrequency;
+  scheduleFrequency?: PagesTestsCreateResponseScheduleFrequency | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const CreatePageTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    date: S.optional(S.String),
-    desktopReport: S.optional(PagesTestsCreateResponseDesktopReport),
-    mobileReport: S.optional(PagesTestsCreateResponseDesktopReport),
-    region: S.optional(PagesTestsCreateResponseRegion),
-    scheduleFrequency: S.optional(PagesTestsCreateResponseScheduleFrequency),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    desktopReport: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReport)),
+    mobileReport: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReport)),
+    region: S.optional(S.NullOr(PagesTestsCreateResponseRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(PagesTestsCreateResponseScheduleFrequency),
+    ),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePageTestResponse",
@@ -345,17 +351,17 @@ export const ScheduleCreateResponseScheduleRegion = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseSchedule {
   /** The frequency of the test. */
-  frequency?: ScheduleCreateResponseScheduleFrequency;
+  frequency?: ScheduleCreateResponseScheduleFrequency | null;
   /** A test region. */
-  region?: ScheduleCreateResponseScheduleRegion;
+  region?: ScheduleCreateResponseScheduleRegion | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const ScheduleCreateResponseSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    frequency: S.optional(ScheduleCreateResponseScheduleFrequency),
-    region: S.optional(ScheduleCreateResponseScheduleRegion),
-    url: S.optional(S.String),
+    frequency: S.optional(S.NullOr(ScheduleCreateResponseScheduleFrequency)),
+    region: S.optional(S.NullOr(ScheduleCreateResponseScheduleRegion)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ScheduleCreateResponseSchedule",
@@ -378,18 +384,20 @@ export const ScheduleCreateResponseTestDesktopReportErrorCode =
 
 export interface ScheduleCreateResponseTestDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: ScheduleCreateResponseTestDesktopReportErrorCode;
+  code?: ScheduleCreateResponseTestDesktopReportErrorCode | null;
   /** Detailed error message. */
-  detail?: string;
+  detail?: string | null;
   /** The final URL displayed to the user. */
-  finalDisplayedUrl?: string;
+  finalDisplayedUrl?: string | null;
 }
 export const ScheduleCreateResponseTestDesktopReportError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      code: S.optional(ScheduleCreateResponseTestDesktopReportErrorCode),
-      detail: S.optional(S.String),
-      finalDisplayedUrl: S.optional(S.String),
+      code: S.optional(
+        S.NullOr(ScheduleCreateResponseTestDesktopReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScheduleCreateResponseTestDesktopReportError",
@@ -404,44 +412,46 @@ export const ScheduleCreateResponseTestDesktopReportState =
 
 export interface ScheduleCreateResponseTestDesktopReport {
   /** Cumulative Layout Shift. */
-  cls?: number;
+  cls?: number | null;
   /** The type of device. */
-  deviceType?: ScheduleCreateResponseTestDesktopReportDeviceType;
-  error?: ScheduleCreateResponseTestDesktopReportError;
+  deviceType?: ScheduleCreateResponseTestDesktopReportDeviceType | null;
+  error?: ScheduleCreateResponseTestDesktopReportError | null;
   /** First Contentful Paint. */
-  fcp?: number;
+  fcp?: number | null;
   /** The URL to the full Lighthouse JSON report. */
-  jsonReportUrl?: string;
+  jsonReportUrl?: string | null;
   /** Largest Contentful Paint. */
-  lcp?: number;
+  lcp?: number | null;
   /** The Lighthouse performance score. */
-  performanceScore?: number;
+  performanceScore?: number | null;
   /** Speed Index. */
-  si?: number;
+  si?: number | null;
   /** The state of the Lighthouse report. */
-  state?: ScheduleCreateResponseTestDesktopReportState;
+  state?: ScheduleCreateResponseTestDesktopReportState | null;
   /** Total Blocking Time. */
-  tbt?: number;
+  tbt?: number | null;
   /** Time To First Byte. */
-  ttfb?: number;
+  ttfb?: number | null;
   /** Time To Interactive. */
-  tti?: number;
+  tti?: number | null;
 }
 export const ScheduleCreateResponseTestDesktopReport = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cls: S.optional(S.Number),
-      deviceType: S.optional(ScheduleCreateResponseTestDesktopReportDeviceType),
-      error: S.optional(ScheduleCreateResponseTestDesktopReportError),
-      fcp: S.optional(S.Number),
-      jsonReportUrl: S.optional(S.String),
-      lcp: S.optional(S.Number),
-      performanceScore: S.optional(S.Number),
-      si: S.optional(S.Number),
-      state: S.optional(ScheduleCreateResponseTestDesktopReportState),
-      tbt: S.optional(S.Number),
-      ttfb: S.optional(S.Number),
-      tti: S.optional(S.Number),
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(ScheduleCreateResponseTestDesktopReportDeviceType),
+      ),
+      error: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportError)),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportState)),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "ScheduleCreateResponseTestDesktopReport",
@@ -472,14 +482,14 @@ export type ScheduleCreateResponseTestRegionValue =
 export const ScheduleCreateResponseTestRegionValue = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseTestRegion {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: ScheduleCreateResponseTestRegionValue;
+  value?: ScheduleCreateResponseTestRegionValue | null;
 }
 export const ScheduleCreateResponseTestRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(S.String),
-    value: S.optional(ScheduleCreateResponseTestRegionValue),
+    label: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(ScheduleCreateResponseTestRegionValue)),
   }),
 ).annotate({
   identifier: "ScheduleCreateResponseTestRegion",
@@ -491,28 +501,32 @@ export const ScheduleCreateResponseTestScheduleFrequency =
 
 export interface ScheduleCreateResponseTest {
   /** UUID. */
-  id?: string;
-  date?: string;
+  id?: string | null;
+  date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: ScheduleCreateResponseTestDesktopReport;
+  desktopReport?: ScheduleCreateResponseTestDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: ScheduleCreateResponseTestDesktopReport;
+  mobileReport?: ScheduleCreateResponseTestDesktopReport | null;
   /** A test region with a label. */
-  region?: ScheduleCreateResponseTestRegion;
+  region?: ScheduleCreateResponseTestRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: ScheduleCreateResponseTestScheduleFrequency;
+  scheduleFrequency?: ScheduleCreateResponseTestScheduleFrequency | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const ScheduleCreateResponseTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    date: S.optional(S.String),
-    desktopReport: S.optional(ScheduleCreateResponseTestDesktopReport),
-    mobileReport: S.optional(ScheduleCreateResponseTestDesktopReport),
-    region: S.optional(ScheduleCreateResponseTestRegion),
-    scheduleFrequency: S.optional(ScheduleCreateResponseTestScheduleFrequency),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    desktopReport: S.optional(
+      S.NullOr(ScheduleCreateResponseTestDesktopReport),
+    ),
+    mobileReport: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReport)),
+    region: S.optional(S.NullOr(ScheduleCreateResponseTestRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(ScheduleCreateResponseTestScheduleFrequency),
+    ),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ScheduleCreateResponseTest",
@@ -521,13 +535,13 @@ export const ScheduleCreateResponseTest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScheduleResponse {
   /** The test schedule. */
-  schedule?: ScheduleCreateResponseSchedule;
-  test?: ScheduleCreateResponseTest;
+  schedule?: ScheduleCreateResponseSchedule | null;
+  test?: ScheduleCreateResponseTest | null;
 }
 export const CreateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    schedule: S.optional(ScheduleCreateResponseSchedule),
-    test: S.optional(ScheduleCreateResponseTest),
+    schedule: S.optional(S.NullOr(ScheduleCreateResponseSchedule)),
+    test: S.optional(S.NullOr(ScheduleCreateResponseTest)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScheduleResponse",
@@ -586,11 +600,11 @@ export const DeletePageTestRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeletePageTestResponse {
   /** Number of items affected. */
-  count?: number;
+  count?: number | null;
 }
 export const DeletePageTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
+    count: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePageTestResponse",
@@ -649,11 +663,11 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteScheduleResponse {
   /** Number of items affected. */
-  count?: number;
+  count?: number | null;
 }
 export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
+    count: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScheduleResponse",
@@ -699,18 +713,18 @@ export const PagesTestsGetResponseDesktopReportErrorCode =
 
 export interface PagesTestsGetResponseDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: PagesTestsGetResponseDesktopReportErrorCode;
+  code?: PagesTestsGetResponseDesktopReportErrorCode | null;
   /** Detailed error message. */
-  detail?: string;
+  detail?: string | null;
   /** The final URL displayed to the user. */
-  finalDisplayedUrl?: string;
+  finalDisplayedUrl?: string | null;
 }
 export const PagesTestsGetResponseDesktopReportError = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      code: S.optional(PagesTestsGetResponseDesktopReportErrorCode),
-      detail: S.optional(S.String),
-      finalDisplayedUrl: S.optional(S.String),
+      code: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportErrorCode)),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PagesTestsGetResponseDesktopReportError",
@@ -724,43 +738,45 @@ export const PagesTestsGetResponseDesktopReportState = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseDesktopReport {
   /** Cumulative Layout Shift. */
-  cls?: number;
+  cls?: number | null;
   /** The type of device. */
-  deviceType?: PagesTestsGetResponseDesktopReportDeviceType;
-  error?: PagesTestsGetResponseDesktopReportError;
+  deviceType?: PagesTestsGetResponseDesktopReportDeviceType | null;
+  error?: PagesTestsGetResponseDesktopReportError | null;
   /** First Contentful Paint. */
-  fcp?: number;
+  fcp?: number | null;
   /** The URL to the full Lighthouse JSON report. */
-  jsonReportUrl?: string;
+  jsonReportUrl?: string | null;
   /** Largest Contentful Paint. */
-  lcp?: number;
+  lcp?: number | null;
   /** The Lighthouse performance score. */
-  performanceScore?: number;
+  performanceScore?: number | null;
   /** Speed Index. */
-  si?: number;
+  si?: number | null;
   /** The state of the Lighthouse report. */
-  state?: PagesTestsGetResponseDesktopReportState;
+  state?: PagesTestsGetResponseDesktopReportState | null;
   /** Total Blocking Time. */
-  tbt?: number;
+  tbt?: number | null;
   /** Time To First Byte. */
-  ttfb?: number;
+  ttfb?: number | null;
   /** Time To Interactive. */
-  tti?: number;
+  tti?: number | null;
 }
 export const PagesTestsGetResponseDesktopReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cls: S.optional(S.Number),
-    deviceType: S.optional(PagesTestsGetResponseDesktopReportDeviceType),
-    error: S.optional(PagesTestsGetResponseDesktopReportError),
-    fcp: S.optional(S.Number),
-    jsonReportUrl: S.optional(S.String),
-    lcp: S.optional(S.Number),
-    performanceScore: S.optional(S.Number),
-    si: S.optional(S.Number),
-    state: S.optional(PagesTestsGetResponseDesktopReportState),
-    tbt: S.optional(S.Number),
-    ttfb: S.optional(S.Number),
-    tti: S.optional(S.Number),
+    cls: S.optional(S.NullOr(S.Number)),
+    deviceType: S.optional(
+      S.NullOr(PagesTestsGetResponseDesktopReportDeviceType),
+    ),
+    error: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportError)),
+    fcp: S.optional(S.NullOr(S.Number)),
+    jsonReportUrl: S.optional(S.NullOr(S.String)),
+    lcp: S.optional(S.NullOr(S.Number)),
+    performanceScore: S.optional(S.NullOr(S.Number)),
+    si: S.optional(S.NullOr(S.Number)),
+    state: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportState)),
+    tbt: S.optional(S.NullOr(S.Number)),
+    ttfb: S.optional(S.NullOr(S.Number)),
+    tti: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PagesTestsGetResponseDesktopReport",
@@ -791,14 +807,14 @@ export type PagesTestsGetResponseRegionValue =
 export const PagesTestsGetResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseRegion {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: PagesTestsGetResponseRegionValue;
+  value?: PagesTestsGetResponseRegionValue | null;
 }
 export const PagesTestsGetResponseRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(S.String),
-    value: S.optional(PagesTestsGetResponseRegionValue),
+    label: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(PagesTestsGetResponseRegionValue)),
   }),
 ).annotate({
   identifier: "PagesTestsGetResponseRegion",
@@ -810,28 +826,30 @@ export const PagesTestsGetResponseScheduleFrequency = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPageTestResponse {
   /** UUID. */
-  id?: string;
-  date?: string;
+  id?: string | null;
+  date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: PagesTestsGetResponseDesktopReport;
+  desktopReport?: PagesTestsGetResponseDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: PagesTestsGetResponseDesktopReport;
+  mobileReport?: PagesTestsGetResponseDesktopReport | null;
   /** A test region with a label. */
-  region?: PagesTestsGetResponseRegion;
+  region?: PagesTestsGetResponseRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsGetResponseScheduleFrequency;
+  scheduleFrequency?: PagesTestsGetResponseScheduleFrequency | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const GetPageTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    date: S.optional(S.String),
-    desktopReport: S.optional(PagesTestsGetResponseDesktopReport),
-    mobileReport: S.optional(PagesTestsGetResponseDesktopReport),
-    region: S.optional(PagesTestsGetResponseRegion),
-    scheduleFrequency: S.optional(PagesTestsGetResponseScheduleFrequency),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    desktopReport: S.optional(S.NullOr(PagesTestsGetResponseDesktopReport)),
+    mobileReport: S.optional(S.NullOr(PagesTestsGetResponseDesktopReport)),
+    region: S.optional(S.NullOr(PagesTestsGetResponseRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(PagesTestsGetResponseScheduleFrequency),
+    ),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageTestResponse",
@@ -917,17 +935,17 @@ export const ScheduleGetResponseRegion = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScheduleResponse {
   /** The frequency of the test. */
-  frequency?: ScheduleGetResponseFrequency;
+  frequency?: ScheduleGetResponseFrequency | null;
   /** A test region. */
-  region?: ScheduleGetResponseRegion;
+  region?: ScheduleGetResponseRegion | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    frequency: S.optional(ScheduleGetResponseFrequency),
-    region: S.optional(ScheduleGetResponseRegion),
-    url: S.optional(S.String),
+    frequency: S.optional(S.NullOr(ScheduleGetResponseFrequency)),
+    region: S.optional(S.NullOr(ScheduleGetResponseRegion)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScheduleResponse",
@@ -954,18 +972,18 @@ export const ListAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailabilitiesRequest>;
 
 export interface AvailabilitiesListResponseQuotaQuotasPerPlanValue {
-  business?: number;
-  enterprise?: number;
-  free?: number;
-  pro?: number;
+  business?: number | null;
+  enterprise?: number | null;
+  free?: number | null;
+  pro?: number | null;
 }
 export const AvailabilitiesListResponseQuotaQuotasPerPlanValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      business: S.optional(S.Number),
-      enterprise: S.optional(S.Number),
-      free: S.optional(S.Number),
-      pro: S.optional(S.Number),
+      business: S.optional(S.NullOr(S.Number)),
+      enterprise: S.optional(S.NullOr(S.Number)),
+      free: S.optional(S.NullOr(S.Number)),
+      pro: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseQuotaQuotasPerPlanValue",
@@ -973,30 +991,32 @@ export const AvailabilitiesListResponseQuotaQuotasPerPlanValue =
 
 export interface AvailabilitiesListResponseQuotaQuotasPerPlan {
   /** Counts per account plan. */
-  value?: AvailabilitiesListResponseQuotaQuotasPerPlanValue;
+  value?: AvailabilitiesListResponseQuotaQuotasPerPlanValue | null;
 }
 export const AvailabilitiesListResponseQuotaQuotasPerPlan =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.optional(AvailabilitiesListResponseQuotaQuotasPerPlanValue),
+      value: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlanValue),
+      ),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseQuotaQuotasPerPlan",
   }) as any as S.Schema<AvailabilitiesListResponseQuotaQuotasPerPlan>;
 
 export interface AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue {
-  business?: number;
-  enterprise?: number;
-  free?: number;
-  pro?: number;
+  business?: number | null;
+  enterprise?: number | null;
+  free?: number | null;
+  pro?: number | null;
 }
 export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      business: S.optional(S.Number),
-      enterprise: S.optional(S.Number),
-      free: S.optional(S.Number),
-      pro: S.optional(S.Number),
+      business: S.optional(S.NullOr(S.Number)),
+      enterprise: S.optional(S.NullOr(S.Number)),
+      free: S.optional(S.NullOr(S.Number)),
+      pro: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue",
@@ -1004,13 +1024,13 @@ export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue =
 
 export interface AvailabilitiesListResponseQuotaScheduleQuotasPerPlan {
   /** Counts per account plan. */
-  value?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue;
+  value?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue | null;
 }
 export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(
-        AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue,
+        S.NullOr(AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue),
       ),
     }),
   ).annotate({
@@ -1019,24 +1039,26 @@ export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
 
 export interface AvailabilitiesListResponseQuota {
   /** Cloudflare plan. */
-  plan?: string;
+  plan?: string | null;
   /** The number of tests available per plan. */
-  quotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan;
+  quotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
   /** The number of remaining schedules available. */
-  remainingSchedules?: number;
+  remainingSchedules?: number | null;
   /** The number of remaining tests available. */
-  remainingTests?: number;
+  remainingTests?: number | null;
   /** The number of schedules available per plan. */
-  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlan;
+  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlan | null;
 }
 export const AvailabilitiesListResponseQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    plan: S.optional(S.String),
-    quotasPerPlan: S.optional(AvailabilitiesListResponseQuotaQuotasPerPlan),
-    remainingSchedules: S.optional(S.Number),
-    remainingTests: S.optional(S.Number),
+    plan: S.optional(S.NullOr(S.String)),
+    quotasPerPlan: S.optional(
+      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
+    ),
+    remainingSchedules: S.optional(S.NullOr(S.Number)),
+    remainingTests: S.optional(S.NullOr(S.Number)),
     scheduleQuotasPerPlan: S.optional(
-      AvailabilitiesListResponseQuotaScheduleQuotasPerPlan,
+      S.NullOr(AvailabilitiesListResponseQuotaScheduleQuotasPerPlan),
     ),
   }),
 ).annotate({
@@ -1069,15 +1091,15 @@ export const AvailabilitiesListResponseRegionsItemValue =
   /*@__PURE__*/ S.String;
 
 export interface AvailabilitiesListResponseRegionsItem {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsItemValue;
+  value?: AvailabilitiesListResponseRegionsItemValue | null;
 }
 export const AvailabilitiesListResponseRegionsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      label: S.optional(S.String),
-      value: S.optional(AvailabilitiesListResponseRegionsItemValue),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsItemValue)),
     }),
 ).annotate({
   identifier: "AvailabilitiesListResponseRegionsItem",
@@ -1090,15 +1112,15 @@ export const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AvailabilitiesListResponseRegionsList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlanBusinessItem {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: string;
+  value?: string | null;
 }
 export const AvailabilitiesListResponseRegionsPerPlanBusinessItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(S.String),
-      value: S.optional(S.String),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanBusinessItem",
@@ -1112,15 +1134,15 @@ export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlanEnterpriseItem {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: string;
+  value?: string | null;
 }
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(S.String),
-      value: S.optional(S.String),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanEnterpriseItem",
@@ -1134,15 +1156,15 @@ export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlanFreeItem {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: string;
+  value?: string | null;
 }
 export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(S.String),
-      value: S.optional(S.String),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanFreeItem",
@@ -1156,15 +1178,15 @@ export const AvailabilitiesListResponseRegionsPerPlanFreeList =
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlanProItem {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: string;
+  value?: string | null;
 }
 export const AvailabilitiesListResponseRegionsPerPlanProItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(S.String),
-      value: S.optional(S.String),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanProItem",
@@ -1178,22 +1200,26 @@ export const AvailabilitiesListResponseRegionsPerPlanProList =
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlan {
-  business?: AvailabilitiesListResponseRegionsPerPlanBusinessList;
-  enterprise?: AvailabilitiesListResponseRegionsPerPlanEnterpriseList;
-  free?: AvailabilitiesListResponseRegionsPerPlanFreeList;
-  pro?: AvailabilitiesListResponseRegionsPerPlanProList;
+  business?: AvailabilitiesListResponseRegionsPerPlanBusinessList | null;
+  enterprise?: AvailabilitiesListResponseRegionsPerPlanEnterpriseList | null;
+  free?: AvailabilitiesListResponseRegionsPerPlanFreeList | null;
+  pro?: AvailabilitiesListResponseRegionsPerPlanProList | null;
 }
 export const AvailabilitiesListResponseRegionsPerPlan = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       business: S.optional(
-        AvailabilitiesListResponseRegionsPerPlanBusinessList,
+        S.NullOr(AvailabilitiesListResponseRegionsPerPlanBusinessList),
       ),
       enterprise: S.optional(
-        AvailabilitiesListResponseRegionsPerPlanEnterpriseList,
+        S.NullOr(AvailabilitiesListResponseRegionsPerPlanEnterpriseList),
       ),
-      free: S.optional(AvailabilitiesListResponseRegionsPerPlanFreeList),
-      pro: S.optional(AvailabilitiesListResponseRegionsPerPlanProList),
+      free: S.optional(
+        S.NullOr(AvailabilitiesListResponseRegionsPerPlanFreeList),
+      ),
+      pro: S.optional(
+        S.NullOr(AvailabilitiesListResponseRegionsPerPlanProList),
+      ),
     }),
 ).annotate({
   identifier: "AvailabilitiesListResponseRegionsPerPlan",
@@ -1201,16 +1227,18 @@ export const AvailabilitiesListResponseRegionsPerPlan = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAvailabilitiesResponse {
-  quota?: AvailabilitiesListResponseQuota;
-  regions?: AvailabilitiesListResponseRegionsList;
+  quota?: AvailabilitiesListResponseQuota | null;
+  regions?: AvailabilitiesListResponseRegionsList | null;
   /** Available regions. */
-  regionsPerPlan?: AvailabilitiesListResponseRegionsPerPlan;
+  regionsPerPlan?: AvailabilitiesListResponseRegionsPerPlan | null;
 }
 export const ListAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    quota: S.optional(AvailabilitiesListResponseQuota),
-    regions: S.optional(AvailabilitiesListResponseRegionsList),
-    regionsPerPlan: S.optional(AvailabilitiesListResponseRegionsPerPlan),
+    quota: S.optional(S.NullOr(AvailabilitiesListResponseQuota)),
+    regions: S.optional(S.NullOr(AvailabilitiesListResponseRegionsList)),
+    regionsPerPlan: S.optional(
+      S.NullOr(AvailabilitiesListResponseRegionsPerPlan),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAvailabilitiesResponse",
@@ -1261,14 +1289,14 @@ export type PagesListResultItemRegionValue =
 export const PagesListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesListResultItemRegion {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: PagesListResultItemRegionValue;
+  value?: PagesListResultItemRegionValue | null;
 }
 export const PagesListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(S.String),
-    value: S.optional(PagesListResultItemRegionValue),
+    label: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(PagesListResultItemRegionValue)),
   }),
 ).annotate({
   identifier: "PagesListResultItemRegion",
@@ -1294,18 +1322,20 @@ export const PagesListResultItemTestsItemDesktopReportErrorCode =
 
 export interface PagesListResultItemTestsItemDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: PagesListResultItemTestsItemDesktopReportErrorCode;
+  code?: PagesListResultItemTestsItemDesktopReportErrorCode | null;
   /** Detailed error message. */
-  detail?: string;
+  detail?: string | null;
   /** The final URL displayed to the user. */
-  finalDisplayedUrl?: string;
+  finalDisplayedUrl?: string | null;
 }
 export const PagesListResultItemTestsItemDesktopReportError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      code: S.optional(PagesListResultItemTestsItemDesktopReportErrorCode),
-      detail: S.optional(S.String),
-      finalDisplayedUrl: S.optional(S.String),
+      code: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PagesListResultItemTestsItemDesktopReportError",
@@ -1320,46 +1350,50 @@ export const PagesListResultItemTestsItemDesktopReportState =
 
 export interface PagesListResultItemTestsItemDesktopReport {
   /** Cumulative Layout Shift. */
-  cls?: number;
+  cls?: number | null;
   /** The type of device. */
-  deviceType?: PagesListResultItemTestsItemDesktopReportDeviceType;
-  error?: PagesListResultItemTestsItemDesktopReportError;
+  deviceType?: PagesListResultItemTestsItemDesktopReportDeviceType | null;
+  error?: PagesListResultItemTestsItemDesktopReportError | null;
   /** First Contentful Paint. */
-  fcp?: number;
+  fcp?: number | null;
   /** The URL to the full Lighthouse JSON report. */
-  jsonReportUrl?: string;
+  jsonReportUrl?: string | null;
   /** Largest Contentful Paint. */
-  lcp?: number;
+  lcp?: number | null;
   /** The Lighthouse performance score. */
-  performanceScore?: number;
+  performanceScore?: number | null;
   /** Speed Index. */
-  si?: number;
+  si?: number | null;
   /** The state of the Lighthouse report. */
-  state?: PagesListResultItemTestsItemDesktopReportState;
+  state?: PagesListResultItemTestsItemDesktopReportState | null;
   /** Total Blocking Time. */
-  tbt?: number;
+  tbt?: number | null;
   /** Time To First Byte. */
-  ttfb?: number;
+  ttfb?: number | null;
   /** Time To Interactive. */
-  tti?: number;
+  tti?: number | null;
 }
 export const PagesListResultItemTestsItemDesktopReport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cls: S.optional(S.Number),
+      cls: S.optional(S.NullOr(S.Number)),
       deviceType: S.optional(
-        PagesListResultItemTestsItemDesktopReportDeviceType,
+        S.NullOr(PagesListResultItemTestsItemDesktopReportDeviceType),
       ),
-      error: S.optional(PagesListResultItemTestsItemDesktopReportError),
-      fcp: S.optional(S.Number),
-      jsonReportUrl: S.optional(S.String),
-      lcp: S.optional(S.Number),
-      performanceScore: S.optional(S.Number),
-      si: S.optional(S.Number),
-      state: S.optional(PagesListResultItemTestsItemDesktopReportState),
-      tbt: S.optional(S.Number),
-      ttfb: S.optional(S.Number),
-      tti: S.optional(S.Number),
+      error: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportError),
+      ),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportState),
+      ),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "PagesListResultItemTestsItemDesktopReport",
@@ -1371,30 +1405,34 @@ export const PagesListResultItemTestsItemScheduleFrequency =
 
 export interface PagesListResultItemTestsItem {
   /** UUID. */
-  id?: string;
-  date?: string;
+  id?: string | null;
+  date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: PagesListResultItemTestsItemDesktopReport;
+  desktopReport?: PagesListResultItemTestsItemDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: PagesListResultItemTestsItemDesktopReport;
+  mobileReport?: PagesListResultItemTestsItemDesktopReport | null;
   /** A test region with a label. */
-  region?: PagesListResultItemRegion;
+  region?: PagesListResultItemRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: PagesListResultItemTestsItemScheduleFrequency;
+  scheduleFrequency?: PagesListResultItemTestsItemScheduleFrequency | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    date: S.optional(S.String),
-    desktopReport: S.optional(PagesListResultItemTestsItemDesktopReport),
-    mobileReport: S.optional(PagesListResultItemTestsItemDesktopReport),
-    region: S.optional(PagesListResultItemRegion),
-    scheduleFrequency: S.optional(
-      PagesListResultItemTestsItemScheduleFrequency,
+    id: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    desktopReport: S.optional(
+      S.NullOr(PagesListResultItemTestsItemDesktopReport),
     ),
-    url: S.optional(S.String),
+    mobileReport: S.optional(
+      S.NullOr(PagesListResultItemTestsItemDesktopReport),
+    ),
+    region: S.optional(S.NullOr(PagesListResultItemRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(PagesListResultItemTestsItemScheduleFrequency),
+    ),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesListResultItemTestsItem",
@@ -1407,19 +1445,21 @@ export const PagesListResultItemTestsList = /*@__PURE__*/ S.Array(
 
 export interface PagesListResultItem {
   /** A test region with a label. */
-  region?: PagesListResultItemRegion;
+  region?: PagesListResultItemRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: PagesListResultItemScheduleFrequency;
-  tests?: PagesListResultItemTestsList;
+  scheduleFrequency?: PagesListResultItemScheduleFrequency | null;
+  tests?: PagesListResultItemTestsList | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const PagesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    region: S.optional(PagesListResultItemRegion),
-    scheduleFrequency: S.optional(PagesListResultItemScheduleFrequency),
-    tests: S.optional(PagesListResultItemTestsList),
-    url: S.optional(S.String),
+    region: S.optional(S.NullOr(PagesListResultItemRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(PagesListResultItemScheduleFrequency),
+    ),
+    tests: S.optional(S.NullOr(PagesListResultItemTestsList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesListResultItem",
@@ -1516,18 +1556,20 @@ export const PagesTestsListResultItemDesktopReportErrorCode =
 
 export interface PagesTestsListResultItemDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: PagesTestsListResultItemDesktopReportErrorCode;
+  code?: PagesTestsListResultItemDesktopReportErrorCode | null;
   /** Detailed error message. */
-  detail?: string;
+  detail?: string | null;
   /** The final URL displayed to the user. */
-  finalDisplayedUrl?: string;
+  finalDisplayedUrl?: string | null;
 }
 export const PagesTestsListResultItemDesktopReportError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      code: S.optional(PagesTestsListResultItemDesktopReportErrorCode),
-      detail: S.optional(S.String),
-      finalDisplayedUrl: S.optional(S.String),
+      code: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PagesTestsListResultItemDesktopReportError",
@@ -1542,44 +1584,46 @@ export const PagesTestsListResultItemDesktopReportState =
 
 export interface PagesTestsListResultItemDesktopReport {
   /** Cumulative Layout Shift. */
-  cls?: number;
+  cls?: number | null;
   /** The type of device. */
-  deviceType?: PagesTestsListResultItemDesktopReportDeviceType;
-  error?: PagesTestsListResultItemDesktopReportError;
+  deviceType?: PagesTestsListResultItemDesktopReportDeviceType | null;
+  error?: PagesTestsListResultItemDesktopReportError | null;
   /** First Contentful Paint. */
-  fcp?: number;
+  fcp?: number | null;
   /** The URL to the full Lighthouse JSON report. */
-  jsonReportUrl?: string;
+  jsonReportUrl?: string | null;
   /** Largest Contentful Paint. */
-  lcp?: number;
+  lcp?: number | null;
   /** The Lighthouse performance score. */
-  performanceScore?: number;
+  performanceScore?: number | null;
   /** Speed Index. */
-  si?: number;
+  si?: number | null;
   /** The state of the Lighthouse report. */
-  state?: PagesTestsListResultItemDesktopReportState;
+  state?: PagesTestsListResultItemDesktopReportState | null;
   /** Total Blocking Time. */
-  tbt?: number;
+  tbt?: number | null;
   /** Time To First Byte. */
-  ttfb?: number;
+  ttfb?: number | null;
   /** Time To Interactive. */
-  tti?: number;
+  tti?: number | null;
 }
 export const PagesTestsListResultItemDesktopReport = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cls: S.optional(S.Number),
-      deviceType: S.optional(PagesTestsListResultItemDesktopReportDeviceType),
-      error: S.optional(PagesTestsListResultItemDesktopReportError),
-      fcp: S.optional(S.Number),
-      jsonReportUrl: S.optional(S.String),
-      lcp: S.optional(S.Number),
-      performanceScore: S.optional(S.Number),
-      si: S.optional(S.Number),
-      state: S.optional(PagesTestsListResultItemDesktopReportState),
-      tbt: S.optional(S.Number),
-      ttfb: S.optional(S.Number),
-      tti: S.optional(S.Number),
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportDeviceType),
+      ),
+      error: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportError)),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportState)),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "PagesTestsListResultItemDesktopReport",
@@ -1610,14 +1654,14 @@ export type PagesTestsListResultItemRegionValue =
 export const PagesTestsListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItemRegion {
-  label?: string;
+  label?: string | null;
   /** A test region. */
-  value?: PagesTestsListResultItemRegionValue;
+  value?: PagesTestsListResultItemRegionValue | null;
 }
 export const PagesTestsListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(S.String),
-    value: S.optional(PagesTestsListResultItemRegionValue),
+    label: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(PagesTestsListResultItemRegionValue)),
   }),
 ).annotate({
   identifier: "PagesTestsListResultItemRegion",
@@ -1628,28 +1672,30 @@ export const PagesTestsListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItem {
   /** UUID. */
-  id?: string;
-  date?: string;
+  id?: string | null;
+  date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: PagesTestsListResultItemDesktopReport;
+  desktopReport?: PagesTestsListResultItemDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: PagesTestsListResultItemDesktopReport;
+  mobileReport?: PagesTestsListResultItemDesktopReport | null;
   /** A test region with a label. */
-  region?: PagesTestsListResultItemRegion;
+  region?: PagesTestsListResultItemRegion | null;
   /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsListResultItemScheduleFrequency;
+  scheduleFrequency?: PagesTestsListResultItemScheduleFrequency | null;
   /** A URL. */
-  url?: string;
+  url?: string | null;
 }
 export const PagesTestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    date: S.optional(S.String),
-    desktopReport: S.optional(PagesTestsListResultItemDesktopReport),
-    mobileReport: S.optional(PagesTestsListResultItemDesktopReport),
-    region: S.optional(PagesTestsListResultItemRegion),
-    scheduleFrequency: S.optional(PagesTestsListResultItemScheduleFrequency),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    desktopReport: S.optional(S.NullOr(PagesTestsListResultItemDesktopReport)),
+    mobileReport: S.optional(S.NullOr(PagesTestsListResultItemDesktopReport)),
+    region: S.optional(S.NullOr(PagesTestsListResultItemRegion)),
+    scheduleFrequency: S.optional(
+      S.NullOr(PagesTestsListResultItemScheduleFrequency),
+    ),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesTestsListResultItem",
@@ -1784,32 +1830,34 @@ export const PagesTrendResponseTtiList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TrendPageResponse {
   /** Cumulative Layout Shift trend. */
-  cls?: PagesTrendResponseClsList;
+  cls?: PagesTrendResponseClsList | null;
   /** First Contentful Paint trend. */
-  fcp?: PagesTrendResponseFcpList;
+  fcp?: PagesTrendResponseFcpList | null;
   /** Largest Contentful Paint trend. */
-  lcp?: PagesTrendResponseLcpList;
+  lcp?: PagesTrendResponseLcpList | null;
   /** The Lighthouse score trend. */
-  performanceScore?: PagesTrendResponsePerformanceScoreList;
+  performanceScore?: PagesTrendResponsePerformanceScoreList | null;
   /** Speed Index trend. */
-  si?: PagesTrendResponseSiList;
+  si?: PagesTrendResponseSiList | null;
   /** Total Blocking Time trend. */
-  tbt?: PagesTrendResponseTbtList;
+  tbt?: PagesTrendResponseTbtList | null;
   /** Time To First Byte trend. */
-  ttfb?: PagesTrendResponseTtfbList;
+  ttfb?: PagesTrendResponseTtfbList | null;
   /** Time To Interactive trend. */
-  tti?: PagesTrendResponseTtiList;
+  tti?: PagesTrendResponseTtiList | null;
 }
 export const TrendPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cls: S.optional(PagesTrendResponseClsList),
-    fcp: S.optional(PagesTrendResponseFcpList),
-    lcp: S.optional(PagesTrendResponseLcpList),
-    performanceScore: S.optional(PagesTrendResponsePerformanceScoreList),
-    si: S.optional(PagesTrendResponseSiList),
-    tbt: S.optional(PagesTrendResponseTbtList),
-    ttfb: S.optional(PagesTrendResponseTtfbList),
-    tti: S.optional(PagesTrendResponseTtiList),
+    cls: S.optional(S.NullOr(PagesTrendResponseClsList)),
+    fcp: S.optional(S.NullOr(PagesTrendResponseFcpList)),
+    lcp: S.optional(S.NullOr(PagesTrendResponseLcpList)),
+    performanceScore: S.optional(
+      S.NullOr(PagesTrendResponsePerformanceScoreList),
+    ),
+    si: S.optional(S.NullOr(PagesTrendResponseSiList)),
+    tbt: S.optional(S.NullOr(PagesTrendResponseTbtList)),
+    ttfb: S.optional(S.NullOr(PagesTrendResponseTtfbList)),
+    tti: S.optional(S.NullOr(PagesTrendResponseTtiList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TrendPageResponse",

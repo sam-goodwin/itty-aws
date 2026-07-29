@@ -275,20 +275,20 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
 
 export interface MaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
-  compaction?: MaintenanceConfigsGetResponseMaintenanceConfigCompaction;
+  compaction?: MaintenanceConfigsGetResponseMaintenanceConfigCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
+  snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
 export const MaintenanceConfigsGetResponseMaintenanceConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       compaction: S.optional(
-        MaintenanceConfigsGetResponseMaintenanceConfigCompaction,
+        S.NullOr(MaintenanceConfigsGetResponseMaintenanceConfigCompaction),
       ),
       snapshotExpiration: S.optional(
-        MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
+        S.NullOr(
+          MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration,
+        ).pipe(T.Body("snapshot_expiration")),
       ),
     }),
   ).annotate({
@@ -402,20 +402,22 @@ export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnaps
 
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures compaction settings for table optimization. */
-  compaction?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction;
+  compaction?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
+  snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       compaction: S.optional(
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction,
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction,
+        ),
       ),
       snapshotExpiration: S.optional(
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration,
+        ).pipe(T.Body("snapshot_expiration")),
       ),
     }),
   ).annotate({
@@ -528,15 +530,15 @@ export const GetResponseMaintenanceConfigSnapshotExpiration =
 
 export interface GetResponseMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
-  compaction?: GetResponseMaintenanceConfigCompaction;
+  compaction?: GetResponseMaintenanceConfigCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: GetResponseMaintenanceConfigSnapshotExpiration;
+  snapshotExpiration?: GetResponseMaintenanceConfigSnapshotExpiration | null;
 }
 export const GetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    compaction: S.optional(GetResponseMaintenanceConfigCompaction),
+    compaction: S.optional(S.NullOr(GetResponseMaintenanceConfigCompaction)),
     snapshotExpiration: S.optional(
-      GetResponseMaintenanceConfigSnapshotExpiration.pipe(
+      S.NullOr(GetResponseMaintenanceConfigSnapshotExpiration).pipe(
         T.Body("snapshot_expiration"),
       ),
     ),
@@ -556,9 +558,9 @@ export interface GetR2DataCatalogResponse {
   /** Indicates the status of the catalog. */
   status: GetResponseStatus;
   /** Shows the credential configuration status. */
-  credentialStatus?: GetResponseCredentialStatus;
+  credentialStatus?: GetResponseCredentialStatus | null;
   /** Configures maintenance for the catalog. */
-  maintenanceConfig?: GetResponseMaintenanceConfig;
+  maintenanceConfig?: GetResponseMaintenanceConfig | null;
 }
 export const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -567,10 +569,10 @@ export const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: GetResponseStatus,
     credentialStatus: S.optional(
-      GetResponseCredentialStatus.pipe(T.Body("credential_status")),
+      S.NullOr(GetResponseCredentialStatus).pipe(T.Body("credential_status")),
     ),
     maintenanceConfig: S.optional(
-      GetResponseMaintenanceConfig.pipe(T.Body("maintenance_config")),
+      S.NullOr(GetResponseMaintenanceConfig).pipe(T.Body("maintenance_config")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -638,16 +640,16 @@ export interface NamespacesListResponseDetailsItem {
   /** Contains the UUID that persists across renames. */
   namespaceUuid: string;
   /** Indicates the creation timestamp in ISO 8601 format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: NamespacesListResponseDetailsItemNamespaceList,
     namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "NamespacesListResponseDetailsItem",
@@ -669,20 +671,24 @@ export interface ListNamespacesResponse {
   /** Lists namespaces in the catalog. */
   namespaces: NamespacesListResponseNamespacesList;
   /** Contains detailed metadata for each namespace when return_details is true. */
-  details?: NamespacesListResponseDetailsList;
+  details?: NamespacesListResponseDetailsList | null;
   /** Contains UUIDs for each namespace when return_uuids is true. */
-  namespaceUuids?: NamespacesListResponseNamespaceUuidsList;
+  namespaceUuids?: NamespacesListResponseNamespaceUuidsList | null;
   /** Use this opaque token to fetch the next page of results. */
-  nextPageToken?: string;
+  nextPageToken?: string | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaces: NamespacesListResponseNamespacesList,
-    details: S.optional(NamespacesListResponseDetailsList),
+    details: S.optional(S.NullOr(NamespacesListResponseDetailsList)),
     namespaceUuids: S.optional(
-      NamespacesListResponseNamespaceUuidsList.pipe(T.Body("namespace_uuids")),
+      S.NullOr(NamespacesListResponseNamespaceUuidsList).pipe(
+        T.Body("namespace_uuids"),
+      ),
     ),
-    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
+    nextPageToken: S.optional(
+      S.NullOr(S.String).pipe(T.Body("next_page_token")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesResponse",
@@ -784,23 +790,25 @@ export interface NamespacesTablesListResponseDetailsItem {
   /** Contains the UUID that persists across renames. */
   tableUuid: string;
   /** Indicates the creation timestamp in ISO 8601 format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specifies the base S3 URI for table storage location. */
-  location?: string;
+  location?: string | null;
   /** Contains the S3 URI to table metadata file. Null for staged tables. */
-  metadataLocation?: string;
+  metadataLocation?: string | null;
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       identifier: NamespacesTablesListResponseDetailsItemIdentifier,
       tableUuid: S.String.pipe(T.Body("table_uuid")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      location: S.optional(S.String),
-      metadataLocation: S.optional(S.String.pipe(T.Body("metadata_location"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      location: S.optional(S.NullOr(S.String)),
+      metadataLocation: S.optional(
+        S.NullOr(S.String).pipe(T.Body("metadata_location")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "NamespacesTablesListResponseDetailsItem",
@@ -822,19 +830,23 @@ export interface ListNamespaceTablesResponse {
   /** Lists tables in the namespace. */
   identifiers: NamespacesTablesListResponseIdentifiersList;
   /** Contains detailed metadata for each table when return_details is true. */
-  details?: NamespacesTablesListResponseDetailsList;
+  details?: NamespacesTablesListResponseDetailsList | null;
   /** Use this opaque token to fetch the next page of results. */
-  nextPageToken?: string;
+  nextPageToken?: string | null;
   /** Contains UUIDs for each table when return_uuids is true. */
-  tableUuids?: NamespacesTablesListResponseTableUuidsList;
+  tableUuids?: NamespacesTablesListResponseTableUuidsList | null;
 }
 export const ListNamespaceTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifiers: NamespacesTablesListResponseIdentifiersList,
-    details: S.optional(NamespacesTablesListResponseDetailsList),
-    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
+    details: S.optional(S.NullOr(NamespacesTablesListResponseDetailsList)),
+    nextPageToken: S.optional(
+      S.NullOr(S.String).pipe(T.Body("next_page_token")),
+    ),
     tableUuids: S.optional(
-      NamespacesTablesListResponseTableUuidsList.pipe(T.Body("table_uuids")),
+      S.NullOr(NamespacesTablesListResponseTableUuidsList).pipe(
+        T.Body("table_uuids"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -927,20 +939,20 @@ export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
 
 export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
-  compaction?: ListResponseWarehousesItemMaintenanceConfigCompaction;
+  compaction?: ListResponseWarehousesItemMaintenanceConfigCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration;
+  snapshotExpiration?: ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration | null;
 }
 export const ListResponseWarehousesItemMaintenanceConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       compaction: S.optional(
-        ListResponseWarehousesItemMaintenanceConfigCompaction,
+        S.NullOr(ListResponseWarehousesItemMaintenanceConfigCompaction),
       ),
       snapshotExpiration: S.optional(
-        ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
+        S.NullOr(
+          ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration,
+        ).pipe(T.Body("snapshot_expiration")),
       ),
     }),
   ).annotate({
@@ -957,9 +969,9 @@ export interface ListResponseWarehousesItem {
   /** Indicates the status of the catalog. */
   status: ListResponseWarehousesItemStatus;
   /** Shows the credential configuration status. */
-  credentialStatus?: ListResponseWarehousesItemCredentialStatus;
+  credentialStatus?: ListResponseWarehousesItemCredentialStatus | null;
   /** Configures maintenance for the catalog. */
-  maintenanceConfig?: ListResponseWarehousesItemMaintenanceConfig;
+  maintenanceConfig?: ListResponseWarehousesItemMaintenanceConfig | null;
 }
 export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -968,12 +980,12 @@ export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: ListResponseWarehousesItemStatus,
     credentialStatus: S.optional(
-      ListResponseWarehousesItemCredentialStatus.pipe(
+      S.NullOr(ListResponseWarehousesItemCredentialStatus).pipe(
         T.Body("credential_status"),
       ),
     ),
     maintenanceConfig: S.optional(
-      ListResponseWarehousesItemMaintenanceConfig.pipe(
+      S.NullOr(ListResponseWarehousesItemMaintenanceConfig).pipe(
         T.Body("maintenance_config"),
       ),
     ),
@@ -1016,18 +1028,21 @@ export const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
 
 export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
-  state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {});
+  state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {}) | null;
   /** Updates the target file size optionally. */
   targetSizeMb?:
     | MaintenanceConfigsUpdateRequestCompactionTargetSizeMb
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const MaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      state: S.optional(MaintenanceConfigsUpdateRequestCompactionState),
+      state: S.optional(
+        S.NullOr(MaintenanceConfigsUpdateRequestCompactionState),
+      ),
       targetSizeMb: S.optional(
-        MaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
+        S.NullOr(MaintenanceConfigsUpdateRequestCompactionTargetSizeMb).pipe(
           T.Body("target_size_mb"),
         ),
       ),
@@ -1044,22 +1059,27 @@ export const MaintenanceConfigsUpdateRequestSnapshotExpirationState =
 
 export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
-  maxSnapshotAge?: string;
+  maxSnapshotAge?: string | null;
   /** Updates the minimum number of snapshots to retain optionally. */
-  minSnapshotsToKeep?: number;
+  minSnapshotsToKeep?: number | null;
   /** Updates the state optionally. */
   state?:
     | MaintenanceConfigsUpdateRequestSnapshotExpirationState
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const MaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
-      minSnapshotsToKeep: S.optional(
-        S.Number.pipe(T.Body("min_snapshots_to_keep")),
+      maxSnapshotAge: S.optional(
+        S.NullOr(S.String).pipe(T.Body("max_snapshot_age")),
       ),
-      state: S.optional(MaintenanceConfigsUpdateRequestSnapshotExpirationState),
+      minSnapshotsToKeep: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("min_snapshots_to_keep")),
+      ),
+      state: S.optional(
+        S.NullOr(MaintenanceConfigsUpdateRequestSnapshotExpirationState),
+      ),
     }),
   ).annotate({
     identifier: "MaintenanceConfigsUpdateRequestSnapshotExpiration",
@@ -1071,17 +1091,17 @@ export interface UpdateMaintenanceConfigRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
   /** Updates compaction configuration (all fields optional). */
-  compaction?: MaintenanceConfigsUpdateRequestCompaction;
+  compaction?: MaintenanceConfigsUpdateRequestCompaction | null;
   /** Updates snapshot expiration configuration (all fields optional). */
-  snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration;
+  snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration | null;
 }
 export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    compaction: S.optional(MaintenanceConfigsUpdateRequestCompaction),
+    compaction: S.optional(S.NullOr(MaintenanceConfigsUpdateRequestCompaction)),
     snapshotExpiration: S.optional(
-      MaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(
+      S.NullOr(MaintenanceConfigsUpdateRequestSnapshotExpiration).pipe(
         T.Body("snapshot_expiration"),
       ),
     ),
@@ -1158,15 +1178,17 @@ export const MaintenanceConfigsUpdateResponseSnapshotExpiration =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMaintenanceConfigResponse {
   /** Configures compaction for catalog maintenance. */
-  compaction?: MaintenanceConfigsUpdateResponseCompaction;
+  compaction?: MaintenanceConfigsUpdateResponseCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: MaintenanceConfigsUpdateResponseSnapshotExpiration;
+  snapshotExpiration?: MaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
 export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    compaction: S.optional(MaintenanceConfigsUpdateResponseCompaction),
+    compaction: S.optional(
+      S.NullOr(MaintenanceConfigsUpdateResponseCompaction),
+    ),
     snapshotExpiration: S.optional(
-      MaintenanceConfigsUpdateResponseSnapshotExpiration.pipe(
+      S.NullOr(MaintenanceConfigsUpdateResponseSnapshotExpiration).pipe(
         T.Body("snapshot_expiration"),
       ),
     ),
@@ -1190,22 +1212,26 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
   state?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState
-    | (string & {});
+    | (string & {})
+    | null;
   /** Updates the target file size optionally. */
   targetSizeMb?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       state: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState,
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState,
+        ),
       ),
       targetSizeMb: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
-          T.Body("target_size_mb"),
-        ),
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb,
+        ).pipe(T.Body("target_size_mb")),
       ),
     }),
   ).annotate({
@@ -1219,23 +1245,28 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationSt
 
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
-  maxSnapshotAge?: string;
+  maxSnapshotAge?: string | null;
   /** Updates the minimum number of snapshots to retain optionally. */
-  minSnapshotsToKeep?: number;
+  minSnapshotsToKeep?: number | null;
   /** Updates the state optionally. */
   state?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
+      maxSnapshotAge: S.optional(
+        S.NullOr(S.String).pipe(T.Body("max_snapshot_age")),
+      ),
       minSnapshotsToKeep: S.optional(
-        S.Number.pipe(T.Body("min_snapshots_to_keep")),
+        S.NullOr(S.Number).pipe(T.Body("min_snapshots_to_keep")),
       ),
       state: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState,
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState,
+        ),
       ),
     }),
   ).annotate({
@@ -1251,9 +1282,9 @@ export interface UpdateNamespaceTableMaintenanceConfigRequest {
   namespace: string;
   tableName: string;
   /** Updates compaction configuration (all fields optional). */
-  compaction?: NamespacesTablesMaintenanceConfigsUpdateRequestCompaction;
+  compaction?: NamespacesTablesMaintenanceConfigsUpdateRequestCompaction | null;
   /** Updates snapshot expiration configuration (all fields optional). */
-  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration;
+  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration | null;
 }
 export const UpdateNamespaceTableMaintenanceConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1263,12 +1294,12 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
       namespace: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label("table_name")),
       compaction: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestCompaction,
+        S.NullOr(NamespacesTablesMaintenanceConfigsUpdateRequestCompaction),
       ),
       snapshotExpiration: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration,
+        ).pipe(T.Body("snapshot_expiration")),
       ),
     })
       .pipe(
@@ -1342,20 +1373,20 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateNamespaceTableMaintenanceConfigResponse {
   /** Configures compaction settings for table optimization. */
-  compaction?: NamespacesTablesMaintenanceConfigsUpdateResponseCompaction;
+  compaction?: NamespacesTablesMaintenanceConfigsUpdateResponseCompaction | null;
   /** Configures snapshot expiration settings. */
-  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration;
+  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
 export const UpdateNamespaceTableMaintenanceConfigResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       compaction: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateResponseCompaction,
+        S.NullOr(NamespacesTablesMaintenanceConfigsUpdateResponseCompaction),
       ),
       snapshotExpiration: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
+        S.NullOr(
+          NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration,
+        ).pipe(T.Body("snapshot_expiration")),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({

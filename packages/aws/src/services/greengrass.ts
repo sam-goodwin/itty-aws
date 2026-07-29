@@ -442,13 +442,14 @@ export type DeploymentType =
   | "NewDeployment"
   | "Redeployment"
   | "ResetDeployment"
-  | "ForceResetDeployment";
+  | "ForceResetDeployment"
+  | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface CreateDeploymentRequest {
   AmznClientToken?: string;
   DeploymentId?: string;
-  DeploymentType?: DeploymentType | (string & {});
+  DeploymentType?: DeploymentType;
   GroupId: string;
   GroupVersionId?: string;
 }
@@ -608,7 +609,10 @@ export const CreateDeviceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDeviceDefinitionVersionResponse",
 }) as any as S.Schema<CreateDeviceDefinitionVersionResponse>;
-export type FunctionIsolationMode = "GreengrassContainer" | "NoContainer";
+export type FunctionIsolationMode =
+  | "GreengrassContainer"
+  | "NoContainer"
+  | (string & {});
 export const FunctionIsolationMode = /*@__PURE__*/ S.String;
 
 export interface FunctionRunAsConfig {
@@ -621,7 +625,7 @@ export const FunctionRunAsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionRunAsConfig",
 }) as any as S.Schema<FunctionRunAsConfig>;
 export interface FunctionDefaultExecutionConfig {
-  IsolationMode?: FunctionIsolationMode | (string & {});
+  IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
 }
 export const FunctionDefaultExecutionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -640,11 +644,11 @@ export const FunctionDefaultConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FunctionDefaultConfig",
 }) as any as S.Schema<FunctionDefaultConfig>;
-export type EncodingType = "binary" | "json";
+export type EncodingType = "binary" | "json" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
 
 export interface FunctionExecutionConfig {
-  IsolationMode?: FunctionIsolationMode | (string & {});
+  IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
 }
 export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -655,11 +659,11 @@ export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FunctionExecutionConfig",
 }) as any as S.Schema<FunctionExecutionConfig>;
-export type Permission = "ro" | "rw";
+export type Permission = "ro" | "rw" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface ResourceAccessPolicy {
-  Permission?: Permission | (string & {});
+  Permission?: Permission;
   ResourceId?: string;
 }
 export const ResourceAccessPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -690,7 +694,7 @@ export const FunctionConfigurationEnvironment = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionConfigurationEnvironment",
 }) as any as S.Schema<FunctionConfigurationEnvironment>;
 export interface FunctionConfiguration {
-  EncodingType?: EncodingType | (string & {});
+  EncodingType?: EncodingType;
   Environment?: FunctionConfigurationEnvironment;
   ExecArgs?: string;
   Executable?: string;
@@ -993,21 +997,27 @@ export const CreateGroupVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupVersionResponse",
 }) as any as S.Schema<CreateGroupVersionResponse>;
-export type LoggerComponent = "GreengrassSystem" | "Lambda";
+export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
 export const LoggerComponent = /*@__PURE__*/ S.String;
 
-export type LoggerLevel = "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL";
+export type LoggerLevel =
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | "ERROR"
+  | "FATAL"
+  | (string & {});
 export const LoggerLevel = /*@__PURE__*/ S.String;
 
-export type LoggerType = "FileSystem" | "AWSCloudWatch";
+export type LoggerType = "FileSystem" | "AWSCloudWatch" | (string & {});
 export const LoggerType = /*@__PURE__*/ S.String;
 
 export interface Logger {
-  Component?: LoggerComponent | (string & {});
+  Component?: LoggerComponent;
   Id?: string;
-  Level?: LoggerLevel | (string & {});
+  Level?: LoggerLevel;
   Space?: number;
-  Type?: LoggerType | (string & {});
+  Type?: LoggerType;
 }
 export const Logger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1163,7 +1173,7 @@ export const LocalVolumeResourceData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalVolumeResourceData>;
 export interface ResourceDownloadOwnerSetting {
   GroupOwner?: string;
-  GroupPermission?: Permission | (string & {});
+  GroupPermission?: Permission;
 }
 export const ResourceDownloadOwnerSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1358,7 +1368,7 @@ export const CreateResourceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateResourceDefinitionVersionResponse",
 }) as any as S.Schema<CreateResourceDefinitionVersionResponse>;
 export type S3UrlSignerRole = string;
-export type SoftwareToUpdate = "core" | "ota_agent";
+export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
 export const SoftwareToUpdate = /*@__PURE__*/ S.String;
 
 export type UpdateAgentLogLevel =
@@ -1369,7 +1379,8 @@ export type UpdateAgentLogLevel =
   | "INFO"
   | "WARN"
   | "ERROR"
-  | "FATAL";
+  | "FATAL"
+  | (string & {});
 export const UpdateAgentLogLevel = /*@__PURE__*/ S.String;
 
 export type UpdateTargets = string[];
@@ -1378,24 +1389,26 @@ export type UpdateTargetsArchitecture =
   | "armv6l"
   | "armv7l"
   | "x86_64"
-  | "aarch64";
+  | "aarch64"
+  | (string & {});
 export const UpdateTargetsArchitecture = /*@__PURE__*/ S.String;
 
 export type UpdateTargetsOperatingSystem =
   | "ubuntu"
   | "raspbian"
   | "amazon_linux"
-  | "openwrt";
+  | "openwrt"
+  | (string & {});
 export const UpdateTargetsOperatingSystem = /*@__PURE__*/ S.String;
 
 export interface CreateSoftwareUpdateJobRequest {
   AmznClientToken?: string;
   S3UrlSignerRole?: string;
-  SoftwareToUpdate?: SoftwareToUpdate | (string & {});
-  UpdateAgentLogLevel?: UpdateAgentLogLevel | (string & {});
+  SoftwareToUpdate?: SoftwareToUpdate;
+  UpdateAgentLogLevel?: UpdateAgentLogLevel;
   UpdateTargets?: string[];
-  UpdateTargetsArchitecture?: UpdateTargetsArchitecture | (string & {});
-  UpdateTargetsOperatingSystem?: UpdateTargetsOperatingSystem | (string & {});
+  UpdateTargetsArchitecture?: UpdateTargetsArchitecture;
+  UpdateTargetsOperatingSystem?: UpdateTargetsOperatingSystem;
 }
 export const CreateSoftwareUpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1899,7 +1912,8 @@ export type BulkDeploymentStatus =
   | "Completed"
   | "Stopping"
   | "Stopped"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const BulkDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -2949,10 +2963,10 @@ export const GetThingRuntimeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetThingRuntimeConfigurationRequest",
 }) as any as S.Schema<GetThingRuntimeConfigurationRequest>;
-export type ConfigurationSyncStatus = "InSync" | "OutOfSync";
+export type ConfigurationSyncStatus = "InSync" | "OutOfSync" | (string & {});
 export const ConfigurationSyncStatus = /*@__PURE__*/ S.String;
 
-export type Telemetry = "On" | "Off";
+export type Telemetry = "On" | "Off" | (string & {});
 export const Telemetry = /*@__PURE__*/ S.String;
 
 export interface TelemetryConfiguration {
@@ -4357,7 +4371,7 @@ export const UpdateSubscriptionDefinitionResponse = /*@__PURE__*/ S.suspend(
   identifier: "UpdateSubscriptionDefinitionResponse",
 }) as any as S.Schema<UpdateSubscriptionDefinitionResponse>;
 export interface TelemetryConfigurationUpdate {
-  Telemetry?: Telemetry | (string & {});
+  Telemetry?: Telemetry;
 }
 export const TelemetryConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Telemetry: S.optional(Telemetry) }),

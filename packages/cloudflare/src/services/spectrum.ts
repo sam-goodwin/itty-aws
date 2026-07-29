@@ -69,15 +69,17 @@ export const AppsCreateRequestDnsSpectrumConfigAppConfigType =
 
 export interface AppsCreateRequestDnsSpectrumConfigAppConfig {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsCreateRequestDnsSpectrumConfigAppConfigType | (string & {});
+  type?: AppsCreateRequestDnsSpectrumConfigAppConfigType | (string & {}) | null;
 }
 export const AppsCreateRequestDnsSpectrumConfigAppConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(AppsCreateRequestDnsSpectrumConfigAppConfigType),
+      name: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsCreateRequestDnsSpectrumConfigAppConfigType),
+      ),
     }),
   ).annotate({
     identifier: "AppsCreateRequestDnsSpectrumConfigAppConfig",
@@ -98,14 +100,19 @@ export const AppsCreateRequestEdgeIpsDynamicType = /*@__PURE__*/ S.String;
 
 export interface AppsCreateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsCreateRequestEdgeIpsDynamicConnectivity | (string & {});
+  connectivity?:
+    | AppsCreateRequestEdgeIpsDynamicConnectivity
+    | (string & {})
+    | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsCreateRequestEdgeIpsDynamicType | (string & {});
+  type?: AppsCreateRequestEdgeIpsDynamicType | (string & {}) | null;
 }
 export const AppsCreateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    connectivity: S.optional(AppsCreateRequestEdgeIpsDynamicConnectivity),
-    type: S.optional(AppsCreateRequestEdgeIpsDynamicType),
+    connectivity: S.optional(
+      S.NullOr(AppsCreateRequestEdgeIpsDynamicConnectivity),
+    ),
+    type: S.optional(S.NullOr(AppsCreateRequestEdgeIpsDynamicType)),
   }),
 ).annotate({
   identifier: "AppsCreateRequestEdgeIpsDynamic",
@@ -121,14 +128,14 @@ export const AppsCreateRequestEdgeIpsStaticType = /*@__PURE__*/ S.String;
 
 export interface AppsCreateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsCreateRequestEdgeIpsStaticIpsList;
+  ips?: AppsCreateRequestEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsCreateRequestEdgeIpsStaticType | (string & {});
+  type?: AppsCreateRequestEdgeIpsStaticType | (string & {}) | null;
 }
 export const AppsCreateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ips: S.optional(AppsCreateRequestEdgeIpsStaticIpsList),
-    type: S.optional(AppsCreateRequestEdgeIpsStaticType),
+    ips: S.optional(S.NullOr(AppsCreateRequestEdgeIpsStaticIpsList)),
+    type: S.optional(S.NullOr(AppsCreateRequestEdgeIpsStaticType)),
   }),
 ).annotate({
   identifier: "AppsCreateRequestEdgeIpsStatic",
@@ -154,17 +161,17 @@ export const AppsCreateRequestOriginDnsType = /*@__PURE__*/ S.String;
 
 export interface AppsCreateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsCreateRequestOriginDnsType | (string & {});
+  type?: AppsCreateRequestOriginDnsType | (string & {}) | null;
 }
 export const AppsCreateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    type: S.optional(AppsCreateRequestOriginDnsType),
+    name: S.optional(S.NullOr(S.String)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(AppsCreateRequestOriginDnsType)),
   }),
 ).annotate({
   identifier: "AppsCreateRequestOriginDns",
@@ -189,25 +196,25 @@ export interface CreateAppRequest {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
-  trafficType?: AppsCreateRequestTrafficType | (string & {});
+  trafficType?: AppsCreateRequestTrafficType | (string & {}) | null;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsCreateRequestEdgeIps;
+  edgeIps?: AppsCreateRequestEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsCreateRequestOriginDirectList;
+  originDirect?: AppsCreateRequestOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsCreateRequestOriginDns;
+  originDns?: AppsCreateRequestOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsCreateRequestOriginPort;
+  originPort?: AppsCreateRequestOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsCreateRequestProxyProtocol | (string & {});
+  proxyProtocol?: AppsCreateRequestProxyProtocol | (string & {}) | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsCreateRequestTls | (string & {});
+  tls?: AppsCreateRequestTls | (string & {}) | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -215,25 +222,31 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
     dns: AppsCreateRequestDnsSpectrumConfigAppConfig,
     protocol: S.String,
     trafficType: S.optional(
-      AppsCreateRequestTrafficType.pipe(T.Body("traffic_type")),
+      S.NullOr(AppsCreateRequestTrafficType).pipe(T.Body("traffic_type")),
     ),
-    argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(AppsCreateRequestEdgeIps.pipe(T.Body("edge_ips"))),
-    ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+    argoSmartRouting: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
+    ),
+    edgeIps: S.optional(
+      S.NullOr(AppsCreateRequestEdgeIps).pipe(T.Body("edge_ips")),
+    ),
+    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
     originDirect: S.optional(
-      AppsCreateRequestOriginDirectList.pipe(T.Body("origin_direct")),
+      S.NullOr(AppsCreateRequestOriginDirectList).pipe(T.Body("origin_direct")),
     ),
     originDns: S.optional(
-      AppsCreateRequestOriginDns.pipe(T.Body("origin_dns")),
+      S.NullOr(AppsCreateRequestOriginDns).pipe(T.Body("origin_dns")),
     ),
     originPort: S.optional(
-      AppsCreateRequestOriginPort.pipe(T.Body("origin_port")),
+      S.NullOr(AppsCreateRequestOriginPort).pipe(T.Body("origin_port")),
     ),
     proxyProtocol: S.optional(
-      AppsCreateRequestProxyProtocol.pipe(T.Body("proxy_protocol")),
+      S.NullOr(AppsCreateRequestProxyProtocol).pipe(T.Body("proxy_protocol")),
     ),
-    tls: S.optional(AppsCreateRequestTls),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    tls: S.optional(S.NullOr(AppsCreateRequestTls)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
   })
     .pipe(
       T.Http({
@@ -255,15 +268,17 @@ export const AppsCreateResultSpectrumConfigAppConfigDnsType =
 
 export interface AppsCreateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsCreateResultSpectrumConfigAppConfigDnsType;
+  type?: AppsCreateResultSpectrumConfigAppConfigDnsType | null;
 }
 export const AppsCreateResultSpectrumConfigAppConfigDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(AppsCreateResultSpectrumConfigAppConfigDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigDnsType),
+      ),
     }),
   ).annotate({
     identifier: "AppsCreateResultSpectrumConfigAppConfigDns",
@@ -290,18 +305,20 @@ export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType =
 
 export interface AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity;
+  connectivity?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType;
+  type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
 export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectivity: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        S.NullOr(
+          AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        ),
       ),
       type: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType,
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType),
       ),
     }),
   ).annotate({
@@ -321,18 +338,18 @@ export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType =
 
 export interface AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList;
+  ips?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType;
+  type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
 export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ips: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList,
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList),
       ),
       type: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType,
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType),
       ),
     }),
   ).annotate({
@@ -367,18 +384,20 @@ export const AppsCreateResultSpectrumConfigAppConfigOriginDnsType =
 
 export interface AppsCreateResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsCreateResultSpectrumConfigAppConfigOriginDnsType;
+  type?: AppsCreateResultSpectrumConfigAppConfigOriginDnsType | null;
 }
 export const AppsCreateResultSpectrumConfigAppConfigOriginDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(AppsCreateResultSpectrumConfigAppConfigOriginDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      ttl: S.optional(S.NullOr(S.Number)),
+      type: S.optional(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDnsType),
+      ),
     }),
   ).annotate({
     identifier: "AppsCreateResultSpectrumConfigAppConfigOriginDns",
@@ -418,23 +437,23 @@ export interface AppsCreateResultSpectrumConfigAppConfig {
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
   trafficType: AppsCreateResultSpectrumConfigAppConfigTrafficType;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsCreateResultSpectrumConfigAppConfigEdgeIps;
+  edgeIps?: AppsCreateResultSpectrumConfigAppConfigEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsCreateResultSpectrumConfigAppConfigOriginDirectList;
+  originDirect?: AppsCreateResultSpectrumConfigAppConfigOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsCreateResultSpectrumConfigAppConfigOriginDns;
+  originDns?: AppsCreateResultSpectrumConfigAppConfigOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsCreateResultSpectrumConfigAppConfigOriginPort;
+  originPort?: AppsCreateResultSpectrumConfigAppConfigOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsCreateResultSpectrumConfigAppConfigProxyProtocol;
+  proxyProtocol?: AppsCreateResultSpectrumConfigAppConfigProxyProtocol | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsCreateResultSpectrumConfigAppConfigTls;
+  tls?: AppsCreateResultSpectrumConfigAppConfigTls | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const AppsCreateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -448,34 +467,38 @@ export const AppsCreateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
         T.Body("traffic_type"),
       ),
       argoSmartRouting: S.optional(
-        S.Boolean.pipe(T.Body("argo_smart_routing")),
+        S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
       ),
       edgeIps: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigEdgeIps.pipe(T.Body("edge_ips")),
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIps).pipe(
+          T.Body("edge_ips"),
+        ),
       ),
-      ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+      ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
       originDirect: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigOriginDirectList.pipe(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDirectList).pipe(
           T.Body("origin_direct"),
         ),
       ),
       originDns: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigOriginDns.pipe(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDns).pipe(
           T.Body("origin_dns"),
         ),
       ),
       originPort: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigOriginPort.pipe(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginPort).pipe(
           T.Body("origin_port"),
         ),
       ),
       proxyProtocol: S.optional(
-        AppsCreateResultSpectrumConfigAppConfigProxyProtocol.pipe(
+        S.NullOr(AppsCreateResultSpectrumConfigAppConfigProxyProtocol).pipe(
           T.Body("proxy_protocol"),
         ),
       ),
-      tls: S.optional(AppsCreateResultSpectrumConfigAppConfigTls),
-      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+      tls: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigTls)),
+      virtualNetworkId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+      ),
     }),
 ).annotate({
   identifier: "AppsCreateResultSpectrumConfigAppConfig",
@@ -500,7 +523,7 @@ export interface AppsCreateResultSpectrumConfigPaygoAppConfig {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList;
+  originDirect?: AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
 export const AppsCreateResultSpectrumConfigPaygoAppConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -511,9 +534,9 @@ export const AppsCreateResultSpectrumConfigPaygoAppConfig =
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       protocol: S.String,
       originDirect: S.optional(
-        AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList.pipe(
-          T.Body("origin_direct"),
-        ),
+        S.NullOr(
+          AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList,
+        ).pipe(T.Body("origin_direct")),
       ),
     }),
   ).annotate({
@@ -776,16 +799,18 @@ export const AnalyticsEventsBytimesGetResponseDataItemMetrics =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export interface AnalyticsEventsBytimesGetResponseDataItem {
-  dimensions?: AnalyticsEventsBytimesGetResponseDataItemDimensionsList;
-  metrics?: AnalyticsEventsBytimesGetResponseDataItemMetrics;
+  dimensions?: AnalyticsEventsBytimesGetResponseDataItemDimensionsList | null;
+  metrics?: AnalyticsEventsBytimesGetResponseDataItemMetrics | null;
 }
 export const AnalyticsEventsBytimesGetResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(
-        AnalyticsEventsBytimesGetResponseDataItemDimensionsList,
+        S.NullOr(AnalyticsEventsBytimesGetResponseDataItemDimensionsList),
       ),
-      metrics: S.optional(AnalyticsEventsBytimesGetResponseDataItemMetrics),
+      metrics: S.optional(
+        S.NullOr(AnalyticsEventsBytimesGetResponseDataItemMetrics),
+      ),
     }),
   ).annotate({
     identifier: "AnalyticsEventsBytimesGetResponseDataItem",
@@ -854,32 +879,36 @@ export const AnalyticsEventsBytimesGetResponseQuerySortList =
 
 export interface AnalyticsEventsBytimesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
-  dimensions?: AnalyticsEventsBytimesGetResponseQueryDimensionsList;
+  dimensions?: AnalyticsEventsBytimesGetResponseQueryDimensionsList | null;
   /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
-  filters?: string;
+  filters?: string | null;
   /** Limit number of returned metrics. */
-  limit?: number;
+  limit?: number | null;
   /** One or more metrics to compute. Options are: */
-  metrics?: AnalyticsEventsBytimesGetResponseQueryMetricsList;
+  metrics?: AnalyticsEventsBytimesGetResponseQueryMetricsList | null;
   /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
-  since?: string;
+  since?: string | null;
   /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
-  sort?: AnalyticsEventsBytimesGetResponseQuerySortList;
+  sort?: AnalyticsEventsBytimesGetResponseQuerySortList | null;
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
-  until?: string;
+  until?: string | null;
 }
 export const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       dimensions: S.optional(
-        AnalyticsEventsBytimesGetResponseQueryDimensionsList,
+        S.NullOr(AnalyticsEventsBytimesGetResponseQueryDimensionsList),
       ),
-      filters: S.optional(S.String),
-      limit: S.optional(S.Number),
-      metrics: S.optional(AnalyticsEventsBytimesGetResponseQueryMetricsList),
-      since: S.optional(S.String),
-      sort: S.optional(AnalyticsEventsBytimesGetResponseQuerySortList),
-      until: S.optional(S.String),
+      filters: S.optional(S.NullOr(S.String)),
+      limit: S.optional(S.NullOr(S.Number)),
+      metrics: S.optional(
+        S.NullOr(AnalyticsEventsBytimesGetResponseQueryMetricsList),
+      ),
+      since: S.optional(S.NullOr(S.String)),
+      sort: S.optional(
+        S.NullOr(AnalyticsEventsBytimesGetResponseQuerySortList),
+      ),
+      until: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AnalyticsEventsBytimesGetResponseQuery",
@@ -924,7 +953,7 @@ export interface GetAnalyticEventBytimeResponse {
   /** Total result for each selected metrics across all data. */
   totals: AnalyticsEventsBytimesGetResponseTotalsMap;
   /** List of time interval buckets: [start, end]. */
-  timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList;
+  timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList | null;
 }
 export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -936,7 +965,7 @@ export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
     rows: S.Number,
     totals: AnalyticsEventsBytimesGetResponseTotalsMap,
     timeIntervals: S.optional(
-      AnalyticsEventsBytimesGetResponseTimeIntervalsList.pipe(
+      S.NullOr(AnalyticsEventsBytimesGetResponseTimeIntervalsList).pipe(
         T.Body("time_intervals"),
       ),
     ),
@@ -1053,16 +1082,18 @@ export const AnalyticsEventsSummariesGetResponseDataItemMetrics =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export interface AnalyticsEventsSummariesGetResponseDataItem {
-  dimensions?: AnalyticsEventsSummariesGetResponseDataItemDimensionsList;
-  metrics?: AnalyticsEventsSummariesGetResponseDataItemMetrics;
+  dimensions?: AnalyticsEventsSummariesGetResponseDataItemDimensionsList | null;
+  metrics?: AnalyticsEventsSummariesGetResponseDataItemMetrics | null;
 }
 export const AnalyticsEventsSummariesGetResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(
-        AnalyticsEventsSummariesGetResponseDataItemDimensionsList,
+        S.NullOr(AnalyticsEventsSummariesGetResponseDataItemDimensionsList),
       ),
-      metrics: S.optional(AnalyticsEventsSummariesGetResponseDataItemMetrics),
+      metrics: S.optional(
+        S.NullOr(AnalyticsEventsSummariesGetResponseDataItemMetrics),
+      ),
     }),
   ).annotate({
     identifier: "AnalyticsEventsSummariesGetResponseDataItem",
@@ -1132,32 +1163,36 @@ export const AnalyticsEventsSummariesGetResponseQuerySortList =
 
 export interface AnalyticsEventsSummariesGetResponseQuery {
   /** Can be used to break down the data by given attributes. Options are: */
-  dimensions?: AnalyticsEventsSummariesGetResponseQueryDimensionsList;
+  dimensions?: AnalyticsEventsSummariesGetResponseQueryDimensionsList | null;
   /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
-  filters?: string;
+  filters?: string | null;
   /** Limit number of returned metrics. */
-  limit?: number;
+  limit?: number | null;
   /** One or more metrics to compute. Options are: */
-  metrics?: AnalyticsEventsSummariesGetResponseQueryMetricsList;
+  metrics?: AnalyticsEventsSummariesGetResponseQueryMetricsList | null;
   /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
-  since?: string;
+  since?: string | null;
   /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
-  sort?: AnalyticsEventsSummariesGetResponseQuerySortList;
+  sort?: AnalyticsEventsSummariesGetResponseQuerySortList | null;
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
-  until?: string;
+  until?: string | null;
 }
 export const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       dimensions: S.optional(
-        AnalyticsEventsSummariesGetResponseQueryDimensionsList,
+        S.NullOr(AnalyticsEventsSummariesGetResponseQueryDimensionsList),
       ),
-      filters: S.optional(S.String),
-      limit: S.optional(S.Number),
-      metrics: S.optional(AnalyticsEventsSummariesGetResponseQueryMetricsList),
-      since: S.optional(S.String),
-      sort: S.optional(AnalyticsEventsSummariesGetResponseQuerySortList),
-      until: S.optional(S.String),
+      filters: S.optional(S.NullOr(S.String)),
+      limit: S.optional(S.NullOr(S.Number)),
+      metrics: S.optional(
+        S.NullOr(AnalyticsEventsSummariesGetResponseQueryMetricsList),
+      ),
+      since: S.optional(S.NullOr(S.String)),
+      sort: S.optional(
+        S.NullOr(AnalyticsEventsSummariesGetResponseQuerySortList),
+      ),
+      until: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AnalyticsEventsSummariesGetResponseQuery",
@@ -1202,7 +1237,7 @@ export interface GetAnalyticEventSummaryResponse {
   /** Total result for each selected metrics across all data. */
   totals: AnalyticsEventsSummariesGetResponseTotalsMap;
   /** List of time interval buckets: [start, end]. */
-  timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList;
+  timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList | null;
 }
 export const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1214,7 +1249,7 @@ export const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
     rows: S.Number,
     totals: AnalyticsEventsSummariesGetResponseTotalsMap,
     timeIntervals: S.optional(
-      AnalyticsEventsSummariesGetResponseTimeIntervalsList.pipe(
+      S.NullOr(AnalyticsEventsSummariesGetResponseTimeIntervalsList).pipe(
         T.Body("time_intervals"),
       ),
     ),
@@ -1250,15 +1285,15 @@ export const AppsGetResultSpectrumConfigAppConfigDnsType =
 
 export interface AppsGetResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsGetResultSpectrumConfigAppConfigDnsType;
+  type?: AppsGetResultSpectrumConfigAppConfigDnsType | null;
 }
 export const AppsGetResultSpectrumConfigAppConfigDns = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(AppsGetResultSpectrumConfigAppConfigDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      type: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigDnsType)),
     }),
 ).annotate({
   identifier: "AppsGetResultSpectrumConfigAppConfigDns",
@@ -1284,17 +1319,21 @@ export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType =
 
 export interface AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity;
+  connectivity?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType;
+  type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
 export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectivity: S.optional(
-        AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        S.NullOr(
+          AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        ),
       ),
-      type: S.optional(AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType),
+      type: S.optional(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType),
+      ),
     }),
   ).annotate({
     identifier: "AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic",
@@ -1313,15 +1352,19 @@ export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType =
 
 export interface AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList;
+  ips?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType;
+  type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
 export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ips: S.optional(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList),
-      type: S.optional(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType),
+      ips: S.optional(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList),
+      ),
+      type: S.optional(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType),
+      ),
     }),
   ).annotate({
     identifier: "AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic",
@@ -1355,18 +1398,20 @@ export const AppsGetResultSpectrumConfigAppConfigOriginDnsType =
 
 export interface AppsGetResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsGetResultSpectrumConfigAppConfigOriginDnsType;
+  type?: AppsGetResultSpectrumConfigAppConfigOriginDnsType | null;
 }
 export const AppsGetResultSpectrumConfigAppConfigOriginDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(AppsGetResultSpectrumConfigAppConfigOriginDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      ttl: S.optional(S.NullOr(S.Number)),
+      type: S.optional(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDnsType),
+      ),
     }),
   ).annotate({
     identifier: "AppsGetResultSpectrumConfigAppConfigOriginDns",
@@ -1405,23 +1450,23 @@ export interface AppsGetResultSpectrumConfigAppConfig {
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
   trafficType: AppsGetResultSpectrumConfigAppConfigTrafficType;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsGetResultSpectrumConfigAppConfigEdgeIps;
+  edgeIps?: AppsGetResultSpectrumConfigAppConfigEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsGetResultSpectrumConfigAppConfigOriginDirectList;
+  originDirect?: AppsGetResultSpectrumConfigAppConfigOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsGetResultSpectrumConfigAppConfigOriginDns;
+  originDns?: AppsGetResultSpectrumConfigAppConfigOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsGetResultSpectrumConfigAppConfigOriginPort;
+  originPort?: AppsGetResultSpectrumConfigAppConfigOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsGetResultSpectrumConfigAppConfigProxyProtocol;
+  proxyProtocol?: AppsGetResultSpectrumConfigAppConfigProxyProtocol | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsGetResultSpectrumConfigAppConfigTls;
+  tls?: AppsGetResultSpectrumConfigAppConfigTls | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const AppsGetResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -1435,34 +1480,38 @@ export const AppsGetResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
         T.Body("traffic_type"),
       ),
       argoSmartRouting: S.optional(
-        S.Boolean.pipe(T.Body("argo_smart_routing")),
+        S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
       ),
       edgeIps: S.optional(
-        AppsGetResultSpectrumConfigAppConfigEdgeIps.pipe(T.Body("edge_ips")),
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIps).pipe(
+          T.Body("edge_ips"),
+        ),
       ),
-      ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+      ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
       originDirect: S.optional(
-        AppsGetResultSpectrumConfigAppConfigOriginDirectList.pipe(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDirectList).pipe(
           T.Body("origin_direct"),
         ),
       ),
       originDns: S.optional(
-        AppsGetResultSpectrumConfigAppConfigOriginDns.pipe(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDns).pipe(
           T.Body("origin_dns"),
         ),
       ),
       originPort: S.optional(
-        AppsGetResultSpectrumConfigAppConfigOriginPort.pipe(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginPort).pipe(
           T.Body("origin_port"),
         ),
       ),
       proxyProtocol: S.optional(
-        AppsGetResultSpectrumConfigAppConfigProxyProtocol.pipe(
+        S.NullOr(AppsGetResultSpectrumConfigAppConfigProxyProtocol).pipe(
           T.Body("proxy_protocol"),
         ),
       ),
-      tls: S.optional(AppsGetResultSpectrumConfigAppConfigTls),
-      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+      tls: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigTls)),
+      virtualNetworkId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+      ),
     }),
 ).annotate({
   identifier: "AppsGetResultSpectrumConfigAppConfig",
@@ -1487,7 +1536,7 @@ export interface AppsGetResultSpectrumConfigPaygoAppConfig {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList;
+  originDirect?: AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
 export const AppsGetResultSpectrumConfigPaygoAppConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1498,9 +1547,9 @@ export const AppsGetResultSpectrumConfigPaygoAppConfig =
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       protocol: S.String,
       originDirect: S.optional(
-        AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList.pipe(
-          T.Body("origin_direct"),
-        ),
+        S.NullOr(
+          AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList,
+        ).pipe(T.Body("origin_direct")),
       ),
     }),
   ).annotate({
@@ -1586,14 +1635,14 @@ export const AppsListResultCase0ItemDnsType = /*@__PURE__*/ S.String;
 
 export interface AppsListResultCase0ItemDns {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsListResultCase0ItemDnsType;
+  type?: AppsListResultCase0ItemDnsType | null;
 }
 export const AppsListResultCase0ItemDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(AppsListResultCase0ItemDnsType),
+    name: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsListResultCase0ItemDnsType)),
   }),
 ).annotate({
   identifier: "AppsListResultCase0ItemDns",
@@ -1614,17 +1663,17 @@ export const AppsListResultCase0ItemEdgeIpsDynamicType = /*@__PURE__*/ S.String;
 
 export interface AppsListResultCase0ItemEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsListResultCase0ItemEdgeIpsDynamicConnectivity;
+  connectivity?: AppsListResultCase0ItemEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsListResultCase0ItemEdgeIpsDynamicType;
+  type?: AppsListResultCase0ItemEdgeIpsDynamicType | null;
 }
 export const AppsListResultCase0ItemEdgeIpsDynamic = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       connectivity: S.optional(
-        AppsListResultCase0ItemEdgeIpsDynamicConnectivity,
+        S.NullOr(AppsListResultCase0ItemEdgeIpsDynamicConnectivity),
       ),
-      type: S.optional(AppsListResultCase0ItemEdgeIpsDynamicType),
+      type: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsDynamicType)),
     }),
 ).annotate({
   identifier: "AppsListResultCase0ItemEdgeIpsDynamic",
@@ -1641,15 +1690,15 @@ export const AppsListResultCase0ItemEdgeIpsStaticType = /*@__PURE__*/ S.String;
 
 export interface AppsListResultCase0ItemEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsListResultCase0ItemEdgeIpsStaticIpsList;
+  ips?: AppsListResultCase0ItemEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsListResultCase0ItemEdgeIpsStaticType;
+  type?: AppsListResultCase0ItemEdgeIpsStaticType | null;
 }
 export const AppsListResultCase0ItemEdgeIpsStatic = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      ips: S.optional(AppsListResultCase0ItemEdgeIpsStaticIpsList),
-      type: S.optional(AppsListResultCase0ItemEdgeIpsStaticType),
+      ips: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsStaticIpsList)),
+      type: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsStaticType)),
     }),
 ).annotate({
   identifier: "AppsListResultCase0ItemEdgeIpsStatic",
@@ -1675,17 +1724,17 @@ export const AppsListResultCase0ItemOriginDnsType = /*@__PURE__*/ S.String;
 
 export interface AppsListResultCase0ItemOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsListResultCase0ItemOriginDnsType;
+  type?: AppsListResultCase0ItemOriginDnsType | null;
 }
 export const AppsListResultCase0ItemOriginDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    type: S.optional(AppsListResultCase0ItemOriginDnsType),
+    name: S.optional(S.NullOr(S.String)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(AppsListResultCase0ItemOriginDnsType)),
   }),
 ).annotate({
   identifier: "AppsListResultCase0ItemOriginDns",
@@ -1720,23 +1769,23 @@ export interface AppsListResultCase0Item {
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
   trafficType: AppsListResultCase0ItemTrafficType;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsListResultCase0ItemEdgeIps;
+  edgeIps?: AppsListResultCase0ItemEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsListResultCase0ItemOriginDirectList;
+  originDirect?: AppsListResultCase0ItemOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsListResultCase0ItemOriginDns;
+  originDns?: AppsListResultCase0ItemOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsListResultCase0ItemOriginPort;
+  originPort?: AppsListResultCase0ItemOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsListResultCase0ItemProxyProtocol;
+  proxyProtocol?: AppsListResultCase0ItemProxyProtocol | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsListResultCase0ItemTls;
+  tls?: AppsListResultCase0ItemTls | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const AppsListResultCase0Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1748,25 +1797,33 @@ export const AppsListResultCase0Item = /*@__PURE__*/ S.suspend(() =>
     trafficType: AppsListResultCase0ItemTrafficType.pipe(
       T.Body("traffic_type"),
     ),
-    argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(
-      AppsListResultCase0ItemEdgeIps.pipe(T.Body("edge_ips")),
+    argoSmartRouting: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
     ),
-    ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+    edgeIps: S.optional(
+      S.NullOr(AppsListResultCase0ItemEdgeIps).pipe(T.Body("edge_ips")),
+    ),
+    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
     originDirect: S.optional(
-      AppsListResultCase0ItemOriginDirectList.pipe(T.Body("origin_direct")),
+      S.NullOr(AppsListResultCase0ItemOriginDirectList).pipe(
+        T.Body("origin_direct"),
+      ),
     ),
     originDns: S.optional(
-      AppsListResultCase0ItemOriginDns.pipe(T.Body("origin_dns")),
+      S.NullOr(AppsListResultCase0ItemOriginDns).pipe(T.Body("origin_dns")),
     ),
     originPort: S.optional(
-      AppsListResultCase0ItemOriginPort.pipe(T.Body("origin_port")),
+      S.NullOr(AppsListResultCase0ItemOriginPort).pipe(T.Body("origin_port")),
     ),
     proxyProtocol: S.optional(
-      AppsListResultCase0ItemProxyProtocol.pipe(T.Body("proxy_protocol")),
+      S.NullOr(AppsListResultCase0ItemProxyProtocol).pipe(
+        T.Body("proxy_protocol"),
+      ),
     ),
-    tls: S.optional(AppsListResultCase0ItemTls),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    tls: S.optional(S.NullOr(AppsListResultCase0ItemTls)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
   }),
 ).annotate({
   identifier: "AppsListResultCase0Item",
@@ -1794,7 +1851,7 @@ export interface AppsListResultCase1Item {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsListResultCase1ItemOriginDirectList;
+  originDirect?: AppsListResultCase1ItemOriginDirectList | null;
 }
 export const AppsListResultCase1Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1804,7 +1861,9 @@ export const AppsListResultCase1Item = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     protocol: S.String,
     originDirect: S.optional(
-      AppsListResultCase1ItemOriginDirectList.pipe(T.Body("origin_direct")),
+      S.NullOr(AppsListResultCase1ItemOriginDirectList).pipe(
+        T.Body("origin_direct"),
+      ),
     ),
   }),
 ).annotate({
@@ -1844,15 +1903,17 @@ export const AppsUpdateRequestDnsSpectrumConfigAppConfigType =
 
 export interface AppsUpdateRequestDnsSpectrumConfigAppConfig {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsUpdateRequestDnsSpectrumConfigAppConfigType | (string & {});
+  type?: AppsUpdateRequestDnsSpectrumConfigAppConfigType | (string & {}) | null;
 }
 export const AppsUpdateRequestDnsSpectrumConfigAppConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(AppsUpdateRequestDnsSpectrumConfigAppConfigType),
+      name: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsUpdateRequestDnsSpectrumConfigAppConfigType),
+      ),
     }),
   ).annotate({
     identifier: "AppsUpdateRequestDnsSpectrumConfigAppConfig",
@@ -1873,14 +1934,19 @@ export const AppsUpdateRequestEdgeIpsDynamicType = /*@__PURE__*/ S.String;
 
 export interface AppsUpdateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsUpdateRequestEdgeIpsDynamicConnectivity | (string & {});
+  connectivity?:
+    | AppsUpdateRequestEdgeIpsDynamicConnectivity
+    | (string & {})
+    | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsUpdateRequestEdgeIpsDynamicType | (string & {});
+  type?: AppsUpdateRequestEdgeIpsDynamicType | (string & {}) | null;
 }
 export const AppsUpdateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    connectivity: S.optional(AppsUpdateRequestEdgeIpsDynamicConnectivity),
-    type: S.optional(AppsUpdateRequestEdgeIpsDynamicType),
+    connectivity: S.optional(
+      S.NullOr(AppsUpdateRequestEdgeIpsDynamicConnectivity),
+    ),
+    type: S.optional(S.NullOr(AppsUpdateRequestEdgeIpsDynamicType)),
   }),
 ).annotate({
   identifier: "AppsUpdateRequestEdgeIpsDynamic",
@@ -1896,14 +1962,14 @@ export const AppsUpdateRequestEdgeIpsStaticType = /*@__PURE__*/ S.String;
 
 export interface AppsUpdateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsUpdateRequestEdgeIpsStaticIpsList;
+  ips?: AppsUpdateRequestEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsUpdateRequestEdgeIpsStaticType | (string & {});
+  type?: AppsUpdateRequestEdgeIpsStaticType | (string & {}) | null;
 }
 export const AppsUpdateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ips: S.optional(AppsUpdateRequestEdgeIpsStaticIpsList),
-    type: S.optional(AppsUpdateRequestEdgeIpsStaticType),
+    ips: S.optional(S.NullOr(AppsUpdateRequestEdgeIpsStaticIpsList)),
+    type: S.optional(S.NullOr(AppsUpdateRequestEdgeIpsStaticType)),
   }),
 ).annotate({
   identifier: "AppsUpdateRequestEdgeIpsStatic",
@@ -1929,17 +1995,17 @@ export const AppsUpdateRequestOriginDnsType = /*@__PURE__*/ S.String;
 
 export interface AppsUpdateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsUpdateRequestOriginDnsType | (string & {});
+  type?: AppsUpdateRequestOriginDnsType | (string & {}) | null;
 }
 export const AppsUpdateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    type: S.optional(AppsUpdateRequestOriginDnsType),
+    name: S.optional(S.NullOr(S.String)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(AppsUpdateRequestOriginDnsType)),
   }),
 ).annotate({
   identifier: "AppsUpdateRequestOriginDns",
@@ -1966,25 +2032,25 @@ export interface UpdateAppRequest {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
-  trafficType?: AppsUpdateRequestTrafficType | (string & {});
+  trafficType?: AppsUpdateRequestTrafficType | (string & {}) | null;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsUpdateRequestEdgeIps;
+  edgeIps?: AppsUpdateRequestEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsUpdateRequestOriginDirectList;
+  originDirect?: AppsUpdateRequestOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsUpdateRequestOriginDns;
+  originDns?: AppsUpdateRequestOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsUpdateRequestOriginPort;
+  originPort?: AppsUpdateRequestOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsUpdateRequestProxyProtocol | (string & {});
+  proxyProtocol?: AppsUpdateRequestProxyProtocol | (string & {}) | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsUpdateRequestTls | (string & {});
+  tls?: AppsUpdateRequestTls | (string & {}) | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1993,25 +2059,31 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
     dns: AppsUpdateRequestDnsSpectrumConfigAppConfig,
     protocol: S.String,
     trafficType: S.optional(
-      AppsUpdateRequestTrafficType.pipe(T.Body("traffic_type")),
+      S.NullOr(AppsUpdateRequestTrafficType).pipe(T.Body("traffic_type")),
     ),
-    argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(AppsUpdateRequestEdgeIps.pipe(T.Body("edge_ips"))),
-    ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+    argoSmartRouting: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
+    ),
+    edgeIps: S.optional(
+      S.NullOr(AppsUpdateRequestEdgeIps).pipe(T.Body("edge_ips")),
+    ),
+    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
     originDirect: S.optional(
-      AppsUpdateRequestOriginDirectList.pipe(T.Body("origin_direct")),
+      S.NullOr(AppsUpdateRequestOriginDirectList).pipe(T.Body("origin_direct")),
     ),
     originDns: S.optional(
-      AppsUpdateRequestOriginDns.pipe(T.Body("origin_dns")),
+      S.NullOr(AppsUpdateRequestOriginDns).pipe(T.Body("origin_dns")),
     ),
     originPort: S.optional(
-      AppsUpdateRequestOriginPort.pipe(T.Body("origin_port")),
+      S.NullOr(AppsUpdateRequestOriginPort).pipe(T.Body("origin_port")),
     ),
     proxyProtocol: S.optional(
-      AppsUpdateRequestProxyProtocol.pipe(T.Body("proxy_protocol")),
+      S.NullOr(AppsUpdateRequestProxyProtocol).pipe(T.Body("proxy_protocol")),
     ),
-    tls: S.optional(AppsUpdateRequestTls),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    tls: S.optional(S.NullOr(AppsUpdateRequestTls)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
   })
     .pipe(
       T.Http({
@@ -2033,15 +2105,17 @@ export const AppsUpdateResultSpectrumConfigAppConfigDnsType =
 
 export interface AppsUpdateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
-  name?: string;
+  name?: string | null;
   /** The type of DNS record associated with the application. */
-  type?: AppsUpdateResultSpectrumConfigAppConfigDnsType;
+  type?: AppsUpdateResultSpectrumConfigAppConfigDnsType | null;
 }
 export const AppsUpdateResultSpectrumConfigAppConfigDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(AppsUpdateResultSpectrumConfigAppConfigDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigDnsType),
+      ),
     }),
   ).annotate({
     identifier: "AppsUpdateResultSpectrumConfigAppConfigDns",
@@ -2068,18 +2142,20 @@ export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType =
 
 export interface AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
-  connectivity?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity;
+  connectivity?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType;
+  type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
 export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectivity: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        S.NullOr(
+          AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity,
+        ),
       ),
       type: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType,
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType),
       ),
     }),
   ).annotate({
@@ -2099,18 +2175,18 @@ export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType =
 
 export interface AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
-  ips?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList;
+  ips?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType;
+  type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
 export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ips: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList,
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList),
       ),
       type: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType,
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType),
       ),
     }),
   ).annotate({
@@ -2145,18 +2221,20 @@ export const AppsUpdateResultSpectrumConfigAppConfigOriginDnsType =
 
 export interface AppsUpdateResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
-  name?: string;
+  name?: string | null;
   /** The TTL of our resolution of your DNS record in seconds. */
-  ttl?: number;
+  ttl?: number | null;
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
-  type?: AppsUpdateResultSpectrumConfigAppConfigOriginDnsType;
+  type?: AppsUpdateResultSpectrumConfigAppConfigOriginDnsType | null;
 }
 export const AppsUpdateResultSpectrumConfigAppConfigOriginDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(AppsUpdateResultSpectrumConfigAppConfigOriginDnsType),
+      name: S.optional(S.NullOr(S.String)),
+      ttl: S.optional(S.NullOr(S.Number)),
+      type: S.optional(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDnsType),
+      ),
     }),
   ).annotate({
     identifier: "AppsUpdateResultSpectrumConfigAppConfigOriginDns",
@@ -2196,23 +2274,23 @@ export interface AppsUpdateResultSpectrumConfigAppConfig {
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
   trafficType: AppsUpdateResultSpectrumConfigAppConfigTrafficType;
   /** Enables Argo Smart Routing for this application. */
-  argoSmartRouting?: boolean;
+  argoSmartRouting?: boolean | null;
   /** The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: AppsUpdateResultSpectrumConfigAppConfigEdgeIps;
+  edgeIps?: AppsUpdateResultSpectrumConfigAppConfigEdgeIps | null;
   /** Enables IP Access Rules for this application. */
-  ipFirewall?: boolean;
+  ipFirewall?: boolean | null;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsUpdateResultSpectrumConfigAppConfigOriginDirectList;
+  originDirect?: AppsUpdateResultSpectrumConfigAppConfigOriginDirectList | null;
   /** The name and type of DNS record for the Spectrum application. */
-  originDns?: AppsUpdateResultSpectrumConfigAppConfigOriginDns;
+  originDns?: AppsUpdateResultSpectrumConfigAppConfigOriginDns | null;
   /** The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`. */
-  originPort?: AppsUpdateResultSpectrumConfigAppConfigOriginPort;
+  originPort?: AppsUpdateResultSpectrumConfigAppConfigOriginPort | null;
   /** Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol. */
-  proxyProtocol?: AppsUpdateResultSpectrumConfigAppConfigProxyProtocol;
+  proxyProtocol?: AppsUpdateResultSpectrumConfigAppConfigProxyProtocol | null;
   /** The type of TLS termination associated with the application. */
-  tls?: AppsUpdateResultSpectrumConfigAppConfigTls;
+  tls?: AppsUpdateResultSpectrumConfigAppConfigTls | null;
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
 }
 export const AppsUpdateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -2226,34 +2304,38 @@ export const AppsUpdateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(
         T.Body("traffic_type"),
       ),
       argoSmartRouting: S.optional(
-        S.Boolean.pipe(T.Body("argo_smart_routing")),
+        S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing")),
       ),
       edgeIps: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigEdgeIps.pipe(T.Body("edge_ips")),
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIps).pipe(
+          T.Body("edge_ips"),
+        ),
       ),
-      ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+      ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
       originDirect: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigOriginDirectList.pipe(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDirectList).pipe(
           T.Body("origin_direct"),
         ),
       ),
       originDns: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigOriginDns.pipe(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDns).pipe(
           T.Body("origin_dns"),
         ),
       ),
       originPort: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigOriginPort.pipe(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginPort).pipe(
           T.Body("origin_port"),
         ),
       ),
       proxyProtocol: S.optional(
-        AppsUpdateResultSpectrumConfigAppConfigProxyProtocol.pipe(
+        S.NullOr(AppsUpdateResultSpectrumConfigAppConfigProxyProtocol).pipe(
           T.Body("proxy_protocol"),
         ),
       ),
-      tls: S.optional(AppsUpdateResultSpectrumConfigAppConfigTls),
-      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+      tls: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigTls)),
+      virtualNetworkId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+      ),
     }),
 ).annotate({
   identifier: "AppsUpdateResultSpectrumConfigAppConfig",
@@ -2278,7 +2360,7 @@ export interface AppsUpdateResultSpectrumConfigPaygoAppConfig {
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
-  originDirect?: AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList;
+  originDirect?: AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
 export const AppsUpdateResultSpectrumConfigPaygoAppConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -2289,9 +2371,9 @@ export const AppsUpdateResultSpectrumConfigPaygoAppConfig =
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       protocol: S.String,
       originDirect: S.optional(
-        AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList.pipe(
-          T.Body("origin_direct"),
-        ),
+        S.NullOr(
+          AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList,
+        ).pipe(T.Body("origin_direct")),
       ),
     }),
   ).annotate({

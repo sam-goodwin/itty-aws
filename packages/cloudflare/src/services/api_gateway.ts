@@ -123,15 +123,15 @@ export interface LabelsUserBulkCreateRequestBodyItem {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string;
+  description?: string | null;
   /** Metadata for the label */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const LabelsUserBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    description: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
+    description: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "LabelsUserBulkCreateRequestBodyItem",
@@ -256,12 +256,14 @@ export const OperationsLabelsBulkCreateRequestManagedLabelsList =
 
 export interface OperationsLabelsBulkCreateRequestManaged {
   /** List of managed label names. */
-  labels?: OperationsLabelsBulkCreateRequestManagedLabelsList;
+  labels?: OperationsLabelsBulkCreateRequestManagedLabelsList | null;
 }
 export const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      labels: S.optional(OperationsLabelsBulkCreateRequestManagedLabelsList),
+      labels: S.optional(
+        S.NullOr(OperationsLabelsBulkCreateRequestManagedLabelsList),
+      ),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkCreateRequestManaged",
@@ -275,12 +277,14 @@ export const OperationsLabelsBulkCreateRequestUserLabelsList =
 
 export interface OperationsLabelsBulkCreateRequestUser {
   /** List of user label names. */
-  labels?: OperationsLabelsBulkCreateRequestUserLabelsList;
+  labels?: OperationsLabelsBulkCreateRequestUserLabelsList | null;
 }
 export const OperationsLabelsBulkCreateRequestUser = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      labels: S.optional(OperationsLabelsBulkCreateRequestUserLabelsList),
+      labels: S.optional(
+        S.NullOr(OperationsLabelsBulkCreateRequestUserLabelsList),
+      ),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkCreateRequestUser",
@@ -291,15 +295,15 @@ export interface BulkCreateOperationLabelsRequest {
   zoneId: string;
   /** Operation IDs selector */
   selector: OperationsLabelsBulkCreateRequestSelector;
-  managed?: OperationsLabelsBulkCreateRequestManaged;
-  user?: OperationsLabelsBulkCreateRequestUser;
+  managed?: OperationsLabelsBulkCreateRequestManaged | null;
+  user?: OperationsLabelsBulkCreateRequestUser | null;
 }
 export const BulkCreateOperationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     selector: OperationsLabelsBulkCreateRequestSelector,
-    managed: S.optional(OperationsLabelsBulkCreateRequestManaged),
-    user: S.optional(OperationsLabelsBulkCreateRequestUser),
+    managed: S.optional(S.NullOr(OperationsLabelsBulkCreateRequestManaged)),
+    user: S.optional(S.NullOr(OperationsLabelsBulkCreateRequestUser)),
   })
     .pipe(
       T.Http({
@@ -375,7 +379,7 @@ export interface OperationsLabelsBulkCreateResultItem {
   method: OperationsLabelsBulkCreateResultItemMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsBulkCreateResultItemLabelsList;
+  labels?: OperationsLabelsBulkCreateResultItemLabelsList | null;
 }
 export const OperationsLabelsBulkCreateResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -385,7 +389,9 @@ export const OperationsLabelsBulkCreateResultItem = /*@__PURE__*/ S.suspend(
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       method: OperationsLabelsBulkCreateResultItemMethod,
       operationId: S.String.pipe(T.Body("operation_id")),
-      labels: S.optional(OperationsLabelsBulkCreateResultItemLabelsList),
+      labels: S.optional(
+        S.NullOr(OperationsLabelsBulkCreateResultItemLabelsList),
+      ),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkCreateResultItem",
@@ -484,36 +490,40 @@ export const OperationsBulkCreateResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
-  authIdTokens?: number;
+  authIdTokens?: number | null;
   /** The number of data points used for the threshold suggestion calculation. */
-  dataPoints?: number;
-  lastUpdated?: string;
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
   /** The p50 quantile of requests (in period_seconds). */
-  p50?: number;
+  p50?: number | null;
   /** The p90 quantile of requests (in period_seconds). */
-  p90?: number;
+  p90?: number | null;
   /** The p99 quantile of requests (in period_seconds). */
-  p99?: number;
+  p99?: number | null;
   /** The period over which this threshold is suggested. */
-  periodSeconds?: number;
+  periodSeconds?: number | null;
   /** The estimated number of requests covered by these calculations. */
-  requests?: number;
+  requests?: number | null;
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
-  suggestedThreshold?: number;
+  suggestedThreshold?: number | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
-      dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      p50: S.optional(S.Number),
-      p90: S.optional(S.Number),
-      p99: S.optional(S.Number),
-      periodSeconds: S.optional(S.Number.pipe(T.Body("period_seconds"))),
-      requests: S.optional(S.Number),
+      authIdTokens: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("auth_id_tokens")),
+      ),
+      dataPoints: S.optional(S.NullOr(S.Number).pipe(T.Body("data_points"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      p50: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
+      p99: S.optional(S.NullOr(S.Number)),
+      periodSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("period_seconds")),
+      ),
+      requests: S.optional(S.NullOr(S.Number)),
       suggestedThreshold: S.optional(
-        S.Number.pipe(T.Body("suggested_threshold")),
+        S.NullOr(S.Number).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -522,13 +532,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThre
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  thresholds?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        ),
       ),
     }),
   ).annotate({
@@ -545,17 +557,19 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeaturePara
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList | null;
   /** An empty response object. This field is required to yield a valid operation schema. */
-  responses?: unknown;
+  responses?: unknown | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        ),
       ),
-      responses: S.optional(S.Unknown),
+      responses: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -563,18 +577,18 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeaturePara
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
+        ).pipe(T.Body("parameter_schemas")),
       ),
     }),
   ).annotate({
@@ -599,15 +613,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeaturePara
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** Target route. */
-  route?: string;
+  route?: string | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      route: S.optional(S.String),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      route: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -616,15 +630,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIR
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting,
+        ).pipe(T.Body("api_routing")),
       ),
     }),
   ).annotate({
@@ -634,15 +648,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIR
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -651,15 +665,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -668,15 +682,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -685,23 +699,29 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 | null;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 | null;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        ),
       ),
       p95: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        ),
       ),
       p99: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        ),
       ),
     }),
   ).annotate({
@@ -710,19 +730,19 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals | null;
   /** Suggested threshold. */
-  mean?: number;
+  mean?: number | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
-      mean: S.optional(S.Number),
+      mean: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -730,17 +750,17 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
-  lastUpdated?: string;
-  suggestedThreshold?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  lastUpdated?: string | null;
+  suggestedThreshold?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
-          T.Body("suggested_threshold"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold,
+        ).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -749,15 +769,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
     }),
   ).annotate({
@@ -767,20 +787,20 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConf
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
+  id?: string | null;
+  createdAt?: string | null;
   /** True if schema is Cloudflare-provided. */
-  isLearned?: boolean;
+  isLearned?: boolean | null;
   /** Schema file name. */
-  name?: string;
+  name?: string | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isLearned: S.optional(S.Boolean.pipe(T.Body("is_learned"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      isLearned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_learned"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -794,25 +814,27 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema | null;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
-  learnedAvailable?: boolean;
+  learnedAvailable?: boolean | null;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
-          T.Body("active_schema"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema,
+        ).pipe(T.Body("active_schema")),
       ),
-      learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
+      learnedAvailable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("learned_available")),
+      ),
       mitigationAction: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -821,15 +843,15 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+  schemaInfo?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo | null;
 }
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
-          T.Body("schema_info"),
-        ),
+        S.NullOr(
+          OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo,
+        ).pipe(T.Body("schema_info")),
       ),
     }),
   ).annotate({
@@ -864,7 +886,7 @@ export interface OperationsBulkCreateResultItem {
   method: OperationsBulkCreateResultItemMethod;
   /** UUID. */
   operationId: string;
-  features?: OperationsBulkCreateResultItemFeatures;
+  features?: OperationsBulkCreateResultItemFeatures | null;
 }
 export const OperationsBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -873,7 +895,7 @@ export const OperationsBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsBulkCreateResultItemMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    features: S.optional(OperationsBulkCreateResultItemFeatures),
+    features: S.optional(S.NullOr(OperationsBulkCreateResultItemFeatures)),
   }),
 ).annotate({
   identifier: "OperationsBulkCreateResultItem",
@@ -1051,7 +1073,7 @@ export interface OperationsLabelsBulkDeleteResultItem {
   method: OperationsLabelsBulkDeleteResultItemMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsBulkDeleteResultItemLabelsList;
+  labels?: OperationsLabelsBulkDeleteResultItemLabelsList | null;
 }
 export const OperationsLabelsBulkDeleteResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1061,7 +1083,9 @@ export const OperationsLabelsBulkDeleteResultItem = /*@__PURE__*/ S.suspend(
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       method: OperationsLabelsBulkDeleteResultItemMethod,
       operationId: S.String.pipe(T.Body("operation_id")),
-      labels: S.optional(OperationsLabelsBulkDeleteResultItemLabelsList),
+      labels: S.optional(
+        S.NullOr(OperationsLabelsBulkDeleteResultItemLabelsList),
+      ),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkDeleteResultItem",
@@ -1123,12 +1147,17 @@ export const DiscoveryOperationsBulkEditRequestBodyValueState =
 
 export interface DiscoveryOperationsBulkEditRequestBodyValue {
   /** Mark state of operation in API Discovery */
-  state?: DiscoveryOperationsBulkEditRequestBodyValueState | (string & {});
+  state?:
+    | DiscoveryOperationsBulkEditRequestBodyValueState
+    | (string & {})
+    | null;
 }
 export const DiscoveryOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      state: S.optional(DiscoveryOperationsBulkEditRequestBodyValueState),
+      state: S.optional(
+        S.NullOr(DiscoveryOperationsBulkEditRequestBodyValueState),
+      ),
     }),
   ).annotate({
     identifier: "DiscoveryOperationsBulkEditRequestBodyValue",
@@ -1170,12 +1199,12 @@ export const DiscoveryOperationsBulkEditResultValueState =
 
 export interface DiscoveryOperationsBulkEditResultValue {
   /** Mark state of operation in API Discovery */
-  state?: DiscoveryOperationsBulkEditResultValueState;
+  state?: DiscoveryOperationsBulkEditResultValueState | null;
 }
 export const DiscoveryOperationsBulkEditResultValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      state: S.optional(DiscoveryOperationsBulkEditResultValueState),
+      state: S.optional(S.NullOr(DiscoveryOperationsBulkEditResultValueState)),
     }),
 ).annotate({
   identifier: "DiscoveryOperationsBulkEditResultValue",
@@ -1360,7 +1389,7 @@ export interface OperationsLabelsBulkUpdateResultItem {
   method: OperationsLabelsBulkUpdateResultItemMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsBulkUpdateResultItemLabelsList;
+  labels?: OperationsLabelsBulkUpdateResultItemLabelsList | null;
 }
 export const OperationsLabelsBulkUpdateResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1370,7 +1399,9 @@ export const OperationsLabelsBulkUpdateResultItem = /*@__PURE__*/ S.suspend(
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       method: OperationsLabelsBulkUpdateResultItemMethod,
       operationId: S.String.pipe(T.Body("operation_id")),
-      labels: S.optional(OperationsLabelsBulkUpdateResultItemLabelsList),
+      labels: S.optional(
+        S.NullOr(OperationsLabelsBulkUpdateResultItemLabelsList),
+      ),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkUpdateResultItem",
@@ -1499,36 +1530,40 @@ export const OperationsCreateResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
-  authIdTokens?: number;
+  authIdTokens?: number | null;
   /** The number of data points used for the threshold suggestion calculation. */
-  dataPoints?: number;
-  lastUpdated?: string;
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
   /** The p50 quantile of requests (in period_seconds). */
-  p50?: number;
+  p50?: number | null;
   /** The p90 quantile of requests (in period_seconds). */
-  p90?: number;
+  p90?: number | null;
   /** The p99 quantile of requests (in period_seconds). */
-  p99?: number;
+  p99?: number | null;
   /** The period over which this threshold is suggested. */
-  periodSeconds?: number;
+  periodSeconds?: number | null;
   /** The estimated number of requests covered by these calculations. */
-  requests?: number;
+  requests?: number | null;
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
-  suggestedThreshold?: number;
+  suggestedThreshold?: number | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
-      dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      p50: S.optional(S.Number),
-      p90: S.optional(S.Number),
-      p99: S.optional(S.Number),
-      periodSeconds: S.optional(S.Number.pipe(T.Body("period_seconds"))),
-      requests: S.optional(S.Number),
+      authIdTokens: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("auth_id_tokens")),
+      ),
+      dataPoints: S.optional(S.NullOr(S.Number).pipe(T.Body("data_points"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      p50: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
+      p99: S.optional(S.NullOr(S.Number)),
+      periodSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("period_seconds")),
+      ),
+      requests: S.optional(S.NullOr(S.Number)),
       suggestedThreshold: S.optional(
-        S.Number.pipe(T.Body("suggested_threshold")),
+        S.NullOr(S.Number).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -1537,13 +1572,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  thresholds?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        ),
       ),
     }),
   ).annotate({
@@ -1560,17 +1597,19 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterS
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList | null;
   /** An empty response object. This field is required to yield a valid operation schema. */
-  responses?: unknown;
+  responses?: unknown | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        ),
       ),
-      responses: S.optional(S.Unknown),
+      responses: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1578,18 +1617,18 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterS
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
+        ).pipe(T.Body("parameter_schemas")),
       ),
     }),
   ).annotate({
@@ -1614,15 +1653,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterS
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** Target route. */
-  route?: string;
+  route?: string | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      route: S.optional(S.String),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      route: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1631,15 +1670,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting,
+        ).pipe(T.Body("api_routing")),
       ),
     }),
   ).annotate({
@@ -1649,15 +1688,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -1666,15 +1705,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -1683,15 +1722,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -1700,23 +1739,29 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 | null;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 | null;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        ),
       ),
       p95: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        ),
       ),
       p99: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        ),
       ),
     }),
   ).annotate({
@@ -1725,19 +1770,19 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals | null;
   /** Suggested threshold. */
-  mean?: number;
+  mean?: number | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
-      mean: S.optional(S.Number),
+      mean: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -1745,17 +1790,17 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
-  lastUpdated?: string;
-  suggestedThreshold?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  lastUpdated?: string | null;
+  suggestedThreshold?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
-          T.Body("suggested_threshold"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold,
+        ).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -1764,15 +1809,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
     }),
   ).annotate({
@@ -1782,20 +1827,20 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
+  id?: string | null;
+  createdAt?: string | null;
   /** True if schema is Cloudflare-provided. */
-  isLearned?: boolean;
+  isLearned?: boolean | null;
   /** Schema file name. */
-  name?: string;
+  name?: string | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isLearned: S.optional(S.Boolean.pipe(T.Body("is_learned"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      isLearned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_learned"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1809,25 +1854,27 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema | null;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
-  learnedAvailable?: boolean;
+  learnedAvailable?: boolean | null;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
-          T.Body("active_schema"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema,
+        ).pipe(T.Body("active_schema")),
       ),
-      learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
+      learnedAvailable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("learned_available")),
+      ),
       mitigationAction: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -1836,15 +1883,15 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+  schemaInfo?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
-          T.Body("schema_info"),
-        ),
+        S.NullOr(
+          OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo,
+        ).pipe(T.Body("schema_info")),
       ),
     }),
   ).annotate({
@@ -1895,18 +1942,18 @@ export const OperationsCreateResponseSchemasLearnedRequestBodyMap =
 
 export interface OperationsCreateResponseSchemasLearned {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
-  parameters?: OperationsCreateResponseSchemasLearnedParametersList;
+  parameters?: OperationsCreateResponseSchemasLearnedParametersList | null;
   /** OpenAPI request body object describing the expected request payload. */
-  requestBody?: OperationsCreateResponseSchemasLearnedRequestBodyMap;
+  requestBody?: OperationsCreateResponseSchemasLearnedRequestBodyMap | null;
 }
 export const OperationsCreateResponseSchemasLearned = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parameters: S.optional(
-        OperationsCreateResponseSchemasLearnedParametersList,
+        S.NullOr(OperationsCreateResponseSchemasLearnedParametersList),
       ),
       requestBody: S.optional(
-        OperationsCreateResponseSchemasLearnedRequestBodyMap,
+        S.NullOr(OperationsCreateResponseSchemasLearnedRequestBodyMap),
       ),
     }),
 ).annotate({
@@ -1940,18 +1987,18 @@ export const OperationsCreateResponseSchemasUploadedRequestBodyMap =
 
 export interface OperationsCreateResponseSchemasUploaded {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
-  parameters?: OperationsCreateResponseSchemasUploadedParametersList;
+  parameters?: OperationsCreateResponseSchemasUploadedParametersList | null;
   /** OpenAPI request body object describing the expected request payload. */
-  requestBody?: OperationsCreateResponseSchemasUploadedRequestBodyMap;
+  requestBody?: OperationsCreateResponseSchemasUploadedRequestBodyMap | null;
 }
 export const OperationsCreateResponseSchemasUploaded = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parameters: S.optional(
-        OperationsCreateResponseSchemasUploadedParametersList,
+        S.NullOr(OperationsCreateResponseSchemasUploadedParametersList),
       ),
       requestBody: S.optional(
-        OperationsCreateResponseSchemasUploadedRequestBodyMap,
+        S.NullOr(OperationsCreateResponseSchemasUploadedRequestBodyMap),
       ),
     }),
 ).annotate({
@@ -1960,14 +2007,14 @@ export const OperationsCreateResponseSchemasUploaded = /*@__PURE__*/ S.suspend(
 
 export interface OperationsCreateResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
-  learned?: OperationsCreateResponseSchemasLearned;
+  learned?: OperationsCreateResponseSchemasLearned | null;
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
-  uploaded?: OperationsCreateResponseSchemasUploaded;
+  uploaded?: OperationsCreateResponseSchemasUploaded | null;
 }
 export const OperationsCreateResponseSchemas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    learned: S.optional(OperationsCreateResponseSchemasLearned),
-    uploaded: S.optional(OperationsCreateResponseSchemasUploaded),
+    learned: S.optional(S.NullOr(OperationsCreateResponseSchemasLearned)),
+    uploaded: S.optional(S.NullOr(OperationsCreateResponseSchemasUploaded)),
   }),
 ).annotate({
   identifier: "OperationsCreateResponseSchemas",
@@ -1984,9 +2031,9 @@ export interface CreateOperationResponse {
   method: OperationsCreateResponseMethod;
   /** UUID. */
   operationId: string;
-  features?: OperationsCreateResponseFeatures;
+  features?: OperationsCreateResponseFeatures | null;
   /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
-  schemas?: OperationsCreateResponseSchemas;
+  schemas?: OperationsCreateResponseSchemas | null;
 }
 export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1995,8 +2042,8 @@ export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsCreateResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    features: S.optional(OperationsCreateResponseFeatures),
-    schemas: S.optional(OperationsCreateResponseSchemas),
+    features: S.optional(S.NullOr(OperationsCreateResponseFeatures)),
+    schemas: S.optional(S.NullOr(OperationsCreateResponseSchemas)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationResponse",
@@ -2018,16 +2065,16 @@ export interface CreateOperationLabelRequest {
   /** UUID. */
   operationId: string;
   /** List of managed label names. */
-  managed?: OperationsLabelsCreateRequestManagedList;
+  managed?: OperationsLabelsCreateRequestManagedList | null;
   /** List of user label names. */
-  user?: OperationsLabelsCreateRequestUserList;
+  user?: OperationsLabelsCreateRequestUserList | null;
 }
 export const CreateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-    managed: S.optional(OperationsLabelsCreateRequestManagedList),
-    user: S.optional(OperationsLabelsCreateRequestUserList),
+    managed: S.optional(S.NullOr(OperationsLabelsCreateRequestManagedList)),
+    user: S.optional(S.NullOr(OperationsLabelsCreateRequestUserList)),
   })
     .pipe(
       T.Http({
@@ -2100,7 +2147,7 @@ export interface CreateOperationLabelResponse {
   method: OperationsLabelsCreateResponseMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsCreateResponseLabelsList;
+  labels?: OperationsLabelsCreateResponseLabelsList | null;
 }
 export const CreateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2109,7 +2156,7 @@ export const CreateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsLabelsCreateResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    labels: S.optional(OperationsLabelsCreateResponseLabelsList),
+    labels: S.optional(S.NullOr(OperationsLabelsCreateResponseLabelsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationLabelResponse",
@@ -2123,17 +2170,19 @@ export interface CreateUserSchemaRequest {
   /** Kind of schema (openapi_v3). */
   kind: string;
   /** Name of the schema. */
-  name?: string;
+  name?: string | null;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     file: S.Unknown,
     kind: S.String,
-    name: S.optional(S.String),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    name: S.optional(S.NullOr(S.String)),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   })
     .pipe(
       T.Http({
@@ -2160,9 +2209,9 @@ export interface UserSchemasCreateResponseSchema {
   /** UUID. */
   schemaId: string;
   /** Source of the schema */
-  source?: string;
+  source?: string | null;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const UserSchemasCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2170,8 +2219,10 @@ export const UserSchemasCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
     kind: UserSchemasCreateResponseSchemaKind,
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
-    source: S.optional(S.String),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    source: S.optional(S.NullOr(S.String)),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }),
 ).annotate({
   identifier: "UserSchemasCreateResponseSchema",
@@ -2188,18 +2239,20 @@ export interface UserSchemasCreateResponseUploadDetailsWarningsItem {
   /** Code that identifies the event that occurred. */
   code: number;
   /** JSONPath location(s) in the schema where these events were encountered. See <https://goessner.net/articles/JsonPath/> for JSONPath specification. */
-  locations?: UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList;
+  locations?: UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList | null;
   /** Diagnostic message that describes the event. */
-  message?: string;
+  message?: string | null;
 }
 export const UserSchemasCreateResponseUploadDetailsWarningsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: S.Number,
       locations: S.optional(
-        UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList,
+        S.NullOr(
+          UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "UserSchemasCreateResponseUploadDetailsWarningsItem",
@@ -2214,12 +2267,14 @@ export const UserSchemasCreateResponseUploadDetailsWarningsList =
 
 export interface UserSchemasCreateResponseUploadDetails {
   /** Diagnostic warning events that occurred during processing. These events are non-critical errors found within the schema. */
-  warnings?: UserSchemasCreateResponseUploadDetailsWarningsList;
+  warnings?: UserSchemasCreateResponseUploadDetailsWarningsList | null;
 }
 export const UserSchemasCreateResponseUploadDetails = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      warnings: S.optional(UserSchemasCreateResponseUploadDetailsWarningsList),
+      warnings: S.optional(
+        S.NullOr(UserSchemasCreateResponseUploadDetailsWarningsList),
+      ),
     }),
 ).annotate({
   identifier: "UserSchemasCreateResponseUploadDetails",
@@ -2228,13 +2283,15 @@ export const UserSchemasCreateResponseUploadDetails = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateUserSchemaResponse {
   schema: UserSchemasCreateResponseSchema;
-  uploadDetails?: UserSchemasCreateResponseUploadDetails;
+  uploadDetails?: UserSchemasCreateResponseUploadDetails | null;
 }
 export const CreateUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: UserSchemasCreateResponseSchema,
     uploadDetails: S.optional(
-      UserSchemasCreateResponseUploadDetails.pipe(T.Body("upload_details")),
+      S.NullOr(UserSchemasCreateResponseUploadDetails).pipe(
+        T.Body("upload_details"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2405,7 +2462,7 @@ export interface DeleteOperationLabelResponse {
   method: OperationsLabelsDeleteResponseMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsDeleteResponseLabelsList;
+  labels?: OperationsLabelsDeleteResponseLabelsList | null;
 }
 export const DeleteOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2414,7 +2471,7 @@ export const DeleteOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsLabelsDeleteResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    labels: S.optional(OperationsLabelsDeleteResponseLabelsList),
+    labels: S.optional(S.NullOr(OperationsLabelsDeleteResponseLabelsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOperationLabelResponse",
@@ -2632,7 +2689,7 @@ export interface GetLabelManagedResponse {
   /** * `user` - label is owned by the user */
   source: LabelsManagedGetResponseSource;
   /** Provides counts of what resources are linked to this label */
-  mappedResources?: unknown;
+  mappedResources?: unknown | null;
 }
 export const GetLabelManagedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2642,7 +2699,9 @@ export const GetLabelManagedResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsManagedGetResponseSource,
-    mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
+    mappedResources: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("mapped_resources")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelManagedResponse",
@@ -2692,7 +2751,7 @@ export interface GetLabelUserResponse {
   /** * `user` - label is owned by the user */
   source: LabelsUserGetResponseSource;
   /** Provides counts of what resources are linked to this label */
-  mappedResources?: unknown;
+  mappedResources?: unknown | null;
 }
 export const GetLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2702,7 +2761,9 @@ export const GetLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsUserGetResponseSource,
-    mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
+    mappedResources: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("mapped_resources")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelUserResponse",
@@ -2764,36 +2825,40 @@ export const OperationsGetResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
-  authIdTokens?: number;
+  authIdTokens?: number | null;
   /** The number of data points used for the threshold suggestion calculation. */
-  dataPoints?: number;
-  lastUpdated?: string;
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
   /** The p50 quantile of requests (in period_seconds). */
-  p50?: number;
+  p50?: number | null;
   /** The p90 quantile of requests (in period_seconds). */
-  p90?: number;
+  p90?: number | null;
   /** The p99 quantile of requests (in period_seconds). */
-  p99?: number;
+  p99?: number | null;
   /** The period over which this threshold is suggested. */
-  periodSeconds?: number;
+  periodSeconds?: number | null;
   /** The estimated number of requests covered by these calculations. */
-  requests?: number;
+  requests?: number | null;
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
-  suggestedThreshold?: number;
+  suggestedThreshold?: number | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
-      dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      p50: S.optional(S.Number),
-      p90: S.optional(S.Number),
-      p99: S.optional(S.Number),
-      periodSeconds: S.optional(S.Number.pipe(T.Body("period_seconds"))),
-      requests: S.optional(S.Number),
+      authIdTokens: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("auth_id_tokens")),
+      ),
+      dataPoints: S.optional(S.NullOr(S.Number).pipe(T.Body("data_points"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      p50: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
+      p99: S.optional(S.NullOr(S.Number)),
+      periodSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("period_seconds")),
+      ),
+      requests: S.optional(S.NullOr(S.Number)),
       suggestedThreshold: S.optional(
-        S.Number.pipe(T.Body("suggested_threshold")),
+        S.NullOr(S.Number).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -2802,13 +2867,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThr
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  thresholds?: OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        ),
       ),
     }),
   ).annotate({
@@ -2825,17 +2892,19 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSche
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList | null;
   /** An empty response object. This field is required to yield a valid operation schema. */
-  responses?: unknown;
+  responses?: unknown | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        ),
       ),
-      responses: S.optional(S.Unknown),
+      responses: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2843,18 +2912,18 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSche
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
+        ).pipe(T.Body("parameter_schemas")),
       ),
     }),
   ).annotate({
@@ -2879,15 +2948,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSche
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** Target route. */
-  route?: string;
+  route?: string | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      route: S.optional(S.String),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      route: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2896,15 +2965,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApi
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting,
+        ).pipe(T.Body("api_routing")),
       ),
     }),
   ).annotate({
@@ -2914,15 +2983,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting =
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -2931,15 +3000,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -2948,15 +3017,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -2965,23 +3034,29 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 | null;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 | null;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        ),
       ),
       p95: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        ),
       ),
       p99: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        ),
       ),
     }),
   ).annotate({
@@ -2990,19 +3065,19 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals | null;
   /** Suggested threshold. */
-  mean?: number;
+  mean?: number | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
-      mean: S.optional(S.Number),
+      mean: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -3010,17 +3085,17 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
-  lastUpdated?: string;
-  suggestedThreshold?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  lastUpdated?: string | null;
+  suggestedThreshold?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
-          T.Body("suggested_threshold"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold,
+        ).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -3029,15 +3104,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
     }),
   ).annotate({
@@ -3047,20 +3122,20 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceInt
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
+  id?: string | null;
+  createdAt?: string | null;
   /** True if schema is Cloudflare-provided. */
-  isLearned?: boolean;
+  isLearned?: boolean | null;
   /** Schema file name. */
-  name?: string;
+  name?: string | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isLearned: S.optional(S.Boolean.pipe(T.Body("is_learned"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      isLearned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_learned"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3074,25 +3149,27 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSch
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema | null;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
-  learnedAvailable?: boolean;
+  learnedAvailable?: boolean | null;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
-          T.Body("active_schema"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema,
+        ).pipe(T.Body("active_schema")),
       ),
-      learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
+      learnedAvailable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("learned_available")),
+      ),
       mitigationAction: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -3101,15 +3178,15 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSch
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+  schemaInfo?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
-          T.Body("schema_info"),
-        ),
+        S.NullOr(
+          OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo,
+        ).pipe(T.Body("schema_info")),
       ),
     }),
   ).annotate({
@@ -3160,14 +3237,18 @@ export const OperationsGetResponseSchemasLearnedRequestBodyMap =
 
 export interface OperationsGetResponseSchemasLearned {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
-  parameters?: OperationsGetResponseSchemasLearnedParametersList;
+  parameters?: OperationsGetResponseSchemasLearnedParametersList | null;
   /** OpenAPI request body object describing the expected request payload. */
-  requestBody?: OperationsGetResponseSchemasLearnedRequestBodyMap;
+  requestBody?: OperationsGetResponseSchemasLearnedRequestBodyMap | null;
 }
 export const OperationsGetResponseSchemasLearned = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parameters: S.optional(OperationsGetResponseSchemasLearnedParametersList),
-    requestBody: S.optional(OperationsGetResponseSchemasLearnedRequestBodyMap),
+    parameters: S.optional(
+      S.NullOr(OperationsGetResponseSchemasLearnedParametersList),
+    ),
+    requestBody: S.optional(
+      S.NullOr(OperationsGetResponseSchemasLearnedRequestBodyMap),
+    ),
   }),
 ).annotate({
   identifier: "OperationsGetResponseSchemasLearned",
@@ -3200,18 +3281,18 @@ export const OperationsGetResponseSchemasUploadedRequestBodyMap =
 
 export interface OperationsGetResponseSchemasUploaded {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
-  parameters?: OperationsGetResponseSchemasUploadedParametersList;
+  parameters?: OperationsGetResponseSchemasUploadedParametersList | null;
   /** OpenAPI request body object describing the expected request payload. */
-  requestBody?: OperationsGetResponseSchemasUploadedRequestBodyMap;
+  requestBody?: OperationsGetResponseSchemasUploadedRequestBodyMap | null;
 }
 export const OperationsGetResponseSchemasUploaded = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parameters: S.optional(
-        OperationsGetResponseSchemasUploadedParametersList,
+        S.NullOr(OperationsGetResponseSchemasUploadedParametersList),
       ),
       requestBody: S.optional(
-        OperationsGetResponseSchemasUploadedRequestBodyMap,
+        S.NullOr(OperationsGetResponseSchemasUploadedRequestBodyMap),
       ),
     }),
 ).annotate({
@@ -3220,14 +3301,14 @@ export const OperationsGetResponseSchemasUploaded = /*@__PURE__*/ S.suspend(
 
 export interface OperationsGetResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
-  learned?: OperationsGetResponseSchemasLearned;
+  learned?: OperationsGetResponseSchemasLearned | null;
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
-  uploaded?: OperationsGetResponseSchemasUploaded;
+  uploaded?: OperationsGetResponseSchemasUploaded | null;
 }
 export const OperationsGetResponseSchemas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    learned: S.optional(OperationsGetResponseSchemasLearned),
-    uploaded: S.optional(OperationsGetResponseSchemasUploaded),
+    learned: S.optional(S.NullOr(OperationsGetResponseSchemasLearned)),
+    uploaded: S.optional(S.NullOr(OperationsGetResponseSchemasUploaded)),
   }),
 ).annotate({
   identifier: "OperationsGetResponseSchemas",
@@ -3244,9 +3325,9 @@ export interface GetOperationResponse {
   method: OperationsGetResponseMethod;
   /** UUID. */
   operationId: string;
-  features?: OperationsGetResponseFeatures;
+  features?: OperationsGetResponseFeatures | null;
   /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
-  schemas?: OperationsGetResponseSchemas;
+  schemas?: OperationsGetResponseSchemas | null;
 }
 export const GetOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3255,8 +3336,8 @@ export const GetOperationResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsGetResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    features: S.optional(OperationsGetResponseFeatures),
-    schemas: S.optional(OperationsGetResponseSchemas),
+    features: S.optional(S.NullOr(OperationsGetResponseFeatures)),
+    schemas: S.optional(S.NullOr(OperationsGetResponseSchemas)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationResponse",
@@ -3295,19 +3376,19 @@ export const OperationsSchemaValidationGetResponseMitigationAction =
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction?: OperationsSchemaValidationGetResponseMitigationAction;
+  mitigationAction?: OperationsSchemaValidationGetResponseMitigationAction | null;
   /** UUID. */
-  operationId?: string;
+  operationId?: string | null;
 }
 export const GetOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       mitigationAction: S.optional(
-        OperationsSchemaValidationGetResponseMitigationAction.pipe(
+        S.NullOr(OperationsSchemaValidationGetResponseMitigationAction).pipe(
           T.Body("mitigation_action"),
         ),
       ),
-      operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
+      operationId: S.optional(S.NullOr(S.String).pipe(T.Body("operation_id"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationSchemaValidationResponse",
@@ -3379,9 +3460,9 @@ export interface GetUserSchemaResponse {
   /** UUID. */
   schemaId: string;
   /** Source of the schema */
-  source?: string;
+  source?: string | null;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3389,8 +3470,10 @@ export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     kind: UserSchemasGetResponseKind,
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
-    source: S.optional(S.String),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    source: S.optional(S.NullOr(S.String)),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUserSchemaResponse",
@@ -3534,13 +3617,13 @@ export const DiscoveryOperationsListResultItemFeaturesTrafficStats =
   }) as any as S.Schema<DiscoveryOperationsListResultItemFeaturesTrafficStats>;
 
 export interface DiscoveryOperationsListResultItemFeatures {
-  trafficStats?: DiscoveryOperationsListResultItemFeaturesTrafficStats;
+  trafficStats?: DiscoveryOperationsListResultItemFeaturesTrafficStats | null;
 }
 export const DiscoveryOperationsListResultItemFeatures =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trafficStats: S.optional(
-        DiscoveryOperationsListResultItemFeaturesTrafficStats.pipe(
+        S.NullOr(DiscoveryOperationsListResultItemFeaturesTrafficStats).pipe(
           T.Body("traffic_stats"),
         ),
       ),
@@ -3563,7 +3646,7 @@ export interface DiscoveryOperationsListResultItem {
   origin: DiscoveryOperationsListResultItemOriginList;
   /** State of operation in API Discovery */
   state: DiscoveryOperationsListResultItemState;
-  features?: DiscoveryOperationsListResultItemFeatures;
+  features?: DiscoveryOperationsListResultItemFeatures | null;
 }
 export const DiscoveryOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3574,7 +3657,7 @@ export const DiscoveryOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     method: DiscoveryOperationsListResultItemMethod,
     origin: DiscoveryOperationsListResultItemOriginList,
     state: DiscoveryOperationsListResultItemState,
-    features: S.optional(DiscoveryOperationsListResultItemFeatures),
+    features: S.optional(S.NullOr(DiscoveryOperationsListResultItemFeatures)),
   }),
 ).annotate({
   identifier: "DiscoveryOperationsListResultItem",
@@ -3673,7 +3756,7 @@ export interface LabelsListResultItem {
   /** * `user` - label is owned by the user */
   source: LabelsListResultItemSource;
   /** Provides counts of what resources are linked to this label */
-  mappedResources?: unknown;
+  mappedResources?: unknown | null;
 }
 export const LabelsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3683,7 +3766,9 @@ export const LabelsListResultItem = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsListResultItemSource,
-    mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
+    mappedResources: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("mapped_resources")),
+    ),
   }),
 ).annotate({
   identifier: "LabelsListResultItem",
@@ -3800,36 +3885,40 @@ export const OperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
-  authIdTokens?: number;
+  authIdTokens?: number | null;
   /** The number of data points used for the threshold suggestion calculation. */
-  dataPoints?: number;
-  lastUpdated?: string;
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
   /** The p50 quantile of requests (in period_seconds). */
-  p50?: number;
+  p50?: number | null;
   /** The p90 quantile of requests (in period_seconds). */
-  p90?: number;
+  p90?: number | null;
   /** The p99 quantile of requests (in period_seconds). */
-  p99?: number;
+  p99?: number | null;
   /** The period over which this threshold is suggested. */
-  periodSeconds?: number;
+  periodSeconds?: number | null;
   /** The estimated number of requests covered by these calculations. */
-  requests?: number;
+  requests?: number | null;
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
-  suggestedThreshold?: number;
+  suggestedThreshold?: number | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
-      dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      p50: S.optional(S.Number),
-      p90: S.optional(S.Number),
-      p99: S.optional(S.Number),
-      periodSeconds: S.optional(S.Number.pipe(T.Body("period_seconds"))),
-      requests: S.optional(S.Number),
+      authIdTokens: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("auth_id_tokens")),
+      ),
+      dataPoints: S.optional(S.NullOr(S.Number).pipe(T.Body("data_points"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      p50: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
+      p99: S.optional(S.NullOr(S.Number)),
+      periodSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("period_seconds")),
+      ),
+      requests: S.optional(S.NullOr(S.Number)),
       suggestedThreshold: S.optional(
-        S.Number.pipe(T.Body("suggested_threshold")),
+        S.NullOr(S.Number).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -3838,13 +3927,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  thresholds?: OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        ),
       ),
     }),
   ).annotate({
@@ -3861,17 +3952,19 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterS
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList | null;
   /** An empty response object. This field is required to yield a valid operation schema. */
-  responses?: unknown;
+  responses?: unknown | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        ),
       ),
-      responses: S.optional(S.Unknown),
+      responses: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3879,18 +3972,18 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterS
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
+        ).pipe(T.Body("parameter_schemas")),
       ),
     }),
   ).annotate({
@@ -3915,15 +4008,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterS
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** Target route. */
-  route?: string;
+  route?: string | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      route: S.optional(S.String),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      route: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3932,15 +4025,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting,
+        ).pipe(T.Body("api_routing")),
       ),
     }),
   ).annotate({
@@ -3950,15 +4043,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -3967,15 +4060,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -3984,15 +4077,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4001,23 +4094,29 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 | null;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 | null;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        ),
       ),
       p95: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        ),
       ),
       p99: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        ),
       ),
     }),
   ).annotate({
@@ -4026,19 +4125,19 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals | null;
   /** Suggested threshold. */
-  mean?: number;
+  mean?: number | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
-      mean: S.optional(S.Number),
+      mean: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4046,17 +4145,17 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
-  lastUpdated?: string;
-  suggestedThreshold?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  lastUpdated?: string | null;
+  suggestedThreshold?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
-          T.Body("suggested_threshold"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold,
+        ).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -4065,15 +4164,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
     }),
   ).annotate({
@@ -4083,20 +4182,20 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidence
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
+  id?: string | null;
+  createdAt?: string | null;
   /** True if schema is Cloudflare-provided. */
-  isLearned?: boolean;
+  isLearned?: boolean | null;
   /** Schema file name. */
-  name?: string;
+  name?: string | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isLearned: S.optional(S.Boolean.pipe(T.Body("is_learned"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      isLearned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_learned"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4110,25 +4209,27 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema | null;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
-  learnedAvailable?: boolean;
+  learnedAvailable?: boolean | null;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
-          T.Body("active_schema"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema,
+        ).pipe(T.Body("active_schema")),
       ),
-      learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
+      learnedAvailable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("learned_available")),
+      ),
       mitigationAction: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -4137,15 +4238,15 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+  schemaInfo?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
-          T.Body("schema_info"),
-        ),
+        S.NullOr(
+          OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo,
+        ).pipe(T.Body("schema_info")),
       ),
     }),
   ).annotate({
@@ -4179,7 +4280,7 @@ export interface OperationsListResultItem {
   method: OperationsListResultItemMethod;
   /** UUID. */
   operationId: string;
-  features?: OperationsListResultItemFeatures;
+  features?: OperationsListResultItemFeatures | null;
 }
 export const OperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4188,7 +4289,7 @@ export const OperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsListResultItemMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    features: S.optional(OperationsListResultItemFeatures),
+    features: S.optional(S.NullOr(OperationsListResultItemFeatures)),
   }),
 ).annotate({
   identifier: "OperationsListResultItem",
@@ -4265,13 +4366,13 @@ export const SchemasListResponseSchemasList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSchemasResponse {
-  schemas?: SchemasListResponseSchemasList;
-  timestamp?: string;
+  schemas?: SchemasListResponseSchemasList | null;
+  timestamp?: string | null;
 }
 export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    schemas: S.optional(SchemasListResponseSchemasList),
-    timestamp: S.optional(S.String),
+    schemas: S.optional(S.NullOr(SchemasListResponseSchemasList)),
+    timestamp: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSchemasResponse",
@@ -4447,36 +4548,40 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationMethod =
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
-  authIdTokens?: number;
+  authIdTokens?: number | null;
   /** The number of data points used for the threshold suggestion calculation. */
-  dataPoints?: number;
-  lastUpdated?: string;
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
   /** The p50 quantile of requests (in period_seconds). */
-  p50?: number;
+  p50?: number | null;
   /** The p90 quantile of requests (in period_seconds). */
-  p90?: number;
+  p90?: number | null;
   /** The p99 quantile of requests (in period_seconds). */
-  p99?: number;
+  p99?: number | null;
   /** The period over which this threshold is suggested. */
-  periodSeconds?: number;
+  periodSeconds?: number | null;
   /** The estimated number of requests covered by these calculations. */
-  requests?: number;
+  requests?: number | null;
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
-  suggestedThreshold?: number;
+  suggestedThreshold?: number | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
-      dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      p50: S.optional(S.Number),
-      p90: S.optional(S.Number),
-      p99: S.optional(S.Number),
-      periodSeconds: S.optional(S.Number.pipe(T.Body("period_seconds"))),
-      requests: S.optional(S.Number),
+      authIdTokens: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("auth_id_tokens")),
+      ),
+      dataPoints: S.optional(S.NullOr(S.Number).pipe(T.Body("data_points"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      p50: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
+      p99: S.optional(S.NullOr(S.Number)),
+      periodSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("period_seconds")),
+      ),
+      requests: S.optional(S.NullOr(S.Number)),
       suggestedThreshold: S.optional(
-        S.Number.pipe(T.Body("suggested_threshold")),
+        S.NullOr(S.Number).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -4485,13 +4590,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  thresholds?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        ),
       ),
     }),
   ).annotate({
@@ -4508,17 +4615,19 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList | null;
   /** An empty response object. This field is required to yield a valid operation schema. */
-  responses?: unknown;
+  responses?: unknown | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        ),
       ),
-      responses: S.optional(S.Unknown),
+      responses: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -4526,18 +4635,18 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** An operation schema object containing a response. */
-  parameterSchemas?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
+        ).pipe(T.Body("parameter_schemas")),
       ),
     }),
   ).annotate({
@@ -4562,15 +4671,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
-  lastUpdated?: string;
+  lastUpdated?: string | null;
   /** Target route. */
-  route?: string;
+  route?: string | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-      route: S.optional(S.String),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+      route: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4579,15 +4688,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting,
+        ).pipe(T.Body("api_routing")),
       ),
     }),
   ).annotate({
@@ -4597,15 +4706,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4614,15 +4723,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4631,15 +4740,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
-  lower?: number;
+  lower?: number | null;
   /** Upper bound for percentile estimate */
-  upper?: number;
+  upper?: number | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lower: S.optional(S.Number),
-      upper: S.optional(S.Number),
+      lower: S.optional(S.NullOr(S.Number)),
+      upper: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4648,23 +4757,29 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 | null;
   /** Upper and lower bound for percentile estimate */
-  p95?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 | null;
   /** Upper and lower bound for percentile estimate */
-  p99?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        ),
       ),
       p95: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        ),
       ),
       p99: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        ),
       ),
     }),
   ).annotate({
@@ -4673,19 +4788,19 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals | null;
   /** Suggested threshold. */
-  mean?: number;
+  mean?: number | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
-      mean: S.optional(S.Number),
+      mean: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -4693,17 +4808,17 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
-  lastUpdated?: string;
-  suggestedThreshold?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  lastUpdated?: string | null;
+  suggestedThreshold?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
-          T.Body("suggested_threshold"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold,
+        ).pipe(T.Body("suggested_threshold")),
       ),
     }),
   ).annotate({
@@ -4712,15 +4827,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals,
+        ).pipe(T.Body("confidence_intervals")),
       ),
     }),
   ).annotate({
@@ -4730,20 +4845,20 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
+  id?: string | null;
+  createdAt?: string | null;
   /** True if schema is Cloudflare-provided. */
-  isLearned?: boolean;
+  isLearned?: boolean | null;
   /** Schema file name. */
-  name?: string;
+  name?: string | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isLearned: S.optional(S.Boolean.pipe(T.Body("is_learned"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      isLearned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_learned"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4757,25 +4872,27 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema | null;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
-  learnedAvailable?: boolean;
+  learnedAvailable?: boolean | null;
   /** Action taken on requests failing validation. */
-  mitigationAction?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
-          T.Body("active_schema"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema,
+        ).pipe(T.Body("active_schema")),
       ),
-      learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
+      learnedAvailable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("learned_available")),
+      ),
       mitigationAction: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -4784,15 +4901,15 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+  schemaInfo?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
-          T.Body("schema_info"),
-        ),
+        S.NullOr(
+          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo,
+        ).pipe(T.Body("schema_info")),
       ),
     }),
   ).annotate({
@@ -4827,7 +4944,7 @@ export interface UserSchemasOperationsListResultItemAPIShieldOperation {
   method: UserSchemasOperationsListResultItemAPIShieldOperationMethod;
   /** UUID. */
   operationId: string;
-  features?: UserSchemasOperationsListResultItemAPIShieldOperationFeatures;
+  features?: UserSchemasOperationsListResultItemAPIShieldOperationFeatures | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperation =
   /*@__PURE__*/ S.suspend(() =>
@@ -4838,7 +4955,7 @@ export const UserSchemasOperationsListResultItemAPIShieldOperation =
       method: UserSchemasOperationsListResultItemAPIShieldOperationMethod,
       operationId: S.String.pipe(T.Body("operation_id")),
       features: S.optional(
-        UserSchemasOperationsListResultItemAPIShieldOperationFeatures,
+        S.NullOr(UserSchemasOperationsListResultItemAPIShieldOperationFeatures),
       ),
     }),
   ).annotate({
@@ -4954,9 +5071,9 @@ export interface UserSchemasListResultItem {
   /** UUID. */
   schemaId: string;
   /** Source of the schema */
-  source?: string;
+  source?: string | null;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const UserSchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4964,8 +5081,10 @@ export const UserSchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
     kind: UserSchemasListResultItemKind,
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
-    source: S.optional(S.String),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    source: S.optional(S.NullOr(S.String)),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }),
 ).annotate({
   identifier: "UserSchemasListResultItem",
@@ -4997,16 +5116,16 @@ export interface PatchLabelUserRequest {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string;
+  description?: string | null;
   /** Metadata for the label */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const PatchLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
+    description: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   })
     .pipe(
       T.Http({
@@ -5058,15 +5177,16 @@ export interface OperationsSchemaValidationEditRequestSettingsMultipleRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?:
     | OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mitigationAction: S.optional(
-        OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -5109,13 +5229,13 @@ export const OperationsSchemaValidationEditResponseMitigationAction =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction?: OperationsSchemaValidationEditResponseMitigationAction;
+  mitigationAction?: OperationsSchemaValidationEditResponseMitigationAction | null;
 }
 export const PatchOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       mitigationAction: S.optional(
-        OperationsSchemaValidationEditResponseMitigationAction.pipe(
+        S.NullOr(OperationsSchemaValidationEditResponseMitigationAction).pipe(
           T.Body("mitigation_action"),
         ),
       ),
@@ -5140,24 +5260,26 @@ export interface PatchSettingSchemaValidationRequest {
   /** The default mitigation action used when there is no mitigation action defined on the operation */
   validationDefaultMitigationAction?:
     | SettingsSchemaValidationEditRequestValidationDefaultMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsSchemaValidationEditRequestValidationOverrideMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     validationDefaultMitigationAction: S.optional(
-      SettingsSchemaValidationEditRequestValidationDefaultMitigationAction.pipe(
-        T.Body("validation_default_mitigation_action"),
-      ),
+      S.NullOr(
+        SettingsSchemaValidationEditRequestValidationDefaultMitigationAction,
+      ).pipe(T.Body("validation_default_mitigation_action")),
     ),
     validationOverrideMitigationAction: S.optional(
-      SettingsSchemaValidationEditRequestValidationOverrideMitigationAction.pipe(
-        T.Body("validation_override_mitigation_action"),
-      ),
+      S.NullOr(
+        SettingsSchemaValidationEditRequestValidationOverrideMitigationAction,
+      ).pipe(T.Body("validation_override_mitigation_action")),
     ),
   })
     .pipe(
@@ -5185,13 +5307,15 @@ export interface PatchUserSchemaRequest {
   zoneId: string;
   schemaId: string;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const PatchUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   })
     .pipe(
       T.Http({
@@ -5218,9 +5342,9 @@ export interface PatchUserSchemaResponse {
   /** UUID. */
   schemaId: string;
   /** Source of the schema */
-  source?: string;
+  source?: string | null;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5228,8 +5352,10 @@ export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     kind: UserSchemasEditResponseKind,
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
-    source: S.optional(S.String),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    source: S.optional(S.NullOr(S.String)),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserSchemaResponse",
@@ -5484,7 +5610,7 @@ export interface PutLabelManagedResourceOperationResponse {
   /** * `user` - label is owned by the user */
   source: LabelsManagedResourcesOperationUpdateResponseSource;
   /** Provides counts of what resources are linked to this label */
-  mappedResources?: unknown;
+  mappedResources?: unknown | null;
 }
 export const PutLabelManagedResourceOperationResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -5495,7 +5621,9 @@ export const PutLabelManagedResourceOperationResponse = /*@__PURE__*/ S.suspend(
       metadata: S.Unknown,
       name: S.String,
       source: LabelsManagedResourcesOperationUpdateResponseSource,
-      mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
+      mappedResources: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("mapped_resources")),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelManagedResourceOperationResponse",
@@ -5507,16 +5635,16 @@ export interface PutLabelUserRequest {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string;
+  description?: string | null;
   /** Metadata for the label */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const PutLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
+    description: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   })
     .pipe(
       T.Http({
@@ -5639,7 +5767,7 @@ export interface PutLabelUserResourceOperationResponse {
   /** * `user` - label is owned by the user */
   source: LabelsUserResourcesOperationUpdateResponseSource;
   /** Provides counts of what resources are linked to this label */
-  mappedResources?: unknown;
+  mappedResources?: unknown | null;
 }
 export const PutLabelUserResourceOperationResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -5650,7 +5778,9 @@ export const PutLabelUserResourceOperationResponse = /*@__PURE__*/ S.suspend(
       metadata: S.Unknown,
       name: S.String,
       source: LabelsUserResourcesOperationUpdateResponseSource,
-      mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
+      mappedResources: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("mapped_resources")),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelUserResourceOperationResponse",
@@ -5671,14 +5801,15 @@ export interface PutOperationSchemaValidationRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?:
     | OperationsSchemaValidationUpdateRequestMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
     mitigationAction: S.optional(
-      OperationsSchemaValidationUpdateRequestMitigationAction.pipe(
+      S.NullOr(OperationsSchemaValidationUpdateRequestMitigationAction).pipe(
         T.Body("mitigation_action"),
       ),
     ),
@@ -5705,19 +5836,19 @@ export const OperationsSchemaValidationUpdateResponseMitigationAction =
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PutOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation */
-  mitigationAction?: OperationsSchemaValidationUpdateResponseMitigationAction;
+  mitigationAction?: OperationsSchemaValidationUpdateResponseMitigationAction | null;
   /** UUID. */
-  operationId?: string;
+  operationId?: string | null;
 }
 export const PutOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       mitigationAction: S.optional(
-        OperationsSchemaValidationUpdateResponseMitigationAction.pipe(
+        S.NullOr(OperationsSchemaValidationUpdateResponseMitigationAction).pipe(
           T.Body("mitigation_action"),
         ),
       ),
-      operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
+      operationId: S.optional(S.NullOr(S.String).pipe(T.Body("operation_id"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOperationSchemaValidationResponse",
@@ -5743,7 +5874,8 @@ export interface PutSettingSchemaValidationRequest {
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5753,9 +5885,9 @@ export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction.pipe(
-        T.Body("validation_override_mitigation_action"),
-      ),
+      S.NullOr(
+        SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction,
+      ).pipe(T.Body("validation_override_mitigation_action")),
     ),
   })
     .pipe(
@@ -5794,16 +5926,16 @@ export interface UpdateOperationLabelRequest {
   /** UUID. */
   operationId: string;
   /** List of managed label names. Omitting this property or passing an empty array will result in all managed labels being removed from the operation */
-  managed?: OperationsLabelsUpdateRequestManagedList;
+  managed?: OperationsLabelsUpdateRequestManagedList | null;
   /** List of user label names. Omitting this property or passing an empty array will result in all user labels being removed from the operation */
-  user?: OperationsLabelsUpdateRequestUserList;
+  user?: OperationsLabelsUpdateRequestUserList | null;
 }
 export const UpdateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-    managed: S.optional(OperationsLabelsUpdateRequestManagedList),
-    user: S.optional(OperationsLabelsUpdateRequestUserList),
+    managed: S.optional(S.NullOr(OperationsLabelsUpdateRequestManagedList)),
+    user: S.optional(S.NullOr(OperationsLabelsUpdateRequestUserList)),
   })
     .pipe(
       T.Http({
@@ -5876,7 +6008,7 @@ export interface UpdateOperationLabelResponse {
   method: OperationsLabelsUpdateResponseMethod;
   /** UUID. */
   operationId: string;
-  labels?: OperationsLabelsUpdateResponseLabelsList;
+  labels?: OperationsLabelsUpdateResponseLabelsList | null;
 }
 export const UpdateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5885,7 +6017,7 @@ export const UpdateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     method: OperationsLabelsUpdateResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
-    labels: S.optional(OperationsLabelsUpdateResponseLabelsList),
+    labels: S.optional(S.NullOr(OperationsLabelsUpdateResponseLabelsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOperationLabelResponse",

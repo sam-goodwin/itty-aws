@@ -531,10 +531,14 @@ export const DescribeJobInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobInput",
 }) as any as S.Schema<DescribeJobInput>;
-export type ActionCode = "ArchiveRetrieval" | "InventoryRetrieval" | "Select";
+export type ActionCode =
+  | "ArchiveRetrieval"
+  | "InventoryRetrieval"
+  | "Select"
+  | (string & {});
 export const ActionCode = /*@__PURE__*/ S.String;
 
-export type StatusCode = "InProgress" | "Succeeded" | "Failed";
+export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
 export const StatusCode = /*@__PURE__*/ S.String;
 
 export type Size = number;
@@ -556,11 +560,11 @@ export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InventoryRetrievalJobDescription",
 }) as any as S.Schema<InventoryRetrievalJobDescription>;
-export type FileHeaderInfo = "USE" | "IGNORE" | "NONE";
+export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
 
 export interface CSVInput {
-  FileHeaderInfo?: FileHeaderInfo | (string & {});
+  FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
@@ -585,14 +589,14 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputSerialization",
 }) as any as S.Schema<InputSerialization>;
-export type ExpressionType = "SQL";
+export type ExpressionType = "SQL" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
 
-export type QuoteFields = "ALWAYS" | "ASNEEDED";
+export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
 export const QuoteFields = /*@__PURE__*/ S.String;
 
 export interface CSVOutput {
-  QuoteFields?: QuoteFields | (string & {});
+  QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
   FieldDelimiter?: string;
@@ -617,7 +621,7 @@ export const OutputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputSerialization>;
 export interface SelectParameters {
   InputSerialization?: InputSerialization;
-  ExpressionType?: ExpressionType | (string & {});
+  ExpressionType?: ExpressionType;
   Expression?: string;
   OutputSerialization?: OutputSerialization;
 }
@@ -631,11 +635,11 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectParameters",
 }) as any as S.Schema<SelectParameters>;
-export type EncryptionType = "aws:kms" | "AES256";
+export type EncryptionType = "aws:kms" | "AES256" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface Encryption {
-  EncryptionType?: EncryptionType | (string & {});
+  EncryptionType?: EncryptionType;
   KMSKeyId?: string;
   KMSContext?: string;
 }
@@ -653,14 +657,19 @@ export type CannedACL =
   | "aws-exec-read"
   | "authenticated-read"
   | "bucket-owner-read"
-  | "bucket-owner-full-control";
+  | "bucket-owner-full-control"
+  | (string & {});
 export const CannedACL = /*@__PURE__*/ S.String;
 
-export type Type = "AmazonCustomerByEmail" | "CanonicalUser" | "Group";
+export type Type =
+  | "AmazonCustomerByEmail"
+  | "CanonicalUser"
+  | "Group"
+  | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface Grantee {
-  Type: Type | (string & {});
+  Type: Type;
   DisplayName?: string;
   URI?: string;
   ID?: string;
@@ -680,12 +689,13 @@ export type Permission =
   | "WRITE"
   | "WRITE_ACP"
   | "READ"
-  | "READ_ACP";
+  | "READ_ACP"
+  | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface Grant {
   Grantee?: Grantee;
-  Permission?: Permission | (string & {});
+  Permission?: Permission;
 }
 export const Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -700,18 +710,22 @@ export const Hashmap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA";
+export type StorageClass =
+  | "STANDARD"
+  | "REDUCED_REDUNDANCY"
+  | "STANDARD_IA"
+  | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
 
 export interface S3Location {
   BucketName?: string;
   Prefix?: string;
   Encryption?: Encryption;
-  CannedACL?: CannedACL | (string & {});
+  CannedACL?: CannedACL;
   AccessControlList?: Grant[];
   Tagging?: { [key: string]: string | undefined };
   UserMetadata?: { [key: string]: string | undefined };
-  StorageClass?: StorageClass | (string & {});
+  StorageClass?: StorageClass;
 }
 export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

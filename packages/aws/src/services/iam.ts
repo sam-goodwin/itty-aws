@@ -787,7 +787,7 @@ export const CreateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccessKeyRequest",
 }) as any as S.Schema<CreateAccessKeyRequest>;
 export type AccessKeyIdType = string;
-export type StatusType = "Active" | "Inactive" | "Expired";
+export type StatusType = "Active" | "Inactive" | "Expired" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 export type AccessKeySecretType = string | redacted.Redacted<string>;
@@ -848,13 +848,13 @@ export type PolicyParameterNameType = string;
 export type PolicyParameterValueType = string;
 export type PolicyParameterValuesListType = string[];
 export const PolicyParameterValuesListType = /*@__PURE__*/ S.Array(S.String);
-export type PolicyParameterTypeEnum = "string" | "stringList";
+export type PolicyParameterTypeEnum = "string" | "stringList" | (string & {});
 export const PolicyParameterTypeEnum = /*@__PURE__*/ S.String;
 
 export interface PolicyParameter {
   Name?: string;
   Values?: string[];
-  Type?: PolicyParameterTypeEnum | (string & {});
+  Type?: PolicyParameterTypeEnum;
 }
 export const PolicyParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1016,7 +1016,9 @@ export const CreateInstanceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyDocumentType = string;
 export type RoleDescriptionType = string;
 export type RoleMaxSessionDurationType = number;
-export type PermissionsBoundaryAttachmentType = "PermissionsBoundaryPolicy";
+export type PermissionsBoundaryAttachmentType =
+  | "PermissionsBoundaryPolicy"
+  | (string & {});
 export const PermissionsBoundaryAttachmentType = /*@__PURE__*/ S.String;
 
 export interface AttachedPermissionsBoundary {
@@ -1357,7 +1359,10 @@ export const CreateRoleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRoleResponse>;
 export type SAMLMetadataDocumentType = string;
 export type SAMLProviderNameType = string;
-export type AssertionEncryptionModeType = "Required" | "Allowed";
+export type AssertionEncryptionModeType =
+  | "Required"
+  | "Allowed"
+  | (string & {});
 export const AssertionEncryptionModeType = /*@__PURE__*/ S.String;
 
 export type PrivateKeyType = string | redacted.Redacted<string>;
@@ -1365,7 +1370,7 @@ export interface CreateSAMLProviderRequest {
   SAMLMetadataDocument: string;
   Name: string;
   Tags?: Tag[];
-  AssertionEncryptionMode?: AssertionEncryptionModeType | (string & {});
+  AssertionEncryptionMode?: AssertionEncryptionModeType;
   AddPrivateKey?: string | redacted.Redacted<string>;
 }
 export const CreateSAMLProviderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2310,7 +2315,10 @@ export const DisableOrganizationsRootCredentialsManagementRequest =
     identifier: "DisableOrganizationsRootCredentialsManagementRequest",
   }) as any as S.Schema<DisableOrganizationsRootCredentialsManagementRequest>;
 export type OrganizationIdType = string;
-export type FeatureType = "RootCredentialsManagement" | "RootSessions";
+export type FeatureType =
+  | "RootCredentialsManagement"
+  | "RootSessions"
+  | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
 
 export type FeaturesListType = FeatureType[];
@@ -2515,7 +2523,11 @@ export const GenerateCredentialReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateCredentialReportRequest",
 }) as any as S.Schema<GenerateCredentialReportRequest>;
-export type ReportStateType = "STARTED" | "INPROGRESS" | "COMPLETE";
+export type ReportStateType =
+  | "STARTED"
+  | "INPROGRESS"
+  | "COMPLETE"
+  | (string & {});
 export const ReportStateType = /*@__PURE__*/ S.String;
 
 export type ReportStateDescriptionType = string;
@@ -2568,12 +2580,13 @@ export const GenerateOrganizationsAccessReportResponse =
   }) as any as S.Schema<GenerateOrganizationsAccessReportResponse>;
 export type AccessAdvisorUsageGranularityType =
   | "SERVICE_LEVEL"
-  | "ACTION_LEVEL";
+  | "ACTION_LEVEL"
+  | (string & {});
 export const AccessAdvisorUsageGranularityType = /*@__PURE__*/ S.String;
 
 export interface GenerateServiceLastAccessedDetailsRequest {
   Arn: string;
-  Granularity?: AccessAdvisorUsageGranularityType | (string & {});
+  Granularity?: AccessAdvisorUsageGranularityType;
 }
 export const GenerateServiceLastAccessedDetailsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2654,15 +2667,16 @@ export type EntityType =
   | "Role"
   | "Group"
   | "LocalManagedPolicy"
-  | "AWSManagedPolicy";
+  | "AWSManagedPolicy"
+  | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
-export type EntityListType = (EntityType | (string & {}))[];
+export type EntityListType = EntityType[];
 export const EntityListType = /*@__PURE__*/ S.Array(EntityType);
 export type MaxItemsType = number;
 export type MarkerType = string;
 export interface GetAccountAuthorizationDetailsRequest {
-  Filter?: (EntityType | (string & {}))[];
+  Filter?: EntityType[];
   MaxItems?: number;
   Marker?: string;
 }
@@ -2970,7 +2984,8 @@ export type SummaryKeyType =
   | "Providers"
   | "RolePolicySizeQuota"
   | "Roles"
-  | "RolesQuota";
+  | "RolesQuota"
+  | (string & {});
 export const SummaryKeyType = /*@__PURE__*/ S.String;
 
 export type SummaryValueType = number;
@@ -3061,7 +3076,7 @@ export const GetCredentialReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCredentialReportRequest",
 }) as any as S.Schema<GetCredentialReportRequest>;
 export type ReportContentType = Uint8Array;
-export type ReportFormatType = "text/csv";
+export type ReportFormatType = "text/csv" | (string & {});
 export const ReportFormatType = /*@__PURE__*/ S.String;
 
 export interface GetCredentialReportResponse {
@@ -3115,7 +3130,8 @@ export type StateType =
   | "FINALIZED"
   | "ACCEPTED"
   | "REJECTED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const StateType = /*@__PURE__*/ S.String;
 
 export type RequestorNameType = string;
@@ -3176,10 +3192,18 @@ export const DelegationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DelegationRequest",
 }) as any as S.Schema<DelegationRequest>;
-export type PermissionCheckStatusType = "COMPLETE" | "IN_PROGRESS" | "FAILED";
+export type PermissionCheckStatusType =
+  | "COMPLETE"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | (string & {});
 export const PermissionCheckStatusType = /*@__PURE__*/ S.String;
 
-export type PermissionCheckResultType = "ALLOWED" | "DENIED" | "UNSURE";
+export type PermissionCheckResultType =
+  | "ALLOWED"
+  | "DENIED"
+  | "UNSURE"
+  | (string & {});
 export const PermissionCheckResultType = /*@__PURE__*/ S.String;
 
 export interface GetDelegationRequestResponse {
@@ -3296,7 +3320,8 @@ export type SummaryStateType =
   | "AVAILABLE"
   | "NOT_AVAILABLE"
   | "NOT_SUPPORTED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SummaryStateType = /*@__PURE__*/ S.String;
 
 export interface GetHumanReadableSummaryResponse {
@@ -3451,14 +3476,15 @@ export type SortKeyType =
   | "SERVICE_NAMESPACE_ASCENDING"
   | "SERVICE_NAMESPACE_DESCENDING"
   | "LAST_AUTHENTICATED_TIME_ASCENDING"
-  | "LAST_AUTHENTICATED_TIME_DESCENDING";
+  | "LAST_AUTHENTICATED_TIME_DESCENDING"
+  | (string & {});
 export const SortKeyType = /*@__PURE__*/ S.String;
 
 export interface GetOrganizationsAccessReportRequest {
   JobId: string;
   MaxItems?: number;
   Marker?: string;
-  SortKey?: SortKeyType | (string & {});
+  SortKey?: SortKeyType;
 }
 export const GetOrganizationsAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3480,7 +3506,11 @@ export const GetOrganizationsAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOrganizationsAccessReportRequest",
 }) as any as S.Schema<GetOrganizationsAccessReportRequest>;
-export type JobStatusType = "IN_PROGRESS" | "COMPLETED" | "FAILED";
+export type JobStatusType =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const JobStatusType = /*@__PURE__*/ S.String;
 
 export type IntegerType = number;
@@ -3936,7 +3966,7 @@ export const GetServiceLastAccessedDetailsWithEntitiesRequest =
   ).annotate({
     identifier: "GetServiceLastAccessedDetailsWithEntitiesRequest",
   }) as any as S.Schema<GetServiceLastAccessedDetailsWithEntitiesRequest>;
-export type PolicyOwnerEntityType = "USER" | "ROLE" | "GROUP";
+export type PolicyOwnerEntityType = "USER" | "ROLE" | "GROUP" | (string & {});
 export const PolicyOwnerEntityType = /*@__PURE__*/ S.String;
 
 export interface EntityInfo {
@@ -4015,7 +4045,8 @@ export type DeletionTaskStatusType =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "NOT_STARTED";
+  | "NOT_STARTED"
+  | (string & {});
 export const DeletionTaskStatusType = /*@__PURE__*/ S.String;
 
 export type ReasonType = string;
@@ -4059,13 +4090,13 @@ export const GetServiceLinkedRoleDeletionStatusResponse =
   ).annotate({
     identifier: "GetServiceLinkedRoleDeletionStatusResponse",
   }) as any as S.Schema<GetServiceLinkedRoleDeletionStatusResponse>;
-export type EncodingType = "SSH" | "PEM";
+export type EncodingType = "SSH" | "PEM" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
 
 export interface GetSSHPublicKeyRequest {
   UserName: string;
   SSHPublicKeyId: string;
-  Encoding: EncodingType | (string & {});
+  Encoding: EncodingType;
 }
 export const GetSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4431,14 +4462,17 @@ export const ListDelegationRequestsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDelegationRequestsResponse",
 }) as any as S.Schema<ListDelegationRequestsResponse>;
-export type PolicyUsageType = "PermissionsPolicy" | "PermissionsBoundary";
+export type PolicyUsageType =
+  | "PermissionsPolicy"
+  | "PermissionsBoundary"
+  | (string & {});
 export const PolicyUsageType = /*@__PURE__*/ S.String;
 
 export interface ListEntitiesForPolicyRequest {
   PolicyArn: string;
-  EntityFilter?: EntityType | (string & {});
+  EntityFilter?: EntityType;
   PathPrefix?: string;
-  PolicyUsageFilter?: PolicyUsageType | (string & {});
+  PolicyUsageFilter?: PolicyUsageType;
   Marker?: string;
   MaxItems?: number;
 }
@@ -4938,14 +4972,14 @@ export const ListOrganizationsFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOrganizationsFeaturesResponse",
 }) as any as S.Schema<ListOrganizationsFeaturesResponse>;
-export type PolicyScopeType = "All" | "AWS" | "Local";
+export type PolicyScopeType = "All" | "AWS" | "Local" | (string & {});
 export const PolicyScopeType = /*@__PURE__*/ S.String;
 
 export interface ListPoliciesRequest {
-  Scope?: PolicyScopeType | (string & {});
+  Scope?: PolicyScopeType;
   OnlyAttached?: boolean;
   PathPrefix?: string;
-  PolicyUsageFilter?: PolicyUsageType | (string & {});
+  PolicyUsageFilter?: PolicyUsageType;
   Marker?: string;
   MaxItems?: number;
 }
@@ -5014,7 +5048,7 @@ export const ListPoliciesGrantingServiceAccessRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListPoliciesGrantingServiceAccessRequest",
 }) as any as S.Schema<ListPoliciesGrantingServiceAccessRequest>;
-export type PolicyType = "INLINE" | "MANAGED";
+export type PolicyType = "INLINE" | "MANAGED" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export type EntityNameType = string;
@@ -5735,11 +5769,15 @@ export const ListUserTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUserTagsResponse",
 }) as any as S.Schema<ListUserTagsResponse>;
-export type AssignmentStatusType = "Assigned" | "Unassigned" | "Any";
+export type AssignmentStatusType =
+  | "Assigned"
+  | "Unassigned"
+  | "Any"
+  | (string & {});
 export const AssignmentStatusType = /*@__PURE__*/ S.String;
 
 export interface ListVirtualMFADevicesRequest {
-  AssignmentStatus?: AssignmentStatusType | (string & {});
+  AssignmentStatus?: AssignmentStatusType;
   Marker?: string;
   MaxItems?: number;
 }
@@ -6134,11 +6172,11 @@ export const SetDefaultPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetDefaultPolicyVersionResponse",
 }) as any as S.Schema<SetDefaultPolicyVersionResponse>;
-export type GlobalEndpointTokenVersion = "v1Token" | "v2Token";
+export type GlobalEndpointTokenVersion = "v1Token" | "v2Token" | (string & {});
 export const GlobalEndpointTokenVersion = /*@__PURE__*/ S.String;
 
 export interface SetSecurityTokenServicePreferencesRequest {
-  GlobalEndpointTokenVersion: GlobalEndpointTokenVersion | (string & {});
+  GlobalEndpointTokenVersion: GlobalEndpointTokenVersion;
 }
 export const SetSecurityTokenServicePreferencesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6182,13 +6220,14 @@ export type ContextKeyTypeEnum =
   | "binary"
   | "binaryList"
   | "date"
-  | "dateList";
+  | "dateList"
+  | (string & {});
 export const ContextKeyTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ContextEntry {
   ContextKeyName?: string;
   ContextKeyValues?: string[];
-  ContextKeyType?: ContextKeyTypeEnum | (string & {});
+  ContextKeyType?: ContextKeyTypeEnum;
 }
 export const ContextEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6243,7 +6282,8 @@ export const SimulateCustomPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyEvaluationDecisionType =
   | "allowed"
   | "explicitDeny"
-  | "implicitDeny";
+  | "implicitDeny"
+  | (string & {});
 export const PolicyEvaluationDecisionType = /*@__PURE__*/ S.String;
 
 export type PolicyIdentifierType = string;
@@ -6254,7 +6294,8 @@ export type PolicySourceType =
   | "aws-managed"
   | "user-managed"
   | "resource"
-  | "none";
+  | "none"
+  | (string & {});
 export const PolicySourceType = /*@__PURE__*/ S.String;
 
 export type LineNumber = number;
@@ -6827,7 +6868,7 @@ export const UntagUserResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccessKeyRequest {
   UserName?: string;
   AccessKeyId: string;
-  Status: StatusType | (string & {});
+  Status: StatusType;
 }
 export const UpdateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7094,7 +7135,7 @@ export const UpdateRoleDescriptionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSAMLProviderRequest {
   SAMLMetadataDocument?: string;
   SAMLProviderArn: string;
-  AssertionEncryptionMode?: AssertionEncryptionModeType | (string & {});
+  AssertionEncryptionMode?: AssertionEncryptionModeType;
   AddPrivateKey?: string | redacted.Redacted<string>;
   RemovePrivateKey?: string;
 }
@@ -7160,7 +7201,7 @@ export const UpdateServerCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceSpecificCredentialRequest {
   UserName?: string;
   ServiceSpecificCredentialId: string;
-  Status: StatusType | (string & {});
+  Status: StatusType;
 }
 export const UpdateServiceSpecificCredentialRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7191,7 +7232,7 @@ export const UpdateServiceSpecificCredentialResponse = /*@__PURE__*/ S.suspend(
 export interface UpdateSigningCertificateRequest {
   UserName?: string;
   CertificateId: string;
-  Status: StatusType | (string & {});
+  Status: StatusType;
 }
 export const UpdateSigningCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7221,7 +7262,7 @@ export const UpdateSigningCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSSHPublicKeyRequest {
   UserName: string;
   SSHPublicKeyId: string;
-  Status: StatusType | (string & {});
+  Status: StatusType;
 }
 export const UpdateSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

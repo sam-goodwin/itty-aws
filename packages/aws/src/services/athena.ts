@@ -296,7 +296,7 @@ export const BatchGetQueryExecutionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetQueryExecutionInput",
 }) as any as S.Schema<BatchGetQueryExecutionInput>;
-export type StatementType = "DDL" | "DML" | "UTILITY";
+export type StatementType = "DDL" | "DML" | "UTILITY" | (string & {});
 export const StatementType = /*@__PURE__*/ S.String;
 
 export type KmsKey = string;
@@ -322,11 +322,11 @@ export const ManagedQueryResultsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedQueryResultsConfiguration",
 }) as any as S.Schema<ManagedQueryResultsConfiguration>;
 export type ResultOutputLocation = string;
-export type EncryptionOption = "SSE_S3" | "SSE_KMS" | "CSE_KMS";
+export type EncryptionOption = "SSE_S3" | "SSE_KMS" | "CSE_KMS" | (string & {});
 export const EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
-  EncryptionOption: EncryptionOption | (string & {});
+  EncryptionOption: EncryptionOption;
   KmsKey?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -338,11 +338,11 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
 export type AwsAccountId = string;
-export type S3AclOption = "BUCKET_OWNER_FULL_CONTROL";
+export type S3AclOption = "BUCKET_OWNER_FULL_CONTROL" | (string & {});
 export const S3AclOption = /*@__PURE__*/ S.String;
 
 export interface AclConfiguration {
-  S3AclOption: S3AclOption | (string & {});
+  S3AclOption: S3AclOption;
 }
 export const AclConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3AclOption: S3AclOption }),
@@ -400,7 +400,8 @@ export type QueryExecutionState =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const QueryExecutionState = /*@__PURE__*/ S.String;
 
 export type ErrorCategory = number;
@@ -492,13 +493,13 @@ export type ExecutionParameter = string;
 export type ExecutionParameters = string[];
 export const ExecutionParameters = /*@__PURE__*/ S.Array(S.String);
 export type BoxedBoolean = boolean;
-export type AuthenticationType = "DIRECTORY_IDENTITY";
+export type AuthenticationType = "DIRECTORY_IDENTITY" | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export interface QueryResultsS3AccessGrantsConfiguration {
   EnableS3AccessGrants: boolean;
   CreateUserLevelPrefix?: boolean;
-  AuthenticationType: AuthenticationType | (string & {});
+  AuthenticationType: AuthenticationType;
 }
 export const QueryResultsS3AccessGrantsConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -631,7 +632,12 @@ export const CreateCapacityReservationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCapacityReservationOutput",
 }) as any as S.Schema<CreateCapacityReservationOutput>;
-export type DataCatalogType = "LAMBDA" | "GLUE" | "HIVE" | "FEDERATED";
+export type DataCatalogType =
+  | "LAMBDA"
+  | "GLUE"
+  | "HIVE"
+  | "FEDERATED"
+  | (string & {});
 export const DataCatalogType = /*@__PURE__*/ S.String;
 
 export type KeyString = string;
@@ -643,7 +649,7 @@ export const ParametersMap = /*@__PURE__*/ S.Record(
 );
 export interface CreateDataCatalogInput {
   Name: string;
-  Type: DataCatalogType | (string & {});
+  Type: DataCatalogType;
   Description?: string;
   Parameters?: { [key: string]: string | undefined };
   Tags?: Tag[];
@@ -670,7 +676,8 @@ export type DataCatalogStatus =
   | "CREATE_FAILED_CLEANUP_FAILED"
   | "DELETE_IN_PROGRESS"
   | "DELETE_COMPLETE"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const DataCatalogStatus = /*@__PURE__*/ S.String;
 
 export type ConnectionType =
@@ -693,7 +700,8 @@ export type ConnectionType =
   | "SAPHANA"
   | "SNOWFLAKE"
   | "DATALAKEGEN2"
-  | "DB2AS400";
+  | "DB2AS400"
+  | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 export interface DataCatalog {
@@ -1138,7 +1146,7 @@ export const ExportNotebookInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportNotebookInput",
 }) as any as S.Schema<ExportNotebookInput>;
-export type NotebookType = "IPYNB";
+export type NotebookType = "IPYNB" | (string & {});
 export const NotebookType = /*@__PURE__*/ S.String;
 
 export interface NotebookMetadata {
@@ -1196,7 +1204,8 @@ export type CalculationExecutionState =
   | "CANCELING"
   | "CANCELED"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CalculationExecutionState = /*@__PURE__*/ S.String;
 
 export interface CalculationStatus {
@@ -1376,11 +1385,16 @@ export type CapacityReservationStatus =
   | "CANCELLING"
   | "CANCELLED"
   | "FAILED"
-  | "UPDATE_PENDING";
+  | "UPDATE_PENDING"
+  | (string & {});
 export const CapacityReservationStatus = /*@__PURE__*/ S.String;
 
 export type AllocatedDpusInteger = number;
-export type CapacityAllocationStatus = "PENDING" | "SUCCEEDED" | "FAILED";
+export type CapacityAllocationStatus =
+  | "PENDING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
 export const CapacityAllocationStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityAllocation {
@@ -1563,14 +1577,14 @@ export const GetQueryExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQueryExecutionOutput>;
 export type Token = string;
 export type MaxQueryResults = number;
-export type QueryResultType = "DATA_MANIFEST" | "DATA_ROWS";
+export type QueryResultType = "DATA_MANIFEST" | "DATA_ROWS" | (string & {});
 export const QueryResultType = /*@__PURE__*/ S.String;
 
 export interface GetQueryResultsInput {
   QueryExecutionId: string;
   NextToken?: string;
   MaxResults?: number;
-  QueryResultType?: QueryResultType | (string & {});
+  QueryResultType?: QueryResultType;
 }
 export const GetQueryResultsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1601,7 +1615,11 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 export type RowList = Row[];
 export const RowList = /*@__PURE__*/ S.Array(Row);
-export type ColumnNullable = "NOT_NULL" | "NULLABLE" | "UNKNOWN";
+export type ColumnNullable =
+  | "NOT_NULL"
+  | "NULLABLE"
+  | "UNKNOWN"
+  | (string & {});
 export const ColumnNullable = /*@__PURE__*/ S.String;
 
 export interface ColumnInfo {
@@ -1852,7 +1870,8 @@ export type SessionState =
   | "TERMINATING"
   | "TERMINATED"
   | "DEGRADED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
 
 export interface SessionStatus {
@@ -2032,7 +2051,7 @@ export const GetWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkGroupInput",
 }) as any as S.Schema<GetWorkGroupInput>;
-export type WorkGroupState = "ENABLED" | "DISABLED";
+export type WorkGroupState = "ENABLED" | "DISABLED" | (string & {});
 export const WorkGroupState = /*@__PURE__*/ S.String;
 
 export type IdentityCenterApplicationArn = string;
@@ -2066,7 +2085,7 @@ export interface ImportNotebookInput {
   WorkGroup: string;
   Name: string;
   Payload?: string;
-  Type: NotebookType | (string & {});
+  Type: NotebookType;
   NotebookS3LocationUri?: string;
   ClientRequestToken?: string;
 }
@@ -2140,7 +2159,7 @@ export type MaxCalculationsCount = number;
 export type SessionManagerToken = string;
 export interface ListCalculationExecutionsRequest {
   SessionId: string;
-  StateFilter?: CalculationExecutionState | (string & {});
+  StateFilter?: CalculationExecutionState;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2331,13 +2350,14 @@ export type ExecutorState =
   | "REGISTERED"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ExecutorState = /*@__PURE__*/ S.String;
 
 export type MaxListExecutorsCount = number;
 export interface ListExecutorsRequest {
   SessionId: string;
-  ExecutorStateFilter?: ExecutorState | (string & {});
+  ExecutorStateFilter?: ExecutorState;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2354,7 +2374,7 @@ export const ListExecutorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListExecutorsRequest",
 }) as any as S.Schema<ListExecutorsRequest>;
 export type ExecutorId = string;
-export type ExecutorType = "COORDINATOR" | "GATEWAY" | "WORKER";
+export type ExecutorType = "COORDINATOR" | "GATEWAY" | "WORKER" | (string & {});
 export const ExecutorType = /*@__PURE__*/ S.String;
 
 export interface ExecutorsSummary {
@@ -2586,7 +2606,7 @@ export const ListQueryExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQueryExecutionsOutput>;
 export interface ListSessionsRequest {
   WorkGroup: string;
-  StateFilter?: SessionState | (string & {});
+  StateFilter?: SessionState;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2989,7 +3009,7 @@ export const UpdateCapacityReservationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCapacityReservationOutput>;
 export interface UpdateDataCatalogInput {
   Name: string;
-  Type: DataCatalogType | (string & {});
+  Type: DataCatalogType;
   Description?: string;
   Parameters?: { [key: string]: string | undefined };
 }
@@ -3039,7 +3059,7 @@ export const UpdateNamedQueryOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNotebookInput {
   NotebookId: string;
   Payload: string;
-  Type: NotebookType | (string & {});
+  Type: NotebookType;
   SessionId?: string;
   ClientRequestToken?: string;
 }
@@ -3199,7 +3219,7 @@ export interface UpdateWorkGroupInput {
   WorkGroup: string;
   Description?: string;
   ConfigurationUpdates?: WorkGroupConfigurationUpdates;
-  State?: WorkGroupState | (string & {});
+  State?: WorkGroupState;
 }
 export const UpdateWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3219,7 +3239,7 @@ export const UpdateWorkGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkGroupOutput",
 }) as any as S.Schema<UpdateWorkGroupOutput>;
-export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED";
+export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED" | (string & {});
 export const ThrottleReason = /*@__PURE__*/ S.String;
 
 export type BatchGetNamedQueryError =

@@ -105,48 +105,50 @@ export interface ConfigGetResponseSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: ConfigGetResponseSettingsContextEnricher;
+  contextEnricher?: ConfigGetResponseSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const ConfigGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(ConfigGetResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
+    contextEnricher: S.optional(
+      S.NullOr(ConfigGetResponseSettingsContextEnricher),
+    ),
+    cookieDomain: S.optional(S.NullOr(S.String)),
+    ecommerce: S.optional(S.NullOr(S.Boolean)),
+    eventsApiPath: S.optional(S.NullOr(S.String)),
+    hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+    hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+    hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+    hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+    initPath: S.optional(S.NullOr(S.String)),
+    injectIframes: S.optional(S.NullOr(S.Boolean)),
+    mcRootPath: S.optional(S.NullOr(S.String)),
+    scriptPath: S.optional(S.NullOr(S.String)),
+    trackPath: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConfigGetResponseSettings",
@@ -160,17 +162,17 @@ export const UntypedConfigMap = /*@__PURE__*/ S.Record(
 
 export interface ConfigGetResponseAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const ConfigGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
+    defaultPurpose: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    sessionExpTime: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ConfigGetResponseAnalytics",
@@ -310,47 +312,49 @@ export const ConfigGetResponseConsentPurposesWithTranslationsMap =
 
 export interface ConfigGetResponseConsent {
   enabled: boolean;
-  buttonTextTranslations?: ConfigGetResponseConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: ConfigGetResponseConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigGetResponseConsentPurposesMap;
+  purposes?: ConfigGetResponseConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const ConfigGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     buttonTextTranslations: S.optional(
-      ConfigGetResponseConsentButtonTextTranslations,
+      S.NullOr(ConfigGetResponseConsentButtonTextTranslations),
     ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
+    companyEmail: S.optional(S.NullOr(S.String)),
+    companyName: S.optional(S.NullOr(S.String)),
+    companyStreetAddress: S.optional(S.NullOr(S.String)),
+    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
     consentModalIntroHTMLWithTranslations: S.optional(
-      ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      S.NullOr(
+        ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      ),
     ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(ConfigGetResponseConsentPurposesMap),
+    cookieName: S.optional(S.NullOr(S.String)),
+    customCSS: S.optional(S.NullOr(S.String)),
+    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+    defaultLanguage: S.optional(S.NullOr(S.String)),
+    hideModal: S.optional(S.NullOr(S.Boolean)),
+    purposes: S.optional(S.NullOr(ConfigGetResponseConsentPurposesMap)),
     purposesWithTranslations: S.optional(
-      ConfigGetResponseConsentPurposesWithTranslationsMap,
+      S.NullOr(ConfigGetResponseConsentPurposesWithTranslationsMap),
     ),
-    tcfCompliant: S.optional(S.Boolean),
+    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "ConfigGetResponseConsent",
@@ -373,11 +377,11 @@ export interface GetConfigResponse {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: ConfigGetResponseAnalytics;
+  analytics?: ConfigGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: ConfigGetResponseConsent;
+  consent?: ConfigGetResponseConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -388,9 +392,9 @@ export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(ConfigGetResponseAnalytics),
-    consent: S.optional(ConfigGetResponseConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+    consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigResponse",
@@ -434,48 +438,50 @@ export interface DefaultGetResponseSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: DefaultGetResponseSettingsContextEnricher;
+  contextEnricher?: DefaultGetResponseSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(DefaultGetResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
+    contextEnricher: S.optional(
+      S.NullOr(DefaultGetResponseSettingsContextEnricher),
+    ),
+    cookieDomain: S.optional(S.NullOr(S.String)),
+    ecommerce: S.optional(S.NullOr(S.Boolean)),
+    eventsApiPath: S.optional(S.NullOr(S.String)),
+    hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+    hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+    hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+    hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+    initPath: S.optional(S.NullOr(S.String)),
+    injectIframes: S.optional(S.NullOr(S.Boolean)),
+    mcRootPath: S.optional(S.NullOr(S.String)),
+    scriptPath: S.optional(S.NullOr(S.String)),
+    trackPath: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DefaultGetResponseSettings",
@@ -483,17 +489,17 @@ export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface DefaultGetResponseAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const DefaultGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
+    defaultPurpose: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    sessionExpTime: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "DefaultGetResponseAnalytics",
@@ -632,47 +638,49 @@ export const DefaultGetResponseConsentPurposesWithTranslationsMap =
 
 export interface DefaultGetResponseConsent {
   enabled: boolean;
-  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: DefaultGetResponseConsentPurposesMap;
+  purposes?: DefaultGetResponseConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const DefaultGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     buttonTextTranslations: S.optional(
-      DefaultGetResponseConsentButtonTextTranslations,
+      S.NullOr(DefaultGetResponseConsentButtonTextTranslations),
     ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
+    companyEmail: S.optional(S.NullOr(S.String)),
+    companyName: S.optional(S.NullOr(S.String)),
+    companyStreetAddress: S.optional(S.NullOr(S.String)),
+    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
     consentModalIntroHTMLWithTranslations: S.optional(
-      DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      S.NullOr(
+        DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      ),
     ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(DefaultGetResponseConsentPurposesMap),
+    cookieName: S.optional(S.NullOr(S.String)),
+    customCSS: S.optional(S.NullOr(S.String)),
+    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+    defaultLanguage: S.optional(S.NullOr(S.String)),
+    hideModal: S.optional(S.NullOr(S.Boolean)),
+    purposes: S.optional(S.NullOr(DefaultGetResponseConsentPurposesMap)),
     purposesWithTranslations: S.optional(
-      DefaultGetResponseConsentPurposesWithTranslationsMap,
+      S.NullOr(DefaultGetResponseConsentPurposesWithTranslationsMap),
     ),
-    tcfCompliant: S.optional(S.Boolean),
+    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DefaultGetResponseConsent",
@@ -695,11 +703,11 @@ export interface GetDefaultResponse {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: DefaultGetResponseAnalytics;
+  analytics?: DefaultGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: DefaultGetResponseConsent;
+  consent?: DefaultGetResponseConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const GetDefaultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -710,9 +718,9 @@ export const GetDefaultResponse = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(DefaultGetResponseAnalytics),
-    consent: S.optional(DefaultGetResponseConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(S.NullOr(DefaultGetResponseAnalytics)),
+    consent: S.optional(S.NullOr(DefaultGetResponseConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDefaultResponse",
@@ -792,51 +800,51 @@ export interface HistoryConfigsGetResultValueConfigSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: HistoryConfigsGetResultValueConfigSettingsContextEnricher;
+  contextEnricher?: HistoryConfigsGetResultValueConfigSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const HistoryConfigsGetResultValueConfigSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       autoInjectScript: S.Boolean,
       contextEnricher: S.optional(
-        HistoryConfigsGetResultValueConfigSettingsContextEnricher,
+        S.NullOr(HistoryConfigsGetResultValueConfigSettingsContextEnricher),
       ),
-      cookieDomain: S.optional(S.String),
-      ecommerce: S.optional(S.Boolean),
-      eventsApiPath: S.optional(S.String),
-      hideExternalReferer: S.optional(S.Boolean),
-      hideIPAddress: S.optional(S.Boolean),
-      hideQueryParams: S.optional(S.Boolean),
-      hideUserAgent: S.optional(S.Boolean),
-      initPath: S.optional(S.String),
-      injectIframes: S.optional(S.Boolean),
-      mcRootPath: S.optional(S.String),
-      scriptPath: S.optional(S.String),
-      trackPath: S.optional(S.String),
+      cookieDomain: S.optional(S.NullOr(S.String)),
+      ecommerce: S.optional(S.NullOr(S.Boolean)),
+      eventsApiPath: S.optional(S.NullOr(S.String)),
+      hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+      hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+      hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+      hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+      initPath: S.optional(S.NullOr(S.String)),
+      injectIframes: S.optional(S.NullOr(S.Boolean)),
+      mcRootPath: S.optional(S.NullOr(S.String)),
+      scriptPath: S.optional(S.NullOr(S.String)),
+      trackPath: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "HistoryConfigsGetResultValueConfigSettings",
@@ -844,18 +852,18 @@ export const HistoryConfigsGetResultValueConfigSettings =
 
 export interface HistoryConfigsGetResultValueConfigAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const HistoryConfigsGetResultValueConfigAnalytics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      defaultPurpose: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      sessionExpTime: S.optional(S.Number),
+      defaultPurpose: S.optional(S.NullOr(S.String)),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      sessionExpTime: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "HistoryConfigsGetResultValueConfigAnalytics",
@@ -997,50 +1005,56 @@ export const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMa
 
 export interface HistoryConfigsGetResultValueConfigConsent {
   enabled: boolean;
-  buttonTextTranslations?: HistoryConfigsGetResultValueConfigConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: HistoryConfigsGetResultValueConfigConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: HistoryConfigsGetResultValueConfigConsentPurposesMap;
+  purposes?: HistoryConfigsGetResultValueConfigConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const HistoryConfigsGetResultValueConfigConsent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       buttonTextTranslations: S.optional(
-        HistoryConfigsGetResultValueConfigConsentButtonTextTranslations,
+        S.NullOr(
+          HistoryConfigsGetResultValueConfigConsentButtonTextTranslations,
+        ),
       ),
-      companyEmail: S.optional(S.String),
-      companyName: S.optional(S.String),
-      companyStreetAddress: S.optional(S.String),
-      consentModalIntroHTML: S.optional(S.String),
+      companyEmail: S.optional(S.NullOr(S.String)),
+      companyName: S.optional(S.NullOr(S.String)),
+      companyStreetAddress: S.optional(S.NullOr(S.String)),
+      consentModalIntroHTML: S.optional(S.NullOr(S.String)),
       consentModalIntroHTMLWithTranslations: S.optional(
-        HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap,
+        S.NullOr(
+          HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap,
+        ),
       ),
-      cookieName: S.optional(S.String),
-      customCSS: S.optional(S.String),
-      customIntroDisclaimerDismissed: S.optional(S.Boolean),
-      defaultLanguage: S.optional(S.String),
-      hideModal: S.optional(S.Boolean),
+      cookieName: S.optional(S.NullOr(S.String)),
+      customCSS: S.optional(S.NullOr(S.String)),
+      customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+      defaultLanguage: S.optional(S.NullOr(S.String)),
+      hideModal: S.optional(S.NullOr(S.Boolean)),
       purposes: S.optional(
-        HistoryConfigsGetResultValueConfigConsentPurposesMap,
+        S.NullOr(HistoryConfigsGetResultValueConfigConsentPurposesMap),
       ),
       purposesWithTranslations: S.optional(
-        HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap,
+        S.NullOr(
+          HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap,
+        ),
       ),
-      tcfCompliant: S.optional(S.Boolean),
+      tcfCompliant: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "HistoryConfigsGetResultValueConfigConsent",
@@ -1062,11 +1076,11 @@ export interface HistoryConfigsGetResultValueConfig {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: HistoryConfigsGetResultValueConfigAnalytics;
+  analytics?: HistoryConfigsGetResultValueConfigAnalytics | null;
   /** Consent management configuration. */
-  consent?: HistoryConfigsGetResultValueConfigConsent;
+  consent?: HistoryConfigsGetResultValueConfigConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const HistoryConfigsGetResultValueConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1077,9 +1091,11 @@ export const HistoryConfigsGetResultValueConfig = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(HistoryConfigsGetResultValueConfigAnalytics),
-    consent: S.optional(HistoryConfigsGetResultValueConfigConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(
+      S.NullOr(HistoryConfigsGetResultValueConfigAnalytics),
+    ),
+    consent: S.optional(S.NullOr(HistoryConfigsGetResultValueConfigConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "HistoryConfigsGetResultValueConfig",
@@ -1259,48 +1275,50 @@ export interface ConfigUpdateRequestSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: ConfigUpdateRequestSettingsContextEnricher;
+  contextEnricher?: ConfigUpdateRequestSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const ConfigUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(ConfigUpdateRequestSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
+    contextEnricher: S.optional(
+      S.NullOr(ConfigUpdateRequestSettingsContextEnricher),
+    ),
+    cookieDomain: S.optional(S.NullOr(S.String)),
+    ecommerce: S.optional(S.NullOr(S.Boolean)),
+    eventsApiPath: S.optional(S.NullOr(S.String)),
+    hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+    hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+    hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+    hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+    initPath: S.optional(S.NullOr(S.String)),
+    injectIframes: S.optional(S.NullOr(S.Boolean)),
+    mcRootPath: S.optional(S.NullOr(S.String)),
+    scriptPath: S.optional(S.NullOr(S.String)),
+    trackPath: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConfigUpdateRequestSettings",
@@ -1308,17 +1326,17 @@ export const ConfigUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigUpdateRequestAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const ConfigUpdateRequestAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
+    defaultPurpose: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    sessionExpTime: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ConfigUpdateRequestAnalytics",
@@ -1457,47 +1475,49 @@ export const ConfigUpdateRequestConsentPurposesWithTranslationsMap =
 
 export interface ConfigUpdateRequestConsent {
   enabled: boolean;
-  buttonTextTranslations?: ConfigUpdateRequestConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: ConfigUpdateRequestConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigUpdateRequestConsentPurposesMap;
+  purposes?: ConfigUpdateRequestConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigUpdateRequestConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: ConfigUpdateRequestConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const ConfigUpdateRequestConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     buttonTextTranslations: S.optional(
-      ConfigUpdateRequestConsentButtonTextTranslations,
+      S.NullOr(ConfigUpdateRequestConsentButtonTextTranslations),
     ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
+    companyEmail: S.optional(S.NullOr(S.String)),
+    companyName: S.optional(S.NullOr(S.String)),
+    companyStreetAddress: S.optional(S.NullOr(S.String)),
+    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
     consentModalIntroHTMLWithTranslations: S.optional(
-      ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap,
+      S.NullOr(
+        ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap,
+      ),
     ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(ConfigUpdateRequestConsentPurposesMap),
+    cookieName: S.optional(S.NullOr(S.String)),
+    customCSS: S.optional(S.NullOr(S.String)),
+    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+    defaultLanguage: S.optional(S.NullOr(S.String)),
+    hideModal: S.optional(S.NullOr(S.Boolean)),
+    purposes: S.optional(S.NullOr(ConfigUpdateRequestConsentPurposesMap)),
     purposesWithTranslations: S.optional(
-      ConfigUpdateRequestConsentPurposesWithTranslationsMap,
+      S.NullOr(ConfigUpdateRequestConsentPurposesWithTranslationsMap),
     ),
-    tcfCompliant: S.optional(S.Boolean),
+    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "ConfigUpdateRequestConsent",
@@ -1521,11 +1541,11 @@ export interface PutConfigRequest {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: ConfigUpdateRequestAnalytics;
+  analytics?: ConfigUpdateRequestAnalytics | null;
   /** Consent management configuration. */
-  consent?: ConfigUpdateRequestConsent;
+  consent?: ConfigUpdateRequestConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1537,9 +1557,9 @@ export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(ConfigUpdateRequestAnalytics),
-    consent: S.optional(ConfigUpdateRequestConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(S.NullOr(ConfigUpdateRequestAnalytics)),
+    consent: S.optional(S.NullOr(ConfigUpdateRequestConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -1571,48 +1591,50 @@ export interface ConfigUpdateResponseSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: ConfigUpdateResponseSettingsContextEnricher;
+  contextEnricher?: ConfigUpdateResponseSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const ConfigUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(ConfigUpdateResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
+    contextEnricher: S.optional(
+      S.NullOr(ConfigUpdateResponseSettingsContextEnricher),
+    ),
+    cookieDomain: S.optional(S.NullOr(S.String)),
+    ecommerce: S.optional(S.NullOr(S.Boolean)),
+    eventsApiPath: S.optional(S.NullOr(S.String)),
+    hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+    hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+    hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+    hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+    initPath: S.optional(S.NullOr(S.String)),
+    injectIframes: S.optional(S.NullOr(S.Boolean)),
+    mcRootPath: S.optional(S.NullOr(S.String)),
+    scriptPath: S.optional(S.NullOr(S.String)),
+    trackPath: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConfigUpdateResponseSettings",
@@ -1620,17 +1642,17 @@ export const ConfigUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigUpdateResponseAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const ConfigUpdateResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
+    defaultPurpose: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    sessionExpTime: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ConfigUpdateResponseAnalytics",
@@ -1769,47 +1791,49 @@ export const ConfigUpdateResponseConsentPurposesWithTranslationsMap =
 
 export interface ConfigUpdateResponseConsent {
   enabled: boolean;
-  buttonTextTranslations?: ConfigUpdateResponseConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: ConfigUpdateResponseConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigUpdateResponseConsentPurposesMap;
+  purposes?: ConfigUpdateResponseConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigUpdateResponseConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: ConfigUpdateResponseConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const ConfigUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     buttonTextTranslations: S.optional(
-      ConfigUpdateResponseConsentButtonTextTranslations,
+      S.NullOr(ConfigUpdateResponseConsentButtonTextTranslations),
     ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
+    companyEmail: S.optional(S.NullOr(S.String)),
+    companyName: S.optional(S.NullOr(S.String)),
+    companyStreetAddress: S.optional(S.NullOr(S.String)),
+    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
     consentModalIntroHTMLWithTranslations: S.optional(
-      ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      S.NullOr(
+        ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      ),
     ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(ConfigUpdateResponseConsentPurposesMap),
+    cookieName: S.optional(S.NullOr(S.String)),
+    customCSS: S.optional(S.NullOr(S.String)),
+    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+    defaultLanguage: S.optional(S.NullOr(S.String)),
+    hideModal: S.optional(S.NullOr(S.Boolean)),
+    purposes: S.optional(S.NullOr(ConfigUpdateResponseConsentPurposesMap)),
     purposesWithTranslations: S.optional(
-      ConfigUpdateResponseConsentPurposesWithTranslationsMap,
+      S.NullOr(ConfigUpdateResponseConsentPurposesWithTranslationsMap),
     ),
-    tcfCompliant: S.optional(S.Boolean),
+    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "ConfigUpdateResponseConsent",
@@ -1832,11 +1856,11 @@ export interface PutConfigResponse {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: ConfigUpdateResponseAnalytics;
+  analytics?: ConfigUpdateResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: ConfigUpdateResponseConsent;
+  consent?: ConfigUpdateResponseConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1847,9 +1871,9 @@ export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(ConfigUpdateResponseAnalytics),
-    consent: S.optional(ConfigUpdateResponseConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(S.NullOr(ConfigUpdateResponseAnalytics)),
+    consent: S.optional(S.NullOr(ConfigUpdateResponseConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutConfigResponse",
@@ -1896,48 +1920,50 @@ export interface HistoryUpdateResponseSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
   /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: HistoryUpdateResponseSettingsContextEnricher;
+  contextEnricher?: HistoryUpdateResponseSettingsContextEnricher | null;
   /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
+  cookieDomain?: string | null;
   /** Ecommerce API enabled. */
-  ecommerce?: boolean;
+  ecommerce?: boolean | null;
   /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
+  eventsApiPath?: string | null;
   /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
+  hideExternalReferer?: boolean | null;
   /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
+  hideIPAddress?: boolean | null;
   /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
+  hideQueryParams?: boolean | null;
   /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
+  hideUserAgent?: boolean | null;
   /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
+  initPath?: string | null;
   /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
+  injectIframes?: boolean | null;
   /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
+  mcRootPath?: string | null;
   /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
+  scriptPath?: string | null;
   /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
+  trackPath?: string | null;
 }
 export const HistoryUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(HistoryUpdateResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
+    contextEnricher: S.optional(
+      S.NullOr(HistoryUpdateResponseSettingsContextEnricher),
+    ),
+    cookieDomain: S.optional(S.NullOr(S.String)),
+    ecommerce: S.optional(S.NullOr(S.Boolean)),
+    eventsApiPath: S.optional(S.NullOr(S.String)),
+    hideExternalReferer: S.optional(S.NullOr(S.Boolean)),
+    hideIPAddress: S.optional(S.NullOr(S.Boolean)),
+    hideQueryParams: S.optional(S.NullOr(S.Boolean)),
+    hideUserAgent: S.optional(S.NullOr(S.Boolean)),
+    initPath: S.optional(S.NullOr(S.String)),
+    injectIframes: S.optional(S.NullOr(S.Boolean)),
+    mcRootPath: S.optional(S.NullOr(S.String)),
+    scriptPath: S.optional(S.NullOr(S.String)),
+    trackPath: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HistoryUpdateResponseSettings",
@@ -1945,17 +1971,17 @@ export const HistoryUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface HistoryUpdateResponseAnalytics {
   /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
+  defaultPurpose?: string | null;
   /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Session expiration time (seconds). */
-  sessionExpTime?: number;
+  sessionExpTime?: number | null;
 }
 export const HistoryUpdateResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
+    defaultPurpose: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    sessionExpTime: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "HistoryUpdateResponseAnalytics",
@@ -2094,47 +2120,49 @@ export const HistoryUpdateResponseConsentPurposesWithTranslationsMap =
 
 export interface HistoryUpdateResponseConsent {
   enabled: boolean;
-  buttonTextTranslations?: HistoryUpdateResponseConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
+  buttonTextTranslations?: HistoryUpdateResponseConsentButtonTextTranslations | null;
+  companyEmail?: string | null;
+  companyName?: string | null;
+  companyStreetAddress?: string | null;
+  consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
+  consentModalIntroHTMLWithTranslations?: HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  cookieName?: string | null;
+  customCSS?: string | null;
+  customIntroDisclaimerDismissed?: boolean | null;
+  defaultLanguage?: string | null;
+  hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: HistoryUpdateResponseConsentPurposesMap;
+  purposes?: HistoryUpdateResponseConsentPurposesMap | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: HistoryUpdateResponseConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
+  purposesWithTranslations?: HistoryUpdateResponseConsentPurposesWithTranslationsMap | null;
+  tcfCompliant?: boolean | null;
 }
 export const HistoryUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     buttonTextTranslations: S.optional(
-      HistoryUpdateResponseConsentButtonTextTranslations,
+      S.NullOr(HistoryUpdateResponseConsentButtonTextTranslations),
     ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
+    companyEmail: S.optional(S.NullOr(S.String)),
+    companyName: S.optional(S.NullOr(S.String)),
+    companyStreetAddress: S.optional(S.NullOr(S.String)),
+    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
     consentModalIntroHTMLWithTranslations: S.optional(
-      HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      S.NullOr(
+        HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+      ),
     ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(HistoryUpdateResponseConsentPurposesMap),
+    cookieName: S.optional(S.NullOr(S.String)),
+    customCSS: S.optional(S.NullOr(S.String)),
+    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+    defaultLanguage: S.optional(S.NullOr(S.String)),
+    hideModal: S.optional(S.NullOr(S.Boolean)),
+    purposes: S.optional(S.NullOr(HistoryUpdateResponseConsentPurposesMap)),
     purposesWithTranslations: S.optional(
-      HistoryUpdateResponseConsentPurposesWithTranslationsMap,
+      S.NullOr(HistoryUpdateResponseConsentPurposesWithTranslationsMap),
     ),
-    tcfCompliant: S.optional(S.Boolean),
+    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "HistoryUpdateResponseConsent",
@@ -2157,11 +2185,11 @@ export interface PutHistoryResponse {
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
-  analytics?: HistoryUpdateResponseAnalytics;
+  analytics?: HistoryUpdateResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: HistoryUpdateResponseConsent;
+  consent?: HistoryUpdateResponseConsent | null;
   /** Single Page Application support enabled. */
-  historyChange?: boolean;
+  historyChange?: boolean | null;
 }
 export const PutHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2172,9 +2200,9 @@ export const PutHistoryResponse = /*@__PURE__*/ S.suspend(() =>
     triggers: UntypedConfigMap,
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
-    analytics: S.optional(HistoryUpdateResponseAnalytics),
-    consent: S.optional(HistoryUpdateResponseConsent),
-    historyChange: S.optional(S.Boolean),
+    analytics: S.optional(S.NullOr(HistoryUpdateResponseAnalytics)),
+    consent: S.optional(S.NullOr(HistoryUpdateResponseConsent)),
+    historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutHistoryResponse",

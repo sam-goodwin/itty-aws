@@ -109,44 +109,46 @@ export const StringList = /*@__PURE__*/ S.Array(
 
 export interface ContainerConfiguration {
   image: string;
-  instanceType?: string;
-  vcpu?: number;
-  memory?: string;
-  memoryMib?: number;
-  disk?: unknown;
-  environmentVariables?: EnvironmentVariableList;
-  secrets?: DocumentList;
-  labels?: DocumentList;
-  ports?: DocumentList;
-  network?: unknown;
-  command?: StringList;
-  entrypoint?: StringList;
-  observability?: unknown;
-  checks?: DocumentList;
-  dns?: unknown;
-  sshPublicKeyIds?: StringList;
+  instanceType?: string | null;
+  vcpu?: number | null;
+  memory?: string | null;
+  memoryMib?: number | null;
+  disk?: unknown | null;
+  environmentVariables?: EnvironmentVariableList | null;
+  secrets?: DocumentList | null;
+  labels?: DocumentList | null;
+  ports?: DocumentList | null;
+  network?: unknown | null;
+  command?: StringList | null;
+  entrypoint?: StringList | null;
+  observability?: unknown | null;
+  checks?: DocumentList | null;
+  dns?: unknown | null;
+  sshPublicKeyIds?: StringList | null;
 }
 export const ContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.String,
-    instanceType: S.optional(S.String.pipe(T.Body("instance_type"))),
-    vcpu: S.optional(S.Number),
-    memory: S.optional(S.String),
-    memoryMib: S.optional(S.Number.pipe(T.Body("memory_mib"))),
-    disk: S.optional(S.Unknown),
+    instanceType: S.optional(S.NullOr(S.String).pipe(T.Body("instance_type"))),
+    vcpu: S.optional(S.NullOr(S.Number)),
+    memory: S.optional(S.NullOr(S.String)),
+    memoryMib: S.optional(S.NullOr(S.Number).pipe(T.Body("memory_mib"))),
+    disk: S.optional(S.NullOr(S.Unknown)),
     environmentVariables: S.optional(
-      EnvironmentVariableList.pipe(T.Body("environment_variables")),
+      S.NullOr(EnvironmentVariableList).pipe(T.Body("environment_variables")),
     ),
-    secrets: S.optional(DocumentList),
-    labels: S.optional(DocumentList),
-    ports: S.optional(DocumentList),
-    network: S.optional(S.Unknown),
-    command: S.optional(StringList),
-    entrypoint: S.optional(StringList),
-    observability: S.optional(S.Unknown),
-    checks: S.optional(DocumentList),
-    dns: S.optional(S.Unknown),
-    sshPublicKeyIds: S.optional(StringList.pipe(T.Body("ssh_public_key_ids"))),
+    secrets: S.optional(S.NullOr(DocumentList)),
+    labels: S.optional(S.NullOr(DocumentList)),
+    ports: S.optional(S.NullOr(DocumentList)),
+    network: S.optional(S.NullOr(S.Unknown)),
+    command: S.optional(S.NullOr(StringList)),
+    entrypoint: S.optional(S.NullOr(StringList)),
+    observability: S.optional(S.NullOr(S.Unknown)),
+    checks: S.optional(S.NullOr(DocumentList)),
+    dns: S.optional(S.NullOr(S.Unknown)),
+    sshPublicKeyIds: S.optional(
+      S.NullOr(StringList).pipe(T.Body("ssh_public_key_ids")),
+    ),
   }),
 ).annotate({
   identifier: "ContainerConfiguration",
@@ -168,12 +170,12 @@ export interface CreateContainerApplicationRequest {
   name: string;
   maxInstances: number;
   configuration: ContainerConfiguration;
-  durableObjects?: DurableObjectsRef;
-  instances?: number;
-  schedulingPolicy?: string;
-  constraints?: unknown;
-  affinities?: unknown;
-  jobs?: boolean;
+  durableObjects?: DurableObjectsRef | null;
+  instances?: number | null;
+  schedulingPolicy?: string | null;
+  constraints?: unknown | null;
+  affinities?: unknown | null;
+  jobs?: boolean | null;
 }
 export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -182,13 +184,15 @@ export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
     maxInstances: S.Number.pipe(T.Body("max_instances")),
     configuration: ContainerConfiguration,
     durableObjects: S.optional(
-      DurableObjectsRef.pipe(T.Body("durable_objects")),
+      S.NullOr(DurableObjectsRef).pipe(T.Body("durable_objects")),
     ),
-    instances: S.optional(S.Number),
-    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
-    constraints: S.optional(S.Unknown),
-    affinities: S.optional(S.Unknown),
-    jobs: S.optional(S.Boolean),
+    instances: S.optional(S.NullOr(S.Number)),
+    schedulingPolicy: S.optional(
+      S.NullOr(S.String).pipe(T.Body("scheduling_policy")),
+    ),
+    constraints: S.optional(S.NullOr(S.Unknown)),
+    affinities: S.optional(S.NullOr(S.Unknown)),
+    jobs: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -207,10 +211,10 @@ export interface ContainerApplicationItem {
   schedulingPolicy: string;
   instances: number;
   maxInstances: number;
-  constraints?: unknown;
-  affinities?: unknown;
+  constraints?: unknown | null;
+  affinities?: unknown | null;
   configuration: ContainerConfiguration;
-  durableObjects?: DurableObjectsRef;
+  durableObjects?: DurableObjectsRef | null;
   createdAt: string;
   version: number;
 }
@@ -222,11 +226,11 @@ export const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
     schedulingPolicy: S.String.pipe(T.Body("scheduling_policy")),
     instances: S.Number,
     maxInstances: S.Number.pipe(T.Body("max_instances")),
-    constraints: S.optional(S.Unknown),
-    affinities: S.optional(S.Unknown),
+    constraints: S.optional(S.NullOr(S.Unknown)),
+    affinities: S.optional(S.NullOr(S.Unknown)),
     configuration: ContainerConfiguration,
     durableObjects: S.optional(
-      DurableObjectsRef.pipe(T.Body("durable_objects")),
+      S.NullOr(DurableObjectsRef).pipe(T.Body("durable_objects")),
     ),
     createdAt: S.String.pipe(T.Body("created_at")),
     version: S.Number,
@@ -247,9 +251,9 @@ export interface CreateContainerApplicationRolloutRequest {
   applicationId: string;
   description: string;
   strategy: string;
-  kind?: string;
-  stepPercentage?: number;
-  targetConfiguration?: ContainerConfiguration;
+  kind?: string | null;
+  stepPercentage?: number | null;
+  targetConfiguration?: ContainerConfiguration | null;
 }
 export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -258,10 +262,12 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
       applicationId: S.String.pipe(T.Label("application_id")),
       description: S.String,
       strategy: S.String,
-      kind: S.optional(S.String),
-      stepPercentage: S.optional(S.Number.pipe(T.Body("step_percentage"))),
+      kind: S.optional(S.NullOr(S.String)),
+      stepPercentage: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("step_percentage")),
+      ),
       targetConfiguration: S.optional(
-        ContainerConfiguration.pipe(T.Body("target_configuration")),
+        S.NullOr(ContainerConfiguration).pipe(T.Body("target_configuration")),
       ),
     }).pipe(
       T.Http({
@@ -441,23 +447,25 @@ export const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContainerApplicationRequest {
   accountId: string;
   applicationId: string;
-  maxInstances?: number;
-  configuration?: ContainerConfiguration;
-  instances?: number;
-  schedulingPolicy?: string;
-  constraints?: unknown;
-  affinities?: unknown;
+  maxInstances?: number | null;
+  configuration?: ContainerConfiguration | null;
+  instances?: number | null;
+  schedulingPolicy?: string | null;
+  constraints?: unknown | null;
+  affinities?: unknown | null;
 }
 export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
-    maxInstances: S.optional(S.Number.pipe(T.Body("max_instances"))),
-    configuration: S.optional(ContainerConfiguration),
-    instances: S.optional(S.Number),
-    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
-    constraints: S.optional(S.Unknown),
-    affinities: S.optional(S.Unknown),
+    maxInstances: S.optional(S.NullOr(S.Number).pipe(T.Body("max_instances"))),
+    configuration: S.optional(S.NullOr(ContainerConfiguration)),
+    instances: S.optional(S.NullOr(S.Number)),
+    schedulingPolicy: S.optional(
+      S.NullOr(S.String).pipe(T.Body("scheduling_policy")),
+    ),
+    constraints: S.optional(S.NullOr(S.Unknown)),
+    affinities: S.optional(S.NullOr(S.Unknown)),
   }).pipe(
     T.Http({
       method: "PATCH",

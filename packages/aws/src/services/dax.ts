@@ -373,10 +373,10 @@ export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SSESpecification",
 }) as any as S.Schema<SSESpecification>;
-export type ClusterEndpointEncryptionType = "NONE" | "TLS";
+export type ClusterEndpointEncryptionType = "NONE" | "TLS" | (string & {});
 export const ClusterEndpointEncryptionType = /*@__PURE__*/ S.String;
 
-export type NetworkType = "ipv4" | "ipv6" | "dual_stack";
+export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateClusterRequest {
@@ -393,8 +393,8 @@ export interface CreateClusterRequest {
   ParameterGroupName?: string;
   Tags?: Tag[];
   SSESpecification?: SSESpecification;
-  ClusterEndpointEncryptionType?: ClusterEndpointEncryptionType | (string & {});
-  NetworkType?: NetworkType | (string & {});
+  ClusterEndpointEncryptionType?: ClusterEndpointEncryptionType;
+  NetworkType?: NetworkType;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -503,7 +503,12 @@ export const ParameterGroupStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParameterGroupStatus",
 }) as any as S.Schema<ParameterGroupStatus>;
-export type SSEStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED";
+export type SSEStatus =
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "DISABLED"
+  | (string & {});
 export const SSEStatus = /*@__PURE__*/ S.String;
 
 export interface SSEDescription {
@@ -844,7 +849,7 @@ export const DescribeDefaultParametersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDefaultParametersRequest",
 }) as any as S.Schema<DescribeDefaultParametersRequest>;
-export type ParameterType = "DEFAULT" | "NODE_TYPE_SPECIFIC";
+export type ParameterType = "DEFAULT" | "NODE_TYPE_SPECIFIC" | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
 
 export interface NodeTypeSpecificValue {
@@ -860,10 +865,10 @@ export type NodeTypeSpecificValueList = NodeTypeSpecificValue[];
 export const NodeTypeSpecificValueList = /*@__PURE__*/ S.Array(
   NodeTypeSpecificValue,
 );
-export type IsModifiable = "TRUE" | "FALSE" | "CONDITIONAL";
+export type IsModifiable = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
 export const IsModifiable = /*@__PURE__*/ S.String;
 
-export type ChangeType = "IMMEDIATE" | "REQUIRES_REBOOT";
+export type ChangeType = "IMMEDIATE" | "REQUIRES_REBOOT" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -906,12 +911,16 @@ export const DescribeDefaultParametersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDefaultParametersResponse",
 }) as any as S.Schema<DescribeDefaultParametersResponse>;
-export type SourceType = "CLUSTER" | "PARAMETER_GROUP" | "SUBNET_GROUP";
+export type SourceType =
+  | "CLUSTER"
+  | "PARAMETER_GROUP"
+  | "SUBNET_GROUP"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsRequest {
   SourceName?: string;
-  SourceType?: SourceType | (string & {});
+  SourceType?: SourceType;
   StartTime?: Date;
   EndTime?: Date;
   Duration?: number;

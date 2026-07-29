@@ -93,11 +93,12 @@ export type MonitorLocalResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::Region"
-  | "AWS::EKS::Cluster";
+  | "AWS::EKS::Cluster"
+  | (string & {});
 export const MonitorLocalResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorLocalResource {
-  type: MonitorLocalResourceType | (string & {});
+  type: MonitorLocalResourceType;
   identifier: string;
 }
 export const MonitorLocalResource = /*@__PURE__*/ S.suspend(() =>
@@ -113,11 +114,12 @@ export type MonitorRemoteResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::AWSService"
-  | "AWS::Region";
+  | "AWS::Region"
+  | (string & {});
 export const MonitorRemoteResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorRemoteResource {
-  type: MonitorRemoteResourceType | (string & {});
+  type: MonitorRemoteResourceType;
   identifier: string;
 }
 export const MonitorRemoteResource = /*@__PURE__*/ S.suspend(() =>
@@ -173,7 +175,8 @@ export type MonitorStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "ERROR"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const MonitorStatus = /*@__PURE__*/ S.String;
 
 export type Iso8601Timestamp = Date;
@@ -206,12 +209,12 @@ export type TargetId = { accountId: string };
 export const TargetId = /*@__PURE__*/ S.Union([
   S.Struct({ accountId: S.String }),
 ]);
-export type TargetType = "ACCOUNT";
+export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
 export interface TargetIdentifier {
   targetId: TargetId;
-  targetType: TargetType | (string & {});
+  targetType: TargetType;
 }
 export const TargetIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetId: TargetId, targetType: TargetType }),
@@ -257,7 +260,8 @@ export type ScopeStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "DEACTIVATING"
-  | "DEACTIVATED";
+  | "DEACTIVATED"
+  | (string & {});
 export const ScopeStatus = /*@__PURE__*/ S.String;
 
 export interface CreateScopeOutput {
@@ -419,7 +423,8 @@ export type MetricUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None";
+  | "None"
+  | (string & {});
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 export type InstanceId = string;
@@ -433,7 +438,8 @@ export type DestinationCategory =
   | "UNCLASSIFIED"
   | "AMAZON_S3"
   | "AMAZON_DYNAMODB"
-  | "INTER_REGION";
+  | "INTER_REGION"
+  | (string & {});
 export const DestinationCategory = /*@__PURE__*/ S.String;
 
 export type Component = string;
@@ -731,7 +737,8 @@ export type QueryStatus =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const QueryStatus = /*@__PURE__*/ S.String;
 
 export interface GetQueryStatusMonitorTopContributorsOutput {
@@ -840,7 +847,7 @@ export type MaxResults = number;
 export interface ListMonitorsInput {
   nextToken?: string;
   maxResults?: number;
-  monitorStatus?: MonitorStatus | (string & {});
+  monitorStatus?: MonitorStatus;
 }
 export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -952,7 +959,8 @@ export type MonitorMetric =
   | "ROUND_TRIP_TIME"
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED";
+  | "DATA_TRANSFERRED"
+  | (string & {});
 export const MonitorMetric = /*@__PURE__*/ S.String;
 
 export type Limit = number;
@@ -960,8 +968,8 @@ export interface StartQueryMonitorTopContributorsInput {
   monitorName: string;
   startTime: Date;
   endTime: Date;
-  metricName: MonitorMetric | (string & {});
-  destinationCategory: DestinationCategory | (string & {});
+  metricName: MonitorMetric;
+  destinationCategory: DestinationCategory;
   limit?: number;
 }
 export const StartQueryMonitorTopContributorsInput = /*@__PURE__*/ S.suspend(
@@ -1000,15 +1008,16 @@ export const StartQueryMonitorTopContributorsOutput = /*@__PURE__*/ S.suspend(
 export type WorkloadInsightsMetric =
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED";
+  | "DATA_TRANSFERRED"
+  | (string & {});
 export const WorkloadInsightsMetric = /*@__PURE__*/ S.String;
 
 export interface StartQueryWorkloadInsightsTopContributorsInput {
   scopeId: string;
   startTime: Date;
   endTime: Date;
-  metricName: WorkloadInsightsMetric | (string & {});
-  destinationCategory: DestinationCategory | (string & {});
+  metricName: WorkloadInsightsMetric;
+  destinationCategory: DestinationCategory;
   limit?: number;
 }
 export const StartQueryWorkloadInsightsTopContributorsInput =
@@ -1047,8 +1056,8 @@ export interface StartQueryWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   startTime: Date;
   endTime: Date;
-  metricName: WorkloadInsightsMetric | (string & {});
-  destinationCategory: DestinationCategory | (string & {});
+  metricName: WorkloadInsightsMetric;
+  destinationCategory: DestinationCategory;
 }
 export const StartQueryWorkloadInsightsTopContributorsDataInput =
   /*@__PURE__*/ S.suspend(() =>

@@ -623,7 +623,10 @@ export type CustomKeyStoreNameType = string;
 export type CloudHsmClusterIdType = string;
 export type TrustAnchorCertificateType = string;
 export type KeyStorePasswordType = string | redacted.Redacted<string>;
-export type CustomKeyStoreType = "AWS_CLOUDHSM" | "EXTERNAL_KEY_STORE";
+export type CustomKeyStoreType =
+  | "AWS_CLOUDHSM"
+  | "EXTERNAL_KEY_STORE"
+  | (string & {});
 export const CustomKeyStoreType = /*@__PURE__*/ S.String;
 
 export type XksProxyUriEndpointType = string;
@@ -651,7 +654,8 @@ export const XksProxyAuthenticationCredentialType = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<XksProxyAuthenticationCredentialType>;
 export type XksProxyConnectivityType =
   | "PUBLIC_ENDPOINT"
-  | "VPC_ENDPOINT_SERVICE";
+  | "VPC_ENDPOINT_SERVICE"
+  | (string & {});
 export const XksProxyConnectivityType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomKeyStoreRequest {
@@ -659,13 +663,13 @@ export interface CreateCustomKeyStoreRequest {
   CloudHsmClusterId?: string;
   TrustAnchorCertificate?: string;
   KeyStorePassword?: string | redacted.Redacted<string>;
-  CustomKeyStoreType?: CustomKeyStoreType | (string & {});
+  CustomKeyStoreType?: CustomKeyStoreType;
   XksProxyUriEndpoint?: string;
   XksProxyUriPath?: string;
   XksProxyVpcEndpointServiceName?: string;
   XksProxyVpcEndpointServiceOwner?: string;
   XksProxyAuthenticationCredential?: XksProxyAuthenticationCredentialType;
-  XksProxyConnectivity?: XksProxyConnectivityType | (string & {});
+  XksProxyConnectivity?: XksProxyConnectivityType;
 }
 export const CreateCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -722,10 +726,11 @@ export type GrantOperation =
   | "GenerateDataKeyPairWithoutPlaintext"
   | "GenerateMac"
   | "VerifyMac"
-  | "DeriveSharedSecret";
+  | "DeriveSharedSecret"
+  | (string & {});
 export const GrantOperation = /*@__PURE__*/ S.String;
 
-export type GrantOperationList = (GrantOperation | (string & {}))[];
+export type GrantOperationList = GrantOperation[];
 export const GrantOperationList = /*@__PURE__*/ S.Array(GrantOperation);
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
@@ -759,7 +764,7 @@ export interface CreateGrantRequest {
   KeyId: string;
   GranteePrincipal?: string;
   RetiringPrincipal?: string;
-  Operations: (GrantOperation | (string & {}))[];
+  Operations: GrantOperation[];
   Constraints?: GrantConstraints;
   GrantTokens?: string[];
   Name?: string;
@@ -812,7 +817,8 @@ export type KeyUsageType =
   | "SIGN_VERIFY"
   | "ENCRYPT_DECRYPT"
   | "GENERATE_VERIFY_MAC"
-  | "KEY_AGREEMENT";
+  | "KEY_AGREEMENT"
+  | (string & {});
 export const KeyUsageType = /*@__PURE__*/ S.String;
 
 export type CustomerMasterKeySpec =
@@ -828,7 +834,8 @@ export type CustomerMasterKeySpec =
   | "HMAC_256"
   | "HMAC_384"
   | "HMAC_512"
-  | "SM2";
+  | "SM2"
+  | (string & {});
 export const CustomerMasterKeySpec = /*@__PURE__*/ S.String;
 
 export type KeySpec =
@@ -848,14 +855,16 @@ export type KeySpec =
   | "ML_DSA_44"
   | "ML_DSA_65"
   | "ML_DSA_87"
-  | "ECC_NIST_EDWARDS25519";
+  | "ECC_NIST_EDWARDS25519"
+  | (string & {});
 export const KeySpec = /*@__PURE__*/ S.String;
 
 export type OriginType =
   | "AWS_KMS"
   | "EXTERNAL"
   | "AWS_CLOUDHSM"
-  | "EXTERNAL_KEY_STORE";
+  | "EXTERNAL_KEY_STORE"
+  | (string & {});
 export const OriginType = /*@__PURE__*/ S.String;
 
 export type TagKeyType = string;
@@ -873,10 +882,10 @@ export type XksKeyIdType = string;
 export interface CreateKeyRequest {
   Policy?: string;
   Description?: string;
-  KeyUsage?: KeyUsageType | (string & {});
-  CustomerMasterKeySpec?: CustomerMasterKeySpec | (string & {});
-  KeySpec?: KeySpec | (string & {});
-  Origin?: OriginType | (string & {});
+  KeyUsage?: KeyUsageType;
+  CustomerMasterKeySpec?: CustomerMasterKeySpec;
+  KeySpec?: KeySpec;
+  Origin?: OriginType;
   CustomKeyStoreId?: string;
   BypassPolicyLockoutSafetyCheck?: boolean;
   Tags?: Tag[];
@@ -920,22 +929,25 @@ export type KeyState =
   | "PendingImport"
   | "PendingReplicaDeletion"
   | "Unavailable"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const KeyState = /*@__PURE__*/ S.String;
 
 export type ExpirationModelType =
   | "KEY_MATERIAL_EXPIRES"
-  | "KEY_MATERIAL_DOES_NOT_EXPIRE";
+  | "KEY_MATERIAL_DOES_NOT_EXPIRE"
+  | (string & {});
 export const ExpirationModelType = /*@__PURE__*/ S.String;
 
-export type KeyManagerType = "AWS" | "CUSTOMER";
+export type KeyManagerType = "AWS" | "CUSTOMER" | (string & {});
 export const KeyManagerType = /*@__PURE__*/ S.String;
 
 export type EncryptionAlgorithmSpec =
   | "SYMMETRIC_DEFAULT"
   | "RSAES_OAEP_SHA_1"
   | "RSAES_OAEP_SHA_256"
-  | "SM2PKE";
+  | "SM2PKE"
+  | (string & {});
 export const EncryptionAlgorithmSpec = /*@__PURE__*/ S.String;
 
 export type EncryptionAlgorithmSpecList = EncryptionAlgorithmSpec[];
@@ -955,20 +967,21 @@ export type SigningAlgorithmSpec =
   | "SM2DSA"
   | "ML_DSA_SHAKE_256"
   | "ED25519_SHA_512"
-  | "ED25519_PH_SHA_512";
+  | "ED25519_PH_SHA_512"
+  | (string & {});
 export const SigningAlgorithmSpec = /*@__PURE__*/ S.String;
 
 export type SigningAlgorithmSpecList = SigningAlgorithmSpec[];
 export const SigningAlgorithmSpecList =
   /*@__PURE__*/ S.Array(SigningAlgorithmSpec);
-export type KeyAgreementAlgorithmSpec = "ECDH";
+export type KeyAgreementAlgorithmSpec = "ECDH" | (string & {});
 export const KeyAgreementAlgorithmSpec = /*@__PURE__*/ S.String;
 
 export type KeyAgreementAlgorithmSpecList = KeyAgreementAlgorithmSpec[];
 export const KeyAgreementAlgorithmSpecList = /*@__PURE__*/ S.Array(
   KeyAgreementAlgorithmSpec,
 );
-export type MultiRegionKeyType = "PRIMARY" | "REPLICA";
+export type MultiRegionKeyType = "PRIMARY" | "REPLICA" | (string & {});
 export const MultiRegionKeyType = /*@__PURE__*/ S.String;
 
 export type RegionType = string;
@@ -1000,7 +1013,8 @@ export type MacAlgorithmSpec =
   | "HMAC_SHA_224"
   | "HMAC_SHA_256"
   | "HMAC_SHA_384"
-  | "HMAC_SHA_512";
+  | "HMAC_SHA_512"
+  | (string & {});
 export const MacAlgorithmSpec = /*@__PURE__*/ S.String;
 
 export type MacAlgorithmSpecList = MacAlgorithmSpec[];
@@ -1081,12 +1095,12 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyResponse",
 }) as any as S.Schema<CreateKeyResponse>;
 export type CiphertextType = Uint8Array;
-export type KeyEncryptionMechanism = "RSAES_OAEP_SHA_256";
+export type KeyEncryptionMechanism = "RSAES_OAEP_SHA_256" | (string & {});
 export const KeyEncryptionMechanism = /*@__PURE__*/ S.String;
 
 export type AttestationDocumentType = Uint8Array;
 export interface RecipientInfo {
-  KeyEncryptionAlgorithm?: KeyEncryptionMechanism | (string & {});
+  KeyEncryptionAlgorithm?: KeyEncryptionMechanism;
   AttestationDocument?: Uint8Array;
 }
 export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
@@ -1095,20 +1109,20 @@ export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
     AttestationDocument: S.optional(T.Blob),
   }),
 ).annotate({ identifier: "RecipientInfo" }) as any as S.Schema<RecipientInfo>;
-export type DryRunModifierType = "IGNORE_CIPHERTEXT";
+export type DryRunModifierType = "IGNORE_CIPHERTEXT" | (string & {});
 export const DryRunModifierType = /*@__PURE__*/ S.String;
 
-export type DryRunModifierList = (DryRunModifierType | (string & {}))[];
+export type DryRunModifierList = DryRunModifierType[];
 export const DryRunModifierList = /*@__PURE__*/ S.Array(DryRunModifierType);
 export interface DecryptRequest {
   CiphertextBlob?: Uint8Array;
   EncryptionContext?: { [key: string]: string | undefined };
   GrantTokens?: string[];
   KeyId?: string;
-  EncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
+  EncryptionAlgorithm?: EncryptionAlgorithmSpec;
   Recipient?: RecipientInfo;
   DryRun?: boolean;
-  DryRunModifiers?: (DryRunModifierType | (string & {}))[];
+  DryRunModifiers?: DryRunModifierType[];
 }
 export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1234,7 +1248,7 @@ export const DeleteImportedKeyMaterialResponse = /*@__PURE__*/ S.suspend(() =>
 export type PublicKeyType = Uint8Array;
 export interface DeriveSharedSecretRequest {
   KeyId: string;
-  KeyAgreementAlgorithm: KeyAgreementAlgorithmSpec | (string & {});
+  KeyAgreementAlgorithm: KeyAgreementAlgorithmSpec;
   PublicKey: Uint8Array;
   GrantTokens?: string[];
   DryRun?: boolean;
@@ -1313,7 +1327,8 @@ export type ConnectionStateType =
   | "CONNECTING"
   | "FAILED"
   | "DISCONNECTED"
-  | "DISCONNECTING";
+  | "DISCONNECTING"
+  | (string & {});
 export const ConnectionStateType = /*@__PURE__*/ S.String;
 
 export type ConnectionErrorCodeType =
@@ -1334,7 +1349,8 @@ export type ConnectionErrorCodeType =
   | "XKS_PROXY_INVALID_CONFIGURATION"
   | "XKS_VPC_ENDPOINT_SERVICE_INVALID_CONFIGURATION"
   | "XKS_PROXY_TIMED_OUT"
-  | "XKS_PROXY_INVALID_TLS_CONFIGURATION";
+  | "XKS_PROXY_INVALID_TLS_CONFIGURATION"
+  | (string & {});
 export const ConnectionErrorCodeType = /*@__PURE__*/ S.String;
 
 export interface XksProxyConfigurationType {
@@ -1558,7 +1574,7 @@ export interface EncryptRequest {
   Plaintext: Uint8Array | redacted.Redacted<Uint8Array>;
   EncryptionContext?: { [key: string]: string | undefined };
   GrantTokens?: string[];
-  EncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
+  EncryptionAlgorithm?: EncryptionAlgorithmSpec;
   DryRun?: boolean;
 }
 export const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1596,14 +1612,14 @@ export const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptResponse",
 }) as any as S.Schema<EncryptResponse>;
 export type NumberOfBytesType = number;
-export type DataKeySpec = "AES_256" | "AES_128";
+export type DataKeySpec = "AES_256" | "AES_128" | (string & {});
 export const DataKeySpec = /*@__PURE__*/ S.String;
 
 export interface GenerateDataKeyRequest {
   KeyId: string;
   EncryptionContext?: { [key: string]: string | undefined };
   NumberOfBytes?: number;
-  KeySpec?: DataKeySpec | (string & {});
+  KeySpec?: DataKeySpec;
   GrantTokens?: string[];
   Recipient?: RecipientInfo;
   DryRun?: boolean;
@@ -1658,13 +1674,14 @@ export type DataKeyPairSpec =
   | "ECC_NIST_P521"
   | "ECC_SECG_P256K1"
   | "SM2"
-  | "ECC_NIST_EDWARDS25519";
+  | "ECC_NIST_EDWARDS25519"
+  | (string & {});
 export const DataKeyPairSpec = /*@__PURE__*/ S.String;
 
 export interface GenerateDataKeyPairRequest {
   EncryptionContext?: { [key: string]: string | undefined };
   KeyId: string;
-  KeyPairSpec: DataKeyPairSpec | (string & {});
+  KeyPairSpec: DataKeyPairSpec;
   GrantTokens?: string[];
   Recipient?: RecipientInfo;
   DryRun?: boolean;
@@ -1716,7 +1733,7 @@ export const GenerateDataKeyPairResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GenerateDataKeyPairWithoutPlaintextRequest {
   EncryptionContext?: { [key: string]: string | undefined };
   KeyId: string;
-  KeyPairSpec: DataKeyPairSpec | (string & {});
+  KeyPairSpec: DataKeyPairSpec;
   GrantTokens?: string[];
   DryRun?: boolean;
 }
@@ -1764,7 +1781,7 @@ export const GenerateDataKeyPairWithoutPlaintextResponse =
 export interface GenerateDataKeyWithoutPlaintextRequest {
   KeyId: string;
   EncryptionContext?: { [key: string]: string | undefined };
-  KeySpec?: DataKeySpec | (string & {});
+  KeySpec?: DataKeySpec;
   NumberOfBytes?: number;
   GrantTokens?: string[];
   DryRun?: boolean;
@@ -1810,7 +1827,7 @@ export const GenerateDataKeyWithoutPlaintextResponse = /*@__PURE__*/ S.suspend(
 export interface GenerateMacRequest {
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
   KeyId: string;
-  MacAlgorithm: MacAlgorithmSpec | (string & {});
+  MacAlgorithm: MacAlgorithmSpec;
   GrantTokens?: string[];
   DryRun?: boolean;
 }
@@ -1915,7 +1932,8 @@ export type KeyLastUsageTrackingOperation =
   | "ReEncrypt"
   | "Sign"
   | "Verify"
-  | "VerifyMac";
+  | "VerifyMac"
+  | (string & {});
 export const KeyLastUsageTrackingOperation = /*@__PURE__*/ S.String;
 
 export type CloudTrailEventIdType = string;
@@ -2034,16 +2052,22 @@ export type AlgorithmSpec =
   | "RSAES_OAEP_SHA_256"
   | "RSA_AES_KEY_WRAP_SHA_1"
   | "RSA_AES_KEY_WRAP_SHA_256"
-  | "SM2PKE";
+  | "SM2PKE"
+  | (string & {});
 export const AlgorithmSpec = /*@__PURE__*/ S.String;
 
-export type WrappingKeySpec = "RSA_2048" | "RSA_3072" | "RSA_4096" | "SM2";
+export type WrappingKeySpec =
+  | "RSA_2048"
+  | "RSA_3072"
+  | "RSA_4096"
+  | "SM2"
+  | (string & {});
 export const WrappingKeySpec = /*@__PURE__*/ S.String;
 
 export interface GetParametersForImportRequest {
   KeyId: string;
-  WrappingAlgorithm: AlgorithmSpec | (string & {});
-  WrappingKeySpec: WrappingKeySpec | (string & {});
+  WrappingAlgorithm: AlgorithmSpec;
+  WrappingKeySpec: WrappingKeySpec;
 }
 export const GetParametersForImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2125,7 +2149,10 @@ export const GetPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPublicKeyResponse",
 }) as any as S.Schema<GetPublicKeyResponse>;
-export type ImportType = "NEW_KEY_MATERIAL" | "EXISTING_KEY_MATERIAL";
+export type ImportType =
+  | "NEW_KEY_MATERIAL"
+  | "EXISTING_KEY_MATERIAL"
+  | (string & {});
 export const ImportType = /*@__PURE__*/ S.String;
 
 export type KeyMaterialDescriptionType = string;
@@ -2134,8 +2161,8 @@ export interface ImportKeyMaterialRequest {
   ImportToken: Uint8Array;
   EncryptedKeyMaterial: Uint8Array;
   ValidTo?: Date;
-  ExpirationModel?: ExpirationModelType | (string & {});
-  ImportType?: ImportType | (string & {});
+  ExpirationModel?: ExpirationModelType;
+  ImportType?: ImportType;
   KeyMaterialDescription?: string;
   KeyMaterialId?: string;
 }
@@ -2347,12 +2374,15 @@ export const ListKeyPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKeyPoliciesResponse",
 }) as any as S.Schema<ListKeyPoliciesResponse>;
-export type IncludeKeyMaterial = "ALL_KEY_MATERIAL" | "ROTATIONS_ONLY";
+export type IncludeKeyMaterial =
+  | "ALL_KEY_MATERIAL"
+  | "ROTATIONS_ONLY"
+  | (string & {});
 export const IncludeKeyMaterial = /*@__PURE__*/ S.String;
 
 export interface ListKeyRotationsRequest {
   KeyId: string;
-  IncludeKeyMaterial?: IncludeKeyMaterial | (string & {});
+  IncludeKeyMaterial?: IncludeKeyMaterial;
   Limit?: number;
   Marker?: string;
 }
@@ -2376,17 +2406,18 @@ export const ListKeyRotationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKeyRotationsRequest",
 }) as any as S.Schema<ListKeyRotationsRequest>;
-export type ImportState = "IMPORTED" | "PENDING_IMPORT";
+export type ImportState = "IMPORTED" | "PENDING_IMPORT" | (string & {});
 export const ImportState = /*@__PURE__*/ S.String;
 
 export type KeyMaterialState =
   | "NON_CURRENT"
   | "CURRENT"
   | "PENDING_ROTATION"
-  | "PENDING_MULTI_REGION_IMPORT_AND_ROTATION";
+  | "PENDING_MULTI_REGION_IMPORT_AND_ROTATION"
+  | (string & {});
 export const KeyMaterialState = /*@__PURE__*/ S.String;
 
-export type RotationType = "AUTOMATIC" | "ON_DEMAND";
+export type RotationType = "AUTOMATIC" | "ON_DEMAND" | (string & {});
 export const RotationType = /*@__PURE__*/ S.String;
 
 export interface RotationsListEntry {
@@ -2575,11 +2606,11 @@ export interface ReEncryptRequest {
   SourceKeyId?: string;
   DestinationKeyId: string;
   DestinationEncryptionContext?: { [key: string]: string | undefined };
-  SourceEncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
-  DestinationEncryptionAlgorithm?: EncryptionAlgorithmSpec | (string & {});
+  SourceEncryptionAlgorithm?: EncryptionAlgorithmSpec;
+  DestinationEncryptionAlgorithm?: EncryptionAlgorithmSpec;
   GrantTokens?: string[];
   DryRun?: boolean;
-  DryRunModifiers?: (DryRunModifierType | (string & {}))[];
+  DryRunModifiers?: DryRunModifierType[];
 }
 export const ReEncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2796,15 +2827,15 @@ export const ScheduleKeyDeletionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduleKeyDeletionResponse",
 }) as any as S.Schema<ScheduleKeyDeletionResponse>;
-export type MessageType = "RAW" | "DIGEST" | "EXTERNAL_MU";
+export type MessageType = "RAW" | "DIGEST" | "EXTERNAL_MU" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
 
 export interface SignRequest {
   KeyId: string;
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
-  MessageType?: MessageType | (string & {});
+  MessageType?: MessageType;
   GrantTokens?: string[];
-  SigningAlgorithm: SigningAlgorithmSpec | (string & {});
+  SigningAlgorithm: SigningAlgorithmSpec;
   DryRun?: boolean;
 }
 export const SignRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2926,7 +2957,7 @@ export interface UpdateCustomKeyStoreRequest {
   XksProxyVpcEndpointServiceName?: string;
   XksProxyVpcEndpointServiceOwner?: string;
   XksProxyAuthenticationCredential?: XksProxyAuthenticationCredentialType;
-  XksProxyConnectivity?: XksProxyConnectivityType | (string & {});
+  XksProxyConnectivity?: XksProxyConnectivityType;
 }
 export const UpdateCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3015,9 +3046,9 @@ export const UpdatePrimaryRegionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyRequest {
   KeyId: string;
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
-  MessageType?: MessageType | (string & {});
+  MessageType?: MessageType;
   Signature: Uint8Array;
-  SigningAlgorithm: SigningAlgorithmSpec | (string & {});
+  SigningAlgorithm: SigningAlgorithmSpec;
   GrantTokens?: string[];
   DryRun?: boolean;
 }
@@ -3057,7 +3088,7 @@ export const VerifyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyMacRequest {
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
   KeyId: string;
-  MacAlgorithm: MacAlgorithmSpec | (string & {});
+  MacAlgorithm: MacAlgorithmSpec;
   Mac: Uint8Array;
   GrantTokens?: string[];
   DryRun?: boolean;

@@ -53,17 +53,17 @@ export interface CreateControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
   /** Allow out of region access */
-  allowOutOfRegionAccess?: boolean;
+  allowOutOfRegionAccess?: boolean | null;
   /** Name of the region. */
-  regions?: string;
+  regions?: string | null;
 }
 export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowOutOfRegionAccess: S.optional(
-      S.Boolean.pipe(T.Body("allow_out_of_region_access")),
+      S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
     ),
-    regions: S.optional(S.String),
+    regions: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -80,16 +80,16 @@ export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateControlCmbConfigResponse {
   /** Allow out of region access */
-  allowOutOfRegionAccess?: boolean;
+  allowOutOfRegionAccess?: boolean | null;
   /** Name of the region. */
-  regions?: string;
+  regions?: string | null;
 }
 export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOutOfRegionAccess: S.optional(
-      S.Boolean.pipe(T.Body("allow_out_of_region_access")),
+      S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
     ),
-    regions: S.optional(S.String),
+    regions: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlCmbConfigResponse",
@@ -99,12 +99,12 @@ export interface CreateControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
   /** The log retention flag for Logpull API. */
-  flag?: boolean;
+  flag?: boolean | null;
 }
 export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    flag: S.optional(S.Boolean),
+    flag: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -121,11 +121,11 @@ export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateControlRetentionResponse {
   /** The log retention flag for Logpull API. */
-  flag?: boolean;
+  flag?: boolean | null;
 }
 export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flag: S.optional(S.Boolean),
+    flag: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlRetentionResponse",
@@ -159,14 +159,14 @@ export interface CreateLogExplorerDatasetForAccountRequest {
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
   /** Controls which fields the API ingests. Defaults to all available */
-  fields?: LogExplorerDatasetsCreateRequestFieldsList;
+  fields?: LogExplorerDatasetsCreateRequestFieldsList | null;
 }
 export const CreateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       dataset: S.String,
-      fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+      fields: S.optional(S.NullOr(LogExplorerDatasetsCreateRequestFieldsList)),
     })
       .pipe(
         T.Http({
@@ -224,7 +224,7 @@ export interface CreateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
   /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsCreateResponseFieldsList;
+  fields?: LogExplorerDatasetsCreateResponseFieldsList | null;
 }
 export const CreateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -237,7 +237,7 @@ export const CreateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsCreateResponseFieldsList),
+    fields: S.optional(S.NullOr(LogExplorerDatasetsCreateResponseFieldsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLogExplorerDatasetResponse",
@@ -249,14 +249,14 @@ export interface CreateLogExplorerDatasetForZoneRequest {
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
   /** Controls which fields the API ingests. Defaults to all available */
-  fields?: LogExplorerDatasetsCreateRequestFieldsList;
+  fields?: LogExplorerDatasetsCreateRequestFieldsList | null;
 }
 export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       dataset: S.String,
-      fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+      fields: S.optional(S.NullOr(LogExplorerDatasetsCreateRequestFieldsList)),
     })
       .pipe(
         T.Http({
@@ -320,16 +320,16 @@ export const GetControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetControlCmbConfigResponse {
   /** Allow out of region access */
-  allowOutOfRegionAccess?: boolean;
+  allowOutOfRegionAccess?: boolean | null;
   /** Name of the region. */
-  regions?: string;
+  regions?: string | null;
 }
 export const GetControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOutOfRegionAccess: S.optional(
-      S.Boolean.pipe(T.Body("allow_out_of_region_access")),
+      S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
     ),
-    regions: S.optional(S.String),
+    regions: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlCmbConfigResponse",
@@ -358,11 +358,11 @@ export const GetControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetControlRetentionResponse {
   /** The log retention flag for Logpull API. */
-  flag?: boolean;
+  flag?: boolean | null;
 }
 export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flag: S.optional(S.Boolean),
+    flag: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlRetentionResponse",
@@ -433,7 +433,7 @@ export interface GetLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
   /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsGetResponseFieldsList;
+  fields?: LogExplorerDatasetsGetResponseFieldsList | null;
 }
 export const GetLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -446,7 +446,7 @@ export const GetLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsGetResponseFieldsList),
+    fields: S.optional(S.NullOr(LogExplorerDatasetsGetResponseFieldsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetResponse",
@@ -585,11 +585,11 @@ export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedFieldResponse {
-  key?: string;
+  key?: string | null;
 }
 export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    key: S.optional(S.String),
+    key: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedFieldResponse",
@@ -849,7 +849,7 @@ export interface UpdateLogExplorerDatasetForAccountRequest {
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
   /** Controls which fields the API ingests after the update. Defaults */
-  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+  fields?: LogExplorerDatasetsUpdateRequestFieldsList | null;
 }
 export const UpdateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -857,7 +857,7 @@ export const UpdateLogExplorerDatasetForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
-      fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+      fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateRequestFieldsList)),
     })
       .pipe(
         T.Http({
@@ -915,7 +915,7 @@ export interface UpdateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
   /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsUpdateResponseFieldsList;
+  fields?: LogExplorerDatasetsUpdateResponseFieldsList | null;
 }
 export const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -928,7 +928,7 @@ export const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsUpdateResponseFieldsList),
+    fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateResponseFieldsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLogExplorerDatasetResponse",
@@ -941,7 +941,7 @@ export interface UpdateLogExplorerDatasetForZoneRequest {
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
   /** Controls which fields the API ingests after the update. Defaults */
-  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+  fields?: LogExplorerDatasetsUpdateRequestFieldsList | null;
 }
 export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -949,7 +949,7 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
-      fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+      fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateRequestFieldsList)),
     })
       .pipe(
         T.Http({

@@ -303,7 +303,8 @@ export type PresetSpeke20Audio =
   | "PRESET-AUDIO-2"
   | "PRESET-AUDIO-3"
   | "SHARED"
-  | "UNENCRYPTED";
+  | "UNENCRYPTED"
+  | (string & {});
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
 
 export type PresetSpeke20Video =
@@ -316,12 +317,13 @@ export type PresetSpeke20Video =
   | "PRESET-VIDEO-7"
   | "PRESET-VIDEO-8"
   | "SHARED"
-  | "UNENCRYPTED";
+  | "UNENCRYPTED"
+  | (string & {});
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
-  PresetSpeke20Audio?: PresetSpeke20Audio | (string & {});
-  PresetSpeke20Video?: PresetSpeke20Video | (string & {});
+  PresetSpeke20Audio?: PresetSpeke20Audio;
+  PresetSpeke20Video?: PresetSpeke20Video;
 }
 export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -378,19 +380,24 @@ export const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "CmafEncryption" }) as any as S.Schema<CmafEncryption>;
-export type AdMarkers = "NONE" | "SCTE35_ENHANCED" | "PASSTHROUGH";
+export type AdMarkers =
+  | "NONE"
+  | "SCTE35_ENHANCED"
+  | "PASSTHROUGH"
+  | (string & {});
 export const AdMarkers = /*@__PURE__*/ S.String;
 
 export type StreamOrder =
   | "ORIGINAL"
   | "VIDEO_BITRATE_ASCENDING"
-  | "VIDEO_BITRATE_DESCENDING";
+  | "VIDEO_BITRATE_DESCENDING"
+  | (string & {});
 export const StreamOrder = /*@__PURE__*/ S.String;
 
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
-  StreamOrder?: StreamOrder | (string & {});
+  StreamOrder?: StreamOrder;
 }
 export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -408,7 +415,7 @@ export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamSelection",
 }) as any as S.Schema<StreamSelection>;
 export interface HlsManifest {
-  AdMarkers?: AdMarkers | (string & {});
+  AdMarkers?: AdMarkers;
   IncludeIframeOnlyStream?: boolean;
   ManifestName?: string;
   ProgramDateTimeIntervalSeconds?: number;
@@ -458,21 +465,21 @@ export const CmafPackage = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "CmafPackage" }) as any as S.Schema<CmafPackage>;
-export type ManifestLayout = "FULL" | "COMPACT";
+export type ManifestLayout = "FULL" | "COMPACT" | (string & {});
 export const ManifestLayout = /*@__PURE__*/ S.String;
 
-export type Profile = "NONE" | "HBBTV_1_5";
+export type Profile = "NONE" | "HBBTV_1_5" | (string & {});
 export const Profile = /*@__PURE__*/ S.String;
 
-export type ScteMarkersSource = "SEGMENTS" | "MANIFEST";
+export type ScteMarkersSource = "SEGMENTS" | "MANIFEST" | (string & {});
 export const ScteMarkersSource = /*@__PURE__*/ S.String;
 
 export interface DashManifest {
-  ManifestLayout?: ManifestLayout | (string & {});
+  ManifestLayout?: ManifestLayout;
   ManifestName?: string;
   MinBufferTimeSeconds?: number;
-  Profile?: Profile | (string & {});
-  ScteMarkersSource?: ScteMarkersSource | (string & {});
+  Profile?: Profile;
+  ScteMarkersSource?: ScteMarkersSource;
   StreamSelection?: StreamSelection;
 }
 export const DashManifest = /*@__PURE__*/ S.suspend(() =>
@@ -504,20 +511,18 @@ export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
   ),
 ).annotate({ identifier: "DashEncryption" }) as any as S.Schema<DashEncryption>;
-export type __PeriodTriggersElement = "ADS";
+export type __PeriodTriggersElement = "ADS" | (string & {});
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
 
-export type __listOf__PeriodTriggersElement = (
-  | __PeriodTriggersElement
-  | (string & {})
-)[];
+export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
 export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
   __PeriodTriggersElement,
 );
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
-  | "NUMBER_WITH_DURATION";
+  | "NUMBER_WITH_DURATION"
+  | (string & {});
 export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
 
 export interface DashPackage {
@@ -525,9 +530,9 @@ export interface DashPackage {
   Encryption?: DashEncryption;
   IncludeEncoderConfigurationInSegments?: boolean;
   IncludeIframeOnlyStream?: boolean;
-  PeriodTriggers?: (__PeriodTriggersElement | (string & {}))[];
+  PeriodTriggers?: __PeriodTriggersElement[];
   SegmentDurationSeconds?: number;
-  SegmentTemplateFormat?: SegmentTemplateFormat | (string & {});
+  SegmentTemplateFormat?: SegmentTemplateFormat;
 }
 export const DashPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -551,12 +556,12 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
-export type EncryptionMethod = "AES_128" | "SAMPLE_AES";
+export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
 export const EncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
-  EncryptionMethod?: EncryptionMethod | (string & {});
+  EncryptionMethod?: EncryptionMethod;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
 export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>

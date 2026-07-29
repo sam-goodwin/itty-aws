@@ -211,7 +211,11 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MapOfStringToString),
   }),
 ).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
-export type AuthorizerType = "TOKEN" | "REQUEST" | "COGNITO_USER_POOLS";
+export type AuthorizerType =
+  | "TOKEN"
+  | "REQUEST"
+  | "COGNITO_USER_POOLS"
+  | (string & {});
 export const AuthorizerType = /*@__PURE__*/ S.String;
 
 export type ProviderARN = string;
@@ -220,7 +224,7 @@ export const ListOfARNs = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAuthorizerRequest {
   restApiId: string;
   name: string;
-  type: AuthorizerType | (string & {});
+  type: AuthorizerType;
   providerARNs?: string[];
   authType?: string;
   authorizerUri?: string;
@@ -332,7 +336,8 @@ export type CacheClusterSize =
   | "28.4"
   | "58.2"
   | "118"
-  | "237";
+  | "237"
+  | (string & {});
 export const CacheClusterSize = /*@__PURE__*/ S.String;
 
 export interface DeploymentCanarySettings {
@@ -355,7 +360,7 @@ export interface CreateDeploymentRequest {
   stageDescription?: string;
   description?: string;
   cacheClusterEnabled?: boolean;
-  cacheClusterSize?: CacheClusterSize | (string & {});
+  cacheClusterSize?: CacheClusterSize;
   variables?: { [key: string]: string | undefined };
   canarySettings?: DeploymentCanarySettings;
   tracingEnabled?: boolean;
@@ -434,12 +439,13 @@ export type DocumentationPartType =
   | "REQUEST_BODY"
   | "RESPONSE"
   | "RESPONSE_HEADER"
-  | "RESPONSE_BODY";
+  | "RESPONSE_BODY"
+  | (string & {});
 export const DocumentationPartType = /*@__PURE__*/ S.String;
 
 export type DocumentationPartLocationStatusCode = string;
 export interface DocumentationPartLocation {
-  type: DocumentationPartType | (string & {});
+  type: DocumentationPartType;
   path?: string;
   method?: string;
   statusCode?: string;
@@ -538,17 +544,17 @@ export const DocumentationVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentationVersion",
 }) as any as S.Schema<DocumentationVersion>;
-export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE";
+export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
 
-export type ListOfEndpointType = (EndpointType | (string & {}))[];
+export type ListOfEndpointType = EndpointType[];
 export const ListOfEndpointType = /*@__PURE__*/ S.Array(EndpointType);
-export type IpAddressType = "ipv4" | "dualstack";
+export type IpAddressType = "ipv4" | "dualstack" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface EndpointConfiguration {
-  types?: (EndpointType | (string & {}))[];
-  ipAddressType?: IpAddressType | (string & {});
+  types?: EndpointType[];
+  ipAddressType?: IpAddressType;
   vpcEndpointIds?: string[];
 }
 export const EndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -572,10 +578,11 @@ export type SecurityPolicy =
   | "SecurityPolicy_TLS13_1_2_2021_06"
   | "SecurityPolicy_TLS13_2025_EDGE"
   | "SecurityPolicy_TLS12_PFS_2025_EDGE"
-  | "SecurityPolicy_TLS12_2018_EDGE";
+  | "SecurityPolicy_TLS12_2018_EDGE"
+  | (string & {});
 export const SecurityPolicy = /*@__PURE__*/ S.String;
 
-export type EndpointAccessMode = "BASIC" | "STRICT";
+export type EndpointAccessMode = "BASIC" | "STRICT" | (string & {});
 export const EndpointAccessMode = /*@__PURE__*/ S.String;
 
 export interface MutualTlsAuthenticationInput {
@@ -593,7 +600,8 @@ export const MutualTlsAuthenticationInput = /*@__PURE__*/ S.suspend(() =>
 export type RoutingMode =
   | "BASE_PATH_MAPPING_ONLY"
   | "ROUTING_RULE_ONLY"
-  | "ROUTING_RULE_THEN_BASE_PATH_MAPPING";
+  | "ROUTING_RULE_THEN_BASE_PATH_MAPPING"
+  | (string & {});
 export const RoutingMode = /*@__PURE__*/ S.String;
 
 export interface CreateDomainNameRequest {
@@ -607,12 +615,12 @@ export interface CreateDomainNameRequest {
   regionalCertificateArn?: string;
   endpointConfiguration?: EndpointConfiguration;
   tags?: { [key: string]: string | undefined };
-  securityPolicy?: SecurityPolicy | (string & {});
-  endpointAccessMode?: EndpointAccessMode | (string & {});
+  securityPolicy?: SecurityPolicy;
+  endpointAccessMode?: EndpointAccessMode;
   mutualTlsAuthentication?: MutualTlsAuthenticationInput;
   ownershipVerificationCertificateArn?: string;
   policy?: string;
-  routingMode?: RoutingMode | (string & {});
+  routingMode?: RoutingMode;
 }
 export const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -651,7 +659,8 @@ export type DomainNameStatus =
   | "PENDING"
   | "PENDING_CERTIFICATE_REIMPORT"
   | "PENDING_OWNERSHIP_VERIFICATION"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DomainNameStatus = /*@__PURE__*/ S.String;
 
 export interface MutualTlsAuthentication {
@@ -722,12 +731,12 @@ export const DomainName = /*@__PURE__*/ S.suspend(() =>
     routingMode: S.optional(RoutingMode),
   }),
 ).annotate({ identifier: "DomainName" }) as any as S.Schema<DomainName>;
-export type AccessAssociationSourceType = "VPCE";
+export type AccessAssociationSourceType = "VPCE" | (string & {});
 export const AccessAssociationSourceType = /*@__PURE__*/ S.String;
 
 export interface CreateDomainNameAccessAssociationRequest {
   domainNameArn: string;
-  accessAssociationSourceType: AccessAssociationSourceType | (string & {});
+  accessAssociationSourceType: AccessAssociationSourceType;
   accessAssociationSource: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -910,13 +919,17 @@ export type IntegrationType =
   | "AWS"
   | "MOCK"
   | "HTTP_PROXY"
-  | "AWS_PROXY";
+  | "AWS_PROXY"
+  | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
 
-export type ConnectionType = "INTERNET" | "VPC_LINK";
+export type ConnectionType = "INTERNET" | "VPC_LINK" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
-export type ContentHandlingStrategy = "CONVERT_TO_BINARY" | "CONVERT_TO_TEXT";
+export type ContentHandlingStrategy =
+  | "CONVERT_TO_BINARY"
+  | "CONVERT_TO_TEXT"
+  | (string & {});
 export const ContentHandlingStrategy = /*@__PURE__*/ S.String;
 
 export interface IntegrationResponse {
@@ -950,7 +963,7 @@ export interface TlsConfig {
 export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ insecureSkipVerification: S.optional(S.Boolean) }),
 ).annotate({ identifier: "TlsConfig" }) as any as S.Schema<TlsConfig>;
-export type ResponseTransferMode = "BUFFERED" | "STREAM";
+export type ResponseTransferMode = "BUFFERED" | "STREAM" | (string & {});
 export const ResponseTransferMode = /*@__PURE__*/ S.String;
 
 export interface Integration {
@@ -1042,7 +1055,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     resourceMethods: S.optional(MapOfMethod),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-export type ApiKeySourceType = "HEADER" | "AUTHORIZER";
+export type ApiKeySourceType = "HEADER" | "AUTHORIZER" | (string & {});
 export const ApiKeySourceType = /*@__PURE__*/ S.String;
 
 export interface CreateRestApiRequest {
@@ -1052,13 +1065,13 @@ export interface CreateRestApiRequest {
   cloneFrom?: string;
   binaryMediaTypes?: string[];
   minimumCompressionSize?: number;
-  apiKeySource?: ApiKeySourceType | (string & {});
+  apiKeySource?: ApiKeySourceType;
   endpointConfiguration?: EndpointConfiguration;
   policy?: string;
   tags?: { [key: string]: string | undefined };
   disableExecuteApiEndpoint?: boolean;
-  securityPolicy?: SecurityPolicy | (string & {});
-  endpointAccessMode?: EndpointAccessMode | (string & {});
+  securityPolicy?: SecurityPolicy;
+  endpointAccessMode?: EndpointAccessMode;
 }
 export const CreateRestApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1088,7 +1101,12 @@ export const CreateRestApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRestApiRequest",
 }) as any as S.Schema<CreateRestApiRequest>;
-export type ApiStatus = "UPDATING" | "AVAILABLE" | "PENDING" | "FAILED";
+export type ApiStatus =
+  | "UPDATING"
+  | "AVAILABLE"
+  | "PENDING"
+  | "FAILED"
+  | (string & {});
 export const ApiStatus = /*@__PURE__*/ S.String;
 
 export interface RestApi {
@@ -1153,7 +1171,7 @@ export interface CreateStageRequest {
   deploymentId: string;
   description?: string;
   cacheClusterEnabled?: boolean;
-  cacheClusterSize?: CacheClusterSize | (string & {});
+  cacheClusterSize?: CacheClusterSize;
   variables?: { [key: string]: string | undefined };
   documentationVersion?: string;
   canarySettings?: CanarySettings;
@@ -1191,13 +1209,15 @@ export type CacheClusterStatus =
   | "AVAILABLE"
   | "DELETE_IN_PROGRESS"
   | "NOT_AVAILABLE"
-  | "FLUSH_IN_PROGRESS";
+  | "FLUSH_IN_PROGRESS"
+  | (string & {});
 export const CacheClusterStatus = /*@__PURE__*/ S.String;
 
 export type UnauthorizedCacheControlHeaderStrategy =
   | "FAIL_WITH_403"
   | "SUCCEED_WITH_RESPONSE_HEADER"
-  | "SUCCEED_WITHOUT_RESPONSE_HEADER";
+  | "SUCCEED_WITHOUT_RESPONSE_HEADER"
+  | (string & {});
 export const UnauthorizedCacheControlHeaderStrategy = /*@__PURE__*/ S.String;
 
 export interface MethodSetting {
@@ -1320,13 +1340,13 @@ export const ApiStage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiStage" }) as any as S.Schema<ApiStage>;
 export type ListOfApiStage = ApiStage[];
 export const ListOfApiStage = /*@__PURE__*/ S.Array(ApiStage);
-export type QuotaPeriodType = "DAY" | "WEEK" | "MONTH";
+export type QuotaPeriodType = "DAY" | "WEEK" | "MONTH" | (string & {});
 export const QuotaPeriodType = /*@__PURE__*/ S.String;
 
 export interface QuotaSettings {
   limit?: number;
   offset?: number;
-  period?: QuotaPeriodType | (string & {});
+  period?: QuotaPeriodType;
 }
 export const QuotaSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1448,7 +1468,12 @@ export const CreateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpcLinkRequest",
 }) as any as S.Schema<CreateVpcLinkRequest>;
-export type VpcLinkStatus = "AVAILABLE" | "PENDING" | "DELETING" | "FAILED";
+export type VpcLinkStatus =
+  | "AVAILABLE"
+  | "PENDING"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
 export const VpcLinkStatus = /*@__PURE__*/ S.String;
 
 export interface VpcLink {
@@ -1752,12 +1777,13 @@ export type GatewayResponseType =
   | "REQUEST_TOO_LARGE"
   | "THROTTLED"
   | "QUOTA_EXCEEDED"
-  | "WAF_FILTERED";
+  | "WAF_FILTERED"
+  | (string & {});
 export const GatewayResponseType = /*@__PURE__*/ S.String;
 
 export interface DeleteGatewayResponseRequest {
   restApiId: string;
-  responseType: GatewayResponseType | (string & {});
+  responseType: GatewayResponseType;
 }
 export const DeleteGatewayResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2597,17 +2623,17 @@ export const GetDocumentationPartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDocumentationPartRequest",
 }) as any as S.Schema<GetDocumentationPartRequest>;
-export type LocationStatusType = "DOCUMENTED" | "UNDOCUMENTED";
+export type LocationStatusType = "DOCUMENTED" | "UNDOCUMENTED" | (string & {});
 export const LocationStatusType = /*@__PURE__*/ S.String;
 
 export interface GetDocumentationPartsRequest {
   restApiId: string;
-  type?: DocumentationPartType | (string & {});
+  type?: DocumentationPartType;
   nameQuery?: string;
   path?: string;
   position?: string;
   limit?: number;
-  locationStatus?: LocationStatusType | (string & {});
+  locationStatus?: LocationStatusType;
 }
 export const GetDocumentationPartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2736,13 +2762,13 @@ export const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDomainNameRequest",
 }) as any as S.Schema<GetDomainNameRequest>;
-export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS";
+export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS" | (string & {});
 export const ResourceOwner = /*@__PURE__*/ S.String;
 
 export interface GetDomainNameAccessAssociationsRequest {
   position?: string;
   limit?: number;
-  resourceOwner?: ResourceOwner | (string & {});
+  resourceOwner?: ResourceOwner;
 }
 export const GetDomainNameAccessAssociationsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2784,7 +2810,7 @@ export const DomainNameAccessAssociations = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainNamesRequest {
   position?: string;
   limit?: number;
-  resourceOwner?: ResourceOwner | (string & {});
+  resourceOwner?: ResourceOwner;
 }
 export const GetDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2862,7 +2888,7 @@ export const ExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportResponse" }) as any as S.Schema<ExportResponse>;
 export interface GetGatewayResponseRequest {
   restApiId: string;
-  responseType: GatewayResponseType | (string & {});
+  responseType: GatewayResponseType;
 }
 export const GetGatewayResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3730,12 +3756,12 @@ export const VpcLinks = /*@__PURE__*/ S.suspend(() =>
     position: S.optional(S.String).pipe(T.HttpQuery("position")),
   }).pipe(S.encodeKeys({ items: "item" })),
 ).annotate({ identifier: "VpcLinks" }) as any as S.Schema<VpcLinks>;
-export type ApiKeysFormat = "csv";
+export type ApiKeysFormat = "csv" | (string & {});
 export const ApiKeysFormat = /*@__PURE__*/ S.String;
 
 export interface ImportApiKeysRequest {
   body: T.StreamingInputBody;
-  format: ApiKeysFormat | (string & {});
+  format: ApiKeysFormat;
   failOnWarnings?: boolean;
 }
 export const ImportApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3766,12 +3792,12 @@ export const ApiKeyIds = /*@__PURE__*/ S.suspend(() =>
     warnings: S.optional(ListOfString),
   }),
 ).annotate({ identifier: "ApiKeyIds" }) as any as S.Schema<ApiKeyIds>;
-export type PutMode = "merge" | "overwrite";
+export type PutMode = "merge" | "overwrite" | (string & {});
 export const PutMode = /*@__PURE__*/ S.String;
 
 export interface ImportDocumentationPartsRequest {
   restApiId: string;
-  mode?: PutMode | (string & {});
+  mode?: PutMode;
   failOnWarnings?: boolean;
   body: T.StreamingInputBody;
 }
@@ -3834,7 +3860,7 @@ export const ImportRestApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportRestApiRequest>;
 export interface PutGatewayResponseRequest {
   restApiId: string;
-  responseType: GatewayResponseType | (string & {});
+  responseType: GatewayResponseType;
   statusCode?: string;
   responseParameters?: { [key: string]: string | undefined };
   responseTemplates?: { [key: string]: string | undefined };
@@ -3866,10 +3892,10 @@ export interface PutIntegrationRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
-  type: IntegrationType | (string & {});
+  type: IntegrationType;
   integrationHttpMethod?: string;
   uri?: string;
-  connectionType?: ConnectionType | (string & {});
+  connectionType?: ConnectionType;
   connectionId?: string;
   credentials?: string;
   requestParameters?: { [key: string]: string | undefined };
@@ -3877,10 +3903,10 @@ export interface PutIntegrationRequest {
   passthroughBehavior?: string;
   cacheNamespace?: string;
   cacheKeyParameters?: string[];
-  contentHandling?: ContentHandlingStrategy | (string & {});
+  contentHandling?: ContentHandlingStrategy;
   timeoutInMillis?: number;
   tlsConfig?: TlsConfig;
-  responseTransferMode?: ResponseTransferMode | (string & {});
+  responseTransferMode?: ResponseTransferMode;
   integrationTarget?: string;
 }
 export const PutIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3935,7 +3961,7 @@ export interface PutIntegrationResponseRequest {
   selectionPattern?: string;
   responseParameters?: { [key: string]: string | undefined };
   responseTemplates?: { [key: string]: string | undefined };
-  contentHandling?: ContentHandlingStrategy | (string & {});
+  contentHandling?: ContentHandlingStrategy;
 }
 export const PutIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4039,7 +4065,7 @@ export const PutMethodResponseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMethodResponseRequest>;
 export interface PutRestApiRequest {
   restApiId: string;
-  mode?: PutMode | (string & {});
+  mode?: PutMode;
   failOnWarnings?: boolean;
   parameters?: { [key: string]: string | undefined };
   body: T.StreamingInputBody;
@@ -4268,11 +4294,18 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type Op = "add" | "remove" | "replace" | "move" | "copy" | "test";
+export type Op =
+  | "add"
+  | "remove"
+  | "replace"
+  | "move"
+  | "copy"
+  | "test"
+  | (string & {});
 export const Op = /*@__PURE__*/ S.String;
 
 export interface PatchOperation {
-  op?: Op | (string & {});
+  op?: Op;
   path?: string;
   value?: string;
   from?: string;
@@ -4506,7 +4539,7 @@ export const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDomainNameRequest>;
 export interface UpdateGatewayResponseRequest {
   restApiId: string;
-  responseType: GatewayResponseType | (string & {});
+  responseType: GatewayResponseType;
   patchOperations?: PatchOperation[];
 }
 export const UpdateGatewayResponseRequest = /*@__PURE__*/ S.suspend(() =>

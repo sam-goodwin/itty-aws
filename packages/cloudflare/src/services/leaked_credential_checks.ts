@@ -53,15 +53,15 @@ export interface CreateDetectionRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const CreateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -76,17 +76,17 @@ export const CreateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDetectionResponse {
   /** Defines the unique ID for this custom detection. */
-  id?: string;
+  id?: string | null;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const CreateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateDetectionResponse",
@@ -96,12 +96,12 @@ export interface CreateLeakedCredentialCheckRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Determines whether or not Leaked Credential Checks are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -116,11 +116,11 @@ export const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const CreateLeakedCredentialCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "CreateLeakedCredentialCheckResponse",
@@ -178,17 +178,17 @@ export const GetDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDetectionResponse {
   /** Defines the unique ID for this custom detection. */
-  id?: string;
+  id?: string | null;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const GetDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetDetectionResponse",
@@ -215,11 +215,11 @@ export const GetLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const GetLeakedCredentialCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "GetLeakedCredentialCheckResponse",
@@ -245,17 +245,17 @@ export const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DetectionsListResultItem {
   /** Defines the unique ID for this custom detection. */
-  id?: string;
+  id?: string | null;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const DetectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DetectionsListResultItem",
@@ -287,16 +287,16 @@ export interface UpdateDetectionRequest {
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const UpdateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     detectionId: S.String.pipe(T.Label("detection_id")),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -311,17 +311,17 @@ export const UpdateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDetectionResponse {
   /** Defines the unique ID for this custom detection. */
-  id?: string;
+  id?: string | null;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string;
+  password?: string | null;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string;
+  username?: string | null;
 }
 export const UpdateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    password: S.optional(S.String),
-    username: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.NullOr(S.String)),
+    username: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateDetectionResponse",

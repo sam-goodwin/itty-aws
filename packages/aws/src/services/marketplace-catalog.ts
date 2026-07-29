@@ -299,7 +299,7 @@ export const DescribeChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeChangeSetRequest",
 }) as any as S.Schema<DescribeChangeSetRequest>;
 export type ChangeSetName = string;
-export type Intent = "VALIDATE" | "APPLY";
+export type Intent = "VALIDATE" | "APPLY" | (string & {});
 export const Intent = /*@__PURE__*/ S.String;
 
 export type ChangeStatus =
@@ -307,10 +307,11 @@ export type ChangeStatus =
   | "APPLYING"
   | "SUCCEEDED"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ChangeStatus = /*@__PURE__*/ S.String;
 
-export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT";
+export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT" | (string & {});
 export const FailureCode = /*@__PURE__*/ S.String;
 
 export type ExceptionMessageContent = string;
@@ -466,12 +467,12 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type SortBy = string;
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface Sort {
   SortBy?: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
 }
 export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(SortOrder) }),
@@ -548,7 +549,7 @@ export const ListChangeSetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChangeSetsResponse",
 }) as any as S.Schema<ListChangeSetsResponse>;
 export type ListEntitiesMaxResultInteger = number;
-export type OwnershipType = "SELF" | "SHARED";
+export type OwnershipType = "SELF" | "SHARED" | (string & {});
 export const OwnershipType = /*@__PURE__*/ S.String;
 
 export type DataProductEntityIdString = string;
@@ -584,18 +585,17 @@ export type DataProductVisibilityString =
   | "Public"
   | "Restricted"
   | "Unavailable"
-  | "Draft";
+  | "Draft"
+  | (string & {});
 export const DataProductVisibilityString = /*@__PURE__*/ S.String;
 
-export type DataProductVisibilityFilterValueList = (
-  | DataProductVisibilityString
-  | (string & {})
-)[];
+export type DataProductVisibilityFilterValueList =
+  DataProductVisibilityString[];
 export const DataProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   DataProductVisibilityString,
 );
 export interface DataProductVisibilityFilter {
-  ValueList?: (DataProductVisibilityString | (string & {}))[];
+  ValueList?: DataProductVisibilityString[];
 }
 export const DataProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(DataProductVisibilityFilterValueList) }),
@@ -673,18 +673,17 @@ export type SaaSProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft";
+  | "Draft"
+  | (string & {});
 export const SaaSProductVisibilityString = /*@__PURE__*/ S.String;
 
-export type SaaSProductVisibilityFilterValueList = (
-  | SaaSProductVisibilityString
-  | (string & {})
-)[];
+export type SaaSProductVisibilityFilterValueList =
+  SaaSProductVisibilityString[];
 export const SaaSProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   SaaSProductVisibilityString,
 );
 export interface SaaSProductVisibilityFilter {
-  ValueList?: (SaaSProductVisibilityString | (string & {}))[];
+  ValueList?: SaaSProductVisibilityString[];
 }
 export const SaaSProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(SaaSProductVisibilityFilterValueList) }),
@@ -785,18 +784,16 @@ export type AmiProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft";
+  | "Draft"
+  | (string & {});
 export const AmiProductVisibilityString = /*@__PURE__*/ S.String;
 
-export type AmiProductVisibilityFilterValueList = (
-  | AmiProductVisibilityString
-  | (string & {})
-)[];
+export type AmiProductVisibilityFilterValueList = AmiProductVisibilityString[];
 export const AmiProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   AmiProductVisibilityString,
 );
 export interface AmiProductVisibilityFilter {
-  ValueList?: (AmiProductVisibilityString | (string & {}))[];
+  ValueList?: AmiProductVisibilityString[];
 }
 export const AmiProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(AmiProductVisibilityFilterValueList) }),
@@ -921,14 +918,14 @@ export const OfferBuyerAccountsFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferBuyerAccountsFilter",
 }) as any as S.Schema<OfferBuyerAccountsFilter>;
-export type OfferStateString = "Draft" | "Released";
+export type OfferStateString = "Draft" | "Released" | (string & {});
 export const OfferStateString = /*@__PURE__*/ S.String;
 
-export type OfferStateFilterValueList = (OfferStateString | (string & {}))[];
+export type OfferStateFilterValueList = OfferStateString[];
 export const OfferStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferStateString);
 export interface OfferStateFilter {
-  ValueList?: (OfferStateString | (string & {}))[];
+  ValueList?: OfferStateString[];
 }
 export const OfferStateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferStateFilterValueList) }),
@@ -939,17 +936,15 @@ export type OfferTargetingString =
   | "BuyerAccounts"
   | "ParticipatingPrograms"
   | "CountryCodes"
-  | "None";
+  | "None"
+  | (string & {});
 export const OfferTargetingString = /*@__PURE__*/ S.String;
 
-export type OfferTargetingFilterValueList = (
-  | OfferTargetingString
-  | (string & {})
-)[];
+export type OfferTargetingFilterValueList = OfferTargetingString[];
 export const OfferTargetingFilterValueList =
   /*@__PURE__*/ S.Array(OfferTargetingString);
 export interface OfferTargetingFilter {
-  ValueList?: (OfferTargetingString | (string & {}))[];
+  ValueList?: OfferTargetingString[];
 }
 export const OfferTargetingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferTargetingFilterValueList) }),
@@ -1074,18 +1069,17 @@ export type ContainerProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft";
+  | "Draft"
+  | (string & {});
 export const ContainerProductVisibilityString = /*@__PURE__*/ S.String;
 
-export type ContainerProductVisibilityFilterValueList = (
-  | ContainerProductVisibilityString
-  | (string & {})
-)[];
+export type ContainerProductVisibilityFilterValueList =
+  ContainerProductVisibilityString[];
 export const ContainerProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   ContainerProductVisibilityString,
 );
 export interface ContainerProductVisibilityFilter {
-  ValueList?: (ContainerProductVisibilityString | (string & {}))[];
+  ValueList?: ContainerProductVisibilityString[];
 }
 export const ContainerProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1320,18 +1314,20 @@ export const ResaleAuthorizationResellerLegalNameFilter =
   ).annotate({
     identifier: "ResaleAuthorizationResellerLegalNameFilter",
   }) as any as S.Schema<ResaleAuthorizationResellerLegalNameFilter>;
-export type ResaleAuthorizationStatusString = "Draft" | "Active" | "Restricted";
+export type ResaleAuthorizationStatusString =
+  | "Draft"
+  | "Active"
+  | "Restricted"
+  | (string & {});
 export const ResaleAuthorizationStatusString = /*@__PURE__*/ S.String;
 
-export type ResaleAuthorizationStatusFilterValueList = (
-  | ResaleAuthorizationStatusString
-  | (string & {})
-)[];
+export type ResaleAuthorizationStatusFilterValueList =
+  ResaleAuthorizationStatusString[];
 export const ResaleAuthorizationStatusFilterValueList = /*@__PURE__*/ S.Array(
   ResaleAuthorizationStatusString,
 );
 export interface ResaleAuthorizationStatusFilter {
-  ValueList?: (ResaleAuthorizationStatusString | (string & {}))[];
+  ValueList?: ResaleAuthorizationStatusString[];
 }
 export const ResaleAuthorizationStatusFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(ResaleAuthorizationStatusFilterValueList) }),
@@ -1483,17 +1479,16 @@ export type MachineLearningProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft";
+  | "Draft"
+  | (string & {});
 export const MachineLearningProductVisibilityString = /*@__PURE__*/ S.String;
 
-export type MachineLearningProductVisibilityFilterValueList = (
-  | MachineLearningProductVisibilityString
-  | (string & {})
-)[];
+export type MachineLearningProductVisibilityFilterValueList =
+  MachineLearningProductVisibilityString[];
 export const MachineLearningProductVisibilityFilterValueList =
   /*@__PURE__*/ S.Array(MachineLearningProductVisibilityString);
 export interface MachineLearningProductVisibilityFilter {
-  ValueList?: (MachineLearningProductVisibilityString | (string & {}))[];
+  ValueList?: MachineLearningProductVisibilityString[];
 }
 export const MachineLearningProductVisibilityFilter = /*@__PURE__*/ S.suspend(
   () =>
@@ -1541,17 +1536,14 @@ export const OfferSetNameFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetNameFilter",
 }) as any as S.Schema<OfferSetNameFilter>;
-export type OfferSetStateString = "Draft" | "Released";
+export type OfferSetStateString = "Draft" | "Released" | (string & {});
 export const OfferSetStateString = /*@__PURE__*/ S.String;
 
-export type OfferSetStateFilterValueList = (
-  | OfferSetStateString
-  | (string & {})
-)[];
+export type OfferSetStateFilterValueList = OfferSetStateString[];
 export const OfferSetStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferSetStateString);
 export interface OfferSetStateFilter {
-  ValueList?: (OfferSetStateString | (string & {}))[];
+  ValueList?: OfferSetStateString[];
 }
 export const OfferSetStateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueList: S.optional(OfferSetStateFilterValueList) }),
@@ -1744,12 +1736,13 @@ export type DataProductSortBy =
   | "EntityId"
   | "ProductTitle"
   | "Visibility"
-  | "LastModifiedDate";
+  | "LastModifiedDate"
+  | (string & {});
 export const DataProductSortBy = /*@__PURE__*/ S.String;
 
 export interface DataProductSort {
-  SortBy?: DataProductSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: DataProductSortBy;
+  SortOrder?: SortOrder;
 }
 export const DataProductSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1764,12 +1757,13 @@ export type SaaSProductSortBy =
   | "ProductTitle"
   | "Visibility"
   | "LastModifiedDate"
-  | "DeliveryOptionTypes";
+  | "DeliveryOptionTypes"
+  | (string & {});
 export const SaaSProductSortBy = /*@__PURE__*/ S.String;
 
 export interface SaaSProductSort {
-  SortBy?: SaaSProductSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: SaaSProductSortBy;
+  SortOrder?: SortOrder;
 }
 export const SaaSProductSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1783,12 +1777,13 @@ export type AmiProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
   | "ProductTitle"
-  | "Visibility";
+  | "Visibility"
+  | (string & {});
 export const AmiProductSortBy = /*@__PURE__*/ S.String;
 
 export interface AmiProductSort {
-  SortBy?: AmiProductSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: AmiProductSortBy;
+  SortOrder?: SortOrder;
 }
 export const AmiProductSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1807,12 +1802,13 @@ export type OfferSortBy =
   | "State"
   | "Targeting"
   | "LastModifiedDate"
-  | "OfferSetId";
+  | "OfferSetId"
+  | (string & {});
 export const OfferSortBy = /*@__PURE__*/ S.String;
 
 export interface OfferSort {
-  SortBy?: OfferSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: OfferSortBy;
+  SortOrder?: SortOrder;
 }
 export const OfferSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1825,12 +1821,13 @@ export type ContainerProductSortBy =
   | "LastModifiedDate"
   | "ProductTitle"
   | "Visibility"
-  | "CompatibleAWSServices";
+  | "CompatibleAWSServices"
+  | (string & {});
 export const ContainerProductSortBy = /*@__PURE__*/ S.String;
 
 export interface ContainerProductSort {
-  SortBy?: ContainerProductSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: ContainerProductSortBy;
+  SortOrder?: SortOrder;
 }
 export const ContainerProductSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1853,12 +1850,13 @@ export type ResaleAuthorizationSortBy =
   | "OfferExtendedStatus"
   | "CreatedDate"
   | "AvailabilityEndDate"
-  | "LastModifiedDate";
+  | "LastModifiedDate"
+  | (string & {});
 export const ResaleAuthorizationSortBy = /*@__PURE__*/ S.String;
 
 export interface ResaleAuthorizationSort {
-  SortBy?: ResaleAuthorizationSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: ResaleAuthorizationSortBy;
+  SortOrder?: SortOrder;
 }
 export const ResaleAuthorizationSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1872,12 +1870,13 @@ export type MachineLearningProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
   | "ProductTitle"
-  | "Visibility";
+  | "Visibility"
+  | (string & {});
 export const MachineLearningProductSortBy = /*@__PURE__*/ S.String;
 
 export interface MachineLearningProductSort {
-  SortBy?: MachineLearningProductSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: MachineLearningProductSortBy;
+  SortOrder?: SortOrder;
 }
 export const MachineLearningProductSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1893,12 +1892,13 @@ export type OfferSetSortBy =
   | "ReleaseDate"
   | "SolutionId"
   | "EntityId"
-  | "LastModifiedDate";
+  | "LastModifiedDate"
+  | (string & {});
 export const OfferSetSortBy = /*@__PURE__*/ S.String;
 
 export interface OfferSetSort {
-  SortBy?: OfferSetSortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: OfferSetSortBy;
+  SortOrder?: SortOrder;
 }
 export const OfferSetSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2004,7 +2004,7 @@ export interface ListEntitiesRequest {
   Sort?: Sort;
   NextToken?: string;
   MaxResults?: number;
-  OwnershipType?: OwnershipType | (string & {});
+  OwnershipType?: OwnershipType;
   EntityTypeFilters?: EntityTypeFilters;
   EntityTypeSort?: EntityTypeSort;
 }
@@ -2309,7 +2309,7 @@ export interface StartChangeSetRequest {
   ChangeSetName?: string;
   ClientRequestToken?: string;
   ChangeSetTags?: Tag[];
-  Intent?: Intent | (string & {});
+  Intent?: Intent;
 }
 export const StartChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

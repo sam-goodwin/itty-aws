@@ -33,14 +33,14 @@ export const CreateRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "CreateRequestActionResponse",
@@ -48,17 +48,17 @@ export const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestAction {
   /** The action to perform. */
-  mode?: CreateRequestActionMode | (string & {});
+  mode?: CreateRequestActionMode | (string & {}) | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: CreateRequestActionResponse;
+  response?: CreateRequestActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(CreateRequestActionMode),
-    response: S.optional(CreateRequestActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(CreateRequestActionMode)),
+    response: S.optional(S.NullOr(CreateRequestActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CreateRequestAction",
@@ -69,17 +69,17 @@ export const CreateRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface CreateRequestMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: CreateRequestMatchHeadersItemOp | (string & {});
+  op?: CreateRequestMatchHeadersItemOp | (string & {}) | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(CreateRequestMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(CreateRequestMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateRequestMatchHeadersItem",
@@ -115,17 +115,17 @@ export const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface CreateRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: CreateRequestMatchRequestMethodsList;
+  methods?: CreateRequestMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: CreateRequestMatchRequestSchemesList;
+  schemes?: CreateRequestMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(CreateRequestMatchRequestMethodsList),
-    schemes: S.optional(CreateRequestMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(CreateRequestMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(CreateRequestMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateRequestMatchRequest",
@@ -133,26 +133,28 @@ export const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const CreateRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "CreateRequestMatchResponse",
 }) as any as S.Schema<CreateRequestMatchResponse>;
 
 export interface CreateRequestMatch {
-  headers?: CreateRequestMatchHeadersList;
-  request?: CreateRequestMatchRequest;
-  response?: CreateRequestMatchResponse;
+  headers?: CreateRequestMatchHeadersList | null;
+  request?: CreateRequestMatchRequest | null;
+  response?: CreateRequestMatchResponse | null;
 }
 export const CreateRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(CreateRequestMatchHeadersList),
-    request: S.optional(CreateRequestMatchRequest),
-    response: S.optional(CreateRequestMatchResponse),
+    headers: S.optional(S.NullOr(CreateRequestMatchHeadersList)),
+    request: S.optional(S.NullOr(CreateRequestMatchRequest)),
+    response: S.optional(S.NullOr(CreateRequestMatchResponse)),
   }),
 ).annotate({
   identifier: "CreateRequestMatch",
@@ -200,14 +202,14 @@ export const CreateResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const CreateResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "CreateResponseActionResponse",
@@ -215,17 +217,17 @@ export const CreateResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseAction {
   /** The action to perform. */
-  mode?: CreateResponseActionMode;
+  mode?: CreateResponseActionMode | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: CreateResponseActionResponse;
+  response?: CreateResponseActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const CreateResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(CreateResponseActionMode),
-    response: S.optional(CreateResponseActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(CreateResponseActionMode)),
+    response: S.optional(S.NullOr(CreateResponseActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CreateResponseAction",
@@ -235,14 +237,14 @@ export type CreateResponseBypassItemName = "url";
 export const CreateResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface CreateResponseBypassItem {
-  name?: CreateResponseBypassItemName;
+  name?: CreateResponseBypassItemName | null;
   /** The URL to bypass. */
-  value?: string;
+  value?: string | null;
 }
 export const CreateResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(CreateResponseBypassItemName),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(CreateResponseBypassItemName)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseBypassItem",
@@ -258,17 +260,17 @@ export const CreateResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface CreateResponseMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: CreateResponseMatchHeadersItemOp;
+  op?: CreateResponseMatchHeadersItemOp | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const CreateResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(CreateResponseMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(CreateResponseMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseMatchHeadersItem",
@@ -303,17 +305,17 @@ export const CreateResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface CreateResponseMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: CreateResponseMatchRequestMethodsList;
+  methods?: CreateResponseMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: CreateResponseMatchRequestSchemesList;
+  schemes?: CreateResponseMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(CreateResponseMatchRequestMethodsList),
-    schemes: S.optional(CreateResponseMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(CreateResponseMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(CreateResponseMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseMatchRequest",
@@ -321,26 +323,28 @@ export const CreateResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const CreateResponseMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseMatchResponse",
 }) as any as S.Schema<CreateResponseMatchResponse>;
 
 export interface CreateResponseMatch {
-  headers?: CreateResponseMatchHeadersList;
-  request?: CreateResponseMatchRequest;
-  response?: CreateResponseMatchResponse;
+  headers?: CreateResponseMatchHeadersList | null;
+  request?: CreateResponseMatchRequest | null;
+  response?: CreateResponseMatchResponse | null;
 }
 export const CreateResponseMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(CreateResponseMatchHeadersList),
-    request: S.optional(CreateResponseMatchRequest),
-    response: S.optional(CreateResponseMatchResponse),
+    headers: S.optional(S.NullOr(CreateResponseMatchHeadersList)),
+    request: S.optional(S.NullOr(CreateResponseMatchRequest)),
+    response: S.optional(S.NullOr(CreateResponseMatchResponse)),
   }),
 ).annotate({
   identifier: "CreateResponseMatch",
@@ -349,32 +353,32 @@ export const CreateResponseMatch = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRateLimitResponse {
   /** The unique identifier of the rate limit. */
-  id?: string;
+  id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: CreateResponseAction;
+  action?: CreateResponseAction | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: CreateResponseBypassList;
+  bypass?: CreateResponseBypassList | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
+  description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: CreateResponseMatch;
+  match?: CreateResponseMatch | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
-  period?: number;
+  period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
-  threshold?: number;
+  threshold?: number | null;
 }
 export const CreateRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(CreateResponseAction),
-    bypass: S.optional(CreateResponseBypassList),
-    description: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    match: S.optional(CreateResponseMatch),
-    period: S.optional(S.Number),
-    threshold: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(CreateResponseAction)),
+    bypass: S.optional(S.NullOr(CreateResponseBypassList)),
+    description: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    match: S.optional(S.NullOr(CreateResponseMatch)),
+    period: S.optional(S.NullOr(S.Number)),
+    threshold: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRateLimitResponse",
@@ -413,14 +417,14 @@ export const DeleteResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const DeleteResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "DeleteResponseActionResponse",
@@ -428,17 +432,17 @@ export const DeleteResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DeleteResponseAction {
   /** The action to perform. */
-  mode?: DeleteResponseActionMode;
+  mode?: DeleteResponseActionMode | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: DeleteResponseActionResponse;
+  response?: DeleteResponseActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const DeleteResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(DeleteResponseActionMode),
-    response: S.optional(DeleteResponseActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(DeleteResponseActionMode)),
+    response: S.optional(S.NullOr(DeleteResponseActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "DeleteResponseAction",
@@ -448,14 +452,14 @@ export type DeleteResponseBypassItemName = "url";
 export const DeleteResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseBypassItem {
-  name?: DeleteResponseBypassItemName;
+  name?: DeleteResponseBypassItemName | null;
   /** The URL to bypass. */
-  value?: string;
+  value?: string | null;
 }
 export const DeleteResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(DeleteResponseBypassItemName),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(DeleteResponseBypassItemName)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DeleteResponseBypassItem",
@@ -471,17 +475,17 @@ export const DeleteResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: DeleteResponseMatchHeadersItemOp;
+  op?: DeleteResponseMatchHeadersItemOp | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const DeleteResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(DeleteResponseMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(DeleteResponseMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DeleteResponseMatchHeadersItem",
@@ -516,17 +520,17 @@ export const DeleteResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface DeleteResponseMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: DeleteResponseMatchRequestMethodsList;
+  methods?: DeleteResponseMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: DeleteResponseMatchRequestSchemesList;
+  schemes?: DeleteResponseMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const DeleteResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(DeleteResponseMatchRequestMethodsList),
-    schemes: S.optional(DeleteResponseMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(DeleteResponseMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(DeleteResponseMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DeleteResponseMatchRequest",
@@ -534,26 +538,28 @@ export const DeleteResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DeleteResponseMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const DeleteResponseMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseMatchResponse",
 }) as any as S.Schema<DeleteResponseMatchResponse>;
 
 export interface DeleteResponseMatch {
-  headers?: DeleteResponseMatchHeadersList;
-  request?: DeleteResponseMatchRequest;
-  response?: DeleteResponseMatchResponse;
+  headers?: DeleteResponseMatchHeadersList | null;
+  request?: DeleteResponseMatchRequest | null;
+  response?: DeleteResponseMatchResponse | null;
 }
 export const DeleteResponseMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(DeleteResponseMatchHeadersList),
-    request: S.optional(DeleteResponseMatchRequest),
-    response: S.optional(DeleteResponseMatchResponse),
+    headers: S.optional(S.NullOr(DeleteResponseMatchHeadersList)),
+    request: S.optional(S.NullOr(DeleteResponseMatchRequest)),
+    response: S.optional(S.NullOr(DeleteResponseMatchResponse)),
   }),
 ).annotate({
   identifier: "DeleteResponseMatch",
@@ -562,32 +568,32 @@ export const DeleteResponseMatch = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRateLimitResponse {
   /** The unique identifier of the rate limit. */
-  id?: string;
+  id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: DeleteResponseAction;
+  action?: DeleteResponseAction | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: DeleteResponseBypassList;
+  bypass?: DeleteResponseBypassList | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
+  description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: DeleteResponseMatch;
+  match?: DeleteResponseMatch | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
-  period?: number;
+  period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
-  threshold?: number;
+  threshold?: number | null;
 }
 export const DeleteRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(DeleteResponseAction),
-    bypass: S.optional(DeleteResponseBypassList),
-    description: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    match: S.optional(DeleteResponseMatch),
-    period: S.optional(S.Number),
-    threshold: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(DeleteResponseAction)),
+    bypass: S.optional(S.NullOr(DeleteResponseBypassList)),
+    description: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    match: S.optional(S.NullOr(DeleteResponseMatch)),
+    period: S.optional(S.NullOr(S.Number)),
+    threshold: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRateLimitResponse",
@@ -603,14 +609,14 @@ export const EditRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const EditRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "EditRequestActionResponse",
@@ -618,17 +624,17 @@ export const EditRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestAction {
   /** The action to perform. */
-  mode?: EditRequestActionMode | (string & {});
+  mode?: EditRequestActionMode | (string & {}) | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: EditRequestActionResponse;
+  response?: EditRequestActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const EditRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(EditRequestActionMode),
-    response: S.optional(EditRequestActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(EditRequestActionMode)),
+    response: S.optional(S.NullOr(EditRequestActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditRequestAction",
@@ -639,17 +645,17 @@ export const EditRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface EditRequestMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: EditRequestMatchHeadersItemOp | (string & {});
+  op?: EditRequestMatchHeadersItemOp | (string & {}) | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const EditRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(EditRequestMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(EditRequestMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditRequestMatchHeadersItem",
@@ -684,17 +690,17 @@ export const EditRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface EditRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: EditRequestMatchRequestMethodsList;
+  methods?: EditRequestMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: EditRequestMatchRequestSchemesList;
+  schemes?: EditRequestMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(EditRequestMatchRequestMethodsList),
-    schemes: S.optional(EditRequestMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(EditRequestMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(EditRequestMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditRequestMatchRequest",
@@ -702,26 +708,28 @@ export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const EditRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "EditRequestMatchResponse",
 }) as any as S.Schema<EditRequestMatchResponse>;
 
 export interface EditRequestMatch {
-  headers?: EditRequestMatchHeadersList;
-  request?: EditRequestMatchRequest;
-  response?: EditRequestMatchResponse;
+  headers?: EditRequestMatchHeadersList | null;
+  request?: EditRequestMatchRequest | null;
+  response?: EditRequestMatchResponse | null;
 }
 export const EditRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(EditRequestMatchHeadersList),
-    request: S.optional(EditRequestMatchRequest),
-    response: S.optional(EditRequestMatchResponse),
+    headers: S.optional(S.NullOr(EditRequestMatchHeadersList)),
+    request: S.optional(S.NullOr(EditRequestMatchRequest)),
+    response: S.optional(S.NullOr(EditRequestMatchResponse)),
   }),
 ).annotate({
   identifier: "EditRequestMatch",
@@ -772,14 +780,14 @@ export const EditResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const EditResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "EditResponseActionResponse",
@@ -787,17 +795,17 @@ export const EditResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseAction {
   /** The action to perform. */
-  mode?: EditResponseActionMode;
+  mode?: EditResponseActionMode | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: EditResponseActionResponse;
+  response?: EditResponseActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const EditResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(EditResponseActionMode),
-    response: S.optional(EditResponseActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(EditResponseActionMode)),
+    response: S.optional(S.NullOr(EditResponseActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditResponseAction",
@@ -807,14 +815,14 @@ export type EditResponseBypassItemName = "url";
 export const EditResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface EditResponseBypassItem {
-  name?: EditResponseBypassItemName;
+  name?: EditResponseBypassItemName | null;
   /** The URL to bypass. */
-  value?: string;
+  value?: string | null;
 }
 export const EditResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(EditResponseBypassItemName),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(EditResponseBypassItemName)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponseBypassItem",
@@ -830,17 +838,17 @@ export const EditResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface EditResponseMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: EditResponseMatchHeadersItemOp;
+  op?: EditResponseMatchHeadersItemOp | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const EditResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(EditResponseMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(EditResponseMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponseMatchHeadersItem",
@@ -874,17 +882,17 @@ export const EditResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface EditResponseMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: EditResponseMatchRequestMethodsList;
+  methods?: EditResponseMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: EditResponseMatchRequestSchemesList;
+  schemes?: EditResponseMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const EditResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(EditResponseMatchRequestMethodsList),
-    schemes: S.optional(EditResponseMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(EditResponseMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(EditResponseMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponseMatchRequest",
@@ -892,26 +900,28 @@ export const EditResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const EditResponseMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "EditResponseMatchResponse",
 }) as any as S.Schema<EditResponseMatchResponse>;
 
 export interface EditResponseMatch {
-  headers?: EditResponseMatchHeadersList;
-  request?: EditResponseMatchRequest;
-  response?: EditResponseMatchResponse;
+  headers?: EditResponseMatchHeadersList | null;
+  request?: EditResponseMatchRequest | null;
+  response?: EditResponseMatchResponse | null;
 }
 export const EditResponseMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(EditResponseMatchHeadersList),
-    request: S.optional(EditResponseMatchRequest),
-    response: S.optional(EditResponseMatchResponse),
+    headers: S.optional(S.NullOr(EditResponseMatchHeadersList)),
+    request: S.optional(S.NullOr(EditResponseMatchRequest)),
+    response: S.optional(S.NullOr(EditResponseMatchResponse)),
   }),
 ).annotate({
   identifier: "EditResponseMatch",
@@ -920,32 +930,32 @@ export const EditResponseMatch = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditRateLimitResponse {
   /** The unique identifier of the rate limit. */
-  id?: string;
+  id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: EditResponseAction;
+  action?: EditResponseAction | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: EditResponseBypassList;
+  bypass?: EditResponseBypassList | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
+  description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: EditResponseMatch;
+  match?: EditResponseMatch | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
-  period?: number;
+  period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
-  threshold?: number;
+  threshold?: number | null;
 }
 export const EditRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(EditResponseAction),
-    bypass: S.optional(EditResponseBypassList),
-    description: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    match: S.optional(EditResponseMatch),
-    period: S.optional(S.Number),
-    threshold: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(EditResponseAction)),
+    bypass: S.optional(S.NullOr(EditResponseBypassList)),
+    description: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    match: S.optional(S.NullOr(EditResponseMatch)),
+    period: S.optional(S.NullOr(S.Number)),
+    threshold: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditRateLimitResponse",
@@ -984,14 +994,14 @@ export const GetResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const GetResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "GetResponseActionResponse",
@@ -999,17 +1009,17 @@ export const GetResponseActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseAction {
   /** The action to perform. */
-  mode?: GetResponseActionMode;
+  mode?: GetResponseActionMode | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: GetResponseActionResponse;
+  response?: GetResponseActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const GetResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(GetResponseActionMode),
-    response: S.optional(GetResponseActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(GetResponseActionMode)),
+    response: S.optional(S.NullOr(GetResponseActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GetResponseAction",
@@ -1019,14 +1029,14 @@ export type GetResponseBypassItemName = "url";
 export const GetResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface GetResponseBypassItem {
-  name?: GetResponseBypassItemName;
+  name?: GetResponseBypassItemName | null;
   /** The URL to bypass. */
-  value?: string;
+  value?: string | null;
 }
 export const GetResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(GetResponseBypassItemName),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(GetResponseBypassItemName)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseBypassItem",
@@ -1042,17 +1052,17 @@ export const GetResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface GetResponseMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: GetResponseMatchHeadersItemOp;
+  op?: GetResponseMatchHeadersItemOp | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const GetResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(GetResponseMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(GetResponseMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseMatchHeadersItem",
@@ -1086,17 +1096,17 @@ export const GetResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface GetResponseMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: GetResponseMatchRequestMethodsList;
+  methods?: GetResponseMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: GetResponseMatchRequestSchemesList;
+  schemes?: GetResponseMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const GetResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(GetResponseMatchRequestMethodsList),
-    schemes: S.optional(GetResponseMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(GetResponseMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(GetResponseMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseMatchRequest",
@@ -1104,26 +1114,28 @@ export const GetResponseMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const GetResponseMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "GetResponseMatchResponse",
 }) as any as S.Schema<GetResponseMatchResponse>;
 
 export interface GetResponseMatch {
-  headers?: GetResponseMatchHeadersList;
-  request?: GetResponseMatchRequest;
-  response?: GetResponseMatchResponse;
+  headers?: GetResponseMatchHeadersList | null;
+  request?: GetResponseMatchRequest | null;
+  response?: GetResponseMatchResponse | null;
 }
 export const GetResponseMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(GetResponseMatchHeadersList),
-    request: S.optional(GetResponseMatchRequest),
-    response: S.optional(GetResponseMatchResponse),
+    headers: S.optional(S.NullOr(GetResponseMatchHeadersList)),
+    request: S.optional(S.NullOr(GetResponseMatchRequest)),
+    response: S.optional(S.NullOr(GetResponseMatchResponse)),
   }),
 ).annotate({
   identifier: "GetResponseMatch",
@@ -1132,32 +1144,32 @@ export const GetResponseMatch = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRateLimitResponse {
   /** The unique identifier of the rate limit. */
-  id?: string;
+  id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: GetResponseAction;
+  action?: GetResponseAction | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: GetResponseBypassList;
+  bypass?: GetResponseBypassList | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
+  description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: GetResponseMatch;
+  match?: GetResponseMatch | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
-  period?: number;
+  period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
-  threshold?: number;
+  threshold?: number | null;
 }
 export const GetRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(GetResponseAction),
-    bypass: S.optional(GetResponseBypassList),
-    description: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    match: S.optional(GetResponseMatch),
-    period: S.optional(S.Number),
-    threshold: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(GetResponseAction)),
+    bypass: S.optional(S.NullOr(GetResponseBypassList)),
+    description: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    match: S.optional(S.NullOr(GetResponseMatch)),
+    period: S.optional(S.NullOr(S.Number)),
+    threshold: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRateLimitResponse",
@@ -1195,14 +1207,14 @@ export const ListResultItemActionMode = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
+  body?: string | null;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
+  contentType?: string | null;
 }
 export const ListResultItemActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    body: S.optional(S.NullOr(S.String)),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "ListResultItemActionResponse",
@@ -1210,17 +1222,17 @@ export const ListResultItemActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemAction {
   /** The action to perform. */
-  mode?: ListResultItemActionMode;
+  mode?: ListResultItemActionMode | null;
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: ListResultItemActionResponse;
+  response?: ListResultItemActionResponse | null;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
+  timeout?: number | null;
 }
 export const ListResultItemAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(ListResultItemActionMode),
-    response: S.optional(ListResultItemActionResponse),
-    timeout: S.optional(S.Number),
+    mode: S.optional(S.NullOr(ListResultItemActionMode)),
+    response: S.optional(S.NullOr(ListResultItemActionResponse)),
+    timeout: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ListResultItemAction",
@@ -1230,14 +1242,14 @@ export type ListResultItemBypassItemName = "url";
 export const ListResultItemBypassItemName = /*@__PURE__*/ S.String;
 
 export interface ListResultItemBypassItem {
-  name?: ListResultItemBypassItemName;
+  name?: ListResultItemBypassItemName | null;
   /** The URL to bypass. */
-  value?: string;
+  value?: string | null;
 }
 export const ListResultItemBypassItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(ListResultItemBypassItemName),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(ListResultItemBypassItemName)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemBypassItem",
@@ -1253,17 +1265,17 @@ export const ListResultItemMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface ListResultItemMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string;
+  name?: string | null;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: ListResultItemMatchHeadersItemOp;
+  op?: ListResultItemMatchHeadersItemOp | null;
   /** The value of the response header, which must match exactly. */
-  value?: string;
+  value?: string | null;
 }
 export const ListResultItemMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(ListResultItemMatchHeadersItemOp),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    op: S.optional(S.NullOr(ListResultItemMatchHeadersItemOp)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemMatchHeadersItem",
@@ -1298,17 +1310,17 @@ export const ListResultItemMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItemMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: ListResultItemMatchRequestMethodsList;
+  methods?: ListResultItemMatchRequestMethodsList | null;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: ListResultItemMatchRequestSchemesList;
+  schemes?: ListResultItemMatchRequestSchemesList | null;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string;
+  url?: string | null;
 }
 export const ListResultItemMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(ListResultItemMatchRequestMethodsList),
-    schemes: S.optional(ListResultItemMatchRequestSchemesList),
-    url: S.optional(S.String),
+    methods: S.optional(S.NullOr(ListResultItemMatchRequestMethodsList)),
+    schemes: S.optional(S.NullOr(ListResultItemMatchRequestSchemesList)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemMatchRequest",
@@ -1316,26 +1328,28 @@ export const ListResultItemMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean;
+  originTraffic?: boolean | null;
 }
 export const ListResultItemMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
+    originTraffic: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemMatchResponse",
 }) as any as S.Schema<ListResultItemMatchResponse>;
 
 export interface ListResultItemMatch {
-  headers?: ListResultItemMatchHeadersList;
-  request?: ListResultItemMatchRequest;
-  response?: ListResultItemMatchResponse;
+  headers?: ListResultItemMatchHeadersList | null;
+  request?: ListResultItemMatchRequest | null;
+  response?: ListResultItemMatchResponse | null;
 }
 export const ListResultItemMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(ListResultItemMatchHeadersList),
-    request: S.optional(ListResultItemMatchRequest),
-    response: S.optional(ListResultItemMatchResponse),
+    headers: S.optional(S.NullOr(ListResultItemMatchHeadersList)),
+    request: S.optional(S.NullOr(ListResultItemMatchRequest)),
+    response: S.optional(S.NullOr(ListResultItemMatchResponse)),
   }),
 ).annotate({
   identifier: "ListResultItemMatch",
@@ -1343,32 +1357,32 @@ export const ListResultItemMatch = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItem {
   /** The unique identifier of the rate limit. */
-  id?: string;
+  id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: ListResultItemAction;
+  action?: ListResultItemAction | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: ListResultItemBypassList;
+  bypass?: ListResultItemBypassList | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
+  description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: ListResultItemMatch;
+  match?: ListResultItemMatch | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
-  period?: number;
+  period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
-  threshold?: number;
+  threshold?: number | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(ListResultItemAction),
-    bypass: S.optional(ListResultItemBypassList),
-    description: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    match: S.optional(ListResultItemMatch),
-    period: S.optional(S.Number),
-    threshold: S.optional(S.Number),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(ListResultItemAction)),
+    bypass: S.optional(S.NullOr(ListResultItemBypassList)),
+    description: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    match: S.optional(S.NullOr(ListResultItemMatch)),
+    period: S.optional(S.NullOr(S.Number)),
+    threshold: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 

@@ -33,11 +33,11 @@ export const GetDcvDelegationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
-  uuid?: string;
+  uuid?: string | null;
 }
 export const GetDcvDelegationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uuid: S.optional(S.String),
+    uuid: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetDcvDelegationResponse",

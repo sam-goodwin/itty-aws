@@ -263,12 +263,13 @@ export type LanguageCode =
   | "ja"
   | "ko"
   | "zh"
-  | "zh-TW";
+  | "zh-TW"
+  | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export interface BatchDetectEntitiesRequest {
   TextList: (string | redacted.Redacted<string>)[];
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const BatchDetectEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -289,7 +290,8 @@ export type EntityType =
   | "DATE"
   | "QUANTITY"
   | "TITLE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface ChildBlock {
@@ -372,7 +374,7 @@ export const BatchDetectEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDetectEntitiesResponse>;
 export interface BatchDetectKeyPhrasesRequest {
   TextList: (string | redacted.Redacted<string>)[];
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const BatchDetectKeyPhrasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -430,7 +432,7 @@ export const BatchDetectKeyPhrasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDetectKeyPhrasesResponse>;
 export interface BatchDetectSentimentRequest {
   TextList: (string | redacted.Redacted<string>)[];
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const BatchDetectSentimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -442,7 +444,12 @@ export const BatchDetectSentimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetectSentimentRequest",
 }) as any as S.Schema<BatchDetectSentimentRequest>;
-export type SentimentType = "POSITIVE" | "NEGATIVE" | "NEUTRAL" | "MIXED";
+export type SentimentType =
+  | "POSITIVE"
+  | "NEGATIVE"
+  | "NEUTRAL"
+  | "MIXED"
+  | (string & {});
 export const SentimentType = /*@__PURE__*/ S.String;
 
 export interface SentimentScore {
@@ -489,12 +496,19 @@ export const BatchDetectSentimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetectSentimentResponse",
 }) as any as S.Schema<BatchDetectSentimentResponse>;
-export type SyntaxLanguageCode = "en" | "es" | "fr" | "de" | "it" | "pt";
+export type SyntaxLanguageCode =
+  | "en"
+  | "es"
+  | "fr"
+  | "de"
+  | "it"
+  | "pt"
+  | (string & {});
 export const SyntaxLanguageCode = /*@__PURE__*/ S.String;
 
 export interface BatchDetectSyntaxRequest {
   TextList: (string | redacted.Redacted<string>)[];
-  LanguageCode: SyntaxLanguageCode | (string & {});
+  LanguageCode: SyntaxLanguageCode;
 }
 export const BatchDetectSyntaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -524,7 +538,8 @@ export type PartOfSpeechTagType =
   | "PUNCT"
   | "SCONJ"
   | "SYM"
-  | "VERB";
+  | "VERB"
+  | (string & {});
 export const PartOfSpeechTagType = /*@__PURE__*/ S.String;
 
 export interface PartOfSpeechTag {
@@ -587,7 +602,7 @@ export const BatchDetectSyntaxResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDetectSyntaxResponse>;
 export interface BatchDetectTargetedSentimentRequest {
   TextList: (string | redacted.Redacted<string>)[];
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const BatchDetectTargetedSentimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -618,7 +633,8 @@ export type TargetedSentimentEntityType =
   | "DATE"
   | "QUANTITY"
   | "ATTRIBUTE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const TargetedSentimentEntityType = /*@__PURE__*/ S.String;
 
 export interface MentionSentiment {
@@ -708,26 +724,27 @@ export type DocumentClassifierEndpointArn = string;
 export type SemiStructuredDocumentBlob = Uint8Array;
 export type DocumentReadAction =
   | "TEXTRACT_DETECT_DOCUMENT_TEXT"
-  | "TEXTRACT_ANALYZE_DOCUMENT";
+  | "TEXTRACT_ANALYZE_DOCUMENT"
+  | (string & {});
 export const DocumentReadAction = /*@__PURE__*/ S.String;
 
-export type DocumentReadMode = "SERVICE_DEFAULT" | "FORCE_DOCUMENT_READ_ACTION";
+export type DocumentReadMode =
+  | "SERVICE_DEFAULT"
+  | "FORCE_DOCUMENT_READ_ACTION"
+  | (string & {});
 export const DocumentReadMode = /*@__PURE__*/ S.String;
 
-export type DocumentReadFeatureTypes = "TABLES" | "FORMS";
+export type DocumentReadFeatureTypes = "TABLES" | "FORMS" | (string & {});
 export const DocumentReadFeatureTypes = /*@__PURE__*/ S.String;
 
-export type ListOfDocumentReadFeatureTypes = (
-  | DocumentReadFeatureTypes
-  | (string & {})
-)[];
+export type ListOfDocumentReadFeatureTypes = DocumentReadFeatureTypes[];
 export const ListOfDocumentReadFeatureTypes = /*@__PURE__*/ S.Array(
   DocumentReadFeatureTypes,
 );
 export interface DocumentReaderConfig {
-  DocumentReadAction: DocumentReadAction | (string & {});
-  DocumentReadMode?: DocumentReadMode | (string & {});
-  FeatureTypes?: (DocumentReadFeatureTypes | (string & {}))[];
+  DocumentReadAction: DocumentReadAction;
+  DocumentReadMode?: DocumentReadMode;
+  FeatureTypes?: DocumentReadFeatureTypes[];
 }
 export const DocumentReaderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -816,7 +833,8 @@ export type DocumentType =
   | "IMAGE"
   | "PLAIN_TEXT"
   | "TEXTRACT_DETECT_DOCUMENT_TEXT_JSON"
-  | "TEXTRACT_ANALYZE_DOCUMENT_JSON";
+  | "TEXTRACT_ANALYZE_DOCUMENT_JSON"
+  | (string & {});
 export const DocumentType = /*@__PURE__*/ S.String;
 
 export interface DocumentTypeListItem {
@@ -835,7 +853,8 @@ export type PageBasedErrorCode =
   | "TEXTRACT_PROVISIONED_THROUGHPUT_EXCEEDED"
   | "PAGE_CHARACTERS_EXCEEDED"
   | "PAGE_SIZE_EXCEEDED"
-  | "INTERNAL_SERVER_ERROR";
+  | "INTERNAL_SERVER_ERROR"
+  | (string & {});
 export const PageBasedErrorCode = /*@__PURE__*/ S.String;
 
 export interface ErrorsListItem {
@@ -854,7 +873,8 @@ export type ListOfErrors = ErrorsListItem[];
 export const ListOfErrors = /*@__PURE__*/ S.Array(ErrorsListItem);
 export type PageBasedWarningCode =
   | "INFERENCING_PLAINTEXT_WITH_NATIVE_TRAINED_MODEL"
-  | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL";
+  | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL"
+  | (string & {});
 export const PageBasedWarningCode = /*@__PURE__*/ S.String;
 
 export interface WarningsListItem {
@@ -895,7 +915,7 @@ export const ClassifyDocumentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClassifyDocumentResponse>;
 export interface ContainsPiiEntitiesRequest {
   Text: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const ContainsPiiEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: S.String, LanguageCode: LanguageCode }).pipe(
@@ -941,7 +961,8 @@ export type PiiEntityType =
   | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
   | "CA_HEALTH_NUMBER"
   | "IN_AADHAAR"
-  | "IN_VOTER_NUMBER";
+  | "IN_VOTER_NUMBER"
+  | (string & {});
 export const PiiEntityType = /*@__PURE__*/ S.String;
 
 export interface EntityLabel {
@@ -963,7 +984,7 @@ export const ContainsPiiEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainsPiiEntitiesResponse>;
 export type ComprehendFlywheelArn = string;
 export type ComprehendArnName = string;
-export type DatasetType = "TRAIN" | "TEST";
+export type DatasetType = "TRAIN" | "TEST" | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
 
 export type Description = string;
@@ -973,7 +994,8 @@ export const AttributeNamesList = /*@__PURE__*/ S.Array(S.String);
 export type S3Uri = string;
 export type AugmentedManifestsDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
-  | "SEMI_STRUCTURED_DOCUMENT";
+  | "SEMI_STRUCTURED_DOCUMENT"
+  | (string & {});
 export const AugmentedManifestsDocumentTypeFormat = /*@__PURE__*/ S.String;
 
 export interface DatasetAugmentedManifestsListItem {
@@ -981,7 +1003,7 @@ export interface DatasetAugmentedManifestsListItem {
   S3Uri: string;
   AnnotationDataS3Uri?: string;
   SourceDocumentsS3Uri?: string;
-  DocumentType?: AugmentedManifestsDocumentTypeFormat | (string & {});
+  DocumentType?: AugmentedManifestsDocumentTypeFormat;
 }
 export const DatasetAugmentedManifestsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -998,7 +1020,10 @@ export type DatasetAugmentedManifestsList = DatasetAugmentedManifestsListItem[];
 export const DatasetAugmentedManifestsList = /*@__PURE__*/ S.Array(
   DatasetAugmentedManifestsListItem,
 );
-export type DatasetDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST";
+export type DatasetDataFormat =
+  | "COMPREHEND_CSV"
+  | "AUGMENTED_MANIFEST"
+  | (string & {});
 export const DatasetDataFormat = /*@__PURE__*/ S.String;
 
 export type LabelDelimiter = string;
@@ -1019,12 +1044,15 @@ export const DatasetEntityRecognizerAnnotations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatasetEntityRecognizerAnnotations",
 }) as any as S.Schema<DatasetEntityRecognizerAnnotations>;
-export type InputFormat = "ONE_DOC_PER_FILE" | "ONE_DOC_PER_LINE";
+export type InputFormat =
+  | "ONE_DOC_PER_FILE"
+  | "ONE_DOC_PER_LINE"
+  | (string & {});
 export const InputFormat = /*@__PURE__*/ S.String;
 
 export interface DatasetEntityRecognizerDocuments {
   S3Uri: string;
-  InputFormat?: InputFormat | (string & {});
+  InputFormat?: InputFormat;
 }
 export const DatasetEntityRecognizerDocuments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Uri: S.String, InputFormat: S.optional(InputFormat) }),
@@ -1056,7 +1084,7 @@ export const DatasetEntityRecognizerInputDataConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatasetEntityRecognizerInputDataConfig>;
 export interface DatasetInputDataConfig {
   AugmentedManifests?: DatasetAugmentedManifestsListItem[];
-  DataFormat?: DatasetDataFormat | (string & {});
+  DataFormat?: DatasetDataFormat;
   DocumentClassifierInputDataConfig?: DatasetDocumentClassifierInputDataConfig;
   EntityRecognizerInputDataConfig?: DatasetEntityRecognizerInputDataConfig;
 }
@@ -1089,7 +1117,7 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateDatasetRequest {
   FlywheelArn: string;
   DatasetName: string;
-  DatasetType?: DatasetType | (string & {});
+  DatasetType?: DatasetType;
   Description?: string;
   InputDataConfig: DatasetInputDataConfig;
   ClientRequestToken?: string;
@@ -1123,19 +1151,20 @@ export type VersionName = string;
 export type IamRoleArn = string;
 export type DocumentClassifierDataFormat =
   | "COMPREHEND_CSV"
-  | "AUGMENTED_MANIFEST";
+  | "AUGMENTED_MANIFEST"
+  | (string & {});
 export const DocumentClassifierDataFormat = /*@__PURE__*/ S.String;
 
-export type Split = "TRAIN" | "TEST";
+export type Split = "TRAIN" | "TEST" | (string & {});
 export const Split = /*@__PURE__*/ S.String;
 
 export interface AugmentedManifestsListItem {
   S3Uri: string;
-  Split?: Split | (string & {});
+  Split?: Split;
   AttributeNames: string[];
   AnnotationDataS3Uri?: string;
   SourceDocumentsS3Uri?: string;
-  DocumentType?: AugmentedManifestsDocumentTypeFormat | (string & {});
+  DocumentType?: AugmentedManifestsDocumentTypeFormat;
 }
 export const AugmentedManifestsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1156,7 +1185,8 @@ export const DocumentClassifierAugmentedManifestsList = /*@__PURE__*/ S.Array(
 );
 export type DocumentClassifierDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
-  | "SEMI_STRUCTURED_DOCUMENT";
+  | "SEMI_STRUCTURED_DOCUMENT"
+  | (string & {});
 export const DocumentClassifierDocumentTypeFormat = /*@__PURE__*/ S.String;
 
 export interface DocumentClassifierDocuments {
@@ -1169,12 +1199,12 @@ export const DocumentClassifierDocuments = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentClassifierDocuments",
 }) as any as S.Schema<DocumentClassifierDocuments>;
 export interface DocumentClassifierInputDataConfig {
-  DataFormat?: DocumentClassifierDataFormat | (string & {});
+  DataFormat?: DocumentClassifierDataFormat;
   S3Uri?: string;
   TestS3Uri?: string;
   LabelDelimiter?: string;
   AugmentedManifests?: AugmentedManifestsListItem[];
-  DocumentType?: DocumentClassifierDocumentTypeFormat | (string & {});
+  DocumentType?: DocumentClassifierDocumentTypeFormat;
   Documents?: DocumentClassifierDocuments;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
@@ -1220,7 +1250,10 @@ export interface VpcConfig {
 export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecurityGroupIds: SecurityGroupIds, Subnets: Subnets }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type DocumentClassifierMode = "MULTI_CLASS" | "MULTI_LABEL";
+export type DocumentClassifierMode =
+  | "MULTI_CLASS"
+  | "MULTI_LABEL"
+  | (string & {});
 export const DocumentClassifierMode = /*@__PURE__*/ S.String;
 
 export type Policy = string;
@@ -1232,10 +1265,10 @@ export interface CreateDocumentClassifierRequest {
   InputDataConfig: DocumentClassifierInputDataConfig;
   OutputDataConfig?: DocumentClassifierOutputDataConfig;
   ClientRequestToken?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
-  Mode?: DocumentClassifierMode | (string & {});
+  Mode?: DocumentClassifierMode;
   ModelKmsKeyId?: string;
   ModelPolicy?: string;
 }
@@ -1311,7 +1344,8 @@ export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEndpointResponse>;
 export type EntityRecognizerDataFormat =
   | "COMPREHEND_CSV"
-  | "AUGMENTED_MANIFEST";
+  | "AUGMENTED_MANIFEST"
+  | (string & {});
 export const EntityRecognizerDataFormat = /*@__PURE__*/ S.String;
 
 export type EntityTypeName = string;
@@ -1328,7 +1362,7 @@ export const EntityTypesList = /*@__PURE__*/ S.Array(EntityTypesListItem);
 export interface EntityRecognizerDocuments {
   S3Uri: string;
   TestS3Uri?: string;
-  InputFormat?: InputFormat | (string & {});
+  InputFormat?: InputFormat;
 }
 export const EntityRecognizerDocuments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1362,7 +1396,7 @@ export const EntityRecognizerAugmentedManifestsList = /*@__PURE__*/ S.Array(
   AugmentedManifestsListItem,
 );
 export interface EntityRecognizerInputDataConfig {
-  DataFormat?: EntityRecognizerDataFormat | (string & {});
+  DataFormat?: EntityRecognizerDataFormat;
   EntityTypes: EntityTypesListItem[];
   Documents?: EntityRecognizerDocuments;
   Annotations?: EntityRecognizerAnnotations;
@@ -1388,7 +1422,7 @@ export interface CreateEntityRecognizerRequest {
   Tags?: Tag[];
   InputDataConfig: EntityRecognizerInputDataConfig;
   ClientRequestToken?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
   ModelKmsKeyId?: string;
@@ -1426,7 +1460,7 @@ export type LabelListItem = string;
 export type LabelsList = string[];
 export const LabelsList = /*@__PURE__*/ S.Array(S.String);
 export interface DocumentClassificationConfig {
-  Mode: DocumentClassifierMode | (string & {});
+  Mode: DocumentClassifierMode;
   Labels?: string[];
 }
 export const DocumentClassificationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1443,7 +1477,7 @@ export const EntityRecognitionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityRecognitionConfig",
 }) as any as S.Schema<EntityRecognitionConfig>;
 export interface TaskConfig {
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   DocumentClassificationConfig?: DocumentClassificationConfig;
   EntityRecognitionConfig?: EntityRecognitionConfig;
 }
@@ -1454,7 +1488,10 @@ export const TaskConfig = /*@__PURE__*/ S.suspend(() =>
     EntityRecognitionConfig: S.optional(EntityRecognitionConfig),
   }),
 ).annotate({ identifier: "TaskConfig" }) as any as S.Schema<TaskConfig>;
-export type ModelType = "DOCUMENT_CLASSIFIER" | "ENTITY_RECOGNIZER";
+export type ModelType =
+  | "DOCUMENT_CLASSIFIER"
+  | "ENTITY_RECOGNIZER"
+  | (string & {});
 export const ModelType = /*@__PURE__*/ S.String;
 
 export type FlywheelS3Uri = string;
@@ -1479,7 +1516,7 @@ export interface CreateFlywheelRequest {
   ActiveModelArn?: string;
   DataAccessRoleArn: string;
   TaskConfig?: TaskConfig;
-  ModelType?: ModelType | (string & {});
+  ModelType?: ModelType;
   DataLakeS3Uri: string;
   DataSecurityConfig?: DataSecurityConfig;
   ClientRequestToken?: string;
@@ -1609,7 +1646,7 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
-export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED";
+export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED" | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
 
 export type AnyLengthString = string;
@@ -1670,12 +1707,13 @@ export type JobStatus =
   | "COMPLETED"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface InputDataConfig {
   S3Uri: string;
-  InputFormat?: InputFormat | (string & {});
+  InputFormat?: InputFormat;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
 export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1763,7 +1801,8 @@ export type ModelStatus =
   | "STOPPED"
   | "IN_ERROR"
   | "TRAINED"
-  | "TRAINED_WITH_WARNING";
+  | "TRAINED_WITH_WARNING"
+  | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export interface ClassifierEvaluationMetrics {
@@ -1938,7 +1977,8 @@ export type EndpointStatus =
   | "DELETING"
   | "FAILED"
   | "IN_SERVICE"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 export interface EndpointProperties {
@@ -2254,7 +2294,8 @@ export type FlywheelStatus =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const FlywheelStatus = /*@__PURE__*/ S.String;
 
 export type FlywheelIterationId = string;
@@ -2317,7 +2358,8 @@ export type FlywheelIterationStatus =
   | "COMPLETED"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const FlywheelIterationStatus = /*@__PURE__*/ S.String;
 
 export interface FlywheelModelEvaluationMetrics {
@@ -2454,17 +2496,18 @@ export const PiiOutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PiiOutputDataConfig",
 }) as any as S.Schema<PiiOutputDataConfig>;
-export type ListOfPiiEntityTypes = (PiiEntityType | (string & {}))[];
+export type ListOfPiiEntityTypes = PiiEntityType[];
 export const ListOfPiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export type PiiEntitiesDetectionMaskMode =
   | "MASK"
-  | "REPLACE_WITH_PII_ENTITY_TYPE";
+  | "REPLACE_WITH_PII_ENTITY_TYPE"
+  | (string & {});
 export const PiiEntitiesDetectionMaskMode = /*@__PURE__*/ S.String;
 
 export type MaskCharacter = string;
 export interface RedactionConfig {
-  PiiEntityTypes?: (PiiEntityType | (string & {}))[];
-  MaskMode?: PiiEntitiesDetectionMaskMode | (string & {});
+  PiiEntityTypes?: PiiEntityType[];
+  MaskMode?: PiiEntitiesDetectionMaskMode;
   MaskCharacter?: string;
 }
 export const RedactionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2476,7 +2519,10 @@ export const RedactionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedactionConfig",
 }) as any as S.Schema<RedactionConfig>;
-export type PiiEntitiesDetectionMode = "ONLY_REDACTION" | "ONLY_OFFSETS";
+export type PiiEntitiesDetectionMode =
+  | "ONLY_REDACTION"
+  | "ONLY_OFFSETS"
+  | (string & {});
 export const PiiEntitiesDetectionMode = /*@__PURE__*/ S.String;
 
 export interface PiiEntitiesDetectionJobProperties {
@@ -2746,7 +2792,7 @@ export const DetectDominantLanguageResponse = /*@__PURE__*/ S.suspend(() =>
 export type EntityRecognizerEndpointArn = string;
 export interface DetectEntitiesRequest {
   Text?: string | redacted.Redacted<string>;
-  LanguageCode?: LanguageCode | (string & {});
+  LanguageCode?: LanguageCode;
   EndpointArn?: string;
   Bytes?: Uint8Array;
   DocumentReaderConfig?: DocumentReaderConfig;
@@ -2764,7 +2810,7 @@ export const DetectEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectEntitiesRequest",
 }) as any as S.Schema<DetectEntitiesRequest>;
-export type BlockType = "LINE" | "WORD";
+export type BlockType = "LINE" | "WORD" | (string & {});
 export const BlockType = /*@__PURE__*/ S.String;
 
 export interface BoundingBox {
@@ -2802,7 +2848,7 @@ export const Geometry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Geometry" }) as any as S.Schema<Geometry>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type RelationshipType = "CHILD";
+export type RelationshipType = "CHILD" | (string & {});
 export const RelationshipType = /*@__PURE__*/ S.String;
 
 export interface RelationshipsListItem {
@@ -2856,7 +2902,7 @@ export const DetectEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectEntitiesResponse>;
 export interface DetectKeyPhrasesRequest {
   Text: string | redacted.Redacted<string>;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const DetectKeyPhrasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
@@ -2875,7 +2921,7 @@ export const DetectKeyPhrasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectKeyPhrasesResponse>;
 export interface DetectPiiEntitiesRequest {
   Text: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const DetectPiiEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: S.String, LanguageCode: LanguageCode }).pipe(
@@ -2910,7 +2956,7 @@ export const DetectPiiEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectPiiEntitiesResponse>;
 export interface DetectSentimentRequest {
   Text: string | redacted.Redacted<string>;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const DetectSentimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
@@ -2933,7 +2979,7 @@ export const DetectSentimentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectSentimentResponse>;
 export interface DetectSyntaxRequest {
   Text: string | redacted.Redacted<string>;
-  LanguageCode: SyntaxLanguageCode | (string & {});
+  LanguageCode: SyntaxLanguageCode;
 }
 export const DetectSyntaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: SensitiveString, LanguageCode: SyntaxLanguageCode }).pipe(
@@ -2952,7 +2998,7 @@ export const DetectSyntaxResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectSyntaxResponse>;
 export interface DetectTargetedSentimentRequest {
   Text: string | redacted.Redacted<string>;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const DetectTargetedSentimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
@@ -2979,7 +3025,7 @@ export type ListOfTextSegments = TextSegment[];
 export const ListOfTextSegments = /*@__PURE__*/ S.Array(TextSegment);
 export interface DetectToxicContentRequest {
   TextSegments: TextSegment[];
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
 }
 export const DetectToxicContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2998,7 +3044,8 @@ export type ToxicContentType =
   | "INSULT"
   | "PROFANITY"
   | "SEXUAL"
-  | "VIOLENCE_OR_THREAT";
+  | "VIOLENCE_OR_THREAT"
+  | (string & {});
 export const ToxicContentType = /*@__PURE__*/ S.String;
 
 export interface ToxicContent {
@@ -3061,8 +3108,8 @@ export const ImportModelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportModelResponse",
 }) as any as S.Schema<ImportModelResponse>;
 export interface DatasetFilter {
-  Status?: DatasetStatus | (string & {});
-  DatasetType?: DatasetType | (string & {});
+  Status?: DatasetStatus;
+  DatasetType?: DatasetType;
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
 }
@@ -3113,7 +3160,7 @@ export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetsResponse>;
 export interface DocumentClassificationJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3169,7 +3216,7 @@ export const ListDocumentClassificationJobsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListDocumentClassificationJobsResponse",
 }) as any as S.Schema<ListDocumentClassificationJobsResponse>;
 export interface DocumentClassifierFilter {
-  Status?: ModelStatus | (string & {});
+  Status?: ModelStatus;
   DocumentClassifierName?: string;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
@@ -3278,7 +3325,7 @@ export const ListDocumentClassifierSummariesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDocumentClassifierSummariesResponse>;
 export interface DominantLanguageDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3335,7 +3382,7 @@ export const ListDominantLanguageDetectionJobsResponse =
   }) as any as S.Schema<ListDominantLanguageDetectionJobsResponse>;
 export interface EndpointFilter {
   ModelArn?: string;
-  Status?: EndpointStatus | (string & {});
+  Status?: EndpointStatus;
   CreationTimeBefore?: Date;
   CreationTimeAfter?: Date;
 }
@@ -3383,7 +3430,7 @@ export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointsResponse>;
 export interface EntitiesDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3437,7 +3484,7 @@ export const ListEntitiesDetectionJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEntitiesDetectionJobsResponse",
 }) as any as S.Schema<ListEntitiesDetectionJobsResponse>;
 export interface EntityRecognizerFilter {
-  Status?: ModelStatus | (string & {});
+  Status?: ModelStatus;
   RecognizerName?: string;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
@@ -3542,7 +3589,7 @@ export const ListEntityRecognizerSummariesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListEntityRecognizerSummariesResponse>;
 export interface EventsDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3648,7 +3695,7 @@ export const ListFlywheelIterationHistoryResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListFlywheelIterationHistoryResponse",
 }) as any as S.Schema<ListFlywheelIterationHistoryResponse>;
 export interface FlywheelFilter {
-  Status?: FlywheelStatus | (string & {});
+  Status?: FlywheelStatus;
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
 }
@@ -3723,7 +3770,7 @@ export const ListFlywheelsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFlywheelsResponse>;
 export interface KeyPhrasesDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3778,7 +3825,7 @@ export const ListKeyPhrasesDetectionJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeyPhrasesDetectionJobsResponse>;
 export interface PiiEntitiesDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3834,7 +3881,7 @@ export const ListPiiEntitiesDetectionJobsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPiiEntitiesDetectionJobsResponse>;
 export interface SentimentDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3908,7 +3955,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TargetedSentimentDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -3964,7 +4011,7 @@ export const ListTargetedSentimentDetectionJobsResponse =
   }) as any as S.Schema<ListTargetedSentimentDetectionJobsResponse>;
 export interface TopicsDetectionJobFilter {
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
@@ -4136,7 +4183,7 @@ export interface StartEntitiesDetectionJobRequest {
   DataAccessRoleArn: string;
   JobName?: string;
   EntityRecognizerArn?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
@@ -4183,7 +4230,7 @@ export interface StartEventsDetectionJobRequest {
   OutputDataConfig: OutputDataConfig;
   DataAccessRoleArn: string;
   JobName?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   TargetEventTypes: string[];
   Tags?: Tag[];
@@ -4249,7 +4296,7 @@ export interface StartKeyPhrasesDetectionJobRequest {
   OutputDataConfig: OutputDataConfig;
   DataAccessRoleArn: string;
   JobName?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
@@ -4289,11 +4336,11 @@ export const StartKeyPhrasesDetectionJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartPiiEntitiesDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
-  Mode: PiiEntitiesDetectionMode | (string & {});
+  Mode: PiiEntitiesDetectionMode;
   RedactionConfig?: RedactionConfig;
   DataAccessRoleArn: string;
   JobName?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
@@ -4334,7 +4381,7 @@ export interface StartSentimentDetectionJobRequest {
   OutputDataConfig: OutputDataConfig;
   DataAccessRoleArn: string;
   JobName?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
@@ -4376,7 +4423,7 @@ export interface StartTargetedSentimentDetectionJobRequest {
   OutputDataConfig: OutputDataConfig;
   DataAccessRoleArn: string;
   JobName?: string;
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   ClientRequestToken?: string;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
@@ -4732,14 +4779,15 @@ export const UpdateFlywheelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFlywheelResponse",
 }) as any as S.Schema<UpdateFlywheelResponse>;
-export type InvalidRequestReason = "INVALID_DOCUMENT";
+export type InvalidRequestReason = "INVALID_DOCUMENT" | (string & {});
 export const InvalidRequestReason = /*@__PURE__*/ S.String;
 
 export type InvalidRequestDetailReason =
   | "DOCUMENT_SIZE_EXCEEDED"
   | "UNSUPPORTED_DOC_TYPE"
   | "PAGE_LIMIT_EXCEEDED"
-  | "TEXTRACT_ACCESS_DENIED";
+  | "TEXTRACT_ACCESS_DENIED"
+  | (string & {});
 export const InvalidRequestDetailReason = /*@__PURE__*/ S.String;
 
 export interface InvalidRequestDetail {

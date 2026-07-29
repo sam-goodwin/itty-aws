@@ -179,7 +179,8 @@ export type ServiceNamespace =
   | "ecs"
   | "ec2"
   | "rds"
-  | "dynamodb";
+  | "dynamodb"
+  | (string & {});
 export const ServiceNamespace = /*@__PURE__*/ S.String;
 
 export type ResourceIdMaxLen1600 = string;
@@ -191,7 +192,8 @@ export type ScalableDimension =
   | "dynamodb:table:ReadCapacityUnits"
   | "dynamodb:table:WriteCapacityUnits"
   | "dynamodb:index:ReadCapacityUnits"
-  | "dynamodb:index:WriteCapacityUnits";
+  | "dynamodb:index:WriteCapacityUnits"
+  | (string & {});
 export const ScalableDimension = /*@__PURE__*/ S.String;
 
 export type ResourceCapacity = number;
@@ -208,12 +210,13 @@ export type ScalingMetricType =
   | "RDSReaderAverageDatabaseConnections"
   | "EC2SpotFleetRequestAverageCPUUtilization"
   | "EC2SpotFleetRequestAverageNetworkIn"
-  | "EC2SpotFleetRequestAverageNetworkOut";
+  | "EC2SpotFleetRequestAverageNetworkOut"
+  | (string & {});
 export const ScalingMetricType = /*@__PURE__*/ S.String;
 
 export type ResourceLabel = string;
 export interface PredefinedScalingMetricSpecification {
-  PredefinedScalingMetricType: ScalingMetricType | (string & {});
+  PredefinedScalingMetricType: ScalingMetricType;
   ResourceLabel?: string;
 }
 export const PredefinedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
@@ -245,7 +248,8 @@ export type MetricStatistic =
   | "Minimum"
   | "Maximum"
   | "SampleCount"
-  | "Sum";
+  | "Sum"
+  | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
 export type MetricUnit = string;
@@ -253,7 +257,7 @@ export interface CustomizedScalingMetricSpecification {
   MetricName: string;
   Namespace: string;
   Dimensions?: MetricDimension[];
-  Statistic: MetricStatistic | (string & {});
+  Statistic: MetricStatistic;
   Unit?: string;
 }
 export const CustomizedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
@@ -305,11 +309,12 @@ export type LoadMetricType =
   | "ASGTotalCPUUtilization"
   | "ASGTotalNetworkIn"
   | "ASGTotalNetworkOut"
-  | "ALBTargetGroupRequestCount";
+  | "ALBTargetGroupRequestCount"
+  | (string & {});
 export const LoadMetricType = /*@__PURE__*/ S.String;
 
 export interface PredefinedLoadMetricSpecification {
-  PredefinedLoadMetricType: LoadMetricType | (string & {});
+  PredefinedLoadMetricType: LoadMetricType;
   ResourceLabel?: string;
 }
 export const PredefinedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -324,7 +329,7 @@ export interface CustomizedLoadMetricSpecification {
   MetricName: string;
   Namespace: string;
   Dimensions?: MetricDimension[];
-  Statistic: MetricStatistic | (string & {});
+  Statistic: MetricStatistic;
   Unit?: string;
 }
 export const CustomizedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -342,34 +347,37 @@ export type ScheduledActionBufferTime = number;
 export type PredictiveScalingMaxCapacityBehavior =
   | "SetForecastCapacityToMaxCapacity"
   | "SetMaxCapacityToForecastCapacity"
-  | "SetMaxCapacityAboveForecastCapacity";
+  | "SetMaxCapacityAboveForecastCapacity"
+  | (string & {});
 export const PredictiveScalingMaxCapacityBehavior = /*@__PURE__*/ S.String;
 
-export type PredictiveScalingMode = "ForecastAndScale" | "ForecastOnly";
+export type PredictiveScalingMode =
+  | "ForecastAndScale"
+  | "ForecastOnly"
+  | (string & {});
 export const PredictiveScalingMode = /*@__PURE__*/ S.String;
 
 export type ScalingPolicyUpdateBehavior =
   | "KeepExternalPolicies"
-  | "ReplaceExternalPolicies";
+  | "ReplaceExternalPolicies"
+  | (string & {});
 export const ScalingPolicyUpdateBehavior = /*@__PURE__*/ S.String;
 
 export type DisableDynamicScaling = boolean;
 export interface ScalingInstruction {
-  ServiceNamespace: ServiceNamespace | (string & {});
+  ServiceNamespace: ServiceNamespace;
   ResourceId: string;
-  ScalableDimension: ScalableDimension | (string & {});
+  ScalableDimension: ScalableDimension;
   MinCapacity: number;
   MaxCapacity: number;
   TargetTrackingConfigurations: TargetTrackingConfiguration[];
   PredefinedLoadMetricSpecification?: PredefinedLoadMetricSpecification;
   CustomizedLoadMetricSpecification?: CustomizedLoadMetricSpecification;
   ScheduledActionBufferTime?: number;
-  PredictiveScalingMaxCapacityBehavior?:
-    | PredictiveScalingMaxCapacityBehavior
-    | (string & {});
+  PredictiveScalingMaxCapacityBehavior?: PredictiveScalingMaxCapacityBehavior;
   PredictiveScalingMaxCapacityBuffer?: number;
-  PredictiveScalingMode?: PredictiveScalingMode | (string & {});
-  ScalingPolicyUpdateBehavior?: ScalingPolicyUpdateBehavior | (string & {});
+  PredictiveScalingMode?: PredictiveScalingMode;
+  ScalingPolicyUpdateBehavior?: ScalingPolicyUpdateBehavior;
   DisableDynamicScaling?: boolean;
 }
 export const ScalingInstruction = /*@__PURE__*/ S.suspend(() =>
@@ -463,7 +471,7 @@ export const DescribeScalingPlanResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeScalingPlanResourcesRequest",
 }) as any as S.Schema<DescribeScalingPlanResourcesRequest>;
 export type PolicyName = string;
-export type PolicyType = "TargetTrackingScaling";
+export type PolicyType = "TargetTrackingScaling" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export interface ScalingPolicy {
@@ -480,7 +488,11 @@ export const ScalingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingPolicy" }) as any as S.Schema<ScalingPolicy>;
 export type ScalingPolicies = ScalingPolicy[];
 export const ScalingPolicies = /*@__PURE__*/ S.Array(ScalingPolicy);
-export type ScalingStatusCode = "Inactive" | "PartiallyActive" | "Active";
+export type ScalingStatusCode =
+  | "Inactive"
+  | "PartiallyActive"
+  | "Active"
+  | (string & {});
 export const ScalingStatusCode = /*@__PURE__*/ S.String;
 
 export interface ScalingPlanResource {
@@ -554,7 +566,8 @@ export type ScalingPlanStatusCode =
   | "DeletionInProgress"
   | "DeletionFailed"
   | "UpdateInProgress"
-  | "UpdateFailed";
+  | "UpdateFailed"
+  | (string & {});
 export const ScalingPlanStatusCode = /*@__PURE__*/ S.String;
 
 export interface ScalingPlan {
@@ -599,16 +612,17 @@ export type ForecastDataType =
   | "CapacityForecast"
   | "LoadForecast"
   | "ScheduledActionMinCapacity"
-  | "ScheduledActionMaxCapacity";
+  | "ScheduledActionMaxCapacity"
+  | (string & {});
 export const ForecastDataType = /*@__PURE__*/ S.String;
 
 export interface GetScalingPlanResourceForecastDataRequest {
   ScalingPlanName: string;
   ScalingPlanVersion: number;
-  ServiceNamespace: ServiceNamespace | (string & {});
+  ServiceNamespace: ServiceNamespace;
   ResourceId: string;
-  ScalableDimension: ScalableDimension | (string & {});
-  ForecastDataType: ForecastDataType | (string & {});
+  ScalableDimension: ScalableDimension;
+  ForecastDataType: ForecastDataType;
   StartTime: Date;
   EndTime: Date;
 }

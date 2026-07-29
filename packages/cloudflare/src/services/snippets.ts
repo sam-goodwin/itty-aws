@@ -205,13 +205,13 @@ export interface GetSnippetResponse {
   /** Identify the snippet. */
   snippetName: string;
   /** Indicates when the snippet was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetSnippetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSnippetResponse",
@@ -245,13 +245,13 @@ export interface ListResultItem {
   /** Identify the snippet. */
   snippetName: string;
   /** Indicates when the snippet was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -285,9 +285,9 @@ export interface RulesUpdateRequestRulesItem {
   /** Identify the snippet. */
   snippetName: string;
   /** Provide an informative description of the rule. */
-  description?: string;
+  description?: string | null;
   /** Indicate whether to execute the rule. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -295,8 +295,8 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestRulesItem",
@@ -343,7 +343,7 @@ export interface PutSnippetRequest {
   /** Snippet metadata ({ mainModule }), JSON-encoded as the multipart `metadata` part. */
   metadata: unknown;
   /** Snippet module file(s), appended under their own filenames. */
-  files?: (File | Blob)[];
+  files?: File | Blob | (File | Blob)[];
 }
 export const PutSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -372,13 +372,13 @@ export interface PutSnippetResponse {
   /** Identify the snippet. */
   snippetName: string;
   /** Indicates when the snippet was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PutSnippetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSnippetResponse",

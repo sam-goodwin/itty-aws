@@ -189,13 +189,18 @@ export interface BulkPatchPoolsRequest {
   /** Identifier. */
   accountId: string;
   /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
-  notificationEmail?: PoolsBulkEditRequestNotificationEmail | (string & {});
+  notificationEmail?:
+    | PoolsBulkEditRequestNotificationEmail
+    | (string & {})
+    | null;
 }
 export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     notificationEmail: S.optional(
-      PoolsBulkEditRequestNotificationEmail.pipe(T.Body("notification_email")),
+      S.NullOr(PoolsBulkEditRequestNotificationEmail).pipe(
+        T.Body("notification_email"),
+      ),
     ),
   })
     .pipe(
@@ -245,25 +250,29 @@ export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
 
 export interface PoolsBulkEditResultItemLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsBulkEditResultItemLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsBulkEditResultItemLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsBulkEditResultItemLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsBulkEditResultItemLoadSheddingSessionPolicy | null;
 }
 export const PoolsBulkEditResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsBulkEditResultItemLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsBulkEditResultItemLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsBulkEditResultItemLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsBulkEditResultItemLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -279,15 +288,15 @@ export const PoolsBulkEditResultItemNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsBulkEditResultItemNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsBulkEditResultItemNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsBulkEditResultItemNotificationFilterOrigin",
@@ -295,15 +304,19 @@ export const PoolsBulkEditResultItemNotificationFilterOrigin =
 
 export interface PoolsBulkEditResultItemNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsBulkEditResultItemNotificationFilterOrigin;
+  origin?: PoolsBulkEditResultItemNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsBulkEditResultItemNotificationFilterOrigin;
+  pool?: PoolsBulkEditResultItemNotificationFilterOrigin | null;
 }
 export const PoolsBulkEditResultItemNotificationFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      origin: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
-      pool: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
+      origin: S.optional(
+        S.NullOr(PoolsBulkEditResultItemNotificationFilterOrigin),
+      ),
+      pool: S.optional(
+        S.NullOr(PoolsBulkEditResultItemNotificationFilterOrigin),
+      ),
     }),
   ).annotate({
     identifier: "PoolsBulkEditResultItemNotificationFilter",
@@ -319,12 +332,12 @@ export const PoolsBulkEditResultItemOriginSteeringPolicy =
 
 export interface PoolsBulkEditResultItemOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsBulkEditResultItemOriginSteeringPolicy;
+  policy?: PoolsBulkEditResultItemOriginSteeringPolicy | null;
 }
 export const PoolsBulkEditResultItemOriginSteering = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      policy: S.optional(PoolsBulkEditResultItemOriginSteeringPolicy),
+      policy: S.optional(S.NullOr(PoolsBulkEditResultItemOriginSteeringPolicy)),
     }),
 ).annotate({
   identifier: "PoolsBulkEditResultItemOriginSteering",
@@ -338,13 +351,15 @@ export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
 
 export interface PoolsBulkEditResultItemOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsBulkEditResultItemOriginsItemHeaderHostList;
+  host?: PoolsBulkEditResultItemOriginsItemHeaderHostList | null;
 }
 export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       host: S.optional(
-        PoolsBulkEditResultItemOriginsItemHeaderHostList.pipe(T.Body("Host")),
+        S.NullOr(PoolsBulkEditResultItemOriginsItemHeaderHostList).pipe(
+          T.Body("Host"),
+        ),
       ),
     }),
 ).annotate({
@@ -353,35 +368,37 @@ export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
 
 export interface PoolsBulkEditResultItemOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsBulkEditResultItemOriginsItemHeader;
+  header?: PoolsBulkEditResultItemOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsBulkEditResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsBulkEditResultItemOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsBulkEditResultItemOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsBulkEditResultItemOriginsItem",
@@ -394,73 +411,83 @@ export const PoolsBulkEditResultItemOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoolsBulkEditResultItemOriginsList>;
 
 export interface PoolsBulkEditResultItem {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsBulkEditResultItemCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsBulkEditResultItemCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsBulkEditResultItemLoadShedding;
+  loadShedding?: PoolsBulkEditResultItemLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsBulkEditResultItemNetworksList;
+  networks?: PoolsBulkEditResultItemNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsBulkEditResultItemNotificationFilter;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsBulkEditResultItemOriginSteering;
+  originSteering?: PoolsBulkEditResultItemOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsBulkEditResultItemOriginsList;
+  origins?: PoolsBulkEditResultItemOriginsList | null;
 }
 export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsBulkEditResultItemCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsBulkEditResultItemCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsBulkEditResultItemLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsBulkEditResultItemLoadShedding).pipe(
+        T.Body("load_shedding"),
+      ),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsBulkEditResultItemNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsBulkEditResultItemNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsBulkEditResultItemNotificationFilter.pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),
     originSteering: S.optional(
-      PoolsBulkEditResultItemOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsBulkEditResultItemOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
-    origins: S.optional(PoolsBulkEditResultItemOriginsList),
+    origins: S.optional(S.NullOr(PoolsBulkEditResultItemOriginsList)),
   }),
 ).annotate({
   identifier: "PoolsBulkEditResultItem",
@@ -493,12 +520,12 @@ export const CreateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
 
 export interface CreateRequestAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const CreateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -530,15 +557,17 @@ export const CreateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: CreateRequestLocationStrategyMode | (string & {});
+  mode?: CreateRequestLocationStrategyMode | (string & {}) | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: CreateRequestLocationStrategyPreferEcs | (string & {});
+  preferEcs?: CreateRequestLocationStrategyPreferEcs | (string & {}) | null;
 }
 export const CreateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(CreateRequestLocationStrategyMode),
+    mode: S.optional(S.NullOr(CreateRequestLocationStrategyMode)),
     preferEcs: S.optional(
-      CreateRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(CreateRequestLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -573,15 +602,19 @@ export const CreateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
 
 export interface CreateRequestRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: CreateRequestRandomSteeringPoolWeightsMap;
+  poolWeights?: CreateRequestRandomSteeringPoolWeightsMap | null;
 }
 export const CreateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      CreateRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(CreateRequestRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -603,20 +636,20 @@ export const CreateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface CreateRequestRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const CreateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    location: S.optional(S.NullOr(S.String)),
+    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemFixedResponse",
@@ -715,44 +748,55 @@ export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntim
 
 export interface CreateRequestRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
   samesite?:
     | CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?:
     | CreateRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?:
     | CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const CreateRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(
+          CreateRequestRulesItemOverridesSessionAffinityAttributesSecure,
+        ),
       ),
       zeroDowntimeFailover: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -773,85 +817,89 @@ export const CreateRequestRulesItemOverridesSteeringPolicy =
 
 export interface CreateRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateRequestRulesItemOverridesCountryPoolsMap;
+  countryPools?: CreateRequestRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: CreateRequestRulesItemOverridesDefaultPoolsList;
+  defaultPools?: CreateRequestRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateRequestLocationStrategy;
+  locationStrategy?: CreateRequestLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateRequestRulesItemOverridesPopPoolsMap;
+  popPools?: CreateRequestRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: CreateRequestRandomSteering;
+  randomSteering?: CreateRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateRequestRulesItemOverridesRegionPoolsMap;
+  regionPools?: CreateRequestRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | CreateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
   steeringPolicy?:
     | CreateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      CreateRequestRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      CreateRequestRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      CreateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(CreateRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
     popPools: S.optional(
-      CreateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(CreateRequestRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      CreateRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(CreateRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      CreateRequestRulesItemOverridesRegionPoolsMap.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesRegionPoolsMap).pipe(
         T.Body("region_pools"),
       ),
     ),
     sessionAffinity: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemOverrides",
@@ -859,31 +907,33 @@ export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateRequestRulesItemFixedResponse;
+  fixedResponse?: CreateRequestRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: CreateRequestRulesItemOverrides;
+  overrides?: CreateRequestRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(CreateRequestRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(CreateRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(CreateRequestRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItem",
@@ -903,39 +953,41 @@ export interface CreateLoadBalancerRequest {
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateRequestCountryPoolsMap;
+  countryPools?: CreateRequestCountryPoolsMap | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateRequestLocationStrategy;
+  locationStrategy?: CreateRequestLocationStrategy | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: CreateRequestNetworksList;
+  networks?: CreateRequestNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateRequestPopPoolsMap;
+  popPools?: CreateRequestPopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: CreateRequestRandomSteering;
+  randomSteering?: CreateRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateRequestRegionPoolsMap;
+  regionPools?: CreateRequestRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: CreateRequestRulesList;
+  rules?: CreateRequestRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | CreateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
   steeringPolicy?:
     | CreateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -944,44 +996,46 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     fallbackPool: S.String.pipe(T.Body("fallback_pool")),
     name: S.String,
     adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      CreateRequestCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(CreateRequestCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     locationStrategy: S.optional(
-      CreateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(CreateRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
-    networks: S.optional(CreateRequestNetworksList),
-    popPools: S.optional(CreateRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    networks: S.optional(S.NullOr(CreateRequestNetworksList)),
+    popPools: S.optional(
+      S.NullOr(CreateRequestPopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      CreateRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(CreateRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      CreateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(CreateRequestRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(CreateRequestRulesList),
+    rules: S.optional(S.NullOr(CreateRequestRulesList)),
     sessionAffinity: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(CreateRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -997,12 +1051,12 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -1039,15 +1093,17 @@ export const CreateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateResponseLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: CreateResponseLocationStrategyMode;
+  mode?: CreateResponseLocationStrategyMode | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: CreateResponseLocationStrategyPreferEcs;
+  preferEcs?: CreateResponseLocationStrategyPreferEcs | null;
 }
 export const CreateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(CreateResponseLocationStrategyMode),
+    mode: S.optional(S.NullOr(CreateResponseLocationStrategyMode)),
     preferEcs: S.optional(
-      CreateResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(CreateResponseLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -1083,15 +1139,19 @@ export const CreateResponseRandomSteeringPoolWeightsMap =
 
 export interface CreateResponseRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: CreateResponseRandomSteeringPoolWeightsMap;
+  poolWeights?: CreateResponseRandomSteeringPoolWeightsMap | null;
 }
 export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      CreateResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(CreateResponseRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -1113,21 +1173,21 @@ export const CreateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface CreateResponseRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-      location: S.optional(S.String),
-      messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+      location: S.optional(S.NullOr(S.String)),
+      messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
     }),
 ).annotate({
   identifier: "CreateResponseRulesItemFixedResponse",
@@ -1227,38 +1287,46 @@ export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDownti
 
 export interface CreateResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?: CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: CreateResponseRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?: CreateResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?: CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const CreateResponseRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        CreateResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(
+          CreateResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        ),
       ),
       zeroDowntimeFailover: S.optional(
-        CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -1279,81 +1347,85 @@ export const CreateResponseRulesItemOverridesSteeringPolicy =
 
 export interface CreateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateResponseAdaptiveRouting;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateResponseRulesItemOverridesCountryPoolsMap;
+  countryPools?: CreateResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: CreateResponseRulesItemOverridesDefaultPoolsList;
+  defaultPools?: CreateResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateResponseLocationStrategy;
+  locationStrategy?: CreateResponseLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateResponseRulesItemOverridesPopPoolsMap;
+  popPools?: CreateResponseRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: CreateResponseRandomSteering;
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateResponseRulesItemOverridesRegionPoolsMap;
+  regionPools?: CreateResponseRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      CreateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      CreateResponseRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      CreateResponseRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      CreateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(CreateResponseLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
     popPools: S.optional(
-      CreateResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(CreateResponseRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      CreateResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      CreateResponseRulesItemOverridesRegionPoolsMap.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesRegionPoolsMap).pipe(
         T.Body("region_pools"),
       ),
     ),
     sessionAffinity: S.optional(
-      CreateResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      CreateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      CreateResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CreateResponseRulesItemOverrides",
@@ -1361,31 +1433,33 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse;
+  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: CreateResponseRulesItemOverrides;
+  overrides?: CreateResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      CreateResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(CreateResponseRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(CreateResponseRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "CreateResponseRulesItem",
@@ -1398,100 +1472,104 @@ export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLoadBalancerResponse {
-  id?: string;
+  id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateResponseAdaptiveRouting;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateResponseCountryPoolsMap;
-  createdOn?: string;
+  countryPools?: CreateResponseCountryPoolsMap | null;
+  createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: CreateResponseDefaultPoolsList;
+  defaultPools?: CreateResponseDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateResponseLocationStrategy;
-  modifiedOn?: string;
+  locationStrategy?: CreateResponseLocationStrategy | null;
+  modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: CreateResponseNetworksList;
+  networks?: CreateResponseNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateResponsePopPoolsMap;
+  popPools?: CreateResponsePopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: CreateResponseRandomSteering;
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateResponseRegionPoolsMap;
+  regionPools?: CreateResponseRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: CreateResponseRulesList;
+  rules?: CreateResponseRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
+  ttl?: number | null;
+  zoneName?: string | null;
 }
 export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      CreateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      CreateResponseCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(CreateResponseCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
-      CreateResponseDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(CreateResponseDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      CreateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(CreateResponseLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(CreateResponseNetworksList),
-    popPools: S.optional(CreateResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(CreateResponseNetworksList)),
+    popPools: S.optional(
+      S.NullOr(CreateResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      CreateResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      CreateResponseRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(CreateResponseRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(CreateResponseRulesList),
+    rules: S.optional(S.NullOr(CreateResponseRulesList)),
     sessionAffinity: S.optional(
-      CreateResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      CreateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      CreateResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(CreateResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLoadBalancerResponse",
@@ -1523,57 +1601,67 @@ export interface CreateMonitorRequest {
   /** Identifier. */
   accountId: string;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
+  consecutiveUp?: number | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsCreateRequestHeaderMap;
+  header?: MonitorsCreateRequestHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
+  method?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsCreateRequestType | (string & {});
+  type?: MonitorsCreateRequestType | (string & {}) | null;
 }
 export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsCreateRequestType),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsCreateRequestHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -1611,63 +1699,73 @@ export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMonitorResponse {
-  id?: string;
+  id?: string | null;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
+  consecutiveUp?: number | null;
+  createdOn?: string | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsCreateResponseHeaderMap;
+  header?: MonitorsCreateResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
+  method?: string | null;
+  modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsCreateResponseType;
+  type?: MonitorsCreateResponseType | null;
 }
 export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsCreateResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsCreateResponseType),
+    id: S.optional(S.NullOr(S.String)),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsCreateResponseHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsCreateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorResponse",
@@ -1683,9 +1781,9 @@ export interface MonitorGroupsCreateRequestMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1694,8 +1792,8 @@ export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsCreateRequestMembersItem",
@@ -1743,9 +1841,9 @@ export interface MonitorGroupsCreateResponseMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1754,8 +1852,8 @@ export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsCreateResponseMembersItem",
@@ -1776,17 +1874,17 @@ export interface CreateMonitorGroupResponse {
   /** List of monitors in this group */
   members: MonitorGroupsCreateResponseMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsCreateResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorGroupResponse",
@@ -1820,58 +1918,68 @@ export interface CreateMonitorPreviewRequest {
   accountId: string;
   monitorId: string;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
+  consecutiveUp?: number | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsPreviewsCreateRequestHeaderMap;
+  header?: MonitorsPreviewsCreateRequestHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
+  method?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsPreviewsCreateRequestType | (string & {});
+  type?: MonitorsPreviewsCreateRequestType | (string & {}) | null;
 }
 export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsPreviewsCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsPreviewsCreateRequestType),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsPreviewsCreateRequestHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsPreviewsCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -1896,13 +2004,13 @@ export const MonitorsPreviewsCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMonitorPreviewResponse {
   /** Monitored pool IDs mapped to their respective names. */
-  pools?: MonitorsPreviewsCreateResponsePoolsMap;
-  previewId?: string;
+  pools?: MonitorsPreviewsCreateResponsePoolsMap | null;
+  previewId?: string | null;
 }
 export const CreateMonitorPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pools: S.optional(MonitorsPreviewsCreateResponsePoolsMap),
-    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
+    pools: S.optional(S.NullOr(MonitorsPreviewsCreateResponsePoolsMap)),
+    previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorPreviewResponse",
@@ -1916,12 +2024,14 @@ export const PoolsCreateRequestOriginsItemHeaderHostList =
 
 export interface PoolsCreateRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsCreateRequestOriginsItemHeaderHostList;
+  host?: PoolsCreateRequestOriginsItemHeaderHostList | null;
 }
 export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(
-      PoolsCreateRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      S.NullOr(PoolsCreateRequestOriginsItemHeaderHostList).pipe(
+        T.Body("Host"),
+      ),
     ),
   }),
 ).annotate({
@@ -1930,35 +2040,37 @@ export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsCreateRequestOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsCreateRequestOriginsItemHeader;
+  header?: PoolsCreateRequestOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsCreateRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsCreateRequestOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsCreateRequestOriginsItem",
@@ -1980,25 +2092,35 @@ export const PoolsCreateRequestLoadSheddingSessionPolicy =
 
 export interface PoolsCreateRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy | (string & {});
+  defaultPolicy?:
+    | PoolsCreateRequestLoadSheddingDefaultPolicy
+    | (string & {})
+    | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?:
+    | PoolsCreateRequestLoadSheddingSessionPolicy
+    | (string & {})
+    | null;
 }
 export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsCreateRequestLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsCreateRequestLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -2009,15 +2131,15 @@ export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsCreateRequestNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsCreateRequestNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsCreateRequestNotificationFilterOrigin",
@@ -2025,15 +2147,15 @@ export const PoolsCreateRequestNotificationFilterOrigin =
 
 export interface PoolsCreateRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateRequestNotificationFilterOrigin;
+  origin?: PoolsCreateRequestNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsCreateRequestNotificationFilterOrigin;
+  pool?: PoolsCreateRequestNotificationFilterOrigin | null;
 }
 export const PoolsCreateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      origin: S.optional(PoolsCreateRequestNotificationFilterOrigin),
-      pool: S.optional(PoolsCreateRequestNotificationFilterOrigin),
+      origin: S.optional(S.NullOr(PoolsCreateRequestNotificationFilterOrigin)),
+      pool: S.optional(S.NullOr(PoolsCreateRequestNotificationFilterOrigin)),
     }),
 ).annotate({
   identifier: "PoolsCreateRequestNotificationFilter",
@@ -2048,11 +2170,11 @@ export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsCreateRequestOriginSteeringPolicy | (string & {});
+  policy?: PoolsCreateRequestOriginSteeringPolicy | (string & {}) | null;
 }
 export const PoolsCreateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsCreateRequestOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsCreateRequestOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsCreateRequestOriginSteering",
@@ -2066,49 +2188,57 @@ export interface CreatePoolRequest {
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
   origins: PoolsCreateRequestOriginsList;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsCreateRequestLoadShedding;
+  loadShedding?: PoolsCreateRequestLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
+  minimumOrigins?: number | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateRequestNotificationFilter;
+  notificationFilter?: PoolsCreateRequestNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsCreateRequestOriginSteering;
+  originSteering?: PoolsCreateRequestOriginSteering | null;
 }
 export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     origins: PoolsCreateRequestOriginsList,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsCreateRequestLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsCreateRequestLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsCreateRequestNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsCreateRequestOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsCreateRequestOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
   })
     .pipe(
@@ -2156,25 +2286,29 @@ export const PoolsCreateResponseLoadSheddingSessionPolicy =
 
 export interface PoolsCreateResponseLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateResponseLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsCreateResponseLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateResponseLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsCreateResponseLoadSheddingSessionPolicy | null;
 }
 export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsCreateResponseLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsCreateResponseLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsCreateResponseLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsCreateResponseLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -2190,15 +2324,15 @@ export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsCreateResponseNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsCreateResponseNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsCreateResponseNotificationFilterOrigin",
@@ -2206,15 +2340,15 @@ export const PoolsCreateResponseNotificationFilterOrigin =
 
 export interface PoolsCreateResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateResponseNotificationFilterOrigin;
+  origin?: PoolsCreateResponseNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsCreateResponseNotificationFilterOrigin;
+  pool?: PoolsCreateResponseNotificationFilterOrigin | null;
 }
 export const PoolsCreateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      origin: S.optional(PoolsCreateResponseNotificationFilterOrigin),
-      pool: S.optional(PoolsCreateResponseNotificationFilterOrigin),
+      origin: S.optional(S.NullOr(PoolsCreateResponseNotificationFilterOrigin)),
+      pool: S.optional(S.NullOr(PoolsCreateResponseNotificationFilterOrigin)),
     }),
 ).annotate({
   identifier: "PoolsCreateResponseNotificationFilter",
@@ -2229,11 +2363,11 @@ export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateResponseOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsCreateResponseOriginSteeringPolicy;
+  policy?: PoolsCreateResponseOriginSteeringPolicy | null;
 }
 export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsCreateResponseOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsCreateResponseOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsCreateResponseOriginSteering",
@@ -2247,13 +2381,15 @@ export const PoolsCreateResponseOriginsItemHeaderHostList =
 
 export interface PoolsCreateResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsCreateResponseOriginsItemHeaderHostList;
+  host?: PoolsCreateResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       host: S.optional(
-        PoolsCreateResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+        S.NullOr(PoolsCreateResponseOriginsItemHeaderHostList).pipe(
+          T.Body("Host"),
+        ),
       ),
     }),
 ).annotate({
@@ -2262,35 +2398,37 @@ export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
 
 export interface PoolsCreateResponseOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsCreateResponseOriginsItemHeader;
+  header?: PoolsCreateResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsCreateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsCreateResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsCreateResponseOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsCreateResponseOriginsItem",
@@ -2304,71 +2442,81 @@ export const PoolsCreateResponseOriginsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePoolResponse {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsCreateResponseCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsCreateResponseCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsCreateResponseLoadShedding;
+  loadShedding?: PoolsCreateResponseLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsCreateResponseNetworksList;
+  networks?: PoolsCreateResponseNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateResponseNotificationFilter;
+  notificationFilter?: PoolsCreateResponseNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsCreateResponseOriginSteering;
+  originSteering?: PoolsCreateResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsCreateResponseOriginsList;
+  origins?: PoolsCreateResponseOriginsList | null;
 }
 export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsCreateResponseCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsCreateResponseLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsCreateResponseLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsCreateResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsCreateResponseNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsCreateResponseNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsCreateResponseNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsCreateResponseOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsCreateResponseOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
-    origins: S.optional(PoolsCreateResponseOriginsList),
+    origins: S.optional(S.NullOr(PoolsCreateResponseOriginsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolResponse",
@@ -2401,58 +2549,68 @@ export interface CreatePoolHealthRequest {
   accountId: string;
   poolId: string;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
+  consecutiveUp?: number | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: PoolsHealthCreateRequestHeaderMap;
+  header?: PoolsHealthCreateRequestHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
+  method?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: PoolsHealthCreateRequestType | (string & {});
+  type?: PoolsHealthCreateRequestType | (string & {}) | null;
 }
 export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(PoolsHealthCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(PoolsHealthCreateRequestType),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(PoolsHealthCreateRequestHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(PoolsHealthCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -2477,13 +2635,13 @@ export const PoolsHealthCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePoolHealthResponse {
   /** Monitored pool IDs mapped to their respective names. */
-  pools?: PoolsHealthCreateResponsePoolsMap;
-  previewId?: string;
+  pools?: PoolsHealthCreateResponsePoolsMap | null;
+  previewId?: string | null;
 }
 export const CreatePoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pools: S.optional(PoolsHealthCreateResponsePoolsMap),
-    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
+    pools: S.optional(S.NullOr(PoolsHealthCreateResponsePoolsMap)),
+    previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolHealthResponse",
@@ -2512,11 +2670,11 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteLoadBalancerResponse {
-  id?: string;
+  id?: string | null;
 }
 export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLoadBalancerResponse",
@@ -2546,11 +2704,11 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMonitorResponse {
-  id?: string;
+  id?: string | null;
 }
 export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorResponse",
@@ -2588,9 +2746,9 @@ export interface MonitorGroupsDeleteResponseMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -2599,8 +2757,8 @@ export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsDeleteResponseMembersItem",
@@ -2621,17 +2779,17 @@ export interface DeleteMonitorGroupResponse {
   /** List of monitors in this group */
   members: MonitorGroupsDeleteResponseMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const DeleteMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsDeleteResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorGroupResponse",
@@ -2661,11 +2819,11 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeletePoolResponse {
-  id?: string;
+  id?: string | null;
 }
 export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePoolResponse",
@@ -2694,12 +2852,12 @@ export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const GetResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -2736,15 +2894,15 @@ export const GetResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface GetResponseLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: GetResponseLocationStrategyMode;
+  mode?: GetResponseLocationStrategyMode | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: GetResponseLocationStrategyPreferEcs;
+  preferEcs?: GetResponseLocationStrategyPreferEcs | null;
 }
 export const GetResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(GetResponseLocationStrategyMode),
+    mode: S.optional(S.NullOr(GetResponseLocationStrategyMode)),
     preferEcs: S.optional(
-      GetResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(GetResponseLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
     ),
   }),
 ).annotate({
@@ -2779,15 +2937,19 @@ export const GetResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
 
 export interface GetResponseRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: GetResponseRandomSteeringPoolWeightsMap;
+  poolWeights?: GetResponseRandomSteeringPoolWeightsMap | null;
 }
 export const GetResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      GetResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(GetResponseRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -2809,20 +2971,20 @@ export const GetResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface GetResponseRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const GetResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    location: S.optional(S.NullOr(S.String)),
+    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
   }),
 ).annotate({
   identifier: "GetResponseRulesItemFixedResponse",
@@ -2915,38 +3077,44 @@ export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeF
 
 export interface GetResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: GetResponseRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?: GetResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: GetResponseRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?: GetResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?: GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const GetResponseRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        GetResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          GetResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        GetResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(GetResponseRulesItemOverridesSessionAffinityAttributesSecure),
       ),
       zeroDowntimeFailover: S.optional(
-        GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -2967,79 +3135,83 @@ export const GetResponseRulesItemOverridesSteeringPolicy =
 
 export interface GetResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: GetResponseAdaptiveRouting;
+  adaptiveRouting?: GetResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: GetResponseRulesItemOverridesCountryPoolsMap;
+  countryPools?: GetResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: GetResponseRulesItemOverridesDefaultPoolsList;
+  defaultPools?: GetResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: GetResponseLocationStrategy;
+  locationStrategy?: GetResponseLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: GetResponseRulesItemOverridesPopPoolsMap;
+  popPools?: GetResponseRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: GetResponseRandomSteering;
+  randomSteering?: GetResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: GetResponseRulesItemOverridesRegionPoolsMap;
+  regionPools?: GetResponseRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      GetResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(GetResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      GetResponseRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(GetResponseRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      GetResponseRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(GetResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      GetResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(GetResponseLocationStrategy).pipe(T.Body("location_strategy")),
     ),
     popPools: S.optional(
-      GetResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(GetResponseRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      GetResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(GetResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      GetResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(GetResponseRulesItemOverridesRegionPoolsMap).pipe(
+        T.Body("region_pools"),
+      ),
     ),
     sessionAffinity: S.optional(
-      GetResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      GetResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      GetResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GetResponseRulesItemOverrides",
@@ -3047,31 +3219,33 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: GetResponseRulesItemFixedResponse;
+  fixedResponse?: GetResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: GetResponseRulesItemOverrides;
+  overrides?: GetResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      GetResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(GetResponseRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(GetResponseRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(GetResponseRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "GetResponseRulesItem",
@@ -3084,100 +3258,102 @@ export const GetResponseRulesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLoadBalancerResponse {
-  id?: string;
+  id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: GetResponseAdaptiveRouting;
+  adaptiveRouting?: GetResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: GetResponseCountryPoolsMap;
-  createdOn?: string;
+  countryPools?: GetResponseCountryPoolsMap | null;
+  createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: GetResponseDefaultPoolsList;
+  defaultPools?: GetResponseDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: GetResponseLocationStrategy;
-  modifiedOn?: string;
+  locationStrategy?: GetResponseLocationStrategy | null;
+  modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: GetResponseNetworksList;
+  networks?: GetResponseNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: GetResponsePopPoolsMap;
+  popPools?: GetResponsePopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: GetResponseRandomSteering;
+  randomSteering?: GetResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: GetResponseRegionPoolsMap;
+  regionPools?: GetResponseRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: GetResponseRulesList;
+  rules?: GetResponseRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
+  ttl?: number | null;
+  zoneName?: string | null;
 }
 export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      GetResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(GetResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      GetResponseCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(GetResponseCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
-      GetResponseDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(GetResponseDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      GetResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(GetResponseLocationStrategy).pipe(T.Body("location_strategy")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(GetResponseNetworksList),
-    popPools: S.optional(GetResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(GetResponseNetworksList)),
+    popPools: S.optional(
+      S.NullOr(GetResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      GetResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(GetResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      GetResponseRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(GetResponseRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(GetResponseRulesList),
+    rules: S.optional(S.NullOr(GetResponseRulesList)),
     sessionAffinity: S.optional(
-      GetResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      GetResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      GetResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(GetResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLoadBalancerResponse",
@@ -3229,63 +3405,73 @@ export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMonitorResponse {
-  id?: string;
+  id?: string | null;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
+  consecutiveUp?: number | null;
+  createdOn?: string | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsGetResponseHeaderMap;
+  header?: MonitorsGetResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
+  method?: string | null;
+  modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsGetResponseType;
+  type?: MonitorsGetResponseType | null;
 }
 export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsGetResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsGetResponseType),
+    id: S.optional(S.NullOr(S.String)),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsGetResponseHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsGetResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorResponse",
@@ -3323,9 +3509,9 @@ export interface MonitorGroupsGetResponseMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3333,8 +3519,8 @@ export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
     monitorId: S.String.pipe(T.Body("monitor_id")),
     monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
     mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "MonitorGroupsGetResponseMembersItem",
@@ -3355,17 +3541,17 @@ export interface GetMonitorGroupResponse {
   /** List of monitors in this group */
   members: MonitorGroupsGetResponseMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsGetResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupResponse",
@@ -3401,22 +3587,26 @@ export const MonitorGroupsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
 export interface MonitorGroupsReferencesGetResultItem {
-  referenceType?: MonitorGroupsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
+  referenceType?: MonitorGroupsReferencesGetResultItemReferenceType | null;
+  resourceId?: string | null;
+  resourceName?: string | null;
+  resourceType?: string | null;
 }
 export const MonitorGroupsReferencesGetResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       referenceType: S.optional(
-        MonitorGroupsReferencesGetResultItemReferenceType.pipe(
+        S.NullOr(MonitorGroupsReferencesGetResultItemReferenceType).pipe(
           T.Body("reference_type"),
         ),
       ),
-      resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-      resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-      resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+      resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
+      resourceName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("resource_name")),
+      ),
+      resourceType: S.optional(
+        S.NullOr(S.String).pipe(T.Body("resource_type")),
+      ),
     }),
 ).annotate({
   identifier: "MonitorGroupsReferencesGetResultItem",
@@ -3473,21 +3663,21 @@ export const MonitorsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
 export interface MonitorsReferencesGetResultItem {
-  referenceType?: MonitorsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
+  referenceType?: MonitorsReferencesGetResultItemReferenceType | null;
+  resourceId?: string | null;
+  resourceName?: string | null;
+  resourceType?: string | null;
 }
 export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceType: S.optional(
-      MonitorsReferencesGetResultItemReferenceType.pipe(
+      S.NullOr(MonitorsReferencesGetResultItemReferenceType).pipe(
         T.Body("reference_type"),
       ),
     ),
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+    resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
+    resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
+    resourceType: S.optional(S.NullOr(S.String).pipe(T.Body("resource_type"))),
   }),
 ).annotate({
   identifier: "MonitorsReferencesGetResultItem",
@@ -3565,23 +3755,31 @@ export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsGetResponseLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsGetResponseLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsGetResponseLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsGetResponseLoadSheddingSessionPolicy | null;
 }
 export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsGetResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    defaultPolicy: S.optional(
+      S.NullOr(PoolsGetResponseLoadSheddingDefaultPolicy).pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsGetResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+      S.NullOr(PoolsGetResponseLoadSheddingSessionPolicy).pipe(
+        T.Body("session_policy"),
+      ),
     ),
   }),
 ).annotate({
@@ -3595,15 +3793,15 @@ export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsGetResponseNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsGetResponseNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
 ).annotate({
   identifier: "PoolsGetResponseNotificationFilterOrigin",
@@ -3611,14 +3809,14 @@ export const PoolsGetResponseNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
 
 export interface PoolsGetResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsGetResponseNotificationFilterOrigin;
+  origin?: PoolsGetResponseNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsGetResponseNotificationFilterOrigin;
+  pool?: PoolsGetResponseNotificationFilterOrigin | null;
 }
 export const PoolsGetResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    origin: S.optional(PoolsGetResponseNotificationFilterOrigin),
-    pool: S.optional(PoolsGetResponseNotificationFilterOrigin),
+    origin: S.optional(S.NullOr(PoolsGetResponseNotificationFilterOrigin)),
+    pool: S.optional(S.NullOr(PoolsGetResponseNotificationFilterOrigin)),
   }),
 ).annotate({
   identifier: "PoolsGetResponseNotificationFilter",
@@ -3633,11 +3831,11 @@ export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsGetResponseOriginSteeringPolicy;
+  policy?: PoolsGetResponseOriginSteeringPolicy | null;
 }
 export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsGetResponseOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsGetResponseOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsGetResponseOriginSteering",
@@ -3650,12 +3848,12 @@ export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsGetResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsGetResponseOriginsItemHeaderHostList;
+  host?: PoolsGetResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(
-      PoolsGetResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      S.NullOr(PoolsGetResponseOriginsItemHeaderHostList).pipe(T.Body("Host")),
     ),
   }),
 ).annotate({
@@ -3664,35 +3862,37 @@ export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsGetResponseOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsGetResponseOriginsItemHeader;
+  header?: PoolsGetResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsGetResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsGetResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsGetResponseOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsGetResponseOriginsItem",
@@ -3705,71 +3905,77 @@ export const PoolsGetResponseOriginsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPoolResponse {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsGetResponseCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsGetResponseCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsGetResponseLoadShedding;
+  loadShedding?: PoolsGetResponseLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsGetResponseNetworksList;
+  networks?: PoolsGetResponseNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsGetResponseNotificationFilter;
+  notificationFilter?: PoolsGetResponseNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsGetResponseOriginSteering;
+  originSteering?: PoolsGetResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsGetResponseOriginsList;
+  origins?: PoolsGetResponseOriginsList | null;
 }
 export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsGetResponseCheckRegionsList).pipe(T.Body("check_regions")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsGetResponseLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsGetResponseLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsGetResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsGetResponseNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsGetResponseNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsGetResponseNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsGetResponseOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsGetResponseOriginSteering).pipe(T.Body("origin_steering")),
     ),
-    origins: S.optional(PoolsGetResponseOriginsList),
+    origins: S.optional(S.NullOr(PoolsGetResponseOriginsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolResponse",
@@ -3799,33 +4005,37 @@ export const GetPoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsHealthGetResponsePopHealthOriginsItemIp {
   /** Failure reason. */
-  failureReason?: string;
+  failureReason?: string | null;
   /** Origin health status. */
-  healthy?: boolean;
+  healthy?: boolean | null;
   /** Response code from origin health check. */
-  responseCode?: number;
+  responseCode?: number | null;
   /** Origin RTT (Round Trip Time) response. */
-  rtt?: string;
+  rtt?: string | null;
 }
 export const PoolsHealthGetResponsePopHealthOriginsItemIp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-      healthy: S.optional(S.Boolean),
-      responseCode: S.optional(S.Number.pipe(T.Body("response_code"))),
-      rtt: S.optional(S.String),
+      failureReason: S.optional(
+        S.NullOr(S.String).pipe(T.Body("failure_reason")),
+      ),
+      healthy: S.optional(S.NullOr(S.Boolean)),
+      responseCode: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("response_code")),
+      ),
+      rtt: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoolsHealthGetResponsePopHealthOriginsItemIp",
   }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItemIp>;
 
 export interface PoolsHealthGetResponsePopHealthOriginsItem {
-  ip?: PoolsHealthGetResponsePopHealthOriginsItemIp;
+  ip?: PoolsHealthGetResponsePopHealthOriginsItemIp | null;
 }
 export const PoolsHealthGetResponsePopHealthOriginsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ip: S.optional(PoolsHealthGetResponsePopHealthOriginsItemIp),
+      ip: S.optional(S.NullOr(PoolsHealthGetResponsePopHealthOriginsItemIp)),
     }),
   ).annotate({
     identifier: "PoolsHealthGetResponsePopHealthOriginsItem",
@@ -3839,13 +4049,13 @@ export const PoolsHealthGetResponsePopHealthOriginsList = /*@__PURE__*/ S.Array(
 
 export interface PoolsHealthGetResponsePopHealth {
   /** Whether health check in region is healthy. */
-  healthy?: boolean;
-  origins?: PoolsHealthGetResponsePopHealthOriginsList;
+  healthy?: boolean | null;
+  origins?: PoolsHealthGetResponsePopHealthOriginsList | null;
 }
 export const PoolsHealthGetResponsePopHealth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    healthy: S.optional(S.Boolean),
-    origins: S.optional(PoolsHealthGetResponsePopHealthOriginsList),
+    healthy: S.optional(S.NullOr(S.Boolean)),
+    origins: S.optional(S.NullOr(PoolsHealthGetResponsePopHealthOriginsList)),
   }),
 ).annotate({
   identifier: "PoolsHealthGetResponsePopHealth",
@@ -3854,15 +4064,15 @@ export const PoolsHealthGetResponsePopHealth = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPoolHealthResponse {
   /** Pool ID. */
-  poolId?: string;
+  poolId?: string | null;
   /** List of regions and associated health status. */
-  popHealth?: PoolsHealthGetResponsePopHealth;
+  popHealth?: PoolsHealthGetResponsePopHealth | null;
 }
 export const GetPoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    poolId: S.optional(S.String.pipe(T.Body("pool_id"))),
+    poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
     popHealth: S.optional(
-      PoolsHealthGetResponsePopHealth.pipe(T.Body("pop_health")),
+      S.NullOr(PoolsHealthGetResponsePopHealth).pipe(T.Body("pop_health")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3898,19 +4108,21 @@ export type PoolsReferencesGetResultItemReferenceType =
 export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
 
 export interface PoolsReferencesGetResultItem {
-  referenceType?: PoolsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
+  referenceType?: PoolsReferencesGetResultItemReferenceType | null;
+  resourceId?: string | null;
+  resourceName?: string | null;
+  resourceType?: string | null;
 }
 export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceType: S.optional(
-      PoolsReferencesGetResultItemReferenceType.pipe(T.Body("reference_type")),
+      S.NullOr(PoolsReferencesGetResultItemReferenceType).pipe(
+        T.Body("reference_type"),
+      ),
     ),
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+    resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
+    resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
+    resourceType: S.optional(S.NullOr(S.String).pipe(T.Body("resource_type"))),
   }),
 ).annotate({
   identifier: "PoolsReferencesGetResultItem",
@@ -3959,18 +4171,22 @@ export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPreviewRequest>;
 
 export interface PreviewsGetResultValueOriginsItemValue {
-  failureReason?: string;
-  healthy?: boolean;
-  responseCode?: number;
-  rtt?: string;
+  failureReason?: string | null;
+  healthy?: boolean | null;
+  responseCode?: number | null;
+  rtt?: string | null;
 }
 export const PreviewsGetResultValueOriginsItemValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-      healthy: S.optional(S.Boolean),
-      responseCode: S.optional(S.Number.pipe(T.Body("response_code"))),
-      rtt: S.optional(S.String),
+      failureReason: S.optional(
+        S.NullOr(S.String).pipe(T.Body("failure_reason")),
+      ),
+      healthy: S.optional(S.NullOr(S.Boolean)),
+      responseCode: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("response_code")),
+      ),
+      rtt: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PreviewsGetResultValueOriginsItemValue",
@@ -3991,13 +4207,13 @@ export const PreviewsGetResultValueOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PreviewsGetResultValueOriginsList>;
 
 export interface PreviewsGetResultValue {
-  healthy?: boolean;
-  origins?: PreviewsGetResultValueOriginsList;
+  healthy?: boolean | null;
+  origins?: PreviewsGetResultValueOriginsList | null;
 }
 export const PreviewsGetResultValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    healthy: S.optional(S.Boolean),
-    origins: S.optional(PreviewsGetResultValueOriginsList),
+    healthy: S.optional(S.NullOr(S.Boolean)),
+    origins: S.optional(S.NullOr(PreviewsGetResultValueOriginsList)),
   }),
 ).annotate({
   identifier: "PreviewsGetResultValue",
@@ -4085,12 +4301,12 @@ export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const ListResultItemAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -4127,15 +4343,17 @@ export const ListResultItemLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface ListResultItemLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: ListResultItemLocationStrategyMode;
+  mode?: ListResultItemLocationStrategyMode | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: ListResultItemLocationStrategyPreferEcs;
+  preferEcs?: ListResultItemLocationStrategyPreferEcs | null;
 }
 export const ListResultItemLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(ListResultItemLocationStrategyMode),
+    mode: S.optional(S.NullOr(ListResultItemLocationStrategyMode)),
     preferEcs: S.optional(
-      ListResultItemLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(ListResultItemLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -4171,15 +4389,19 @@ export const ListResultItemRandomSteeringPoolWeightsMap =
 
 export interface ListResultItemRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: ListResultItemRandomSteeringPoolWeightsMap;
+  poolWeights?: ListResultItemRandomSteeringPoolWeightsMap | null;
 }
 export const ListResultItemRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      ListResultItemRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(ListResultItemRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -4201,21 +4423,21 @@ export const ListResultItemRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface ListResultItemRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const ListResultItemRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-      location: S.optional(S.String),
-      messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+      location: S.optional(S.NullOr(S.String)),
+      messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
     }),
 ).annotate({
   identifier: "ListResultItemRulesItemFixedResponse",
@@ -4315,38 +4537,46 @@ export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDownti
 
 export interface ListResultItemRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?: ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: ListResultItemRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?: ListResultItemRulesItemOverridesSessionAffinityAttributesSecure | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?: ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const ListResultItemRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        ListResultItemRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(
+          ListResultItemRulesItemOverridesSessionAffinityAttributesSecure,
+        ),
       ),
       zeroDowntimeFailover: S.optional(
-        ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -4367,81 +4597,85 @@ export const ListResultItemRulesItemOverridesSteeringPolicy =
 
 export interface ListResultItemRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: ListResultItemAdaptiveRouting;
+  adaptiveRouting?: ListResultItemAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: ListResultItemRulesItemOverridesCountryPoolsMap;
+  countryPools?: ListResultItemRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: ListResultItemRulesItemOverridesDefaultPoolsList;
+  defaultPools?: ListResultItemRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: ListResultItemLocationStrategy;
+  locationStrategy?: ListResultItemLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: ListResultItemRulesItemOverridesPopPoolsMap;
+  popPools?: ListResultItemRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: ListResultItemRandomSteering;
+  randomSteering?: ListResultItemRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: ListResultItemRulesItemOverridesRegionPoolsMap;
+  regionPools?: ListResultItemRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity;
+  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      ListResultItemAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(ListResultItemAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      ListResultItemRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      ListResultItemRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      ListResultItemLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(ListResultItemLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
     popPools: S.optional(
-      ListResultItemRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(ListResultItemRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      ListResultItemRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(ListResultItemRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      ListResultItemRulesItemOverridesRegionPoolsMap.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesRegionPoolsMap).pipe(
         T.Body("region_pools"),
       ),
     ),
     sessionAffinity: S.optional(
-      ListResultItemRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      ListResultItemRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      ListResultItemRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ListResultItemRulesItemOverrides",
@@ -4449,31 +4683,33 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: ListResultItemRulesItemFixedResponse;
+  fixedResponse?: ListResultItemRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: ListResultItemRulesItemOverrides;
+  overrides?: ListResultItemRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      ListResultItemRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(ListResultItemRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(ListResultItemRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(ListResultItemRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "ListResultItemRulesItem",
@@ -4485,100 +4721,104 @@ export const ListResultItemRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemRulesList>;
 
 export interface ListResultItem {
-  id?: string;
+  id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: ListResultItemAdaptiveRouting;
+  adaptiveRouting?: ListResultItemAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: ListResultItemCountryPoolsMap;
-  createdOn?: string;
+  countryPools?: ListResultItemCountryPoolsMap | null;
+  createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: ListResultItemDefaultPoolsList;
+  defaultPools?: ListResultItemDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: ListResultItemLocationStrategy;
-  modifiedOn?: string;
+  locationStrategy?: ListResultItemLocationStrategy | null;
+  modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: ListResultItemNetworksList;
+  networks?: ListResultItemNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: ListResultItemPopPoolsMap;
+  popPools?: ListResultItemPopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: ListResultItemRandomSteering;
+  randomSteering?: ListResultItemRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: ListResultItemRegionPoolsMap;
+  regionPools?: ListResultItemRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: ListResultItemRulesList;
+  rules?: ListResultItemRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity;
+  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
+  ttl?: number | null;
+  zoneName?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      ListResultItemAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(ListResultItemAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      ListResultItemCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(ListResultItemCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
-      ListResultItemDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(ListResultItemDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      ListResultItemLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(ListResultItemLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(ListResultItemNetworksList),
-    popPools: S.optional(ListResultItemPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(ListResultItemNetworksList)),
+    popPools: S.optional(
+      S.NullOr(ListResultItemPopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      ListResultItemRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(ListResultItemRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      ListResultItemRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(ListResultItemRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(ListResultItemRulesList),
+    rules: S.optional(S.NullOr(ListResultItemRulesList)),
     sessionAffinity: S.optional(
-      ListResultItemRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      ListResultItemRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      ListResultItemRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(ListResultItemRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -4632,9 +4872,9 @@ export interface MonitorGroupsListResultItemMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsListResultItemMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -4643,8 +4883,8 @@ export const MonitorGroupsListResultItemMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsListResultItemMembersItem",
@@ -4664,17 +4904,17 @@ export interface MonitorGroupsListResultItem {
   /** List of monitors in this group */
   members: MonitorGroupsListResultItemMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const MonitorGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsListResultItemMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "MonitorGroupsListResultItem",
@@ -4743,63 +4983,73 @@ export type MonitorsListResultItemType =
 export const MonitorsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface MonitorsListResultItem {
-  id?: string;
+  id?: string | null;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
+  consecutiveUp?: number | null;
+  createdOn?: string | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsListResultItemHeaderMap;
+  header?: MonitorsListResultItemHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
+  method?: string | null;
+  modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsListResultItemType;
+  type?: MonitorsListResultItemType | null;
 }
 export const MonitorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsListResultItemHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsListResultItemType),
+    id: S.optional(S.NullOr(S.String)),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsListResultItemHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsListResultItemType)),
   }),
 ).annotate({
   identifier: "MonitorsListResultItem",
@@ -4881,25 +5131,29 @@ export const PoolsListResultItemLoadSheddingSessionPolicy =
 
 export interface PoolsListResultItemLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsListResultItemLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsListResultItemLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsListResultItemLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsListResultItemLoadSheddingSessionPolicy | null;
 }
 export const PoolsListResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsListResultItemLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsListResultItemLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsListResultItemLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsListResultItemLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -4915,15 +5169,15 @@ export const PoolsListResultItemNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsListResultItemNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsListResultItemNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsListResultItemNotificationFilterOrigin",
@@ -4931,15 +5185,15 @@ export const PoolsListResultItemNotificationFilterOrigin =
 
 export interface PoolsListResultItemNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsListResultItemNotificationFilterOrigin;
+  origin?: PoolsListResultItemNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsListResultItemNotificationFilterOrigin;
+  pool?: PoolsListResultItemNotificationFilterOrigin | null;
 }
 export const PoolsListResultItemNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      origin: S.optional(PoolsListResultItemNotificationFilterOrigin),
-      pool: S.optional(PoolsListResultItemNotificationFilterOrigin),
+      origin: S.optional(S.NullOr(PoolsListResultItemNotificationFilterOrigin)),
+      pool: S.optional(S.NullOr(PoolsListResultItemNotificationFilterOrigin)),
     }),
 ).annotate({
   identifier: "PoolsListResultItemNotificationFilter",
@@ -4954,11 +5208,11 @@ export const PoolsListResultItemOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsListResultItemOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsListResultItemOriginSteeringPolicy;
+  policy?: PoolsListResultItemOriginSteeringPolicy | null;
 }
 export const PoolsListResultItemOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsListResultItemOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsListResultItemOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsListResultItemOriginSteering",
@@ -4972,13 +5226,15 @@ export const PoolsListResultItemOriginsItemHeaderHostList =
 
 export interface PoolsListResultItemOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsListResultItemOriginsItemHeaderHostList;
+  host?: PoolsListResultItemOriginsItemHeaderHostList | null;
 }
 export const PoolsListResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       host: S.optional(
-        PoolsListResultItemOriginsItemHeaderHostList.pipe(T.Body("Host")),
+        S.NullOr(PoolsListResultItemOriginsItemHeaderHostList).pipe(
+          T.Body("Host"),
+        ),
       ),
     }),
 ).annotate({
@@ -4987,35 +5243,37 @@ export const PoolsListResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
 
 export interface PoolsListResultItemOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsListResultItemOriginsItemHeader;
+  header?: PoolsListResultItemOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsListResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsListResultItemOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsListResultItemOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsListResultItemOriginsItem",
@@ -5028,71 +5286,81 @@ export const PoolsListResultItemOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoolsListResultItemOriginsList>;
 
 export interface PoolsListResultItem {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsListResultItemCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsListResultItemCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsListResultItemLoadShedding;
+  loadShedding?: PoolsListResultItemLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsListResultItemNetworksList;
+  networks?: PoolsListResultItemNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsListResultItemNotificationFilter;
+  notificationFilter?: PoolsListResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsListResultItemOriginSteering;
+  originSteering?: PoolsListResultItemOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsListResultItemOriginsList;
+  origins?: PoolsListResultItemOriginsList | null;
 }
 export const PoolsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsListResultItemCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsListResultItemCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsListResultItemLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsListResultItemLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsListResultItemNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsListResultItemNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsListResultItemNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsListResultItemNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsListResultItemOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsListResultItemOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
-    origins: S.optional(PoolsListResultItemOriginsList),
+    origins: S.optional(S.NullOr(PoolsListResultItemOriginsList)),
   }),
 ).annotate({
   identifier: "PoolsListResultItem",
@@ -5210,27 +5478,29 @@ export const SearchesListResponseResourcesItemResourceType =
 
 export interface SearchesListResponseResourcesItem {
   /** When listed as a reference, the type (direction) of the reference. */
-  referenceType?: SearchesListResponseResourcesItemReferenceType;
+  referenceType?: SearchesListResponseResourcesItemReferenceType | null;
   /** A list of references to (referrer) or from (referral) this resource. */
-  references?: SearchesListResponseResourcesItemReferencesList;
-  resourceId?: string;
+  references?: SearchesListResponseResourcesItemReferencesList | null;
+  resourceId?: string | null;
   /** The human-identifiable name of the resource. */
-  resourceName?: string;
+  resourceName?: string | null;
   /** The type of the resource. */
-  resourceType?: SearchesListResponseResourcesItemResourceType;
+  resourceType?: SearchesListResponseResourcesItemResourceType | null;
 }
 export const SearchesListResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceType: S.optional(
-      SearchesListResponseResourcesItemReferenceType.pipe(
+      S.NullOr(SearchesListResponseResourcesItemReferenceType).pipe(
         T.Body("reference_type"),
       ),
     ),
-    references: S.optional(SearchesListResponseResourcesItemReferencesList),
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
+    references: S.optional(
+      S.NullOr(SearchesListResponseResourcesItemReferencesList),
+    ),
+    resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
+    resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
     resourceType: S.optional(
-      SearchesListResponseResourcesItemResourceType.pipe(
+      S.NullOr(SearchesListResponseResourcesItemResourceType).pipe(
         T.Body("resource_type"),
       ),
     ),
@@ -5248,11 +5518,11 @@ export const SearchesListResponseResourcesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSearchesResponse {
   /** A list of resources matching the search query. */
-  resources?: SearchesListResponseResourcesList;
+  resources?: SearchesListResponseResourcesList | null;
 }
 export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resources: S.optional(SearchesListResponseResourcesList),
+    resources: S.optional(S.NullOr(SearchesListResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSearchesResponse",
@@ -5260,12 +5530,12 @@ export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -5302,15 +5572,15 @@ export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditRequestLocationStrategyMode | (string & {});
+  mode?: EditRequestLocationStrategyMode | (string & {}) | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditRequestLocationStrategyPreferEcs | (string & {});
+  preferEcs?: EditRequestLocationStrategyPreferEcs | (string & {}) | null;
 }
 export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(EditRequestLocationStrategyMode),
+    mode: S.optional(S.NullOr(EditRequestLocationStrategyMode)),
     preferEcs: S.optional(
-      EditRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(EditRequestLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
     ),
   }),
 ).annotate({
@@ -5340,15 +5610,19 @@ export const EditRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
 
 export interface EditRequestRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditRequestRandomSteeringPoolWeightsMap;
+  poolWeights?: EditRequestRandomSteeringPoolWeightsMap | null;
 }
 export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      EditRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(EditRequestRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -5370,20 +5644,20 @@ export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface EditRequestRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    location: S.optional(S.NullOr(S.String)),
+    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
   }),
 ).annotate({
   identifier: "EditRequestRulesItemFixedResponse",
@@ -5476,44 +5750,53 @@ export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeF
 
 export interface EditRequestRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
   samesite?:
     | EditRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?:
     | EditRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?:
     | EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const EditRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          EditRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(EditRequestRulesItemOverridesSessionAffinityAttributesSecure),
       ),
       zeroDowntimeFailover: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -5534,81 +5817,89 @@ export const EditRequestRulesItemOverridesSteeringPolicy =
 
 export interface EditRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditRequestAdaptiveRouting;
+  adaptiveRouting?: EditRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
+  countryPools?: EditRequestRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestRulesItemOverridesDefaultPoolsList;
+  defaultPools?: EditRequestRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditRequestLocationStrategy;
+  locationStrategy?: EditRequestLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestRulesItemOverridesPopPoolsMap;
+  popPools?: EditRequestRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: EditRequestRandomSteering;
+  randomSteering?: EditRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
+  regionPools?: EditRequestRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | EditRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
+  steeringPolicy?:
+    | EditRequestRulesItemOverridesSteeringPolicy
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(EditRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      EditRequestRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(EditRequestRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      EditRequestRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(EditRequestRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(EditRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
     popPools: S.optional(
-      EditRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(EditRequestRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      EditRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(EditRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      EditRequestRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(EditRequestRulesItemOverridesRegionPoolsMap).pipe(
+        T.Body("region_pools"),
+      ),
     ),
     sessionAffinity: S.optional(
-      EditRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      EditRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditRequestRulesItemOverrides",
@@ -5616,31 +5907,33 @@ export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditRequestRulesItemFixedResponse;
+  fixedResponse?: EditRequestRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditRequestRulesItemOverrides;
+  overrides?: EditRequestRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      EditRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(EditRequestRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(EditRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(EditRequestRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "EditRequestRulesItem",
@@ -5655,92 +5948,98 @@ export interface PatchLoadBalancerRequest {
   zoneId: string;
   loadBalancerId: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditRequestAdaptiveRouting;
+  adaptiveRouting?: EditRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestCountryPoolsMap;
+  countryPools?: EditRequestCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestDefaultPoolsList;
+  defaultPools?: EditRequestDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditRequestLocationStrategy;
+  locationStrategy?: EditRequestLocationStrategy | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestPopPoolsMap;
+  popPools?: EditRequestPopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: EditRequestRandomSteering;
+  randomSteering?: EditRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRegionPoolsMap;
+  regionPools?: EditRequestRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditRequestRulesList;
+  rules?: EditRequestRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | EditRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
+  steeringPolicy?:
+    | EditRequestRulesItemOverridesSteeringPolicy
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
     adaptiveRouting: S.optional(
-      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(EditRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      EditRequestCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(EditRequestCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
     defaultPools: S.optional(
-      EditRequestDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(EditRequestDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(EditRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
-    name: S.optional(S.String),
-    popPools: S.optional(EditRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    popPools: S.optional(
+      S.NullOr(EditRequestPopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      EditRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(EditRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      EditRequestRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(EditRequestRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(EditRequestRulesList),
+    rules: S.optional(S.NullOr(EditRequestRulesList)),
     sessionAffinity: S.optional(
-      EditRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      EditRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(EditRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -5756,12 +6055,12 @@ export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -5798,15 +6097,17 @@ export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditResponseLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditResponseLocationStrategyMode;
+  mode?: EditResponseLocationStrategyMode | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditResponseLocationStrategyPreferEcs;
+  preferEcs?: EditResponseLocationStrategyPreferEcs | null;
 }
 export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(EditResponseLocationStrategyMode),
+    mode: S.optional(S.NullOr(EditResponseLocationStrategyMode)),
     preferEcs: S.optional(
-      EditResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(EditResponseLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -5841,15 +6142,19 @@ export const EditResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
 
 export interface EditResponseRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditResponseRandomSteeringPoolWeightsMap;
+  poolWeights?: EditResponseRandomSteeringPoolWeightsMap | null;
 }
 export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      EditResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(EditResponseRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -5871,20 +6176,20 @@ export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface EditResponseRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    location: S.optional(S.NullOr(S.String)),
+    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
   }),
 ).annotate({
   identifier: "EditResponseRulesItemFixedResponse",
@@ -5979,38 +6284,44 @@ export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntime
 
 export interface EditResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const EditResponseRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributesSecure),
       ),
       zeroDowntimeFailover: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -6031,79 +6342,83 @@ export const EditResponseRulesItemOverridesSteeringPolicy =
 
 export interface EditResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditResponseAdaptiveRouting;
+  adaptiveRouting?: EditResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseRulesItemOverridesCountryPoolsMap;
+  countryPools?: EditResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList;
+  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditResponseLocationStrategy;
+  locationStrategy?: EditResponseLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponseRulesItemOverridesPopPoolsMap;
+  popPools?: EditResponseRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: EditResponseRandomSteering;
+  randomSteering?: EditResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRulesItemOverridesRegionPoolsMap;
+  regionPools?: EditResponseRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      EditResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(EditResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      EditResponseRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(EditResponseRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      EditResponseRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(EditResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      EditResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(EditResponseLocationStrategy).pipe(T.Body("location_strategy")),
     ),
     popPools: S.optional(
-      EditResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(EditResponseRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      EditResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(EditResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      EditResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(EditResponseRulesItemOverridesRegionPoolsMap).pipe(
+        T.Body("region_pools"),
+      ),
     ),
     sessionAffinity: S.optional(
-      EditResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      EditResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditResponseRulesItemOverrides",
@@ -6111,31 +6426,33 @@ export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditResponseRulesItemFixedResponse;
+  fixedResponse?: EditResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditResponseRulesItemOverrides;
+  overrides?: EditResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      EditResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(EditResponseRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(EditResponseRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(EditResponseRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "EditResponseRulesItem",
@@ -6148,100 +6465,102 @@ export const EditResponseRulesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchLoadBalancerResponse {
-  id?: string;
+  id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditResponseAdaptiveRouting;
+  adaptiveRouting?: EditResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseCountryPoolsMap;
-  createdOn?: string;
+  countryPools?: EditResponseCountryPoolsMap | null;
+  createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseDefaultPoolsList;
+  defaultPools?: EditResponseDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditResponseLocationStrategy;
-  modifiedOn?: string;
+  locationStrategy?: EditResponseLocationStrategy | null;
+  modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: EditResponseNetworksList;
+  networks?: EditResponseNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponsePopPoolsMap;
+  popPools?: EditResponsePopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: EditResponseRandomSteering;
+  randomSteering?: EditResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRegionPoolsMap;
+  regionPools?: EditResponseRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditResponseRulesList;
+  rules?: EditResponseRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
+  ttl?: number | null;
+  zoneName?: string | null;
 }
 export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      EditResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(EditResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      EditResponseCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(EditResponseCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
-      EditResponseDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(EditResponseDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      EditResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(EditResponseLocationStrategy).pipe(T.Body("location_strategy")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(EditResponseNetworksList),
-    popPools: S.optional(EditResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(EditResponseNetworksList)),
+    popPools: S.optional(
+      S.NullOr(EditResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      EditResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(EditResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      EditResponseRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(EditResponseRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(EditResponseRulesList),
+    rules: S.optional(S.NullOr(EditResponseRulesList)),
     sessionAffinity: S.optional(
-      EditResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      EditResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(EditResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLoadBalancerResponse",
@@ -6274,58 +6593,68 @@ export interface PatchMonitorRequest {
   accountId: string;
   monitorId: string;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
+  consecutiveUp?: number | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsEditRequestHeaderMap;
+  header?: MonitorsEditRequestHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
+  method?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsEditRequestType | (string & {});
+  type?: MonitorsEditRequestType | (string & {}) | null;
 }
 export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsEditRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsEditRequestType),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsEditRequestHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsEditRequestType)),
   })
     .pipe(
       T.Http({
@@ -6363,63 +6692,73 @@ export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchMonitorResponse {
-  id?: string;
+  id?: string | null;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
+  consecutiveUp?: number | null;
+  createdOn?: string | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsEditResponseHeaderMap;
+  header?: MonitorsEditResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
+  method?: string | null;
+  modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsEditResponseType;
+  type?: MonitorsEditResponseType | null;
 }
 export const PatchMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsEditResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsEditResponseType),
+    id: S.optional(S.NullOr(S.String)),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsEditResponseHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsEditResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorResponse",
@@ -6435,9 +6774,9 @@ export interface MonitorGroupsEditRequestMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6445,8 +6784,8 @@ export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
     monitorId: S.String.pipe(T.Body("monitor_id")),
     monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
     mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "MonitorGroupsEditRequestMembersItem",
@@ -6496,9 +6835,9 @@ export interface MonitorGroupsEditResponseMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -6507,8 +6846,8 @@ export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsEditResponseMembersItem",
@@ -6529,17 +6868,17 @@ export interface PatchMonitorGroupResponse {
   /** List of monitors in this group */
   members: MonitorGroupsEditResponseMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PatchMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsEditResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorGroupResponse",
@@ -6577,23 +6916,37 @@ export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy | (string & {});
+  defaultPolicy?:
+    | PoolsEditRequestLoadSheddingDefaultPolicy
+    | (string & {})
+    | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?:
+    | PoolsEditRequestLoadSheddingSessionPolicy
+    | (string & {})
+    | null;
 }
 export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    defaultPolicy: S.optional(
+      S.NullOr(PoolsEditRequestLoadSheddingDefaultPolicy).pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsEditRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+      S.NullOr(PoolsEditRequestLoadSheddingSessionPolicy).pipe(
+        T.Body("session_policy"),
+      ),
     ),
   }),
 ).annotate({
@@ -6602,15 +6955,15 @@ export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsEditRequestNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsEditRequestNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
 ).annotate({
   identifier: "PoolsEditRequestNotificationFilterOrigin",
@@ -6618,14 +6971,14 @@ export const PoolsEditRequestNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
 
 export interface PoolsEditRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditRequestNotificationFilterOrigin;
+  origin?: PoolsEditRequestNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsEditRequestNotificationFilterOrigin;
+  pool?: PoolsEditRequestNotificationFilterOrigin | null;
 }
 export const PoolsEditRequestNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    origin: S.optional(PoolsEditRequestNotificationFilterOrigin),
-    pool: S.optional(PoolsEditRequestNotificationFilterOrigin),
+    origin: S.optional(S.NullOr(PoolsEditRequestNotificationFilterOrigin)),
+    pool: S.optional(S.NullOr(PoolsEditRequestNotificationFilterOrigin)),
   }),
 ).annotate({
   identifier: "PoolsEditRequestNotificationFilter",
@@ -6640,11 +6993,11 @@ export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsEditRequestOriginSteeringPolicy | (string & {});
+  policy?: PoolsEditRequestOriginSteeringPolicy | (string & {}) | null;
 }
 export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsEditRequestOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsEditRequestOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsEditRequestOriginSteering",
@@ -6657,12 +7010,12 @@ export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsEditRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsEditRequestOriginsItemHeaderHostList;
+  host?: PoolsEditRequestOriginsItemHeaderHostList | null;
 }
 export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(
-      PoolsEditRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      S.NullOr(PoolsEditRequestOriginsItemHeaderHostList).pipe(T.Body("Host")),
     ),
   }),
 ).annotate({
@@ -6671,35 +7024,37 @@ export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsEditRequestOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsEditRequestOriginsItemHeader;
+  header?: PoolsEditRequestOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsEditRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsEditRequestOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsEditRequestOriginsItem",
@@ -6715,60 +7070,66 @@ export interface PatchPoolRequest {
   accountId: string;
   poolId: string;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsEditRequestCheckRegionsList;
+  checkRegions?: PoolsEditRequestCheckRegionsList | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsEditRequestLoadShedding;
+  loadShedding?: PoolsEditRequestLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
+  minimumOrigins?: number | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditRequestNotificationFilter;
+  notificationFilter?: PoolsEditRequestNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsEditRequestOriginSteering;
+  originSteering?: PoolsEditRequestOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsEditRequestOriginsList;
+  origins?: PoolsEditRequestOriginsList | null;
 }
 export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
     checkRegions: S.optional(
-      PoolsEditRequestCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsEditRequestCheckRegionsList).pipe(T.Body("check_regions")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsEditRequestLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsEditRequestLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsEditRequestNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsEditRequestNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsEditRequestOriginSteering).pipe(T.Body("origin_steering")),
     ),
-    origins: S.optional(PoolsEditRequestOriginsList),
+    origins: S.optional(S.NullOr(PoolsEditRequestOriginsList)),
   })
     .pipe(
       T.Http({
@@ -6815,23 +7176,31 @@ export const PoolsEditResponseLoadSheddingSessionPolicy =
 
 export interface PoolsEditResponseLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditResponseLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsEditResponseLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditResponseLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsEditResponseLoadSheddingSessionPolicy | null;
 }
 export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    defaultPolicy: S.optional(
+      S.NullOr(PoolsEditResponseLoadSheddingDefaultPolicy).pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsEditResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+      S.NullOr(PoolsEditResponseLoadSheddingSessionPolicy).pipe(
+        T.Body("session_policy"),
+      ),
     ),
   }),
 ).annotate({
@@ -6845,15 +7214,15 @@ export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsEditResponseNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsEditResponseNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsEditResponseNotificationFilterOrigin",
@@ -6861,14 +7230,14 @@ export const PoolsEditResponseNotificationFilterOrigin =
 
 export interface PoolsEditResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditResponseNotificationFilterOrigin;
+  origin?: PoolsEditResponseNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsEditResponseNotificationFilterOrigin;
+  pool?: PoolsEditResponseNotificationFilterOrigin | null;
 }
 export const PoolsEditResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    origin: S.optional(PoolsEditResponseNotificationFilterOrigin),
-    pool: S.optional(PoolsEditResponseNotificationFilterOrigin),
+    origin: S.optional(S.NullOr(PoolsEditResponseNotificationFilterOrigin)),
+    pool: S.optional(S.NullOr(PoolsEditResponseNotificationFilterOrigin)),
   }),
 ).annotate({
   identifier: "PoolsEditResponseNotificationFilter",
@@ -6883,11 +7252,11 @@ export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditResponseOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsEditResponseOriginSteeringPolicy;
+  policy?: PoolsEditResponseOriginSteeringPolicy | null;
 }
 export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsEditResponseOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsEditResponseOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsEditResponseOriginSteering",
@@ -6900,12 +7269,12 @@ export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsEditResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsEditResponseOriginsItemHeaderHostList;
+  host?: PoolsEditResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(
-      PoolsEditResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      S.NullOr(PoolsEditResponseOriginsItemHeaderHostList).pipe(T.Body("Host")),
     ),
   }),
 ).annotate({
@@ -6914,35 +7283,37 @@ export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsEditResponseOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsEditResponseOriginsItemHeader;
+  header?: PoolsEditResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsEditResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsEditResponseOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsEditResponseOriginsItem",
@@ -6955,71 +7326,77 @@ export const PoolsEditResponseOriginsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchPoolResponse {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsEditResponseCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsEditResponseCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsEditResponseLoadShedding;
+  loadShedding?: PoolsEditResponseLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsEditResponseNetworksList;
+  networks?: PoolsEditResponseNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditResponseNotificationFilter;
+  notificationFilter?: PoolsEditResponseNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsEditResponseOriginSteering;
+  originSteering?: PoolsEditResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsEditResponseOriginsList;
+  origins?: PoolsEditResponseOriginsList | null;
 }
 export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsEditResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsEditResponseCheckRegionsList).pipe(T.Body("check_regions")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsEditResponseLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsEditResponseLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsEditResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsEditResponseNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsEditResponseNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsEditResponseNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsEditResponseOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsEditResponseOriginSteering).pipe(T.Body("origin_steering")),
     ),
-    origins: S.optional(PoolsEditResponseOriginsList),
+    origins: S.optional(S.NullOr(PoolsEditResponseOriginsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPoolResponse",
@@ -7032,12 +7409,12 @@ export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
 
 export interface UpdateRequestAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const UpdateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -7069,15 +7446,17 @@ export const UpdateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: UpdateRequestLocationStrategyMode | (string & {});
+  mode?: UpdateRequestLocationStrategyMode | (string & {}) | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: UpdateRequestLocationStrategyPreferEcs | (string & {});
+  preferEcs?: UpdateRequestLocationStrategyPreferEcs | (string & {}) | null;
 }
 export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(UpdateRequestLocationStrategyMode),
+    mode: S.optional(S.NullOr(UpdateRequestLocationStrategyMode)),
     preferEcs: S.optional(
-      UpdateRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(UpdateRequestLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -7112,15 +7491,19 @@ export const UpdateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
 
 export interface UpdateRequestRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: UpdateRequestRandomSteeringPoolWeightsMap;
+  poolWeights?: UpdateRequestRandomSteeringPoolWeightsMap | null;
 }
 export const UpdateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      UpdateRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(UpdateRequestRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -7142,20 +7525,20 @@ export const UpdateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface UpdateRequestRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const UpdateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    location: S.optional(S.NullOr(S.String)),
+    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemFixedResponse",
@@ -7254,44 +7637,55 @@ export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntim
 
 export interface UpdateRequestRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
   samesite?:
     | UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?:
     | UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?:
     | UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(
+          UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure,
+        ),
       ),
       zeroDowntimeFailover: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -7312,85 +7706,89 @@ export const UpdateRequestRulesItemOverridesSteeringPolicy =
 
 export interface UpdateRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateRequestAdaptiveRouting;
+  adaptiveRouting?: UpdateRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateRequestRulesItemOverridesCountryPoolsMap;
+  countryPools?: UpdateRequestRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: UpdateRequestRulesItemOverridesDefaultPoolsList;
+  defaultPools?: UpdateRequestRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateRequestLocationStrategy;
+  locationStrategy?: UpdateRequestLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateRequestRulesItemOverridesPopPoolsMap;
+  popPools?: UpdateRequestRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: UpdateRequestRandomSteering;
+  randomSteering?: UpdateRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateRequestRulesItemOverridesRegionPoolsMap;
+  regionPools?: UpdateRequestRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | UpdateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
   steeringPolicy?:
     | UpdateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      UpdateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(UpdateRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      UpdateRequestRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      UpdateRequestRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      UpdateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(UpdateRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
     popPools: S.optional(
-      UpdateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(UpdateRequestRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      UpdateRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(UpdateRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      UpdateRequestRulesItemOverridesRegionPoolsMap.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesRegionPoolsMap).pipe(
         T.Body("region_pools"),
       ),
     ),
     sessionAffinity: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemOverrides",
@@ -7398,31 +7796,33 @@ export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: UpdateRequestRulesItemFixedResponse;
+  fixedResponse?: UpdateRequestRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: UpdateRequestRulesItemOverrides;
+  overrides?: UpdateRequestRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      UpdateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(UpdateRequestRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(UpdateRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(UpdateRequestRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItem",
@@ -7443,41 +7843,43 @@ export interface UpdateLoadBalancerRequest {
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateRequestAdaptiveRouting;
+  adaptiveRouting?: UpdateRequestAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateRequestCountryPoolsMap;
+  countryPools?: UpdateRequestCountryPoolsMap | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateRequestLocationStrategy;
+  locationStrategy?: UpdateRequestLocationStrategy | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: UpdateRequestNetworksList;
+  networks?: UpdateRequestNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateRequestPopPoolsMap;
+  popPools?: UpdateRequestPopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: UpdateRequestRandomSteering;
+  randomSteering?: UpdateRequestRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateRequestRegionPoolsMap;
+  regionPools?: UpdateRequestRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: UpdateRequestRulesList;
+  rules?: UpdateRequestRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
   sessionAffinity?:
     | UpdateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
   steeringPolicy?:
     | UpdateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
+    | (string & {})
+    | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7487,45 +7889,47 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     fallbackPool: S.String.pipe(T.Body("fallback_pool")),
     name: S.String,
     adaptiveRouting: S.optional(
-      UpdateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(UpdateRequestAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      UpdateRequestCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(UpdateRequestCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     locationStrategy: S.optional(
-      UpdateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(UpdateRequestLocationStrategy).pipe(T.Body("location_strategy")),
     ),
-    networks: S.optional(UpdateRequestNetworksList),
-    popPools: S.optional(UpdateRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    networks: S.optional(S.NullOr(UpdateRequestNetworksList)),
+    popPools: S.optional(
+      S.NullOr(UpdateRequestPopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      UpdateRequestRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(UpdateRequestRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      UpdateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(UpdateRequestRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(UpdateRequestRulesList),
+    rules: S.optional(S.NullOr(UpdateRequestRulesList)),
     sessionAffinity: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(UpdateRequestRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -7541,12 +7945,12 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+  failoverAcrossPools?: boolean | null;
 }
 export const UpdateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
+      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
     ),
   }),
 ).annotate({
@@ -7583,15 +7987,17 @@ export const UpdateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseLocationStrategy {
   /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: UpdateResponseLocationStrategyMode;
+  mode?: UpdateResponseLocationStrategyMode | null;
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: UpdateResponseLocationStrategyPreferEcs;
+  preferEcs?: UpdateResponseLocationStrategyPreferEcs | null;
 }
 export const UpdateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(UpdateResponseLocationStrategyMode),
+    mode: S.optional(S.NullOr(UpdateResponseLocationStrategyMode)),
     preferEcs: S.optional(
-      UpdateResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+      S.NullOr(UpdateResponseLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
     ),
   }),
 ).annotate({
@@ -7627,15 +8033,19 @@ export const UpdateResponseRandomSteeringPoolWeightsMap =
 
 export interface UpdateResponseRandomSteering {
   /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
+  defaultWeight?: number | null;
   /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: UpdateResponseRandomSteeringPoolWeightsMap;
+  poolWeights?: UpdateResponseRandomSteeringPoolWeightsMap | null;
 }
 export const UpdateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
     poolWeights: S.optional(
-      UpdateResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+      S.NullOr(UpdateResponseRandomSteeringPoolWeightsMap).pipe(
+        T.Body("pool_weights"),
+      ),
     ),
   }),
 ).annotate({
@@ -7657,21 +8067,21 @@ export const UpdateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
 
 export interface UpdateResponseRulesItemFixedResponse {
   /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
+  contentType?: string | null;
   /** The http 'Location' header to include in the response. */
-  location?: string;
+  location?: string | null;
   /** Text to include as the http body. */
-  messageBody?: string;
+  messageBody?: string | null;
   /** The http status code to respond with. */
-  statusCode?: number;
+  statusCode?: number | null;
 }
 export const UpdateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-      location: S.optional(S.String),
-      messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+      location: S.optional(S.NullOr(S.String)),
+      messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
     }),
 ).annotate({
   identifier: "UpdateResponseRulesItemFixedResponse",
@@ -7771,38 +8181,46 @@ export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDownti
 
 export interface UpdateResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
+  drainDuration?: number | null;
   /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
+  headers?: UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
   /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
+  requireAllHeaders?: boolean | null;
   /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite;
+  samesite?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
   /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure;
+  secure?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
   /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+  zeroDowntimeFailover?: UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
       headers: S.optional(
-        UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        S.NullOr(
+          UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
       ),
       requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
       ),
       samesite: S.optional(
-        UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        S.NullOr(
+          UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
       ),
       secure: S.optional(
-        UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        S.NullOr(
+          UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure,
+        ),
       ),
       zeroDowntimeFailover: S.optional(
-        UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
+        S.NullOr(
+          UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
       ),
     }),
   ).annotate({
@@ -7823,81 +8241,85 @@ export const UpdateResponseRulesItemOverridesSteeringPolicy =
 
 export interface UpdateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateResponseAdaptiveRouting;
+  adaptiveRouting?: UpdateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateResponseRulesItemOverridesCountryPoolsMap;
+  countryPools?: UpdateResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: UpdateResponseRulesItemOverridesDefaultPoolsList;
+  defaultPools?: UpdateResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateResponseLocationStrategy;
+  locationStrategy?: UpdateResponseLocationStrategy | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateResponseRulesItemOverridesPopPoolsMap;
+  popPools?: UpdateResponseRulesItemOverridesPopPoolsMap | null;
   /** Configures pool weights. */
-  randomSteering?: UpdateResponseRandomSteering;
+  randomSteering?: UpdateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateResponseRulesItemOverridesRegionPoolsMap;
+  regionPools?: UpdateResponseRulesItemOverridesRegionPoolsMap | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
+  ttl?: number | null;
 }
 export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      UpdateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(UpdateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      UpdateResponseRulesItemOverridesCountryPoolsMap.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesCountryPoolsMap).pipe(
         T.Body("country_pools"),
       ),
     ),
     defaultPools: S.optional(
-      UpdateResponseRulesItemOverridesDefaultPoolsList.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
       ),
     ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      UpdateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(UpdateResponseLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
     popPools: S.optional(
-      UpdateResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+      S.NullOr(UpdateResponseRulesItemOverridesPopPoolsMap).pipe(
+        T.Body("pop_pools"),
+      ),
     ),
     randomSteering: S.optional(
-      UpdateResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(UpdateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      UpdateResponseRulesItemOverridesRegionPoolsMap.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesRegionPoolsMap).pipe(
         T.Body("region_pools"),
       ),
     ),
     sessionAffinity: S.optional(
-      UpdateResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      UpdateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      UpdateResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
+    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "UpdateResponseRulesItemOverrides",
@@ -7905,31 +8327,33 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateResponseRulesItem {
   /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
+  condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: UpdateResponseRulesItemFixedResponse;
+  fixedResponse?: UpdateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
-  name?: string;
+  name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: UpdateResponseRulesItemOverrides;
+  overrides?: UpdateResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
+  priority?: number | null;
   /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
+  terminates?: boolean | null;
 }
 export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      UpdateResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      S.NullOr(UpdateResponseRulesItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
     ),
-    name: S.optional(S.String),
-    overrides: S.optional(UpdateResponseRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(UpdateResponseRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "UpdateResponseRulesItem",
@@ -7942,100 +8366,104 @@ export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLoadBalancerResponse {
-  id?: string;
+  id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateResponseAdaptiveRouting;
+  adaptiveRouting?: UpdateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateResponseCountryPoolsMap;
-  createdOn?: string;
+  countryPools?: UpdateResponseCountryPoolsMap | null;
+  createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: UpdateResponseDefaultPoolsList;
+  defaultPools?: UpdateResponseDefaultPoolsList | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
+  fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateResponseLocationStrategy;
-  modifiedOn?: string;
+  locationStrategy?: UpdateResponseLocationStrategy | null;
+  modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: UpdateResponseNetworksList;
+  networks?: UpdateResponseNetworksList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateResponsePopPoolsMap;
+  popPools?: UpdateResponsePopPoolsMap | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
+  proxied?: boolean | null;
   /** Configures pool weights. */
-  randomSteering?: UpdateResponseRandomSteering;
+  randomSteering?: UpdateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateResponseRegionPoolsMap;
+  regionPools?: UpdateResponseRegionPoolsMap | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: UpdateResponseRulesList;
+  rules?: UpdateResponseRulesList | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity;
+  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes;
+  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
+  sessionAffinityTtl?: number | null;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy;
+  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
+  ttl?: number | null;
+  zoneName?: string | null;
 }
 export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      UpdateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      S.NullOr(UpdateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
-      UpdateResponseCountryPoolsMap.pipe(T.Body("country_pools")),
+      S.NullOr(UpdateResponseCountryPoolsMap).pipe(T.Body("country_pools")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
-      UpdateResponseDefaultPoolsList.pipe(T.Body("default_pools")),
+      S.NullOr(UpdateResponseDefaultPoolsList).pipe(T.Body("default_pools")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      UpdateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+      S.NullOr(UpdateResponseLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(UpdateResponseNetworksList),
-    popPools: S.optional(UpdateResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(UpdateResponseNetworksList)),
+    popPools: S.optional(
+      S.NullOr(UpdateResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    ),
+    proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      UpdateResponseRandomSteering.pipe(T.Body("random_steering")),
+      S.NullOr(UpdateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
     regionPools: S.optional(
-      UpdateResponseRegionPoolsMap.pipe(T.Body("region_pools")),
+      S.NullOr(UpdateResponseRegionPoolsMap).pipe(T.Body("region_pools")),
     ),
-    rules: S.optional(UpdateResponseRulesList),
+    rules: S.optional(S.NullOr(UpdateResponseRulesList)),
     sessionAffinity: S.optional(
-      UpdateResponseRulesItemOverridesSessionAffinity.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinity).pipe(
         T.Body("session_affinity"),
       ),
     ),
     sessionAffinityAttributes: S.optional(
-      UpdateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
     sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      UpdateResponseRulesItemOverridesSteeringPolicy.pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesSteeringPolicy).pipe(
         T.Body("steering_policy"),
       ),
     ),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLoadBalancerResponse",
@@ -8068,58 +8496,68 @@ export interface UpdateMonitorRequest {
   accountId: string;
   monitorId: string;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
+  consecutiveUp?: number | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsUpdateRequestHeaderMap;
+  header?: MonitorsUpdateRequestHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
+  method?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsUpdateRequestType | (string & {});
+  type?: MonitorsUpdateRequestType | (string & {}) | null;
 }
 export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsUpdateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsUpdateRequestType),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsUpdateRequestHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsUpdateRequestType)),
   })
     .pipe(
       T.Http({
@@ -8157,63 +8595,73 @@ export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMonitorResponse {
-  id?: string;
+  id?: string | null;
   /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
+  allowInsecure?: boolean | null;
   /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
+  consecutiveDown?: number | null;
   /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
+  consecutiveUp?: number | null;
+  createdOn?: string | null;
   /** Object description. */
-  description?: string;
+  description?: string | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
+  expectedBody?: string | null;
   /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
+  expectedCodes?: string | null;
   /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
+  followRedirects?: boolean | null;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsUpdateResponseHeaderMap;
+  header?: MonitorsUpdateResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
+  interval?: number | null;
   /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
+  method?: string | null;
+  modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
+  path?: string | null;
   /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
+  port?: number | null;
   /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
+  probeZone?: string | null;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
+  retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
+  timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsUpdateResponseType;
+  type?: MonitorsUpdateResponseType | null;
 }
 export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsUpdateResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsUpdateResponseType),
+    id: S.optional(S.NullOr(S.String)),
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    consecutiveDown: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_down")),
+    ),
+    consecutiveUp: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_up")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expected_codes")),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(MonitorsUpdateResponseHeaderMap)),
+    interval: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    probeZone: S.optional(S.NullOr(S.String).pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.NullOr(S.Number)),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(MonitorsUpdateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorResponse",
@@ -8229,9 +8677,9 @@ export interface MonitorGroupsUpdateRequestMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -8240,8 +8688,8 @@ export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsUpdateRequestMembersItem",
@@ -8291,9 +8739,9 @@ export interface MonitorGroupsUpdateResponseMembersItem {
   /** Whether this monitor must be healthy for the pool to be considered healthy */
   mustBeHealthy: boolean;
   /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -8302,8 +8750,8 @@ export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
       monitorId: S.String.pipe(T.Body("monitor_id")),
       monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsUpdateResponseMembersItem",
@@ -8324,17 +8772,17 @@ export interface UpdateMonitorGroupResponse {
   /** List of monitors in this group */
   members: MonitorGroupsUpdateResponseMembersList;
   /** The timestamp of when the monitor group was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsUpdateResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorGroupResponse",
@@ -8348,12 +8796,14 @@ export const PoolsUpdateRequestOriginsItemHeaderHostList =
 
 export interface PoolsUpdateRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsUpdateRequestOriginsItemHeaderHostList;
+  host?: PoolsUpdateRequestOriginsItemHeaderHostList | null;
 }
 export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(
-      PoolsUpdateRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      S.NullOr(PoolsUpdateRequestOriginsItemHeaderHostList).pipe(
+        T.Body("Host"),
+      ),
     ),
   }),
 ).annotate({
@@ -8362,35 +8812,37 @@ export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsUpdateRequestOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsUpdateRequestOriginsItemHeader;
+  header?: PoolsUpdateRequestOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsUpdateRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsUpdateRequestOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsUpdateRequestOriginsItem",
@@ -8436,25 +8888,35 @@ export const PoolsUpdateRequestLoadSheddingSessionPolicy =
 
 export interface PoolsUpdateRequestLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy | (string & {});
+  defaultPolicy?:
+    | PoolsUpdateRequestLoadSheddingDefaultPolicy
+    | (string & {})
+    | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?:
+    | PoolsUpdateRequestLoadSheddingSessionPolicy
+    | (string & {})
+    | null;
 }
 export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsUpdateRequestLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsUpdateRequestLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -8465,15 +8927,15 @@ export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoolsUpdateRequestNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsUpdateRequestNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsUpdateRequestNotificationFilterOrigin",
@@ -8481,15 +8943,15 @@ export const PoolsUpdateRequestNotificationFilterOrigin =
 
 export interface PoolsUpdateRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateRequestNotificationFilterOrigin;
+  origin?: PoolsUpdateRequestNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsUpdateRequestNotificationFilterOrigin;
+  pool?: PoolsUpdateRequestNotificationFilterOrigin | null;
 }
 export const PoolsUpdateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      origin: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
-      pool: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
+      origin: S.optional(S.NullOr(PoolsUpdateRequestNotificationFilterOrigin)),
+      pool: S.optional(S.NullOr(PoolsUpdateRequestNotificationFilterOrigin)),
     }),
 ).annotate({
   identifier: "PoolsUpdateRequestNotificationFilter",
@@ -8504,11 +8966,11 @@ export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateRequestOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateRequestOriginSteeringPolicy | (string & {});
+  policy?: PoolsUpdateRequestOriginSteeringPolicy | (string & {}) | null;
 }
 export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsUpdateRequestOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsUpdateRequestOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsUpdateRequestOriginSteering",
@@ -8523,29 +8985,29 @@ export interface UpdatePoolRequest {
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
   origins: PoolsUpdateRequestOriginsList;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsUpdateRequestCheckRegionsList;
+  checkRegions?: PoolsUpdateRequestCheckRegionsList | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsUpdateRequestLoadShedding;
+  loadShedding?: PoolsUpdateRequestLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
+  minimumOrigins?: number | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateRequestNotificationFilter;
+  notificationFilter?: PoolsUpdateRequestNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsUpdateRequestOriginSteering;
+  originSteering?: PoolsUpdateRequestOriginSteering | null;
 }
 export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8554,24 +9016,34 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     origins: PoolsUpdateRequestOriginsList,
     checkRegions: S.optional(
-      PoolsUpdateRequestCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsUpdateRequestCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsUpdateRequestLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsUpdateRequestLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsUpdateRequestNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsUpdateRequestNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsUpdateRequestOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
   })
     .pipe(
@@ -8619,25 +9091,29 @@ export const PoolsUpdateResponseLoadSheddingSessionPolicy =
 
 export interface PoolsUpdateResponseLoadShedding {
   /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
+  defaultPercent?: number | null;
   /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateResponseLoadSheddingDefaultPolicy;
+  defaultPolicy?: PoolsUpdateResponseLoadSheddingDefaultPolicy | null;
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
+  sessionPercent?: number | null;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateResponseLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsUpdateResponseLoadSheddingSessionPolicy | null;
 }
 export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_percent")),
+    ),
     defaultPolicy: S.optional(
-      PoolsUpdateResponseLoadSheddingDefaultPolicy.pipe(
+      S.NullOr(PoolsUpdateResponseLoadSheddingDefaultPolicy).pipe(
         T.Body("default_policy"),
       ),
     ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPercent: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_percent")),
+    ),
     sessionPolicy: S.optional(
-      PoolsUpdateResponseLoadSheddingSessionPolicy.pipe(
+      S.NullOr(PoolsUpdateResponseLoadSheddingSessionPolicy).pipe(
         T.Body("session_policy"),
       ),
     ),
@@ -8653,15 +9129,15 @@ export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
 
 export interface PoolsUpdateResponseNotificationFilterOrigin {
   /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
+  disable?: boolean | null;
   /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
+  healthy?: boolean | null;
 }
 export const PoolsUpdateResponseNotificationFilterOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
+      disable: S.optional(S.NullOr(S.Boolean)),
+      healthy: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PoolsUpdateResponseNotificationFilterOrigin",
@@ -8669,15 +9145,15 @@ export const PoolsUpdateResponseNotificationFilterOrigin =
 
 export interface PoolsUpdateResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateResponseNotificationFilterOrigin;
+  origin?: PoolsUpdateResponseNotificationFilterOrigin | null;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsUpdateResponseNotificationFilterOrigin;
+  pool?: PoolsUpdateResponseNotificationFilterOrigin | null;
 }
 export const PoolsUpdateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      origin: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
-      pool: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
+      origin: S.optional(S.NullOr(PoolsUpdateResponseNotificationFilterOrigin)),
+      pool: S.optional(S.NullOr(PoolsUpdateResponseNotificationFilterOrigin)),
     }),
 ).annotate({
   identifier: "PoolsUpdateResponseNotificationFilter",
@@ -8692,11 +9168,11 @@ export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateResponseOriginSteering {
   /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateResponseOriginSteeringPolicy;
+  policy?: PoolsUpdateResponseOriginSteeringPolicy | null;
 }
 export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policy: S.optional(PoolsUpdateResponseOriginSteeringPolicy),
+    policy: S.optional(S.NullOr(PoolsUpdateResponseOriginSteeringPolicy)),
   }),
 ).annotate({
   identifier: "PoolsUpdateResponseOriginSteering",
@@ -8710,13 +9186,15 @@ export const PoolsUpdateResponseOriginsItemHeaderHostList =
 
 export interface PoolsUpdateResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsUpdateResponseOriginsItemHeaderHostList;
+  host?: PoolsUpdateResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       host: S.optional(
-        PoolsUpdateResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+        S.NullOr(PoolsUpdateResponseOriginsItemHeaderHostList).pipe(
+          T.Body("Host"),
+        ),
       ),
     }),
 ).annotate({
@@ -8725,35 +9203,37 @@ export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
 
 export interface PoolsUpdateResponseOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
+  address?: string | null;
   /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
+  flattenCname?: boolean | null;
   /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsUpdateResponseOriginsItemHeader;
+  header?: PoolsUpdateResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
-  name?: string;
+  name?: string | null;
   /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
+  port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
+  virtualNetworkId?: string | null;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
+  weight?: number | null;
 }
 export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsUpdateResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
+    address: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+    header: S.optional(S.NullOr(PoolsUpdateResponseOriginsItemHeader)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    virtualNetworkId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
+    ),
+    weight: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "PoolsUpdateResponseOriginsItem",
@@ -8767,71 +9247,81 @@ export const PoolsUpdateResponseOriginsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePoolResponse {
-  id?: string;
+  id?: string | null;
   /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsUpdateResponseCheckRegionsList;
-  createdOn?: string;
+  checkRegions?: PoolsUpdateResponseCheckRegionsList | null;
+  createdOn?: string | null;
   /** A human-readable description of the pool. */
-  description?: string;
+  description?: string | null;
   /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
+  disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
+  latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsUpdateResponseLoadShedding;
+  loadShedding?: PoolsUpdateResponseLoadShedding | null;
   /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
+  longitude?: number | null;
   /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
+  minimumOrigins?: number | null;
+  modifiedOn?: string | null;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
+  monitor?: string | null;
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
+  monitorGroup?: string | null;
   /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsUpdateResponseNetworksList;
+  networks?: PoolsUpdateResponseNetworksList | null;
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
+  notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateResponseNotificationFilter;
+  notificationFilter?: PoolsUpdateResponseNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsUpdateResponseOriginSteering;
+  originSteering?: PoolsUpdateResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsUpdateResponseOriginsList;
+  origins?: PoolsUpdateResponseOriginsList | null;
 }
 export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     checkRegions: S.optional(
-      PoolsUpdateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      S.NullOr(PoolsUpdateResponseCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
-      PoolsUpdateResponseLoadShedding.pipe(T.Body("load_shedding")),
+      S.NullOr(PoolsUpdateResponseLoadShedding).pipe(T.Body("load_shedding")),
     ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsUpdateResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    longitude: S.optional(S.NullOr(S.Number)),
+    minimumOrigins: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("minimum_origins")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.NullOr(S.String)),
+    monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(PoolsUpdateResponseNetworksList)),
+    notificationEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("notification_email")),
+    ),
     notificationFilter: S.optional(
-      PoolsUpdateResponseNotificationFilter.pipe(T.Body("notification_filter")),
+      S.NullOr(PoolsUpdateResponseNotificationFilter).pipe(
+        T.Body("notification_filter"),
+      ),
     ),
     originSteering: S.optional(
-      PoolsUpdateResponseOriginSteering.pipe(T.Body("origin_steering")),
+      S.NullOr(PoolsUpdateResponseOriginSteering).pipe(
+        T.Body("origin_steering"),
+      ),
     ),
-    origins: S.optional(PoolsUpdateResponseOriginsList),
+    origins: S.optional(S.NullOr(PoolsUpdateResponseOriginsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePoolResponse",

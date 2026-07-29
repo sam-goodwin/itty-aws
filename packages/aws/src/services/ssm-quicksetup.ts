@@ -223,7 +223,7 @@ export const GetConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConfigurationInput",
 }) as any as S.Schema<GetConfigurationInput>;
-export type StatusType = "Deployment" | "AsyncExecutions";
+export type StatusType = "Deployment" | "AsyncExecutions" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 export type Status =
@@ -236,7 +236,8 @@ export type Status =
   | "STOPPED"
   | "DELETE_FAILED"
   | "STOP_FAILED"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export type StatusDetails = { [key: string]: string | undefined };

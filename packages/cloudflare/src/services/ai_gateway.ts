@@ -261,21 +261,30 @@ export interface CreateAiGatewayRequest {
   collectLogs: boolean;
   rateLimitingInterval: number | null;
   rateLimitingLimit: number | null;
-  authentication?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: CreateRequestLogManagementStrategy | (string & {});
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  rateLimitingTechnique?: CreateRequestRateLimitingTechnique | (string & {});
+  authentication?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?:
+    | CreateRequestLogManagementStrategy
+    | (string & {})
+    | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  rateLimitingTechnique?:
+    | CreateRequestRateLimitingTechnique
+    | (string & {})
+    | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: CreateRequestRetryBackoff | (string & {});
+  retryBackoff?: CreateRequestRetryBackoff | (string & {}) | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
+  retryMaxAttempts?: number | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: CreateRequestWorkersAiBillingMode | (string & {});
-  zdr?: boolean;
+  workersAiBillingMode?:
+    | CreateRequestWorkersAiBillingMode
+    | (string & {})
+    | null;
+  zdr?: boolean | null;
 }
 export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -290,29 +299,37 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("rate_limiting_interval"),
     ),
     rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      CreateRequestLogManagementStrategy.pipe(
+      S.NullOr(CreateRequestLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
     rateLimitingTechnique: S.optional(
-      CreateRequestRateLimitingTechnique.pipe(
+      S.NullOr(CreateRequestRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      CreateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(CreateRequestRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     workersAiBillingMode: S.optional(
-      CreateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+      S.NullOr(CreateRequestWorkersAiBillingMode).pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -460,37 +477,65 @@ export type CreateResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const CreateResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGuardrailsPrompt {
-  p1?: CreateResponseGuardrailsPromptP1;
-  s1?: CreateResponseGuardrailsPromptS1;
-  s10?: CreateResponseGuardrailsPromptS10;
-  s11?: CreateResponseGuardrailsPromptS11;
-  s12?: CreateResponseGuardrailsPromptS12;
-  s13?: CreateResponseGuardrailsPromptS13;
-  s2?: CreateResponseGuardrailsPromptS2;
-  s3?: CreateResponseGuardrailsPromptS3;
-  s4?: CreateResponseGuardrailsPromptS4;
-  s5?: CreateResponseGuardrailsPromptS5;
-  s6?: CreateResponseGuardrailsPromptS6;
-  s7?: CreateResponseGuardrailsPromptS7;
-  s8?: CreateResponseGuardrailsPromptS8;
-  s9?: CreateResponseGuardrailsPromptS9;
+  p1?: CreateResponseGuardrailsPromptP1 | null;
+  s1?: CreateResponseGuardrailsPromptS1 | null;
+  s10?: CreateResponseGuardrailsPromptS10 | null;
+  s11?: CreateResponseGuardrailsPromptS11 | null;
+  s12?: CreateResponseGuardrailsPromptS12 | null;
+  s13?: CreateResponseGuardrailsPromptS13 | null;
+  s2?: CreateResponseGuardrailsPromptS2 | null;
+  s3?: CreateResponseGuardrailsPromptS3 | null;
+  s4?: CreateResponseGuardrailsPromptS4 | null;
+  s5?: CreateResponseGuardrailsPromptS5 | null;
+  s6?: CreateResponseGuardrailsPromptS6 | null;
+  s7?: CreateResponseGuardrailsPromptS7 | null;
+  s8?: CreateResponseGuardrailsPromptS8 | null;
+  s9?: CreateResponseGuardrailsPromptS9 | null;
 }
 export const CreateResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(CreateResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(CreateResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(CreateResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(CreateResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(CreateResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(CreateResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(CreateResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(CreateResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(CreateResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(CreateResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(CreateResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(CreateResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(CreateResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(CreateResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(CreateResponseGuardrailsPromptS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseGuardrailsPrompt",
@@ -539,37 +584,65 @@ export type CreateResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const CreateResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGuardrailsResponse {
-  p1?: CreateResponseGuardrailsResponseP1;
-  s1?: CreateResponseGuardrailsResponseS1;
-  s10?: CreateResponseGuardrailsResponseS10;
-  s11?: CreateResponseGuardrailsResponseS11;
-  s12?: CreateResponseGuardrailsResponseS12;
-  s13?: CreateResponseGuardrailsResponseS13;
-  s2?: CreateResponseGuardrailsResponseS2;
-  s3?: CreateResponseGuardrailsResponseS3;
-  s4?: CreateResponseGuardrailsResponseS4;
-  s5?: CreateResponseGuardrailsResponseS5;
-  s6?: CreateResponseGuardrailsResponseS6;
-  s7?: CreateResponseGuardrailsResponseS7;
-  s8?: CreateResponseGuardrailsResponseS8;
-  s9?: CreateResponseGuardrailsResponseS9;
+  p1?: CreateResponseGuardrailsResponseP1 | null;
+  s1?: CreateResponseGuardrailsResponseS1 | null;
+  s10?: CreateResponseGuardrailsResponseS10 | null;
+  s11?: CreateResponseGuardrailsResponseS11 | null;
+  s12?: CreateResponseGuardrailsResponseS12 | null;
+  s13?: CreateResponseGuardrailsResponseS13 | null;
+  s2?: CreateResponseGuardrailsResponseS2 | null;
+  s3?: CreateResponseGuardrailsResponseS3 | null;
+  s4?: CreateResponseGuardrailsResponseS4 | null;
+  s5?: CreateResponseGuardrailsResponseS5 | null;
+  s6?: CreateResponseGuardrailsResponseS6 | null;
+  s7?: CreateResponseGuardrailsResponseS7 | null;
+  s8?: CreateResponseGuardrailsResponseS8 | null;
+  s9?: CreateResponseGuardrailsResponseS9 | null;
 }
 export const CreateResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(CreateResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(CreateResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(CreateResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(CreateResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(CreateResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(CreateResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(CreateResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(CreateResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(CreateResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(CreateResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(CreateResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(CreateResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(CreateResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(CreateResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(CreateResponseGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseGuardrailsResponse",
@@ -607,16 +680,16 @@ export const CreateResponseOtelItemContentType = /*@__PURE__*/ S.String;
 export interface CreateResponseOtelItem {
   headers: CreateResponseOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: CreateResponseOtelItemContentType;
+  authorization?: string | null;
+  contentType?: CreateResponseOtelItemContentType | null;
 }
 export const CreateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: CreateResponseOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      CreateResponseOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(CreateResponseOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -695,24 +768,26 @@ export interface CreateResponseSpendLimitsRulesItem {
   limit: number;
   limitType: CreateResponseSpendLimitsRulesItemLimitType;
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: CreateResponseSpendLimitsRulesItemModel;
-  provider?: CreateResponseSpendLimitsRulesItemProvider;
-  technique?: CreateResponseSpendLimitsRulesItemTechnique;
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: CreateResponseSpendLimitsRulesItemModel | null;
+  provider?: CreateResponseSpendLimitsRulesItemProvider | null;
+  technique?: CreateResponseSpendLimitsRulesItemTechnique | null;
 }
 export const CreateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: CreateResponseSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(CreateResponseSpendLimitsRulesItemModel),
-    provider: S.optional(CreateResponseSpendLimitsRulesItemProvider),
-    technique: S.optional(CreateResponseSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemProvider)),
+    technique: S.optional(
+      S.NullOr(CreateResponseSpendLimitsRulesItemTechnique),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseSpendLimitsRulesItem",
@@ -725,13 +800,13 @@ export const CreateResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseSpendLimitsRulesList>;
 
 export interface CreateResponseSpendLimits {
-  enabled?: boolean;
-  rules?: CreateResponseSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: CreateResponseSpendLimitsRulesList | null;
 }
 export const CreateResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(CreateResponseSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(CreateResponseSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "CreateResponseSpendLimits",
@@ -783,28 +858,28 @@ export interface CreateAiGatewayResponse {
   modifiedAt: string;
   rateLimitingInterval: number;
   rateLimitingLimit: number;
-  authentication?: boolean;
-  dlp?: CreateResponseDlp;
-  guardrails?: CreateResponseGuardrails;
-  isDefault?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: CreateResponseLogManagementStrategy;
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: CreateResponseOtelList;
-  rateLimitingTechnique?: CreateResponseRateLimitingTechnique;
+  authentication?: boolean | null;
+  dlp?: CreateResponseDlp | null;
+  guardrails?: CreateResponseGuardrails | null;
+  isDefault?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?: CreateResponseLogManagementStrategy | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: CreateResponseOtelList | null;
+  rateLimitingTechnique?: CreateResponseRateLimitingTechnique | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: CreateResponseRetryBackoff;
+  retryBackoff?: CreateResponseRetryBackoff | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: CreateResponseSpendLimits;
-  storeId?: string;
-  stripe?: CreateResponseStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: CreateResponseSpendLimits | null;
+  storeId?: string | null;
+  stripe?: CreateResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: CreateResponseWorkersAiBillingMode;
-  zdr?: boolean;
+  workersAiBillingMode?: CreateResponseWorkersAiBillingMode | null;
+  zdr?: boolean | null;
 }
 export const CreateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -818,40 +893,46 @@ export const CreateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
     rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(CreateResponseDlp),
-    guardrails: S.optional(CreateResponseGuardrails),
-    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(CreateResponseDlp)),
+    guardrails: S.optional(S.NullOr(CreateResponseGuardrails)),
+    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      CreateResponseLogManagementStrategy.pipe(
+      S.NullOr(CreateResponseLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(CreateResponseOtelList),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(CreateResponseOtelList)),
     rateLimitingTechnique: S.optional(
-      CreateResponseRateLimitingTechnique.pipe(
+      S.NullOr(CreateResponseRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      CreateResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(CreateResponseRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      CreateResponseSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(CreateResponseSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(CreateResponseStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(CreateResponseStripe)),
     workersAiBillingMode: S.optional(
-      CreateResponseWorkersAiBillingMode.pipe(
+      S.NullOr(CreateResponseWorkersAiBillingMode).pipe(
         T.Body("workers_ai_billing_mode"),
       ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAiGatewayResponse",
@@ -932,17 +1013,17 @@ export interface CreateBillingTopupResponse {
   /** Stripe invoice ID. */
   paymentIntentId: string;
   /** Card brand (visa, mastercard, etc.). */
-  brand?: string;
+  brand?: string | null;
   /** Last 4 digits of card. */
-  last4?: string;
+  last4?: string | null;
 }
 export const CreateBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientSecret: S.String.pipe(T.Body("client_secret")),
     onboarding: S.Boolean,
     paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-    brand: S.optional(S.String),
-    last4: S.optional(S.String),
+    brand: S.optional(S.NullOr(S.String)),
+    last4: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingTopupResponse",
@@ -992,14 +1073,14 @@ export interface CreateCustomProviderRequest {
   baseUrl: string;
   name: string;
   slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  position?: number;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  position?: number | null;
 }
 export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1007,14 +1088,14 @@ export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
     baseUrl: S.String.pipe(T.Body("base_url")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    position: S.optional(S.Number),
+    beta: S.optional(S.NullOr(S.Boolean)),
+    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
+    description: S.optional(S.NullOr(S.String)),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    headers: S.optional(S.NullOr(S.String)),
+    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
+    link: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -1036,15 +1117,15 @@ export interface CreateCustomProviderResponse {
   modifiedAt: string;
   name: string;
   slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
 }
 export const CreateCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1054,15 +1135,15 @@ export const CreateCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
+    beta: S.optional(S.NullOr(S.Boolean)),
+    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
+    description: S.optional(S.NullOr(S.String)),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    headers: S.optional(S.NullOr(S.String)),
+    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
+    link: S.optional(S.NullOr(S.String)),
+    logo: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomProviderResponse",
@@ -1351,12 +1432,12 @@ export const DynamicRoutingCreateDeploymentResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateDeploymentResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1387,29 +1468,12 @@ export const DynamicRoutingCreateDeploymentResponseElementsItemCase1 =
     identifier: "DynamicRoutingCreateDeploymentResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase1>;
 
-export interface DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap =
-  {
-    [key: string]:
-      | DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue
-      | undefined;
-  };
+  { [key: string]: unknown | undefined };
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase2Type =
@@ -1612,29 +1676,12 @@ export const DynamicRoutingCreateDeploymentResponseElementsItemCase4 =
     identifier: "DynamicRoutingCreateDeploymentResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase4>;
 
-export interface DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap =
-  {
-    [key: string]:
-      | DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue
-      | undefined;
-  };
+  { [key: string]: unknown | undefined };
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase5Type = "end";
@@ -1790,12 +1837,12 @@ export const DynamicRoutingCreateRequestElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateRequestElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingCreateRequestElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingCreateRequestElementsItemCase1Properties",
@@ -1823,27 +1870,13 @@ export const DynamicRoutingCreateRequestElementsItemCase1 =
     identifier: "DynamicRoutingCreateRequestElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase1>;
 
-export interface DynamicRoutingCreateRequestElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateRequestElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateRequestElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingCreateRequestElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateRequestElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateRequestElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateRequestElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateRequestElementsItemCase2Type = "percentage";
@@ -2031,27 +2064,13 @@ export const DynamicRoutingCreateRequestElementsItemCase4 =
     identifier: "DynamicRoutingCreateRequestElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase4>;
 
-export interface DynamicRoutingCreateRequestElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateRequestElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateRequestElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingCreateRequestElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateRequestElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateRequestElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateRequestElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateRequestElementsItemCase5Type = "end";
@@ -2223,12 +2242,12 @@ export const DynamicRoutingCreateResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingCreateResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingCreateResponseElementsItemCase1Properties",
@@ -2256,27 +2275,13 @@ export const DynamicRoutingCreateResponseElementsItemCase1 =
     identifier: "DynamicRoutingCreateResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase1>;
 
-export interface DynamicRoutingCreateResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingCreateResponseElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateResponseElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateResponseElementsItemCase2Type = "percentage";
@@ -2462,27 +2467,13 @@ export const DynamicRoutingCreateResponseElementsItemCase4 =
     identifier: "DynamicRoutingCreateResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase4>;
 
-export interface DynamicRoutingCreateResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingCreateResponseElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateResponseElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateResponseElementsItemCase5Type = "end";
@@ -2538,7 +2529,7 @@ export interface DynamicRoutingCreateResponseVersion {
   createdAt: string;
   data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2546,7 +2537,7 @@ export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     data: DynamicRoutingCreateRequestElementsList,
     versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
   }),
 ).annotate({
   identifier: "DynamicRoutingCreateResponseVersion",
@@ -2788,10 +2779,10 @@ export interface CreateProviderConfigRequest {
   alias: string;
   defaultConfig: boolean;
   providerSlug: string;
-  rateLimit?: number;
-  rateLimitPeriod?: number;
-  secret?: string;
-  secretId?: string;
+  rateLimit?: number | null;
+  rateLimitPeriod?: number | null;
+  secret?: string | null;
+  secretId?: string | null;
 }
 export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2800,10 +2791,12 @@ export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
     alias: S.String,
     defaultConfig: S.Boolean.pipe(T.Body("default_config")),
     providerSlug: S.String.pipe(T.Body("provider_slug")),
-    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
-    secret: S.optional(S.String),
-    secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
+    rateLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("rate_limit_period")),
+    ),
+    secret: S.optional(S.NullOr(S.String)),
+    secretId: S.optional(S.NullOr(S.String).pipe(T.Body("secret_id"))),
   })
     .pipe(
       T.Http({
@@ -2828,8 +2821,8 @@ export interface CreateProviderConfigResponse {
   providerSlug: string;
   secretId: string;
   secretPreview: string;
-  rateLimit?: number;
-  rateLimitPeriod?: number;
+  rateLimit?: number | null;
+  rateLimitPeriod?: number | null;
 }
 export const CreateProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2841,8 +2834,10 @@ export const CreateProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
     providerSlug: S.String.pipe(T.Body("provider_slug")),
     secretId: S.String.pipe(T.Body("secret_id")),
     secretPreview: S.String.pipe(T.Body("secret_preview")),
-    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
+    rateLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("rate_limit_period")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProviderConfigResponse",
@@ -2934,12 +2929,12 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateVersionRequestElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingCreateVersionRequestElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingCreateVersionRequestElementsItemCase1Properties",
@@ -2968,28 +2963,13 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase1 =
     identifier: "DynamicRoutingCreateVersionRequestElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase1>;
 
-export interface DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateVersionRequestElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateVersionRequestElementsItemCase2Type =
@@ -3185,28 +3165,13 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase4 =
     identifier: "DynamicRoutingCreateVersionRequestElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase4>;
 
-export interface DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateVersionRequestElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateVersionRequestElementsItemCase5Type = "end";
@@ -3366,12 +3331,12 @@ export const DynamicRoutingCreateVersionResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateVersionResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingCreateVersionResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3402,28 +3367,13 @@ export const DynamicRoutingCreateVersionResponseElementsItemCase1 =
     identifier: "DynamicRoutingCreateVersionResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase1>;
 
-export interface DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateVersionResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateVersionResponseElementsItemCase2Type =
@@ -3621,28 +3571,13 @@ export const DynamicRoutingCreateVersionResponseElementsItemCase4 =
     identifier: "DynamicRoutingCreateVersionResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase4>;
 
-export interface DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingCreateVersionResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateVersionResponseElementsItemCase5Type = "end";
@@ -3736,14 +3671,14 @@ export const CreditBalanceBillingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditBalanceBillingRequest>;
 
 export interface BillingCreditBalanceResponsePaymentMethod {
-  brand?: string;
-  last4?: string;
+  brand?: string | null;
+  last4?: string | null;
 }
 export const BillingCreditBalanceResponsePaymentMethod =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      brand: S.optional(S.String),
-      last4: S.optional(S.String),
+      brand: S.optional(S.NullOr(S.String)),
+      last4: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "BillingCreditBalanceResponsePaymentMethod",
@@ -3775,7 +3710,7 @@ export interface CreditBalanceBillingResponse {
   hasDefaultPaymentMethod: boolean;
   paymentMethod: BillingCreditBalanceResponsePaymentMethod;
   topupConfig: BillingCreditBalanceResponseTopupConfig;
-  firstTopupSuccess?: boolean;
+  firstTopupSuccess?: boolean | null;
 }
 export const CreditBalanceBillingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3790,7 +3725,7 @@ export const CreditBalanceBillingResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("topup_config"),
     ),
     firstTopupSuccess: S.optional(
-      S.Boolean.pipe(T.Body("first_topup_success")),
+      S.NullOr(S.Boolean).pipe(T.Body("first_topup_success")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3953,37 +3888,65 @@ export type DeleteResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const DeleteResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseGuardrailsPrompt {
-  p1?: DeleteResponseGuardrailsPromptP1;
-  s1?: DeleteResponseGuardrailsPromptS1;
-  s10?: DeleteResponseGuardrailsPromptS10;
-  s11?: DeleteResponseGuardrailsPromptS11;
-  s12?: DeleteResponseGuardrailsPromptS12;
-  s13?: DeleteResponseGuardrailsPromptS13;
-  s2?: DeleteResponseGuardrailsPromptS2;
-  s3?: DeleteResponseGuardrailsPromptS3;
-  s4?: DeleteResponseGuardrailsPromptS4;
-  s5?: DeleteResponseGuardrailsPromptS5;
-  s6?: DeleteResponseGuardrailsPromptS6;
-  s7?: DeleteResponseGuardrailsPromptS7;
-  s8?: DeleteResponseGuardrailsPromptS8;
-  s9?: DeleteResponseGuardrailsPromptS9;
+  p1?: DeleteResponseGuardrailsPromptP1 | null;
+  s1?: DeleteResponseGuardrailsPromptS1 | null;
+  s10?: DeleteResponseGuardrailsPromptS10 | null;
+  s11?: DeleteResponseGuardrailsPromptS11 | null;
+  s12?: DeleteResponseGuardrailsPromptS12 | null;
+  s13?: DeleteResponseGuardrailsPromptS13 | null;
+  s2?: DeleteResponseGuardrailsPromptS2 | null;
+  s3?: DeleteResponseGuardrailsPromptS3 | null;
+  s4?: DeleteResponseGuardrailsPromptS4 | null;
+  s5?: DeleteResponseGuardrailsPromptS5 | null;
+  s6?: DeleteResponseGuardrailsPromptS6 | null;
+  s7?: DeleteResponseGuardrailsPromptS7 | null;
+  s8?: DeleteResponseGuardrailsPromptS8 | null;
+  s9?: DeleteResponseGuardrailsPromptS9 | null;
 }
 export const DeleteResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(DeleteResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(DeleteResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(DeleteResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(DeleteResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(DeleteResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(DeleteResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(DeleteResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(DeleteResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(DeleteResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(DeleteResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(DeleteResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(DeleteResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(DeleteResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(DeleteResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(DeleteResponseGuardrailsPromptS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseGuardrailsPrompt",
@@ -4032,37 +3995,65 @@ export type DeleteResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const DeleteResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseGuardrailsResponse {
-  p1?: DeleteResponseGuardrailsResponseP1;
-  s1?: DeleteResponseGuardrailsResponseS1;
-  s10?: DeleteResponseGuardrailsResponseS10;
-  s11?: DeleteResponseGuardrailsResponseS11;
-  s12?: DeleteResponseGuardrailsResponseS12;
-  s13?: DeleteResponseGuardrailsResponseS13;
-  s2?: DeleteResponseGuardrailsResponseS2;
-  s3?: DeleteResponseGuardrailsResponseS3;
-  s4?: DeleteResponseGuardrailsResponseS4;
-  s5?: DeleteResponseGuardrailsResponseS5;
-  s6?: DeleteResponseGuardrailsResponseS6;
-  s7?: DeleteResponseGuardrailsResponseS7;
-  s8?: DeleteResponseGuardrailsResponseS8;
-  s9?: DeleteResponseGuardrailsResponseS9;
+  p1?: DeleteResponseGuardrailsResponseP1 | null;
+  s1?: DeleteResponseGuardrailsResponseS1 | null;
+  s10?: DeleteResponseGuardrailsResponseS10 | null;
+  s11?: DeleteResponseGuardrailsResponseS11 | null;
+  s12?: DeleteResponseGuardrailsResponseS12 | null;
+  s13?: DeleteResponseGuardrailsResponseS13 | null;
+  s2?: DeleteResponseGuardrailsResponseS2 | null;
+  s3?: DeleteResponseGuardrailsResponseS3 | null;
+  s4?: DeleteResponseGuardrailsResponseS4 | null;
+  s5?: DeleteResponseGuardrailsResponseS5 | null;
+  s6?: DeleteResponseGuardrailsResponseS6 | null;
+  s7?: DeleteResponseGuardrailsResponseS7 | null;
+  s8?: DeleteResponseGuardrailsResponseS8 | null;
+  s9?: DeleteResponseGuardrailsResponseS9 | null;
 }
 export const DeleteResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(DeleteResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(DeleteResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(DeleteResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(DeleteResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(DeleteResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(DeleteResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(DeleteResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(DeleteResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(DeleteResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(DeleteResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(DeleteResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(DeleteResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(DeleteResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(DeleteResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(DeleteResponseGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseGuardrailsResponse",
@@ -4100,16 +4091,16 @@ export const DeleteResponseOtelItemContentType = /*@__PURE__*/ S.String;
 export interface DeleteResponseOtelItem {
   headers: DeleteResponseOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: DeleteResponseOtelItemContentType;
+  authorization?: string | null;
+  contentType?: DeleteResponseOtelItemContentType | null;
 }
 export const DeleteResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: DeleteResponseOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      DeleteResponseOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(DeleteResponseOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -4188,24 +4179,26 @@ export interface DeleteResponseSpendLimitsRulesItem {
   limit: number;
   limitType: DeleteResponseSpendLimitsRulesItemLimitType;
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: DeleteResponseSpendLimitsRulesItemModel;
-  provider?: DeleteResponseSpendLimitsRulesItemProvider;
-  technique?: DeleteResponseSpendLimitsRulesItemTechnique;
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: DeleteResponseSpendLimitsRulesItemModel | null;
+  provider?: DeleteResponseSpendLimitsRulesItemProvider | null;
+  technique?: DeleteResponseSpendLimitsRulesItemTechnique | null;
 }
 export const DeleteResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: DeleteResponseSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(DeleteResponseSpendLimitsRulesItemModel),
-    provider: S.optional(DeleteResponseSpendLimitsRulesItemProvider),
-    technique: S.optional(DeleteResponseSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemProvider)),
+    technique: S.optional(
+      S.NullOr(DeleteResponseSpendLimitsRulesItemTechnique),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseSpendLimitsRulesItem",
@@ -4218,13 +4211,13 @@ export const DeleteResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DeleteResponseSpendLimitsRulesList>;
 
 export interface DeleteResponseSpendLimits {
-  enabled?: boolean;
-  rules?: DeleteResponseSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: DeleteResponseSpendLimitsRulesList | null;
 }
 export const DeleteResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(DeleteResponseSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "DeleteResponseSpendLimits",
@@ -4276,28 +4269,28 @@ export interface DeleteAiGatewayResponse {
   modifiedAt: string;
   rateLimitingInterval: number;
   rateLimitingLimit: number;
-  authentication?: boolean;
-  dlp?: DeleteResponseDlp;
-  guardrails?: DeleteResponseGuardrails;
-  isDefault?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: DeleteResponseLogManagementStrategy;
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: DeleteResponseOtelList;
-  rateLimitingTechnique?: DeleteResponseRateLimitingTechnique;
+  authentication?: boolean | null;
+  dlp?: DeleteResponseDlp | null;
+  guardrails?: DeleteResponseGuardrails | null;
+  isDefault?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?: DeleteResponseLogManagementStrategy | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: DeleteResponseOtelList | null;
+  rateLimitingTechnique?: DeleteResponseRateLimitingTechnique | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: DeleteResponseRetryBackoff;
+  retryBackoff?: DeleteResponseRetryBackoff | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: DeleteResponseSpendLimits;
-  storeId?: string;
-  stripe?: DeleteResponseStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: DeleteResponseSpendLimits | null;
+  storeId?: string | null;
+  stripe?: DeleteResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: DeleteResponseWorkersAiBillingMode;
-  zdr?: boolean;
+  workersAiBillingMode?: DeleteResponseWorkersAiBillingMode | null;
+  zdr?: boolean | null;
 }
 export const DeleteAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4311,40 +4304,46 @@ export const DeleteAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
     rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(DeleteResponseDlp),
-    guardrails: S.optional(DeleteResponseGuardrails),
-    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(DeleteResponseDlp)),
+    guardrails: S.optional(S.NullOr(DeleteResponseGuardrails)),
+    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      DeleteResponseLogManagementStrategy.pipe(
+      S.NullOr(DeleteResponseLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(DeleteResponseOtelList),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(DeleteResponseOtelList)),
     rateLimitingTechnique: S.optional(
-      DeleteResponseRateLimitingTechnique.pipe(
+      S.NullOr(DeleteResponseRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      DeleteResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(DeleteResponseRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      DeleteResponseSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(DeleteResponseSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(DeleteResponseStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(DeleteResponseStripe)),
     workersAiBillingMode: S.optional(
-      DeleteResponseWorkersAiBillingMode.pipe(
+      S.NullOr(DeleteResponseWorkersAiBillingMode).pipe(
         T.Body("workers_ai_billing_mode"),
       ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAiGatewayResponse",
@@ -4431,15 +4430,15 @@ export interface DeleteCustomProviderResponse {
   modifiedAt: string;
   name: string;
   slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
 }
 export const DeleteCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4449,15 +4448,15 @@ export const DeleteCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
+    beta: S.optional(S.NullOr(S.Boolean)),
+    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
+    description: S.optional(S.NullOr(S.String)),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    headers: S.optional(S.NullOr(S.String)),
+    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
+    link: S.optional(S.NullOr(S.String)),
+    logo: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomProviderResponse",
@@ -4675,12 +4674,12 @@ export const DynamicRoutingDeleteResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingDeleteResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingDeleteResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingDeleteResponseElementsItemCase1Properties",
@@ -4708,27 +4707,13 @@ export const DynamicRoutingDeleteResponseElementsItemCase1 =
     identifier: "DynamicRoutingDeleteResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase1>;
 
-export interface DynamicRoutingDeleteResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingDeleteResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingDeleteResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingDeleteResponseElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingDeleteResponseElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingDeleteResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingDeleteResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingDeleteResponseElementsItemCase2Type = "percentage";
@@ -4914,27 +4899,13 @@ export const DynamicRoutingDeleteResponseElementsItemCase4 =
     identifier: "DynamicRoutingDeleteResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase4>;
 
-export interface DynamicRoutingDeleteResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingDeleteResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingDeleteResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingDeleteResponseElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingDeleteResponseElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingDeleteResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingDeleteResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingDeleteResponseElementsItemCase5Type = "end";
@@ -5432,37 +5403,45 @@ export type GetResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const GetResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface GetResponseGuardrailsPrompt {
-  p1?: GetResponseGuardrailsPromptP1;
-  s1?: GetResponseGuardrailsPromptS1;
-  s10?: GetResponseGuardrailsPromptS10;
-  s11?: GetResponseGuardrailsPromptS11;
-  s12?: GetResponseGuardrailsPromptS12;
-  s13?: GetResponseGuardrailsPromptS13;
-  s2?: GetResponseGuardrailsPromptS2;
-  s3?: GetResponseGuardrailsPromptS3;
-  s4?: GetResponseGuardrailsPromptS4;
-  s5?: GetResponseGuardrailsPromptS5;
-  s6?: GetResponseGuardrailsPromptS6;
-  s7?: GetResponseGuardrailsPromptS7;
-  s8?: GetResponseGuardrailsPromptS8;
-  s9?: GetResponseGuardrailsPromptS9;
+  p1?: GetResponseGuardrailsPromptP1 | null;
+  s1?: GetResponseGuardrailsPromptS1 | null;
+  s10?: GetResponseGuardrailsPromptS10 | null;
+  s11?: GetResponseGuardrailsPromptS11 | null;
+  s12?: GetResponseGuardrailsPromptS12 | null;
+  s13?: GetResponseGuardrailsPromptS13 | null;
+  s2?: GetResponseGuardrailsPromptS2 | null;
+  s3?: GetResponseGuardrailsPromptS3 | null;
+  s4?: GetResponseGuardrailsPromptS4 | null;
+  s5?: GetResponseGuardrailsPromptS5 | null;
+  s6?: GetResponseGuardrailsPromptS6 | null;
+  s7?: GetResponseGuardrailsPromptS7 | null;
+  s8?: GetResponseGuardrailsPromptS8 | null;
+  s9?: GetResponseGuardrailsPromptS9 | null;
 }
 export const GetResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(GetResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(GetResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(GetResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(GetResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(GetResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(GetResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(GetResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(GetResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(GetResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(GetResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(GetResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(GetResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(GetResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(GetResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(S.NullOr(GetResponseGuardrailsPromptP1).pipe(T.Body("P1"))),
+    s1: S.optional(S.NullOr(GetResponseGuardrailsPromptS1).pipe(T.Body("S1"))),
+    s10: S.optional(
+      S.NullOr(GetResponseGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(GetResponseGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(GetResponseGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(GetResponseGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(S.NullOr(GetResponseGuardrailsPromptS2).pipe(T.Body("S2"))),
+    s3: S.optional(S.NullOr(GetResponseGuardrailsPromptS3).pipe(T.Body("S3"))),
+    s4: S.optional(S.NullOr(GetResponseGuardrailsPromptS4).pipe(T.Body("S4"))),
+    s5: S.optional(S.NullOr(GetResponseGuardrailsPromptS5).pipe(T.Body("S5"))),
+    s6: S.optional(S.NullOr(GetResponseGuardrailsPromptS6).pipe(T.Body("S6"))),
+    s7: S.optional(S.NullOr(GetResponseGuardrailsPromptS7).pipe(T.Body("S7"))),
+    s8: S.optional(S.NullOr(GetResponseGuardrailsPromptS8).pipe(T.Body("S8"))),
+    s9: S.optional(S.NullOr(GetResponseGuardrailsPromptS9).pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "GetResponseGuardrailsPrompt",
@@ -5511,37 +5490,65 @@ export type GetResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const GetResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface GetResponseGuardrailsResponse {
-  p1?: GetResponseGuardrailsResponseP1;
-  s1?: GetResponseGuardrailsResponseS1;
-  s10?: GetResponseGuardrailsResponseS10;
-  s11?: GetResponseGuardrailsResponseS11;
-  s12?: GetResponseGuardrailsResponseS12;
-  s13?: GetResponseGuardrailsResponseS13;
-  s2?: GetResponseGuardrailsResponseS2;
-  s3?: GetResponseGuardrailsResponseS3;
-  s4?: GetResponseGuardrailsResponseS4;
-  s5?: GetResponseGuardrailsResponseS5;
-  s6?: GetResponseGuardrailsResponseS6;
-  s7?: GetResponseGuardrailsResponseS7;
-  s8?: GetResponseGuardrailsResponseS8;
-  s9?: GetResponseGuardrailsResponseS9;
+  p1?: GetResponseGuardrailsResponseP1 | null;
+  s1?: GetResponseGuardrailsResponseS1 | null;
+  s10?: GetResponseGuardrailsResponseS10 | null;
+  s11?: GetResponseGuardrailsResponseS11 | null;
+  s12?: GetResponseGuardrailsResponseS12 | null;
+  s13?: GetResponseGuardrailsResponseS13 | null;
+  s2?: GetResponseGuardrailsResponseS2 | null;
+  s3?: GetResponseGuardrailsResponseS3 | null;
+  s4?: GetResponseGuardrailsResponseS4 | null;
+  s5?: GetResponseGuardrailsResponseS5 | null;
+  s6?: GetResponseGuardrailsResponseS6 | null;
+  s7?: GetResponseGuardrailsResponseS7 | null;
+  s8?: GetResponseGuardrailsResponseS8 | null;
+  s9?: GetResponseGuardrailsResponseS9 | null;
 }
 export const GetResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(GetResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(GetResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(GetResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(GetResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(GetResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(GetResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(GetResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(GetResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(GetResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(GetResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(GetResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(GetResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(GetResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(GetResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(GetResponseGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "GetResponseGuardrailsResponse",
@@ -5579,16 +5586,16 @@ export const GetResponseOtelItemContentType = /*@__PURE__*/ S.String;
 export interface GetResponseOtelItem {
   headers: GetResponseOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: GetResponseOtelItemContentType;
+  authorization?: string | null;
+  contentType?: GetResponseOtelItemContentType | null;
 }
 export const GetResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: GetResponseOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      GetResponseOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(GetResponseOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -5663,24 +5670,24 @@ export interface GetResponseSpendLimitsRulesItem {
   limit: number;
   limitType: GetResponseSpendLimitsRulesItemLimitType;
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: GetResponseSpendLimitsRulesItemModel;
-  provider?: GetResponseSpendLimitsRulesItemProvider;
-  technique?: GetResponseSpendLimitsRulesItemTechnique;
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: GetResponseSpendLimitsRulesItemModel | null;
+  provider?: GetResponseSpendLimitsRulesItemProvider | null;
+  technique?: GetResponseSpendLimitsRulesItemTechnique | null;
 }
 export const GetResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: GetResponseSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(GetResponseSpendLimitsRulesItemModel),
-    provider: S.optional(GetResponseSpendLimitsRulesItemProvider),
-    technique: S.optional(GetResponseSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemProvider)),
+    technique: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemTechnique)),
   }),
 ).annotate({
   identifier: "GetResponseSpendLimitsRulesItem",
@@ -5693,13 +5700,13 @@ export const GetResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseSpendLimitsRulesList>;
 
 export interface GetResponseSpendLimits {
-  enabled?: boolean;
-  rules?: GetResponseSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: GetResponseSpendLimitsRulesList | null;
 }
 export const GetResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(GetResponseSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(GetResponseSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "GetResponseSpendLimits",
@@ -5749,28 +5756,28 @@ export interface GetAiGatewayResponse {
   modifiedAt: string;
   rateLimitingInterval: number;
   rateLimitingLimit: number;
-  authentication?: boolean;
-  dlp?: GetResponseDlp;
-  guardrails?: GetResponseGuardrails;
-  isDefault?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: GetResponseLogManagementStrategy;
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: GetResponseOtelList;
-  rateLimitingTechnique?: GetResponseRateLimitingTechnique;
+  authentication?: boolean | null;
+  dlp?: GetResponseDlp | null;
+  guardrails?: GetResponseGuardrails | null;
+  isDefault?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?: GetResponseLogManagementStrategy | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: GetResponseOtelList | null;
+  rateLimitingTechnique?: GetResponseRateLimitingTechnique | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: GetResponseRetryBackoff;
+  retryBackoff?: GetResponseRetryBackoff | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: GetResponseSpendLimits;
-  storeId?: string;
-  stripe?: GetResponseStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: GetResponseSpendLimits | null;
+  storeId?: string | null;
+  stripe?: GetResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: GetResponseWorkersAiBillingMode;
-  zdr?: boolean;
+  workersAiBillingMode?: GetResponseWorkersAiBillingMode | null;
+  zdr?: boolean | null;
 }
 export const GetAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5784,34 +5791,46 @@ export const GetAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
     rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(GetResponseDlp),
-    guardrails: S.optional(GetResponseGuardrails),
-    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
-    logManagementStrategy: S.optional(
-      GetResponseLogManagementStrategy.pipe(T.Body("log_management_strategy")),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(GetResponseDlp)),
+    guardrails: S.optional(S.NullOr(GetResponseGuardrails)),
+    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(GetResponseOtelList),
+    logManagementStrategy: S.optional(
+      S.NullOr(GetResponseLogManagementStrategy).pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(GetResponseOtelList)),
     rateLimitingTechnique: S.optional(
-      GetResponseRateLimitingTechnique.pipe(T.Body("rate_limiting_technique")),
+      S.NullOr(GetResponseRateLimitingTechnique).pipe(
+        T.Body("rate_limiting_technique"),
+      ),
     ),
     retryBackoff: S.optional(
-      GetResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(GetResponseRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      GetResponseSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(GetResponseSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(GetResponseStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(GetResponseStripe)),
     workersAiBillingMode: S.optional(
-      GetResponseWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+      S.NullOr(GetResponseWorkersAiBillingMode).pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAiGatewayResponse",
@@ -5934,15 +5953,15 @@ export interface GetCustomProviderResponse {
   modifiedAt: string;
   name: string;
   slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
 }
 export const GetCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5952,15 +5971,15 @@ export const GetCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
+    beta: S.optional(S.NullOr(S.Boolean)),
+    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
+    description: S.optional(S.NullOr(S.String)),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    headers: S.optional(S.NullOr(S.String)),
+    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
+    link: S.optional(S.NullOr(S.String)),
+    logo: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomProviderResponse",
@@ -6190,12 +6209,12 @@ export const DynamicRoutingGetResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingGetResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingGetResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingGetResponseElementsItemCase1Properties",
@@ -6223,27 +6242,13 @@ export const DynamicRoutingGetResponseElementsItemCase1 =
     identifier: "DynamicRoutingGetResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase1>;
 
-export interface DynamicRoutingGetResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingGetResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingGetResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingGetResponseElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingGetResponseElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingGetResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingGetResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingGetResponseElementsItemCase2Type = "percentage";
@@ -6428,27 +6433,13 @@ export const DynamicRoutingGetResponseElementsItemCase4 =
     identifier: "DynamicRoutingGetResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase4>;
 
-export interface DynamicRoutingGetResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingGetResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingGetResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingGetResponseElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingGetResponseElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingGetResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingGetResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingGetResponseElementsItemCase5Type = "end";
@@ -6504,7 +6495,7 @@ export interface DynamicRoutingGetResponseVersion {
   createdAt: string;
   data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6512,7 +6503,7 @@ export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     data: DynamicRoutingCreateRequestElementsList,
     versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
   }),
 ).annotate({
   identifier: "DynamicRoutingGetResponseVersion",
@@ -6760,21 +6751,21 @@ export interface GetLogResponse {
   success: boolean;
   tokensIn: number;
   tokensOut: number;
-  cost?: number;
-  customCost?: boolean;
-  metadata?: string;
-  modelType?: string;
-  requestContentType?: string;
-  requestHead?: string;
-  requestHeadComplete?: boolean;
-  requestSize?: number;
-  requestType?: string;
-  responseContentType?: string;
-  responseHead?: string;
-  responseHeadComplete?: boolean;
-  responseSize?: number;
-  statusCode?: number;
-  step?: number;
+  cost?: number | null;
+  customCost?: boolean | null;
+  metadata?: string | null;
+  modelType?: string | null;
+  requestContentType?: string | null;
+  requestHead?: string | null;
+  requestHeadComplete?: boolean | null;
+  requestSize?: number | null;
+  requestType?: string | null;
+  responseContentType?: string | null;
+  responseHead?: string | null;
+  responseHeadComplete?: boolean | null;
+  responseSize?: number | null;
+  statusCode?: number | null;
+  step?: number | null;
 }
 export const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6788,29 +6779,29 @@ export const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
     success: S.Boolean,
     tokensIn: S.Number.pipe(T.Body("tokens_in")),
     tokensOut: S.Number.pipe(T.Body("tokens_out")),
-    cost: S.optional(S.Number),
-    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
-    metadata: S.optional(S.String),
-    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
+    cost: S.optional(S.NullOr(S.Number)),
+    customCost: S.optional(S.NullOr(S.Boolean).pipe(T.Body("custom_cost"))),
+    metadata: S.optional(S.NullOr(S.String)),
+    modelType: S.optional(S.NullOr(S.String).pipe(T.Body("model_type"))),
     requestContentType: S.optional(
-      S.String.pipe(T.Body("request_content_type")),
+      S.NullOr(S.String).pipe(T.Body("request_content_type")),
     ),
-    requestHead: S.optional(S.String.pipe(T.Body("request_head"))),
+    requestHead: S.optional(S.NullOr(S.String).pipe(T.Body("request_head"))),
     requestHeadComplete: S.optional(
-      S.Boolean.pipe(T.Body("request_head_complete")),
+      S.NullOr(S.Boolean).pipe(T.Body("request_head_complete")),
     ),
-    requestSize: S.optional(S.Number.pipe(T.Body("request_size"))),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    requestSize: S.optional(S.NullOr(S.Number).pipe(T.Body("request_size"))),
+    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
     responseContentType: S.optional(
-      S.String.pipe(T.Body("response_content_type")),
+      S.NullOr(S.String).pipe(T.Body("response_content_type")),
     ),
-    responseHead: S.optional(S.String.pipe(T.Body("response_head"))),
+    responseHead: S.optional(S.NullOr(S.String).pipe(T.Body("response_head"))),
     responseHeadComplete: S.optional(
-      S.Boolean.pipe(T.Body("response_head_complete")),
+      S.NullOr(S.Boolean).pipe(T.Body("response_head_complete")),
     ),
-    responseSize: S.optional(S.Number.pipe(T.Body("response_size"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    step: S.optional(S.Number),
+    responseSize: S.optional(S.NullOr(S.Number).pipe(T.Body("response_size"))),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+    step: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetLogResponse" }) as any as S.Schema<GetLogResponse>;
 
@@ -6952,12 +6943,12 @@ export const DynamicRoutingGetVersionResponseElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase1Outputs>;
 
 export interface DynamicRoutingGetVersionResponseElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingGetVersionResponseElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingGetVersionResponseElementsItemCase1Properties",
@@ -6986,27 +6977,13 @@ export const DynamicRoutingGetVersionResponseElementsItemCase1 =
     identifier: "DynamicRoutingGetVersionResponseElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase1>;
 
-export interface DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingGetVersionResponseElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingGetVersionResponseElementsItemCase2Type =
@@ -7198,27 +7175,13 @@ export const DynamicRoutingGetVersionResponseElementsItemCase4 =
     identifier: "DynamicRoutingGetVersionResponseElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase4>;
 
-export interface DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingGetVersionResponseElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingGetVersionResponseElementsItemCase5Type = "end";
@@ -7278,7 +7241,7 @@ export interface GetVersionDynamicRoutingResponse {
   modifiedAt: string;
   name: string;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7291,7 +7254,7 @@ export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionDynamicRoutingResponse",
@@ -7327,16 +7290,16 @@ export interface BillingInvoiceHistoryResponseInvoicesItem {
   amountPaid: number;
   amountRemaining: number;
   currency: string;
-  id?: string;
-  attemptCount?: number;
-  attempted?: boolean;
-  autoAdvance?: boolean;
-  created?: number;
-  createdBy?: string;
-  description?: string;
-  invoiceOrigin?: string;
-  invoicePdf?: string;
-  status?: string;
+  id?: string | null;
+  attemptCount?: number | null;
+  attempted?: boolean | null;
+  autoAdvance?: boolean | null;
+  created?: number | null;
+  createdBy?: string | null;
+  description?: string | null;
+  invoiceOrigin?: string | null;
+  invoicePdf?: string | null;
+  status?: string | null;
 }
 export const BillingInvoiceHistoryResponseInvoicesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7345,16 +7308,20 @@ export const BillingInvoiceHistoryResponseInvoicesItem =
       amountPaid: S.Number.pipe(T.Body("amount_paid")),
       amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
       currency: S.String,
-      id: S.optional(S.String),
-      attemptCount: S.optional(S.Number.pipe(T.Body("attempt_count"))),
-      attempted: S.optional(S.Boolean),
-      autoAdvance: S.optional(S.Boolean.pipe(T.Body("auto_advance"))),
-      created: S.optional(S.Number),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      description: S.optional(S.String),
-      invoiceOrigin: S.optional(S.String.pipe(T.Body("invoice_origin"))),
-      invoicePdf: S.optional(S.String.pipe(T.Body("invoice_pdf"))),
-      status: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      attemptCount: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("attempt_count")),
+      ),
+      attempted: S.optional(S.NullOr(S.Boolean)),
+      autoAdvance: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_advance"))),
+      created: S.optional(S.NullOr(S.Number)),
+      createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+      description: S.optional(S.NullOr(S.String)),
+      invoiceOrigin: S.optional(
+        S.NullOr(S.String).pipe(T.Body("invoice_origin")),
+      ),
+      invoicePdf: S.optional(S.NullOr(S.String).pipe(T.Body("invoice_pdf"))),
+      status: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "BillingInvoiceHistoryResponseInvoicesItem",
@@ -7446,8 +7413,8 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPricing =
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem {
   amount: number;
   type: string;
-  creditBalanceTransaction?: string;
-  discount?: string;
+  creditBalanceTransaction?: string | null;
+  discount?: string | null;
 }
 export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7455,9 +7422,9 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsIte
       amount: S.Number,
       type: S.String,
       creditBalanceTransaction: S.optional(
-        S.String.pipe(T.Body("credit_balance_transaction")),
+        S.NullOr(S.String).pipe(T.Body("credit_balance_transaction")),
       ),
-      discount: S.optional(S.String),
+      discount: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7478,7 +7445,7 @@ export interface BillingInvoicePreviewResponseInvoiceLinesItem {
   period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod;
   pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing;
   quantity: number;
-  pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList;
+  pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList | null;
 }
 export const BillingInvoicePreviewResponseInvoiceLinesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7490,9 +7457,9 @@ export const BillingInvoicePreviewResponseInvoiceLinesItem =
       pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing,
       quantity: S.Number,
       pretaxCreditAmounts: S.optional(
-        BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList.pipe(
-          T.Body("pretax_credit_amounts"),
-        ),
+        S.NullOr(
+          BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList,
+        ).pipe(T.Body("pretax_credit_amounts")),
       ),
     }),
   ).annotate({
@@ -7704,37 +7671,65 @@ export type ListResultItemGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const ListResultItemGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGuardrailsPrompt {
-  p1?: ListResultItemGuardrailsPromptP1;
-  s1?: ListResultItemGuardrailsPromptS1;
-  s10?: ListResultItemGuardrailsPromptS10;
-  s11?: ListResultItemGuardrailsPromptS11;
-  s12?: ListResultItemGuardrailsPromptS12;
-  s13?: ListResultItemGuardrailsPromptS13;
-  s2?: ListResultItemGuardrailsPromptS2;
-  s3?: ListResultItemGuardrailsPromptS3;
-  s4?: ListResultItemGuardrailsPromptS4;
-  s5?: ListResultItemGuardrailsPromptS5;
-  s6?: ListResultItemGuardrailsPromptS6;
-  s7?: ListResultItemGuardrailsPromptS7;
-  s8?: ListResultItemGuardrailsPromptS8;
-  s9?: ListResultItemGuardrailsPromptS9;
+  p1?: ListResultItemGuardrailsPromptP1 | null;
+  s1?: ListResultItemGuardrailsPromptS1 | null;
+  s10?: ListResultItemGuardrailsPromptS10 | null;
+  s11?: ListResultItemGuardrailsPromptS11 | null;
+  s12?: ListResultItemGuardrailsPromptS12 | null;
+  s13?: ListResultItemGuardrailsPromptS13 | null;
+  s2?: ListResultItemGuardrailsPromptS2 | null;
+  s3?: ListResultItemGuardrailsPromptS3 | null;
+  s4?: ListResultItemGuardrailsPromptS4 | null;
+  s5?: ListResultItemGuardrailsPromptS5 | null;
+  s6?: ListResultItemGuardrailsPromptS6 | null;
+  s7?: ListResultItemGuardrailsPromptS7 | null;
+  s8?: ListResultItemGuardrailsPromptS8 | null;
+  s9?: ListResultItemGuardrailsPromptS9 | null;
 }
 export const ListResultItemGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(ListResultItemGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(ListResultItemGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(ListResultItemGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(ListResultItemGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(ListResultItemGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(ListResultItemGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(ListResultItemGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(ListResultItemGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(ListResultItemGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(ListResultItemGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(ListResultItemGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(ListResultItemGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(ListResultItemGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(ListResultItemGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(ListResultItemGuardrailsPromptS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemGuardrailsPrompt",
@@ -7783,37 +7778,65 @@ export type ListResultItemGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const ListResultItemGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGuardrailsResponse {
-  p1?: ListResultItemGuardrailsResponseP1;
-  s1?: ListResultItemGuardrailsResponseS1;
-  s10?: ListResultItemGuardrailsResponseS10;
-  s11?: ListResultItemGuardrailsResponseS11;
-  s12?: ListResultItemGuardrailsResponseS12;
-  s13?: ListResultItemGuardrailsResponseS13;
-  s2?: ListResultItemGuardrailsResponseS2;
-  s3?: ListResultItemGuardrailsResponseS3;
-  s4?: ListResultItemGuardrailsResponseS4;
-  s5?: ListResultItemGuardrailsResponseS5;
-  s6?: ListResultItemGuardrailsResponseS6;
-  s7?: ListResultItemGuardrailsResponseS7;
-  s8?: ListResultItemGuardrailsResponseS8;
-  s9?: ListResultItemGuardrailsResponseS9;
+  p1?: ListResultItemGuardrailsResponseP1 | null;
+  s1?: ListResultItemGuardrailsResponseS1 | null;
+  s10?: ListResultItemGuardrailsResponseS10 | null;
+  s11?: ListResultItemGuardrailsResponseS11 | null;
+  s12?: ListResultItemGuardrailsResponseS12 | null;
+  s13?: ListResultItemGuardrailsResponseS13 | null;
+  s2?: ListResultItemGuardrailsResponseS2 | null;
+  s3?: ListResultItemGuardrailsResponseS3 | null;
+  s4?: ListResultItemGuardrailsResponseS4 | null;
+  s5?: ListResultItemGuardrailsResponseS5 | null;
+  s6?: ListResultItemGuardrailsResponseS6 | null;
+  s7?: ListResultItemGuardrailsResponseS7 | null;
+  s8?: ListResultItemGuardrailsResponseS8 | null;
+  s9?: ListResultItemGuardrailsResponseS9 | null;
 }
 export const ListResultItemGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(ListResultItemGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(ListResultItemGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(ListResultItemGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(ListResultItemGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(ListResultItemGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(ListResultItemGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(ListResultItemGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(ListResultItemGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(ListResultItemGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(ListResultItemGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(ListResultItemGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(ListResultItemGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(ListResultItemGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(ListResultItemGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(ListResultItemGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemGuardrailsResponse",
@@ -7851,16 +7874,16 @@ export const ListResultItemOtelItemContentType = /*@__PURE__*/ S.String;
 export interface ListResultItemOtelItem {
   headers: ListResultItemOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: ListResultItemOtelItemContentType;
+  authorization?: string | null;
+  contentType?: ListResultItemOtelItemContentType | null;
 }
 export const ListResultItemOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: ListResultItemOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      ListResultItemOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(ListResultItemOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -7939,24 +7962,26 @@ export interface ListResultItemSpendLimitsRulesItem {
   limit: number;
   limitType: ListResultItemSpendLimitsRulesItemLimitType;
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: ListResultItemSpendLimitsRulesItemModel;
-  provider?: ListResultItemSpendLimitsRulesItemProvider;
-  technique?: ListResultItemSpendLimitsRulesItemTechnique;
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: ListResultItemSpendLimitsRulesItemModel | null;
+  provider?: ListResultItemSpendLimitsRulesItemProvider | null;
+  technique?: ListResultItemSpendLimitsRulesItemTechnique | null;
 }
 export const ListResultItemSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: ListResultItemSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(ListResultItemSpendLimitsRulesItemModel),
-    provider: S.optional(ListResultItemSpendLimitsRulesItemProvider),
-    technique: S.optional(ListResultItemSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemProvider)),
+    technique: S.optional(
+      S.NullOr(ListResultItemSpendLimitsRulesItemTechnique),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemSpendLimitsRulesItem",
@@ -7969,13 +7994,13 @@ export const ListResultItemSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemSpendLimitsRulesList>;
 
 export interface ListResultItemSpendLimits {
-  enabled?: boolean;
-  rules?: ListResultItemSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: ListResultItemSpendLimitsRulesList | null;
 }
 export const ListResultItemSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(ListResultItemSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(ListResultItemSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "ListResultItemSpendLimits",
@@ -8026,28 +8051,28 @@ export interface ListResultItem {
   modifiedAt: string;
   rateLimitingInterval: number;
   rateLimitingLimit: number;
-  authentication?: boolean;
-  dlp?: ListResultItemDlp;
-  guardrails?: ListResultItemGuardrails;
-  isDefault?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: ListResultItemLogManagementStrategy;
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: ListResultItemOtelList;
-  rateLimitingTechnique?: ListResultItemRateLimitingTechnique;
+  authentication?: boolean | null;
+  dlp?: ListResultItemDlp | null;
+  guardrails?: ListResultItemGuardrails | null;
+  isDefault?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?: ListResultItemLogManagementStrategy | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: ListResultItemOtelList | null;
+  rateLimitingTechnique?: ListResultItemRateLimitingTechnique | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: ListResultItemRetryBackoff;
+  retryBackoff?: ListResultItemRetryBackoff | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: ListResultItemSpendLimits;
-  storeId?: string;
-  stripe?: ListResultItemStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: ListResultItemSpendLimits | null;
+  storeId?: string | null;
+  stripe?: ListResultItemStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: ListResultItemWorkersAiBillingMode;
-  zdr?: boolean;
+  workersAiBillingMode?: ListResultItemWorkersAiBillingMode | null;
+  zdr?: boolean | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8061,40 +8086,46 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
     rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(ListResultItemDlp),
-    guardrails: S.optional(ListResultItemGuardrails),
-    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(ListResultItemDlp)),
+    guardrails: S.optional(S.NullOr(ListResultItemGuardrails)),
+    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      ListResultItemLogManagementStrategy.pipe(
+      S.NullOr(ListResultItemLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(ListResultItemOtelList),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(ListResultItemOtelList)),
     rateLimitingTechnique: S.optional(
-      ListResultItemRateLimitingTechnique.pipe(
+      S.NullOr(ListResultItemRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      ListResultItemRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(ListResultItemRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      ListResultItemSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(ListResultItemSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(ListResultItemStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(ListResultItemStripe)),
     workersAiBillingMode: S.optional(
-      ListResultItemWorkersAiBillingMode.pipe(
+      S.NullOr(ListResultItemWorkersAiBillingMode).pipe(
         T.Body("workers_ai_billing_mode"),
       ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -8155,15 +8186,15 @@ export interface CustomProvidersListResultItem {
   modifiedAt: string;
   name: string;
   slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
 }
 export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8173,15 +8204,15 @@ export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
+    beta: S.optional(S.NullOr(S.Boolean)),
+    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
+    description: S.optional(S.NullOr(S.String)),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    headers: S.optional(S.NullOr(S.String)),
+    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
+    link: S.optional(S.NullOr(S.String)),
+    logo: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CustomProvidersListResultItem",
@@ -8555,12 +8586,12 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase1Outputs>;
 
 export interface DynamicRoutingListResponseDataRoutesItemElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -8591,29 +8622,12 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItemCase1 =
     identifier: "DynamicRoutingListResponseDataRoutesItemElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase1>;
 
-export interface DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap =
-  {
-    [key: string]:
-      | DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue
-      | undefined;
-  };
+  { [key: string]: unknown | undefined };
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase2Type =
@@ -8816,29 +8830,12 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItemCase4 =
     identifier: "DynamicRoutingListResponseDataRoutesItemElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase4>;
 
-export interface DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap =
-  {
-    [key: string]:
-      | DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue
-      | undefined;
-  };
+  { [key: string]: unknown | undefined };
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase5Type =
@@ -8900,7 +8897,7 @@ export interface DynamicRoutingListResponseDataRoutesItemVersion {
   createdAt: string;
   data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const DynamicRoutingListResponseDataRoutesItemVersion =
   /*@__PURE__*/ S.suspend(() =>
@@ -8909,7 +8906,7 @@ export const DynamicRoutingListResponseDataRoutesItemVersion =
       createdAt: S.String.pipe(T.Body("created_at")),
       data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+      isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
     }),
   ).annotate({
     identifier: "DynamicRoutingListResponseDataRoutesItemVersion",
@@ -9388,15 +9385,15 @@ export interface LogsListResultItem {
   success: boolean;
   tokensIn: number;
   tokensOut: number;
-  cost?: number;
-  customCost?: boolean;
-  metadata?: string;
-  modelType?: string;
-  requestContentType?: string;
-  requestType?: string;
-  responseContentType?: string;
-  statusCode?: number;
-  step?: number;
+  cost?: number | null;
+  customCost?: boolean | null;
+  metadata?: string | null;
+  modelType?: string | null;
+  requestContentType?: string | null;
+  requestType?: string | null;
+  responseContentType?: string | null;
+  statusCode?: number | null;
+  step?: number | null;
 }
 export const LogsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9410,19 +9407,19 @@ export const LogsListResultItem = /*@__PURE__*/ S.suspend(() =>
     success: S.Boolean,
     tokensIn: S.Number.pipe(T.Body("tokens_in")),
     tokensOut: S.Number.pipe(T.Body("tokens_out")),
-    cost: S.optional(S.Number),
-    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
-    metadata: S.optional(S.String),
-    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
+    cost: S.optional(S.NullOr(S.Number)),
+    customCost: S.optional(S.NullOr(S.Boolean).pipe(T.Body("custom_cost"))),
+    metadata: S.optional(S.NullOr(S.String)),
+    modelType: S.optional(S.NullOr(S.String).pipe(T.Body("model_type"))),
     requestContentType: S.optional(
-      S.String.pipe(T.Body("request_content_type")),
+      S.NullOr(S.String).pipe(T.Body("request_content_type")),
     ),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
     responseContentType: S.optional(
-      S.String.pipe(T.Body("response_content_type")),
+      S.NullOr(S.String).pipe(T.Body("response_content_type")),
     ),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    step: S.optional(S.Number),
+    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+    step: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LogsListResultItem",
@@ -9484,8 +9481,8 @@ export interface ProviderConfigsListResultItem {
   providerSlug: string;
   secretId: string;
   secretPreview: string;
-  rateLimit?: number;
-  rateLimitPeriod?: number;
+  rateLimit?: number | null;
+  rateLimitPeriod?: number | null;
 }
 export const ProviderConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9497,8 +9494,10 @@ export const ProviderConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
     providerSlug: S.String.pipe(T.Body("provider_slug")),
     secretId: S.String.pipe(T.Body("secret_id")),
     secretPreview: S.String.pipe(T.Body("secret_preview")),
-    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
+    rateLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("rate_limit_period")),
+    ),
   }),
 ).annotate({
   identifier: "ProviderConfigsListResultItem",
@@ -9559,7 +9558,7 @@ export interface DynamicRoutingListVersionsResponseDataVersionsItem {
   createdAt: string;
   data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const DynamicRoutingListVersionsResponseDataVersionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -9568,7 +9567,7 @@ export const DynamicRoutingListVersionsResponseDataVersionsItem =
       createdAt: S.String.pipe(T.Body("created_at")),
       data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+      isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
     }),
   ).annotate({
     identifier: "DynamicRoutingListVersionsResponseDataVersionsItem",
@@ -9738,12 +9737,12 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase1Outputs>;
 
 export interface DynamicRoutingUpdateResponseRouteElementsItemCase1Properties {
-  conditions?: unknown;
+  conditions?: unknown | null;
 }
 export const DynamicRoutingUpdateResponseRouteElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.Unknown),
+      conditions: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "DynamicRoutingUpdateResponseRouteElementsItemCase1Properties",
@@ -9772,28 +9771,13 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase1 =
     identifier: "DynamicRoutingUpdateResponseRouteElementsItemCase1",
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase1>;
 
-export interface DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue",
-  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue>;
-
 export type DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap = {
-  [key: string]:
-    | DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase2Type =
@@ -9985,28 +9969,13 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase4 =
     identifier: "DynamicRoutingUpdateResponseRouteElementsItemCase4",
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase4>;
 
-export interface DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue {
-  elementId: string;
-}
-export const DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      elementId: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue",
-  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue>;
-
 export type DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap = {
-  [key: string]:
-    | DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsValue,
+    S.Unknown,
   ) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase5Type = "end";
@@ -10064,7 +10033,7 @@ export interface DynamicRoutingUpdateResponseRouteVersion {
   createdAt: string;
   data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
-  isValid?: boolean;
+  isValid?: boolean | null;
 }
 export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
   () =>
@@ -10073,7 +10042,7 @@ export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+      isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
     }),
 ).annotate({
   identifier: "DynamicRoutingUpdateResponseRouteVersion",
@@ -10128,18 +10097,18 @@ export interface PatchLogRequest {
   /** gateway id */
   gatewayId: string;
   id: string;
-  feedback?: number;
-  metadata?: LogsEditRequestMetadata;
-  score?: number;
+  feedback?: number | null;
+  metadata?: LogsEditRequestMetadata | null;
+  score?: number | null;
 }
 export const PatchLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-    feedback: S.optional(S.Number),
-    metadata: S.optional(LogsEditRequestMetadata),
-    score: S.optional(S.Number),
+    feedback: S.optional(S.NullOr(S.Number)),
+    metadata: S.optional(S.NullOr(LogsEditRequestMetadata)),
+    score: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -10393,37 +10362,65 @@ export type UpdateRequestGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsPrompt {
-  p1?: UpdateRequestGuardrailsPromptP1 | (string & {});
-  s1?: UpdateRequestGuardrailsPromptS1 | (string & {});
-  s10?: UpdateRequestGuardrailsPromptS10 | (string & {});
-  s11?: UpdateRequestGuardrailsPromptS11 | (string & {});
-  s12?: UpdateRequestGuardrailsPromptS12 | (string & {});
-  s13?: UpdateRequestGuardrailsPromptS13 | (string & {});
-  s2?: UpdateRequestGuardrailsPromptS2 | (string & {});
-  s3?: UpdateRequestGuardrailsPromptS3 | (string & {});
-  s4?: UpdateRequestGuardrailsPromptS4 | (string & {});
-  s5?: UpdateRequestGuardrailsPromptS5 | (string & {});
-  s6?: UpdateRequestGuardrailsPromptS6 | (string & {});
-  s7?: UpdateRequestGuardrailsPromptS7 | (string & {});
-  s8?: UpdateRequestGuardrailsPromptS8 | (string & {});
-  s9?: UpdateRequestGuardrailsPromptS9 | (string & {});
+  p1?: UpdateRequestGuardrailsPromptP1 | (string & {}) | null;
+  s1?: UpdateRequestGuardrailsPromptS1 | (string & {}) | null;
+  s10?: UpdateRequestGuardrailsPromptS10 | (string & {}) | null;
+  s11?: UpdateRequestGuardrailsPromptS11 | (string & {}) | null;
+  s12?: UpdateRequestGuardrailsPromptS12 | (string & {}) | null;
+  s13?: UpdateRequestGuardrailsPromptS13 | (string & {}) | null;
+  s2?: UpdateRequestGuardrailsPromptS2 | (string & {}) | null;
+  s3?: UpdateRequestGuardrailsPromptS3 | (string & {}) | null;
+  s4?: UpdateRequestGuardrailsPromptS4 | (string & {}) | null;
+  s5?: UpdateRequestGuardrailsPromptS5 | (string & {}) | null;
+  s6?: UpdateRequestGuardrailsPromptS6 | (string & {}) | null;
+  s7?: UpdateRequestGuardrailsPromptS7 | (string & {}) | null;
+  s8?: UpdateRequestGuardrailsPromptS8 | (string & {}) | null;
+  s9?: UpdateRequestGuardrailsPromptS9 | (string & {}) | null;
 }
 export const UpdateRequestGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(UpdateRequestGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(UpdateRequestGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(UpdateRequestGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(UpdateRequestGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(UpdateRequestGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(UpdateRequestGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(UpdateRequestGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(UpdateRequestGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(UpdateRequestGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(UpdateRequestGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(UpdateRequestGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(UpdateRequestGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(UpdateRequestGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(UpdateRequestGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(UpdateRequestGuardrailsPromptS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsPrompt",
@@ -10472,37 +10469,65 @@ export type UpdateRequestGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsResponse {
-  p1?: UpdateRequestGuardrailsResponseP1 | (string & {});
-  s1?: UpdateRequestGuardrailsResponseS1 | (string & {});
-  s10?: UpdateRequestGuardrailsResponseS10 | (string & {});
-  s11?: UpdateRequestGuardrailsResponseS11 | (string & {});
-  s12?: UpdateRequestGuardrailsResponseS12 | (string & {});
-  s13?: UpdateRequestGuardrailsResponseS13 | (string & {});
-  s2?: UpdateRequestGuardrailsResponseS2 | (string & {});
-  s3?: UpdateRequestGuardrailsResponseS3 | (string & {});
-  s4?: UpdateRequestGuardrailsResponseS4 | (string & {});
-  s5?: UpdateRequestGuardrailsResponseS5 | (string & {});
-  s6?: UpdateRequestGuardrailsResponseS6 | (string & {});
-  s7?: UpdateRequestGuardrailsResponseS7 | (string & {});
-  s8?: UpdateRequestGuardrailsResponseS8 | (string & {});
-  s9?: UpdateRequestGuardrailsResponseS9 | (string & {});
+  p1?: UpdateRequestGuardrailsResponseP1 | (string & {}) | null;
+  s1?: UpdateRequestGuardrailsResponseS1 | (string & {}) | null;
+  s10?: UpdateRequestGuardrailsResponseS10 | (string & {}) | null;
+  s11?: UpdateRequestGuardrailsResponseS11 | (string & {}) | null;
+  s12?: UpdateRequestGuardrailsResponseS12 | (string & {}) | null;
+  s13?: UpdateRequestGuardrailsResponseS13 | (string & {}) | null;
+  s2?: UpdateRequestGuardrailsResponseS2 | (string & {}) | null;
+  s3?: UpdateRequestGuardrailsResponseS3 | (string & {}) | null;
+  s4?: UpdateRequestGuardrailsResponseS4 | (string & {}) | null;
+  s5?: UpdateRequestGuardrailsResponseS5 | (string & {}) | null;
+  s6?: UpdateRequestGuardrailsResponseS6 | (string & {}) | null;
+  s7?: UpdateRequestGuardrailsResponseS7 | (string & {}) | null;
+  s8?: UpdateRequestGuardrailsResponseS8 | (string & {}) | null;
+  s9?: UpdateRequestGuardrailsResponseS9 | (string & {}) | null;
 }
 export const UpdateRequestGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(UpdateRequestGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(UpdateRequestGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(UpdateRequestGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(UpdateRequestGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(UpdateRequestGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(UpdateRequestGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(UpdateRequestGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(UpdateRequestGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(UpdateRequestGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(UpdateRequestGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(UpdateRequestGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(UpdateRequestGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(UpdateRequestGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(UpdateRequestGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(UpdateRequestGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsResponse",
@@ -10540,16 +10565,16 @@ export const UpdateRequestOtelItemContentType = /*@__PURE__*/ S.String;
 export interface UpdateRequestOtelItem {
   headers: UpdateRequestOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: UpdateRequestOtelItemContentType | (string & {});
+  authorization?: string | null;
+  contentType?: UpdateRequestOtelItemContentType | (string & {}) | null;
 }
 export const UpdateRequestOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: UpdateRequestOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      UpdateRequestOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(UpdateRequestOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -10627,24 +10652,24 @@ export interface UpdateRequestSpendLimitsRulesItem {
   limit: number;
   limitType: UpdateRequestSpendLimitsRulesItemLimitType | (string & {});
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: UpdateRequestSpendLimitsRulesItemModel;
-  provider?: UpdateRequestSpendLimitsRulesItemProvider;
-  technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {});
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: UpdateRequestSpendLimitsRulesItemModel | null;
+  provider?: UpdateRequestSpendLimitsRulesItemProvider | null;
+  technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {}) | null;
 }
 export const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: UpdateRequestSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(UpdateRequestSpendLimitsRulesItemModel),
-    provider: S.optional(UpdateRequestSpendLimitsRulesItemProvider),
-    technique: S.optional(UpdateRequestSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemProvider)),
+    technique: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemTechnique)),
   }),
 ).annotate({
   identifier: "UpdateRequestSpendLimitsRulesItem",
@@ -10657,13 +10682,13 @@ export const UpdateRequestSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestSpendLimitsRulesList>;
 
 export interface UpdateRequestSpendLimits {
-  enabled?: boolean;
-  rules?: UpdateRequestSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: UpdateRequestSpendLimitsRulesList | null;
 }
 export const UpdateRequestSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(UpdateRequestSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "UpdateRequestSpendLimits",
@@ -10713,27 +10738,36 @@ export interface UpdateAiGatewayRequest {
   collectLogs: boolean;
   rateLimitingInterval: number | null;
   rateLimitingLimit: number | null;
-  authentication?: boolean;
-  dlp?: UpdateRequestDlp;
-  guardrails?: UpdateRequestGuardrails;
-  logManagement?: number;
-  logManagementStrategy?: UpdateRequestLogManagementStrategy | (string & {});
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: UpdateRequestOtelList;
-  rateLimitingTechnique?: UpdateRequestRateLimitingTechnique | (string & {});
+  authentication?: boolean | null;
+  dlp?: UpdateRequestDlp | null;
+  guardrails?: UpdateRequestGuardrails | null;
+  logManagement?: number | null;
+  logManagementStrategy?:
+    | UpdateRequestLogManagementStrategy
+    | (string & {})
+    | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: UpdateRequestOtelList | null;
+  rateLimitingTechnique?:
+    | UpdateRequestRateLimitingTechnique
+    | (string & {})
+    | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: UpdateRequestRetryBackoff | (string & {});
+  retryBackoff?: UpdateRequestRetryBackoff | (string & {}) | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: UpdateRequestSpendLimits;
-  storeId?: string;
-  stripe?: UpdateRequestStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: UpdateRequestSpendLimits | null;
+  storeId?: string | null;
+  stripe?: UpdateRequestStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: UpdateRequestWorkersAiBillingMode | (string & {});
-  zdr?: boolean;
+  workersAiBillingMode?:
+    | UpdateRequestWorkersAiBillingMode
+    | (string & {})
+    | null;
+  zdr?: boolean | null;
 }
 export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10748,37 +10782,45 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("rate_limiting_interval"),
     ),
     rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(UpdateRequestDlp),
-    guardrails: S.optional(UpdateRequestGuardrails),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(UpdateRequestDlp)),
+    guardrails: S.optional(S.NullOr(UpdateRequestGuardrails)),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      UpdateRequestLogManagementStrategy.pipe(
+      S.NullOr(UpdateRequestLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(UpdateRequestOtelList),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(UpdateRequestOtelList)),
     rateLimitingTechnique: S.optional(
-      UpdateRequestRateLimitingTechnique.pipe(
+      S.NullOr(UpdateRequestRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      UpdateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(UpdateRequestRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      UpdateRequestSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(UpdateRequestSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(UpdateRequestStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(UpdateRequestStripe)),
     workersAiBillingMode: S.optional(
-      UpdateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+      S.NullOr(UpdateRequestWorkersAiBillingMode).pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -10926,37 +10968,65 @@ export type UpdateResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const UpdateResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseGuardrailsPrompt {
-  p1?: UpdateResponseGuardrailsPromptP1;
-  s1?: UpdateResponseGuardrailsPromptS1;
-  s10?: UpdateResponseGuardrailsPromptS10;
-  s11?: UpdateResponseGuardrailsPromptS11;
-  s12?: UpdateResponseGuardrailsPromptS12;
-  s13?: UpdateResponseGuardrailsPromptS13;
-  s2?: UpdateResponseGuardrailsPromptS2;
-  s3?: UpdateResponseGuardrailsPromptS3;
-  s4?: UpdateResponseGuardrailsPromptS4;
-  s5?: UpdateResponseGuardrailsPromptS5;
-  s6?: UpdateResponseGuardrailsPromptS6;
-  s7?: UpdateResponseGuardrailsPromptS7;
-  s8?: UpdateResponseGuardrailsPromptS8;
-  s9?: UpdateResponseGuardrailsPromptS9;
+  p1?: UpdateResponseGuardrailsPromptP1 | null;
+  s1?: UpdateResponseGuardrailsPromptS1 | null;
+  s10?: UpdateResponseGuardrailsPromptS10 | null;
+  s11?: UpdateResponseGuardrailsPromptS11 | null;
+  s12?: UpdateResponseGuardrailsPromptS12 | null;
+  s13?: UpdateResponseGuardrailsPromptS13 | null;
+  s2?: UpdateResponseGuardrailsPromptS2 | null;
+  s3?: UpdateResponseGuardrailsPromptS3 | null;
+  s4?: UpdateResponseGuardrailsPromptS4 | null;
+  s5?: UpdateResponseGuardrailsPromptS5 | null;
+  s6?: UpdateResponseGuardrailsPromptS6 | null;
+  s7?: UpdateResponseGuardrailsPromptS7 | null;
+  s8?: UpdateResponseGuardrailsPromptS8 | null;
+  s9?: UpdateResponseGuardrailsPromptS9 | null;
 }
 export const UpdateResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(UpdateResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
-    s1: S.optional(UpdateResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
-    s10: S.optional(UpdateResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
-    s11: S.optional(UpdateResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
-    s12: S.optional(UpdateResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
-    s13: S.optional(UpdateResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
-    s2: S.optional(UpdateResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
-    s3: S.optional(UpdateResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
-    s4: S.optional(UpdateResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
-    s5: S.optional(UpdateResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
-    s6: S.optional(UpdateResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
-    s7: S.optional(UpdateResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
-    s8: S.optional(UpdateResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
-    s9: S.optional(UpdateResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(UpdateResponseGuardrailsPromptS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateResponseGuardrailsPrompt",
@@ -11005,37 +11075,65 @@ export type UpdateResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const UpdateResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseGuardrailsResponse {
-  p1?: UpdateResponseGuardrailsResponseP1;
-  s1?: UpdateResponseGuardrailsResponseS1;
-  s10?: UpdateResponseGuardrailsResponseS10;
-  s11?: UpdateResponseGuardrailsResponseS11;
-  s12?: UpdateResponseGuardrailsResponseS12;
-  s13?: UpdateResponseGuardrailsResponseS13;
-  s2?: UpdateResponseGuardrailsResponseS2;
-  s3?: UpdateResponseGuardrailsResponseS3;
-  s4?: UpdateResponseGuardrailsResponseS4;
-  s5?: UpdateResponseGuardrailsResponseS5;
-  s6?: UpdateResponseGuardrailsResponseS6;
-  s7?: UpdateResponseGuardrailsResponseS7;
-  s8?: UpdateResponseGuardrailsResponseS8;
-  s9?: UpdateResponseGuardrailsResponseS9;
+  p1?: UpdateResponseGuardrailsResponseP1 | null;
+  s1?: UpdateResponseGuardrailsResponseS1 | null;
+  s10?: UpdateResponseGuardrailsResponseS10 | null;
+  s11?: UpdateResponseGuardrailsResponseS11 | null;
+  s12?: UpdateResponseGuardrailsResponseS12 | null;
+  s13?: UpdateResponseGuardrailsResponseS13 | null;
+  s2?: UpdateResponseGuardrailsResponseS2 | null;
+  s3?: UpdateResponseGuardrailsResponseS3 | null;
+  s4?: UpdateResponseGuardrailsResponseS4 | null;
+  s5?: UpdateResponseGuardrailsResponseS5 | null;
+  s6?: UpdateResponseGuardrailsResponseS6 | null;
+  s7?: UpdateResponseGuardrailsResponseS7 | null;
+  s8?: UpdateResponseGuardrailsResponseS8 | null;
+  s9?: UpdateResponseGuardrailsResponseS9 | null;
 }
 export const UpdateResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(UpdateResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
-    s1: S.optional(UpdateResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
-    s10: S.optional(UpdateResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
-    s11: S.optional(UpdateResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
-    s12: S.optional(UpdateResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
-    s13: S.optional(UpdateResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
-    s2: S.optional(UpdateResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
-    s3: S.optional(UpdateResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
-    s4: S.optional(UpdateResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
-    s5: S.optional(UpdateResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
-    s6: S.optional(UpdateResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
-    s7: S.optional(UpdateResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
-    s8: S.optional(UpdateResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
-    s9: S.optional(UpdateResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
+    p1: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseP1).pipe(T.Body("P1")),
+    ),
+    s1: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS1).pipe(T.Body("S1")),
+    ),
+    s10: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS10).pipe(T.Body("S10")),
+    ),
+    s11: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS11).pipe(T.Body("S11")),
+    ),
+    s12: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS12).pipe(T.Body("S12")),
+    ),
+    s13: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS13).pipe(T.Body("S13")),
+    ),
+    s2: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS2).pipe(T.Body("S2")),
+    ),
+    s3: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS3).pipe(T.Body("S3")),
+    ),
+    s4: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS4).pipe(T.Body("S4")),
+    ),
+    s5: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS5).pipe(T.Body("S5")),
+    ),
+    s6: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS6).pipe(T.Body("S6")),
+    ),
+    s7: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS7).pipe(T.Body("S7")),
+    ),
+    s8: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS8).pipe(T.Body("S8")),
+    ),
+    s9: S.optional(
+      S.NullOr(UpdateResponseGuardrailsResponseS9).pipe(T.Body("S9")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateResponseGuardrailsResponse",
@@ -11073,16 +11171,16 @@ export const UpdateResponseOtelItemContentType = /*@__PURE__*/ S.String;
 export interface UpdateResponseOtelItem {
   headers: UpdateResponseOtelItemHeadersMap;
   url: string;
-  authorization?: string;
-  contentType?: UpdateResponseOtelItemContentType;
+  authorization?: string | null;
+  contentType?: UpdateResponseOtelItemContentType | null;
 }
 export const UpdateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: UpdateResponseOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.String),
+    authorization: S.optional(S.NullOr(S.String)),
     contentType: S.optional(
-      UpdateResponseOtelItemContentType.pipe(T.Body("content_type")),
+      S.NullOr(UpdateResponseOtelItemContentType).pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -11161,24 +11259,26 @@ export interface UpdateResponseSpendLimitsRulesItem {
   limit: number;
   limitType: UpdateResponseSpendLimitsRulesItemLimitType;
   window: number;
-  id?: string;
-  enabled?: boolean;
-  metadata?: unknown;
-  model?: UpdateResponseSpendLimitsRulesItemModel;
-  provider?: UpdateResponseSpendLimitsRulesItemProvider;
-  technique?: UpdateResponseSpendLimitsRulesItemTechnique;
+  id?: string | null;
+  enabled?: boolean | null;
+  metadata?: unknown | null;
+  model?: UpdateResponseSpendLimitsRulesItemModel | null;
+  provider?: UpdateResponseSpendLimitsRulesItemProvider | null;
+  technique?: UpdateResponseSpendLimitsRulesItemTechnique | null;
 }
 export const UpdateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: UpdateResponseSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    model: S.optional(UpdateResponseSpendLimitsRulesItemModel),
-    provider: S.optional(UpdateResponseSpendLimitsRulesItemProvider),
-    technique: S.optional(UpdateResponseSpendLimitsRulesItemTechnique),
+    id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    model: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemModel)),
+    provider: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemProvider)),
+    technique: S.optional(
+      S.NullOr(UpdateResponseSpendLimitsRulesItemTechnique),
+    ),
   }),
 ).annotate({
   identifier: "UpdateResponseSpendLimitsRulesItem",
@@ -11191,13 +11291,13 @@ export const UpdateResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseSpendLimitsRulesList>;
 
 export interface UpdateResponseSpendLimits {
-  enabled?: boolean;
-  rules?: UpdateResponseSpendLimitsRulesList;
+  enabled?: boolean | null;
+  rules?: UpdateResponseSpendLimitsRulesList | null;
 }
 export const UpdateResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    rules: S.optional(UpdateResponseSpendLimitsRulesList),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    rules: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesList)),
   }),
 ).annotate({
   identifier: "UpdateResponseSpendLimits",
@@ -11249,28 +11349,28 @@ export interface UpdateAiGatewayResponse {
   modifiedAt: string;
   rateLimitingInterval: number;
   rateLimitingLimit: number;
-  authentication?: boolean;
-  dlp?: UpdateResponseDlp;
-  guardrails?: UpdateResponseGuardrails;
-  isDefault?: boolean;
-  logManagement?: number;
-  logManagementStrategy?: UpdateResponseLogManagementStrategy;
-  logpush?: boolean;
-  logpushPublicKey?: string;
-  otel?: UpdateResponseOtelList;
-  rateLimitingTechnique?: UpdateResponseRateLimitingTechnique;
+  authentication?: boolean | null;
+  dlp?: UpdateResponseDlp | null;
+  guardrails?: UpdateResponseGuardrails | null;
+  isDefault?: boolean | null;
+  logManagement?: number | null;
+  logManagementStrategy?: UpdateResponseLogManagementStrategy | null;
+  logpush?: boolean | null;
+  logpushPublicKey?: string | null;
+  otel?: UpdateResponseOtelList | null;
+  rateLimitingTechnique?: UpdateResponseRateLimitingTechnique | null;
   /** Backoff strategy for retry delays */
-  retryBackoff?: UpdateResponseRetryBackoff;
+  retryBackoff?: UpdateResponseRetryBackoff | null;
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number;
-  spendLimits?: UpdateResponseSpendLimits;
-  storeId?: string;
-  stripe?: UpdateResponseStripe;
+  retryMaxAttempts?: number | null;
+  spendLimits?: UpdateResponseSpendLimits | null;
+  storeId?: string | null;
+  stripe?: UpdateResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: UpdateResponseWorkersAiBillingMode;
-  zdr?: boolean;
+  workersAiBillingMode?: UpdateResponseWorkersAiBillingMode | null;
+  zdr?: boolean | null;
 }
 export const UpdateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11284,40 +11384,46 @@ export const UpdateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
     rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.Boolean),
-    dlp: S.optional(UpdateResponseDlp),
-    guardrails: S.optional(UpdateResponseGuardrails),
-    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
-    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    authentication: S.optional(S.NullOr(S.Boolean)),
+    dlp: S.optional(S.NullOr(UpdateResponseDlp)),
+    guardrails: S.optional(S.NullOr(UpdateResponseGuardrails)),
+    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
+    logManagement: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("log_management")),
+    ),
     logManagementStrategy: S.optional(
-      UpdateResponseLogManagementStrategy.pipe(
+      S.NullOr(UpdateResponseLogManagementStrategy).pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-    otel: S.optional(UpdateResponseOtelList),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    logpushPublicKey: S.optional(
+      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
+    ),
+    otel: S.optional(S.NullOr(UpdateResponseOtelList)),
     rateLimitingTechnique: S.optional(
-      UpdateResponseRateLimitingTechnique.pipe(
+      S.NullOr(UpdateResponseRateLimitingTechnique).pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      UpdateResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+      S.NullOr(UpdateResponseRetryBackoff).pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
+    ),
     spendLimits: S.optional(
-      UpdateResponseSpendLimits.pipe(T.Body("spend_limits")),
+      S.NullOr(UpdateResponseSpendLimits).pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-    stripe: S.optional(UpdateResponseStripe),
+    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
+    stripe: S.optional(S.NullOr(UpdateResponseStripe)),
     workersAiBillingMode: S.optional(
-      UpdateResponseWorkersAiBillingMode.pipe(
+      S.NullOr(UpdateResponseWorkersAiBillingMode).pipe(
         T.Body("workers_ai_billing_mode"),
       ),
     ),
-    zdr: S.optional(S.Boolean),
+    zdr: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAiGatewayResponse",

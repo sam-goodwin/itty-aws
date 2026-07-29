@@ -224,10 +224,10 @@ export const CancelBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelBenefitApplicationOutput>;
 export type BenefitApplicationName = string;
 export type BenefitApplicationDescription = string;
-export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS";
+export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
 export const FulfillmentType = /*@__PURE__*/ S.String;
 
-export type FulfillmentTypes = (FulfillmentType | (string & {}))[];
+export type FulfillmentTypes = FulfillmentType[];
 export const FulfillmentTypes = /*@__PURE__*/ S.Array(FulfillmentType);
 export type TagKey = string;
 export type TagValue = string;
@@ -280,7 +280,7 @@ export interface CreateBenefitApplicationInput {
   Name?: string;
   Description?: string;
   BenefitIdentifier: string;
-  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
+  FulfillmentTypes?: FulfillmentType[];
   BenefitApplicationDetails?: any;
   Tags?: Tag[];
   AssociatedResources?: string[];
@@ -390,7 +390,7 @@ export const GetBenefitInput = /*@__PURE__*/ S.suspend(() =>
 export type Program = string;
 export type Programs = string[];
 export const Programs = /*@__PURE__*/ S.Array(S.String);
-export type BenefitStatus = "ACTIVE" | "INACTIVE";
+export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const BenefitStatus = /*@__PURE__*/ S.String;
 
 export interface GetBenefitOutput {
@@ -440,7 +440,11 @@ export const GetBenefitAllocationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBenefitAllocationInput>;
 export type BenefitAllocationId = string;
 export type BenefitAllocationArn = string;
-export type BenefitAllocationStatus = "ACTIVE" | "INACTIVE" | "FULFILLED";
+export type BenefitAllocationStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "FULFILLED"
+  | (string & {});
 export const BenefitAllocationStatus = /*@__PURE__*/ S.String;
 
 export type BenefitId = string;
@@ -541,7 +545,8 @@ export type CurrencyCode =
   | "XCD"
   | "XOF"
   | "XPF"
-  | "ZAR";
+  | "ZAR"
+  | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export interface MonetaryValue {
@@ -730,7 +735,8 @@ export type BenefitApplicationStatus =
   | "ACTION_REQUIRED"
   | "APPROVED"
   | "REJECTED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const BenefitApplicationStatus = /*@__PURE__*/ S.String;
 
 export type BenefitApplicationStage = string;
@@ -746,7 +752,8 @@ export type FileType =
   | "image/png"
   | "image/jpeg"
   | "image/svg+xml"
-  | "text/csv";
+  | "text/csv"
+  | (string & {});
 export const FileType = /*@__PURE__*/ S.String;
 
 export interface FileDetail {
@@ -829,19 +836,16 @@ export const GetBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBenefitApplicationOutput>;
 export type BenefitApplicationIdentifierList = string[];
 export const BenefitApplicationIdentifierList = /*@__PURE__*/ S.Array(S.String);
-export type BenefitAllocationStatusList = (
-  | BenefitAllocationStatus
-  | (string & {})
-)[];
+export type BenefitAllocationStatusList = BenefitAllocationStatus[];
 export const BenefitAllocationStatusList = /*@__PURE__*/ S.Array(
   BenefitAllocationStatus,
 );
 export interface ListBenefitAllocationsInput {
   Catalog: string;
-  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
+  FulfillmentTypes?: FulfillmentType[];
   BenefitIdentifiers?: string[];
   BenefitApplicationIdentifiers?: string[];
-  Status?: (BenefitAllocationStatus | (string & {}))[];
+  Status?: BenefitAllocationStatus[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -922,15 +926,15 @@ export const ListBenefitAllocationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBenefitAllocationsOutput",
 }) as any as S.Schema<ListBenefitAllocationsOutput>;
-export type Statuses = (BenefitApplicationStatus | (string & {}))[];
+export type Statuses = BenefitApplicationStatus[];
 export const Statuses = /*@__PURE__*/ S.Array(BenefitApplicationStatus);
 export type Stages = string[];
 export const Stages = /*@__PURE__*/ S.Array(S.String);
-export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION";
+export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface AssociatedResource {
-  ResourceType?: ResourceType | (string & {});
+  ResourceType?: ResourceType;
   ResourceIdentifier?: string;
   ResourceArn?: string;
 }
@@ -948,9 +952,9 @@ export const AssociatedResources = /*@__PURE__*/ S.Array(AssociatedResource);
 export interface ListBenefitApplicationsInput {
   Catalog: string;
   Programs?: string[];
-  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
+  FulfillmentTypes?: FulfillmentType[];
   BenefitIdentifiers?: string[];
-  Status?: (BenefitApplicationStatus | (string & {}))[];
+  Status?: BenefitApplicationStatus[];
   Stages?: string[];
   AssociatedResources?: AssociatedResource[];
   AssociatedResourceArns?: string[];
@@ -1041,13 +1045,13 @@ export const ListBenefitApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBenefitApplicationsOutput",
 }) as any as S.Schema<ListBenefitApplicationsOutput>;
-export type BenefitStatuses = (BenefitStatus | (string & {}))[];
+export type BenefitStatuses = BenefitStatus[];
 export const BenefitStatuses = /*@__PURE__*/ S.Array(BenefitStatus);
 export interface ListBenefitsInput {
   Catalog: string;
   Programs?: string[];
-  FulfillmentTypes?: (FulfillmentType | (string & {}))[];
-  Status?: (BenefitStatus | (string & {}))[];
+  FulfillmentTypes?: FulfillmentType[];
+  Status?: BenefitStatus[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1293,7 +1297,8 @@ export type ValidationExceptionReason =
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
-  | "BUSINESS_VALIDATION_FAILED";
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionErrorCode =
@@ -1306,7 +1311,8 @@ export type ValidationExceptionErrorCode =
   | "INVALID_RESOURCE_STATE"
   | "DUPLICATE_KEY_VALUE"
   | "VALUE_OUT_OF_RANGE"
-  | "ACTION_NOT_PERMITTED";
+  | "ACTION_NOT_PERMITTED"
+  | (string & {});
 export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

@@ -97,7 +97,7 @@ export interface CreateOriginCaCertificateRequest {
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
   requestType: CreateRequestRequestType | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity?: CreateRequestRequestedValidity | (number & {});
+  requestedValidity?: CreateRequestRequestedValidity | (number & {}) | null;
 }
 export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -105,7 +105,9 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     hostnames: CreateRequestHostnamesList,
     requestType: CreateRequestRequestType.pipe(T.Body("request_type")),
     requestedValidity: S.optional(
-      CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
+      S.NullOr(CreateRequestRequestedValidity).pipe(
+        T.Body("requested_validity"),
+      ),
     ),
   })
     .pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 }))
@@ -146,13 +148,13 @@ export interface CreateOriginCaCertificateResponse {
   /** The number of days for which the certificate should be valid. */
   requestedValidity: CreateResponseRequestedValidity;
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
-  certificate?: string;
+  certificate?: string | null;
   /** When the certificate will expire. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** When the certificate was revoked; absent while the certificate is live. */
-  revokedAt?: string;
+  revokedAt?: string | null;
 }
 export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -162,10 +164,10 @@ export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     requestedValidity: CreateResponseRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginCaCertificateResponse",
@@ -194,14 +196,14 @@ export const DeleteOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginCaCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** When the certificate was revoked. */
-  revokedAt?: string;
+  revokedAt?: string | null;
 }
 export const DeleteOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginCaCertificateResponse",
@@ -259,13 +261,13 @@ export interface GetOriginCaCertificateResponse {
   /** The number of days for which the certificate should be valid. */
   requestedValidity: GetResponseRequestedValidity;
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
-  certificate?: string;
+  certificate?: string | null;
   /** When the certificate will expire. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** When the certificate was revoked; absent while the certificate is live. */
-  revokedAt?: string;
+  revokedAt?: string | null;
 }
 export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -275,10 +277,10 @@ export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     requestedValidity: GetResponseRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCaCertificateResponse",
@@ -341,13 +343,13 @@ export interface ListResultItem {
   /** The number of days for which the certificate should be valid. */
   requestedValidity: ListResultItemRequestedValidity;
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
-  certificate?: string;
+  certificate?: string | null;
   /** When the certificate will expire. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** When the certificate was revoked; absent while the certificate is live. */
-  revokedAt?: string;
+  revokedAt?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -357,10 +359,10 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     requestedValidity: ListResultItemRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
-    id: S.optional(S.String),
-    certificate: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 

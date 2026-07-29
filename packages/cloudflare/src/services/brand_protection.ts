@@ -61,12 +61,12 @@ export const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
 
 export interface BulkQueryRequest {
   accountId: string;
-  queries?: QueriesBulkRequestQueriesList;
+  queries?: QueriesBulkRequestQueriesList | null;
 }
 export const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    queries: S.optional(QueriesBulkRequestQueriesList),
+    queries: S.optional(S.NullOr(QueriesBulkRequestQueriesList)),
   })
     .pipe(
       T.Http({
@@ -114,15 +114,15 @@ export const CreateLogoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateLogoResponse {
-  id?: number;
-  tag?: string;
-  uploadPath?: string;
+  id?: number | null;
+  tag?: string | null;
+  uploadPath?: string | null;
 }
 export const CreateLogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    tag: S.optional(S.String),
-    uploadPath: S.optional(S.String.pipe(T.Body("upload_path"))),
+    id: S.optional(S.NullOr(S.Number)),
+    tag: S.optional(S.NullOr(S.String)),
+    uploadPath: S.optional(S.NullOr(S.String).pipe(T.Body("upload_path"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLogoResponse",
@@ -133,11 +133,11 @@ export interface CreateQueryRequest {
   id?: string;
   scan?: boolean;
   tag?: string;
-  maxTime?: string;
-  minTime?: string;
-  stringMatches?: unknown;
-  bodyScan?: boolean;
-  bodyTag?: string;
+  maxTime?: string | null;
+  minTime?: string | null;
+  stringMatches?: unknown | null;
+  bodyScan?: boolean | null;
+  bodyTag?: string | null;
 }
 export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -145,11 +145,13 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String.pipe(T.Query())),
     scan: S.optional(S.Boolean.pipe(T.Query())),
     tag: S.optional(S.String.pipe(T.Query())),
-    maxTime: S.optional(S.String.pipe(T.Body("max_time"))),
-    minTime: S.optional(S.String.pipe(T.Body("min_time"))),
-    stringMatches: S.optional(S.Unknown.pipe(T.Body("string_matches"))),
-    bodyScan: S.optional(S.Boolean.pipe(T.Body("scan"))),
-    bodyTag: S.optional(S.String.pipe(T.Body("tag"))),
+    maxTime: S.optional(S.NullOr(S.String).pipe(T.Body("max_time"))),
+    minTime: S.optional(S.NullOr(S.String).pipe(T.Body("min_time"))),
+    stringMatches: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("string_matches")),
+    ),
+    bodyScan: S.optional(S.NullOr(S.Boolean).pipe(T.Body("scan"))),
+    bodyTag: S.optional(S.NullOr(S.String).pipe(T.Body("tag"))),
   })
     .pipe(
       T.Http({
@@ -179,7 +181,7 @@ export interface CreateV2LogoRequest {
   /** Unique identifier for the logo query */
   tag: string;
   /** If true, search historic scanned images for matches above the similarity threshold */
-  searchLookback?: boolean;
+  searchLookback?: boolean | null;
 }
 export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -187,7 +189,9 @@ export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
     imageData: S.String.pipe(T.Body("image_data")),
     similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
     tag: S.String,
-    searchLookback: S.optional(S.Boolean.pipe(T.Body("search_lookback"))),
+    searchLookback: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("search_lookback")),
+    ),
   })
     .pipe(
       T.Http({
@@ -204,12 +208,12 @@ export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateV2LogoResponse {
   message: string;
-  queryId?: number;
+  queryId?: number | null;
 }
 export const CreateV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
-    queryId: S.optional(S.Number.pipe(T.Body("query_id"))),
+    queryId: S.optional(S.NullOr(S.Number).pipe(T.Body("query_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV2LogoResponse",
@@ -356,13 +360,13 @@ export const LogoMatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadLogoMatchResponse {
-  matches?: LogoMatchesDownloadResponseMatchesList;
-  total?: number;
+  matches?: LogoMatchesDownloadResponseMatchesList | null;
+  total?: number | null;
 }
 export const DownloadLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matches: S.optional(LogoMatchesDownloadResponseMatchesList),
-    total: S.optional(S.Number),
+    matches: S.optional(S.NullOr(LogoMatchesDownloadResponseMatchesList)),
+    total: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DownloadLogoMatchResponse",
@@ -411,13 +415,13 @@ export const MatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadMatchResponse {
-  matches?: MatchesDownloadResponseMatchesList;
-  total?: number;
+  matches?: MatchesDownloadResponseMatchesList | null;
+  total?: number | null;
 }
 export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matches: S.optional(MatchesDownloadResponseMatchesList),
-    total: S.optional(S.Number),
+    matches: S.optional(S.NullOr(MatchesDownloadResponseMatchesList)),
+    total: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DownloadMatchResponse",
@@ -471,13 +475,13 @@ export const LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLogoMatchResponse {
-  matches?: LogoMatchesGetResponseMatchesList;
-  total?: number;
+  matches?: LogoMatchesGetResponseMatchesList | null;
+  total?: number | null;
 }
 export const GetLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matches: S.optional(LogoMatchesGetResponseMatchesList),
-    total: S.optional(S.Number),
+    matches: S.optional(S.NullOr(LogoMatchesGetResponseMatchesList)),
+    total: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogoMatchResponse",
@@ -526,13 +530,13 @@ export const MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMatchResponse {
-  matches?: MatchesGetResponseMatchesList;
-  total?: number;
+  matches?: MatchesGetResponseMatchesList | null;
+  total?: number | null;
 }
 export const GetMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matches: S.optional(MatchesGetResponseMatchesList),
-    total: S.optional(S.Number),
+    matches: S.optional(S.NullOr(MatchesGetResponseMatchesList)),
+    total: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMatchResponse",
@@ -571,9 +575,9 @@ export interface GetV2LogoResponse {
   tag: string;
   uploadedAt: string;
   /** MIME type of the image (only present when download=true) */
-  contentType?: string;
+  contentType?: string | null;
   /** Base64-encoded image data (only present when download=true) */
-  imageData?: string;
+  imageData?: string | null;
 }
 export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -582,8 +586,8 @@ export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
     similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
     tag: S.String,
     uploadedAt: S.String.pipe(T.Body("uploaded_at")),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    imageData: S.optional(S.String.pipe(T.Body("image_data"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetV2LogoResponse",
@@ -640,8 +644,8 @@ export interface V2LogoMatchesGetResponseMatchesItem {
   registrar: string;
   similarityScore: number;
   urlScanId: string;
-  contentType?: string;
-  imageData?: string;
+  contentType?: string | null;
+  imageData?: string | null;
 }
 export const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -652,8 +656,8 @@ export const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
     registrar: S.String,
     similarityScore: S.Number.pipe(T.Body("similarity_score")),
     urlScanId: S.String.pipe(T.Body("url_scan_id")),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    imageData: S.optional(S.String.pipe(T.Body("image_data"))),
+    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
   }),
 ).annotate({
   identifier: "V2LogoMatchesGetResponseMatchesItem",
@@ -777,9 +781,9 @@ export interface V2MatchesGetResponseMatchesItem {
   scanSubmissionId: number;
   source: string;
   /** Whether the match is dismissed. Only present for single-query requests. For multi-query requests, use the dismissed field in each match_details entry. */
-  dismissed?: boolean;
+  dismissed?: boolean | null;
   /** Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested. */
-  matchDetails?: V2MatchesGetResponseMatchesItemMatchDetailsList;
+  matchDetails?: V2MatchesGetResponseMatchesItemMatchDetailsList | null;
 }
 export const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -792,9 +796,9 @@ export const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
     scanStatus: S.String.pipe(T.Body("scan_status")),
     scanSubmissionId: S.Number.pipe(T.Body("scan_submission_id")),
     source: S.String,
-    dismissed: S.optional(S.Boolean),
+    dismissed: S.optional(S.NullOr(S.Boolean)),
     matchDetails: S.optional(
-      V2MatchesGetResponseMatchesItemMatchDetailsList.pipe(
+      S.NullOr(V2MatchesGetResponseMatchesItemMatchDetailsList).pipe(
         T.Body("match_details"),
       ),
     ),
@@ -865,16 +869,16 @@ export const V2QueriesGetResponseParametersStringMatchesList =
 
 export interface V2QueriesGetResponseParameters {
   stringMatches: V2QueriesGetResponseParametersStringMatchesList;
-  maxTime?: string;
-  minTime?: string;
+  maxTime?: string | null;
+  minTime?: string | null;
 }
 export const V2QueriesGetResponseParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringMatches: V2QueriesGetResponseParametersStringMatchesList.pipe(
       T.Body("string_matches"),
     ),
-    maxTime: S.optional(S.String.pipe(T.Body("max_time"))),
-    minTime: S.optional(S.String.pipe(T.Body("min_time"))),
+    maxTime: S.optional(S.NullOr(S.String).pipe(T.Body("max_time"))),
+    minTime: S.optional(S.NullOr(S.String).pipe(T.Body("min_time"))),
   }),
 ).annotate({
   identifier: "V2QueriesGetResponseParameters",
@@ -951,16 +955,16 @@ export const SubmitResponseSubmittedUrlsList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SubmitBrandProtectionResponse {
-  skippedUrls?: SubmitResponseSkippedUrlsList;
-  submittedUrls?: SubmitResponseSubmittedUrlsList;
+  skippedUrls?: SubmitResponseSkippedUrlsList | null;
+  submittedUrls?: SubmitResponseSubmittedUrlsList | null;
 }
 export const SubmitBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skippedUrls: S.optional(
-      SubmitResponseSkippedUrlsList.pipe(T.Body("skipped_urls")),
+      S.NullOr(SubmitResponseSkippedUrlsList).pipe(T.Body("skipped_urls")),
     ),
     submittedUrls: S.optional(
-      SubmitResponseSubmittedUrlsList.pipe(T.Body("submitted_urls")),
+      S.NullOr(SubmitResponseSubmittedUrlsList).pipe(T.Body("submitted_urls")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

@@ -112,29 +112,29 @@ export const V1CreateResponseVariantsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateV1Response {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** Image file name. */
-  filename?: string;
+  filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** Object specifying available variants for an image. */
-  variants?: V1CreateResponseVariantsList;
+  variants?: V1CreateResponseVariantsList | null;
 }
 export const CreateV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    creator: S.optional(S.String),
-    filename: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    uploaded: S.optional(S.String),
-    variants: S.optional(V1CreateResponseVariantsList),
+    id: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    variants: S.optional(S.NullOr(V1CreateResponseVariantsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV1Response",
@@ -182,14 +182,14 @@ export interface CreateV1VariantRequest {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateRequestOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const CreateV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
     options: V1VariantsCreateRequestOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -245,13 +245,13 @@ export interface V1VariantsCreateResponseVariant {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateResponseVariantOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const V1VariantsCreateResponseVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     options: V1VariantsCreateResponseVariantOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "V1VariantsCreateResponseVariant",
@@ -259,11 +259,11 @@ export const V1VariantsCreateResponseVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateV1VariantResponse {
-  variant?: V1VariantsCreateResponseVariant;
+  variant?: V1VariantsCreateResponseVariant | null;
 }
 export const CreateV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variant: S.optional(V1VariantsCreateResponseVariant),
+    variant: S.optional(S.NullOr(V1VariantsCreateResponseVariant)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV1VariantResponse",
@@ -292,14 +292,14 @@ export const CreateV2DirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateV2DirectUploadResponse {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request. */
-  uploadURL?: string;
+  uploadURL?: string | null;
 }
 export const CreateV2DirectUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    uploadURL: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    uploadURL: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV2DirectUploadResponse",
@@ -359,14 +359,14 @@ export const DeleteV1KeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface V1KeysDeleteResponseKeysItem {
   /** Key name. */
-  name?: string;
+  name?: string | null;
   /** Key value. */
-  value?: string;
+  value?: string | null;
 }
 export const V1KeysDeleteResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "V1KeysDeleteResponseKeysItem",
@@ -379,11 +379,11 @@ export const V1KeysDeleteResponseKeysList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteV1KeyResponse {
-  keys?: V1KeysDeleteResponseKeysList;
+  keys?: V1KeysDeleteResponseKeysList | null;
 }
 export const DeleteV1KeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    keys: S.optional(V1KeysDeleteResponseKeysList),
+    keys: S.optional(S.NullOr(V1KeysDeleteResponseKeysList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1KeyResponse",
@@ -447,29 +447,29 @@ export const V1GetResponseVariantsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1Response {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** Image file name. */
-  filename?: string;
+  filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** Object specifying available variants for an image. */
-  variants?: V1GetResponseVariantsList;
+  variants?: V1GetResponseVariantsList | null;
 }
 export const GetV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    creator: S.optional(S.String),
-    filename: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    uploaded: S.optional(S.String),
-    variants: S.optional(V1GetResponseVariantsList),
+    id: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    variants: S.optional(S.NullOr(V1GetResponseVariantsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetV1Response" }) as any as S.Schema<GetV1Response>;
 
@@ -525,14 +525,14 @@ export const GetV1StatRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface V1StatsGetResponseCount {
   /** Cloudflare Images allowed usage. */
-  allowed?: number;
+  allowed?: number | null;
   /** Cloudflare Images current usage. */
-  current?: number;
+  current?: number | null;
 }
 export const V1StatsGetResponseCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowed: S.optional(S.Number),
-    current: S.optional(S.Number),
+    allowed: S.optional(S.NullOr(S.Number)),
+    current: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "V1StatsGetResponseCount",
@@ -540,11 +540,11 @@ export const V1StatsGetResponseCount = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1StatResponse {
-  count?: V1StatsGetResponseCount;
+  count?: V1StatsGetResponseCount | null;
 }
 export const GetV1StatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(V1StatsGetResponseCount),
+    count: S.optional(S.NullOr(V1StatsGetResponseCount)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetV1StatResponse",
@@ -613,13 +613,13 @@ export interface V1VariantsGetResponseVariant {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsGetResponseVariantOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const V1VariantsGetResponseVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     options: V1VariantsGetResponseVariantOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "V1VariantsGetResponseVariant",
@@ -627,11 +627,11 @@ export const V1VariantsGetResponseVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1VariantResponse {
-  variant?: V1VariantsGetResponseVariant;
+  variant?: V1VariantsGetResponseVariant | null;
 }
 export const GetV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variant: S.optional(V1VariantsGetResponseVariant),
+    variant: S.optional(S.NullOr(V1VariantsGetResponseVariant)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetV1VariantResponse",
@@ -659,14 +659,14 @@ export const ListV1KeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface V1KeysListResponseKeysItem {
   /** Key name. */
-  name?: string;
+  name?: string | null;
   /** Key value. */
-  value?: string;
+  value?: string | null;
 }
 export const V1KeysListResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "V1KeysListResponseKeysItem",
@@ -679,11 +679,11 @@ export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV1KeysResponse {
-  keys?: V1KeysListResponseKeysList;
+  keys?: V1KeysListResponseKeysList | null;
 }
 export const ListV1KeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    keys: S.optional(V1KeysListResponseKeysList),
+    keys: S.optional(S.NullOr(V1KeysListResponseKeysList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV1KeysResponse",
@@ -723,29 +723,29 @@ export const V1ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
 
 export interface V1ListResponseImagesItem {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** Image file name. */
-  filename?: string;
+  filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** Object specifying available variants for an image. */
-  variants?: V1ListResponseImagesItemVariantsList;
+  variants?: V1ListResponseImagesItemVariantsList | null;
 }
 export const V1ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    creator: S.optional(S.String),
-    filename: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    uploaded: S.optional(S.String),
-    variants: S.optional(V1ListResponseImagesItemVariantsList),
+    id: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    variants: S.optional(S.NullOr(V1ListResponseImagesItemVariantsList)),
   }),
 ).annotate({
   identifier: "V1ListResponseImagesItem",
@@ -758,11 +758,11 @@ export const V1ListResponseImagesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV1sResponse {
-  images?: V1ListResponseImagesList;
+  images?: V1ListResponseImagesList | null;
 }
 export const ListV1sResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    images: S.optional(V1ListResponseImagesList),
+    images: S.optional(S.NullOr(V1ListResponseImagesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV1sResponse",
@@ -831,24 +831,24 @@ export interface V1VariantsListResponseVariantsHero {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsListResponseVariantsHeroOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const V1VariantsListResponseVariantsHero = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     options: V1VariantsListResponseVariantsHeroOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "V1VariantsListResponseVariantsHero",
 }) as any as S.Schema<V1VariantsListResponseVariantsHero>;
 
 export interface V1VariantsListResponseVariants {
-  hero?: V1VariantsListResponseVariantsHero;
+  hero?: V1VariantsListResponseVariantsHero | null;
 }
 export const V1VariantsListResponseVariants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    hero: S.optional(V1VariantsListResponseVariantsHero),
+    hero: S.optional(S.NullOr(V1VariantsListResponseVariantsHero)),
   }),
 ).annotate({
   identifier: "V1VariantsListResponseVariants",
@@ -856,11 +856,11 @@ export const V1VariantsListResponseVariants = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV1VariantsResponse {
-  variants?: V1VariantsListResponseVariants;
+  variants?: V1VariantsListResponseVariants | null;
 }
 export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variants: S.optional(V1VariantsListResponseVariants),
+    variants: S.optional(S.NullOr(V1VariantsListResponseVariants)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV1VariantsResponse",
@@ -868,11 +868,13 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface V2ListRequestMeta {
   /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
-  fieldOperator__?: unknown;
+  fieldOperator__?: unknown | null;
 }
 export const V2ListRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
+    fieldOperator__: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("<field>[<operator>]")),
+    ),
   }),
 ).annotate({
   identifier: "V2ListRequestMeta",
@@ -888,7 +890,7 @@ export interface ListV2sRequest {
   continuationToken?: string;
   /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
-  meta?: V2ListRequestMeta;
+  meta?: V2ListRequestMeta | null;
   /** Number of items per page */
   perPage?: number;
   /** Sorting order by upload time */
@@ -899,7 +901,7 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
-    meta: S.optional(V2ListRequestMeta.pipe(T.DeepQuery("meta"))),
+    meta: S.optional(S.NullOr(V2ListRequestMeta).pipe(T.DeepQuery("meta"))),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   })
@@ -920,29 +922,29 @@ export const V2ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
 
 export interface V2ListResponseImagesItem {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** Image file name. */
-  filename?: string;
+  filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** Object specifying available variants for an image. */
-  variants?: V2ListResponseImagesItemVariantsList;
+  variants?: V2ListResponseImagesItemVariantsList | null;
 }
 export const V2ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    creator: S.optional(S.String),
-    filename: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    uploaded: S.optional(S.String),
-    variants: S.optional(V2ListResponseImagesItemVariantsList),
+    id: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    variants: S.optional(S.NullOr(V2ListResponseImagesItemVariantsList)),
   }),
 ).annotate({
   identifier: "V2ListResponseImagesItem",
@@ -956,13 +958,15 @@ export const V2ListResponseImagesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV2sResponse {
   /** Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
-  continuationToken?: string;
-  images?: V2ListResponseImagesList;
+  continuationToken?: string | null;
+  images?: V2ListResponseImagesList | null;
 }
 export const ListV2sResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    continuationToken: S.optional(S.String.pipe(T.Body("continuation_token"))),
-    images: S.optional(V2ListResponseImagesList),
+    continuationToken: S.optional(
+      S.NullOr(S.String).pipe(T.Body("continuation_token")),
+    ),
+    images: S.optional(S.NullOr(V2ListResponseImagesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV2sResponse",
@@ -974,19 +978,19 @@ export interface PatchV1Request {
   /** Image unique identifier. */
   imageId: string;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified. */
-  metadata?: unknown;
+  metadata?: unknown | null;
   /** Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
 }
 export const PatchV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     imageId: S.String.pipe(T.Label("image_id")),
-    creator: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
+    creator: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -1006,29 +1010,29 @@ export const V1EditResponseVariantsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchV1Response {
   /** Image unique identifier. */
-  id?: string;
+  id?: string | null;
   /** Can set the creator field with an internal user ID. */
-  creator?: string;
+  creator?: string | null;
   /** Image file name. */
-  filename?: string;
+  filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** Object specifying available variants for an image. */
-  variants?: V1EditResponseVariantsList;
+  variants?: V1EditResponseVariantsList | null;
 }
 export const PatchV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    creator: S.optional(S.String),
-    filename: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    uploaded: S.optional(S.String),
-    variants: S.optional(V1EditResponseVariantsList),
+    id: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    variants: S.optional(S.NullOr(V1EditResponseVariantsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchV1Response",
@@ -1076,14 +1080,14 @@ export interface PatchV1VariantRequest {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditRequestOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const PatchV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     variantId: S.String.pipe(T.Label("variant_id")),
     options: V1VariantsEditRequestOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -1139,13 +1143,13 @@ export interface V1VariantsEditResponseVariant {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditResponseVariantOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean;
+  neverRequireSignedURLs?: boolean | null;
 }
 export const V1VariantsEditResponseVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     options: V1VariantsEditResponseVariantOptions,
-    neverRequireSignedURLs: S.optional(S.Boolean),
+    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "V1VariantsEditResponseVariant",
@@ -1153,11 +1157,11 @@ export const V1VariantsEditResponseVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchV1VariantResponse {
-  variant?: V1VariantsEditResponseVariant;
+  variant?: V1VariantsEditResponseVariant | null;
 }
 export const PatchV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variant: S.optional(V1VariantsEditResponseVariant),
+    variant: S.optional(S.NullOr(V1VariantsEditResponseVariant)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchV1VariantResponse",
@@ -1187,14 +1191,14 @@ export const PutV1KeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface V1KeysUpdateResponseKeysItem {
   /** Key name. */
-  name?: string;
+  name?: string | null;
   /** Key value. */
-  value?: string;
+  value?: string | null;
 }
 export const V1KeysUpdateResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "V1KeysUpdateResponseKeysItem",
@@ -1207,11 +1211,11 @@ export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutV1KeyResponse {
-  keys?: V1KeysUpdateResponseKeysList;
+  keys?: V1KeysUpdateResponseKeysList | null;
 }
 export const PutV1KeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    keys: S.optional(V1KeysUpdateResponseKeysList),
+    keys: S.optional(S.NullOr(V1KeysUpdateResponseKeysList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutV1KeyResponse",

@@ -197,23 +197,26 @@ export const DataQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataQuery" }) as any as S.Schema<DataQuery>;
 export type AccountId = string;
-export type S3OutputType = "CUSTOM" | "ATHENA" | "REDSHIFT";
+export type S3OutputType = "CUSTOM" | "ATHENA" | "REDSHIFT" | (string & {});
 export const S3OutputType = /*@__PURE__*/ S.String;
 
-export type FormatOption = "TEXT_OR_CSV" | "PARQUET";
+export type FormatOption = "TEXT_OR_CSV" | "PARQUET" | (string & {});
 export const FormatOption = /*@__PURE__*/ S.String;
 
-export type CompressionOption = "GZIP" | "PARQUET";
+export type CompressionOption = "GZIP" | "PARQUET" | (string & {});
 export const CompressionOption = /*@__PURE__*/ S.String;
 
-export type OverwriteOption = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT";
+export type OverwriteOption =
+  | "CREATE_NEW_REPORT"
+  | "OVERWRITE_REPORT"
+  | (string & {});
 export const OverwriteOption = /*@__PURE__*/ S.String;
 
 export interface S3OutputConfigurations {
-  OutputType: S3OutputType | (string & {});
-  Format: FormatOption | (string & {});
-  Compression: CompressionOption | (string & {});
-  Overwrite: OverwriteOption | (string & {});
+  OutputType: S3OutputType;
+  Format: FormatOption;
+  Compression: CompressionOption;
+  Overwrite: OverwriteOption;
 }
 export const S3OutputConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,11 +252,11 @@ export const DestinationConfigurations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationConfigurations",
 }) as any as S.Schema<DestinationConfigurations>;
-export type FrequencyOption = "SYNCHRONOUS";
+export type FrequencyOption = "SYNCHRONOUS" | (string & {});
 export const FrequencyOption = /*@__PURE__*/ S.String;
 
 export interface RefreshCadence {
-  Frequency: FrequencyOption | (string & {});
+  Frequency: FrequencyOption;
 }
 export const RefreshCadence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Frequency: FrequencyOption }),
@@ -342,13 +345,15 @@ export type ExecutionStatusCode =
   | "QUERY_FAILURE"
   | "DELIVERY_IN_PROCESS"
   | "DELIVERY_SUCCESS"
-  | "DELIVERY_FAILURE";
+  | "DELIVERY_FAILURE"
+  | (string & {});
 export const ExecutionStatusCode = /*@__PURE__*/ S.String;
 
 export type ExecutionStatusReason =
   | "INSUFFICIENT_PERMISSION"
   | "BILL_OWNER_CHANGED"
-  | "INTERNAL_FAILURE";
+  | "INTERNAL_FAILURE"
+  | (string & {});
 export const ExecutionStatusReason = /*@__PURE__*/ S.String;
 
 export interface ExecutionStatus {
@@ -399,7 +404,7 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExportRequest",
 }) as any as S.Schema<GetExportRequest>;
-export type ExportStatusCode = "HEALTHY" | "UNHEALTHY";
+export type ExportStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const ExportStatusCode = /*@__PURE__*/ S.String;
 
 export interface ExportStatus {
@@ -709,7 +714,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

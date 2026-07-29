@@ -106,23 +106,23 @@ export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The hostname for which the tls settings are set. */
-  hostname?: string;
+  hostname?: string | null;
   /** Deployment status for the given tls setting. */
-  status?: string;
+  status?: string | null;
   /** This is the time the tls setting was updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** The TLS setting value. */
-  value?: SettingsTlsDeleteResponseValue;
+  value?: SettingsTlsDeleteResponseValue | null;
 }
 export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    hostname: S.optional(S.String),
-    status: S.optional(S.String),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    value: S.optional(SettingsTlsDeleteResponseValue),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    hostname: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    value: S.optional(S.NullOr(SettingsTlsDeleteResponseValue)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingTlsResponse",
@@ -180,23 +180,23 @@ export const SettingsTlsGetResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface SettingsTlsGetResultItem {
   /** This is the time the tls setting was originally created for this hostname. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The hostname for which the tls settings are set. */
-  hostname?: string;
+  hostname?: string | null;
   /** Deployment status for the given tls setting. */
-  status?: string;
+  status?: string | null;
   /** This is the time the tls setting was updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** The TLS setting value. */
-  value?: SettingsTlsGetResultItemValue;
+  value?: SettingsTlsGetResultItemValue | null;
 }
 export const SettingsTlsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    hostname: S.optional(S.String),
-    status: S.optional(S.String),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    value: S.optional(SettingsTlsGetResultItemValue),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    hostname: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    value: S.optional(S.NullOr(SettingsTlsGetResultItemValue)),
   }),
 ).annotate({
   identifier: "SettingsTlsGetResultItem",
@@ -244,6 +244,7 @@ export const SettingsTlsUpdateRequestValueCase1List = /*@__PURE__*/ S.Array(
 
 export type SettingsTlsUpdateRequestValue =
   | SettingsTlsUpdateRequestValueCase0
+  | (string & {})
   | SettingsTlsUpdateRequestValueCase1List;
 export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], []]),
@@ -302,23 +303,23 @@ export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The hostname for which the tls settings are set. */
-  hostname?: string;
+  hostname?: string | null;
   /** Deployment status for the given tls setting. */
-  status?: string;
+  status?: string | null;
   /** This is the time the tls setting was updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** The TLS setting value. */
-  value?: SettingsTlsUpdateResponseValue;
+  value?: SettingsTlsUpdateResponseValue | null;
 }
 export const PutSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    hostname: S.optional(S.String),
-    status: S.optional(S.String),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    value: S.optional(SettingsTlsUpdateResponseValue),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    hostname: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    value: S.optional(S.NullOr(SettingsTlsUpdateResponseValue)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingTlsResponse",

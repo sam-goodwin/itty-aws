@@ -122,22 +122,22 @@ export const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention =
 
 export interface InstancesBulkRequestBodyItemInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  errorRetention?: InstancesBulkRequestBodyItemInstanceRetentionErrorRetention;
+  errorRetention?: InstancesBulkRequestBodyItemInstanceRetentionErrorRetention | null;
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention;
+  successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention | null;
 }
 export const InstancesBulkRequestBodyItemInstanceRetention =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       errorRetention: S.optional(
-        InstancesBulkRequestBodyItemInstanceRetentionErrorRetention.pipe(
-          T.Body("error_retention"),
-        ),
+        S.NullOr(
+          InstancesBulkRequestBodyItemInstanceRetentionErrorRetention,
+        ).pipe(T.Body("error_retention")),
       ),
       successRetention: S.optional(
-        InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention.pipe(
-          T.Body("success_retention"),
-        ),
+        S.NullOr(
+          InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention,
+        ).pipe(T.Body("success_retention")),
       ),
     }),
   ).annotate({
@@ -145,19 +145,19 @@ export const InstancesBulkRequestBodyItemInstanceRetention =
   }) as any as S.Schema<InstancesBulkRequestBodyItemInstanceRetention>;
 
 export interface InstancesBulkRequestBodyItem {
-  instanceId?: string;
-  instanceRetention?: InstancesBulkRequestBodyItemInstanceRetention;
-  params?: unknown;
+  instanceId?: string | null;
+  instanceRetention?: InstancesBulkRequestBodyItemInstanceRetention | null;
+  params?: unknown | null;
 }
 export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+    instanceId: S.optional(S.NullOr(S.String).pipe(T.Body("instance_id"))),
     instanceRetention: S.optional(
-      InstancesBulkRequestBodyItemInstanceRetention.pipe(
+      S.NullOr(InstancesBulkRequestBodyItemInstanceRetention).pipe(
         T.Body("instance_retention"),
       ),
     ),
-    params: S.optional(S.Unknown),
+    params: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "InstancesBulkRequestBodyItem",
@@ -216,7 +216,7 @@ export interface InstancesBulkResultItem {
   status: InstancesBulkResultItemStatus;
   versionId: string;
   workflowId: string;
-  triggerSource?: InstancesBulkResultItemTriggerSource;
+  triggerSource?: InstancesBulkResultItemTriggerSource | null;
 }
 export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -225,7 +225,9 @@ export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
     versionId: S.String.pipe(T.Body("version_id")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
     triggerSource: S.optional(
-      InstancesBulkResultItemTriggerSource.pipe(T.Body("trigger_source")),
+      S.NullOr(InstancesBulkResultItemTriggerSource).pipe(
+        T.Body("trigger_source"),
+      ),
     ),
   }),
 ).annotate({
@@ -266,20 +268,20 @@ export const InstancesCreateRequestInstanceRetentionSuccessRetention =
 
 export interface InstancesCreateRequestInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  errorRetention?: InstancesCreateRequestInstanceRetentionErrorRetention;
+  errorRetention?: InstancesCreateRequestInstanceRetentionErrorRetention | null;
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention;
+  successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention | null;
 }
 export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       errorRetention: S.optional(
-        InstancesCreateRequestInstanceRetentionErrorRetention.pipe(
+        S.NullOr(InstancesCreateRequestInstanceRetentionErrorRetention).pipe(
           T.Body("error_retention"),
         ),
       ),
       successRetention: S.optional(
-        InstancesCreateRequestInstanceRetentionSuccessRetention.pipe(
+        S.NullOr(InstancesCreateRequestInstanceRetentionSuccessRetention).pipe(
           T.Body("success_retention"),
         ),
       ),
@@ -291,21 +293,21 @@ export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
 export interface CreateInstanceRequest {
   accountId: string;
   workflowName: string;
-  instanceId?: string;
-  instanceRetention?: InstancesCreateRequestInstanceRetention;
-  params?: unknown;
+  instanceId?: string | null;
+  instanceRetention?: InstancesCreateRequestInstanceRetention | null;
+  params?: unknown | null;
 }
 export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
-    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+    instanceId: S.optional(S.NullOr(S.String).pipe(T.Body("instance_id"))),
     instanceRetention: S.optional(
-      InstancesCreateRequestInstanceRetention.pipe(
+      S.NullOr(InstancesCreateRequestInstanceRetention).pipe(
         T.Body("instance_retention"),
       ),
     ),
-    params: S.optional(S.Unknown),
+    params: S.optional(S.NullOr(S.Unknown)),
   })
     .pipe(
       T.Http({
@@ -345,7 +347,7 @@ export interface CreateInstanceResponse {
   status: InstancesCreateResponseStatus;
   versionId: string;
   workflowId: string;
-  triggerSource?: InstancesCreateResponseTriggerSource;
+  triggerSource?: InstancesCreateResponseTriggerSource | null;
 }
 export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -354,7 +356,9 @@ export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     versionId: S.String.pipe(T.Body("version_id")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
     triggerSource: S.optional(
-      InstancesCreateResponseTriggerSource.pipe(T.Body("trigger_source")),
+      S.NullOr(InstancesCreateResponseTriggerSource).pipe(
+        T.Body("trigger_source"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -583,7 +587,7 @@ export interface InstancesGetResponseStepsItemCase0ConfigRetries {
   /** Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function. */
   delay: InstancesGetResponseStepsItemCase0ConfigRetriesDelay;
   limit: number;
-  backoff?: InstancesGetResponseStepsItemCase0ConfigRetriesBackoff;
+  backoff?: InstancesGetResponseStepsItemCase0ConfigRetriesBackoff | null;
 }
 export const InstancesGetResponseStepsItemCase0ConfigRetries =
   /*@__PURE__*/ S.suspend(() =>
@@ -591,7 +595,7 @@ export const InstancesGetResponseStepsItemCase0ConfigRetries =
       delay: InstancesGetResponseStepsItemCase0ConfigRetriesDelay,
       limit: S.Number,
       backoff: S.optional(
-        InstancesGetResponseStepsItemCase0ConfigRetriesBackoff,
+        S.NullOr(InstancesGetResponseStepsItemCase0ConfigRetriesBackoff),
       ),
     }),
   ).annotate({
@@ -611,14 +615,16 @@ export interface InstancesGetResponseStepsItemCase0Config {
   /** Specifies the timeout duration. */
   timeout: InstancesGetResponseStepsItemCase0ConfigTimeout;
   /** When set to 'output', step output is redacted from log and step output responses. */
-  sensitive?: InstancesGetResponseStepsItemCase0ConfigSensitive;
+  sensitive?: InstancesGetResponseStepsItemCase0ConfigSensitive | null;
 }
 export const InstancesGetResponseStepsItemCase0Config = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       retries: InstancesGetResponseStepsItemCase0ConfigRetries,
       timeout: InstancesGetResponseStepsItemCase0ConfigTimeout,
-      sensitive: S.optional(InstancesGetResponseStepsItemCase0ConfigSensitive),
+      sensitive: S.optional(
+        S.NullOr(InstancesGetResponseStepsItemCase0ConfigSensitive),
+      ),
     }),
 ).annotate({
   identifier: "InstancesGetResponseStepsItemCase0Config",
@@ -742,7 +748,7 @@ export interface InstancesGetResponseStepsItemCase3 {
   name: string;
   start: string;
   type: InstancesGetResponseStepsItemCase3Type;
-  output?: string;
+  output?: string | null;
 }
 export const InstancesGetResponseStepsItemCase3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -752,7 +758,7 @@ export const InstancesGetResponseStepsItemCase3 = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     start: S.String,
     type: InstancesGetResponseStepsItemCase3Type,
-    output: S.optional(S.String),
+    output: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InstancesGetResponseStepsItemCase3",
@@ -825,7 +831,7 @@ export interface GetInstanceResponse {
   success: boolean;
   trigger: InstancesGetResponseTrigger;
   versionId: string;
-  schedule?: InstancesGetResponseSchedule;
+  schedule?: InstancesGetResponseSchedule | null;
 }
 export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -842,7 +848,7 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     success: S.Boolean,
     trigger: InstancesGetResponseTrigger,
     versionId: S.String,
-    schedule: S.optional(InstancesGetResponseSchedule),
+    schedule: S.optional(S.NullOr(InstancesGetResponseSchedule)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInstanceResponse",
@@ -875,11 +881,11 @@ export type VersionsGetResponseLanguage = "javascript" | "python";
 export const VersionsGetResponseLanguage = /*@__PURE__*/ S.String;
 
 export interface VersionsGetResponseLimits {
-  steps?: number;
+  steps?: number | null;
 }
 export const VersionsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    steps: S.optional(S.Number),
+    steps: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "VersionsGetResponseLimits",
@@ -895,7 +901,7 @@ export interface GetVersionResponse {
   language: VersionsGetResponseLanguage;
   modifiedOn: string;
   workflowId: string;
-  limits?: VersionsGetResponseLimits;
+  limits?: VersionsGetResponseLimits | null;
 }
 export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -906,7 +912,7 @@ export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
     language: VersionsGetResponseLanguage,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
-    limits: S.optional(VersionsGetResponseLimits),
+    limits: S.optional(S.NullOr(VersionsGetResponseLimits)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionResponse",
@@ -934,27 +940,27 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkflowRequest>;
 
 export interface GetResponseInstances {
-  complete?: number;
-  errored?: number;
-  paused?: number;
-  queued?: number;
-  rollingBack?: number;
-  running?: number;
-  terminated?: number;
-  waiting?: number;
-  waitingForPause?: number;
+  complete?: number | null;
+  errored?: number | null;
+  paused?: number | null;
+  queued?: number | null;
+  rollingBack?: number | null;
+  running?: number | null;
+  terminated?: number | null;
+  waiting?: number | null;
+  waitingForPause?: number | null;
 }
 export const GetResponseInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    complete: S.optional(S.Number),
-    errored: S.optional(S.Number),
-    paused: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    rollingBack: S.optional(S.Number),
-    running: S.optional(S.Number),
-    terminated: S.optional(S.Number),
-    waiting: S.optional(S.Number),
-    waitingForPause: S.optional(S.Number),
+    complete: S.optional(S.NullOr(S.Number)),
+    errored: S.optional(S.NullOr(S.Number)),
+    paused: S.optional(S.NullOr(S.Number)),
+    queued: S.optional(S.NullOr(S.Number)),
+    rollingBack: S.optional(S.NullOr(S.Number)),
+    running: S.optional(S.NullOr(S.Number)),
+    terminated: S.optional(S.NullOr(S.Number)),
+    waiting: S.optional(S.NullOr(S.Number)),
+    waitingForPause: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GetResponseInstances",
@@ -988,7 +994,7 @@ export interface GetWorkflowResponse {
   name: string;
   scriptName: string;
   triggeredOn: string;
-  schedules?: GetResponseSchedulesList;
+  schedules?: GetResponseSchedulesList | null;
 }
 export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1000,7 +1006,7 @@ export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     scriptName: S.String.pipe(T.Body("script_name")),
     triggeredOn: S.String.pipe(T.Body("triggered_on")),
-    schedules: S.optional(GetResponseSchedulesList),
+    schedules: S.optional(S.NullOr(GetResponseSchedulesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWorkflowResponse",
@@ -1082,8 +1088,8 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase0 {
   duration: VersionsGraphResponseGraphWorkflowNodesItemCase0Duration;
   name: string;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase0Type;
-  resolves?: number;
-  starts?: number;
+  resolves?: number | null;
+  starts?: number | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1091,8 +1097,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase0 =
       duration: VersionsGraphResponseGraphWorkflowNodesItemCase0Duration,
       name: S.String,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase0Type,
-      resolves: S.optional(S.Number),
-      starts: S.optional(S.Number),
+      resolves: S.optional(S.NullOr(S.Number)),
+      starts: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase0",
@@ -1167,8 +1173,8 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase1 {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase1Type;
-  resolves?: number;
-  starts?: number;
+  resolves?: number | null;
+  starts?: number | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1177,8 +1183,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1 =
       name: S.String,
       nodes: VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase1Type,
-      resolves: S.optional(S.Number),
-      starts: S.optional(S.Number),
+      resolves: S.optional(S.NullOr(S.Number)),
+      starts: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase1",
@@ -1268,9 +1274,9 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase2 {
   options: VersionsGraphResponseGraphWorkflowNodesItemCase2Options;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase2Type;
   /** Shape descriptor for JSON payloads. */
-  payload?: VersionsGraphResponseGraphWorkflowNodesItemCase2Payload;
-  resolves?: number;
-  starts?: number;
+  payload?: VersionsGraphResponseGraphWorkflowNodesItemCase2Payload | null;
+  resolves?: number | null;
+  starts?: number | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1279,10 +1285,10 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase2 =
       options: VersionsGraphResponseGraphWorkflowNodesItemCase2Options,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase2Type,
       payload: S.optional(
-        VersionsGraphResponseGraphWorkflowNodesItemCase2Payload,
+        S.NullOr(VersionsGraphResponseGraphWorkflowNodesItemCase2Payload),
       ),
-      resolves: S.optional(S.Number),
-      starts: S.optional(S.Number),
+      resolves: S.optional(S.NullOr(S.Number)),
+      starts: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2",
@@ -1297,8 +1303,8 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase3 {
   name: string;
   timestamp: string;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase3Type;
-  resolves?: number;
-  starts?: number;
+  resolves?: number | null;
+  starts?: number | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase3 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1306,8 +1312,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase3 =
       name: S.String,
       timestamp: S.String,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase3Type,
-      resolves: S.optional(S.Number),
-      starts: S.optional(S.Number),
+      resolves: S.optional(S.NullOr(S.Number)),
+      starts: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase3",
@@ -1725,7 +1731,7 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase10 {
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase10Type;
   /** Shape descriptor for JSON payloads. */
-  payload?: VersionsGraphResponseGraphWorkflowNodesItemCase10Payload;
+  payload?: VersionsGraphResponseGraphWorkflowNodesItemCase10Payload | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1735,7 +1741,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10 =
       nodes: VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase10Type,
       payload: S.optional(
-        VersionsGraphResponseGraphWorkflowNodesItemCase10Payload,
+        S.NullOr(VersionsGraphResponseGraphWorkflowNodesItemCase10Payload),
       ),
     }),
   ).annotate({
@@ -1750,16 +1756,16 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase11Type =
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase11 {
   name: string;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase11Type;
-  resolves?: number;
-  starts?: number;
+  resolves?: number | null;
+  starts?: number | null;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItemCase11 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: VersionsGraphResponseGraphWorkflowNodesItemCase11Type,
-      resolves: S.optional(S.Number),
-      starts: S.optional(S.Number),
+      resolves: S.optional(S.NullOr(S.Number)),
+      starts: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase11",
@@ -1916,14 +1922,14 @@ export interface VersionsGraphResponseGraphWorkflow {
   functions: VersionsGraphResponseGraphWorkflowFunctionsMap;
   nodes: VersionsGraphResponseGraphWorkflowNodesList;
   /** Shape descriptor for JSON payloads. */
-  payload?: VersionsGraphResponseGraphWorkflowPayload;
+  payload?: VersionsGraphResponseGraphWorkflowPayload | null;
 }
 export const VersionsGraphResponseGraphWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     className: S.String.pipe(T.Body("class_name")),
     functions: VersionsGraphResponseGraphWorkflowFunctionsMap,
     nodes: VersionsGraphResponseGraphWorkflowNodesList,
-    payload: S.optional(VersionsGraphResponseGraphWorkflowPayload),
+    payload: S.optional(S.NullOr(VersionsGraphResponseGraphWorkflowPayload)),
   }),
 ).annotate({
   identifier: "VersionsGraphResponseGraphWorkflow",
@@ -2050,7 +2056,7 @@ export interface InstancesListResultItem {
   status: InstancesListResultItemStatus;
   versionId: string;
   workflowId: string;
-  triggerSource?: InstancesListResultItemTriggerSource;
+  triggerSource?: InstancesListResultItemTriggerSource | null;
 }
 export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2063,7 +2069,9 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
     versionId: S.String.pipe(T.Body("version_id")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
     triggerSource: S.optional(
-      InstancesListResultItemTriggerSource.pipe(T.Body("trigger_source")),
+      S.NullOr(InstancesListResultItemTriggerSource).pipe(
+        T.Body("trigger_source"),
+      ),
     ),
   }),
 ).annotate({
@@ -2119,11 +2127,11 @@ export type VersionsListResultItemLanguage = "javascript" | "python";
 export const VersionsListResultItemLanguage = /*@__PURE__*/ S.String;
 
 export interface VersionsListResultItemLimits {
-  steps?: number;
+  steps?: number | null;
 }
 export const VersionsListResultItemLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    steps: S.optional(S.Number),
+    steps: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "VersionsListResultItemLimits",
@@ -2138,7 +2146,7 @@ export interface VersionsListResultItem {
   language: VersionsListResultItemLanguage;
   modifiedOn: string;
   workflowId: string;
-  limits?: VersionsListResultItemLimits;
+  limits?: VersionsListResultItemLimits | null;
 }
 export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2149,7 +2157,7 @@ export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
     language: VersionsListResultItemLanguage,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
-    limits: S.optional(VersionsListResultItemLimits),
+    limits: S.optional(S.NullOr(VersionsListResultItemLimits)),
   }),
 ).annotate({
   identifier: "VersionsListResultItem",
@@ -2202,27 +2210,27 @@ export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkflowsRequest>;
 
 export interface ListResultItemInstances {
-  complete?: number;
-  errored?: number;
-  paused?: number;
-  queued?: number;
-  rollingBack?: number;
-  running?: number;
-  terminated?: number;
-  waiting?: number;
-  waitingForPause?: number;
+  complete?: number | null;
+  errored?: number | null;
+  paused?: number | null;
+  queued?: number | null;
+  rollingBack?: number | null;
+  running?: number | null;
+  terminated?: number | null;
+  waiting?: number | null;
+  waitingForPause?: number | null;
 }
 export const ListResultItemInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    complete: S.optional(S.Number),
-    errored: S.optional(S.Number),
-    paused: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    rollingBack: S.optional(S.Number),
-    running: S.optional(S.Number),
-    terminated: S.optional(S.Number),
-    waiting: S.optional(S.Number),
-    waitingForPause: S.optional(S.Number),
+    complete: S.optional(S.NullOr(S.Number)),
+    errored: S.optional(S.NullOr(S.Number)),
+    paused: S.optional(S.NullOr(S.Number)),
+    queued: S.optional(S.NullOr(S.Number)),
+    rollingBack: S.optional(S.NullOr(S.Number)),
+    running: S.optional(S.NullOr(S.Number)),
+    terminated: S.optional(S.NullOr(S.Number)),
+    waiting: S.optional(S.NullOr(S.Number)),
+    waitingForPause: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ListResultItemInstances",
@@ -2255,7 +2263,7 @@ export interface ListResultItem {
   name: string;
   scriptName: string;
   triggeredOn: string;
-  schedules?: ListResultItemSchedulesList;
+  schedules?: ListResultItemSchedulesList | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2267,7 +2275,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     scriptName: S.String.pipe(T.Body("script_name")),
     triggeredOn: S.String.pipe(T.Body("triggered_on")),
-    schedules: S.optional(ListResultItemSchedulesList),
+    schedules: S.optional(S.NullOr(ListResultItemSchedulesList)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -2306,14 +2314,14 @@ export const InstancesStatusEditRequestFromType = /*@__PURE__*/ S.String;
 
 export interface InstancesStatusEditRequestFrom {
   name: string;
-  count?: number;
-  type?: InstancesStatusEditRequestFromType | (string & {});
+  count?: number | null;
+  type?: InstancesStatusEditRequestFromType | (string & {}) | null;
 }
 export const InstancesStatusEditRequestFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    count: S.optional(S.Number),
-    type: S.optional(InstancesStatusEditRequestFromType),
+    count: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(InstancesStatusEditRequestFromType)),
   }),
 ).annotate({
   identifier: "InstancesStatusEditRequestFrom",
@@ -2324,20 +2332,20 @@ export interface PatchInstanceStatusRequest {
   workflowName: string;
   /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
   instanceId: string;
-  status?: InstancesStatusEditRequestStatus | (string & {});
+  status?: InstancesStatusEditRequestStatus | (string & {}) | null;
   /** Run rollback before terminating. */
-  rollback?: boolean;
+  rollback?: boolean | null;
   /** Step to restart from. */
-  from?: InstancesStatusEditRequestFrom;
+  from?: InstancesStatusEditRequestFrom | null;
 }
 export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
     instanceId: S.String.pipe(T.Label("instance_id")),
-    status: S.optional(InstancesStatusEditRequestStatus),
-    rollback: S.optional(S.Boolean),
-    from: S.optional(InstancesStatusEditRequestFrom),
+    status: S.optional(S.NullOr(InstancesStatusEditRequestStatus)),
+    rollback: S.optional(S.NullOr(S.Boolean)),
+    from: S.optional(S.NullOr(InstancesStatusEditRequestFrom)),
   })
     .pipe(
       T.Http({
@@ -2379,11 +2387,11 @@ export const PatchInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchInstanceStatusResponse>;
 
 export interface UpdateRequestLimits {
-  steps?: number;
+  steps?: number | null;
 }
 export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    steps: S.optional(S.Number),
+    steps: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "UpdateRequestLimits",
@@ -2410,8 +2418,8 @@ export interface PutWorkflowRequest {
   workflowName: string;
   className: string;
   scriptName: string;
-  limits?: UpdateRequestLimits;
-  schedules?: UpdateRequestSchedulesList;
+  limits?: UpdateRequestLimits | null;
+  schedules?: UpdateRequestSchedulesList | null;
 }
 export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2419,8 +2427,8 @@ export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
     workflowName: S.String.pipe(T.Label("workflow_name")),
     className: S.String.pipe(T.Body("class_name")),
     scriptName: S.String.pipe(T.Body("script_name")),
-    limits: S.optional(UpdateRequestLimits),
-    schedules: S.optional(UpdateRequestSchedulesList),
+    limits: S.optional(S.NullOr(UpdateRequestLimits)),
+    schedules: S.optional(S.NullOr(UpdateRequestSchedulesList)),
   })
     .pipe(
       T.Http({
@@ -2531,13 +2539,13 @@ export interface StepInstanceResponse {
   error: InstancesStepResponseError;
   status: InstancesStepResponseStatus;
   /** Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON. */
-  output?: unknown;
+  output?: unknown | null;
 }
 export const StepInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: InstancesStepResponseError,
     status: InstancesStepResponseStatus,
-    output: S.optional(S.Unknown),
+    output: S.optional(S.NullOr(S.Unknown)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StepInstanceResponse",

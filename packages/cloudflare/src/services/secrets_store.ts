@@ -167,7 +167,7 @@ export interface CreateStoreResponse {
   /** The name of the store */
   name: string;
   /** Account Identifier */
-  accountId?: string;
+  accountId?: string | null;
 }
 export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -175,7 +175,7 @@ export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStoreResponse",
@@ -195,14 +195,14 @@ export interface StoresSecretsCreateRequestBodyItem {
   /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
   value: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
 }
 export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scopes: StoresSecretsCreateRequestBodyItemScopesList,
     value: S.String,
-    comment: S.optional(S.String),
+    comment: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "StoresSecretsCreateRequestBodyItem",
@@ -263,9 +263,9 @@ export interface StoresSecretsCreateResultItem {
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsCreateResultItemScopesList;
+  scopes?: StoresSecretsCreateResultItemScopesList | null;
 }
 export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -275,8 +275,8 @@ export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: StoresSecretsCreateResultItemStatus,
     storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsCreateResultItemScopesList),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsCreateResultItemScopesList)),
   }),
 ).annotate({
   identifier: "StoresSecretsCreateResultItem",
@@ -386,7 +386,7 @@ export interface DuplicateStoreSecretRequest {
   /** The list of services that can use this secret. */
   scopes: StoresSecretsDuplicateRequestScopesList;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
 }
 export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -395,7 +395,7 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     secretId: S.String.pipe(T.Label("secret_id")),
     name: S.String,
     scopes: StoresSecretsDuplicateRequestScopesList,
-    comment: S.optional(S.String),
+    comment: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -434,9 +434,9 @@ export interface DuplicateStoreSecretResponse {
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsDuplicateResponseScopesList;
+  scopes?: StoresSecretsDuplicateResponseScopesList | null;
 }
 export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -446,8 +446,8 @@ export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: StoresSecretsDuplicateResponseStatus,
     storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsDuplicateResponseScopesList),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsDuplicateResponseScopesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DuplicateStoreSecretResponse",
@@ -534,7 +534,7 @@ export interface GetStoreResponse {
   /** The name of the store */
   name: string;
   /** Account Identifier */
-  accountId?: string;
+  accountId?: string | null;
 }
 export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -542,7 +542,7 @@ export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreResponse",
@@ -596,9 +596,9 @@ export interface GetStoreSecretResponse {
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsGetResponseScopesList;
+  scopes?: StoresSecretsGetResponseScopesList | null;
 }
 export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -608,8 +608,8 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: StoresSecretsGetResponseStatus,
     storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsGetResponseScopesList),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsGetResponseScopesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreSecretResponse",
@@ -668,7 +668,7 @@ export interface StoresListResultItem {
   /** The name of the store */
   name: string;
   /** Account Identifier */
-  accountId?: string;
+  accountId?: string | null;
 }
 export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -676,7 +676,7 @@ export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
   }),
 ).annotate({
   identifier: "StoresListResultItem",
@@ -783,9 +783,9 @@ export interface StoresSecretsListResultItem {
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsListResultItemScopesList;
+  scopes?: StoresSecretsListResultItemScopesList | null;
 }
 export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -795,8 +795,8 @@ export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: StoresSecretsListResultItemStatus,
     storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsListResultItemScopesList),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsListResultItemScopesList)),
   }),
 ).annotate({
   identifier: "StoresSecretsListResultItem",
@@ -835,20 +835,20 @@ export interface PatchStoreSecretRequest {
   /** Secret identifier tag. */
   secretId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsEditRequestScopesList;
+  scopes?: StoresSecretsEditRequestScopesList | null;
   /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
-  value?: string;
+  value?: string | null;
 }
 export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     secretId: S.String.pipe(T.Label("secret_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsEditRequestScopesList),
-    value: S.optional(S.String),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsEditRequestScopesList)),
+    value: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -884,9 +884,9 @@ export interface PatchStoreSecretResponse {
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
-  comment?: string;
+  comment?: string | null;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsEditResponseScopesList;
+  scopes?: StoresSecretsEditResponseScopesList | null;
 }
 export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -896,8 +896,8 @@ export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     status: StoresSecretsEditResponseStatus,
     storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsEditResponseScopesList),
+    comment: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(S.NullOr(StoresSecretsEditResponseScopesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStoreSecretResponse",

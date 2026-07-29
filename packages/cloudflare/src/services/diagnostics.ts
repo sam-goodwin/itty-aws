@@ -76,7 +76,7 @@ export interface CreateEndpointHealthcheckRequest {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -85,7 +85,7 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -110,9 +110,9 @@ export interface CreateEndpointHealthcheckResponse {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** UUID. */
-  id?: string;
+  id?: string | null;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -120,8 +120,8 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEndpointHealthcheckResponse",
@@ -147,25 +147,29 @@ export const TraceroutesCreateRequestOptionsPacketType = /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateRequestOptions {
   /** Max TTL. */
-  maxTtl?: number;
+  maxTtl?: number | null;
   /** Type of packet sent. */
-  packetType?: TraceroutesCreateRequestOptionsPacketType | (string & {});
+  packetType?: TraceroutesCreateRequestOptionsPacketType | (string & {}) | null;
   /** Number of packets sent at each TTL. */
-  packetsPerTtl?: number;
+  packetsPerTtl?: number | null;
   /** For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol. */
-  port?: number;
+  port?: number | null;
   /** Set the time (in seconds) to wait for a response to a probe. */
-  waitTime?: number;
+  waitTime?: number | null;
 }
 export const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxTtl: S.optional(S.Number.pipe(T.Body("max_ttl"))),
+    maxTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl"))),
     packetType: S.optional(
-      TraceroutesCreateRequestOptionsPacketType.pipe(T.Body("packet_type")),
+      S.NullOr(TraceroutesCreateRequestOptionsPacketType).pipe(
+        T.Body("packet_type"),
+      ),
     ),
-    packetsPerTtl: S.optional(S.Number.pipe(T.Body("packets_per_ttl"))),
-    port: S.optional(S.Number),
-    waitTime: S.optional(S.Number.pipe(T.Body("wait_time"))),
+    packetsPerTtl: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("packets_per_ttl")),
+    ),
+    port: S.optional(S.NullOr(S.Number)),
+    waitTime: S.optional(S.NullOr(S.Number).pipe(T.Body("wait_time"))),
   }),
 ).annotate({
   identifier: "TraceroutesCreateRequestOptions",
@@ -176,15 +180,15 @@ export interface CreateTracerouteRequest {
   accountId: string;
   targets: TraceroutesCreateRequestTargetsList;
   /** If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes. */
-  colos?: TraceroutesCreateRequestColosList;
-  options?: TraceroutesCreateRequestOptions;
+  colos?: TraceroutesCreateRequestColosList | null;
+  options?: TraceroutesCreateRequestOptions | null;
 }
 export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     targets: TraceroutesCreateRequestTargetsList,
-    colos: S.optional(TraceroutesCreateRequestColosList),
-    options: S.optional(TraceroutesCreateRequestOptions),
+    colos: S.optional(S.NullOr(TraceroutesCreateRequestColosList)),
+    options: S.optional(S.NullOr(TraceroutesCreateRequestOptions)),
   })
     .pipe(
       T.Http({
@@ -200,15 +204,15 @@ export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface TraceroutesCreateResultItemColosItemColo {
   /** Source colo city. */
-  city?: string;
+  city?: string | null;
   /** Source colo name. */
-  name?: string;
+  name?: string | null;
 }
 export const TraceroutesCreateResultItemColosItemColo = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      city: S.optional(S.String),
-      name: S.optional(S.String),
+      city: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "TraceroutesCreateResultItemColosItemColo",
@@ -231,38 +235,42 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
 
 export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** AS number associated with the node object. */
-  asn?: string;
+  asn?: string | null;
   /** IP address of the node. */
-  ip?: string;
+  ip?: string | null;
   /** Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from. */
-  labels?: TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList;
+  labels?: TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList | null;
   /** Maximum RTT in ms. */
-  maxRttMs?: number;
+  maxRttMs?: number | null;
   /** Mean RTT in ms. */
-  meanRttMs?: number;
+  meanRttMs?: number | null;
   /** Minimum RTT in ms. */
-  minRttMs?: number;
+  minRttMs?: number | null;
   /** Host name of the address, this may be the same as the IP address. */
-  name?: string;
+  name?: string | null;
   /** Number of packets with a response from this node. */
-  packetCount?: number;
+  packetCount?: number | null;
   /** Standard deviation of the RTTs in ms. */
-  stdDevRttMs?: number;
+  stdDevRttMs?: number | null;
 }
 export const TraceroutesCreateResultItemColosItemHopsItemNodesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      asn: S.optional(S.String),
-      ip: S.optional(S.String),
+      asn: S.optional(S.NullOr(S.String)),
+      ip: S.optional(S.NullOr(S.String)),
       labels: S.optional(
-        TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList,
+        S.NullOr(
+          TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList,
+        ),
       ),
-      maxRttMs: S.optional(S.Number.pipe(T.Body("max_rtt_ms"))),
-      meanRttMs: S.optional(S.Number.pipe(T.Body("mean_rtt_ms"))),
-      minRttMs: S.optional(S.Number.pipe(T.Body("min_rtt_ms"))),
-      name: S.optional(S.String),
-      packetCount: S.optional(S.Number.pipe(T.Body("packet_count"))),
-      stdDevRttMs: S.optional(S.Number.pipe(T.Body("std_dev_rtt_ms"))),
+      maxRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_rtt_ms"))),
+      meanRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("mean_rtt_ms"))),
+      minRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("min_rtt_ms"))),
+      name: S.optional(S.NullOr(S.String)),
+      packetCount: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_count"))),
+      stdDevRttMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("std_dev_rtt_ms")),
+      ),
     }),
   ).annotate({
     identifier: "TraceroutesCreateResultItemColosItemHopsItemNodesItem",
@@ -277,21 +285,23 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesList =
 
 export interface TraceroutesCreateResultItemColosItemHopsItem {
   /** An array of node objects. */
-  nodes?: TraceroutesCreateResultItemColosItemHopsItemNodesList;
+  nodes?: TraceroutesCreateResultItemColosItemHopsItemNodesList | null;
   /** Number of packets where no response was received. */
-  packetsLost?: number;
+  packetsLost?: number | null;
   /** Number of packets sent with specified TTL. */
-  packetsSent?: number;
+  packetsSent?: number | null;
   /** The time to live (TTL). */
-  packetsTtl?: number;
+  packetsTtl?: number | null;
 }
 export const TraceroutesCreateResultItemColosItemHopsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      nodes: S.optional(TraceroutesCreateResultItemColosItemHopsItemNodesList),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
-      packetsTtl: S.optional(S.Number.pipe(T.Body("packets_ttl"))),
+      nodes: S.optional(
+        S.NullOr(TraceroutesCreateResultItemColosItemHopsItemNodesList),
+      ),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      packetsTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_ttl"))),
     }),
   ).annotate({
     identifier: "TraceroutesCreateResultItemColosItemHopsItem",
@@ -305,23 +315,27 @@ export const TraceroutesCreateResultItemColosItemHopsList =
   ) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsList>;
 
 export interface TraceroutesCreateResultItemColosItem {
-  colo?: TraceroutesCreateResultItemColosItemColo;
+  colo?: TraceroutesCreateResultItemColosItemColo | null;
   /** Errors resulting from collecting traceroute from colo to target. */
-  error?: TraceroutesCreateResultItemColosItemError;
-  hops?: TraceroutesCreateResultItemColosItemHopsList;
+  error?: TraceroutesCreateResultItemColosItemError | null;
+  hops?: TraceroutesCreateResultItemColosItemHopsList | null;
   /** Aggregated statistics from all hops about the target. */
-  targetSummary?: unknown;
+  targetSummary?: unknown | null;
   /** Total time of traceroute in ms. */
-  tracerouteTimeMs?: number;
+  tracerouteTimeMs?: number | null;
 }
 export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      colo: S.optional(TraceroutesCreateResultItemColosItemColo),
-      error: S.optional(TraceroutesCreateResultItemColosItemError),
-      hops: S.optional(TraceroutesCreateResultItemColosItemHopsList),
-      targetSummary: S.optional(S.Unknown.pipe(T.Body("target_summary"))),
-      tracerouteTimeMs: S.optional(S.Number.pipe(T.Body("traceroute_time_ms"))),
+      colo: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemColo)),
+      error: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemError)),
+      hops: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemHopsList)),
+      targetSummary: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("target_summary")),
+      ),
+      tracerouteTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("traceroute_time_ms")),
+      ),
     }),
 ).annotate({
   identifier: "TraceroutesCreateResultItemColosItem",
@@ -334,14 +348,14 @@ export const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TraceroutesCreateResultItemColosList>;
 
 export interface TraceroutesCreateResultItem {
-  colos?: TraceroutesCreateResultItemColosList;
+  colos?: TraceroutesCreateResultItemColosList | null;
   /** The target hostname, IPv6, or IPv6 address. */
-  target?: string;
+  target?: string | null;
 }
 export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    colos: S.optional(TraceroutesCreateResultItemColosList),
-    target: S.optional(S.String),
+    colos: S.optional(S.NullOr(TraceroutesCreateResultItemColosList)),
+    target: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "TraceroutesCreateResultItem",
@@ -430,9 +444,9 @@ export interface GetEndpointHealthcheckResponse {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** UUID. */
-  id?: string;
+  id?: string | null;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const GetEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -440,8 +454,8 @@ export const GetEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEndpointHealthcheckResponse",
@@ -477,9 +491,9 @@ export interface ListEndpointHealthchecksItem {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** UUID. */
-  id?: string;
+  id?: string | null;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -487,8 +501,8 @@ export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListEndpointHealthchecksItem",
@@ -522,7 +536,7 @@ export interface UpdateEndpointHealthcheckRequest {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -532,7 +546,7 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -557,9 +571,9 @@ export interface UpdateEndpointHealthcheckResponse {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** UUID. */
-  id?: string;
+  id?: string | null;
   /** Optional name associated with this check */
-  name?: string;
+  name?: string | null;
 }
 export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -567,8 +581,8 @@ export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEndpointHealthcheckResponse",

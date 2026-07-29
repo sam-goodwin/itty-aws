@@ -190,14 +190,14 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 export type LongName = string;
 export type Uri = string;
 export type RoleArn = string;
-export type ValidatorType = "JSON_SCHEMA" | "LAMBDA";
+export type ValidatorType = "JSON_SCHEMA" | "LAMBDA" | (string & {});
 export const ValidatorType = /*@__PURE__*/ S.String;
 
 export type StringWithLengthBetween0And32768 =
   | string
   | redacted.Redacted<string>;
 export interface Validator {
-  Type: ValidatorType | (string & {});
+  Type: ValidatorType;
   Content: string | redacted.Redacted<string>;
 }
 export const Validator = /*@__PURE__*/ S.suspend(() =>
@@ -276,10 +276,10 @@ export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationProfile>;
 export type MinutesBetween0And24Hours = number;
 export type GrowthFactor = number;
-export type GrowthType = "LINEAR" | "EXPONENTIAL";
+export type GrowthType = "LINEAR" | "EXPONENTIAL" | (string & {});
 export const GrowthType = /*@__PURE__*/ S.String;
 
-export type ReplicateTo = "NONE" | "SSM_DOCUMENT";
+export type ReplicateTo = "NONE" | "SSM_DOCUMENT" | (string & {});
 export const ReplicateTo = /*@__PURE__*/ S.String;
 
 export interface CreateDeploymentStrategyRequest {
@@ -288,8 +288,8 @@ export interface CreateDeploymentStrategyRequest {
   DeploymentDurationInMinutes: number;
   FinalBakeTimeInMinutes?: number;
   GrowthFactor: number;
-  GrowthType?: GrowthType | (string & {});
-  ReplicateTo?: ReplicateTo | (string & {});
+  GrowthType?: GrowthType;
+  ReplicateTo?: ReplicateTo;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateDeploymentStrategyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -385,7 +385,8 @@ export type EnvironmentState =
   | "DEPLOYING"
   | "ROLLING_BACK"
   | "ROLLED_BACK"
-  | "REVERTED";
+  | "REVERTED"
+  | (string & {});
 export const EnvironmentState = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -533,7 +534,11 @@ export const CreateExperimentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExperimentDefinitionRequest",
 }) as any as S.Schema<CreateExperimentDefinitionRequest>;
-export type ExperimentDefinitionStatus = "ACTIVE" | "IDLE" | "ARCHIVED";
+export type ExperimentDefinitionStatus =
+  | "ACTIVE"
+  | "IDLE"
+  | "ARCHIVED"
+  | (string & {});
 export const ExperimentDefinitionStatus = /*@__PURE__*/ S.String;
 
 export type TreatmentKey = string;
@@ -607,7 +612,8 @@ export type ActionPoint =
   | "ON_DEPLOYMENT_STEP"
   | "ON_DEPLOYMENT_BAKING"
   | "ON_DEPLOYMENT_COMPLETE"
-  | "ON_DEPLOYMENT_ROLLED_BACK";
+  | "ON_DEPLOYMENT_ROLLED_BACK"
+  | (string & {});
 export const ActionPoint = /*@__PURE__*/ S.String;
 
 export interface Action {
@@ -626,7 +632,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
-export type ActionsMap = { [key in ActionPoint | (string & {})]?: Action[] };
+export type ActionsMap = { [key in ActionPoint]?: Action[] };
 export const ActionsMap = /*@__PURE__*/ S.Record(
   ActionPoint,
   ActionList.pipe(S.optional),
@@ -841,13 +847,17 @@ export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
-export type DeletionProtectionCheck = "ACCOUNT_DEFAULT" | "APPLY" | "BYPASS";
+export type DeletionProtectionCheck =
+  | "ACCOUNT_DEFAULT"
+  | "APPLY"
+  | "BYPASS"
+  | (string & {});
 export const DeletionProtectionCheck = /*@__PURE__*/ S.String;
 
 export interface DeleteConfigurationProfileRequest {
   ApplicationId: string;
   ConfigurationProfileId: string;
-  DeletionProtectionCheck?: DeletionProtectionCheck | (string & {});
+  DeletionProtectionCheck?: DeletionProtectionCheck;
 }
 export const DeleteConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -912,7 +922,7 @@ export const DeleteDeploymentStrategyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvironmentRequest {
   EnvironmentId: string;
   ApplicationId: string;
-  DeletionProtectionCheck?: DeletionProtectionCheck | (string & {});
+  DeletionProtectionCheck?: DeletionProtectionCheck;
 }
 export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -943,13 +953,13 @@ export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
-export type DeleteType = "ARCHIVE" | "DESTROY";
+export type DeleteType = "ARCHIVE" | "DESTROY" | (string & {});
 export const DeleteType = /*@__PURE__*/ S.String;
 
 export interface DeleteExperimentDefinitionRequest {
   ApplicationIdentifier: string;
   ExperimentDefinitionIdentifier: string;
-  DeleteType?: DeleteType | (string & {});
+  DeleteType?: DeleteType;
 }
 export const DeleteExperimentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1244,7 +1254,8 @@ export type DeploymentState =
   | "COMPLETE"
   | "ROLLING_BACK"
   | "ROLLED_BACK"
-  | "REVERTED";
+  | "REVERTED"
+  | (string & {});
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 export type DeploymentEventType =
@@ -1254,14 +1265,16 @@ export type DeploymentEventType =
   | "BAKE_TIME_STARTED"
   | "DEPLOYMENT_STARTED"
   | "DEPLOYMENT_COMPLETED"
-  | "REVERT_COMPLETED";
+  | "REVERT_COMPLETED"
+  | (string & {});
 export const DeploymentEventType = /*@__PURE__*/ S.String;
 
 export type TriggeredBy =
   | "USER"
   | "APPCONFIG"
   | "CLOUDWATCH_ALARM"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const TriggeredBy = /*@__PURE__*/ S.String;
 
 export interface ActionInvocation {
@@ -1483,7 +1496,7 @@ export const GetExperimentRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExperimentRunRequest",
 }) as any as S.Schema<GetExperimentRunRequest>;
-export type ExperimentRunStatus = "RUNNING" | "DONE";
+export type ExperimentRunStatus = "RUNNING" | "DONE" | (string & {});
 export const ExperimentRunStatus = /*@__PURE__*/ S.String;
 
 export type NullablePercentage = number;
@@ -1782,7 +1795,7 @@ export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeploymentsRequest",
 }) as any as S.Schema<ListDeploymentsRequest>;
-export type DeploymentType = "USER" | "MANAGED";
+export type DeploymentType = "USER" | "MANAGED" | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface DeploymentSummary {
@@ -1914,7 +1927,7 @@ export interface ListExperimentDefinitionsRequest {
   ApplicationIdentifier?: string;
   ConfigurationProfileIdentifier?: string;
   EnvironmentIdentifier?: string;
-  Status?: ExperimentDefinitionStatus | (string & {});
+  Status?: ExperimentDefinitionStatus;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2029,7 +2042,8 @@ export type ExperimentRunEventType =
   | "RUN_STARTED"
   | "EXPOSURE_UPDATED"
   | "OVERRIDES_UPDATED"
-  | "RUN_STOPPED";
+  | "RUN_STOPPED"
+  | (string & {});
 export const ExperimentRunEventType = /*@__PURE__*/ S.String;
 
 export interface ExperimentRunEvent {
@@ -2075,7 +2089,7 @@ export interface ListExperimentRunsRequest {
   ExperimentDefinitionIdentifier: string;
   MaxResults?: number;
   NextToken?: string;
-  Status?: ExperimentRunStatus | (string & {});
+  Status?: ExperimentRunStatus;
 }
 export const ListExperimentRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2650,7 +2664,7 @@ export interface UpdateDeploymentStrategyRequest {
   DeploymentDurationInMinutes?: number;
   FinalBakeTimeInMinutes?: number;
   GrowthFactor?: number;
-  GrowthType?: GrowthType | (string & {});
+  GrowthType?: GrowthType;
 }
 export const UpdateDeploymentStrategyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2867,7 +2881,7 @@ export const ValidateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateConfigurationResponse",
 }) as any as S.Schema<ValidateConfigurationResponse>;
-export type BadRequestReason = "InvalidConfiguration";
+export type BadRequestReason = "InvalidConfiguration" | (string & {});
 export const BadRequestReason = /*@__PURE__*/ S.String;
 
 export interface InvalidConfigurationDetail {
@@ -2898,7 +2912,7 @@ export type BadRequestDetails = {
 export const BadRequestDetails = /*@__PURE__*/ S.Union([
   S.Struct({ InvalidConfiguration: InvalidConfigurationDetailList }),
 ]);
-export type BytesMeasure = "KILOBYTES";
+export type BytesMeasure = "KILOBYTES" | (string & {});
 export const BytesMeasure = /*@__PURE__*/ S.String;
 
 export type CreateApplicationError =

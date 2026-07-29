@@ -150,7 +150,7 @@ export type SshKey = string;
 export type IpAddress = string;
 export type IamRoleArn = string;
 export type ExternalId = string;
-export type SubscriptionType = "PRODUCTION";
+export type SubscriptionType = "PRODUCTION" | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
 
 export type ClientToken = string;
@@ -160,7 +160,7 @@ export interface CreateHsmRequest {
   EniIp?: string;
   IamRoleArn: string;
   ExternalId?: string;
-  SubscriptionType: SubscriptionType | (string & {});
+  SubscriptionType: SubscriptionType;
   ClientToken?: string;
   SyslogIp?: string;
 }
@@ -296,7 +296,11 @@ export const HsmList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionSerial = string;
 export type PartitionSerialList = string[];
 export const PartitionSerialList = /*@__PURE__*/ S.Array(S.String);
-export type CloudHsmObjectState = "READY" | "UPDATING" | "DEGRADED";
+export type CloudHsmObjectState =
+  | "READY"
+  | "UPDATING"
+  | "DEGRADED"
+  | (string & {});
 export const CloudHsmObjectState = /*@__PURE__*/ S.String;
 
 export interface DescribeHapgResponse {
@@ -347,7 +351,8 @@ export type HsmStatus =
   | "SUSPENDED"
   | "TERMINATING"
   | "TERMINATED"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const HsmStatus = /*@__PURE__*/ S.String;
 
 export type AZ = string;
@@ -439,14 +444,14 @@ export const DescribeLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLunaClientResponse",
 }) as any as S.Schema<DescribeLunaClientResponse>;
-export type ClientVersion = "5.1" | "5.3";
+export type ClientVersion = "5.1" | "5.3" | (string & {});
 export const ClientVersion = /*@__PURE__*/ S.String;
 
 export type HapgList = string[];
 export const HapgList = /*@__PURE__*/ S.Array(S.String);
 export interface GetConfigRequest {
   ClientArn: string;
-  ClientVersion: ClientVersion | (string & {});
+  ClientVersion: ClientVersion;
   HapgList: string[];
 }
 export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>

@@ -201,11 +201,11 @@ export class WorkerNotFound extends T.applyErrorMatchers(
 
 export interface MessagesAckRequestAcksItem {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
-  leaseId?: string;
+  leaseId?: string | null;
 }
 export const MessagesAckRequestAcksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
+    leaseId: S.optional(S.NullOr(S.String).pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestAcksItem",
@@ -218,14 +218,14 @@ export const MessagesAckRequestAcksList = /*@__PURE__*/ S.Array(
 
 export interface MessagesAckRequestRetriesItem {
   /** The number of seconds to delay before making the message available for another attempt. */
-  delaySeconds?: number;
+  delaySeconds?: number | null;
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
-  leaseId?: string;
+  leaseId?: string | null;
 }
 export const MessagesAckRequestRetriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
+    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
+    leaseId: S.optional(S.NullOr(S.String).pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestRetriesItem",
@@ -242,15 +242,15 @@ export interface AckMessageRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  acks?: MessagesAckRequestAcksList;
-  retries?: MessagesAckRequestRetriesList;
+  acks?: MessagesAckRequestAcksList | null;
+  retries?: MessagesAckRequestRetriesList | null;
 }
 export const AckMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    acks: S.optional(MessagesAckRequestAcksList),
-    retries: S.optional(MessagesAckRequestRetriesList),
+    acks: S.optional(S.NullOr(MessagesAckRequestAcksList)),
+    retries: S.optional(S.NullOr(MessagesAckRequestRetriesList)),
   })
     .pipe(
       T.Http({
@@ -275,17 +275,17 @@ export const MessagesAckResponseWarningsMap = /*@__PURE__*/ S.Record(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AckMessageResponse {
   /** The number of messages that were succesfully acknowledged. */
-  ackCount?: number;
+  ackCount?: number | null;
   /** The number of messages that were succesfully retried. */
-  retryCount?: number;
+  retryCount?: number | null;
   /** Map of lease IDs to warning messages encountered during acknowledgement. */
-  warnings?: MessagesAckResponseWarningsMap;
+  warnings?: MessagesAckResponseWarningsMap | null;
 }
 export const AckMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ackCount: S.optional(S.Number),
-    retryCount: S.optional(S.Number),
-    warnings: S.optional(MessagesAckResponseWarningsMap),
+    ackCount: S.optional(S.NullOr(S.Number)),
+    retryCount: S.optional(S.NullOr(S.Number)),
+    warnings: S.optional(S.NullOr(MessagesAckResponseWarningsMap)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AckMessageResponse",
@@ -297,23 +297,26 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType =
   /*@__PURE__*/ S.String;
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageText {
-  body?: string;
+  body?: string | null;
   contentType?:
     | MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType
-    | (string & {});
+    | (string & {})
+    | null;
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number;
+  delaySeconds?: number | null;
 }
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageText =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.optional(S.String),
+      body: S.optional(S.NullOr(S.String)),
       contentType: S.optional(
-        MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType.pipe(
-          T.Body("content_type"),
-        ),
+        S.NullOr(
+          MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType,
+        ).pipe(T.Body("content_type")),
       ),
-      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+      delaySeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("delay_seconds")),
+      ),
     }),
   ).annotate({
     identifier: "MessagesBulkPushRequestMessagesItemMqQueueMessageText",
@@ -325,23 +328,26 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType =
   /*@__PURE__*/ S.String;
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageJson {
-  body?: unknown;
+  body?: unknown | null;
   contentType?:
     | MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType
-    | (string & {});
+    | (string & {})
+    | null;
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number;
+  delaySeconds?: number | null;
 }
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageJson =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.optional(S.Unknown),
+      body: S.optional(S.NullOr(S.Unknown)),
       contentType: S.optional(
-        MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType.pipe(
-          T.Body("content_type"),
-        ),
+        S.NullOr(
+          MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType,
+        ).pipe(T.Body("content_type")),
       ),
-      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+      delaySeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("delay_seconds")),
+      ),
     }),
   ).annotate({
     identifier: "MessagesBulkPushRequestMessagesItemMqQueueMessageJson",
@@ -369,15 +375,15 @@ export interface BulkPushMessagesRequest {
   /** A Resource identifier. */
   queueId: string;
   /** The number of seconds to wait for attempting to deliver this batch to consumers */
-  delaySeconds?: number;
-  messages?: MessagesBulkPushRequestMessagesList;
+  delaySeconds?: number | null;
+  messages?: MessagesBulkPushRequestMessagesList | null;
 }
 export const BulkPushMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-    messages: S.optional(MessagesBulkPushRequestMessagesList),
+    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
+    messages: S.optional(S.NullOr(MessagesBulkPushRequestMessagesList)),
   })
     .pipe(
       T.Http({
@@ -414,11 +420,11 @@ export const MessagesBulkPushResponseMetadataMetrics = /*@__PURE__*/ S.suspend(
 
 export interface MessagesBulkPushResponseMetadata {
   /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
-  metrics?: MessagesBulkPushResponseMetadataMetrics;
+  metrics?: MessagesBulkPushResponseMetadataMetrics | null;
 }
 export const MessagesBulkPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metrics: S.optional(MessagesBulkPushResponseMetadataMetrics),
+    metrics: S.optional(S.NullOr(MessagesBulkPushResponseMetadataMetrics)),
   }),
 ).annotate({
   identifier: "MessagesBulkPushResponseMetadata",
@@ -426,11 +432,11 @@ export const MessagesBulkPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkPushMessagesResponse {
-  metadata?: MessagesBulkPushResponseMetadata;
+  metadata?: MessagesBulkPushResponseMetadata | null;
 }
 export const BulkPushMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(MessagesBulkPushResponseMetadata),
+    metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPushMessagesResponse",
@@ -441,24 +447,28 @@ export const ConsumersCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersCreateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "ConsumersCreateRequestSettingsWorker",
@@ -466,22 +476,22 @@ export const ConsumersCreateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
 
 export interface ConsumersCreateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersCreateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -510,19 +520,21 @@ export interface CreateConsumerRequest {
   /** A Resource identifier. */
   queueId: string;
   /** Name of a Worker */
-  scriptName?: string;
+  scriptName?: string | null;
   type: ConsumersCreateRequestType | (string & {});
-  deadLetterQueue?: string;
-  settings?: ConsumersCreateRequestSettings;
+  deadLetterQueue?: string | null;
+  settings?: ConsumersCreateRequestSettings | null;
 }
 export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     type: ConsumersCreateRequestType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersCreateRequestSettings),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    settings: S.optional(S.NullOr(ConsumersCreateRequestSettings)),
   })
     .pipe(
       T.Http({
@@ -538,23 +550,27 @@ export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersCreateResultWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersCreateResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+    maxConcurrency: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+    ),
+    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+    maxWaitTimeMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+    ),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
   }),
 ).annotate({
   identifier: "ConsumersCreateResultWorkerSettings",
@@ -565,25 +581,27 @@ export const ConsumersCreateResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateResultWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersCreateResultWorkerSettings;
-  type?: ConsumersCreateResultWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
+  type?: ConsumersCreateResultWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const ConsumersCreateResultWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersCreateResultWorkerSettings),
-    type: S.optional(ConsumersCreateResultWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
+    type: S.optional(S.NullOr(ConsumersCreateResultWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersCreateResultWorker",
@@ -591,22 +609,22 @@ export const ConsumersCreateResultWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersCreateResultHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersCreateResultHTTPPullSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -618,22 +636,24 @@ export const ConsumersCreateResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateResultHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersCreateResultHTTPPullSettings;
-  type?: ConsumersCreateResultHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
+  type?: ConsumersCreateResultHTTPPullType | null;
 }
 export const ConsumersCreateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersCreateResultHTTPPullSettings),
-    type: S.optional(ConsumersCreateResultHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
+    type: S.optional(S.NullOr(ConsumersCreateResultHTTPPullType)),
   }),
 ).annotate({
   identifier: "ConsumersCreateResultHTTPPull",
@@ -695,24 +715,28 @@ export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const CreateResponseConsumersItemWorkerSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
   ).annotate({
     identifier: "CreateResponseConsumersItemWorkerSettings",
@@ -723,25 +747,27 @@ export const CreateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: CreateResponseConsumersItemWorkerSettings;
-  type?: CreateResponseConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: CreateResponseConsumersItemWorkerSettings | null;
+  type?: CreateResponseConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const CreateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(CreateResponseConsumersItemWorkerSettings),
-    type: S.optional(CreateResponseConsumersItemWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(CreateResponseConsumersItemWorkerSettings)),
+    type: S.optional(S.NullOr(CreateResponseConsumersItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseConsumersItemWorker",
@@ -749,22 +775,22 @@ export const CreateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const CreateResponseConsumersItemHTTPPullSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
   ).annotate({
@@ -776,22 +802,24 @@ export const CreateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: CreateResponseConsumersItemHTTPPullSettings;
-  type?: CreateResponseConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: CreateResponseConsumersItemHTTPPullSettings | null;
+  type?: CreateResponseConsumersItemHTTPPullType | null;
 }
 export const CreateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(CreateResponseConsumersItemHTTPPullSettings),
-    type: S.optional(CreateResponseConsumersItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(CreateResponseConsumersItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(CreateResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "CreateResponseConsumersItemHTTPPull",
@@ -832,14 +860,16 @@ export const CreateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface CreateResponseProducersItemMqWorkerProducer {
-  script?: string;
-  type?: CreateResponseProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: CreateResponseProducersItemMqWorkerProducerType | null;
 }
 export const CreateResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(CreateResponseProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(CreateResponseProducersItemMqWorkerProducerType),
+      ),
     }),
   ).annotate({
     identifier: "CreateResponseProducersItemMqWorkerProducer",
@@ -850,14 +880,14 @@ export const CreateResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
 export interface CreateResponseProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: CreateResponseProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: CreateResponseProducersItemMqR2ProducerType | null;
 }
 export const CreateResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(CreateResponseProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(S.NullOr(CreateResponseProducersItemMqR2ProducerType)),
     }),
 ).annotate({
   identifier: "CreateResponseProducersItemMqR2Producer",
@@ -880,18 +910,22 @@ export const CreateResponseProducersList = /*@__PURE__*/ S.Array(
 
 export interface CreateResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const CreateResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -900,31 +934,31 @@ export const CreateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateQueueResponse {
-  consumers?: CreateResponseConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: CreateResponseProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: CreateResponseSettings;
+  consumers?: CreateResponseConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: CreateResponseProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: CreateResponseSettings | null;
 }
 export const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(CreateResponseConsumersList),
+    consumers: S.optional(S.NullOr(CreateResponseConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(CreateResponseProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(CreateResponseProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(CreateResponseSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateQueueResponse",
@@ -962,12 +996,15 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceImages {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceImagesType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceImagesType),
+      type: S.optional(
+        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceImagesType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceImages",
@@ -979,12 +1016,17 @@ export const SubscriptionsCreateRequestSourceMqEventSourceKVType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceKVType | (string & {});
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceKVType
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceKV",
@@ -996,12 +1038,17 @@ export const SubscriptionsCreateRequestSourceMqEventSourceR2Type =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceR2Type | (string & {});
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceR2Type
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceR2",
@@ -1016,13 +1063,14 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType,
+        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType),
       ),
     }),
   ).annotate({
@@ -1038,13 +1086,14 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceVectorize {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceVectorizeType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateRequestSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -1058,18 +1107,21 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(
+          SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
+        ),
       ),
     }),
   ).annotate({
@@ -1085,17 +1137,20 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorke
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -1111,17 +1166,22 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow 
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -1154,24 +1214,24 @@ export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
   /** Destination configuration for the subscription */
-  destination?: SubscriptionsCreateRequestDestination;
+  destination?: SubscriptionsCreateRequestDestination | null;
   /** Whether the subscription is active */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** List of event types this subscription handles */
-  events?: SubscriptionsCreateRequestEventsList;
+  events?: SubscriptionsCreateRequestEventsList | null;
   /** Name of the subscription */
-  name?: string;
+  name?: string | null;
   /** Source configuration for the subscription */
-  source?: SubscriptionsCreateRequestSource;
+  source?: SubscriptionsCreateRequestSource | null;
 }
 export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    destination: S.optional(SubscriptionsCreateRequestDestination),
-    enabled: S.optional(S.Boolean),
-    events: S.optional(SubscriptionsCreateRequestEventsList),
-    name: S.optional(S.String),
-    source: S.optional(SubscriptionsCreateRequestSource),
+    destination: S.optional(S.NullOr(SubscriptionsCreateRequestDestination)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    events: S.optional(S.NullOr(SubscriptionsCreateRequestEventsList)),
+    name: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(SubscriptionsCreateRequestSource)),
   })
     .pipe(
       T.Http({
@@ -1216,13 +1276,13 @@ export const SubscriptionsCreateResponseSourceMqEventSourceImagesType =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceImagesType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceImagesType | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceImagesType,
+        S.NullOr(SubscriptionsCreateResponseSourceMqEventSourceImagesType),
       ),
     }),
   ).annotate({
@@ -1235,12 +1295,14 @@ export const SubscriptionsCreateResponseSourceMqEventSourceKVType =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceKVType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceKVType | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsCreateResponseSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsCreateResponseSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateResponseSourceMqEventSourceKV",
@@ -1252,12 +1314,14 @@ export const SubscriptionsCreateResponseSourceMqEventSourceR2Type =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceR2Type;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceR2Type | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsCreateResponseSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsCreateResponseSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateResponseSourceMqEventSourceR2",
@@ -1270,13 +1334,15 @@ export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType,
+        S.NullOr(
+          SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType,
+        ),
       ),
     }),
   ).annotate({
@@ -1290,13 +1356,13 @@ export const SubscriptionsCreateResponseSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceVectorizeType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceVectorizeType | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsCreateResponseSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -1310,16 +1376,18 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(
+          SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType,
+        ),
       ),
     }),
   ).annotate({
@@ -1333,17 +1401,19 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerTy
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -1357,17 +1427,21 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType
 
 export interface SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -1547,13 +1621,13 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceImagesType =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceImagesType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceImagesType | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceImagesType,
+        S.NullOr(SubscriptionsDeleteResponseSourceMqEventSourceImagesType),
       ),
     }),
   ).annotate({
@@ -1566,12 +1640,14 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceKVType =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceKVType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceKVType | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsDeleteResponseSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsDeleteResponseSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsDeleteResponseSourceMqEventSourceKV",
@@ -1583,12 +1659,14 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceR2Type =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceR2Type;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceR2Type | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsDeleteResponseSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsDeleteResponseSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsDeleteResponseSourceMqEventSourceR2",
@@ -1601,13 +1679,15 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType,
+        S.NullOr(
+          SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType,
+        ),
       ),
     }),
   ).annotate({
@@ -1621,13 +1701,13 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -1641,16 +1721,18 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(
+          SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType,
+        ),
       ),
     }),
   ).annotate({
@@ -1664,17 +1746,19 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerTy
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -1688,17 +1772,21 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType
 
 export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -1789,23 +1877,27 @@ export const GetConsumerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersGetResultWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersGetResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+    maxConcurrency: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+    ),
+    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+    maxWaitTimeMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+    ),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
   }),
 ).annotate({
   identifier: "ConsumersGetResultWorkerSettings",
@@ -1816,25 +1908,27 @@ export const ConsumersGetResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersGetResultWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersGetResultWorkerSettings;
-  type?: ConsumersGetResultWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersGetResultWorkerSettings | null;
+  type?: ConsumersGetResultWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersGetResultWorkerSettings),
-    type: S.optional(ConsumersGetResultWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersGetResultWorkerSettings)),
+    type: S.optional(S.NullOr(ConsumersGetResultWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersGetResultWorker",
@@ -1842,21 +1936,21 @@ export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersGetResultHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersGetResultHTTPPullSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     visibilityTimeoutMs: S.optional(
-      S.Number.pipe(T.Body("visibility_timeout_ms")),
+      S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
     ),
   }),
 ).annotate({
@@ -1868,22 +1962,24 @@ export const ConsumersGetResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersGetResultHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersGetResultHTTPPullSettings;
-  type?: ConsumersGetResultHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersGetResultHTTPPullSettings | null;
+  type?: ConsumersGetResultHTTPPullType | null;
 }
 export const ConsumersGetResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersGetResultHTTPPullSettings),
-    type: S.optional(ConsumersGetResultHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersGetResultHTTPPullSettings)),
+    type: S.optional(S.NullOr(ConsumersGetResultHTTPPullType)),
   }),
 ).annotate({
   identifier: "ConsumersGetResultHTTPPull",
@@ -1990,24 +2086,28 @@ export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const GetResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "GetResponseConsumersItemWorkerSettings",
@@ -2018,25 +2118,27 @@ export const GetResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface GetResponseConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: GetResponseConsumersItemWorkerSettings;
-  type?: GetResponseConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: GetResponseConsumersItemWorkerSettings | null;
+  type?: GetResponseConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const GetResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(GetResponseConsumersItemWorkerSettings),
-    type: S.optional(GetResponseConsumersItemWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(GetResponseConsumersItemWorkerSettings)),
+    type: S.optional(S.NullOr(GetResponseConsumersItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseConsumersItemWorker",
@@ -2044,22 +2146,22 @@ export const GetResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const GetResponseConsumersItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -2071,22 +2173,24 @@ export const GetResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface GetResponseConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: GetResponseConsumersItemHTTPPullSettings;
-  type?: GetResponseConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: GetResponseConsumersItemHTTPPullSettings | null;
+  type?: GetResponseConsumersItemHTTPPullType | null;
 }
 export const GetResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(GetResponseConsumersItemHTTPPullSettings),
-    type: S.optional(GetResponseConsumersItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(GetResponseConsumersItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(GetResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "GetResponseConsumersItemHTTPPull",
@@ -2127,14 +2231,14 @@ export const GetResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface GetResponseProducersItemMqWorkerProducer {
-  script?: string;
-  type?: GetResponseProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: GetResponseProducersItemMqWorkerProducerType | null;
 }
 export const GetResponseProducersItemMqWorkerProducer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(GetResponseProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(S.NullOr(GetResponseProducersItemMqWorkerProducerType)),
     }),
 ).annotate({
   identifier: "GetResponseProducersItemMqWorkerProducer",
@@ -2144,14 +2248,14 @@ export type GetResponseProducersItemMqR2ProducerType = "r2_bucket";
 export const GetResponseProducersItemMqR2ProducerType = /*@__PURE__*/ S.String;
 
 export interface GetResponseProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: GetResponseProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: GetResponseProducersItemMqR2ProducerType | null;
 }
 export const GetResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(GetResponseProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(S.NullOr(GetResponseProducersItemMqR2ProducerType)),
     }),
 ).annotate({
   identifier: "GetResponseProducersItemMqR2Producer",
@@ -2174,18 +2278,22 @@ export const GetResponseProducersList = /*@__PURE__*/ S.Array(
 
 export interface GetResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const GetResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -2194,31 +2302,31 @@ export const GetResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetQueueResponse {
-  consumers?: GetResponseConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: GetResponseProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: GetResponseSettings;
+  consumers?: GetResponseConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: GetResponseProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: GetResponseSettings | null;
 }
 export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(GetResponseConsumersList),
+    consumers: S.optional(S.NullOr(GetResponseConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(GetResponseProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(GetResponseProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(GetResponseSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(GetResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQueueResponse",
@@ -2276,12 +2384,14 @@ export const SubscriptionsGetResponseSourceMqEventSourceImagesType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceImagesType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceImagesType | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceImagesType),
+      type: S.optional(
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceImagesType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsGetResponseSourceMqEventSourceImages",
@@ -2293,12 +2403,14 @@ export const SubscriptionsGetResponseSourceMqEventSourceKVType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceKVType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceKVType | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsGetResponseSourceMqEventSourceKV",
@@ -2310,12 +2422,14 @@ export const SubscriptionsGetResponseSourceMqEventSourceR2Type =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceR2Type;
+  type?: SubscriptionsGetResponseSourceMqEventSourceR2Type | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsGetResponseSourceMqEventSourceR2",
@@ -2328,13 +2442,13 @@ export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType,
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType),
       ),
     }),
   ).annotate({
@@ -2348,13 +2462,13 @@ export const SubscriptionsGetResponseSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceVectorizeType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceVectorizeType | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsGetResponseSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -2368,16 +2482,16 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType),
       ),
     }),
   ).annotate({
@@ -2391,17 +2505,19 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType 
 
 export interface SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -2415,17 +2531,21 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType =
 
 export interface SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow",
@@ -2512,24 +2632,28 @@ export const ListConsumersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersListResultItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersListResultItemWorkerSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "ConsumersListResultItemWorkerSettings",
@@ -2540,28 +2664,30 @@ export const ConsumersListResultItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersListResultItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersListResultItemWorkerSettings;
-  type?: ConsumersListResultItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersListResultItemWorkerSettings | null;
+  type?: ConsumersListResultItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
   /** Name of the consumer Worker script. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersListResultItemWorkerSettings),
-    type: S.optional(ConsumersListResultItemWorkerType),
-    script: S.optional(S.String),
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersListResultItemWorkerSettings)),
+    type: S.optional(S.NullOr(ConsumersListResultItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
+    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemWorker",
@@ -2569,22 +2695,22 @@ export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersListResultItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersListResultItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -2596,22 +2722,24 @@ export const ConsumersListResultItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersListResultItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersListResultItemHTTPPullSettings;
-  type?: ConsumersListResultItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersListResultItemHTTPPullSettings | null;
+  type?: ConsumersListResultItemHTTPPullType | null;
 }
 export const ConsumersListResultItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersListResultItemHTTPPullSettings),
-    type: S.optional(ConsumersListResultItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersListResultItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(ConsumersListResultItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemHTTPPull",
@@ -2685,24 +2813,28 @@ export const ListQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ListResultItemConsumersItemWorkerSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
   ).annotate({
     identifier: "ListResultItemConsumersItemWorkerSettings",
@@ -2713,25 +2845,27 @@ export const ListResultItemConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ListResultItemConsumersItemWorkerSettings;
-  type?: ListResultItemConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ListResultItemConsumersItemWorkerSettings | null;
+  type?: ListResultItemConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const ListResultItemConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ListResultItemConsumersItemWorkerSettings),
-    type: S.optional(ListResultItemConsumersItemWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ListResultItemConsumersItemWorkerSettings)),
+    type: S.optional(S.NullOr(ListResultItemConsumersItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemConsumersItemWorker",
@@ -2739,22 +2873,22 @@ export const ListResultItemConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ListResultItemConsumersItemHTTPPullSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
   ).annotate({
@@ -2766,22 +2900,24 @@ export const ListResultItemConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ListResultItemConsumersItemHTTPPullSettings;
-  type?: ListResultItemConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ListResultItemConsumersItemHTTPPullSettings | null;
+  type?: ListResultItemConsumersItemHTTPPullType | null;
 }
 export const ListResultItemConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ListResultItemConsumersItemHTTPPullSettings),
-    type: S.optional(ListResultItemConsumersItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ListResultItemConsumersItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(ListResultItemConsumersItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "ListResultItemConsumersItemHTTPPull",
@@ -2822,14 +2958,16 @@ export const ListResultItemProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface ListResultItemProducersItemMqWorkerProducer {
-  script?: string;
-  type?: ListResultItemProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: ListResultItemProducersItemMqWorkerProducerType | null;
 }
 export const ListResultItemProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(ListResultItemProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(ListResultItemProducersItemMqWorkerProducerType),
+      ),
     }),
   ).annotate({
     identifier: "ListResultItemProducersItemMqWorkerProducer",
@@ -2840,14 +2978,14 @@ export const ListResultItemProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
 export interface ListResultItemProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: ListResultItemProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: ListResultItemProducersItemMqR2ProducerType | null;
 }
 export const ListResultItemProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(ListResultItemProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(S.NullOr(ListResultItemProducersItemMqR2ProducerType)),
     }),
 ).annotate({
   identifier: "ListResultItemProducersItemMqR2Producer",
@@ -2870,18 +3008,22 @@ export const ListResultItemProducersList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItemSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const ListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -2889,31 +3031,31 @@ export const ListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemSettings>;
 
 export interface ListResultItem {
-  consumers?: ListResultItemConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: ListResultItemProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: ListResultItemSettings;
+  consumers?: ListResultItemConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: ListResultItemProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: ListResultItemSettings | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(ListResultItemConsumersList),
+    consumers: S.optional(S.NullOr(ListResultItemConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(ListResultItemProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(ListResultItemProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ListResultItemSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ListResultItemSettings)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -3010,13 +3152,13 @@ export const SubscriptionsListResultItemSourceMqEventSourceImagesType =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceImagesType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceImagesType | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceImagesType,
+        S.NullOr(SubscriptionsListResultItemSourceMqEventSourceImagesType),
       ),
     }),
   ).annotate({
@@ -3029,12 +3171,14 @@ export const SubscriptionsListResultItemSourceMqEventSourceKVType =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceKVType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceKVType | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsListResultItemSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsListResultItemSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsListResultItemSourceMqEventSourceKV",
@@ -3046,12 +3190,14 @@ export const SubscriptionsListResultItemSourceMqEventSourceR2Type =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceR2Type;
+  type?: SubscriptionsListResultItemSourceMqEventSourceR2Type | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsListResultItemSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsListResultItemSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsListResultItemSourceMqEventSourceR2",
@@ -3064,13 +3210,15 @@ export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType,
+        S.NullOr(
+          SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType,
+        ),
       ),
     }),
   ).annotate({
@@ -3084,13 +3232,13 @@ export const SubscriptionsListResultItemSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceVectorizeType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceVectorizeType | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsListResultItemSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -3104,16 +3252,18 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(
+          SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType,
+        ),
       ),
     }),
   ).annotate({
@@ -3127,17 +3277,19 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerTy
 
 export interface SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -3151,17 +3303,21 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType
 
 export interface SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -3245,18 +3401,22 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const EditRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -3268,15 +3428,15 @@ export interface PatchQueueRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  queueName?: string;
-  settings?: EditRequestSettings;
+  queueName?: string | null;
+  settings?: EditRequestSettings | null;
 }
 export const PatchQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(EditRequestSettings),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(EditRequestSettings)),
   })
     .pipe(
       T.Http({
@@ -3292,24 +3452,28 @@ export const PatchQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const EditResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "EditResponseConsumersItemWorkerSettings",
@@ -3320,25 +3484,27 @@ export const EditResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface EditResponseConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: EditResponseConsumersItemWorkerSettings;
-  type?: EditResponseConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: EditResponseConsumersItemWorkerSettings | null;
+  type?: EditResponseConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const EditResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(EditResponseConsumersItemWorkerSettings),
-    type: S.optional(EditResponseConsumersItemWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(EditResponseConsumersItemWorkerSettings)),
+    type: S.optional(S.NullOr(EditResponseConsumersItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponseConsumersItemWorker",
@@ -3346,22 +3512,22 @@ export const EditResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const EditResponseConsumersItemHTTPPullSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
   ).annotate({
@@ -3373,22 +3539,24 @@ export const EditResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface EditResponseConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: EditResponseConsumersItemHTTPPullSettings;
-  type?: EditResponseConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: EditResponseConsumersItemHTTPPullSettings | null;
+  type?: EditResponseConsumersItemHTTPPullType | null;
 }
 export const EditResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(EditResponseConsumersItemHTTPPullSettings),
-    type: S.optional(EditResponseConsumersItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(EditResponseConsumersItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(EditResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "EditResponseConsumersItemHTTPPull",
@@ -3429,14 +3597,14 @@ export const EditResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface EditResponseProducersItemMqWorkerProducer {
-  script?: string;
-  type?: EditResponseProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: EditResponseProducersItemMqWorkerProducerType | null;
 }
 export const EditResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(EditResponseProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(S.NullOr(EditResponseProducersItemMqWorkerProducerType)),
     }),
   ).annotate({
     identifier: "EditResponseProducersItemMqWorkerProducer",
@@ -3446,14 +3614,14 @@ export type EditResponseProducersItemMqR2ProducerType = "r2_bucket";
 export const EditResponseProducersItemMqR2ProducerType = /*@__PURE__*/ S.String;
 
 export interface EditResponseProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: EditResponseProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: EditResponseProducersItemMqR2ProducerType | null;
 }
 export const EditResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(EditResponseProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(S.NullOr(EditResponseProducersItemMqR2ProducerType)),
     }),
 ).annotate({
   identifier: "EditResponseProducersItemMqR2Producer",
@@ -3476,18 +3644,22 @@ export const EditResponseProducersList = /*@__PURE__*/ S.Array(
 
 export interface EditResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const EditResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -3496,31 +3668,31 @@ export const EditResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchQueueResponse {
-  consumers?: EditResponseConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: EditResponseProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: EditResponseSettings;
+  consumers?: EditResponseConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: EditResponseProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: EditResponseSettings | null;
 }
 export const PatchQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(EditResponseConsumersList),
+    consumers: S.optional(S.NullOr(EditResponseConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(EditResponseProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(EditResponseProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(EditResponseSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(EditResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchQueueResponse",
@@ -3556,22 +3728,22 @@ export interface PatchSubscriptionRequest {
   /** A Resource identifier. */
   subscriptionId: string;
   /** Destination configuration for the subscription */
-  destination?: SubscriptionsUpdateRequestDestination;
+  destination?: SubscriptionsUpdateRequestDestination | null;
   /** Whether the subscription is active */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** List of event types this subscription handles */
-  events?: SubscriptionsUpdateRequestEventsList;
+  events?: SubscriptionsUpdateRequestEventsList | null;
   /** Name of the subscription */
-  name?: string;
+  name?: string | null;
 }
 export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
-    destination: S.optional(SubscriptionsUpdateRequestDestination),
-    enabled: S.optional(S.Boolean),
-    events: S.optional(SubscriptionsUpdateRequestEventsList),
-    name: S.optional(S.String),
+    destination: S.optional(S.NullOr(SubscriptionsUpdateRequestDestination)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    events: S.optional(S.NullOr(SubscriptionsUpdateRequestEventsList)),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3616,13 +3788,13 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceImagesType =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceImagesType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceImagesType | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceImagesType,
+        S.NullOr(SubscriptionsUpdateResponseSourceMqEventSourceImagesType),
       ),
     }),
   ).annotate({
@@ -3635,12 +3807,14 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceKVType =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceKVType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceKVType | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsUpdateResponseSourceMqEventSourceKVType),
+      type: S.optional(
+        S.NullOr(SubscriptionsUpdateResponseSourceMqEventSourceKVType),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsUpdateResponseSourceMqEventSourceKV",
@@ -3652,12 +3826,14 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceR2Type =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceR2Type;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceR2Type | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(SubscriptionsUpdateResponseSourceMqEventSourceR2Type),
+      type: S.optional(
+        S.NullOr(SubscriptionsUpdateResponseSourceMqEventSourceR2Type),
+      ),
     }),
   ).annotate({
     identifier: "SubscriptionsUpdateResponseSourceMqEventSourceR2",
@@ -3670,13 +3846,15 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType,
+        S.NullOr(
+          SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType,
+        ),
       ),
     }),
   ).annotate({
@@ -3690,13 +3868,13 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType,
+        S.NullOr(SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType),
       ),
     }),
   ).annotate({
@@ -3710,16 +3888,18 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string;
+  modelName?: string | null;
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType,
+        S.NullOr(
+          SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType,
+        ),
       ),
     }),
   ).annotate({
@@ -3733,17 +3913,19 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerTy
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType | null;
   /** Name of the worker */
-  workerName?: string;
+  workerName?: string | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        S.NullOr(
+          SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        ),
       ),
-      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -3757,17 +3939,21 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType
 
 export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType | null;
   /** Name of the workflow */
-  workflowName?: string;
+  workflowName?: string | null;
 }
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType,
+        S.NullOr(
+          SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType,
+        ),
       ),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      workflowName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("workflow_name")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -3836,17 +4022,17 @@ export interface PullMessageRequest {
   /** A Resource identifier. */
   queueId: string;
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const PullMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
     visibilityTimeoutMs: S.optional(
-      S.Number.pipe(T.Body("visibility_timeout_ms")),
+      S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
     ),
   })
     .pipe(
@@ -3862,22 +4048,22 @@ export const PullMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PullMessageRequest>;
 
 export interface MessagesPullResponseMessagesItem {
-  id?: string;
-  attempts?: number;
-  body?: string;
+  id?: string | null;
+  attempts?: number | null;
+  body?: string | null;
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
-  leaseId?: string;
-  metadata?: unknown;
-  timestampMs?: number;
+  leaseId?: string | null;
+  metadata?: unknown | null;
+  timestampMs?: number | null;
 }
 export const MessagesPullResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    attempts: S.optional(S.Number),
-    body: S.optional(S.String),
-    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
-    metadata: S.optional(S.Unknown),
-    timestampMs: S.optional(S.Number.pipe(T.Body("timestamp_ms"))),
+    id: S.optional(S.NullOr(S.String)),
+    attempts: S.optional(S.NullOr(S.Number)),
+    body: S.optional(S.NullOr(S.String)),
+    leaseId: S.optional(S.NullOr(S.String).pipe(T.Body("lease_id"))),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    timestampMs: S.optional(S.NullOr(S.Number).pipe(T.Body("timestamp_ms"))),
   }),
 ).annotate({
   identifier: "MessagesPullResponseMessagesItem",
@@ -3911,11 +4097,11 @@ export const MessagesPullResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
 
 export interface MessagesPullResponseMetadata {
   /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
-  metrics?: MessagesPullResponseMetadataMetrics;
+  metrics?: MessagesPullResponseMetadataMetrics | null;
 }
 export const MessagesPullResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metrics: S.optional(MessagesPullResponseMetadataMetrics),
+    metrics: S.optional(S.NullOr(MessagesPullResponseMetadataMetrics)),
   }),
 ).annotate({
   identifier: "MessagesPullResponseMetadata",
@@ -3924,17 +4110,17 @@ export const MessagesPullResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PullMessageResponse {
   /** The number of unacknowledged messages in the queue. */
-  messageBacklogCount?: number;
-  messages?: MessagesPullResponseMessagesList;
-  metadata?: MessagesPullResponseMetadata;
+  messageBacklogCount?: number | null;
+  messages?: MessagesPullResponseMessagesList | null;
+  metadata?: MessagesPullResponseMetadata | null;
 }
 export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageBacklogCount: S.optional(
-      S.Number.pipe(T.Body("message_backlog_count")),
+      S.NullOr(S.Number).pipe(T.Body("message_backlog_count")),
     ),
-    messages: S.optional(MessagesPullResponseMessagesList),
-    metadata: S.optional(MessagesPullResponseMetadata),
+    messages: S.optional(S.NullOr(MessagesPullResponseMessagesList)),
+    metadata: S.optional(S.NullOr(MessagesPullResponseMetadata)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PullMessageResponse",
@@ -3948,20 +4134,20 @@ export interface PushMessageRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  body?: unknown;
-  contentType?: MessagesPushRequestContentType | (string & {});
+  body?: unknown | null;
+  contentType?: MessagesPushRequestContentType | (string & {}) | null;
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number;
+  delaySeconds?: number | null;
 }
 export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: S.optional(S.Unknown),
+    body: S.optional(S.NullOr(S.Unknown)),
     contentType: S.optional(
-      MessagesPushRequestContentType.pipe(T.Body("content_type")),
+      S.NullOr(MessagesPushRequestContentType).pipe(T.Body("content_type")),
     ),
-    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
   })
     .pipe(
       T.Http({
@@ -3997,11 +4183,11 @@ export const MessagesPushResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
 
 export interface MessagesPushResponseMetadata {
   /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
-  metrics?: MessagesPushResponseMetadataMetrics;
+  metrics?: MessagesPushResponseMetadataMetrics | null;
 }
 export const MessagesPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metrics: S.optional(MessagesPushResponseMetadataMetrics),
+    metrics: S.optional(S.NullOr(MessagesPushResponseMetadataMetrics)),
   }),
 ).annotate({
   identifier: "MessagesPushResponseMetadata",
@@ -4009,11 +4195,11 @@ export const MessagesPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PushMessageResponse {
-  metadata?: MessagesPushResponseMetadata;
+  metadata?: MessagesPushResponseMetadata | null;
 }
 export const PushMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(MessagesPushResponseMetadata),
+    metadata: S.optional(S.NullOr(MessagesPushResponseMetadata)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PushMessageResponse",
@@ -4025,14 +4211,14 @@ export interface StartPurgeRequest {
   /** A Resource identifier. */
   queueId: string;
   /** Confimation that all messages will be deleted permanently. */
-  deleteMessagesPermanently?: boolean;
+  deleteMessagesPermanently?: boolean | null;
 }
 export const StartPurgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     deleteMessagesPermanently: S.optional(
-      S.Boolean.pipe(T.Body("delete_messages_permanently")),
+      S.NullOr(S.Boolean).pipe(T.Body("delete_messages_permanently")),
     ),
   })
     .pipe(
@@ -4049,24 +4235,28 @@ export const StartPurgeRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PurgeStartResponseConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const PurgeStartResponseConsumersItemWorkerSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
   ).annotate({
     identifier: "PurgeStartResponseConsumersItemWorkerSettings",
@@ -4077,26 +4267,30 @@ export const PurgeStartResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface PurgeStartResponseConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: PurgeStartResponseConsumersItemWorkerSettings;
-  type?: PurgeStartResponseConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: PurgeStartResponseConsumersItemWorkerSettings | null;
+  type?: PurgeStartResponseConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const PurgeStartResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      settings: S.optional(PurgeStartResponseConsumersItemWorkerSettings),
-      type: S.optional(PurgeStartResponseConsumersItemWorkerType),
-      script: S.optional(S.String),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deadLetterQueue: S.optional(
+        S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+      ),
+      queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+      settings: S.optional(
+        S.NullOr(PurgeStartResponseConsumersItemWorkerSettings),
+      ),
+      type: S.optional(S.NullOr(PurgeStartResponseConsumersItemWorkerType)),
+      script: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PurgeStartResponseConsumersItemWorker",
@@ -4104,22 +4298,22 @@ export const PurgeStartResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(
 
 export interface PurgeStartResponseConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const PurgeStartResponseConsumersItemHTTPPullSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
   ).annotate({
@@ -4132,23 +4326,27 @@ export const PurgeStartResponseConsumersItemHTTPPullType =
 
 export interface PurgeStartResponseConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: PurgeStartResponseConsumersItemHTTPPullSettings;
-  type?: PurgeStartResponseConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: PurgeStartResponseConsumersItemHTTPPullSettings | null;
+  type?: PurgeStartResponseConsumersItemHTTPPullType | null;
 }
 export const PurgeStartResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      settings: S.optional(PurgeStartResponseConsumersItemHTTPPullSettings),
-      type: S.optional(PurgeStartResponseConsumersItemHTTPPullType),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deadLetterQueue: S.optional(
+        S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+      ),
+      queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+      settings: S.optional(
+        S.NullOr(PurgeStartResponseConsumersItemHTTPPullSettings),
+      ),
+      type: S.optional(S.NullOr(PurgeStartResponseConsumersItemHTTPPullType)),
     }),
 ).annotate({
   identifier: "PurgeStartResponseConsumersItemHTTPPull",
@@ -4190,14 +4388,16 @@ export const PurgeStartResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface PurgeStartResponseProducersItemMqWorkerProducer {
-  script?: string;
-  type?: PurgeStartResponseProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: PurgeStartResponseProducersItemMqWorkerProducerType | null;
 }
 export const PurgeStartResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(PurgeStartResponseProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(PurgeStartResponseProducersItemMqWorkerProducerType),
+      ),
     }),
   ).annotate({
     identifier: "PurgeStartResponseProducersItemMqWorkerProducer",
@@ -4208,14 +4408,16 @@ export const PurgeStartResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
 export interface PurgeStartResponseProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: PurgeStartResponseProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: PurgeStartResponseProducersItemMqR2ProducerType | null;
 }
 export const PurgeStartResponseProducersItemMqR2Producer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(PurgeStartResponseProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(
+        S.NullOr(PurgeStartResponseProducersItemMqR2ProducerType),
+      ),
     }),
   ).annotate({
     identifier: "PurgeStartResponseProducersItemMqR2Producer",
@@ -4239,18 +4441,22 @@ export const PurgeStartResponseProducersList = /*@__PURE__*/ S.Array(
 
 export interface PurgeStartResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const PurgeStartResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -4259,31 +4465,31 @@ export const PurgeStartResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StartPurgeResponse {
-  consumers?: PurgeStartResponseConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: PurgeStartResponseProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: PurgeStartResponseSettings;
+  consumers?: PurgeStartResponseConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: PurgeStartResponseProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: PurgeStartResponseSettings | null;
 }
 export const StartPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(PurgeStartResponseConsumersList),
+    consumers: S.optional(S.NullOr(PurgeStartResponseConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(PurgeStartResponseProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(PurgeStartResponseProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(PurgeStartResponseSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(PurgeStartResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartPurgeResponse",
@@ -4315,14 +4521,14 @@ export const StatusPurgeRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatusPurgeResponse {
   /** Indicates if the last purge operation completed successfully. */
-  completed?: string;
+  completed?: string | null;
   /** Timestamp when the last purge operation started. */
-  startedAt?: string;
+  startedAt?: string | null;
 }
 export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    completed: S.optional(S.String),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    completed: S.optional(S.NullOr(S.String)),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusPurgeResponse",
@@ -4333,24 +4539,28 @@ export const ConsumersUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "ConsumersUpdateRequestSettingsWorker",
@@ -4358,22 +4568,22 @@ export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
 
 export interface ConsumersUpdateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersUpdateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -4404,20 +4614,22 @@ export interface UpdateConsumerRequest {
   /** A Resource identifier. */
   consumerId: string;
   /** Name of a Worker */
-  scriptName?: string;
+  scriptName?: string | null;
   type: ConsumersUpdateRequestType | (string & {});
-  deadLetterQueue?: string;
-  settings?: ConsumersUpdateRequestSettings;
+  deadLetterQueue?: string | null;
+  settings?: ConsumersUpdateRequestSettings | null;
 }
 export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     type: ConsumersUpdateRequestType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersUpdateRequestSettings),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    settings: S.optional(S.NullOr(ConsumersUpdateRequestSettings)),
   })
     .pipe(
       T.Http({
@@ -4433,23 +4645,27 @@ export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersUpdateResultWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const ConsumersUpdateResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+    maxConcurrency: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+    ),
+    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+    maxWaitTimeMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+    ),
+    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
   }),
 ).annotate({
   identifier: "ConsumersUpdateResultWorkerSettings",
@@ -4460,25 +4676,27 @@ export const ConsumersUpdateResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateResultWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersUpdateResultWorkerSettings;
-  type?: ConsumersUpdateResultWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersUpdateResultWorkerSettings | null;
+  type?: ConsumersUpdateResultWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const ConsumersUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersUpdateResultWorkerSettings),
-    type: S.optional(ConsumersUpdateResultWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersUpdateResultWorkerSettings)),
+    type: S.optional(S.NullOr(ConsumersUpdateResultWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersUpdateResultWorker",
@@ -4486,22 +4704,22 @@ export const ConsumersUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConsumersUpdateResultHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const ConsumersUpdateResultHTTPPullSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -4513,22 +4731,24 @@ export const ConsumersUpdateResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateResultHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: ConsumersUpdateResultHTTPPullSettings;
-  type?: ConsumersUpdateResultHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: ConsumersUpdateResultHTTPPullSettings | null;
+  type?: ConsumersUpdateResultHTTPPullType | null;
 }
 export const ConsumersUpdateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(ConsumersUpdateResultHTTPPullSettings),
-    type: S.optional(ConsumersUpdateResultHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(ConsumersUpdateResultHTTPPullSettings)),
+    type: S.optional(S.NullOr(ConsumersUpdateResultHTTPPullType)),
   }),
 ).annotate({
   identifier: "ConsumersUpdateResultHTTPPull",
@@ -4568,18 +4788,22 @@ export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const UpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -4591,15 +4815,15 @@ export interface UpdateQueueRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  queueName?: string;
-  settings?: UpdateRequestSettings;
+  queueName?: string | null;
+  settings?: UpdateRequestSettings | null;
 }
 export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(UpdateRequestSettings),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(UpdateRequestSettings)),
   })
     .pipe(
       T.Http({
@@ -4615,24 +4839,28 @@ export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateResponseConsumersItemWorkerSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
+  maxConcurrency?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
+  maxWaitTimeMs?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
 }
 export const UpdateResponseConsumersItemWorkerSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
+      ),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
+      ),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
     }),
   ).annotate({
     identifier: "UpdateResponseConsumersItemWorkerSettings",
@@ -4643,25 +4871,27 @@ export const UpdateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseConsumersItemWorker {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: UpdateResponseConsumersItemWorkerSettings;
-  type?: UpdateResponseConsumersItemWorkerType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: UpdateResponseConsumersItemWorkerSettings | null;
+  type?: UpdateResponseConsumersItemWorkerType | null;
   /** Name of a Worker */
-  script?: string;
+  script?: string | null;
 }
 export const UpdateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(UpdateResponseConsumersItemWorkerSettings),
-    type: S.optional(UpdateResponseConsumersItemWorkerType),
-    script: S.optional(S.String),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(UpdateResponseConsumersItemWorkerSettings)),
+    type: S.optional(S.NullOr(UpdateResponseConsumersItemWorkerType)),
+    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateResponseConsumersItemWorker",
@@ -4669,22 +4899,22 @@ export const UpdateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateResponseConsumersItemHTTPPullSettings {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
+  batchSize?: number | null;
   /** The maximum number of retries */
-  maxRetries?: number;
+  maxRetries?: number | null;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
+  retryDelay?: number | null;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
+  visibilityTimeoutMs?: number | null;
 }
 export const UpdateResponseConsumersItemHTTPPullSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
+        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
   ).annotate({
@@ -4696,22 +4926,24 @@ export const UpdateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseConsumersItemHTTPPull {
   /** A Resource identifier. */
-  consumerId?: string;
-  createdOn?: string;
+  consumerId?: string | null;
+  createdOn?: string | null;
   /** Name of the dead letter queue, or empty string if not configured */
-  deadLetterQueue?: string;
-  queueName?: string;
-  settings?: UpdateResponseConsumersItemHTTPPullSettings;
-  type?: UpdateResponseConsumersItemHTTPPullType;
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: UpdateResponseConsumersItemHTTPPullSettings | null;
+  type?: UpdateResponseConsumersItemHTTPPullType | null;
 }
 export const UpdateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(UpdateResponseConsumersItemHTTPPullSettings),
-    type: S.optional(UpdateResponseConsumersItemHTTPPullType),
+    consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
+    ),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(UpdateResponseConsumersItemHTTPPullSettings)),
+    type: S.optional(S.NullOr(UpdateResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
   identifier: "UpdateResponseConsumersItemHTTPPull",
@@ -4752,14 +4984,16 @@ export const UpdateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface UpdateResponseProducersItemMqWorkerProducer {
-  script?: string;
-  type?: UpdateResponseProducersItemMqWorkerProducerType;
+  script?: string | null;
+  type?: UpdateResponseProducersItemMqWorkerProducerType | null;
 }
 export const UpdateResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.String),
-      type: S.optional(UpdateResponseProducersItemMqWorkerProducerType),
+      script: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(UpdateResponseProducersItemMqWorkerProducerType),
+      ),
     }),
   ).annotate({
     identifier: "UpdateResponseProducersItemMqWorkerProducer",
@@ -4770,14 +5004,14 @@ export const UpdateResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
 export interface UpdateResponseProducersItemMqR2Producer {
-  bucketName?: string;
-  type?: UpdateResponseProducersItemMqR2ProducerType;
+  bucketName?: string | null;
+  type?: UpdateResponseProducersItemMqR2ProducerType | null;
 }
 export const UpdateResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      type: S.optional(UpdateResponseProducersItemMqR2ProducerType),
+      bucketName: S.optional(S.NullOr(S.String).pipe(T.Body("bucket_name"))),
+      type: S.optional(S.NullOr(UpdateResponseProducersItemMqR2ProducerType)),
     }),
 ).annotate({
   identifier: "UpdateResponseProducersItemMqR2Producer",
@@ -4800,18 +5034,22 @@ export const UpdateResponseProducersList = /*@__PURE__*/ S.Array(
 
 export interface UpdateResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
+  deliveryDelay?: number | null;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
+  deliveryPaused?: boolean | null;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
+  messageRetentionPeriod?: number | null;
 }
 export const UpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    deliveryDelay: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
+    ),
+    deliveryPaused: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
+    ),
     messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
+      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -4820,31 +5058,31 @@ export const UpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateQueueResponse {
-  consumers?: UpdateResponseConsumersList;
-  consumersTotalCount?: number;
-  createdOn?: string;
-  modifiedOn?: string;
-  producers?: UpdateResponseProducersList;
-  producersTotalCount?: number;
-  queueId?: string;
-  queueName?: string;
-  settings?: UpdateResponseSettings;
+  consumers?: UpdateResponseConsumersList | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?: UpdateResponseProducersList | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: UpdateResponseSettings | null;
 }
 export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consumers: S.optional(UpdateResponseConsumersList),
+    consumers: S.optional(S.NullOr(UpdateResponseConsumersList)),
     consumersTotalCount: S.optional(
-      S.Number.pipe(T.Body("consumers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("consumers_total_count")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    producers: S.optional(UpdateResponseProducersList),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    producers: S.optional(S.NullOr(UpdateResponseProducersList)),
     producersTotalCount: S.optional(
-      S.Number.pipe(T.Body("producers_total_count")),
+      S.NullOr(S.Number).pipe(T.Body("producers_total_count")),
     ),
-    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
-    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(UpdateResponseSettings),
+    queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    settings: S.optional(S.NullOr(UpdateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateQueueResponse",

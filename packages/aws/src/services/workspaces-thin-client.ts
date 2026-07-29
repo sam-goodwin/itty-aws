@@ -161,10 +161,11 @@ export type Arn = string;
 export type DesktopEndpoint = string | redacted.Redacted<string>;
 export type SoftwareSetUpdateSchedule =
   | "USE_MAINTENANCE_WINDOW"
-  | "APPLY_IMMEDIATELY";
+  | "APPLY_IMMEDIATELY"
+  | (string & {});
 export const SoftwareSetUpdateSchedule = /*@__PURE__*/ S.String;
 
-export type MaintenanceWindowType = "SYSTEM" | "CUSTOM";
+export type MaintenanceWindowType = "SYSTEM" | "CUSTOM" | (string & {});
 export const MaintenanceWindowType = /*@__PURE__*/ S.String;
 
 export type Hour = number;
@@ -176,22 +177,23 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
-export type DayOfWeekList = (DayOfWeek | (string & {}))[];
+export type DayOfWeekList = DayOfWeek[];
 export const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
-export type ApplyTimeOf = "UTC" | "DEVICE";
+export type ApplyTimeOf = "UTC" | "DEVICE" | (string & {});
 export const ApplyTimeOf = /*@__PURE__*/ S.String;
 
 export interface MaintenanceWindow {
-  type: MaintenanceWindowType | (string & {});
+  type: MaintenanceWindowType;
   startTimeHour?: number;
   startTimeMinute?: number;
   endTimeHour?: number;
   endTimeMinute?: number;
-  daysOfTheWeek?: (DayOfWeek | (string & {}))[];
-  applyTimeOf?: ApplyTimeOf | (string & {});
+  daysOfTheWeek?: DayOfWeek[];
+  applyTimeOf?: ApplyTimeOf;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -206,7 +208,10 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MaintenanceWindow",
 }) as any as S.Schema<MaintenanceWindow>;
-export type SoftwareSetUpdateMode = "USE_LATEST" | "USE_DESIRED";
+export type SoftwareSetUpdateMode =
+  | "USE_LATEST"
+  | "USE_DESIRED"
+  | (string & {});
 export const SoftwareSetUpdateMode = /*@__PURE__*/ S.String;
 
 export type SoftwareSetId = string;
@@ -228,9 +233,9 @@ export interface CreateEnvironmentRequest {
   name?: string | redacted.Redacted<string>;
   desktopArn: string;
   desktopEndpoint?: string | redacted.Redacted<string>;
-  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule | (string & {});
+  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule;
   maintenanceWindow?: MaintenanceWindow;
-  softwareSetUpdateMode?: SoftwareSetUpdateMode | (string & {});
+  softwareSetUpdateMode?: SoftwareSetUpdateMode;
   desiredSoftwareSetId?: string;
   kmsKeyArn?: string;
   clientToken?: string;
@@ -264,7 +269,11 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
 export type EnvironmentId = string;
-export type DesktopType = "workspaces" | "appstream" | "workspaces-web";
+export type DesktopType =
+  | "workspaces"
+  | "appstream"
+  | "workspaces-web"
+  | (string & {});
 export const DesktopType = /*@__PURE__*/ S.String;
 
 export type ActivationCode = string | redacted.Redacted<string>;
@@ -373,12 +382,12 @@ export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
-export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED";
+export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
 export const TargetDeviceStatus = /*@__PURE__*/ S.String;
 
 export interface DeregisterDeviceRequest {
   id: string;
-  targetDeviceStatus?: TargetDeviceStatus | (string & {});
+  targetDeviceStatus?: TargetDeviceStatus;
   clientToken?: string;
 }
 export const DeregisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -427,19 +436,22 @@ export type DeviceStatus =
   | "REGISTERED"
   | "DEREGISTERING"
   | "DEREGISTERED"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const DeviceStatus = /*@__PURE__*/ S.String;
 
 export type DeviceSoftwareSetComplianceStatus =
   | "NONE"
   | "COMPLIANT"
-  | "NOT_COMPLIANT";
+  | "NOT_COMPLIANT"
+  | (string & {});
 export const DeviceSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
 
 export type SoftwareSetUpdateStatus =
   | "AVAILABLE"
   | "IN_PROGRESS"
-  | "UP_TO_DATE";
+  | "UP_TO_DATE"
+  | (string & {});
 export const SoftwareSetUpdateStatus = /*@__PURE__*/ S.String;
 
 export type UserId = string | redacted.Redacted<string>;
@@ -521,7 +533,8 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentSoftwareSetComplianceStatus =
   | "NO_REGISTERED_DEVICES"
   | "COMPLIANT"
-  | "NOT_COMPLIANT";
+  | "NOT_COMPLIANT"
+  | (string & {});
 export const EnvironmentSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -595,7 +608,10 @@ export const GetSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSoftwareSetRequest",
 }) as any as S.Schema<GetSoftwareSetRequest>;
-export type SoftwareSetValidationStatus = "VALIDATED" | "NOT_VALIDATED";
+export type SoftwareSetValidationStatus =
+  | "VALIDATED"
+  | "NOT_VALIDATED"
+  | (string & {});
 export const SoftwareSetValidationStatus = /*@__PURE__*/ S.String;
 
 export interface Software {
@@ -887,7 +903,7 @@ export interface UpdateDeviceRequest {
   id: string;
   name?: string | redacted.Redacted<string>;
   desiredSoftwareSetId?: string;
-  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule | (string & {});
+  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule;
 }
 export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -922,9 +938,9 @@ export interface UpdateEnvironmentRequest {
   name?: string | redacted.Redacted<string>;
   desktopArn?: string;
   desktopEndpoint?: string | redacted.Redacted<string>;
-  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule | (string & {});
+  softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule;
   maintenanceWindow?: MaintenanceWindow;
-  softwareSetUpdateMode?: SoftwareSetUpdateMode | (string & {});
+  softwareSetUpdateMode?: SoftwareSetUpdateMode;
   desiredSoftwareSetId?: string;
   deviceCreationTags?: { [key: string]: string | undefined };
 }
@@ -962,7 +978,7 @@ export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvironmentResponse>;
 export interface UpdateSoftwareSetRequest {
   id: string;
-  validationStatus: SoftwareSetValidationStatus | (string & {});
+  validationStatus: SoftwareSetValidationStatus;
 }
 export const UpdateSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -997,7 +1013,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type FieldName = string;

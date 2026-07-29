@@ -50,13 +50,13 @@ export interface CreateCustomCsrForAccountRequest {
   /** State or province name. */
   state: string;
   /** Optional description for the CSR. */
-  description?: string;
+  description?: string | null;
   /** Key algorithm to use for the CSR. Defaults to rsa2048 if not specified. */
-  keyType?: CreateRequestKeyType | (string & {});
+  keyType?: CreateRequestKeyType | (string & {}) | null;
   /** Human-readable name for the CSR. */
-  name?: string;
+  name?: string | null;
   /** Organizational unit name. */
-  organizationalUnit?: string;
+  organizationalUnit?: string | null;
 }
 export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67,11 +67,13 @@ export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     organization: S.String,
     sans: CreateRequestSansList,
     state: S.String,
-    description: S.optional(S.String),
-    keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    keyType: S.optional(
+      S.NullOr(CreateRequestKeyType).pipe(T.Body("key_type")),
+    ),
+    name: S.optional(S.NullOr(S.String)),
     organizationalUnit: S.optional(
-      S.String.pipe(T.Body("organizational_unit")),
+      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
     ),
   })
     .pipe(
@@ -103,46 +105,46 @@ export interface CreateCustomCsrResponse {
   /** The key algorithm used to generate the CSR. */
   keyType: CreateResponseKeyType;
   /** Account identifier associated with this CSR. */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The common name (domain) for the CSR. */
-  commonName?: string;
+  commonName?: string | null;
   /** Two-letter ISO 3166-1 alpha-2 country code. */
-  country?: string;
+  country?: string | null;
   /** The PEM-encoded Certificate Signing Request. */
-  csr?: string;
+  csr?: string | null;
   /** Optional description for the CSR. */
-  description?: string;
+  description?: string | null;
   /** City or locality name. */
-  locality?: string;
+  locality?: string | null;
   /** Human-readable name for the CSR. */
-  name?: string;
+  name?: string | null;
   /** Organization name. */
-  organization?: string;
+  organization?: string | null;
   /** Organizational unit name. */
-  organizationalUnit?: string;
+  organizationalUnit?: string | null;
   /** Subject Alternative Names included in the CSR. */
-  sans?: CreateResponseSansList;
+  sans?: CreateResponseSansList | null;
   /** State or province name. */
-  state?: string;
+  state?: string | null;
 }
 export const CreateCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     keyType: CreateResponseKeyType.pipe(T.Body("key_type")),
-    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
-    country: S.optional(S.String),
-    csr: S.optional(S.String),
-    description: S.optional(S.String),
-    locality: S.optional(S.String),
-    name: S.optional(S.String),
-    organization: S.optional(S.String),
+    accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
+    country: S.optional(S.NullOr(S.String)),
+    csr: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    locality: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    organization: S.optional(S.NullOr(S.String)),
     organizationalUnit: S.optional(
-      S.String.pipe(T.Body("organizational_unit")),
+      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
     ),
-    sans: S.optional(CreateResponseSansList),
-    state: S.optional(S.String),
+    sans: S.optional(S.NullOr(CreateResponseSansList)),
+    state: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrResponse",
@@ -164,13 +166,13 @@ export interface CreateCustomCsrForZoneRequest {
   /** State or province name. */
   state: string;
   /** Optional description for the CSR. */
-  description?: string;
+  description?: string | null;
   /** Key algorithm to use for the CSR. Defaults to rsa2048 if not specified. */
-  keyType?: CreateRequestKeyType | (string & {});
+  keyType?: CreateRequestKeyType | (string & {}) | null;
   /** Human-readable name for the CSR. */
-  name?: string;
+  name?: string | null;
   /** Organizational unit name. */
-  organizationalUnit?: string;
+  organizationalUnit?: string | null;
 }
 export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -181,11 +183,13 @@ export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     organization: S.String,
     sans: CreateRequestSansList,
     state: S.String,
-    description: S.optional(S.String),
-    keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    keyType: S.optional(
+      S.NullOr(CreateRequestKeyType).pipe(T.Body("key_type")),
+    ),
+    name: S.optional(S.NullOr(S.String)),
     organizationalUnit: S.optional(
-      S.String.pipe(T.Body("organizational_unit")),
+      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
     ),
   })
     .pipe(
@@ -226,11 +230,11 @@ export const DeleteCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomCsrResponse {
   /** Custom CSR identifier tag. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCsrResponse",
@@ -299,46 +303,46 @@ export interface GetCustomCsrResponse {
   /** The key algorithm used to generate the CSR. */
   keyType: GetResponseKeyType;
   /** Account identifier associated with this CSR. */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The common name (domain) for the CSR. */
-  commonName?: string;
+  commonName?: string | null;
   /** Two-letter ISO 3166-1 alpha-2 country code. */
-  country?: string;
+  country?: string | null;
   /** The PEM-encoded Certificate Signing Request. */
-  csr?: string;
+  csr?: string | null;
   /** Optional description for the CSR. */
-  description?: string;
+  description?: string | null;
   /** City or locality name. */
-  locality?: string;
+  locality?: string | null;
   /** Human-readable name for the CSR. */
-  name?: string;
+  name?: string | null;
   /** Organization name. */
-  organization?: string;
+  organization?: string | null;
   /** Organizational unit name. */
-  organizationalUnit?: string;
+  organizationalUnit?: string | null;
   /** Subject Alternative Names included in the CSR. */
-  sans?: GetResponseSansList;
+  sans?: GetResponseSansList | null;
   /** State or province name. */
-  state?: string;
+  state?: string | null;
 }
 export const GetCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     keyType: GetResponseKeyType.pipe(T.Body("key_type")),
-    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
-    country: S.optional(S.String),
-    csr: S.optional(S.String),
-    description: S.optional(S.String),
-    locality: S.optional(S.String),
-    name: S.optional(S.String),
-    organization: S.optional(S.String),
+    accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
+    country: S.optional(S.NullOr(S.String)),
+    csr: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    locality: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    organization: S.optional(S.NullOr(S.String)),
     organizationalUnit: S.optional(
-      S.String.pipe(T.Body("organizational_unit")),
+      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
     ),
-    sans: S.optional(GetResponseSansList),
-    state: S.optional(S.String),
+    sans: S.optional(S.NullOr(GetResponseSansList)),
+    state: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCsrResponse",
@@ -409,46 +413,46 @@ export interface ListResultItem {
   /** The key algorithm used to generate the CSR. */
   keyType: ListResultItemKeyType;
   /** Account identifier associated with this CSR. */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The common name (domain) for the CSR. */
-  commonName?: string;
+  commonName?: string | null;
   /** Two-letter ISO 3166-1 alpha-2 country code. */
-  country?: string;
+  country?: string | null;
   /** The PEM-encoded Certificate Signing Request. */
-  csr?: string;
+  csr?: string | null;
   /** Optional description for the CSR. */
-  description?: string;
+  description?: string | null;
   /** City or locality name. */
-  locality?: string;
+  locality?: string | null;
   /** Human-readable name for the CSR. */
-  name?: string;
+  name?: string | null;
   /** Organization name. */
-  organization?: string;
+  organization?: string | null;
   /** Organizational unit name. */
-  organizationalUnit?: string;
+  organizationalUnit?: string | null;
   /** Subject Alternative Names included in the CSR. */
-  sans?: ListResultItemSansList;
+  sans?: ListResultItemSansList | null;
   /** State or province name. */
-  state?: string;
+  state?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     keyType: ListResultItemKeyType.pipe(T.Body("key_type")),
-    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
-    country: S.optional(S.String),
-    csr: S.optional(S.String),
-    description: S.optional(S.String),
-    locality: S.optional(S.String),
-    name: S.optional(S.String),
-    organization: S.optional(S.String),
+    accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
+    country: S.optional(S.NullOr(S.String)),
+    csr: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    locality: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    organization: S.optional(S.NullOr(S.String)),
     organizationalUnit: S.optional(
-      S.String.pipe(T.Body("organizational_unit")),
+      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
     ),
-    sans: S.optional(ListResultItemSansList),
-    state: S.optional(S.String),
+    sans: S.optional(S.NullOr(ListResultItemSansList)),
+    state: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 

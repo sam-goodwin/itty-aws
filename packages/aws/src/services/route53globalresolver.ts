@@ -156,7 +156,8 @@ export type ISO8601TimeString = Date;
 export type HostedZoneAssociationStatus =
   | "CREATING"
   | "OPERATIONAL"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const HostedZoneAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateHostedZoneOutput {
@@ -183,37 +184,45 @@ export const AssociateHostedZoneOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateHostedZoneOutput",
 }) as any as S.Schema<AssociateHostedZoneOutput>;
-export type FirewallRuleAction = "ALLOW" | "ALERT" | "BLOCK";
+export type FirewallRuleAction = "ALLOW" | "ALERT" | "BLOCK" | (string & {});
 export const FirewallRuleAction = /*@__PURE__*/ S.String;
 
-export type BlockOverrideDnsQueryType = "CNAME";
+export type BlockOverrideDnsQueryType = "CNAME" | (string & {});
 export const BlockOverrideDnsQueryType = /*@__PURE__*/ S.String;
 
 export type Domain = string;
 export type BlockOverrideTtl = number;
-export type FirewallBlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE";
+export type FirewallBlockResponse =
+  | "NODATA"
+  | "NXDOMAIN"
+  | "OVERRIDE"
+  | (string & {});
 export const FirewallBlockResponse = /*@__PURE__*/ S.String;
 
 export type ClientToken = string;
-export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH";
+export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const ConfidenceThreshold = /*@__PURE__*/ S.String;
 
 export type ResourceDescription = string;
-export type DnsAdvancedProtection = "DGA" | "DNS_TUNNELING" | "DICTIONARY_DGA";
+export type DnsAdvancedProtection =
+  | "DGA"
+  | "DNS_TUNNELING"
+  | "DICTIONARY_DGA"
+  | (string & {});
 export const DnsAdvancedProtection = /*@__PURE__*/ S.String;
 
 export type FirewallRulePriority = number;
 export type DnsQueryType = string;
 export interface BatchCreateFirewallRuleInputItem {
-  action: FirewallRuleAction | (string & {});
-  blockOverrideDnsType?: BlockOverrideDnsQueryType | (string & {});
+  action: FirewallRuleAction;
+  blockOverrideDnsType?: BlockOverrideDnsQueryType;
   blockOverrideDomain?: string;
   blockOverrideTtl?: number;
-  blockResponse?: FirewallBlockResponse | (string & {});
+  blockResponse?: FirewallBlockResponse;
   clientToken: string;
-  confidenceThreshold?: ConfidenceThreshold | (string & {});
+  confidenceThreshold?: ConfidenceThreshold;
   description?: string;
-  dnsAdvancedProtection?: DnsAdvancedProtection | (string & {});
+  dnsAdvancedProtection?: DnsAdvancedProtection;
   firewallDomainListId?: string;
   name: string;
   priority?: number;
@@ -266,7 +275,8 @@ export type CRResourceStatus =
   | "CREATING"
   | "OPERATIONAL"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const CRResourceStatus = /*@__PURE__*/ S.String;
 
 export interface BatchCreateFirewallRuleResult {
@@ -428,14 +438,14 @@ export const BatchDeleteFirewallRuleOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteFirewallRuleOutput",
 }) as any as S.Schema<BatchDeleteFirewallRuleOutput>;
 export interface BatchUpdateFirewallRuleInputItem {
-  action?: FirewallRuleAction | (string & {});
-  blockOverrideDnsType?: BlockOverrideDnsQueryType | (string & {});
+  action?: FirewallRuleAction;
+  blockOverrideDnsType?: BlockOverrideDnsQueryType;
   blockOverrideDomain?: string;
   blockOverrideTtl?: number;
-  blockResponse?: FirewallBlockResponse | (string & {});
-  confidenceThreshold?: ConfidenceThreshold | (string & {});
+  blockResponse?: FirewallBlockResponse;
+  confidenceThreshold?: ConfidenceThreshold;
   description?: string;
-  dnsAdvancedProtection?: DnsAdvancedProtection | (string & {});
+  dnsAdvancedProtection?: DnsAdvancedProtection;
   firewallRuleId: string;
   name?: string;
   priority?: number;
@@ -559,11 +569,11 @@ export const BatchUpdateFirewallRuleOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateFirewallRuleOutput",
 }) as any as S.Schema<BatchUpdateFirewallRuleOutput>;
 export type Cidr = string;
-export type IpAddressType = "IPV4" | "IPV6";
+export type IpAddressType = "IPV4" | "IPV6" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type ResourceNameShort = string;
-export type DnsProtocol = "DO53" | "DOH" | "DOT";
+export type DnsProtocol = "DO53" | "DOH" | "DOT" | (string & {});
 export const DnsProtocol = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -573,10 +583,10 @@ export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateAccessSourceInput {
   cidr: string;
   clientToken?: string;
-  ipAddressType?: IpAddressType | (string & {});
+  ipAddressType?: IpAddressType;
   name?: string;
   dnsViewId: string;
-  protocol: DnsProtocol | (string & {});
+  protocol: DnsProtocol;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateAccessSourceInput = /*@__PURE__*/ S.suspend(() =>
@@ -658,7 +668,11 @@ export const CreateAccessTokenInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessTokenInput",
 }) as any as S.Schema<CreateAccessTokenInput>;
-export type TokenStatus = "CREATING" | "OPERATIONAL" | "DELETING";
+export type TokenStatus =
+  | "CREATING"
+  | "OPERATIONAL"
+  | "DELETING"
+  | (string & {});
 export const TokenStatus = /*@__PURE__*/ S.String;
 
 export type AccessTokenValue = string | redacted.Redacted<string>;
@@ -688,22 +702,22 @@ export const CreateAccessTokenOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessTokenOutput",
 }) as any as S.Schema<CreateAccessTokenOutput>;
-export type DnsSecValidationType = "ENABLED" | "DISABLED";
+export type DnsSecValidationType = "ENABLED" | "DISABLED" | (string & {});
 export const DnsSecValidationType = /*@__PURE__*/ S.String;
 
-export type EdnsClientSubnetType = "ENABLED" | "DISABLED";
+export type EdnsClientSubnetType = "ENABLED" | "DISABLED" | (string & {});
 export const EdnsClientSubnetType = /*@__PURE__*/ S.String;
 
-export type FirewallRulesFailOpenType = "ENABLED" | "DISABLED";
+export type FirewallRulesFailOpenType = "ENABLED" | "DISABLED" | (string & {});
 export const FirewallRulesFailOpenType = /*@__PURE__*/ S.String;
 
 export interface CreateDNSViewInput {
   globalResolverId: string;
   clientToken?: string;
   name: string;
-  dnssecValidation?: DnsSecValidationType | (string & {});
-  ednsClientSubnet?: EdnsClientSubnetType | (string & {});
-  firewallRulesFailOpen?: FirewallRulesFailOpenType | (string & {});
+  dnssecValidation?: DnsSecValidationType;
+  ednsClientSubnet?: EdnsClientSubnetType;
+  firewallRulesFailOpen?: FirewallRulesFailOpenType;
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -737,7 +751,8 @@ export type ProfileResourceStatus =
   | "ENABLING"
   | "DISABLING"
   | "DISABLED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ProfileResourceStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDNSViewOutput {
@@ -829,15 +844,15 @@ export const CreateFirewallDomainListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateFirewallDomainListOutput",
 }) as any as S.Schema<CreateFirewallDomainListOutput>;
 export interface CreateFirewallRuleInput {
-  action: FirewallRuleAction | (string & {});
-  blockOverrideDnsType?: BlockOverrideDnsQueryType | (string & {});
+  action: FirewallRuleAction;
+  blockOverrideDnsType?: BlockOverrideDnsQueryType;
   blockOverrideDomain?: string;
   blockOverrideTtl?: number;
-  blockResponse?: FirewallBlockResponse | (string & {});
+  blockResponse?: FirewallBlockResponse;
   clientToken?: string;
-  confidenceThreshold?: ConfidenceThreshold | (string & {});
+  confidenceThreshold?: ConfidenceThreshold;
   description?: string;
-  dnsAdvancedProtection?: DnsAdvancedProtection | (string & {});
+  dnsAdvancedProtection?: DnsAdvancedProtection;
   firewallDomainListId?: string;
   name: string;
   priority?: number;
@@ -915,7 +930,7 @@ export const CreateFirewallRuleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallRuleOutput",
 }) as any as S.Schema<CreateFirewallRuleOutput>;
-export type GlobalResolverIpAddressType = "IPV4" | "DUAL_STACK";
+export type GlobalResolverIpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const GlobalResolverIpAddressType = /*@__PURE__*/ S.String;
 
 export type Region = string;
@@ -924,7 +939,7 @@ export const Regions = /*@__PURE__*/ S.Array(S.String);
 export interface CreateGlobalResolverInput {
   clientToken?: string;
   description?: string;
-  ipAddressType?: GlobalResolverIpAddressType | (string & {});
+  ipAddressType?: GlobalResolverIpAddressType;
   name: string;
   observabilityRegion?: string;
   regions: string[];
@@ -2511,9 +2526,9 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccessSourceInput {
   accessSourceId: string;
   cidr?: string;
-  ipAddressType?: IpAddressType | (string & {});
+  ipAddressType?: IpAddressType;
   name?: string;
-  protocol?: DnsProtocol | (string & {});
+  protocol?: DnsProtocol;
 }
 export const UpdateAccessSourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2597,9 +2612,9 @@ export interface UpdateDNSViewInput {
   dnsViewId: string;
   name?: string;
   description?: string;
-  dnssecValidation?: DnsSecValidationType | (string & {});
-  ednsClientSubnet?: EdnsClientSubnetType | (string & {});
-  firewallRulesFailOpen?: FirewallRulesFailOpenType | (string & {});
+  dnssecValidation?: DnsSecValidationType;
+  ednsClientSubnet?: EdnsClientSubnetType;
+  firewallRulesFailOpen?: FirewallRulesFailOpenType;
 }
 export const UpdateDNSViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2691,15 +2706,15 @@ export const UpdateFirewallDomainsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateFirewallDomainsOutput",
 }) as any as S.Schema<UpdateFirewallDomainsOutput>;
 export interface UpdateFirewallRuleInput {
-  action?: FirewallRuleAction | (string & {});
-  blockOverrideDnsType?: BlockOverrideDnsQueryType | (string & {});
+  action?: FirewallRuleAction;
+  blockOverrideDnsType?: BlockOverrideDnsQueryType;
   blockOverrideDomain?: string;
   blockOverrideTtl?: number;
-  blockResponse?: FirewallBlockResponse | (string & {});
+  blockResponse?: FirewallBlockResponse;
   clientToken: string;
-  confidenceThreshold?: ConfidenceThreshold | (string & {});
+  confidenceThreshold?: ConfidenceThreshold;
   description?: string;
-  dnsAdvancedProtection?: DnsAdvancedProtection | (string & {});
+  dnsAdvancedProtection?: DnsAdvancedProtection;
   firewallRuleId: string;
   name?: string;
   priority?: number;
@@ -2778,7 +2793,7 @@ export interface UpdateGlobalResolverInput {
   name?: string;
   observabilityRegion?: string;
   description?: string;
-  ipAddressType?: GlobalResolverIpAddressType | (string & {});
+  ipAddressType?: GlobalResolverIpAddressType;
   regions?: string[];
 }
 export const UpdateGlobalResolverInput = /*@__PURE__*/ S.suspend(() =>
@@ -2892,7 +2907,8 @@ export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

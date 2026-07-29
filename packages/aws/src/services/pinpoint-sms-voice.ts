@@ -169,10 +169,11 @@ export type EventType =
   | "COMPLETED_CALL"
   | "BUSY"
   | "FAILED"
-  | "NO_ANSWER";
+  | "NO_ANSWER"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = (EventType | (string & {}))[];
+export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface SnsDestination {
   TopicArn?: string;
@@ -184,7 +185,7 @@ export interface EventDestinationDefinition {
   CloudWatchLogsDestination?: CloudWatchLogsDestination;
   Enabled?: boolean;
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
-  MatchingEventTypes?: (EventType | (string & {}))[];
+  MatchingEventTypes?: EventType[];
   SnsDestination?: SnsDestination;
 }
 export const EventDestinationDefinition = /*@__PURE__*/ S.suspend(() =>

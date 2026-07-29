@@ -28,13 +28,13 @@ export interface CreateTenantCustomNameserverRequest {
   /** The FQDN of the name server. */
   nsName: string;
   /** The number of the set that this name server belongs to. */
-  nsSet?: number;
+  nsSet?: number | null;
 }
 export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     nsName: S.String.pipe(T.Body("ns_name")),
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+    nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
   })
     .pipe(
       T.Http({
@@ -53,14 +53,14 @@ export const CreateResponseDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseDnsRecordsItem {
   /** DNS record type. */
-  type?: CreateResponseDnsRecordsItemType;
+  type?: CreateResponseDnsRecordsItemType | null;
   /** DNS record contents (an IPv4 or IPv6 address). */
-  value?: string;
+  value?: string | null;
 }
 export const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(CreateResponseDnsRecordsItemType),
-    value: S.optional(S.String),
+    type: S.optional(S.NullOr(CreateResponseDnsRecordsItemType)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseDnsRecordsItem",
@@ -85,7 +85,7 @@ export interface CreateTenantCustomNameserverResponse {
   /** Identifier. */
   zoneTag: string;
   /** The number of the set that this name server belongs to. */
-  nsSet?: number;
+  nsSet?: number | null;
 }
 export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -94,7 +94,7 @@ export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
       nsName: S.String.pipe(T.Body("ns_name")),
       status: CreateResponseStatus,
       zoneTag: S.String.pipe(T.Body("zone_tag")),
-      nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+      nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTenantCustomNameserverResponse",
@@ -169,14 +169,14 @@ export const GetResultItemDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface GetResultItemDnsRecordsItem {
   /** DNS record type. */
-  type?: GetResultItemDnsRecordsItemType;
+  type?: GetResultItemDnsRecordsItemType | null;
   /** DNS record contents (an IPv4 or IPv6 address). */
-  value?: string;
+  value?: string | null;
 }
 export const GetResultItemDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(GetResultItemDnsRecordsItemType),
-    value: S.optional(S.String),
+    type: S.optional(S.NullOr(GetResultItemDnsRecordsItemType)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResultItemDnsRecordsItem",
@@ -200,7 +200,7 @@ export interface GetResultItem {
   /** Identifier. */
   zoneTag: string;
   /** The number of the set that this name server belongs to. */
-  nsSet?: number;
+  nsSet?: number | null;
 }
 export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -208,7 +208,7 @@ export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
     nsName: S.String.pipe(T.Body("ns_name")),
     status: GetResultItemStatus,
     zoneTag: S.String.pipe(T.Body("zone_tag")),
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+    nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
   }),
 ).annotate({ identifier: "GetResultItem" }) as any as S.Schema<GetResultItem>;
 

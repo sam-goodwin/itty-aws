@@ -288,7 +288,8 @@ export type AssociateResourceErrorReason =
   | "SERVICE_LIMIT_EXCEEDED"
   | "ILLEGAL_CUSTOMLINEITEM"
   | "INTERNAL_SERVER_EXCEPTION"
-  | "INVALID_BILLING_PERIOD_RANGE";
+  | "INVALID_BILLING_PERIOD_RANGE"
+  | (string & {});
 export const AssociateResourceErrorReason = /*@__PURE__*/ S.String;
 
 export interface AssociateResourceError {
@@ -502,28 +503,31 @@ export const CustomLineItemPercentageChargeDetails = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomLineItemPercentageChargeDetails",
 }) as any as S.Schema<CustomLineItemPercentageChargeDetails>;
-export type CustomLineItemType = "CREDIT" | "FEE";
+export type CustomLineItemType = "CREDIT" | "FEE" | (string & {});
 export const CustomLineItemType = /*@__PURE__*/ S.String;
 
-export type LineItemFilterAttributeName = "LINE_ITEM_TYPE" | "SERVICE";
+export type LineItemFilterAttributeName =
+  | "LINE_ITEM_TYPE"
+  | "SERVICE"
+  | (string & {});
 export const LineItemFilterAttributeName = /*@__PURE__*/ S.String;
 
-export type MatchOption = "NOT_EQUAL" | "EQUAL";
+export type MatchOption = "NOT_EQUAL" | "EQUAL" | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
 
-export type LineItemFilterValue = "SAVINGS_PLAN_NEGATION";
+export type LineItemFilterValue = "SAVINGS_PLAN_NEGATION" | (string & {});
 export const LineItemFilterValue = /*@__PURE__*/ S.String;
 
-export type LineItemFilterValuesList = (LineItemFilterValue | (string & {}))[];
+export type LineItemFilterValuesList = LineItemFilterValue[];
 export const LineItemFilterValuesList =
   /*@__PURE__*/ S.Array(LineItemFilterValue);
 export type AttributeValue = string;
 export type AttributeValueList = string[];
 export const AttributeValueList = /*@__PURE__*/ S.Array(S.String);
 export interface LineItemFilter {
-  Attribute: LineItemFilterAttributeName | (string & {});
-  MatchOption: MatchOption | (string & {});
-  Values?: (LineItemFilterValue | (string & {}))[];
+  Attribute: LineItemFilterAttributeName;
+  MatchOption: MatchOption;
+  Values?: LineItemFilterValue[];
   AttributeValues?: string[];
 }
 export const LineItemFilter = /*@__PURE__*/ S.suspend(() =>
@@ -539,7 +543,7 @@ export const LineItemFiltersList = /*@__PURE__*/ S.Array(LineItemFilter);
 export interface CustomLineItemChargeDetails {
   Flat?: CustomLineItemFlatChargeDetails;
   Percentage?: CustomLineItemPercentageChargeDetails;
-  Type: CustomLineItemType | (string & {});
+  Type: CustomLineItemType;
   LineItemFilters?: LineItemFilter[];
 }
 export const CustomLineItemChargeDetails = /*@__PURE__*/ S.suspend(() =>
@@ -552,7 +556,7 @@ export const CustomLineItemChargeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomLineItemChargeDetails",
 }) as any as S.Schema<CustomLineItemChargeDetails>;
-export type ComputationRuleEnum = "ITEMIZED" | "CONSOLIDATED";
+export type ComputationRuleEnum = "ITEMIZED" | "CONSOLIDATED" | (string & {});
 export const ComputationRuleEnum = /*@__PURE__*/ S.String;
 
 export type Service = string;
@@ -573,7 +577,7 @@ export interface CreateCustomLineItemInput {
   Tags?: { [key: string]: string | undefined };
   ChargeDetails: CustomLineItemChargeDetails;
   AccountId?: string;
-  ComputationRule?: ComputationRuleEnum | (string & {});
+  ComputationRule?: ComputationRuleEnum;
   PresentationDetails?: PresentationObject;
 }
 export const CreateCustomLineItemInput = /*@__PURE__*/ S.suspend(() =>
@@ -656,10 +660,15 @@ export const CreatePricingPlanOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePricingPlanOutput>;
 export type PricingRuleName = string | redacted.Redacted<string>;
 export type PricingRuleDescription = string | redacted.Redacted<string>;
-export type PricingRuleScope = "GLOBAL" | "SERVICE" | "BILLING_ENTITY" | "SKU";
+export type PricingRuleScope =
+  | "GLOBAL"
+  | "SERVICE"
+  | "BILLING_ENTITY"
+  | "SKU"
+  | (string & {});
 export const PricingRuleScope = /*@__PURE__*/ S.String;
 
-export type PricingRuleType = "MARKUP" | "DISCOUNT" | "TIERING";
+export type PricingRuleType = "MARKUP" | "DISCOUNT" | "TIERING" | (string & {});
 export const PricingRuleType = /*@__PURE__*/ S.String;
 
 export type ModifierPercentage = number;
@@ -687,8 +696,8 @@ export interface CreatePricingRuleInput {
   ClientToken?: string;
   Name: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
-  Scope: PricingRuleScope | (string & {});
-  Type: PricingRuleType | (string & {});
+  Scope: PricingRuleScope;
+  Type: PricingRuleType;
   ModifierPercentage?: number;
   Service?: string;
   Tags?: { [key: string]: string | undefined };
@@ -906,10 +915,13 @@ export const BillingPeriodRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BillingPeriodRange",
 }) as any as S.Schema<BillingPeriodRange>;
-export type GroupByAttributeName = "PRODUCT_NAME" | "BILLING_PERIOD";
+export type GroupByAttributeName =
+  | "PRODUCT_NAME"
+  | "BILLING_PERIOD"
+  | (string & {});
 export const GroupByAttributeName = /*@__PURE__*/ S.String;
 
-export type GroupByAttributesList = (GroupByAttributeName | (string & {}))[];
+export type GroupByAttributesList = GroupByAttributeName[];
 export const GroupByAttributesList =
   /*@__PURE__*/ S.Array(GroupByAttributeName);
 export type MaxBillingGroupCostReportResults = number;
@@ -917,7 +929,7 @@ export type Token = string;
 export interface GetBillingGroupCostReportInput {
   Arn: string;
   BillingPeriodRange?: BillingPeriodRange;
-  GroupBy?: (GroupByAttributeName | (string & {}))[];
+  GroupBy?: GroupByAttributeName[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -1145,24 +1157,25 @@ export const ListBillingGroupCostReportsOutput = /*@__PURE__*/ S.suspend(() =>
 export type BillingGroupStatus =
   | "ACTIVE"
   | "PRIMARY_ACCOUNT_MISSING"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const BillingGroupStatus = /*@__PURE__*/ S.String;
 
-export type BillingGroupStatusList = (BillingGroupStatus | (string & {}))[];
+export type BillingGroupStatusList = BillingGroupStatus[];
 export const BillingGroupStatusList = /*@__PURE__*/ S.Array(BillingGroupStatus);
 export type PrimaryAccountIdList = string[];
 export const PrimaryAccountIdList = /*@__PURE__*/ S.Array(S.String);
-export type BillingGroupType = "STANDARD" | "TRANSFER_BILLING";
+export type BillingGroupType = "STANDARD" | "TRANSFER_BILLING" | (string & {});
 export const BillingGroupType = /*@__PURE__*/ S.String;
 
-export type BillingGroupTypeList = (BillingGroupType | (string & {}))[];
+export type BillingGroupTypeList = BillingGroupType[];
 export const BillingGroupTypeList = /*@__PURE__*/ S.Array(BillingGroupType);
-export type SearchOption = "STARTS_WITH";
+export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = /*@__PURE__*/ S.String;
 
 export type SearchValue = string;
 export interface StringSearch {
-  SearchOption: SearchOption | (string & {});
+  SearchOption: SearchOption;
   SearchValue: string;
 }
 export const StringSearch = /*@__PURE__*/ S.suspend(() =>
@@ -1175,10 +1188,10 @@ export const ResponsibilityTransferArnsList = /*@__PURE__*/ S.Array(S.String);
 export interface ListBillingGroupsFilter {
   Arns?: string[];
   PricingPlan?: string;
-  Statuses?: (BillingGroupStatus | (string & {}))[];
+  Statuses?: BillingGroupStatus[];
   AutoAssociate?: boolean;
   PrimaryAccountIds?: string[];
-  BillingGroupTypes?: (BillingGroupType | (string & {}))[];
+  BillingGroupTypes?: BillingGroupType[];
   Names?: StringSearch[];
   ResponsibilityTransferArns?: string[];
 }
@@ -1361,7 +1374,7 @@ export const ListCustomLineItemChargeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCustomLineItemChargeDetails",
 }) as any as S.Schema<ListCustomLineItemChargeDetails>;
-export type CurrencyCode = "USD" | "CNY";
+export type CurrencyCode = "USD" | "CNY" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export type CustomLineItemProductCode = string;
@@ -1788,11 +1801,11 @@ export const ListPricingRulesAssociatedToPricingPlanOutput =
   ).annotate({
     identifier: "ListPricingRulesAssociatedToPricingPlanOutput",
   }) as any as S.Schema<ListPricingRulesAssociatedToPricingPlanOutput>;
-export type CustomLineItemRelationship = "PARENT" | "CHILD";
+export type CustomLineItemRelationship = "PARENT" | "CHILD" | (string & {});
 export const CustomLineItemRelationship = /*@__PURE__*/ S.String;
 
 export interface ListResourcesAssociatedToCustomLineItemFilter {
-  Relationship?: CustomLineItemRelationship | (string & {});
+  Relationship?: CustomLineItemRelationship;
 }
 export const ListResourcesAssociatedToCustomLineItemFilter =
   /*@__PURE__*/ S.suspend(() =>
@@ -1964,7 +1977,7 @@ export const UpdateBillingGroupAccountGrouping = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBillingGroupInput {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
-  Status?: BillingGroupStatus | (string & {});
+  Status?: BillingGroupStatus;
   ComputationPreference?: ComputationPreference;
   Description?: string | redacted.Redacted<string>;
   AccountGrouping?: UpdateBillingGroupAccountGrouping;
@@ -2160,7 +2173,7 @@ export interface UpdatePricingRuleInput {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
-  Type?: PricingRuleType | (string & {});
+  Type?: PricingRuleType;
   ModifierPercentage?: number;
   Tiering?: UpdateTieringInput;
 }
@@ -2224,7 +2237,8 @@ export type ConflictExceptionReason =
   | "PRICING_RULE_IN_PRICING_PLAN_CONFLICT"
   | "PRICING_PLAN_ATTACHED_TO_BILLING_GROUP_DELETE_CONFLICT"
   | "PRICING_RULE_ATTACHED_TO_PRICING_PLAN_DELETE_CONFLICT"
-  | "WRITE_CONFLICT_RETRY";
+  | "WRITE_CONFLICT_RETRY"
+  | (string & {});
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
 export type RetryAfterSeconds = number;
@@ -2294,7 +2308,8 @@ export type ValidationExceptionReason =
   | "ILLEGAL_ACCOUNT_ID"
   | "BILLING_GROUP_ALREADY_EXIST_IN_CURRENT_BILLING_PERIOD"
   | "ILLEGAL_COMPUTATION_RULE"
-  | "ILLEGAL_LINE_ITEM_FILTER";
+  | "ILLEGAL_LINE_ITEM_FILTER"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

@@ -263,7 +263,8 @@ export const BatchMeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
 export type UsageRecordResultStatus =
   | "Success"
   | "CustomerNotSubscribed"
-  | "DuplicateRecord";
+  | "DuplicateRecord"
+  | (string & {});
 export const UsageRecordResultStatus = /*@__PURE__*/ S.String;
 
 export interface UsageRecordResult {

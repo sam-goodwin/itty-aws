@@ -186,7 +186,8 @@ export type AgreementCancellationRequestStatus =
   | "APPROVED"
   | "REJECTED"
   | "CANCELLED"
-  | "VALIDATION_FAILED";
+  | "VALIDATION_FAILED"
+  | (string & {});
 export const AgreementCancellationRequestStatus = /*@__PURE__*/ S.String;
 
 export type AgreementCancellationRequestReasonCode =
@@ -197,7 +198,8 @@ export type AgreementCancellationRequestReasonCode =
   | "PRODUCT_DISCONTINUED"
   | "UNINTENDED_RENEWAL"
   | "BUYER_DISSATISFACTION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AgreementCancellationRequestReasonCode = /*@__PURE__*/ S.String;
 
 export type AgreementCancellationRequestDescription =
@@ -250,7 +252,8 @@ export type PaymentRequestStatus =
   | "PENDING_APPROVAL"
   | "APPROVED"
   | "REJECTED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const PaymentRequestStatus = /*@__PURE__*/ S.String;
 
 export type PaymentRequestName = string;
@@ -332,7 +335,8 @@ export type BillingAdjustmentReasonCode =
   | "ALTERNATIVE_PROCUREMENT_CHANNEL"
   | "UNINTENDED_RENEWAL"
   | "BUYER_DISSATISFACTION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const BillingAdjustmentReasonCode = /*@__PURE__*/ S.String;
 
 export type BillingAdjustmentDescription = string | redacted.Redacted<string>;
@@ -342,7 +346,7 @@ export interface BatchCreateBillingAdjustmentRequestEntry {
   originalInvoiceId: string;
   adjustmentAmount: string;
   currencyCode: string;
-  adjustmentReasonCode: BillingAdjustmentReasonCode | (string & {});
+  adjustmentReasonCode: BillingAdjustmentReasonCode;
   description?: string | redacted.Redacted<string>;
   clientToken: string;
 }
@@ -397,7 +401,8 @@ export type BillingAdjustmentErrorCode =
   | "CONFLICT_EXCEPTION"
   | "VALIDATION_EXCEPTION"
   | "RESOURCE_NOT_FOUND_EXCEPTION"
-  | "INTERNAL_FAILURE";
+  | "INTERNAL_FAILURE"
+  | (string & {});
 export const BillingAdjustmentErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchCreateBillingAdjustmentError {
@@ -531,7 +536,7 @@ export const CancelAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelAgreementPaymentRequestOutput",
 }) as any as S.Schema<CancelAgreementPaymentRequestOutput>;
-export type Intent = "NEW" | "AMEND" | "REPLACE";
+export type Intent = "NEW" | "AMEND" | "REPLACE" | (string & {});
 export const Intent = /*@__PURE__*/ S.String;
 
 export type TermId = string;
@@ -566,14 +571,13 @@ export const RenewalTermConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewalTermConfiguration>;
 export type PaymentRequestApprovalStrategy =
   | "AUTO_APPROVE_ON_EXPIRATION"
-  | "WAIT_FOR_APPROVAL";
+  | "WAIT_FOR_APPROVAL"
+  | (string & {});
 export const PaymentRequestApprovalStrategy = /*@__PURE__*/ S.String;
 
 export type ISO8601Duration = string;
 export interface VariablePaymentTermConfiguration {
-  paymentRequestApprovalStrategy:
-    | PaymentRequestApprovalStrategy
-    | (string & {});
+  paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy;
   expirationDuration?: string;
 }
 export const VariablePaymentTermConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -623,11 +627,11 @@ export const RequestedTerm = /*@__PURE__*/ S.suspend(() =>
 export type RequestedTermList = RequestedTerm[];
 export const RequestedTermList = /*@__PURE__*/ S.Array(RequestedTerm);
 export type AgreementProposalId = string;
-export type TaxEstimation = "DISABLED" | "ENABLED";
+export type TaxEstimation = "DISABLED" | "ENABLED" | (string & {});
 export const TaxEstimation = /*@__PURE__*/ S.String;
 
 export interface TaxConfiguration {
-  taxEstimation?: TaxEstimation | (string & {});
+  taxEstimation?: TaxEstimation;
 }
 export const TaxConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxEstimation: S.optional(TaxEstimation) }),
@@ -636,7 +640,7 @@ export const TaxConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaxConfiguration>;
 export interface CreateAgreementRequestInput {
   clientToken?: string;
-  intent: Intent | (string & {});
+  intent: Intent;
   requestedTerms: RequestedTerm[];
   sourceAgreementIdentifier?: string;
   agreementProposalIdentifier?: string;
@@ -656,7 +660,11 @@ export const CreateAgreementRequestInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgreementRequestInput",
 }) as any as S.Schema<CreateAgreementRequestInput>;
-export type Timing = "ON_ACCEPTANCE" | "SCHEDULED" | "BILLING_PERIOD";
+export type Timing =
+  | "ON_ACCEPTANCE"
+  | "SCHEDULED"
+  | "BILLING_PERIOD"
+  | (string & {});
 export const Timing = /*@__PURE__*/ S.String;
 
 export interface TaxBreakdownItem {
@@ -838,7 +846,8 @@ export type AgreementStatus =
   | "REPLACED"
   | "ROLLED_BACK"
   | "SUPERSEDED"
-  | "TERMINATED";
+  | "TERMINATED"
+  | (string & {});
 export const AgreementStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeAgreementOutput {
@@ -934,7 +943,8 @@ export type AgreementEntitlementStatus =
   | "SCHEDULED"
   | "PENDING"
   | "FAILED"
-  | "DEPROVISIONED";
+  | "DEPROVISIONED"
+  | (string & {});
 export const AgreementEntitlementStatus = /*@__PURE__*/ S.String;
 
 export type AgreementEntitlementStatusReasonCode =
@@ -946,7 +956,8 @@ export type AgreementEntitlementStatusReasonCode =
   | "UNSUPPORTED_OPERATION"
   | "AGREEMENT_INACTIVE"
   | "AGREEMENT_ACTIVE"
-  | "PRODUCT_RESTRICTED";
+  | "PRODUCT_RESTRICTED"
+  | (string & {});
 export const AgreementEntitlementStatusReasonCode = /*@__PURE__*/ S.String;
 
 export type AwsArn = string;
@@ -1541,7 +1552,8 @@ export const GetBillingAdjustmentRequestInput = /*@__PURE__*/ S.suspend(() =>
 export type BillingAdjustmentStatus =
   | "PENDING"
   | "VALIDATION_FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const BillingAdjustmentStatus = /*@__PURE__*/ S.String;
 
 export type BillingAdjustmentStatusMessage = string;
@@ -1580,7 +1592,7 @@ export type Catalog = string;
 export interface ListAgreementCancellationRequestsInput {
   partyType: string;
   agreementId?: string;
-  status?: AgreementCancellationRequestStatus | (string & {});
+  status?: AgreementCancellationRequestStatus;
   agreementType?: string;
   catalog?: string;
   maxResults?: number;
@@ -1697,10 +1709,10 @@ export const ListAgreementChargesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAgreementChargesOutput",
 }) as any as S.Schema<ListAgreementChargesOutput>;
-export type LineItemGroupBy = "INVOICE_ID";
+export type LineItemGroupBy = "INVOICE_ID" | (string & {});
 export const LineItemGroupBy = /*@__PURE__*/ S.String;
 
-export type InvoiceType = "INVOICE" | "CREDIT_MEMO";
+export type InvoiceType = "INVOICE" | "CREDIT_MEMO" | (string & {});
 export const InvoiceType = /*@__PURE__*/ S.String;
 
 export interface InvoiceBillingPeriod {
@@ -1714,9 +1726,9 @@ export const InvoiceBillingPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoiceBillingPeriod>;
 export interface ListAgreementInvoiceLineItemsInput {
   agreementId: string;
-  groupBy: LineItemGroupBy | (string & {});
+  groupBy: LineItemGroupBy;
   invoiceId?: string;
-  invoiceType?: InvoiceType | (string & {});
+  invoiceType?: InvoiceType;
   invoiceBillingPeriod?: InvoiceBillingPeriod;
   beforeIssuedTime?: Date;
   afterIssuedTime?: Date;
@@ -1805,7 +1817,7 @@ export interface ListAgreementPaymentRequestsInput {
   agreementType?: string;
   catalog?: string;
   agreementId?: string;
-  status?: PaymentRequestStatus | (string & {});
+  status?: PaymentRequestStatus;
   maxResults?: number;
   nextToken?: string;
 }
@@ -1868,7 +1880,7 @@ export const ListAgreementPaymentRequestsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAgreementPaymentRequestsOutput>;
 export interface ListBillingAdjustmentRequestsInput {
   agreementId?: string;
-  status?: BillingAdjustmentStatus | (string & {});
+  status?: BillingAdjustmentStatus;
   createdAfter?: Date;
   createdBefore?: Date;
   maxResults?: number;
@@ -2040,12 +2052,12 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type SortBy = string;
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface Sort {
   sortBy?: string;
-  sortOrder?: SortOrder | (string & {});
+  sortOrder?: SortOrder;
 }
 export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(SortOrder) }),
@@ -2123,7 +2135,7 @@ export const SearchAgreementsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAgreementsOutput>;
 export interface SendAgreementCancellationRequestInput {
   agreementId: string;
-  reasonCode: AgreementCancellationRequestReasonCode | (string & {});
+  reasonCode: AgreementCancellationRequestReasonCode;
   clientToken?: string;
   description?: string | redacted.Redacted<string>;
 }
@@ -2232,7 +2244,8 @@ export type AccessDeniedExceptionReason =
   | "DENIED_BY_PRIVATE_MARKETPLACE_POLICY"
   | "FAILED_KYC_COMPLIANCE"
   | "MISSING_MFA"
-  | "INVALID_ACCESS";
+  | "INVALID_ACCESS"
+  | (string & {});
 export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
 export type ResourceType =
@@ -2243,7 +2256,8 @@ export type ResourceType =
   | "PaymentRequest"
   | "Invoice"
   | "AgreementCancellationRequest"
-  | "BillingAdjustmentRequest";
+  | "BillingAdjustmentRequest"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -2328,7 +2342,8 @@ export type ValidationExceptionReason =
   | "DUPLICATE_CHARGES"
   | "UNSUPPORTED_ACCOUNT_PLAN"
   | "DUPLICATE_AGREEMENT_IN_ORGANIZATION"
-  | "MISSING_PURCHASE_ORDER_REFERENCE";
+  | "MISSING_PURCHASE_ORDER_REFERENCE"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

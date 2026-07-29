@@ -145,12 +145,15 @@ export const AcceptConnectionInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionId = string;
 export type ConnectionArn = string;
 export type AwsAccountId = string;
-export type ConnectionType = "OPPORTUNITY_COLLABORATION" | "SUBSIDIARY";
+export type ConnectionType =
+  | "OPPORTUNITY_COLLABORATION"
+  | "SUBSIDIARY"
+  | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 export type Email = string;
 export type SensitiveUnicodeString = string | redacted.Redacted<string>;
-export type ConnectionTypeStatus = "ACTIVE" | "CANCELED";
+export type ConnectionTypeStatus = "ACTIVE" | "CANCELED" | (string & {});
 export const ConnectionTypeStatus = /*@__PURE__*/ S.String;
 
 export type PartnerProfileId = string;
@@ -285,7 +288,7 @@ export const AssociateAwsTrainingCertificationEmailDomainResponse =
 export interface CancelConnectionRequest {
   Catalog: string;
   Identifier: string;
-  ConnectionType: ConnectionType | (string & {});
+  ConnectionType: ConnectionType;
   Reason: string;
   ClientToken: string;
 }
@@ -340,7 +343,7 @@ export const CancelConnectionInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelConnectionInvitationRequest>;
 export type ConnectionInvitationArn = string;
 export type ParticipantIdentifier = string;
-export type ParticipantType = "SENDER" | "RECEIVER";
+export type ParticipantType = "SENDER" | "RECEIVER" | (string & {});
 export const ParticipantType = /*@__PURE__*/ S.String;
 
 export type InvitationStatus =
@@ -348,7 +351,8 @@ export type InvitationStatus =
   | "ACCEPTED"
   | "REJECTED"
   | "CANCELED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const InvitationStatus = /*@__PURE__*/ S.String;
 
 export type UnicodeStringIncludingNewLine = string;
@@ -420,7 +424,8 @@ export type PrimarySolutionType =
   | "HARDWARE_PRODUCTS"
   | "COMMUNICATION_SERVICES"
   | "VALUE_ADDED_RESALE_AWS_SERVICES"
-  | "TRAINING_SERVICES";
+  | "TRAINING_SERVICES"
+  | (string & {});
 export const PrimarySolutionType = /*@__PURE__*/ S.String;
 
 export type IndustrySegment =
@@ -460,10 +465,11 @@ export type IndustrySegment =
   | "TELECOMMUNICATIONS"
   | "TRANSPORTATION_LOGISTICS"
   | "TRAVEL_HOSPITALITY"
-  | "WHOLESALE_DISTRIBUTION";
+  | "WHOLESALE_DISTRIBUTION"
+  | (string & {});
 export const IndustrySegment = /*@__PURE__*/ S.String;
 
-export type IndustrySegmentList = (IndustrySegment | (string & {}))[];
+export type IndustrySegmentList = IndustrySegment[];
 export const IndustrySegmentList = /*@__PURE__*/ S.Array(IndustrySegment);
 export type Locale = string;
 export interface LocalizedContent {
@@ -491,8 +497,8 @@ export interface TaskDetails {
   Description: string;
   WebsiteUrl: string;
   LogoUrl: string;
-  PrimarySolutionType: PrimarySolutionType | (string & {});
-  IndustrySegments: (IndustrySegment | (string & {}))[];
+  PrimarySolutionType: PrimarySolutionType;
+  IndustrySegments: IndustrySegment[];
   TranslationSourceLocale: string;
   LocalizedContents?: LocalizedContent[];
 }
@@ -512,7 +518,8 @@ export type ProfileTaskStatus =
   | "IN_PROGRESS"
   | "CANCELED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ProfileTaskStatus = /*@__PURE__*/ S.String;
 
 export type ProfileValidationErrorReason =
@@ -522,7 +529,8 @@ export type ProfileValidationErrorReason =
   | "INVALID_LOGO_URL"
   | "INVALID_LOGO_FILE"
   | "INVALID_LOGO_SIZE"
-  | "INVALID_WEBSITE_URL";
+  | "INVALID_WEBSITE_URL"
+  | (string & {});
 export const ProfileValidationErrorReason = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -568,7 +576,7 @@ export const CancelProfileUpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectionInvitationRequest {
   Catalog: string;
   ClientToken: string;
-  ConnectionType: ConnectionType | (string & {});
+  ConnectionType: ConnectionType;
   Email: string;
   Message: string;
   Name: string | redacted.Redacted<string>;
@@ -658,7 +666,7 @@ export interface CreatePartnerRequest {
   Catalog: string;
   ClientToken?: string;
   LegalName: string | redacted.Redacted<string>;
-  PrimarySolutionType: PrimarySolutionType | (string & {});
+  PrimarySolutionType: PrimarySolutionType;
   AllianceLeadContact: AllianceLeadContact;
   EmailVerificationCode: string | redacted.Redacted<string>;
   Tags?: Tag[];
@@ -884,7 +892,8 @@ export type ConnectionPreferencesArn = string;
 export type AccessType =
   | "ALLOW_ALL"
   | "DENY_ALL"
-  | "ALLOW_BY_DEFAULT_DENY_SOME";
+  | "ALLOW_BY_DEFAULT_DENY_SOME"
+  | (string & {});
 export const AccessType = /*@__PURE__*/ S.String;
 
 export type ParticipantIdentifierList = string[];
@@ -991,7 +1000,7 @@ export const GetProfileVisibilityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProfileVisibilityRequest",
 }) as any as S.Schema<GetProfileVisibilityRequest>;
-export type ProfileVisibility = "PRIVATE" | "PUBLIC";
+export type ProfileVisibility = "PRIVATE" | "PUBLIC" | (string & {});
 export const ProfileVisibility = /*@__PURE__*/ S.String;
 
 export interface GetProfileVisibilityResponse {
@@ -1014,11 +1023,12 @@ export const GetProfileVisibilityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProfileVisibilityResponse>;
 export type VerificationType =
   | "BUSINESS_VERIFICATION"
-  | "REGISTRANT_VERIFICATION";
+  | "REGISTRANT_VERIFICATION"
+  | (string & {});
 export const VerificationType = /*@__PURE__*/ S.String;
 
 export interface GetVerificationRequest {
-  VerificationType: VerificationType | (string & {});
+  VerificationType: VerificationType;
 }
 export const GetVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VerificationType: VerificationType }).pipe(
@@ -1032,7 +1042,8 @@ export type VerificationStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "SUCCEEDED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const VerificationStatus = /*@__PURE__*/ S.String;
 
 export type VerificationStatusReason = string;
@@ -1127,11 +1138,11 @@ export type MaxResults = number;
 export interface ListConnectionInvitationsRequest {
   Catalog: string;
   NextToken?: string;
-  ConnectionType?: ConnectionType | (string & {});
+  ConnectionType?: ConnectionType;
   MaxResults?: number;
   OtherParticipantIdentifiers?: string[];
-  ParticipantType?: ParticipantType | (string & {});
-  Status?: InvitationStatus | (string & {});
+  ParticipantType?: ParticipantType;
+  Status?: InvitationStatus;
 }
 export const ListConnectionInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1365,7 +1376,7 @@ export const PutAllianceLeadContactResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutProfileVisibilityRequest {
   Catalog: string;
   Identifier: string;
-  Visibility: ProfileVisibility | (string & {});
+  Visibility: ProfileVisibility;
 }
 export const PutProfileVisibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1607,7 +1618,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectionPreferencesRequest {
   Catalog: string;
   Revision: number;
-  AccessType: AccessType | (string & {});
+  AccessType: AccessType;
   ExcludedParticipantIdentifiers?: string[];
 }
 export const UpdateConnectionPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1644,7 +1655,8 @@ export const UpdateConnectionPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateConnectionPreferencesResponse>;
 export type AccessDeniedExceptionReason =
   | "ACCESS_DENIED"
-  | "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE";
+  | "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE"
+  | (string & {});
 export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
 export type ConflictExceptionReason =
@@ -1659,7 +1671,8 @@ export type ConflictExceptionReason =
   | "INCOMPATIBLE_CONNECTION_STATE"
   | "INCOMPATIBLE_CONNECTION_PREFERENCES_REVISION"
   | "ACCOUNT_ALREADY_VERIFIED"
-  | "VERIFICATION_ALREADY_IN_PROGRESS";
+  | "VERIFICATION_ALREADY_IN_PROGRESS"
+  | (string & {});
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
 export type ResourceNotFoundExceptionReason =
@@ -1671,7 +1684,8 @@ export type ResourceNotFoundExceptionReason =
   | "RECEIVER_PROFILE_NOT_FOUND"
   | "CONNECTION_INVITATION_NOT_FOUND"
   | "CONNECTION_NOT_FOUND"
-  | "VERIFICATION_NOT_FOUND";
+  | "VERIFICATION_NOT_FOUND"
+  | (string & {});
 export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 
 export type ServiceQuotaExceededExceptionReason =
@@ -1681,12 +1695,14 @@ export type ServiceQuotaExceededExceptionReason =
   | "LIMIT_EXCEEDED_NUMBER_OF_ACTIVE_CONNECTION"
   | "LIMIT_EXCEEDED_NUMBER_OF_OPEN_CONNECTION_INVITATION"
   | "LIMIT_EXCEEDED_NUMBER_OF_PROFILE_UPDATE_PER_DAY"
-  | "LIMIT_EXCEEDED_NUMBER_OF_PROFILE_VISIBILITY_UPDATE_PER_DAY";
+  | "LIMIT_EXCEEDED_NUMBER_OF_PROFILE_VISIBILITY_UPDATE_PER_DAY"
+  | (string & {});
 export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
   | "REQUEST_VALIDATION_FAILED"
-  | "BUSINESS_VALIDATION_FAILED";
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type FieldValidationCode =
@@ -1696,7 +1712,8 @@ export type FieldValidationCode =
   | "INVALID_STRING_FORMAT"
   | "TOO_MANY_VALUES"
   | "ACTION_NOT_PERMITTED"
-  | "INVALID_ENUM_VALUE";
+  | "INVALID_ENUM_VALUE"
+  | (string & {});
 export const FieldValidationCode = /*@__PURE__*/ S.String;
 
 export interface FieldValidationError {
@@ -1717,7 +1734,8 @@ export type BusinessValidationCode =
   | "INVALID_ACCOUNT_LINKING_STATUS"
   | "INVALID_ACCOUNT_STATE"
   | "INCOMPATIBLE_DOMAIN"
-  | "INELIGIBLE_ACCOUNT_TIER";
+  | "INELIGIBLE_ACCOUNT_TIER"
+  | (string & {});
 export const BusinessValidationCode = /*@__PURE__*/ S.String;
 
 export interface BusinessValidationError {

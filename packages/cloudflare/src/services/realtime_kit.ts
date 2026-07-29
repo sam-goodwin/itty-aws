@@ -213,9 +213,9 @@ export interface AddParticipantMeetingRequest {
   /** Name of the preset to apply to this participant. */
   presetName: string;
   /** (Optional) Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,8 +224,8 @@ export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     meetingId: S.String.pipe(T.Label("meeting_id")),
     customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
     presetName: S.String.pipe(T.Body("preset_name")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    picture: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -253,9 +253,9 @@ export interface MeetingsAddParticipantResponseData {
   /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
   /** Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** URL to a picture of the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const MeetingsAddParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -265,8 +265,8 @@ export const MeetingsAddParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
     customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
     presetName: S.String.pipe(T.Body("preset_name")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    picture: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "MeetingsAddParticipantResponseData",
@@ -275,11 +275,11 @@ export const MeetingsAddParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface AddParticipantMeetingResponse {
   /** Represents a participant. */
-  data?: MeetingsAddParticipantResponseData;
+  data?: MeetingsAddParticipantResponseData | null;
 }
 export const AddParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsAddParticipantResponseData),
+    data: S.optional(S.NullOr(MeetingsAddParticipantResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddParticipantMeetingResponse",
@@ -291,14 +291,14 @@ export interface CreateIndependentLivestreamLivestreamRequest {
   /** The app identifier tag. */
   appId: string;
   /** Name of the livestream */
-  name?: string;
+  name?: string | null;
 }
 export const CreateIndependentLivestreamLivestreamRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -322,32 +322,34 @@ export const LivestreamsCreateIndependentLivestreamResponseDataStatus =
 
 export interface LivestreamsCreateIndependentLivestreamResponseData {
   /** The livestream ID. */
-  id?: string;
+  id?: string | null;
   /** Specifies if the livestream was disabled. */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /** The server URL to which the RTMP encoder should send the video and audio data. */
-  ingestServer?: string;
-  meetingId?: string;
-  name?: string;
+  ingestServer?: string | null;
+  meetingId?: string | null;
+  name?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsCreateIndependentLivestreamResponseDataStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsCreateIndependentLivestreamResponseDataStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
 }
 export const LivestreamsCreateIndependentLivestreamResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsCreateIndependentLivestreamResponseDataStatus,
+      id: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
       ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+      name: S.optional(S.NullOr(S.String)),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(LivestreamsCreateIndependentLivestreamResponseDataStatus),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
     }),
   ).annotate({
     identifier: "LivestreamsCreateIndependentLivestreamResponseData",
@@ -355,12 +357,14 @@ export const LivestreamsCreateIndependentLivestreamResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateIndependentLivestreamLivestreamResponse {
-  data?: LivestreamsCreateIndependentLivestreamResponseData;
+  data?: LivestreamsCreateIndependentLivestreamResponseData | null;
 }
 export const CreateIndependentLivestreamLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(LivestreamsCreateIndependentLivestreamResponseData),
+      data: S.optional(
+        S.NullOr(LivestreamsCreateIndependentLivestreamResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateIndependentLivestreamLivestreamResponse",
@@ -389,28 +393,30 @@ export interface MeetingsCreateRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsCreateRequestAiConfigSummarizationSummaryType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsCreateRequestAiConfigSummarizationTextFormat
-    | (string & {});
+    | (string & {})
+    | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsCreateRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsCreateRequestAiConfigSummarizationSummaryType.pipe(
+        S.NullOr(MeetingsCreateRequestAiConfigSummarizationSummaryType).pipe(
           T.Body("summary_type"),
         ),
       ),
       textFormat: S.optional(
-        MeetingsCreateRequestAiConfigSummarizationTextFormat.pipe(
+        S.NullOr(MeetingsCreateRequestAiConfigSummarizationTextFormat).pipe(
           T.Body("text_format"),
         ),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestAiConfigSummarization",
@@ -439,20 +445,27 @@ export const MeetingsCreateRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsCreateRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsCreateRequestAiConfigTranscriptionLanguage | (string & {});
+  language?:
+    | MeetingsCreateRequestAiConfigTranscriptionLanguage
+    | (string & {})
+    | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsCreateRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsCreateRequestAiConfigTranscriptionKeywordsList,
+        S.NullOr(MeetingsCreateRequestAiConfigTranscriptionKeywordsList),
       ),
-      language: S.optional(MeetingsCreateRequestAiConfigTranscriptionLanguage),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      language: S.optional(
+        S.NullOr(MeetingsCreateRequestAiConfigTranscriptionLanguage),
+      ),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestAiConfigTranscription",
@@ -460,14 +473,18 @@ export const MeetingsCreateRequestAiConfigTranscription =
 
 export interface MeetingsCreateRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsCreateRequestAiConfigSummarization;
+  summarization?: MeetingsCreateRequestAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsCreateRequestAiConfigTranscription;
+  transcription?: MeetingsCreateRequestAiConfigTranscription | null;
 }
 export const MeetingsCreateRequestAiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    summarization: S.optional(MeetingsCreateRequestAiConfigSummarization),
-    transcription: S.optional(MeetingsCreateRequestAiConfigTranscription),
+    summarization: S.optional(
+      S.NullOr(MeetingsCreateRequestAiConfigSummarization),
+    ),
+    transcription: S.optional(
+      S.NullOr(MeetingsCreateRequestAiConfigTranscription),
+    ),
   }),
 ).annotate({
   identifier: "MeetingsCreateRequestAiConfig",
@@ -489,20 +506,26 @@ export interface MeetingsCreateRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsCreateRequestRecordingConfigAudioConfigChannel
-    | (string & {});
+    | (string & {})
+    | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsCreateRequestRecordingConfigAudioConfigCodec | (string & {});
+  codec?:
+    | MeetingsCreateRequestRecordingConfigAudioConfigCodec
+    | (string & {})
+    | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsCreateRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsCreateRequestRecordingConfigAudioConfigChannel,
+        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfigChannel),
       ),
-      codec: S.optional(MeetingsCreateRequestRecordingConfigAudioConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      codec: S.optional(
+        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfigCodec),
+      ),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigAudioConfig",
@@ -510,12 +533,12 @@ export const MeetingsCreateRequestRecordingConfigAudioConfig =
 
 export interface MeetingsCreateRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsCreateRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigLiveStreamingConfig",
@@ -553,49 +576,50 @@ export interface MeetingsCreateRequestRecordingConfigStorageConfig {
   /** Type of storage media. */
   type: MeetingsCreateRequestRecordingConfigStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsCreateRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsCreateRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigStorageConfig",
@@ -617,15 +641,15 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize",
@@ -635,22 +659,25 @@ export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
   position?:
     | MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {});
+    | (string & {})
+    | null;
   /** Size of the watermark */
-  size?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermark",
@@ -658,26 +685,31 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermark =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsCreateRequestRecordingConfigVideoConfigCodec | (string & {});
+  codec?:
+    | MeetingsCreateRequestRecordingConfigVideoConfigCodec
+    | (string & {})
+    | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsCreateRequestRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsCreateRequestRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      codec: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsCreateRequestRecordingConfigVideoConfigWatermark,
+      codec: S.optional(
+        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigCodec),
       ),
-      width: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
+      watermark: S.optional(
+        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigWatermark),
+      ),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfig",
@@ -685,43 +717,45 @@ export const MeetingsCreateRequestRecordingConfigVideoConfig =
 
 export interface MeetingsCreateRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsCreateRequestRecordingConfigAudioConfig;
+  audioConfig?: MeetingsCreateRequestRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsCreateRequestRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsCreateRequestRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsCreateRequestRecordingConfigStorageConfig;
-  videoConfig?: MeetingsCreateRequestRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsCreateRequestRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsCreateRequestRecordingConfigVideoConfig | null;
 }
 export const MeetingsCreateRequestRecordingConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsCreateRequestRecordingConfigAudioConfig.pipe(
+        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfig).pipe(
           T.Body("audio_config"),
         ),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(
+        S.NullOr(MeetingsCreateRequestRecordingConfigLiveStreamingConfig).pipe(
           T.Body("live_streaming_config"),
         ),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsCreateRequestRecordingConfigStorageConfig.pipe(
+        S.NullOr(MeetingsCreateRequestRecordingConfigStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
       videoConfig: S.optional(
-        MeetingsCreateRequestRecordingConfigVideoConfig.pipe(
+        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfig).pipe(
           T.Body("video_config"),
         ),
       ),
@@ -736,45 +770,53 @@ export interface CreateMeetingRequest {
   /** The app identifier tag. */
   appId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsCreateRequestAiConfig;
+  aiConfig?: MeetingsCreateRequestAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsCreateRequestRecordingConfig;
+  recordingConfig?: MeetingsCreateRequestRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const CreateMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     aiConfig: S.optional(
-      MeetingsCreateRequestAiConfig.pipe(T.Body("ai_config")),
+      S.NullOr(MeetingsCreateRequestAiConfig).pipe(T.Body("ai_config")),
     ),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsCreateRequestRecordingConfig.pipe(T.Body("recording_config")),
+      S.NullOr(MeetingsCreateRequestRecordingConfig).pipe(
+        T.Body("recording_config"),
+      ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   })
     .pipe(
       T.Http({
@@ -809,26 +851,26 @@ export const MeetingsCreateResponseDataAiConfigSummarizationTextFormat =
 
 export interface MeetingsCreateResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsCreateResponseDataAiConfigSummarizationSummaryType;
+  summaryType?: MeetingsCreateResponseDataAiConfigSummarizationSummaryType | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsCreateResponseDataAiConfigSummarizationTextFormat;
+  textFormat?: MeetingsCreateResponseDataAiConfigSummarizationTextFormat | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsCreateResponseDataAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsCreateResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsCreateResponseDataAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsCreateResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsCreateResponseDataAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataAiConfigSummarization",
@@ -857,22 +899,24 @@ export const MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
 
 export interface MeetingsCreateResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsCreateResponseDataAiConfigTranscriptionLanguage;
+  language?: MeetingsCreateResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsCreateResponseDataAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList,
+        S.NullOr(MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList),
       ),
       language: S.optional(
-        MeetingsCreateResponseDataAiConfigTranscriptionLanguage,
+        S.NullOr(MeetingsCreateResponseDataAiConfigTranscriptionLanguage),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataAiConfigTranscription",
@@ -880,14 +924,18 @@ export const MeetingsCreateResponseDataAiConfigTranscription =
 
 export interface MeetingsCreateResponseDataAiConfig {
   /** Summary Config */
-  summarization?: MeetingsCreateResponseDataAiConfigSummarization;
+  summarization?: MeetingsCreateResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsCreateResponseDataAiConfigTranscription;
+  transcription?: MeetingsCreateResponseDataAiConfigTranscription | null;
 }
 export const MeetingsCreateResponseDataAiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    summarization: S.optional(MeetingsCreateResponseDataAiConfigSummarization),
-    transcription: S.optional(MeetingsCreateResponseDataAiConfigTranscription),
+    summarization: S.optional(
+      S.NullOr(MeetingsCreateResponseDataAiConfigSummarization),
+    ),
+    transcription: S.optional(
+      S.NullOr(MeetingsCreateResponseDataAiConfigTranscription),
+    ),
   }),
 ).annotate({
   identifier: "MeetingsCreateResponseDataAiConfig",
@@ -907,22 +955,22 @@ export const MeetingsCreateResponseDataRecordingConfigAudioConfigCodec =
 
 export interface MeetingsCreateResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsCreateResponseDataRecordingConfigAudioConfigChannel;
+  channel?: MeetingsCreateResponseDataRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsCreateResponseDataRecordingConfigAudioConfigCodec;
+  codec?: MeetingsCreateResponseDataRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsCreateResponseDataRecordingConfigAudioConfigChannel,
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfigChannel),
       ),
       codec: S.optional(
-        MeetingsCreateResponseDataRecordingConfigAudioConfigCodec,
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfigCodec),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataRecordingConfigAudioConfig",
@@ -930,12 +978,12 @@ export const MeetingsCreateResponseDataRecordingConfigAudioConfig =
 
 export interface MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig",
@@ -974,47 +1022,47 @@ export interface MeetingsCreateResponseDataRecordingConfigStorageConfig {
   /** Type of storage media. */
   type: MeetingsCreateResponseDataRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod;
+  authMethod?: MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsCreateResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataRecordingConfigStorageConfig",
@@ -1033,15 +1081,15 @@ export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPositi
 
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -1050,22 +1098,26 @@ export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize =
 
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  position?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark",
@@ -1073,28 +1125,28 @@ export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark =
 
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsCreateResponseDataRecordingConfigVideoConfigCodec;
+  codec?: MeetingsCreateResponseDataRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsCreateResponseDataRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsCreateResponseDataRecordingConfigVideoConfigCodec,
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigCodec),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark,
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsCreateResponseDataRecordingConfigVideoConfig",
@@ -1102,43 +1154,45 @@ export const MeetingsCreateResponseDataRecordingConfigVideoConfig =
 
 export interface MeetingsCreateResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsCreateResponseDataRecordingConfigAudioConfig;
+  audioConfig?: MeetingsCreateResponseDataRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsCreateResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsCreateResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsCreateResponseDataRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsCreateResponseDataRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsCreateResponseDataRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsCreateResponseDataRecordingConfigVideoConfig | null;
 }
 export const MeetingsCreateResponseDataRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsCreateResponseDataRecordingConfigAudioConfig.pipe(
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfig).pipe(
           T.Body("audio_config"),
         ),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      liveStreamingConfig: S.optional(
+        S.NullOr(
+          MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
+      ),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsCreateResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsCreateResponseDataRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsCreateResponseDataRecordingConfigStorageConfig.pipe(
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
       videoConfig: S.optional(
-        MeetingsCreateResponseDataRecordingConfigVideoConfig.pipe(
+        S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfig).pipe(
           T.Body("video_config"),
         ),
       ),
@@ -1158,25 +1212,25 @@ export interface MeetingsCreateResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsCreateResponseDataAiConfig;
+  aiConfig?: MeetingsCreateResponseDataAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsCreateResponseDataRecordingConfig;
+  recordingConfig?: MeetingsCreateResponseDataRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsCreateResponseDataStatus;
+  status?: MeetingsCreateResponseDataStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const MeetingsCreateResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1184,25 +1238,31 @@ export const MeetingsCreateResponseData = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     aiConfig: S.optional(
-      MeetingsCreateResponseDataAiConfig.pipe(T.Body("ai_config")),
+      S.NullOr(MeetingsCreateResponseDataAiConfig).pipe(T.Body("ai_config")),
     ),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsCreateResponseDataRecordingConfig.pipe(
+      S.NullOr(MeetingsCreateResponseDataRecordingConfig).pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    status: S.optional(MeetingsCreateResponseDataStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    status: S.optional(S.NullOr(MeetingsCreateResponseDataStatus)),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   }),
 ).annotate({
   identifier: "MeetingsCreateResponseData",
@@ -1211,11 +1271,11 @@ export const MeetingsCreateResponseData = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateMeetingResponse {
   /** Data returned by the operation */
-  data?: MeetingsCreateResponseData;
+  data?: MeetingsCreateResponseData | null;
 }
 export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsCreateResponseData),
+    data: S.optional(S.NullOr(MeetingsCreateResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMeetingResponse",
@@ -1237,9 +1297,9 @@ export interface CreatePollActiveSessionRequest {
   /** Question of the poll */
   question: string;
   /** if voters on a poll are anonymous */
-  anonymous?: boolean;
+  anonymous?: boolean | null;
   /** if votes on an option are visible before a person votes */
-  hideVotes?: boolean;
+  hideVotes?: boolean | null;
 }
 export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1248,8 +1308,8 @@ export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
     meetingId: S.String.pipe(T.Label("meeting_id")),
     options: ActiveSessionCreatePollRequestOptionsList,
     question: S.String,
-    anonymous: S.optional(S.Boolean),
-    hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
+    anonymous: S.optional(S.NullOr(S.Boolean)),
+    hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
   })
     .pipe(
       T.Http({
@@ -1321,10 +1381,10 @@ export interface ActiveSessionCreatePollResponseDataPoll {
   options: ActiveSessionCreatePollResponseDataPollOptionsList;
   /** Question asked by the poll */
   question: string;
-  anonymous?: boolean;
-  createdBy?: string;
-  hideVotes?: boolean;
-  voted?: ActiveSessionCreatePollResponseDataPollVotedList;
+  anonymous?: boolean | null;
+  createdBy?: string | null;
+  hideVotes?: boolean | null;
+  voted?: ActiveSessionCreatePollResponseDataPollVotedList | null;
 }
 export const ActiveSessionCreatePollResponseDataPoll = /*@__PURE__*/ S.suspend(
   () =>
@@ -1332,23 +1392,25 @@ export const ActiveSessionCreatePollResponseDataPoll = /*@__PURE__*/ S.suspend(
       id: S.String,
       options: ActiveSessionCreatePollResponseDataPollOptionsList,
       question: S.String,
-      anonymous: S.optional(S.Boolean),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
-      voted: S.optional(ActiveSessionCreatePollResponseDataPollVotedList),
+      anonymous: S.optional(S.NullOr(S.Boolean)),
+      createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+      hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
+      voted: S.optional(
+        S.NullOr(ActiveSessionCreatePollResponseDataPollVotedList),
+      ),
     }),
 ).annotate({
   identifier: "ActiveSessionCreatePollResponseDataPoll",
 }) as any as S.Schema<ActiveSessionCreatePollResponseDataPoll>;
 
 export interface ActiveSessionCreatePollResponseData {
-  action?: string;
-  poll?: ActiveSessionCreatePollResponseDataPoll;
+  action?: string | null;
+  poll?: ActiveSessionCreatePollResponseDataPoll | null;
 }
 export const ActiveSessionCreatePollResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(S.String),
-    poll: S.optional(ActiveSessionCreatePollResponseDataPoll),
+    action: S.optional(S.NullOr(S.String)),
+    poll: S.optional(S.NullOr(ActiveSessionCreatePollResponseDataPoll)),
   }),
 ).annotate({
   identifier: "ActiveSessionCreatePollResponseData",
@@ -1356,11 +1418,11 @@ export const ActiveSessionCreatePollResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreatePollActiveSessionResponse {
-  data?: ActiveSessionCreatePollResponseData;
+  data?: ActiveSessionCreatePollResponseData | null;
 }
 export const CreatePollActiveSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(ActiveSessionCreatePollResponseData),
+    data: S.optional(S.NullOr(ActiveSessionCreatePollResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePollActiveSessionResponse",
@@ -1422,14 +1484,14 @@ export interface PresetsCreateRequestConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsCreateRequestConfigMediaVideoQuality | (string & {});
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsCreateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsCreateRequestConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMediaVideo",
@@ -1437,17 +1499,19 @@ export const PresetsCreateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
 
 export interface PresetsCreateRequestConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsCreateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMediaAudio",
@@ -1459,13 +1523,13 @@ export interface PresetsCreateRequestConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsCreateRequestConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsCreateRequestConfigMediaAudio;
+  audio?: PresetsCreateRequestConfigMediaAudio | null;
 }
 export const PresetsCreateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshare: PresetsCreateRequestConfigMediaScreenshare,
     video: PresetsCreateRequestConfigMediaVideo,
-    audio: S.optional(PresetsCreateRequestConfigMediaAudio),
+    audio: S.optional(S.NullOr(PresetsCreateRequestConfigMediaAudio)),
   }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMedia",
@@ -1495,7 +1559,7 @@ export interface PresetsCreateRequestConfig {
   /** Type of the meeting */
   viewType: PresetsCreateRequestConfigViewType | (string & {});
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList | null;
 }
 export const PresetsCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1506,7 +1570,7 @@ export const PresetsCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
     media: PresetsCreateRequestConfigMedia,
     viewType: PresetsCreateRequestConfigViewType.pipe(T.Body("view_type")),
     livestreamViewerQualities: S.optional(
-      PresetsCreateRequestConfigLivestreamViewerQualitiesList.pipe(
+      S.NullOr(PresetsCreateRequestConfigLivestreamViewerQualitiesList).pipe(
         T.Body("livestream_viewer_qualities"),
       ),
     ),
@@ -1688,18 +1752,21 @@ export const PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
 export interface PresetsCreateRequestPermissionsPluginsConfigValue {
   accessControl?:
     | PresetsCreateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {});
-  handlesViewOnly?: boolean;
+    | (string & {})
+    | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsCreateRequestPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsCreateRequestPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsCreateRequestPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsCreateRequestPermissionsPluginsConfigValue",
@@ -1807,11 +1874,14 @@ export interface PresetsCreateRequestPermissions {
   waitingRoomType:
     | PresetsCreateRequestPermissionsWaitingRoomType
     | (string & {});
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsCreateRequestPermissionsStageAccess | (string & {});
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  acceptStageRequests?: boolean | null;
+  isRecorder?: boolean | null;
+  stageAccess?:
+    | PresetsCreateRequestPermissionsStageAccess
+    | (string & {})
+    | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
 }
 export const PresetsCreateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1853,15 +1923,17 @@ export const PresetsCreateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
       T.Body("waiting_room_type"),
     ),
     acceptStageRequests: S.optional(
-      S.Boolean.pipe(T.Body("accept_stage_requests")),
+      S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
     ),
-    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+    isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
     stageAccess: S.optional(
-      PresetsCreateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
+      S.NullOr(PresetsCreateRequestPermissionsStageAccess).pipe(
+        T.Body("stage_access"),
+      ),
     ),
-    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+    stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
     transcriptionEnabled: S.optional(
-      S.Boolean.pipe(T.Body("transcription_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
     ),
   }),
 ).annotate({
@@ -1961,9 +2033,9 @@ export interface PresetsCreateRequestUiDesignTokens {
   colors: PresetsCreateRequestUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsCreateRequestUiDesignTokensTheme | (string & {});
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
 }
 export const PresetsCreateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1976,9 +2048,9 @@ export const PresetsCreateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
     colors: PresetsCreateRequestUiDesignTokensColors,
     spacingBase: S.Number.pipe(T.Body("spacing_base")),
     theme: PresetsCreateRequestUiDesignTokensTheme,
-    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-    logo: S.optional(S.String),
+    fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+    googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+    logo: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PresetsCreateRequestUiDesignTokens",
@@ -2085,14 +2157,14 @@ export interface PresetsCreateResponseDataConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsCreateResponseDataConfigMediaVideoQuality;
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsCreateResponseDataConfigMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsCreateResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataConfigMediaVideo",
@@ -2100,17 +2172,19 @@ export const PresetsCreateResponseDataConfigMediaVideo =
 
 export interface PresetsCreateResponseDataConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsCreateResponseDataConfigMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataConfigMediaAudio",
@@ -2122,14 +2196,14 @@ export interface PresetsCreateResponseDataConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsCreateResponseDataConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsCreateResponseDataConfigMediaAudio;
+  audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
 export const PresetsCreateResponseDataConfigMedia = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       screenshare: PresetsCreateResponseDataConfigMediaScreenshare,
       video: PresetsCreateResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsCreateResponseDataConfigMediaAudio),
+      audio: S.optional(S.NullOr(PresetsCreateResponseDataConfigMediaAudio)),
     }),
 ).annotate({
   identifier: "PresetsCreateResponseDataConfigMedia",
@@ -2159,7 +2233,7 @@ export interface PresetsCreateResponseDataConfig {
   /** Type of the meeting */
   viewType: PresetsCreateResponseDataConfigViewType;
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsCreateResponseDataConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsCreateResponseDataConfigLivestreamViewerQualitiesList | null;
 }
 export const PresetsCreateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2170,9 +2244,9 @@ export const PresetsCreateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
     media: PresetsCreateResponseDataConfigMedia,
     viewType: PresetsCreateResponseDataConfigViewType.pipe(T.Body("view_type")),
     livestreamViewerQualities: S.optional(
-      PresetsCreateResponseDataConfigLivestreamViewerQualitiesList.pipe(
-        T.Body("livestream_viewer_qualities"),
-      ),
+      S.NullOr(
+        PresetsCreateResponseDataConfigLivestreamViewerQualitiesList,
+      ).pipe(T.Body("livestream_viewer_qualities")),
     ),
   }),
 ).annotate({
@@ -2344,18 +2418,20 @@ export const PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl
   /*@__PURE__*/ S.String;
 
 export interface PresetsCreateResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl;
-  handlesViewOnly?: boolean;
+  accessControl?: PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsCreateResponseDataPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataPermissionsPluginsConfigValue",
@@ -2463,11 +2539,11 @@ export interface PresetsCreateResponseDataPermissions {
   showParticipantList: boolean;
   /** Waiting room type */
   waitingRoomType: PresetsCreateResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsCreateResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  acceptStageRequests?: boolean | null;
+  isRecorder?: boolean | null;
+  stageAccess?: PresetsCreateResponseDataPermissionsStageAccess | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
 }
 export const PresetsCreateResponseDataPermissions = /*@__PURE__*/ S.suspend(
   () =>
@@ -2511,17 +2587,19 @@ export const PresetsCreateResponseDataPermissions = /*@__PURE__*/ S.suspend(
         T.Body("waiting_room_type"),
       ),
       acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
+        S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
       ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
       stageAccess: S.optional(
-        PresetsCreateResponseDataPermissionsStageAccess.pipe(
+        S.NullOr(PresetsCreateResponseDataPermissionsStageAccess).pipe(
           T.Body("stage_access"),
         ),
       ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      stageEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("stage_enabled")),
+      ),
       transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
+        S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
       ),
     }),
 ).annotate({
@@ -2622,9 +2700,9 @@ export interface PresetsCreateResponseDataUiDesignTokens {
   colors: PresetsCreateResponseDataUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsCreateResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
 }
 export const PresetsCreateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
   () =>
@@ -2638,9 +2716,9 @@ export const PresetsCreateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
       colors: PresetsCreateResponseDataUiDesignTokensColors,
       spacingBase: S.Number.pipe(T.Body("spacing_base")),
       theme: PresetsCreateResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
+      fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+      logo: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PresetsCreateResponseDataUiDesignTokens",
@@ -2730,7 +2808,7 @@ export interface CreateWebhookWebhookRequest {
   /** URL this webhook will send events to */
   url: string;
   /** Set whether or not the webhook should be active when created */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2739,7 +2817,7 @@ export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     events: WebhooksCreateWebhookRequestEventsList,
     name: S.String,
     url: S.String,
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -2868,12 +2946,12 @@ export const MeetingsDeleteMeetingParticipantResponseData =
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteMeetingParticipantMeetingResponse {
   /** Data returned by the operation */
-  data?: MeetingsDeleteMeetingParticipantResponseData;
+  data?: MeetingsDeleteMeetingParticipantResponseData | null;
 }
 export const DeleteMeetingParticipantMeetingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(MeetingsDeleteMeetingParticipantResponseData),
+      data: S.optional(S.NullOr(MeetingsDeleteMeetingParticipantResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMeetingParticipantMeetingResponse",
@@ -2960,14 +3038,14 @@ export interface PresetsDeleteResponseDataConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsDeleteResponseDataConfigMediaVideoQuality;
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsDeleteResponseDataConfigMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsDeleteResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataConfigMediaVideo",
@@ -2975,17 +3053,19 @@ export const PresetsDeleteResponseDataConfigMediaVideo =
 
 export interface PresetsDeleteResponseDataConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsDeleteResponseDataConfigMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataConfigMediaAudio",
@@ -2997,14 +3077,14 @@ export interface PresetsDeleteResponseDataConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsDeleteResponseDataConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsDeleteResponseDataConfigMediaAudio;
+  audio?: PresetsDeleteResponseDataConfigMediaAudio | null;
 }
 export const PresetsDeleteResponseDataConfigMedia = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       screenshare: PresetsDeleteResponseDataConfigMediaScreenshare,
       video: PresetsDeleteResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsDeleteResponseDataConfigMediaAudio),
+      audio: S.optional(S.NullOr(PresetsDeleteResponseDataConfigMediaAudio)),
     }),
 ).annotate({
   identifier: "PresetsDeleteResponseDataConfigMedia",
@@ -3034,7 +3114,7 @@ export interface PresetsDeleteResponseDataConfig {
   /** Type of the meeting */
   viewType: PresetsDeleteResponseDataConfigViewType;
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList | null;
 }
 export const PresetsDeleteResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3045,9 +3125,9 @@ export const PresetsDeleteResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
     media: PresetsDeleteResponseDataConfigMedia,
     viewType: PresetsDeleteResponseDataConfigViewType.pipe(T.Body("view_type")),
     livestreamViewerQualities: S.optional(
-      PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList.pipe(
-        T.Body("livestream_viewer_qualities"),
-      ),
+      S.NullOr(
+        PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList,
+      ).pipe(T.Body("livestream_viewer_qualities")),
     ),
   }),
 ).annotate({
@@ -3219,18 +3299,20 @@ export const PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl
   /*@__PURE__*/ S.String;
 
 export interface PresetsDeleteResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl;
-  handlesViewOnly?: boolean;
+  accessControl?: PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsDeleteResponseDataPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataPermissionsPluginsConfigValue",
@@ -3338,11 +3420,11 @@ export interface PresetsDeleteResponseDataPermissions {
   showParticipantList: boolean;
   /** Waiting room type */
   waitingRoomType: PresetsDeleteResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsDeleteResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  acceptStageRequests?: boolean | null;
+  isRecorder?: boolean | null;
+  stageAccess?: PresetsDeleteResponseDataPermissionsStageAccess | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
 }
 export const PresetsDeleteResponseDataPermissions = /*@__PURE__*/ S.suspend(
   () =>
@@ -3386,17 +3468,19 @@ export const PresetsDeleteResponseDataPermissions = /*@__PURE__*/ S.suspend(
         T.Body("waiting_room_type"),
       ),
       acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
+        S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
       ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
       stageAccess: S.optional(
-        PresetsDeleteResponseDataPermissionsStageAccess.pipe(
+        S.NullOr(PresetsDeleteResponseDataPermissionsStageAccess).pipe(
           T.Body("stage_access"),
         ),
       ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      stageEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("stage_enabled")),
+      ),
       transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
+        S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
       ),
     }),
 ).annotate({
@@ -3497,9 +3581,9 @@ export interface PresetsDeleteResponseDataUiDesignTokens {
   colors: PresetsDeleteResponseDataUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsDeleteResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
 }
 export const PresetsDeleteResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
   () =>
@@ -3513,9 +3597,9 @@ export const PresetsDeleteResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
       colors: PresetsDeleteResponseDataUiDesignTokensColors,
       spacingBase: S.Number.pipe(T.Body("spacing_base")),
       theme: PresetsDeleteResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
+      fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+      logo: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PresetsDeleteResponseDataUiDesignTokens",
@@ -3669,11 +3753,11 @@ export interface EditParticipantMeetingRequest {
   meetingId: string;
   participantId: string;
   /** (Optional) Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string;
+  picture?: string | null;
   /** (Optional) Name of the preset to apply to this participant. */
-  presetName?: string;
+  presetName?: string | null;
 }
 export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3681,9 +3765,9 @@ export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     participantId: S.String.pipe(T.Label("participant_id")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
-    presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
+    name: S.optional(S.NullOr(S.String)),
+    picture: S.optional(S.NullOr(S.String)),
+    presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
   })
     .pipe(
       T.Http({
@@ -3711,9 +3795,9 @@ export interface MeetingsEditParticipantResponseData {
   /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
   /** Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** URL to a picture of the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const MeetingsEditParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3723,8 +3807,8 @@ export const MeetingsEditParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
     customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
     presetName: S.String.pipe(T.Body("preset_name")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    picture: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "MeetingsEditParticipantResponseData",
@@ -3733,11 +3817,11 @@ export const MeetingsEditParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface EditParticipantMeetingResponse {
   /** Represents a participant. */
-  data?: MeetingsEditParticipantResponseData;
+  data?: MeetingsEditParticipantResponseData | null;
 }
 export const EditParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsEditParticipantResponseData),
+    data: S.optional(S.NullOr(MeetingsEditParticipantResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditParticipantMeetingResponse",
@@ -3768,23 +3852,23 @@ export interface EditWebhookWebhookRequest {
   /** The app identifier tag. */
   appId: string;
   webhookId: string;
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Events that the webhook will get triggered by */
-  events?: WebhooksEditWebhookRequestEventsList;
+  events?: WebhooksEditWebhookRequestEventsList | null;
   /** Name of the webhook */
-  name?: string;
+  name?: string | null;
   /** URL the webhook will send events to */
-  url?: string;
+  url?: string | null;
 }
 export const EditWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-    enabled: S.optional(S.Boolean),
-    events: S.optional(WebhooksEditWebhookRequestEventsList),
-    name: S.optional(S.String),
-    url: S.optional(S.String),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    events: S.optional(S.NullOr(WebhooksEditWebhookRequestEventsList)),
+    name: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3885,14 +3969,14 @@ export const GenerateSummaryOfTranscriptsSessionRequest =
   }) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>;
 
 export interface SessionsGenerateSummaryOfTranscriptsResponseData {
-  sessionId?: string;
-  status?: string;
+  sessionId?: string | null;
+  status?: string | null;
 }
 export const SessionsGenerateSummaryOfTranscriptsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      status: S.optional(S.String),
+      sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+      status: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "SessionsGenerateSummaryOfTranscriptsResponseData",
@@ -3900,12 +3984,14 @@ export const SessionsGenerateSummaryOfTranscriptsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GenerateSummaryOfTranscriptsSessionResponse {
-  data?: SessionsGenerateSummaryOfTranscriptsResponseData;
+  data?: SessionsGenerateSummaryOfTranscriptsResponseData | null;
 }
 export const GenerateSummaryOfTranscriptsSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(SessionsGenerateSummaryOfTranscriptsResponseData),
+      data: S.optional(
+        S.NullOr(SessionsGenerateSummaryOfTranscriptsResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GenerateSummaryOfTranscriptsSessionResponse",
@@ -3943,40 +4029,44 @@ export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestrea
   /*@__PURE__*/ S.String;
 
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream {
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specifies if the livestream was disabled. */
-  disabled?: string;
+  disabled?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
+  ingestServer?: string | null;
   /** ID of the meeting. */
-  meetingId?: string;
+  meetingId?: string | null;
   /** Name of the livestream. */
-  name?: string;
+  name?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus,
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      disabled: S.optional(S.NullOr(S.String)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
       ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+      name: S.optional(S.NullOr(S.String)),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(
+          LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus,
+        ),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier:
@@ -3984,37 +4074,43 @@ export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestrea
   }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream>;
 
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession {
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  errMessage?: string;
+  createdAt?: string | null;
+  errMessage?: string | null;
   /** The time duration for which the input was given or the meeting was streamed. */
-  ingestSeconds?: string;
+  ingestSeconds?: string | null;
   /** Timestamp the object was invoked. The time is returned in ISO format. */
-  invokedTime?: string;
-  livestreamId?: string;
+  invokedTime?: string | null;
+  livestreamId?: string | null;
   /** Timestamp the object was started. The time is returned in ISO format. */
-  startedTime?: string;
+  startedTime?: string | null;
   /** Timestamp the object was stopped. The time is returned in ISO format. */
-  stoppedTime?: string;
+  stoppedTime?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** The total view time for which the viewers watched the stream. */
-  viewerSeconds?: string;
+  viewerSeconds?: string | null;
 }
 export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.String.pipe(T.Body("ingest_seconds"))),
-      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.String.pipe(T.Body("viewer_seconds"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.NullOr(S.String).pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_seconds")),
+      ),
+      invokedTime: S.optional(S.NullOr(S.String).pipe(T.Body("invoked_time"))),
+      livestreamId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("livestream_id")),
+      ),
+      startedTime: S.optional(S.NullOr(S.String).pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(
+        S.NullOr(S.String).pipe(T.Body("viewer_seconds")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -4022,17 +4118,21 @@ export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession =
   }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession>;
 
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseData {
-  livestream?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream;
-  session?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession;
+  livestream?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream | null;
+  session?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession | null;
 }
 export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       livestream: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream,
+        S.NullOr(
+          LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream,
+        ),
       ),
       session: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession,
+        S.NullOr(
+          LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession,
+        ),
       ),
     }),
   ).annotate({
@@ -4041,13 +4141,13 @@ export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetActiveLivestreamsForLivestreamIdLivestreamResponse {
-  data?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseData;
+  data?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseData | null;
 }
 export const GetActiveLivestreamsForLivestreamIdLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseData,
+        S.NullOr(LivestreamsGetActiveLivestreamsForLivestreamIdResponseData),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -4113,7 +4213,7 @@ export interface RecordingsGetActiveRecordingsResponseData {
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
+  recordingDuration?: number | null;
 }
 export const RecordingsGetActiveRecordingsResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -4130,7 +4230,7 @@ export const RecordingsGetActiveRecordingsResponseData =
       status: RecordingsGetActiveRecordingsResponseDataStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
     }),
   ).annotate({
@@ -4220,9 +4320,9 @@ export interface ActiveSessionGetActiveSessionResponseData {
   type: ActiveSessionGetActiveSessionResponseDataType;
   /** timestamp when session was last updated */
   updatedAt: string;
-  breakoutRooms?: ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList;
+  breakoutRooms?: ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList | null;
   /** timestamp when session ended */
-  endedAt?: string;
+  endedAt?: string | null;
 }
 export const ActiveSessionGetActiveSessionResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -4242,11 +4342,11 @@ export const ActiveSessionGetActiveSessionResponseData =
       type: ActiveSessionGetActiveSessionResponseDataType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       breakoutRooms: S.optional(
-        ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList.pipe(
-          T.Body("breakout_rooms"),
-        ),
+        S.NullOr(
+          ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList,
+        ).pipe(T.Body("breakout_rooms")),
       ),
-      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+      endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
     }),
   ).annotate({
     identifier: "ActiveSessionGetActiveSessionResponseData",
@@ -4254,12 +4354,12 @@ export const ActiveSessionGetActiveSessionResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetActiveSessionActiveSessionResponse {
-  data?: ActiveSessionGetActiveSessionResponseData;
+  data?: ActiveSessionGetActiveSessionResponseData | null;
 }
 export const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(ActiveSessionGetActiveSessionResponseData),
+      data: S.optional(S.NullOr(ActiveSessionGetActiveSessionResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetActiveSessionActiveSessionResponse",
@@ -4325,16 +4425,16 @@ export const GetAllLivestreamsLivestreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAllLivestreamsLivestreamRequest>;
 
 export interface LivestreamsGetAllLivestreamsResponseDataPaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
+  endOffset?: number | null;
+  startOffset?: number | null;
+  totalCount?: number | null;
 }
 export const LivestreamsGetAllLivestreamsResponseDataPaging =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+      endOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("end_offset"))),
+      startOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("start_offset"))),
+      totalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_count"))),
     }),
   ).annotate({
     identifier: "LivestreamsGetAllLivestreamsResponseDataPaging",
@@ -4350,40 +4450,46 @@ export const LivestreamsGetAllLivestreamsResponseDataStatus =
 
 export interface LivestreamsGetAllLivestreamsResponseData {
   /** The ID of the livestream. */
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specifies if the livestream was disabled. */
-  disabled?: string;
+  disabled?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
+  ingestServer?: string | null;
   /** ID of the meeting. */
-  meetingId?: string;
+  meetingId?: string | null;
   /** Name of the livestream. */
-  name?: string;
-  paging?: LivestreamsGetAllLivestreamsResponseDataPaging;
+  name?: string | null;
+  paging?: LivestreamsGetAllLivestreamsResponseDataPaging | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetAllLivestreamsResponseDataStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsGetAllLivestreamsResponseDataStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const LivestreamsGetAllLivestreamsResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      paging: S.optional(LivestreamsGetAllLivestreamsResponseDataPaging),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(LivestreamsGetAllLivestreamsResponseDataStatus),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      disabled: S.optional(S.NullOr(S.String)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
+      ),
+      meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+      name: S.optional(S.NullOr(S.String)),
+      paging: S.optional(
+        S.NullOr(LivestreamsGetAllLivestreamsResponseDataPaging),
+      ),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(LivestreamsGetAllLivestreamsResponseDataStatus),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "LivestreamsGetAllLivestreamsResponseData",
@@ -4391,11 +4497,11 @@ export const LivestreamsGetAllLivestreamsResponseData = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAllLivestreamsLivestreamResponse {
-  data?: LivestreamsGetAllLivestreamsResponseData;
+  data?: LivestreamsGetAllLivestreamsResponseData | null;
 }
 export const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(LivestreamsGetAllLivestreamsResponseData),
+    data: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAllLivestreamsLivestreamResponse",
@@ -4435,15 +4541,15 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 export interface AppsGetResponseDataItem {
-  id?: string;
-  createdAt?: string;
-  name?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  name?: string | null;
 }
 export const AppsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AppsGetResponseDataItem",
@@ -4455,15 +4561,15 @@ export const AppsGetResponseDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsGetResponseDataList>;
 
 export interface AppsGetResponsePaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
+  endOffset?: number | null;
+  startOffset?: number | null;
+  totalCount?: number | null;
 }
 export const AppsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-    startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    endOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("end_offset"))),
+    startOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("start_offset"))),
+    totalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_count"))),
   }),
 ).annotate({
   identifier: "AppsGetResponsePaging",
@@ -4471,13 +4577,13 @@ export const AppsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAppResponse {
-  data?: AppsGetResponseDataList;
-  paging?: AppsGetResponsePaging;
+  data?: AppsGetResponseDataList | null;
+  paging?: AppsGetResponsePaging | null;
 }
 export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(AppsGetResponseDataList),
-    paging: S.optional(AppsGetResponsePaging),
+    data: S.optional(S.NullOr(AppsGetResponseDataList)),
+    paging: S.optional(S.NullOr(AppsGetResponsePaging)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
@@ -4516,21 +4622,21 @@ export const GetLivestreamAnalyticsCompleteLivestreamRequest =
 
 export interface LivestreamsGetLivestreamAnalyticsCompleteResponseData {
   /** Count of total livestreams. */
-  count?: number;
+  count?: number | null;
   /** Total time duration for which the input was given or the meeting was streamed. */
-  totalIngestSeconds?: number;
+  totalIngestSeconds?: number | null;
   /** Total view time for which the viewers watched the stream. */
-  totalViewerSeconds?: number;
+  totalViewerSeconds?: number | null;
 }
 export const LivestreamsGetLivestreamAnalyticsCompleteResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.optional(S.Number),
+      count: S.optional(S.NullOr(S.Number)),
       totalIngestSeconds: S.optional(
-        S.Number.pipe(T.Body("total_ingest_seconds")),
+        S.NullOr(S.Number).pipe(T.Body("total_ingest_seconds")),
       ),
       totalViewerSeconds: S.optional(
-        S.Number.pipe(T.Body("total_viewer_seconds")),
+        S.NullOr(S.Number).pipe(T.Body("total_viewer_seconds")),
       ),
     }),
   ).annotate({
@@ -4539,12 +4645,14 @@ export const LivestreamsGetLivestreamAnalyticsCompleteResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamAnalyticsCompleteLivestreamResponse {
-  data?: LivestreamsGetLivestreamAnalyticsCompleteResponseData;
+  data?: LivestreamsGetLivestreamAnalyticsCompleteResponseData | null;
 }
 export const GetLivestreamAnalyticsCompleteLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(LivestreamsGetLivestreamAnalyticsCompleteResponseData),
+      data: S.optional(
+        S.NullOr(LivestreamsGetLivestreamAnalyticsCompleteResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamAnalyticsCompleteLivestreamResponse",
@@ -4585,24 +4693,24 @@ export const GetLivestreamAnalyticsDaywiseLivestreamRequest =
 
 export interface LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem {
   /** Count of total livestream sessions. */
-  count?: number;
+  count?: number | null;
   /** Analytics date. */
-  date?: string;
+  date?: string | null;
   /** Total time duration for which the input was given or the meeting was streamed. */
-  totalIngestSeconds?: number;
+  totalIngestSeconds?: number | null;
   /** Total view time for which the viewers watched the stream. */
-  totalViewerSeconds?: number;
+  totalViewerSeconds?: number | null;
 }
 export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.optional(S.Number),
-      date: S.optional(S.String),
+      count: S.optional(S.NullOr(S.Number)),
+      date: S.optional(S.NullOr(S.String)),
       totalIngestSeconds: S.optional(
-        S.Number.pipe(T.Body("total_ingest_seconds")),
+        S.NullOr(S.Number).pipe(T.Body("total_ingest_seconds")),
       ),
       totalViewerSeconds: S.optional(
-        S.Number.pipe(T.Body("total_viewer_seconds")),
+        S.NullOr(S.Number).pipe(T.Body("total_viewer_seconds")),
       ),
     }),
   ).annotate({
@@ -4618,13 +4726,13 @@ export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamAnalyticsDaywiseLivestreamResponse {
-  data?: LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList;
+  data?: LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList | null;
 }
 export const GetLivestreamAnalyticsDaywiseLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(
-        LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList,
+        S.NullOr(LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -4659,35 +4767,41 @@ export const GetLivestreamSessionDetailsForSessionIdLivestreamRequest =
 
 export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData {
   /** The livestream ID. */
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  errMessage?: string;
+  errMessage?: string | null;
   /** Name of the livestream. */
-  ingestSeconds?: number;
-  livestreamId?: string;
+  ingestSeconds?: number | null;
+  livestreamId?: string | null;
   /** Unique key for accessing each livestream. */
-  startedTime?: string;
+  startedTime?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  stoppedTime?: string;
+  stoppedTime?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** Specifies if the livestream was disabled. */
-  viewerSeconds?: number;
+  viewerSeconds?: number | null;
 }
 export const LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.NullOr(S.String).pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("ingest_seconds")),
+      ),
+      livestreamId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("livestream_id")),
+      ),
+      startedTime: S.optional(S.NullOr(S.String).pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("viewer_seconds")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -4696,13 +4810,15 @@ export const LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamSessionDetailsForSessionIdLivestreamResponse {
-  data?: LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData;
+  data?: LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData | null;
 }
 export const GetLivestreamSessionDetailsForSessionIdLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(
-        LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData,
+        S.NullOr(
+          LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData,
+        ),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -4748,40 +4864,44 @@ export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestrea
 
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream {
   /** ID of the livestream. */
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specifies if the livestream was disabled. */
-  disabled?: string;
+  disabled?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
+  ingestServer?: string | null;
   /** The ID of the meeting. */
-  meetingId?: string;
+  meetingId?: string | null;
   /** Name of the livestream. */
-  name?: string;
+  name?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus,
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      disabled: S.optional(S.NullOr(S.String)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
       ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+      name: S.optional(S.NullOr(S.String)),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(
+          LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus,
+        ),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier:
@@ -4789,16 +4909,16 @@ export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestrea
   }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream>;
 
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
+  endOffset?: number | null;
+  startOffset?: number | null;
+  totalCount?: number | null;
 }
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+      endOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("end_offset"))),
+      startOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("start_offset"))),
+      totalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_count"))),
     }),
   ).annotate({
     identifier:
@@ -4807,37 +4927,43 @@ export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging =
 
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession {
   /** ID of the session. */
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  errMessage?: string;
+  createdAt?: string | null;
+  errMessage?: string | null;
   /** The time duration for which the input was given or the meeting was streamed. */
-  ingestSeconds?: number;
+  ingestSeconds?: number | null;
   /** Timestamp the object was invoked. The time is returned in ISO format. */
-  invokedTime?: string;
-  livestreamId?: string;
+  invokedTime?: string | null;
+  livestreamId?: string | null;
   /** Timestamp the object was started. The time is returned in ISO format. */
-  startedTime?: string;
+  startedTime?: string | null;
   /** Timestamp the object was stopped. The time is returned in ISO format. */
-  stoppedTime?: string;
+  stoppedTime?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** The total view time for which the viewers watched the stream. */
-  viewerSeconds?: number;
+  viewerSeconds?: number | null;
 }
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
-      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.NullOr(S.String).pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("ingest_seconds")),
+      ),
+      invokedTime: S.optional(S.NullOr(S.String).pipe(T.Body("invoked_time"))),
+      livestreamId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("livestream_id")),
+      ),
+      startedTime: S.optional(S.NullOr(S.String).pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("viewer_seconds")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -4845,21 +4971,27 @@ export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession =
   }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession>;
 
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseData {
-  livestream?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream;
-  paging?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging;
-  session?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession;
+  livestream?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream | null;
+  paging?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging | null;
+  session?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession | null;
 }
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       livestream: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream,
+        S.NullOr(
+          LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream,
+        ),
       ),
       paging: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging,
+        S.NullOr(
+          LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging,
+        ),
       ),
       session: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession,
+        S.NullOr(
+          LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession,
+        ),
       ),
     }),
   ).annotate({
@@ -4868,13 +5000,13 @@ export const LivestreamsGetLivestreamSessionForLivestreamIdResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamSessionForLivestreamIdLivestreamResponse {
-  data?: LivestreamsGetLivestreamSessionForLivestreamIdResponseData;
+  data?: LivestreamsGetLivestreamSessionForLivestreamIdResponseData | null;
 }
 export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseData,
+        S.NullOr(LivestreamsGetLivestreamSessionForLivestreamIdResponseData),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -4939,22 +5071,22 @@ export const MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
 
 export interface MeetingsGetResponseDataItemRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel;
+  channel?: MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec;
+  codec?: MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel,
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel),
       ),
       codec: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec,
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsGetResponseDataItemRecordingConfigAudioConfig",
@@ -4962,12 +5094,12 @@ export const MeetingsGetResponseDataItemRecordingConfigAudioConfig =
 
 export interface MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig",
@@ -5006,47 +5138,47 @@ export interface MeetingsGetResponseDataItemRecordingConfigStorageConfig {
   /** Type of storage media. */
   type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod;
+  authMethod?: MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsGetResponseDataItemRecordingConfigStorageConfig",
@@ -5065,15 +5197,15 @@ export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosit
 
 export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -5082,22 +5214,26 @@ export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize 
 
 export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition;
+  position?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -5106,28 +5242,30 @@ export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark =
 
 export interface MeetingsGetResponseDataItemRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec;
+  codec?: MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec,
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsGetResponseDataItemRecordingConfigVideoConfig",
@@ -5135,43 +5273,45 @@ export const MeetingsGetResponseDataItemRecordingConfigVideoConfig =
 
 export interface MeetingsGetResponseDataItemRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsGetResponseDataItemRecordingConfigAudioConfig;
+  audioConfig?: MeetingsGetResponseDataItemRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsGetResponseDataItemRecordingConfigStorageConfig;
-  videoConfig?: MeetingsGetResponseDataItemRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsGetResponseDataItemRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsGetResponseDataItemRecordingConfigVideoConfig | null;
 }
 export const MeetingsGetResponseDataItemRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfig.pipe(
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigAudioConfig).pipe(
           T.Body("audio_config"),
         ),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      liveStreamingConfig: S.optional(
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
+      ),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigStorageConfig.pipe(
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
       videoConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfig.pipe(
+        S.NullOr(MeetingsGetResponseDataItemRecordingConfigVideoConfig).pipe(
           T.Body("video_config"),
         ),
       ),
@@ -5191,23 +5331,23 @@ export interface MeetingsGetResponseDataItem {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsGetResponseDataItemRecordingConfig;
+  recordingConfig?: MeetingsGetResponseDataItemRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsGetResponseDataItemStatus;
+  status?: MeetingsGetResponseDataItemStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5215,22 +5355,28 @@ export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsGetResponseDataItemRecordingConfig.pipe(
+      S.NullOr(MeetingsGetResponseDataItemRecordingConfig).pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    status: S.optional(MeetingsGetResponseDataItemStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    status: S.optional(S.NullOr(MeetingsGetResponseDataItemStatus)),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   }),
 ).annotate({
   identifier: "MeetingsGetResponseDataItem",
@@ -5306,39 +5452,41 @@ export const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
 
 export interface LivestreamsGetMeetingActiveLivestreamsResponseData {
   /** The livestream ID. */
-  id?: string;
+  id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specifies if the livestream was disabled. */
-  disabled?: string;
+  disabled?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  meetingId?: string;
+  ingestServer?: string | null;
+  meetingId?: string | null;
   /** Name of the livestream. */
-  name?: string;
+  name?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetMeetingActiveLivestreamsResponseDataStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsGetMeetingActiveLivestreamsResponseDataStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const LivestreamsGetMeetingActiveLivestreamsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetMeetingActiveLivestreamsResponseDataStatus,
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      disabled: S.optional(S.NullOr(S.String)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
       ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
+      name: S.optional(S.NullOr(S.String)),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(LivestreamsGetMeetingActiveLivestreamsResponseDataStatus),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier: "LivestreamsGetMeetingActiveLivestreamsResponseData",
@@ -5346,12 +5494,14 @@ export const LivestreamsGetMeetingActiveLivestreamsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingActiveLivestreamsLivestreamResponse {
-  data?: LivestreamsGetMeetingActiveLivestreamsResponseData;
+  data?: LivestreamsGetMeetingActiveLivestreamsResponseData | null;
 }
 export const GetMeetingActiveLivestreamsLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(LivestreamsGetMeetingActiveLivestreamsResponseData),
+      data: S.optional(
+        S.NullOr(LivestreamsGetMeetingActiveLivestreamsResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetMeetingActiveLivestreamsLivestreamResponse",
@@ -5405,26 +5555,26 @@ export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
 
 export interface MeetingsGetMeetingByIdResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  summaryType?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  textFormat?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingByIdResponseDataAiConfigSummarization",
@@ -5453,22 +5603,28 @@ export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
 
 export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  language?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsGetMeetingByIdResponseDataAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        ),
       ),
       language: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        ),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingByIdResponseDataAiConfigTranscription",
@@ -5476,18 +5632,18 @@ export const MeetingsGetMeetingByIdResponseDataAiConfigTranscription =
 
 export interface MeetingsGetMeetingByIdResponseDataAiConfig {
   /** Summary Config */
-  summarization?: MeetingsGetMeetingByIdResponseDataAiConfigSummarization;
+  summarization?: MeetingsGetMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsGetMeetingByIdResponseDataAiConfigTranscription;
+  transcription?: MeetingsGetMeetingByIdResponseDataAiConfigTranscription | null;
 }
 export const MeetingsGetMeetingByIdResponseDataAiConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarization: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarization,
+        S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigSummarization),
       ),
       transcription: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscription,
+        S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigTranscription),
       ),
     }),
   ).annotate({
@@ -5507,22 +5663,26 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  channel?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig",
@@ -5530,12 +5690,12 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig =
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -5570,47 +5730,47 @@ export interface MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig 
   /** Type of storage media. */
   type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  authMethod?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -5630,15 +5790,15 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWaterma
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -5647,22 +5807,26 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWaterma
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  position?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -5671,28 +5835,32 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWaterma
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig",
@@ -5700,45 +5868,47 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig =
 
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig;
+  audioConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
 export const MeetingsGetMeetingByIdResponseDataRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -5756,25 +5926,25 @@ export interface MeetingsGetMeetingByIdResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsGetMeetingByIdResponseDataAiConfig;
+  aiConfig?: MeetingsGetMeetingByIdResponseDataAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfig;
+  recordingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsGetMeetingByIdResponseDataStatus;
+  status?: MeetingsGetMeetingByIdResponseDataStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5782,25 +5952,33 @@ export const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     aiConfig: S.optional(
-      MeetingsGetMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
+      S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfig).pipe(
+        T.Body("ai_config"),
+      ),
     ),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsGetMeetingByIdResponseDataRecordingConfig.pipe(
+      S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfig).pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    status: S.optional(MeetingsGetMeetingByIdResponseDataStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    status: S.optional(S.NullOr(MeetingsGetMeetingByIdResponseDataStatus)),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   }),
 ).annotate({
   identifier: "MeetingsGetMeetingByIdResponseData",
@@ -5809,11 +5987,11 @@ export const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingByIdMeetingResponse {
   /** Data returned by the operation */
-  data?: MeetingsGetMeetingByIdResponseData;
+  data?: MeetingsGetMeetingByIdResponseData | null;
 }
 export const GetMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsGetMeetingByIdResponseData),
+    data: S.optional(S.NullOr(MeetingsGetMeetingByIdResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingByIdMeetingResponse",
@@ -5858,9 +6036,9 @@ export interface MeetingsGetMeetingParticipantResponseData {
   /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
   /** Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** URL to a picture of the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const MeetingsGetMeetingParticipantResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -5870,8 +6048,8 @@ export const MeetingsGetMeetingParticipantResponseData =
       customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
       presetName: S.String.pipe(T.Body("preset_name")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
+      picture: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingParticipantResponseData",
@@ -5935,9 +6113,9 @@ export interface MeetingsGetMeetingParticipantsResponseDataItem {
   /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
   /** Name of the participant. */
-  name?: string;
+  name?: string | null;
   /** URL to a picture of the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const MeetingsGetMeetingParticipantsResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5947,8 +6125,8 @@ export const MeetingsGetMeetingParticipantsResponseDataItem =
       customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
       presetName: S.String.pipe(T.Body("preset_name")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
+      picture: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsGetMeetingParticipantsResponseDataItem",
@@ -6035,20 +6213,20 @@ export const RecordingsGetOneRecordingResponseDataStartReasonCallerType =
 
 export interface RecordingsGetOneRecordingResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsGetOneRecordingResponseDataStartReasonCallerType;
+  type?: RecordingsGetOneRecordingResponseDataStartReasonCallerType | null;
   /** The user ID of the person who started the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsGetOneRecordingResponseDataStartReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsGetOneRecordingResponseDataStartReasonCallerType,
+        S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonCallerType),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier: "RecordingsGetOneRecordingResponseDataStartReasonCaller",
@@ -6061,18 +6239,18 @@ export const RecordingsGetOneRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsGetOneRecordingResponseDataStartReason {
-  caller?: RecordingsGetOneRecordingResponseDataStartReasonCaller;
+  caller?: RecordingsGetOneRecordingResponseDataStartReasonCaller | null;
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
-  reason?: RecordingsGetOneRecordingResponseDataStartReasonReason;
+  reason?: RecordingsGetOneRecordingResponseDataStartReasonReason | null;
 }
 export const RecordingsGetOneRecordingResponseDataStartReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caller: S.optional(
-        RecordingsGetOneRecordingResponseDataStartReasonCaller,
+        S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonCaller),
       ),
       reason: S.optional(
-        RecordingsGetOneRecordingResponseDataStartReasonReason,
+        S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonReason),
       ),
     }),
   ).annotate({
@@ -6087,20 +6265,20 @@ export const RecordingsGetOneRecordingResponseDataStopReasonCallerType =
 
 export interface RecordingsGetOneRecordingResponseDataStopReasonCaller {
   /** Name of the user who stopped the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsGetOneRecordingResponseDataStopReasonCallerType;
+  type?: RecordingsGetOneRecordingResponseDataStopReasonCallerType | null;
   /** The user ID of the person who stopped the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsGetOneRecordingResponseDataStopReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsGetOneRecordingResponseDataStopReasonCallerType,
+        S.NullOr(RecordingsGetOneRecordingResponseDataStopReasonCallerType),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier: "RecordingsGetOneRecordingResponseDataStopReasonCaller",
@@ -6114,15 +6292,19 @@ export const RecordingsGetOneRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsGetOneRecordingResponseDataStopReason {
-  caller?: RecordingsGetOneRecordingResponseDataStopReasonCaller;
+  caller?: RecordingsGetOneRecordingResponseDataStopReasonCaller | null;
   /** Specifies the reason why the recording stopped. */
-  reason?: RecordingsGetOneRecordingResponseDataStopReasonReason;
+  reason?: RecordingsGetOneRecordingResponseDataStopReasonReason | null;
 }
 export const RecordingsGetOneRecordingResponseDataStopReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      caller: S.optional(RecordingsGetOneRecordingResponseDataStopReasonCaller),
-      reason: S.optional(RecordingsGetOneRecordingResponseDataStopReasonReason),
+      caller: S.optional(
+        S.NullOr(RecordingsGetOneRecordingResponseDataStopReasonCaller),
+      ),
+      reason: S.optional(
+        S.NullOr(RecordingsGetOneRecordingResponseDataStopReasonReason),
+      ),
     }),
   ).annotate({
     identifier: "RecordingsGetOneRecordingResponseDataStopReason",
@@ -6147,47 +6329,47 @@ export interface RecordingsGetOneRecordingResponseDataStorageConfig {
   /** Type of storage media. */
   type: RecordingsGetOneRecordingResponseDataStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod;
+  authMethod?: RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsGetOneRecordingResponseDataStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsGetOneRecordingResponseDataStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsGetOneRecordingResponseDataStorageConfig",
@@ -6217,10 +6399,10 @@ export interface RecordingsGetOneRecordingResponseData {
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
-  startReason?: RecordingsGetOneRecordingResponseDataStartReason;
-  stopReason?: RecordingsGetOneRecordingResponseDataStopReason;
-  storageConfig?: RecordingsGetOneRecordingResponseDataStorageConfig;
+  recordingDuration?: number | null;
+  startReason?: RecordingsGetOneRecordingResponseDataStartReason | null;
+  stopReason?: RecordingsGetOneRecordingResponseDataStopReason | null;
+  storageConfig?: RecordingsGetOneRecordingResponseDataStorageConfig | null;
 }
 export const RecordingsGetOneRecordingResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -6237,20 +6419,20 @@ export const RecordingsGetOneRecordingResponseData = /*@__PURE__*/ S.suspend(
       status: RecordingsGetOneRecordingResponseDataStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
       startReason: S.optional(
-        RecordingsGetOneRecordingResponseDataStartReason.pipe(
+        S.NullOr(RecordingsGetOneRecordingResponseDataStartReason).pipe(
           T.Body("start_reason"),
         ),
       ),
       stopReason: S.optional(
-        RecordingsGetOneRecordingResponseDataStopReason.pipe(
+        S.NullOr(RecordingsGetOneRecordingResponseDataStopReason).pipe(
           T.Body("stop_reason"),
         ),
       ),
       storageConfig: S.optional(
-        RecordingsGetOneRecordingResponseDataStorageConfig.pipe(
+        S.NullOr(RecordingsGetOneRecordingResponseDataStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
@@ -6262,11 +6444,11 @@ export const RecordingsGetOneRecordingResponseData = /*@__PURE__*/ S.suspend(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOneRecordingRecordingResponse {
   /** Data returned by the operation */
-  data?: RecordingsGetOneRecordingResponseData;
+  data?: RecordingsGetOneRecordingResponseData | null;
 }
 export const GetOneRecordingRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(RecordingsGetOneRecordingResponseData),
+    data: S.optional(S.NullOr(RecordingsGetOneRecordingResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOneRecordingRecordingResponse",
@@ -6302,20 +6484,22 @@ export const GetOrgAnalyticsAnalyticRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>;
 
 export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
-  day?: string;
+  day?: string | null;
   /** Total recording minutes for a specific day */
-  totalRecordingMinutes?: number;
+  totalRecordingMinutes?: number | null;
   /** Total number of recordings for a specific day */
-  totalRecordings?: number;
+  totalRecordings?: number | null;
 }
 export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      day: S.optional(S.String),
+      day: S.optional(S.NullOr(S.String)),
       totalRecordingMinutes: S.optional(
-        S.Number.pipe(T.Body("total_recording_minutes")),
+        S.NullOr(S.Number).pipe(T.Body("total_recording_minutes")),
       ),
-      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
+      totalRecordings: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("total_recordings")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -6331,23 +6515,25 @@ export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
 
 export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStats {
   /** Day wise recording stats */
-  dayStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
+  dayStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList | null;
   /** Total number of recordings during the range specified */
-  recordingCount?: number;
+  recordingCount?: number | null;
   /** Total recording minutes during the range specified */
-  recordingMinutesConsumed?: number;
+  recordingMinutesConsumed?: number | null;
 }
 export const AnalyticsGetOrgAnalyticsResponseDataRecordingStats =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dayStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
+        S.NullOr(
+          AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList,
+        ).pipe(T.Body("day_stats")),
       ),
-      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
+      recordingCount: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("recording_count")),
+      ),
       recordingMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("recording_minutes_consumed")),
+        S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
       ),
     }),
   ).annotate({
@@ -6355,20 +6541,22 @@ export const AnalyticsGetOrgAnalyticsResponseDataRecordingStats =
   }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStats>;
 
 export interface AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
-  day?: string;
+  day?: string | null;
   /** Total session minutes for a specific day */
-  totalSessionMinutes?: number;
+  totalSessionMinutes?: number | null;
   /** Total number of sessions for a specific day */
-  totalSessions?: number;
+  totalSessions?: number | null;
 }
 export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      day: S.optional(S.String),
+      day: S.optional(S.NullOr(S.String)),
       totalSessionMinutes: S.optional(
-        S.Number.pipe(T.Body("total_session_minutes")),
+        S.NullOr(S.Number).pipe(T.Body("total_session_minutes")),
       ),
-      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
+      totalSessions: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("total_sessions")),
+      ),
     }),
   ).annotate({
     identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
@@ -6383,23 +6571,25 @@ export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
 
 export interface AnalyticsGetOrgAnalyticsResponseDataSessionStats {
   /** Day wise session stats */
-  dayStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
+  dayStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList | null;
   /** Total number of sessions during the range specified */
-  sessionsCount?: number;
+  sessionsCount?: number | null;
   /** Total session minutes during the range specified */
-  sessionsMinutesConsumed?: number;
+  sessionsMinutesConsumed?: number | null;
 }
 export const AnalyticsGetOrgAnalyticsResponseDataSessionStats =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dayStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
+        S.NullOr(
+          AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList,
+        ).pipe(T.Body("day_stats")),
       ),
-      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
+      sessionsCount: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("sessions_count")),
+      ),
       sessionsMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("sessions_minutes_consumed")),
+        S.NullOr(S.Number).pipe(T.Body("sessions_minutes_consumed")),
       ),
     }),
   ).annotate({
@@ -6408,20 +6598,20 @@ export const AnalyticsGetOrgAnalyticsResponseDataSessionStats =
 
 export interface AnalyticsGetOrgAnalyticsResponseData {
   /** Recording statistics of an App during the range specified */
-  recordingStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStats;
+  recordingStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStats | null;
   /** Session statistics of an App during the range specified */
-  sessionStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStats;
+  sessionStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStats | null;
 }
 export const AnalyticsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       recordingStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataRecordingStats.pipe(
+        S.NullOr(AnalyticsGetOrgAnalyticsResponseDataRecordingStats).pipe(
           T.Body("recording_stats"),
         ),
       ),
       sessionStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataSessionStats.pipe(
+        S.NullOr(AnalyticsGetOrgAnalyticsResponseDataSessionStats).pipe(
           T.Body("session_stats"),
         ),
       ),
@@ -6432,11 +6622,11 @@ export const AnalyticsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOrgAnalyticsAnalyticResponse {
-  data?: AnalyticsGetOrgAnalyticsResponseData;
+  data?: AnalyticsGetOrgAnalyticsResponseData | null;
 }
 export const GetOrgAnalyticsAnalyticResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(AnalyticsGetOrgAnalyticsResponseData),
+    data: S.optional(S.NullOr(AnalyticsGetOrgAnalyticsResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrgAnalyticsAnalyticResponse",
@@ -6499,47 +6689,53 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEven
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem {
   /** ID of the peer event. */
-  id?: string;
+  id?: string | null;
   /** Timestamp when this peer event was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Name of the peer event. */
-  eventName?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName;
+  eventName?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName | null;
   /** Minutes consumed attributed to this event. */
-  minutesConsumed?: number;
+  minutesConsumed?: number | null;
   /** ID of the participant this event belongs to. */
-  participantId?: string;
+  participantId?: string | null;
   /** Peer ID this event belongs to. */
-  peerId?: string;
+  peerId?: string | null;
   /** View type of the preset associated with the peer. */
-  presetViewType?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType;
+  presetViewType?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType | null;
   /** ID of the session this event belongs to. */
-  sessionId?: string;
+  sessionId?: string | null;
   /** ID of the socket session associated with this event. */
-  socketSessionId?: string;
+  socketSessionId?: string | null;
   /** Timestamp when this peer event was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       eventName: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName.pipe(
-          T.Body("event_name"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName,
+        ).pipe(T.Body("event_name")),
       ),
-      minutesConsumed: S.optional(S.Number.pipe(T.Body("minutes_consumed"))),
-      participantId: S.optional(S.String.pipe(T.Body("participant_id"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
+      minutesConsumed: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("minutes_consumed")),
+      ),
+      participantId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("participant_id")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
       presetViewType: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType.pipe(
-          T.Body("preset_view_type"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType,
+        ).pipe(T.Body("preset_view_type")),
       ),
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      socketSessionId: S.optional(S.String.pipe(T.Body("socket_session_id"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+      socketSessionId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("socket_session_id")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier:
@@ -6555,18 +6751,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEven
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6582,18 +6778,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6609,22 +6805,26 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem {
   /** Devices that became available. */
-  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList;
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList | null;
   /** Devices that became unavailable. */
-  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList | null;
   /** Timestamp of the device update. */
-  timestamp?: string;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       added: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList,
+        ),
       ),
       removed: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList,
+        ),
       ),
-      timestamp: S.optional(S.String),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6639,20 +6839,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata {
-  browser?: string;
-  browserVersion?: string;
-  engine?: string;
-  userAgent?: string;
-  webglSupport?: boolean;
+  browser?: string | null;
+  browserVersion?: string | null;
+  engine?: string | null;
+  userAgent?: string | null;
+  webglSupport?: boolean | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      browser: S.optional(S.String),
-      browserVersion: S.optional(S.String.pipe(T.Body("browser_version"))),
-      engine: S.optional(S.String),
-      userAgent: S.optional(S.String.pipe(T.Body("user_agent"))),
-      webglSupport: S.optional(S.Boolean.pipe(T.Body("webgl_support"))),
+      browser: S.optional(S.NullOr(S.String)),
+      browserVersion: S.optional(
+        S.NullOr(S.String).pipe(T.Body("browser_version")),
+      ),
+      engine: S.optional(S.NullOr(S.String)),
+      userAgent: S.optional(S.NullOr(S.String).pipe(T.Body("user_agent"))),
+      webglSupport: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("webgl_support")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -6660,111 +6864,117 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem {
-  availableIncomingBitrate?: number;
-  availableOutgoingBitrate?: number;
-  bytesDiscardedOnSend?: number;
-  bytesReceived?: number;
-  bytesSent?: number;
-  currentRoundTripTime?: number;
+  availableIncomingBitrate?: number | null;
+  availableOutgoingBitrate?: number | null;
+  bytesDiscardedOnSend?: number | null;
+  bytesReceived?: number | null;
+  bytesSent?: number | null;
+  currentRoundTripTime?: number | null;
   /** Epoch milliseconds when the last packet was received. */
-  lastPacketReceivedTimestamp?: number;
+  lastPacketReceivedTimestamp?: number | null;
   /** Epoch milliseconds when the last packet was sent. */
-  lastPacketSentTimestamp?: number;
-  localCandidateAddress?: string;
-  localCandidateId?: string;
-  localCandidateNetworkType?: string;
-  localCandidatePort?: number;
-  localCandidateProtocol?: string;
-  localCandidateRelatedAddress?: string;
-  localCandidateRelatedPort?: number;
-  localCandidateType?: string;
-  localCandidateUrl?: string;
-  nominated?: boolean;
-  packetsDiscardedOnSend?: number;
-  packetsReceived?: number;
-  packetsSent?: number;
-  remoteCandidateAddress?: string;
-  remoteCandidateId?: string;
-  remoteCandidatePort?: number;
-  remoteCandidateProtocol?: string;
-  remoteCandidateType?: string;
-  remoteCandidateUrl?: string;
-  totalRoundTripTime?: number;
+  lastPacketSentTimestamp?: number | null;
+  localCandidateAddress?: string | null;
+  localCandidateId?: string | null;
+  localCandidateNetworkType?: string | null;
+  localCandidatePort?: number | null;
+  localCandidateProtocol?: string | null;
+  localCandidateRelatedAddress?: string | null;
+  localCandidateRelatedPort?: number | null;
+  localCandidateType?: string | null;
+  localCandidateUrl?: string | null;
+  nominated?: boolean | null;
+  packetsDiscardedOnSend?: number | null;
+  packetsReceived?: number | null;
+  packetsSent?: number | null;
+  remoteCandidateAddress?: string | null;
+  remoteCandidateId?: string | null;
+  remoteCandidatePort?: number | null;
+  remoteCandidateProtocol?: string | null;
+  remoteCandidateType?: string | null;
+  remoteCandidateUrl?: string | null;
+  totalRoundTripTime?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       availableIncomingBitrate: S.optional(
-        S.Number.pipe(T.Body("available_incoming_bitrate")),
+        S.NullOr(S.Number).pipe(T.Body("available_incoming_bitrate")),
       ),
       availableOutgoingBitrate: S.optional(
-        S.Number.pipe(T.Body("available_outgoing_bitrate")),
+        S.NullOr(S.Number).pipe(T.Body("available_outgoing_bitrate")),
       ),
       bytesDiscardedOnSend: S.optional(
-        S.Number.pipe(T.Body("bytes_discarded_on_send")),
+        S.NullOr(S.Number).pipe(T.Body("bytes_discarded_on_send")),
       ),
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
+      ),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
       currentRoundTripTime: S.optional(
-        S.Number.pipe(T.Body("current_round_trip_time")),
+        S.NullOr(S.Number).pipe(T.Body("current_round_trip_time")),
       ),
       lastPacketReceivedTimestamp: S.optional(
-        S.Number.pipe(T.Body("last_packet_received_timestamp")),
+        S.NullOr(S.Number).pipe(T.Body("last_packet_received_timestamp")),
       ),
       lastPacketSentTimestamp: S.optional(
-        S.Number.pipe(T.Body("last_packet_sent_timestamp")),
+        S.NullOr(S.Number).pipe(T.Body("last_packet_sent_timestamp")),
       ),
       localCandidateAddress: S.optional(
-        S.String.pipe(T.Body("local_candidate_address")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_address")),
       ),
-      localCandidateId: S.optional(S.String.pipe(T.Body("local_candidate_id"))),
+      localCandidateId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("local_candidate_id")),
+      ),
       localCandidateNetworkType: S.optional(
-        S.String.pipe(T.Body("local_candidate_network_type")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_network_type")),
       ),
       localCandidatePort: S.optional(
-        S.Number.pipe(T.Body("local_candidate_port")),
+        S.NullOr(S.Number).pipe(T.Body("local_candidate_port")),
       ),
       localCandidateProtocol: S.optional(
-        S.String.pipe(T.Body("local_candidate_protocol")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_protocol")),
       ),
       localCandidateRelatedAddress: S.optional(
-        S.String.pipe(T.Body("local_candidate_related_address")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_related_address")),
       ),
       localCandidateRelatedPort: S.optional(
-        S.Number.pipe(T.Body("local_candidate_related_port")),
+        S.NullOr(S.Number).pipe(T.Body("local_candidate_related_port")),
       ),
       localCandidateType: S.optional(
-        S.String.pipe(T.Body("local_candidate_type")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_type")),
       ),
       localCandidateUrl: S.optional(
-        S.String.pipe(T.Body("local_candidate_url")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_url")),
       ),
-      nominated: S.optional(S.Boolean),
+      nominated: S.optional(S.NullOr(S.Boolean)),
       packetsDiscardedOnSend: S.optional(
-        S.Number.pipe(T.Body("packets_discarded_on_send")),
+        S.NullOr(S.Number).pipe(T.Body("packets_discarded_on_send")),
       ),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
       remoteCandidateAddress: S.optional(
-        S.String.pipe(T.Body("remote_candidate_address")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_address")),
       ),
       remoteCandidateId: S.optional(
-        S.String.pipe(T.Body("remote_candidate_id")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_id")),
       ),
       remoteCandidatePort: S.optional(
-        S.Number.pipe(T.Body("remote_candidate_port")),
+        S.NullOr(S.Number).pipe(T.Body("remote_candidate_port")),
       ),
       remoteCandidateProtocol: S.optional(
-        S.String.pipe(T.Body("remote_candidate_protocol")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_protocol")),
       ),
       remoteCandidateType: S.optional(
-        S.String.pipe(T.Body("remote_candidate_type")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_type")),
       ),
       remoteCandidateUrl: S.optional(
-        S.String.pipe(T.Body("remote_candidate_url")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_url")),
       ),
       totalRoundTripTime: S.optional(
-        S.Number.pipe(T.Body("total_round_trip_time")),
+        S.NullOr(S.Number).pipe(T.Body("total_round_trip_time")),
       ),
     }),
   ).annotate({
@@ -6780,111 +6990,117 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem {
-  availableIncomingBitrate?: number;
-  availableOutgoingBitrate?: number;
-  bytesDiscardedOnSend?: number;
-  bytesReceived?: number;
-  bytesSent?: number;
-  currentRoundTripTime?: number;
+  availableIncomingBitrate?: number | null;
+  availableOutgoingBitrate?: number | null;
+  bytesDiscardedOnSend?: number | null;
+  bytesReceived?: number | null;
+  bytesSent?: number | null;
+  currentRoundTripTime?: number | null;
   /** Epoch milliseconds when the last packet was received. */
-  lastPacketReceivedTimestamp?: number;
+  lastPacketReceivedTimestamp?: number | null;
   /** Epoch milliseconds when the last packet was sent. */
-  lastPacketSentTimestamp?: number;
-  localCandidateAddress?: string;
-  localCandidateId?: string;
-  localCandidateNetworkType?: string;
-  localCandidatePort?: number;
-  localCandidateProtocol?: string;
-  localCandidateRelatedAddress?: string;
-  localCandidateRelatedPort?: number;
-  localCandidateType?: string;
-  localCandidateUrl?: string;
-  nominated?: boolean;
-  packetsDiscardedOnSend?: number;
-  packetsReceived?: number;
-  packetsSent?: number;
-  remoteCandidateAddress?: string;
-  remoteCandidateId?: string;
-  remoteCandidatePort?: number;
-  remoteCandidateProtocol?: string;
-  remoteCandidateType?: string;
-  remoteCandidateUrl?: string;
-  totalRoundTripTime?: number;
+  lastPacketSentTimestamp?: number | null;
+  localCandidateAddress?: string | null;
+  localCandidateId?: string | null;
+  localCandidateNetworkType?: string | null;
+  localCandidatePort?: number | null;
+  localCandidateProtocol?: string | null;
+  localCandidateRelatedAddress?: string | null;
+  localCandidateRelatedPort?: number | null;
+  localCandidateType?: string | null;
+  localCandidateUrl?: string | null;
+  nominated?: boolean | null;
+  packetsDiscardedOnSend?: number | null;
+  packetsReceived?: number | null;
+  packetsSent?: number | null;
+  remoteCandidateAddress?: string | null;
+  remoteCandidateId?: string | null;
+  remoteCandidatePort?: number | null;
+  remoteCandidateProtocol?: string | null;
+  remoteCandidateType?: string | null;
+  remoteCandidateUrl?: string | null;
+  totalRoundTripTime?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       availableIncomingBitrate: S.optional(
-        S.Number.pipe(T.Body("available_incoming_bitrate")),
+        S.NullOr(S.Number).pipe(T.Body("available_incoming_bitrate")),
       ),
       availableOutgoingBitrate: S.optional(
-        S.Number.pipe(T.Body("available_outgoing_bitrate")),
+        S.NullOr(S.Number).pipe(T.Body("available_outgoing_bitrate")),
       ),
       bytesDiscardedOnSend: S.optional(
-        S.Number.pipe(T.Body("bytes_discarded_on_send")),
+        S.NullOr(S.Number).pipe(T.Body("bytes_discarded_on_send")),
       ),
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
+      ),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
       currentRoundTripTime: S.optional(
-        S.Number.pipe(T.Body("current_round_trip_time")),
+        S.NullOr(S.Number).pipe(T.Body("current_round_trip_time")),
       ),
       lastPacketReceivedTimestamp: S.optional(
-        S.Number.pipe(T.Body("last_packet_received_timestamp")),
+        S.NullOr(S.Number).pipe(T.Body("last_packet_received_timestamp")),
       ),
       lastPacketSentTimestamp: S.optional(
-        S.Number.pipe(T.Body("last_packet_sent_timestamp")),
+        S.NullOr(S.Number).pipe(T.Body("last_packet_sent_timestamp")),
       ),
       localCandidateAddress: S.optional(
-        S.String.pipe(T.Body("local_candidate_address")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_address")),
       ),
-      localCandidateId: S.optional(S.String.pipe(T.Body("local_candidate_id"))),
+      localCandidateId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("local_candidate_id")),
+      ),
       localCandidateNetworkType: S.optional(
-        S.String.pipe(T.Body("local_candidate_network_type")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_network_type")),
       ),
       localCandidatePort: S.optional(
-        S.Number.pipe(T.Body("local_candidate_port")),
+        S.NullOr(S.Number).pipe(T.Body("local_candidate_port")),
       ),
       localCandidateProtocol: S.optional(
-        S.String.pipe(T.Body("local_candidate_protocol")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_protocol")),
       ),
       localCandidateRelatedAddress: S.optional(
-        S.String.pipe(T.Body("local_candidate_related_address")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_related_address")),
       ),
       localCandidateRelatedPort: S.optional(
-        S.Number.pipe(T.Body("local_candidate_related_port")),
+        S.NullOr(S.Number).pipe(T.Body("local_candidate_related_port")),
       ),
       localCandidateType: S.optional(
-        S.String.pipe(T.Body("local_candidate_type")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_type")),
       ),
       localCandidateUrl: S.optional(
-        S.String.pipe(T.Body("local_candidate_url")),
+        S.NullOr(S.String).pipe(T.Body("local_candidate_url")),
       ),
-      nominated: S.optional(S.Boolean),
+      nominated: S.optional(S.NullOr(S.Boolean)),
       packetsDiscardedOnSend: S.optional(
-        S.Number.pipe(T.Body("packets_discarded_on_send")),
+        S.NullOr(S.Number).pipe(T.Body("packets_discarded_on_send")),
       ),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
       remoteCandidateAddress: S.optional(
-        S.String.pipe(T.Body("remote_candidate_address")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_address")),
       ),
       remoteCandidateId: S.optional(
-        S.String.pipe(T.Body("remote_candidate_id")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_id")),
       ),
       remoteCandidatePort: S.optional(
-        S.Number.pipe(T.Body("remote_candidate_port")),
+        S.NullOr(S.Number).pipe(T.Body("remote_candidate_port")),
       ),
       remoteCandidateProtocol: S.optional(
-        S.String.pipe(T.Body("remote_candidate_protocol")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_protocol")),
       ),
       remoteCandidateType: S.optional(
-        S.String.pipe(T.Body("remote_candidate_type")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_type")),
       ),
       remoteCandidateUrl: S.optional(
-        S.String.pipe(T.Body("remote_candidate_url")),
+        S.NullOr(S.String).pipe(T.Body("remote_candidate_url")),
       ),
       totalRoundTripTime: S.optional(
-        S.Number.pipe(T.Body("total_round_trip_time")),
+        S.NullOr(S.Number).pipe(T.Body("total_round_trip_time")),
       ),
     }),
   ).annotate({
@@ -6900,21 +7116,21 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs {
-  consumingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList;
-  producingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList;
+  consumingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList | null;
+  producingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       consumingTransport: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList.pipe(
-          T.Body("consuming_transport"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList,
+        ).pipe(T.Body("consuming_transport")),
       ),
       producingTransport: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList.pipe(
-          T.Body("producing_transport"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList,
+        ).pipe(T.Body("producing_transport")),
       ),
     }),
   ).annotate({
@@ -6923,18 +7139,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo {
-  cpus?: number;
-  isMobile?: boolean;
-  os?: string;
-  osVersion?: string;
+  cpus?: number | null;
+  isMobile?: boolean | null;
+  os?: string | null;
+  osVersion?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpus: S.optional(S.Number),
-      isMobile: S.optional(S.Boolean.pipe(T.Body("is_mobile"))),
-      os: S.optional(S.String),
-      osVersion: S.optional(S.String.pipe(T.Body("os_version"))),
+      cpus: S.optional(S.NullOr(S.Number)),
+      isMobile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_mobile"))),
+      os: S.optional(S.NullOr(S.String)),
+      osVersion: S.optional(S.NullOr(S.String).pipe(T.Body("os_version"))),
     }),
   ).annotate({
     identifier:
@@ -6948,20 +7164,22 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem {
   /** Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null). */
-  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata;
+  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata | null;
   /** Name of the event. */
-  name?: string;
+  name?: string | null;
   /** Timestamp when the event occurred. */
-  timestamp?: string;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata,
+        ),
       ),
-      name: S.optional(S.String),
-      timestamp: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6976,20 +7194,20 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn {
-  asn?: string;
-  domain?: string;
-  name?: string;
-  route?: string;
-  type?: string;
+  asn?: string | null;
+  domain?: string | null;
+  name?: string | null;
+  route?: string | null;
+  type?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      asn: S.optional(S.String),
-      domain: S.optional(S.String),
-      name: S.optional(S.String),
-      route: S.optional(S.String),
-      type: S.optional(S.String),
+      asn: S.optional(S.NullOr(S.String)),
+      domain: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      route: S.optional(S.NullOr(S.String)),
+      type: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6997,26 +7215,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation {
-  asn?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn;
-  city?: string;
-  country?: string;
-  ipv4?: string;
-  org?: string;
-  region?: string;
-  timezone?: string;
+  asn?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn | null;
+  city?: string | null;
+  country?: string | null;
+  ipv4?: string | null;
+  org?: string | null;
+  region?: string | null;
+  timezone?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       asn: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn,
+        ),
       ),
-      city: S.optional(S.String),
-      country: S.optional(S.String),
-      ipv4: S.optional(S.String),
-      org: S.optional(S.String),
-      region: S.optional(S.String),
-      timezone: S.optional(S.String),
+      city: S.optional(S.NullOr(S.String)),
+      country: S.optional(S.NullOr(S.String)),
+      ipv4: S.optional(S.NullOr(S.String)),
+      org: S.optional(S.NullOr(S.String)),
+      region: S.optional(S.NullOr(S.String)),
+      timezone: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7024,14 +7244,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata {
-  audioEncoder?: string;
-  videoEncoder?: string;
+  audioEncoder?: string | null;
+  videoEncoder?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      audioEncoder: S.optional(S.String.pipe(T.Body("audio_encoder"))),
-      videoEncoder: S.optional(S.String.pipe(T.Body("video_encoder"))),
+      audioEncoder: S.optional(
+        S.NullOr(S.String).pipe(T.Body("audio_encoder")),
+      ),
+      videoEncoder: S.optional(
+        S.NullOr(S.String).pipe(T.Body("video_encoder")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -7046,30 +7270,34 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem {
-  effectiveNetworkType?: string;
-  reflexiveConnectivity?: boolean;
-  relayConnectivity?: boolean;
-  sdp?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList;
-  timestamp?: string;
-  turnConnectivity?: boolean;
+  effectiveNetworkType?: string | null;
+  reflexiveConnectivity?: boolean | null;
+  relayConnectivity?: boolean | null;
+  sdp?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList | null;
+  timestamp?: string | null;
+  turnConnectivity?: boolean | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effectiveNetworkType: S.optional(
-        S.String.pipe(T.Body("effective_network_type")),
+        S.NullOr(S.String).pipe(T.Body("effective_network_type")),
       ),
       reflexiveConnectivity: S.optional(
-        S.Boolean.pipe(T.Body("reflexive_connectivity")),
+        S.NullOr(S.Boolean).pipe(T.Body("reflexive_connectivity")),
       ),
       relayConnectivity: S.optional(
-        S.Boolean.pipe(T.Body("relay_connectivity")),
+        S.NullOr(S.Boolean).pipe(T.Body("relay_connectivity")),
       ),
       sdp: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList,
+        ),
       ),
-      timestamp: S.optional(S.String),
-      turnConnectivity: S.optional(S.Boolean.pipe(T.Body("turn_connectivity"))),
+      timestamp: S.optional(S.NullOr(S.String)),
+      turnConnectivity: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("turn_connectivity")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -7085,18 +7313,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7105,16 +7333,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem {
   /** A media device (camera, microphone, or speaker). */
-  device?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice;
-  timestamp?: string;
+  device?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       device: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice,
+        ),
       ),
-      timestamp: S.optional(S.String),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7130,18 +7360,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7157,18 +7387,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7184,22 +7414,26 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem {
   /** Devices that became available. */
-  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList;
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList | null;
   /** Devices that became unavailable. */
-  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList | null;
   /** Timestamp of the device update. */
-  timestamp?: string;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       added: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList,
+        ),
       ),
       removed: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList,
+        ),
       ),
-      timestamp: S.optional(S.String),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7215,18 +7449,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7242,18 +7476,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem {
   /** ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** Kind of device, for example audioinput or videoinput. */
-  kind?: string;
+  kind?: string | null;
   /** Human-readable label of the device. */
-  label?: string;
+  label?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceId: S.optional(S.String.pipe(T.Body("device_id"))),
-      kind: S.optional(S.String),
-      label: S.optional(S.String),
+      deviceId: S.optional(S.NullOr(S.String).pipe(T.Body("device_id"))),
+      kind: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7269,22 +7503,26 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem {
   /** Devices that became available. */
-  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList;
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList | null;
   /** Devices that became unavailable. */
-  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList | null;
   /** Timestamp of the device update. */
-  timestamp?: string;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       added: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList,
+        ),
       ),
       removed: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList,
+        ),
       ),
-      timestamp: S.optional(S.String),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7299,81 +7537,85 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata {
-  audioDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList;
-  browserMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata;
-  candidatePairs?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs;
-  deviceInfo?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo;
-  events?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList;
-  ipInformation?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation;
-  nativeMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata;
-  pcMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList;
-  roomViewType?: string;
-  sdkName?: string;
-  sdkType?: string;
-  sdkVersion?: string;
-  selectedDeviceUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList;
-  speakerDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList;
-  videoDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList;
+  audioDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList | null;
+  browserMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata | null;
+  candidatePairs?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs | null;
+  deviceInfo?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo | null;
+  events?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList | null;
+  ipInformation?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation | null;
+  nativeMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata | null;
+  pcMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList | null;
+  roomViewType?: string | null;
+  sdkName?: string | null;
+  sdkType?: string | null;
+  sdkVersion?: string | null;
+  selectedDeviceUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList | null;
+  speakerDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList | null;
+  videoDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioDevicesUpdates: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList.pipe(
-          T.Body("audio_devices_updates"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList,
+        ).pipe(T.Body("audio_devices_updates")),
       ),
       browserMetadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata.pipe(
-          T.Body("browser_metadata"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata,
+        ).pipe(T.Body("browser_metadata")),
       ),
       candidatePairs: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs.pipe(
-          T.Body("candidate_pairs"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs,
+        ).pipe(T.Body("candidate_pairs")),
       ),
       deviceInfo: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo.pipe(
-          T.Body("device_info"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo,
+        ).pipe(T.Body("device_info")),
       ),
       events: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList,
+        ),
       ),
       ipInformation: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation.pipe(
-          T.Body("ip_information"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation,
+        ).pipe(T.Body("ip_information")),
       ),
       nativeMetadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata.pipe(
-          T.Body("native_metadata"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata,
+        ).pipe(T.Body("native_metadata")),
       ),
       pcMetadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList.pipe(
-          T.Body("pc_metadata"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList,
+        ).pipe(T.Body("pc_metadata")),
       ),
-      roomViewType: S.optional(S.String.pipe(T.Body("room_view_type"))),
-      sdkName: S.optional(S.String.pipe(T.Body("sdk_name"))),
-      sdkType: S.optional(S.String.pipe(T.Body("sdk_type"))),
-      sdkVersion: S.optional(S.String.pipe(T.Body("sdk_version"))),
+      roomViewType: S.optional(
+        S.NullOr(S.String).pipe(T.Body("room_view_type")),
+      ),
+      sdkName: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_name"))),
+      sdkType: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_type"))),
+      sdkVersion: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_version"))),
       selectedDeviceUpdates: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList.pipe(
-          T.Body("selected_device_updates"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList,
+        ).pipe(T.Body("selected_device_updates")),
       ),
       speakerDevicesUpdates: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList.pipe(
-          T.Body("speaker_devices_updates"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList,
+        ).pipe(T.Body("speaker_devices_updates")),
       ),
       videoDevicesUpdates: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList.pipe(
-          T.Body("video_devices_updates"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList,
+        ).pipe(T.Body("video_devices_updates")),
       ),
     }),
   ).annotate({
@@ -7382,44 +7624,48 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem {
-  bytesReceived?: number;
-  concealmentEvents?: number;
-  consumerId?: string;
-  jitter?: number;
-  jitterBufferDelay?: number;
-  jitterBufferEmittedCount?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsReceived?: number;
-  peerId?: string;
-  producerId?: string;
-  ssrc?: number;
-  timestamp?: string;
+  bytesReceived?: number | null;
+  concealmentEvents?: number | null;
+  consumerId?: string | null;
+  jitter?: number | null;
+  jitterBufferDelay?: number | null;
+  jitterBufferEmittedCount?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsReceived?: number | null;
+  peerId?: string | null;
+  producerId?: string | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      concealmentEvents: S.optional(
-        S.Number.pipe(T.Body("concealment_events")),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
       ),
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      jitter: S.optional(S.Number),
+      concealmentEvents: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("concealment_events")),
+      ),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      jitter: S.optional(S.NullOr(S.Number)),
       jitterBufferDelay: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_delay")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_delay")),
       ),
       jitterBufferEmittedCount: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_emitted_count")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_emitted_count")),
       ),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7434,24 +7680,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7459,28 +7705,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7488,18 +7734,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7508,29 +7754,29 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative {
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay;
+  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       jitterBufferDelay: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay.pipe(
-          T.Body("jitter_buffer_delay"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
+        ).pipe(T.Body("jitter_buffer_delay")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
     }),
   ).annotate({
@@ -7539,30 +7785,30 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem {
-  bytesSent?: number;
-  jitter?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsSent?: number;
-  producerId?: string;
-  rtt?: number;
-  ssrc?: number;
-  timestamp?: string;
+  bytesSent?: number | null;
+  jitter?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsSent?: number | null;
+  producerId?: string | null;
+  rtt?: number | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
-      jitter: S.optional(S.Number),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      rtt: S.optional(S.Number),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
+      jitter: S.optional(S.NullOr(S.Number)),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      rtt: S.optional(S.NullOr(S.Number)),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7577,28 +7823,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7606,18 +7852,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7625,24 +7871,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7651,27 +7897,29 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative {
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
       rtt: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt,
+        ),
       ),
     }),
   ).annotate({
@@ -7680,44 +7928,48 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem {
-  bytesReceived?: number;
-  concealmentEvents?: number;
-  consumerId?: string;
-  jitter?: number;
-  jitterBufferDelay?: number;
-  jitterBufferEmittedCount?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsReceived?: number;
-  peerId?: string;
-  producerId?: string;
-  ssrc?: number;
-  timestamp?: string;
+  bytesReceived?: number | null;
+  concealmentEvents?: number | null;
+  consumerId?: string | null;
+  jitter?: number | null;
+  jitterBufferDelay?: number | null;
+  jitterBufferEmittedCount?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsReceived?: number | null;
+  peerId?: string | null;
+  producerId?: string | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      concealmentEvents: S.optional(
-        S.Number.pipe(T.Body("concealment_events")),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
       ),
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      jitter: S.optional(S.Number),
+      concealmentEvents: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("concealment_events")),
+      ),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      jitter: S.optional(S.NullOr(S.Number)),
       jitterBufferDelay: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_delay")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_delay")),
       ),
       jitterBufferEmittedCount: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_emitted_count")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_emitted_count")),
       ),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7732,24 +7984,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7757,28 +8009,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7786,18 +8038,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7806,29 +8058,29 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative {
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay;
+  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       jitterBufferDelay: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay.pipe(
-          T.Body("jitter_buffer_delay"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay,
+        ).pipe(T.Body("jitter_buffer_delay")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
     }),
   ).annotate({
@@ -7837,30 +8089,30 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem {
-  bytesSent?: number;
-  jitter?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsSent?: number;
-  producerId?: string;
-  rtt?: number;
-  ssrc?: number;
-  timestamp?: string;
+  bytesSent?: number | null;
+  jitter?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsSent?: number | null;
+  producerId?: string | null;
+  rtt?: number | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
-      jitter: S.optional(S.Number),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      rtt: S.optional(S.Number),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
+      jitter: S.optional(S.NullOr(S.Number)),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      rtt: S.optional(S.NullOr(S.Number)),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7875,28 +8127,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7904,18 +8156,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7923,24 +8175,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -7949,27 +8201,29 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative {
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
       rtt: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt,
+        ),
       ),
     }),
   ).annotate({
@@ -7978,54 +8232,66 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem {
-  bytesReceived?: number;
-  consumerId?: string;
-  firCount?: number;
-  frameHeight?: number;
-  frameWidth?: number;
-  framesDecoded?: number;
-  framesDropped?: number;
-  framesPerSecond?: number;
-  jitter?: number;
-  jitterBufferDelay?: number;
-  jitterBufferEmittedCount?: number;
-  keyFramesDecoded?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsReceived?: number;
-  peerId?: string;
-  producerId?: string;
-  ssrc?: number;
-  timestamp?: string;
+  bytesReceived?: number | null;
+  consumerId?: string | null;
+  firCount?: number | null;
+  frameHeight?: number | null;
+  frameWidth?: number | null;
+  framesDecoded?: number | null;
+  framesDropped?: number | null;
+  framesPerSecond?: number | null;
+  jitter?: number | null;
+  jitterBufferDelay?: number | null;
+  jitterBufferEmittedCount?: number | null;
+  keyFramesDecoded?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsReceived?: number | null;
+  peerId?: string | null;
+  producerId?: string | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      firCount: S.optional(S.Number.pipe(T.Body("fir_count"))),
-      frameHeight: S.optional(S.Number.pipe(T.Body("frame_height"))),
-      frameWidth: S.optional(S.Number.pipe(T.Body("frame_width"))),
-      framesDecoded: S.optional(S.Number.pipe(T.Body("frames_decoded"))),
-      framesDropped: S.optional(S.Number.pipe(T.Body("frames_dropped"))),
-      framesPerSecond: S.optional(S.Number.pipe(T.Body("frames_per_second"))),
-      jitter: S.optional(S.Number),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
+      ),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      firCount: S.optional(S.NullOr(S.Number).pipe(T.Body("fir_count"))),
+      frameHeight: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_height"))),
+      frameWidth: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_width"))),
+      framesDecoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_decoded")),
+      ),
+      framesDropped: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_dropped")),
+      ),
+      framesPerSecond: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_per_second")),
+      ),
+      jitter: S.optional(S.NullOr(S.Number)),
       jitterBufferDelay: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_delay")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_delay")),
       ),
       jitterBufferEmittedCount: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_emitted_count")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_emitted_count")),
       ),
-      keyFramesDecoded: S.optional(S.Number.pipe(T.Body("key_frames_decoded"))),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      keyFramesDecoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("key_frames_decoded")),
+      ),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -8040,18 +8306,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8059,18 +8325,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8078,17 +8344,19 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues {
-  lagFraction?: number;
-  noVideoFraction?: number;
-  poorResolutionFraction?: number;
+  lagFraction?: number | null;
+  noVideoFraction?: number | null;
+  poorResolutionFraction?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lagFraction: S.optional(S.Number.pipe(T.Body("lag_fraction"))),
-      noVideoFraction: S.optional(S.Number.pipe(T.Body("no_video_fraction"))),
+      lagFraction: S.optional(S.NullOr(S.Number).pipe(T.Body("lag_fraction"))),
+      noVideoFraction: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("no_video_fraction")),
+      ),
       poorResolutionFraction: S.optional(
-        S.Number.pipe(T.Body("poor_resolution_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("poor_resolution_fraction")),
       ),
     }),
   ).annotate({
@@ -8097,24 +8365,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8122,28 +8390,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8151,18 +8419,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8171,51 +8439,53 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative {
   /** Distribution summary with average and percentiles. */
-  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond;
+  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond | null;
   /** Distribution summary with average and percentiles. */
-  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth;
-  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues;
+  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth | null;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay;
-  keyFramesDecodedFraction?: number;
+  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay | null;
+  keyFramesDecodedFraction?: number | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       framePerSecond: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond.pipe(
-          T.Body("frame_per_second"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond,
+        ).pipe(T.Body("frame_per_second")),
       ),
       frameWidth: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth.pipe(
-          T.Body("frame_width"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth,
+        ).pipe(T.Body("frame_width")),
       ),
       issues: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues,
+        ),
       ),
       jitterBufferDelay: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay.pipe(
-          T.Body("jitter_buffer_delay"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay,
+        ).pipe(T.Body("jitter_buffer_delay")),
       ),
       keyFramesDecodedFraction: S.optional(
-        S.Number.pipe(T.Body("key_frames_decoded_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("key_frames_decoded_fraction")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
     }),
   ).annotate({
@@ -8224,18 +8494,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations {
-  bandwidth?: number;
-  cpu?: number;
-  none?: number;
-  other?: number;
+  bandwidth?: number | null;
+  cpu?: number | null;
+  none?: number | null;
+  other?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bandwidth: S.optional(S.Number),
-      cpu: S.optional(S.Number),
-      none: S.optional(S.Number),
-      other: S.optional(S.Number),
+      bandwidth: S.optional(S.NullOr(S.Number)),
+      cpu: S.optional(S.NullOr(S.Number)),
+      none: S.optional(S.NullOr(S.Number)),
+      other: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8248,60 +8518,68 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   /*@__PURE__*/ S.String;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem {
-  bytesSent?: number;
-  firCount?: number;
-  frameHeight?: number;
-  frameWidth?: number;
-  framesEncoded?: number;
-  framesPerSecond?: number;
-  jitter?: number;
-  keyFramesEncoded?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsSent?: number;
-  pliCount?: number;
-  producerId?: string;
-  qualityLimitationDurations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations;
-  qualityLimitationReason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason;
-  qualityLimitationResolutionChanges?: number;
-  rtt?: number;
-  ssrc?: number;
-  timestamp?: string;
+  bytesSent?: number | null;
+  firCount?: number | null;
+  frameHeight?: number | null;
+  frameWidth?: number | null;
+  framesEncoded?: number | null;
+  framesPerSecond?: number | null;
+  jitter?: number | null;
+  keyFramesEncoded?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsSent?: number | null;
+  pliCount?: number | null;
+  producerId?: string | null;
+  qualityLimitationDurations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations | null;
+  qualityLimitationReason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason | null;
+  qualityLimitationResolutionChanges?: number | null;
+  rtt?: number | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
-      firCount: S.optional(S.Number.pipe(T.Body("fir_count"))),
-      frameHeight: S.optional(S.Number.pipe(T.Body("frame_height"))),
-      frameWidth: S.optional(S.Number.pipe(T.Body("frame_width"))),
-      framesEncoded: S.optional(S.Number.pipe(T.Body("frames_encoded"))),
-      framesPerSecond: S.optional(S.Number.pipe(T.Body("frames_per_second"))),
-      jitter: S.optional(S.Number),
-      keyFramesEncoded: S.optional(S.Number.pipe(T.Body("key_frames_encoded"))),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
-      pliCount: S.optional(S.Number.pipe(T.Body("pli_count"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
+      firCount: S.optional(S.NullOr(S.Number).pipe(T.Body("fir_count"))),
+      frameHeight: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_height"))),
+      frameWidth: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_width"))),
+      framesEncoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_encoded")),
+      ),
+      framesPerSecond: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_per_second")),
+      ),
+      jitter: S.optional(S.NullOr(S.Number)),
+      keyFramesEncoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("key_frames_encoded")),
+      ),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      pliCount: S.optional(S.NullOr(S.Number).pipe(T.Body("pli_count"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
       qualityLimitationDurations: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations.pipe(
-          T.Body("quality_limitation_durations"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations,
+        ).pipe(T.Body("quality_limitation_durations")),
       ),
       qualityLimitationReason: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason.pipe(
-          T.Body("quality_limitation_reason"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason,
+        ).pipe(T.Body("quality_limitation_reason")),
       ),
       qualityLimitationResolutionChanges: S.optional(
-        S.Number.pipe(T.Body("quality_limitation_resolution_changes")),
+        S.NullOr(S.Number).pipe(
+          T.Body("quality_limitation_resolution_changes"),
+        ),
       ),
-      rtt: S.optional(S.Number),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      rtt: S.optional(S.NullOr(S.Number)),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -8316,18 +8594,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8335,18 +8613,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8354,27 +8632,31 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues {
-  bandwidthQualityLimitationFraction?: number;
-  cpuQualityLimitationFraction?: number;
-  noVideoFraction?: number;
-  poorResolutionFraction?: number;
-  qualityLimitationFraction?: number;
+  bandwidthQualityLimitationFraction?: number | null;
+  cpuQualityLimitationFraction?: number | null;
+  noVideoFraction?: number | null;
+  poorResolutionFraction?: number | null;
+  qualityLimitationFraction?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bandwidthQualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("bandwidth_quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(
+          T.Body("bandwidth_quality_limitation_fraction"),
+        ),
       ),
       cpuQualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("cpu_quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("cpu_quality_limitation_fraction")),
       ),
-      noVideoFraction: S.optional(S.Number.pipe(T.Body("no_video_fraction"))),
+      noVideoFraction: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("no_video_fraction")),
+      ),
       poorResolutionFraction: S.optional(
-        S.Number.pipe(T.Body("poor_resolution_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("poor_resolution_fraction")),
       ),
       qualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("quality_limitation_fraction")),
       ),
     }),
   ).annotate({
@@ -8383,28 +8665,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8412,18 +8694,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8431,24 +8713,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8457,53 +8739,57 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative {
   /** Distribution summary with average and percentiles. */
-  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond;
+  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond | null;
   /** Distribution summary with average and percentiles. */
-  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth;
-  highNegativeFeedbackFraction?: number;
-  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues;
-  keyFramesEncodedFraction?: number;
+  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth | null;
+  highNegativeFeedbackFraction?: number | null;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues | null;
+  keyFramesEncodedFraction?: number | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       framePerSecond: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond.pipe(
-          T.Body("frame_per_second"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond,
+        ).pipe(T.Body("frame_per_second")),
       ),
       frameWidth: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth.pipe(
-          T.Body("frame_width"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth,
+        ).pipe(T.Body("frame_width")),
       ),
       highNegativeFeedbackFraction: S.optional(
-        S.Number.pipe(T.Body("high_negative_feedback_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("high_negative_feedback_fraction")),
       ),
       issues: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues,
+        ),
       ),
       keyFramesEncodedFraction: S.optional(
-        S.Number.pipe(T.Body("key_frames_encoded_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("key_frames_encoded_fraction")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
       rtt: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt,
+        ),
       ),
     }),
   ).annotate({
@@ -8512,54 +8798,66 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem {
-  bytesReceived?: number;
-  consumerId?: string;
-  firCount?: number;
-  frameHeight?: number;
-  frameWidth?: number;
-  framesDecoded?: number;
-  framesDropped?: number;
-  framesPerSecond?: number;
-  jitter?: number;
-  jitterBufferDelay?: number;
-  jitterBufferEmittedCount?: number;
-  keyFramesDecoded?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsReceived?: number;
-  peerId?: string;
-  producerId?: string;
-  ssrc?: number;
-  timestamp?: string;
+  bytesReceived?: number | null;
+  consumerId?: string | null;
+  firCount?: number | null;
+  frameHeight?: number | null;
+  frameWidth?: number | null;
+  framesDecoded?: number | null;
+  framesDropped?: number | null;
+  framesPerSecond?: number | null;
+  jitter?: number | null;
+  jitterBufferDelay?: number | null;
+  jitterBufferEmittedCount?: number | null;
+  keyFramesDecoded?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsReceived?: number | null;
+  peerId?: string | null;
+  producerId?: string | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesReceived: S.optional(S.Number.pipe(T.Body("bytes_received"))),
-      consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
-      firCount: S.optional(S.Number.pipe(T.Body("fir_count"))),
-      frameHeight: S.optional(S.Number.pipe(T.Body("frame_height"))),
-      frameWidth: S.optional(S.Number.pipe(T.Body("frame_width"))),
-      framesDecoded: S.optional(S.Number.pipe(T.Body("frames_decoded"))),
-      framesDropped: S.optional(S.Number.pipe(T.Body("frames_dropped"))),
-      framesPerSecond: S.optional(S.Number.pipe(T.Body("frames_per_second"))),
-      jitter: S.optional(S.Number),
+      bytesReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("bytes_received")),
+      ),
+      consumerId: S.optional(S.NullOr(S.String).pipe(T.Body("consumer_id"))),
+      firCount: S.optional(S.NullOr(S.Number).pipe(T.Body("fir_count"))),
+      frameHeight: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_height"))),
+      frameWidth: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_width"))),
+      framesDecoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_decoded")),
+      ),
+      framesDropped: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_dropped")),
+      ),
+      framesPerSecond: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_per_second")),
+      ),
+      jitter: S.optional(S.NullOr(S.Number)),
       jitterBufferDelay: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_delay")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_delay")),
       ),
       jitterBufferEmittedCount: S.optional(
-        S.Number.pipe(T.Body("jitter_buffer_emitted_count")),
+        S.NullOr(S.Number).pipe(T.Body("jitter_buffer_emitted_count")),
       ),
-      keyFramesDecoded: S.optional(S.Number.pipe(T.Body("key_frames_decoded"))),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsReceived: S.optional(S.Number.pipe(T.Body("packets_received"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      keyFramesDecoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("key_frames_decoded")),
+      ),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsReceived: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("packets_received")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -8574,18 +8872,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8593,18 +8891,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8612,17 +8910,19 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues {
-  lagFraction?: number;
-  noVideoFraction?: number;
-  poorResolutionFraction?: number;
+  lagFraction?: number | null;
+  noVideoFraction?: number | null;
+  poorResolutionFraction?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lagFraction: S.optional(S.Number.pipe(T.Body("lag_fraction"))),
-      noVideoFraction: S.optional(S.Number.pipe(T.Body("no_video_fraction"))),
+      lagFraction: S.optional(S.NullOr(S.Number).pipe(T.Body("lag_fraction"))),
+      noVideoFraction: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("no_video_fraction")),
+      ),
       poorResolutionFraction: S.optional(
-        S.Number.pipe(T.Body("poor_resolution_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("poor_resolution_fraction")),
       ),
     }),
   ).annotate({
@@ -8631,24 +8931,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8656,28 +8956,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8685,18 +8985,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8705,51 +9005,53 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative {
   /** Distribution summary with average and percentiles. */
-  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond;
+  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond | null;
   /** Distribution summary with average and percentiles. */
-  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth;
-  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues;
+  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth | null;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay;
-  keyFramesDecodedFraction?: number;
+  jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay | null;
+  keyFramesDecodedFraction?: number | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       framePerSecond: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond.pipe(
-          T.Body("frame_per_second"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond,
+        ).pipe(T.Body("frame_per_second")),
       ),
       frameWidth: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth.pipe(
-          T.Body("frame_width"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth,
+        ).pipe(T.Body("frame_width")),
       ),
       issues: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues,
+        ),
       ),
       jitterBufferDelay: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay.pipe(
-          T.Body("jitter_buffer_delay"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay,
+        ).pipe(T.Body("jitter_buffer_delay")),
       ),
       keyFramesDecodedFraction: S.optional(
-        S.Number.pipe(T.Body("key_frames_decoded_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("key_frames_decoded_fraction")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
     }),
   ).annotate({
@@ -8758,18 +9060,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations {
-  bandwidth?: number;
-  cpu?: number;
-  none?: number;
-  other?: number;
+  bandwidth?: number | null;
+  cpu?: number | null;
+  none?: number | null;
+  other?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bandwidth: S.optional(S.Number),
-      cpu: S.optional(S.Number),
-      none: S.optional(S.Number),
-      other: S.optional(S.Number),
+      bandwidth: S.optional(S.NullOr(S.Number)),
+      cpu: S.optional(S.NullOr(S.Number)),
+      none: S.optional(S.NullOr(S.Number)),
+      other: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8782,60 +9084,68 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   /*@__PURE__*/ S.String;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem {
-  bytesSent?: number;
-  firCount?: number;
-  frameHeight?: number;
-  frameWidth?: number;
-  framesEncoded?: number;
-  framesPerSecond?: number;
-  jitter?: number;
-  keyFramesEncoded?: number;
-  mid?: string;
-  mosQuality?: number;
-  packetsLost?: number;
-  packetsSent?: number;
-  pliCount?: number;
-  producerId?: string;
-  qualityLimitationDurations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations;
-  qualityLimitationReason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason;
-  qualityLimitationResolutionChanges?: number;
-  rtt?: number;
-  ssrc?: number;
-  timestamp?: string;
+  bytesSent?: number | null;
+  firCount?: number | null;
+  frameHeight?: number | null;
+  frameWidth?: number | null;
+  framesEncoded?: number | null;
+  framesPerSecond?: number | null;
+  jitter?: number | null;
+  keyFramesEncoded?: number | null;
+  mid?: string | null;
+  mosQuality?: number | null;
+  packetsLost?: number | null;
+  packetsSent?: number | null;
+  pliCount?: number | null;
+  producerId?: string | null;
+  qualityLimitationDurations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations | null;
+  qualityLimitationReason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason | null;
+  qualityLimitationResolutionChanges?: number | null;
+  rtt?: number | null;
+  ssrc?: number | null;
+  timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytesSent: S.optional(S.Number.pipe(T.Body("bytes_sent"))),
-      firCount: S.optional(S.Number.pipe(T.Body("fir_count"))),
-      frameHeight: S.optional(S.Number.pipe(T.Body("frame_height"))),
-      frameWidth: S.optional(S.Number.pipe(T.Body("frame_width"))),
-      framesEncoded: S.optional(S.Number.pipe(T.Body("frames_encoded"))),
-      framesPerSecond: S.optional(S.Number.pipe(T.Body("frames_per_second"))),
-      jitter: S.optional(S.Number),
-      keyFramesEncoded: S.optional(S.Number.pipe(T.Body("key_frames_encoded"))),
-      mid: S.optional(S.String),
-      mosQuality: S.optional(S.Number.pipe(T.Body("mos_quality"))),
-      packetsLost: S.optional(S.Number.pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.Number.pipe(T.Body("packets_sent"))),
-      pliCount: S.optional(S.Number.pipe(T.Body("pli_count"))),
-      producerId: S.optional(S.String.pipe(T.Body("producer_id"))),
+      bytesSent: S.optional(S.NullOr(S.Number).pipe(T.Body("bytes_sent"))),
+      firCount: S.optional(S.NullOr(S.Number).pipe(T.Body("fir_count"))),
+      frameHeight: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_height"))),
+      frameWidth: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_width"))),
+      framesEncoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_encoded")),
+      ),
+      framesPerSecond: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("frames_per_second")),
+      ),
+      jitter: S.optional(S.NullOr(S.Number)),
+      keyFramesEncoded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("key_frames_encoded")),
+      ),
+      mid: S.optional(S.NullOr(S.String)),
+      mosQuality: S.optional(S.NullOr(S.Number).pipe(T.Body("mos_quality"))),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      pliCount: S.optional(S.NullOr(S.Number).pipe(T.Body("pli_count"))),
+      producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
       qualityLimitationDurations: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations.pipe(
-          T.Body("quality_limitation_durations"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations,
+        ).pipe(T.Body("quality_limitation_durations")),
       ),
       qualityLimitationReason: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason.pipe(
-          T.Body("quality_limitation_reason"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason,
+        ).pipe(T.Body("quality_limitation_reason")),
       ),
       qualityLimitationResolutionChanges: S.optional(
-        S.Number.pipe(T.Body("quality_limitation_resolution_changes")),
+        S.NullOr(S.Number).pipe(
+          T.Body("quality_limitation_resolution_changes"),
+        ),
       ),
-      rtt: S.optional(S.Number),
-      ssrc: S.optional(S.Number),
-      timestamp: S.optional(S.String),
+      rtt: S.optional(S.NullOr(S.Number)),
+      ssrc: S.optional(S.NullOr(S.Number)),
+      timestamp: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -8850,18 +9160,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8869,18 +9179,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8888,27 +9198,31 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues {
-  bandwidthQualityLimitationFraction?: number;
-  cpuQualityLimitationFraction?: number;
-  noVideoFraction?: number;
-  poorResolutionFraction?: number;
-  qualityLimitationFraction?: number;
+  bandwidthQualityLimitationFraction?: number | null;
+  cpuQualityLimitationFraction?: number | null;
+  noVideoFraction?: number | null;
+  poorResolutionFraction?: number | null;
+  qualityLimitationFraction?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bandwidthQualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("bandwidth_quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(
+          T.Body("bandwidth_quality_limitation_fraction"),
+        ),
       ),
       cpuQualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("cpu_quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("cpu_quality_limitation_fraction")),
       ),
-      noVideoFraction: S.optional(S.Number.pipe(T.Body("no_video_fraction"))),
+      noVideoFraction: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("no_video_fraction")),
+      ),
       poorResolutionFraction: S.optional(
-        S.Number.pipe(T.Body("poor_resolution_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("poor_resolution_fraction")),
       ),
       qualityLimitationFraction: S.optional(
-        S.Number.pipe(T.Body("quality_limitation_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("quality_limitation_fraction")),
       ),
     }),
   ).annotate({
@@ -8917,28 +9231,28 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss {
-  "10OrGreaterEventFraction"?: number;
-  "25OrGreaterEventFraction"?: number;
-  "5OrGreaterEventFraction"?: number;
-  "50OrGreaterEventFraction"?: number;
-  avg?: number;
+  "10OrGreaterEventFraction"?: number | null;
+  "25OrGreaterEventFraction"?: number | null;
+  "5OrGreaterEventFraction"?: number | null;
+  "50OrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "10OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("10_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("10_or_greater_event_fraction")),
       ),
       "25OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("25_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("25_or_greater_event_fraction")),
       ),
       "5OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("5_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("5_or_greater_event_fraction")),
       ),
       "50OrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("50_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("50_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8946,18 +9260,18 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos {
-  avg?: number;
-  p50?: number;
-  p75?: number;
-  p90?: number;
+  avg?: number | null;
+  p50?: number | null;
+  p75?: number | null;
+  p90?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      avg: S.optional(S.Number),
-      p50: S.optional(S.Number),
-      p75: S.optional(S.Number),
-      p90: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
+      p50: S.optional(S.NullOr(S.Number)),
+      p75: S.optional(S.NullOr(S.Number)),
+      p90: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8965,24 +9279,24 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt {
-  "100msOrGreaterEventFraction"?: number;
-  "250msOrGreaterEventFraction"?: number;
-  "500msOrGreaterEventFraction"?: number;
-  avg?: number;
+  "100msOrGreaterEventFraction"?: number | null;
+  "250msOrGreaterEventFraction"?: number | null;
+  "500msOrGreaterEventFraction"?: number | null;
+  avg?: number | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       "100msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("100ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("100ms_or_greater_event_fraction")),
       ),
       "250msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("250ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("250ms_or_greater_event_fraction")),
       ),
       "500msOrGreaterEventFraction": S.optional(
-        S.Number.pipe(T.Body("500ms_or_greater_event_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("500ms_or_greater_event_fraction")),
       ),
-      avg: S.optional(S.Number),
+      avg: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -8991,53 +9305,57 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative {
   /** Distribution summary with average and percentiles. */
-  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond;
+  framePerSecond?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond | null;
   /** Distribution summary with average and percentiles. */
-  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth;
-  highNegativeFeedbackFraction?: number;
-  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues;
-  keyFramesEncodedFraction?: number;
+  frameWidth?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth | null;
+  highNegativeFeedbackFraction?: number | null;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues | null;
+  keyFramesEncodedFraction?: number | null;
   /** Cumulative packet loss distribution. */
-  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss;
+  packetLoss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss | null;
   /** Distribution summary with average and percentiles. */
-  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos;
+  qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos | null;
   /** Cumulative latency distribution (milliseconds-based thresholds). */
-  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       framePerSecond: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond.pipe(
-          T.Body("frame_per_second"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond,
+        ).pipe(T.Body("frame_per_second")),
       ),
       frameWidth: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth.pipe(
-          T.Body("frame_width"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth,
+        ).pipe(T.Body("frame_width")),
       ),
       highNegativeFeedbackFraction: S.optional(
-        S.Number.pipe(T.Body("high_negative_feedback_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("high_negative_feedback_fraction")),
       ),
       issues: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues,
+        ),
       ),
       keyFramesEncodedFraction: S.optional(
-        S.Number.pipe(T.Body("key_frames_encoded_fraction")),
+        S.NullOr(S.Number).pipe(T.Body("key_frames_encoded_fraction")),
       ),
       packetLoss: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss.pipe(
-          T.Body("packet_loss"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss,
+        ).pipe(T.Body("packet_loss")),
       ),
       qualityMos: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos.pipe(
-          T.Body("quality_mos"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos,
+        ).pipe(T.Body("quality_mos")),
       ),
       rtt: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt,
+        ),
       ),
     }),
   ).annotate({
@@ -9046,113 +9364,113 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality {
-  audioConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList;
+  audioConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList | null;
   /** Aggregated inbound (consumer) audio statistics for the session. */
-  audioConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative;
-  audioProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList;
+  audioConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative | null;
+  audioProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList | null;
   /** Aggregated outbound (producer) audio statistics for the session. */
-  audioProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative;
-  screenshareAudioConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList;
+  audioProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative | null;
+  screenshareAudioConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList | null;
   /** Aggregated inbound (consumer) audio statistics for the session. */
-  screenshareAudioConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative;
-  screenshareAudioProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList;
+  screenshareAudioConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative | null;
+  screenshareAudioProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList | null;
   /** Aggregated outbound (producer) audio statistics for the session. */
-  screenshareAudioProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative;
-  screenshareVideoConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList;
+  screenshareAudioProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative | null;
+  screenshareVideoConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList | null;
   /** Aggregated inbound (consumer) video statistics for the session. */
-  screenshareVideoConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative;
-  screenshareVideoProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList;
+  screenshareVideoConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative | null;
+  screenshareVideoProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList | null;
   /** Aggregated outbound (producer) video statistics for the session. */
-  screenshareVideoProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative;
-  videoConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList;
+  screenshareVideoProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative | null;
+  videoConsumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList | null;
   /** Aggregated inbound (consumer) video statistics for the session. */
-  videoConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative;
-  videoProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList;
+  videoConsumerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative | null;
+  videoProducer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList | null;
   /** Aggregated outbound (producer) video statistics for the session. */
-  videoProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative;
+  videoProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConsumer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList.pipe(
-          T.Body("audio_consumer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList,
+        ).pipe(T.Body("audio_consumer")),
       ),
       audioConsumerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative.pipe(
-          T.Body("audio_consumer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative,
+        ).pipe(T.Body("audio_consumer_cumulative")),
       ),
       audioProducer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList.pipe(
-          T.Body("audio_producer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList,
+        ).pipe(T.Body("audio_producer")),
       ),
       audioProducerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative.pipe(
-          T.Body("audio_producer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative,
+        ).pipe(T.Body("audio_producer_cumulative")),
       ),
       screenshareAudioConsumer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList.pipe(
-          T.Body("screenshare_audio_consumer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList,
+        ).pipe(T.Body("screenshare_audio_consumer")),
       ),
       screenshareAudioConsumerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative.pipe(
-          T.Body("screenshare_audio_consumer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative,
+        ).pipe(T.Body("screenshare_audio_consumer_cumulative")),
       ),
       screenshareAudioProducer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList.pipe(
-          T.Body("screenshare_audio_producer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList,
+        ).pipe(T.Body("screenshare_audio_producer")),
       ),
       screenshareAudioProducerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative.pipe(
-          T.Body("screenshare_audio_producer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative,
+        ).pipe(T.Body("screenshare_audio_producer_cumulative")),
       ),
       screenshareVideoConsumer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList.pipe(
-          T.Body("screenshare_video_consumer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList,
+        ).pipe(T.Body("screenshare_video_consumer")),
       ),
       screenshareVideoConsumerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative.pipe(
-          T.Body("screenshare_video_consumer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative,
+        ).pipe(T.Body("screenshare_video_consumer_cumulative")),
       ),
       screenshareVideoProducer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList.pipe(
-          T.Body("screenshare_video_producer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList,
+        ).pipe(T.Body("screenshare_video_producer")),
       ),
       screenshareVideoProducerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative.pipe(
-          T.Body("screenshare_video_producer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative,
+        ).pipe(T.Body("screenshare_video_producer_cumulative")),
       ),
       videoConsumer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList.pipe(
-          T.Body("video_consumer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList,
+        ).pipe(T.Body("video_consumer")),
       ),
       videoConsumerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative.pipe(
-          T.Body("video_consumer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative,
+        ).pipe(T.Body("video_consumer_cumulative")),
       ),
       videoProducer: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList.pipe(
-          T.Body("video_producer"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList,
+        ).pipe(T.Body("video_producer")),
       ),
       videoProducerCumulative: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative.pipe(
-          T.Body("video_producer_cumulative"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative,
+        ).pipe(T.Body("video_producer_cumulative")),
       ),
     }),
   ).annotate({
@@ -9162,18 +9480,22 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport {
   /** Connection and device metadata for the participant. */
-  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata;
+  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata | null;
   /** Media quality statistics for the participant. */
-  quality?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality;
+  quality?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata,
+        ),
       ),
       quality: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality,
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality,
+        ),
       ),
     }),
   ).annotate({
@@ -9183,70 +9505,70 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipant {
   /** ID of the participant. */
-  id?: string;
+  id?: string | null;
   /** timestamp when this participant was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** ID passed by client to create this participant. */
-  customParticipantId?: string;
+  customParticipantId?: string | null;
   /** Display name of participant when joining the session. */
-  displayName?: string;
+  displayName?: string | null;
   /** number of minutes for which the participant was in the session. */
-  duration?: number;
+  duration?: number | null;
   /** timestamp at which participant joined the session. */
-  joinedAt?: string;
+  joinedAt?: string | null;
   /** timestamp at which participant left the session. */
-  leftAt?: string;
+  leftAt?: string | null;
   /** Connection lifecycle events for the participant's peer. */
-  peerEvents?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList;
+  peerEvents?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList | null;
   /** Peer call statistics report. */
-  peerReport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport;
+  peerReport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport | null;
   /** Name of the preset associated with the participant. */
-  role?: string;
-  sessionId?: string;
+  role?: string | null;
+  sessionId?: string | null;
   /** timestamp when this participant's data was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** User id for this participant. */
-  userId?: string;
+  userId?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipant =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       customParticipantId: S.optional(
-        S.String.pipe(T.Body("custom_participant_id")),
+        S.NullOr(S.String).pipe(T.Body("custom_participant_id")),
       ),
-      displayName: S.optional(S.String.pipe(T.Body("display_name"))),
-      duration: S.optional(S.Number),
-      joinedAt: S.optional(S.String.pipe(T.Body("joined_at"))),
-      leftAt: S.optional(S.String.pipe(T.Body("left_at"))),
+      displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
+      duration: S.optional(S.NullOr(S.Number)),
+      joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
+      leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
       peerEvents: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList.pipe(
-          T.Body("peer_events"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList,
+        ).pipe(T.Body("peer_events")),
       ),
       peerReport: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport.pipe(
-          T.Body("peer_report"),
-        ),
+        S.NullOr(
+          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport,
+        ).pipe(T.Body("peer_report")),
       ),
-      role: S.optional(S.String),
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      userId: S.optional(S.String.pipe(T.Body("user_id"))),
+      role: S.optional(S.NullOr(S.String)),
+      sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_id"))),
     }),
   ).annotate({
     identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipant",
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipant>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseData {
-  participant?: SessionsGetParticipantDataFromPeerIdResponseDataParticipant;
+  participant?: SessionsGetParticipantDataFromPeerIdResponseDataParticipant | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       participant: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipant,
+        S.NullOr(SessionsGetParticipantDataFromPeerIdResponseDataParticipant),
       ),
     }),
   ).annotate({
@@ -9255,12 +9577,14 @@ export const SessionsGetParticipantDataFromPeerIdResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetParticipantDataFromPeerIdSessionResponse {
-  data?: SessionsGetParticipantDataFromPeerIdResponseData;
+  data?: SessionsGetParticipantDataFromPeerIdResponseData | null;
 }
 export const GetParticipantDataFromPeerIdSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(SessionsGetParticipantDataFromPeerIdResponseData),
+      data: S.optional(
+        S.NullOr(SessionsGetParticipantDataFromPeerIdResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetParticipantDataFromPeerIdSessionResponse",
@@ -9300,20 +9624,20 @@ export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PresetsGetResponseDataItem {
   /** ID of the preset */
-  id?: string;
+  id?: string | null;
   /** Timestamp this preset was created at */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Name of the preset */
-  name?: string;
+  name?: string | null;
   /** Timestamp this preset was last updated */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const PresetsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    name: S.optional(S.String),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    name: S.optional(S.NullOr(S.String)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "PresetsGetResponseDataItem",
@@ -9434,14 +9758,14 @@ export interface PresetsGetPresetByIdResponseDataConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality;
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsGetPresetByIdResponseDataConfigMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataConfigMediaVideo",
@@ -9449,17 +9773,19 @@ export const PresetsGetPresetByIdResponseDataConfigMediaVideo =
 
 export interface PresetsGetPresetByIdResponseDataConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsGetPresetByIdResponseDataConfigMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataConfigMediaAudio",
@@ -9471,14 +9797,16 @@ export interface PresetsGetPresetByIdResponseDataConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsGetPresetByIdResponseDataConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsGetPresetByIdResponseDataConfigMediaAudio;
+  audio?: PresetsGetPresetByIdResponseDataConfigMediaAudio | null;
 }
 export const PresetsGetPresetByIdResponseDataConfigMedia =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       screenshare: PresetsGetPresetByIdResponseDataConfigMediaScreenshare,
       video: PresetsGetPresetByIdResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsGetPresetByIdResponseDataConfigMediaAudio),
+      audio: S.optional(
+        S.NullOr(PresetsGetPresetByIdResponseDataConfigMediaAudio),
+      ),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataConfigMedia",
@@ -9509,7 +9837,7 @@ export interface PresetsGetPresetByIdResponseDataConfig {
   /** Type of the meeting */
   viewType: PresetsGetPresetByIdResponseDataConfigViewType;
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList | null;
 }
 export const PresetsGetPresetByIdResponseDataConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -9524,9 +9852,9 @@ export const PresetsGetPresetByIdResponseDataConfig = /*@__PURE__*/ S.suspend(
         T.Body("view_type"),
       ),
       livestreamViewerQualities: S.optional(
-        PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList.pipe(
-          T.Body("livestream_viewer_qualities"),
-        ),
+        S.NullOr(
+          PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList,
+        ).pipe(T.Body("livestream_viewer_qualities")),
       ),
     }),
 ).annotate({
@@ -9698,18 +10026,20 @@ export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccess
   /*@__PURE__*/ S.String;
 
 export interface PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl;
-  handlesViewOnly?: boolean;
+  accessControl?: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue",
@@ -9817,11 +10147,11 @@ export interface PresetsGetPresetByIdResponseDataPermissions {
   showParticipantList: boolean;
   /** Waiting room type */
   waitingRoomType: PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsGetPresetByIdResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  acceptStageRequests?: boolean | null;
+  isRecorder?: boolean | null;
+  stageAccess?: PresetsGetPresetByIdResponseDataPermissionsStageAccess | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
 }
 export const PresetsGetPresetByIdResponseDataPermissions =
   /*@__PURE__*/ S.suspend(() =>
@@ -9867,17 +10197,19 @@ export const PresetsGetPresetByIdResponseDataPermissions =
           T.Body("waiting_room_type"),
         ),
       acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
+        S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
       ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
       stageAccess: S.optional(
-        PresetsGetPresetByIdResponseDataPermissionsStageAccess.pipe(
+        S.NullOr(PresetsGetPresetByIdResponseDataPermissionsStageAccess).pipe(
           T.Body("stage_access"),
         ),
       ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      stageEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("stage_enabled")),
+      ),
       transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
+        S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
       ),
     }),
   ).annotate({
@@ -9980,9 +10312,9 @@ export interface PresetsGetPresetByIdResponseDataUiDesignTokens {
   colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
 }
 export const PresetsGetPresetByIdResponseDataUiDesignTokens =
   /*@__PURE__*/ S.suspend(() =>
@@ -9998,9 +10330,9 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokens =
       colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors,
       spacingBase: S.Number.pipe(T.Body("spacing_base")),
       theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
+      fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+      logo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataUiDesignTokens",
@@ -10009,14 +10341,14 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokens =
 export interface PresetsGetPresetByIdResponseDataUi {
   designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens;
   /** Difference between the preset's UI config and the defaults. */
-  configDiff?: unknown;
+  configDiff?: unknown | null;
 }
 export const PresetsGetPresetByIdResponseDataUi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens.pipe(
       T.Body("design_tokens"),
     ),
-    configDiff: S.optional(S.Unknown.pipe(T.Body("config_diff"))),
+    configDiff: S.optional(S.NullOr(S.Unknown).pipe(T.Body("config_diff"))),
   }),
 ).annotate({
   identifier: "PresetsGetPresetByIdResponseDataUi",
@@ -10163,22 +10495,26 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel;
+  channel?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec;
+  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier:
@@ -10187,12 +10523,12 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -10227,47 +10563,47 @@ export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigSt
   /** Type of storage media. */
   type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod;
+  authMethod?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -10286,15 +10622,15 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -10303,22 +10639,26 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition;
+  position?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize;
+  size?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -10327,28 +10667,32 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec;
+  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark;
+  watermark?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -10357,45 +10701,47 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoC
 
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig;
+  audioConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig;
-  videoConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig | null;
+  videoConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -10416,23 +10762,23 @@ export interface RecordingsGetRecordingsResponseDataItemMeeting {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig;
+  recordingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: RecordingsGetRecordingsResponseDataItemMeetingStatus;
+  status?: RecordingsGetRecordingsResponseDataItemMeetingStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const RecordingsGetRecordingsResponseDataItemMeeting =
   /*@__PURE__*/ S.suspend(() =>
@@ -10441,22 +10787,30 @@ export const RecordingsGetRecordingsResponseDataItemMeeting =
       createdAt: S.String.pipe(T.Body("created_at")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
+        S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
       ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+      ),
       recordingConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig.pipe(
-          T.Body("recording_config"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig,
+        ).pipe(T.Body("recording_config")),
       ),
       sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+        S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
       ),
-      status: S.optional(RecordingsGetRecordingsResponseDataItemMeetingStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+      status: S.optional(
+        S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingStatus),
+      ),
+      summarizeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+      ),
+      title: S.optional(S.NullOr(S.String)),
+      transcribeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+      ),
     }),
   ).annotate({
     identifier: "RecordingsGetRecordingsResponseDataItemMeeting",
@@ -10481,47 +10835,47 @@ export interface RecordingsGetRecordingsResponseDataItemStorageConfig {
   /** Type of storage media. */
   type: RecordingsGetRecordingsResponseDataItemStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod;
+  authMethod?: RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsGetRecordingsResponseDataItemStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsGetRecordingsResponseDataItemStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsGetRecordingsResponseDataItemStorageConfig",
@@ -10550,10 +10904,10 @@ export interface RecordingsGetRecordingsResponseDataItem {
   status: RecordingsGetRecordingsResponseDataItemStatus;
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
-  meeting?: RecordingsGetRecordingsResponseDataItemMeeting;
+  meeting?: RecordingsGetRecordingsResponseDataItemMeeting | null;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
-  storageConfig?: RecordingsGetRecordingsResponseDataItemStorageConfig;
+  recordingDuration?: number | null;
+  storageConfig?: RecordingsGetRecordingsResponseDataItemStorageConfig | null;
 }
 export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -10569,12 +10923,14 @@ export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
       startedTime: S.String.pipe(T.Body("started_time")),
       status: RecordingsGetRecordingsResponseDataItemStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
-      meeting: S.optional(RecordingsGetRecordingsResponseDataItemMeeting),
+      meeting: S.optional(
+        S.NullOr(RecordingsGetRecordingsResponseDataItemMeeting),
+      ),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
       storageConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemStorageConfig.pipe(
+        S.NullOr(RecordingsGetRecordingsResponseDataItemStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
@@ -10661,11 +11017,11 @@ export const SessionsGetSessionChatResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionChatSessionResponse {
-  data?: SessionsGetSessionChatResponseData;
+  data?: SessionsGetSessionChatResponseData | null;
 }
 export const GetSessionChatSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(SessionsGetSessionChatResponseData),
+    data: S.optional(S.NullOr(SessionsGetSessionChatResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionChatSessionResponse",
@@ -10743,9 +11099,9 @@ export interface SessionsGetSessionDetailsResponseData {
   type: SessionsGetSessionDetailsResponseDataType;
   /** timestamp when session was last updated */
   updatedAt: string;
-  breakoutRooms?: SessionsGetSessionDetailsResponseDataBreakoutRoomsList;
+  breakoutRooms?: SessionsGetSessionDetailsResponseDataBreakoutRoomsList | null;
   /** timestamp when session ended */
-  endedAt?: string;
+  endedAt?: string | null;
 }
 export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -10765,11 +11121,11 @@ export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
       type: SessionsGetSessionDetailsResponseDataType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       breakoutRooms: S.optional(
-        SessionsGetSessionDetailsResponseDataBreakoutRoomsList.pipe(
+        S.NullOr(SessionsGetSessionDetailsResponseDataBreakoutRoomsList).pipe(
           T.Body("breakout_rooms"),
         ),
       ),
-      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+      endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
     }),
 ).annotate({
   identifier: "SessionsGetSessionDetailsResponseData",
@@ -10777,11 +11133,11 @@ export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionDetailsSessionResponse {
-  data?: SessionsGetSessionDetailsResponseData;
+  data?: SessionsGetSessionDetailsResponseData | null;
 }
 export const GetSessionDetailsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(SessionsGetSessionDetailsResponseData),
+    data: S.optional(S.NullOr(SessionsGetSessionDetailsResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionDetailsSessionResponse",
@@ -10832,47 +11188,53 @@ export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEven
 
 export interface SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem {
   /** ID of the peer event. */
-  id?: string;
+  id?: string | null;
   /** Timestamp when this peer event was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Name of the peer event. */
-  eventName?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName;
+  eventName?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName | null;
   /** Minutes consumed attributed to this event. */
-  minutesConsumed?: number;
+  minutesConsumed?: number | null;
   /** ID of the participant this event belongs to. */
-  participantId?: string;
+  participantId?: string | null;
   /** Peer ID this event belongs to. */
-  peerId?: string;
+  peerId?: string | null;
   /** View type of the preset associated with the peer. */
-  presetViewType?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType;
+  presetViewType?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType | null;
   /** ID of the session this event belongs to. */
-  sessionId?: string;
+  sessionId?: string | null;
   /** ID of the socket session associated with this event. */
-  socketSessionId?: string;
+  socketSessionId?: string | null;
   /** Timestamp when this peer event was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       eventName: S.optional(
-        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName.pipe(
-          T.Body("event_name"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName,
+        ).pipe(T.Body("event_name")),
       ),
-      minutesConsumed: S.optional(S.Number.pipe(T.Body("minutes_consumed"))),
-      participantId: S.optional(S.String.pipe(T.Body("participant_id"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
+      minutesConsumed: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("minutes_consumed")),
+      ),
+      participantId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("participant_id")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
       presetViewType: S.optional(
-        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType.pipe(
-          T.Body("preset_view_type"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType,
+        ).pipe(T.Body("preset_view_type")),
       ),
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      socketSessionId: S.optional(S.String.pipe(T.Body("socket_session_id"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+      socketSessionId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("socket_session_id")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier:
@@ -10888,61 +11250,61 @@ export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEven
 
 export interface SessionsGetSessionParticipantDetailsResponseDataParticipant {
   /** Participant ID. This maps to the corresponding peerId. */
-  id?: string;
+  id?: string | null;
   /** timestamp when this participant was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** ID passed by client to create this participant. */
-  customParticipantId?: string;
+  customParticipantId?: string | null;
   /** Display name of participant when joining the session. */
-  displayName?: string;
+  displayName?: string | null;
   /** number of minutes for which the participant was in the session. */
-  duration?: number;
+  duration?: number | null;
   /** timestamp at which participant joined the session. */
-  joinedAt?: string;
+  joinedAt?: string | null;
   /** timestamp at which participant left the session. */
-  leftAt?: string;
+  leftAt?: string | null;
   /** Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true. */
-  peerEvents?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList;
+  peerEvents?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList | null;
   /** Name of the preset associated with the participant. */
-  presetName?: string;
+  presetName?: string | null;
   /** timestamp when this participant's data was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** User id for this participant. */
-  userId?: string;
+  userId?: string | null;
 }
 export const SessionsGetSessionParticipantDetailsResponseDataParticipant =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       customParticipantId: S.optional(
-        S.String.pipe(T.Body("custom_participant_id")),
+        S.NullOr(S.String).pipe(T.Body("custom_participant_id")),
       ),
-      displayName: S.optional(S.String.pipe(T.Body("display_name"))),
-      duration: S.optional(S.Number),
-      joinedAt: S.optional(S.String.pipe(T.Body("joined_at"))),
-      leftAt: S.optional(S.String.pipe(T.Body("left_at"))),
+      displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
+      duration: S.optional(S.NullOr(S.Number)),
+      joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
+      leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
       peerEvents: S.optional(
-        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList.pipe(
-          T.Body("peer_events"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList,
+        ).pipe(T.Body("peer_events")),
       ),
-      presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      userId: S.optional(S.String.pipe(T.Body("user_id"))),
+      presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_id"))),
     }),
   ).annotate({
     identifier: "SessionsGetSessionParticipantDetailsResponseDataParticipant",
   }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipant>;
 
 export interface SessionsGetSessionParticipantDetailsResponseData {
-  participant?: SessionsGetSessionParticipantDetailsResponseDataParticipant;
+  participant?: SessionsGetSessionParticipantDetailsResponseDataParticipant | null;
 }
 export const SessionsGetSessionParticipantDetailsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       participant: S.optional(
-        SessionsGetSessionParticipantDetailsResponseDataParticipant,
+        S.NullOr(SessionsGetSessionParticipantDetailsResponseDataParticipant),
       ),
     }),
   ).annotate({
@@ -10951,12 +11313,14 @@ export const SessionsGetSessionParticipantDetailsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionParticipantDetailsSessionResponse {
-  data?: SessionsGetSessionParticipantDetailsResponseData;
+  data?: SessionsGetSessionParticipantDetailsResponseData | null;
 }
 export const GetSessionParticipantDetailsSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(SessionsGetSessionParticipantDetailsResponseData),
+      data: S.optional(
+        S.NullOr(SessionsGetSessionParticipantDetailsResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetSessionParticipantDetailsSessionResponse",
@@ -11042,47 +11406,53 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEvent
 
 export interface SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem {
   /** ID of the peer event. */
-  id?: string;
+  id?: string | null;
   /** Timestamp when this peer event was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Name of the peer event. */
-  eventName?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName;
+  eventName?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName | null;
   /** Minutes consumed attributed to this event. */
-  minutesConsumed?: number;
+  minutesConsumed?: number | null;
   /** ID of the participant this event belongs to. */
-  participantId?: string;
+  participantId?: string | null;
   /** Peer ID this event belongs to. */
-  peerId?: string;
+  peerId?: string | null;
   /** View type of the preset associated with the peer. */
-  presetViewType?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType;
+  presetViewType?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType | null;
   /** ID of the session this event belongs to. */
-  sessionId?: string;
+  sessionId?: string | null;
   /** ID of the socket session associated with this event. */
-  socketSessionId?: string;
+  socketSessionId?: string | null;
   /** Timestamp when this peer event was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       eventName: S.optional(
-        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName.pipe(
-          T.Body("event_name"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName,
+        ).pipe(T.Body("event_name")),
       ),
-      minutesConsumed: S.optional(S.Number.pipe(T.Body("minutes_consumed"))),
-      participantId: S.optional(S.String.pipe(T.Body("participant_id"))),
-      peerId: S.optional(S.String.pipe(T.Body("peer_id"))),
+      minutesConsumed: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("minutes_consumed")),
+      ),
+      participantId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("participant_id")),
+      ),
+      peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
       presetViewType: S.optional(
-        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType.pipe(
-          T.Body("preset_view_type"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType,
+        ).pipe(T.Body("preset_view_type")),
       ),
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      socketSessionId: S.optional(S.String.pipe(T.Body("socket_session_id"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+      socketSessionId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("socket_session_id")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier:
@@ -11098,48 +11468,48 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEvent
 
 export interface SessionsGetSessionParticipantsResponseDataParticipantsItem {
   /** Participant ID. This maps to the corresponding peerId. */
-  id?: string;
+  id?: string | null;
   /** timestamp when this participant was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** ID passed by client to create this participant. */
-  customParticipantId?: string;
+  customParticipantId?: string | null;
   /** Display name of participant when joining the session. */
-  displayName?: string;
+  displayName?: string | null;
   /** number of minutes for which the participant was in the session. */
-  duration?: number;
+  duration?: number | null;
   /** timestamp at which participant joined the session. */
-  joinedAt?: string;
+  joinedAt?: string | null;
   /** timestamp at which participant left the session. */
-  leftAt?: string;
+  leftAt?: string | null;
   /** Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true. */
-  peerEvents?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList;
+  peerEvents?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList | null;
   /** Name of the preset associated with the participant. */
-  presetName?: string;
+  presetName?: string | null;
   /** timestamp when this participant's data was last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** User id for this participant. */
-  userId?: string;
+  userId?: string | null;
 }
 export const SessionsGetSessionParticipantsResponseDataParticipantsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       customParticipantId: S.optional(
-        S.String.pipe(T.Body("custom_participant_id")),
+        S.NullOr(S.String).pipe(T.Body("custom_participant_id")),
       ),
-      displayName: S.optional(S.String.pipe(T.Body("display_name"))),
-      duration: S.optional(S.Number),
-      joinedAt: S.optional(S.String.pipe(T.Body("joined_at"))),
-      leftAt: S.optional(S.String.pipe(T.Body("left_at"))),
+      displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
+      duration: S.optional(S.NullOr(S.Number)),
+      joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
+      leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
       peerEvents: S.optional(
-        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList.pipe(
-          T.Body("peer_events"),
-        ),
+        S.NullOr(
+          SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList,
+        ).pipe(T.Body("peer_events")),
       ),
-      presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      userId: S.optional(S.String.pipe(T.Body("user_id"))),
+      presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_id"))),
     }),
   ).annotate({
     identifier: "SessionsGetSessionParticipantsResponseDataParticipantsItem",
@@ -11153,13 +11523,13 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsList =
   ) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsList>;
 
 export interface SessionsGetSessionParticipantsResponseData {
-  participants?: SessionsGetSessionParticipantsResponseDataParticipantsList;
+  participants?: SessionsGetSessionParticipantsResponseDataParticipantsList | null;
 }
 export const SessionsGetSessionParticipantsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       participants: S.optional(
-        SessionsGetSessionParticipantsResponseDataParticipantsList,
+        S.NullOr(SessionsGetSessionParticipantsResponseDataParticipantsList),
       ),
     }),
   ).annotate({
@@ -11168,12 +11538,12 @@ export const SessionsGetSessionParticipantsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionParticipantsSessionResponse {
-  data?: SessionsGetSessionParticipantsResponseData;
+  data?: SessionsGetSessionParticipantsResponseData | null;
 }
 export const GetSessionParticipantsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(SessionsGetSessionParticipantsResponseData),
+      data: S.optional(S.NullOr(SessionsGetSessionParticipantsResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionParticipantsSessionResponse",
@@ -11286,9 +11656,9 @@ export interface SessionsGetSessionsResponseDataSessionsItem {
   type: SessionsGetSessionsResponseDataSessionsItemType;
   /** timestamp when session was last updated */
   updatedAt: string;
-  breakoutRooms?: SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList;
+  breakoutRooms?: SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList | null;
   /** timestamp when session ended */
-  endedAt?: string;
+  endedAt?: string | null;
 }
 export const SessionsGetSessionsResponseDataSessionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -11308,11 +11678,11 @@ export const SessionsGetSessionsResponseDataSessionsItem =
       type: SessionsGetSessionsResponseDataSessionsItemType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       breakoutRooms: S.optional(
-        SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList.pipe(
-          T.Body("breakout_rooms"),
-        ),
+        S.NullOr(
+          SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList,
+        ).pipe(T.Body("breakout_rooms")),
       ),
-      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+      endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
     }),
   ).annotate({
     identifier: "SessionsGetSessionsResponseDataSessionsItem",
@@ -11326,26 +11696,26 @@ export const SessionsGetSessionsResponseDataSessionsList =
   ) as any as S.Schema<SessionsGetSessionsResponseDataSessionsList>;
 
 export interface SessionsGetSessionsResponseData {
-  sessions?: SessionsGetSessionsResponseDataSessionsList;
+  sessions?: SessionsGetSessionsResponseDataSessionsList | null;
 }
 export const SessionsGetSessionsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sessions: S.optional(SessionsGetSessionsResponseDataSessionsList),
+    sessions: S.optional(S.NullOr(SessionsGetSessionsResponseDataSessionsList)),
   }),
 ).annotate({
   identifier: "SessionsGetSessionsResponseData",
 }) as any as S.Schema<SessionsGetSessionsResponseData>;
 
 export interface SessionsGetSessionsResponsePaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
+  endOffset?: number | null;
+  startOffset?: number | null;
+  totalCount?: number | null;
 }
 export const SessionsGetSessionsResponsePaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-    startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    endOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("end_offset"))),
+    startOffset: S.optional(S.NullOr(S.Number).pipe(T.Body("start_offset"))),
+    totalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("total_count"))),
   }),
 ).annotate({
   identifier: "SessionsGetSessionsResponsePaging",
@@ -11353,13 +11723,13 @@ export const SessionsGetSessionsResponsePaging = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionsSessionResponse {
-  data?: SessionsGetSessionsResponseData;
-  paging?: SessionsGetSessionsResponsePaging;
+  data?: SessionsGetSessionsResponseData | null;
+  paging?: SessionsGetSessionsResponsePaging | null;
 }
 export const GetSessionsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(SessionsGetSessionsResponseData),
-    paging: S.optional(SessionsGetSessionsResponsePaging),
+    data: S.optional(S.NullOr(SessionsGetSessionsResponseData)),
+    paging: S.optional(S.NullOr(SessionsGetSessionsResponsePaging)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionsSessionResponse",
@@ -11410,11 +11780,11 @@ export const SessionsGetSessionSummaryResponseData = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionSummarySessionResponse {
-  data?: SessionsGetSessionSummaryResponseData;
+  data?: SessionsGetSessionSummaryResponseData | null;
 }
 export const GetSessionSummarySessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(SessionsGetSessionSummaryResponseData),
+    data: S.optional(S.NullOr(SessionsGetSessionSummaryResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionSummarySessionResponse",
@@ -11480,12 +11850,12 @@ export const SessionsGetSessionTranscriptsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionTranscriptsSessionResponse {
-  data?: SessionsGetSessionTranscriptsResponseData;
+  data?: SessionsGetSessionTranscriptsResponseData | null;
 }
 export const GetSessionTranscriptsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(SessionsGetSessionTranscriptsResponseData),
+      data: S.optional(S.NullOr(SessionsGetSessionTranscriptsResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionTranscriptsSessionResponse",
@@ -11696,15 +12066,15 @@ export const KickAllParticipantsActiveSessionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<KickAllParticipantsActiveSessionRequest>;
 
 export interface ActiveSessionKickAllParticipantsResponseData {
-  action?: string;
-  kickedParticipantsCount?: number;
+  action?: string | null;
+  kickedParticipantsCount?: number | null;
 }
 export const ActiveSessionKickAllParticipantsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      action: S.optional(S.String),
+      action: S.optional(S.NullOr(S.String)),
       kickedParticipantsCount: S.optional(
-        S.Number.pipe(T.Body("kicked_participants_count")),
+        S.NullOr(S.Number).pipe(T.Body("kicked_participants_count")),
       ),
     }),
   ).annotate({
@@ -11713,12 +12083,12 @@ export const ActiveSessionKickAllParticipantsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface KickAllParticipantsActiveSessionResponse {
-  data?: ActiveSessionKickAllParticipantsResponseData;
+  data?: ActiveSessionKickAllParticipantsResponseData | null;
 }
 export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(ActiveSessionKickAllParticipantsResponseData),
+      data: S.optional(S.NullOr(ActiveSessionKickAllParticipantsResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickAllParticipantsActiveSessionResponse",
@@ -11780,11 +12150,11 @@ export interface ActiveSessionKickParticipantsResponseDataParticipantsItem {
   createdAt: string;
   updatedAt: string;
   /** Email of the session participant. */
-  email?: string;
+  email?: string | null;
   /** Name of the session participant. */
-  name?: string;
+  name?: string | null;
   /** A URL pointing to a picture of the participant. */
-  picture?: string;
+  picture?: string | null;
 }
 export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -11792,9 +12162,9 @@ export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
       id: S.String,
       createdAt: S.String.pipe(T.Body("created_at")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
+      email: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      picture: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ActiveSessionKickParticipantsResponseDataParticipantsItem",
@@ -11808,15 +12178,15 @@ export const ActiveSessionKickParticipantsResponseDataParticipantsList =
   ) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsList>;
 
 export interface ActiveSessionKickParticipantsResponseData {
-  action?: string;
-  participants?: ActiveSessionKickParticipantsResponseDataParticipantsList;
+  action?: string | null;
+  participants?: ActiveSessionKickParticipantsResponseDataParticipantsList | null;
 }
 export const ActiveSessionKickParticipantsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      action: S.optional(S.String),
+      action: S.optional(S.NullOr(S.String)),
       participants: S.optional(
-        ActiveSessionKickParticipantsResponseDataParticipantsList,
+        S.NullOr(ActiveSessionKickParticipantsResponseDataParticipantsList),
       ),
     }),
   ).annotate({
@@ -11825,12 +12195,12 @@ export const ActiveSessionKickParticipantsResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface KickParticipantsActiveSessionResponse {
-  data?: ActiveSessionKickParticipantsResponseData;
+  data?: ActiveSessionKickParticipantsResponseData | null;
 }
 export const KickParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(ActiveSessionKickParticipantsResponseData),
+      data: S.optional(S.NullOr(ActiveSessionKickParticipantsResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickParticipantsActiveSessionResponse",
@@ -11866,20 +12236,22 @@ export const LivestreamsGetOrgAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>;
 
 export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
-  day?: string;
+  day?: string | null;
   /** Total recording minutes for a specific day */
-  totalRecordingMinutes?: number;
+  totalRecordingMinutes?: number | null;
   /** Total number of recordings for a specific day */
-  totalRecordings?: number;
+  totalRecordings?: number | null;
 }
 export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      day: S.optional(S.String),
+      day: S.optional(S.NullOr(S.String)),
       totalRecordingMinutes: S.optional(
-        S.Number.pipe(T.Body("total_recording_minutes")),
+        S.NullOr(S.Number).pipe(T.Body("total_recording_minutes")),
       ),
-      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
+      totalRecordings: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("total_recordings")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -11895,23 +12267,25 @@ export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
 
 export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStats {
   /** Day wise recording stats */
-  dayStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
+  dayStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList | null;
   /** Total number of recordings during the range specified */
-  recordingCount?: number;
+  recordingCount?: number | null;
   /** Total recording minutes during the range specified */
-  recordingMinutesConsumed?: number;
+  recordingMinutesConsumed?: number | null;
 }
 export const LivestreamsGetOrgAnalyticsResponseDataRecordingStats =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dayStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
+        S.NullOr(
+          LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList,
+        ).pipe(T.Body("day_stats")),
       ),
-      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
+      recordingCount: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("recording_count")),
+      ),
       recordingMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("recording_minutes_consumed")),
+        S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
       ),
     }),
   ).annotate({
@@ -11919,20 +12293,22 @@ export const LivestreamsGetOrgAnalyticsResponseDataRecordingStats =
   }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStats>;
 
 export interface LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
-  day?: string;
+  day?: string | null;
   /** Total session minutes for a specific day */
-  totalSessionMinutes?: number;
+  totalSessionMinutes?: number | null;
   /** Total number of sessions for a specific day */
-  totalSessions?: number;
+  totalSessions?: number | null;
 }
 export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      day: S.optional(S.String),
+      day: S.optional(S.NullOr(S.String)),
       totalSessionMinutes: S.optional(
-        S.Number.pipe(T.Body("total_session_minutes")),
+        S.NullOr(S.Number).pipe(T.Body("total_session_minutes")),
       ),
-      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
+      totalSessions: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("total_sessions")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -11948,23 +12324,25 @@ export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
 
 export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
   /** Day wise session stats */
-  dayStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
+  dayStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList | null;
   /** Total number of sessions during the range specified */
-  sessionsCount?: number;
+  sessionsCount?: number | null;
   /** Total session minutes during the range specified */
-  sessionsMinutesConsumed?: number;
+  sessionsMinutesConsumed?: number | null;
 }
 export const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dayStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
+        S.NullOr(
+          LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList,
+        ).pipe(T.Body("day_stats")),
       ),
-      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
+      sessionsCount: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("sessions_count")),
+      ),
       sessionsMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("sessions_minutes_consumed")),
+        S.NullOr(S.Number).pipe(T.Body("sessions_minutes_consumed")),
       ),
     }),
   ).annotate({
@@ -11973,20 +12351,20 @@ export const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
 
 export interface LivestreamsGetOrgAnalyticsResponseData {
   /** Recording statistics of an App during the range specified */
-  recordingStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStats;
+  recordingStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStats | null;
   /** Session statistics of an App during the range specified */
-  sessionStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStats;
+  sessionStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStats | null;
 }
 export const LivestreamsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       recordingStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataRecordingStats.pipe(
+        S.NullOr(LivestreamsGetOrgAnalyticsResponseDataRecordingStats).pipe(
           T.Body("recording_stats"),
         ),
       ),
       sessionStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataSessionStats.pipe(
+        S.NullOr(LivestreamsGetOrgAnalyticsResponseDataSessionStats).pipe(
           T.Body("session_stats"),
         ),
       ),
@@ -11997,11 +12375,11 @@ export const LivestreamsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface LivestreamsGetOrgAnalyticsResponse {
-  data?: LivestreamsGetOrgAnalyticsResponseData;
+  data?: LivestreamsGetOrgAnalyticsResponseData | null;
 }
 export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(LivestreamsGetOrgAnalyticsResponseData),
+    data: S.optional(S.NullOr(LivestreamsGetOrgAnalyticsResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LivestreamsGetOrgAnalyticsResponse",
@@ -12016,15 +12394,15 @@ export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
 
 export interface PresetsUpdateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
-  desktop?: number;
+  desktop?: number | null;
   /** Maximum number of streams visible on mobile devices */
-  mobile?: number;
+  mobile?: number | null;
 }
 export const PresetsUpdateRequestConfigMaxVideoStreams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      desktop: S.optional(S.Number),
-      mobile: S.optional(S.Number),
+      desktop: S.optional(S.NullOr(S.Number)),
+      mobile: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestConfigMaxVideoStreams",
@@ -12032,17 +12410,19 @@ export const PresetsUpdateRequestConfigMaxVideoStreams =
 
 export interface PresetsUpdateRequestConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsUpdateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMediaAudio",
@@ -12059,15 +12439,20 @@ export const PresetsUpdateRequestConfigMediaScreenshareQuality =
 
 export interface PresetsUpdateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
-  frameRate?: number;
+  frameRate?: number | null;
   /** Quality of screen share */
-  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality | (string & {});
+  quality?:
+    | PresetsUpdateRequestConfigMediaScreenshareQuality
+    | (string & {})
+    | null;
 }
 export const PresetsUpdateRequestConfigMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-      quality: S.optional(PresetsUpdateRequestConfigMediaScreenshareQuality),
+      frameRate: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_rate"))),
+      quality: S.optional(
+        S.NullOr(PresetsUpdateRequestConfigMediaScreenshareQuality),
+      ),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestConfigMediaScreenshare",
@@ -12084,18 +12469,20 @@ export const PresetsUpdateRequestConfigMediaVideoQuality =
 
 export interface PresetsUpdateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
-  frameRate?: number;
+  frameRate?: number | null;
   /** Video quality of participants */
-  quality?: PresetsUpdateRequestConfigMediaVideoQuality | (string & {});
+  quality?: PresetsUpdateRequestConfigMediaVideoQuality | (string & {}) | null;
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-      quality: S.optional(PresetsUpdateRequestConfigMediaVideoQuality),
-      simulcast: S.optional(S.Boolean),
+      frameRate: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_rate"))),
+      quality: S.optional(
+        S.NullOr(PresetsUpdateRequestConfigMediaVideoQuality),
+      ),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMediaVideo",
@@ -12103,17 +12490,19 @@ export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
 
 export interface PresetsUpdateRequestConfigMedia {
   /** Control options for Audio quality. */
-  audio?: PresetsUpdateRequestConfigMediaAudio;
+  audio?: PresetsUpdateRequestConfigMediaAudio | null;
   /** Configuration options for participant screen shares */
-  screenshare?: PresetsUpdateRequestConfigMediaScreenshare;
+  screenshare?: PresetsUpdateRequestConfigMediaScreenshare | null;
   /** Configuration options for participant videos */
-  video?: PresetsUpdateRequestConfigMediaVideo;
+  video?: PresetsUpdateRequestConfigMediaVideo | null;
 }
 export const PresetsUpdateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(PresetsUpdateRequestConfigMediaAudio),
-    screenshare: S.optional(PresetsUpdateRequestConfigMediaScreenshare),
-    video: S.optional(PresetsUpdateRequestConfigMediaVideo),
+    audio: S.optional(S.NullOr(PresetsUpdateRequestConfigMediaAudio)),
+    screenshare: S.optional(
+      S.NullOr(PresetsUpdateRequestConfigMediaScreenshare),
+    ),
+    video: S.optional(S.NullOr(PresetsUpdateRequestConfigMediaVideo)),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMedia",
@@ -12128,34 +12517,34 @@ export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestConfig {
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList | null;
   /** Maximum number of screen shares that can be active at a given time */
-  maxScreenshareCount?: number;
+  maxScreenshareCount?: number | null;
   /** Maximum number of streams that are visible on a device */
-  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams;
+  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams | null;
   /** Media configuration options. eg: Video quality */
-  media?: PresetsUpdateRequestConfigMedia;
+  media?: PresetsUpdateRequestConfigMedia | null;
   /** Type of the meeting */
-  viewType?: PresetsUpdateRequestConfigViewType | (string & {});
+  viewType?: PresetsUpdateRequestConfigViewType | (string & {}) | null;
 }
 export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     livestreamViewerQualities: S.optional(
-      PresetsUpdateRequestConfigLivestreamViewerQualitiesList.pipe(
+      S.NullOr(PresetsUpdateRequestConfigLivestreamViewerQualitiesList).pipe(
         T.Body("livestream_viewer_qualities"),
       ),
     ),
     maxScreenshareCount: S.optional(
-      S.Number.pipe(T.Body("max_screenshare_count")),
+      S.NullOr(S.Number).pipe(T.Body("max_screenshare_count")),
     ),
     maxVideoStreams: S.optional(
-      PresetsUpdateRequestConfigMaxVideoStreams.pipe(
+      S.NullOr(PresetsUpdateRequestConfigMaxVideoStreams).pipe(
         T.Body("max_video_streams"),
       ),
     ),
-    media: S.optional(PresetsUpdateRequestConfigMedia),
+    media: S.optional(S.NullOr(PresetsUpdateRequestConfigMedia)),
     viewType: S.optional(
-      PresetsUpdateRequestConfigViewType.pipe(T.Body("view_type")),
+      S.NullOr(PresetsUpdateRequestConfigViewType).pipe(T.Body("view_type")),
     ),
   }),
 ).annotate({
@@ -12163,18 +12552,18 @@ export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PresetsUpdateRequestConfig>;
 
 export interface PresetsUpdateRequestPermissionsChatPrivate {
-  canReceive?: boolean;
-  canSend?: boolean;
-  files?: boolean;
-  text?: boolean;
+  canReceive?: boolean | null;
+  canSend?: boolean | null;
+  files?: boolean | null;
+  text?: boolean | null;
 }
 export const PresetsUpdateRequestPermissionsChatPrivate =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      canReceive: S.optional(S.Boolean.pipe(T.Body("can_receive"))),
-      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
-      files: S.optional(S.Boolean),
-      text: S.optional(S.Boolean),
+      canReceive: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_receive"))),
+      canSend: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_send"))),
+      files: S.optional(S.NullOr(S.Boolean)),
+      text: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsChatPrivate",
@@ -12182,52 +12571,52 @@ export const PresetsUpdateRequestPermissionsChatPrivate =
 
 export interface PresetsUpdateRequestPermissionsChatPublic {
   /** Can send messages in general */
-  canSend?: boolean;
+  canSend?: boolean | null;
   /** Can send file messages */
-  files?: boolean;
+  files?: boolean | null;
   /** Can send text messages */
-  text?: boolean;
+  text?: boolean | null;
 }
 export const PresetsUpdateRequestPermissionsChatPublic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
-      files: S.optional(S.Boolean),
-      text: S.optional(S.Boolean),
+      canSend: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_send"))),
+      files: S.optional(S.NullOr(S.Boolean)),
+      text: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsChatPublic",
   }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPublic>;
 
 export interface PresetsUpdateRequestPermissionsChat {
-  private?: PresetsUpdateRequestPermissionsChatPrivate;
-  public?: PresetsUpdateRequestPermissionsChatPublic;
+  private?: PresetsUpdateRequestPermissionsChatPrivate | null;
+  public?: PresetsUpdateRequestPermissionsChatPublic | null;
 }
 export const PresetsUpdateRequestPermissionsChat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    private: S.optional(PresetsUpdateRequestPermissionsChatPrivate),
-    public: S.optional(PresetsUpdateRequestPermissionsChatPublic),
+    private: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChatPrivate)),
+    public: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChatPublic)),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsChat",
 }) as any as S.Schema<PresetsUpdateRequestPermissionsChat>;
 
 export interface PresetsUpdateRequestPermissionsConnectedMeetings {
-  canAlterConnectedMeetings?: boolean;
-  canSwitchConnectedMeetings?: boolean;
-  canSwitchToParentMeeting?: boolean;
+  canAlterConnectedMeetings?: boolean | null;
+  canSwitchConnectedMeetings?: boolean | null;
+  canSwitchToParentMeeting?: boolean | null;
 }
 export const PresetsUpdateRequestPermissionsConnectedMeetings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canAlterConnectedMeetings: S.optional(
-        S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
+        S.NullOr(S.Boolean).pipe(T.Body("can_alter_connected_meetings")),
       ),
       canSwitchConnectedMeetings: S.optional(
-        S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
+        S.NullOr(S.Boolean).pipe(T.Body("can_switch_connected_meetings")),
       ),
       canSwitchToParentMeeting: S.optional(
-        S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
+        S.NullOr(S.Boolean).pipe(T.Body("can_switch_to_parent_meeting")),
       ),
     }),
   ).annotate({
@@ -12245,13 +12634,14 @@ export interface PresetsUpdateRequestPermissionsMediaAudio {
   /** Can produce audio */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaAudioCanProduce
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PresetsUpdateRequestPermissionsMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaAudioCanProduce.pipe(
+        S.NullOr(PresetsUpdateRequestPermissionsMediaAudioCanProduce).pipe(
           T.Body("can_produce"),
         ),
       ),
@@ -12271,15 +12661,16 @@ export interface PresetsUpdateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaScreenshareCanProduce
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PresetsUpdateRequestPermissionsMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaScreenshareCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
+        S.NullOr(
+          PresetsUpdateRequestPermissionsMediaScreenshareCanProduce,
+        ).pipe(T.Body("can_produce")),
       ),
     }),
   ).annotate({
@@ -12297,13 +12688,14 @@ export interface PresetsUpdateRequestPermissionsMediaVideo {
   /** Can produce video */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaVideoCanProduce
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PresetsUpdateRequestPermissionsMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaVideoCanProduce.pipe(
+        S.NullOr(PresetsUpdateRequestPermissionsMediaVideoCanProduce).pipe(
           T.Body("can_produce"),
         ),
       ),
@@ -12314,18 +12706,20 @@ export const PresetsUpdateRequestPermissionsMediaVideo =
 
 export interface PresetsUpdateRequestPermissionsMedia {
   /** Audio permissions */
-  audio?: PresetsUpdateRequestPermissionsMediaAudio;
+  audio?: PresetsUpdateRequestPermissionsMediaAudio | null;
   /** Screenshare permissions */
-  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare;
+  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare | null;
   /** Video permissions */
-  video?: PresetsUpdateRequestPermissionsMediaVideo;
+  video?: PresetsUpdateRequestPermissionsMediaVideo | null;
 }
 export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      audio: S.optional(PresetsUpdateRequestPermissionsMediaAudio),
-      screenshare: S.optional(PresetsUpdateRequestPermissionsMediaScreenshare),
-      video: S.optional(PresetsUpdateRequestPermissionsMediaVideo),
+      audio: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMediaAudio)),
+      screenshare: S.optional(
+        S.NullOr(PresetsUpdateRequestPermissionsMediaScreenshare),
+      ),
+      video: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMediaVideo)),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsMedia",
@@ -12340,18 +12734,21 @@ export const PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
 export interface PresetsUpdateRequestPermissionsPluginsConfigValue {
   accessControl?:
     | PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {});
-  handlesViewOnly?: boolean;
+    | (string & {})
+    | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsUpdateRequestPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsPluginsConfigValue",
@@ -12368,21 +12765,25 @@ export const PresetsUpdateRequestPermissionsPluginsConfigMap =
 
 export interface PresetsUpdateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
-  canClose?: boolean;
+  canClose?: boolean | null;
   /** Can edit plugin config */
-  canEditConfig?: boolean;
+  canEditConfig?: boolean | null;
   /** Can start plugins */
-  canStart?: boolean;
+  canStart?: boolean | null;
   /** Plugin configuration keyed by plugin UUID. */
-  config?: PresetsUpdateRequestPermissionsPluginsConfigMap;
+  config?: PresetsUpdateRequestPermissionsPluginsConfigMap | null;
 }
 export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
-      canEditConfig: S.optional(S.Boolean.pipe(T.Body("can_edit_config"))),
-      canStart: S.optional(S.Boolean.pipe(T.Body("can_start"))),
-      config: S.optional(PresetsUpdateRequestPermissionsPluginsConfigMap),
+      canClose: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_close"))),
+      canEditConfig: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("can_edit_config")),
+      ),
+      canStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_start"))),
+      config: S.optional(
+        S.NullOr(PresetsUpdateRequestPermissionsPluginsConfigMap),
+      ),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsPlugins",
@@ -12390,18 +12791,18 @@ export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
 
 export interface PresetsUpdateRequestPermissionsPolls {
   /** Can create polls */
-  canCreate?: boolean;
+  canCreate?: boolean | null;
   /** Can view polls */
-  canView?: boolean;
+  canView?: boolean | null;
   /** Can vote on polls */
-  canVote?: boolean;
+  canVote?: boolean | null;
 }
 export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      canCreate: S.optional(S.Boolean.pipe(T.Body("can_create"))),
-      canView: S.optional(S.Boolean.pipe(T.Body("can_view"))),
-      canVote: S.optional(S.Boolean.pipe(T.Body("can_vote"))),
+      canCreate: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_create"))),
+      canView: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_view"))),
+      canVote: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_vote"))),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsPolls",
@@ -12429,99 +12830,118 @@ export const PresetsUpdateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissions {
-  acceptStageRequests?: boolean;
+  acceptStageRequests?: boolean | null;
   /** Whether this participant can accept waiting requests */
-  acceptWaitingRequests?: boolean;
-  canAcceptProductionRequests?: boolean;
-  canChangeParticipantPermissions?: boolean;
-  canEditDisplayName?: boolean;
-  canLivestream?: boolean;
-  canRecord?: boolean;
-  canSpotlight?: boolean;
-  chat?: PresetsUpdateRequestPermissionsChat;
-  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings;
-  disableParticipantAudio?: boolean;
-  disableParticipantScreensharing?: boolean;
-  disableParticipantVideo?: boolean;
+  acceptWaitingRequests?: boolean | null;
+  canAcceptProductionRequests?: boolean | null;
+  canChangeParticipantPermissions?: boolean | null;
+  canEditDisplayName?: boolean | null;
+  canLivestream?: boolean | null;
+  canRecord?: boolean | null;
+  canSpotlight?: boolean | null;
+  chat?: PresetsUpdateRequestPermissionsChat | null;
+  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings | null;
+  disableParticipantAudio?: boolean | null;
+  disableParticipantScreensharing?: boolean | null;
+  disableParticipantVideo?: boolean | null;
   /** Whether this participant is visible to others or not */
-  hiddenParticipant?: boolean;
-  isRecorder?: boolean;
-  kickParticipant?: boolean;
+  hiddenParticipant?: boolean | null;
+  isRecorder?: boolean | null;
+  kickParticipant?: boolean | null;
   /** Media permissions */
-  media?: PresetsUpdateRequestPermissionsMedia;
-  pinParticipant?: boolean;
+  media?: PresetsUpdateRequestPermissionsMedia | null;
+  pinParticipant?: boolean | null;
   /** Plugin permissions */
-  plugins?: PresetsUpdateRequestPermissionsPlugins;
+  plugins?: PresetsUpdateRequestPermissionsPlugins | null;
   /** Poll permissions */
-  polls?: PresetsUpdateRequestPermissionsPolls;
+  polls?: PresetsUpdateRequestPermissionsPolls | null;
   /** Type of the recording peer */
-  recorderType?: PresetsUpdateRequestPermissionsRecorderType | (string & {});
-  showParticipantList?: boolean;
-  stageAccess?: PresetsUpdateRequestPermissionsStageAccess | (string & {});
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  recorderType?:
+    | PresetsUpdateRequestPermissionsRecorderType
+    | (string & {})
+    | null;
+  showParticipantList?: boolean | null;
+  stageAccess?:
+    | PresetsUpdateRequestPermissionsStageAccess
+    | (string & {})
+    | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
   /** Waiting room type */
   waitingRoomType?:
     | PresetsUpdateRequestPermissionsWaitingRoomType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const PresetsUpdateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptStageRequests: S.optional(
-      S.Boolean.pipe(T.Body("accept_stage_requests")),
+      S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
     ),
     acceptWaitingRequests: S.optional(
-      S.Boolean.pipe(T.Body("accept_waiting_requests")),
+      S.NullOr(S.Boolean).pipe(T.Body("accept_waiting_requests")),
     ),
     canAcceptProductionRequests: S.optional(
-      S.Boolean.pipe(T.Body("can_accept_production_requests")),
+      S.NullOr(S.Boolean).pipe(T.Body("can_accept_production_requests")),
     ),
     canChangeParticipantPermissions: S.optional(
-      S.Boolean.pipe(T.Body("can_change_participant_permissions")),
+      S.NullOr(S.Boolean).pipe(T.Body("can_change_participant_permissions")),
     ),
     canEditDisplayName: S.optional(
-      S.Boolean.pipe(T.Body("can_edit_display_name")),
+      S.NullOr(S.Boolean).pipe(T.Body("can_edit_display_name")),
     ),
-    canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
-    canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
-    canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
-    chat: S.optional(PresetsUpdateRequestPermissionsChat),
+    canLivestream: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("can_livestream")),
+    ),
+    canRecord: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_record"))),
+    canSpotlight: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_spotlight"))),
+    chat: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChat)),
     connectedMeetings: S.optional(
-      PresetsUpdateRequestPermissionsConnectedMeetings.pipe(
+      S.NullOr(PresetsUpdateRequestPermissionsConnectedMeetings).pipe(
         T.Body("connected_meetings"),
       ),
     ),
     disableParticipantAudio: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_audio")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_audio")),
     ),
     disableParticipantScreensharing: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_screensharing")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_screensharing")),
     ),
     disableParticipantVideo: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_video")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_video")),
     ),
-    hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
-    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-    kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
-    media: S.optional(PresetsUpdateRequestPermissionsMedia),
-    pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
-    plugins: S.optional(PresetsUpdateRequestPermissionsPlugins),
-    polls: S.optional(PresetsUpdateRequestPermissionsPolls),
+    hiddenParticipant: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("hidden_participant")),
+    ),
+    isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
+    kickParticipant: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("kick_participant")),
+    ),
+    media: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMedia)),
+    pinParticipant: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("pin_participant")),
+    ),
+    plugins: S.optional(S.NullOr(PresetsUpdateRequestPermissionsPlugins)),
+    polls: S.optional(S.NullOr(PresetsUpdateRequestPermissionsPolls)),
     recorderType: S.optional(
-      PresetsUpdateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
+      S.NullOr(PresetsUpdateRequestPermissionsRecorderType).pipe(
+        T.Body("recorder_type"),
+      ),
     ),
     showParticipantList: S.optional(
-      S.Boolean.pipe(T.Body("show_participant_list")),
+      S.NullOr(S.Boolean).pipe(T.Body("show_participant_list")),
     ),
     stageAccess: S.optional(
-      PresetsUpdateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
+      S.NullOr(PresetsUpdateRequestPermissionsStageAccess).pipe(
+        T.Body("stage_access"),
+      ),
     ),
-    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+    stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
     transcriptionEnabled: S.optional(
-      S.Boolean.pipe(T.Body("transcription_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
     ),
     waitingRoomType: S.optional(
-      PresetsUpdateRequestPermissionsWaitingRoomType.pipe(
+      S.NullOr(PresetsUpdateRequestPermissionsWaitingRoomType).pipe(
         T.Body("waiting_room_type"),
       ),
     ),
@@ -12546,68 +12966,70 @@ export const PresetsUpdateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
-  "1000"?: string;
-  "600"?: string;
-  "700"?: string;
-  "800"?: string;
-  "900"?: string;
+  "1000"?: string | null;
+  "600"?: string | null;
+  "700"?: string | null;
+  "800"?: string | null;
+  "900"?: string | null;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.optional(S.String),
-      "600": S.optional(S.String),
-      "700": S.optional(S.String),
-      "800": S.optional(S.String),
-      "900": S.optional(S.String),
+      "1000": S.optional(S.NullOr(S.String)),
+      "600": S.optional(S.NullOr(S.String)),
+      "700": S.optional(S.NullOr(S.String)),
+      "800": S.optional(S.NullOr(S.String)),
+      "900": S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
-  "300"?: string;
-  "400"?: string;
-  "500"?: string;
-  "600"?: string;
-  "700"?: string;
+  "300"?: string | null;
+  "400"?: string | null;
+  "500"?: string | null;
+  "600"?: string | null;
+  "700"?: string | null;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.optional(S.String),
-      "400": S.optional(S.String),
-      "500": S.optional(S.String),
-      "600": S.optional(S.String),
-      "700": S.optional(S.String),
+      "300": S.optional(S.NullOr(S.String)),
+      "400": S.optional(S.NullOr(S.String)),
+      "500": S.optional(S.NullOr(S.String)),
+      "600": S.optional(S.NullOr(S.String)),
+      "700": S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
   }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBrand>;
 
 export interface PresetsUpdateRequestUiDesignTokensColors {
-  background?: PresetsUpdateRequestUiDesignTokensColorsBackground;
-  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand;
-  danger?: string;
-  success?: string;
-  text?: string;
-  textOnBrand?: string;
-  videoBg?: string;
-  warning?: string;
+  background?: PresetsUpdateRequestUiDesignTokensColorsBackground | null;
+  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand | null;
+  danger?: string | null;
+  success?: string | null;
+  text?: string | null;
+  textOnBrand?: string | null;
+  videoBg?: string | null;
+  warning?: string | null;
 }
 export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       background: S.optional(
-        PresetsUpdateRequestUiDesignTokensColorsBackground,
+        S.NullOr(PresetsUpdateRequestUiDesignTokensColorsBackground),
       ),
-      brand: S.optional(PresetsUpdateRequestUiDesignTokensColorsBrand),
-      danger: S.optional(S.String),
-      success: S.optional(S.String),
-      text: S.optional(S.String),
-      textOnBrand: S.optional(S.String.pipe(T.Body("text_on_brand"))),
-      videoBg: S.optional(S.String.pipe(T.Body("video_bg"))),
-      warning: S.optional(S.String),
+      brand: S.optional(
+        S.NullOr(PresetsUpdateRequestUiDesignTokensColorsBrand),
+      ),
+      danger: S.optional(S.NullOr(S.String)),
+      success: S.optional(S.NullOr(S.String)),
+      text: S.optional(S.NullOr(S.String)),
+      textOnBrand: S.optional(S.NullOr(S.String).pipe(T.Body("text_on_brand"))),
+      videoBg: S.optional(S.NullOr(S.String).pipe(T.Body("video_bg"))),
+      warning: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestUiDesignTokensColors",
@@ -12620,45 +13042,53 @@ export type PresetsUpdateRequestUiDesignTokensTheme =
 export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokens {
-  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius | (string & {});
-  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth | (string & {});
-  colors?: PresetsUpdateRequestUiDesignTokensColors;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
-  spacingBase?: number;
-  theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {});
+  borderRadius?:
+    | PresetsUpdateRequestUiDesignTokensBorderRadius
+    | (string & {})
+    | null;
+  borderWidth?:
+    | PresetsUpdateRequestUiDesignTokensBorderWidth
+    | (string & {})
+    | null;
+  colors?: PresetsUpdateRequestUiDesignTokensColors | null;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
+  spacingBase?: number | null;
+  theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {}) | null;
 }
 export const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     borderRadius: S.optional(
-      PresetsUpdateRequestUiDesignTokensBorderRadius.pipe(
+      S.NullOr(PresetsUpdateRequestUiDesignTokensBorderRadius).pipe(
         T.Body("border_radius"),
       ),
     ),
     borderWidth: S.optional(
-      PresetsUpdateRequestUiDesignTokensBorderWidth.pipe(
+      S.NullOr(PresetsUpdateRequestUiDesignTokensBorderWidth).pipe(
         T.Body("border_width"),
       ),
     ),
-    colors: S.optional(PresetsUpdateRequestUiDesignTokensColors),
-    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-    logo: S.optional(S.String),
-    spacingBase: S.optional(S.Number.pipe(T.Body("spacing_base"))),
-    theme: S.optional(PresetsUpdateRequestUiDesignTokensTheme),
+    colors: S.optional(S.NullOr(PresetsUpdateRequestUiDesignTokensColors)),
+    fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+    googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+    logo: S.optional(S.NullOr(S.String)),
+    spacingBase: S.optional(S.NullOr(S.Number).pipe(T.Body("spacing_base"))),
+    theme: S.optional(S.NullOr(PresetsUpdateRequestUiDesignTokensTheme)),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestUiDesignTokens",
 }) as any as S.Schema<PresetsUpdateRequestUiDesignTokens>;
 
 export interface PresetsUpdateRequestUi {
-  designTokens?: PresetsUpdateRequestUiDesignTokens;
+  designTokens?: PresetsUpdateRequestUiDesignTokens | null;
 }
 export const PresetsUpdateRequestUi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     designTokens: S.optional(
-      PresetsUpdateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
+      S.NullOr(PresetsUpdateRequestUiDesignTokens).pipe(
+        T.Body("design_tokens"),
+      ),
     ),
   }),
 ).annotate({
@@ -12671,21 +13101,21 @@ export interface PatchPresetRequest {
   /** The app identifier tag. */
   appId: string;
   presetId: string;
-  config?: PresetsUpdateRequestConfig;
+  config?: PresetsUpdateRequestConfig | null;
   /** Name of the preset */
-  name?: string;
-  permissions?: PresetsUpdateRequestPermissions;
-  ui?: PresetsUpdateRequestUi;
+  name?: string | null;
+  permissions?: PresetsUpdateRequestPermissions | null;
+  ui?: PresetsUpdateRequestUi | null;
 }
 export const PatchPresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     presetId: S.String.pipe(T.Label("preset_id")),
-    config: S.optional(PresetsUpdateRequestConfig),
-    name: S.optional(S.String),
-    permissions: S.optional(PresetsUpdateRequestPermissions),
-    ui: S.optional(PresetsUpdateRequestUi),
+    config: S.optional(S.NullOr(PresetsUpdateRequestConfig)),
+    name: S.optional(S.NullOr(S.String)),
+    permissions: S.optional(S.NullOr(PresetsUpdateRequestPermissions)),
+    ui: S.optional(S.NullOr(PresetsUpdateRequestUi)),
   })
     .pipe(
       T.Http({
@@ -12755,14 +13185,14 @@ export interface PresetsUpdateResponseDataConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsUpdateResponseDataConfigMediaVideoQuality;
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
+  simulcast?: boolean | null;
 }
 export const PresetsUpdateResponseDataConfigMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsUpdateResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
+      simulcast: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataConfigMediaVideo",
@@ -12770,17 +13200,19 @@ export const PresetsUpdateResponseDataConfigMediaVideo =
 
 export interface PresetsUpdateResponseDataConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
+  enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
+  enableStereo?: boolean | null;
 }
 export const PresetsUpdateResponseDataConfigMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+      enableStereo: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataConfigMediaAudio",
@@ -12792,14 +13224,14 @@ export interface PresetsUpdateResponseDataConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsUpdateResponseDataConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsUpdateResponseDataConfigMediaAudio;
+  audio?: PresetsUpdateResponseDataConfigMediaAudio | null;
 }
 export const PresetsUpdateResponseDataConfigMedia = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       screenshare: PresetsUpdateResponseDataConfigMediaScreenshare,
       video: PresetsUpdateResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsUpdateResponseDataConfigMediaAudio),
+      audio: S.optional(S.NullOr(PresetsUpdateResponseDataConfigMediaAudio)),
     }),
 ).annotate({
   identifier: "PresetsUpdateResponseDataConfigMedia",
@@ -12829,7 +13261,7 @@ export interface PresetsUpdateResponseDataConfig {
   /** Type of the meeting */
   viewType: PresetsUpdateResponseDataConfigViewType;
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList;
+  livestreamViewerQualities?: PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList | null;
 }
 export const PresetsUpdateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12840,9 +13272,9 @@ export const PresetsUpdateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
     media: PresetsUpdateResponseDataConfigMedia,
     viewType: PresetsUpdateResponseDataConfigViewType.pipe(T.Body("view_type")),
     livestreamViewerQualities: S.optional(
-      PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList.pipe(
-        T.Body("livestream_viewer_qualities"),
-      ),
+      S.NullOr(
+        PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList,
+      ).pipe(T.Body("livestream_viewer_qualities")),
     ),
   }),
 ).annotate({
@@ -13014,18 +13446,20 @@ export const PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl;
-  handlesViewOnly?: boolean;
+  accessControl?: PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl | null;
+  handlesViewOnly?: boolean | null;
 }
 export const PresetsUpdateResponseDataPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
+        S.NullOr(
+          PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl,
+        ).pipe(T.Body("access_control")),
       ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+      handlesViewOnly: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
+      ),
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataPermissionsPluginsConfigValue",
@@ -13133,11 +13567,11 @@ export interface PresetsUpdateResponseDataPermissions {
   showParticipantList: boolean;
   /** Waiting room type */
   waitingRoomType: PresetsUpdateResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsUpdateResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
+  acceptStageRequests?: boolean | null;
+  isRecorder?: boolean | null;
+  stageAccess?: PresetsUpdateResponseDataPermissionsStageAccess | null;
+  stageEnabled?: boolean | null;
+  transcriptionEnabled?: boolean | null;
 }
 export const PresetsUpdateResponseDataPermissions = /*@__PURE__*/ S.suspend(
   () =>
@@ -13181,17 +13615,19 @@ export const PresetsUpdateResponseDataPermissions = /*@__PURE__*/ S.suspend(
         T.Body("waiting_room_type"),
       ),
       acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
+        S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
       ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
       stageAccess: S.optional(
-        PresetsUpdateResponseDataPermissionsStageAccess.pipe(
+        S.NullOr(PresetsUpdateResponseDataPermissionsStageAccess).pipe(
           T.Body("stage_access"),
         ),
       ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      stageEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("stage_enabled")),
+      ),
       transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
+        S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
       ),
     }),
 ).annotate({
@@ -13292,9 +13728,9 @@ export interface PresetsUpdateResponseDataUiDesignTokens {
   colors: PresetsUpdateResponseDataUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsUpdateResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
+  fontFamily?: string | null;
+  googleFont?: string | null;
+  logo?: string | null;
 }
 export const PresetsUpdateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
   () =>
@@ -13308,9 +13744,9 @@ export const PresetsUpdateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
       colors: PresetsUpdateResponseDataUiDesignTokensColors,
       spacingBase: S.Number.pipe(T.Body("spacing_base")),
       theme: PresetsUpdateResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
+      fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
+      logo: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PresetsUpdateResponseDataUiDesignTokens",
@@ -13420,20 +13856,22 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType
 
 export interface RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType;
+  type?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType | null;
   /** The user ID of the person who started the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType,
+        ),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier:
@@ -13447,18 +13885,22 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsPauseResumeStopRecordingResponseDataStartReason {
-  caller?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller;
+  caller?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller | null;
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
-  reason?: RecordingsPauseResumeStopRecordingResponseDataStartReasonReason;
+  reason?: RecordingsPauseResumeStopRecordingResponseDataStartReasonReason | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseDataStartReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caller: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller,
+        ),
       ),
       reason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonReason,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStartReasonReason,
+        ),
       ),
     }),
   ).annotate({
@@ -13472,20 +13914,22 @@ export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType 
 
 export interface RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller {
   /** Name of the user who stopped the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType;
+  type?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType | null;
   /** The user ID of the person who stopped the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType,
+        ),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier:
@@ -13500,18 +13944,22 @@ export const RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsPauseResumeStopRecordingResponseDataStopReason {
-  caller?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller;
+  caller?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller | null;
   /** Specifies the reason why the recording stopped. */
-  reason?: RecordingsPauseResumeStopRecordingResponseDataStopReasonReason;
+  reason?: RecordingsPauseResumeStopRecordingResponseDataStopReasonReason | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseDataStopReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caller: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller,
+        ),
       ),
       reason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonReason,
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStopReasonReason,
+        ),
       ),
     }),
   ).annotate({
@@ -13536,47 +13984,47 @@ export interface RecordingsPauseResumeStopRecordingResponseDataStorageConfig {
   /** Type of storage media. */
   type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod;
+  authMethod?: RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsPauseResumeStopRecordingResponseDataStorageConfig",
@@ -13606,10 +14054,10 @@ export interface RecordingsPauseResumeStopRecordingResponseData {
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
-  startReason?: RecordingsPauseResumeStopRecordingResponseDataStartReason;
-  stopReason?: RecordingsPauseResumeStopRecordingResponseDataStopReason;
-  storageConfig?: RecordingsPauseResumeStopRecordingResponseDataStorageConfig;
+  recordingDuration?: number | null;
+  startReason?: RecordingsPauseResumeStopRecordingResponseDataStartReason | null;
+  stopReason?: RecordingsPauseResumeStopRecordingResponseDataStopReason | null;
+  storageConfig?: RecordingsPauseResumeStopRecordingResponseDataStorageConfig | null;
 }
 export const RecordingsPauseResumeStopRecordingResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -13626,22 +14074,22 @@ export const RecordingsPauseResumeStopRecordingResponseData =
       status: RecordingsPauseResumeStopRecordingResponseDataStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
       startReason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReason.pipe(
-          T.Body("start_reason"),
-        ),
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStartReason,
+        ).pipe(T.Body("start_reason")),
       ),
       stopReason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReason.pipe(
+        S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStopReason).pipe(
           T.Body("stop_reason"),
         ),
       ),
       storageConfig: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          RecordingsPauseResumeStopRecordingResponseDataStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
     }),
   ).annotate({
@@ -13651,12 +14099,14 @@ export const RecordingsPauseResumeStopRecordingResponseData =
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PauseResumeStopRecordingRecordingResponse {
   /** Data returned by the operation */
-  data?: RecordingsPauseResumeStopRecordingResponseData;
+  data?: RecordingsPauseResumeStopRecordingResponseData | null;
 }
 export const PauseResumeStopRecordingRecordingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(RecordingsPauseResumeStopRecordingResponseData),
+      data: S.optional(
+        S.NullOr(RecordingsPauseResumeStopRecordingResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PauseResumeStopRecordingRecordingResponse",
@@ -13683,26 +14133,26 @@ export const PostAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAppRequest" }) as any as S.Schema<PostAppRequest>;
 
 export interface AppsPostResponseDataApp {
-  id?: string;
-  createdAt?: string;
-  name?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  name?: string | null;
 }
 export const AppsPostResponseDataApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AppsPostResponseDataApp",
 }) as any as S.Schema<AppsPostResponseDataApp>;
 
 export interface AppsPostResponseData {
-  app?: AppsPostResponseDataApp;
+  app?: AppsPostResponseDataApp | null;
 }
 export const AppsPostResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    app: S.optional(AppsPostResponseDataApp),
+    app: S.optional(S.NullOr(AppsPostResponseDataApp)),
   }),
 ).annotate({
   identifier: "AppsPostResponseData",
@@ -13710,11 +14160,11 @@ export const AppsPostResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PostAppResponse {
-  data?: AppsPostResponseData;
+  data?: AppsPostResponseData | null;
 }
 export const PostAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(AppsPostResponseData),
+    data: S.optional(S.NullOr(AppsPostResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PostAppResponse",
@@ -13798,28 +14248,30 @@ export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat
-    | (string & {});
+    | (string & {})
+    | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestAiConfigSummarization",
@@ -13848,24 +14300,31 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
   language?:
     | MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage
-    | (string & {});
+    | (string & {})
+    | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+        ),
       ),
       language: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
+        ),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestAiConfigTranscription",
@@ -13873,18 +14332,18 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
 
 export interface MeetingsReplaceMeetingByIdRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization;
+  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription;
+  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription | null;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarization: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarization,
+        S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfigSummarization),
       ),
       transcription: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscription,
+        S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfigTranscription),
       ),
     }),
   ).annotate({
@@ -13906,24 +14365,30 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel
-    | (string & {});
+    | (string & {})
+    | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
   codec?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
@@ -13931,12 +14396,12 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -13977,49 +14442,50 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig {
     | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType
     | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig",
@@ -14038,15 +14504,15 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermar
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -14057,22 +14523,27 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWate
   /** Position of the watermark */
   position?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {});
+    | (string & {})
+    | null;
   /** Size of the watermark */
-  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -14083,28 +14554,33 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
@@ -14112,45 +14588,47 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig;
+  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig;
-  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig | null;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -14164,23 +14642,23 @@ export interface ReplaceMeetingByIdMeetingRequest {
   appId: string;
   meetingId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig;
+  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig;
+  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14188,24 +14666,32 @@ export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     aiConfig: S.optional(
-      MeetingsReplaceMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
+      S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfig).pipe(
+        T.Body("ai_config"),
+      ),
     ),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsReplaceMeetingByIdRequestRecordingConfig.pipe(
+      S.NullOr(MeetingsReplaceMeetingByIdRequestRecordingConfig).pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   })
     .pipe(
       T.Http({
@@ -14239,26 +14725,26 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextForm
 
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  summaryType?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  textFormat?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization",
@@ -14278,22 +14764,28 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage
 
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  language?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        ),
       ),
       language: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        ),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription",
@@ -14301,18 +14793,18 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription =
 
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfig {
   /** Summary Config */
-  summarization?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization;
+  summarization?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription;
+  transcription?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataAiConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarization: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization,
+        S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization),
       ),
       transcription: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription,
+        S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription),
       ),
     }),
   ).annotate({
@@ -14331,22 +14823,26 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCod
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  channel?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier:
@@ -14355,12 +14851,12 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig =
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -14395,47 +14891,47 @@ export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageCon
   /** Type of storage media. */
   type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  authMethod?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -14454,15 +14950,15 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWat
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -14471,22 +14967,26 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWat
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  position?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -14495,28 +14995,32 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWat
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -14525,45 +15029,47 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig =
 
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig;
+  audioConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -14584,25 +15090,25 @@ export interface MeetingsReplaceMeetingByIdResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsReplaceMeetingByIdResponseDataAiConfig;
+  aiConfig?: MeetingsReplaceMeetingByIdResponseDataAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfig;
+  recordingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsReplaceMeetingByIdResponseDataStatus;
+  status?: MeetingsReplaceMeetingByIdResponseDataStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -14611,27 +15117,35 @@ export const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       aiConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfig.pipe(
+        S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfig).pipe(
           T.Body("ai_config"),
         ),
       ),
       liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
+        S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
       ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+      ),
       recordingConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfig.pipe(
+        S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfig).pipe(
           T.Body("recording_config"),
         ),
       ),
       sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+        S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
       ),
-      status: S.optional(MeetingsReplaceMeetingByIdResponseDataStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+      status: S.optional(
+        S.NullOr(MeetingsReplaceMeetingByIdResponseDataStatus),
+      ),
+      summarizeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+      ),
+      title: S.optional(S.NullOr(S.String)),
+      transcribeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+      ),
     }),
 ).annotate({
   identifier: "MeetingsReplaceMeetingByIdResponseData",
@@ -14640,11 +15154,11 @@ export const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ReplaceMeetingByIdMeetingResponse {
   /** Data returned by the operation */
-  data?: MeetingsReplaceMeetingByIdResponseData;
+  data?: MeetingsReplaceMeetingByIdResponseData | null;
 }
 export const ReplaceMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsReplaceMeetingByIdResponseData),
+    data: S.optional(S.NullOr(MeetingsReplaceMeetingByIdResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReplaceMeetingByIdMeetingResponse",
@@ -14682,7 +15196,7 @@ export interface ReplaceWebhookWebhookRequest {
   /** URL this webhook will send events to */
   url: string;
   /** Set whether or not the webhook should be active when created */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14692,7 +15206,7 @@ export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     events: WebhooksReplaceWebhookRequestEventsList,
     name: S.String,
     url: S.String,
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -14770,15 +15284,15 @@ export const ReplaceWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface LivestreamsStartLivestreamingAMeetingRequestVideoConfig {
   /** Height of the livestreaming video in pixels */
-  height?: number;
+  height?: number | null;
   /** Width of the livestreaming video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const LivestreamsStartLivestreamingAMeetingRequestVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "LivestreamsStartLivestreamingAMeetingRequestVideoConfig",
@@ -14790,8 +15304,8 @@ export interface StartLivestreamingAMeetingLivestreamRequest {
   /** The app identifier tag. */
   appId: string;
   meetingId: string;
-  name?: string;
-  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig;
+  name?: string | null;
+  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig | null;
 }
 export const StartLivestreamingAMeetingLivestreamRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14799,9 +15313,9 @@ export const StartLivestreamingAMeetingLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       videoConfig: S.optional(
-        LivestreamsStartLivestreamingAMeetingRequestVideoConfig.pipe(
+        S.NullOr(LivestreamsStartLivestreamingAMeetingRequestVideoConfig).pipe(
           T.Body("video_config"),
         ),
       ),
@@ -14828,25 +15342,27 @@ export const LivestreamsStartLivestreamingAMeetingResponseDataStatus =
 
 export interface LivestreamsStartLivestreamingAMeetingResponseData {
   /** The livestream ID. */
-  id?: string;
+  id?: string | null;
   /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
+  ingestServer?: string | null;
   /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsStartLivestreamingAMeetingResponseDataStatus;
+  playbackUrl?: string | null;
+  status?: LivestreamsStartLivestreamingAMeetingResponseDataStatus | null;
   /** Unique key for accessing each livestream. */
-  streamKey?: string;
+  streamKey?: string | null;
 }
 export const LivestreamsStartLivestreamingAMeetingResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsStartLivestreamingAMeetingResponseDataStatus,
+      id: S.optional(S.NullOr(S.String)),
+      ingestServer: S.optional(
+        S.NullOr(S.String).pipe(T.Body("ingest_server")),
       ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
+      status: S.optional(
+        S.NullOr(LivestreamsStartLivestreamingAMeetingResponseDataStatus),
+      ),
+      streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
     }),
   ).annotate({
     identifier: "LivestreamsStartLivestreamingAMeetingResponseData",
@@ -14854,12 +15370,14 @@ export const LivestreamsStartLivestreamingAMeetingResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartLivestreamingAMeetingLivestreamResponse {
-  data?: LivestreamsStartLivestreamingAMeetingResponseData;
+  data?: LivestreamsStartLivestreamingAMeetingResponseData | null;
 }
 export const StartLivestreamingAMeetingLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(LivestreamsStartLivestreamingAMeetingResponseData),
+      data: S.optional(
+        S.NullOr(LivestreamsStartLivestreamingAMeetingResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StartLivestreamingAMeetingLivestreamResponse",
@@ -14877,18 +15395,28 @@ export const RecordingsStartRecordingsRequestAudioConfigCodec =
 
 export interface RecordingsStartRecordingsRequestAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: RecordingsStartRecordingsRequestAudioConfigChannel | (string & {});
+  channel?:
+    | RecordingsStartRecordingsRequestAudioConfigChannel
+    | (string & {})
+    | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: RecordingsStartRecordingsRequestAudioConfigCodec | (string & {});
+  codec?:
+    | RecordingsStartRecordingsRequestAudioConfigCodec
+    | (string & {})
+    | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const RecordingsStartRecordingsRequestAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      channel: S.optional(RecordingsStartRecordingsRequestAudioConfigChannel),
-      codec: S.optional(RecordingsStartRecordingsRequestAudioConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      channel: S.optional(
+        S.NullOr(RecordingsStartRecordingsRequestAudioConfigChannel),
+      ),
+      codec: S.optional(
+        S.NullOr(RecordingsStartRecordingsRequestAudioConfigCodec),
+      ),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestAudioConfig",
@@ -14900,12 +15428,17 @@ export const RecordingsStartRecordingsRequestInteractiveConfigType =
 
 export interface RecordingsStartRecordingsRequestInteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
-  type?: RecordingsStartRecordingsRequestInteractiveConfigType | (string & {});
+  type?:
+    | RecordingsStartRecordingsRequestInteractiveConfigType
+    | (string & {})
+    | null;
 }
 export const RecordingsStartRecordingsRequestInteractiveConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(RecordingsStartRecordingsRequestInteractiveConfigType),
+      type: S.optional(
+        S.NullOr(RecordingsStartRecordingsRequestInteractiveConfigType),
+      ),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
@@ -14926,12 +15459,12 @@ export const RecordingsStartRecordingsRequestRealtimekitBucketConfig =
 
 export interface RecordingsStartRecordingsRequestRtmpOutConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const RecordingsStartRecordingsRequestRtmpOutConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestRtmpOutConfig",
@@ -14956,49 +15489,50 @@ export interface RecordingsStartRecordingsRequestStorageConfig {
   /** Type of storage media. */
   type: RecordingsStartRecordingsRequestStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | RecordingsStartRecordingsRequestStorageConfigAuthMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsStartRecordingsRequestStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsStartRecordingsRequestStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsStartRecordingsRequestStorageConfigAuthMethod.pipe(
+        S.NullOr(RecordingsStartRecordingsRequestStorageConfigAuthMethod).pipe(
           T.Body("auth_method"),
         ),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestStorageConfig",
@@ -15018,15 +15552,15 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
 
 export interface RecordingsStartRecordingsRequestVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfigWatermarkSize",
@@ -15036,22 +15570,23 @@ export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
   /** Position of the watermark */
   position?:
     | RecordingsStartRecordingsRequestVideoConfigWatermarkPosition
-    | (string & {});
+    | (string & {})
+    | null;
   /** Size of the watermark */
-  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize;
+  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const RecordingsStartRecordingsRequestVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermarkPosition,
+        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermarkPosition),
       ),
       size: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermarkSize,
+        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermarkSize),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfigWatermark",
@@ -15059,26 +15594,31 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermark =
 
 export interface RecordingsStartRecordingsRequestVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: RecordingsStartRecordingsRequestVideoConfigCodec | (string & {});
+  codec?:
+    | RecordingsStartRecordingsRequestVideoConfigCodec
+    | (string & {})
+    | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark;
+  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const RecordingsStartRecordingsRequestVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      codec: S.optional(RecordingsStartRecordingsRequestVideoConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermark,
+      codec: S.optional(
+        S.NullOr(RecordingsStartRecordingsRequestVideoConfigCodec),
       ),
-      width: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
+      watermark: S.optional(
+        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermark),
+      ),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfig",
@@ -15092,21 +15632,21 @@ export interface StartRecordingsRecordingRequest {
   /** ID of the meeting to record. */
   meetingId: string;
   /** By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode. */
-  allowMultipleRecordings?: boolean;
+  allowMultipleRecordings?: boolean | null;
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: RecordingsStartRecordingsRequestAudioConfig;
+  audioConfig?: RecordingsStartRecordingsRequestAudioConfig | null;
   /** Update the recording file name. */
-  fileNamePrefix?: string;
+  fileNamePrefix?: string | null;
   /** Allows you to add timed metadata to your recordings, which are digital markers inserted into a video file to provide contextual information at specific points in the content range. The ID3 tags containing this information are available to clients on the playback timeline in HLS format. The output files are generated in a compressed .tar format. */
-  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig;
+  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig;
-  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig;
-  storageConfig?: RecordingsStartRecordingsRequestStorageConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig | null;
+  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig | null;
+  storageConfig?: RecordingsStartRecordingsRequestStorageConfig | null;
   /** Pass a custom url to record arbitary screen */
-  url?: string;
-  videoConfig?: RecordingsStartRecordingsRequestVideoConfig;
+  url?: string | null;
+  videoConfig?: RecordingsStartRecordingsRequestVideoConfig | null;
 }
 export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15114,36 +15654,42 @@ export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Body("meeting_id")),
     allowMultipleRecordings: S.optional(
-      S.Boolean.pipe(T.Body("allow_multiple_recordings")),
+      S.NullOr(S.Boolean).pipe(T.Body("allow_multiple_recordings")),
     ),
     audioConfig: S.optional(
-      RecordingsStartRecordingsRequestAudioConfig.pipe(T.Body("audio_config")),
+      S.NullOr(RecordingsStartRecordingsRequestAudioConfig).pipe(
+        T.Body("audio_config"),
+      ),
     ),
-    fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+    fileNamePrefix: S.optional(
+      S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+    ),
     interactiveConfig: S.optional(
-      RecordingsStartRecordingsRequestInteractiveConfig.pipe(
+      S.NullOr(RecordingsStartRecordingsRequestInteractiveConfig).pipe(
         T.Body("interactive_config"),
       ),
     ),
-    maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+    maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
     realtimekitBucketConfig: S.optional(
-      RecordingsStartRecordingsRequestRealtimekitBucketConfig.pipe(
+      S.NullOr(RecordingsStartRecordingsRequestRealtimekitBucketConfig).pipe(
         T.Body("realtimekit_bucket_config"),
       ),
     ),
     rtmpOutConfig: S.optional(
-      RecordingsStartRecordingsRequestRtmpOutConfig.pipe(
+      S.NullOr(RecordingsStartRecordingsRequestRtmpOutConfig).pipe(
         T.Body("rtmp_out_config"),
       ),
     ),
     storageConfig: S.optional(
-      RecordingsStartRecordingsRequestStorageConfig.pipe(
+      S.NullOr(RecordingsStartRecordingsRequestStorageConfig).pipe(
         T.Body("storage_config"),
       ),
     ),
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
     videoConfig: S.optional(
-      RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
+      S.NullOr(RecordingsStartRecordingsRequestVideoConfig).pipe(
+        T.Body("video_config"),
+      ),
     ),
   })
     .pipe(
@@ -15176,20 +15722,20 @@ export const RecordingsStartRecordingsResponseDataStartReasonCallerType =
 
 export interface RecordingsStartRecordingsResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsStartRecordingsResponseDataStartReasonCallerType;
+  type?: RecordingsStartRecordingsResponseDataStartReasonCallerType | null;
   /** The user ID of the person who started the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsStartRecordingsResponseDataStartReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonCallerType,
+        S.NullOr(RecordingsStartRecordingsResponseDataStartReasonCallerType),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsResponseDataStartReasonCaller",
@@ -15202,18 +15748,18 @@ export const RecordingsStartRecordingsResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsStartRecordingsResponseDataStartReason {
-  caller?: RecordingsStartRecordingsResponseDataStartReasonCaller;
+  caller?: RecordingsStartRecordingsResponseDataStartReasonCaller | null;
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
-  reason?: RecordingsStartRecordingsResponseDataStartReasonReason;
+  reason?: RecordingsStartRecordingsResponseDataStartReasonReason | null;
 }
 export const RecordingsStartRecordingsResponseDataStartReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caller: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonCaller,
+        S.NullOr(RecordingsStartRecordingsResponseDataStartReasonCaller),
       ),
       reason: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonReason,
+        S.NullOr(RecordingsStartRecordingsResponseDataStartReasonReason),
       ),
     }),
   ).annotate({
@@ -15228,20 +15774,20 @@ export const RecordingsStartRecordingsResponseDataStopReasonCallerType =
 
 export interface RecordingsStartRecordingsResponseDataStopReasonCaller {
   /** Name of the user who stopped the recording. */
-  name?: string;
+  name?: string | null;
   /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsStartRecordingsResponseDataStopReasonCallerType;
+  type?: RecordingsStartRecordingsResponseDataStopReasonCallerType | null;
   /** The user ID of the person who stopped the recording. */
-  userId?: string;
+  userId?: string | null;
 }
 export const RecordingsStartRecordingsResponseDataStopReasonCaller =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
       type: S.optional(
-        RecordingsStartRecordingsResponseDataStopReasonCallerType,
+        S.NullOr(RecordingsStartRecordingsResponseDataStopReasonCallerType),
       ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+      userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsResponseDataStopReasonCaller",
@@ -15255,15 +15801,19 @@ export const RecordingsStartRecordingsResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
 export interface RecordingsStartRecordingsResponseDataStopReason {
-  caller?: RecordingsStartRecordingsResponseDataStopReasonCaller;
+  caller?: RecordingsStartRecordingsResponseDataStopReasonCaller | null;
   /** Specifies the reason why the recording stopped. */
-  reason?: RecordingsStartRecordingsResponseDataStopReasonReason;
+  reason?: RecordingsStartRecordingsResponseDataStopReasonReason | null;
 }
 export const RecordingsStartRecordingsResponseDataStopReason =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      caller: S.optional(RecordingsStartRecordingsResponseDataStopReasonCaller),
-      reason: S.optional(RecordingsStartRecordingsResponseDataStopReasonReason),
+      caller: S.optional(
+        S.NullOr(RecordingsStartRecordingsResponseDataStopReasonCaller),
+      ),
+      reason: S.optional(
+        S.NullOr(RecordingsStartRecordingsResponseDataStopReasonReason),
+      ),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsResponseDataStopReason",
@@ -15288,47 +15838,47 @@ export interface RecordingsStartRecordingsResponseDataStorageConfig {
   /** Type of storage media. */
   type: RecordingsStartRecordingsResponseDataStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsStartRecordingsResponseDataStorageConfigAuthMethod;
+  authMethod?: RecordingsStartRecordingsResponseDataStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const RecordingsStartRecordingsResponseDataStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsStartRecordingsResponseDataStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        RecordingsStartRecordingsResponseDataStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          RecordingsStartRecordingsResponseDataStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsResponseDataStorageConfig",
@@ -15358,10 +15908,10 @@ export interface RecordingsStartRecordingsResponseData {
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
-  startReason?: RecordingsStartRecordingsResponseDataStartReason;
-  stopReason?: RecordingsStartRecordingsResponseDataStopReason;
-  storageConfig?: RecordingsStartRecordingsResponseDataStorageConfig;
+  recordingDuration?: number | null;
+  startReason?: RecordingsStartRecordingsResponseDataStartReason | null;
+  stopReason?: RecordingsStartRecordingsResponseDataStopReason | null;
+  storageConfig?: RecordingsStartRecordingsResponseDataStorageConfig | null;
 }
 export const RecordingsStartRecordingsResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -15378,20 +15928,20 @@ export const RecordingsStartRecordingsResponseData = /*@__PURE__*/ S.suspend(
       status: RecordingsStartRecordingsResponseDataStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
       startReason: S.optional(
-        RecordingsStartRecordingsResponseDataStartReason.pipe(
+        S.NullOr(RecordingsStartRecordingsResponseDataStartReason).pipe(
           T.Body("start_reason"),
         ),
       ),
       stopReason: S.optional(
-        RecordingsStartRecordingsResponseDataStopReason.pipe(
+        S.NullOr(RecordingsStartRecordingsResponseDataStopReason).pipe(
           T.Body("stop_reason"),
         ),
       ),
       storageConfig: S.optional(
-        RecordingsStartRecordingsResponseDataStorageConfig.pipe(
+        S.NullOr(RecordingsStartRecordingsResponseDataStorageConfig).pipe(
           T.Body("storage_config"),
         ),
       ),
@@ -15403,11 +15953,11 @@ export const RecordingsStartRecordingsResponseData = /*@__PURE__*/ S.suspend(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartRecordingsRecordingResponse {
   /** Data returned by the operation */
-  data?: RecordingsStartRecordingsResponseData;
+  data?: RecordingsStartRecordingsResponseData | null;
 }
 export const StartRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(RecordingsStartRecordingsResponseData),
+    data: S.optional(S.NullOr(RecordingsStartRecordingsResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartRecordingsRecordingResponse",
@@ -15419,18 +15969,21 @@ export const RecordingsStartTrackRecordingRequestLayersValueMediaKind =
 
 export interface RecordingsStartTrackRecordingRequestLayersValue {
   /** A file name prefix to apply for files generated from this layer */
-  fileNamePrefix?: string;
+  fileNamePrefix?: string | null;
   /** Media kind to record. Track recording currently supports audio only. */
   mediaKind?:
     | RecordingsStartTrackRecordingRequestLayersValueMediaKind
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const RecordingsStartTrackRecordingRequestLayersValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       mediaKind: S.optional(
-        RecordingsStartTrackRecordingRequestLayersValueMediaKind.pipe(
+        S.NullOr(RecordingsStartTrackRecordingRequestLayersValueMediaKind).pipe(
           T.Body("media_kind"),
         ),
       ),
@@ -15462,18 +16015,20 @@ export interface StartTrackRecordingRecordingRequest {
   /** ID of the meeting to record. */
   meetingId: string;
   /** Optional audio layer configuration. If omitted, RealtimeKit records all participant audio using the default file name prefix. */
-  layers?: RecordingsStartTrackRecordingRequestLayersMap;
+  layers?: RecordingsStartTrackRecordingRequestLayersMap | null;
   /** Optional list of participant user IDs to record. Selective track recording (`user_ids`) is in early beta contact support to use this feature. */
-  userIds?: RecordingsStartTrackRecordingRequestUserIdsList;
+  userIds?: RecordingsStartTrackRecordingRequestUserIdsList | null;
 }
 export const StartTrackRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Body("meeting_id")),
-    layers: S.optional(RecordingsStartTrackRecordingRequestLayersMap),
+    layers: S.optional(S.NullOr(RecordingsStartTrackRecordingRequestLayersMap)),
     userIds: S.optional(
-      RecordingsStartTrackRecordingRequestUserIdsList.pipe(T.Body("user_ids")),
+      S.NullOr(RecordingsStartTrackRecordingRequestUserIdsList).pipe(
+        T.Body("user_ids"),
+      ),
     ),
   })
     .pipe(
@@ -15522,7 +16077,7 @@ export interface RecordingsStartTrackRecordingResponseDataRecording {
   /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
   stoppedTime: string;
   /** Total recording time in seconds. */
-  recordingDuration?: number;
+  recordingDuration?: number | null;
 }
 export const RecordingsStartTrackRecordingResponseDataRecording =
   /*@__PURE__*/ S.suspend(() =>
@@ -15539,7 +16094,7 @@ export const RecordingsStartTrackRecordingResponseDataRecording =
       status: RecordingsStartTrackRecordingResponseDataRecordingStatus,
       stoppedTime: S.String.pipe(T.Body("stopped_time")),
       recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+        S.NullOr(S.Number).pipe(T.Body("recording_duration")),
       ),
     }),
   ).annotate({
@@ -15561,12 +16116,12 @@ export const RecordingsStartTrackRecordingResponseData =
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartTrackRecordingRecordingResponse {
   /** Data returned by the operation */
-  data?: RecordingsStartTrackRecordingResponseData;
+  data?: RecordingsStartTrackRecordingResponseData | null;
 }
 export const StartTrackRecordingRecordingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(RecordingsStartTrackRecordingResponseData),
+      data: S.optional(S.NullOr(RecordingsStartTrackRecordingResponseData)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartTrackRecordingRecordingResponse",
@@ -15599,12 +16154,12 @@ export const StopLivestreamingAMeetingLivestreamRequest =
   }) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>;
 
 export interface LivestreamsStopLivestreamingAMeetingResponseData {
-  message?: string;
+  message?: string | null;
 }
 export const LivestreamsStopLivestreamingAMeetingResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "LivestreamsStopLivestreamingAMeetingResponseData",
@@ -15612,12 +16167,14 @@ export const LivestreamsStopLivestreamingAMeetingResponseData =
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StopLivestreamingAMeetingLivestreamResponse {
-  data?: LivestreamsStopLivestreamingAMeetingResponseData;
+  data?: LivestreamsStopLivestreamingAMeetingResponseData | null;
 }
 export const StopLivestreamingAMeetingLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: S.optional(LivestreamsStopLivestreamingAMeetingResponseData),
+      data: S.optional(
+        S.NullOr(LivestreamsStopLivestreamingAMeetingResponseData),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StopLivestreamingAMeetingLivestreamResponse",
@@ -15646,28 +16203,30 @@ export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat
-    | (string & {});
+    | (string & {})
+    | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestAiConfigSummarization",
@@ -15696,24 +16255,29 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
   language?:
     | MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage
-    | (string & {});
+    | (string & {})
+    | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+        ),
       ),
       language: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage,
+        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestAiConfigTranscription",
@@ -15721,18 +16285,18 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
 
 export interface MeetingsUpdateMeetingByIdRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization;
+  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription;
+  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription | null;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       summarization: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarization,
+        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigSummarization),
       ),
       transcription: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscription,
+        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigTranscription),
       ),
     }),
 ).annotate({
@@ -15755,24 +16319,30 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel
-    | (string & {});
+    | (string & {})
+    | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
   codec?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig",
@@ -15780,12 +16350,12 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -15826,49 +16396,50 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig {
     | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType
     | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig",
@@ -15887,15 +16458,15 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -15906,22 +16477,27 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWater
   /** Position of the watermark */
   position?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {});
+    | (string & {})
+    | null;
   /** Size of the watermark */
-  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -15932,28 +16508,33 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig",
@@ -15961,45 +16542,47 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig;
+  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig;
-  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig | null;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -16016,25 +16599,25 @@ export interface UpdateMeetingByIdMeetingRequest {
   appId: string;
   meetingId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig;
+  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** If a meeting is updated to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig;
+  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdRequestStatus | (string & {});
+  status?: MeetingsUpdateMeetingByIdRequestStatus | (string & {}) | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16042,25 +16625,33 @@ export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     aiConfig: S.optional(
-      MeetingsUpdateMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
+      S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfig).pipe(
+        T.Body("ai_config"),
+      ),
     ),
     liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+    ),
     recordingConfig: S.optional(
-      MeetingsUpdateMeetingByIdRequestRecordingConfig.pipe(
+      S.NullOr(MeetingsUpdateMeetingByIdRequestRecordingConfig).pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    status: S.optional(MeetingsUpdateMeetingByIdRequestStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    status: S.optional(S.NullOr(MeetingsUpdateMeetingByIdRequestStatus)),
+    summarizeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+    ),
+    title: S.optional(S.NullOr(S.String)),
+    transcribeOnEnd: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+    ),
   })
     .pipe(
       T.Http({
@@ -16094,26 +16685,26 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextForma
 
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  summaryType?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType | null;
   /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  textFormat?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat | null;
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
+  wordLimit?: number | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType,
+        ).pipe(T.Body("summary_type")),
       ),
       textFormat: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat,
+        ).pipe(T.Body("text_format")),
       ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization",
@@ -16133,22 +16724,28 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage 
 
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  language?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
+  profanityFilter?: boolean | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+        ),
       ),
       language: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+        ),
       ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+      profanityFilter: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
+      ),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription",
@@ -16156,18 +16753,18 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription =
 
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfig {
   /** Summary Config */
-  summarization?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization;
+  summarization?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
-  transcription?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription;
+  transcription?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataAiConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarization: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization,
+        S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization),
       ),
       transcription: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription,
+        S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription),
       ),
     }),
   ).annotate({
@@ -16186,22 +16783,26 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCode
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  channel?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel | null;
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec | null;
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+        ),
       ),
       codec: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier:
@@ -16210,12 +16811,12 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig =
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string;
+  rtmpUrl?: string | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -16250,47 +16851,47 @@ export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConf
   /** Type of storage media. */
   type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType;
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
+  accessKey?: string | null;
   /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  authMethod?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod | null;
   /** Name of the storage medium's bucket. */
-  bucket?: string;
+  bucket?: string | null;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string;
+  host?: string | null;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
+  password?: string | null;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
+  path?: string | null;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number;
+  port?: number | null;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
+  privateKey?: string | null;
   /** Region of the storage medium. */
-  region?: string;
+  region?: string | null;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
+  secret?: string | null;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string;
+  username?: string | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod,
+        ).pipe(T.Body("auth_method")),
       ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
+      bucket: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.NullOr(S.String)),
+      port: S.optional(S.NullOr(S.Number)),
+      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+      region: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -16309,15 +16910,15 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWate
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number;
+  height?: number | null;
   /** Width of the watermark in px */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
+      height: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -16326,22 +16927,26 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWate
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
-  position?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  position?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition | null;
   /** Size of the watermark */
-  size?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  size?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize | null;
   /** URL of the watermark image */
-  url?: string;
+  url?: string | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+        ),
       ),
       size: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+        ),
       ),
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -16350,28 +16955,32 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWate
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec | null;
   /** Controls whether to export video file seperately */
-  exportFile?: boolean;
+  exportFile?: boolean | null;
   /** Height of the recording video in pixels */
-  height?: number;
+  height?: number | null;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  watermark?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark | null;
   /** Width of the recording video in pixels */
-  width?: number;
+  width?: number | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+        ),
       ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
+      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      height: S.optional(S.NullOr(S.Number)),
       watermark: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+        ),
       ),
-      width: S.optional(S.Number),
+      width: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -16380,45 +16989,47 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig =
 
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig;
+  audioConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig | null;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  fileNamePrefix?: string | null;
+  liveStreamingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig | null;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig;
+  maxSeconds?: number | null;
+  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig | null;
+  storageConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig | null;
+  videoConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig,
+        ).pipe(T.Body("audio_config")),
       ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      fileNamePrefix: S.optional(
+        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
+      ),
       liveStreamingConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig,
+        ).pipe(T.Body("live_streaming_config")),
       ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig,
+        ).pipe(T.Body("realtimekit_bucket_config")),
       ),
       storageConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig,
+        ).pipe(T.Body("storage_config")),
       ),
       videoConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
+        S.NullOr(
+          MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig,
+        ).pipe(T.Body("video_config")),
       ),
     }),
   ).annotate({
@@ -16437,25 +17048,25 @@ export interface MeetingsUpdateMeetingByIdResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsUpdateMeetingByIdResponseDataAiConfig;
+  aiConfig?: MeetingsUpdateMeetingByIdResponseDataAiConfig | null;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
+  liveStreamOnStart?: boolean | null;
   /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
+  persistChat?: boolean | null;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
+  recordOnStart?: boolean | null;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfig;
+  recordingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfig | null;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
+  sessionKeepAliveTimeInSecs?: number | null;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdResponseDataStatus;
+  status?: MeetingsUpdateMeetingByIdResponseDataStatus | null;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
+  summarizeOnEnd?: boolean | null;
   /** Title of the meeting. */
-  title?: string;
+  title?: string | null;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  transcribeOnEnd?: boolean | null;
 }
 export const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -16464,25 +17075,33 @@ export const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       aiConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
+        S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfig).pipe(
+          T.Body("ai_config"),
+        ),
       ),
       liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
+        S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
       ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
+      ),
       recordingConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfig.pipe(
+        S.NullOr(MeetingsUpdateMeetingByIdResponseDataRecordingConfig).pipe(
           T.Body("recording_config"),
         ),
       ),
       sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+        S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
       ),
-      status: S.optional(MeetingsUpdateMeetingByIdResponseDataStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+      status: S.optional(S.NullOr(MeetingsUpdateMeetingByIdResponseDataStatus)),
+      summarizeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
+      ),
+      title: S.optional(S.NullOr(S.String)),
+      transcribeOnEnd: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
+      ),
     }),
 ).annotate({
   identifier: "MeetingsUpdateMeetingByIdResponseData",
@@ -16491,11 +17110,11 @@ export const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface UpdateMeetingByIdMeetingResponse {
   /** Data returned by the operation */
-  data?: MeetingsUpdateMeetingByIdResponseData;
+  data?: MeetingsUpdateMeetingByIdResponseData | null;
 }
 export const UpdateMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsUpdateMeetingByIdResponseData),
+    data: S.optional(S.NullOr(MeetingsUpdateMeetingByIdResponseData)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMeetingByIdMeetingResponse",

@@ -43,15 +43,15 @@ export const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DayReportAsnResponse {
-  cidr?: string;
-  date?: string;
-  offenseCount?: number;
+  cidr?: string | null;
+  date?: string | null;
+  offenseCount?: number | null;
 }
 export const DayReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cidr: S.optional(S.String),
-    date: S.optional(S.String),
-    offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
+    cidr: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    offenseCount: S.optional(S.NullOr(S.Number).pipe(T.Body("offense_count"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DayReportAsnResponse",
@@ -81,11 +81,11 @@ export const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigAsnResponse {
-  asn?: number;
+  asn?: number | null;
 }
 export const DeleteConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asn: S.optional(S.Number),
+    asn: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigAsnResponse",
@@ -115,15 +115,15 @@ export const FullReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FullReportAsnResponse {
-  cidr?: string;
-  date?: string;
-  offenseCount?: number;
+  cidr?: string | null;
+  date?: string | null;
+  offenseCount?: number | null;
 }
 export const FullReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cidr: S.optional(S.String),
-    date: S.optional(S.String),
-    offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
+    cidr: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    offenseCount: S.optional(S.NullOr(S.Number).pipe(T.Body("offense_count"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FullReportAsnResponse",
@@ -151,11 +151,11 @@ export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigAsnResponse {
-  asn?: number;
+  asn?: number | null;
 }
 export const GetConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asn: S.optional(S.Number),
+    asn: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigAsnResponse",

@@ -179,7 +179,7 @@ export const CancelHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelHarvestJobResponse",
 }) as any as S.Schema<CancelHarvestJobResponse>;
 export type IdempotencyToken = string;
-export type InputType = "HLS" | "CMAF";
+export type InputType = "HLS" | "CMAF" | (string & {});
 export const InputType = /*@__PURE__*/ S.String;
 
 export type ResourceDescription = string;
@@ -214,7 +214,7 @@ export interface CreateChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;
   ClientToken?: string;
-  InputType?: InputType | (string & {});
+  InputType?: InputType;
   Description?: string;
   InputSwitchConfiguration?: InputSwitchConfiguration;
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
@@ -473,7 +473,8 @@ export type HarvestJobStatus =
   | "IN_PROGRESS"
   | "CANCELLED"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const HarvestJobStatus = /*@__PURE__*/ S.String;
 
 export interface CreateHarvestJobResponse {
@@ -514,7 +515,7 @@ export const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHarvestJobResponse",
 }) as any as S.Schema<CreateHarvestJobResponse>;
-export type ContainerType = "TS" | "CMAF" | "ISM";
+export type ContainerType = "TS" | "CMAF" | "ISM" | (string & {});
 export const ContainerType = /*@__PURE__*/ S.String;
 
 export type ScteFilter =
@@ -536,12 +537,13 @@ export type ScteFilter =
   | "PROVIDER_AD_BLOCK"
   | "DISTRIBUTOR_AD_BLOCK"
   | "CONTENT_IDENTIFICATION"
-  | "CALL_AD_SERVER";
+  | "CALL_AD_SERVER"
+  | (string & {});
 export const ScteFilter = /*@__PURE__*/ S.String;
 
-export type ScteFilterList = (ScteFilter | (string & {}))[];
+export type ScteFilterList = ScteFilter[];
 export const ScteFilterList = /*@__PURE__*/ S.Array(ScteFilter);
-export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER";
+export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER" | (string & {});
 export const ScteInSegments = /*@__PURE__*/ S.String;
 
 export type CustomAdType =
@@ -549,15 +551,16 @@ export type CustomAdType =
   | "CHAPTER"
   | "UNSCHEDULED_EVENT"
   | "ALTERNATE_CONTENT_OPPORTUNITY"
-  | "NETWORK";
+  | "NETWORK"
+  | (string & {});
 export const CustomAdType = /*@__PURE__*/ S.String;
 
-export type CustomAdTypeList = (CustomAdType | (string & {}))[];
+export type CustomAdTypeList = CustomAdType[];
 export const CustomAdTypeList = /*@__PURE__*/ S.Array(CustomAdType);
 export interface Scte {
-  ScteFilter?: (ScteFilter | (string & {}))[];
-  ScteInSegments?: ScteInSegments | (string & {});
-  CustomAdTypes?: (CustomAdType | (string & {}))[];
+  ScteFilter?: ScteFilter[];
+  ScteInSegments?: ScteInSegments;
+  CustomAdTypes?: CustomAdType[];
 }
 export const Scte = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -566,19 +569,19 @@ export const Scte = /*@__PURE__*/ S.suspend(() =>
     CustomAdTypes: S.optional(CustomAdTypeList),
   }),
 ).annotate({ identifier: "Scte" }) as any as S.Schema<Scte>;
-export type TsEncryptionMethod = "AES_128" | "SAMPLE_AES";
+export type TsEncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
 export const TsEncryptionMethod = /*@__PURE__*/ S.String;
 
-export type CmafEncryptionMethod = "CENC" | "CBCS";
+export type CmafEncryptionMethod = "CENC" | "CBCS" | (string & {});
 export const CmafEncryptionMethod = /*@__PURE__*/ S.String;
 
-export type IsmEncryptionMethod = "CENC";
+export type IsmEncryptionMethod = "CENC" | (string & {});
 export const IsmEncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface EncryptionMethod {
-  TsEncryptionMethod?: TsEncryptionMethod | (string & {});
-  CmafEncryptionMethod?: CmafEncryptionMethod | (string & {});
-  IsmEncryptionMethod?: IsmEncryptionMethod | (string & {});
+  TsEncryptionMethod?: TsEncryptionMethod;
+  CmafEncryptionMethod?: CmafEncryptionMethod;
+  IsmEncryptionMethod?: IsmEncryptionMethod;
 }
 export const EncryptionMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -594,7 +597,8 @@ export type PresetSpeke20Audio =
   | "PRESET_AUDIO_2"
   | "PRESET_AUDIO_3"
   | "SHARED"
-  | "UNENCRYPTED";
+  | "UNENCRYPTED"
+  | (string & {});
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
 
 export type PresetSpeke20Video =
@@ -607,12 +611,13 @@ export type PresetSpeke20Video =
   | "PRESET_VIDEO_7"
   | "PRESET_VIDEO_8"
   | "SHARED"
-  | "UNENCRYPTED";
+  | "UNENCRYPTED"
+  | (string & {});
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
-  PresetSpeke20Audio: PresetSpeke20Audio | (string & {});
-  PresetSpeke20Video: PresetSpeke20Video | (string & {});
+  PresetSpeke20Audio: PresetSpeke20Audio;
+  PresetSpeke20Video: PresetSpeke20Video;
 }
 export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -627,15 +632,16 @@ export type DrmSystem =
   | "FAIRPLAY"
   | "PLAYREADY"
   | "WIDEVINE"
-  | "IRDETO";
+  | "IRDETO"
+  | (string & {});
 export const DrmSystem = /*@__PURE__*/ S.String;
 
-export type DrmSystems = (DrmSystem | (string & {}))[];
+export type DrmSystems = DrmSystem[];
 export const DrmSystems = /*@__PURE__*/ S.Array(DrmSystem);
 export interface SpekeKeyProvider {
   EncryptionContractConfiguration: EncryptionContractConfiguration;
   ResourceId: string;
-  DrmSystems: (DrmSystem | (string & {}))[];
+  DrmSystems: DrmSystem[];
   RoleArn: string;
   Url: string;
   CertificateArn?: string;
@@ -689,15 +695,15 @@ export const Segment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 export type ManifestName = string;
-export type AdMarkerHls = "DATERANGE" | "SCTE35_ENHANCED";
+export type AdMarkerHls = "DATERANGE" | "SCTE35_ENHANCED" | (string & {});
 export const AdMarkerHls = /*@__PURE__*/ S.String;
 
-export type ScteInManifests = "ALL" | "MATCHES_FILTER";
+export type ScteInManifests = "ALL" | "MATCHES_FILTER" | (string & {});
 export const ScteInManifests = /*@__PURE__*/ S.String;
 
 export interface ScteHls {
-  AdMarkerHls?: AdMarkerHls | (string & {});
-  ScteInManifests?: ScteInManifests | (string & {});
+  AdMarkerHls?: AdMarkerHls;
+  ScteInManifests?: ScteInManifests;
 }
 export const ScteHls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -732,7 +738,7 @@ export const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterConfiguration",
 }) as any as S.Schema<FilterConfiguration>;
-export type UriPathType = "LEAF" | "ROOT";
+export type UriPathType = "LEAF" | "ROOT" | (string & {});
 export const UriPathType = /*@__PURE__*/ S.String;
 
 export interface CreateHlsManifestConfiguration {
@@ -744,7 +750,7 @@ export interface CreateHlsManifestConfiguration {
   ProgramDateTimeIntervalSeconds?: number;
   FilterConfiguration?: FilterConfiguration;
   UrlEncodeChildManifest?: boolean;
-  UriPathType?: UriPathType | (string & {});
+  UriPathType?: UriPathType;
 }
 export const CreateHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -774,7 +780,7 @@ export interface CreateLowLatencyHlsManifestConfiguration {
   ProgramDateTimeIntervalSeconds?: number;
   FilterConfiguration?: FilterConfiguration;
   UrlEncodeChildManifest?: boolean;
-  UriPathType?: UriPathType | (string & {});
+  UriPathType?: UriPathType;
 }
 export const CreateLowLatencyHlsManifestConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -797,7 +803,7 @@ export type CreateLowLatencyHlsManifests =
 export const CreateLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
   CreateLowLatencyHlsManifestConfiguration,
 );
-export type DashSegmentTemplateFormat = "NUMBER_WITH_TIMELINE";
+export type DashSegmentTemplateFormat = "NUMBER_WITH_TIMELINE" | (string & {});
 export const DashSegmentTemplateFormat = /*@__PURE__*/ S.String;
 
 export type DashPeriodTrigger =
@@ -805,17 +811,18 @@ export type DashPeriodTrigger =
   | "DRM_KEY_ROTATION"
   | "SOURCE_CHANGES"
   | "SOURCE_DISRUPTIONS"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const DashPeriodTrigger = /*@__PURE__*/ S.String;
 
-export type DashPeriodTriggers = (DashPeriodTrigger | (string & {}))[];
+export type DashPeriodTriggers = DashPeriodTrigger[];
 export const DashPeriodTriggers = /*@__PURE__*/ S.Array(DashPeriodTrigger);
-export type AdMarkerDash = "BINARY" | "XML";
+export type AdMarkerDash = "BINARY" | "XML" | (string & {});
 export const AdMarkerDash = /*@__PURE__*/ S.String;
 
 export interface ScteDash {
-  AdMarkerDash?: AdMarkerDash | (string & {});
-  ScteInManifests?: ScteInManifests | (string & {});
+  AdMarkerDash?: AdMarkerDash;
+  ScteInManifests?: ScteInManifests;
 }
 export const ScteDash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -823,18 +830,19 @@ export const ScteDash = /*@__PURE__*/ S.suspend(() =>
     ScteInManifests: S.optional(ScteInManifests),
   }),
 ).annotate({ identifier: "ScteDash" }) as any as S.Schema<ScteDash>;
-export type DashDrmSignaling = "INDIVIDUAL" | "REFERENCED";
+export type DashDrmSignaling = "INDIVIDUAL" | "REFERENCED" | (string & {});
 export const DashDrmSignaling = /*@__PURE__*/ S.String;
 
 export type DashUtcTimingMode =
   | "HTTP_HEAD"
   | "HTTP_ISO"
   | "HTTP_XSDATE"
-  | "UTC_DIRECT";
+  | "UTC_DIRECT"
+  | (string & {});
 export const DashUtcTimingMode = /*@__PURE__*/ S.String;
 
 export interface DashUtcTiming {
-  TimingMode?: DashUtcTimingMode | (string & {});
+  TimingMode?: DashUtcTimingMode;
   TimingSource?: string;
 }
 export const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
@@ -843,10 +851,10 @@ export const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
     TimingSource: S.optional(S.String),
   }),
 ).annotate({ identifier: "DashUtcTiming" }) as any as S.Schema<DashUtcTiming>;
-export type DashProfile = "DVB_DASH";
+export type DashProfile = "DVB_DASH" | (string & {});
 export const DashProfile = /*@__PURE__*/ S.String;
 
-export type DashProfiles = (DashProfile | (string & {}))[];
+export type DashProfiles = DashProfile[];
 export const DashProfiles = /*@__PURE__*/ S.Array(DashProfile);
 export interface DashBaseUrl {
   Url: string;
@@ -921,17 +929,17 @@ export const DashDvbSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DashDvbSettings",
 }) as any as S.Schema<DashDvbSettings>;
-export type DashCompactness = "STANDARD" | "NONE";
+export type DashCompactness = "STANDARD" | "NONE" | (string & {});
 export const DashCompactness = /*@__PURE__*/ S.String;
 
-export type DashAudioTimelinePattern = "NONE" | "PATTERNED";
+export type DashAudioTimelinePattern = "NONE" | "PATTERNED" | (string & {});
 export const DashAudioTimelinePattern = /*@__PURE__*/ S.String;
 
-export type DashTtmlProfile = "IMSC_1" | "EBU_TT_D_101";
+export type DashTtmlProfile = "IMSC_1" | "EBU_TT_D_101" | (string & {});
 export const DashTtmlProfile = /*@__PURE__*/ S.String;
 
 export interface DashTtmlConfiguration {
-  TtmlProfile: DashTtmlProfile | (string & {});
+  TtmlProfile: DashTtmlProfile;
 }
 export const DashTtmlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TtmlProfile: DashTtmlProfile }),
@@ -961,19 +969,19 @@ export interface CreateDashManifestConfiguration {
   MinUpdatePeriodSeconds?: number;
   MinBufferTimeSeconds?: number;
   SuggestedPresentationDelaySeconds?: number;
-  SegmentTemplateFormat?: DashSegmentTemplateFormat | (string & {});
-  PeriodTriggers?: (DashPeriodTrigger | (string & {}))[];
+  SegmentTemplateFormat?: DashSegmentTemplateFormat;
+  PeriodTriggers?: DashPeriodTrigger[];
   ScteDash?: ScteDash;
-  DrmSignaling?: DashDrmSignaling | (string & {});
+  DrmSignaling?: DashDrmSignaling;
   UtcTiming?: DashUtcTiming;
-  Profiles?: (DashProfile | (string & {}))[];
+  Profiles?: DashProfile[];
   BaseUrls?: DashBaseUrl[];
   ProgramInformation?: DashProgramInformation;
   DvbSettings?: DashDvbSettings;
-  Compactness?: DashCompactness | (string & {});
-  AudioTimelinePattern?: DashAudioTimelinePattern | (string & {});
+  Compactness?: DashCompactness;
+  AudioTimelinePattern?: DashAudioTimelinePattern;
   SubtitleConfiguration?: DashSubtitleConfiguration;
-  UriPathType?: UriPathType | (string & {});
+  UriPathType?: UriPathType;
   AvailabilityStartTimeConfiguration?: DashAvailabilityStartTimeConfiguration;
 }
 export const CreateDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1008,14 +1016,14 @@ export type CreateDashManifests = CreateDashManifestConfiguration[];
 export const CreateDashManifests = /*@__PURE__*/ S.Array(
   CreateDashManifestConfiguration,
 );
-export type MssManifestLayout = "FULL" | "COMPACT";
+export type MssManifestLayout = "FULL" | "COMPACT" | (string & {});
 export const MssManifestLayout = /*@__PURE__*/ S.String;
 
 export interface CreateMssManifestConfiguration {
   ManifestName: string;
   ManifestWindowSeconds?: number;
   FilterConfiguration?: FilterConfiguration;
-  ManifestLayout?: MssManifestLayout | (string & {});
+  ManifestLayout?: MssManifestLayout;
 }
 export const CreateMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1035,32 +1043,30 @@ export type EndpointErrorCondition =
   | "STALE_MANIFEST"
   | "INCOMPLETE_MANIFEST"
   | "MISSING_DRM_KEY"
-  | "SLATE_INPUT";
+  | "SLATE_INPUT"
+  | (string & {});
 export const EndpointErrorCondition = /*@__PURE__*/ S.String;
 
-export type EndpointErrorConditions = (
-  | EndpointErrorCondition
-  | (string & {})
-)[];
+export type EndpointErrorConditions = EndpointErrorCondition[];
 export const EndpointErrorConditions = /*@__PURE__*/ S.Array(
   EndpointErrorCondition,
 );
 export interface ForceEndpointErrorConfiguration {
-  EndpointErrorConditions?: (EndpointErrorCondition | (string & {}))[];
+  EndpointErrorConditions?: EndpointErrorCondition[];
 }
 export const ForceEndpointErrorConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EndpointErrorConditions: S.optional(EndpointErrorConditions) }),
 ).annotate({
   identifier: "ForceEndpointErrorConfiguration",
 }) as any as S.Schema<ForceEndpointErrorConfiguration>;
-export type UriSeparator = "UNDERSCORE" | "HYPHEN";
+export type UriSeparator = "UNDERSCORE" | "HYPHEN" | (string & {});
 export const UriSeparator = /*@__PURE__*/ S.String;
 
 export interface CreateOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
   OriginEndpointName: string;
-  ContainerType: ContainerType | (string & {});
+  ContainerType: ContainerType;
   Segment?: Segment;
   ClientToken?: string;
   Description?: string;
@@ -1070,7 +1076,7 @@ export interface CreateOriginEndpointRequest {
   DashManifests?: CreateDashManifestConfiguration[];
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
-  UriSeparator?: UriSeparator | (string & {});
+  UriSeparator?: UriSeparator;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1907,7 +1913,7 @@ export interface ListHarvestJobsRequest {
   ChannelGroupName: string;
   ChannelName?: string;
   OriginEndpointName?: string;
-  Status?: HarvestJobStatus | (string & {});
+  Status?: HarvestJobStatus;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2482,7 +2488,7 @@ export interface UpdateOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
   OriginEndpointName: string;
-  ContainerType: ContainerType | (string & {});
+  ContainerType: ContainerType;
   Segment?: Segment;
   Description?: string;
   StartoverWindowSeconds?: number;
@@ -2491,7 +2497,7 @@ export interface UpdateOriginEndpointRequest {
   DashManifests?: CreateDashManifestConfiguration[];
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
-  UriSeparator?: UriSeparator | (string & {});
+  UriSeparator?: UriSeparator;
   ETag?: string;
 }
 export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2578,14 +2584,16 @@ export type ConflictExceptionType =
   | "RESOURCE_IN_USE"
   | "RESOURCE_ALREADY_EXISTS"
   | "IDEMPOTENT_PARAMETER_MISMATCH"
-  | "CONFLICTING_OPERATION";
+  | "CONFLICTING_OPERATION"
+  | (string & {});
 export const ConflictExceptionType = /*@__PURE__*/ S.String;
 
 export type ResourceTypeNotFound =
   | "CHANNEL_GROUP"
   | "CHANNEL"
   | "ORIGIN_ENDPOINT"
-  | "HARVEST_JOB";
+  | "HARVEST_JOB"
+  | (string & {});
 export const ResourceTypeNotFound = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionType =
@@ -2688,7 +2696,8 @@ export type ValidationExceptionType =
   | "MISSING_CERTIFICATE_DOMAIN_NAME"
   | "INVALID_ARN"
   | "SCTE_IN_MANIFESTS_INVALID_CONFIGURATION"
-  | "CUSTOM_AD_TYPES_INVALID_CONFIGURATION";
+  | "CUSTOM_AD_TYPES_INVALID_CONFIGURATION"
+  | (string & {});
 export const ValidationExceptionType = /*@__PURE__*/ S.String;
 
 export type CancelHarvestJobError =

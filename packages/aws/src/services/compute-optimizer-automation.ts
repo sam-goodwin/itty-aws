@@ -179,10 +179,13 @@ export const AssociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateAccountsResponse>;
 export type RuleName = string;
 export type RuleDescription = string;
-export type RuleType = "OrganizationRule" | "AccountRule";
+export type RuleType = "OrganizationRule" | "AccountRule" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type RuleApplyOrder = "BeforeAccountRules" | "AfterAccountRules";
+export type RuleApplyOrder =
+  | "BeforeAccountRules"
+  | "AfterAccountRules"
+  | (string & {});
 export const RuleApplyOrder = /*@__PURE__*/ S.String;
 
 export type OrganizationConfigurationAccountIds = string[];
@@ -190,7 +193,7 @@ export const OrganizationConfigurationAccountIds = /*@__PURE__*/ S.Array(
   S.String,
 );
 export interface OrganizationConfiguration {
-  ruleApplyOrder?: RuleApplyOrder | (string & {});
+  ruleApplyOrder?: RuleApplyOrder;
   accountIds?: string[];
 }
 export const OrganizationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -203,13 +206,11 @@ export const OrganizationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationConfiguration>;
 export type RecommendedActionType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
-  | "UpgradeEbsVolumeType";
+  | "UpgradeEbsVolumeType"
+  | (string & {});
 export const RecommendedActionType = /*@__PURE__*/ S.String;
 
-export type RecommendedActionTypeList = (
-  | RecommendedActionType
-  | (string & {})
-)[];
+export type RecommendedActionTypeList = RecommendedActionType[];
 export const RecommendedActionTypeList = /*@__PURE__*/ S.Array(
   RecommendedActionType,
 );
@@ -237,14 +238,15 @@ export type ComparisonOperator =
   | "NumericLessThanIfExists"
   | "NumericLessThanEqualsIfExists"
   | "NumericGreaterThanIfExists"
-  | "NumericGreaterThanEqualsIfExists";
+  | "NumericGreaterThanEqualsIfExists"
+  | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type StringCriteriaValue = string;
 export type StringCriteriaValues = string[];
 export const StringCriteriaValues = /*@__PURE__*/ S.Array(S.String);
 export interface StringCriteriaCondition {
-  comparison?: ComparisonOperator | (string & {});
+  comparison?: ComparisonOperator;
   values?: string[];
 }
 export const StringCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -262,7 +264,7 @@ export const StringCriteriaConditionList = /*@__PURE__*/ S.Array(
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export interface IntegerCriteriaCondition {
-  comparison?: ComparisonOperator | (string & {});
+  comparison?: ComparisonOperator;
   values?: number[];
 }
 export const IntegerCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -280,7 +282,7 @@ export const IntegerCriteriaConditionList = /*@__PURE__*/ S.Array(
 export type DoubleList = number[];
 export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface DoubleCriteriaCondition {
-  comparison?: ComparisonOperator | (string & {});
+  comparison?: ComparisonOperator;
   values?: number[];
 }
 export const DoubleCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -296,7 +298,7 @@ export const DoubleCriteriaConditionList = /*@__PURE__*/ S.Array(
   DoubleCriteriaCondition,
 );
 export interface ResourceTagsCriteriaCondition {
-  comparison?: ComparisonOperator | (string & {});
+  comparison?: ComparisonOperator;
   key?: string;
   values?: string[];
 }
@@ -347,7 +349,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
     executionWindowInMinutes: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
-export type RuleStatus = "Active" | "Inactive";
+export type RuleStatus = "Active" | "Inactive" | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -364,13 +366,13 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateAutomationRuleRequest {
   name: string;
   description?: string;
-  ruleType: RuleType | (string & {});
+  ruleType: RuleType;
   organizationConfiguration?: OrganizationConfiguration;
   priority?: string;
-  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
+  recommendedActionTypes: RecommendedActionType[];
   criteria?: Criteria;
   schedule: Schedule;
-  status: RuleStatus | (string & {});
+  status: RuleStatus;
   tags?: Tag[];
   clientToken?: string;
 }
@@ -494,7 +496,8 @@ export const GetAutomationEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutomationEventRequest>;
 export type EventType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
-  | "UpgradeEbsVolumeType";
+  | "UpgradeEbsVolumeType"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventStatus =
@@ -506,16 +509,20 @@ export type EventStatus =
   | "RollbackReady"
   | "RollbackInProgress"
   | "RollbackComplete"
-  | "RollbackFailed";
+  | "RollbackFailed"
+  | (string & {});
 export const EventStatus = /*@__PURE__*/ S.String;
 
 export type ResourceArn = string;
 export type ResourceId = string;
 export type RecommendedActionId = string;
-export type ResourceType = "EbsVolume";
+export type ResourceType = "EbsVolume" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type SavingsEstimationMode = "BeforeDiscount" | "AfterDiscount";
+export type SavingsEstimationMode =
+  | "BeforeDiscount"
+  | "AfterDiscount"
+  | (string & {});
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
 
 export interface EstimatedMonthlySavings {
@@ -638,10 +645,15 @@ export const GetEnrollmentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnrollmentConfigurationRequest",
 }) as any as S.Schema<GetEnrollmentConfigurationRequest>;
-export type EnrollmentStatus = "Active" | "Inactive" | "Pending" | "Failed";
+export type EnrollmentStatus =
+  | "Active"
+  | "Inactive"
+  | "Pending"
+  | "Failed"
+  | (string & {});
 export const EnrollmentStatus = /*@__PURE__*/ S.String;
 
-export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed";
+export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed" | (string & {});
 export const OrganizationRuleMode = /*@__PURE__*/ S.String;
 
 export interface GetEnrollmentConfigurationResponse {
@@ -822,10 +834,16 @@ export type StepType =
   | "CreateEbsSnapshot"
   | "DeleteEbsVolume"
   | "ModifyEbsVolume"
-  | "CreateEbsVolume";
+  | "CreateEbsVolume"
+  | (string & {});
 export const StepType = /*@__PURE__*/ S.String;
 
-export type StepStatus = "Ready" | "InProgress" | "Complete" | "Failed";
+export type StepStatus =
+  | "Ready"
+  | "InProgress"
+  | "Complete"
+  | "Failed"
+  | (string & {});
 export const StepStatus = /*@__PURE__*/ S.String;
 
 export interface AutomationEventStep {
@@ -966,9 +984,9 @@ export const OrganizationScope = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationScope",
 }) as any as S.Schema<OrganizationScope>;
 export interface ListAutomationRulePreviewRequest {
-  ruleType: RuleType | (string & {});
+  ruleType: RuleType;
   organizationScope?: OrganizationScope;
-  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
+  recommendedActionTypes: RecommendedActionType[];
   criteria?: Criteria;
   maxResults?: number;
   nextToken?: string;
@@ -1064,9 +1082,9 @@ export const ListAutomationRulePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAutomationRulePreviewResponse",
 }) as any as S.Schema<ListAutomationRulePreviewResponse>;
 export interface ListAutomationRulePreviewSummariesRequest {
-  ruleType: RuleType | (string & {});
+  ruleType: RuleType;
   organizationScope?: OrganizationScope;
-  recommendedActionTypes: (RecommendedActionType | (string & {}))[];
+  recommendedActionTypes: RecommendedActionType[];
   criteria?: Criteria;
   maxResults?: number;
   nextToken?: string;
@@ -1465,13 +1483,13 @@ export interface UpdateAutomationRuleRequest {
   ruleRevision: number;
   name?: string;
   description?: string;
-  ruleType?: RuleType | (string & {});
+  ruleType?: RuleType;
   organizationConfiguration?: OrganizationConfiguration;
   priority?: string;
-  recommendedActionTypes?: (RecommendedActionType | (string & {}))[];
+  recommendedActionTypes?: RecommendedActionType[];
   criteria?: Criteria;
   schedule?: Schedule;
-  status?: RuleStatus | (string & {});
+  status?: RuleStatus;
   clientToken?: string;
 }
 export const UpdateAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1533,7 +1551,7 @@ export const UpdateAutomationRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAutomationRuleResponse",
 }) as any as S.Schema<UpdateAutomationRuleResponse>;
 export interface UpdateEnrollmentConfigurationRequest {
-  status: EnrollmentStatus | (string & {});
+  status: EnrollmentStatus;
   clientToken?: string;
 }
 export const UpdateEnrollmentConfigurationRequest = /*@__PURE__*/ S.suspend(

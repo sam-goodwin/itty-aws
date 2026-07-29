@@ -116,15 +116,18 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type DatastoreName = string;
-export type FHIRVersion = "R4";
+export type FHIRVersion = "R4" | (string & {});
 export const FHIRVersion = /*@__PURE__*/ S.String;
 
-export type CmkType = "CUSTOMER_MANAGED_KMS_KEY" | "AWS_OWNED_KMS_KEY";
+export type CmkType =
+  | "CUSTOMER_MANAGED_KMS_KEY"
+  | "AWS_OWNED_KMS_KEY"
+  | (string & {});
 export const CmkType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyID = string;
 export interface KmsEncryptionConfig {
-  CmkType: CmkType | (string & {});
+  CmkType: CmkType;
   KmsKeyId?: string;
 }
 export const KmsEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -140,11 +143,11 @@ export const SseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SseConfiguration",
 }) as any as S.Schema<SseConfiguration>;
-export type PreloadDataType = "SYNTHEA";
+export type PreloadDataType = "SYNTHEA" | (string & {});
 export const PreloadDataType = /*@__PURE__*/ S.String;
 
 export interface PreloadDataConfig {
-  PreloadDataType: PreloadDataType | (string & {});
+  PreloadDataType: PreloadDataType;
 }
 export const PreloadDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PreloadDataType: PreloadDataType }),
@@ -166,13 +169,14 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type AuthorizationStrategy =
   | "SMART_ON_FHIR_V1"
   | "SMART_ON_FHIR"
-  | "AWS_AUTH";
+  | "AWS_AUTH"
+  | (string & {});
 export const AuthorizationStrategy = /*@__PURE__*/ S.String;
 
 export type ConfigurationMetadata = string;
 export type LambdaArn = string;
 export interface IdentityProviderConfiguration {
-  AuthorizationStrategy: AuthorizationStrategy | (string & {});
+  AuthorizationStrategy: AuthorizationStrategy;
   FineGrainedAuthorizationEnabled?: boolean;
   Metadata?: string;
   IdpLambdaArn?: string;
@@ -193,22 +197,28 @@ export type AnalyticsStatus =
   | "DISABLED"
   | "DISABLING"
   | "PAUSING"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const AnalyticsStatus = /*@__PURE__*/ S.String;
 
 export interface AnalyticsConfiguration {
-  Status?: AnalyticsStatus | (string & {});
+  Status?: AnalyticsStatus;
 }
 export const AnalyticsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(AnalyticsStatus) }),
 ).annotate({
   identifier: "AnalyticsConfiguration",
 }) as any as S.Schema<AnalyticsConfiguration>;
-export type NlpStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING";
+export type NlpStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING"
+  | (string & {});
 export const NlpStatus = /*@__PURE__*/ S.String;
 
 export interface NlpConfiguration {
-  Status?: NlpStatus | (string & {});
+  Status?: NlpStatus;
 }
 export const NlpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(NlpStatus) }),
@@ -227,7 +237,7 @@ export const ProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfileConfiguration>;
 export interface CreateFHIRDatastoreRequest {
   DatastoreName?: string;
-  DatastoreTypeVersion: FHIRVersion | (string & {});
+  DatastoreTypeVersion: FHIRVersion;
   SseConfiguration?: SseConfiguration;
   PreloadDataConfig?: PreloadDataConfig;
   ClientToken?: string;
@@ -264,7 +274,8 @@ export type DatastoreStatus =
   | "DELETED"
   | "CREATE_FAILED"
   | "UPDATING"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const DatastoreStatus = /*@__PURE__*/ S.String;
 
 export type BoundedLengthString = string;
@@ -321,7 +332,10 @@ export const DescribeFHIRDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFHIRDatastoreRequest",
 }) as any as S.Schema<DescribeFHIRDatastoreRequest>;
 export type ErrorMessage = string;
-export type ErrorCategory = "RETRYABLE_ERROR" | "NON_RETRYABLE_ERROR";
+export type ErrorCategory =
+  | "RETRYABLE_ERROR"
+  | "NON_RETRYABLE_ERROR"
+  | (string & {});
 export const ErrorCategory = /*@__PURE__*/ S.String;
 
 export interface ErrorCause {
@@ -401,7 +415,8 @@ export type JobStatus =
   | "CANCEL_SUBMITTED"
   | "CANCEL_IN_PROGRESS"
   | "CANCEL_COMPLETED"
-  | "CANCEL_FAILED";
+  | "CANCEL_FAILED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type S3Uri = string;
@@ -493,7 +508,11 @@ export const JobProgressReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobProgressReport",
 }) as any as S.Schema<JobProgressReport>;
-export type ValidationLevel = "strict" | "structure-only" | "minimal";
+export type ValidationLevel =
+  | "strict"
+  | "structure-only"
+  | "minimal"
+  | (string & {});
 export const ValidationLevel = /*@__PURE__*/ S.String;
 
 export interface ImportJobProperties {
@@ -538,7 +557,7 @@ export const DescribeFHIRImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFHIRImportJobResponse>;
 export interface DatastoreFilter {
   DatastoreName?: string;
-  DatastoreStatus?: DatastoreStatus | (string & {});
+  DatastoreStatus?: DatastoreStatus;
   CreatedBefore?: Date;
   CreatedAfter?: Date;
 }
@@ -590,7 +609,7 @@ export interface ListFHIRExportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmittedBefore?: Date;
   SubmittedAfter?: Date;
 }
@@ -631,7 +650,7 @@ export interface ListFHIRImportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   JobName?: string;
-  JobStatus?: JobStatus | (string & {});
+  JobStatus?: JobStatus;
   SubmittedBefore?: Date;
   SubmittedAfter?: Date;
 }
@@ -727,7 +746,7 @@ export interface StartFHIRImportJobRequest {
   DatastoreId: string;
   DataAccessRoleArn: string;
   ClientToken?: string;
-  ValidationLevel?: ValidationLevel | (string & {});
+  ValidationLevel?: ValidationLevel;
 }
 export const StartFHIRImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

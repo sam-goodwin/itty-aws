@@ -143,12 +143,12 @@ export type BatchGetRecordIdentifiers = BatchGetRecordIdentifier[];
 export const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(
   BatchGetRecordIdentifier,
 );
-export type ExpirationTimeResponse = "Enabled" | "Disabled";
+export type ExpirationTimeResponse = "Enabled" | "Disabled" | (string & {});
 export const ExpirationTimeResponse = /*@__PURE__*/ S.String;
 
 export interface BatchGetRecordRequest {
   Identifiers?: BatchGetRecordIdentifier[];
-  ExpirationTimeResponse?: ExpirationTimeResponse | (string & {});
+  ExpirationTimeResponse?: ExpirationTimeResponse;
 }
 export const BatchGetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -253,22 +253,23 @@ export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetRecordResponse",
 }) as any as S.Schema<BatchGetRecordResponse>;
-export type TargetStore = "OnlineStore" | "OfflineStore";
+export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
 export const TargetStore = /*@__PURE__*/ S.String;
 
-export type TargetStores = (TargetStore | (string & {}))[];
+export type TargetStores = TargetStore[];
 export const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
 export type TtlDurationUnit =
   | "Seconds"
   | "Minutes"
   | "Hours"
   | "Days"
-  | "Weeks";
+  | "Weeks"
+  | (string & {});
 export const TtlDurationUnit = /*@__PURE__*/ S.String;
 
 export type TtlDurationValue = number;
 export interface TtlDuration {
-  Unit?: TtlDurationUnit | (string & {});
+  Unit?: TtlDurationUnit;
   Value?: number;
 }
 export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
@@ -277,7 +278,7 @@ export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
 export interface BatchWriteRecordEntry {
   FeatureGroupName?: string;
   Record?: FeatureValue[];
-  TargetStores?: (TargetStore | (string & {}))[];
+  TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
 export const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
@@ -367,15 +368,15 @@ export const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchWriteRecordResponse",
 }) as any as S.Schema<BatchWriteRecordResponse>;
-export type DeletionMode = "SoftDelete" | "HardDelete";
+export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
 
 export interface DeleteRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
   EventTime?: string;
-  TargetStores?: (TargetStore | (string & {}))[];
-  DeletionMode?: DeletionMode | (string & {});
+  TargetStores?: TargetStore[];
+  DeletionMode?: DeletionMode;
 }
 export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -409,7 +410,7 @@ export interface GetRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
   FeatureNames?: string[];
-  ExpirationTimeResponse?: ExpirationTimeResponse | (string & {});
+  ExpirationTimeResponse?: ExpirationTimeResponse;
 }
 export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -490,7 +491,7 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutRecordRequest {
   FeatureGroupName: string;
   Record?: FeatureValue[];
-  TargetStores?: (TargetStore | (string & {}))[];
+  TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
 export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>

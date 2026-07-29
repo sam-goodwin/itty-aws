@@ -46,14 +46,14 @@ export interface DeleteOriginTlsComplianceModeResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const DeleteOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: DeleteResponseId,
       editable: S.Boolean,
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsComplianceModeResponse",
@@ -96,14 +96,14 @@ export interface GetOriginTlsComplianceModeResponse {
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: GetResponseValueList;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GetResponseId,
     editable: S.Boolean,
     value: GetResponseValueList,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsComplianceModeResponse",
@@ -154,7 +154,7 @@ export interface PatchOriginTlsComplianceModeResponse {
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: EditResponseValueList;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -162,7 +162,7 @@ export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
       id: EditResponseId,
       editable: S.Boolean,
       value: EditResponseValueList,
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOriginTlsComplianceModeResponse",
@@ -213,14 +213,14 @@ export interface PutOriginTlsComplianceModeResponse {
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: UpdateResponseValueList;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PutOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: UpdateResponseId,
     editable: S.Boolean,
     value: UpdateResponseValueList,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginTlsComplianceModeResponse",

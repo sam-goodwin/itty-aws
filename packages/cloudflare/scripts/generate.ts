@@ -44,6 +44,9 @@ const makeCfSpec = (
     return lowerFirst(camel(stripped));
   },
   nullableTrait: NULLABLE_TRAIT,
+  // v0 surface: every optional body member is `?: X | null` — the v4 API
+  // freely returns explicit nulls for absent optional fields.
+  optionalsNullable: true,
   errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 
   extraBindings: [
@@ -59,7 +62,9 @@ const makeCfSpec = (
       trait: FORM_DATA_FILE_TRAIT,
       binding: "file",
       pipe: "T.FormDataFile()",
-      tsType: "(File | Blob)[]",
+      // The protocol appends one part per file and accepts a bare file
+      // (v0 surface: single-module snippet/worker uploads pass one File).
+      tsType: "File | Blob | (File | Blob)[]",
     },
     {
       // Raw object GET body — delivered by the protocol as a lazy byte
@@ -78,11 +83,14 @@ const makeCfSpec = (
     [DEEP_QUERY_TRAIT]: "T.DeepQuery",
   },
 
-  // A Blob-targeted whole-body member is a raw object upload — accept
-  // every binary-ish payload form (v0 surface).
+  // Blob-targeted members accept binary-ish payload forms (v0 surface):
+  // a whole-body Blob is a raw object upload; a body-bound Blob is a
+  // binary form part (e.g. the KV value).
   memberTsType: (m) =>
-    m.binding === "rawBody" && m.target === "smithy.api#Blob"
-      ? "Blob | Uint8Array | ArrayBuffer | string"
+    m.target === "smithy.api#Blob"
+      ? m.binding === "rawBody"
+        ? "Blob | Uint8Array | ArrayBuffer | string"
+        : "string | File | Blob"
       : undefined,
 
   sourceNote: ".generated-specs",

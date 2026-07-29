@@ -598,13 +598,13 @@ export interface AppsFlagsCreateRequestRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsCreateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsCreateRequestRulesItemRollout",
@@ -617,14 +617,14 @@ export interface AppsFlagsCreateRequestRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsCreateRequestRulesItemRollout;
+  rollout?: AppsFlagsCreateRequestRulesItemRollout | null;
 }
 export const AppsFlagsCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsCreateRequestRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsCreateRequestRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsCreateRequestRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsCreateRequestRulesItem",
@@ -681,9 +681,9 @@ export interface CreateAppFlagRequest {
   rules: AppsFlagsCreateRequestRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsCreateRequestVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsCreateRequestType | (string & {});
+  type?: AppsFlagsCreateRequestType | (string & {}) | null;
 }
 export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -694,8 +694,8 @@ export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsCreateRequestRulesList,
     variations: AppsFlagsCreateRequestVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsCreateRequestType),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -1189,13 +1189,13 @@ export interface AppsFlagsCreateResponseRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsCreateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsCreateResponseRulesItemRollout",
@@ -1208,14 +1208,14 @@ export interface AppsFlagsCreateResponseRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsCreateResponseRulesItemRollout;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsCreateResponseRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsCreateResponseRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsCreateResponseRulesItem",
@@ -1269,11 +1269,11 @@ export interface CreateAppFlagResponse {
   rules: AppsFlagsCreateResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsCreateResponseVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsCreateResponseType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsCreateResponseType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const CreateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1282,10 +1282,10 @@ export const CreateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsCreateResponseRulesList,
     variations: AppsFlagsCreateResponseVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsCreateResponseType),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsCreateResponseType)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppFlagResponse",
@@ -1468,14 +1468,14 @@ export interface GetAppEvaluateResponse {
   flagKey: string;
   reason: AppsEvaluateGetResponseReason;
   variant: string;
-  value?: AppsEvaluateGetResponseValue;
+  value?: AppsEvaluateGetResponseValue | null;
 }
 export const GetAppEvaluateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagKey: S.String,
     reason: AppsEvaluateGetResponseReason,
     variant: S.String,
-    value: S.optional(AppsEvaluateGetResponseValue),
+    value: S.optional(S.NullOr(AppsEvaluateGetResponseValue)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppEvaluateResponse",
@@ -1988,13 +1988,13 @@ export interface AppsFlagsGetResponseRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsGetResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsGetResponseRulesItemRollout",
@@ -2007,14 +2007,14 @@ export interface AppsFlagsGetResponseRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsGetResponseRulesItemRollout;
+  rollout?: AppsFlagsGetResponseRulesItemRollout | null;
 }
 export const AppsFlagsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsGetResponseRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsGetResponseRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsGetResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsGetResponseRulesItem",
@@ -2064,11 +2064,11 @@ export interface GetAppFlagResponse {
   rules: AppsFlagsGetResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsGetResponseVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsGetResponseType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsGetResponseType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const GetAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2077,10 +2077,10 @@ export const GetAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsGetResponseRulesList,
     variations: AppsFlagsGetResponseVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsGetResponseType),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsGetResponseType)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppFlagResponse",
@@ -2602,13 +2602,13 @@ export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout",
@@ -2621,7 +2621,7 @@ export interface AppsFlagsChangelogListResultItemCase0AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout;
+  rollout?: AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2631,7 +2631,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItem =
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
       rollout: S.optional(
-        AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout,
+        S.NullOr(AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout),
       ),
     }),
   ).annotate({
@@ -2689,11 +2689,11 @@ export interface AppsFlagsChangelogListResultItemCase0After {
   rules: AppsFlagsChangelogListResultItemCase0AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsChangelogListResultItemCase0AfterVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsChangelogListResultItemCase0AfterType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsChangelogListResultItemCase0AfterType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase0After =
   /*@__PURE__*/ S.suspend(() =>
@@ -2703,10 +2703,12 @@ export const AppsFlagsChangelogListResultItemCase0After =
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase0AfterRulesList,
       variations: AppsFlagsChangelogListResultItemCase0AfterVariations,
-      description: S.optional(S.String),
-      type: S.optional(AppsFlagsChangelogListResultItemCase0AfterType),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+      description: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsFlagsChangelogListResultItemCase0AfterType),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase0After",
@@ -3216,13 +3218,13 @@ export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout",
@@ -3235,7 +3237,7 @@ export interface AppsFlagsChangelogListResultItemCase1AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout;
+  rollout?: AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3245,7 +3247,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItem =
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
       rollout: S.optional(
-        AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout,
+        S.NullOr(AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout),
       ),
     }),
   ).annotate({
@@ -3303,11 +3305,11 @@ export interface AppsFlagsChangelogListResultItemCase1After {
   rules: AppsFlagsChangelogListResultItemCase1AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsChangelogListResultItemCase1AfterVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsChangelogListResultItemCase1AfterType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsChangelogListResultItemCase1AfterType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase1After =
   /*@__PURE__*/ S.suspend(() =>
@@ -3317,10 +3319,12 @@ export const AppsFlagsChangelogListResultItemCase1After =
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase1AfterRulesList,
       variations: AppsFlagsChangelogListResultItemCase1AfterVariations,
-      description: S.optional(S.String),
-      type: S.optional(AppsFlagsChangelogListResultItemCase1AfterType),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+      description: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsFlagsChangelogListResultItemCase1AfterType),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase1After",
@@ -3830,13 +3834,13 @@ export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout",
@@ -3849,7 +3853,7 @@ export interface AppsFlagsChangelogListResultItemCase2AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout;
+  rollout?: AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3859,7 +3863,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItem =
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
       rollout: S.optional(
-        AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout,
+        S.NullOr(AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout),
       ),
     }),
   ).annotate({
@@ -3917,11 +3921,11 @@ export interface AppsFlagsChangelogListResultItemCase2After {
   rules: AppsFlagsChangelogListResultItemCase2AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsChangelogListResultItemCase2AfterVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsChangelogListResultItemCase2AfterType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsChangelogListResultItemCase2AfterType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const AppsFlagsChangelogListResultItemCase2After =
   /*@__PURE__*/ S.suspend(() =>
@@ -3931,10 +3935,12 @@ export const AppsFlagsChangelogListResultItemCase2After =
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase2AfterRulesList,
       variations: AppsFlagsChangelogListResultItemCase2AfterVariations,
-      description: S.optional(S.String),
-      type: S.optional(AppsFlagsChangelogListResultItemCase2AfterType),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+      description: S.optional(S.NullOr(S.String)),
+      type: S.optional(
+        S.NullOr(AppsFlagsChangelogListResultItemCase2AfterType),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase2After",
@@ -3991,14 +3997,18 @@ export const AppsFlagsChangelogListResultItemCase2DiffValueTo =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2DiffValue {
-  from?: AppsFlagsChangelogListResultItemCase2DiffValueFrom;
-  to?: AppsFlagsChangelogListResultItemCase2DiffValueTo;
+  from?: AppsFlagsChangelogListResultItemCase2DiffValueFrom | null;
+  to?: AppsFlagsChangelogListResultItemCase2DiffValueTo | null;
 }
 export const AppsFlagsChangelogListResultItemCase2DiffValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(AppsFlagsChangelogListResultItemCase2DiffValueFrom),
-      to: S.optional(AppsFlagsChangelogListResultItemCase2DiffValueTo),
+      from: S.optional(
+        S.NullOr(AppsFlagsChangelogListResultItemCase2DiffValueFrom),
+      ),
+      to: S.optional(
+        S.NullOr(AppsFlagsChangelogListResultItemCase2DiffValueTo),
+      ),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase2DiffValue",
@@ -4577,13 +4587,13 @@ export interface AppsFlagsListResultItemRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsListResultItemRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsListResultItemRulesItemRollout",
@@ -4596,14 +4606,14 @@ export interface AppsFlagsListResultItemRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsListResultItemRulesItemRollout;
+  rollout?: AppsFlagsListResultItemRulesItemRollout | null;
 }
 export const AppsFlagsListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsListResultItemRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsListResultItemRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsListResultItemRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsListResultItemRulesItem",
@@ -4656,11 +4666,11 @@ export interface AppsFlagsListResultItem {
   rules: AppsFlagsListResultItemRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsListResultItemVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsListResultItemType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsListResultItemType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const AppsFlagsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4669,10 +4679,10 @@ export const AppsFlagsListResultItem = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsListResultItemRulesList,
     variations: AppsFlagsListResultItemVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsListResultItemType),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsListResultItemType)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
   }),
 ).annotate({
   identifier: "AppsFlagsListResultItem",
@@ -4763,13 +4773,13 @@ export interface UpdateAppRequest {
   accountId: string;
   /** App identifier. */
   appId: string;
-  name?: string;
+  name?: string | null;
 }
 export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -5309,13 +5319,13 @@ export interface AppsFlagsUpdateRequestRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsUpdateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsUpdateRequestRulesItemRollout",
@@ -5328,14 +5338,14 @@ export interface AppsFlagsUpdateRequestRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsUpdateRequestRulesItemRollout;
+  rollout?: AppsFlagsUpdateRequestRulesItemRollout | null;
 }
 export const AppsFlagsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateRequestRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsUpdateRequestRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsUpdateRequestRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsUpdateRequestRulesItem",
@@ -5394,9 +5404,9 @@ export interface UpdateAppFlagRequest {
   rules: AppsFlagsUpdateRequestRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsUpdateRequestVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsUpdateRequestType | (string & {});
+  type?: AppsFlagsUpdateRequestType | (string & {}) | null;
 }
 export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5408,8 +5418,8 @@ export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsUpdateRequestRulesList,
     variations: AppsFlagsUpdateRequestVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsUpdateRequestType),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsUpdateRequestType)),
   })
     .pipe(
       T.Http({
@@ -5903,13 +5913,13 @@ export interface AppsFlagsUpdateResponseRulesItemRollout {
   /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
+  attribute?: string | null;
 }
 export const AppsFlagsUpdateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       percentage: S.Number,
-      attribute: S.optional(S.String),
+      attribute: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AppsFlagsUpdateResponseRulesItemRollout",
@@ -5922,14 +5932,14 @@ export interface AppsFlagsUpdateResponseRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsUpdateResponseRulesItemRollout;
+  rollout?: AppsFlagsUpdateResponseRulesItemRollout | null;
 }
 export const AppsFlagsUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateResponseRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsUpdateResponseRulesItemRollout),
+    rollout: S.optional(S.NullOr(AppsFlagsUpdateResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsUpdateResponseRulesItem",
@@ -5983,11 +5993,11 @@ export interface UpdateAppFlagResponse {
   rules: AppsFlagsUpdateResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsUpdateResponseVariations;
-  description?: string;
+  description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
-  type?: AppsFlagsUpdateResponseType;
-  updatedAt?: string;
-  updatedBy?: string;
+  type?: AppsFlagsUpdateResponseType | null;
+  updatedAt?: string | null;
+  updatedBy?: string | null;
 }
 export const UpdateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5996,10 +6006,10 @@ export const UpdateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     key: S.String,
     rules: AppsFlagsUpdateResponseRulesList,
     variations: AppsFlagsUpdateResponseVariations,
-    description: S.optional(S.String),
-    type: S.optional(AppsFlagsUpdateResponseType),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AppsFlagsUpdateResponseType)),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppFlagResponse",

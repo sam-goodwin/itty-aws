@@ -114,12 +114,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export type HomeRegion = string;
-export type TargetType = "ACCOUNT";
+export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
 export type TargetId = string;
 export interface Target {
-  Type: TargetType | (string & {});
+  Type: TargetType;
   Id?: string;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>

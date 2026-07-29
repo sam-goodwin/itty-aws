@@ -43,20 +43,20 @@ export const ListResultPublicIPIPsIpv6CidrsList = /*@__PURE__*/ S.Array(
 
 export interface ListResultPublicIPIPs {
   /** A digest of the IP data. Useful for determining if the data has changed. */
-  etag?: string;
+  etag?: string | null;
   /** List of Cloudflare IPv4 CIDR addresses. */
-  ipv4Cidrs?: ListResultPublicIPIPsIpv4CidrsList;
+  ipv4Cidrs?: ListResultPublicIPIPsIpv4CidrsList | null;
   /** List of Cloudflare IPv6 CIDR addresses. */
-  ipv6Cidrs?: ListResultPublicIPIPsIpv6CidrsList;
+  ipv6Cidrs?: ListResultPublicIPIPsIpv6CidrsList | null;
 }
 export const ListResultPublicIPIPs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    etag: S.optional(S.String),
+    etag: S.optional(S.NullOr(S.String)),
     ipv4Cidrs: S.optional(
-      ListResultPublicIPIPsIpv4CidrsList.pipe(T.Body("ipv4_cidrs")),
+      S.NullOr(ListResultPublicIPIPsIpv4CidrsList).pipe(T.Body("ipv4_cidrs")),
     ),
     ipv6Cidrs: S.optional(
-      ListResultPublicIPIPsIpv6CidrsList.pipe(T.Body("ipv6_cidrs")),
+      S.NullOr(ListResultPublicIPIPsIpv6CidrsList).pipe(T.Body("ipv6_cidrs")),
     ),
   }),
 ).annotate({
@@ -81,25 +81,29 @@ export const ListResultPublicIPIPsJDCloudJdcloudCidrsList =
 
 export interface ListResultPublicIPIPsJDCloud {
   /** A digest of the IP data. Useful for determining if the data has changed. */
-  etag?: string;
+  etag?: string | null;
   /** List of Cloudflare IPv4 CIDR addresses. */
-  ipv4Cidrs?: ListResultPublicIPIPsJDCloudIpv4CidrsList;
+  ipv4Cidrs?: ListResultPublicIPIPsJDCloudIpv4CidrsList | null;
   /** List of Cloudflare IPv6 CIDR addresses. */
-  ipv6Cidrs?: ListResultPublicIPIPsJDCloudIpv6CidrsList;
+  ipv6Cidrs?: ListResultPublicIPIPsJDCloudIpv6CidrsList | null;
   /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
-  jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList;
+  jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList | null;
 }
 export const ListResultPublicIPIPsJDCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    etag: S.optional(S.String),
+    etag: S.optional(S.NullOr(S.String)),
     ipv4Cidrs: S.optional(
-      ListResultPublicIPIPsJDCloudIpv4CidrsList.pipe(T.Body("ipv4_cidrs")),
+      S.NullOr(ListResultPublicIPIPsJDCloudIpv4CidrsList).pipe(
+        T.Body("ipv4_cidrs"),
+      ),
     ),
     ipv6Cidrs: S.optional(
-      ListResultPublicIPIPsJDCloudIpv6CidrsList.pipe(T.Body("ipv6_cidrs")),
+      S.NullOr(ListResultPublicIPIPsJDCloudIpv6CidrsList).pipe(
+        T.Body("ipv6_cidrs"),
+      ),
     ),
     jdcloudCidrs: S.optional(
-      ListResultPublicIPIPsJDCloudJdcloudCidrsList.pipe(
+      S.NullOr(ListResultPublicIPIPsJDCloudJdcloudCidrsList).pipe(
         T.Body("jdcloud_cidrs"),
       ),
     ),

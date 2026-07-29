@@ -238,7 +238,7 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputParallelism",
 }) as any as S.Schema<InputParallelism>;
-export type RecordFormatType = "JSON" | "CSV";
+export type RecordFormatType = "JSON" | "CSV" | (string & {});
 export const RecordFormatType = /*@__PURE__*/ S.String;
 
 export type RecordRowPath = string;
@@ -274,7 +274,7 @@ export const MappingParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "MappingParameters",
 }) as any as S.Schema<MappingParameters>;
 export interface RecordFormat {
-  RecordFormatType: RecordFormatType | (string & {});
+  RecordFormatType: RecordFormatType;
   MappingParameters?: MappingParameters;
 }
 export const RecordFormat = /*@__PURE__*/ S.suspend(() =>
@@ -420,7 +420,7 @@ export const LambdaOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
 ).annotate({ identifier: "LambdaOutput" }) as any as S.Schema<LambdaOutput>;
 export interface DestinationSchema {
-  RecordFormatType: RecordFormatType | (string & {});
+  RecordFormatType: RecordFormatType;
 }
 export const DestinationSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecordFormatType: RecordFormatType }),
@@ -593,7 +593,8 @@ export type ApplicationStatus =
   | "STOPPING"
   | "READY"
   | "RUNNING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface ApplicationSummary {
@@ -838,11 +839,12 @@ export const KinesisFirehoseInputDescription = /*@__PURE__*/ S.suspend(() =>
 export type InputStartingPosition =
   | "NOW"
   | "TRIM_HORIZON"
-  | "LAST_STOPPED_POINT";
+  | "LAST_STOPPED_POINT"
+  | (string & {});
 export const InputStartingPosition = /*@__PURE__*/ S.String;
 
 export interface InputStartingPositionConfiguration {
-  InputStartingPosition?: InputStartingPosition | (string & {});
+  InputStartingPosition?: InputStartingPosition;
 }
 export const InputStartingPositionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InputStartingPosition: S.optional(InputStartingPosition) }),

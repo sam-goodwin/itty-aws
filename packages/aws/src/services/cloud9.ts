@@ -169,7 +169,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM";
+export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 export interface CreateEnvironmentEC2Request {
@@ -182,7 +182,7 @@ export interface CreateEnvironmentEC2Request {
   automaticStopTimeMinutes?: number;
   ownerArn?: string;
   tags?: Tag[];
-  connectionType?: ConnectionType | (string & {});
+  connectionType?: ConnectionType;
   dryRun?: boolean;
 }
 export const CreateEnvironmentEC2Request = /*@__PURE__*/ S.suspend(() =>
@@ -213,13 +213,13 @@ export const CreateEnvironmentEC2Result = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentEC2Result",
 }) as any as S.Schema<CreateEnvironmentEC2Result>;
-export type MemberPermissions = "read-write" | "read-only";
+export type MemberPermissions = "read-write" | "read-only" | (string & {});
 export const MemberPermissions = /*@__PURE__*/ S.String;
 
 export interface CreateEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;
-  permissions: MemberPermissions | (string & {});
+  permissions: MemberPermissions;
 }
 export const CreateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -232,7 +232,7 @@ export const CreateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentMembershipRequest",
 }) as any as S.Schema<CreateEnvironmentMembershipRequest>;
-export type Permissions = "owner" | "read-write" | "read-only";
+export type Permissions = "owner" | "read-write" | "read-only" | (string & {});
 export const Permissions = /*@__PURE__*/ S.String;
 
 export interface EnvironmentMember {
@@ -294,13 +294,13 @@ export const DeleteEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEnvironmentMembershipResult",
 }) as any as S.Schema<DeleteEnvironmentMembershipResult>;
-export type PermissionsList = (Permissions | (string & {}))[];
+export type PermissionsList = Permissions[];
 export const PermissionsList = /*@__PURE__*/ S.Array(Permissions);
 export type MaxResults = number;
 export interface DescribeEnvironmentMembershipsRequest {
   userArn?: string;
   environmentId?: string;
-  permissions?: (Permissions | (string & {}))[];
+  permissions?: Permissions[];
   nextToken?: string;
   maxResults?: number;
 }
@@ -345,7 +345,7 @@ export const DescribeEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentsRequest",
 }) as any as S.Schema<DescribeEnvironmentsRequest>;
-export type EnvironmentType = "ssh" | "ec2";
+export type EnvironmentType = "ssh" | "ec2" | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 export type EnvironmentLifecycleStatus =
@@ -353,7 +353,8 @@ export type EnvironmentLifecycleStatus =
   | "CREATED"
   | "CREATE_FAILED"
   | "DELETING"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const EnvironmentLifecycleStatus = /*@__PURE__*/ S.String;
 
 export interface EnvironmentLifecycle {
@@ -381,7 +382,8 @@ export type ManagedCredentialsStatus =
   | "PENDING_REMOVAL_BY_OWNER"
   | "PENDING_START_REMOVAL_BY_OWNER"
   | "FAILED_REMOVAL_BY_COLLABORATOR"
-  | "FAILED_REMOVAL_BY_OWNER";
+  | "FAILED_REMOVAL_BY_OWNER"
+  | (string & {});
 export const ManagedCredentialsStatus = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -435,7 +437,8 @@ export type EnvironmentStatus =
   | "ready"
   | "stopping"
   | "stopped"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeEnvironmentStatusResult {
@@ -530,14 +533,14 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type ManagedCredentialsAction = "ENABLE" | "DISABLE";
+export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
 export const ManagedCredentialsAction = /*@__PURE__*/ S.String;
 
 export interface UpdateEnvironmentRequest {
   environmentId: string;
   name?: string;
   description?: string | redacted.Redacted<string>;
-  managedCredentialsAction?: ManagedCredentialsAction | (string & {});
+  managedCredentialsAction?: ManagedCredentialsAction;
 }
 export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -560,7 +563,7 @@ export const UpdateEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;
-  permissions: MemberPermissions | (string & {});
+  permissions: MemberPermissions;
 }
 export const UpdateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

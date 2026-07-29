@@ -200,13 +200,14 @@ export const CompleteAttachmentUploadResponse = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionType =
   | "WEBSOCKET"
   | "CONNECTION_CREDENTIALS"
-  | "WEBRTC_CONNECTION";
+  | "WEBRTC_CONNECTION"
+  | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
-export type ConnectionTypeList = (ConnectionType | (string & {}))[];
+export type ConnectionTypeList = ConnectionType[];
 export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType);
 export interface CreateParticipantConnectionRequest {
-  Type?: (ConnectionType | (string & {}))[];
+  Type?: ConnectionType[];
   ParticipantToken: string;
   ConnectParticipant?: boolean;
 }
@@ -281,7 +282,7 @@ export const WebRTCMediaPlacement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebRTCMediaPlacement",
 }) as any as S.Schema<WebRTCMediaPlacement>;
-export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE";
+export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
 export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
 
 export interface AudioFeatures {
@@ -508,10 +509,10 @@ export const GetAuthenticationUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type ContactId = string;
 export type MaxResults = number;
 export type NextToken = string;
-export type ScanDirection = "FORWARD" | "BACKWARD";
+export type ScanDirection = "FORWARD" | "BACKWARD" | (string & {});
 export const ScanDirection = /*@__PURE__*/ S.String;
 
-export type SortKey = "DESCENDING" | "ASCENDING";
+export type SortKey = "DESCENDING" | "ASCENDING" | (string & {});
 export const SortKey = /*@__PURE__*/ S.String;
 
 export type ChatItemId = string;
@@ -533,8 +534,8 @@ export interface GetTranscriptRequest {
   ContactId?: string;
   MaxResults?: number;
   NextToken?: string;
-  ScanDirection?: ScanDirection | (string & {});
-  SortOrder?: SortKey | (string & {});
+  ScanDirection?: ScanDirection;
+  SortOrder?: SortKey;
   StartPosition?: StartPosition;
   ConnectionToken: string;
 }
@@ -574,7 +575,8 @@ export type ChatItemType =
   | "ATTACHMENT"
   | "CONNECTION_ACK"
   | "MESSAGE_DELIVERED"
-  | "MESSAGE_READ";
+  | "MESSAGE_READ"
+  | (string & {});
 export const ChatItemType = /*@__PURE__*/ S.String;
 
 export type ParticipantId = string;
@@ -584,12 +586,17 @@ export type ParticipantRole =
   | "CUSTOMER"
   | "SYSTEM"
   | "CUSTOM_BOT"
-  | "SUPERVISOR";
+  | "SUPERVISOR"
+  | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
 
 export type ContentType = string;
 export type AttachmentName = string;
-export type ArtifactStatus = "APPROVED" | "REJECTED" | "IN_PROGRESS";
+export type ArtifactStatus =
+  | "APPROVED"
+  | "REJECTED"
+  | "IN_PROGRESS"
+  | (string & {});
 export const ArtifactStatus = /*@__PURE__*/ S.String;
 
 export interface AttachmentItem {
@@ -622,7 +629,11 @@ export const Receipt = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Receipt" }) as any as S.Schema<Receipt>;
 export type Receipts = Receipt[];
 export const Receipts = /*@__PURE__*/ S.Array(Receipt);
-export type MessageProcessingStatus = "PROCESSING" | "FAILED" | "REJECTED";
+export type MessageProcessingStatus =
+  | "PROCESSING"
+  | "FAILED"
+  | "REJECTED"
+  | (string & {});
 export const MessageProcessingStatus = /*@__PURE__*/ S.String;
 
 export interface MessageMetadata {
@@ -836,7 +847,8 @@ export type ResourceType =
   | "HIERARCHY_LEVEL"
   | "HIERARCHY_GROUP"
   | "USER"
-  | "PHONE_NUMBER";
+  | "PHONE_NUMBER"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type CancelParticipantAuthenticationError =

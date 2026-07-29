@@ -131,19 +131,19 @@ export interface CheckResponseDomainsItem {
   /** Indicates whether this domain can be registered programmatically through this API based on a real-time registry check. */
   registrable: boolean;
   /** Annual pricing information for a registrable domain. This object is only */
-  pricing?: CheckResponseDomainsItemPricing;
+  pricing?: CheckResponseDomainsItemPricing | null;
   /** Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API. */
-  reason?: CheckResponseDomainsItemReason;
+  reason?: CheckResponseDomainsItemReason | null;
   /** The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`. */
-  tier?: CheckResponseDomainsItemTier;
+  tier?: CheckResponseDomainsItemTier | null;
 }
 export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
-    pricing: S.optional(CheckResponseDomainsItemPricing),
-    reason: S.optional(CheckResponseDomainsItemReason),
-    tier: S.optional(CheckResponseDomainsItemTier),
+    pricing: S.optional(S.NullOr(CheckResponseDomainsItemPricing)),
+    reason: S.optional(S.NullOr(CheckResponseDomainsItemReason)),
+    tier: S.optional(S.NullOr(CheckResponseDomainsItemTier)),
   }),
 ).annotate({
   identifier: "CheckResponseDomainsItem",
@@ -224,12 +224,12 @@ export interface RegistrationStatusGetResponseLinks {
   /** URL to this status resource. */
   self: string;
   /** URL to the domain resource. */
-  resource?: string;
+  resource?: string | null;
 }
 export const RegistrationStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
-    resource: S.optional(S.String),
+    resource: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RegistrationStatusGetResponseLinks",
@@ -277,9 +277,9 @@ export interface GetRegistrationStatusResponse {
   state: RegistrationStatusGetResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
-  context?: RegistrationStatusGetResponseContextMap;
+  context?: RegistrationStatusGetResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationStatusGetResponseError;
+  error?: RegistrationStatusGetResponseError | null;
 }
 export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -288,8 +288,8 @@ export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
     links: RegistrationStatusGetResponseLinks,
     state: RegistrationStatusGetResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(RegistrationStatusGetResponseContextMap),
-    error: S.optional(RegistrationStatusGetResponseError),
+    context: S.optional(S.NullOr(RegistrationStatusGetResponseContextMap)),
+    error: S.optional(S.NullOr(RegistrationStatusGetResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegistrationStatusResponse",
@@ -322,12 +322,12 @@ export interface UpdateStatusGetResponseLinks {
   /** URL to this status resource. */
   self: string;
   /** URL to the domain resource. */
-  resource?: string;
+  resource?: string | null;
 }
 export const UpdateStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
-    resource: S.optional(S.String),
+    resource: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateStatusGetResponseLinks",
@@ -375,9 +375,9 @@ export interface GetUpdateStatusResponse {
   state: UpdateStatusGetResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
-  context?: UpdateStatusGetResponseContextMap;
+  context?: UpdateStatusGetResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: UpdateStatusGetResponseError;
+  error?: UpdateStatusGetResponseError | null;
 }
 export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -386,8 +386,8 @@ export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
     links: UpdateStatusGetResponseLinks,
     state: UpdateStatusGetResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(UpdateStatusGetResponseContextMap),
-    error: S.optional(UpdateStatusGetResponseError),
+    context: S.optional(S.NullOr(UpdateStatusGetResponseContextMap)),
+    error: S.optional(S.NullOr(UpdateStatusGetResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUpdateStatusResponse",
@@ -433,13 +433,13 @@ export interface DomainsListResultItemRegistrantContact {
   /** The zipcode or postal code where the user lives. */
   zip: string;
   /** Contact Identifier. */
-  id?: string;
+  id?: string | null;
   /** Optional address line for unit, floor, suite, etc. */
-  address2?: string;
+  address2?: string | null;
   /** The contact email address of the user. */
-  email?: string;
+  email?: string | null;
   /** Contact fax number. */
-  fax?: string;
+  fax?: string | null;
 }
 export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(
   () =>
@@ -453,10 +453,10 @@ export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(
       phone: S.String,
       state: S.String,
       zip: S.String,
-      id: S.optional(S.String),
-      address2: S.optional(S.String),
-      email: S.optional(S.String),
-      fax: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      address2: S.optional(S.NullOr(S.String)),
+      email: S.optional(S.NullOr(S.String)),
+      fax: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "DomainsListResultItemRegistrantContact",
@@ -502,43 +502,47 @@ export const DomainsListResultItemTransferInUnlockDomain =
 
 export interface DomainsListResultItemTransferIn {
   /** Form of authorization has been accepted by the registrant. */
-  acceptFoa?: DomainsListResultItemTransferInAcceptFoa;
+  acceptFoa?: DomainsListResultItemTransferInAcceptFoa | null;
   /** Shows transfer status with the registry. */
-  approveTransfer?: DomainsListResultItemTransferInApproveTransfer;
+  approveTransfer?: DomainsListResultItemTransferInApproveTransfer | null;
   /** Indicates if cancellation is still possible. */
-  canCancelTransfer?: boolean;
+  canCancelTransfer?: boolean | null;
   /** Privacy guards are disabled at the foreign registrar. */
-  disablePrivacy?: DomainsListResultItemTransferInDisablePrivacy;
+  disablePrivacy?: DomainsListResultItemTransferInDisablePrivacy | null;
   /** Auth code has been entered and verified. */
-  enterAuthCode?: DomainsListResultItemTransferInEnterAuthCode;
+  enterAuthCode?: DomainsListResultItemTransferInEnterAuthCode | null;
   /** Domain is unlocked at the foreign registrar. */
-  unlockDomain?: DomainsListResultItemTransferInUnlockDomain;
+  unlockDomain?: DomainsListResultItemTransferInUnlockDomain | null;
 }
 export const DomainsListResultItemTransferIn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptFoa: S.optional(
-      DomainsListResultItemTransferInAcceptFoa.pipe(T.Body("accept_foa")),
+      S.NullOr(DomainsListResultItemTransferInAcceptFoa).pipe(
+        T.Body("accept_foa"),
+      ),
     ),
     approveTransfer: S.optional(
-      DomainsListResultItemTransferInApproveTransfer.pipe(
+      S.NullOr(DomainsListResultItemTransferInApproveTransfer).pipe(
         T.Body("approve_transfer"),
       ),
     ),
     canCancelTransfer: S.optional(
-      S.Boolean.pipe(T.Body("can_cancel_transfer")),
+      S.NullOr(S.Boolean).pipe(T.Body("can_cancel_transfer")),
     ),
     disablePrivacy: S.optional(
-      DomainsListResultItemTransferInDisablePrivacy.pipe(
+      S.NullOr(DomainsListResultItemTransferInDisablePrivacy).pipe(
         T.Body("disable_privacy"),
       ),
     ),
     enterAuthCode: S.optional(
-      DomainsListResultItemTransferInEnterAuthCode.pipe(
+      S.NullOr(DomainsListResultItemTransferInEnterAuthCode).pipe(
         T.Body("enter_auth_code"),
       ),
     ),
     unlockDomain: S.optional(
-      DomainsListResultItemTransferInUnlockDomain.pipe(T.Body("unlock_domain")),
+      S.NullOr(DomainsListResultItemTransferInUnlockDomain).pipe(
+        T.Body("unlock_domain"),
+      ),
     ),
   }),
 ).annotate({
@@ -547,29 +551,29 @@ export const DomainsListResultItemTransferIn = /*@__PURE__*/ S.suspend(() =>
 
 export interface DomainsListResultItem {
   /** Domain identifier. */
-  id?: string;
+  id?: string | null;
   /** Shows if a domain is available for transferring into Cloudflare Registrar. */
-  available?: boolean;
+  available?: boolean | null;
   /** Indicates if the domain can be registered as a new domain. */
-  canRegister?: boolean;
+  canRegister?: boolean | null;
   /** Shows time of creation. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Shows name of current registrar. */
-  currentRegistrar?: string;
+  currentRegistrar?: string | null;
   /** Shows when domain name registration expires. */
-  expiresAt?: string;
+  expiresAt?: string | null;
   /** Shows whether a registrar lock is in place for a domain. */
-  locked?: boolean;
+  locked?: boolean | null;
   /** Shows contact information for domain registrant. */
-  registrantContact?: DomainsListResultItemRegistrantContact;
+  registrantContact?: DomainsListResultItemRegistrantContact | null;
   /** A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en). */
-  registryStatuses?: string;
+  registryStatuses?: string | null;
   /** Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs. */
-  supportedTld?: boolean;
+  supportedTld?: boolean | null;
   /** Statuses for domain transfers into Cloudflare Registrar. */
-  transferIn?: DomainsListResultItemTransferIn;
+  transferIn?: DomainsListResultItemTransferIn | null;
   /** Last updated. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** Domain name. */
   name?: string | null;
   /** Whether the domain auto-renews. */
@@ -579,22 +583,28 @@ export interface DomainsListResultItem {
 }
 export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    available: S.optional(S.Boolean),
-    canRegister: S.optional(S.Boolean.pipe(T.Body("can_register"))),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    currentRegistrar: S.optional(S.String.pipe(T.Body("current_registrar"))),
-    expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
-    locked: S.optional(S.Boolean),
+    id: S.optional(S.NullOr(S.String)),
+    available: S.optional(S.NullOr(S.Boolean)),
+    canRegister: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_register"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    currentRegistrar: S.optional(
+      S.NullOr(S.String).pipe(T.Body("current_registrar")),
+    ),
+    expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
+    locked: S.optional(S.NullOr(S.Boolean)),
     registrantContact: S.optional(
-      DomainsListResultItemRegistrantContact.pipe(T.Body("registrant_contact")),
+      S.NullOr(DomainsListResultItemRegistrantContact).pipe(
+        T.Body("registrant_contact"),
+      ),
     ),
-    registryStatuses: S.optional(S.String.pipe(T.Body("registry_statuses"))),
-    supportedTld: S.optional(S.Boolean.pipe(T.Body("supported_tld"))),
+    registryStatuses: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registry_statuses")),
+    ),
+    supportedTld: S.optional(S.NullOr(S.Boolean).pipe(T.Body("supported_tld"))),
     transferIn: S.optional(
-      DomainsListResultItemTransferIn.pipe(T.Body("transfer_in")),
+      S.NullOr(DomainsListResultItemTransferIn).pipe(T.Body("transfer_in")),
     ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     name: S.optional(S.NullOr(S.String)),
     autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
     privacy: S.optional(S.NullOr(S.Boolean)),
@@ -629,19 +639,19 @@ export interface PutDomainRequest {
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
   /** Auto-renew controls whether subscription is automatically renewed upon domain expiration. */
-  autoRenew?: boolean;
+  autoRenew?: boolean | null;
   /** Shows whether a registrar lock is in place for a domain. */
-  locked?: boolean;
+  locked?: boolean | null;
   /** Privacy option controls redacting WHOIS information. */
-  privacy?: boolean;
+  privacy?: boolean | null;
 }
 export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-    locked: S.optional(S.Boolean),
-    privacy: S.optional(S.Boolean),
+    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
+    locked: S.optional(S.NullOr(S.Boolean)),
+    privacy: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -693,14 +703,14 @@ export interface RegistrationsCreateRequestContactsRegistrantPostalInfo {
   /** Full legal name of the registrant (individual or authorized representative). */
   name: string;
   /** Organization or company name. Optional for individual registrants. */
-  organization?: string;
+  organization?: string | null;
 }
 export const RegistrationsCreateRequestContactsRegistrantPostalInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: RegistrationsCreateRequestContactsRegistrantPostalInfoAddress,
       name: S.String,
-      organization: S.optional(S.String),
+      organization: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RegistrationsCreateRequestContactsRegistrantPostalInfo",
@@ -714,7 +724,7 @@ export interface RegistrationsCreateRequestContactsRegistrant {
   /** Postal/mailing information for the registrant contact. */
   postalInfo: RegistrationsCreateRequestContactsRegistrantPostalInfo;
   /** Fax number in E.164 format (e.g., `+1.5555555555`). Optional. */
-  fax?: string;
+  fax?: string | null;
 }
 export const RegistrationsCreateRequestContactsRegistrant =
   /*@__PURE__*/ S.suspend(() =>
@@ -724,7 +734,7 @@ export const RegistrationsCreateRequestContactsRegistrant =
       postalInfo: RegistrationsCreateRequestContactsRegistrantPostalInfo.pipe(
         T.Body("postal_info"),
       ),
-      fax: S.optional(S.String),
+      fax: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RegistrationsCreateRequestContactsRegistrant",
@@ -732,11 +742,13 @@ export const RegistrationsCreateRequestContactsRegistrant =
 
 export interface RegistrationsCreateRequestContacts {
   /** Registrant contact data for the domain registration. This information */
-  registrant?: RegistrationsCreateRequestContactsRegistrant;
+  registrant?: RegistrationsCreateRequestContactsRegistrant | null;
 }
 export const RegistrationsCreateRequestContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    registrant: S.optional(RegistrationsCreateRequestContactsRegistrant),
+    registrant: S.optional(
+      S.NullOr(RegistrationsCreateRequestContactsRegistrant),
+    ),
   }),
 ).annotate({
   identifier: "RegistrationsCreateRequestContacts",
@@ -752,25 +764,27 @@ export interface RegistrationsCreateRequest {
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
   /** Enable or disable automatic renewal. Defaults to `false` if omitted. */
-  autoRenew?: boolean;
+  autoRenew?: boolean | null;
   /** Contact data for the registration request. */
-  contacts?: RegistrationsCreateRequestContacts;
+  contacts?: RegistrationsCreateRequestContacts | null;
   /** WHOIS privacy mode for the registration. Defaults to `redaction`. */
-  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {});
+  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {}) | null;
   /** Number of years to register (1–10). If omitted, defaults to the */
-  years?: number;
+  years?: number | null;
 }
 export const RegistrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     domainName: S.String.pipe(T.Body("domain_name")),
-    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-    contacts: S.optional(RegistrationsCreateRequestContacts),
+    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
+    contacts: S.optional(S.NullOr(RegistrationsCreateRequestContacts)),
     privacyMode: S.optional(
-      RegistrationsCreateRequestPrivacyMode.pipe(T.Body("privacy_mode")),
+      S.NullOr(RegistrationsCreateRequestPrivacyMode).pipe(
+        T.Body("privacy_mode"),
+      ),
     ),
-    years: S.optional(S.Number),
+    years: S.optional(S.NullOr(S.Number)),
   })
     .pipe(
       T.Http({
@@ -788,12 +802,12 @@ export interface RegistrationsCreateResponseLinks {
   /** URL to this status resource. */
   self: string;
   /** URL to the domain resource. */
-  resource?: string;
+  resource?: string | null;
 }
 export const RegistrationsCreateResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
-    resource: S.optional(S.String),
+    resource: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RegistrationsCreateResponseLinks",
@@ -841,9 +855,9 @@ export interface RegistrationsCreateResponse {
   state: RegistrationsCreateResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
-  context?: RegistrationsCreateResponseContextMap;
+  context?: RegistrationsCreateResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationsCreateResponseError;
+  error?: RegistrationsCreateResponseError | null;
 }
 export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -852,8 +866,8 @@ export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     links: RegistrationsCreateResponseLinks,
     state: RegistrationsCreateResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(RegistrationsCreateResponseContextMap),
-    error: S.optional(RegistrationsCreateResponseError),
+    context: S.optional(S.NullOr(RegistrationsCreateResponseContextMap)),
+    error: S.optional(S.NullOr(RegistrationsCreateResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsCreateResponse",
@@ -869,14 +883,14 @@ export interface RegistrationsEditRequest {
   domainName: string;
   prefer?: RegistrationsEditRequestPrefer | (string & {});
   /** Enable or disable automatic renewal. */
-  autoRenew?: boolean;
+  autoRenew?: boolean | null;
 }
 export const RegistrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
     prefer: S.optional(RegistrationsEditRequestPrefer.pipe(T.Header("Prefer"))),
-    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
   })
     .pipe(
       T.Http({
@@ -894,12 +908,12 @@ export interface RegistrationsEditResponseLinks {
   /** URL to this status resource. */
   self: string;
   /** URL to the domain resource. */
-  resource?: string;
+  resource?: string | null;
 }
 export const RegistrationsEditResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
-    resource: S.optional(S.String),
+    resource: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RegistrationsEditResponseLinks",
@@ -947,9 +961,9 @@ export interface RegistrationsEditResponse {
   state: RegistrationsEditResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
-  context?: RegistrationsEditResponseContextMap;
+  context?: RegistrationsEditResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationsEditResponseError;
+  error?: RegistrationsEditResponseError | null;
 }
 export const RegistrationsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -958,8 +972,8 @@ export const RegistrationsEditResponse = /*@__PURE__*/ S.suspend(() =>
     links: RegistrationsEditResponseLinks,
     state: RegistrationsEditResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(RegistrationsEditResponseContextMap),
-    error: S.optional(RegistrationsEditResponseError),
+    context: S.optional(S.NullOr(RegistrationsEditResponseContextMap)),
+    error: S.optional(S.NullOr(RegistrationsEditResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsEditResponse",
@@ -1199,19 +1213,19 @@ export interface SearchResponseDomainsItem {
   /** Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration. */
   registrable: boolean;
   /** Annual pricing information for a registrable domain. This object is only */
-  pricing?: SearchResponseDomainsItemPricing;
+  pricing?: SearchResponseDomainsItemPricing | null;
   /** Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status. */
-  reason?: SearchResponseDomainsItemReason;
+  reason?: SearchResponseDomainsItemReason | null;
   /** The pricing tier for this domain. Always present when `registrable` is `true`; */
-  tier?: SearchResponseDomainsItemTier;
+  tier?: SearchResponseDomainsItemTier | null;
 }
 export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
-    pricing: S.optional(SearchResponseDomainsItemPricing),
-    reason: S.optional(SearchResponseDomainsItemReason),
-    tier: S.optional(SearchResponseDomainsItemTier),
+    pricing: S.optional(S.NullOr(SearchResponseDomainsItemPricing)),
+    reason: S.optional(S.NullOr(SearchResponseDomainsItemReason)),
+    tier: S.optional(S.NullOr(SearchResponseDomainsItemTier)),
   }),
 ).annotate({
   identifier: "SearchResponseDomainsItem",

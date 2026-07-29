@@ -146,17 +146,19 @@ export type DbInstanceType =
   | "db.influx.8xlarge"
   | "db.influx.12xlarge"
   | "db.influx.16xlarge"
-  | "db.influx.24xlarge";
+  | "db.influx.24xlarge"
+  | (string & {});
 export const DbInstanceType = /*@__PURE__*/ S.String;
 
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
-  | "InfluxIOIncludedT3";
+  | "InfluxIOIncludedT3"
+  | (string & {});
 export const DbStorageType = /*@__PURE__*/ S.String;
 
 export type AllocatedStorage = number;
-export type NetworkType = "IPV4" | "DUAL";
+export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export type VpcSubnetId = string;
@@ -165,10 +167,10 @@ export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
-export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS";
+export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
 export const ClusterDeploymentType = /*@__PURE__*/ S.String;
 
-export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER";
+export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
 export const FailoverMode = /*@__PURE__*/ S.String;
 
 export interface S3Configuration {
@@ -214,15 +216,15 @@ export interface CreateDbClusterInput {
   bucket?: string;
   port?: number;
   dbParameterGroupIdentifier?: string;
-  dbInstanceType: DbInstanceType | (string & {});
-  dbStorageType?: DbStorageType | (string & {});
+  dbInstanceType: DbInstanceType;
+  dbStorageType?: DbStorageType;
   allocatedStorage?: number;
-  networkType?: NetworkType | (string & {});
+  networkType?: NetworkType;
   publiclyAccessible?: boolean;
   vpcSubnetIds: string[];
   vpcSecurityGroupIds: string[];
-  deploymentType?: ClusterDeploymentType | (string & {});
-  failoverMode?: FailoverMode | (string & {});
+  deploymentType?: ClusterDeploymentType;
+  failoverMode?: FailoverMode;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
   maintenanceSchedule?: MaintenanceSchedule;
   tags?: { [key: string]: string | undefined };
@@ -266,7 +268,8 @@ export type ClusterStatus =
   | "UPDATING_INSTANCE_TYPE"
   | "REBOOTING"
   | "REBOOT_FAILED"
-  | "PARTIALLY_AVAILABLE";
+  | "PARTIALLY_AVAILABLE"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDbClusterOutput {
@@ -282,7 +285,10 @@ export const CreateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDbClusterOutput",
 }) as any as S.Schema<CreateDbClusterOutput>;
 export type DbInstanceName = string;
-export type DeploymentType = "SINGLE_AZ" | "WITH_MULTIAZ_STANDBY";
+export type DeploymentType =
+  | "SINGLE_AZ"
+  | "WITH_MULTIAZ_STANDBY"
+  | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface CreateDbInstanceInput {
@@ -291,19 +297,19 @@ export interface CreateDbInstanceInput {
   password: string | redacted.Redacted<string>;
   organization?: string;
   bucket?: string;
-  dbInstanceType: DbInstanceType | (string & {});
+  dbInstanceType: DbInstanceType;
   vpcSubnetIds: string[];
   vpcSecurityGroupIds: string[];
   publiclyAccessible?: boolean;
-  dbStorageType?: DbStorageType | (string & {});
+  dbStorageType?: DbStorageType;
   allocatedStorage: number;
   dbParameterGroupIdentifier?: string;
-  deploymentType?: DeploymentType | (string & {});
+  deploymentType?: DeploymentType;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
   maintenanceSchedule?: MaintenanceSchedule;
   tags?: { [key: string]: string | undefined };
   port?: number;
-  networkType?: NetworkType | (string & {});
+  networkType?: NetworkType;
 }
 export const CreateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -345,7 +351,8 @@ export type Status =
   | "UPDATING_INSTANCE_TYPE"
   | "MAINTENANCE"
   | "REBOOTING"
-  | "REBOOT_FAILED";
+  | "REBOOT_FAILED"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export type InstanceMode =
@@ -355,7 +362,8 @@ export type InstanceMode =
   | "INGEST"
   | "QUERY"
   | "COMPACT"
-  | "PROCESS";
+  | "PROCESS"
+  | (string & {});
 export const InstanceMode = /*@__PURE__*/ S.String;
 
 export type InstanceModeList = InstanceMode[];
@@ -423,10 +431,10 @@ export const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDbInstanceOutput",
 }) as any as S.Schema<CreateDbInstanceOutput>;
 export type DbParameterGroupName = string;
-export type LogLevel = "debug" | "info" | "error";
+export type LogLevel = "debug" | "info" | "error" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
 
-export type TracingType = "log" | "jaeger" | "disabled";
+export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
 export const TracingType = /*@__PURE__*/ S.String;
 
 export type DurationType =
@@ -434,11 +442,12 @@ export type DurationType =
   | "minutes"
   | "seconds"
   | "milliseconds"
-  | "days";
+  | "days"
+  | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
 
 export interface Duration {
-  durationType: DurationType | (string & {});
+  durationType: DurationType;
   value: number;
 }
 export const Duration = /*@__PURE__*/ S.suspend(() =>
@@ -446,11 +455,11 @@ export const Duration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 export interface InfluxDBv2Parameters {
   fluxLogEnabled?: boolean;
-  logLevel?: LogLevel | (string & {});
+  logLevel?: LogLevel;
   noTasks?: boolean;
   queryConcurrency?: number;
   queryQueueSize?: number;
-  tracingType?: TracingType | (string & {});
+  tracingType?: TracingType;
   metricsDisabled?: boolean;
   httpIdleTimeout?: Duration;
   httpReadHeaderTimeout?: Duration;
@@ -520,10 +529,13 @@ export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InfluxDBv2Parameters",
 }) as any as S.Schema<InfluxDBv2Parameters>;
-export type LogFormats = "full";
+export type LogFormats = "full" | (string & {});
 export const LogFormats = /*@__PURE__*/ S.String;
 
-export type DataFusionRuntimeType = "multi-thread" | "multi-thread-alt";
+export type DataFusionRuntimeType =
+  | "multi-thread"
+  | "multi-thread-alt"
+  | (string & {});
 export const DataFusionRuntimeType = /*@__PURE__*/ S.String;
 
 export type PercentOrAbsoluteLong =
@@ -537,9 +549,9 @@ export interface InfluxDBv3CoreParameters {
   queryFileLimit?: number;
   queryLogSize?: number;
   logFilter?: string;
-  logFormat?: LogFormats | (string & {});
+  logFormat?: LogFormats;
   dataFusionNumThreads?: number;
-  dataFusionRuntimeType?: DataFusionRuntimeType | (string & {});
+  dataFusionRuntimeType?: DataFusionRuntimeType;
   dataFusionRuntimeDisableLifoSlot?: boolean;
   dataFusionRuntimeEventInterval?: number;
   dataFusionRuntimeGlobalQueueInterval?: number;
@@ -623,9 +635,9 @@ export interface InfluxDBv3EnterpriseParameters {
   queryFileLimit?: number;
   queryLogSize?: number;
   logFilter?: string;
-  logFormat?: LogFormats | (string & {});
+  logFormat?: LogFormats;
   dataFusionNumThreads?: number;
-  dataFusionRuntimeType?: DataFusionRuntimeType | (string & {});
+  dataFusionRuntimeType?: DataFusionRuntimeType;
   dataFusionRuntimeDisableLifoSlot?: boolean;
   dataFusionRuntimeEventInterval?: number;
   dataFusionRuntimeGlobalQueueInterval?: number;
@@ -893,7 +905,8 @@ export const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export type EngineType =
   | "INFLUXDB_V2"
   | "INFLUXDB_V3_CORE"
-  | "INFLUXDB_V3_ENTERPRISE";
+  | "INFLUXDB_V3_ENTERPRISE"
+  | (string & {});
 export const EngineType = /*@__PURE__*/ S.String;
 
 export interface ClusterConfiguration {
@@ -1461,8 +1474,8 @@ export interface UpdateDbClusterInput {
   logDeliveryConfiguration?: LogDeliveryConfiguration;
   dbParameterGroupIdentifier?: string;
   port?: number;
-  dbInstanceType?: DbInstanceType | (string & {});
-  failoverMode?: FailoverMode | (string & {});
+  dbInstanceType?: DbInstanceType;
+  failoverMode?: FailoverMode;
   maintenanceSchedule?: MaintenanceSchedule;
 }
 export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
@@ -1493,9 +1506,9 @@ export interface UpdateDbInstanceInput {
   logDeliveryConfiguration?: LogDeliveryConfiguration;
   dbParameterGroupIdentifier?: string;
   port?: number;
-  dbInstanceType?: DbInstanceType | (string & {});
-  deploymentType?: DeploymentType | (string & {});
-  dbStorageType?: DbStorageType | (string & {});
+  dbInstanceType?: DbInstanceType;
+  deploymentType?: DeploymentType;
+  dbStorageType?: DbStorageType;
   allocatedStorage?: number;
   maintenanceSchedule?: MaintenanceSchedule;
 }
@@ -1578,7 +1591,10 @@ export const UpdateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDbInstanceOutput",
 }) as any as S.Schema<UpdateDbInstanceOutput>;
-export type ValidationExceptionReason = "FIELD_VALIDATION_FAILED" | "OTHER";
+export type ValidationExceptionReason =
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type CreateDbClusterError =

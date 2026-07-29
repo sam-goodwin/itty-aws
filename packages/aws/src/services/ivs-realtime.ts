@@ -345,7 +345,7 @@ export const ParticipantAttributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type IngestProtocol = "RTMP" | "RTMPS";
+export type IngestProtocol = "RTMP" | "RTMPS" | (string & {});
 export const IngestProtocol = /*@__PURE__*/ S.String;
 
 export type InsecureIngest = boolean;
@@ -355,7 +355,7 @@ export interface CreateIngestConfigurationRequest {
   stageArn?: string;
   userId?: string;
   attributes?: { [key: string]: string | undefined };
-  ingestProtocol: IngestProtocol | (string & {});
+  ingestProtocol: IngestProtocol;
   insecureIngest?: boolean;
   redundantIngest?: boolean;
   tags?: { [key: string]: string | undefined };
@@ -541,30 +541,28 @@ export type AutoParticipantRecordingStorageConfigurationArn = string;
 export type ParticipantRecordingMediaType =
   | "AUDIO_VIDEO"
   | "AUDIO_ONLY"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const ParticipantRecordingMediaType = /*@__PURE__*/ S.String;
 
-export type ParticipantRecordingMediaTypeList = (
-  | ParticipantRecordingMediaType
-  | (string & {})
-)[];
+export type ParticipantRecordingMediaTypeList = ParticipantRecordingMediaType[];
 export const ParticipantRecordingMediaTypeList = /*@__PURE__*/ S.Array(
   ParticipantRecordingMediaType,
 );
 export type ThumbnailIntervalSeconds = number;
-export type ThumbnailStorageType = "SEQUENTIAL" | "LATEST";
+export type ThumbnailStorageType = "SEQUENTIAL" | "LATEST" | (string & {});
 export const ThumbnailStorageType = /*@__PURE__*/ S.String;
 
-export type ThumbnailStorageTypeList = (ThumbnailStorageType | (string & {}))[];
+export type ThumbnailStorageTypeList = ThumbnailStorageType[];
 export const ThumbnailStorageTypeList =
   /*@__PURE__*/ S.Array(ThumbnailStorageType);
-export type ThumbnailRecordingMode = "INTERVAL" | "DISABLED";
+export type ThumbnailRecordingMode = "INTERVAL" | "DISABLED" | (string & {});
 export const ThumbnailRecordingMode = /*@__PURE__*/ S.String;
 
 export interface ParticipantThumbnailConfiguration {
   targetIntervalSeconds?: number;
-  storage?: (ThumbnailStorageType | (string & {}))[];
-  recordingMode?: ThumbnailRecordingMode | (string & {});
+  storage?: ThumbnailStorageType[];
+  recordingMode?: ThumbnailRecordingMode;
 }
 export const ParticipantThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -588,7 +586,7 @@ export const ParticipantRecordingHlsConfiguration = /*@__PURE__*/ S.suspend(
 export type RecordParticipantReplicas = boolean;
 export interface AutoParticipantRecordingConfiguration {
   storageConfigurationArn: string;
-  mediaTypes?: (ParticipantRecordingMediaType | (string & {}))[];
+  mediaTypes?: ParticipantRecordingMediaType[];
   thumbnailConfiguration?: ParticipantThumbnailConfiguration;
   recordingReconnectWindowSeconds?: number;
   hlsConfiguration?: ParticipantRecordingHlsConfiguration;
@@ -910,18 +908,23 @@ export const GetCompositionRequest = /*@__PURE__*/ S.suspend(() =>
 export type CompositionState = string;
 export type AttributeKey = string;
 export type OmitStoppedVideo = boolean;
-export type VideoAspectRatio = "AUTO" | "VIDEO" | "SQUARE" | "PORTRAIT";
+export type VideoAspectRatio =
+  | "AUTO"
+  | "VIDEO"
+  | "SQUARE"
+  | "PORTRAIT"
+  | (string & {});
 export const VideoAspectRatio = /*@__PURE__*/ S.String;
 
-export type VideoFillMode = "FILL" | "COVER" | "CONTAIN";
+export type VideoFillMode = "FILL" | "COVER" | "CONTAIN" | (string & {});
 export const VideoFillMode = /*@__PURE__*/ S.String;
 
 export type GridGap = number;
 export interface GridConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
-  videoAspectRatio?: VideoAspectRatio | (string & {});
-  videoFillMode?: VideoFillMode | (string & {});
+  videoAspectRatio?: VideoAspectRatio;
+  videoFillMode?: VideoFillMode;
   gridGap?: number;
   participantOrderAttribute?: string;
 }
@@ -937,7 +940,7 @@ export const GridConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GridConfiguration",
 }) as any as S.Schema<GridConfiguration>;
-export type PipBehavior = "STATIC" | "DYNAMIC";
+export type PipBehavior = "STATIC" | "DYNAMIC" | (string & {});
 export const PipBehavior = /*@__PURE__*/ S.String;
 
 export type PipOffset = number;
@@ -945,7 +948,8 @@ export type PipPosition =
   | "TOP_LEFT"
   | "TOP_RIGHT"
   | "BOTTOM_LEFT"
-  | "BOTTOM_RIGHT";
+  | "BOTTOM_RIGHT"
+  | (string & {});
 export const PipPosition = /*@__PURE__*/ S.String;
 
 export type PipWidth = number;
@@ -953,12 +957,12 @@ export type PipHeight = number;
 export interface PipConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
-  videoFillMode?: VideoFillMode | (string & {});
+  videoFillMode?: VideoFillMode;
   gridGap?: number;
   pipParticipantAttribute?: string;
-  pipBehavior?: PipBehavior | (string & {});
+  pipBehavior?: PipBehavior;
   pipOffset?: number;
-  pipPosition?: PipPosition | (string & {});
+  pipPosition?: PipPosition;
   pipWidth?: number;
   pipHeight?: number;
   participantOrderAttribute?: string;
@@ -1033,7 +1037,7 @@ export const RecordingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordingConfiguration>;
 export interface CompositionThumbnailConfiguration {
   targetIntervalSeconds?: number;
-  storage?: (ThumbnailStorageType | (string & {}))[];
+  storage?: ThumbnailStorageType[];
 }
 export const CompositionThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1225,7 +1229,12 @@ export type ParticipantClientAttribute = string;
 export type ParticipantRecordingS3BucketName = string;
 export type ParticipantRecordingS3Prefix = string;
 export type ParticipantRecordingState = string;
-export type ParticipantProtocol = "UNKNOWN" | "WHIP" | "RTMP" | "RTMPS";
+export type ParticipantProtocol =
+  | "UNKNOWN"
+  | "WHIP"
+  | "RTMP"
+  | "RTMPS"
+  | (string & {});
 export const ParticipantProtocol = /*@__PURE__*/ S.String;
 
 export type ReplicationType = string;
@@ -1701,7 +1710,8 @@ export type EventErrorCode =
   | "REUSE_OF_STREAM_KEY"
   | "B_FRAME_PRESENT"
   | "INVALID_INPUT"
-  | "INTERNAL_SERVER_EXCEPTION";
+  | "INTERNAL_SERVER_EXCEPTION"
+  | (string & {});
 export const EventErrorCode = /*@__PURE__*/ S.String;
 
 export type Replica = boolean;

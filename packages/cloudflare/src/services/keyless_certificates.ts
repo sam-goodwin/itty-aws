@@ -78,11 +78,11 @@ export interface CreateKeylessCertificateRequest {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestBundleMethod | (string & {});
+  bundleMethod?: CreateRequestBundleMethod | (string & {}) | null;
   /** The keyless SSL name. */
-  name?: string;
+  name?: string | null;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: CreateRequestTunnel;
+  tunnel?: CreateRequestTunnel | null;
 }
 export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -91,10 +91,10 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     host: S.String,
     port: S.Number,
     bundleMethod: S.optional(
-      CreateRequestBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(CreateRequestBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    name: S.optional(S.String),
-    tunnel: S.optional(CreateRequestTunnel),
+    name: S.optional(S.NullOr(S.String)),
+    tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
   })
     .pipe(
       T.Http({
@@ -152,7 +152,7 @@ export interface CreateKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: CreateResponseStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: CreateResponseTunnel;
+  tunnel?: CreateResponseTunnel | null;
 }
 export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -165,7 +165,7 @@ export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     permissions: CreateResponsePermissionsList,
     port: S.Number,
     status: CreateResponseStatus,
-    tunnel: S.optional(CreateResponseTunnel),
+    tunnel: S.optional(S.NullOr(CreateResponseTunnel)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateKeylessCertificateResponse",
@@ -197,11 +197,11 @@ export const DeleteKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteKeylessCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteKeylessCertificateResponse",
@@ -274,7 +274,7 @@ export interface GetKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: GetResponseStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: GetResponseTunnel;
+  tunnel?: GetResponseTunnel | null;
 }
 export const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -287,7 +287,7 @@ export const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     permissions: GetResponsePermissionsList,
     port: S.Number,
     status: GetResponseStatus,
-    tunnel: S.optional(GetResponseTunnel),
+    tunnel: S.optional(S.NullOr(GetResponseTunnel)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetKeylessCertificateResponse",
@@ -356,7 +356,7 @@ export interface ListResultItem {
   /** Status of the Keyless SSL. */
   status: ListResultItemStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: ListResultItemTunnel;
+  tunnel?: ListResultItemTunnel | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -369,7 +369,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     permissions: ListResultItemPermissionsList,
     port: S.Number,
     status: ListResultItemStatus,
-    tunnel: S.optional(ListResultItemTunnel),
+    tunnel: S.optional(S.NullOr(ListResultItemTunnel)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -414,25 +414,25 @@ export interface PatchKeylessCertificateRequest {
   /** Identifier. */
   keylessCertificateId: string;
   /** Whether or not the Keyless SSL is on or off. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The keyless SSL name. */
-  host?: string;
+  host?: string | null;
   /** The keyless SSL name. */
-  name?: string;
+  name?: string | null;
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
-  port?: number;
+  port?: number | null;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditRequestTunnel;
+  tunnel?: EditRequestTunnel | null;
 }
 export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-    enabled: S.optional(S.Boolean),
-    host: S.optional(S.String),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    tunnel: S.optional(EditRequestTunnel),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    host: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+    tunnel: S.optional(S.NullOr(EditRequestTunnel)),
   })
     .pipe(
       T.Http({
@@ -490,7 +490,7 @@ export interface PatchKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: EditResponseStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditResponseTunnel;
+  tunnel?: EditResponseTunnel | null;
 }
 export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -503,7 +503,7 @@ export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     permissions: EditResponsePermissionsList,
     port: S.Number,
     status: EditResponseStatus,
-    tunnel: S.optional(EditResponseTunnel),
+    tunnel: S.optional(S.NullOr(EditResponseTunnel)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchKeylessCertificateResponse",

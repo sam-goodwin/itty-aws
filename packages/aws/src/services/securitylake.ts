@@ -148,14 +148,15 @@ export type AwsLogSourceName =
   | "LAMBDA_EXECUTION"
   | "S3_DATA"
   | "EKS_AUDIT"
-  | "WAF";
+  | "WAF"
+  | (string & {});
 export const AwsLogSourceName = /*@__PURE__*/ S.String;
 
 export type AwsLogSourceVersion = string;
 export interface AwsLogSourceConfiguration {
   accounts?: string[];
   regions: string[];
-  sourceName: AwsLogSourceName | (string & {});
+  sourceName: AwsLogSourceName;
   sourceVersion?: string;
 }
 export const AwsLogSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -412,7 +413,12 @@ export const CreateDataLakeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataLakeRequest",
 }) as any as S.Schema<CreateDataLakeRequest>;
 export type S3BucketArn = string;
-export type DataLakeStatus = "INITIALIZED" | "PENDING" | "COMPLETED" | "FAILED";
+export type DataLakeStatus =
+  | "INITIALIZED"
+  | "PENDING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const DataLakeStatus = /*@__PURE__*/ S.String;
 
 export interface DataLakeUpdateException {
@@ -504,7 +510,7 @@ export const CreateDataLakeExceptionSubscriptionResponse =
     identifier: "CreateDataLakeExceptionSubscriptionResponse",
   }) as any as S.Schema<CreateDataLakeExceptionSubscriptionResponse>;
 export interface AwsLogSourceResource {
-  sourceName?: AwsLogSourceName | (string & {});
+  sourceName?: AwsLogSourceName;
   sourceVersion?: string;
 }
 export const AwsLogSourceResource = /*@__PURE__*/ S.suspend(() =>
@@ -572,17 +578,17 @@ export const LogSourceResource = /*@__PURE__*/ S.Union([
 ]);
 export type LogSourceResourceList = LogSourceResource[];
 export const LogSourceResourceList = /*@__PURE__*/ S.Array(LogSourceResource);
-export type AccessType = "LAKEFORMATION" | "S3";
+export type AccessType = "LAKEFORMATION" | "S3" | (string & {});
 export const AccessType = /*@__PURE__*/ S.String;
 
-export type AccessTypeList = (AccessType | (string & {}))[];
+export type AccessTypeList = AccessType[];
 export const AccessTypeList = /*@__PURE__*/ S.Array(AccessType);
 export interface CreateSubscriberRequest {
   subscriberIdentity: AwsIdentity;
   subscriberName: string;
   subscriberDescription?: string;
   sources: LogSourceResource[];
-  accessTypes?: (AccessType | (string & {}))[];
+  accessTypes?: AccessType[];
   tags?: Tag[];
 }
 export const CreateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
@@ -607,7 +613,12 @@ export const CreateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriberRequest",
 }) as any as S.Schema<CreateSubscriberRequest>;
 export type UUID = string;
-export type SubscriberStatus = "ACTIVE" | "DEACTIVATED" | "PENDING" | "READY";
+export type SubscriberStatus =
+  | "ACTIVE"
+  | "DEACTIVATED"
+  | "PENDING"
+  | "READY"
+  | (string & {});
 export const SubscriberStatus = /*@__PURE__*/ S.String;
 
 export type ResourceShareArn = string;
@@ -668,14 +679,14 @@ export const SqsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SqsNotificationConfiguration",
 }) as any as S.Schema<SqsNotificationConfiguration>;
-export type HttpMethod = "POST" | "PUT";
+export type HttpMethod = "POST" | "PUT" | (string & {});
 export const HttpMethod = /*@__PURE__*/ S.String;
 
 export interface HttpsNotificationConfiguration {
   endpoint: string;
   authorizationApiKeyName?: string;
   authorizationApiKeyValue?: string | redacted.Redacted<string>;
-  httpMethod?: HttpMethod | (string & {});
+  httpMethod?: HttpMethod;
   targetRoleArn: string;
 }
 export const HttpsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1027,7 +1038,8 @@ export const GetDataLakeSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SourceCollectionStatus =
   | "COLLECTING"
   | "MISCONFIGURED"
-  | "NOT_COLLECTING";
+  | "NOT_COLLECTING"
+  | (string & {});
 export const SourceCollectionStatus = /*@__PURE__*/ S.String;
 
 export interface DataLakeSourceStatus {

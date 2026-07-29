@@ -260,11 +260,11 @@ export const Logging = /*@__PURE__*/ S.Union([
 export type NetworkConnector = string;
 export type NetworkConnectorList = string[];
 export const NetworkConnectorList = /*@__PURE__*/ S.Array(S.String);
-export type Architecture = "ARM_64";
+export type Architecture = "ARM_64" | (string & {});
 export const Architecture = /*@__PURE__*/ S.String;
 
 export interface CpuConfiguration {
-  architecture: Architecture | (string & {});
+  architecture: Architecture;
 }
 export const CpuConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ architecture: Architecture }),
@@ -281,22 +281,22 @@ export const Resources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
 export type ResourcesList = Resources[];
 export const ResourcesList = /*@__PURE__*/ S.Array(Resources);
-export type Capability = "ALL";
+export type Capability = "ALL" | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
 
-export type CapabilityList = (Capability | (string & {}))[];
+export type CapabilityList = Capability[];
 export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
-export type HookState = "DISABLED" | "ENABLED";
+export type HookState = "DISABLED" | "ENABLED" | (string & {});
 export const HookState = /*@__PURE__*/ S.String;
 
 export interface MicrovmHooks {
-  run?: HookState | (string & {});
+  run?: HookState;
   runTimeoutInSeconds?: number;
-  resume?: HookState | (string & {});
+  resume?: HookState;
   resumeTimeoutInSeconds?: number;
-  suspend?: HookState | (string & {});
+  suspend?: HookState;
   suspendTimeoutInSeconds?: number;
-  terminate?: HookState | (string & {});
+  terminate?: HookState;
   terminateTimeoutInSeconds?: number;
 }
 export const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
@@ -312,9 +312,9 @@ export const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MicrovmHooks" }) as any as S.Schema<MicrovmHooks>;
 export interface MicrovmImageHooks {
-  ready?: HookState | (string & {});
+  ready?: HookState;
   readyTimeoutInSeconds?: number;
-  validate?: HookState | (string & {});
+  validate?: HookState;
   validateTimeoutInSeconds?: number;
 }
 export const MicrovmImageHooks = /*@__PURE__*/ S.suspend(() =>
@@ -361,7 +361,7 @@ export interface CreateMicrovmImageRequest {
   egressNetworkConnectors?: string[];
   cpuConfigurations?: CpuConfiguration[];
   resources?: Resources[];
-  additionalOsCapabilities?: (Capability | (string & {}))[];
+  additionalOsCapabilities?: Capability[];
   hooks?: Hooks;
   environmentVariables?: { [key: string]: string | undefined };
   name: string;
@@ -407,7 +407,8 @@ export type MicrovmImageState =
   | "UPDATE_FAILED"
   | "DELETING"
   | "DELETE_FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const MicrovmImageState = /*@__PURE__*/ S.String;
 
 export interface CreateMicrovmImageResponse {
@@ -555,7 +556,8 @@ export type MicrovmImageVersionState =
   | "FAILED"
   | "DELETING"
   | "DELETED"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MicrovmImageVersionState = /*@__PURE__*/ S.String;
 
 export interface DeleteMicrovmImageVersionOutput {
@@ -600,7 +602,8 @@ export type MicrovmState =
   | "SUSPENDING"
   | "SUSPENDED"
   | "TERMINATING"
-  | "TERMINATED";
+  | "TERMINATED"
+  | (string & {});
 export const MicrovmState = /*@__PURE__*/ S.String;
 
 export type MicrovmImageArn = string;
@@ -722,10 +725,15 @@ export const GetMicrovmImageBuildInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMicrovmImageBuildInput",
 }) as any as S.Schema<GetMicrovmImageBuildInput>;
-export type BuildState = "PENDING" | "IN_PROGRESS" | "SUCCESSFUL" | "FAILED";
+export type BuildState =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "SUCCESSFUL"
+  | "FAILED"
+  | (string & {});
 export const BuildState = /*@__PURE__*/ S.String;
 
-export type Chipset = "GRAVITON";
+export type Chipset = "GRAVITON" | (string & {});
 export const Chipset = /*@__PURE__*/ S.String;
 
 export interface SnapshotBuild {
@@ -792,7 +800,7 @@ export const GetMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMicrovmImageVersionInput",
 }) as any as S.Schema<GetMicrovmImageVersionInput>;
-export type MicrovmImageVersionStatus = "ACTIVE" | "INACTIVE";
+export type MicrovmImageVersionStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const MicrovmImageVersionStatus = /*@__PURE__*/ S.String;
 
 export interface GetMicrovmImageVersionOutput {
@@ -959,8 +967,8 @@ export interface ListMicrovmImageBuildsInput {
   nextToken?: string;
   imageIdentifier: string;
   imageVersion: string;
-  architecture?: Architecture | (string & {});
-  chipset?: Chipset | (string & {});
+  architecture?: Architecture;
+  chipset?: Chipset;
   chipsetGeneration?: string;
 }
 export const ListMicrovmImageBuildsInput = /*@__PURE__*/ S.suspend(() =>
@@ -1477,7 +1485,7 @@ export interface UpdateMicrovmImageRequest {
   egressNetworkConnectors?: string[];
   cpuConfigurations?: CpuConfiguration[];
   resources?: Resources[];
-  additionalOsCapabilities?: (Capability | (string & {}))[];
+  additionalOsCapabilities?: Capability[];
   hooks?: Hooks;
   environmentVariables?: { [key: string]: string | undefined };
   imageIdentifier: string;
@@ -1566,7 +1574,7 @@ export const UpdateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMicrovmImageVersionRequest {
   imageIdentifier: string;
   imageVersion: string;
-  status: MicrovmImageVersionStatus | (string & {});
+  status: MicrovmImageVersionStatus;
 }
 export const UpdateMicrovmImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

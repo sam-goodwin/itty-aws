@@ -1374,57 +1374,13 @@ export const awsSpec = (
     }
   };
 
-  // --- Direction classification (enum openness) ------------------------------
-  // Enum/intEnum ALIASES are emitted CLOSED (`type X = "a" | "b"`);
-  // request-reachable shapes — including shapes shared with responses —
-  // re-open enum references inline (`X | (string & {})`) so consumers can
-  // send tomorrow's values without an SDK update. Only references inside
-  // pure response/error shapes stay the plain closed alias.
-  const requestReachableNames = (() => {
-    const inputRoots: string[] = [];
-    for (const shape of Object.values(shapes)) {
-      if (shape.type !== "operation") continue;
-      if (shape.input?.target) inputRoots.push(shape.input.target);
-    }
-    const requestReachable = reachableFrom(shapes, inputRoots, shapeDeps);
-    const names = new Set<string>();
-    for (const id of requestReachable) names.add(formatName(id));
-    return names;
-  })();
-
-  /** The inline open arm for an enum-targeted reference, if any. */
-  const openEnumArm = (target: string): string | undefined => {
-    const t = shapes[target]?.type;
-    return t === "enum"
-      ? "(string & {})"
-      : t === "intEnum"
-        ? "(number & {})"
-        : undefined;
-  };
-
   /**
-   * TS type of a member/element reference as seen from inside the shape
-   * named `ownerName`: enum references from request-reachable shapes gain
-   * the inline open arm — including enums reached through inlined list
-   * elements and map values; everything else is the plain (closed) alias.
+   * TS type of a member/element reference. Enum openness lives on the
+   * ALIAS (`type X = "a" | (string & {})`, v0 surface), so references are
+   * always the plain alias regardless of direction.
    */
-  const tsTypeAt = (target: string, ownerName: string): string => {
-    if (!requestReachableNames.has(ownerName)) return tsTypeOf(target);
-    const shape = shapes[target];
-    if (shape?.type === "list") {
-      const elementType = tsTypeAt(shape.member.target, ownerName);
-      return elementType.includes("|")
-        ? `(${elementType})[]`
-        : `${elementType}[]`;
-    }
-    if (shape?.type === "map") {
-      const valueType = tsTypeAt(shape.value.target, ownerName);
-      return `{ [key: string]: ${valueType} | undefined }`;
-    }
-    const base = tsTypeOf(target);
-    const arm = openEnumArm(target);
-    return arm ? `${base} | ${arm}` : base;
-  };
+  const tsTypeAt = (target: string, _ownerName: string): string =>
+    tsTypeOf(target);
 
   // --- Member conversion (shared by structures and error classes) -----------
 
@@ -1779,7 +1735,10 @@ export const awsSpec = (
           return [`export type ${name} = ${tsType};`];
         }
 
-        // ---- Open string enums (spec-patch add/replace honored).
+        // ---- Open string enums (spec-patch add/replace honored). The
+        // alias itself carries the open arm (`type X = "a" | (string & {})`)
+        // in BOTH directions — v0 surface, which alchemy is written
+        // against; AWS adds enum values without an SDK release.
         case "enum": {
           const name = formatName(id);
           const enumOverride = serviceSpec.enums?.[name];
@@ -1794,11 +1753,16 @@ export const awsSpec = (
               enumValues = [...enumValues, ...enumOverride.add];
             }
           }
-          return enumDecl({ name, values: enumValues, pure: PURE });
+          const union = enumValues.length
+            ? `${enumValues.map((v) => JSON.stringify(v)).join(" | ")} | (string & {})`
+            : "string";
+          return [
+            `export type ${name} = ${union};`,
+            `export const ${name} = ${PURE}S.String;\n`,
+          ];
         }
 
-        // ---- Int enums: CLOSED numeric literal union aliases; request-side
-        // member references re-open them inline (`Y | (number & {})`).
+        // ---- Int enums: OPEN numeric literal union aliases (v0 surface).
         case "intEnum": {
           const name = formatName(id);
           const enumOverride = serviceSpec.enums?.[name];
@@ -1817,11 +1781,11 @@ export const awsSpec = (
             }
           }
           const intUnion = enumValues.length
-            ? enumValues.join(" | ")
+            ? `${enumValues.join(" | ")} | (number & {})`
             : "number";
           return [
             `export type ${name} = ${intUnion};`,
-            `export const ${name} = ${PURE}S.Literals([${enumValues.join(", ")}]);`,
+            `export const ${name} = ${PURE}S.Number;`,
           ];
         }
 
@@ -1924,13 +1888,9 @@ export const awsSpec = (
           // Value piped through S.optional so undefined values are accepted
           // (and dropped during serialization).
           const recordExpr = `S.Record(${wrappedKey}, ${wrappedValue}.pipe(S.optional))${sparsePipe}`;
-          // Request-reachable enum-key maps re-open the key inline so
-          // callers can send undocumented keys.
-          const keyArm = requestReachableNames.has(name)
-            ? openEnumArm(def.key.target)
-            : undefined;
+          // Enum-key maps map over the (open) alias directly.
           const typeAlias = isKeyEnum
-            ? `export type ${name} = { [key in ${keyTargetName}${keyArm ? ` | ${keyArm}` : ""}]?: ${valueTsType} };`
+            ? `export type ${name} = { [key in ${keyTargetName}]?: ${valueTsType} };`
             : `export type ${name} = { [key: string]: ${valueTsType} | undefined };`;
           return [
             typeAlias,

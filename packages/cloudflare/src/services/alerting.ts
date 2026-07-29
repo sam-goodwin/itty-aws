@@ -175,11 +175,11 @@ export const CreateDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDestinationPagerdutyResponse {
   /** token in form of UUID */
-  id?: string;
+  id?: string | null;
 }
 export const CreateDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationPagerdutyResponse",
@@ -193,14 +193,14 @@ export interface CreateDestinationWebhookRequest {
   /** The POST endpoint to call when dispatching a notification. */
   url: string;
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
+  secret?: string | null;
 }
 export const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     url: S.String,
-    secret: S.optional(S.String),
+    secret: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -217,11 +217,11 @@ export const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDestinationWebhookResponse {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const CreateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationWebhookResponse",
@@ -301,12 +301,12 @@ export const PoliciesCreateRequestAlertType = /*@__PURE__*/ S.String;
 
 export interface PoliciesCreateRequestMechanismsEmailItem {
   /** The email address */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PoliciesCreateRequestMechanismsEmailItem",
@@ -320,12 +320,12 @@ export const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesCreateRequestMechanismsPagerdutyItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesCreateRequestMechanismsPagerdutyItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesCreateRequestMechanismsPagerdutyItem",
@@ -340,12 +340,12 @@ export const PoliciesCreateRequestMechanismsPagerdutyList =
 
 export interface PoliciesCreateRequestMechanismsWebhooksItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesCreateRequestMechanismsWebhooksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesCreateRequestMechanismsWebhooksItem",
@@ -359,15 +359,17 @@ export const PoliciesCreateRequestMechanismsWebhooksList =
   ) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksList>;
 
 export interface PoliciesCreateRequestMechanisms {
-  email?: PoliciesCreateRequestMechanismsEmailList;
-  pagerduty?: PoliciesCreateRequestMechanismsPagerdutyList;
-  webhooks?: PoliciesCreateRequestMechanismsWebhooksList;
+  email?: PoliciesCreateRequestMechanismsEmailList | null;
+  pagerduty?: PoliciesCreateRequestMechanismsPagerdutyList | null;
+  webhooks?: PoliciesCreateRequestMechanismsWebhooksList | null;
 }
 export const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(PoliciesCreateRequestMechanismsEmailList),
-    pagerduty: S.optional(PoliciesCreateRequestMechanismsPagerdutyList),
-    webhooks: S.optional(PoliciesCreateRequestMechanismsWebhooksList),
+    email: S.optional(S.NullOr(PoliciesCreateRequestMechanismsEmailList)),
+    pagerduty: S.optional(
+      S.NullOr(PoliciesCreateRequestMechanismsPagerdutyList),
+    ),
+    webhooks: S.optional(S.NullOr(PoliciesCreateRequestMechanismsWebhooksList)),
   }),
 ).annotate({
   identifier: "PoliciesCreateRequestMechanisms",
@@ -626,223 +628,253 @@ export const PoliciesCreateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesCreateRequestFilters {
   /** Usage depends on specific alert type */
-  actions?: PoliciesCreateRequestFiltersActionsList;
+  actions?: PoliciesCreateRequestFiltersActionsList | null;
   /** Used for configuring radar_notification */
-  affectedAsns?: PoliciesCreateRequestFiltersAffectedAsnsList;
+  affectedAsns?: PoliciesCreateRequestFiltersAffectedAsnsList | null;
   /** Used for configuring incident_alert */
-  affectedComponents?: PoliciesCreateRequestFiltersAffectedComponentsList;
+  affectedComponents?: PoliciesCreateRequestFiltersAffectedComponentsList | null;
   /** Used for configuring radar_notification */
-  affectedLocations?: PoliciesCreateRequestFiltersAffectedLocationsList;
+  affectedLocations?: PoliciesCreateRequestFiltersAffectedLocationsList | null;
   /** Used for configuring maintenance_event_notification */
-  airportCode?: PoliciesCreateRequestFiltersAirportCodeList;
+  airportCode?: PoliciesCreateRequestFiltersAirportCodeList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferences?: PoliciesCreateRequestFiltersAlertTriggerPreferencesList;
+  alertTriggerPreferences?: PoliciesCreateRequestFiltersAlertTriggerPreferencesList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferencesValue?: PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList;
+  alertTriggerPreferencesValue?: PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList | null;
   /** Used for configuring load_balancing_pool_enablement_alert */
-  enabled?: PoliciesCreateRequestFiltersEnabledList;
+  enabled?: PoliciesCreateRequestFiltersEnabledList | null;
   /** Used for configuring pages_event_alert */
-  environment?: PoliciesCreateRequestFiltersEnvironmentList;
+  environment?: PoliciesCreateRequestFiltersEnvironmentList | null;
   /** Used for configuring pages_event_alert */
-  event?: PoliciesCreateRequestFiltersEventList;
+  event?: PoliciesCreateRequestFiltersEventList | null;
   /** Used for configuring load_balancing_health_alert */
-  eventSource?: PoliciesCreateRequestFiltersEventSourceList;
+  eventSource?: PoliciesCreateRequestFiltersEventSourceList | null;
   /** Usage depends on specific alert type */
-  eventType?: PoliciesCreateRequestFiltersEventTypeList;
+  eventType?: PoliciesCreateRequestFiltersEventTypeList | null;
   /** Usage depends on specific alert type */
-  groupBy?: PoliciesCreateRequestFiltersGroupByList;
+  groupBy?: PoliciesCreateRequestFiltersGroupByList | null;
   /** Used for configuring health_check_status_notification */
-  healthCheckId?: PoliciesCreateRequestFiltersHealthCheckIdList;
+  healthCheckId?: PoliciesCreateRequestFiltersHealthCheckIdList | null;
   /** Used for configuring incident_alert */
-  incidentImpact?: PoliciesCreateRequestFiltersIncidentImpactList;
+  incidentImpact?: PoliciesCreateRequestFiltersIncidentImpactList | null;
   /** Used for configuring stream_live_notifications */
-  inputId?: PoliciesCreateRequestFiltersInputIdList;
+  inputId?: PoliciesCreateRequestFiltersInputIdList | null;
   /** Used for configuring security_insights_alert */
-  insightClass?: PoliciesCreateRequestFiltersInsightClassList;
+  insightClass?: PoliciesCreateRequestFiltersInsightClassList | null;
   /** Used for configuring billing_usage_alert */
-  limit?: PoliciesCreateRequestFiltersLimitList;
+  limit?: PoliciesCreateRequestFiltersLimitList | null;
   /** Used for configuring logo_match_alert */
-  logoTag?: PoliciesCreateRequestFiltersLogoTagList;
+  logoTag?: PoliciesCreateRequestFiltersLogoTagList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  megabitsPerSecond?: PoliciesCreateRequestFiltersMegabitsPerSecondList;
+  megabitsPerSecond?: PoliciesCreateRequestFiltersMegabitsPerSecondList | null;
   /** Used for configuring load_balancing_health_alert */
-  newHealth?: PoliciesCreateRequestFiltersNewHealthList;
+  newHealth?: PoliciesCreateRequestFiltersNewHealthList | null;
   /** Used for configuring tunnel_health_event */
-  newStatus?: PoliciesCreateRequestFiltersNewStatusList;
+  newStatus?: PoliciesCreateRequestFiltersNewStatusList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  packetsPerSecond?: PoliciesCreateRequestFiltersPacketsPerSecondList;
+  packetsPerSecond?: PoliciesCreateRequestFiltersPacketsPerSecondList | null;
   /** Usage depends on specific alert type */
-  poolId?: PoliciesCreateRequestFiltersPoolIdList;
+  poolId?: PoliciesCreateRequestFiltersPoolIdList | null;
   /** Usage depends on specific alert type */
-  popNames?: PoliciesCreateRequestFiltersPopNamesList;
+  popNames?: PoliciesCreateRequestFiltersPopNamesList | null;
   /** Used for configuring billing_usage_alert */
-  product?: PoliciesCreateRequestFiltersProductList;
+  product?: PoliciesCreateRequestFiltersProductList | null;
   /** Used for configuring pages_event_alert */
-  projectId?: PoliciesCreateRequestFiltersProjectIdList;
+  projectId?: PoliciesCreateRequestFiltersProjectIdList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  protocol?: PoliciesCreateRequestFiltersProtocolList;
+  protocol?: PoliciesCreateRequestFiltersProtocolList | null;
   /** Usage depends on specific alert type */
-  queryTag?: PoliciesCreateRequestFiltersQueryTagList;
+  queryTag?: PoliciesCreateRequestFiltersQueryTagList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  requestsPerSecond?: PoliciesCreateRequestFiltersRequestsPerSecondList;
+  requestsPerSecond?: PoliciesCreateRequestFiltersRequestsPerSecondList | null;
   /** Usage depends on specific alert type */
-  selectors?: PoliciesCreateRequestFiltersSelectorsList;
+  selectors?: PoliciesCreateRequestFiltersSelectorsList | null;
   /** Used for configuring clickhouse_alert_fw_ent_anomaly */
-  services?: PoliciesCreateRequestFiltersServicesList;
+  services?: PoliciesCreateRequestFiltersServicesList | null;
   /** Usage depends on specific alert type */
-  slo?: PoliciesCreateRequestFiltersSloList;
+  slo?: PoliciesCreateRequestFiltersSloList | null;
   /** Used for configuring health_check_status_notification */
-  status?: PoliciesCreateRequestFiltersStatusList;
+  status?: PoliciesCreateRequestFiltersStatusList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetHostname?: PoliciesCreateRequestFiltersTargetHostnameList;
+  targetHostname?: PoliciesCreateRequestFiltersTargetHostnameList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  targetIp?: PoliciesCreateRequestFiltersTargetIpList;
+  targetIp?: PoliciesCreateRequestFiltersTargetIpList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetZoneName?: PoliciesCreateRequestFiltersTargetZoneNameList;
+  targetZoneName?: PoliciesCreateRequestFiltersTargetZoneNameList | null;
   /** Used for configuring traffic_anomalies_alert */
-  trafficExclusions?: PoliciesCreateRequestFiltersTrafficExclusionsList;
+  trafficExclusions?: PoliciesCreateRequestFiltersTrafficExclusionsList | null;
   /** Used for configuring tunnel_health_event */
-  tunnelId?: PoliciesCreateRequestFiltersTunnelIdList;
+  tunnelId?: PoliciesCreateRequestFiltersTunnelIdList | null;
   /** Usage depends on specific alert type */
-  tunnelName?: PoliciesCreateRequestFiltersTunnelNameList;
+  tunnelName?: PoliciesCreateRequestFiltersTunnelNameList | null;
   /** Usage depends on specific alert type */
-  type?: PoliciesCreateRequestFiltersTypeList;
+  type?: PoliciesCreateRequestFiltersTypeList | null;
   /** Usage depends on specific alert type */
-  where?: PoliciesCreateRequestFiltersWhereList;
+  where?: PoliciesCreateRequestFiltersWhereList | null;
   /** Usage depends on specific alert type */
-  zones?: PoliciesCreateRequestFiltersZonesList;
+  zones?: PoliciesCreateRequestFiltersZonesList | null;
 }
 export const PoliciesCreateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actions: S.optional(PoliciesCreateRequestFiltersActionsList),
+    actions: S.optional(S.NullOr(PoliciesCreateRequestFiltersActionsList)),
     affectedAsns: S.optional(
-      PoliciesCreateRequestFiltersAffectedAsnsList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersAffectedAsnsList).pipe(
         T.Body("affected_asns"),
       ),
     ),
     affectedComponents: S.optional(
-      PoliciesCreateRequestFiltersAffectedComponentsList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersAffectedComponentsList).pipe(
         T.Body("affected_components"),
       ),
     ),
     affectedLocations: S.optional(
-      PoliciesCreateRequestFiltersAffectedLocationsList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersAffectedLocationsList).pipe(
         T.Body("affected_locations"),
       ),
     ),
     airportCode: S.optional(
-      PoliciesCreateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
+      S.NullOr(PoliciesCreateRequestFiltersAirportCodeList).pipe(
+        T.Body("airport_code"),
+      ),
     ),
     alertTriggerPreferences: S.optional(
-      PoliciesCreateRequestFiltersAlertTriggerPreferencesList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersAlertTriggerPreferencesList).pipe(
         T.Body("alert_trigger_preferences"),
       ),
     ),
     alertTriggerPreferencesValue: S.optional(
-      PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList.pipe(
-        T.Body("alert_trigger_preferences_value"),
+      S.NullOr(
+        PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList,
+      ).pipe(T.Body("alert_trigger_preferences_value")),
+    ),
+    enabled: S.optional(S.NullOr(PoliciesCreateRequestFiltersEnabledList)),
+    environment: S.optional(
+      S.NullOr(PoliciesCreateRequestFiltersEnvironmentList),
+    ),
+    event: S.optional(S.NullOr(PoliciesCreateRequestFiltersEventList)),
+    eventSource: S.optional(
+      S.NullOr(PoliciesCreateRequestFiltersEventSourceList).pipe(
+        T.Body("event_source"),
       ),
     ),
-    enabled: S.optional(PoliciesCreateRequestFiltersEnabledList),
-    environment: S.optional(PoliciesCreateRequestFiltersEnvironmentList),
-    event: S.optional(PoliciesCreateRequestFiltersEventList),
-    eventSource: S.optional(
-      PoliciesCreateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
-    ),
     eventType: S.optional(
-      PoliciesCreateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
+      S.NullOr(PoliciesCreateRequestFiltersEventTypeList).pipe(
+        T.Body("event_type"),
+      ),
     ),
     groupBy: S.optional(
-      PoliciesCreateRequestFiltersGroupByList.pipe(T.Body("group_by")),
+      S.NullOr(PoliciesCreateRequestFiltersGroupByList).pipe(
+        T.Body("group_by"),
+      ),
     ),
     healthCheckId: S.optional(
-      PoliciesCreateRequestFiltersHealthCheckIdList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersHealthCheckIdList).pipe(
         T.Body("health_check_id"),
       ),
     ),
     incidentImpact: S.optional(
-      PoliciesCreateRequestFiltersIncidentImpactList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersIncidentImpactList).pipe(
         T.Body("incident_impact"),
       ),
     ),
     inputId: S.optional(
-      PoliciesCreateRequestFiltersInputIdList.pipe(T.Body("input_id")),
+      S.NullOr(PoliciesCreateRequestFiltersInputIdList).pipe(
+        T.Body("input_id"),
+      ),
     ),
     insightClass: S.optional(
-      PoliciesCreateRequestFiltersInsightClassList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersInsightClassList).pipe(
         T.Body("insight_class"),
       ),
     ),
-    limit: S.optional(PoliciesCreateRequestFiltersLimitList),
+    limit: S.optional(S.NullOr(PoliciesCreateRequestFiltersLimitList)),
     logoTag: S.optional(
-      PoliciesCreateRequestFiltersLogoTagList.pipe(T.Body("logo_tag")),
+      S.NullOr(PoliciesCreateRequestFiltersLogoTagList).pipe(
+        T.Body("logo_tag"),
+      ),
     ),
     megabitsPerSecond: S.optional(
-      PoliciesCreateRequestFiltersMegabitsPerSecondList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersMegabitsPerSecondList).pipe(
         T.Body("megabits_per_second"),
       ),
     ),
     newHealth: S.optional(
-      PoliciesCreateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
+      S.NullOr(PoliciesCreateRequestFiltersNewHealthList).pipe(
+        T.Body("new_health"),
+      ),
     ),
     newStatus: S.optional(
-      PoliciesCreateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
+      S.NullOr(PoliciesCreateRequestFiltersNewStatusList).pipe(
+        T.Body("new_status"),
+      ),
     ),
     packetsPerSecond: S.optional(
-      PoliciesCreateRequestFiltersPacketsPerSecondList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersPacketsPerSecondList).pipe(
         T.Body("packets_per_second"),
       ),
     ),
     poolId: S.optional(
-      PoliciesCreateRequestFiltersPoolIdList.pipe(T.Body("pool_id")),
+      S.NullOr(PoliciesCreateRequestFiltersPoolIdList).pipe(T.Body("pool_id")),
     ),
     popNames: S.optional(
-      PoliciesCreateRequestFiltersPopNamesList.pipe(T.Body("pop_names")),
+      S.NullOr(PoliciesCreateRequestFiltersPopNamesList).pipe(
+        T.Body("pop_names"),
+      ),
     ),
-    product: S.optional(PoliciesCreateRequestFiltersProductList),
+    product: S.optional(S.NullOr(PoliciesCreateRequestFiltersProductList)),
     projectId: S.optional(
-      PoliciesCreateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
+      S.NullOr(PoliciesCreateRequestFiltersProjectIdList).pipe(
+        T.Body("project_id"),
+      ),
     ),
-    protocol: S.optional(PoliciesCreateRequestFiltersProtocolList),
+    protocol: S.optional(S.NullOr(PoliciesCreateRequestFiltersProtocolList)),
     queryTag: S.optional(
-      PoliciesCreateRequestFiltersQueryTagList.pipe(T.Body("query_tag")),
+      S.NullOr(PoliciesCreateRequestFiltersQueryTagList).pipe(
+        T.Body("query_tag"),
+      ),
     ),
     requestsPerSecond: S.optional(
-      PoliciesCreateRequestFiltersRequestsPerSecondList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersRequestsPerSecondList).pipe(
         T.Body("requests_per_second"),
       ),
     ),
-    selectors: S.optional(PoliciesCreateRequestFiltersSelectorsList),
-    services: S.optional(PoliciesCreateRequestFiltersServicesList),
-    slo: S.optional(PoliciesCreateRequestFiltersSloList),
-    status: S.optional(PoliciesCreateRequestFiltersStatusList),
+    selectors: S.optional(S.NullOr(PoliciesCreateRequestFiltersSelectorsList)),
+    services: S.optional(S.NullOr(PoliciesCreateRequestFiltersServicesList)),
+    slo: S.optional(S.NullOr(PoliciesCreateRequestFiltersSloList)),
+    status: S.optional(S.NullOr(PoliciesCreateRequestFiltersStatusList)),
     targetHostname: S.optional(
-      PoliciesCreateRequestFiltersTargetHostnameList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersTargetHostnameList).pipe(
         T.Body("target_hostname"),
       ),
     ),
     targetIp: S.optional(
-      PoliciesCreateRequestFiltersTargetIpList.pipe(T.Body("target_ip")),
+      S.NullOr(PoliciesCreateRequestFiltersTargetIpList).pipe(
+        T.Body("target_ip"),
+      ),
     ),
     targetZoneName: S.optional(
-      PoliciesCreateRequestFiltersTargetZoneNameList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersTargetZoneNameList).pipe(
         T.Body("target_zone_name"),
       ),
     ),
     trafficExclusions: S.optional(
-      PoliciesCreateRequestFiltersTrafficExclusionsList.pipe(
+      S.NullOr(PoliciesCreateRequestFiltersTrafficExclusionsList).pipe(
         T.Body("traffic_exclusions"),
       ),
     ),
     tunnelId: S.optional(
-      PoliciesCreateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+      S.NullOr(PoliciesCreateRequestFiltersTunnelIdList).pipe(
+        T.Body("tunnel_id"),
+      ),
     ),
     tunnelName: S.optional(
-      PoliciesCreateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+      S.NullOr(PoliciesCreateRequestFiltersTunnelNameList).pipe(
+        T.Body("tunnel_name"),
+      ),
     ),
-    type: S.optional(PoliciesCreateRequestFiltersTypeList),
-    where: S.optional(PoliciesCreateRequestFiltersWhereList),
-    zones: S.optional(PoliciesCreateRequestFiltersZonesList),
+    type: S.optional(S.NullOr(PoliciesCreateRequestFiltersTypeList)),
+    where: S.optional(S.NullOr(PoliciesCreateRequestFiltersWhereList)),
+    zones: S.optional(S.NullOr(PoliciesCreateRequestFiltersZonesList)),
   }),
 ).annotate({
   identifier: "PoliciesCreateRequestFilters",
@@ -860,11 +892,11 @@ export interface CreatePolicyRequest {
   /** Name of the policy. */
   name: string;
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
-  alertInterval?: string;
+  alertInterval?: string | null;
   /** Optional description for the Notification policy. */
-  description?: string;
+  description?: string | null;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
-  filters?: PoliciesCreateRequestFilters;
+  filters?: PoliciesCreateRequestFilters | null;
 }
 export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -873,9 +905,11 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     mechanisms: PoliciesCreateRequestMechanisms,
     name: S.String,
-    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
-    description: S.optional(S.String),
-    filters: S.optional(PoliciesCreateRequestFilters),
+    alertInterval: S.optional(
+      S.NullOr(S.String).pipe(T.Body("alert_interval")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    filters: S.optional(S.NullOr(PoliciesCreateRequestFilters)),
   })
     .pipe(
       T.Http({
@@ -892,11 +926,11 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePolicyResponse {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePolicyResponse",
@@ -904,17 +938,17 @@ export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SilencesCreateRequestBodyItem {
   /** When the silence ends. */
-  endTime?: string;
+  endTime?: string | null;
   /** The unique identifier of a notification policy */
-  policyId?: string;
+  policyId?: string | null;
   /** When the silence starts. */
-  startTime?: string;
+  startTime?: string | null;
 }
 export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
   }),
 ).annotate({
   identifier: "SilencesCreateRequestBodyItem",
@@ -1101,18 +1135,18 @@ export const DestinationsEligibleGetResultValueItemType =
 
 export interface DestinationsEligibleGetResultValueItem {
   /** Determines whether or not the account is eligible for the delivery mechanism. */
-  eligible?: boolean;
+  eligible?: boolean | null;
   /** Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications. */
-  ready?: boolean;
+  ready?: boolean | null;
   /** Determines type of delivery mechanism. */
-  type?: DestinationsEligibleGetResultValueItemType;
+  type?: DestinationsEligibleGetResultValueItemType | null;
 }
 export const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      eligible: S.optional(S.Boolean),
-      ready: S.optional(S.Boolean),
-      type: S.optional(DestinationsEligibleGetResultValueItemType),
+      eligible: S.optional(S.NullOr(S.Boolean)),
+      ready: S.optional(S.NullOr(S.Boolean)),
+      type: S.optional(S.NullOr(DestinationsEligibleGetResultValueItemType)),
     }),
 ).annotate({
   identifier: "DestinationsEligibleGetResultValueItem",
@@ -1161,14 +1195,14 @@ export const GetDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DestinationsPagerdutyGetResultItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
   /** The name of the pagerduty service. */
-  name?: string;
+  name?: string | null;
 }
 export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DestinationsPagerdutyGetResultItem",
@@ -1232,32 +1266,32 @@ export const DestinationsWebhooksGetResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDestinationWebhookResponse {
   /** The unique identifier of a webhook */
-  id?: string;
+  id?: string | null;
   /** Timestamp of when the webhook destination was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
-  lastFailure?: string;
+  lastFailure?: string | null;
   /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
-  lastSuccess?: string;
+  lastSuccess?: string | null;
   /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
-  name?: string;
+  name?: string | null;
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
+  secret?: string | null;
   /** Type of webhook endpoint. */
-  type?: DestinationsWebhooksGetResponseType;
+  type?: DestinationsWebhooksGetResponseType | null;
   /** The POST endpoint to call when dispatching a notification. */
-  url?: string;
+  url?: string | null;
 }
 export const GetDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
-    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
-    name: S.optional(S.String),
-    secret: S.optional(S.String),
-    type: S.optional(DestinationsWebhooksGetResponseType),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.NullOr(S.String).pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.NullOr(S.String).pipe(T.Body("last_success"))),
+    name: S.optional(S.NullOr(S.String)),
+    secret: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(DestinationsWebhooksGetResponseType)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationWebhookResponse",
@@ -1603,219 +1637,247 @@ export const PoliciesGetResponseFiltersZonesList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesGetResponseFilters {
   /** Usage depends on specific alert type */
-  actions?: PoliciesGetResponseFiltersActionsList;
+  actions?: PoliciesGetResponseFiltersActionsList | null;
   /** Used for configuring radar_notification */
-  affectedAsns?: PoliciesGetResponseFiltersAffectedAsnsList;
+  affectedAsns?: PoliciesGetResponseFiltersAffectedAsnsList | null;
   /** Used for configuring incident_alert */
-  affectedComponents?: PoliciesGetResponseFiltersAffectedComponentsList;
+  affectedComponents?: PoliciesGetResponseFiltersAffectedComponentsList | null;
   /** Used for configuring radar_notification */
-  affectedLocations?: PoliciesGetResponseFiltersAffectedLocationsList;
+  affectedLocations?: PoliciesGetResponseFiltersAffectedLocationsList | null;
   /** Used for configuring maintenance_event_notification */
-  airportCode?: PoliciesGetResponseFiltersAirportCodeList;
+  airportCode?: PoliciesGetResponseFiltersAirportCodeList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferences?: PoliciesGetResponseFiltersAlertTriggerPreferencesList;
+  alertTriggerPreferences?: PoliciesGetResponseFiltersAlertTriggerPreferencesList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferencesValue?: PoliciesGetResponseFiltersAlertTriggerPreferencesValueList;
+  alertTriggerPreferencesValue?: PoliciesGetResponseFiltersAlertTriggerPreferencesValueList | null;
   /** Used for configuring load_balancing_pool_enablement_alert */
-  enabled?: PoliciesGetResponseFiltersEnabledList;
+  enabled?: PoliciesGetResponseFiltersEnabledList | null;
   /** Used for configuring pages_event_alert */
-  environment?: PoliciesGetResponseFiltersEnvironmentList;
+  environment?: PoliciesGetResponseFiltersEnvironmentList | null;
   /** Used for configuring pages_event_alert */
-  event?: PoliciesGetResponseFiltersEventList;
+  event?: PoliciesGetResponseFiltersEventList | null;
   /** Used for configuring load_balancing_health_alert */
-  eventSource?: PoliciesGetResponseFiltersEventSourceList;
+  eventSource?: PoliciesGetResponseFiltersEventSourceList | null;
   /** Usage depends on specific alert type */
-  eventType?: PoliciesGetResponseFiltersEventTypeList;
+  eventType?: PoliciesGetResponseFiltersEventTypeList | null;
   /** Usage depends on specific alert type */
-  groupBy?: PoliciesGetResponseFiltersGroupByList;
+  groupBy?: PoliciesGetResponseFiltersGroupByList | null;
   /** Used for configuring health_check_status_notification */
-  healthCheckId?: PoliciesGetResponseFiltersHealthCheckIdList;
+  healthCheckId?: PoliciesGetResponseFiltersHealthCheckIdList | null;
   /** Used for configuring incident_alert */
-  incidentImpact?: PoliciesGetResponseFiltersIncidentImpactList;
+  incidentImpact?: PoliciesGetResponseFiltersIncidentImpactList | null;
   /** Used for configuring stream_live_notifications */
-  inputId?: PoliciesGetResponseFiltersInputIdList;
+  inputId?: PoliciesGetResponseFiltersInputIdList | null;
   /** Used for configuring security_insights_alert */
-  insightClass?: PoliciesGetResponseFiltersInsightClassList;
+  insightClass?: PoliciesGetResponseFiltersInsightClassList | null;
   /** Used for configuring billing_usage_alert */
-  limit?: PoliciesGetResponseFiltersLimitList;
+  limit?: PoliciesGetResponseFiltersLimitList | null;
   /** Used for configuring logo_match_alert */
-  logoTag?: PoliciesGetResponseFiltersLogoTagList;
+  logoTag?: PoliciesGetResponseFiltersLogoTagList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  megabitsPerSecond?: PoliciesGetResponseFiltersMegabitsPerSecondList;
+  megabitsPerSecond?: PoliciesGetResponseFiltersMegabitsPerSecondList | null;
   /** Used for configuring load_balancing_health_alert */
-  newHealth?: PoliciesGetResponseFiltersNewHealthList;
+  newHealth?: PoliciesGetResponseFiltersNewHealthList | null;
   /** Used for configuring tunnel_health_event */
-  newStatus?: PoliciesGetResponseFiltersNewStatusList;
+  newStatus?: PoliciesGetResponseFiltersNewStatusList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  packetsPerSecond?: PoliciesGetResponseFiltersPacketsPerSecondList;
+  packetsPerSecond?: PoliciesGetResponseFiltersPacketsPerSecondList | null;
   /** Usage depends on specific alert type */
-  poolId?: PoliciesGetResponseFiltersPoolIdList;
+  poolId?: PoliciesGetResponseFiltersPoolIdList | null;
   /** Usage depends on specific alert type */
-  popNames?: PoliciesGetResponseFiltersPopNamesList;
+  popNames?: PoliciesGetResponseFiltersPopNamesList | null;
   /** Used for configuring billing_usage_alert */
-  product?: PoliciesGetResponseFiltersProductList;
+  product?: PoliciesGetResponseFiltersProductList | null;
   /** Used for configuring pages_event_alert */
-  projectId?: PoliciesGetResponseFiltersProjectIdList;
+  projectId?: PoliciesGetResponseFiltersProjectIdList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  protocol?: PoliciesGetResponseFiltersProtocolList;
+  protocol?: PoliciesGetResponseFiltersProtocolList | null;
   /** Usage depends on specific alert type */
-  queryTag?: PoliciesGetResponseFiltersQueryTagList;
+  queryTag?: PoliciesGetResponseFiltersQueryTagList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  requestsPerSecond?: PoliciesGetResponseFiltersRequestsPerSecondList;
+  requestsPerSecond?: PoliciesGetResponseFiltersRequestsPerSecondList | null;
   /** Usage depends on specific alert type */
-  selectors?: PoliciesGetResponseFiltersSelectorsList;
+  selectors?: PoliciesGetResponseFiltersSelectorsList | null;
   /** Used for configuring clickhouse_alert_fw_ent_anomaly */
-  services?: PoliciesGetResponseFiltersServicesList;
+  services?: PoliciesGetResponseFiltersServicesList | null;
   /** Usage depends on specific alert type */
-  slo?: PoliciesGetResponseFiltersSloList;
+  slo?: PoliciesGetResponseFiltersSloList | null;
   /** Used for configuring health_check_status_notification */
-  status?: PoliciesGetResponseFiltersStatusList;
+  status?: PoliciesGetResponseFiltersStatusList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetHostname?: PoliciesGetResponseFiltersTargetHostnameList;
+  targetHostname?: PoliciesGetResponseFiltersTargetHostnameList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  targetIp?: PoliciesGetResponseFiltersTargetIpList;
+  targetIp?: PoliciesGetResponseFiltersTargetIpList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetZoneName?: PoliciesGetResponseFiltersTargetZoneNameList;
+  targetZoneName?: PoliciesGetResponseFiltersTargetZoneNameList | null;
   /** Used for configuring traffic_anomalies_alert */
-  trafficExclusions?: PoliciesGetResponseFiltersTrafficExclusionsList;
+  trafficExclusions?: PoliciesGetResponseFiltersTrafficExclusionsList | null;
   /** Used for configuring tunnel_health_event */
-  tunnelId?: PoliciesGetResponseFiltersTunnelIdList;
+  tunnelId?: PoliciesGetResponseFiltersTunnelIdList | null;
   /** Usage depends on specific alert type */
-  tunnelName?: PoliciesGetResponseFiltersTunnelNameList;
+  tunnelName?: PoliciesGetResponseFiltersTunnelNameList | null;
   /** Usage depends on specific alert type */
-  type?: PoliciesGetResponseFiltersTypeList;
+  type?: PoliciesGetResponseFiltersTypeList | null;
   /** Usage depends on specific alert type */
-  where?: PoliciesGetResponseFiltersWhereList;
+  where?: PoliciesGetResponseFiltersWhereList | null;
   /** Usage depends on specific alert type */
-  zones?: PoliciesGetResponseFiltersZonesList;
+  zones?: PoliciesGetResponseFiltersZonesList | null;
 }
 export const PoliciesGetResponseFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actions: S.optional(PoliciesGetResponseFiltersActionsList),
+    actions: S.optional(S.NullOr(PoliciesGetResponseFiltersActionsList)),
     affectedAsns: S.optional(
-      PoliciesGetResponseFiltersAffectedAsnsList.pipe(T.Body("affected_asns")),
+      S.NullOr(PoliciesGetResponseFiltersAffectedAsnsList).pipe(
+        T.Body("affected_asns"),
+      ),
     ),
     affectedComponents: S.optional(
-      PoliciesGetResponseFiltersAffectedComponentsList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersAffectedComponentsList).pipe(
         T.Body("affected_components"),
       ),
     ),
     affectedLocations: S.optional(
-      PoliciesGetResponseFiltersAffectedLocationsList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersAffectedLocationsList).pipe(
         T.Body("affected_locations"),
       ),
     ),
     airportCode: S.optional(
-      PoliciesGetResponseFiltersAirportCodeList.pipe(T.Body("airport_code")),
+      S.NullOr(PoliciesGetResponseFiltersAirportCodeList).pipe(
+        T.Body("airport_code"),
+      ),
     ),
     alertTriggerPreferences: S.optional(
-      PoliciesGetResponseFiltersAlertTriggerPreferencesList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersAlertTriggerPreferencesList).pipe(
         T.Body("alert_trigger_preferences"),
       ),
     ),
     alertTriggerPreferencesValue: S.optional(
-      PoliciesGetResponseFiltersAlertTriggerPreferencesValueList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersAlertTriggerPreferencesValueList).pipe(
         T.Body("alert_trigger_preferences_value"),
       ),
     ),
-    enabled: S.optional(PoliciesGetResponseFiltersEnabledList),
-    environment: S.optional(PoliciesGetResponseFiltersEnvironmentList),
-    event: S.optional(PoliciesGetResponseFiltersEventList),
+    enabled: S.optional(S.NullOr(PoliciesGetResponseFiltersEnabledList)),
+    environment: S.optional(
+      S.NullOr(PoliciesGetResponseFiltersEnvironmentList),
+    ),
+    event: S.optional(S.NullOr(PoliciesGetResponseFiltersEventList)),
     eventSource: S.optional(
-      PoliciesGetResponseFiltersEventSourceList.pipe(T.Body("event_source")),
+      S.NullOr(PoliciesGetResponseFiltersEventSourceList).pipe(
+        T.Body("event_source"),
+      ),
     ),
     eventType: S.optional(
-      PoliciesGetResponseFiltersEventTypeList.pipe(T.Body("event_type")),
+      S.NullOr(PoliciesGetResponseFiltersEventTypeList).pipe(
+        T.Body("event_type"),
+      ),
     ),
     groupBy: S.optional(
-      PoliciesGetResponseFiltersGroupByList.pipe(T.Body("group_by")),
+      S.NullOr(PoliciesGetResponseFiltersGroupByList).pipe(T.Body("group_by")),
     ),
     healthCheckId: S.optional(
-      PoliciesGetResponseFiltersHealthCheckIdList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersHealthCheckIdList).pipe(
         T.Body("health_check_id"),
       ),
     ),
     incidentImpact: S.optional(
-      PoliciesGetResponseFiltersIncidentImpactList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersIncidentImpactList).pipe(
         T.Body("incident_impact"),
       ),
     ),
     inputId: S.optional(
-      PoliciesGetResponseFiltersInputIdList.pipe(T.Body("input_id")),
+      S.NullOr(PoliciesGetResponseFiltersInputIdList).pipe(T.Body("input_id")),
     ),
     insightClass: S.optional(
-      PoliciesGetResponseFiltersInsightClassList.pipe(T.Body("insight_class")),
+      S.NullOr(PoliciesGetResponseFiltersInsightClassList).pipe(
+        T.Body("insight_class"),
+      ),
     ),
-    limit: S.optional(PoliciesGetResponseFiltersLimitList),
+    limit: S.optional(S.NullOr(PoliciesGetResponseFiltersLimitList)),
     logoTag: S.optional(
-      PoliciesGetResponseFiltersLogoTagList.pipe(T.Body("logo_tag")),
+      S.NullOr(PoliciesGetResponseFiltersLogoTagList).pipe(T.Body("logo_tag")),
     ),
     megabitsPerSecond: S.optional(
-      PoliciesGetResponseFiltersMegabitsPerSecondList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersMegabitsPerSecondList).pipe(
         T.Body("megabits_per_second"),
       ),
     ),
     newHealth: S.optional(
-      PoliciesGetResponseFiltersNewHealthList.pipe(T.Body("new_health")),
+      S.NullOr(PoliciesGetResponseFiltersNewHealthList).pipe(
+        T.Body("new_health"),
+      ),
     ),
     newStatus: S.optional(
-      PoliciesGetResponseFiltersNewStatusList.pipe(T.Body("new_status")),
+      S.NullOr(PoliciesGetResponseFiltersNewStatusList).pipe(
+        T.Body("new_status"),
+      ),
     ),
     packetsPerSecond: S.optional(
-      PoliciesGetResponseFiltersPacketsPerSecondList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersPacketsPerSecondList).pipe(
         T.Body("packets_per_second"),
       ),
     ),
     poolId: S.optional(
-      PoliciesGetResponseFiltersPoolIdList.pipe(T.Body("pool_id")),
+      S.NullOr(PoliciesGetResponseFiltersPoolIdList).pipe(T.Body("pool_id")),
     ),
     popNames: S.optional(
-      PoliciesGetResponseFiltersPopNamesList.pipe(T.Body("pop_names")),
+      S.NullOr(PoliciesGetResponseFiltersPopNamesList).pipe(
+        T.Body("pop_names"),
+      ),
     ),
-    product: S.optional(PoliciesGetResponseFiltersProductList),
+    product: S.optional(S.NullOr(PoliciesGetResponseFiltersProductList)),
     projectId: S.optional(
-      PoliciesGetResponseFiltersProjectIdList.pipe(T.Body("project_id")),
+      S.NullOr(PoliciesGetResponseFiltersProjectIdList).pipe(
+        T.Body("project_id"),
+      ),
     ),
-    protocol: S.optional(PoliciesGetResponseFiltersProtocolList),
+    protocol: S.optional(S.NullOr(PoliciesGetResponseFiltersProtocolList)),
     queryTag: S.optional(
-      PoliciesGetResponseFiltersQueryTagList.pipe(T.Body("query_tag")),
+      S.NullOr(PoliciesGetResponseFiltersQueryTagList).pipe(
+        T.Body("query_tag"),
+      ),
     ),
     requestsPerSecond: S.optional(
-      PoliciesGetResponseFiltersRequestsPerSecondList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersRequestsPerSecondList).pipe(
         T.Body("requests_per_second"),
       ),
     ),
-    selectors: S.optional(PoliciesGetResponseFiltersSelectorsList),
-    services: S.optional(PoliciesGetResponseFiltersServicesList),
-    slo: S.optional(PoliciesGetResponseFiltersSloList),
-    status: S.optional(PoliciesGetResponseFiltersStatusList),
+    selectors: S.optional(S.NullOr(PoliciesGetResponseFiltersSelectorsList)),
+    services: S.optional(S.NullOr(PoliciesGetResponseFiltersServicesList)),
+    slo: S.optional(S.NullOr(PoliciesGetResponseFiltersSloList)),
+    status: S.optional(S.NullOr(PoliciesGetResponseFiltersStatusList)),
     targetHostname: S.optional(
-      PoliciesGetResponseFiltersTargetHostnameList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersTargetHostnameList).pipe(
         T.Body("target_hostname"),
       ),
     ),
     targetIp: S.optional(
-      PoliciesGetResponseFiltersTargetIpList.pipe(T.Body("target_ip")),
+      S.NullOr(PoliciesGetResponseFiltersTargetIpList).pipe(
+        T.Body("target_ip"),
+      ),
     ),
     targetZoneName: S.optional(
-      PoliciesGetResponseFiltersTargetZoneNameList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersTargetZoneNameList).pipe(
         T.Body("target_zone_name"),
       ),
     ),
     trafficExclusions: S.optional(
-      PoliciesGetResponseFiltersTrafficExclusionsList.pipe(
+      S.NullOr(PoliciesGetResponseFiltersTrafficExclusionsList).pipe(
         T.Body("traffic_exclusions"),
       ),
     ),
     tunnelId: S.optional(
-      PoliciesGetResponseFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+      S.NullOr(PoliciesGetResponseFiltersTunnelIdList).pipe(
+        T.Body("tunnel_id"),
+      ),
     ),
     tunnelName: S.optional(
-      PoliciesGetResponseFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+      S.NullOr(PoliciesGetResponseFiltersTunnelNameList).pipe(
+        T.Body("tunnel_name"),
+      ),
     ),
-    type: S.optional(PoliciesGetResponseFiltersTypeList),
-    where: S.optional(PoliciesGetResponseFiltersWhereList),
-    zones: S.optional(PoliciesGetResponseFiltersZonesList),
+    type: S.optional(S.NullOr(PoliciesGetResponseFiltersTypeList)),
+    where: S.optional(S.NullOr(PoliciesGetResponseFiltersWhereList)),
+    zones: S.optional(S.NullOr(PoliciesGetResponseFiltersZonesList)),
   }),
 ).annotate({
   identifier: "PoliciesGetResponseFilters",
@@ -1823,12 +1885,12 @@ export const PoliciesGetResponseFilters = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoliciesGetResponseMechanismsEmailItem {
   /** The email address */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PoliciesGetResponseMechanismsEmailItem",
@@ -1842,12 +1904,12 @@ export const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesGetResponseMechanismsPagerdutyItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesGetResponseMechanismsPagerdutyItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesGetResponseMechanismsPagerdutyItem",
@@ -1861,12 +1923,12 @@ export const PoliciesGetResponseMechanismsPagerdutyList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesGetResponseMechanismsWebhooksItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesGetResponseMechanismsWebhooksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesGetResponseMechanismsWebhooksItem",
@@ -1879,15 +1941,15 @@ export const PoliciesGetResponseMechanismsWebhooksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
 
 export interface PoliciesGetResponseMechanisms {
-  email?: PoliciesGetResponseMechanismsEmailList;
-  pagerduty?: PoliciesGetResponseMechanismsPagerdutyList;
-  webhooks?: PoliciesGetResponseMechanismsWebhooksList;
+  email?: PoliciesGetResponseMechanismsEmailList | null;
+  pagerduty?: PoliciesGetResponseMechanismsPagerdutyList | null;
+  webhooks?: PoliciesGetResponseMechanismsWebhooksList | null;
 }
 export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(PoliciesGetResponseMechanismsEmailList),
-    pagerduty: S.optional(PoliciesGetResponseMechanismsPagerdutyList),
-    webhooks: S.optional(PoliciesGetResponseMechanismsWebhooksList),
+    email: S.optional(S.NullOr(PoliciesGetResponseMechanismsEmailList)),
+    pagerduty: S.optional(S.NullOr(PoliciesGetResponseMechanismsPagerdutyList)),
+    webhooks: S.optional(S.NullOr(PoliciesGetResponseMechanismsWebhooksList)),
   }),
 ).annotate({
   identifier: "PoliciesGetResponseMechanisms",
@@ -1896,38 +1958,40 @@ export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPolicyResponse {
   /** The unique identifier of a notification policy */
-  id?: string;
+  id?: string | null;
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
-  alertInterval?: string;
+  alertInterval?: string | null;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType?: PoliciesGetResponseAlertType;
-  created?: string;
+  alertType?: PoliciesGetResponseAlertType | null;
+  created?: string | null;
   /** Optional description for the Notification policy. */
-  description?: string;
+  description?: string | null;
   /** Whether or not the Notification policy is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
-  filters?: PoliciesGetResponseFilters;
+  filters?: PoliciesGetResponseFilters | null;
   /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
-  mechanisms?: PoliciesGetResponseMechanisms;
-  modified?: string;
+  mechanisms?: PoliciesGetResponseMechanisms | null;
+  modified?: string | null;
   /** Name of the policy. */
-  name?: string;
+  name?: string | null;
 }
 export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
-    alertType: S.optional(
-      PoliciesGetResponseAlertType.pipe(T.Body("alert_type")),
+    id: S.optional(S.NullOr(S.String)),
+    alertInterval: S.optional(
+      S.NullOr(S.String).pipe(T.Body("alert_interval")),
     ),
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    filters: S.optional(PoliciesGetResponseFilters),
-    mechanisms: S.optional(PoliciesGetResponseMechanisms),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
+    alertType: S.optional(
+      S.NullOr(PoliciesGetResponseAlertType).pipe(T.Body("alert_type")),
+    ),
+    created: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    filters: S.optional(S.NullOr(PoliciesGetResponseFilters)),
+    mechanisms: S.optional(S.NullOr(PoliciesGetResponseMechanisms)),
+    modified: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPolicyResponse",
@@ -1959,26 +2023,26 @@ export const GetSilenceRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSilenceResponse {
   /** Silence ID */
-  id?: string;
+  id?: string | null;
   /** When the silence was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** When the silence ends. */
-  endTime?: string;
+  endTime?: string | null;
   /** The unique identifier of a notification policy */
-  policyId?: string;
+  policyId?: string | null;
   /** When the silence starts. */
-  startTime?: string;
+  startTime?: string | null;
   /** When the silence was modified. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const GetSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSilenceResponse",
@@ -2010,11 +2074,11 @@ export const LinkDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LinkDestinationPagerdutyResponse {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const LinkDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LinkDestinationPagerdutyResponse",
@@ -2049,24 +2113,24 @@ export const AvailableAlertsListResultValueItemFilterOptionsList =
 
 export interface AvailableAlertsListResultValueItem {
   /** Describes the alert type. */
-  description?: string;
+  description?: string | null;
   /** Alert type name. */
-  displayName?: string;
+  displayName?: string | null;
   /** Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings. */
-  filterOptions?: AvailableAlertsListResultValueItemFilterOptionsList;
+  filterOptions?: AvailableAlertsListResultValueItemFilterOptionsList | null;
   /** Use this value when creating and updating a notification policy. */
-  type?: string;
+  type?: string | null;
 }
 export const AvailableAlertsListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    displayName: S.optional(S.String.pipe(T.Body("display_name"))),
+    description: S.optional(S.NullOr(S.String)),
+    displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
     filterOptions: S.optional(
-      AvailableAlertsListResultValueItemFilterOptionsList.pipe(
+      S.NullOr(AvailableAlertsListResultValueItemFilterOptionsList).pipe(
         T.Body("filter_options"),
       ),
     ),
-    type: S.optional(S.String),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AvailableAlertsListResultValueItem",
@@ -2126,32 +2190,32 @@ export const DestinationsWebhooksListResultItemType = /*@__PURE__*/ S.String;
 
 export interface DestinationsWebhooksListResultItem {
   /** The unique identifier of a webhook */
-  id?: string;
+  id?: string | null;
   /** Timestamp of when the webhook destination was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
-  lastFailure?: string;
+  lastFailure?: string | null;
   /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
-  lastSuccess?: string;
+  lastSuccess?: string | null;
   /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
-  name?: string;
+  name?: string | null;
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
+  secret?: string | null;
   /** Type of webhook endpoint. */
-  type?: DestinationsWebhooksListResultItemType;
+  type?: DestinationsWebhooksListResultItemType | null;
   /** The POST endpoint to call when dispatching a notification. */
-  url?: string;
+  url?: string | null;
 }
 export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
-    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
-    name: S.optional(S.String),
-    secret: S.optional(S.String),
-    type: S.optional(DestinationsWebhooksListResultItemType),
-    url: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.NullOr(S.String).pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.NullOr(S.String).pipe(T.Body("last_success"))),
+    name: S.optional(S.NullOr(S.String)),
+    secret: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(DestinationsWebhooksListResultItemType)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DestinationsWebhooksListResultItem",
@@ -2218,37 +2282,39 @@ export const HistoryListResultItemMechanismType = /*@__PURE__*/ S.String;
 
 export interface HistoryListResultItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
   /** Message body included in the notification sent. */
-  alertBody?: string;
+  alertBody?: string | null;
   /** Type of notification that has been dispatched. */
-  alertType?: string;
+  alertType?: string | null;
   /** Description of the notification policy (if present). */
-  description?: string;
+  description?: string | null;
   /** The mechanism to which the notification has been dispatched. */
-  mechanism?: string;
+  mechanism?: string | null;
   /** The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured. */
-  mechanismType?: HistoryListResultItemMechanismType;
+  mechanismType?: HistoryListResultItemMechanismType | null;
   /** Name of the policy. */
-  name?: string;
+  name?: string | null;
   /** The unique identifier of a notification policy */
-  policyId?: string;
+  policyId?: string | null;
   /** Timestamp of when the notification was dispatched in ISO 8601 format. */
-  sent?: string;
+  sent?: string | null;
 }
 export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    alertBody: S.optional(S.String.pipe(T.Body("alert_body"))),
-    alertType: S.optional(S.String.pipe(T.Body("alert_type"))),
-    description: S.optional(S.String),
-    mechanism: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    alertBody: S.optional(S.NullOr(S.String).pipe(T.Body("alert_body"))),
+    alertType: S.optional(S.NullOr(S.String).pipe(T.Body("alert_type"))),
+    description: S.optional(S.NullOr(S.String)),
+    mechanism: S.optional(S.NullOr(S.String)),
     mechanismType: S.optional(
-      HistoryListResultItemMechanismType.pipe(T.Body("mechanism_type")),
+      S.NullOr(HistoryListResultItemMechanismType).pipe(
+        T.Body("mechanism_type"),
+      ),
     ),
-    name: S.optional(S.String),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    sent: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    sent: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HistoryListResultItem",
@@ -2618,223 +2684,253 @@ export const PoliciesListResultItemFiltersZonesList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
-  actions?: PoliciesListResultItemFiltersActionsList;
+  actions?: PoliciesListResultItemFiltersActionsList | null;
   /** Used for configuring radar_notification */
-  affectedAsns?: PoliciesListResultItemFiltersAffectedAsnsList;
+  affectedAsns?: PoliciesListResultItemFiltersAffectedAsnsList | null;
   /** Used for configuring incident_alert */
-  affectedComponents?: PoliciesListResultItemFiltersAffectedComponentsList;
+  affectedComponents?: PoliciesListResultItemFiltersAffectedComponentsList | null;
   /** Used for configuring radar_notification */
-  affectedLocations?: PoliciesListResultItemFiltersAffectedLocationsList;
+  affectedLocations?: PoliciesListResultItemFiltersAffectedLocationsList | null;
   /** Used for configuring maintenance_event_notification */
-  airportCode?: PoliciesListResultItemFiltersAirportCodeList;
+  airportCode?: PoliciesListResultItemFiltersAirportCodeList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferences?: PoliciesListResultItemFiltersAlertTriggerPreferencesList;
+  alertTriggerPreferences?: PoliciesListResultItemFiltersAlertTriggerPreferencesList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferencesValue?: PoliciesListResultItemFiltersAlertTriggerPreferencesValueList;
+  alertTriggerPreferencesValue?: PoliciesListResultItemFiltersAlertTriggerPreferencesValueList | null;
   /** Used for configuring load_balancing_pool_enablement_alert */
-  enabled?: PoliciesListResultItemFiltersEnabledList;
+  enabled?: PoliciesListResultItemFiltersEnabledList | null;
   /** Used for configuring pages_event_alert */
-  environment?: PoliciesListResultItemFiltersEnvironmentList;
+  environment?: PoliciesListResultItemFiltersEnvironmentList | null;
   /** Used for configuring pages_event_alert */
-  event?: PoliciesListResultItemFiltersEventList;
+  event?: PoliciesListResultItemFiltersEventList | null;
   /** Used for configuring load_balancing_health_alert */
-  eventSource?: PoliciesListResultItemFiltersEventSourceList;
+  eventSource?: PoliciesListResultItemFiltersEventSourceList | null;
   /** Usage depends on specific alert type */
-  eventType?: PoliciesListResultItemFiltersEventTypeList;
+  eventType?: PoliciesListResultItemFiltersEventTypeList | null;
   /** Usage depends on specific alert type */
-  groupBy?: PoliciesListResultItemFiltersGroupByList;
+  groupBy?: PoliciesListResultItemFiltersGroupByList | null;
   /** Used for configuring health_check_status_notification */
-  healthCheckId?: PoliciesListResultItemFiltersHealthCheckIdList;
+  healthCheckId?: PoliciesListResultItemFiltersHealthCheckIdList | null;
   /** Used for configuring incident_alert */
-  incidentImpact?: PoliciesListResultItemFiltersIncidentImpactList;
+  incidentImpact?: PoliciesListResultItemFiltersIncidentImpactList | null;
   /** Used for configuring stream_live_notifications */
-  inputId?: PoliciesListResultItemFiltersInputIdList;
+  inputId?: PoliciesListResultItemFiltersInputIdList | null;
   /** Used for configuring security_insights_alert */
-  insightClass?: PoliciesListResultItemFiltersInsightClassList;
+  insightClass?: PoliciesListResultItemFiltersInsightClassList | null;
   /** Used for configuring billing_usage_alert */
-  limit?: PoliciesListResultItemFiltersLimitList;
+  limit?: PoliciesListResultItemFiltersLimitList | null;
   /** Used for configuring logo_match_alert */
-  logoTag?: PoliciesListResultItemFiltersLogoTagList;
+  logoTag?: PoliciesListResultItemFiltersLogoTagList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  megabitsPerSecond?: PoliciesListResultItemFiltersMegabitsPerSecondList;
+  megabitsPerSecond?: PoliciesListResultItemFiltersMegabitsPerSecondList | null;
   /** Used for configuring load_balancing_health_alert */
-  newHealth?: PoliciesListResultItemFiltersNewHealthList;
+  newHealth?: PoliciesListResultItemFiltersNewHealthList | null;
   /** Used for configuring tunnel_health_event */
-  newStatus?: PoliciesListResultItemFiltersNewStatusList;
+  newStatus?: PoliciesListResultItemFiltersNewStatusList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  packetsPerSecond?: PoliciesListResultItemFiltersPacketsPerSecondList;
+  packetsPerSecond?: PoliciesListResultItemFiltersPacketsPerSecondList | null;
   /** Usage depends on specific alert type */
-  poolId?: PoliciesListResultItemFiltersPoolIdList;
+  poolId?: PoliciesListResultItemFiltersPoolIdList | null;
   /** Usage depends on specific alert type */
-  popNames?: PoliciesListResultItemFiltersPopNamesList;
+  popNames?: PoliciesListResultItemFiltersPopNamesList | null;
   /** Used for configuring billing_usage_alert */
-  product?: PoliciesListResultItemFiltersProductList;
+  product?: PoliciesListResultItemFiltersProductList | null;
   /** Used for configuring pages_event_alert */
-  projectId?: PoliciesListResultItemFiltersProjectIdList;
+  projectId?: PoliciesListResultItemFiltersProjectIdList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  protocol?: PoliciesListResultItemFiltersProtocolList;
+  protocol?: PoliciesListResultItemFiltersProtocolList | null;
   /** Usage depends on specific alert type */
-  queryTag?: PoliciesListResultItemFiltersQueryTagList;
+  queryTag?: PoliciesListResultItemFiltersQueryTagList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  requestsPerSecond?: PoliciesListResultItemFiltersRequestsPerSecondList;
+  requestsPerSecond?: PoliciesListResultItemFiltersRequestsPerSecondList | null;
   /** Usage depends on specific alert type */
-  selectors?: PoliciesListResultItemFiltersSelectorsList;
+  selectors?: PoliciesListResultItemFiltersSelectorsList | null;
   /** Used for configuring clickhouse_alert_fw_ent_anomaly */
-  services?: PoliciesListResultItemFiltersServicesList;
+  services?: PoliciesListResultItemFiltersServicesList | null;
   /** Usage depends on specific alert type */
-  slo?: PoliciesListResultItemFiltersSloList;
+  slo?: PoliciesListResultItemFiltersSloList | null;
   /** Used for configuring health_check_status_notification */
-  status?: PoliciesListResultItemFiltersStatusList;
+  status?: PoliciesListResultItemFiltersStatusList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetHostname?: PoliciesListResultItemFiltersTargetHostnameList;
+  targetHostname?: PoliciesListResultItemFiltersTargetHostnameList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  targetIp?: PoliciesListResultItemFiltersTargetIpList;
+  targetIp?: PoliciesListResultItemFiltersTargetIpList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetZoneName?: PoliciesListResultItemFiltersTargetZoneNameList;
+  targetZoneName?: PoliciesListResultItemFiltersTargetZoneNameList | null;
   /** Used for configuring traffic_anomalies_alert */
-  trafficExclusions?: PoliciesListResultItemFiltersTrafficExclusionsList;
+  trafficExclusions?: PoliciesListResultItemFiltersTrafficExclusionsList | null;
   /** Used for configuring tunnel_health_event */
-  tunnelId?: PoliciesListResultItemFiltersTunnelIdList;
+  tunnelId?: PoliciesListResultItemFiltersTunnelIdList | null;
   /** Usage depends on specific alert type */
-  tunnelName?: PoliciesListResultItemFiltersTunnelNameList;
+  tunnelName?: PoliciesListResultItemFiltersTunnelNameList | null;
   /** Usage depends on specific alert type */
-  type?: PoliciesListResultItemFiltersTypeList;
+  type?: PoliciesListResultItemFiltersTypeList | null;
   /** Usage depends on specific alert type */
-  where?: PoliciesListResultItemFiltersWhereList;
+  where?: PoliciesListResultItemFiltersWhereList | null;
   /** Usage depends on specific alert type */
-  zones?: PoliciesListResultItemFiltersZonesList;
+  zones?: PoliciesListResultItemFiltersZonesList | null;
 }
 export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actions: S.optional(PoliciesListResultItemFiltersActionsList),
+    actions: S.optional(S.NullOr(PoliciesListResultItemFiltersActionsList)),
     affectedAsns: S.optional(
-      PoliciesListResultItemFiltersAffectedAsnsList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersAffectedAsnsList).pipe(
         T.Body("affected_asns"),
       ),
     ),
     affectedComponents: S.optional(
-      PoliciesListResultItemFiltersAffectedComponentsList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersAffectedComponentsList).pipe(
         T.Body("affected_components"),
       ),
     ),
     affectedLocations: S.optional(
-      PoliciesListResultItemFiltersAffectedLocationsList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersAffectedLocationsList).pipe(
         T.Body("affected_locations"),
       ),
     ),
     airportCode: S.optional(
-      PoliciesListResultItemFiltersAirportCodeList.pipe(T.Body("airport_code")),
+      S.NullOr(PoliciesListResultItemFiltersAirportCodeList).pipe(
+        T.Body("airport_code"),
+      ),
     ),
     alertTriggerPreferences: S.optional(
-      PoliciesListResultItemFiltersAlertTriggerPreferencesList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersAlertTriggerPreferencesList).pipe(
         T.Body("alert_trigger_preferences"),
       ),
     ),
     alertTriggerPreferencesValue: S.optional(
-      PoliciesListResultItemFiltersAlertTriggerPreferencesValueList.pipe(
-        T.Body("alert_trigger_preferences_value"),
+      S.NullOr(
+        PoliciesListResultItemFiltersAlertTriggerPreferencesValueList,
+      ).pipe(T.Body("alert_trigger_preferences_value")),
+    ),
+    enabled: S.optional(S.NullOr(PoliciesListResultItemFiltersEnabledList)),
+    environment: S.optional(
+      S.NullOr(PoliciesListResultItemFiltersEnvironmentList),
+    ),
+    event: S.optional(S.NullOr(PoliciesListResultItemFiltersEventList)),
+    eventSource: S.optional(
+      S.NullOr(PoliciesListResultItemFiltersEventSourceList).pipe(
+        T.Body("event_source"),
       ),
     ),
-    enabled: S.optional(PoliciesListResultItemFiltersEnabledList),
-    environment: S.optional(PoliciesListResultItemFiltersEnvironmentList),
-    event: S.optional(PoliciesListResultItemFiltersEventList),
-    eventSource: S.optional(
-      PoliciesListResultItemFiltersEventSourceList.pipe(T.Body("event_source")),
-    ),
     eventType: S.optional(
-      PoliciesListResultItemFiltersEventTypeList.pipe(T.Body("event_type")),
+      S.NullOr(PoliciesListResultItemFiltersEventTypeList).pipe(
+        T.Body("event_type"),
+      ),
     ),
     groupBy: S.optional(
-      PoliciesListResultItemFiltersGroupByList.pipe(T.Body("group_by")),
+      S.NullOr(PoliciesListResultItemFiltersGroupByList).pipe(
+        T.Body("group_by"),
+      ),
     ),
     healthCheckId: S.optional(
-      PoliciesListResultItemFiltersHealthCheckIdList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersHealthCheckIdList).pipe(
         T.Body("health_check_id"),
       ),
     ),
     incidentImpact: S.optional(
-      PoliciesListResultItemFiltersIncidentImpactList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersIncidentImpactList).pipe(
         T.Body("incident_impact"),
       ),
     ),
     inputId: S.optional(
-      PoliciesListResultItemFiltersInputIdList.pipe(T.Body("input_id")),
+      S.NullOr(PoliciesListResultItemFiltersInputIdList).pipe(
+        T.Body("input_id"),
+      ),
     ),
     insightClass: S.optional(
-      PoliciesListResultItemFiltersInsightClassList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersInsightClassList).pipe(
         T.Body("insight_class"),
       ),
     ),
-    limit: S.optional(PoliciesListResultItemFiltersLimitList),
+    limit: S.optional(S.NullOr(PoliciesListResultItemFiltersLimitList)),
     logoTag: S.optional(
-      PoliciesListResultItemFiltersLogoTagList.pipe(T.Body("logo_tag")),
+      S.NullOr(PoliciesListResultItemFiltersLogoTagList).pipe(
+        T.Body("logo_tag"),
+      ),
     ),
     megabitsPerSecond: S.optional(
-      PoliciesListResultItemFiltersMegabitsPerSecondList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersMegabitsPerSecondList).pipe(
         T.Body("megabits_per_second"),
       ),
     ),
     newHealth: S.optional(
-      PoliciesListResultItemFiltersNewHealthList.pipe(T.Body("new_health")),
+      S.NullOr(PoliciesListResultItemFiltersNewHealthList).pipe(
+        T.Body("new_health"),
+      ),
     ),
     newStatus: S.optional(
-      PoliciesListResultItemFiltersNewStatusList.pipe(T.Body("new_status")),
+      S.NullOr(PoliciesListResultItemFiltersNewStatusList).pipe(
+        T.Body("new_status"),
+      ),
     ),
     packetsPerSecond: S.optional(
-      PoliciesListResultItemFiltersPacketsPerSecondList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersPacketsPerSecondList).pipe(
         T.Body("packets_per_second"),
       ),
     ),
     poolId: S.optional(
-      PoliciesListResultItemFiltersPoolIdList.pipe(T.Body("pool_id")),
+      S.NullOr(PoliciesListResultItemFiltersPoolIdList).pipe(T.Body("pool_id")),
     ),
     popNames: S.optional(
-      PoliciesListResultItemFiltersPopNamesList.pipe(T.Body("pop_names")),
+      S.NullOr(PoliciesListResultItemFiltersPopNamesList).pipe(
+        T.Body("pop_names"),
+      ),
     ),
-    product: S.optional(PoliciesListResultItemFiltersProductList),
+    product: S.optional(S.NullOr(PoliciesListResultItemFiltersProductList)),
     projectId: S.optional(
-      PoliciesListResultItemFiltersProjectIdList.pipe(T.Body("project_id")),
+      S.NullOr(PoliciesListResultItemFiltersProjectIdList).pipe(
+        T.Body("project_id"),
+      ),
     ),
-    protocol: S.optional(PoliciesListResultItemFiltersProtocolList),
+    protocol: S.optional(S.NullOr(PoliciesListResultItemFiltersProtocolList)),
     queryTag: S.optional(
-      PoliciesListResultItemFiltersQueryTagList.pipe(T.Body("query_tag")),
+      S.NullOr(PoliciesListResultItemFiltersQueryTagList).pipe(
+        T.Body("query_tag"),
+      ),
     ),
     requestsPerSecond: S.optional(
-      PoliciesListResultItemFiltersRequestsPerSecondList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersRequestsPerSecondList).pipe(
         T.Body("requests_per_second"),
       ),
     ),
-    selectors: S.optional(PoliciesListResultItemFiltersSelectorsList),
-    services: S.optional(PoliciesListResultItemFiltersServicesList),
-    slo: S.optional(PoliciesListResultItemFiltersSloList),
-    status: S.optional(PoliciesListResultItemFiltersStatusList),
+    selectors: S.optional(S.NullOr(PoliciesListResultItemFiltersSelectorsList)),
+    services: S.optional(S.NullOr(PoliciesListResultItemFiltersServicesList)),
+    slo: S.optional(S.NullOr(PoliciesListResultItemFiltersSloList)),
+    status: S.optional(S.NullOr(PoliciesListResultItemFiltersStatusList)),
     targetHostname: S.optional(
-      PoliciesListResultItemFiltersTargetHostnameList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersTargetHostnameList).pipe(
         T.Body("target_hostname"),
       ),
     ),
     targetIp: S.optional(
-      PoliciesListResultItemFiltersTargetIpList.pipe(T.Body("target_ip")),
+      S.NullOr(PoliciesListResultItemFiltersTargetIpList).pipe(
+        T.Body("target_ip"),
+      ),
     ),
     targetZoneName: S.optional(
-      PoliciesListResultItemFiltersTargetZoneNameList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersTargetZoneNameList).pipe(
         T.Body("target_zone_name"),
       ),
     ),
     trafficExclusions: S.optional(
-      PoliciesListResultItemFiltersTrafficExclusionsList.pipe(
+      S.NullOr(PoliciesListResultItemFiltersTrafficExclusionsList).pipe(
         T.Body("traffic_exclusions"),
       ),
     ),
     tunnelId: S.optional(
-      PoliciesListResultItemFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+      S.NullOr(PoliciesListResultItemFiltersTunnelIdList).pipe(
+        T.Body("tunnel_id"),
+      ),
     ),
     tunnelName: S.optional(
-      PoliciesListResultItemFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+      S.NullOr(PoliciesListResultItemFiltersTunnelNameList).pipe(
+        T.Body("tunnel_name"),
+      ),
     ),
-    type: S.optional(PoliciesListResultItemFiltersTypeList),
-    where: S.optional(PoliciesListResultItemFiltersWhereList),
-    zones: S.optional(PoliciesListResultItemFiltersZonesList),
+    type: S.optional(S.NullOr(PoliciesListResultItemFiltersTypeList)),
+    where: S.optional(S.NullOr(PoliciesListResultItemFiltersWhereList)),
+    zones: S.optional(S.NullOr(PoliciesListResultItemFiltersZonesList)),
   }),
 ).annotate({
   identifier: "PoliciesListResultItemFilters",
@@ -2842,12 +2938,12 @@ export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoliciesListResultItemMechanismsEmailItem {
   /** The email address */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesListResultItemMechanismsEmailItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesListResultItemMechanismsEmailItem",
@@ -2861,12 +2957,12 @@ export const PoliciesListResultItemMechanismsEmailList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesListResultItemMechanismsPagerdutyItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesListResultItemMechanismsPagerdutyItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesListResultItemMechanismsPagerdutyItem",
@@ -2881,12 +2977,12 @@ export const PoliciesListResultItemMechanismsPagerdutyList =
 
 export interface PoliciesListResultItemMechanismsWebhooksItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesListResultItemMechanismsWebhooksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesListResultItemMechanismsWebhooksItem",
@@ -2900,15 +2996,19 @@ export const PoliciesListResultItemMechanismsWebhooksList =
   ) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksList>;
 
 export interface PoliciesListResultItemMechanisms {
-  email?: PoliciesListResultItemMechanismsEmailList;
-  pagerduty?: PoliciesListResultItemMechanismsPagerdutyList;
-  webhooks?: PoliciesListResultItemMechanismsWebhooksList;
+  email?: PoliciesListResultItemMechanismsEmailList | null;
+  pagerduty?: PoliciesListResultItemMechanismsPagerdutyList | null;
+  webhooks?: PoliciesListResultItemMechanismsWebhooksList | null;
 }
 export const PoliciesListResultItemMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(PoliciesListResultItemMechanismsEmailList),
-    pagerduty: S.optional(PoliciesListResultItemMechanismsPagerdutyList),
-    webhooks: S.optional(PoliciesListResultItemMechanismsWebhooksList),
+    email: S.optional(S.NullOr(PoliciesListResultItemMechanismsEmailList)),
+    pagerduty: S.optional(
+      S.NullOr(PoliciesListResultItemMechanismsPagerdutyList),
+    ),
+    webhooks: S.optional(
+      S.NullOr(PoliciesListResultItemMechanismsWebhooksList),
+    ),
   }),
 ).annotate({
   identifier: "PoliciesListResultItemMechanisms",
@@ -2916,38 +3016,40 @@ export const PoliciesListResultItemMechanisms = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoliciesListResultItem {
   /** The unique identifier of a notification policy */
-  id?: string;
+  id?: string | null;
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
-  alertInterval?: string;
+  alertInterval?: string | null;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType?: PoliciesListResultItemAlertType;
-  created?: string;
+  alertType?: PoliciesListResultItemAlertType | null;
+  created?: string | null;
   /** Optional description for the Notification policy. */
-  description?: string;
+  description?: string | null;
   /** Whether or not the Notification policy is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
-  filters?: PoliciesListResultItemFilters;
+  filters?: PoliciesListResultItemFilters | null;
   /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
-  mechanisms?: PoliciesListResultItemMechanisms;
-  modified?: string;
+  mechanisms?: PoliciesListResultItemMechanisms | null;
+  modified?: string | null;
   /** Name of the policy. */
-  name?: string;
+  name?: string | null;
 }
 export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
-    alertType: S.optional(
-      PoliciesListResultItemAlertType.pipe(T.Body("alert_type")),
+    id: S.optional(S.NullOr(S.String)),
+    alertInterval: S.optional(
+      S.NullOr(S.String).pipe(T.Body("alert_interval")),
     ),
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    filters: S.optional(PoliciesListResultItemFilters),
-    mechanisms: S.optional(PoliciesListResultItemMechanisms),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
+    alertType: S.optional(
+      S.NullOr(PoliciesListResultItemAlertType).pipe(T.Body("alert_type")),
+    ),
+    created: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    filters: S.optional(S.NullOr(PoliciesListResultItemFilters)),
+    mechanisms: S.optional(S.NullOr(PoliciesListResultItemMechanisms)),
+    modified: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PoliciesListResultItem",
@@ -2995,26 +3097,26 @@ export const ListSilencesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface SilencesListResultItem {
   /** Silence ID */
-  id?: string;
+  id?: string | null;
   /** When the silence was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** When the silence ends. */
-  endTime?: string;
+  endTime?: string | null;
   /** The unique identifier of a notification policy */
-  policyId?: string;
+  policyId?: string | null;
   /** When the silence starts. */
-  startTime?: string;
+  startTime?: string | null;
   /** When the silence was modified. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "SilencesListResultItem",
@@ -3050,7 +3152,7 @@ export interface UpdateDestinationWebhookRequest {
   /** The POST endpoint to call when dispatching a notification. */
   url: string;
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
+  secret?: string | null;
 }
 export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3058,7 +3160,7 @@ export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     webhookId: S.String.pipe(T.Label("webhook_id")),
     name: S.String,
     url: S.String,
-    secret: S.optional(S.String),
+    secret: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3075,11 +3177,11 @@ export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDestinationWebhookResponse {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const UpdateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDestinationWebhookResponse",
@@ -3410,223 +3512,253 @@ export const PoliciesUpdateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
-  actions?: PoliciesUpdateRequestFiltersActionsList;
+  actions?: PoliciesUpdateRequestFiltersActionsList | null;
   /** Used for configuring radar_notification */
-  affectedAsns?: PoliciesUpdateRequestFiltersAffectedAsnsList;
+  affectedAsns?: PoliciesUpdateRequestFiltersAffectedAsnsList | null;
   /** Used for configuring incident_alert */
-  affectedComponents?: PoliciesUpdateRequestFiltersAffectedComponentsList;
+  affectedComponents?: PoliciesUpdateRequestFiltersAffectedComponentsList | null;
   /** Used for configuring radar_notification */
-  affectedLocations?: PoliciesUpdateRequestFiltersAffectedLocationsList;
+  affectedLocations?: PoliciesUpdateRequestFiltersAffectedLocationsList | null;
   /** Used for configuring maintenance_event_notification */
-  airportCode?: PoliciesUpdateRequestFiltersAirportCodeList;
+  airportCode?: PoliciesUpdateRequestFiltersAirportCodeList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferences?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesList;
+  alertTriggerPreferences?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesList | null;
   /** Usage depends on specific alert type */
-  alertTriggerPreferencesValue?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList;
+  alertTriggerPreferencesValue?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList | null;
   /** Used for configuring load_balancing_pool_enablement_alert */
-  enabled?: PoliciesUpdateRequestFiltersEnabledList;
+  enabled?: PoliciesUpdateRequestFiltersEnabledList | null;
   /** Used for configuring pages_event_alert */
-  environment?: PoliciesUpdateRequestFiltersEnvironmentList;
+  environment?: PoliciesUpdateRequestFiltersEnvironmentList | null;
   /** Used for configuring pages_event_alert */
-  event?: PoliciesUpdateRequestFiltersEventList;
+  event?: PoliciesUpdateRequestFiltersEventList | null;
   /** Used for configuring load_balancing_health_alert */
-  eventSource?: PoliciesUpdateRequestFiltersEventSourceList;
+  eventSource?: PoliciesUpdateRequestFiltersEventSourceList | null;
   /** Usage depends on specific alert type */
-  eventType?: PoliciesUpdateRequestFiltersEventTypeList;
+  eventType?: PoliciesUpdateRequestFiltersEventTypeList | null;
   /** Usage depends on specific alert type */
-  groupBy?: PoliciesUpdateRequestFiltersGroupByList;
+  groupBy?: PoliciesUpdateRequestFiltersGroupByList | null;
   /** Used for configuring health_check_status_notification */
-  healthCheckId?: PoliciesUpdateRequestFiltersHealthCheckIdList;
+  healthCheckId?: PoliciesUpdateRequestFiltersHealthCheckIdList | null;
   /** Used for configuring incident_alert */
-  incidentImpact?: PoliciesUpdateRequestFiltersIncidentImpactList;
+  incidentImpact?: PoliciesUpdateRequestFiltersIncidentImpactList | null;
   /** Used for configuring stream_live_notifications */
-  inputId?: PoliciesUpdateRequestFiltersInputIdList;
+  inputId?: PoliciesUpdateRequestFiltersInputIdList | null;
   /** Used for configuring security_insights_alert */
-  insightClass?: PoliciesUpdateRequestFiltersInsightClassList;
+  insightClass?: PoliciesUpdateRequestFiltersInsightClassList | null;
   /** Used for configuring billing_usage_alert */
-  limit?: PoliciesUpdateRequestFiltersLimitList;
+  limit?: PoliciesUpdateRequestFiltersLimitList | null;
   /** Used for configuring logo_match_alert */
-  logoTag?: PoliciesUpdateRequestFiltersLogoTagList;
+  logoTag?: PoliciesUpdateRequestFiltersLogoTagList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  megabitsPerSecond?: PoliciesUpdateRequestFiltersMegabitsPerSecondList;
+  megabitsPerSecond?: PoliciesUpdateRequestFiltersMegabitsPerSecondList | null;
   /** Used for configuring load_balancing_health_alert */
-  newHealth?: PoliciesUpdateRequestFiltersNewHealthList;
+  newHealth?: PoliciesUpdateRequestFiltersNewHealthList | null;
   /** Used for configuring tunnel_health_event */
-  newStatus?: PoliciesUpdateRequestFiltersNewStatusList;
+  newStatus?: PoliciesUpdateRequestFiltersNewStatusList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  packetsPerSecond?: PoliciesUpdateRequestFiltersPacketsPerSecondList;
+  packetsPerSecond?: PoliciesUpdateRequestFiltersPacketsPerSecondList | null;
   /** Usage depends on specific alert type */
-  poolId?: PoliciesUpdateRequestFiltersPoolIdList;
+  poolId?: PoliciesUpdateRequestFiltersPoolIdList | null;
   /** Usage depends on specific alert type */
-  popNames?: PoliciesUpdateRequestFiltersPopNamesList;
+  popNames?: PoliciesUpdateRequestFiltersPopNamesList | null;
   /** Used for configuring billing_usage_alert */
-  product?: PoliciesUpdateRequestFiltersProductList;
+  product?: PoliciesUpdateRequestFiltersProductList | null;
   /** Used for configuring pages_event_alert */
-  projectId?: PoliciesUpdateRequestFiltersProjectIdList;
+  projectId?: PoliciesUpdateRequestFiltersProjectIdList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  protocol?: PoliciesUpdateRequestFiltersProtocolList;
+  protocol?: PoliciesUpdateRequestFiltersProtocolList | null;
   /** Usage depends on specific alert type */
-  queryTag?: PoliciesUpdateRequestFiltersQueryTagList;
+  queryTag?: PoliciesUpdateRequestFiltersQueryTagList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  requestsPerSecond?: PoliciesUpdateRequestFiltersRequestsPerSecondList;
+  requestsPerSecond?: PoliciesUpdateRequestFiltersRequestsPerSecondList | null;
   /** Usage depends on specific alert type */
-  selectors?: PoliciesUpdateRequestFiltersSelectorsList;
+  selectors?: PoliciesUpdateRequestFiltersSelectorsList | null;
   /** Used for configuring clickhouse_alert_fw_ent_anomaly */
-  services?: PoliciesUpdateRequestFiltersServicesList;
+  services?: PoliciesUpdateRequestFiltersServicesList | null;
   /** Usage depends on specific alert type */
-  slo?: PoliciesUpdateRequestFiltersSloList;
+  slo?: PoliciesUpdateRequestFiltersSloList | null;
   /** Used for configuring health_check_status_notification */
-  status?: PoliciesUpdateRequestFiltersStatusList;
+  status?: PoliciesUpdateRequestFiltersStatusList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetHostname?: PoliciesUpdateRequestFiltersTargetHostnameList;
+  targetHostname?: PoliciesUpdateRequestFiltersTargetHostnameList | null;
   /** Used for configuring advanced_ddos_attack_l4_alert */
-  targetIp?: PoliciesUpdateRequestFiltersTargetIpList;
+  targetIp?: PoliciesUpdateRequestFiltersTargetIpList | null;
   /** Used for configuring advanced_ddos_attack_l7_alert */
-  targetZoneName?: PoliciesUpdateRequestFiltersTargetZoneNameList;
+  targetZoneName?: PoliciesUpdateRequestFiltersTargetZoneNameList | null;
   /** Used for configuring traffic_anomalies_alert */
-  trafficExclusions?: PoliciesUpdateRequestFiltersTrafficExclusionsList;
+  trafficExclusions?: PoliciesUpdateRequestFiltersTrafficExclusionsList | null;
   /** Used for configuring tunnel_health_event */
-  tunnelId?: PoliciesUpdateRequestFiltersTunnelIdList;
+  tunnelId?: PoliciesUpdateRequestFiltersTunnelIdList | null;
   /** Usage depends on specific alert type */
-  tunnelName?: PoliciesUpdateRequestFiltersTunnelNameList;
+  tunnelName?: PoliciesUpdateRequestFiltersTunnelNameList | null;
   /** Usage depends on specific alert type */
-  type?: PoliciesUpdateRequestFiltersTypeList;
+  type?: PoliciesUpdateRequestFiltersTypeList | null;
   /** Usage depends on specific alert type */
-  where?: PoliciesUpdateRequestFiltersWhereList;
+  where?: PoliciesUpdateRequestFiltersWhereList | null;
   /** Usage depends on specific alert type */
-  zones?: PoliciesUpdateRequestFiltersZonesList;
+  zones?: PoliciesUpdateRequestFiltersZonesList | null;
 }
 export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actions: S.optional(PoliciesUpdateRequestFiltersActionsList),
+    actions: S.optional(S.NullOr(PoliciesUpdateRequestFiltersActionsList)),
     affectedAsns: S.optional(
-      PoliciesUpdateRequestFiltersAffectedAsnsList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersAffectedAsnsList).pipe(
         T.Body("affected_asns"),
       ),
     ),
     affectedComponents: S.optional(
-      PoliciesUpdateRequestFiltersAffectedComponentsList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersAffectedComponentsList).pipe(
         T.Body("affected_components"),
       ),
     ),
     affectedLocations: S.optional(
-      PoliciesUpdateRequestFiltersAffectedLocationsList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersAffectedLocationsList).pipe(
         T.Body("affected_locations"),
       ),
     ),
     airportCode: S.optional(
-      PoliciesUpdateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
+      S.NullOr(PoliciesUpdateRequestFiltersAirportCodeList).pipe(
+        T.Body("airport_code"),
+      ),
     ),
     alertTriggerPreferences: S.optional(
-      PoliciesUpdateRequestFiltersAlertTriggerPreferencesList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersAlertTriggerPreferencesList).pipe(
         T.Body("alert_trigger_preferences"),
       ),
     ),
     alertTriggerPreferencesValue: S.optional(
-      PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList.pipe(
-        T.Body("alert_trigger_preferences_value"),
+      S.NullOr(
+        PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList,
+      ).pipe(T.Body("alert_trigger_preferences_value")),
+    ),
+    enabled: S.optional(S.NullOr(PoliciesUpdateRequestFiltersEnabledList)),
+    environment: S.optional(
+      S.NullOr(PoliciesUpdateRequestFiltersEnvironmentList),
+    ),
+    event: S.optional(S.NullOr(PoliciesUpdateRequestFiltersEventList)),
+    eventSource: S.optional(
+      S.NullOr(PoliciesUpdateRequestFiltersEventSourceList).pipe(
+        T.Body("event_source"),
       ),
     ),
-    enabled: S.optional(PoliciesUpdateRequestFiltersEnabledList),
-    environment: S.optional(PoliciesUpdateRequestFiltersEnvironmentList),
-    event: S.optional(PoliciesUpdateRequestFiltersEventList),
-    eventSource: S.optional(
-      PoliciesUpdateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
-    ),
     eventType: S.optional(
-      PoliciesUpdateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
+      S.NullOr(PoliciesUpdateRequestFiltersEventTypeList).pipe(
+        T.Body("event_type"),
+      ),
     ),
     groupBy: S.optional(
-      PoliciesUpdateRequestFiltersGroupByList.pipe(T.Body("group_by")),
+      S.NullOr(PoliciesUpdateRequestFiltersGroupByList).pipe(
+        T.Body("group_by"),
+      ),
     ),
     healthCheckId: S.optional(
-      PoliciesUpdateRequestFiltersHealthCheckIdList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersHealthCheckIdList).pipe(
         T.Body("health_check_id"),
       ),
     ),
     incidentImpact: S.optional(
-      PoliciesUpdateRequestFiltersIncidentImpactList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersIncidentImpactList).pipe(
         T.Body("incident_impact"),
       ),
     ),
     inputId: S.optional(
-      PoliciesUpdateRequestFiltersInputIdList.pipe(T.Body("input_id")),
+      S.NullOr(PoliciesUpdateRequestFiltersInputIdList).pipe(
+        T.Body("input_id"),
+      ),
     ),
     insightClass: S.optional(
-      PoliciesUpdateRequestFiltersInsightClassList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersInsightClassList).pipe(
         T.Body("insight_class"),
       ),
     ),
-    limit: S.optional(PoliciesUpdateRequestFiltersLimitList),
+    limit: S.optional(S.NullOr(PoliciesUpdateRequestFiltersLimitList)),
     logoTag: S.optional(
-      PoliciesUpdateRequestFiltersLogoTagList.pipe(T.Body("logo_tag")),
+      S.NullOr(PoliciesUpdateRequestFiltersLogoTagList).pipe(
+        T.Body("logo_tag"),
+      ),
     ),
     megabitsPerSecond: S.optional(
-      PoliciesUpdateRequestFiltersMegabitsPerSecondList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersMegabitsPerSecondList).pipe(
         T.Body("megabits_per_second"),
       ),
     ),
     newHealth: S.optional(
-      PoliciesUpdateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
+      S.NullOr(PoliciesUpdateRequestFiltersNewHealthList).pipe(
+        T.Body("new_health"),
+      ),
     ),
     newStatus: S.optional(
-      PoliciesUpdateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
+      S.NullOr(PoliciesUpdateRequestFiltersNewStatusList).pipe(
+        T.Body("new_status"),
+      ),
     ),
     packetsPerSecond: S.optional(
-      PoliciesUpdateRequestFiltersPacketsPerSecondList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersPacketsPerSecondList).pipe(
         T.Body("packets_per_second"),
       ),
     ),
     poolId: S.optional(
-      PoliciesUpdateRequestFiltersPoolIdList.pipe(T.Body("pool_id")),
+      S.NullOr(PoliciesUpdateRequestFiltersPoolIdList).pipe(T.Body("pool_id")),
     ),
     popNames: S.optional(
-      PoliciesUpdateRequestFiltersPopNamesList.pipe(T.Body("pop_names")),
+      S.NullOr(PoliciesUpdateRequestFiltersPopNamesList).pipe(
+        T.Body("pop_names"),
+      ),
     ),
-    product: S.optional(PoliciesUpdateRequestFiltersProductList),
+    product: S.optional(S.NullOr(PoliciesUpdateRequestFiltersProductList)),
     projectId: S.optional(
-      PoliciesUpdateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
+      S.NullOr(PoliciesUpdateRequestFiltersProjectIdList).pipe(
+        T.Body("project_id"),
+      ),
     ),
-    protocol: S.optional(PoliciesUpdateRequestFiltersProtocolList),
+    protocol: S.optional(S.NullOr(PoliciesUpdateRequestFiltersProtocolList)),
     queryTag: S.optional(
-      PoliciesUpdateRequestFiltersQueryTagList.pipe(T.Body("query_tag")),
+      S.NullOr(PoliciesUpdateRequestFiltersQueryTagList).pipe(
+        T.Body("query_tag"),
+      ),
     ),
     requestsPerSecond: S.optional(
-      PoliciesUpdateRequestFiltersRequestsPerSecondList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersRequestsPerSecondList).pipe(
         T.Body("requests_per_second"),
       ),
     ),
-    selectors: S.optional(PoliciesUpdateRequestFiltersSelectorsList),
-    services: S.optional(PoliciesUpdateRequestFiltersServicesList),
-    slo: S.optional(PoliciesUpdateRequestFiltersSloList),
-    status: S.optional(PoliciesUpdateRequestFiltersStatusList),
+    selectors: S.optional(S.NullOr(PoliciesUpdateRequestFiltersSelectorsList)),
+    services: S.optional(S.NullOr(PoliciesUpdateRequestFiltersServicesList)),
+    slo: S.optional(S.NullOr(PoliciesUpdateRequestFiltersSloList)),
+    status: S.optional(S.NullOr(PoliciesUpdateRequestFiltersStatusList)),
     targetHostname: S.optional(
-      PoliciesUpdateRequestFiltersTargetHostnameList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersTargetHostnameList).pipe(
         T.Body("target_hostname"),
       ),
     ),
     targetIp: S.optional(
-      PoliciesUpdateRequestFiltersTargetIpList.pipe(T.Body("target_ip")),
+      S.NullOr(PoliciesUpdateRequestFiltersTargetIpList).pipe(
+        T.Body("target_ip"),
+      ),
     ),
     targetZoneName: S.optional(
-      PoliciesUpdateRequestFiltersTargetZoneNameList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersTargetZoneNameList).pipe(
         T.Body("target_zone_name"),
       ),
     ),
     trafficExclusions: S.optional(
-      PoliciesUpdateRequestFiltersTrafficExclusionsList.pipe(
+      S.NullOr(PoliciesUpdateRequestFiltersTrafficExclusionsList).pipe(
         T.Body("traffic_exclusions"),
       ),
     ),
     tunnelId: S.optional(
-      PoliciesUpdateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+      S.NullOr(PoliciesUpdateRequestFiltersTunnelIdList).pipe(
+        T.Body("tunnel_id"),
+      ),
     ),
     tunnelName: S.optional(
-      PoliciesUpdateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+      S.NullOr(PoliciesUpdateRequestFiltersTunnelNameList).pipe(
+        T.Body("tunnel_name"),
+      ),
     ),
-    type: S.optional(PoliciesUpdateRequestFiltersTypeList),
-    where: S.optional(PoliciesUpdateRequestFiltersWhereList),
-    zones: S.optional(PoliciesUpdateRequestFiltersZonesList),
+    type: S.optional(S.NullOr(PoliciesUpdateRequestFiltersTypeList)),
+    where: S.optional(S.NullOr(PoliciesUpdateRequestFiltersWhereList)),
+    zones: S.optional(S.NullOr(PoliciesUpdateRequestFiltersZonesList)),
   }),
 ).annotate({
   identifier: "PoliciesUpdateRequestFilters",
@@ -3634,12 +3766,12 @@ export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
 
 export interface PoliciesUpdateRequestMechanismsEmailItem {
   /** The email address */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesUpdateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "PoliciesUpdateRequestMechanismsEmailItem",
@@ -3653,12 +3785,12 @@ export const PoliciesUpdateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
 
 export interface PoliciesUpdateRequestMechanismsPagerdutyItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesUpdateRequestMechanismsPagerdutyItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesUpdateRequestMechanismsPagerdutyItem",
@@ -3673,12 +3805,12 @@ export const PoliciesUpdateRequestMechanismsPagerdutyList =
 
 export interface PoliciesUpdateRequestMechanismsWebhooksItem {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const PoliciesUpdateRequestMechanismsWebhooksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "PoliciesUpdateRequestMechanismsWebhooksItem",
@@ -3692,15 +3824,17 @@ export const PoliciesUpdateRequestMechanismsWebhooksList =
   ) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksList>;
 
 export interface PoliciesUpdateRequestMechanisms {
-  email?: PoliciesUpdateRequestMechanismsEmailList;
-  pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList;
-  webhooks?: PoliciesUpdateRequestMechanismsWebhooksList;
+  email?: PoliciesUpdateRequestMechanismsEmailList | null;
+  pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList | null;
+  webhooks?: PoliciesUpdateRequestMechanismsWebhooksList | null;
 }
 export const PoliciesUpdateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(PoliciesUpdateRequestMechanismsEmailList),
-    pagerduty: S.optional(PoliciesUpdateRequestMechanismsPagerdutyList),
-    webhooks: S.optional(PoliciesUpdateRequestMechanismsWebhooksList),
+    email: S.optional(S.NullOr(PoliciesUpdateRequestMechanismsEmailList)),
+    pagerduty: S.optional(
+      S.NullOr(PoliciesUpdateRequestMechanismsPagerdutyList),
+    ),
+    webhooks: S.optional(S.NullOr(PoliciesUpdateRequestMechanismsWebhooksList)),
   }),
 ).annotate({
   identifier: "PoliciesUpdateRequestMechanisms",
@@ -3712,33 +3846,35 @@ export interface UpdatePolicyRequest {
   /** The unique identifier of a notification policy */
   policyId: string;
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
-  alertInterval?: string;
+  alertInterval?: string | null;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType?: PoliciesUpdateRequestAlertType | (string & {});
+  alertType?: PoliciesUpdateRequestAlertType | (string & {}) | null;
   /** Optional description for the Notification policy. */
-  description?: string;
+  description?: string | null;
   /** Whether or not the Notification policy is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
-  filters?: PoliciesUpdateRequestFilters;
+  filters?: PoliciesUpdateRequestFilters | null;
   /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
-  mechanisms?: PoliciesUpdateRequestMechanisms;
+  mechanisms?: PoliciesUpdateRequestMechanisms | null;
   /** Name of the policy. */
-  name?: string;
+  name?: string | null;
 }
 export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
-    alertType: S.optional(
-      PoliciesUpdateRequestAlertType.pipe(T.Body("alert_type")),
+    alertInterval: S.optional(
+      S.NullOr(S.String).pipe(T.Body("alert_interval")),
     ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    filters: S.optional(PoliciesUpdateRequestFilters),
-    mechanisms: S.optional(PoliciesUpdateRequestMechanisms),
-    name: S.optional(S.String),
+    alertType: S.optional(
+      S.NullOr(PoliciesUpdateRequestAlertType).pipe(T.Body("alert_type")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    filters: S.optional(S.NullOr(PoliciesUpdateRequestFilters)),
+    mechanisms: S.optional(S.NullOr(PoliciesUpdateRequestMechanisms)),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3755,11 +3891,11 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePolicyResponse {
   /** UUID */
-  id?: string;
+  id?: string | null;
 }
 export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePolicyResponse",
@@ -3767,17 +3903,17 @@ export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SilencesUpdateRequestBodyItem {
   /** Silence ID */
-  id?: string;
+  id?: string | null;
   /** When the silence ends. */
-  endTime?: string;
+  endTime?: string | null;
   /** When the silence starts. */
-  startTime?: string;
+  startTime?: string | null;
 }
 export const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    id: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
   }),
 ).annotate({
   identifier: "SilencesUpdateRequestBodyItem",
@@ -3813,26 +3949,26 @@ export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface SilencesUpdateResultItem {
   /** Silence ID */
-  id?: string;
+  id?: string | null;
   /** When the silence was created. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** When the silence ends. */
-  endTime?: string;
+  endTime?: string | null;
   /** The unique identifier of a notification policy */
-  policyId?: string;
+  policyId?: string | null;
   /** When the silence starts. */
-  startTime?: string;
+  startTime?: string | null;
   /** When the silence was modified. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const SilencesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "SilencesUpdateResultItem",

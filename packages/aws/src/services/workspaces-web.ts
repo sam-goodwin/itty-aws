@@ -458,16 +458,17 @@ export type Category =
   | "ProfessionalNetwork"
   | "SocialNetworking"
   | "WebBasedEmail"
-  | "ParkedDomains";
+  | "ParkedDomains"
+  | (string & {});
 export const Category = /*@__PURE__*/ S.String;
 
-export type BlockedCategories = (Category | (string & {}))[];
+export type BlockedCategories = Category[];
 export const BlockedCategories = /*@__PURE__*/ S.Array(Category);
 export type UrlPattern = string | redacted.Redacted<string>;
 export type UrlPatternList = (string | redacted.Redacted<string>)[];
 export const UrlPatternList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface WebContentFilteringPolicy {
-  blockedCategories?: (Category | (string & {}))[];
+  blockedCategories?: Category[];
   allowedUrls?: (string | redacted.Redacted<string>)[];
   blockedUrls?: (string | redacted.Redacted<string>)[];
 }
@@ -842,14 +843,15 @@ export type Event =
   | "SessionStart"
   | "SessionDisconnect"
   | "SessionEnd"
-  | "UrlBlockByContentFilter";
+  | "UrlBlockByContentFilter"
+  | (string & {});
 export const Event = /*@__PURE__*/ S.String;
 
-export type Events = (Event | (string & {}))[];
+export type Events = Event[];
 export const Events = /*@__PURE__*/ S.Array(Event);
 export type EventFilter =
   | { all: Record<string, never>; include?: never }
-  | { all?: never; include: (Event | (string & {}))[] };
+  | { all?: never; include: Event[] };
 export const EventFilter = /*@__PURE__*/ S.Union([
   S.Struct({ all: S.Struct({}) }),
   S.Struct({ include: Events }),
@@ -857,18 +859,18 @@ export const EventFilter = /*@__PURE__*/ S.Union([
 export type S3Bucket = string | redacted.Redacted<string>;
 export type S3KeyPrefix = string | redacted.Redacted<string>;
 export type S3BucketOwner = string;
-export type LogFileFormat = "JSONLines" | "Json";
+export type LogFileFormat = "JSONLines" | "Json" | (string & {});
 export const LogFileFormat = /*@__PURE__*/ S.String;
 
-export type FolderStructure = "Flat" | "NestedByDate";
+export type FolderStructure = "Flat" | "NestedByDate" | (string & {});
 export const FolderStructure = /*@__PURE__*/ S.String;
 
 export interface S3LogConfiguration {
   bucket: string | redacted.Redacted<string>;
   keyPrefix?: string | redacted.Redacted<string>;
   bucketOwner?: string;
-  logFileFormat: LogFileFormat | (string & {});
-  folderStructure: FolderStructure | (string & {});
+  logFileFormat: LogFileFormat;
+  folderStructure: FolderStructure;
 }
 export const S3LogConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1079,7 +1081,8 @@ export type Locale =
   | "ko-KR"
   | "pt-BR"
   | "zh-CN"
-  | "zh-TW";
+  | "zh-TW"
+  | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
 
 export type BrandingSafeStringType = string;
@@ -1109,13 +1112,13 @@ export const LocalizedBrandingStrings = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedBrandingStrings",
 }) as any as S.Schema<LocalizedBrandingStrings>;
 export type LocalizedBrandingStringMap = {
-  [key in Locale | (string & {})]?: LocalizedBrandingStrings;
+  [key in Locale]?: LocalizedBrandingStrings;
 };
 export const LocalizedBrandingStringMap = /*@__PURE__*/ S.Record(
   Locale,
   LocalizedBrandingStrings.pipe(S.optional),
 );
-export type ColorTheme = "Light" | "Dark";
+export type ColorTheme = "Light" | "Dark" | (string & {});
 export const ColorTheme = /*@__PURE__*/ S.String;
 
 export type Markdown = string | redacted.Redacted<string>;
@@ -1124,7 +1127,7 @@ export interface BrandingConfigurationCreateInput {
   wallpaper?: WallpaperImageInput;
   favicon: IconImageInput;
   localizedStrings: { [key: string]: LocalizedBrandingStrings | undefined };
-  colorTheme: ColorTheme | (string & {});
+  colorTheme: ColorTheme;
   termsOfService?: string | redacted.Redacted<string>;
 }
 export const BrandingConfigurationCreateInput = /*@__PURE__*/ S.suspend(() =>
@@ -2087,7 +2090,7 @@ export type Username = string | redacted.Redacted<string>;
 export type IpAddress = string | redacted.Redacted<string>;
 export type IpAddressList = (string | redacted.Redacted<string>)[];
 export const IpAddressList = /*@__PURE__*/ S.Array(SensitiveString);
-export type SessionStatus = "Active" | "Terminated";
+export type SessionStatus = "Active" | "Terminated" | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export interface Session {
@@ -2323,7 +2326,11 @@ export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUserSettingsRequest",
 }) as any as S.Schema<GetUserSettingsRequest>;
-export type MimeType = "image/png" | "image/jpeg" | "image/x-icon";
+export type MimeType =
+  | "image/png"
+  | "image/jpeg"
+  | "image/x-icon"
+  | (string & {});
 export const MimeType = /*@__PURE__*/ S.String;
 
 export interface ImageMetadata {
@@ -2788,15 +2795,18 @@ export const ListSessionLoggersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionLoggersResponse",
 }) as any as S.Schema<ListSessionLoggersResponse>;
-export type SessionSortBy = "StartTimeAscending" | "StartTimeDescending";
+export type SessionSortBy =
+  | "StartTimeAscending"
+  | "StartTimeDescending"
+  | (string & {});
 export const SessionSortBy = /*@__PURE__*/ S.String;
 
 export interface ListSessionsRequest {
   portalId: string;
   username?: string | redacted.Redacted<string>;
   sessionId?: string;
-  sortBy?: SessionSortBy | (string & {});
-  status?: SessionStatus | (string & {});
+  sortBy?: SessionSortBy;
+  status?: SessionStatus;
   maxResults?: number;
   nextToken?: string;
 }
@@ -3496,7 +3506,7 @@ export interface BrandingConfigurationUpdateInput {
   wallpaper?: WallpaperImageInput;
   favicon?: IconImageInput;
   localizedStrings?: { [key: string]: LocalizedBrandingStrings | undefined };
-  colorTheme?: ColorTheme | (string & {});
+  colorTheme?: ColorTheme;
   termsOfService?: string | redacted.Redacted<string>;
 }
 export const BrandingConfigurationUpdateInput = /*@__PURE__*/ S.suspend(() =>

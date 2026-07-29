@@ -199,8 +199,8 @@ export interface CreateCatalogSyncRequest {
   destinationType: CatalogSyncsCreateRequestDestinationType | (string & {});
   name: string;
   updateMode: CatalogSyncsCreateRequestUpdateMode | (string & {});
-  description?: string;
-  policy?: string;
+  description?: string | null;
+  policy?: string | null;
 }
 export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -211,8 +211,8 @@ export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     updateMode: CatalogSyncsCreateRequestUpdateMode.pipe(T.Body("update_mode")),
-    description: S.optional(S.String),
-    policy: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    policy: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -393,36 +393,40 @@ export type CatalogSyncsCreateResponseErrorsValueCode =
 export const CatalogSyncsCreateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsCreateResponseErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const CatalogSyncsCreateResponseErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "CatalogSyncsCreateResponseErrorsValueMeta",
   }) as any as S.Schema<CatalogSyncsCreateResponseErrorsValueMeta>;
 
 export interface CatalogSyncsCreateResponseErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const CatalogSyncsCreateResponseErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "CatalogSyncsCreateResponseErrorsValueSource",
@@ -431,18 +435,20 @@ export const CatalogSyncsCreateResponseErrorsValueSource =
 export interface CatalogSyncsCreateResponseErrorsValue {
   code: CatalogSyncsCreateResponseErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta;
-  source?: CatalogSyncsCreateResponseErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
+  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
 export const CatalogSyncsCreateResponseErrorsValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       code: CatalogSyncsCreateResponseErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(CatalogSyncsCreateResponseErrorsValueMeta),
-      source: S.optional(CatalogSyncsCreateResponseErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
+      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
     }),
 ).annotate({
   identifier: "CatalogSyncsCreateResponseErrorsValue",
@@ -466,10 +472,10 @@ export interface CreateCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsCreateResponseUpdateMode;
-  errors?: CatalogSyncsCreateResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
+  errors?: CatalogSyncsCreateResponseErrorsMap | null;
+  includesDiscoveriesUntil?: string | null;
+  lastAttemptedUpdateAt?: string | null;
+  lastSuccessfulUpdateAt?: string | null;
 }
 export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,15 +491,15 @@ export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsCreateResponseUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(CatalogSyncsCreateResponseErrorsMap),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsMap)),
     includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
+      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
     lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
     ),
     lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -512,7 +518,7 @@ export interface CreateCloudIntegrationRequest {
   forwarded?: string;
   cloudType: CloudIntegrationsCreateRequestCloudType | (string & {});
   friendlyName: string;
-  description?: string;
+  description?: string | null;
 }
 export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -522,7 +528,7 @@ export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("cloud_type"),
     ),
     friendlyName: S.String.pipe(T.Body("friendly_name")),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -659,17 +665,17 @@ export interface CloudIntegrationsCreateResponseStatus {
   lastDiscoveryStatus: CloudIntegrationsCreateResponseStatusLastDiscoveryStatus;
   lastDiscoveryStatusV2: CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2;
   regions: CloudIntegrationsCreateResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsCreateResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
+  credentialsGoodSince?: string | null;
+  credentialsMissingSince?: string | null;
+  credentialsRejectedSince?: string | null;
+  discoveryMessage?: string | null;
+  discoveryMessageV2?: string | null;
+  inUseBy?: CloudIntegrationsCreateResponseStatusInUseByList | null;
+  lastDiscoveryCompletedAt?: string | null;
+  lastDiscoveryCompletedAtV2?: string | null;
+  lastDiscoveryStartedAt?: string | null;
+  lastDiscoveryStartedAtV2?: string | null;
+  lastUpdated?: string | null;
 }
 export const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(
   () =>
@@ -692,36 +698,38 @@ export const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(
         ),
       regions: CloudIntegrationsCreateResponseStatusRegionsList,
       credentialsGoodSince: S.optional(
-        S.String.pipe(T.Body("credentials_good_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
       ),
       credentialsMissingSince: S.optional(
-        S.String.pipe(T.Body("credentials_missing_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
       ),
       credentialsRejectedSince: S.optional(
-        S.String.pipe(T.Body("credentials_rejected_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
       ),
-      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+      discoveryMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("discovery_message")),
+      ),
       discoveryMessageV2: S.optional(
-        S.String.pipe(T.Body("discovery_message_v2")),
+        S.NullOr(S.String).pipe(T.Body("discovery_message_v2")),
       ),
       inUseBy: S.optional(
-        CloudIntegrationsCreateResponseStatusInUseByList.pipe(
+        S.NullOr(CloudIntegrationsCreateResponseStatusInUseByList).pipe(
           T.Body("in_use_by"),
         ),
       ),
       lastDiscoveryCompletedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
       ),
       lastDiscoveryCompletedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
       ),
       lastDiscoveryStartedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
       ),
       lastDiscoveryStartedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
       ),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
     }),
 ).annotate({
   identifier: "CloudIntegrationsCreateResponseStatus",
@@ -736,13 +744,13 @@ export interface CreateCloudIntegrationResponse {
   lifecycleState: CloudIntegrationsCreateResponseLifecycleState;
   state: CloudIntegrationsCreateResponseState;
   stateV2: CloudIntegrationsCreateResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsCreateResponseStatus;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
+  status?: CloudIntegrationsCreateResponseStatus | null;
 }
 export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -757,17 +765,19 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: CloudIntegrationsCreateResponseState,
     stateV2: CloudIntegrationsCreateResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
-    status: S.optional(CloudIntegrationsCreateResponseStatus),
+    status: S.optional(S.NullOr(CloudIntegrationsCreateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCloudIntegrationResponse",
@@ -799,17 +809,17 @@ export interface CreateOnRampRequest {
   installRoutesInMagicWan: boolean;
   name: string;
   type: OnRampsCreateRequestType | (string & {});
-  adoptedHubId?: string;
-  attachedHubs?: OnRampsCreateRequestAttachedHubsList;
-  attachedVpcs?: OnRampsCreateRequestAttachedVpcsList;
+  adoptedHubId?: string | null;
+  attachedHubs?: OnRampsCreateRequestAttachedHubsList | null;
+  attachedVpcs?: OnRampsCreateRequestAttachedVpcsList | null;
   /** Sets the cloud-side ASN. If unset or zero, the cloud's default ASN takes effect. */
-  cloudAsn?: number;
-  description?: string;
-  hubProviderId?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  region?: string;
-  vpc?: string;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hubProviderId?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  region?: string | null;
+  vpc?: string | null;
 }
 export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -823,24 +833,30 @@ export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: OnRampsCreateRequestType,
-    adoptedHubId: S.optional(S.String.pipe(T.Body("adopted_hub_id"))),
+    adoptedHubId: S.optional(S.NullOr(S.String).pipe(T.Body("adopted_hub_id"))),
     attachedHubs: S.optional(
-      OnRampsCreateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsCreateRequestAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsCreateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsCreateRequestAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hubProviderId: S.optional(S.String.pipe(T.Body("hub_provider_id"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hubProviderId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("hub_provider_id")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    region: S.optional(S.String),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    vpc: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1588,17 +1604,19 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
   );
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -1974,17 +1992,19 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
   );
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -2003,7 +2023,7 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2017,7 +2037,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItem =
         OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItem",
@@ -2100,7 +2120,7 @@ export interface OnRampsCreateResponsePostApplyResourcesValue {
   tags: OnRampsCreateResponsePostApplyResourcesValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsCreateResponsePostApplyResourcesValueManagedByList;
+  managedBy?: OnRampsCreateResponsePostApplyResourcesValueManagedByList | null;
 }
 export const OnRampsCreateResponsePostApplyResourcesValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -2140,9 +2160,9 @@ export const OnRampsCreateResponsePostApplyResourcesValue =
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        OnRampsCreateResponsePostApplyResourcesValueManagedByList.pipe(
-          T.Body("managed_by"),
-        ),
+        S.NullOr(
+          OnRampsCreateResponsePostApplyResourcesValueManagedByList,
+        ).pipe(T.Body("managed_by")),
       ),
     }),
   ).annotate({
@@ -2371,36 +2391,40 @@ export const OnRampsCreateResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
 export interface OnRampsCreateResponseStatusLifecycleErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const OnRampsCreateResponseStatusLifecycleErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "OnRampsCreateResponseStatusLifecycleErrorsValueMeta",
   }) as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsValueMeta>;
 
 export interface OnRampsCreateResponseStatusLifecycleErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const OnRampsCreateResponseStatusLifecycleErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "OnRampsCreateResponseStatusLifecycleErrorsValueSource",
@@ -2409,18 +2433,24 @@ export const OnRampsCreateResponseStatusLifecycleErrorsValueSource =
 export interface OnRampsCreateResponseStatusLifecycleErrorsValue {
   code: OnRampsCreateResponseStatusLifecycleErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: OnRampsCreateResponseStatusLifecycleErrorsValueMeta;
-  source?: OnRampsCreateResponseStatusLifecycleErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: OnRampsCreateResponseStatusLifecycleErrorsValueMeta | null;
+  source?: OnRampsCreateResponseStatusLifecycleErrorsValueSource | null;
 }
 export const OnRampsCreateResponseStatusLifecycleErrorsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: OnRampsCreateResponseStatusLifecycleErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(OnRampsCreateResponseStatusLifecycleErrorsValueMeta),
-      source: S.optional(OnRampsCreateResponseStatusLifecycleErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(
+        S.NullOr(OnRampsCreateResponseStatusLifecycleErrorsValueMeta),
+      ),
+      source: S.optional(
+        S.NullOr(OnRampsCreateResponseStatusLifecycleErrorsValueSource),
+      ),
     }),
   ).annotate({
     identifier: "OnRampsCreateResponseStatusLifecycleErrorsValue",
@@ -2441,7 +2471,7 @@ export interface OnRampsCreateResponseStatus {
   planProgress: OnRampsCreateResponseStatusPlanProgress;
   routes: OnRampsCreateResponseStatusRoutesList;
   tunnels: OnRampsCreateResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsCreateResponseStatusLifecycleErrorsMap;
+  lifecycleErrors?: OnRampsCreateResponseStatusLifecycleErrorsMap | null;
 }
 export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2457,7 +2487,7 @@ export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
     routes: OnRampsCreateResponseStatusRoutesList,
     tunnels: OnRampsCreateResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      OnRampsCreateResponseStatusLifecycleErrorsMap.pipe(
+      S.NullOr(OnRampsCreateResponseStatusLifecycleErrorsMap).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -2963,17 +2993,19 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue 
   );
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -3348,17 +3380,19 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   );
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -3377,7 +3411,7 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItem {
   hiddenItems: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3391,7 +3425,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItem =
         OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItem",
@@ -3473,7 +3507,7 @@ export interface OnRampsCreateResponseVpcsByIdValue {
   tags: OnRampsCreateResponseVpcsByIdValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsCreateResponseVpcsByIdValueManagedByList;
+  managedBy?: OnRampsCreateResponseVpcsByIdValueManagedByList | null;
 }
 export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3510,7 +3544,7 @@ export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      OnRampsCreateResponseVpcsByIdValueManagedByList.pipe(
+      S.NullOr(OnRampsCreateResponseVpcsByIdValueManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
@@ -3543,28 +3577,28 @@ export interface CreateOnRampResponse {
   name: string;
   type: OnRampsCreateResponseType;
   updatedAt: string;
-  attachedHubs?: OnRampsCreateResponseAttachedHubsList;
-  attachedVpcs?: OnRampsCreateResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsCreateResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsCreateResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsCreateResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsCreateResponseVpcsByIdMap;
+  attachedHubs?: OnRampsCreateResponseAttachedHubsList | null;
+  attachedVpcs?: OnRampsCreateResponseAttachedVpcsList | null;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hub?: string | null;
+  lastAppliedAt?: string | null;
+  lastExportedAt?: string | null;
+  lastPlannedAt?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  plannedMonthlyCostEstimate?: OnRampsCreateResponsePlannedMonthlyCostEstimate | null;
+  plannedResources?: OnRampsCreateResponsePlannedResourcesList | null;
+  plannedResourcesUnavailable?: boolean | null;
+  postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
+  postApplyResources?: OnRampsCreateResponsePostApplyResourcesMap | null;
+  postApplyResourcesUnavailable?: boolean | null;
+  region?: string | null;
+  status?: OnRampsCreateResponseStatus | null;
+  vpc?: string | null;
+  vpcsById?: OnRampsCreateResponseVpcsByIdMap | null;
   /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsCreateResponseVpcsByIdUnavailableList;
+  vpcsByIdUnavailable?: OnRampsCreateResponseVpcsByIdUnavailableList | null;
 }
 export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3579,57 +3613,67 @@ export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     type: OnRampsCreateResponseType,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     attachedHubs: S.optional(
-      OnRampsCreateResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsCreateResponseAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsCreateResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsCreateResponseAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hub: S.optional(S.NullOr(S.String)),
+    lastAppliedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_applied_at")),
+    ),
+    lastExportedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_exported_at")),
+    ),
+    lastPlannedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_planned_at")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
     plannedMonthlyCostEstimate: S.optional(
-      OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsCreateResponsePlannedMonthlyCostEstimate).pipe(
         T.Body("planned_monthly_cost_estimate"),
       ),
     ),
     plannedResources: S.optional(
-      OnRampsCreateResponsePlannedResourcesList.pipe(
+      S.NullOr(OnRampsCreateResponsePlannedResourcesList).pipe(
         T.Body("planned_resources"),
       ),
     ),
     plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
     ),
     postApplyMonthlyCostEstimate: S.optional(
-      OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsCreateResponsePostApplyMonthlyCostEstimate).pipe(
         T.Body("post_apply_monthly_cost_estimate"),
       ),
     ),
     postApplyResources: S.optional(
-      OnRampsCreateResponsePostApplyResourcesMap.pipe(
+      S.NullOr(OnRampsCreateResponsePostApplyResourcesMap).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
     postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
     ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsCreateResponseStatus),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(OnRampsCreateResponseStatus)),
+    vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      OnRampsCreateResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsCreateResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
-      OnRampsCreateResponseVpcsByIdUnavailableList.pipe(
+      S.NullOr(OnRampsCreateResponseVpcsByIdUnavailableList).pipe(
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
@@ -4141,36 +4185,40 @@ export type CatalogSyncsGetResponseErrorsValueCode =
 export const CatalogSyncsGetResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsGetResponseErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const CatalogSyncsGetResponseErrorsValueMeta = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
 ).annotate({
   identifier: "CatalogSyncsGetResponseErrorsValueMeta",
 }) as any as S.Schema<CatalogSyncsGetResponseErrorsValueMeta>;
 
 export interface CatalogSyncsGetResponseErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const CatalogSyncsGetResponseErrorsValueSource = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "CatalogSyncsGetResponseErrorsValueSource",
@@ -4179,17 +4227,19 @@ export const CatalogSyncsGetResponseErrorsValueSource = /*@__PURE__*/ S.suspend(
 export interface CatalogSyncsGetResponseErrorsValue {
   code: CatalogSyncsGetResponseErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: CatalogSyncsGetResponseErrorsValueMeta;
-  source?: CatalogSyncsGetResponseErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: CatalogSyncsGetResponseErrorsValueMeta | null;
+  source?: CatalogSyncsGetResponseErrorsValueSource | null;
 }
 export const CatalogSyncsGetResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: CatalogSyncsGetResponseErrorsValueCode,
     message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    meta: S.optional(CatalogSyncsGetResponseErrorsValueMeta),
-    source: S.optional(CatalogSyncsGetResponseErrorsValueSource),
+    documentationUrl: S.optional(
+      S.NullOr(S.String).pipe(T.Body("documentation_url")),
+    ),
+    meta: S.optional(S.NullOr(CatalogSyncsGetResponseErrorsValueMeta)),
+    source: S.optional(S.NullOr(CatalogSyncsGetResponseErrorsValueSource)),
   }),
 ).annotate({
   identifier: "CatalogSyncsGetResponseErrorsValue",
@@ -4213,10 +4263,10 @@ export interface GetCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsGetResponseUpdateMode;
-  errors?: CatalogSyncsGetResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
+  errors?: CatalogSyncsGetResponseErrorsMap | null;
+  includesDiscoveriesUntil?: string | null;
+  lastAttemptedUpdateAt?: string | null;
+  lastSuccessfulUpdateAt?: string | null;
 }
 export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4230,15 +4280,15 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     policy: S.String,
     updateMode: CatalogSyncsGetResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(CatalogSyncsGetResponseErrorsMap),
+    errors: S.optional(S.NullOr(CatalogSyncsGetResponseErrorsMap)),
     includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
+      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
     lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
     ),
     lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -4390,17 +4440,17 @@ export interface CloudIntegrationsGetResponseStatus {
   lastDiscoveryStatus: CloudIntegrationsGetResponseStatusLastDiscoveryStatus;
   lastDiscoveryStatusV2: CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2;
   regions: CloudIntegrationsGetResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsGetResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
+  credentialsGoodSince?: string | null;
+  credentialsMissingSince?: string | null;
+  credentialsRejectedSince?: string | null;
+  discoveryMessage?: string | null;
+  discoveryMessageV2?: string | null;
+  inUseBy?: CloudIntegrationsGetResponseStatusInUseByList | null;
+  lastDiscoveryCompletedAt?: string | null;
+  lastDiscoveryCompletedAtV2?: string | null;
+  lastDiscoveryStartedAt?: string | null;
+  lastDiscoveryStartedAtV2?: string | null;
+  lastUpdated?: string | null;
 }
 export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4421,34 +4471,38 @@ export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
       ),
     regions: CloudIntegrationsGetResponseStatusRegionsList,
     credentialsGoodSince: S.optional(
-      S.String.pipe(T.Body("credentials_good_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
     ),
     credentialsMissingSince: S.optional(
-      S.String.pipe(T.Body("credentials_missing_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
     ),
     credentialsRejectedSince: S.optional(
-      S.String.pipe(T.Body("credentials_rejected_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
     ),
-    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+    discoveryMessage: S.optional(
+      S.NullOr(S.String).pipe(T.Body("discovery_message")),
+    ),
     discoveryMessageV2: S.optional(
-      S.String.pipe(T.Body("discovery_message_v2")),
+      S.NullOr(S.String).pipe(T.Body("discovery_message_v2")),
     ),
     inUseBy: S.optional(
-      CloudIntegrationsGetResponseStatusInUseByList.pipe(T.Body("in_use_by")),
+      S.NullOr(CloudIntegrationsGetResponseStatusInUseByList).pipe(
+        T.Body("in_use_by"),
+      ),
     ),
     lastDiscoveryCompletedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
     ),
     lastDiscoveryCompletedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
     ),
     lastDiscoveryStartedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
     ),
     lastDiscoveryStartedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at_v2")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
     ),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "CloudIntegrationsGetResponseStatus",
@@ -4463,13 +4517,13 @@ export interface GetCloudIntegrationResponse {
   lifecycleState: CloudIntegrationsGetResponseLifecycleState;
   state: CloudIntegrationsGetResponseState;
   stateV2: CloudIntegrationsGetResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsGetResponseStatus;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
+  status?: CloudIntegrationsGetResponseStatus | null;
 }
 export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4482,17 +4536,19 @@ export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: CloudIntegrationsGetResponseState,
     stateV2: CloudIntegrationsGetResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
-    status: S.optional(CloudIntegrationsGetResponseStatus),
+    status: S.optional(S.NullOr(CloudIntegrationsGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCloudIntegrationResponse",
@@ -5259,17 +5315,19 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   );
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -5645,17 +5703,19 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   );
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -5674,7 +5734,7 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5688,7 +5748,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItem =
         OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItem",
@@ -5771,7 +5831,7 @@ export interface OnRampsGetResponsePostApplyResourcesValue {
   tags: OnRampsGetResponsePostApplyResourcesValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsGetResponsePostApplyResourcesValueManagedByList;
+  managedBy?: OnRampsGetResponsePostApplyResourcesValueManagedByList | null;
 }
 export const OnRampsGetResponsePostApplyResourcesValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -5810,7 +5870,7 @@ export const OnRampsGetResponsePostApplyResourcesValue =
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        OnRampsGetResponsePostApplyResourcesValueManagedByList.pipe(
+        S.NullOr(OnRampsGetResponsePostApplyResourcesValueManagedByList).pipe(
           T.Body("managed_by"),
         ),
       ),
@@ -6040,36 +6100,40 @@ export const OnRampsGetResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
 export interface OnRampsGetResponseStatusLifecycleErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const OnRampsGetResponseStatusLifecycleErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "OnRampsGetResponseStatusLifecycleErrorsValueMeta",
   }) as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsValueMeta>;
 
 export interface OnRampsGetResponseStatusLifecycleErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const OnRampsGetResponseStatusLifecycleErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "OnRampsGetResponseStatusLifecycleErrorsValueSource",
@@ -6078,18 +6142,24 @@ export const OnRampsGetResponseStatusLifecycleErrorsValueSource =
 export interface OnRampsGetResponseStatusLifecycleErrorsValue {
   code: OnRampsGetResponseStatusLifecycleErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: OnRampsGetResponseStatusLifecycleErrorsValueMeta;
-  source?: OnRampsGetResponseStatusLifecycleErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: OnRampsGetResponseStatusLifecycleErrorsValueMeta | null;
+  source?: OnRampsGetResponseStatusLifecycleErrorsValueSource | null;
 }
 export const OnRampsGetResponseStatusLifecycleErrorsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: OnRampsGetResponseStatusLifecycleErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(OnRampsGetResponseStatusLifecycleErrorsValueMeta),
-      source: S.optional(OnRampsGetResponseStatusLifecycleErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(
+        S.NullOr(OnRampsGetResponseStatusLifecycleErrorsValueMeta),
+      ),
+      source: S.optional(
+        S.NullOr(OnRampsGetResponseStatusLifecycleErrorsValueSource),
+      ),
     }),
   ).annotate({
     identifier: "OnRampsGetResponseStatusLifecycleErrorsValue",
@@ -6110,7 +6180,7 @@ export interface OnRampsGetResponseStatus {
   planProgress: OnRampsGetResponseStatusPlanProgress;
   routes: OnRampsGetResponseStatusRoutesList;
   tunnels: OnRampsGetResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsGetResponseStatusLifecycleErrorsMap;
+  lifecycleErrors?: OnRampsGetResponseStatusLifecycleErrorsMap | null;
 }
 export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6126,7 +6196,7 @@ export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
     routes: OnRampsGetResponseStatusRoutesList,
     tunnels: OnRampsGetResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      OnRampsGetResponseStatusLifecycleErrorsMap.pipe(
+      S.NullOr(OnRampsGetResponseStatusLifecycleErrorsMap).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -6628,17 +6698,19 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   );
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -7013,17 +7085,19 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   );
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -7041,7 +7115,7 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItem {
   hiddenItems: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7055,7 +7129,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItem =
         OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsGetResponseVpcsByIdValueSectionsItem",
@@ -7135,7 +7209,7 @@ export interface OnRampsGetResponseVpcsByIdValue {
   tags: OnRampsGetResponseVpcsByIdValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsGetResponseVpcsByIdValueManagedByList;
+  managedBy?: OnRampsGetResponseVpcsByIdValueManagedByList | null;
 }
 export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7171,7 +7245,9 @@ export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      OnRampsGetResponseVpcsByIdValueManagedByList.pipe(T.Body("managed_by")),
+      S.NullOr(OnRampsGetResponseVpcsByIdValueManagedByList).pipe(
+        T.Body("managed_by"),
+      ),
     ),
   }),
 ).annotate({
@@ -7201,28 +7277,28 @@ export interface GetOnRampResponse {
   name: string;
   type: OnRampsGetResponseType;
   updatedAt: string;
-  attachedHubs?: OnRampsGetResponseAttachedHubsList;
-  attachedVpcs?: OnRampsGetResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsGetResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsGetResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsGetResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsGetResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsGetResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsGetResponseVpcsByIdMap;
+  attachedHubs?: OnRampsGetResponseAttachedHubsList | null;
+  attachedVpcs?: OnRampsGetResponseAttachedVpcsList | null;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hub?: string | null;
+  lastAppliedAt?: string | null;
+  lastExportedAt?: string | null;
+  lastPlannedAt?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  plannedMonthlyCostEstimate?: OnRampsGetResponsePlannedMonthlyCostEstimate | null;
+  plannedResources?: OnRampsGetResponsePlannedResourcesList | null;
+  plannedResourcesUnavailable?: boolean | null;
+  postApplyMonthlyCostEstimate?: OnRampsGetResponsePostApplyMonthlyCostEstimate | null;
+  postApplyResources?: OnRampsGetResponsePostApplyResourcesMap | null;
+  postApplyResourcesUnavailable?: boolean | null;
+  region?: string | null;
+  status?: OnRampsGetResponseStatus | null;
+  vpc?: string | null;
+  vpcsById?: OnRampsGetResponseVpcsByIdMap | null;
   /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsGetResponseVpcsByIdUnavailableList;
+  vpcsByIdUnavailable?: OnRampsGetResponseVpcsByIdUnavailableList | null;
 }
 export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7237,55 +7313,67 @@ export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     type: OnRampsGetResponseType,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     attachedHubs: S.optional(
-      OnRampsGetResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsGetResponseAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsGetResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsGetResponseAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hub: S.optional(S.NullOr(S.String)),
+    lastAppliedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_applied_at")),
+    ),
+    lastExportedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_exported_at")),
+    ),
+    lastPlannedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_planned_at")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
     plannedMonthlyCostEstimate: S.optional(
-      OnRampsGetResponsePlannedMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsGetResponsePlannedMonthlyCostEstimate).pipe(
         T.Body("planned_monthly_cost_estimate"),
       ),
     ),
     plannedResources: S.optional(
-      OnRampsGetResponsePlannedResourcesList.pipe(T.Body("planned_resources")),
+      S.NullOr(OnRampsGetResponsePlannedResourcesList).pipe(
+        T.Body("planned_resources"),
+      ),
     ),
     plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
     ),
     postApplyMonthlyCostEstimate: S.optional(
-      OnRampsGetResponsePostApplyMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsGetResponsePostApplyMonthlyCostEstimate).pipe(
         T.Body("post_apply_monthly_cost_estimate"),
       ),
     ),
     postApplyResources: S.optional(
-      OnRampsGetResponsePostApplyResourcesMap.pipe(
+      S.NullOr(OnRampsGetResponsePostApplyResourcesMap).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
     postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
     ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsGetResponseStatus),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(OnRampsGetResponseStatus)),
+    vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      OnRampsGetResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsGetResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
-      OnRampsGetResponseVpcsByIdUnavailableList.pipe(
+      S.NullOr(OnRampsGetResponseVpcsByIdUnavailableList).pipe(
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
@@ -7806,16 +7894,18 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
   );
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue | null;
 }
 export const ResourcesGetResponseSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
-      value: S.optional(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
+      ),
     }),
   ).annotate({
     identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
@@ -8189,16 +8279,18 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
   );
 
 export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue | null;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
-      value: S.optional(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
+      ),
     }),
   ).annotate({
     identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
@@ -8215,7 +8307,7 @@ export interface ResourcesGetResponseSectionsItem {
   hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList;
   name: string;
   visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8226,7 +8318,7 @@ export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
     visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList.pipe(
       T.Body("visible_items"),
     ),
-    helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+    helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
   }),
 ).annotate({
   identifier: "ResourcesGetResponseSectionsItem",
@@ -8302,7 +8394,7 @@ export interface GetResourceResponse {
   tags: ResourcesGetResponseTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: ResourcesGetResponseManagedByList;
+  managedBy?: ResourcesGetResponseManagedByList | null;
 }
 export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8335,7 +8427,7 @@ export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      ResourcesGetResponseManagedByList.pipe(T.Body("managed_by")),
+      S.NullOr(ResourcesGetResponseManagedByList).pipe(T.Body("managed_by")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -8709,36 +8801,40 @@ export type CatalogSyncsListResultItemErrorsValueCode =
 export const CatalogSyncsListResultItemErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsListResultItemErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const CatalogSyncsListResultItemErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "CatalogSyncsListResultItemErrorsValueMeta",
   }) as any as S.Schema<CatalogSyncsListResultItemErrorsValueMeta>;
 
 export interface CatalogSyncsListResultItemErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const CatalogSyncsListResultItemErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "CatalogSyncsListResultItemErrorsValueSource",
@@ -8747,18 +8843,20 @@ export const CatalogSyncsListResultItemErrorsValueSource =
 export interface CatalogSyncsListResultItemErrorsValue {
   code: CatalogSyncsListResultItemErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: CatalogSyncsListResultItemErrorsValueMeta;
-  source?: CatalogSyncsListResultItemErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: CatalogSyncsListResultItemErrorsValueMeta | null;
+  source?: CatalogSyncsListResultItemErrorsValueSource | null;
 }
 export const CatalogSyncsListResultItemErrorsValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       code: CatalogSyncsListResultItemErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(CatalogSyncsListResultItemErrorsValueMeta),
-      source: S.optional(CatalogSyncsListResultItemErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(S.NullOr(CatalogSyncsListResultItemErrorsValueMeta)),
+      source: S.optional(S.NullOr(CatalogSyncsListResultItemErrorsValueSource)),
     }),
 ).annotate({
   identifier: "CatalogSyncsListResultItemErrorsValue",
@@ -8781,10 +8879,10 @@ export interface CatalogSyncsListResultItem {
   name: string;
   policy: string;
   updateMode: CatalogSyncsListResultItemUpdateMode;
-  errors?: CatalogSyncsListResultItemErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
+  errors?: CatalogSyncsListResultItemErrorsMap | null;
+  includesDiscoveriesUntil?: string | null;
+  lastAttemptedUpdateAt?: string | null;
+  lastSuccessfulUpdateAt?: string | null;
 }
 export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8800,15 +8898,15 @@ export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsListResultItemUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(CatalogSyncsListResultItemErrorsMap),
+    errors: S.optional(S.NullOr(CatalogSyncsListResultItemErrorsMap)),
     includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
+      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
     lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
     ),
     lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
     ),
   }),
 ).annotate({
@@ -8986,17 +9084,17 @@ export interface CloudIntegrationsListResultItemStatus {
   lastDiscoveryStatus: CloudIntegrationsListResultItemStatusLastDiscoveryStatus;
   lastDiscoveryStatusV2: CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2;
   regions: CloudIntegrationsListResultItemStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsListResultItemStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
+  credentialsGoodSince?: string | null;
+  credentialsMissingSince?: string | null;
+  credentialsRejectedSince?: string | null;
+  discoveryMessage?: string | null;
+  discoveryMessageV2?: string | null;
+  inUseBy?: CloudIntegrationsListResultItemStatusInUseByList | null;
+  lastDiscoveryCompletedAt?: string | null;
+  lastDiscoveryCompletedAtV2?: string | null;
+  lastDiscoveryStartedAt?: string | null;
+  lastDiscoveryStartedAtV2?: string | null;
+  lastUpdated?: string | null;
 }
 export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(
   () =>
@@ -9019,36 +9117,38 @@ export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(
         ),
       regions: CloudIntegrationsListResultItemStatusRegionsList,
       credentialsGoodSince: S.optional(
-        S.String.pipe(T.Body("credentials_good_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
       ),
       credentialsMissingSince: S.optional(
-        S.String.pipe(T.Body("credentials_missing_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
       ),
       credentialsRejectedSince: S.optional(
-        S.String.pipe(T.Body("credentials_rejected_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
       ),
-      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+      discoveryMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("discovery_message")),
+      ),
       discoveryMessageV2: S.optional(
-        S.String.pipe(T.Body("discovery_message_v2")),
+        S.NullOr(S.String).pipe(T.Body("discovery_message_v2")),
       ),
       inUseBy: S.optional(
-        CloudIntegrationsListResultItemStatusInUseByList.pipe(
+        S.NullOr(CloudIntegrationsListResultItemStatusInUseByList).pipe(
           T.Body("in_use_by"),
         ),
       ),
       lastDiscoveryCompletedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
       ),
       lastDiscoveryCompletedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
       ),
       lastDiscoveryStartedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
       ),
       lastDiscoveryStartedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
       ),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
     }),
 ).annotate({
   identifier: "CloudIntegrationsListResultItemStatus",
@@ -9062,13 +9162,13 @@ export interface CloudIntegrationsListResultItem {
   lifecycleState: CloudIntegrationsListResultItemLifecycleState;
   state: CloudIntegrationsListResultItemState;
   stateV2: CloudIntegrationsListResultItemStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsListResultItemStatus;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
+  status?: CloudIntegrationsListResultItemStatus | null;
 }
 export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9083,17 +9183,19 @@ export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     ),
     state: CloudIntegrationsListResultItemState,
     stateV2: CloudIntegrationsListResultItemStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
-    status: S.optional(CloudIntegrationsListResultItemStatus),
+    status: S.optional(S.NullOr(CloudIntegrationsListResultItemStatus)),
   }),
 ).annotate({
   identifier: "CloudIntegrationsListResultItem",
@@ -9919,17 +10021,19 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
   );
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -10305,17 +10409,19 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
   );
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -10334,7 +10440,7 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -10348,7 +10454,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItem =
         OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItem",
@@ -10431,7 +10537,7 @@ export interface OnRampsListResultItemPostApplyResourcesValue {
   tags: OnRampsListResultItemPostApplyResourcesValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsListResultItemPostApplyResourcesValueManagedByList;
+  managedBy?: OnRampsListResultItemPostApplyResourcesValueManagedByList | null;
 }
 export const OnRampsListResultItemPostApplyResourcesValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -10471,9 +10577,9 @@ export const OnRampsListResultItemPostApplyResourcesValue =
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        OnRampsListResultItemPostApplyResourcesValueManagedByList.pipe(
-          T.Body("managed_by"),
-        ),
+        S.NullOr(
+          OnRampsListResultItemPostApplyResourcesValueManagedByList,
+        ).pipe(T.Body("managed_by")),
       ),
     }),
   ).annotate({
@@ -10702,36 +10808,40 @@ export const OnRampsListResultItemStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
 export interface OnRampsListResultItemStatusLifecycleErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const OnRampsListResultItemStatusLifecycleErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "OnRampsListResultItemStatusLifecycleErrorsValueMeta",
   }) as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsValueMeta>;
 
 export interface OnRampsListResultItemStatusLifecycleErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const OnRampsListResultItemStatusLifecycleErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "OnRampsListResultItemStatusLifecycleErrorsValueSource",
@@ -10740,18 +10850,24 @@ export const OnRampsListResultItemStatusLifecycleErrorsValueSource =
 export interface OnRampsListResultItemStatusLifecycleErrorsValue {
   code: OnRampsListResultItemStatusLifecycleErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: OnRampsListResultItemStatusLifecycleErrorsValueMeta;
-  source?: OnRampsListResultItemStatusLifecycleErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: OnRampsListResultItemStatusLifecycleErrorsValueMeta | null;
+  source?: OnRampsListResultItemStatusLifecycleErrorsValueSource | null;
 }
 export const OnRampsListResultItemStatusLifecycleErrorsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: OnRampsListResultItemStatusLifecycleErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(OnRampsListResultItemStatusLifecycleErrorsValueMeta),
-      source: S.optional(OnRampsListResultItemStatusLifecycleErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(
+        S.NullOr(OnRampsListResultItemStatusLifecycleErrorsValueMeta),
+      ),
+      source: S.optional(
+        S.NullOr(OnRampsListResultItemStatusLifecycleErrorsValueSource),
+      ),
     }),
   ).annotate({
     identifier: "OnRampsListResultItemStatusLifecycleErrorsValue",
@@ -10772,7 +10888,7 @@ export interface OnRampsListResultItemStatus {
   planProgress: OnRampsListResultItemStatusPlanProgress;
   routes: OnRampsListResultItemStatusRoutesList;
   tunnels: OnRampsListResultItemStatusTunnelsList;
-  lifecycleErrors?: OnRampsListResultItemStatusLifecycleErrorsMap;
+  lifecycleErrors?: OnRampsListResultItemStatusLifecycleErrorsMap | null;
 }
 export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10788,7 +10904,7 @@ export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
     routes: OnRampsListResultItemStatusRoutesList,
     tunnels: OnRampsListResultItemStatusTunnelsList,
     lifecycleErrors: S.optional(
-      OnRampsListResultItemStatusLifecycleErrorsMap.pipe(
+      S.NullOr(OnRampsListResultItemStatusLifecycleErrorsMap).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -11294,17 +11410,19 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue 
   );
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -11679,17 +11797,19 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
   );
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -11708,7 +11828,7 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItem {
   hiddenItems: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -11722,7 +11842,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItem =
         OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsListResultItemVpcsByIdValueSectionsItem",
@@ -11804,7 +11924,7 @@ export interface OnRampsListResultItemVpcsByIdValue {
   tags: OnRampsListResultItemVpcsByIdValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsListResultItemVpcsByIdValueManagedByList;
+  managedBy?: OnRampsListResultItemVpcsByIdValueManagedByList | null;
 }
 export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11841,7 +11961,7 @@ export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      OnRampsListResultItemVpcsByIdValueManagedByList.pipe(
+      S.NullOr(OnRampsListResultItemVpcsByIdValueManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
@@ -11873,28 +11993,28 @@ export interface OnRampsListResultItem {
   name: string;
   type: OnRampsListResultItemType;
   updatedAt: string;
-  attachedHubs?: OnRampsListResultItemAttachedHubsList;
-  attachedVpcs?: OnRampsListResultItemAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsListResultItemPlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsListResultItemPlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsListResultItemPostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsListResultItemPostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsListResultItemStatus;
-  vpc?: string;
-  vpcsById?: OnRampsListResultItemVpcsByIdMap;
+  attachedHubs?: OnRampsListResultItemAttachedHubsList | null;
+  attachedVpcs?: OnRampsListResultItemAttachedVpcsList | null;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hub?: string | null;
+  lastAppliedAt?: string | null;
+  lastExportedAt?: string | null;
+  lastPlannedAt?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  plannedMonthlyCostEstimate?: OnRampsListResultItemPlannedMonthlyCostEstimate | null;
+  plannedResources?: OnRampsListResultItemPlannedResourcesList | null;
+  plannedResourcesUnavailable?: boolean | null;
+  postApplyMonthlyCostEstimate?: OnRampsListResultItemPostApplyMonthlyCostEstimate | null;
+  postApplyResources?: OnRampsListResultItemPostApplyResourcesMap | null;
+  postApplyResourcesUnavailable?: boolean | null;
+  region?: string | null;
+  status?: OnRampsListResultItemStatus | null;
+  vpc?: string | null;
+  vpcsById?: OnRampsListResultItemVpcsByIdMap | null;
   /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsListResultItemVpcsByIdUnavailableList;
+  vpcsByIdUnavailable?: OnRampsListResultItemVpcsByIdUnavailableList | null;
 }
 export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11909,57 +12029,67 @@ export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
     type: OnRampsListResultItemType,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     attachedHubs: S.optional(
-      OnRampsListResultItemAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsListResultItemAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsListResultItemAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsListResultItemAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hub: S.optional(S.NullOr(S.String)),
+    lastAppliedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_applied_at")),
+    ),
+    lastExportedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_exported_at")),
+    ),
+    lastPlannedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_planned_at")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
     plannedMonthlyCostEstimate: S.optional(
-      OnRampsListResultItemPlannedMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsListResultItemPlannedMonthlyCostEstimate).pipe(
         T.Body("planned_monthly_cost_estimate"),
       ),
     ),
     plannedResources: S.optional(
-      OnRampsListResultItemPlannedResourcesList.pipe(
+      S.NullOr(OnRampsListResultItemPlannedResourcesList).pipe(
         T.Body("planned_resources"),
       ),
     ),
     plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
     ),
     postApplyMonthlyCostEstimate: S.optional(
-      OnRampsListResultItemPostApplyMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsListResultItemPostApplyMonthlyCostEstimate).pipe(
         T.Body("post_apply_monthly_cost_estimate"),
       ),
     ),
     postApplyResources: S.optional(
-      OnRampsListResultItemPostApplyResourcesMap.pipe(
+      S.NullOr(OnRampsListResultItemPostApplyResourcesMap).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
     postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
     ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsListResultItemStatus),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(OnRampsListResultItemStatus)),
+    vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      OnRampsListResultItemVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsListResultItemVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
-      OnRampsListResultItemVpcsByIdUnavailableList.pipe(
+      S.NullOr(OnRampsListResultItemVpcsByIdUnavailableList).pipe(
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
@@ -12605,17 +12735,17 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValue =
   );
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesListResultItemSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: ResourcesListResultItemSectionsItemHiddenItemsItemValue | null;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        ResourcesListResultItemSectionsItemHiddenItemsItemValue,
+        S.NullOr(ResourcesListResultItemSectionsItemHiddenItemsItemValue),
       ),
     }),
   ).annotate({
@@ -12990,17 +13120,17 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   );
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesListResultItemSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: ResourcesListResultItemSectionsItemVisibleItemsItemValue | null;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        ResourcesListResultItemSectionsItemVisibleItemsItemValue,
+        S.NullOr(ResourcesListResultItemSectionsItemVisibleItemsItemValue),
       ),
     }),
   ).annotate({
@@ -13018,7 +13148,7 @@ export interface ResourcesListResultItemSectionsItem {
   hiddenItems: ResourcesListResultItemSectionsItemHiddenItemsList;
   name: string;
   visibleItems: ResourcesListResultItemSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13029,7 +13159,7 @@ export const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
     visibleItems: ResourcesListResultItemSectionsItemVisibleItemsList.pipe(
       T.Body("visible_items"),
     ),
-    helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+    helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
   }),
 ).annotate({
   identifier: "ResourcesListResultItemSectionsItem",
@@ -13107,7 +13237,7 @@ export interface ResourcesListResultItem {
   tags: ResourcesListResultItemTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: ResourcesListResultItemManagedByList;
+  managedBy?: ResourcesListResultItemManagedByList | null;
 }
 export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13140,7 +13270,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      ResourcesListResultItemManagedByList.pipe(T.Body("managed_by")),
+      S.NullOr(ResourcesListResultItemManagedByList).pipe(T.Body("managed_by")),
     ),
   }),
 ).annotate({
@@ -13173,20 +13303,20 @@ export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
 export interface PatchCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {});
+  description?: string | null;
+  name?: string | null;
+  policy?: string | null;
+  updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {}) | null;
 }
 export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    policy: S.optional(S.NullOr(S.String)),
     updateMode: S.optional(
-      CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
+      S.NullOr(CatalogSyncsEditRequestUpdateMode).pipe(T.Body("update_mode")),
     ),
   })
     .pipe(
@@ -13368,36 +13498,40 @@ export type CatalogSyncsEditResponseErrorsValueCode =
 export const CatalogSyncsEditResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsEditResponseErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const CatalogSyncsEditResponseErrorsValueMeta = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
 ).annotate({
   identifier: "CatalogSyncsEditResponseErrorsValueMeta",
 }) as any as S.Schema<CatalogSyncsEditResponseErrorsValueMeta>;
 
 export interface CatalogSyncsEditResponseErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const CatalogSyncsEditResponseErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "CatalogSyncsEditResponseErrorsValueSource",
@@ -13406,17 +13540,19 @@ export const CatalogSyncsEditResponseErrorsValueSource =
 export interface CatalogSyncsEditResponseErrorsValue {
   code: CatalogSyncsEditResponseErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: CatalogSyncsEditResponseErrorsValueMeta;
-  source?: CatalogSyncsEditResponseErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: CatalogSyncsEditResponseErrorsValueMeta | null;
+  source?: CatalogSyncsEditResponseErrorsValueSource | null;
 }
 export const CatalogSyncsEditResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: CatalogSyncsEditResponseErrorsValueCode,
     message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    meta: S.optional(CatalogSyncsEditResponseErrorsValueMeta),
-    source: S.optional(CatalogSyncsEditResponseErrorsValueSource),
+    documentationUrl: S.optional(
+      S.NullOr(S.String).pipe(T.Body("documentation_url")),
+    ),
+    meta: S.optional(S.NullOr(CatalogSyncsEditResponseErrorsValueMeta)),
+    source: S.optional(S.NullOr(CatalogSyncsEditResponseErrorsValueSource)),
   }),
 ).annotate({
   identifier: "CatalogSyncsEditResponseErrorsValue",
@@ -13440,10 +13576,10 @@ export interface PatchCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsEditResponseUpdateMode;
-  errors?: CatalogSyncsEditResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
+  errors?: CatalogSyncsEditResponseErrorsMap | null;
+  includesDiscoveriesUntil?: string | null;
+  lastAttemptedUpdateAt?: string | null;
+  lastSuccessfulUpdateAt?: string | null;
 }
 export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13457,15 +13593,15 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     policy: S.String,
     updateMode: CatalogSyncsEditResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(CatalogSyncsEditResponseErrorsMap),
+    errors: S.optional(S.NullOr(CatalogSyncsEditResponseErrorsMap)),
     includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
+      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
     lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
     ),
     lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -13475,28 +13611,30 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  friendlyName?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
 }
 export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    friendlyName: S.optional(S.NullOr(S.String).pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
   })
     .pipe(
@@ -13633,17 +13771,17 @@ export interface CloudIntegrationsEditResponseStatus {
   lastDiscoveryStatus: CloudIntegrationsEditResponseStatusLastDiscoveryStatus;
   lastDiscoveryStatusV2: CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2;
   regions: CloudIntegrationsEditResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsEditResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
+  credentialsGoodSince?: string | null;
+  credentialsMissingSince?: string | null;
+  credentialsRejectedSince?: string | null;
+  discoveryMessage?: string | null;
+  discoveryMessageV2?: string | null;
+  inUseBy?: CloudIntegrationsEditResponseStatusInUseByList | null;
+  lastDiscoveryCompletedAt?: string | null;
+  lastDiscoveryCompletedAtV2?: string | null;
+  lastDiscoveryStartedAt?: string | null;
+  lastDiscoveryStartedAtV2?: string | null;
+  lastUpdated?: string | null;
 }
 export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13665,34 +13803,38 @@ export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
       ),
     regions: CloudIntegrationsEditResponseStatusRegionsList,
     credentialsGoodSince: S.optional(
-      S.String.pipe(T.Body("credentials_good_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
     ),
     credentialsMissingSince: S.optional(
-      S.String.pipe(T.Body("credentials_missing_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
     ),
     credentialsRejectedSince: S.optional(
-      S.String.pipe(T.Body("credentials_rejected_since")),
+      S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
     ),
-    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+    discoveryMessage: S.optional(
+      S.NullOr(S.String).pipe(T.Body("discovery_message")),
+    ),
     discoveryMessageV2: S.optional(
-      S.String.pipe(T.Body("discovery_message_v2")),
+      S.NullOr(S.String).pipe(T.Body("discovery_message_v2")),
     ),
     inUseBy: S.optional(
-      CloudIntegrationsEditResponseStatusInUseByList.pipe(T.Body("in_use_by")),
+      S.NullOr(CloudIntegrationsEditResponseStatusInUseByList).pipe(
+        T.Body("in_use_by"),
+      ),
     ),
     lastDiscoveryCompletedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
     ),
     lastDiscoveryCompletedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
     ),
     lastDiscoveryStartedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
     ),
     lastDiscoveryStartedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at_v2")),
+      S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
     ),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "CloudIntegrationsEditResponseStatus",
@@ -13707,13 +13849,13 @@ export interface PatchCloudIntegrationResponse {
   lifecycleState: CloudIntegrationsEditResponseLifecycleState;
   state: CloudIntegrationsEditResponseState;
   stateV2: CloudIntegrationsEditResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsEditResponseStatus;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
+  status?: CloudIntegrationsEditResponseStatus | null;
 }
 export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13728,17 +13870,19 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: CloudIntegrationsEditResponseState,
     stateV2: CloudIntegrationsEditResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
-    status: S.optional(CloudIntegrationsEditResponseStatus),
+    status: S.optional(S.NullOr(CloudIntegrationsEditResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCloudIntegrationResponse",
@@ -13757,41 +13901,45 @@ export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
 export interface PatchOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsEditRequestAttachedHubsList;
-  attachedVpcs?: OnRampsEditRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
+  attachedHubs?: OnRampsEditRequestAttachedHubsList | null;
+  attachedVpcs?: OnRampsEditRequestAttachedVpcsList | null;
+  description?: string | null;
+  installRoutesInCloud?: boolean | null;
+  installRoutesInMagicWan?: boolean | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  name?: string | null;
+  vpc?: string | null;
 }
 export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
     attachedHubs: S.optional(
-      OnRampsEditRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsEditRequestAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsEditRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsEditRequestAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_cloud")),
     ),
     installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_magic_wan")),
     ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    vpc: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -14536,17 +14684,19 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
   );
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -14922,17 +15072,19 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
   );
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -14951,7 +15103,7 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -14965,7 +15117,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItem =
         OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItem",
@@ -15048,7 +15200,7 @@ export interface OnRampsEditResponsePostApplyResourcesValue {
   tags: OnRampsEditResponsePostApplyResourcesValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsEditResponsePostApplyResourcesValueManagedByList;
+  managedBy?: OnRampsEditResponsePostApplyResourcesValueManagedByList | null;
 }
 export const OnRampsEditResponsePostApplyResourcesValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -15087,7 +15239,7 @@ export const OnRampsEditResponsePostApplyResourcesValue =
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        OnRampsEditResponsePostApplyResourcesValueManagedByList.pipe(
+        S.NullOr(OnRampsEditResponsePostApplyResourcesValueManagedByList).pipe(
           T.Body("managed_by"),
         ),
       ),
@@ -15317,36 +15469,40 @@ export const OnRampsEditResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
 export interface OnRampsEditResponseStatusLifecycleErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const OnRampsEditResponseStatusLifecycleErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "OnRampsEditResponseStatusLifecycleErrorsValueMeta",
   }) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsValueMeta>;
 
 export interface OnRampsEditResponseStatusLifecycleErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const OnRampsEditResponseStatusLifecycleErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "OnRampsEditResponseStatusLifecycleErrorsValueSource",
@@ -15355,18 +15511,24 @@ export const OnRampsEditResponseStatusLifecycleErrorsValueSource =
 export interface OnRampsEditResponseStatusLifecycleErrorsValue {
   code: OnRampsEditResponseStatusLifecycleErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: OnRampsEditResponseStatusLifecycleErrorsValueMeta;
-  source?: OnRampsEditResponseStatusLifecycleErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: OnRampsEditResponseStatusLifecycleErrorsValueMeta | null;
+  source?: OnRampsEditResponseStatusLifecycleErrorsValueSource | null;
 }
 export const OnRampsEditResponseStatusLifecycleErrorsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: OnRampsEditResponseStatusLifecycleErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(OnRampsEditResponseStatusLifecycleErrorsValueMeta),
-      source: S.optional(OnRampsEditResponseStatusLifecycleErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(
+        S.NullOr(OnRampsEditResponseStatusLifecycleErrorsValueMeta),
+      ),
+      source: S.optional(
+        S.NullOr(OnRampsEditResponseStatusLifecycleErrorsValueSource),
+      ),
     }),
   ).annotate({
     identifier: "OnRampsEditResponseStatusLifecycleErrorsValue",
@@ -15387,7 +15549,7 @@ export interface OnRampsEditResponseStatus {
   planProgress: OnRampsEditResponseStatusPlanProgress;
   routes: OnRampsEditResponseStatusRoutesList;
   tunnels: OnRampsEditResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap;
+  lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap | null;
 }
 export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15403,7 +15565,7 @@ export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
     routes: OnRampsEditResponseStatusRoutesList,
     tunnels: OnRampsEditResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      OnRampsEditResponseStatusLifecycleErrorsMap.pipe(
+      S.NullOr(OnRampsEditResponseStatusLifecycleErrorsMap).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -15905,17 +16067,19 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   );
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -16290,17 +16454,19 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   );
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -16318,7 +16484,7 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItem {
   hiddenItems: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -16332,7 +16498,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItem =
         OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsEditResponseVpcsByIdValueSectionsItem",
@@ -16412,7 +16578,7 @@ export interface OnRampsEditResponseVpcsByIdValue {
   tags: OnRampsEditResponseVpcsByIdValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsEditResponseVpcsByIdValueManagedByList;
+  managedBy?: OnRampsEditResponseVpcsByIdValueManagedByList | null;
 }
 export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16449,7 +16615,9 @@ export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      OnRampsEditResponseVpcsByIdValueManagedByList.pipe(T.Body("managed_by")),
+      S.NullOr(OnRampsEditResponseVpcsByIdValueManagedByList).pipe(
+        T.Body("managed_by"),
+      ),
     ),
   }),
 ).annotate({
@@ -16479,28 +16647,28 @@ export interface PatchOnRampResponse {
   name: string;
   type: OnRampsEditResponseType;
   updatedAt: string;
-  attachedHubs?: OnRampsEditResponseAttachedHubsList;
-  attachedVpcs?: OnRampsEditResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsEditResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsEditResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsEditResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsEditResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsEditResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsEditResponseVpcsByIdMap;
+  attachedHubs?: OnRampsEditResponseAttachedHubsList | null;
+  attachedVpcs?: OnRampsEditResponseAttachedVpcsList | null;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hub?: string | null;
+  lastAppliedAt?: string | null;
+  lastExportedAt?: string | null;
+  lastPlannedAt?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  plannedMonthlyCostEstimate?: OnRampsEditResponsePlannedMonthlyCostEstimate | null;
+  plannedResources?: OnRampsEditResponsePlannedResourcesList | null;
+  plannedResourcesUnavailable?: boolean | null;
+  postApplyMonthlyCostEstimate?: OnRampsEditResponsePostApplyMonthlyCostEstimate | null;
+  postApplyResources?: OnRampsEditResponsePostApplyResourcesMap | null;
+  postApplyResourcesUnavailable?: boolean | null;
+  region?: string | null;
+  status?: OnRampsEditResponseStatus | null;
+  vpc?: string | null;
+  vpcsById?: OnRampsEditResponseVpcsByIdMap | null;
   /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList;
+  vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList | null;
 }
 export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16515,55 +16683,67 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     type: OnRampsEditResponseType,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     attachedHubs: S.optional(
-      OnRampsEditResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsEditResponseAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsEditResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsEditResponseAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hub: S.optional(S.NullOr(S.String)),
+    lastAppliedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_applied_at")),
+    ),
+    lastExportedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_exported_at")),
+    ),
+    lastPlannedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_planned_at")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
     plannedMonthlyCostEstimate: S.optional(
-      OnRampsEditResponsePlannedMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsEditResponsePlannedMonthlyCostEstimate).pipe(
         T.Body("planned_monthly_cost_estimate"),
       ),
     ),
     plannedResources: S.optional(
-      OnRampsEditResponsePlannedResourcesList.pipe(T.Body("planned_resources")),
+      S.NullOr(OnRampsEditResponsePlannedResourcesList).pipe(
+        T.Body("planned_resources"),
+      ),
     ),
     plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
     ),
     postApplyMonthlyCostEstimate: S.optional(
-      OnRampsEditResponsePostApplyMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsEditResponsePostApplyMonthlyCostEstimate).pipe(
         T.Body("post_apply_monthly_cost_estimate"),
       ),
     ),
     postApplyResources: S.optional(
-      OnRampsEditResponsePostApplyResourcesMap.pipe(
+      S.NullOr(OnRampsEditResponsePostApplyResourcesMap).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
     postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
     ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsEditResponseStatus),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(OnRampsEditResponseStatus)),
+    vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      OnRampsEditResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsEditResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
-      OnRampsEditResponseVpcsByIdUnavailableList.pipe(
+      S.NullOr(OnRampsEditResponseVpcsByIdUnavailableList).pipe(
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
@@ -16752,20 +16932,20 @@ export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
 export interface UpdateCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {});
+  description?: string | null;
+  name?: string | null;
+  policy?: string | null;
+  updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {}) | null;
 }
 export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    policy: S.optional(S.NullOr(S.String)),
     updateMode: S.optional(
-      CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
+      S.NullOr(CatalogSyncsUpdateRequestUpdateMode).pipe(T.Body("update_mode")),
     ),
   })
     .pipe(
@@ -16947,36 +17127,40 @@ export type CatalogSyncsUpdateResponseErrorsValueCode =
 export const CatalogSyncsUpdateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsUpdateResponseErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const CatalogSyncsUpdateResponseErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "CatalogSyncsUpdateResponseErrorsValueMeta",
   }) as any as S.Schema<CatalogSyncsUpdateResponseErrorsValueMeta>;
 
 export interface CatalogSyncsUpdateResponseErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const CatalogSyncsUpdateResponseErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "CatalogSyncsUpdateResponseErrorsValueSource",
@@ -16985,18 +17169,20 @@ export const CatalogSyncsUpdateResponseErrorsValueSource =
 export interface CatalogSyncsUpdateResponseErrorsValue {
   code: CatalogSyncsUpdateResponseErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: CatalogSyncsUpdateResponseErrorsValueMeta;
-  source?: CatalogSyncsUpdateResponseErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: CatalogSyncsUpdateResponseErrorsValueMeta | null;
+  source?: CatalogSyncsUpdateResponseErrorsValueSource | null;
 }
 export const CatalogSyncsUpdateResponseErrorsValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       code: CatalogSyncsUpdateResponseErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(CatalogSyncsUpdateResponseErrorsValueMeta),
-      source: S.optional(CatalogSyncsUpdateResponseErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(S.NullOr(CatalogSyncsUpdateResponseErrorsValueMeta)),
+      source: S.optional(S.NullOr(CatalogSyncsUpdateResponseErrorsValueSource)),
     }),
 ).annotate({
   identifier: "CatalogSyncsUpdateResponseErrorsValue",
@@ -17020,10 +17206,10 @@ export interface UpdateCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsUpdateResponseUpdateMode;
-  errors?: CatalogSyncsUpdateResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
+  errors?: CatalogSyncsUpdateResponseErrorsMap | null;
+  includesDiscoveriesUntil?: string | null;
+  lastAttemptedUpdateAt?: string | null;
+  lastSuccessfulUpdateAt?: string | null;
 }
 export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17039,15 +17225,15 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsUpdateResponseUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(CatalogSyncsUpdateResponseErrorsMap),
+    errors: S.optional(S.NullOr(CatalogSyncsUpdateResponseErrorsMap)),
     includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
+      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
     lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
     ),
     lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
+      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -17057,28 +17243,30 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  friendlyName?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
 }
 export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    friendlyName: S.optional(S.NullOr(S.String).pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
   })
     .pipe(
@@ -17216,17 +17404,17 @@ export interface CloudIntegrationsUpdateResponseStatus {
   lastDiscoveryStatus: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus;
   lastDiscoveryStatusV2: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2;
   regions: CloudIntegrationsUpdateResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsUpdateResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
+  credentialsGoodSince?: string | null;
+  credentialsMissingSince?: string | null;
+  credentialsRejectedSince?: string | null;
+  discoveryMessage?: string | null;
+  discoveryMessageV2?: string | null;
+  inUseBy?: CloudIntegrationsUpdateResponseStatusInUseByList | null;
+  lastDiscoveryCompletedAt?: string | null;
+  lastDiscoveryCompletedAtV2?: string | null;
+  lastDiscoveryStartedAt?: string | null;
+  lastDiscoveryStartedAtV2?: string | null;
+  lastUpdated?: string | null;
 }
 export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(
   () =>
@@ -17249,36 +17437,38 @@ export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(
         ),
       regions: CloudIntegrationsUpdateResponseStatusRegionsList,
       credentialsGoodSince: S.optional(
-        S.String.pipe(T.Body("credentials_good_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
       ),
       credentialsMissingSince: S.optional(
-        S.String.pipe(T.Body("credentials_missing_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
       ),
       credentialsRejectedSince: S.optional(
-        S.String.pipe(T.Body("credentials_rejected_since")),
+        S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
       ),
-      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+      discoveryMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("discovery_message")),
+      ),
       discoveryMessageV2: S.optional(
-        S.String.pipe(T.Body("discovery_message_v2")),
+        S.NullOr(S.String).pipe(T.Body("discovery_message_v2")),
       ),
       inUseBy: S.optional(
-        CloudIntegrationsUpdateResponseStatusInUseByList.pipe(
+        S.NullOr(CloudIntegrationsUpdateResponseStatusInUseByList).pipe(
           T.Body("in_use_by"),
         ),
       ),
       lastDiscoveryCompletedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
       ),
       lastDiscoveryCompletedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
       ),
       lastDiscoveryStartedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
       ),
       lastDiscoveryStartedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at_v2")),
+        S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
       ),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
     }),
 ).annotate({
   identifier: "CloudIntegrationsUpdateResponseStatus",
@@ -17293,13 +17483,13 @@ export interface UpdateCloudIntegrationResponse {
   lifecycleState: CloudIntegrationsUpdateResponseLifecycleState;
   state: CloudIntegrationsUpdateResponseState;
   stateV2: CloudIntegrationsUpdateResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsUpdateResponseStatus;
+  awsArn?: string | null;
+  azureSubscriptionId?: string | null;
+  azureTenantId?: string | null;
+  description?: string | null;
+  gcpProjectId?: string | null;
+  gcpServiceAccountEmail?: string | null;
+  status?: CloudIntegrationsUpdateResponseStatus | null;
 }
 export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17314,17 +17504,19 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: CloudIntegrationsUpdateResponseState,
     stateV2: CloudIntegrationsUpdateResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
+      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
+      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
     ),
-    status: S.optional(CloudIntegrationsUpdateResponseStatus),
+    status: S.optional(S.NullOr(CloudIntegrationsUpdateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCloudIntegrationResponse",
@@ -17343,41 +17535,45 @@ export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
 export interface UpdateOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsUpdateRequestAttachedHubsList;
-  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
+  attachedHubs?: OnRampsUpdateRequestAttachedHubsList | null;
+  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList | null;
+  description?: string | null;
+  installRoutesInCloud?: boolean | null;
+  installRoutesInMagicWan?: boolean | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  name?: string | null;
+  vpc?: string | null;
 }
 export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
     attachedHubs: S.optional(
-      OnRampsUpdateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsUpdateRequestAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsUpdateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsUpdateRequestAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_cloud")),
     ),
     installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_magic_wan")),
     ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    vpc: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -18125,17 +18321,19 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
   );
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -18511,17 +18709,19 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
   );
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -18540,7 +18740,7 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -18554,7 +18754,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem =
         OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItem",
@@ -18637,7 +18837,7 @@ export interface OnRampsUpdateResponsePostApplyResourcesValue {
   tags: OnRampsUpdateResponsePostApplyResourcesValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsUpdateResponsePostApplyResourcesValueManagedByList;
+  managedBy?: OnRampsUpdateResponsePostApplyResourcesValueManagedByList | null;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -18677,9 +18877,9 @@ export const OnRampsUpdateResponsePostApplyResourcesValue =
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        OnRampsUpdateResponsePostApplyResourcesValueManagedByList.pipe(
-          T.Body("managed_by"),
-        ),
+        S.NullOr(
+          OnRampsUpdateResponsePostApplyResourcesValueManagedByList,
+        ).pipe(T.Body("managed_by")),
       ),
     }),
   ).annotate({
@@ -18908,36 +19108,40 @@ export const OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
 export interface OnRampsUpdateResponseStatusLifecycleErrorsValueMeta {
-  l10nKey?: string;
-  loggableError?: string;
-  templateData?: unknown;
-  traceId?: string;
+  l10nKey?: string | null;
+  loggableError?: string | null;
+  templateData?: unknown | null;
+  traceId?: string | null;
 }
 export const OnRampsUpdateResponseStatusLifecycleErrorsValueMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      l10nKey: S.optional(S.String.pipe(T.Body("l10n_key"))),
-      loggableError: S.optional(S.String.pipe(T.Body("loggable_error"))),
-      templateData: S.optional(S.Unknown.pipe(T.Body("template_data"))),
-      traceId: S.optional(S.String.pipe(T.Body("trace_id"))),
+      l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+      loggableError: S.optional(
+        S.NullOr(S.String).pipe(T.Body("loggable_error")),
+      ),
+      templateData: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("template_data")),
+      ),
+      traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
   ).annotate({
     identifier: "OnRampsUpdateResponseStatusLifecycleErrorsValueMeta",
   }) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsValueMeta>;
 
 export interface OnRampsUpdateResponseStatusLifecycleErrorsValueSource {
-  parameter?: string;
-  parameterValueIndex?: number;
-  pointer?: string;
+  parameter?: string | null;
+  parameterValueIndex?: number | null;
+  pointer?: string | null;
 }
 export const OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parameter: S.optional(S.String),
+      parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
-        S.Number.pipe(T.Body("parameter_value_index")),
+        S.NullOr(S.Number).pipe(T.Body("parameter_value_index")),
       ),
-      pointer: S.optional(S.String),
+      pointer: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "OnRampsUpdateResponseStatusLifecycleErrorsValueSource",
@@ -18946,18 +19150,24 @@ export const OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
 export interface OnRampsUpdateResponseStatusLifecycleErrorsValue {
   code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode;
   message: string;
-  documentationUrl?: string;
-  meta?: OnRampsUpdateResponseStatusLifecycleErrorsValueMeta;
-  source?: OnRampsUpdateResponseStatusLifecycleErrorsValueSource;
+  documentationUrl?: string | null;
+  meta?: OnRampsUpdateResponseStatusLifecycleErrorsValueMeta | null;
+  source?: OnRampsUpdateResponseStatusLifecycleErrorsValueSource | null;
 }
 export const OnRampsUpdateResponseStatusLifecycleErrorsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode,
       message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      meta: S.optional(OnRampsUpdateResponseStatusLifecycleErrorsValueMeta),
-      source: S.optional(OnRampsUpdateResponseStatusLifecycleErrorsValueSource),
+      documentationUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("documentation_url")),
+      ),
+      meta: S.optional(
+        S.NullOr(OnRampsUpdateResponseStatusLifecycleErrorsValueMeta),
+      ),
+      source: S.optional(
+        S.NullOr(OnRampsUpdateResponseStatusLifecycleErrorsValueSource),
+      ),
     }),
   ).annotate({
     identifier: "OnRampsUpdateResponseStatusLifecycleErrorsValue",
@@ -18978,7 +19188,7 @@ export interface OnRampsUpdateResponseStatus {
   planProgress: OnRampsUpdateResponseStatusPlanProgress;
   routes: OnRampsUpdateResponseStatusRoutesList;
   tunnels: OnRampsUpdateResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap;
+  lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap | null;
 }
 export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18994,7 +19204,7 @@ export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
     routes: OnRampsUpdateResponseStatusRoutesList,
     tunnels: OnRampsUpdateResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      OnRampsUpdateResponseStatusLifecycleErrorsMap.pipe(
+      S.NullOr(OnRampsUpdateResponseStatusLifecycleErrorsMap).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -19500,17 +19710,19 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue 
   );
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        S.NullOr(
+          OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -19885,17 +20097,19 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   );
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue;
+  helpText?: string | null;
+  name?: string | null;
+  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
+      helpText: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
       value: S.optional(
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        S.NullOr(
+          OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
+        ),
       ),
     }),
   ).annotate({
@@ -19914,7 +20128,7 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItem {
   hiddenItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList;
   name: string;
   visibleItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string;
+  helpText?: string | null;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -19928,7 +20142,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItem =
         OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
-      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
     identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItem",
@@ -20010,7 +20224,7 @@ export interface OnRampsUpdateResponseVpcsByIdValue {
   tags: OnRampsUpdateResponseVpcsByIdValueTagsMap;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsUpdateResponseVpcsByIdValueManagedByList;
+  managedBy?: OnRampsUpdateResponseVpcsByIdValueManagedByList | null;
 }
 export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20047,7 +20261,7 @@ export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      OnRampsUpdateResponseVpcsByIdValueManagedByList.pipe(
+      S.NullOr(OnRampsUpdateResponseVpcsByIdValueManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
@@ -20080,28 +20294,28 @@ export interface UpdateOnRampResponse {
   name: string;
   type: OnRampsUpdateResponseType;
   updatedAt: string;
-  attachedHubs?: OnRampsUpdateResponseAttachedHubsList;
-  attachedVpcs?: OnRampsUpdateResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsUpdateResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsUpdateResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsUpdateResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsUpdateResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsUpdateResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsUpdateResponseVpcsByIdMap;
+  attachedHubs?: OnRampsUpdateResponseAttachedHubsList | null;
+  attachedVpcs?: OnRampsUpdateResponseAttachedVpcsList | null;
+  cloudAsn?: number | null;
+  description?: string | null;
+  hub?: string | null;
+  lastAppliedAt?: string | null;
+  lastExportedAt?: string | null;
+  lastPlannedAt?: string | null;
+  manageHubToHubAttachments?: boolean | null;
+  manageVpcToHubAttachments?: boolean | null;
+  plannedMonthlyCostEstimate?: OnRampsUpdateResponsePlannedMonthlyCostEstimate | null;
+  plannedResources?: OnRampsUpdateResponsePlannedResourcesList | null;
+  plannedResourcesUnavailable?: boolean | null;
+  postApplyMonthlyCostEstimate?: OnRampsUpdateResponsePostApplyMonthlyCostEstimate | null;
+  postApplyResources?: OnRampsUpdateResponsePostApplyResourcesMap | null;
+  postApplyResourcesUnavailable?: boolean | null;
+  region?: string | null;
+  status?: OnRampsUpdateResponseStatus | null;
+  vpc?: string | null;
+  vpcsById?: OnRampsUpdateResponseVpcsByIdMap | null;
   /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList;
+  vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList | null;
 }
 export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20116,57 +20330,67 @@ export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     type: OnRampsUpdateResponseType,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     attachedHubs: S.optional(
-      OnRampsUpdateResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+      S.NullOr(OnRampsUpdateResponseAttachedHubsList).pipe(
+        T.Body("attached_hubs"),
+      ),
     ),
     attachedVpcs: S.optional(
-      OnRampsUpdateResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+      S.NullOr(OnRampsUpdateResponseAttachedVpcsList).pipe(
+        T.Body("attached_vpcs"),
+      ),
     ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.NullOr(S.String)),
+    hub: S.optional(S.NullOr(S.String)),
+    lastAppliedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_applied_at")),
+    ),
+    lastExportedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_exported_at")),
+    ),
+    lastPlannedAt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_planned_at")),
+    ),
     manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
     plannedMonthlyCostEstimate: S.optional(
-      OnRampsUpdateResponsePlannedMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsUpdateResponsePlannedMonthlyCostEstimate).pipe(
         T.Body("planned_monthly_cost_estimate"),
       ),
     ),
     plannedResources: S.optional(
-      OnRampsUpdateResponsePlannedResourcesList.pipe(
+      S.NullOr(OnRampsUpdateResponsePlannedResourcesList).pipe(
         T.Body("planned_resources"),
       ),
     ),
     plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
     ),
     postApplyMonthlyCostEstimate: S.optional(
-      OnRampsUpdateResponsePostApplyMonthlyCostEstimate.pipe(
+      S.NullOr(OnRampsUpdateResponsePostApplyMonthlyCostEstimate).pipe(
         T.Body("post_apply_monthly_cost_estimate"),
       ),
     ),
     postApplyResources: S.optional(
-      OnRampsUpdateResponsePostApplyResourcesMap.pipe(
+      S.NullOr(OnRampsUpdateResponsePostApplyResourcesMap).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
     postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+      S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
     ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsUpdateResponseStatus),
-    vpc: S.optional(S.String),
+    region: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(OnRampsUpdateResponseStatus)),
+    vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      OnRampsUpdateResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsUpdateResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
-      OnRampsUpdateResponseVpcsByIdUnavailableList.pipe(
+      S.NullOr(OnRampsUpdateResponseVpcsByIdUnavailableList).pipe(
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),

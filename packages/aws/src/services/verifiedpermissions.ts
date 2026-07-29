@@ -179,7 +179,7 @@ export const BatchGetPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetPolicyInput",
 }) as any as S.Schema<BatchGetPolicyInput>;
-export type PolicyType = "STATIC" | "TEMPLATE_LINKED";
+export type PolicyType = "STATIC" | "TEMPLATE_LINKED" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export type StaticPolicyDescription = string | redacted.Redacted<string>;
@@ -261,7 +261,8 @@ export const BatchGetPolicyOutputList = /*@__PURE__*/ S.Array(
 export type BatchGetPolicyErrorCode =
   | "POLICY_STORE_NOT_FOUND"
   | "POLICY_NOT_FOUND"
-  | "POLICY_STORE_ALIAS_NOT_FOUND";
+  | "POLICY_STORE_ALIAS_NOT_FOUND"
+  | (string & {});
 export const BatchGetPolicyErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchGetPolicyErrorItem {
@@ -711,7 +712,7 @@ export const BatchIsAuthorizedInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchIsAuthorizedInput",
 }) as any as S.Schema<BatchIsAuthorizedInput>;
-export type Decision = "ALLOW" | "DENY";
+export type Decision = "ALLOW" | "DENY" | (string & {});
 export const Decision = /*@__PURE__*/ S.String;
 
 export interface DeterminingPolicyItem {
@@ -1038,7 +1039,7 @@ export const CreatePolicyInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePolicyInput>;
 export type ActionIdentifierList = ActionIdentifier[];
 export const ActionIdentifierList = /*@__PURE__*/ S.Array(ActionIdentifier);
-export type PolicyEffect = "Permit" | "Forbid";
+export type PolicyEffect = "Permit" | "Forbid" | (string & {});
 export const PolicyEffect = /*@__PURE__*/ S.String;
 
 export interface CreatePolicyOutput {
@@ -1067,11 +1068,11 @@ export const CreatePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePolicyOutput",
 }) as any as S.Schema<CreatePolicyOutput>;
-export type ValidationMode = "OFF" | "STRICT";
+export type ValidationMode = "OFF" | "STRICT" | (string & {});
 export const ValidationMode = /*@__PURE__*/ S.String;
 
 export interface ValidationSettings {
-  mode: ValidationMode | (string & {});
+  mode: ValidationMode;
 }
 export const ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: ValidationMode }),
@@ -1079,7 +1080,7 @@ export const ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidationSettings",
 }) as any as S.Schema<ValidationSettings>;
 export type PolicyStoreDescription = string | redacted.Redacted<string>;
-export type DeletionProtection = "ENABLED" | "DISABLED";
+export type DeletionProtection = "ENABLED" | "DISABLED" | (string & {});
 export const DeletionProtection = /*@__PURE__*/ S.String;
 
 export type KmsKey = string;
@@ -1117,7 +1118,7 @@ export interface CreatePolicyStoreInput {
   clientToken?: string;
   validationSettings: ValidationSettings;
   description?: string | redacted.Redacted<string>;
-  deletionProtection?: DeletionProtection | (string & {});
+  deletionProtection?: DeletionProtection;
   encryptionSettings?: EncryptionSettings;
   tags?: { [key: string]: string | undefined };
 }
@@ -1268,12 +1269,12 @@ export const DeletePolicyStoreOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePolicyStoreOutput",
 }) as any as S.Schema<DeletePolicyStoreOutput>;
-export type DeletionMode = "SoftDelete" | "HardDelete";
+export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
 
 export interface DeletePolicyStoreAliasInput {
   aliasName: string;
-  deletionMode?: DeletionMode | (string & {});
+  deletionMode?: DeletionMode;
 }
 export const DeletePolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1320,7 +1321,7 @@ export const GetIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIdentitySourceInput",
 }) as any as S.Schema<GetIdentitySourceInput>;
 export type DiscoveryUrl = string;
-export type OpenIdIssuer = "COGNITO";
+export type OpenIdIssuer = "COGNITO" | (string & {});
 export const OpenIdIssuer = /*@__PURE__*/ S.String;
 
 export interface IdentitySourceDetails {
@@ -1533,7 +1534,7 @@ export const EncryptionState = /*@__PURE__*/ S.Union([
   S.Struct({ kmsEncryptionState: KmsEncryptionState }),
   S.Struct({ default: S.Struct({}) }),
 ]);
-export type CedarVersion = "CEDAR_2" | "CEDAR_4";
+export type CedarVersion = "CEDAR_2" | "CEDAR_4" | (string & {});
 export const CedarVersion = /*@__PURE__*/ S.String;
 
 export interface GetPolicyStoreOutput {
@@ -1574,7 +1575,7 @@ export const GetPolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPolicyStoreAliasInput",
 }) as any as S.Schema<GetPolicyStoreAliasInput>;
-export type AliasState = "Active" | "PendingDeletion";
+export type AliasState = "Active" | "PendingDeletion" | (string & {});
 export const AliasState = /*@__PURE__*/ S.String;
 
 export interface GetPolicyStoreAliasOutput {
@@ -1929,7 +1930,7 @@ export const EntityReference = /*@__PURE__*/ S.Union([
 export interface PolicyFilter {
   principal?: EntityReference;
   resource?: EntityReference;
-  policyType?: PolicyType | (string & {});
+  policyType?: PolicyType;
   policyTemplateId?: string;
 }
 export const PolicyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2464,7 +2465,7 @@ export const UpdatePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePolicyStoreInput {
   policyStoreId: string;
   validationSettings: ValidationSettings;
-  deletionProtection?: DeletionProtection | (string & {});
+  deletionProtection?: DeletionProtection;
   description?: string | redacted.Redacted<string>;
 }
 export const UpdatePolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
@@ -2537,7 +2538,8 @@ export type ResourceType =
   | "POLICY"
   | "POLICY_TEMPLATE"
   | "SCHEMA"
-  | "POLICY_STORE_ALIAS";
+  | "POLICY_STORE_ALIAS"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceConflict {

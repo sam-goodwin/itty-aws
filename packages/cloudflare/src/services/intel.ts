@@ -322,14 +322,14 @@ export const ClassAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClassAttackSurfaceReportIssueRequest>;
 
 export interface AttackSurfaceReportIssuesClassResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const AttackSurfaceReportIssuesClassResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
+      count: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AttackSurfaceReportIssuesClassResultItem",
@@ -353,15 +353,15 @@ export interface CreateIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
 }
 export const CreateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -378,32 +378,36 @@ export const CreateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
-  id?: number;
+  id?: number | null;
   /** The date and time when the data entry was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** Whether the indicator feed can be attributed to a provider */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** Whether the indicator feed can be downloaded */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** The date and time when the data entry was last modified */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
 }
 export const CreateIndicatorFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.Number)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    isAttributable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+    ),
+    isDownloadable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+    ),
+    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndicatorFeedResponse",
@@ -413,16 +417,16 @@ export interface CreateIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
   /** The Cloudflare account tag of the account to change permissions on */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The ID of the feed to add/remove permissions on */
-  feedId?: number;
+  feedId?: number | null;
 }
 export const CreateIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-      feedId: S.optional(S.Number.pipe(T.Body("feed_id"))),
+      accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+      feedId: S.optional(S.NullOr(S.Number).pipe(T.Body("feed_id"))),
     })
       .pipe(
         T.Http({
@@ -439,12 +443,12 @@ export const CreateIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
-  success?: boolean;
+  success?: boolean | null;
 }
 export const CreateIndicatorFeedPermissionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      success: S.optional(S.Boolean),
+      success: S.optional(S.NullOr(S.Boolean)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndicatorFeedPermissionResponse",
@@ -486,49 +490,52 @@ export interface CreateMiscategorizationRequest {
   /** Identifier. */
   accountId: string;
   /** Content category IDs to add. */
-  contentAdds?: MiscategorizationsCreateRequestContentAddsList;
+  contentAdds?: MiscategorizationsCreateRequestContentAddsList | null;
   /** Content category IDs to remove. */
-  contentRemoves?: MiscategorizationsCreateRequestContentRemovesList;
-  indicatorType?: MiscategorizationsCreateRequestIndicatorType | (string & {});
+  contentRemoves?: MiscategorizationsCreateRequestContentRemovesList | null;
+  indicatorType?:
+    | MiscategorizationsCreateRequestIndicatorType
+    | (string & {})
+    | null;
   /** Provide only if indicator_type is `ipv4` or `ipv6`. */
-  ip?: string;
+  ip?: string | null;
   /** Security category IDs to add. */
-  securityAdds?: MiscategorizationsCreateRequestSecurityAddsList;
+  securityAdds?: MiscategorizationsCreateRequestSecurityAddsList | null;
   /** Security category IDs to remove. */
-  securityRemoves?: MiscategorizationsCreateRequestSecurityRemovesList;
+  securityRemoves?: MiscategorizationsCreateRequestSecurityRemovesList | null;
   /** Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateMiscategorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     contentAdds: S.optional(
-      MiscategorizationsCreateRequestContentAddsList.pipe(
+      S.NullOr(MiscategorizationsCreateRequestContentAddsList).pipe(
         T.Body("content_adds"),
       ),
     ),
     contentRemoves: S.optional(
-      MiscategorizationsCreateRequestContentRemovesList.pipe(
+      S.NullOr(MiscategorizationsCreateRequestContentRemovesList).pipe(
         T.Body("content_removes"),
       ),
     ),
     indicatorType: S.optional(
-      MiscategorizationsCreateRequestIndicatorType.pipe(
+      S.NullOr(MiscategorizationsCreateRequestIndicatorType).pipe(
         T.Body("indicator_type"),
       ),
     ),
-    ip: S.optional(S.String),
+    ip: S.optional(S.NullOr(S.String)),
     securityAdds: S.optional(
-      MiscategorizationsCreateRequestSecurityAddsList.pipe(
+      S.NullOr(MiscategorizationsCreateRequestSecurityAddsList).pipe(
         T.Body("security_adds"),
       ),
     ),
     securityRemoves: S.optional(
-      MiscategorizationsCreateRequestSecurityRemovesList.pipe(
+      S.NullOr(MiscategorizationsCreateRequestSecurityRemovesList).pipe(
         T.Body("security_removes"),
       ),
     ),
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -583,16 +590,16 @@ export interface DeleteIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
   /** The Cloudflare account tag of the account to change permissions on */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The ID of the feed to add/remove permissions on */
-  feedId?: number;
+  feedId?: number | null;
 }
 export const DeleteIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-      feedId: S.optional(S.Number.pipe(T.Body("feed_id"))),
+      accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+      feedId: S.optional(S.NullOr(S.Number).pipe(T.Body("feed_id"))),
     })
       .pipe(
         T.Http({
@@ -609,12 +616,12 @@ export const DeleteIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
-  success?: boolean;
+  success?: boolean | null;
 }
 export const DeleteIndicatorFeedPermissionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      success: S.optional(S.Boolean),
+      success: S.optional(S.NullOr(S.Boolean)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndicatorFeedPermissionResponse",
@@ -624,14 +631,14 @@ export interface DismissAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
   issueId: string;
-  dismiss?: boolean;
+  dismiss?: boolean | null;
 }
 export const DismissAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
-      dismiss: S.optional(S.Boolean),
+      dismiss: S.optional(S.NullOr(S.Boolean)),
     })
       .pipe(
         T.Http({
@@ -706,24 +713,24 @@ export const AsnSubnetsGetResponseSubnetsList = /*@__PURE__*/ S.Array(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAsnSubnetResponse {
-  asn?: unknown;
+  asn?: unknown | null;
   /** Total results returned based on your search parameters. */
-  count?: number;
-  ipCountTotal?: number;
+  count?: number | null;
+  ipCountTotal?: number | null;
   /** Current page within paginated list of results. */
-  page?: number;
+  page?: number | null;
   /** Number of results per page of results. */
-  perPage?: number;
-  subnets?: AsnSubnetsGetResponseSubnetsList;
+  perPage?: number | null;
+  subnets?: AsnSubnetsGetResponseSubnetsList | null;
 }
 export const GetAsnSubnetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asn: S.optional(S.Unknown),
-    count: S.optional(S.Number),
-    ipCountTotal: S.optional(S.Number.pipe(T.Body("ip_count_total"))),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-    subnets: S.optional(AsnSubnetsGetResponseSubnetsList),
+    asn: S.optional(S.NullOr(S.Unknown)),
+    count: S.optional(S.NullOr(S.Number)),
+    ipCountTotal: S.optional(S.NullOr(S.Number).pipe(T.Body("ip_count_total"))),
+    page: S.optional(S.NullOr(S.Number)),
+    perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
+    subnets: S.optional(S.NullOr(AsnSubnetsGetResponseSubnetsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAsnSubnetResponse",
@@ -803,13 +810,13 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DomainsGetResponseAdditionalInformation {
   /** Suspected DGA malware family. */
-  suspectedMalwareFamily?: string;
+  suspectedMalwareFamily?: string | null;
 }
 export const DomainsGetResponseAdditionalInformation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       suspectedMalwareFamily: S.optional(
-        S.String.pipe(T.Body("suspected_malware_family")),
+        S.NullOr(S.String).pipe(T.Body("suspected_malware_family")),
       ),
     }),
 ).annotate({
@@ -817,29 +824,31 @@ export const DomainsGetResponseAdditionalInformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DomainsGetResponseAdditionalInformation>;
 
 export interface DomainsGetResponseApplication {
-  id?: number;
-  name?: string;
+  id?: number | null;
+  name?: string | null;
 }
 export const DomainsGetResponseApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DomainsGetResponseApplication",
 }) as any as S.Schema<DomainsGetResponseApplication>;
 
 export interface DomainsGetResponseContentCategoriesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsGetResponseContentCategoriesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
 ).annotate({
   identifier: "DomainsGetResponseContentCategoriesItem",
@@ -852,16 +861,18 @@ export const DomainsGetResponseContentCategoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DomainsGetResponseContentCategoriesList>;
 
 export interface DomainsGetResponseInheritedContentCategoriesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsGetResponseInheritedContentCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
   ).annotate({
     identifier: "DomainsGetResponseInheritedContentCategoriesItem",
@@ -875,16 +886,18 @@ export const DomainsGetResponseInheritedContentCategoriesList =
   ) as any as S.Schema<DomainsGetResponseInheritedContentCategoriesList>;
 
 export interface DomainsGetResponseInheritedRiskTypesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsGetResponseInheritedRiskTypesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
 ).annotate({
   identifier: "DomainsGetResponseInheritedRiskTypesItem",
@@ -898,15 +911,15 @@ export const DomainsGetResponseInheritedRiskTypesList = /*@__PURE__*/ S.Array(
 
 export interface DomainsGetResponseResolvesToRefsItem {
   /** STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c. */
-  id?: string;
+  id?: string | null;
   /** IP address or domain name. */
-  value?: string;
+  value?: string | null;
 }
 export const DomainsGetResponseResolvesToRefsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
-      value: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "DomainsGetResponseResolvesToRefsItem",
@@ -919,15 +932,17 @@ export const DomainsGetResponseResolvesToRefsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DomainsGetResponseResolvesToRefsList>;
 
 export interface DomainsGetResponseRiskTypesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsGetResponseRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+    id: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    superCategoryId: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+    ),
   }),
 ).annotate({
   identifier: "DomainsGetResponseRiskTypesItem",
@@ -942,55 +957,61 @@ export const DomainsGetResponseRiskTypesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDomainResponse {
   /** Additional information related to the host name. */
-  additionalInformation?: DomainsGetResponseAdditionalInformation;
+  additionalInformation?: DomainsGetResponseAdditionalInformation | null;
   /** Application that the hostname belongs to. */
-  application?: DomainsGetResponseApplication;
-  contentCategories?: DomainsGetResponseContentCategoriesList;
-  domain?: string;
-  inheritedContentCategories?: DomainsGetResponseInheritedContentCategoriesList;
+  application?: DomainsGetResponseApplication | null;
+  contentCategories?: DomainsGetResponseContentCategoriesList | null;
+  domain?: string | null;
+  inheritedContentCategories?: DomainsGetResponseInheritedContentCategoriesList | null;
   /** Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable. */
-  inheritedFrom?: string;
-  inheritedRiskTypes?: DomainsGetResponseInheritedRiskTypesList;
+  inheritedFrom?: string | null;
+  inheritedRiskTypes?: DomainsGetResponseInheritedRiskTypesList | null;
   /** Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000. */
-  popularityRank?: number;
+  popularityRank?: number | null;
   /** Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to. */
-  resolvesToRefs?: DomainsGetResponseResolvesToRefsList;
+  resolvesToRefs?: DomainsGetResponseResolvesToRefsList | null;
   /** Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk). */
-  riskScore?: number;
-  riskTypes?: DomainsGetResponseRiskTypesList;
+  riskScore?: number | null;
+  riskTypes?: DomainsGetResponseRiskTypesList | null;
 }
 export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInformation: S.optional(
-      DomainsGetResponseAdditionalInformation.pipe(
+      S.NullOr(DomainsGetResponseAdditionalInformation).pipe(
         T.Body("additional_information"),
       ),
     ),
-    application: S.optional(DomainsGetResponseApplication),
+    application: S.optional(S.NullOr(DomainsGetResponseApplication)),
     contentCategories: S.optional(
-      DomainsGetResponseContentCategoriesList.pipe(
+      S.NullOr(DomainsGetResponseContentCategoriesList).pipe(
         T.Body("content_categories"),
       ),
     ),
-    domain: S.optional(S.String),
+    domain: S.optional(S.NullOr(S.String)),
     inheritedContentCategories: S.optional(
-      DomainsGetResponseInheritedContentCategoriesList.pipe(
+      S.NullOr(DomainsGetResponseInheritedContentCategoriesList).pipe(
         T.Body("inherited_content_categories"),
       ),
     ),
-    inheritedFrom: S.optional(S.String.pipe(T.Body("inherited_from"))),
+    inheritedFrom: S.optional(
+      S.NullOr(S.String).pipe(T.Body("inherited_from")),
+    ),
     inheritedRiskTypes: S.optional(
-      DomainsGetResponseInheritedRiskTypesList.pipe(
+      S.NullOr(DomainsGetResponseInheritedRiskTypesList).pipe(
         T.Body("inherited_risk_types"),
       ),
     ),
-    popularityRank: S.optional(S.Number.pipe(T.Body("popularity_rank"))),
-    resolvesToRefs: S.optional(
-      DomainsGetResponseResolvesToRefsList.pipe(T.Body("resolves_to_refs")),
+    popularityRank: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("popularity_rank")),
     ),
-    riskScore: S.optional(S.Number.pipe(T.Body("risk_score"))),
+    resolvesToRefs: S.optional(
+      S.NullOr(DomainsGetResponseResolvesToRefsList).pipe(
+        T.Body("resolves_to_refs"),
+      ),
+    ),
+    riskScore: S.optional(S.NullOr(S.Number).pipe(T.Body("risk_score"))),
     riskTypes: S.optional(
-      DomainsGetResponseRiskTypesList.pipe(T.Body("risk_types")),
+      S.NullOr(DomainsGetResponseRiskTypesList).pipe(T.Body("risk_types")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1033,13 +1054,13 @@ export const GetDomainBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DomainsBulksGetResultItemAdditionalInformation {
   /** Suspected DGA malware family. */
-  suspectedMalwareFamily?: string;
+  suspectedMalwareFamily?: string | null;
 }
 export const DomainsBulksGetResultItemAdditionalInformation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suspectedMalwareFamily: S.optional(
-        S.String.pipe(T.Body("suspected_malware_family")),
+        S.NullOr(S.String).pipe(T.Body("suspected_malware_family")),
       ),
     }),
   ).annotate({
@@ -1047,30 +1068,32 @@ export const DomainsBulksGetResultItemAdditionalInformation =
   }) as any as S.Schema<DomainsBulksGetResultItemAdditionalInformation>;
 
 export interface DomainsBulksGetResultItemApplication {
-  id?: number;
-  name?: string;
+  id?: number | null;
+  name?: string | null;
 }
 export const DomainsBulksGetResultItemApplication = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "DomainsBulksGetResultItemApplication",
 }) as any as S.Schema<DomainsBulksGetResultItemApplication>;
 
 export interface DomainsBulksGetResultItemContentCategoriesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsBulksGetResultItemContentCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
   ).annotate({
     identifier: "DomainsBulksGetResultItemContentCategoriesItem",
@@ -1084,16 +1107,18 @@ export const DomainsBulksGetResultItemContentCategoriesList =
   ) as any as S.Schema<DomainsBulksGetResultItemContentCategoriesList>;
 
 export interface DomainsBulksGetResultItemInheritedContentCategoriesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsBulksGetResultItemInheritedContentCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
   ).annotate({
     identifier: "DomainsBulksGetResultItemInheritedContentCategoriesItem",
@@ -1107,16 +1132,18 @@ export const DomainsBulksGetResultItemInheritedContentCategoriesList =
   ) as any as S.Schema<DomainsBulksGetResultItemInheritedContentCategoriesList>;
 
 export interface DomainsBulksGetResultItemInheritedRiskTypesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsBulksGetResultItemInheritedRiskTypesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
   ).annotate({
     identifier: "DomainsBulksGetResultItemInheritedRiskTypesItem",
@@ -1130,16 +1157,18 @@ export const DomainsBulksGetResultItemInheritedRiskTypesList =
   ) as any as S.Schema<DomainsBulksGetResultItemInheritedRiskTypesList>;
 
 export interface DomainsBulksGetResultItemRiskTypesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const DomainsBulksGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
-      superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
+      superCategoryId: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+      ),
     }),
 ).annotate({
   identifier: "DomainsBulksGetResultItemRiskTypesItem",
@@ -1153,50 +1182,56 @@ export const DomainsBulksGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
 
 export interface DomainsBulksGetResultItem {
   /** Additional information related to the host name. */
-  additionalInformation?: DomainsBulksGetResultItemAdditionalInformation;
+  additionalInformation?: DomainsBulksGetResultItemAdditionalInformation | null;
   /** Application that the hostname belongs to. */
-  application?: DomainsBulksGetResultItemApplication;
-  contentCategories?: DomainsBulksGetResultItemContentCategoriesList;
-  domain?: string;
-  inheritedContentCategories?: DomainsBulksGetResultItemInheritedContentCategoriesList;
+  application?: DomainsBulksGetResultItemApplication | null;
+  contentCategories?: DomainsBulksGetResultItemContentCategoriesList | null;
+  domain?: string | null;
+  inheritedContentCategories?: DomainsBulksGetResultItemInheritedContentCategoriesList | null;
   /** Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable. */
-  inheritedFrom?: string;
-  inheritedRiskTypes?: DomainsBulksGetResultItemInheritedRiskTypesList;
+  inheritedFrom?: string | null;
+  inheritedRiskTypes?: DomainsBulksGetResultItemInheritedRiskTypesList | null;
   /** Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000. */
-  popularityRank?: number;
+  popularityRank?: number | null;
   /** Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk). */
-  riskScore?: number;
-  riskTypes?: DomainsBulksGetResultItemRiskTypesList;
+  riskScore?: number | null;
+  riskTypes?: DomainsBulksGetResultItemRiskTypesList | null;
 }
 export const DomainsBulksGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInformation: S.optional(
-      DomainsBulksGetResultItemAdditionalInformation.pipe(
+      S.NullOr(DomainsBulksGetResultItemAdditionalInformation).pipe(
         T.Body("additional_information"),
       ),
     ),
-    application: S.optional(DomainsBulksGetResultItemApplication),
+    application: S.optional(S.NullOr(DomainsBulksGetResultItemApplication)),
     contentCategories: S.optional(
-      DomainsBulksGetResultItemContentCategoriesList.pipe(
+      S.NullOr(DomainsBulksGetResultItemContentCategoriesList).pipe(
         T.Body("content_categories"),
       ),
     ),
-    domain: S.optional(S.String),
+    domain: S.optional(S.NullOr(S.String)),
     inheritedContentCategories: S.optional(
-      DomainsBulksGetResultItemInheritedContentCategoriesList.pipe(
+      S.NullOr(DomainsBulksGetResultItemInheritedContentCategoriesList).pipe(
         T.Body("inherited_content_categories"),
       ),
     ),
-    inheritedFrom: S.optional(S.String.pipe(T.Body("inherited_from"))),
+    inheritedFrom: S.optional(
+      S.NullOr(S.String).pipe(T.Body("inherited_from")),
+    ),
     inheritedRiskTypes: S.optional(
-      DomainsBulksGetResultItemInheritedRiskTypesList.pipe(
+      S.NullOr(DomainsBulksGetResultItemInheritedRiskTypesList).pipe(
         T.Body("inherited_risk_types"),
       ),
     ),
-    popularityRank: S.optional(S.Number.pipe(T.Body("popularity_rank"))),
-    riskScore: S.optional(S.Number.pipe(T.Body("risk_score"))),
+    popularityRank: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("popularity_rank")),
+    ),
+    riskScore: S.optional(S.NullOr(S.Number).pipe(T.Body("risk_score"))),
     riskTypes: S.optional(
-      DomainsBulksGetResultItemRiskTypesList.pipe(T.Body("risk_types")),
+      S.NullOr(DomainsBulksGetResultItemRiskTypesList).pipe(
+        T.Body("risk_types"),
+      ),
     ),
   }),
 ).annotate({
@@ -1238,14 +1273,14 @@ export const GetDomainHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDomainHistoryRequest>;
 
 export interface DomainHistoryGetResultItemCategorizationsItemCategoriesItem {
-  id?: number;
-  name?: string;
+  id?: number | null;
+  name?: string | null;
 }
 export const DomainHistoryGetResultItemCategorizationsItemCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.Number),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.Number)),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DomainHistoryGetResultItemCategorizationsItemCategoriesItem",
@@ -1259,18 +1294,18 @@ export const DomainHistoryGetResultItemCategorizationsItemCategoriesList =
   ) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItemCategoriesList>;
 
 export interface DomainHistoryGetResultItemCategorizationsItem {
-  categories?: DomainHistoryGetResultItemCategorizationsItemCategoriesList;
-  end?: string;
-  start?: string;
+  categories?: DomainHistoryGetResultItemCategorizationsItemCategoriesList | null;
+  end?: string | null;
+  start?: string | null;
 }
 export const DomainHistoryGetResultItemCategorizationsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       categories: S.optional(
-        DomainHistoryGetResultItemCategorizationsItemCategoriesList,
+        S.NullOr(DomainHistoryGetResultItemCategorizationsItemCategoriesList),
       ),
-      end: S.optional(S.String),
-      start: S.optional(S.String),
+      end: S.optional(S.NullOr(S.String)),
+      start: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DomainHistoryGetResultItemCategorizationsItem",
@@ -1284,13 +1319,15 @@ export const DomainHistoryGetResultItemCategorizationsList =
   ) as any as S.Schema<DomainHistoryGetResultItemCategorizationsList>;
 
 export interface DomainHistoryGetResultItem {
-  categorizations?: DomainHistoryGetResultItemCategorizationsList;
-  domain?: string;
+  categorizations?: DomainHistoryGetResultItemCategorizationsList | null;
+  domain?: string | null;
 }
 export const DomainHistoryGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    categorizations: S.optional(DomainHistoryGetResultItemCategorizationsList),
-    domain: S.optional(S.String),
+    categorizations: S.optional(
+      S.NullOr(DomainHistoryGetResultItemCategorizationsList),
+    ),
+    domain: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DomainHistoryGetResultItem",
@@ -1332,22 +1369,26 @@ export const GetIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIndicatorFeedRequest>;
 
 export interface IndicatorFeedsGetResponseLastUploadSummaryPersisted {
-  domainsAdded?: number;
-  domainsRemoved?: number;
-  ipsAdded?: number;
-  ipsRemoved?: number;
-  urlsAdded?: number;
-  urlsRemoved?: number;
+  domainsAdded?: number | null;
+  domainsRemoved?: number | null;
+  ipsAdded?: number | null;
+  ipsRemoved?: number | null;
+  urlsAdded?: number | null;
+  urlsRemoved?: number | null;
 }
 export const IndicatorFeedsGetResponseLastUploadSummaryPersisted =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      domainsAdded: S.optional(S.Number.pipe(T.Body("domains_added"))),
-      domainsRemoved: S.optional(S.Number.pipe(T.Body("domains_removed"))),
-      ipsAdded: S.optional(S.Number.pipe(T.Body("ips_added"))),
-      ipsRemoved: S.optional(S.Number.pipe(T.Body("ips_removed"))),
-      urlsAdded: S.optional(S.Number.pipe(T.Body("urls_added"))),
-      urlsRemoved: S.optional(S.Number.pipe(T.Body("urls_removed"))),
+      domainsAdded: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("domains_added")),
+      ),
+      domainsRemoved: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("domains_removed")),
+      ),
+      ipsAdded: S.optional(S.NullOr(S.Number).pipe(T.Body("ips_added"))),
+      ipsRemoved: S.optional(S.NullOr(S.Number).pipe(T.Body("ips_removed"))),
+      urlsAdded: S.optional(S.NullOr(S.Number).pipe(T.Body("urls_added"))),
+      urlsRemoved: S.optional(S.NullOr(S.Number).pipe(T.Body("urls_removed"))),
     }),
   ).annotate({
     identifier: "IndicatorFeedsGetResponseLastUploadSummaryPersisted",
@@ -1355,23 +1396,23 @@ export const IndicatorFeedsGetResponseLastUploadSummaryPersisted =
 
 export interface IndicatorFeedsGetResponseLastUploadSummarySkipped {
   /** Domains filtered by the global popularity allowlist at QS */
-  allowlistedDomains?: number;
+  allowlistedDomains?: number | null;
   /** Indicators in the upload whose valid_until is already in */
-  expiredIndicators?: number;
+  expiredIndicators?: number | null;
   /** Reserved for future use. Currently always 0 — the unifier */
-  invalidIndicators?: number;
+  invalidIndicators?: number | null;
 }
 export const IndicatorFeedsGetResponseLastUploadSummarySkipped =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowlistedDomains: S.optional(
-        S.Number.pipe(T.Body("allowlisted_domains")),
+        S.NullOr(S.Number).pipe(T.Body("allowlisted_domains")),
       ),
       expiredIndicators: S.optional(
-        S.Number.pipe(T.Body("expired_indicators")),
+        S.NullOr(S.Number).pipe(T.Body("expired_indicators")),
       ),
       invalidIndicators: S.optional(
-        S.Number.pipe(T.Body("invalid_indicators")),
+        S.NullOr(S.Number).pipe(T.Body("invalid_indicators")),
       ),
     }),
   ).annotate({
@@ -1380,18 +1421,18 @@ export const IndicatorFeedsGetResponseLastUploadSummarySkipped =
 
 export interface IndicatorFeedsGetResponseLastUploadSummaryUploaded {
   /** Number of domain indicators in the upload */
-  domains?: number;
+  domains?: number | null;
   /** Number of IP indicators in the upload */
-  ips?: number;
+  ips?: number | null;
   /** Number of URL indicators in the upload */
-  urls?: number;
+  urls?: number | null;
 }
 export const IndicatorFeedsGetResponseLastUploadSummaryUploaded =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      domains: S.optional(S.Number),
-      ips: S.optional(S.Number),
-      urls: S.optional(S.Number),
+      domains: S.optional(S.NullOr(S.Number)),
+      ips: S.optional(S.NullOr(S.Number)),
+      urls: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "IndicatorFeedsGetResponseLastUploadSummaryUploaded",
@@ -1399,20 +1440,24 @@ export const IndicatorFeedsGetResponseLastUploadSummaryUploaded =
 
 export interface IndicatorFeedsGetResponseLastUploadSummary {
   /** Net delta applied to feed indicators by this upload. Snapshot */
-  persisted?: IndicatorFeedsGetResponseLastUploadSummaryPersisted;
+  persisted?: IndicatorFeedsGetResponseLastUploadSummaryPersisted | null;
   /** Counts of indicators that were uploaded but did not reach */
-  skipped?: IndicatorFeedsGetResponseLastUploadSummarySkipped;
+  skipped?: IndicatorFeedsGetResponseLastUploadSummarySkipped | null;
   /** Indicator counts from the unified file the loader received */
-  uploaded?: IndicatorFeedsGetResponseLastUploadSummaryUploaded;
+  uploaded?: IndicatorFeedsGetResponseLastUploadSummaryUploaded | null;
 }
 export const IndicatorFeedsGetResponseLastUploadSummary =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       persisted: S.optional(
-        IndicatorFeedsGetResponseLastUploadSummaryPersisted,
+        S.NullOr(IndicatorFeedsGetResponseLastUploadSummaryPersisted),
       ),
-      skipped: S.optional(IndicatorFeedsGetResponseLastUploadSummarySkipped),
-      uploaded: S.optional(IndicatorFeedsGetResponseLastUploadSummaryUploaded),
+      skipped: S.optional(
+        S.NullOr(IndicatorFeedsGetResponseLastUploadSummarySkipped),
+      ),
+      uploaded: S.optional(
+        S.NullOr(IndicatorFeedsGetResponseLastUploadSummaryUploaded),
+      ),
     }),
   ).annotate({
     identifier: "IndicatorFeedsGetResponseLastUploadSummary",
@@ -1431,55 +1476,61 @@ export const IndicatorFeedsGetResponseLatestUploadStatus =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
-  id?: number;
+  id?: number | null;
   /** The date and time when the data entry was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** Whether the indicator feed can be attributed to a provider */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** Whether the indicator feed can be downloaded */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** Summary of indicator counts from the last successful upload to this */
-  lastUploadSummary?: IndicatorFeedsGetResponseLastUploadSummary;
+  lastUploadSummary?: IndicatorFeedsGetResponseLastUploadSummary | null;
   /** Human-readable error message describing why the latest upload */
-  latestUploadError?: string;
+  latestUploadError?: string | null;
   /** Status of the latest snapshot uploaded */
-  latestUploadStatus?: IndicatorFeedsGetResponseLatestUploadStatus;
+  latestUploadStatus?: IndicatorFeedsGetResponseLatestUploadStatus | null;
   /** The date and time when the data entry was last modified */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
   /** The unique identifier for the provider */
-  providerId?: number;
+  providerId?: number | null;
   /** The provider of the indicator feed */
-  providerName?: string;
+  providerName?: string | null;
 }
 export const GetIndicatorFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
+    id: S.optional(S.NullOr(S.Number)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    isAttributable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+    ),
+    isDownloadable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+    ),
+    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
     lastUploadSummary: S.optional(
-      IndicatorFeedsGetResponseLastUploadSummary.pipe(
+      S.NullOr(IndicatorFeedsGetResponseLastUploadSummary).pipe(
         T.Body("last_upload_summary"),
       ),
     ),
-    latestUploadError: S.optional(S.String.pipe(T.Body("latest_upload_error"))),
+    latestUploadError: S.optional(
+      S.NullOr(S.String).pipe(T.Body("latest_upload_error")),
+    ),
     latestUploadStatus: S.optional(
-      IndicatorFeedsGetResponseLatestUploadStatus.pipe(
+      S.NullOr(IndicatorFeedsGetResponseLatestUploadStatus).pipe(
         T.Body("latest_upload_status"),
       ),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    providerId: S.optional(S.Number.pipe(T.Body("provider_id"))),
-    providerName: S.optional(S.String.pipe(T.Body("provider_name"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    providerId: S.optional(S.NullOr(S.Number).pipe(T.Body("provider_id"))),
+    providerName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIndicatorFeedResponse",
@@ -1514,35 +1565,37 @@ export type IpsGetResultItemBelongsToRefType =
 export const IpsGetResultItemBelongsToRefType = /*@__PURE__*/ S.String;
 
 export interface IpsGetResultItemBelongsToRef {
-  id?: string;
-  country?: string;
-  description?: string;
+  id?: string | null;
+  country?: string | null;
+  description?: string | null;
   /** Infrastructure type of this ASN. */
-  type?: IpsGetResultItemBelongsToRefType;
-  value?: string;
+  type?: IpsGetResultItemBelongsToRefType | null;
+  value?: string | null;
 }
 export const IpsGetResultItemBelongsToRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    country: S.optional(S.String),
-    description: S.optional(S.String),
-    type: S.optional(IpsGetResultItemBelongsToRefType),
-    value: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    country: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(IpsGetResultItemBelongsToRefType)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "IpsGetResultItemBelongsToRef",
 }) as any as S.Schema<IpsGetResultItemBelongsToRef>;
 
 export interface IpsGetResultItemRiskTypesItem {
-  id?: number;
-  name?: string;
-  superCategoryId?: number;
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
 }
 export const IpsGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    superCategoryId: S.optional(S.Number.pipe(T.Body("super_category_id"))),
+    id: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    superCategoryId: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("super_category_id")),
+    ),
   }),
 ).annotate({
   identifier: "IpsGetResultItemRiskTypesItem",
@@ -1556,18 +1609,18 @@ export const IpsGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
 
 export interface IpsGetResultItem {
   /** Specifies a reference to the autonomous systems (AS) that the IP address belongs to. */
-  belongsToRef?: IpsGetResultItemBelongsToRef;
-  ip?: string;
-  riskTypes?: IpsGetResultItemRiskTypesList;
+  belongsToRef?: IpsGetResultItemBelongsToRef | null;
+  ip?: string | null;
+  riskTypes?: IpsGetResultItemRiskTypesList | null;
 }
 export const IpsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     belongsToRef: S.optional(
-      IpsGetResultItemBelongsToRef.pipe(T.Body("belongs_to_ref")),
+      S.NullOr(IpsGetResultItemBelongsToRef).pipe(T.Body("belongs_to_ref")),
     ),
-    ip: S.optional(S.String),
+    ip: S.optional(S.NullOr(S.String)),
     riskTypes: S.optional(
-      IpsGetResultItemRiskTypesList.pipe(T.Body("risk_types")),
+      S.NullOr(IpsGetResultItemRiskTypesList).pipe(T.Body("risk_types")),
     ),
   }),
 ).annotate({
@@ -1624,85 +1677,85 @@ export interface GetWhoiResponse {
   punycode: string;
   registrant: string;
   registrar: string;
-  id?: string;
-  administrativeCity?: string;
-  administrativeCountry?: string;
-  administrativeEmail?: string;
-  administrativeFax?: string;
-  administrativeFaxExt?: string;
-  administrativeId?: string;
-  administrativeName?: string;
-  administrativeOrg?: string;
-  administrativePhone?: string;
-  administrativePhoneExt?: string;
-  administrativePostalCode?: string;
-  administrativeProvince?: string;
-  administrativeReferralUrl?: string;
-  administrativeStreet?: string;
-  billingCity?: string;
-  billingCountry?: string;
-  billingEmail?: string;
-  billingFax?: string;
-  billingFaxExt?: string;
-  billingId?: string;
-  billingName?: string;
-  billingOrg?: string;
-  billingPhone?: string;
-  billingPhoneExt?: string;
-  billingPostalCode?: string;
-  billingProvince?: string;
-  billingReferralUrl?: string;
-  billingStreet?: string;
-  createdDate?: string;
-  createdDateRaw?: string;
-  expirationDate?: string;
-  expirationDateRaw?: string;
-  registrantCity?: string;
-  registrantCountry?: string;
-  registrantEmail?: string;
-  registrantFax?: string;
-  registrantFaxExt?: string;
-  registrantId?: string;
-  registrantName?: string;
-  registrantOrg?: string;
-  registrantPhone?: string;
-  registrantPhoneExt?: string;
-  registrantPostalCode?: string;
-  registrantProvince?: string;
-  registrantReferralUrl?: string;
-  registrantStreet?: string;
-  registrarCity?: string;
-  registrarCountry?: string;
-  registrarEmail?: string;
-  registrarFax?: string;
-  registrarFaxExt?: string;
-  registrarId?: string;
-  registrarName?: string;
-  registrarOrg?: string;
-  registrarPhone?: string;
-  registrarPhoneExt?: string;
-  registrarPostalCode?: string;
-  registrarProvince?: string;
-  registrarReferralUrl?: string;
-  registrarStreet?: string;
-  status?: WhoisGetResponseStatusList;
-  technicalCity?: string;
-  technicalCountry?: string;
-  technicalEmail?: string;
-  technicalFax?: string;
-  technicalFaxExt?: string;
-  technicalId?: string;
-  technicalName?: string;
-  technicalOrg?: string;
-  technicalPhone?: string;
-  technicalPhoneExt?: string;
-  technicalPostalCode?: string;
-  technicalProvince?: string;
-  technicalReferralUrl?: string;
-  technicalStreet?: string;
-  updatedDate?: string;
-  updatedDateRaw?: string;
-  whoisServer?: string;
+  id?: string | null;
+  administrativeCity?: string | null;
+  administrativeCountry?: string | null;
+  administrativeEmail?: string | null;
+  administrativeFax?: string | null;
+  administrativeFaxExt?: string | null;
+  administrativeId?: string | null;
+  administrativeName?: string | null;
+  administrativeOrg?: string | null;
+  administrativePhone?: string | null;
+  administrativePhoneExt?: string | null;
+  administrativePostalCode?: string | null;
+  administrativeProvince?: string | null;
+  administrativeReferralUrl?: string | null;
+  administrativeStreet?: string | null;
+  billingCity?: string | null;
+  billingCountry?: string | null;
+  billingEmail?: string | null;
+  billingFax?: string | null;
+  billingFaxExt?: string | null;
+  billingId?: string | null;
+  billingName?: string | null;
+  billingOrg?: string | null;
+  billingPhone?: string | null;
+  billingPhoneExt?: string | null;
+  billingPostalCode?: string | null;
+  billingProvince?: string | null;
+  billingReferralUrl?: string | null;
+  billingStreet?: string | null;
+  createdDate?: string | null;
+  createdDateRaw?: string | null;
+  expirationDate?: string | null;
+  expirationDateRaw?: string | null;
+  registrantCity?: string | null;
+  registrantCountry?: string | null;
+  registrantEmail?: string | null;
+  registrantFax?: string | null;
+  registrantFaxExt?: string | null;
+  registrantId?: string | null;
+  registrantName?: string | null;
+  registrantOrg?: string | null;
+  registrantPhone?: string | null;
+  registrantPhoneExt?: string | null;
+  registrantPostalCode?: string | null;
+  registrantProvince?: string | null;
+  registrantReferralUrl?: string | null;
+  registrantStreet?: string | null;
+  registrarCity?: string | null;
+  registrarCountry?: string | null;
+  registrarEmail?: string | null;
+  registrarFax?: string | null;
+  registrarFaxExt?: string | null;
+  registrarId?: string | null;
+  registrarName?: string | null;
+  registrarOrg?: string | null;
+  registrarPhone?: string | null;
+  registrarPhoneExt?: string | null;
+  registrarPostalCode?: string | null;
+  registrarProvince?: string | null;
+  registrarReferralUrl?: string | null;
+  registrarStreet?: string | null;
+  status?: WhoisGetResponseStatusList | null;
+  technicalCity?: string | null;
+  technicalCountry?: string | null;
+  technicalEmail?: string | null;
+  technicalFax?: string | null;
+  technicalFaxExt?: string | null;
+  technicalId?: string | null;
+  technicalName?: string | null;
+  technicalOrg?: string | null;
+  technicalPhone?: string | null;
+  technicalPhoneExt?: string | null;
+  technicalPostalCode?: string | null;
+  technicalProvince?: string | null;
+  technicalReferralUrl?: string | null;
+  technicalStreet?: string | null;
+  updatedDate?: string | null;
+  updatedDateRaw?: string | null;
+  whoisServer?: string | null;
 }
 export const GetWhoiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1714,125 +1767,205 @@ export const GetWhoiResponse = /*@__PURE__*/ S.suspend(() =>
     punycode: S.String,
     registrant: S.String,
     registrar: S.String,
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     administrativeCity: S.optional(
-      S.String.pipe(T.Body("administrative_city")),
+      S.NullOr(S.String).pipe(T.Body("administrative_city")),
     ),
     administrativeCountry: S.optional(
-      S.String.pipe(T.Body("administrative_country")),
+      S.NullOr(S.String).pipe(T.Body("administrative_country")),
     ),
     administrativeEmail: S.optional(
-      S.String.pipe(T.Body("administrative_email")),
+      S.NullOr(S.String).pipe(T.Body("administrative_email")),
     ),
-    administrativeFax: S.optional(S.String.pipe(T.Body("administrative_fax"))),
+    administrativeFax: S.optional(
+      S.NullOr(S.String).pipe(T.Body("administrative_fax")),
+    ),
     administrativeFaxExt: S.optional(
-      S.String.pipe(T.Body("administrative_fax_ext")),
+      S.NullOr(S.String).pipe(T.Body("administrative_fax_ext")),
     ),
-    administrativeId: S.optional(S.String.pipe(T.Body("administrative_id"))),
+    administrativeId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("administrative_id")),
+    ),
     administrativeName: S.optional(
-      S.String.pipe(T.Body("administrative_name")),
+      S.NullOr(S.String).pipe(T.Body("administrative_name")),
     ),
-    administrativeOrg: S.optional(S.String.pipe(T.Body("administrative_org"))),
+    administrativeOrg: S.optional(
+      S.NullOr(S.String).pipe(T.Body("administrative_org")),
+    ),
     administrativePhone: S.optional(
-      S.String.pipe(T.Body("administrative_phone")),
+      S.NullOr(S.String).pipe(T.Body("administrative_phone")),
     ),
     administrativePhoneExt: S.optional(
-      S.String.pipe(T.Body("administrative_phone_ext")),
+      S.NullOr(S.String).pipe(T.Body("administrative_phone_ext")),
     ),
     administrativePostalCode: S.optional(
-      S.String.pipe(T.Body("administrative_postal_code")),
+      S.NullOr(S.String).pipe(T.Body("administrative_postal_code")),
     ),
     administrativeProvince: S.optional(
-      S.String.pipe(T.Body("administrative_province")),
+      S.NullOr(S.String).pipe(T.Body("administrative_province")),
     ),
     administrativeReferralUrl: S.optional(
-      S.String.pipe(T.Body("administrative_referral_url")),
+      S.NullOr(S.String).pipe(T.Body("administrative_referral_url")),
     ),
     administrativeStreet: S.optional(
-      S.String.pipe(T.Body("administrative_street")),
+      S.NullOr(S.String).pipe(T.Body("administrative_street")),
     ),
-    billingCity: S.optional(S.String.pipe(T.Body("billing_city"))),
-    billingCountry: S.optional(S.String.pipe(T.Body("billing_country"))),
-    billingEmail: S.optional(S.String.pipe(T.Body("billing_email"))),
-    billingFax: S.optional(S.String.pipe(T.Body("billing_fax"))),
-    billingFaxExt: S.optional(S.String.pipe(T.Body("billing_fax_ext"))),
-    billingId: S.optional(S.String.pipe(T.Body("billing_id"))),
-    billingName: S.optional(S.String.pipe(T.Body("billing_name"))),
-    billingOrg: S.optional(S.String.pipe(T.Body("billing_org"))),
-    billingPhone: S.optional(S.String.pipe(T.Body("billing_phone"))),
-    billingPhoneExt: S.optional(S.String.pipe(T.Body("billing_phone_ext"))),
-    billingPostalCode: S.optional(S.String.pipe(T.Body("billing_postal_code"))),
-    billingProvince: S.optional(S.String.pipe(T.Body("billing_province"))),
+    billingCity: S.optional(S.NullOr(S.String).pipe(T.Body("billing_city"))),
+    billingCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_country")),
+    ),
+    billingEmail: S.optional(S.NullOr(S.String).pipe(T.Body("billing_email"))),
+    billingFax: S.optional(S.NullOr(S.String).pipe(T.Body("billing_fax"))),
+    billingFaxExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_fax_ext")),
+    ),
+    billingId: S.optional(S.NullOr(S.String).pipe(T.Body("billing_id"))),
+    billingName: S.optional(S.NullOr(S.String).pipe(T.Body("billing_name"))),
+    billingOrg: S.optional(S.NullOr(S.String).pipe(T.Body("billing_org"))),
+    billingPhone: S.optional(S.NullOr(S.String).pipe(T.Body("billing_phone"))),
+    billingPhoneExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_phone_ext")),
+    ),
+    billingPostalCode: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_postal_code")),
+    ),
+    billingProvince: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_province")),
+    ),
     billingReferralUrl: S.optional(
-      S.String.pipe(T.Body("billing_referral_url")),
+      S.NullOr(S.String).pipe(T.Body("billing_referral_url")),
     ),
-    billingStreet: S.optional(S.String.pipe(T.Body("billing_street"))),
-    createdDate: S.optional(S.String.pipe(T.Body("created_date"))),
-    createdDateRaw: S.optional(S.String.pipe(T.Body("created_date_raw"))),
-    expirationDate: S.optional(S.String.pipe(T.Body("expiration_date"))),
-    expirationDateRaw: S.optional(S.String.pipe(T.Body("expiration_date_raw"))),
-    registrantCity: S.optional(S.String.pipe(T.Body("registrant_city"))),
-    registrantCountry: S.optional(S.String.pipe(T.Body("registrant_country"))),
-    registrantEmail: S.optional(S.String.pipe(T.Body("registrant_email"))),
-    registrantFax: S.optional(S.String.pipe(T.Body("registrant_fax"))),
-    registrantFaxExt: S.optional(S.String.pipe(T.Body("registrant_fax_ext"))),
-    registrantId: S.optional(S.String.pipe(T.Body("registrant_id"))),
-    registrantName: S.optional(S.String.pipe(T.Body("registrant_name"))),
-    registrantOrg: S.optional(S.String.pipe(T.Body("registrant_org"))),
-    registrantPhone: S.optional(S.String.pipe(T.Body("registrant_phone"))),
+    billingStreet: S.optional(
+      S.NullOr(S.String).pipe(T.Body("billing_street")),
+    ),
+    createdDate: S.optional(S.NullOr(S.String).pipe(T.Body("created_date"))),
+    createdDateRaw: S.optional(
+      S.NullOr(S.String).pipe(T.Body("created_date_raw")),
+    ),
+    expirationDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expiration_date")),
+    ),
+    expirationDateRaw: S.optional(
+      S.NullOr(S.String).pipe(T.Body("expiration_date_raw")),
+    ),
+    registrantCity: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_city")),
+    ),
+    registrantCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_country")),
+    ),
+    registrantEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_email")),
+    ),
+    registrantFax: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_fax")),
+    ),
+    registrantFaxExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_fax_ext")),
+    ),
+    registrantId: S.optional(S.NullOr(S.String).pipe(T.Body("registrant_id"))),
+    registrantName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_name")),
+    ),
+    registrantOrg: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_org")),
+    ),
+    registrantPhone: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_phone")),
+    ),
     registrantPhoneExt: S.optional(
-      S.String.pipe(T.Body("registrant_phone_ext")),
+      S.NullOr(S.String).pipe(T.Body("registrant_phone_ext")),
     ),
     registrantPostalCode: S.optional(
-      S.String.pipe(T.Body("registrant_postal_code")),
+      S.NullOr(S.String).pipe(T.Body("registrant_postal_code")),
     ),
     registrantProvince: S.optional(
-      S.String.pipe(T.Body("registrant_province")),
+      S.NullOr(S.String).pipe(T.Body("registrant_province")),
     ),
     registrantReferralUrl: S.optional(
-      S.String.pipe(T.Body("registrant_referral_url")),
+      S.NullOr(S.String).pipe(T.Body("registrant_referral_url")),
     ),
-    registrantStreet: S.optional(S.String.pipe(T.Body("registrant_street"))),
-    registrarCity: S.optional(S.String.pipe(T.Body("registrar_city"))),
-    registrarCountry: S.optional(S.String.pipe(T.Body("registrar_country"))),
-    registrarEmail: S.optional(S.String.pipe(T.Body("registrar_email"))),
-    registrarFax: S.optional(S.String.pipe(T.Body("registrar_fax"))),
-    registrarFaxExt: S.optional(S.String.pipe(T.Body("registrar_fax_ext"))),
-    registrarId: S.optional(S.String.pipe(T.Body("registrar_id"))),
-    registrarName: S.optional(S.String.pipe(T.Body("registrar_name"))),
-    registrarOrg: S.optional(S.String.pipe(T.Body("registrar_org"))),
-    registrarPhone: S.optional(S.String.pipe(T.Body("registrar_phone"))),
-    registrarPhoneExt: S.optional(S.String.pipe(T.Body("registrar_phone_ext"))),
+    registrantStreet: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrant_street")),
+    ),
+    registrarCity: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_city")),
+    ),
+    registrarCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_country")),
+    ),
+    registrarEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_email")),
+    ),
+    registrarFax: S.optional(S.NullOr(S.String).pipe(T.Body("registrar_fax"))),
+    registrarFaxExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_fax_ext")),
+    ),
+    registrarId: S.optional(S.NullOr(S.String).pipe(T.Body("registrar_id"))),
+    registrarName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_name")),
+    ),
+    registrarOrg: S.optional(S.NullOr(S.String).pipe(T.Body("registrar_org"))),
+    registrarPhone: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_phone")),
+    ),
+    registrarPhoneExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_phone_ext")),
+    ),
     registrarPostalCode: S.optional(
-      S.String.pipe(T.Body("registrar_postal_code")),
+      S.NullOr(S.String).pipe(T.Body("registrar_postal_code")),
     ),
-    registrarProvince: S.optional(S.String.pipe(T.Body("registrar_province"))),
+    registrarProvince: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_province")),
+    ),
     registrarReferralUrl: S.optional(
-      S.String.pipe(T.Body("registrar_referral_url")),
+      S.NullOr(S.String).pipe(T.Body("registrar_referral_url")),
     ),
-    registrarStreet: S.optional(S.String.pipe(T.Body("registrar_street"))),
-    status: S.optional(WhoisGetResponseStatusList),
-    technicalCity: S.optional(S.String.pipe(T.Body("technical_city"))),
-    technicalCountry: S.optional(S.String.pipe(T.Body("technical_country"))),
-    technicalEmail: S.optional(S.String.pipe(T.Body("technical_email"))),
-    technicalFax: S.optional(S.String.pipe(T.Body("technical_fax"))),
-    technicalFaxExt: S.optional(S.String.pipe(T.Body("technical_fax_ext"))),
-    technicalId: S.optional(S.String.pipe(T.Body("technical_id"))),
-    technicalName: S.optional(S.String.pipe(T.Body("technical_name"))),
-    technicalOrg: S.optional(S.String.pipe(T.Body("technical_org"))),
-    technicalPhone: S.optional(S.String.pipe(T.Body("technical_phone"))),
-    technicalPhoneExt: S.optional(S.String.pipe(T.Body("technical_phone_ext"))),
+    registrarStreet: S.optional(
+      S.NullOr(S.String).pipe(T.Body("registrar_street")),
+    ),
+    status: S.optional(S.NullOr(WhoisGetResponseStatusList)),
+    technicalCity: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_city")),
+    ),
+    technicalCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_country")),
+    ),
+    technicalEmail: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_email")),
+    ),
+    technicalFax: S.optional(S.NullOr(S.String).pipe(T.Body("technical_fax"))),
+    technicalFaxExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_fax_ext")),
+    ),
+    technicalId: S.optional(S.NullOr(S.String).pipe(T.Body("technical_id"))),
+    technicalName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_name")),
+    ),
+    technicalOrg: S.optional(S.NullOr(S.String).pipe(T.Body("technical_org"))),
+    technicalPhone: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_phone")),
+    ),
+    technicalPhoneExt: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_phone_ext")),
+    ),
     technicalPostalCode: S.optional(
-      S.String.pipe(T.Body("technical_postal_code")),
+      S.NullOr(S.String).pipe(T.Body("technical_postal_code")),
     ),
-    technicalProvince: S.optional(S.String.pipe(T.Body("technical_province"))),
+    technicalProvince: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_province")),
+    ),
     technicalReferralUrl: S.optional(
-      S.String.pipe(T.Body("technical_referral_url")),
+      S.NullOr(S.String).pipe(T.Body("technical_referral_url")),
     ),
-    technicalStreet: S.optional(S.String.pipe(T.Body("technical_street"))),
-    updatedDate: S.optional(S.String.pipe(T.Body("updated_date"))),
-    updatedDateRaw: S.optional(S.String.pipe(T.Body("updated_date_raw"))),
-    whoisServer: S.optional(S.String.pipe(T.Body("whois_server"))),
+    technicalStreet: S.optional(
+      S.NullOr(S.String).pipe(T.Body("technical_street")),
+    ),
+    updatedDate: S.optional(S.NullOr(S.String).pipe(T.Body("updated_date"))),
+    updatedDateRaw: S.optional(
+      S.NullOr(S.String).pipe(T.Body("updated_date_raw")),
+    ),
+    whoisServer: S.optional(S.NullOr(S.String).pipe(T.Body("whois_server"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWhoiResponse",
@@ -1995,14 +2128,16 @@ export const AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
 
 export interface AttackSurfaceReportIssuesListResponseIssuesItemPayload {
   /** Describes the method used to detect insight. */
-  detectionMethod?: string;
-  zoneTag?: string;
+  detectionMethod?: string | null;
+  zoneTag?: string | null;
 }
 export const AttackSurfaceReportIssuesListResponseIssuesItemPayload =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      detectionMethod: S.optional(S.String.pipe(T.Body("detection_method"))),
-      zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+      detectionMethod: S.optional(
+        S.NullOr(S.String).pipe(T.Body("detection_method")),
+      ),
+      zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
     }),
   ).annotate({
     identifier: "AttackSurfaceReportIssuesListResponseIssuesItemPayload",
@@ -2029,54 +2164,56 @@ export const AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
 export interface AttackSurfaceReportIssuesListResponseIssuesItem {
-  id?: string;
-  dismissed?: boolean;
+  id?: string | null;
+  dismissed?: boolean | null;
   /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
-  hasExtendedContext?: boolean;
-  issueClass?: string;
-  issueType?: AttackSurfaceReportIssuesListResponseIssuesItemIssueType;
-  payload?: AttackSurfaceReportIssuesListResponseIssuesItemPayload;
-  resolveLink?: string;
-  resolveText?: string;
-  severity?: AttackSurfaceReportIssuesListResponseIssuesItemSeverity;
-  since?: string;
+  hasExtendedContext?: boolean | null;
+  issueClass?: string | null;
+  issueType?: AttackSurfaceReportIssuesListResponseIssuesItemIssueType | null;
+  payload?: AttackSurfaceReportIssuesListResponseIssuesItemPayload | null;
+  resolveLink?: string | null;
+  resolveText?: string | null;
+  severity?: AttackSurfaceReportIssuesListResponseIssuesItemSeverity | null;
+  since?: string | null;
   /** The current status of the insight. */
-  status?: AttackSurfaceReportIssuesListResponseIssuesItemStatus;
-  subject?: string;
-  timestamp?: string;
+  status?: AttackSurfaceReportIssuesListResponseIssuesItemStatus | null;
+  subject?: string | null;
+  timestamp?: string | null;
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  userClassification?: AttackSurfaceReportIssuesListResponseIssuesItemUserClassification;
+  userClassification?: AttackSurfaceReportIssuesListResponseIssuesItemUserClassification | null;
 }
 export const AttackSurfaceReportIssuesListResponseIssuesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      dismissed: S.optional(S.Boolean),
+      id: S.optional(S.NullOr(S.String)),
+      dismissed: S.optional(S.NullOr(S.Boolean)),
       hasExtendedContext: S.optional(
-        S.Boolean.pipe(T.Body("has_extended_context")),
+        S.NullOr(S.Boolean).pipe(T.Body("has_extended_context")),
       ),
-      issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
+      issueClass: S.optional(S.NullOr(S.String).pipe(T.Body("issue_class"))),
       issueType: S.optional(
-        AttackSurfaceReportIssuesListResponseIssuesItemIssueType.pipe(
+        S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemIssueType).pipe(
           T.Body("issue_type"),
         ),
       ),
       payload: S.optional(
-        AttackSurfaceReportIssuesListResponseIssuesItemPayload,
+        S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemPayload),
       ),
-      resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
-      resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
+      resolveLink: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_link"))),
+      resolveText: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_text"))),
       severity: S.optional(
-        AttackSurfaceReportIssuesListResponseIssuesItemSeverity,
+        S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemSeverity),
       ),
-      since: S.optional(S.String),
-      status: S.optional(AttackSurfaceReportIssuesListResponseIssuesItemStatus),
-      subject: S.optional(S.String),
-      timestamp: S.optional(S.String),
+      since: S.optional(S.NullOr(S.String)),
+      status: S.optional(
+        S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemStatus),
+      ),
+      subject: S.optional(S.NullOr(S.String)),
+      timestamp: S.optional(S.NullOr(S.String)),
       userClassification: S.optional(
-        AttackSurfaceReportIssuesListResponseIssuesItemUserClassification.pipe(
-          T.Body("user_classification"),
-        ),
+        S.NullOr(
+          AttackSurfaceReportIssuesListResponseIssuesItemUserClassification,
+        ).pipe(T.Body("user_classification")),
       ),
     }),
   ).annotate({
@@ -2093,20 +2230,22 @@ export const AttackSurfaceReportIssuesListResponseIssuesList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAttackSurfaceReportIssuesResponse {
   /** Indicates the total number of results. */
-  count?: number;
-  issues?: AttackSurfaceReportIssuesListResponseIssuesList;
+  count?: number | null;
+  issues?: AttackSurfaceReportIssuesListResponseIssuesList | null;
   /** Specifies the current page within paginated list of results. */
-  page?: number;
+  page?: number | null;
   /** Sets the number of results per page of results. */
-  perPage?: number;
+  perPage?: number | null;
 }
 export const ListAttackSurfaceReportIssuesResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      count: S.optional(S.Number),
-      issues: S.optional(AttackSurfaceReportIssuesListResponseIssuesList),
-      page: S.optional(S.Number),
-      perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+      count: S.optional(S.NullOr(S.Number)),
+      issues: S.optional(
+        S.NullOr(AttackSurfaceReportIssuesListResponseIssuesList),
+      ),
+      page: S.optional(S.NullOr(S.Number)),
+      perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAttackSurfaceReportIssuesResponse",
@@ -2114,14 +2253,14 @@ export const ListAttackSurfaceReportIssuesResponse = /*@__PURE__*/ S.suspend(
 
 export interface DnsListRequestStartEndParams {
   /** Defaults to the current date. */
-  end?: string;
+  end?: string | null;
   /** Defaults to 30 days before the end parameter value. */
-  start?: string;
+  start?: string | null;
 }
 export const DnsListRequestStartEndParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    end: S.optional(S.String),
-    start: S.optional(S.String),
+    end: S.optional(S.NullOr(S.String)),
+    start: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DnsListRequestStartEndParams",
@@ -2135,7 +2274,7 @@ export interface ListDnsRequest {
   page?: number;
   /** Maximum number of results requested. */
   perPage?: number;
-  startEndParams?: DnsListRequestStartEndParams;
+  startEndParams?: DnsListRequestStartEndParams | null;
 }
 export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2144,7 +2283,7 @@ export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     startEndParams: S.optional(
-      DnsListRequestStartEndParams.pipe(
+      S.NullOr(DnsListRequestStartEndParams).pipe(
         T.Body("start_end_params"),
         T.DeepQuery("start_end_params"),
       ),
@@ -2162,17 +2301,17 @@ export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsListResponseReverseRecordsItem {
   /** First seen date of the DNS record during the time period. */
-  firstSeen?: string;
+  firstSeen?: string | null;
   /** Hostname that the IP was observed resolving to. */
-  hostname?: string;
+  hostname?: string | null;
   /** Last seen date of the DNS record during the time period. */
-  lastSeen?: string;
+  lastSeen?: string | null;
 }
 export const DnsListResponseReverseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    firstSeen: S.optional(S.String.pipe(T.Body("first_seen"))),
-    hostname: S.optional(S.String),
-    lastSeen: S.optional(S.String.pipe(T.Body("last_seen"))),
+    firstSeen: S.optional(S.NullOr(S.String).pipe(T.Body("first_seen"))),
+    hostname: S.optional(S.NullOr(S.String)),
+    lastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen"))),
   }),
 ).annotate({
   identifier: "DnsListResponseReverseRecordsItem",
@@ -2187,21 +2326,23 @@ export const DnsListResponseReverseRecordsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListDnsResponse {
   /** Total results returned based on your search parameters. */
-  count?: number;
+  count?: number | null;
   /** Current page within paginated list of results. */
-  page?: number;
+  page?: number | null;
   /** Number of results per page of results. */
-  perPage?: number;
+  perPage?: number | null;
   /** Reverse DNS look-ups observed during the time period. */
-  reverseRecords?: DnsListResponseReverseRecordsList;
+  reverseRecords?: DnsListResponseReverseRecordsList | null;
 }
 export const ListDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    count: S.optional(S.NullOr(S.Number)),
+    page: S.optional(S.NullOr(S.Number)),
+    perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
     reverseRecords: S.optional(
-      DnsListResponseReverseRecordsList.pipe(T.Body("reverse_records")),
+      S.NullOr(DnsListResponseReverseRecordsList).pipe(
+        T.Body("reverse_records"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2230,27 +2371,31 @@ export const ListIndicatorFeedPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface IndicatorFeedsPermissionsListResultItem {
   /** The unique identifier for the indicator feed */
-  id?: number;
+  id?: number | null;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** Whether the indicator feed can be attributed to a provider */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** Whether the indicator feed can be downloaded */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
 }
 export const IndicatorFeedsPermissionsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.Number),
-      description: S.optional(S.String),
-      isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-      isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-      isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
-      name: S.optional(S.String),
+      id: S.optional(S.NullOr(S.Number)),
+      description: S.optional(S.NullOr(S.String)),
+      isAttributable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+      ),
+      isDownloadable: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+      ),
+      isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
+      name: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "IndicatorFeedsPermissionsListResultItem",
@@ -2292,32 +2437,36 @@ export const ListIndicatorFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface IndicatorFeedsListResultItem {
   /** The unique identifier for the indicator feed */
-  id?: number;
+  id?: number | null;
   /** The date and time when the data entry was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** Whether the indicator feed can be attributed to a provider */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** Whether the indicator feed can be downloaded */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** The date and time when the data entry was last modified */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
 }
 export const IndicatorFeedsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.Number)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    isAttributable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+    ),
+    isDownloadable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+    ),
+    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "IndicatorFeedsListResultItem",
@@ -2365,29 +2514,29 @@ export const ListSinkholesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface SinkholesListResultItem {
   /** The unique identifier for the sinkhole. */
-  id?: string;
+  id?: string | null;
   /** The account tag that owns this sinkhole. */
-  accountTag?: string;
+  accountTag?: string | null;
   /** The date and time when the sinkhole was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The date and time when the sinkhole was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The name of the sinkhole. */
-  name?: string;
+  name?: string | null;
   /** The name of the R2 bucket to store results. */
-  r2Bucket?: string;
+  r2Bucket?: string | null;
   /** The id of the R2 instance. */
-  r2Id?: string;
+  r2Id?: string | null;
 }
 export const SinkholesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    r2Bucket: S.optional(S.String.pipe(T.Body("r2_bucket"))),
-    r2Id: S.optional(S.String.pipe(T.Body("r2_id"))),
+    id: S.optional(S.NullOr(S.String)),
+    accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    r2Bucket: S.optional(S.NullOr(S.String).pipe(T.Body("r2_bucket"))),
+    r2Id: S.optional(S.NullOr(S.String).pipe(T.Body("r2_id"))),
   }),
 ).annotate({
   identifier: "SinkholesListResultItem",
@@ -2419,13 +2568,13 @@ export interface PutIndicatorFeedSnapshotRequest {
   /** Indicator feed ID */
   feedId: number;
   /** The file to upload. Either a plain STIX2/CRDF body or a gzipped one (recognised by 0x1f 0x8b magic bytes or a .gz filename suffix). */
-  source?: string;
+  source?: string | null;
 }
 export const PutIndicatorFeedSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.Number.pipe(T.Label("feed_id")),
-    source: S.optional(S.String),
+    source: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -2443,17 +2592,17 @@ export const PutIndicatorFeedSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutIndicatorFeedSnapshotResponse {
   /** Feed id */
-  fileId?: number;
+  fileId?: number | null;
   /** Name of the file unified in our system */
-  filename?: string;
+  filename?: string | null;
   /** Current status of upload, should be unified */
-  status?: string;
+  status?: string | null;
 }
 export const PutIndicatorFeedSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fileId: S.optional(S.Number.pipe(T.Body("file_id"))),
-    filename: S.optional(S.String),
-    status: S.optional(S.String),
+    fileId: S.optional(S.NullOr(S.Number).pipe(T.Body("file_id"))),
+    filename: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutIndicatorFeedSnapshotResponse",
@@ -2605,14 +2754,14 @@ export const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SeverityAttackSurfaceReportIssueRequest>;
 
 export interface AttackSurfaceReportIssuesSeverityResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const AttackSurfaceReportIssuesSeverityResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
+      count: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AttackSurfaceReportIssuesSeverityResultItem",
@@ -2773,14 +2922,14 @@ export const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TypeAttackSurfaceReportIssueRequest>;
 
 export interface AttackSurfaceReportIssuesTypeResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const AttackSurfaceReportIssuesTypeResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      count: S.optional(S.Number),
-      value: S.optional(S.String),
+      count: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AttackSurfaceReportIssuesTypeResultItem",
@@ -2806,25 +2955,29 @@ export interface UpdateIndicatorFeedRequest {
   /** Indicator feed ID */
   feedId: number;
   /** The new description of the feed */
-  description?: string;
+  description?: string | null;
   /** The new is_attributable value of the feed */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** The new is_downloadable value of the feed */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** The new is_public value of the feed */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** The new name of the feed */
-  name?: string;
+  name?: string | null;
 }
 export const UpdateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.Number.pipe(T.Label("feed_id")),
-    description: S.optional(S.String),
-    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    isAttributable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+    ),
+    isDownloadable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+    ),
+    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -2841,32 +2994,36 @@ export const UpdateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
-  id?: number;
+  id?: number | null;
   /** The date and time when the data entry was created */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The description of the example test */
-  description?: string;
+  description?: string | null;
   /** Whether the indicator feed can be attributed to a provider */
-  isAttributable?: boolean;
+  isAttributable?: boolean | null;
   /** Whether the indicator feed can be downloaded */
-  isDownloadable?: boolean;
+  isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
-  isPublic?: boolean;
+  isPublic?: boolean | null;
   /** The date and time when the data entry was last modified */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The name of the indicator feed */
-  name?: string;
+  name?: string | null;
 }
 export const UpdateIndicatorFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
-    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
-    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    id: S.optional(S.NullOr(S.Number)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    isAttributable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
+    ),
+    isDownloadable: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
+    ),
+    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIndicatorFeedResponse",

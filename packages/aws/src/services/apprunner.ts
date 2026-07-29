@@ -157,7 +157,8 @@ export const AssociateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export type CertificateValidationRecordStatus =
   | "PENDING_VALIDATION"
   | "SUCCESS"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CertificateValidationRecordStatus = /*@__PURE__*/ S.String;
 
 export interface CertificateValidationRecord {
@@ -187,7 +188,8 @@ export type CustomDomainAssociationStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | "PENDING_CERTIFICATE_DNS_VALIDATION"
-  | "BINDING_CERTIFICATE";
+  | "BINDING_CERTIFICATE"
+  | (string & {});
 export const CustomDomainAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface CustomDomain {
@@ -284,7 +286,8 @@ export type AutoScalingConfigurationStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "active"
-  | "inactive";
+  | "inactive"
+  | (string & {});
 export const AutoScalingConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type MaxConcurrency = number;
@@ -334,12 +337,12 @@ export const CreateAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateAutoScalingConfigurationResponse",
 }) as any as S.Schema<CreateAutoScalingConfigurationResponse>;
 export type ConnectionName = string;
-export type ProviderType = "GITHUB" | "BITBUCKET";
+export type ProviderType = "GITHUB" | "BITBUCKET" | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export interface CreateConnectionRequest {
   ConnectionName: string;
-  ProviderType: ProviderType | (string & {});
+  ProviderType: ProviderType;
   Tags?: Tag[];
 }
 export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -365,7 +368,8 @@ export type ConnectionStatus =
   | "PENDING_HANDSHAKE"
   | "AVAILABLE"
   | "ERROR"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface Connection {
@@ -393,11 +397,11 @@ export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConnectionResponse",
 }) as any as S.Schema<CreateConnectionResponse>;
 export type ObservabilityConfigurationName = string;
-export type TracingVendor = "AWSXRAY";
+export type TracingVendor = "AWSXRAY" | (string & {});
 export const TracingVendor = /*@__PURE__*/ S.String;
 
 export interface TraceConfiguration {
-  Vendor: TracingVendor | (string & {});
+  Vendor: TracingVendor;
 }
 export const TraceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Vendor: TracingVendor }),
@@ -429,7 +433,10 @@ export const CreateObservabilityConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateObservabilityConfigurationRequest",
 }) as any as S.Schema<CreateObservabilityConfigurationRequest>;
-export type ObservabilityConfigurationStatus = "ACTIVE" | "INACTIVE";
+export type ObservabilityConfigurationStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
 export const ObservabilityConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface ObservabilityConfiguration {
@@ -468,11 +475,11 @@ export const CreateObservabilityConfigurationResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateObservabilityConfigurationResponse",
 }) as any as S.Schema<CreateObservabilityConfigurationResponse>;
 export type ServiceName = string;
-export type SourceCodeVersionType = "BRANCH";
+export type SourceCodeVersionType = "BRANCH" | (string & {});
 export const SourceCodeVersionType = /*@__PURE__*/ S.String;
 
 export interface SourceCodeVersion {
-  Type: SourceCodeVersionType | (string & {});
+  Type: SourceCodeVersionType;
   Value: string;
 }
 export const SourceCodeVersion = /*@__PURE__*/ S.suspend(() =>
@@ -480,7 +487,7 @@ export const SourceCodeVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceCodeVersion",
 }) as any as S.Schema<SourceCodeVersion>;
-export type ConfigurationSource = "REPOSITORY" | "API";
+export type ConfigurationSource = "REPOSITORY" | "API" | (string & {});
 export const ConfigurationSource = /*@__PURE__*/ S.String;
 
 export type Runtime =
@@ -496,7 +503,8 @@ export type Runtime =
   | "RUBY_31"
   | "PYTHON_311"
   | "NODEJS_18"
-  | "NODEJS_22";
+  | "NODEJS_22"
+  | (string & {});
 export const Runtime = /*@__PURE__*/ S.String;
 
 export type BuildCommand = string | redacted.Redacted<string>;
@@ -522,7 +530,7 @@ export const RuntimeEnvironmentSecrets = /*@__PURE__*/ S.Record(
   SensitiveString.pipe(S.optional),
 );
 export interface CodeConfigurationValues {
-  Runtime: Runtime | (string & {});
+  Runtime: Runtime;
   BuildCommand?: string | redacted.Redacted<string>;
   StartCommand?: string | redacted.Redacted<string>;
   Port?: string;
@@ -546,7 +554,7 @@ export const CodeConfigurationValues = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodeConfigurationValues",
 }) as any as S.Schema<CodeConfigurationValues>;
 export interface CodeConfiguration {
-  ConfigurationSource: ConfigurationSource | (string & {});
+  ConfigurationSource: ConfigurationSource;
   CodeConfigurationValues?: CodeConfigurationValues;
 }
 export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -593,13 +601,13 @@ export const ImageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageConfiguration",
 }) as any as S.Schema<ImageConfiguration>;
-export type ImageRepositoryType = "ECR" | "ECR_PUBLIC";
+export type ImageRepositoryType = "ECR" | "ECR_PUBLIC" | (string & {});
 export const ImageRepositoryType = /*@__PURE__*/ S.String;
 
 export interface ImageRepository {
   ImageIdentifier: string;
   ImageConfiguration?: ImageConfiguration;
-  ImageRepositoryType: ImageRepositoryType | (string & {});
+  ImageRepositoryType: ImageRepositoryType;
 }
 export const ImageRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -664,7 +672,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
-export type HealthCheckProtocol = "TCP" | "HTTP";
+export type HealthCheckProtocol = "TCP" | "HTTP" | (string & {});
 export const HealthCheckProtocol = /*@__PURE__*/ S.String;
 
 export type HealthCheckPath = string;
@@ -673,7 +681,7 @@ export type HealthCheckTimeout = number;
 export type HealthCheckHealthyThreshold = number;
 export type HealthCheckUnhealthyThreshold = number;
 export interface HealthCheckConfiguration {
-  Protocol?: HealthCheckProtocol | (string & {});
+  Protocol?: HealthCheckProtocol;
   Path?: string;
   Interval?: number;
   Timeout?: number;
@@ -692,11 +700,11 @@ export const HealthCheckConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HealthCheckConfiguration",
 }) as any as S.Schema<HealthCheckConfiguration>;
-export type EgressType = "DEFAULT" | "VPC";
+export type EgressType = "DEFAULT" | "VPC" | (string & {});
 export const EgressType = /*@__PURE__*/ S.String;
 
 export interface EgressConfiguration {
-  EgressType?: EgressType | (string & {});
+  EgressType?: EgressType;
   VpcConnectorArn?: string;
 }
 export const EgressConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -715,13 +723,13 @@ export const IngressConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IngressConfiguration",
 }) as any as S.Schema<IngressConfiguration>;
-export type IpAddressType = "IPV4" | "DUAL_STACK";
+export type IpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface NetworkConfiguration {
   EgressConfiguration?: EgressConfiguration;
   IngressConfiguration?: IngressConfiguration;
-  IpAddressType?: IpAddressType | (string & {});
+  IpAddressType?: IpAddressType;
 }
 export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -787,7 +795,8 @@ export type ServiceStatus =
   | "DELETED"
   | "DELETE_FAILED"
   | "PAUSED"
-  | "OPERATION_IN_PROGRESS";
+  | "OPERATION_IN_PROGRESS"
+  | (string & {});
 export const ServiceStatus = /*@__PURE__*/ S.String;
 
 export interface AutoScalingConfigurationSummary {
@@ -887,7 +896,12 @@ export const CreateVpcConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpcConnectorRequest",
 }) as any as S.Schema<CreateVpcConnectorRequest>;
-export type VpcConnectorStatus = "ACTIVE" | "INACTIVE" | "active" | "inactive";
+export type VpcConnectorStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "active"
+  | "inactive"
+  | (string & {});
 export const VpcConnectorStatus = /*@__PURE__*/ S.String;
 
 export interface VpcConnector {
@@ -967,7 +981,8 @@ export type VpcIngressConnectionStatus =
   | "FAILED_CREATION"
   | "FAILED_UPDATE"
   | "FAILED_DELETION"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const VpcIngressConnectionStatus = /*@__PURE__*/ S.String;
 
 export type CustomerAccountId = string;
@@ -1582,7 +1597,8 @@ export type OperationType =
   | "PAUSE_SERVICE"
   | "RESUME_SERVICE"
   | "DELETE_SERVICE"
-  | "UPDATE_SERVICE";
+  | "UPDATE_SERVICE"
+  | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type OperationStatus =
@@ -1592,7 +1608,8 @@ export type OperationStatus =
   | "SUCCEEDED"
   | "ROLLBACK_IN_PROGRESS"
   | "ROLLBACK_FAILED"
-  | "ROLLBACK_SUCCEEDED";
+  | "ROLLBACK_SUCCEEDED"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface OperationSummary {

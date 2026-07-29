@@ -174,11 +174,11 @@ export type CodeHandler = string;
 export type BlueprintType = string;
 export type BlueprintTypes = string[];
 export const BlueprintTypes = /*@__PURE__*/ S.Array(S.String);
-export type DependencyType = "LambdaLayer";
+export type DependencyType = "LambdaLayer" | (string & {});
 export const DependencyType = /*@__PURE__*/ S.String;
 
 export interface Dependency {
-  Type?: DependencyType | (string & {});
+  Type?: DependencyType;
   Reference: string;
 }
 export const Dependency = /*@__PURE__*/ S.suspend(() =>
@@ -280,19 +280,22 @@ export const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
     Ipv6AllowedForDualStack: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VpcConfigInput" }) as any as S.Schema<VpcConfigInput>;
-export type ResourceToTag = "lambda-function";
+export type ResourceToTag = "lambda-function" | (string & {});
 export const ResourceToTag = /*@__PURE__*/ S.String;
 
-export type ResourceList = (ResourceToTag | (string & {}))[];
+export type ResourceList = ResourceToTag[];
 export const ResourceList = /*@__PURE__*/ S.Array(ResourceToTag);
-export type ProvisionedResourceCleanupSetting = "AUTOMATIC" | "OFF";
+export type ProvisionedResourceCleanupSetting =
+  | "AUTOMATIC"
+  | "OFF"
+  | (string & {});
 export const ProvisionedResourceCleanupSetting = /*@__PURE__*/ S.String;
 
-export type BrowserType = "CHROME" | "FIREFOX";
+export type BrowserType = "CHROME" | "FIREFOX" | (string & {});
 export const BrowserType = /*@__PURE__*/ S.String;
 
 export interface BrowserConfig {
-  BrowserType?: BrowserType | (string & {});
+  BrowserType?: BrowserType;
 }
 export const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BrowserType: S.optional(BrowserType) }),
@@ -320,12 +323,12 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type EncryptionMode = "SSE_S3" | "SSE_KMS";
+export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export interface S3EncryptionConfig {
-  EncryptionMode?: EncryptionMode | (string & {});
+  EncryptionMode?: EncryptionMode;
   KmsKeyArn?: string;
 }
 export const S3EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -355,10 +358,8 @@ export interface CreateCanaryRequest {
   FailureRetentionPeriodInDays?: number;
   RuntimeVersion: string;
   VpcConfig?: VpcConfigInput;
-  ResourcesToReplicateTags?: (ResourceToTag | (string & {}))[];
-  ProvisionedResourceCleanup?:
-    | ProvisionedResourceCleanupSetting
-    | (string & {});
+  ResourcesToReplicateTags?: ResourceToTag[];
+  ProvisionedResourceCleanup?: ProvisionedResourceCleanupSetting;
   BrowserConfigs?: BrowserConfig[];
   AddReplicaLocations?: AddReplicaLocationInput[];
   Tags?: { [key: string]: string | undefined };
@@ -459,7 +460,8 @@ export type CanaryState =
   | "STOPPING"
   | "STOPPED"
   | "ERROR"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const CanaryState = /*@__PURE__*/ S.String;
 
 export type CanaryStateReasonCode =
@@ -474,7 +476,8 @@ export type CanaryStateReasonCode =
   | "ROLLBACK_FAILED"
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
-  | "SYNC_DELETE_IN_PROGRESS";
+  | "SYNC_DELETE_IN_PROGRESS"
+  | (string & {});
 export const CanaryStateReasonCode = /*@__PURE__*/ S.String;
 
 export interface CanaryStatus {
@@ -566,10 +569,14 @@ export type VisualReferencesOutput = VisualReferenceOutput[];
 export const VisualReferencesOutput = /*@__PURE__*/ S.Array(
   VisualReferenceOutput,
 );
-export type LocationType = "Primary" | "Replica";
+export type LocationType = "Primary" | "Replica" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
 
-export type ReplicationState = "InProgress" | "InSync" | "Inconsistent";
+export type ReplicationState =
+  | "InProgress"
+  | "InSync"
+  | "Inconsistent"
+  | (string & {});
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 export interface ReplicationStatus {
@@ -847,7 +854,7 @@ export interface DescribeCanariesLastRunRequest {
   NextToken?: string;
   MaxResults?: number;
   Names?: string[];
-  BrowserType?: BrowserType | (string & {});
+  BrowserType?: BrowserType;
 }
 export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -869,13 +876,20 @@ export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeCanariesLastRunRequest",
 }) as any as S.Schema<DescribeCanariesLastRunRequest>;
 export type RetryAttempt = number;
-export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED";
+export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED" | (string & {});
 export const CanaryRunState = /*@__PURE__*/ S.String;
 
-export type CanaryRunStateReasonCode = "CANARY_FAILURE" | "EXECUTION_FAILURE";
+export type CanaryRunStateReasonCode =
+  | "CANARY_FAILURE"
+  | "EXECUTION_FAILURE"
+  | (string & {});
 export const CanaryRunStateReasonCode = /*@__PURE__*/ S.String;
 
-export type CanaryRunTestResult = "PASSED" | "FAILED" | "UNKNOWN";
+export type CanaryRunTestResult =
+  | "PASSED"
+  | "FAILED"
+  | "UNKNOWN"
+  | (string & {});
 export const CanaryRunTestResult = /*@__PURE__*/ S.String;
 
 export interface CanaryRunStatus {
@@ -1075,7 +1089,7 @@ export const GetCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCanaryResponse",
 }) as any as S.Schema<GetCanaryResponse>;
-export type RunType = "CANARY_RUN" | "DRY_RUN";
+export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
 export const RunType = /*@__PURE__*/ S.String;
 
 export interface GetCanaryRunsRequest {
@@ -1083,7 +1097,7 @@ export interface GetCanaryRunsRequest {
   NextToken?: string;
   MaxResults?: number;
   DryRunId?: string;
-  RunType?: RunType | (string & {});
+  RunType?: RunType;
 }
 export const GetCanaryRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1319,7 +1333,7 @@ export const StartCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VisualReferenceInput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId: string;
-  BrowserType?: BrowserType | (string & {});
+  BrowserType?: BrowserType;
 }
 export const VisualReferenceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1344,9 +1358,7 @@ export interface StartCanaryDryRunRequest {
   VisualReference?: VisualReferenceInput;
   ArtifactS3Location?: string;
   ArtifactConfig?: ArtifactConfigInput;
-  ProvisionedResourceCleanup?:
-    | ProvisionedResourceCleanupSetting
-    | (string & {});
+  ProvisionedResourceCleanup?: ProvisionedResourceCleanupSetting;
   BrowserConfigs?: BrowserConfig[];
   VisualReferences?: VisualReferenceInput[];
 }
@@ -1481,9 +1493,7 @@ export interface UpdateCanaryRequest {
   VisualReference?: VisualReferenceInput;
   ArtifactS3Location?: string;
   ArtifactConfig?: ArtifactConfigInput;
-  ProvisionedResourceCleanup?:
-    | ProvisionedResourceCleanupSetting
-    | (string & {});
+  ProvisionedResourceCleanup?: ProvisionedResourceCleanupSetting;
   DryRunId?: string;
   VisualReferences?: VisualReferenceInput[];
   BrowserConfigs?: BrowserConfig[];

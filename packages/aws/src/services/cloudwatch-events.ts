@@ -188,7 +188,8 @@ export type ReplayState =
   | "CANCELLING"
   | "COMPLETED"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReplayState = /*@__PURE__*/ S.String;
 
 export type ReplayStateReason = string;
@@ -217,7 +218,8 @@ export type ApiDestinationHttpMethod =
   | "OPTIONS"
   | "PUT"
   | "PATCH"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const ApiDestinationHttpMethod = /*@__PURE__*/ S.String;
 
 export type ApiDestinationInvocationRateLimitPerSecond = number;
@@ -226,7 +228,7 @@ export interface CreateApiDestinationRequest {
   Description?: string;
   ConnectionArn: string;
   InvocationEndpoint: string;
-  HttpMethod: ApiDestinationHttpMethod | (string & {});
+  HttpMethod: ApiDestinationHttpMethod;
   InvocationRateLimitPerSecond?: number;
 }
 export const CreateApiDestinationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -252,7 +254,7 @@ export const CreateApiDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApiDestinationRequest",
 }) as any as S.Schema<CreateApiDestinationRequest>;
 export type ApiDestinationArn = string;
-export type ApiDestinationState = "ACTIVE" | "INACTIVE";
+export type ApiDestinationState = "ACTIVE" | "INACTIVE" | (string & {});
 export const ApiDestinationState = /*@__PURE__*/ S.String;
 
 export interface CreateApiDestinationResponse {
@@ -313,7 +315,8 @@ export type ArchiveState =
   | "CREATING"
   | "UPDATING"
   | "CREATE_FAILED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const ArchiveState = /*@__PURE__*/ S.String;
 
 export type ArchiveStateReason = string;
@@ -338,7 +341,8 @@ export type ConnectionDescription = string;
 export type ConnectionAuthorizationType =
   | "BASIC"
   | "OAUTH_CLIENT_CREDENTIALS"
-  | "API_KEY";
+  | "API_KEY"
+  | (string & {});
 export const ConnectionAuthorizationType = /*@__PURE__*/ S.String;
 
 export type AuthHeaderParameters = string;
@@ -363,7 +367,7 @@ export const CreateConnectionOAuthClientRequestParameters =
   ).annotate({
     identifier: "CreateConnectionOAuthClientRequestParameters",
   }) as any as S.Schema<CreateConnectionOAuthClientRequestParameters>;
-export type ConnectionOAuthHttpMethod = "GET" | "POST" | "PUT";
+export type ConnectionOAuthHttpMethod = "GET" | "POST" | "PUT" | (string & {});
 export const ConnectionOAuthHttpMethod = /*@__PURE__*/ S.String;
 
 export type HeaderKey = string;
@@ -443,7 +447,7 @@ export const ConnectionHttpParameters = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectionOAuthRequestParameters {
   ClientParameters: CreateConnectionOAuthClientRequestParameters;
   AuthorizationEndpoint: string;
-  HttpMethod: ConnectionOAuthHttpMethod | (string & {});
+  HttpMethod: ConnectionOAuthHttpMethod;
   OAuthHttpParameters?: ConnectionHttpParameters;
 }
 export const CreateConnectionOAuthRequestParameters = /*@__PURE__*/ S.suspend(
@@ -491,7 +495,7 @@ export const CreateConnectionAuthRequestParameters = /*@__PURE__*/ S.suspend(
 export interface CreateConnectionRequest {
   Name: string;
   Description?: string;
-  AuthorizationType: ConnectionAuthorizationType | (string & {});
+  AuthorizationType: ConnectionAuthorizationType;
   AuthParameters: CreateConnectionAuthRequestParameters;
 }
 export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -521,7 +525,8 @@ export type ConnectionState =
   | "AUTHORIZED"
   | "DEAUTHORIZED"
   | "AUTHORIZING"
-  | "DEAUTHORIZING";
+  | "DEAUTHORIZING"
+  | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export interface CreateConnectionResponse {
@@ -1103,7 +1108,7 @@ export const DescribeEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventSourceRequest",
 }) as any as S.Schema<DescribeEventSourceRequest>;
-export type EventSourceState = "PENDING" | "ACTIVE" | "DELETED";
+export type EventSourceState = "PENDING" | "ACTIVE" | "DELETED" | (string & {});
 export const EventSourceState = /*@__PURE__*/ S.String;
 
 export interface DescribeEventSourceResponse {
@@ -1240,7 +1245,7 @@ export const DescribeRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRuleRequest>;
 export type RuleArn = string;
 export type ScheduleExpression = string;
-export type RuleState = "ENABLED" | "DISABLED";
+export type RuleState = "ENABLED" | "DISABLED" | (string & {});
 export const RuleState = /*@__PURE__*/ S.String;
 
 export type RuleDescription = string;
@@ -1396,7 +1401,7 @@ export const ListApiDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListArchivesRequest {
   NamePrefix?: string;
   EventSourceArn?: string;
-  State?: ArchiveState | (string & {});
+  State?: ArchiveState;
   NextToken?: string;
   Limit?: number;
 }
@@ -1459,7 +1464,7 @@ export const ListArchivesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListArchivesResponse>;
 export interface ListConnectionsRequest {
   NamePrefix?: string;
-  ConnectionState?: ConnectionState | (string & {});
+  ConnectionState?: ConnectionState;
   NextToken?: string;
   Limit?: number;
 }
@@ -1738,7 +1743,7 @@ export const ListPartnerEventSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPartnerEventSourcesResponse>;
 export interface ListReplaysRequest {
   NamePrefix?: string;
-  State?: ReplayState | (string & {});
+  State?: ReplayState;
   EventSourceArn?: string;
   NextToken?: string;
   Limit?: number;
@@ -2018,18 +2023,18 @@ export const RunCommandParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunCommandParameters",
 }) as any as S.Schema<RunCommandParameters>;
 export type LimitMin1 = number;
-export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL";
+export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | (string & {});
 export const LaunchType = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type AssignPublicIp = "ENABLED" | "DISABLED";
+export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
 export const AssignPublicIp = /*@__PURE__*/ S.String;
 
 export interface AwsVpcConfiguration {
   Subnets: string[];
   SecurityGroups?: string[];
-  AssignPublicIp?: AssignPublicIp | (string & {});
+  AssignPublicIp?: AssignPublicIp;
 }
 export const AwsVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2069,12 +2074,15 @@ export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
 export const CapacityProviderStrategy = /*@__PURE__*/ S.Array(
   CapacityProviderStrategyItem,
 );
-export type PlacementConstraintType = "distinctInstance" | "memberOf";
+export type PlacementConstraintType =
+  | "distinctInstance"
+  | "memberOf"
+  | (string & {});
 export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 export type PlacementConstraintExpression = string;
 export interface PlacementConstraint {
-  type?: PlacementConstraintType | (string & {});
+  type?: PlacementConstraintType;
   expression?: string;
 }
 export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -2087,12 +2095,16 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
 export const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
-export type PlacementStrategyType = "random" | "spread" | "binpack";
+export type PlacementStrategyType =
+  | "random"
+  | "spread"
+  | "binpack"
+  | (string & {});
 export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 export type PlacementStrategyField = string;
 export interface PlacementStrategy {
-  type?: PlacementStrategyType | (string & {});
+  type?: PlacementStrategyType;
   field?: string;
 }
 export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -2105,14 +2117,14 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
 export const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
-export type PropagateTags = "TASK_DEFINITION";
+export type PropagateTags = "TASK_DEFINITION" | (string & {});
 export const PropagateTags = /*@__PURE__*/ S.String;
 
 export type ReferenceId = string;
 export interface EcsParameters {
   TaskDefinitionArn: string;
   TaskCount?: number;
-  LaunchType?: LaunchType | (string & {});
+  LaunchType?: LaunchType;
   NetworkConfiguration?: NetworkConfiguration;
   PlatformVersion?: string;
   Group?: string;
@@ -2121,7 +2133,7 @@ export interface EcsParameters {
   EnableExecuteCommand?: boolean;
   PlacementConstraints?: PlacementConstraint[];
   PlacementStrategy?: PlacementStrategy[];
-  PropagateTags?: PropagateTags | (string & {});
+  PropagateTags?: PropagateTags;
   ReferenceId?: string;
   Tags?: Tag[];
 }
@@ -2536,7 +2548,7 @@ export interface PutRuleRequest {
   Name: string;
   ScheduleExpression?: string;
   EventPattern?: string;
-  State?: RuleState | (string & {});
+  State?: RuleState;
   Description?: string;
   RoleArn?: string;
   Tags?: Tag[];
@@ -2846,7 +2858,7 @@ export interface UpdateApiDestinationRequest {
   Description?: string;
   ConnectionArn?: string;
   InvocationEndpoint?: string;
-  HttpMethod?: ApiDestinationHttpMethod | (string & {});
+  HttpMethod?: ApiDestinationHttpMethod;
   InvocationRateLimitPerSecond?: number;
 }
 export const UpdateApiDestinationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2960,7 +2972,7 @@ export const UpdateConnectionOAuthClientRequestParameters =
 export interface UpdateConnectionOAuthRequestParameters {
   ClientParameters?: UpdateConnectionOAuthClientRequestParameters;
   AuthorizationEndpoint?: string;
-  HttpMethod?: ConnectionOAuthHttpMethod | (string & {});
+  HttpMethod?: ConnectionOAuthHttpMethod;
   OAuthHttpParameters?: ConnectionHttpParameters;
 }
 export const UpdateConnectionOAuthRequestParameters = /*@__PURE__*/ S.suspend(
@@ -3013,7 +3025,7 @@ export const UpdateConnectionAuthRequestParameters = /*@__PURE__*/ S.suspend(
 export interface UpdateConnectionRequest {
   Name: string;
   Description?: string;
-  AuthorizationType?: ConnectionAuthorizationType | (string & {});
+  AuthorizationType?: ConnectionAuthorizationType;
   AuthParameters?: UpdateConnectionAuthRequestParameters;
 }
 export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>

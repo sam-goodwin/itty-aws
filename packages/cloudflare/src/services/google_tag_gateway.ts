@@ -49,7 +49,7 @@ export interface GetConfigResponse {
   /** Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX). */
   measurementId: string;
   /** Set up the associated Google Tag on the zone automatically when enabled. */
-  setUpTag?: boolean;
+  setUpTag?: boolean | null;
 }
 export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -57,7 +57,7 @@ export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     hideOriginalIp: S.Boolean,
     measurementId: S.String,
-    setUpTag: S.optional(S.Boolean),
+    setUpTag: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "GetConfigResponse",
@@ -75,7 +75,7 @@ export interface PutConfigRequest {
   /** Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX). */
   measurementId: string;
   /** Set up the associated Google Tag on the zone automatically when enabled. */
-  setUpTag?: boolean;
+  setUpTag?: boolean | null;
 }
 export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -84,7 +84,7 @@ export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     hideOriginalIp: S.Boolean,
     measurementId: S.String,
-    setUpTag: S.optional(S.Boolean),
+    setUpTag: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -107,7 +107,7 @@ export interface PutConfigResponse {
   /** Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX). */
   measurementId: string;
   /** Set up the associated Google Tag on the zone automatically when enabled. */
-  setUpTag?: boolean;
+  setUpTag?: boolean | null;
 }
 export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -115,7 +115,7 @@ export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     hideOriginalIp: S.Boolean,
     measurementId: S.String,
-    setUpTag: S.optional(S.Boolean),
+    setUpTag: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "PutConfigResponse",

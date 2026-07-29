@@ -170,7 +170,8 @@ export type TimeUnit =
   | "MILLISECONDS"
   | "SECONDS"
   | "MICROSECONDS"
-  | "NANOSECONDS";
+  | "NANOSECONDS"
+  | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
 
 export type SchemaName = string;
@@ -193,13 +194,14 @@ export type ScalarMeasureValueType =
   | "BIGINT"
   | "BOOLEAN"
   | "VARCHAR"
-  | "TIMESTAMP";
+  | "TIMESTAMP"
+  | (string & {});
 export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
-  MeasureValueType?: ScalarMeasureValueType | (string & {});
+  MeasureValueType?: ScalarMeasureValueType;
 }
 export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -232,14 +234,15 @@ export type MeasureValueType =
   | "VARCHAR"
   | "BOOLEAN"
   | "TIMESTAMP"
-  | "MULTI";
+  | "MULTI"
+  | (string & {});
 export const MeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
   TargetMeasureName?: string;
-  MeasureValueType: MeasureValueType | (string & {});
+  MeasureValueType: MeasureValueType;
   MultiMeasureAttributeMappings?: MultiMeasureAttributeMapping[];
 }
 export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
@@ -258,7 +261,7 @@ export const MixedMeasureMappingList =
   /*@__PURE__*/ S.Array(MixedMeasureMapping);
 export interface DataModel {
   TimeColumn?: string;
-  TimeUnit?: TimeUnit | (string & {});
+  TimeUnit?: TimeUnit;
   DimensionMappings: DimensionMapping[];
   MultiMeasureMappings?: MultiMeasureMappings;
   MixedMeasureMappings?: MixedMeasureMapping[];
@@ -328,13 +331,13 @@ export const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CsvConfiguration",
 }) as any as S.Schema<CsvConfiguration>;
-export type BatchLoadDataFormat = "CSV";
+export type BatchLoadDataFormat = "CSV" | (string & {});
 export const BatchLoadDataFormat = /*@__PURE__*/ S.String;
 
 export interface DataSourceConfiguration {
   DataSourceS3Configuration: DataSourceS3Configuration;
   CsvConfiguration?: CsvConfiguration;
-  DataFormat: BatchLoadDataFormat | (string & {});
+  DataFormat: BatchLoadDataFormat;
 }
 export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -346,14 +349,14 @@ export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceConfiguration",
 }) as any as S.Schema<DataSourceConfiguration>;
 export type S3ObjectKeyPrefix = string;
-export type S3EncryptionOption = "SSE_S3" | "SSE_KMS";
+export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
 export const S3EncryptionOption = /*@__PURE__*/ S.String;
 
 export type StringValue2048 = string;
 export interface ReportS3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
-  EncryptionOption?: S3EncryptionOption | (string & {});
+  EncryptionOption?: S3EncryptionOption;
   KmsKeyId?: string;
 }
 export const ReportS3Configuration = /*@__PURE__*/ S.suspend(() =>
@@ -482,7 +485,7 @@ export const RetentionProperties = /*@__PURE__*/ S.suspend(() =>
 export interface S3Configuration {
   BucketName?: string;
   ObjectKeyPrefix?: string;
-  EncryptionOption?: S3EncryptionOption | (string & {});
+  EncryptionOption?: S3EncryptionOption;
   KmsKeyId?: string;
 }
 export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
@@ -517,16 +520,19 @@ export const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MagneticStoreWriteProperties",
 }) as any as S.Schema<MagneticStoreWriteProperties>;
-export type PartitionKeyType = "DIMENSION" | "MEASURE";
+export type PartitionKeyType = "DIMENSION" | "MEASURE" | (string & {});
 export const PartitionKeyType = /*@__PURE__*/ S.String;
 
-export type PartitionKeyEnforcementLevel = "REQUIRED" | "OPTIONAL";
+export type PartitionKeyEnforcementLevel =
+  | "REQUIRED"
+  | "OPTIONAL"
+  | (string & {});
 export const PartitionKeyEnforcementLevel = /*@__PURE__*/ S.String;
 
 export interface PartitionKey {
-  Type: PartitionKeyType | (string & {});
+  Type: PartitionKeyType;
   Name?: string;
-  EnforcementInRecord?: PartitionKeyEnforcementLevel | (string & {});
+  EnforcementInRecord?: PartitionKeyEnforcementLevel;
 }
 export const PartitionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -565,7 +571,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTableRequest",
 }) as any as S.Schema<CreateTableRequest>;
-export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING";
+export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING" | (string & {});
 export const TableStatus = /*@__PURE__*/ S.String;
 
 export interface Table {
@@ -671,7 +677,8 @@ export type BatchLoadStatus =
   | "FAILED"
   | "SUCCEEDED"
   | "PROGRESS_STOPPED"
-  | "PENDING_RESUME";
+  | "PENDING_RESUME"
+  | (string & {});
 export const BatchLoadStatus = /*@__PURE__*/ S.String;
 
 export interface BatchLoadTaskDescription {
@@ -784,7 +791,7 @@ export type PageLimit = number;
 export interface ListBatchLoadTasksRequest {
   NextToken?: string;
   MaxResults?: number;
-  TaskStatus?: BatchLoadStatus | (string & {});
+  TaskStatus?: BatchLoadStatus;
 }
 export const ListBatchLoadTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1008,13 +1015,13 @@ export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTableResponse",
 }) as any as S.Schema<UpdateTableResponse>;
 export type SchemaValue = string;
-export type DimensionValueType = "VARCHAR";
+export type DimensionValueType = "VARCHAR" | (string & {});
 export const DimensionValueType = /*@__PURE__*/ S.String;
 
 export interface Dimension {
   Name: string;
   Value: string;
-  DimensionValueType?: DimensionValueType | (string & {});
+  DimensionValueType?: DimensionValueType;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1028,7 +1035,7 @@ export const Dimensions = /*@__PURE__*/ S.Array(Dimension);
 export interface MeasureValue {
   Name: string;
   Value: string;
-  Type: MeasureValueType | (string & {});
+  Type: MeasureValueType;
 }
 export const MeasureValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Value: S.String, Type: MeasureValueType }),
@@ -1039,9 +1046,9 @@ export interface Record {
   Dimensions?: Dimension[];
   MeasureName?: string;
   MeasureValue?: string;
-  MeasureValueType?: MeasureValueType | (string & {});
+  MeasureValueType?: MeasureValueType;
   Time?: string;
-  TimeUnit?: TimeUnit | (string & {});
+  TimeUnit?: TimeUnit;
   Version?: number;
   MeasureValues?: MeasureValue[];
 }

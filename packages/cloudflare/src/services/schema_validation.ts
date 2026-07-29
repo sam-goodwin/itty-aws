@@ -90,15 +90,16 @@ export interface SettingsOperationsBulkEditRequestBodyValue {
   /** Mitigation actions are as follows: */
   mitigationAction?:
     | SettingsOperationsBulkEditRequestBodyValueMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const SettingsOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mitigationAction: S.optional(
-        SettingsOperationsBulkEditRequestBodyValueMitigationAction.pipe(
-          T.Body("mitigation_action"),
-        ),
+        S.NullOr(
+          SettingsOperationsBulkEditRequestBodyValueMitigationAction,
+        ).pipe(T.Body("mitigation_action")),
       ),
     }),
   ).annotate({
@@ -227,7 +228,7 @@ export interface CreateSchemaResponse {
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
   source: string;
   /** An indicator if this schema is enabled */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -236,7 +237,9 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSchemaResponse",
@@ -304,11 +307,11 @@ export const DeleteSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingOperationResponse {
   /** UUID. */
-  operationId?: string;
+  operationId?: string | null;
 }
 export const DeleteSettingOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
+    operationId: S.optional(S.NullOr(S.String).pipe(T.Body("operation_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingOperationResponse",
@@ -355,7 +358,7 @@ export interface GetSchemaResponse {
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
   source: string;
   /** An indicator if this schema is enabled */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const GetSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -364,7 +367,9 @@ export const GetSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSchemaResponse",
@@ -406,7 +411,7 @@ export interface GetSettingResponse {
   /** The default mitigation action used */
   validationDefaultMitigationAction: SettingsGetResponseValidationDefaultMitigationAction;
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
-  validationOverrideMitigationAction?: SettingsGetResponseValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?: SettingsGetResponseValidationOverrideMitigationAction | null;
 }
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -415,7 +420,7 @@ export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      SettingsGetResponseValidationOverrideMitigationAction.pipe(
+      S.NullOr(SettingsGetResponseValidationOverrideMitigationAction).pipe(
         T.Body("validation_override_mitigation_action"),
       ),
     ),
@@ -520,7 +525,7 @@ export interface SchemasListResultItem {
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
   source: string;
   /** An indicator if this schema is enabled */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const SchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -529,7 +534,9 @@ export const SchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }),
 ).annotate({
   identifier: "SchemasListResultItem",
@@ -632,13 +639,15 @@ export interface PatchSchemaRequest {
   /** UUID. */
   schemaId: string;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const PatchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   })
     .pipe(
       T.Http({
@@ -667,7 +676,7 @@ export interface PatchSchemaResponse {
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
   source: string;
   /** An indicator if this schema is enabled */
-  validationEnabled?: boolean;
+  validationEnabled?: boolean | null;
 }
 export const PatchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -676,7 +685,9 @@ export const PatchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
-    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
+    validationEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSchemaResponse",
@@ -699,7 +710,8 @@ export interface PatchSettingRequest {
   /** The default mitigation action used */
   validationDefaultMitigationAction?:
     | SettingsEditRequestValidationDefaultMitigationAction
-    | (string & {});
+    | (string & {})
+    | null;
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsEditRequestValidationOverrideMitigationAction
@@ -710,7 +722,7 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     validationDefaultMitigationAction: S.optional(
-      SettingsEditRequestValidationDefaultMitigationAction.pipe(
+      S.NullOr(SettingsEditRequestValidationDefaultMitigationAction).pipe(
         T.Body("validation_default_mitigation_action"),
       ),
     ),
@@ -748,7 +760,7 @@ export interface PatchSettingResponse {
   /** The default mitigation action used */
   validationDefaultMitigationAction: SettingsEditResponseValidationDefaultMitigationAction;
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
-  validationOverrideMitigationAction?: SettingsEditResponseValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?: SettingsEditResponseValidationOverrideMitigationAction | null;
 }
 export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -757,7 +769,7 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      SettingsEditResponseValidationOverrideMitigationAction.pipe(
+      S.NullOr(SettingsEditResponseValidationOverrideMitigationAction).pipe(
         T.Body("validation_override_mitigation_action"),
       ),
     ),
@@ -831,7 +843,7 @@ export interface PutSettingResponse {
   /** The default mitigation action used */
   validationDefaultMitigationAction: SettingsUpdateResponseValidationDefaultMitigationAction;
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
-  validationOverrideMitigationAction?: SettingsUpdateResponseValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?: SettingsUpdateResponseValidationOverrideMitigationAction | null;
 }
 export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -840,7 +852,7 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      SettingsUpdateResponseValidationOverrideMitigationAction.pipe(
+      S.NullOr(SettingsUpdateResponseValidationOverrideMitigationAction).pipe(
         T.Body("validation_override_mitigation_action"),
       ),
     ),

@@ -936,7 +936,8 @@ export type QueryStatus =
   | "FINISHED"
   | "FAILED"
   | "CANCELLED"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const QueryStatus = /*@__PURE__*/ S.String;
 
 export interface CancelQueryResponse {
@@ -955,12 +956,15 @@ export const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelQueryResponse>;
 export type ChannelName = string;
 export type Source = string;
-export type DestinationType = "EVENT_DATA_STORE" | "AWS_SERVICE";
+export type DestinationType =
+  | "EVENT_DATA_STORE"
+  | "AWS_SERVICE"
+  | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
 
 export type Location = string;
 export interface Destination {
-  Type: DestinationType | (string & {});
+  Type: DestinationType;
   Location: string;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
@@ -1014,12 +1018,12 @@ export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChannelResponse",
 }) as any as S.Schema<CreateChannelResponse>;
 export type DashboardName = string;
-export type RefreshScheduleFrequencyUnit = "HOURS" | "DAYS";
+export type RefreshScheduleFrequencyUnit = "HOURS" | "DAYS" | (string & {});
 export const RefreshScheduleFrequencyUnit = /*@__PURE__*/ S.String;
 
 export type RefreshScheduleFrequencyValue = number;
 export interface RefreshScheduleFrequency {
-  Unit?: RefreshScheduleFrequencyUnit | (string & {});
+  Unit?: RefreshScheduleFrequencyUnit;
   Value?: number;
 }
 export const RefreshScheduleFrequency = /*@__PURE__*/ S.suspend(() =>
@@ -1030,13 +1034,13 @@ export const RefreshScheduleFrequency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RefreshScheduleFrequency",
 }) as any as S.Schema<RefreshScheduleFrequency>;
-export type RefreshScheduleStatus = "ENABLED" | "DISABLED";
+export type RefreshScheduleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RefreshScheduleStatus = /*@__PURE__*/ S.String;
 
 export type TimeOfDay = string;
 export interface RefreshSchedule {
   Frequency?: RefreshScheduleFrequency;
-  Status?: RefreshScheduleStatus | (string & {});
+  Status?: RefreshScheduleStatus;
   TimeOfDay?: string;
 }
 export const RefreshSchedule = /*@__PURE__*/ S.suspend(() =>
@@ -1103,7 +1107,7 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDashboardRequest",
 }) as any as S.Schema<CreateDashboardRequest>;
 export type DashboardArn = string;
-export type DashboardType = "MANAGED" | "CUSTOM";
+export type DashboardType = "MANAGED" | "CUSTOM" | (string & {});
 export const DashboardType = /*@__PURE__*/ S.String;
 
 export type QueryAlias = string;
@@ -1197,7 +1201,8 @@ export type RetentionPeriod = number;
 export type EventDataStoreKmsKeyId = string;
 export type BillingMode =
   | "EXTENDABLE_RETENTION_PRICING"
-  | "FIXED_RETENTION_PRICING";
+  | "FIXED_RETENTION_PRICING"
+  | (string & {});
 export const BillingMode = /*@__PURE__*/ S.String;
 
 export interface CreateEventDataStoreRequest {
@@ -1210,7 +1215,7 @@ export interface CreateEventDataStoreRequest {
   TagsList?: Tag[];
   KmsKeyId?: string;
   StartIngestion?: boolean;
-  BillingMode?: BillingMode | (string & {});
+  BillingMode?: BillingMode;
 }
 export const CreateEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1244,7 +1249,8 @@ export type EventDataStoreStatus =
   | "PENDING_DELETION"
   | "STARTING_INGESTION"
   | "STOPPING_INGESTION"
-  | "STOPPED_INGESTION";
+  | "STOPPED_INGESTION"
+  | (string & {});
 export const EventDataStoreStatus = /*@__PURE__*/ S.String;
 
 export interface CreateEventDataStoreResponse {
@@ -1564,7 +1570,8 @@ export type DeliveryStatus =
   | "ACCESS_DENIED"
   | "ACCESS_DENIED_SIGNING_FILE"
   | "CANCELLED"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
 
 export type Prompt = string;
@@ -1688,7 +1695,8 @@ export type FederationStatus =
   | "ENABLING"
   | "ENABLED"
   | "DISABLING"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const FederationStatus = /*@__PURE__*/ S.String;
 
 export interface DisableFederationResponse {
@@ -1865,7 +1873,8 @@ export type DashboardStatus =
   | "CREATED"
   | "UPDATING"
   | "UPDATED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const DashboardStatus = /*@__PURE__*/ S.String;
 
 export interface GetDashboardResponse {
@@ -1922,17 +1931,17 @@ export const GetEventConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventConfigurationRequest",
 }) as any as S.Schema<GetEventConfigurationRequest>;
-export type MaxEventSize = "Standard" | "Large";
+export type MaxEventSize = "Standard" | "Large" | (string & {});
 export const MaxEventSize = /*@__PURE__*/ S.String;
 
-export type Type = "TagContext" | "RequestContext";
+export type Type = "TagContext" | "RequestContext" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export type OperatorTargetListMember = string;
 export type OperatorTargetList = string[];
 export const OperatorTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface ContextKeySelector {
-  Type: Type | (string & {});
+  Type: Type;
   Equals: string[];
 }
 export const ContextKeySelector = /*@__PURE__*/ S.suspend(() =>
@@ -1942,17 +1951,21 @@ export const ContextKeySelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContextKeySelector>;
 export type ContextKeySelectors = ContextKeySelector[];
 export const ContextKeySelectors = /*@__PURE__*/ S.Array(ContextKeySelector);
-export type Template = "API_ACTIVITY" | "RESOURCE_ACCESS" | "USER_ACTIONS";
+export type Template =
+  | "API_ACTIVITY"
+  | "RESOURCE_ACCESS"
+  | "USER_ACTIONS"
+  | (string & {});
 export const Template = /*@__PURE__*/ S.String;
 
-export type Templates = (Template | (string & {}))[];
+export type Templates = Template[];
 export const Templates = /*@__PURE__*/ S.Array(Template);
-export type EventCategoryAggregation = "Data";
+export type EventCategoryAggregation = "Data" | (string & {});
 export const EventCategoryAggregation = /*@__PURE__*/ S.String;
 
 export interface AggregationConfiguration {
-  Templates: (Template | (string & {}))[];
-  EventCategory: EventCategoryAggregation | (string & {});
+  Templates: Template[];
+  EventCategory: EventCategoryAggregation;
 }
 export const AggregationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Templates: Templates, EventCategory: EventCategoryAggregation }),
@@ -2070,7 +2083,7 @@ export const GetEventSelectorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventSelectorsRequest",
 }) as any as S.Schema<GetEventSelectorsRequest>;
-export type ReadWriteType = "ReadOnly" | "WriteOnly" | "All";
+export type ReadWriteType = "ReadOnly" | "WriteOnly" | "All" | (string & {});
 export const ReadWriteType = /*@__PURE__*/ S.String;
 
 export type DataResourceValues = string[];
@@ -2090,7 +2103,7 @@ export const DataResources = /*@__PURE__*/ S.Array(DataResource);
 export type ExcludeManagementEventSources = string[];
 export const ExcludeManagementEventSources = /*@__PURE__*/ S.Array(S.String);
 export interface EventSelector {
-  ReadWriteType?: ReadWriteType | (string & {});
+  ReadWriteType?: ReadWriteType;
   IncludeManagementEvents?: boolean;
   DataResources?: DataResource[];
   ExcludeManagementEventSources?: string[];
@@ -2162,7 +2175,8 @@ export type ImportStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "STOPPED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
 
 export interface ImportStatistics {
@@ -2235,17 +2249,20 @@ export const GetInsightSelectorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInsightSelectorsRequest",
 }) as any as S.Schema<GetInsightSelectorsRequest>;
-export type InsightType = "ApiCallRateInsight" | "ApiErrorRateInsight";
+export type InsightType =
+  | "ApiCallRateInsight"
+  | "ApiErrorRateInsight"
+  | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
 
-export type SourceEventCategory = "Management" | "Data";
+export type SourceEventCategory = "Management" | "Data" | (string & {});
 export const SourceEventCategory = /*@__PURE__*/ S.String;
 
-export type SourceEventCategories = (SourceEventCategory | (string & {}))[];
+export type SourceEventCategories = SourceEventCategory[];
 export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
 export interface InsightSelector {
-  InsightType?: InsightType | (string & {});
-  EventCategories?: (SourceEventCategory | (string & {}))[];
+  InsightType?: InsightType;
+  EventCategories?: SourceEventCategory[];
 }
 export const InsightSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2524,7 +2541,7 @@ export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDashboardsMaxResultsCount = number;
 export interface ListDashboardsRequest {
   NamePrefix?: string;
-  Type?: DashboardType | (string & {});
+  Type?: DashboardType;
   NextToken?: string;
   MaxResults?: number;
 }
@@ -2666,7 +2683,11 @@ export const ListImportFailuresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImportFailuresRequest",
 }) as any as S.Schema<ListImportFailuresRequest>;
-export type ImportFailureStatus = "FAILED" | "RETRY" | "SUCCEEDED";
+export type ImportFailureStatus =
+  | "FAILED"
+  | "RETRY"
+  | "SUCCEEDED"
+  | (string & {});
 export const ImportFailureStatus = /*@__PURE__*/ S.String;
 
 export interface ImportFailureListItem {
@@ -2707,7 +2728,7 @@ export type ListImportsMaxResultsCount = number;
 export interface ListImportsRequest {
   MaxResults?: number;
   Destination?: string;
-  ImportStatus?: ImportStatus | (string & {});
+  ImportStatus?: ImportStatus;
   NextToken?: string;
 }
 export const ListImportsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2766,18 +2787,19 @@ export const ListImportsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImportsResponse",
 }) as any as S.Schema<ListImportsResponse>;
-export type ListInsightsDataType = "InsightsEvents";
+export type ListInsightsDataType = "InsightsEvents" | (string & {});
 export const ListInsightsDataType = /*@__PURE__*/ S.String;
 
 export type ListInsightsDataDimensionKey =
   | "EventId"
   | "EventName"
-  | "EventSource";
+  | "EventSource"
+  | (string & {});
 export const ListInsightsDataDimensionKey = /*@__PURE__*/ S.String;
 
 export type ListInsightsDataDimensionValue = string;
 export type ListInsightsDataDimensions = {
-  [key in ListInsightsDataDimensionKey | (string & {})]?: string;
+  [key in ListInsightsDataDimensionKey]?: string;
 };
 export const ListInsightsDataDimensions = /*@__PURE__*/ S.Record(
   ListInsightsDataDimensionKey,
@@ -2786,7 +2808,7 @@ export const ListInsightsDataDimensions = /*@__PURE__*/ S.Record(
 export type ListInsightsDataMaxResultsCount = number;
 export interface ListInsightsDataRequest {
   InsightSource: string;
-  DataType: ListInsightsDataType | (string & {});
+  DataType: ListInsightsDataType;
   Dimensions?: { [key: string]: string | undefined };
   StartTime?: Date;
   EndTime?: Date;
@@ -2870,7 +2892,10 @@ export type EventSource = string;
 export type EventName = string;
 export type ErrorCode = string;
 export type InsightsMetricPeriod = number;
-export type InsightsMetricDataType = "FillWithZeros" | "NonZeroData";
+export type InsightsMetricDataType =
+  | "FillWithZeros"
+  | "NonZeroData"
+  | (string & {});
 export const InsightsMetricDataType = /*@__PURE__*/ S.String;
 
 export type InsightsMetricMaxResults = number;
@@ -2879,12 +2904,12 @@ export interface ListInsightsMetricDataRequest {
   TrailName?: string;
   EventSource: string;
   EventName: string;
-  InsightType: InsightType | (string & {});
+  InsightType: InsightType;
   ErrorCode?: string;
   StartTime?: Date;
   EndTime?: Date;
   Period?: number;
-  DataType?: InsightsMetricDataType | (string & {});
+  DataType?: InsightsMetricDataType;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -3009,7 +3034,7 @@ export interface ListQueriesRequest {
   MaxResults?: number;
   StartTime?: Date;
   EndTime?: Date;
-  QueryStatus?: QueryStatus | (string & {});
+  QueryStatus?: QueryStatus;
 }
 export const ListQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3159,12 +3184,13 @@ export type LookupAttributeKey =
   | "ResourceType"
   | "ResourceName"
   | "EventSource"
-  | "AccessKeyId";
+  | "AccessKeyId"
+  | (string & {});
 export const LookupAttributeKey = /*@__PURE__*/ S.String;
 
 export type LookupAttributeValue = string;
 export interface LookupAttribute {
-  AttributeKey: LookupAttributeKey | (string & {});
+  AttributeKey: LookupAttributeKey;
   AttributeValue: string;
 }
 export const LookupAttribute = /*@__PURE__*/ S.suspend(() =>
@@ -3174,7 +3200,7 @@ export const LookupAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookupAttribute>;
 export type LookupAttributesList = LookupAttribute[];
 export const LookupAttributesList = /*@__PURE__*/ S.Array(LookupAttribute);
-export type EventCategory = "insight";
+export type EventCategory = "insight" | (string & {});
 export const EventCategory = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
@@ -3183,7 +3209,7 @@ export interface LookupEventsRequest {
   LookupAttributes?: LookupAttribute[];
   StartTime?: Date;
   EndTime?: Date;
-  EventCategory?: EventCategory | (string & {});
+  EventCategory?: EventCategory;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -3224,7 +3250,7 @@ export const LookupEventsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutEventConfigurationRequest {
   TrailName?: string;
   EventDataStore?: string;
-  MaxEventSize?: MaxEventSize | (string & {});
+  MaxEventSize?: MaxEventSize;
   ContextKeySelectors?: ContextKeySelector[];
   AggregationConfigurations?: AggregationConfiguration[];
 }
@@ -3926,7 +3952,7 @@ export interface UpdateEventDataStoreRequest {
   RetentionPeriod?: number;
   TerminationProtectionEnabled?: boolean;
   KmsKeyId?: string;
-  BillingMode?: BillingMode | (string & {});
+  BillingMode?: BillingMode;
 }
 export const UpdateEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

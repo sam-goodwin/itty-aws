@@ -242,13 +242,14 @@ export type SavingsPlanRateFilterName =
   | "productType"
   | "serviceCode"
   | "usageType"
-  | "operation";
+  | "operation"
+  | (string & {});
 export const SavingsPlanRateFilterName = /*@__PURE__*/ S.String;
 
 export type ListOfStrings = string[];
 export const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface SavingsPlanRateFilter {
-  name?: SavingsPlanRateFilterName | (string & {});
+  name?: SavingsPlanRateFilterName;
   values?: string[];
 }
 export const SavingsPlanRateFilter = /*@__PURE__*/ S.suspend(() =>
@@ -290,7 +291,7 @@ export const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSavingsPlanRatesRequest",
 }) as any as S.Schema<DescribeSavingsPlanRatesRequest>;
-export type CurrencyCode = "CNY" | "USD" | "EUR";
+export type CurrencyCode = "CNY" | "USD" | "EUR" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateUnit =
@@ -310,7 +311,8 @@ export type SavingsPlanRateUnit =
   | "DCU-Hr"
   | "NCU-hr"
   | "OCU-hours"
-  | "Jobs";
+  | "Jobs"
+  | (string & {});
 export const SavingsPlanRateUnit = /*@__PURE__*/ S.String;
 
 export type SavingsPlanProductType =
@@ -327,7 +329,8 @@ export type SavingsPlanProductType =
   | "Timestream"
   | "Keyspaces"
   | "DMS"
-  | "OpenSearch";
+  | "OpenSearch"
+  | (string & {});
 export const SavingsPlanProductType = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateServiceCode =
@@ -345,7 +348,8 @@ export type SavingsPlanRateServiceCode =
   | "AmazonTimestream"
   | "AmazonMCS"
   | "AWSDatabaseMigrationSvc"
-  | "AmazonES";
+  | "AmazonES"
+  | (string & {});
 export const SavingsPlanRateServiceCode = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateUsageType = string;
@@ -355,7 +359,8 @@ export type SavingsPlanRatePropertyKey =
   | "instanceType"
   | "instanceFamily"
   | "productDescription"
-  | "tenancy";
+  | "tenancy"
+  | (string & {});
 export const SavingsPlanRatePropertyKey = /*@__PURE__*/ S.String;
 
 export type JsonSafeFilterValueString = string;
@@ -428,10 +433,11 @@ export type SavingsPlanState =
   | "queued"
   | "queued-deleted"
   | "pending-return"
-  | "returned";
+  | "returned"
+  | (string & {});
 export const SavingsPlanState = /*@__PURE__*/ S.String;
 
-export type SavingsPlanStateList = (SavingsPlanState | (string & {}))[];
+export type SavingsPlanStateList = SavingsPlanState[];
 export const SavingsPlanStateList = /*@__PURE__*/ S.Array(SavingsPlanState);
 export type SavingsPlansFilterName =
   | "region"
@@ -443,11 +449,12 @@ export type SavingsPlansFilterName =
   | "payment-option"
   | "start"
   | "end"
-  | "instance-family";
+  | "instance-family"
+  | (string & {});
 export const SavingsPlansFilterName = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanFilter {
-  name?: SavingsPlansFilterName | (string & {});
+  name?: SavingsPlansFilterName;
   values?: string[];
 }
 export const SavingsPlanFilter = /*@__PURE__*/ S.suspend(() =>
@@ -465,7 +472,7 @@ export interface DescribeSavingsPlansRequest {
   savingsPlanIds?: string[];
   nextToken?: string;
   maxResults?: number;
-  states?: (SavingsPlanState | (string & {}))[];
+  states?: SavingsPlanState[];
   filters?: SavingsPlanFilter[];
 }
 export const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
@@ -495,19 +502,18 @@ export type SavingsPlanType =
   | "Compute"
   | "EC2Instance"
   | "SageMaker"
-  | "Database";
+  | "Database"
+  | (string & {});
 export const SavingsPlanType = /*@__PURE__*/ S.String;
 
 export type SavingsPlanPaymentOption =
   | "All Upfront"
   | "Partial Upfront"
-  | "No Upfront";
+  | "No Upfront"
+  | (string & {});
 export const SavingsPlanPaymentOption = /*@__PURE__*/ S.String;
 
-export type SavingsPlanProductTypeList = (
-  | SavingsPlanProductType
-  | (string & {})
-)[];
+export type SavingsPlanProductTypeList = SavingsPlanProductType[];
 export const SavingsPlanProductTypeList = /*@__PURE__*/ S.Array(
   SavingsPlanProductType,
 );
@@ -573,19 +579,13 @@ export const DescribeSavingsPlansResponse = /*@__PURE__*/ S.suspend(() =>
 export type UUID = string;
 export type UUIDs = string[];
 export const UUIDs = /*@__PURE__*/ S.Array(S.String);
-export type SavingsPlanPaymentOptionList = (
-  | SavingsPlanPaymentOption
-  | (string & {})
-)[];
+export type SavingsPlanPaymentOptionList = SavingsPlanPaymentOption[];
 export const SavingsPlanPaymentOptionList = /*@__PURE__*/ S.Array(
   SavingsPlanPaymentOption,
 );
-export type SavingsPlanTypeList = (SavingsPlanType | (string & {}))[];
+export type SavingsPlanTypeList = SavingsPlanType[];
 export const SavingsPlanTypeList = /*@__PURE__*/ S.Array(SavingsPlanType);
-export type SavingsPlanRateServiceCodeList = (
-  | SavingsPlanRateServiceCode
-  | (string & {})
-)[];
+export type SavingsPlanRateServiceCodeList = SavingsPlanRateServiceCode[];
 export const SavingsPlanRateServiceCodeList = /*@__PURE__*/ S.Array(
   SavingsPlanRateServiceCode,
 );
@@ -599,13 +599,14 @@ export type SavingsPlanRateFilterAttribute =
   | "instanceType"
   | "productDescription"
   | "tenancy"
-  | "productId";
+  | "productId"
+  | (string & {});
 export const SavingsPlanRateFilterAttribute = /*@__PURE__*/ S.String;
 
 export type FilterValuesList = string[];
 export const FilterValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface SavingsPlanOfferingRateFilterElement {
-  name?: SavingsPlanRateFilterAttribute | (string & {});
+  name?: SavingsPlanRateFilterAttribute;
   values?: string[];
 }
 export const SavingsPlanOfferingRateFilterElement = /*@__PURE__*/ S.suspend(
@@ -625,10 +626,10 @@ export const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ S.Array(
 export type PageSize = number;
 export interface DescribeSavingsPlansOfferingRatesRequest {
   savingsPlanOfferingIds?: string[];
-  savingsPlanPaymentOptions?: (SavingsPlanPaymentOption | (string & {}))[];
-  savingsPlanTypes?: (SavingsPlanType | (string & {}))[];
-  products?: (SavingsPlanProductType | (string & {}))[];
-  serviceCodes?: (SavingsPlanRateServiceCode | (string & {}))[];
+  savingsPlanPaymentOptions?: SavingsPlanPaymentOption[];
+  savingsPlanTypes?: SavingsPlanType[];
+  products?: SavingsPlanProductType[];
+  serviceCodes?: SavingsPlanRateServiceCode[];
   usageTypes?: string[];
   operations?: string[];
   filters?: SavingsPlanOfferingRateFilterElement[];
@@ -741,7 +742,7 @@ export const DescribeSavingsPlansOfferingRatesResponse =
   }) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>;
 export type DurationsList = number[];
 export const DurationsList = /*@__PURE__*/ S.Array(S.Number);
-export type CurrencyList = (CurrencyCode | (string & {}))[];
+export type CurrencyList = CurrencyCode[];
 export const CurrencyList = /*@__PURE__*/ S.Array(CurrencyCode);
 export type SavingsPlanDescriptionsList = string[];
 export const SavingsPlanDescriptionsList = /*@__PURE__*/ S.Array(S.String);
@@ -754,11 +755,14 @@ export const SavingsPlanUsageTypeList = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
 export const SavingsPlanOperationList = /*@__PURE__*/ S.Array(S.String);
-export type SavingsPlanOfferingFilterAttribute = "region" | "instanceFamily";
+export type SavingsPlanOfferingFilterAttribute =
+  | "region"
+  | "instanceFamily"
+  | (string & {});
 export const SavingsPlanOfferingFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanOfferingFilterElement {
-  name?: SavingsPlanOfferingFilterAttribute | (string & {});
+  name?: SavingsPlanOfferingFilterAttribute;
   values?: string[];
 }
 export const SavingsPlanOfferingFilterElement = /*@__PURE__*/ S.suspend(() =>
@@ -775,11 +779,11 @@ export const SavingsPlanOfferingFiltersList = /*@__PURE__*/ S.Array(
 );
 export interface DescribeSavingsPlansOfferingsRequest {
   offeringIds?: string[];
-  paymentOptions?: (SavingsPlanPaymentOption | (string & {}))[];
-  productType?: SavingsPlanProductType | (string & {});
-  planTypes?: (SavingsPlanType | (string & {}))[];
+  paymentOptions?: SavingsPlanPaymentOption[];
+  productType?: SavingsPlanProductType;
+  planTypes?: SavingsPlanType[];
   durations?: number[];
-  currencies?: (CurrencyCode | (string & {}))[];
+  currencies?: CurrencyCode[];
   descriptions?: string[];
   serviceCodes?: string[];
   usageTypes?: string[];
@@ -817,7 +821,10 @@ export const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSavingsPlansOfferingsRequest",
 }) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>;
-export type SavingsPlanOfferingPropertyKey = "region" | "instanceFamily";
+export type SavingsPlanOfferingPropertyKey =
+  | "region"
+  | "instanceFamily"
+  | (string & {});
 export const SavingsPlanOfferingPropertyKey = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanOfferingProperty {

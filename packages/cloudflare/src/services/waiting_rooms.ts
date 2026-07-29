@@ -98,29 +98,29 @@ export interface CreateEventRequest {
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsCreateRequestTurnstileAction | (string & {});
+  turnstileAction?: EventsCreateRequestTurnstileAction | (string & {}) | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsCreateRequestTurnstileMode | (string & {});
+  turnstileMode?: EventsCreateRequestTurnstileMode | (string & {}) | null;
 }
 export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -129,27 +129,39 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
     eventEndTime: S.String.pipe(T.Body("event_end_time")),
     eventStartTime: S.String.pipe(T.Body("event_start_time")),
     name: S.String,
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsCreateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsCreateRequestTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsCreateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsCreateRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -176,69 +188,85 @@ export const EventsCreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEventResponse {
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsCreateResponseTurnstileAction;
+  turnstileAction?: EventsCreateResponseTurnstileAction | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsCreateResponseTurnstileMode;
+  turnstileMode?: EventsCreateResponseTurnstileMode | null;
 }
 export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsCreateResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsCreateResponseTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsCreateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsCreateResponseTurnstileMode).pipe(
+        T.Body("turnstile_mode"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -254,16 +282,16 @@ export interface RulesCreateRequestRules {
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const RulesCreateRequestRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesCreateRequestRulesAction,
     expression: S.String,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "RulesCreateRequestRules",
@@ -298,28 +326,28 @@ export const RulesCreateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateResultItem {
   /** The ID of the rule. */
-  id?: string;
+  id?: string | null;
   /** The action to take when the expression matches. */
-  action?: RulesCreateResultItemAction;
+  action?: RulesCreateResultItemAction | null;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Criteria defining when there is a match for the current rule. */
-  expression?: string;
-  lastUpdated?: string;
+  expression?: string | null;
+  lastUpdated?: string | null;
   /** The version of the rule. */
-  version?: string;
+  version?: string | null;
 }
 export const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(RulesCreateResultItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    version: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(RulesCreateResultItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesCreateResultItem",
@@ -347,14 +375,14 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateRequestAdditionalRoutesItem",
@@ -378,14 +406,14 @@ export const CreateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: CreateRequestCookieAttributesSamesite | (string & {});
+  samesite?: CreateRequestCookieAttributesSamesite | (string & {}) | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: CreateRequestCookieAttributesSecure | (string & {});
+  secure?: CreateRequestCookieAttributesSecure | (string & {}) | null;
 }
 export const CreateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(CreateRequestCookieAttributesSamesite),
-    secure: S.optional(CreateRequestCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(CreateRequestCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(CreateRequestCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "CreateRequestCookieAttributes",
@@ -474,41 +502,42 @@ export interface CreateWaitingRoomRequest {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
   totalActiveUsers: number;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: CreateRequestAdditionalRoutesList;
+  additionalRoutes?: CreateRequestAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: CreateRequestCookieAttributes;
+  cookieAttributes?: CreateRequestCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
+  cookieSuffix?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
   defaultTemplateLanguage?:
     | CreateRequestDefaultTemplateLanguage
-    | (string & {});
+    | (string & {})
+    | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: CreateRequestEnabledOriginCommandsList;
+  enabledOriginCommands?: CreateRequestEnabledOriginCommandsList | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
+  jsonResponseEnabled?: boolean | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: CreateRequestQueueingMethod | (string & {});
+  queueingMethod?: CreateRequestQueueingMethod | (string & {}) | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: CreateRequestQueueingStatusCode | (number & {});
+  queueingStatusCode?: CreateRequestQueueingStatusCode | (number & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: CreateRequestTurnstileAction | (string & {});
+  turnstileAction?: CreateRequestTurnstileAction | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: CreateRequestTurnstileMode | (string & {});
+  turnstileMode?: CreateRequestTurnstileMode | (string & {}) | null;
 }
 export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -518,45 +547,53 @@ export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
     totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
     additionalRoutes: S.optional(
-      CreateRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(CreateRequestAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      CreateRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(CreateRequestCookieAttributes).pipe(T.Body("cookie_attributes")),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      CreateRequestDefaultTemplateLanguage.pipe(
+      S.NullOr(CreateRequestDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      CreateRequestEnabledOriginCommandsList.pipe(
+      S.NullOr(CreateRequestEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      CreateRequestQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(CreateRequestQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      CreateRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(CreateRequestQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
     turnstileAction: S.optional(
-      CreateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(CreateRequestTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      CreateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(CreateRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -573,14 +610,14 @@ export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResponseAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResponseAdditionalRoutesItem",
@@ -604,14 +641,14 @@ export const CreateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: CreateResponseCookieAttributesSamesite;
+  samesite?: CreateResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: CreateResponseCookieAttributesSecure;
+  secure?: CreateResponseCookieAttributesSecure | null;
 }
 export const CreateResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(CreateResponseCookieAttributesSamesite),
-    secure: S.optional(CreateResponseCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(CreateResponseCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(CreateResponseCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "CreateResponseCookieAttributes",
@@ -689,113 +726,125 @@ export const CreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWaitingRoomResponse {
-  id?: string;
+  id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: CreateResponseAdditionalRoutesList;
+  additionalRoutes?: CreateResponseAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: CreateResponseCookieAttributes;
+  cookieAttributes?: CreateResponseCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
+  cookieSuffix?: string | null;
+  createdOn?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: CreateResponseDefaultTemplateLanguage;
+  defaultTemplateLanguage?: CreateResponseDefaultTemplateLanguage | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: CreateResponseEnabledOriginCommandsList;
+  enabledOriginCommands?: CreateResponseEnabledOriginCommandsList | null;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
+  host?: string | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
+  jsonResponseEnabled?: boolean | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
+  nextEventPrequeueStartTime?: string | null;
   /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
+  nextEventStartTime?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: CreateResponseQueueingMethod;
+  queueingMethod?: CreateResponseQueueingMethod | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: CreateResponseQueueingStatusCode;
+  queueingStatusCode?: CreateResponseQueueingStatusCode | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: CreateResponseTurnstileAction;
+  turnstileAction?: CreateResponseTurnstileAction | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: CreateResponseTurnstileMode;
+  turnstileMode?: CreateResponseTurnstileMode | null;
 }
 export const CreateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
-      CreateResponseAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(CreateResponseAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      CreateResponseCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(CreateResponseCookieAttributes).pipe(
+        T.Body("cookie_attributes"),
+      ),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      CreateResponseDefaultTemplateLanguage.pipe(
+      S.NullOr(CreateResponseDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      CreateResponseEnabledOriginCommandsList.pipe(
+      S.NullOr(CreateResponseEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
-    host: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
     nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
     ),
     nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_start_time")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      CreateResponseQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(CreateResponseQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      CreateResponseQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(CreateResponseQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      CreateResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(CreateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      CreateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(CreateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -828,11 +877,11 @@ export const DeleteEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteEventResponse {
-  id?: string;
+  id?: string | null;
 }
 export const DeleteEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEventResponse",
@@ -868,28 +917,28 @@ export const RulesDeleteResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesDeleteResultItem {
   /** The ID of the rule. */
-  id?: string;
+  id?: string | null;
   /** The action to take when the expression matches. */
-  action?: RulesDeleteResultItemAction;
+  action?: RulesDeleteResultItemAction | null;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Criteria defining when there is a match for the current rule. */
-  expression?: string;
-  lastUpdated?: string;
+  expression?: string | null;
+  lastUpdated?: string | null;
   /** The version of the rule. */
-  version?: string;
+  version?: string | null;
 }
 export const RulesDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(RulesDeleteResultItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    version: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(RulesDeleteResultItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesDeleteResultItem",
@@ -939,11 +988,11 @@ export const DeleteWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWaitingRoomResponse {
-  id?: string;
+  id?: string | null;
 }
 export const DeleteWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWaitingRoomResponse",
@@ -985,69 +1034,83 @@ export const EventsGetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEventResponse {
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsGetResponseTurnstileAction;
+  turnstileAction?: EventsGetResponseTurnstileAction | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsGetResponseTurnstileMode;
+  turnstileMode?: EventsGetResponseTurnstileMode | null;
 }
 export const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsGetResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsGetResponseTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsGetResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsGetResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1080,54 +1143,66 @@ export const GetEventDetailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEventDetailResponse {
-  id?: string;
-  createdOn?: string;
-  customPageHtml?: string;
+  id?: string | null;
+  createdOn?: string | null;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
-  disableSessionRenewal?: boolean;
+  description?: string | null;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
-  newUsersPerMinute?: number;
+  name?: string | null;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
-  queueingMethod?: string;
-  sessionDuration?: number;
+  prequeueStartTime?: string | null;
+  queueingMethod?: string | null;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
-  totalActiveUsers?: number;
+  suspended?: boolean | null;
+  totalActiveUsers?: number | null;
 }
 export const GetEventDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEventDetailResponse",
@@ -1158,28 +1233,28 @@ export const RulesGetResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesGetResultItem {
   /** The ID of the rule. */
-  id?: string;
+  id?: string | null;
   /** The action to take when the expression matches. */
-  action?: RulesGetResultItemAction;
+  action?: RulesGetResultItemAction | null;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Criteria defining when there is a match for the current rule. */
-  expression?: string;
-  lastUpdated?: string;
+  expression?: string | null;
+  lastUpdated?: string | null;
   /** The version of the rule. */
-  version?: string;
+  version?: string | null;
 }
 export const RulesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(RulesGetResultItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    version: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(RulesGetResultItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesGetResultItem",
@@ -1271,25 +1346,25 @@ export const StatusesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStatusResponse {
-  estimatedQueuedUsers?: number;
-  estimatedTotalActiveUsers?: number;
-  eventId?: string;
-  maxEstimatedTimeMinutes?: number;
-  status?: StatusesGetResponseStatus;
+  estimatedQueuedUsers?: number | null;
+  estimatedTotalActiveUsers?: number | null;
+  eventId?: string | null;
+  maxEstimatedTimeMinutes?: number | null;
+  status?: StatusesGetResponseStatus | null;
 }
 export const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedQueuedUsers: S.optional(
-      S.Number.pipe(T.Body("estimated_queued_users")),
+      S.NullOr(S.Number).pipe(T.Body("estimated_queued_users")),
     ),
     estimatedTotalActiveUsers: S.optional(
-      S.Number.pipe(T.Body("estimated_total_active_users")),
+      S.NullOr(S.Number).pipe(T.Body("estimated_total_active_users")),
     ),
-    eventId: S.optional(S.String.pipe(T.Body("event_id"))),
+    eventId: S.optional(S.NullOr(S.String).pipe(T.Body("event_id"))),
     maxEstimatedTimeMinutes: S.optional(
-      S.Number.pipe(T.Body("max_estimated_time_minutes")),
+      S.NullOr(S.Number).pipe(T.Body("max_estimated_time_minutes")),
     ),
-    status: S.optional(StatusesGetResponseStatus),
+    status: S.optional(S.NullOr(StatusesGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStatusResponse",
@@ -1319,14 +1394,14 @@ export const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const GetResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseAdditionalRoutesItem",
@@ -1350,14 +1425,14 @@ export const GetResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface GetResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: GetResponseCookieAttributesSamesite;
+  samesite?: GetResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: GetResponseCookieAttributesSecure;
+  secure?: GetResponseCookieAttributesSecure | null;
 }
 export const GetResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(GetResponseCookieAttributesSamesite),
-    secure: S.optional(GetResponseCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(GetResponseCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(GetResponseCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "GetResponseCookieAttributes",
@@ -1435,113 +1510,123 @@ export const GetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWaitingRoomResponse {
-  id?: string;
+  id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: GetResponseAdditionalRoutesList;
+  additionalRoutes?: GetResponseAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: GetResponseCookieAttributes;
+  cookieAttributes?: GetResponseCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
+  cookieSuffix?: string | null;
+  createdOn?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: GetResponseDefaultTemplateLanguage;
+  defaultTemplateLanguage?: GetResponseDefaultTemplateLanguage | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: GetResponseEnabledOriginCommandsList;
+  enabledOriginCommands?: GetResponseEnabledOriginCommandsList | null;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
+  host?: string | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
+  jsonResponseEnabled?: boolean | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
+  nextEventPrequeueStartTime?: string | null;
   /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
+  nextEventStartTime?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: GetResponseQueueingMethod;
+  queueingMethod?: GetResponseQueueingMethod | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: GetResponseQueueingStatusCode;
+  queueingStatusCode?: GetResponseQueueingStatusCode | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: GetResponseTurnstileAction;
+  turnstileAction?: GetResponseTurnstileAction | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: GetResponseTurnstileMode;
+  turnstileMode?: GetResponseTurnstileMode | null;
 }
 export const GetWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
-      GetResponseAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(GetResponseAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      GetResponseCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(GetResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      GetResponseDefaultTemplateLanguage.pipe(
+      S.NullOr(GetResponseDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      GetResponseEnabledOriginCommandsList.pipe(
+      S.NullOr(GetResponseEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
-    host: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
     nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
     ),
     nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_start_time")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      GetResponseQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(GetResponseQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      GetResponseQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(GetResponseQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      GetResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(GetResponseTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      GetResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(GetResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1587,69 +1672,85 @@ export type EventsListResultItemTurnstileMode =
 export const EventsListResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface EventsListResultItem {
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsListResultItemTurnstileAction;
+  turnstileAction?: EventsListResultItemTurnstileAction | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsListResultItemTurnstileMode;
+  turnstileMode?: EventsListResultItemTurnstileMode | null;
 }
 export const EventsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsListResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsListResultItemTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsListResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsListResultItemTurnstileMode).pipe(
+        T.Body("turnstile_mode"),
+      ),
     ),
   }),
 ).annotate({
@@ -1704,14 +1805,14 @@ export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const ListResultItemAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemAdditionalRoutesItem",
@@ -1735,14 +1836,14 @@ export const ListResultItemCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface ListResultItemCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: ListResultItemCookieAttributesSamesite;
+  samesite?: ListResultItemCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: ListResultItemCookieAttributesSecure;
+  secure?: ListResultItemCookieAttributesSecure | null;
 }
 export const ListResultItemCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(ListResultItemCookieAttributesSamesite),
-    secure: S.optional(ListResultItemCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(ListResultItemCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(ListResultItemCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "ListResultItemCookieAttributes",
@@ -1819,113 +1920,125 @@ export type ListResultItemTurnstileMode =
 export const ListResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
-  id?: string;
+  id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: ListResultItemAdditionalRoutesList;
+  additionalRoutes?: ListResultItemAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: ListResultItemCookieAttributes;
+  cookieAttributes?: ListResultItemCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
+  cookieSuffix?: string | null;
+  createdOn?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: ListResultItemDefaultTemplateLanguage;
+  defaultTemplateLanguage?: ListResultItemDefaultTemplateLanguage | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: ListResultItemEnabledOriginCommandsList;
+  enabledOriginCommands?: ListResultItemEnabledOriginCommandsList | null;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
+  host?: string | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
+  jsonResponseEnabled?: boolean | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
+  nextEventPrequeueStartTime?: string | null;
   /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
+  nextEventStartTime?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: ListResultItemQueueingMethod;
+  queueingMethod?: ListResultItemQueueingMethod | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: ListResultItemQueueingStatusCode;
+  queueingStatusCode?: ListResultItemQueueingStatusCode | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: ListResultItemTurnstileAction;
+  turnstileAction?: ListResultItemTurnstileAction | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: ListResultItemTurnstileMode;
+  turnstileMode?: ListResultItemTurnstileMode | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
-      ListResultItemAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(ListResultItemAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      ListResultItemCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(ListResultItemCookieAttributes).pipe(
+        T.Body("cookie_attributes"),
+      ),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      ListResultItemDefaultTemplateLanguage.pipe(
+      S.NullOr(ListResultItemDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      ListResultItemEnabledOriginCommandsList.pipe(
+      S.NullOr(ListResultItemEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
-    host: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
     nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
     ),
     nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_start_time")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      ListResultItemQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(ListResultItemQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      ListResultItemQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(ListResultItemQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      ListResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(ListResultItemTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      ListResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(ListResultItemTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
@@ -1998,29 +2111,29 @@ export interface PatchEventRequest {
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsEditRequestTurnstileAction | (string & {});
+  turnstileAction?: EventsEditRequestTurnstileAction | (string & {}) | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsEditRequestTurnstileMode | (string & {});
+  turnstileMode?: EventsEditRequestTurnstileMode | (string & {}) | null;
 }
 export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2030,27 +2143,39 @@ export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
     eventEndTime: S.String.pipe(T.Body("event_end_time")),
     eventStartTime: S.String.pipe(T.Body("event_start_time")),
     name: S.String,
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsEditRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsEditRequestTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsEditRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsEditRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -2077,69 +2202,83 @@ export const EventsEditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchEventResponse {
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsEditResponseTurnstileAction;
+  turnstileAction?: EventsEditResponseTurnstileAction | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsEditResponseTurnstileMode;
+  turnstileMode?: EventsEditResponseTurnstileMode | null;
 }
 export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsEditResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsEditResponseTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsEditResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsEditResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2151,11 +2290,11 @@ export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditRequestPositionIndex {
   /** Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
-  index?: number;
+  index?: number | null;
 }
 export const RulesEditRequestPositionIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    index: S.optional(S.Number),
+    index: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "RulesEditRequestPositionIndex",
@@ -2163,11 +2302,11 @@ export const RulesEditRequestPositionIndex = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestPositionBefore {
   /** Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the first rule in the ruleset. */
-  before?: string;
+  before?: string | null;
 }
 export const RulesEditRequestPositionBefore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    before: S.optional(S.String),
+    before: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesEditRequestPositionBefore",
@@ -2175,11 +2314,11 @@ export const RulesEditRequestPositionBefore = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestPositionAfter {
   /** Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the last rule in the ruleset. */
-  after?: string;
+  after?: string | null;
 }
 export const RulesEditRequestPositionAfter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    after: S.optional(S.String),
+    after: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesEditRequestPositionAfter",
@@ -2204,11 +2343,11 @@ export interface PatchRuleRequest {
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Reorder the position of a rule */
-  position?: RulesEditRequestPosition;
+  position?: RulesEditRequestPosition | null;
 }
 export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2217,9 +2356,9 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Label("rule_id")),
     action: RulesEditRequestAction,
     expression: S.String,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    position: S.optional(RulesEditRequestPosition),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    position: S.optional(S.NullOr(RulesEditRequestPosition)),
   })
     .pipe(
       T.Http({
@@ -2238,28 +2377,28 @@ export const RulesEditResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditResultItem {
   /** The ID of the rule. */
-  id?: string;
+  id?: string | null;
   /** The action to take when the expression matches. */
-  action?: RulesEditResultItemAction;
+  action?: RulesEditResultItemAction | null;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Criteria defining when there is a match for the current rule. */
-  expression?: string;
-  lastUpdated?: string;
+  expression?: string | null;
+  lastUpdated?: string | null;
   /** The version of the rule. */
-  version?: string;
+  version?: string | null;
 }
 export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(RulesEditResultItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    version: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(RulesEditResultItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesEditResultItem",
@@ -2289,13 +2428,13 @@ export interface PatchSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. */
-  searchEngineCrawlerBypass?: boolean;
+  searchEngineCrawlerBypass?: boolean | null;
 }
 export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     searchEngineCrawlerBypass: S.optional(
-      S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
+      S.NullOr(S.Boolean).pipe(T.Body("search_engine_crawler_bypass")),
     ),
   })
     .pipe(
@@ -2327,14 +2466,14 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const EditRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditRequestAdditionalRoutesItem",
@@ -2358,14 +2497,14 @@ export const EditRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: EditRequestCookieAttributesSamesite | (string & {});
+  samesite?: EditRequestCookieAttributesSamesite | (string & {}) | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: EditRequestCookieAttributesSecure | (string & {});
+  secure?: EditRequestCookieAttributesSecure | (string & {}) | null;
 }
 export const EditRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(EditRequestCookieAttributesSamesite),
-    secure: S.optional(EditRequestCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(EditRequestCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(EditRequestCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "EditRequestCookieAttributes",
@@ -2455,39 +2594,42 @@ export interface PatchWaitingRoomRequest {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
   totalActiveUsers: number;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: EditRequestAdditionalRoutesList;
+  additionalRoutes?: EditRequestAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: EditRequestCookieAttributes;
+  cookieAttributes?: EditRequestCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
+  cookieSuffix?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: EditRequestDefaultTemplateLanguage | (string & {});
+  defaultTemplateLanguage?:
+    | EditRequestDefaultTemplateLanguage
+    | (string & {})
+    | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: EditRequestEnabledOriginCommandsList;
+  enabledOriginCommands?: EditRequestEnabledOriginCommandsList | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
+  jsonResponseEnabled?: boolean | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: EditRequestQueueingMethod | (string & {});
+  queueingMethod?: EditRequestQueueingMethod | (string & {}) | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: EditRequestQueueingStatusCode | (number & {});
+  queueingStatusCode?: EditRequestQueueingStatusCode | (number & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: EditRequestTurnstileAction | (string & {});
+  turnstileAction?: EditRequestTurnstileAction | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: EditRequestTurnstileMode | (string & {});
+  turnstileMode?: EditRequestTurnstileMode | (string & {}) | null;
 }
 export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2498,45 +2640,53 @@ export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
     totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
     additionalRoutes: S.optional(
-      EditRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(EditRequestAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      EditRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(EditRequestCookieAttributes).pipe(T.Body("cookie_attributes")),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      EditRequestDefaultTemplateLanguage.pipe(
+      S.NullOr(EditRequestDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      EditRequestEnabledOriginCommandsList.pipe(
+      S.NullOr(EditRequestEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      EditRequestQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(EditRequestQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      EditRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(EditRequestQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
     turnstileAction: S.optional(
-      EditRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EditRequestTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      EditRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EditRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -2553,14 +2703,14 @@ export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const EditResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponseAdditionalRoutesItem",
@@ -2584,14 +2734,14 @@ export const EditResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: EditResponseCookieAttributesSamesite;
+  samesite?: EditResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: EditResponseCookieAttributesSecure;
+  secure?: EditResponseCookieAttributesSecure | null;
 }
 export const EditResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(EditResponseCookieAttributesSamesite),
-    secure: S.optional(EditResponseCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(EditResponseCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(EditResponseCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "EditResponseCookieAttributes",
@@ -2669,113 +2819,123 @@ export const EditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchWaitingRoomResponse {
-  id?: string;
+  id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: EditResponseAdditionalRoutesList;
+  additionalRoutes?: EditResponseAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: EditResponseCookieAttributes;
+  cookieAttributes?: EditResponseCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
+  cookieSuffix?: string | null;
+  createdOn?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: EditResponseDefaultTemplateLanguage;
+  defaultTemplateLanguage?: EditResponseDefaultTemplateLanguage | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: EditResponseEnabledOriginCommandsList;
+  enabledOriginCommands?: EditResponseEnabledOriginCommandsList | null;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
+  host?: string | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
+  jsonResponseEnabled?: boolean | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
+  nextEventPrequeueStartTime?: string | null;
   /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
+  nextEventStartTime?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: EditResponseQueueingMethod;
+  queueingMethod?: EditResponseQueueingMethod | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: EditResponseQueueingStatusCode;
+  queueingStatusCode?: EditResponseQueueingStatusCode | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: EditResponseTurnstileAction;
+  turnstileAction?: EditResponseTurnstileAction | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: EditResponseTurnstileMode;
+  turnstileMode?: EditResponseTurnstileMode | null;
 }
 export const PatchWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
-      EditResponseAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(EditResponseAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      EditResponseCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(EditResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      EditResponseDefaultTemplateLanguage.pipe(
+      S.NullOr(EditResponseDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      EditResponseEnabledOriginCommandsList.pipe(
+      S.NullOr(EditResponseEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
-    host: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
     nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
     ),
     nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_start_time")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      EditResponseQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(EditResponseQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      EditResponseQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(EditResponseQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EditResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EditResponseTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      EditResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EditResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2808,11 +2968,11 @@ export const PreviewPageRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PreviewPageResponse {
   /** URL where the custom waiting room page can temporarily be previewed. */
-  previewUrl?: string;
+  previewUrl?: string | null;
 }
 export const PreviewPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    previewUrl: S.optional(S.String.pipe(T.Body("preview_url"))),
+    previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PreviewPageResponse",
@@ -2822,13 +2982,13 @@ export interface PutSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. */
-  searchEngineCrawlerBypass?: boolean;
+  searchEngineCrawlerBypass?: boolean | null;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     searchEngineCrawlerBypass: S.optional(
-      S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
+      S.NullOr(S.Boolean).pipe(T.Body("search_engine_crawler_bypass")),
     ),
   })
     .pipe(
@@ -2880,29 +3040,29 @@ export interface UpdateEventRequest {
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsUpdateRequestTurnstileAction | (string & {});
+  turnstileAction?: EventsUpdateRequestTurnstileAction | (string & {}) | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsUpdateRequestTurnstileMode | (string & {});
+  turnstileMode?: EventsUpdateRequestTurnstileMode | (string & {}) | null;
 }
 export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2912,27 +3072,39 @@ export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
     eventEndTime: S.String.pipe(T.Body("event_end_time")),
     eventStartTime: S.String.pipe(T.Body("event_start_time")),
     name: S.String,
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsUpdateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsUpdateRequestTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsUpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsUpdateRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -2959,69 +3131,85 @@ export const EventsUpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEventResponse {
-  id?: string;
-  createdOn?: string;
+  id?: string | null;
+  createdOn?: string | null;
   /** If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it. */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** A note that you can use to add more details about the event. */
-  description?: string;
+  description?: string | null;
   /** If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** An ISO 8601 timestamp that marks the end of the event. */
-  eventEndTime?: string;
+  eventEndTime?: string | null;
   /** An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`. */
-  eventStartTime?: string;
-  modifiedOn?: string;
+  eventStartTime?: string | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`. */
-  prequeueStartTime?: string;
+  prequeueStartTime?: string | null;
   /** If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it. */
-  queueingMethod?: string;
+  queueingMethod?: string | null;
   /** If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary. */
-  shuffleAtEventStart?: boolean;
+  shuffleAtEventStart?: boolean | null;
   /** Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it. */
-  turnstileAction?: EventsUpdateResponseTurnstileAction;
+  turnstileAction?: EventsUpdateResponseTurnstileAction | null;
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
-  turnstileMode?: EventsUpdateResponseTurnstileMode;
+  turnstileMode?: EventsUpdateResponseTurnstileMode | null;
 }
 export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
-    eventEndTime: S.optional(S.String.pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.String.pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+    eventStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("event_start_time")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
-    prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    prequeueStartTime: S.optional(
+      S.NullOr(S.String).pipe(T.Body("prequeue_start_time")),
+    ),
+    queueingMethod: S.optional(
+      S.NullOr(S.String).pipe(T.Body("queueing_method")),
+    ),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
     shuffleAtEventStart: S.optional(
-      S.Boolean.pipe(T.Body("shuffle_at_event_start")),
+      S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
     ),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      EventsUpdateResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(EventsUpdateResponseTurnstileAction).pipe(
+        T.Body("turnstile_action"),
+      ),
     ),
     turnstileMode: S.optional(
-      EventsUpdateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(EventsUpdateResponseTurnstileMode).pipe(
+        T.Body("turnstile_mode"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3037,16 +3225,16 @@ export interface RulesUpdateRequestRulesItem {
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesUpdateRequestRulesItemAction,
     expression: S.String,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestRulesItem",
@@ -3086,28 +3274,28 @@ export const RulesUpdateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {
   /** The ID of the rule. */
-  id?: string;
+  id?: string | null;
   /** The action to take when the expression matches. */
-  action?: RulesUpdateResultItemAction;
+  action?: RulesUpdateResultItemAction | null;
   /** The description of the rule. */
-  description?: string;
+  description?: string | null;
   /** When set to true, the rule is enabled. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Criteria defining when there is a match for the current rule. */
-  expression?: string;
-  lastUpdated?: string;
+  expression?: string | null;
+  lastUpdated?: string | null;
   /** The version of the rule. */
-  version?: string;
+  version?: string | null;
 }
 export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(RulesUpdateResultItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    version: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(RulesUpdateResultItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesUpdateResultItem",
@@ -3135,14 +3323,14 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const UpdateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateRequestAdditionalRoutesItem",
@@ -3166,14 +3354,14 @@ export const UpdateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: UpdateRequestCookieAttributesSamesite | (string & {});
+  samesite?: UpdateRequestCookieAttributesSamesite | (string & {}) | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: UpdateRequestCookieAttributesSecure | (string & {});
+  secure?: UpdateRequestCookieAttributesSecure | (string & {}) | null;
 }
 export const UpdateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(UpdateRequestCookieAttributesSamesite),
-    secure: S.optional(UpdateRequestCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(UpdateRequestCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(UpdateRequestCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "UpdateRequestCookieAttributes",
@@ -3263,41 +3451,42 @@ export interface UpdateWaitingRoomRequest {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
   totalActiveUsers: number;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: UpdateRequestAdditionalRoutesList;
+  additionalRoutes?: UpdateRequestAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: UpdateRequestCookieAttributes;
+  cookieAttributes?: UpdateRequestCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
+  cookieSuffix?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
   defaultTemplateLanguage?:
     | UpdateRequestDefaultTemplateLanguage
-    | (string & {});
+    | (string & {})
+    | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: UpdateRequestEnabledOriginCommandsList;
+  enabledOriginCommands?: UpdateRequestEnabledOriginCommandsList | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
+  jsonResponseEnabled?: boolean | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: UpdateRequestQueueingMethod | (string & {});
+  queueingMethod?: UpdateRequestQueueingMethod | (string & {}) | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: UpdateRequestQueueingStatusCode | (number & {});
+  queueingStatusCode?: UpdateRequestQueueingStatusCode | (number & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: UpdateRequestTurnstileAction | (string & {});
+  turnstileAction?: UpdateRequestTurnstileAction | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: UpdateRequestTurnstileMode | (string & {});
+  turnstileMode?: UpdateRequestTurnstileMode | (string & {}) | null;
 }
 export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3308,45 +3497,53 @@ export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
     totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
     additionalRoutes: S.optional(
-      UpdateRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(UpdateRequestAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      UpdateRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(UpdateRequestCookieAttributes).pipe(T.Body("cookie_attributes")),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      UpdateRequestDefaultTemplateLanguage.pipe(
+      S.NullOr(UpdateRequestDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      UpdateRequestEnabledOriginCommandsList.pipe(
+      S.NullOr(UpdateRequestEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      UpdateRequestQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(UpdateRequestQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      UpdateRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(UpdateRequestQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
     turnstileAction: S.optional(
-      UpdateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(UpdateRequestTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      UpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(UpdateRequestTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   })
     .pipe(
@@ -3363,14 +3560,14 @@ export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateResponseAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
+  host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
 }
 export const UpdateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
+    path: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateResponseAdditionalRoutesItem",
@@ -3394,14 +3591,14 @@ export const UpdateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: UpdateResponseCookieAttributesSamesite;
+  samesite?: UpdateResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: UpdateResponseCookieAttributesSecure;
+  secure?: UpdateResponseCookieAttributesSecure | null;
 }
 export const UpdateResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    samesite: S.optional(UpdateResponseCookieAttributesSamesite),
-    secure: S.optional(UpdateResponseCookieAttributesSecure),
+    samesite: S.optional(S.NullOr(UpdateResponseCookieAttributesSamesite)),
+    secure: S.optional(S.NullOr(UpdateResponseCookieAttributesSecure)),
   }),
 ).annotate({
   identifier: "UpdateResponseCookieAttributes",
@@ -3479,113 +3676,125 @@ export const UpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWaitingRoomResponse {
-  id?: string;
+  id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: UpdateResponseAdditionalRoutesList;
+  additionalRoutes?: UpdateResponseAdditionalRoutesList | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: UpdateResponseCookieAttributes;
+  cookieAttributes?: UpdateResponseCookieAttributes | null;
   /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
+  cookieSuffix?: string | null;
+  createdOn?: string | null;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
+  customPageHtml?: string | null;
   /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: UpdateResponseDefaultTemplateLanguage;
+  defaultTemplateLanguage?: UpdateResponseDefaultTemplateLanguage | null;
   /** A note that you can use to add more details about the waiting room. */
-  description?: string;
+  description?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
+  disableSessionRenewal?: boolean | null;
   /** A list of enabled origin commands. */
-  enabledOriginCommands?: UpdateResponseEnabledOriginCommandsList;
+  enabledOriginCommands?: UpdateResponseEnabledOriginCommandsList | null;
   /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
+  host?: string | null;
   /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
+  jsonResponseEnabled?: boolean | null;
+  modifiedOn?: string | null;
   /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
+  name?: string | null;
   /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
+  newUsersPerMinute?: number | null;
   /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
+  nextEventPrequeueStartTime?: string | null;
   /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
+  nextEventStartTime?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
+  path?: string | null;
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
+  queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: UpdateResponseQueueingMethod;
+  queueingMethod?: UpdateResponseQueueingMethod | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: UpdateResponseQueueingStatusCode;
+  queueingStatusCode?: UpdateResponseQueueingStatusCode | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
+  sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
+  totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: UpdateResponseTurnstileAction;
+  turnstileAction?: UpdateResponseTurnstileAction | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: UpdateResponseTurnstileMode;
+  turnstileMode?: UpdateResponseTurnstileMode | null;
 }
 export const UpdateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
-      UpdateResponseAdditionalRoutesList.pipe(T.Body("additional_routes")),
+      S.NullOr(UpdateResponseAdditionalRoutesList).pipe(
+        T.Body("additional_routes"),
+      ),
     ),
     cookieAttributes: S.optional(
-      UpdateResponseCookieAttributes.pipe(T.Body("cookie_attributes")),
+      S.NullOr(UpdateResponseCookieAttributes).pipe(
+        T.Body("cookie_attributes"),
+      ),
     ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(
+      S.NullOr(S.String).pipe(T.Body("custom_page_html")),
+    ),
     defaultTemplateLanguage: S.optional(
-      UpdateResponseDefaultTemplateLanguage.pipe(
+      S.NullOr(UpdateResponseDefaultTemplateLanguage).pipe(
         T.Body("default_template_language"),
       ),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
+      S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
     ),
     enabledOriginCommands: S.optional(
-      UpdateResponseEnabledOriginCommandsList.pipe(
+      S.NullOr(UpdateResponseEnabledOriginCommandsList).pipe(
         T.Body("enabled_origin_commands"),
       ),
     ),
-    host: S.optional(S.String),
+    host: S.optional(S.NullOr(S.String)),
     jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
     newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
+      S.NullOr(S.Number).pipe(T.Body("new_users_per_minute")),
     ),
     nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
     ),
     nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
+      S.NullOr(S.String).pipe(T.Body("next_event_start_time")),
     ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    path: S.optional(S.NullOr(S.String)),
+    queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
     queueingMethod: S.optional(
-      UpdateResponseQueueingMethod.pipe(T.Body("queueing_method")),
+      S.NullOr(UpdateResponseQueueingMethod).pipe(T.Body("queueing_method")),
     ),
     queueingStatusCode: S.optional(
-      UpdateResponseQueueingStatusCode.pipe(T.Body("queueing_status_code")),
+      S.NullOr(UpdateResponseQueueingStatusCode).pipe(
+        T.Body("queueing_status_code"),
+      ),
     ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    sessionDuration: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_duration")),
+    ),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    totalActiveUsers: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("total_active_users")),
+    ),
     turnstileAction: S.optional(
-      UpdateResponseTurnstileAction.pipe(T.Body("turnstile_action")),
+      S.NullOr(UpdateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
     ),
     turnstileMode: S.optional(
-      UpdateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
+      S.NullOr(UpdateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

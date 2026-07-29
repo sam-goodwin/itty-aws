@@ -221,7 +221,8 @@ export const AttributesMap = /*@__PURE__*/ S.Record(
 );
 export type VehicleAssociationBehavior =
   | "CreateIotThing"
-  | "ValidateIotThingExists";
+  | "ValidateIotThingExists"
+  | (string & {});
 export const VehicleAssociationBehavior = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -236,12 +237,17 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ResourceIdentifier = string;
-export type TimeUnit = "MILLISECOND" | "SECOND" | "MINUTE" | "HOUR";
+export type TimeUnit =
+  | "MILLISECOND"
+  | "SECOND"
+  | "MINUTE"
+  | "HOUR"
+  | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
 
 export type PositiveInteger = number;
 export interface TimePeriod {
-  unit: TimeUnit | (string & {});
+  unit: TimeUnit;
   value: number;
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
@@ -289,7 +295,7 @@ export interface CreateVehicleRequestItem {
   modelManifestArn: string;
   decoderManifestArn: string;
   attributes?: { [key: string]: string | undefined };
-  associationBehavior?: VehicleAssociationBehavior | (string & {});
+  associationBehavior?: VehicleAssociationBehavior;
   tags?: Tag[];
   stateTemplates?: StateTemplateAssociation[];
 }
@@ -373,7 +379,7 @@ export const BatchCreateVehicleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateVehicleResponse",
 }) as any as S.Schema<BatchCreateVehicleResponse>;
-export type UpdateMode = "Overwrite" | "Merge";
+export type UpdateMode = "Overwrite" | "Merge" | (string & {});
 export const UpdateMode = /*@__PURE__*/ S.String;
 
 export type StateTemplateAssociationIdentifiers = string[];
@@ -385,7 +391,7 @@ export interface UpdateVehicleRequestItem {
   modelManifestArn?: string;
   decoderManifestArn?: string;
   attributes?: { [key: string]: string | undefined };
-  attributeUpdateMode?: UpdateMode | (string & {});
+  attributeUpdateMode?: UpdateMode;
   stateTemplatesToAdd?: StateTemplateAssociation[];
   stateTemplatesToRemove?: string[];
   stateTemplatesToUpdate?: StateTemplateAssociation[];
@@ -469,13 +475,13 @@ export const BatchUpdateVehicleResponse = /*@__PURE__*/ S.suspend(() =>
 export type CampaignName = string;
 export type Description = string;
 export type Uint32 = number;
-export type DiagnosticsMode = "OFF" | "SEND_ACTIVE_DTCS";
+export type DiagnosticsMode = "OFF" | "SEND_ACTIVE_DTCS" | (string & {});
 export const DiagnosticsMode = /*@__PURE__*/ S.String;
 
-export type SpoolingMode = "OFF" | "TO_DISK";
+export type SpoolingMode = "OFF" | "TO_DISK" | (string & {});
 export const SpoolingMode = /*@__PURE__*/ S.String;
 
-export type Compression = "OFF" | "SNAPPY";
+export type Compression = "OFF" | "SNAPPY" | (string & {});
 export const Compression = /*@__PURE__*/ S.String;
 
 export type Priority = number;
@@ -510,14 +516,14 @@ export const TimeBasedCollectionScheme = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeBasedCollectionScheme",
 }) as any as S.Schema<TimeBasedCollectionScheme>;
 export type EventExpression = string | redacted.Redacted<string>;
-export type TriggerMode = "ALWAYS" | "RISING_EDGE";
+export type TriggerMode = "ALWAYS" | "RISING_EDGE" | (string & {});
 export const TriggerMode = /*@__PURE__*/ S.String;
 
 export type LanguageVersion = number;
 export interface ConditionBasedCollectionScheme {
   expression: string | redacted.Redacted<string>;
   minimumTriggerIntervalMs?: number;
-  triggerMode?: TriggerMode | (string & {});
+  triggerMode?: TriggerMode;
   conditionLanguageVersion?: number;
 }
 export const ConditionBasedCollectionScheme = /*@__PURE__*/ S.suspend(() =>
@@ -547,17 +553,17 @@ export type NodePath = string;
 export type DataExtraDimensionNodePathList = string[];
 export const DataExtraDimensionNodePathList = /*@__PURE__*/ S.Array(S.String);
 export type S3BucketArn = string;
-export type DataFormat = "JSON" | "PARQUET";
+export type DataFormat = "JSON" | "PARQUET" | (string & {});
 export const DataFormat = /*@__PURE__*/ S.String;
 
-export type StorageCompressionFormat = "NONE" | "GZIP";
+export type StorageCompressionFormat = "NONE" | "GZIP" | (string & {});
 export const StorageCompressionFormat = /*@__PURE__*/ S.String;
 
 export type Prefix = string;
 export interface S3Config {
   bucketArn: string;
-  dataFormat?: DataFormat | (string & {});
-  storageCompressionFormat?: StorageCompressionFormat | (string & {});
+  dataFormat?: DataFormat;
+  storageCompressionFormat?: StorageCompressionFormat;
   prefix?: string;
 }
 export const S3Config = /*@__PURE__*/ S.suspend(() =>
@@ -610,12 +616,12 @@ export type DataDestinationConfigs = DataDestinationConfig[];
 export const DataDestinationConfigs = /*@__PURE__*/ S.Array(
   DataDestinationConfig,
 );
-export type StorageMaximumSizeUnit = "MB" | "GB" | "TB";
+export type StorageMaximumSizeUnit = "MB" | "GB" | "TB" | (string & {});
 export const StorageMaximumSizeUnit = /*@__PURE__*/ S.String;
 
 export type StorageMaximumSizeValue = number;
 export interface StorageMaximumSize {
-  unit: StorageMaximumSizeUnit | (string & {});
+  unit: StorageMaximumSizeUnit;
   value: number;
 }
 export const StorageMaximumSize = /*@__PURE__*/ S.suspend(() =>
@@ -624,12 +630,16 @@ export const StorageMaximumSize = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageMaximumSize",
 }) as any as S.Schema<StorageMaximumSize>;
 export type StorageLocation = string | redacted.Redacted<string>;
-export type StorageMinimumTimeToLiveUnit = "HOURS" | "DAYS" | "WEEKS";
+export type StorageMinimumTimeToLiveUnit =
+  | "HOURS"
+  | "DAYS"
+  | "WEEKS"
+  | (string & {});
 export const StorageMinimumTimeToLiveUnit = /*@__PURE__*/ S.String;
 
 export type StorageMinimumTimeToLiveValue = number;
 export interface StorageMinimumTimeToLive {
-  unit: StorageMinimumTimeToLiveUnit | (string & {});
+  unit: StorageMinimumTimeToLiveUnit;
   value: number;
 }
 export const StorageMinimumTimeToLive = /*@__PURE__*/ S.suspend(() =>
@@ -689,7 +699,7 @@ export const TimeBasedSignalFetchConfig = /*@__PURE__*/ S.suspend(() =>
 export type FetchConfigEventExpression = string | redacted.Redacted<string>;
 export interface ConditionBasedSignalFetchConfig {
   conditionExpression: string | redacted.Redacted<string>;
-  triggerMode: TriggerMode | (string & {});
+  triggerMode: TriggerMode;
 }
 export const ConditionBasedSignalFetchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditionExpression: SensitiveString, triggerMode: TriggerMode }),
@@ -734,9 +744,9 @@ export interface CreateCampaignRequest {
   startTime?: Date;
   expiryTime?: Date;
   postTriggerCollectionDuration?: number;
-  diagnosticsMode?: DiagnosticsMode | (string & {});
-  spoolingMode?: SpoolingMode | (string & {});
-  compression?: Compression | (string & {});
+  diagnosticsMode?: DiagnosticsMode;
+  spoolingMode?: SpoolingMode;
+  compression?: Compression;
   priority?: number;
   signalsToCollect?: SignalInformation[];
   collectionScheme: CollectionScheme;
@@ -795,13 +805,14 @@ export type SignalDecoderType =
   | "CAN_SIGNAL"
   | "OBD_SIGNAL"
   | "MESSAGE_SIGNAL"
-  | "CUSTOM_DECODING_SIGNAL";
+  | "CUSTOM_DECODING_SIGNAL"
+  | (string & {});
 export const SignalDecoderType = /*@__PURE__*/ S.String;
 
 export type InterfaceId = string;
 export type NonNegativeInteger = number;
 export type CanSignalName = string;
-export type SignalValueType = "INTEGER" | "FLOATING_POINT";
+export type SignalValueType = "INTEGER" | "FLOATING_POINT" | (string & {});
 export const SignalValueType = /*@__PURE__*/ S.String;
 
 export interface CanSignal {
@@ -813,7 +824,7 @@ export interface CanSignal {
   factor: number;
   length: number;
   name?: string;
-  signalValueType?: SignalValueType | (string & {});
+  signalValueType?: SignalValueType;
 }
 export const CanSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -841,7 +852,7 @@ export interface ObdSignal {
   bitRightShift?: number;
   bitMaskLength?: number;
   isSigned?: boolean;
-  signalValueType?: SignalValueType | (string & {});
+  signalValueType?: SignalValueType;
 }
 export const ObdSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -874,12 +885,13 @@ export type ROS2PrimitiveType =
   | "INT64"
   | "UINT64"
   | "STRING"
-  | "WSTRING";
+  | "WSTRING"
+  | (string & {});
 export const ROS2PrimitiveType = /*@__PURE__*/ S.String;
 
 export type MaxStringSize = number;
 export interface ROS2PrimitiveMessageDefinition {
-  primitiveType: ROS2PrimitiveType | (string & {});
+  primitiveType: ROS2PrimitiveType;
   offset?: number;
   scaling?: number;
   upperBound?: number;
@@ -904,13 +916,14 @@ export type StructureMessageName = string;
 export type StructuredMessageListType =
   | "FIXED_CAPACITY"
   | "DYNAMIC_UNBOUNDED_CAPACITY"
-  | "DYNAMIC_BOUNDED_CAPACITY";
+  | "DYNAMIC_BOUNDED_CAPACITY"
+  | (string & {});
 export const StructuredMessageListType = /*@__PURE__*/ S.String;
 
 export interface StructuredMessageListDefinition {
   name: string;
   memberType: StructuredMessage;
-  listType: StructuredMessageListType | (string & {});
+  listType: StructuredMessageListType;
   capacity?: number;
 }
 export const StructuredMessageListDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -996,7 +1009,7 @@ export const CustomDecodingSignal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDecodingSignal>;
 export interface SignalDecoder {
   fullyQualifiedName: string;
-  type: SignalDecoderType | (string & {});
+  type: SignalDecoderType;
   interfaceId: string;
   canSignal?: CanSignal;
   obdSignal?: ObdSignal;
@@ -1020,7 +1033,8 @@ export type NetworkInterfaceType =
   | "CAN_INTERFACE"
   | "OBD_INTERFACE"
   | "VEHICLE_MIDDLEWARE"
-  | "CUSTOM_DECODING_INTERFACE";
+  | "CUSTOM_DECODING_INTERFACE"
+  | (string & {});
 export const NetworkInterfaceType = /*@__PURE__*/ S.String;
 
 export type CanInterfaceName = string;
@@ -1061,12 +1075,12 @@ export const ObdInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ObdInterface" }) as any as S.Schema<ObdInterface>;
 export type VehicleMiddlewareName = string;
-export type VehicleMiddlewareProtocol = "ROS_2";
+export type VehicleMiddlewareProtocol = "ROS_2" | (string & {});
 export const VehicleMiddlewareProtocol = /*@__PURE__*/ S.String;
 
 export interface VehicleMiddleware {
   name: string;
-  protocolName: VehicleMiddlewareProtocol | (string & {});
+  protocolName: VehicleMiddlewareProtocol;
 }
 export const VehicleMiddleware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, protocolName: VehicleMiddlewareProtocol }),
@@ -1084,7 +1098,7 @@ export const CustomDecodingInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDecodingInterface>;
 export interface NetworkInterface {
   interfaceId: string;
-  type: NetworkInterfaceType | (string & {});
+  type: NetworkInterfaceType;
   canInterface?: CanInterface;
   obdInterface?: ObdInterface;
   vehicleMiddleware?: VehicleMiddleware;
@@ -1104,7 +1118,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
 export const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
-export type DefaultForUnmappedSignalsType = "CUSTOM_DECODING";
+export type DefaultForUnmappedSignalsType = "CUSTOM_DECODING" | (string & {});
 export const DefaultForUnmappedSignalsType = /*@__PURE__*/ S.String;
 
 export interface CreateDecoderManifestRequest {
@@ -1113,7 +1127,7 @@ export interface CreateDecoderManifestRequest {
   modelManifestArn: string;
   signalDecoders?: SignalDecoder[];
   networkInterfaces?: NetworkInterface[];
-  defaultForUnmappedSignals?: DefaultForUnmappedSignalsType | (string & {});
+  defaultForUnmappedSignals?: DefaultForUnmappedSignalsType;
   tags?: Tag[];
 }
 export const CreateDecoderManifestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1263,12 +1277,13 @@ export type NodeDataType =
   | "UNIX_TIMESTAMP_ARRAY"
   | "UNKNOWN"
   | "STRUCT"
-  | "STRUCT_ARRAY";
+  | "STRUCT_ARRAY"
+  | (string & {});
 export const NodeDataType = /*@__PURE__*/ S.String;
 
 export interface Sensor {
   fullyQualifiedName: string;
-  dataType: NodeDataType | (string & {});
+  dataType: NodeDataType;
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1294,7 +1309,7 @@ export const Sensor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sensor" }) as any as S.Schema<Sensor>;
 export interface Actuator {
   fullyQualifiedName: string;
-  dataType: NodeDataType | (string & {});
+  dataType: NodeDataType;
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1322,7 +1337,7 @@ export const Actuator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Actuator" }) as any as S.Schema<Actuator>;
 export interface Attribute {
   fullyQualifiedName: string;
-  dataType: NodeDataType | (string & {});
+  dataType: NodeDataType;
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1362,13 +1377,13 @@ export const CustomStruct = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
   }),
 ).annotate({ identifier: "CustomStruct" }) as any as S.Schema<CustomStruct>;
-export type NodeDataEncoding = "BINARY" | "TYPED";
+export type NodeDataEncoding = "BINARY" | "TYPED" | (string & {});
 export const NodeDataEncoding = /*@__PURE__*/ S.String;
 
 export interface CustomProperty {
   fullyQualifiedName: string;
-  dataType: NodeDataType | (string & {});
-  dataEncoding?: NodeDataEncoding | (string & {});
+  dataType: NodeDataType;
+  dataEncoding?: NodeDataEncoding;
   description?: string;
   deprecationMessage?: string;
   comment?: string;
@@ -1541,7 +1556,7 @@ export interface CreateVehicleRequest {
   modelManifestArn: string;
   decoderManifestArn: string;
   attributes?: { [key: string]: string | undefined };
-  associationBehavior?: VehicleAssociationBehavior | (string & {});
+  associationBehavior?: VehicleAssociationBehavior;
   tags?: Tag[];
   stateTemplates?: StateTemplateAssociation[];
 }
@@ -1816,7 +1831,8 @@ export type CampaignStatus =
   | "CREATING"
   | "WAITING_FOR_APPROVAL"
   | "RUNNING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const CampaignStatus = /*@__PURE__*/ S.String;
 
 export interface GetCampaignResponse {
@@ -1888,7 +1904,12 @@ export const GetDecoderManifestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDecoderManifestRequest",
 }) as any as S.Schema<GetDecoderManifestRequest>;
-export type ManifestStatus = "ACTIVE" | "DRAFT" | "INVALID" | "VALIDATING";
+export type ManifestStatus =
+  | "ACTIVE"
+  | "DRAFT"
+  | "INVALID"
+  | "VALIDATING"
+  | (string & {});
 export const ManifestStatus = /*@__PURE__*/ S.String;
 
 export interface GetDecoderManifestResponse {
@@ -1930,12 +1951,17 @@ export const GetEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEncryptionConfigurationRequest",
 }) as any as S.Schema<GetEncryptionConfigurationRequest>;
-export type EncryptionStatus = "PENDING" | "SUCCESS" | "FAILURE";
+export type EncryptionStatus =
+  | "PENDING"
+  | "SUCCESS"
+  | "FAILURE"
+  | (string & {});
 export const EncryptionStatus = /*@__PURE__*/ S.String;
 
 export type EncryptionType =
   | "KMS_BASED_ENCRYPTION"
-  | "FLEETWISE_DEFAULT_ENCRYPTION";
+  | "FLEETWISE_DEFAULT_ENCRYPTION"
+  | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -2013,12 +2039,12 @@ export const GetLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLoggingOptionsRequest",
 }) as any as S.Schema<GetLoggingOptionsRequest>;
-export type LogType = "OFF" | "ERROR";
+export type LogType = "OFF" | "ERROR" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
 export type CloudWatchLogGroupName = string;
 export interface CloudWatchLogDeliveryOptions {
-  logType: LogType | (string & {});
+  logType: LogType;
   logGroupName?: string;
 }
 export const CloudWatchLogDeliveryOptions = /*@__PURE__*/ S.suspend(() =>
@@ -2092,7 +2118,8 @@ export type CustomerAccountId = string;
 export type RegistrationStatus =
   | "REGISTRATION_PENDING"
   | "REGISTRATION_SUCCESS"
-  | "REGISTRATION_FAILURE";
+  | "REGISTRATION_FAILURE"
+  | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
 
 export type TimestreamDatabaseName = string;
@@ -2333,7 +2360,8 @@ export type VehicleState =
   | "HEALTHY"
   | "SUSPENDED"
   | "DELETING"
-  | "READY_FOR_CHECKIN";
+  | "READY_FOR_CHECKIN"
+  | (string & {});
 export const VehicleState = /*@__PURE__*/ S.String;
 
 export interface VehicleStatus {
@@ -2461,14 +2489,14 @@ export const ImportSignalCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportSignalCatalogResponse",
 }) as any as S.Schema<ImportSignalCatalogResponse>;
 export type StatusStr = string;
-export type ListResponseScope = "METADATA_ONLY";
+export type ListResponseScope = "METADATA_ONLY" | (string & {});
 export const ListResponseScope = /*@__PURE__*/ S.String;
 
 export interface ListCampaignsRequest {
   nextToken?: string;
   maxResults?: number;
   status?: string;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2573,7 +2601,7 @@ export interface ListDecoderManifestsRequest {
   modelManifestArn?: string;
   nextToken?: string;
   maxResults?: number;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListDecoderManifestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2676,7 +2704,7 @@ export const ListDecoderManifestSignalsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListFleetsRequest {
   nextToken?: string;
   maxResults?: number;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2802,7 +2830,7 @@ export interface ListModelManifestsRequest {
   signalCatalogArn?: string;
   nextToken?: string;
   maxResults?: number;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListModelManifestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2870,14 +2898,15 @@ export type SignalNodeType =
   | "ATTRIBUTE"
   | "BRANCH"
   | "CUSTOM_STRUCT"
-  | "CUSTOM_PROPERTY";
+  | "CUSTOM_PROPERTY"
+  | (string & {});
 export const SignalNodeType = /*@__PURE__*/ S.String;
 
 export interface ListSignalCatalogNodesRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
-  signalNodeType?: SignalNodeType | (string & {});
+  signalNodeType?: SignalNodeType;
 }
 export const ListSignalCatalogNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2966,7 +2995,7 @@ export const ListSignalCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListStateTemplatesRequest {
   nextToken?: string;
   maxResults?: number;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListStateTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3064,7 +3093,7 @@ export interface ListVehiclesRequest {
   attributeValues?: string[];
   nextToken?: string;
   maxResults?: number;
-  listResponseScope?: ListResponseScope | (string & {});
+  listResponseScope?: ListResponseScope;
 }
 export const ListVehiclesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3165,7 +3194,7 @@ export const ListVehiclesInFleetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVehiclesInFleetResponse>;
 export interface PutEncryptionConfigurationRequest {
   kmsKeyId?: string;
-  encryptionType: EncryptionType | (string & {});
+  encryptionType: EncryptionType;
 }
 export const PutEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3331,14 +3360,19 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type UpdateCampaignAction = "APPROVE" | "SUSPEND" | "RESUME" | "UPDATE";
+export type UpdateCampaignAction =
+  | "APPROVE"
+  | "SUSPEND"
+  | "RESUME"
+  | "UPDATE"
+  | (string & {});
 export const UpdateCampaignAction = /*@__PURE__*/ S.String;
 
 export interface UpdateCampaignRequest {
   name: string;
   description?: string;
   dataExtraDimensions?: string[];
-  action: UpdateCampaignAction | (string & {});
+  action: UpdateCampaignAction;
 }
 export const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3386,8 +3420,8 @@ export interface UpdateDecoderManifestRequest {
   networkInterfacesToAdd?: NetworkInterface[];
   networkInterfacesToUpdate?: NetworkInterface[];
   networkInterfacesToRemove?: string[];
-  status?: ManifestStatus | (string & {});
-  defaultForUnmappedSignals?: DefaultForUnmappedSignalsType | (string & {});
+  status?: ManifestStatus;
+  defaultForUnmappedSignals?: DefaultForUnmappedSignalsType;
 }
 export const UpdateDecoderManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3460,7 +3494,7 @@ export interface UpdateModelManifestRequest {
   description?: string;
   nodesToAdd?: string[];
   nodesToRemove?: string[];
-  status?: ManifestStatus | (string & {});
+  status?: ManifestStatus;
 }
 export const UpdateModelManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3579,7 +3613,7 @@ export interface UpdateVehicleRequest {
   modelManifestArn?: string;
   decoderManifestArn?: string;
   attributes?: { [key: string]: string | undefined };
-  attributeUpdateMode?: UpdateMode | (string & {});
+  attributeUpdateMode?: UpdateMode;
   stateTemplatesToAdd?: StateTemplateAssociation[];
   stateTemplatesToRemove?: string[];
   stateTemplatesToUpdate?: StateTemplateAssociation[];
@@ -3621,7 +3655,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {
@@ -3653,7 +3688,8 @@ export type SignalDecoderFailureReason =
   | "NO_SIGNAL_IN_CATALOG_FOR_DECODER_SIGNAL"
   | "SIGNAL_DECODER_INCOMPATIBLE_WITH_SIGNAL_CATALOG"
   | "EMPTY_MESSAGE_SIGNAL"
-  | "CUSTOM_DECODING_SIGNAL_INFO_IS_NULL";
+  | "CUSTOM_DECODING_SIGNAL_INFO_IS_NULL"
+  | (string & {});
 export const SignalDecoderFailureReason = /*@__PURE__*/ S.String;
 
 export interface InvalidSignalDecoder {
@@ -3681,7 +3717,8 @@ export type NetworkInterfaceFailureReason =
   | "OBD_NETWORK_INTERFACE_INFO_IS_NULL"
   | "NETWORK_INTERFACE_TO_REMOVE_ASSOCIATED_WITH_SIGNALS"
   | "VEHICLE_MIDDLEWARE_NETWORK_INTERFACE_INFO_IS_NULL"
-  | "CUSTOM_DECODING_SIGNAL_NETWORK_INTERFACE_INFO_IS_NULL";
+  | "CUSTOM_DECODING_SIGNAL_NETWORK_INTERFACE_INFO_IS_NULL"
+  | (string & {});
 export const NetworkInterfaceFailureReason = /*@__PURE__*/ S.String;
 
 export interface InvalidNetworkInterface {

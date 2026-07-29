@@ -53,27 +53,29 @@ export const ScansBulkCreateRequestBodyItemVisibility = /*@__PURE__*/ S.String;
 export interface ScansBulkCreateRequestBodyItem {
   url: string;
   /** Enable agent readiness checks. */
-  agentReadiness?: boolean;
-  customagent?: string;
+  agentReadiness?: boolean | null;
+  customagent?: string | null;
   /** Set custom headers. */
-  customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap;
-  referer?: string;
+  customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap | null;
+  referer?: string | null;
   /** Take multiple screenshots targeting different device types. */
-  screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList;
+  screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList | null;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
+  visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {}) | null;
 }
 export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
-    agentReadiness: S.optional(S.Boolean),
-    customagent: S.optional(S.String),
-    customHeaders: S.optional(ScansBulkCreateRequestBodyItemCustomHeadersMap),
-    referer: S.optional(S.String),
-    screenshotsResolutions: S.optional(
-      ScansBulkCreateRequestBodyItemScreenshotsResolutionsList,
+    agentReadiness: S.optional(S.NullOr(S.Boolean)),
+    customagent: S.optional(S.NullOr(S.String)),
+    customHeaders: S.optional(
+      S.NullOr(ScansBulkCreateRequestBodyItemCustomHeadersMap),
     ),
-    visibility: S.optional(ScansBulkCreateRequestBodyItemVisibility),
+    referer: S.optional(S.NullOr(S.String)),
+    screenshotsResolutions: S.optional(
+      S.NullOr(ScansBulkCreateRequestBodyItemScreenshotsResolutionsList),
+    ),
+    visibility: S.optional(S.NullOr(ScansBulkCreateRequestBodyItemVisibility)),
   }),
 ).annotate({
   identifier: "ScansBulkCreateRequestBodyItem",
@@ -344,31 +346,31 @@ export interface CreateScanRequest {
   accountId: string;
   url: string;
   /** Enable agent readiness checks. */
-  agentReadiness?: boolean;
+  agentReadiness?: boolean | null;
   /** Country to geo egress from */
-  country?: ScansCreateRequestCountry | (string & {});
-  customagent?: string;
+  country?: ScansCreateRequestCountry | (string & {}) | null;
+  customagent?: string | null;
   /** Set custom headers. */
-  customHeaders?: ScansCreateRequestCustomHeadersMap;
-  referer?: string;
+  customHeaders?: ScansCreateRequestCustomHeadersMap | null;
+  referer?: string | null;
   /** Take multiple screenshots targeting different device types. */
-  screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList;
+  screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList | null;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansCreateRequestVisibility | (string & {});
+  visibility?: ScansCreateRequestVisibility | (string & {}) | null;
 }
 export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     url: S.String,
-    agentReadiness: S.optional(S.Boolean),
-    country: S.optional(ScansCreateRequestCountry),
-    customagent: S.optional(S.String),
-    customHeaders: S.optional(ScansCreateRequestCustomHeadersMap),
-    referer: S.optional(S.String),
+    agentReadiness: S.optional(S.NullOr(S.Boolean)),
+    country: S.optional(S.NullOr(ScansCreateRequestCountry)),
+    customagent: S.optional(S.NullOr(S.String)),
+    customHeaders: S.optional(S.NullOr(ScansCreateRequestCustomHeadersMap)),
+    referer: S.optional(S.NullOr(S.String)),
     screenshotsResolutions: S.optional(
-      ScansCreateRequestScreenshotsResolutionsList,
+      S.NullOr(ScansCreateRequestScreenshotsResolutionsList),
     ),
-    visibility: S.optional(ScansCreateRequestVisibility),
+    visibility: S.optional(S.NullOr(ScansCreateRequestVisibility)),
   })
     .pipe(
       T.Http({
@@ -628,7 +630,7 @@ export interface ScansGetResponseDataRequestsItemRequestRequest {
   mixedContentType: string;
   referrerPolicy: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseDataRequestsItemRequestRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -639,7 +641,7 @@ export const ScansGetResponseDataRequestsItemRequestRequest =
       mixedContentType: S.String,
       referrerPolicy: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "ScansGetResponseDataRequestsItemRequestRequest",
@@ -678,7 +680,7 @@ export interface ScansGetResponseDataRequestsItemRequestRedirectResponse {
   status: number;
   statusText: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseDataRequestsItemRequestRedirectResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -694,7 +696,7 @@ export const ScansGetResponseDataRequestsItemRequestRedirectResponse =
       status: S.Number,
       statusText: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "ScansGetResponseDataRequestsItemRequestRedirectResponse",
@@ -709,10 +711,10 @@ export interface ScansGetResponseDataRequestsItemRequest {
   requestId: string;
   type: string;
   wallTime: number;
-  frameId?: string;
-  loaderId?: string;
-  primaryRequest?: boolean;
-  redirectResponse?: ScansGetResponseDataRequestsItemRequestRedirectResponse;
+  frameId?: string | null;
+  loaderId?: string | null;
+  primaryRequest?: boolean | null;
+  redirectResponse?: ScansGetResponseDataRequestsItemRequestRedirectResponse | null;
 }
 export const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -725,11 +727,11 @@ export const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ S.suspend(
       requestId: S.String,
       type: S.String,
       wallTime: S.Number,
-      frameId: S.optional(S.String),
-      loaderId: S.optional(S.String),
-      primaryRequest: S.optional(S.Boolean),
+      frameId: S.optional(S.NullOr(S.String)),
+      loaderId: S.optional(S.NullOr(S.String)),
+      primaryRequest: S.optional(S.NullOr(S.Boolean)),
       redirectResponse: S.optional(
-        ScansGetResponseDataRequestsItemRequestRedirectResponse,
+        S.NullOr(ScansGetResponseDataRequestsItemRequestRedirectResponse),
       ),
     }),
 ).annotate({
@@ -865,7 +867,7 @@ export interface ScansGetResponseDataRequestsItemResponseResponse {
   status: number;
   statusText: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseDataRequestsItemResponseResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -883,7 +885,7 @@ export const ScansGetResponseDataRequestsItemResponseResponse =
       status: S.Number,
       statusText: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier: "ScansGetResponseDataRequestsItemResponseResponse",
@@ -899,8 +901,8 @@ export interface ScansGetResponseDataRequestsItemResponse {
   response: ScansGetResponseDataRequestsItemResponseResponse;
   size: number;
   type: string;
-  contentAvailable?: boolean;
-  hash?: string;
+  contentAvailable?: boolean | null;
+  hash?: string | null;
 }
 export const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -914,8 +916,8 @@ export const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(
       response: ScansGetResponseDataRequestsItemResponseResponse,
       size: S.Number,
       type: S.String,
-      contentAvailable: S.optional(S.Boolean),
-      hash: S.optional(S.String),
+      contentAvailable: S.optional(S.NullOr(S.Boolean)),
+      hash: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "ScansGetResponseDataRequestsItemResponse",
@@ -1009,13 +1011,15 @@ export const ScansGetResponseDataRequestsItemRequestsList =
 export interface ScansGetResponseDataRequestsItem {
   request: ScansGetResponseDataRequestsItemRequest;
   response: ScansGetResponseDataRequestsItemResponse;
-  requests?: ScansGetResponseDataRequestsItemRequestsList;
+  requests?: ScansGetResponseDataRequestsItemRequestsList | null;
 }
 export const ScansGetResponseDataRequestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: ScansGetResponseDataRequestsItemRequest,
     response: ScansGetResponseDataRequestsItemResponse,
-    requests: S.optional(ScansGetResponseDataRequestsItemRequestsList),
+    requests: S.optional(
+      S.NullOr(ScansGetResponseDataRequestsItemRequestsList),
+    ),
   }),
 ).annotate({
   identifier: "ScansGetResponseDataRequestsItem",
@@ -1333,14 +1337,14 @@ export const ScansGetResponseMetaProcessorsPhishing = /*@__PURE__*/ S.suspend(
 export interface ScansGetResponseMetaProcessorsRadarRankDataItem {
   bucket: string;
   hostname: string;
-  rank?: number;
+  rank?: number | null;
 }
 export const ScansGetResponseMetaProcessorsRadarRankDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucket: S.String,
       hostname: S.String,
-      rank: S.optional(S.Number),
+      rank: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsRadarRankDataItem",
@@ -1469,14 +1473,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1486,20 +1490,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1509,9 +1513,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1519,13 +1523,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -1542,21 +1552,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1581,14 +1593,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1598,20 +1610,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1621,9 +1633,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1631,13 +1643,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -1654,21 +1672,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1693,14 +1713,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1710,20 +1730,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1733,9 +1753,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1743,13 +1763,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -1766,21 +1792,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1825,14 +1853,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1842,20 +1870,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1865,9 +1893,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1875,13 +1903,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -1898,21 +1932,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
@@ -1936,14 +1972,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -1953,20 +1989,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1976,9 +2012,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1986,13 +2022,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2009,21 +2051,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2",
@@ -2047,14 +2091,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2064,20 +2108,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2087,9 +2131,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2097,13 +2141,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2120,21 +2170,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp",
@@ -2158,14 +2210,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2175,20 +2227,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2198,9 +2250,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2208,13 +2260,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2231,21 +2289,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp",
@@ -2269,14 +2329,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2286,20 +2346,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2309,9 +2369,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2319,13 +2379,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2342,21 +2408,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2401,14 +2469,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2418,20 +2486,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2441,9 +2509,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2451,13 +2519,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2474,21 +2548,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2527,14 +2603,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2544,20 +2620,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2567,9 +2643,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2577,13 +2653,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2600,21 +2682,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2639,14 +2723,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2656,20 +2740,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2679,9 +2763,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2689,13 +2773,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2712,21 +2802,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2751,14 +2843,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2768,20 +2860,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2791,9 +2883,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2801,13 +2893,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2824,21 +2922,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2883,14 +2983,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -2900,20 +3000,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2923,9 +3023,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2933,13 +3033,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -2956,21 +3062,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -2995,14 +3103,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3012,20 +3120,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3035,9 +3143,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3045,13 +3153,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3068,21 +3182,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3107,14 +3223,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3124,20 +3240,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3147,9 +3263,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3157,13 +3273,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3180,21 +3302,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3219,14 +3343,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3236,20 +3360,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3259,9 +3383,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3269,13 +3393,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3292,21 +3422,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3331,14 +3463,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3348,20 +3480,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3371,9 +3503,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3381,13 +3513,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3404,21 +3542,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3443,14 +3583,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3460,20 +3600,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3483,9 +3623,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3493,13 +3633,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3516,21 +3662,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3555,14 +3703,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest {
   method: string;
   url: string;
-  headers?: unknown;
+  headers?: unknown | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
       url: S.String,
-      headers: S.optional(S.Unknown),
+      headers: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -3572,20 +3720,20 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse {
   status: number;
   statusText: string;
-  bodyPreview?: string;
-  bodySize?: number;
-  headers?: unknown;
-  redirectedTo?: string;
+  bodyPreview?: string | null;
+  bodySize?: number | null;
+  headers?: unknown | null;
+  redirectedTo?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
       statusText: S.String,
-      bodyPreview: S.optional(S.String),
-      bodySize: S.optional(S.Number),
-      headers: S.optional(S.Unknown),
-      redirectedTo: S.optional(S.String),
+      bodyPreview: S.optional(S.NullOr(S.String)),
+      bodySize: S.optional(S.NullOr(S.Number)),
+      headers: S.optional(S.NullOr(S.Unknown)),
+      redirectedTo: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3595,9 +3743,9 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem {
   action: string;
   label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse;
+  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding | null;
+  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest | null;
+  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3605,13 +3753,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
       action: S.String,
       label: S.String,
       finding: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding,
+        ),
       ),
       request: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest,
+        ),
       ),
       response: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse,
+        ),
       ),
     }),
   ).annotate({
@@ -3628,21 +3782,23 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp {
   status: string;
-  details?: unknown;
-  durationMs?: number;
-  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList;
-  message?: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList | null;
+  message?: string | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
-      details: S.optional(S.Unknown),
-      durationMs: S.optional(S.Number),
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
       evidence: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList,
+        ),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3766,9 +3922,9 @@ export interface ScansGetResponseMetaProcessorsAgentReadiness {
   checks: ScansGetResponseMetaProcessorsAgentReadinessChecks;
   level: number;
   levelName: string;
-  commerceSignals?: ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList;
-  isCommerce?: boolean;
-  nextLevel?: ScansGetResponseMetaProcessorsAgentReadinessNextLevel;
+  commerceSignals?: ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList | null;
+  isCommerce?: boolean | null;
+  nextLevel?: ScansGetResponseMetaProcessorsAgentReadinessNextLevel | null;
 }
 export const ScansGetResponseMetaProcessorsAgentReadiness =
   /*@__PURE__*/ S.suspend(() =>
@@ -3777,11 +3933,13 @@ export const ScansGetResponseMetaProcessorsAgentReadiness =
       level: S.Number,
       levelName: S.String,
       commerceSignals: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList,
+        ),
       ),
-      isCommerce: S.optional(S.Boolean),
+      isCommerce: S.optional(S.NullOr(S.Boolean)),
       nextLevel: S.optional(
-        ScansGetResponseMetaProcessorsAgentReadinessNextLevel,
+        S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessNextLevel),
       ),
     }),
   ).annotate({
@@ -3821,16 +3979,16 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowLi
   ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal {
-  aiInput?: string;
-  aiTrain?: string;
-  search?: string;
+  aiInput?: string | null;
+  aiTrain?: string | null;
+  search?: string | null;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      aiInput: S.optional(S.String.pipe(T.Body("ai-input"))),
-      aiTrain: S.optional(S.String.pipe(T.Body("ai-train"))),
-      search: S.optional(S.String),
+      aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
+      aiTrain: S.optional(S.NullOr(S.String).pipe(T.Body("ai-train"))),
+      search: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3840,8 +3998,8 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSig
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape {
   allow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeAllowList;
   disallow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList;
-  contentSignal?: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal;
-  crawlDelay?: number;
+  contentSignal?: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal | null;
+  crawlDelay?: number | null;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape =
   /*@__PURE__*/ S.suspend(() =>
@@ -3850,9 +4008,11 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape =
       disallow:
         ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList,
       contentSignal: S.optional(
-        ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal,
+        S.NullOr(
+          ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal,
+        ),
       ),
-      crawlDelay: S.optional(S.Number),
+      crawlDelay: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape",
@@ -3882,14 +4042,14 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItem {
   rules: ScansGetResponseMetaProcessorsRobotsTxtDataItemRules;
   sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList;
-  hash?: string;
+  hash?: string | null;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rules: ScansGetResponseMetaProcessorsRobotsTxtDataItemRules,
       sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList,
-      hash: S.optional(S.String),
+      hash: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItem",
@@ -4072,10 +4232,10 @@ export interface ScansGetResponseMetaProcessors {
   phishing: ScansGetResponseMetaProcessorsPhishing;
   radarRank: ScansGetResponseMetaProcessorsRadarRank;
   wappa: ScansGetResponseMetaProcessorsWappa;
-  agentReadiness?: ScansGetResponseMetaProcessorsAgentReadiness;
-  phishingV2?: ScansGetResponseMetaProcessorsPhishingV2;
-  robotsTxt?: ScansGetResponseMetaProcessorsRobotsTxt;
-  urlCategories?: ScansGetResponseMetaProcessorsUrlCategories;
+  agentReadiness?: ScansGetResponseMetaProcessorsAgentReadiness | null;
+  phishingV2?: ScansGetResponseMetaProcessorsPhishingV2 | null;
+  robotsTxt?: ScansGetResponseMetaProcessorsRobotsTxt | null;
+  urlCategories?: ScansGetResponseMetaProcessorsUrlCategories | null;
 }
 export const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4086,12 +4246,18 @@ export const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
     phishing: ScansGetResponseMetaProcessorsPhishing,
     radarRank: ScansGetResponseMetaProcessorsRadarRank,
     wappa: ScansGetResponseMetaProcessorsWappa,
-    agentReadiness: S.optional(ScansGetResponseMetaProcessorsAgentReadiness),
-    phishingV2: S.optional(
-      ScansGetResponseMetaProcessorsPhishingV2.pipe(T.Body("phishing_v2")),
+    agentReadiness: S.optional(
+      S.NullOr(ScansGetResponseMetaProcessorsAgentReadiness),
     ),
-    robotsTxt: S.optional(ScansGetResponseMetaProcessorsRobotsTxt),
-    urlCategories: S.optional(ScansGetResponseMetaProcessorsUrlCategories),
+    phishingV2: S.optional(
+      S.NullOr(ScansGetResponseMetaProcessorsPhishingV2).pipe(
+        T.Body("phishing_v2"),
+      ),
+    ),
+    robotsTxt: S.optional(S.NullOr(ScansGetResponseMetaProcessorsRobotsTxt)),
+    urlCategories: S.optional(
+      S.NullOr(ScansGetResponseMetaProcessorsUrlCategories),
+    ),
   }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessors",
@@ -4142,7 +4308,7 @@ export interface ScansGetResponsePage {
   tlsValidDays: number;
   tlsValidFrom: string;
   url: string;
-  screenshot?: ScansGetResponsePageScreenshot;
+  screenshot?: ScansGetResponsePageScreenshot | null;
 }
 export const ScansGetResponsePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4162,7 +4328,7 @@ export const ScansGetResponsePage = /*@__PURE__*/ S.suspend(() =>
     tlsValidDays: S.Number,
     tlsValidFrom: S.String,
     url: S.String,
-    screenshot: S.optional(ScansGetResponsePageScreenshot),
+    screenshot: S.optional(S.NullOr(ScansGetResponsePageScreenshot)),
   }),
 ).annotate({
   identifier: "ScansGetResponsePage",
@@ -4304,7 +4470,7 @@ export interface ScansGetResponseStatsIpStatsItem {
   redirects: number;
   requests: number;
   size: number;
-  count?: number;
+  count?: number | null;
 }
 export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4319,7 +4485,7 @@ export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
     redirects: S.Number,
     requests: S.Number,
     size: S.Number,
-    count: S.optional(S.Number),
+    count: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ScansGetResponseStatsIpStatsItem",
@@ -4551,14 +4717,14 @@ export const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
 
 export interface ScansGetResponseTaskOptions {
   /** Custom headers set. */
-  customHeaders?: unknown;
-  screenshotsResolutions?: ScansGetResponseTaskOptionsScreenshotsResolutionsList;
+  customHeaders?: unknown | null;
+  screenshotsResolutions?: ScansGetResponseTaskOptionsScreenshotsResolutionsList | null;
 }
 export const ScansGetResponseTaskOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customHeaders: S.optional(S.Unknown),
+    customHeaders: S.optional(S.NullOr(S.Unknown)),
     screenshotsResolutions: S.optional(
-      ScansGetResponseTaskOptionsScreenshotsResolutionsList,
+      S.NullOr(ScansGetResponseTaskOptionsScreenshotsResolutionsList),
     ),
   }),
 ).annotate({
@@ -4747,14 +4913,14 @@ export const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ S.suspend(
 export interface ScansHarResponseLogEntriesItemResponseContent {
   mimeType: string;
   size: number;
-  compression?: number;
+  compression?: number | null;
 }
 export const ScansHarResponseLogEntriesItemResponseContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mimeType: S.String,
       size: S.Number,
-      compression: S.optional(S.Number),
+      compression: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "ScansHarResponseLogEntriesItemResponseContent",

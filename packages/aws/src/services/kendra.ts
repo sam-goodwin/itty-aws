@@ -157,12 +157,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 export type ExperienceId = string;
 export type IndexId = string;
 export type EntityId = string;
-export type EntityType = "USER" | "GROUP";
+export type EntityType = "USER" | "GROUP" | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface EntityConfiguration {
   EntityId: string;
-  EntityType: EntityType | (string & {});
+  EntityType: EntityType;
 }
 export const EntityConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EntityId: S.String, EntityType: EntityType }),
@@ -215,12 +215,12 @@ export const AssociateEntitiesToExperienceResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateEntitiesToExperienceResponse",
 }) as any as S.Schema<AssociateEntitiesToExperienceResponse>;
-export type Persona = "OWNER" | "VIEWER";
+export type Persona = "OWNER" | "VIEWER" | (string & {});
 export const Persona = /*@__PURE__*/ S.String;
 
 export interface EntityPersonaConfiguration {
   EntityId: string;
-  Persona: Persona | (string & {});
+  Persona: Persona;
 }
 export const EntityPersonaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EntityId: S.String, Persona: Persona }),
@@ -290,7 +290,7 @@ export const BatchDeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteDocumentRequest",
 }) as any as S.Schema<BatchDeleteDocumentRequest>;
-export type ErrorCode = "InternalError" | "InvalidRequest";
+export type ErrorCode = "InternalError" | "InvalidRequest" | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchDeleteDocumentResponseFailedDocument {
@@ -447,7 +447,8 @@ export type DocumentStatus =
   | "INDEXED"
   | "UPDATED"
   | "FAILED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const DocumentStatus = /*@__PURE__*/ S.String;
 
 export interface Status {
@@ -490,16 +491,16 @@ export const S3Path = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bucket: S.String, Key: S.String }),
 ).annotate({ identifier: "S3Path" }) as any as S.Schema<S3Path>;
 export type PrincipalName = string;
-export type PrincipalType = "USER" | "GROUP";
+export type PrincipalType = "USER" | "GROUP" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
-export type ReadAccessType = "ALLOW" | "DENY";
+export type ReadAccessType = "ALLOW" | "DENY" | (string & {});
 export const ReadAccessType = /*@__PURE__*/ S.String;
 
 export interface Principal {
   Name: string;
-  Type: PrincipalType | (string & {});
-  Access: ReadAccessType | (string & {});
+  Type: PrincipalType;
+  Access: ReadAccessType;
   DataSourceId?: string;
 }
 export const Principal = /*@__PURE__*/ S.suspend(() =>
@@ -536,7 +537,8 @@ export type ContentType =
   | "MS_EXCEL"
   | "CSV"
   | "JSON"
-  | "MD";
+  | "MD"
+  | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
 export type AccessControlConfigurationId = string;
@@ -548,7 +550,7 @@ export interface Document {
   Attributes?: DocumentAttribute[];
   AccessControlList?: Principal[];
   HierarchicalAccessControlList?: HierarchicalPrincipal[];
-  ContentType?: ContentType | (string & {});
+  ContentType?: ContentType;
   AccessControlConfigurationId?: string;
 }
 export const Document = /*@__PURE__*/ S.suspend(() =>
@@ -577,12 +579,13 @@ export type ConditionOperator =
   | "NotContains"
   | "Exists"
   | "NotExists"
-  | "BeginsWith";
+  | "BeginsWith"
+  | (string & {});
 export const ConditionOperator = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeCondition {
   ConditionDocumentAttributeKey: string;
-  Operator: ConditionOperator | (string & {});
+  Operator: ConditionOperator;
   ConditionOnValue?: DocumentAttributeValue;
 }
 export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
@@ -783,7 +786,8 @@ export type DataSourceType =
   | "JIRA"
   | "GITHUB"
   | "ALFRESCO"
-  | "TEMPLATE";
+  | "TEMPLATE"
+  | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 export type DataSourceInclusionsExclusionsStringsMember = string;
@@ -831,7 +835,8 @@ export type SharePointVersion =
   | "SHAREPOINT_2013"
   | "SHAREPOINT_2016"
   | "SHAREPOINT_ONLINE"
-  | "SHAREPOINT_2019";
+  | "SHAREPOINT_2019"
+  | (string & {});
 export const SharePointVersion = /*@__PURE__*/ S.String;
 
 export type Url = string;
@@ -874,7 +879,10 @@ export type DataSourceToIndexFieldMappingList = DataSourceToIndexFieldMapping[];
 export const DataSourceToIndexFieldMappingList = /*@__PURE__*/ S.Array(
   DataSourceToIndexFieldMapping,
 );
-export type SharePointOnlineAuthenticationType = "HTTP_BASIC" | "OAUTH2";
+export type SharePointOnlineAuthenticationType =
+  | "HTTP_BASIC"
+  | "OAUTH2"
+  | (string & {});
 export const SharePointOnlineAuthenticationType = /*@__PURE__*/ S.String;
 
 export type Host = string;
@@ -894,7 +902,7 @@ export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyConfiguration",
 }) as any as S.Schema<ProxyConfiguration>;
 export interface SharePointConfiguration {
-  SharePointVersion: SharePointVersion | (string & {});
+  SharePointVersion: SharePointVersion;
   Urls: string[];
   SecretArn: string;
   CrawlAttachments?: boolean;
@@ -906,7 +914,7 @@ export interface SharePointConfiguration {
   DocumentTitleFieldName?: string;
   DisableLocalGroups?: boolean;
   SslCertificateS3Path?: S3Path;
-  AuthenticationType?: SharePointOnlineAuthenticationType | (string & {});
+  AuthenticationType?: SharePointOnlineAuthenticationType;
   ProxyConfiguration?: ProxyConfiguration;
 }
 export const SharePointConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -933,7 +941,8 @@ export type DatabaseEngineType =
   | "RDS_AURORA_MYSQL"
   | "RDS_AURORA_POSTGRESQL"
   | "RDS_MYSQL"
-  | "RDS_POSTGRESQL";
+  | "RDS_POSTGRESQL"
+  | (string & {});
 export const DatabaseEngineType = /*@__PURE__*/ S.String;
 
 export type DatabaseHost = string;
@@ -987,13 +996,14 @@ export const AclConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AclConfiguration",
 }) as any as S.Schema<AclConfiguration>;
-export type QueryIdentifiersEnclosingOption = "DOUBLE_QUOTES" | "NONE";
+export type QueryIdentifiersEnclosingOption =
+  | "DOUBLE_QUOTES"
+  | "NONE"
+  | (string & {});
 export const QueryIdentifiersEnclosingOption = /*@__PURE__*/ S.String;
 
 export interface SqlConfiguration {
-  QueryIdentifiersEnclosingOption?:
-    | QueryIdentifiersEnclosingOption
-    | (string & {});
+  QueryIdentifiersEnclosingOption?: QueryIdentifiersEnclosingOption;
 }
 export const SqlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1005,7 +1015,7 @@ export const SqlConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlConfiguration",
 }) as any as S.Schema<SqlConfiguration>;
 export interface DatabaseConfiguration {
-  DatabaseEngineType: DatabaseEngineType | (string & {});
+  DatabaseEngineType: DatabaseEngineType;
   ConnectionConfiguration: ConnectionConfiguration;
   VpcConfiguration?: DataSourceVpcConfiguration;
   ColumnConfiguration: ColumnConfiguration;
@@ -1041,11 +1051,12 @@ export type SalesforceStandardObjectName =
   | "PROFILE"
   | "SOLUTION"
   | "TASK"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const SalesforceStandardObjectName = /*@__PURE__*/ S.String;
 
 export interface SalesforceStandardObjectConfiguration {
-  Name: SalesforceStandardObjectName | (string & {});
+  Name: SalesforceStandardObjectName;
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
   FieldMappings?: DataSourceToIndexFieldMapping[];
@@ -1069,13 +1080,12 @@ export const SalesforceStandardObjectConfigurationList = /*@__PURE__*/ S.Array(
 export type SalesforceKnowledgeArticleState =
   | "DRAFT"
   | "PUBLISHED"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const SalesforceKnowledgeArticleState = /*@__PURE__*/ S.String;
 
-export type SalesforceKnowledgeArticleStateList = (
-  | SalesforceKnowledgeArticleState
-  | (string & {})
-)[];
+export type SalesforceKnowledgeArticleStateList =
+  SalesforceKnowledgeArticleState[];
 export const SalesforceKnowledgeArticleStateList = /*@__PURE__*/ S.Array(
   SalesforceKnowledgeArticleState,
 );
@@ -1117,7 +1127,7 @@ export type SalesforceCustomKnowledgeArticleTypeConfigurationList =
 export const SalesforceCustomKnowledgeArticleTypeConfigurationList =
   /*@__PURE__*/ S.Array(SalesforceCustomKnowledgeArticleTypeConfiguration);
 export interface SalesforceKnowledgeArticleConfiguration {
-  IncludedStates: (SalesforceKnowledgeArticleState | (string & {}))[];
+  IncludedStates: SalesforceKnowledgeArticleState[];
   StandardKnowledgeArticleTypeConfiguration?: SalesforceStandardKnowledgeArticleTypeConfiguration;
   CustomKnowledgeArticleTypeConfigurations?: SalesforceCustomKnowledgeArticleTypeConfiguration[];
 }
@@ -1137,13 +1147,12 @@ export const SalesforceKnowledgeArticleConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SalesforceKnowledgeArticleConfiguration>;
 export type SalesforceChatterFeedIncludeFilterType =
   | "ACTIVE_USER"
-  | "STANDARD_USER";
+  | "STANDARD_USER"
+  | (string & {});
 export const SalesforceChatterFeedIncludeFilterType = /*@__PURE__*/ S.String;
 
-export type SalesforceChatterFeedIncludeFilterTypes = (
-  | SalesforceChatterFeedIncludeFilterType
-  | (string & {})
-)[];
+export type SalesforceChatterFeedIncludeFilterTypes =
+  SalesforceChatterFeedIncludeFilterType[];
 export const SalesforceChatterFeedIncludeFilterTypes = /*@__PURE__*/ S.Array(
   SalesforceChatterFeedIncludeFilterType,
 );
@@ -1151,10 +1160,7 @@ export interface SalesforceChatterFeedConfiguration {
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
   FieldMappings?: DataSourceToIndexFieldMapping[];
-  IncludeFilterTypes?: (
-    | SalesforceChatterFeedIncludeFilterType
-    | (string & {})
-  )[];
+  IncludeFilterTypes?: SalesforceChatterFeedIncludeFilterType[];
 }
 export const SalesforceChatterFeedConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1252,7 +1258,7 @@ export const OneDriveConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "OneDriveConfiguration",
 }) as any as S.Schema<OneDriveConfiguration>;
 export type ServiceNowHostUrl = string;
-export type ServiceNowBuildVersionType = "LONDON" | "OTHERS";
+export type ServiceNowBuildVersionType = "LONDON" | "OTHERS" | (string & {});
 export const ServiceNowBuildVersionType = /*@__PURE__*/ S.String;
 
 export type ServiceNowKnowledgeArticleFilterQuery = string;
@@ -1308,16 +1314,19 @@ export const ServiceNowServiceCatalogConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ServiceNowServiceCatalogConfiguration",
 }) as any as S.Schema<ServiceNowServiceCatalogConfiguration>;
-export type ServiceNowAuthenticationType = "HTTP_BASIC" | "OAUTH2";
+export type ServiceNowAuthenticationType =
+  | "HTTP_BASIC"
+  | "OAUTH2"
+  | (string & {});
 export const ServiceNowAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface ServiceNowConfiguration {
   HostUrl: string;
   SecretArn: string;
-  ServiceNowBuildVersion: ServiceNowBuildVersionType | (string & {});
+  ServiceNowBuildVersion: ServiceNowBuildVersionType;
   KnowledgeArticleConfiguration?: ServiceNowKnowledgeArticleConfiguration;
   ServiceCatalogConfiguration?: ServiceNowServiceCatalogConfiguration;
-  AuthenticationType?: ServiceNowAuthenticationType | (string & {});
+  AuthenticationType?: ServiceNowAuthenticationType;
 }
 export const ServiceNowConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1335,7 +1344,7 @@ export const ServiceNowConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceNowConfiguration",
 }) as any as S.Schema<ServiceNowConfiguration>;
-export type ConfluenceVersion = "CLOUD" | "SERVER";
+export type ConfluenceVersion = "CLOUD" | "SERVER" | (string & {});
 export const ConfluenceVersion = /*@__PURE__*/ S.String;
 
 export type ConfluenceSpaceIdentifier = string;
@@ -1345,11 +1354,12 @@ export type ConfluenceSpaceFieldName =
   | "DISPLAY_URL"
   | "ITEM_TYPE"
   | "SPACE_KEY"
-  | "URL";
+  | "URL"
+  | (string & {});
 export const ConfluenceSpaceFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceSpaceToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceSpaceFieldName | (string & {});
+  DataSourceFieldName?: ConfluenceSpaceFieldName;
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1397,11 +1407,12 @@ export type ConfluencePageFieldName =
   | "SPACE_KEY"
   | "SPACE_NAME"
   | "URL"
-  | "VERSION";
+  | "VERSION"
+  | (string & {});
 export const ConfluencePageFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluencePageToIndexFieldMapping {
-  DataSourceFieldName?: ConfluencePageFieldName | (string & {});
+  DataSourceFieldName?: ConfluencePageFieldName;
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1436,11 +1447,12 @@ export type ConfluenceBlogFieldName =
   | "SPACE_KEY"
   | "SPACE_NAME"
   | "URL"
-  | "VERSION";
+  | "VERSION"
+  | (string & {});
 export const ConfluenceBlogFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceBlogToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceBlogFieldName | (string & {});
+  DataSourceFieldName?: ConfluenceBlogFieldName;
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1477,11 +1489,12 @@ export type ConfluenceAttachmentFieldName =
   | "SPACE_KEY"
   | "SPACE_NAME"
   | "URL"
-  | "VERSION";
+  | "VERSION"
+  | (string & {});
 export const ConfluenceAttachmentFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceAttachmentToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceAttachmentFieldName | (string & {});
+  DataSourceFieldName?: ConfluenceAttachmentFieldName;
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1512,13 +1525,13 @@ export const ConfluenceAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfluenceAttachmentConfiguration",
 }) as any as S.Schema<ConfluenceAttachmentConfiguration>;
-export type ConfluenceAuthenticationType = "HTTP_BASIC" | "PAT";
+export type ConfluenceAuthenticationType = "HTTP_BASIC" | "PAT" | (string & {});
 export const ConfluenceAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface ConfluenceConfiguration {
   ServerUrl: string;
   SecretArn: string;
-  Version: ConfluenceVersion | (string & {});
+  Version: ConfluenceVersion;
   SpaceConfiguration?: ConfluenceSpaceConfiguration;
   PageConfiguration?: ConfluencePageConfiguration;
   BlogConfiguration?: ConfluenceBlogConfiguration;
@@ -1527,7 +1540,7 @@ export interface ConfluenceConfiguration {
   InclusionPatterns?: string[];
   ExclusionPatterns?: string[];
   ProxyConfiguration?: ProxyConfiguration;
-  AuthenticationType?: ConfluenceAuthenticationType | (string & {});
+  AuthenticationType?: ConfluenceAuthenticationType;
 }
 export const ConfluenceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1581,12 +1594,16 @@ export const GoogleDriveConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type SeedUrl = string;
 export type SeedUrlList = string[];
 export const SeedUrlList = /*@__PURE__*/ S.Array(S.String);
-export type WebCrawlerMode = "HOST_ONLY" | "SUBDOMAINS" | "EVERYTHING";
+export type WebCrawlerMode =
+  | "HOST_ONLY"
+  | "SUBDOMAINS"
+  | "EVERYTHING"
+  | (string & {});
 export const WebCrawlerMode = /*@__PURE__*/ S.String;
 
 export interface SeedUrlConfiguration {
   SeedUrls: string[];
-  WebCrawlerMode?: WebCrawlerMode | (string & {});
+  WebCrawlerMode?: WebCrawlerMode;
 }
 export const SeedUrlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1694,12 +1711,12 @@ export const WorkDocsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkDocsConfiguration",
 }) as any as S.Schema<WorkDocsConfiguration>;
 export type FileSystemId = string;
-export type FsxFileSystemType = "WINDOWS";
+export type FsxFileSystemType = "WINDOWS" | (string & {});
 export const FsxFileSystemType = /*@__PURE__*/ S.String;
 
 export interface FsxConfiguration {
   FileSystemId: string;
-  FileSystemType: FsxFileSystemType | (string & {});
+  FileSystemType: FsxFileSystemType;
   VpcConfiguration: DataSourceVpcConfiguration;
   SecretArn?: string;
   InclusionPatterns?: string[];
@@ -1724,10 +1741,11 @@ export type SlackEntity =
   | "PUBLIC_CHANNEL"
   | "PRIVATE_CHANNEL"
   | "GROUP_MESSAGE"
-  | "DIRECT_MESSAGE";
+  | "DIRECT_MESSAGE"
+  | (string & {});
 export const SlackEntity = /*@__PURE__*/ S.String;
 
-export type SlackEntityList = (SlackEntity | (string & {}))[];
+export type SlackEntityList = SlackEntity[];
 export const SlackEntityList = /*@__PURE__*/ S.Array(SlackEntity);
 export type SinceCrawlDate = string;
 export type LookBackPeriod = number;
@@ -1739,7 +1757,7 @@ export interface SlackConfiguration {
   TeamId: string;
   SecretArn: string;
   VpcConfiguration?: DataSourceVpcConfiguration;
-  SlackEntityList: (SlackEntity | (string & {}))[];
+  SlackEntityList: SlackEntity[];
   UseChangeLog?: boolean;
   CrawlBotMessage?: boolean;
   ExcludeArchived?: boolean;
@@ -1849,10 +1867,14 @@ export type IssueType = string[];
 export const IssueType = /*@__PURE__*/ S.Array(S.String);
 export type JiraStatus = string[];
 export const JiraStatus = /*@__PURE__*/ S.Array(S.String);
-export type IssueSubEntity = "COMMENTS" | "ATTACHMENTS" | "WORKLOGS";
+export type IssueSubEntity =
+  | "COMMENTS"
+  | "ATTACHMENTS"
+  | "WORKLOGS"
+  | (string & {});
 export const IssueSubEntity = /*@__PURE__*/ S.String;
 
-export type IssueSubEntityFilter = (IssueSubEntity | (string & {}))[];
+export type IssueSubEntityFilter = IssueSubEntity[];
 export const IssueSubEntityFilter = /*@__PURE__*/ S.Array(IssueSubEntity);
 export interface JiraConfiguration {
   JiraAccountUrl: string;
@@ -1861,7 +1883,7 @@ export interface JiraConfiguration {
   Project?: string[];
   IssueType?: string[];
   Status?: string[];
-  IssueSubEntityFilter?: (IssueSubEntity | (string & {}))[];
+  IssueSubEntityFilter?: IssueSubEntity[];
   AttachmentFieldMappings?: DataSourceToIndexFieldMapping[];
   CommentFieldMappings?: DataSourceToIndexFieldMapping[];
   IssueFieldMappings?: DataSourceToIndexFieldMapping[];
@@ -1916,7 +1938,7 @@ export const OnPremiseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnPremiseConfiguration",
 }) as any as S.Schema<OnPremiseConfiguration>;
-export type Type = "SAAS" | "ON_PREMISE";
+export type Type = "SAAS" | "ON_PREMISE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface GitHubDocumentCrawlProperties {
@@ -1949,7 +1971,7 @@ export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GitHubConfiguration {
   SaaSConfiguration?: SaaSConfiguration;
   OnPremiseConfiguration?: OnPremiseConfiguration;
-  Type?: Type | (string & {});
+  Type?: Type;
   SecretArn: string;
   UseChangeLog?: boolean;
   GitHubDocumentCrawlProperties?: GitHubDocumentCrawlProperties;
@@ -2016,10 +2038,14 @@ export const GitHubConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GitHubConfiguration>;
 export type SiteUrl = string;
 export type SiteId = string;
-export type AlfrescoEntity = "wiki" | "blog" | "documentLibrary";
+export type AlfrescoEntity =
+  | "wiki"
+  | "blog"
+  | "documentLibrary"
+  | (string & {});
 export const AlfrescoEntity = /*@__PURE__*/ S.String;
 
-export type EntityFilter = (AlfrescoEntity | (string & {}))[];
+export type EntityFilter = AlfrescoEntity[];
 export const EntityFilter = /*@__PURE__*/ S.Array(AlfrescoEntity);
 export interface AlfrescoConfiguration {
   SiteUrl: string;
@@ -2028,7 +2054,7 @@ export interface AlfrescoConfiguration {
   SslCertificateS3Path: S3Path;
   CrawlSystemFolders?: boolean;
   CrawlComments?: boolean;
-  EntityFilter?: (AlfrescoEntity | (string & {}))[];
+  EntityFilter?: AlfrescoEntity[];
   DocumentLibraryFieldMappings?: DataSourceToIndexFieldMapping[];
   BlogFieldMappings?: DataSourceToIndexFieldMapping[];
   WikiFieldMappings?: DataSourceToIndexFieldMapping[];
@@ -2124,7 +2150,7 @@ export type LanguageCode = string;
 export interface CreateDataSourceRequest {
   Name: string;
   IndexId: string;
-  Type: DataSourceType | (string & {});
+  Type: DataSourceType;
   Configuration?: DataSourceConfiguration;
   VpcConfiguration?: DataSourceVpcConfiguration;
   Description?: string;
@@ -2237,7 +2263,7 @@ export const CreateExperienceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateExperienceResponse",
 }) as any as S.Schema<CreateExperienceResponse>;
 export type FaqName = string;
-export type FaqFileFormat = "CSV" | "CSV_WITH_HEADER" | "JSON";
+export type FaqFileFormat = "CSV" | "CSV_WITH_HEADER" | "JSON" | (string & {});
 export const FaqFileFormat = /*@__PURE__*/ S.String;
 
 export interface CreateFaqRequest {
@@ -2247,7 +2273,7 @@ export interface CreateFaqRequest {
   S3Path: S3Path;
   RoleArn: string;
   Tags?: Tag[];
-  FileFormat?: FaqFileFormat | (string & {});
+  FileFormat?: FaqFileFormat;
   ClientToken?: string;
   LanguageCode?: string;
 }
@@ -2278,7 +2304,7 @@ export const CreateFaqResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFaqResponse>;
 export type FeaturedResultsSetName = string;
 export type FeaturedResultsSetDescription = string;
-export type FeaturedResultsSetStatus = "ACTIVE" | "INACTIVE";
+export type FeaturedResultsSetStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const FeaturedResultsSetStatus = /*@__PURE__*/ S.String;
 
 export type QueryText = string;
@@ -2299,7 +2325,7 @@ export interface CreateFeaturedResultsSetRequest {
   FeaturedResultsSetName: string;
   Description?: string;
   ClientToken?: string;
-  Status?: FeaturedResultsSetStatus | (string & {});
+  Status?: FeaturedResultsSetStatus;
   QueryTexts?: string[];
   FeaturedDocuments?: FeaturedDocument[];
   Tags?: Tag[];
@@ -2356,7 +2382,8 @@ export type IndexName = string;
 export type IndexEdition =
   | "DEVELOPER_EDITION"
   | "ENTERPRISE_EDITION"
-  | "GEN_AI_ENTERPRISE_EDITION";
+  | "GEN_AI_ENTERPRISE_EDITION"
+  | (string & {});
 export const IndexEdition = /*@__PURE__*/ S.String;
 
 export type KmsKeyId = string | redacted.Redacted<string>;
@@ -2368,7 +2395,7 @@ export const ServerSideEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerSideEncryptionConfiguration",
 }) as any as S.Schema<ServerSideEncryptionConfiguration>;
-export type KeyLocation = "URL" | "SECRET_MANAGER";
+export type KeyLocation = "URL" | "SECRET_MANAGER" | (string & {});
 export const KeyLocation = /*@__PURE__*/ S.String;
 
 export type UserNameAttributeField = string;
@@ -2376,7 +2403,7 @@ export type GroupAttributeField = string;
 export type Issuer = string;
 export type ClaimRegex = string;
 export interface JwtTokenTypeConfiguration {
-  KeyLocation: KeyLocation | (string & {});
+  KeyLocation: KeyLocation;
   URL?: string;
   SecretManagerArn?: string;
   UserNameAttributeField?: string;
@@ -2422,14 +2449,17 @@ export type UserTokenConfigurationList = UserTokenConfiguration[];
 export const UserTokenConfigurationList = /*@__PURE__*/ S.Array(
   UserTokenConfiguration,
 );
-export type UserContextPolicy = "ATTRIBUTE_FILTER" | "USER_TOKEN";
+export type UserContextPolicy =
+  | "ATTRIBUTE_FILTER"
+  | "USER_TOKEN"
+  | (string & {});
 export const UserContextPolicy = /*@__PURE__*/ S.String;
 
-export type UserGroupResolutionMode = "AWS_SSO" | "NONE";
+export type UserGroupResolutionMode = "AWS_SSO" | "NONE" | (string & {});
 export const UserGroupResolutionMode = /*@__PURE__*/ S.String;
 
 export interface UserGroupResolutionConfiguration {
-  UserGroupResolutionMode: UserGroupResolutionMode | (string & {});
+  UserGroupResolutionMode: UserGroupResolutionMode;
 }
 export const UserGroupResolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserGroupResolutionMode: UserGroupResolutionMode }),
@@ -2438,14 +2468,14 @@ export const UserGroupResolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupResolutionConfiguration>;
 export interface CreateIndexRequest {
   Name: string;
-  Edition?: IndexEdition | (string & {});
+  Edition?: IndexEdition;
   RoleArn: string;
   ServerSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
   Description?: string;
   ClientToken?: string;
   Tags?: Tag[];
   UserTokenConfigurations?: UserTokenConfiguration[];
-  UserContextPolicy?: UserContextPolicy | (string & {});
+  UserContextPolicy?: UserContextPolicy;
   UserGroupResolutionConfiguration?: UserGroupResolutionConfiguration;
 }
 export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2740,7 +2770,8 @@ export type DataSourceStatus =
   | "DELETING"
   | "FAILED"
   | "UPDATING"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeDataSourceResponse {
@@ -2794,7 +2825,7 @@ export const DescribeExperienceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExperienceRequest",
 }) as any as S.Schema<DescribeExperienceRequest>;
-export type EndpointType = "HOME";
+export type EndpointType = "HOME" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export type Endpoint = string;
@@ -2812,7 +2843,12 @@ export const ExperienceEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperienceEndpoint>;
 export type ExperienceEndpoints = ExperienceEndpoint[];
 export const ExperienceEndpoints = /*@__PURE__*/ S.Array(ExperienceEndpoint);
-export type ExperienceStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED";
+export type ExperienceStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
 export const ExperienceStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeExperienceResponse {
@@ -2861,7 +2897,8 @@ export type FaqStatus =
   | "UPDATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const FaqStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeFaqResponse {
@@ -2979,7 +3016,8 @@ export type IndexStatus =
   | "DELETING"
   | "FAILED"
   | "UPDATING"
-  | "SYSTEM_UPDATING";
+  | "SYSTEM_UPDATING"
+  | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export type DocumentMetadataConfigurationName = string;
@@ -2987,13 +3025,14 @@ export type DocumentAttributeValueType =
   | "STRING_VALUE"
   | "STRING_LIST_VALUE"
   | "LONG_VALUE"
-  | "DATE_VALUE";
+  | "DATE_VALUE"
+  | (string & {});
 export const DocumentAttributeValueType = /*@__PURE__*/ S.String;
 
 export type DocumentMetadataBoolean = boolean;
 export type Importance = number;
 export type Duration = string;
-export type Order = "ASCENDING" | "DESCENDING";
+export type Order = "ASCENDING" | "DESCENDING" | (string & {});
 export const Order = /*@__PURE__*/ S.String;
 
 export type ValueImportanceMapKey = string;
@@ -3006,7 +3045,7 @@ export interface Relevance {
   Freshness?: boolean;
   Importance?: number;
   Duration?: string;
-  RankOrder?: Order | (string & {});
+  RankOrder?: Order;
   ValueImportanceMap?: { [key: string]: number | undefined };
 }
 export const Relevance = /*@__PURE__*/ S.suspend(() =>
@@ -3034,7 +3073,7 @@ export const Search = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Search" }) as any as S.Schema<Search>;
 export interface DocumentMetadataConfiguration {
   Name: string;
-  Type: DocumentAttributeValueType | (string & {});
+  Type: DocumentAttributeValueType;
   Relevance?: Relevance;
   Search?: Search;
 }
@@ -3160,7 +3199,8 @@ export type PrincipalMappingStatus =
   | "SUCCEEDED"
   | "PROCESSING"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const PrincipalMappingStatus = /*@__PURE__*/ S.String;
 
 export type FailureReason = string;
@@ -3220,7 +3260,8 @@ export type QuerySuggestionsBlockListStatus =
   | "DELETING"
   | "UPDATING"
   | "ACTIVE_BUT_UPDATE_FAILED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const QuerySuggestionsBlockListStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeQuerySuggestionsBlockListResponse {
@@ -3267,10 +3308,10 @@ export const DescribeQuerySuggestionsConfigRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeQuerySuggestionsConfigRequest",
 }) as any as S.Schema<DescribeQuerySuggestionsConfigRequest>;
-export type Mode = "ENABLED" | "LEARN_ONLY";
+export type Mode = "ENABLED" | "LEARN_ONLY" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
 
-export type QuerySuggestionsStatus = "ACTIVE" | "UPDATING";
+export type QuerySuggestionsStatus = "ACTIVE" | "UPDATING" | (string & {});
 export const QuerySuggestionsStatus = /*@__PURE__*/ S.String;
 
 export type ObjectBoolean = boolean;
@@ -3290,7 +3331,7 @@ export const SuggestableConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuggestableConfig>;
 export type SuggestableConfigList = SuggestableConfig[];
 export const SuggestableConfigList = /*@__PURE__*/ S.Array(SuggestableConfig);
-export type AttributeSuggestionsMode = "ACTIVE" | "INACTIVE";
+export type AttributeSuggestionsMode = "ACTIVE" | "INACTIVE" | (string & {});
 export const AttributeSuggestionsMode = /*@__PURE__*/ S.String;
 
 export interface AttributeSuggestionsDescribeConfig {
@@ -3357,7 +3398,8 @@ export type ThesaurusStatus =
   | "DELETING"
   | "UPDATING"
   | "ACTIVE_BUT_UPDATE_FAILED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ThesaurusStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeThesaurusResponse {
@@ -3451,10 +3493,10 @@ export const DisassociatePersonasFromEntitiesResponse = /*@__PURE__*/ S.suspend(
   identifier: "DisassociatePersonasFromEntitiesResponse",
 }) as any as S.Schema<DisassociatePersonasFromEntitiesResponse>;
 export type SuggestionQueryText = string;
-export type SuggestionType = "QUERY" | "DOCUMENT_ATTRIBUTES";
+export type SuggestionType = "QUERY" | "DOCUMENT_ATTRIBUTES" | (string & {});
 export const SuggestionType = /*@__PURE__*/ S.String;
 
-export type SuggestionTypes = (SuggestionType | (string & {}))[];
+export type SuggestionTypes = SuggestionType[];
 export const SuggestionTypes = /*@__PURE__*/ S.Array(SuggestionType);
 export type DocumentAttributeKeyList = string[];
 export const DocumentAttributeKeyList = /*@__PURE__*/ S.Array(S.String);
@@ -3552,7 +3594,7 @@ export interface GetQuerySuggestionsRequest {
   IndexId: string;
   QueryText: string;
   MaxSuggestionsCount?: number;
-  SuggestionTypes?: (SuggestionType | (string & {}))[];
+  SuggestionTypes?: SuggestionType[];
   AttributeSuggestionsConfig?: AttributeSuggestionsGetConfig;
 }
 export const GetQuerySuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3651,7 +3693,8 @@ export type Interval =
   | "ONE_WEEK_AGO"
   | "TWO_WEEKS_AGO"
   | "ONE_MONTH_AGO"
-  | "TWO_MONTHS_AGO";
+  | "TWO_MONTHS_AGO"
+  | (string & {});
 export const Interval = /*@__PURE__*/ S.String;
 
 export type MetricType =
@@ -3660,14 +3703,15 @@ export type MetricType =
   | "QUERIES_BY_ZERO_RESULT_RATE"
   | "DOCS_BY_CLICK_COUNT"
   | "AGG_QUERY_DOC_METRICS"
-  | "TREND_QUERY_DOC_METRICS";
+  | "TREND_QUERY_DOC_METRICS"
+  | (string & {});
 export const MetricType = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
 export interface GetSnapshotsRequest {
   IndexId: string;
-  Interval: Interval | (string & {});
-  MetricType: MetricType | (string & {});
+  Interval: Interval;
+  MetricType: MetricType;
   NextToken?: string;
   MaxResults?: number;
 }
@@ -3821,7 +3865,8 @@ export type DataSourceSyncJobStatus =
   | "INCOMPLETE"
   | "STOPPING"
   | "ABORTED"
-  | "SYNCING_INDEXING";
+  | "SYNCING_INDEXING"
+  | (string & {});
 export const DataSourceSyncJobStatus = /*@__PURE__*/ S.String;
 
 export interface ListDataSourceSyncJobsRequest {
@@ -3830,7 +3875,7 @@ export interface ListDataSourceSyncJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   StartTimeFilter?: TimeRange;
-  StatusFilter?: DataSourceSyncJobStatus | (string & {});
+  StatusFilter?: DataSourceSyncJobStatus;
 }
 export const ListDataSourceSyncJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4465,7 +4510,11 @@ export type FacetList = Facet[];
 export const FacetList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Facet> => Facet).annotate({ identifier: "Facet" }),
 ) as any as S.Schema<FacetList>;
-export type QueryResultType = "DOCUMENT" | "QUESTION_ANSWER" | "ANSWER";
+export type QueryResultType =
+  | "DOCUMENT"
+  | "QUESTION_ANSWER"
+  | "ANSWER"
+  | (string & {});
 export const QueryResultType = /*@__PURE__*/ S.String;
 
 export interface DocumentRelevanceConfiguration {
@@ -4482,12 +4531,12 @@ export type DocumentRelevanceOverrideConfigurationList =
 export const DocumentRelevanceOverrideConfigurationList = /*@__PURE__*/ S.Array(
   DocumentRelevanceConfiguration,
 );
-export type SortOrder = "DESC" | "ASC";
+export type SortOrder = "DESC" | "ASC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface SortingConfiguration {
   DocumentAttributeKey: string;
-  SortOrder: SortOrder | (string & {});
+  SortOrder: SortOrder;
 }
 export const SortingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DocumentAttributeKey: S.String, SortOrder: SortOrder }),
@@ -4506,7 +4555,11 @@ export const SpellCorrectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpellCorrectionConfiguration",
 }) as any as S.Schema<SpellCorrectionConfiguration>;
-export type MissingAttributeKeyStrategy = "IGNORE" | "COLLAPSE" | "EXPAND";
+export type MissingAttributeKeyStrategy =
+  | "IGNORE"
+  | "COLLAPSE"
+  | "EXPAND"
+  | (string & {});
 export const MissingAttributeKeyStrategy = /*@__PURE__*/ S.String;
 
 export interface ExpandConfiguration {
@@ -4524,7 +4577,7 @@ export const ExpandConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CollapseConfiguration {
   DocumentAttributeKey: string;
   SortingConfigurations?: SortingConfiguration[];
-  MissingAttributeKeyStrategy?: MissingAttributeKeyStrategy | (string & {});
+  MissingAttributeKeyStrategy?: MissingAttributeKeyStrategy;
   Expand?: boolean;
   ExpandConfiguration?: ExpandConfiguration;
 }
@@ -4545,7 +4598,7 @@ export interface QueryRequest {
   AttributeFilter?: AttributeFilter;
   Facets?: Facet[];
   RequestedDocumentAttributes?: string[];
-  QueryResultTypeFilter?: QueryResultType | (string & {});
+  QueryResultTypeFilter?: QueryResultType;
   DocumentRelevanceOverrideConfigurations?: DocumentRelevanceConfiguration[];
   PageNumber?: number;
   PageSize?: number;
@@ -4580,13 +4633,15 @@ export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "QueryRequest" }) as any as S.Schema<QueryRequest>;
 export type QueryId = string;
-export type QueryResultFormat = "TABLE" | "TEXT";
+export type QueryResultFormat = "TABLE" | "TEXT" | (string & {});
 export const QueryResultFormat = /*@__PURE__*/ S.String;
 
-export type AdditionalResultAttributeValueType = "TEXT_WITH_HIGHLIGHTS_VALUE";
+export type AdditionalResultAttributeValueType =
+  | "TEXT_WITH_HIGHLIGHTS_VALUE"
+  | (string & {});
 export const AdditionalResultAttributeValueType = /*@__PURE__*/ S.String;
 
-export type HighlightType = "STANDARD" | "THESAURUS_SYNONYM";
+export type HighlightType = "STANDARD" | "THESAURUS_SYNONYM" | (string & {});
 export const HighlightType = /*@__PURE__*/ S.String;
 
 export interface Highlight {
@@ -4648,7 +4703,8 @@ export type ScoreConfidence =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "NOT_AVAILABLE";
+  | "NOT_AVAILABLE"
+  | (string & {});
 export const ScoreConfidence = /*@__PURE__*/ S.String;
 
 export interface ScoreAttributes {
@@ -4813,7 +4869,7 @@ export const FacetResultList = /*@__PURE__*/ S.Array(
   }),
 ) as any as S.Schema<FacetResultList>;
 export type WarningMessage = string;
-export type WarningCode = "QUERY_LANGUAGE_INVALID_SYNTAX";
+export type WarningCode = "QUERY_LANGUAGE_INVALID_SYNTAX" | (string & {});
 export const WarningCode = /*@__PURE__*/ S.String;
 
 export interface Warning {
@@ -5018,12 +5074,12 @@ export const ClickFeedback = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClickFeedback" }) as any as S.Schema<ClickFeedback>;
 export type ClickFeedbackList = ClickFeedback[];
 export const ClickFeedbackList = /*@__PURE__*/ S.Array(ClickFeedback);
-export type RelevanceType = "RELEVANT" | "NOT_RELEVANT";
+export type RelevanceType = "RELEVANT" | "NOT_RELEVANT" | (string & {});
 export const RelevanceType = /*@__PURE__*/ S.String;
 
 export interface RelevanceFeedback {
   ResultId: string;
-  RelevanceValue: RelevanceType | (string & {});
+  RelevanceValue: RelevanceType;
 }
 export const RelevanceFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResultId: S.String, RelevanceValue: RelevanceType }),
@@ -5192,7 +5248,7 @@ export interface UpdateFeaturedResultsSetRequest {
   FeaturedResultsSetId: string;
   FeaturedResultsSetName?: string;
   Description?: string;
-  Status?: FeaturedResultsSetStatus | (string & {});
+  Status?: FeaturedResultsSetStatus;
   QueryTexts?: string[];
   FeaturedDocuments?: FeaturedDocument[];
 }
@@ -5227,7 +5283,7 @@ export interface UpdateIndexRequest {
   DocumentMetadataConfigurationUpdates?: DocumentMetadataConfiguration[];
   CapacityUnits?: CapacityUnitsConfiguration;
   UserTokenConfigurations?: UserTokenConfiguration[];
-  UserContextPolicy?: UserContextPolicy | (string & {});
+  UserContextPolicy?: UserContextPolicy;
   UserGroupResolutionConfiguration?: UserGroupResolutionConfiguration;
 }
 export const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5288,7 +5344,7 @@ export const UpdateQuerySuggestionsBlockListResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateQuerySuggestionsBlockListResponse>;
 export interface AttributeSuggestionsUpdateConfig {
   SuggestableConfigList?: SuggestableConfig[];
-  AttributeSuggestionsMode?: AttributeSuggestionsMode | (string & {});
+  AttributeSuggestionsMode?: AttributeSuggestionsMode;
 }
 export const AttributeSuggestionsUpdateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5300,7 +5356,7 @@ export const AttributeSuggestionsUpdateConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttributeSuggestionsUpdateConfig>;
 export interface UpdateQuerySuggestionsConfigRequest {
   IndexId: string;
-  Mode?: Mode | (string & {});
+  Mode?: Mode;
   QueryLogLookBackWindowInDays?: number;
   IncludeQueriesWithoutUserInformation?: boolean;
   MinimumNumberOfQueryingUsers?: number;

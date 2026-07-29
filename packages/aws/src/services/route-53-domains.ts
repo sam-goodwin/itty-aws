@@ -275,7 +275,8 @@ export type DomainAvailability =
   | "RESERVED"
   | "DONT_KNOW"
   | "INVALID_NAME_FOR_TLD"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const DomainAvailability = /*@__PURE__*/ S.String;
 
 export interface CheckDomainAvailabilityResponse {
@@ -315,7 +316,8 @@ export type Transferable =
   | "DONT_KNOW"
   | "DOMAIN_IN_OWN_ACCOUNT"
   | "DOMAIN_IN_ANOTHER_ACCOUNT"
-  | "PREMIUM_DOMAIN";
+  | "PREMIUM_DOMAIN"
+  | (string & {});
 export const Transferable = /*@__PURE__*/ S.String;
 
 export interface DomainTransferability {
@@ -540,7 +542,7 @@ export const GetContactReachabilityStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContactReachabilityStatusRequest",
 }) as any as S.Schema<GetContactReachabilityStatusRequest>;
-export type ReachabilityStatus = "PENDING" | "DONE" | "EXPIRED";
+export type ReachabilityStatus = "PENDING" | "DONE" | "EXPIRED" | (string & {});
 export const ReachabilityStatus = /*@__PURE__*/ S.String;
 
 export interface GetContactReachabilityStatusResponse {
@@ -593,7 +595,8 @@ export type ContactType =
   | "COMPANY"
   | "ASSOCIATION"
   | "PUBLIC_BODY"
-  | "RESELLER";
+  | "RESELLER"
+  | (string & {});
 export const ContactType = /*@__PURE__*/ S.String;
 
 export type AddressLine = string | redacted.Redacted<string>;
@@ -850,7 +853,8 @@ export type CountryCode =
   | "YT"
   | "ZA"
   | "ZM"
-  | "ZW";
+  | "ZW"
+  | (string & {});
 export const CountryCode = /*@__PURE__*/ S.String;
 
 export type ZipCode = string | redacted.Redacted<string>;
@@ -890,12 +894,13 @@ export type ExtraParamName =
   | "AU_PRIORITY_TOKEN"
   | "AU_ELIGIBILITY_TYPE"
   | "AU_POLICY_REASON"
-  | "AU_REGISTRANT_NAME";
+  | "AU_REGISTRANT_NAME"
+  | (string & {});
 export const ExtraParamName = /*@__PURE__*/ S.String;
 
 export type ExtraParamValue = string | redacted.Redacted<string>;
 export interface ExtraParam {
-  Name: ExtraParamName | (string & {});
+  Name: ExtraParamName;
   Value: string | redacted.Redacted<string>;
 }
 export const ExtraParam = /*@__PURE__*/ S.suspend(() =>
@@ -906,13 +911,13 @@ export const ExtraParamList = /*@__PURE__*/ S.Array(ExtraParam);
 export interface ContactDetail {
   FirstName?: string | redacted.Redacted<string>;
   LastName?: string | redacted.Redacted<string>;
-  ContactType?: ContactType | (string & {});
+  ContactType?: ContactType;
   OrganizationName?: string | redacted.Redacted<string>;
   AddressLine1?: string | redacted.Redacted<string>;
   AddressLine2?: string | redacted.Redacted<string>;
   City?: string | redacted.Redacted<string>;
   State?: string | redacted.Redacted<string>;
-  CountryCode?: CountryCode | (string & {});
+  CountryCode?: CountryCode;
   ZipCode?: string | redacted.Redacted<string>;
   PhoneNumber?: string | redacted.Redacted<string>;
   Email?: string | redacted.Redacted<string>;
@@ -1093,7 +1098,8 @@ export type OperationStatus =
   | "IN_PROGRESS"
   | "ERROR"
   | "SUCCESSFUL"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -1118,7 +1124,8 @@ export type OperationType =
   | "INTERNAL_TRANSFER_IN_DOMAIN"
   | "RELEASE_TO_GANDI"
   | "TRANSFER_ON_RENEW"
-  | "RESTORE_DOMAIN";
+  | "RESTORE_DOMAIN"
+  | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type StatusFlag =
@@ -1126,7 +1133,8 @@ export type StatusFlag =
   | "PENDING_CUSTOMER_ACTION"
   | "PENDING_AUTHORIZATION"
   | "PENDING_PAYMENT_VERIFICATION"
-  | "PENDING_SUPPORT_CASE";
+  | "PENDING_SUPPORT_CASE"
+  | (string & {});
 export const StatusFlag = /*@__PURE__*/ S.String;
 
 export interface GetOperationDetailResponse {
@@ -1155,18 +1163,18 @@ export const GetOperationDetailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOperationDetailResponse",
 }) as any as S.Schema<GetOperationDetailResponse>;
-export type ListDomainsAttributeName = "DomainName" | "Expiry";
+export type ListDomainsAttributeName = "DomainName" | "Expiry" | (string & {});
 export const ListDomainsAttributeName = /*@__PURE__*/ S.String;
 
-export type Operator = "LE" | "GE" | "BEGINS_WITH";
+export type Operator = "LE" | "GE" | "BEGINS_WITH" | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
 
 export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface FilterCondition {
-  Name: ListDomainsAttributeName | (string & {});
-  Operator: Operator | (string & {});
+  Name: ListDomainsAttributeName;
+  Operator: Operator;
   Values: string[];
 }
 export const FilterCondition = /*@__PURE__*/ S.suspend(() =>
@@ -1180,12 +1188,12 @@ export const FilterCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilterCondition>;
 export type FilterConditions = FilterCondition[];
 export const FilterConditions = /*@__PURE__*/ S.Array(FilterCondition);
-export type SortOrder = "ASC" | "DESC";
+export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface SortCondition {
-  Name: ListDomainsAttributeName | (string & {});
-  SortOrder: SortOrder | (string & {});
+  Name: ListDomainsAttributeName;
+  SortOrder: SortOrder;
 }
 export const SortCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: ListDomainsAttributeName, SortOrder: SortOrder }),
@@ -1246,21 +1254,21 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
-export type OperationStatusList = (OperationStatus | (string & {}))[];
+export type OperationStatusList = OperationStatus[];
 export const OperationStatusList = /*@__PURE__*/ S.Array(OperationStatus);
-export type OperationTypeList = (OperationType | (string & {}))[];
+export type OperationTypeList = OperationType[];
 export const OperationTypeList = /*@__PURE__*/ S.Array(OperationType);
-export type ListOperationsSortAttributeName = "SubmittedDate";
+export type ListOperationsSortAttributeName = "SubmittedDate" | (string & {});
 export const ListOperationsSortAttributeName = /*@__PURE__*/ S.String;
 
 export interface ListOperationsRequest {
   SubmittedSince?: Date;
   Marker?: string;
   MaxItems?: number;
-  Status?: (OperationStatus | (string & {}))[];
-  Type?: (OperationType | (string & {}))[];
-  SortBy?: ListOperationsSortAttributeName | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  Status?: OperationStatus[];
+  Type?: OperationType[];
+  SortBy?: ListOperationsSortAttributeName;
+  SortOrder?: SortOrder;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

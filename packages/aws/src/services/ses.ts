@@ -507,10 +507,11 @@ export type EventType =
   | "delivery"
   | "open"
   | "click"
-  | "renderingFailure";
+  | "renderingFailure"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = (EventType | (string & {}))[];
+export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
@@ -523,13 +524,17 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
 export type DimensionName = string;
-export type DimensionValueSource = "messageTag" | "emailHeader" | "linkTag";
+export type DimensionValueSource =
+  | "messageTag"
+  | "emailHeader"
+  | "linkTag"
+  | (string & {});
 export const DimensionValueSource = /*@__PURE__*/ S.String;
 
 export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
-  DimensionValueSource: DimensionValueSource | (string & {});
+  DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
 export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -563,7 +568,7 @@ export const SNSDestination = /*@__PURE__*/ S.suspend(() =>
 export interface EventDestination {
   Name: string;
   Enabled?: boolean;
-  MatchingEventTypes: (EventType | (string & {}))[];
+  MatchingEventTypes: EventType[];
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   CloudWatchDestination?: CloudWatchDestination;
   SNSDestination?: SNSDestination;
@@ -688,12 +693,12 @@ export const CreateCustomVerificationEmailTemplateResponse =
     identifier: "CreateCustomVerificationEmailTemplateResponse",
   }) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>;
 export type ReceiptFilterName = string;
-export type ReceiptFilterPolicy = "Block" | "Allow";
+export type ReceiptFilterPolicy = "Block" | "Allow" | (string & {});
 export const ReceiptFilterPolicy = /*@__PURE__*/ S.String;
 
 export type Cidr = string;
 export interface ReceiptIpFilter {
-  Policy: ReceiptFilterPolicy | (string & {});
+  Policy: ReceiptFilterPolicy;
   Cidr: string;
 }
 export const ReceiptIpFilter = /*@__PURE__*/ S.suspend(() =>
@@ -733,7 +738,7 @@ export const CreateReceiptFilterResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateReceiptFilterResponse",
 }) as any as S.Schema<CreateReceiptFilterResponse>;
 export type ReceiptRuleName = string;
-export type TlsPolicy = "Require" | "Optional";
+export type TlsPolicy = "Require" | "Optional" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
 
 export type Recipient = string;
@@ -785,13 +790,13 @@ export interface WorkmailAction {
 export const WorkmailAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TopicArn: S.optional(S.String), OrganizationArn: S.String }),
 ).annotate({ identifier: "WorkmailAction" }) as any as S.Schema<WorkmailAction>;
-export type InvocationType = "Event" | "RequestResponse";
+export type InvocationType = "Event" | "RequestResponse" | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
 
 export interface LambdaAction {
   TopicArn?: string;
   FunctionArn: string;
-  InvocationType?: InvocationType | (string & {});
+  InvocationType?: InvocationType;
 }
 export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -800,11 +805,11 @@ export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
     InvocationType: S.optional(InvocationType),
   }),
 ).annotate({ identifier: "LambdaAction" }) as any as S.Schema<LambdaAction>;
-export type StopScope = "RuleSet";
+export type StopScope = "RuleSet" | (string & {});
 export const StopScope = /*@__PURE__*/ S.String;
 
 export interface StopAction {
-  Scope: StopScope | (string & {});
+  Scope: StopScope;
   TopicArn?: string;
 }
 export const StopAction = /*@__PURE__*/ S.suspend(() =>
@@ -821,12 +826,12 @@ export const AddHeaderAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddHeaderAction",
 }) as any as S.Schema<AddHeaderAction>;
-export type SNSActionEncoding = "UTF-8" | "Base64";
+export type SNSActionEncoding = "UTF-8" | "Base64" | (string & {});
 export const SNSActionEncoding = /*@__PURE__*/ S.String;
 
 export interface SNSAction {
   TopicArn: string;
-  Encoding?: SNSActionEncoding | (string & {});
+  Encoding?: SNSActionEncoding;
 }
 export const SNSAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
@@ -866,7 +871,7 @@ export const ReceiptActionsList = /*@__PURE__*/ S.Array(ReceiptAction);
 export interface ReceiptRule {
   Name: string;
   Enabled?: boolean;
-  TlsPolicy?: TlsPolicy | (string & {});
+  TlsPolicy?: TlsPolicy;
   Recipients?: string[];
   Actions?: ReceiptAction[];
   ScanEnabled?: boolean;
@@ -1297,22 +1302,17 @@ export type ConfigurationSetAttribute =
   | "eventDestinations"
   | "trackingOptions"
   | "deliveryOptions"
-  | "reputationOptions";
+  | "reputationOptions"
+  | (string & {});
 export const ConfigurationSetAttribute = /*@__PURE__*/ S.String;
 
-export type ConfigurationSetAttributeList = (
-  | ConfigurationSetAttribute
-  | (string & {})
-)[];
+export type ConfigurationSetAttributeList = ConfigurationSetAttribute[];
 export const ConfigurationSetAttributeList = /*@__PURE__*/ S.Array(
   ConfigurationSetAttribute,
 );
 export interface DescribeConfigurationSetRequest {
   ConfigurationSetName: string;
-  ConfigurationSetAttributeNames?: (
-    | ConfigurationSetAttribute
-    | (string & {})
-  )[];
+  ConfigurationSetAttributeNames?: ConfigurationSetAttribute[];
 }
 export const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1335,7 +1335,7 @@ export const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventDestinations = EventDestination[];
 export const EventDestinations = /*@__PURE__*/ S.Array(EventDestination);
 export interface DeliveryOptions {
-  TlsPolicy?: TlsPolicy | (string & {});
+  TlsPolicy?: TlsPolicy;
 }
 export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TlsPolicy: S.optional(TlsPolicy) }),
@@ -1523,7 +1523,8 @@ export type VerificationStatus =
   | "Success"
   | "Failed"
   | "TemporaryFailure"
-  | "NotStarted";
+  | "NotStarted"
+  | (string & {});
 export const VerificationStatus = /*@__PURE__*/ S.String;
 
 export type VerificationToken = string;
@@ -1582,10 +1583,14 @@ export type CustomMailFromStatus =
   | "Pending"
   | "Success"
   | "Failed"
-  | "TemporaryFailure";
+  | "TemporaryFailure"
+  | (string & {});
 export const CustomMailFromStatus = /*@__PURE__*/ S.String;
 
-export type BehaviorOnMXFailure = "UseDefaultValue" | "RejectMessage";
+export type BehaviorOnMXFailure =
+  | "UseDefaultValue"
+  | "RejectMessage"
+  | (string & {});
 export const BehaviorOnMXFailure = /*@__PURE__*/ S.String;
 
 export interface IdentityMailFromDomainAttributes {
@@ -1968,11 +1973,11 @@ export const ListCustomVerificationEmailTemplatesResponse =
   ).annotate({
     identifier: "ListCustomVerificationEmailTemplatesResponse",
   }) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>;
-export type IdentityType = "EmailAddress" | "Domain";
+export type IdentityType = "EmailAddress" | "Domain" | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export interface ListIdentitiesRequest {
-  IdentityType?: IdentityType | (string & {});
+  IdentityType?: IdentityType;
   NextToken?: string;
   MaxItems?: number;
 }
@@ -2284,7 +2289,8 @@ export type BounceType =
   | "ExceededQuota"
   | "ContentRejected"
   | "Undefined"
-  | "TemporaryFailure";
+  | "TemporaryFailure"
+  | (string & {});
 export const BounceType = /*@__PURE__*/ S.String;
 
 export type DsnAction =
@@ -2292,7 +2298,8 @@ export type DsnAction =
   | "delayed"
   | "delivered"
   | "relayed"
-  | "expanded";
+  | "expanded"
+  | (string & {});
 export const DsnAction = /*@__PURE__*/ S.String;
 
 export type RemoteMta = string;
@@ -2301,7 +2308,7 @@ export type DiagnosticCode = string;
 export type LastAttemptDate = Date;
 export interface RecipientDsnFields {
   FinalRecipient?: string;
-  Action: DsnAction | (string & {});
+  Action: DsnAction;
   RemoteMta?: string;
   Status: string;
   DiagnosticCode?: string;
@@ -2326,7 +2333,7 @@ export const RecipientDsnFields = /*@__PURE__*/ S.suspend(() =>
 export interface BouncedRecipientInfo {
   Recipient: string;
   RecipientArn?: string;
-  BounceType?: BounceType | (string & {});
+  BounceType?: BounceType;
   RecipientDsnFields?: RecipientDsnFields;
 }
 export const BouncedRecipientInfo = /*@__PURE__*/ S.suspend(() =>
@@ -2475,7 +2482,8 @@ export type BulkEmailStatus =
   | "ConfigurationSetSendingPaused"
   | "InvalidParameterValue"
   | "TransientFailure"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const BulkEmailStatus = /*@__PURE__*/ S.String;
 
 export interface BulkEmailDestinationStatus {
@@ -2774,12 +2782,16 @@ export const SetIdentityFeedbackForwardingEnabledResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "SetIdentityFeedbackForwardingEnabledResponse",
   }) as any as S.Schema<SetIdentityFeedbackForwardingEnabledResponse>;
-export type NotificationType = "Bounce" | "Complaint" | "Delivery";
+export type NotificationType =
+  | "Bounce"
+  | "Complaint"
+  | "Delivery"
+  | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
 
 export interface SetIdentityHeadersInNotificationsEnabledRequest {
   Identity: string;
-  NotificationType: NotificationType | (string & {});
+  NotificationType: NotificationType;
   Enabled: boolean;
 }
 export const SetIdentityHeadersInNotificationsEnabledRequest =
@@ -2810,7 +2822,7 @@ export const SetIdentityHeadersInNotificationsEnabledResponse =
 export interface SetIdentityMailFromDomainRequest {
   Identity: string;
   MailFromDomain?: string;
-  BehaviorOnMXFailure?: BehaviorOnMXFailure | (string & {});
+  BehaviorOnMXFailure?: BehaviorOnMXFailure;
 }
 export const SetIdentityMailFromDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2839,7 +2851,7 @@ export const SetIdentityMailFromDomainResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetIdentityMailFromDomainResponse>;
 export interface SetIdentityNotificationTopicRequest {
   Identity: string;
-  NotificationType: NotificationType | (string & {});
+  NotificationType: NotificationType;
   SnsTopic?: string;
 }
 export const SetIdentityNotificationTopicRequest = /*@__PURE__*/ S.suspend(() =>

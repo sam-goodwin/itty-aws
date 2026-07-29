@@ -292,7 +292,11 @@ export const DescribeApplicationStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationStateRequest",
 }) as any as S.Schema<DescribeApplicationStateRequest>;
-export type ApplicationStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
+export type ApplicationStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type UpdateDateTime = Date;
@@ -324,12 +328,17 @@ export const DescribeMigrationTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMigrationTaskRequest",
 }) as any as S.Schema<DescribeMigrationTaskRequest>;
-export type Status = "NOT_STARTED" | "IN_PROGRESS" | "FAILED" | "COMPLETED";
+export type Status =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETED"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export type ProgressPercent = number;
 export interface Task {
-  Status: Status | (string & {});
+  Status: Status;
   StatusDetail?: string;
   ProgressPercent?: number;
 }
@@ -350,12 +359,13 @@ export type ResourceAttributeType =
   | "VM_NAME"
   | "VM_PATH"
   | "BIOS_ID"
-  | "MOTHERBOARD_SERIAL_NUMBER";
+  | "MOTHERBOARD_SERIAL_NUMBER"
+  | (string & {});
 export const ResourceAttributeType = /*@__PURE__*/ S.String;
 
 export type ResourceAttributeValue = string;
 export interface ResourceAttribute {
-  Type: ResourceAttributeType | (string & {});
+  Type: ResourceAttributeType;
   Value: string;
 }
 export const ResourceAttribute = /*@__PURE__*/ S.suspend(() =>
@@ -671,7 +681,7 @@ export const ListMigrationTaskUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMigrationTaskUpdatesRequest",
 }) as any as S.Schema<ListMigrationTaskUpdatesRequest>;
-export type UpdateType = "MIGRATION_TASK_STATE_UPDATED";
+export type UpdateType = "MIGRATION_TASK_STATE_UPDATED" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export interface MigrationTaskUpdate {
@@ -778,7 +788,7 @@ export const ListSourceResourcesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSourceResourcesResult>;
 export interface NotifyApplicationStateRequest {
   ApplicationId: string;
-  Status: ApplicationStatus | (string & {});
+  Status: ApplicationStatus;
   UpdateDateTime?: Date;
   DryRun?: boolean;
 }

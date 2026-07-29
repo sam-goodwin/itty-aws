@@ -207,7 +207,7 @@ export const AssociateChannelFlowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateChannelFlowResponse",
 }) as any as S.Schema<AssociateChannelFlowResponse>;
-export type ChannelMembershipType = "DEFAULT" | "HIDDEN";
+export type ChannelMembershipType = "DEFAULT" | "HIDDEN" | (string & {});
 export const ChannelMembershipType = /*@__PURE__*/ S.String;
 
 export type MemberArns = string[];
@@ -215,7 +215,7 @@ export const MemberArns = /*@__PURE__*/ S.Array(S.String);
 export type SubChannelId = string;
 export interface BatchCreateChannelMembershipRequest {
   ChannelArn: string;
-  Type?: ChannelMembershipType | (string & {});
+  Type?: ChannelMembershipType;
   MemberArns: string[];
   ChimeBearer: string;
   SubChannelId?: string;
@@ -286,7 +286,8 @@ export type ErrorCode =
   | "Unauthorized"
   | "Unprocessable"
   | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist";
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchCreateChannelMembershipError_ {
@@ -328,13 +329,13 @@ export type NonEmptyContent = string | redacted.Redacted<string>;
 export type Metadata = string | redacted.Redacted<string>;
 export type PushNotificationTitle = string | redacted.Redacted<string>;
 export type PushNotificationBody = string | redacted.Redacted<string>;
-export type PushNotificationType = "DEFAULT" | "VOIP";
+export type PushNotificationType = "DEFAULT" | "VOIP" | (string & {});
 export const PushNotificationType = /*@__PURE__*/ S.String;
 
 export interface PushNotificationConfiguration {
   Title?: string | redacted.Redacted<string>;
   Body?: string | redacted.Redacted<string>;
-  Type?: PushNotificationType | (string & {});
+  Type?: PushNotificationType;
 }
 export const PushNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -432,10 +433,10 @@ export const ChannelFlowCallbackResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelFlowCallbackResponse",
 }) as any as S.Schema<ChannelFlowCallbackResponse>;
 export type NonEmptyResourceName = string | redacted.Redacted<string>;
-export type ChannelMode = "UNRESTRICTED" | "RESTRICTED";
+export type ChannelMode = "UNRESTRICTED" | "RESTRICTED" | (string & {});
 export const ChannelMode = /*@__PURE__*/ S.String;
 
-export type ChannelPrivacy = "PUBLIC" | "PRIVATE";
+export type ChannelPrivacy = "PUBLIC" | "PRIVATE" | (string & {});
 export const ChannelPrivacy = /*@__PURE__*/ S.String;
 
 export type ClientRequestToken = string | redacted.Redacted<string>;
@@ -475,12 +476,13 @@ export const ElasticChannelConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ExpirationDays = number;
 export type ExpirationCriterion =
   | "CREATED_TIMESTAMP"
-  | "LAST_MESSAGE_TIMESTAMP";
+  | "LAST_MESSAGE_TIMESTAMP"
+  | (string & {});
 export const ExpirationCriterion = /*@__PURE__*/ S.String;
 
 export interface ExpirationSettings {
   ExpirationDays: number;
-  ExpirationCriterion: ExpirationCriterion | (string & {});
+  ExpirationCriterion: ExpirationCriterion;
 }
 export const ExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -493,8 +495,8 @@ export const ExpirationSettings = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChannelRequest {
   AppInstanceArn: string;
   Name: string | redacted.Redacted<string>;
-  Mode?: ChannelMode | (string & {});
-  Privacy?: ChannelPrivacy | (string & {});
+  Mode?: ChannelMode;
+  Privacy?: ChannelPrivacy;
   Metadata?: string | redacted.Redacted<string>;
   ClientRequestToken: string | redacted.Redacted<string>;
   Tags?: Tag[];
@@ -574,12 +576,12 @@ export const CreateChannelBanResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChannelBanResponse",
 }) as any as S.Schema<CreateChannelBanResponse>;
 export type LambdaFunctionArn = string;
-export type InvocationType = "ASYNC";
+export type InvocationType = "ASYNC" | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
 
 export interface LambdaConfiguration {
   ResourceArn: string;
-  InvocationType: InvocationType | (string & {});
+  InvocationType: InvocationType;
 }
 export const LambdaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, InvocationType: InvocationType }),
@@ -595,14 +597,14 @@ export const ProcessorConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProcessorConfiguration",
 }) as any as S.Schema<ProcessorConfiguration>;
 export type ChannelFlowExecutionOrder = number;
-export type FallbackAction = "CONTINUE" | "ABORT";
+export type FallbackAction = "CONTINUE" | "ABORT" | (string & {});
 export const FallbackAction = /*@__PURE__*/ S.String;
 
 export interface Processor {
   Name: string | redacted.Redacted<string>;
   Configuration: ProcessorConfiguration;
   ExecutionOrder: number;
-  FallbackAction: FallbackAction | (string & {});
+  FallbackAction: FallbackAction;
 }
 export const Processor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -652,7 +654,7 @@ export const CreateChannelFlowResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChannelMembershipRequest {
   ChannelArn: string;
   MemberArn: string;
-  Type: ChannelMembershipType | (string & {});
+  Type: ChannelMembershipType;
   ChimeBearer: string;
   SubChannelId?: string;
 }
@@ -1402,12 +1404,12 @@ export const GetChannelMembershipPreferencesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetChannelMembershipPreferencesRequest",
 }) as any as S.Schema<GetChannelMembershipPreferencesRequest>;
-export type AllowNotifications = "ALL" | "NONE" | "FILTERED";
+export type AllowNotifications = "ALL" | "NONE" | "FILTERED" | (string & {});
 export const AllowNotifications = /*@__PURE__*/ S.String;
 
 export type FilterRule = string | redacted.Redacted<string>;
 export interface PushNotificationPreferences {
-  AllowNotifications: AllowNotifications | (string & {});
+  AllowNotifications: AllowNotifications;
   FilterRule?: string | redacted.Redacted<string>;
 }
 export const PushNotificationPreferences = /*@__PURE__*/ S.suspend(() =>
@@ -1470,13 +1472,21 @@ export const GetChannelMessageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChannelMessageRequest",
 }) as any as S.Schema<GetChannelMessageRequest>;
 export type Content = string | redacted.Redacted<string>;
-export type ChannelMessageType = "STANDARD" | "CONTROL";
+export type ChannelMessageType = "STANDARD" | "CONTROL" | (string & {});
 export const ChannelMessageType = /*@__PURE__*/ S.String;
 
-export type ChannelMessagePersistenceType = "PERSISTENT" | "NON_PERSISTENT";
+export type ChannelMessagePersistenceType =
+  | "PERSISTENT"
+  | "NON_PERSISTENT"
+  | (string & {});
 export const ChannelMessagePersistenceType = /*@__PURE__*/ S.String;
 
-export type ChannelMessageStatus = "SENT" | "PENDING" | "FAILED" | "DENIED";
+export type ChannelMessageStatus =
+  | "SENT"
+  | "PENDING"
+  | "FAILED"
+  | "DENIED"
+  | (string & {});
 export const ChannelMessageStatus = /*@__PURE__*/ S.String;
 
 export type StatusDetail = string;
@@ -1588,11 +1598,11 @@ export const GetChannelMessageStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetChannelMessageStatusResponse",
 }) as any as S.Schema<GetChannelMessageStatusResponse>;
-export type NetworkType = "IPV4_ONLY" | "DUAL_STACK";
+export type NetworkType = "IPV4_ONLY" | "DUAL_STACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export interface GetMessagingSessionEndpointRequest {
-  NetworkType?: NetworkType | (string & {});
+  NetworkType?: NetworkType;
 }
 export const GetMessagingSessionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1650,11 +1660,11 @@ export const GetMessagingStreamingConfigurationsRequest =
   ).annotate({
     identifier: "GetMessagingStreamingConfigurationsRequest",
   }) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>;
-export type MessagingDataType = "Channel" | "ChannelMessage";
+export type MessagingDataType = "Channel" | "ChannelMessage" | (string & {});
 export const MessagingDataType = /*@__PURE__*/ S.String;
 
 export interface StreamingConfiguration {
-  DataType: MessagingDataType | (string & {});
+  DataType: MessagingDataType;
   ResourceArn: string;
 }
 export const StreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1781,7 +1791,7 @@ export const ListChannelFlowsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChannelFlowsResponse>;
 export interface ListChannelMembershipsRequest {
   ChannelArn: string;
-  Type?: ChannelMembershipType | (string & {});
+  Type?: ChannelMembershipType;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
@@ -1884,12 +1894,12 @@ export const ListChannelMembershipsForAppInstanceUserResponse =
   ).annotate({
     identifier: "ListChannelMembershipsForAppInstanceUserResponse",
   }) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>;
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListChannelMessagesRequest {
   ChannelArn: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
   NotBefore?: Date;
   NotAfter?: Date;
   MaxResults?: number;
@@ -2037,7 +2047,7 @@ export const ListChannelModeratorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChannelModeratorsResponse>;
 export interface ListChannelsRequest {
   AppInstanceArn: string;
-  Privacy?: ChannelPrivacy | (string & {});
+  Privacy?: ChannelPrivacy;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
@@ -2427,19 +2437,19 @@ export const RedactChannelMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedactChannelMessageResponse",
 }) as any as S.Schema<RedactChannelMessageResponse>;
-export type SearchFieldKey = "MEMBERS";
+export type SearchFieldKey = "MEMBERS" | (string & {});
 export const SearchFieldKey = /*@__PURE__*/ S.String;
 
 export type SearchFieldValue = string;
 export type SearchFieldValues = string[];
 export const SearchFieldValues = /*@__PURE__*/ S.Array(S.String);
-export type SearchFieldOperator = "EQUALS" | "INCLUDES";
+export type SearchFieldOperator = "EQUALS" | "INCLUDES" | (string & {});
 export const SearchFieldOperator = /*@__PURE__*/ S.String;
 
 export interface SearchField {
-  Key: SearchFieldKey | (string & {});
+  Key: SearchFieldKey;
   Values: string[];
-  Operator: SearchFieldOperator | (string & {});
+  Operator: SearchFieldOperator;
 }
 export const SearchField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2490,8 +2500,8 @@ export const SearchChannelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SendChannelMessageRequest {
   ChannelArn: string;
   Content: string | redacted.Redacted<string>;
-  Type: ChannelMessageType | (string & {});
-  Persistence: ChannelMessagePersistenceType | (string & {});
+  Type: ChannelMessageType;
+  Persistence: ChannelMessagePersistenceType;
   Metadata?: string | redacted.Redacted<string>;
   ClientRequestToken: string | redacted.Redacted<string>;
   ChimeBearer: string;
@@ -2597,7 +2607,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelRequest {
   ChannelArn: string;
   Name?: string | redacted.Redacted<string>;
-  Mode?: ChannelMode | (string & {});
+  Mode?: ChannelMode;
   Metadata?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }

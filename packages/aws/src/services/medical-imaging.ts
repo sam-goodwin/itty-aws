@@ -209,7 +209,7 @@ export const CopyImageSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyImageSetRequest",
 }) as any as S.Schema<CopyImageSetRequest>;
-export type ImageSetState = "ACTIVE" | "LOCKED" | "DELETED";
+export type ImageSetState = "ACTIVE" | "LOCKED" | "DELETED" | (string & {});
 export const ImageSetState = /*@__PURE__*/ S.String;
 
 export type ImageSetWorkflowStatus =
@@ -226,7 +226,8 @@ export type ImageSetWorkflowStatus =
   | "DELETED"
   | "IMPORTING"
   | "IMPORTED"
-  | "IMPORT_FAILED";
+  | "IMPORT_FAILED"
+  | (string & {});
 export const ImageSetWorkflowStatus = /*@__PURE__*/ S.String;
 
 export type Arn = string;
@@ -299,7 +300,10 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type KmsKeyArn = string;
 export type LambdaArn = string;
-export type LosslessStorageFormat = "HTJ2K" | "JPEG_2000_LOSSLESS";
+export type LosslessStorageFormat =
+  | "HTJ2K"
+  | "JPEG_2000_LOSSLESS"
+  | (string & {});
 export const LosslessStorageFormat = /*@__PURE__*/ S.String;
 
 export interface CreateDatastoreRequest {
@@ -308,7 +312,7 @@ export interface CreateDatastoreRequest {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
   lambdaAuthorizerArn?: string;
-  losslessStorageFormat?: LosslessStorageFormat | (string & {});
+  losslessStorageFormat?: LosslessStorageFormat;
 }
 export const CreateDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -336,7 +340,8 @@ export type DatastoreStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DatastoreStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDatastoreResponse {
@@ -491,7 +496,12 @@ export const GetDICOMImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDICOMImportJobRequest",
 }) as any as S.Schema<GetDICOMImportJobRequest>;
 export type JobName = string;
-export type JobStatus = "SUBMITTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
+export type JobStatus =
+  | "SUBMITTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type RoleArn = string;
@@ -652,7 +662,10 @@ export interface Overrides {
 export const Overrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ forced: S.optional(S.Boolean) }),
 ).annotate({ identifier: "Overrides" }) as any as S.Schema<Overrides>;
-export type StorageTier = "FREQUENT_ACCESS" | "ARCHIVE_INSTANT_ACCESS";
+export type StorageTier =
+  | "FREQUENT_ACCESS"
+  | "ARCHIVE_INSTANT_ACCESS"
+  | (string & {});
 export const StorageTier = /*@__PURE__*/ S.String;
 
 export interface GetImageSetResponse {
@@ -735,7 +748,7 @@ export const GetImageSetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetImageSetMetadataResponse>;
 export type NextToken = string;
 export interface ListDatastoresRequest {
-  datastoreStatus?: DatastoreStatus | (string & {});
+  datastoreStatus?: DatastoreStatus;
   nextToken?: string;
   maxResults?: number;
 }
@@ -795,7 +808,7 @@ export const ListDatastoresResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatastoresResponse>;
 export interface ListDICOMImportJobsRequest {
   datastoreId: string;
-  jobStatus?: JobStatus | (string & {});
+  jobStatus?: JobStatus;
   nextToken?: string;
   maxResults?: number;
 }
@@ -1088,27 +1101,31 @@ export type SearchByAttributeValues = SearchByAttributeValue[];
 export const SearchByAttributeValues = /*@__PURE__*/ S.Array(
   SearchByAttributeValue,
 );
-export type Operator = "EQUAL" | "BETWEEN";
+export type Operator = "EQUAL" | "BETWEEN" | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface SearchFilter {
   values: SearchByAttributeValue[];
-  operator: Operator | (string & {});
+  operator: Operator;
 }
 export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ values: SearchByAttributeValues, operator: Operator }),
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
 export const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
-export type SortOrder = "ASC" | "DESC";
+export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
-export type SortField = "updatedAt" | "createdAt" | "DICOMStudyDateAndTime";
+export type SortField =
+  | "updatedAt"
+  | "createdAt"
+  | "DICOMStudyDateAndTime"
+  | (string & {});
 export const SortField = /*@__PURE__*/ S.String;
 
 export interface Sort {
-  sortOrder: SortOrder | (string & {});
-  sortField: SortField | (string & {});
+  sortOrder: SortOrder;
+  sortField: SortField;
 }
 export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sortOrder: SortOrder, sortField: SortField }),

@@ -170,14 +170,14 @@ export const __mapOf__stringMin0Max256PatternS = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type NetworkType = "IPV4" | "DUALSTACK";
+export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateClusterRequest {
   ClientToken?: string;
   ClusterName?: string;
   Tags?: { [key: string]: string | undefined };
-  NetworkType?: NetworkType | (string & {});
+  NetworkType?: NetworkType;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -212,7 +212,11 @@ export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterEndpoint>;
 export type __listOfClusterEndpoint = ClusterEndpoint[];
 export const __listOfClusterEndpoint = /*@__PURE__*/ S.Array(ClusterEndpoint);
-export type Status = "PENDING" | "DEPLOYED" | "PENDING_DELETION";
+export type Status =
+  | "PENDING"
+  | "DEPLOYED"
+  | "PENDING_DELETION"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export type __stringMin12Max12PatternD12 = string;
@@ -348,13 +352,13 @@ export type __listOf__stringMin1Max256PatternAZaZ09 = string[];
 export const __listOf__stringMin1Max256PatternAZaZ09 = /*@__PURE__*/ S.Array(
   S.String,
 );
-export type RuleType = "ATLEAST" | "AND" | "OR";
+export type RuleType = "ATLEAST" | "AND" | "OR" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 export interface RuleConfig {
   Inverted?: boolean;
   Threshold?: number;
-  Type?: RuleType | (string & {});
+  Type?: RuleType;
 }
 export const RuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1080,7 +1084,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterRequest {
   ClusterArn?: string;
-  NetworkType?: NetworkType | (string & {});
+  NetworkType?: NetworkType;
 }
 export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

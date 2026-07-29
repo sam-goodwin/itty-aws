@@ -466,7 +466,7 @@ export interface AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -481,7 +481,9 @@ export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -906,7 +908,7 @@ export interface AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -921,7 +923,9 @@ export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -1396,7 +1400,7 @@ export interface AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1411,7 +1415,9 @@ export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotat
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -1751,7 +1757,7 @@ export interface EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1766,7 +1772,9 @@ export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -2156,7 +2164,7 @@ export interface EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2171,7 +2179,9 @@ export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -2522,7 +2532,7 @@ export interface EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2537,7 +2547,9 @@ export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -2915,7 +2927,7 @@ export interface EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2930,7 +2942,9 @@ export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -3676,7 +3690,7 @@ export interface DnsTopAsesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3689,7 +3703,7 @@ export const DnsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -3968,7 +3982,7 @@ export interface NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3983,7 +3997,9 @@ export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -4266,7 +4282,7 @@ export interface QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4281,7 +4297,9 @@ export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -4483,11 +4501,11 @@ export interface EntitiesAsnsAsSetResponseAsSetsItem {
   /** The name of the AS-SET */
   name: string;
   /** The AS number following hierarchical AS-SET name */
-  hierarchicalAsn?: number;
+  hierarchicalAsn?: number | null;
   /** The inferred AS number of the AS-SET */
-  inferredAsn?: number;
+  inferredAsn?: number | null;
   /** The AS number matching PeeringDB record */
-  peeringdbAsn?: number;
+  peeringdbAsn?: number | null;
 }
 export const EntitiesAsnsAsSetResponseAsSetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4499,9 +4517,11 @@ export const EntitiesAsnsAsSetResponseAsSetsItem = /*@__PURE__*/ S.suspend(() =>
       T.Body("irr_sources"),
     ),
     name: S.String,
-    hierarchicalAsn: S.optional(S.Number.pipe(T.Body("hierarchical_asn"))),
-    inferredAsn: S.optional(S.Number.pipe(T.Body("inferred_asn"))),
-    peeringdbAsn: S.optional(S.Number.pipe(T.Body("peeringdb_asn"))),
+    hierarchicalAsn: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("hierarchical_asn")),
+    ),
+    inferredAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("inferred_asn"))),
+    peeringdbAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("peeringdb_asn"))),
   }),
 ).annotate({
   identifier: "EntitiesAsnsAsSetResponseAsSetsItem",
@@ -4751,7 +4771,7 @@ export interface AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4766,7 +4786,9 @@ export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -5111,7 +5133,7 @@ export interface AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5126,7 +5148,9 @@ export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -5470,7 +5494,7 @@ export interface AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5485,7 +5509,9 @@ export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -5890,7 +5916,7 @@ export interface AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoA
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5905,7 +5931,9 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnot
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -6391,7 +6419,7 @@ export interface HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6406,7 +6434,9 @@ export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -6868,7 +6898,7 @@ export interface HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6883,7 +6913,9 @@ export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -7195,7 +7227,7 @@ export interface LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7210,7 +7242,9 @@ export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -7545,7 +7579,7 @@ export interface LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidence
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7560,7 +7594,9 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfo
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -7806,7 +7842,7 @@ export interface EntitiesAsnsBotnetThreatFeedResponseAsesItem {
   country: string;
   name: string;
   rank: number;
-  rankChange?: number;
+  rankChange?: number | null;
 }
 export const EntitiesAsnsBotnetThreatFeedResponseAsesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7815,7 +7851,7 @@ export const EntitiesAsnsBotnetThreatFeedResponseAsesItem =
       country: S.String,
       name: S.String,
       rank: S.Number,
-      rankChange: S.optional(S.Number),
+      rankChange: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "EntitiesAsnsBotnetThreatFeedResponseAsesItem",
@@ -7831,14 +7867,14 @@ export const EntitiesAsnsBotnetThreatFeedResponseAsesList =
 export interface EntitiesAsnsBotnetThreatFeedResponseMeta {
   date: string;
   total: number;
-  compareDate?: string;
+  compareDate?: string | null;
 }
 export const EntitiesAsnsBotnetThreatFeedResponseMeta = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       date: S.String,
       total: S.Number,
-      compareDate: S.optional(S.String),
+      compareDate: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "EntitiesAsnsBotnetThreatFeedResponseMeta",
@@ -8005,7 +8041,7 @@ export interface VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -8020,7 +8056,9 @@ export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -8511,7 +8549,7 @@ export interface HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -8526,7 +8564,9 @@ export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -8954,7 +8994,7 @@ export interface HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -8969,7 +9009,9 @@ export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -9458,7 +9500,7 @@ export interface HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -9473,7 +9515,9 @@ export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -9887,7 +9931,7 @@ export interface HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -9902,7 +9946,9 @@ export const HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -10343,7 +10389,7 @@ export interface DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -10358,7 +10404,9 @@ export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -10852,7 +10900,7 @@ export interface DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -10867,7 +10915,9 @@ export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -11265,7 +11315,7 @@ export interface VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -11280,7 +11330,9 @@ export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -11743,7 +11795,7 @@ export interface LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -11758,7 +11810,9 @@ export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnota
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -12092,7 +12146,7 @@ export interface LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfide
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -12107,7 +12161,9 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -12568,7 +12624,7 @@ export interface HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -12583,7 +12639,9 @@ export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -13062,7 +13120,7 @@ export interface HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -13077,7 +13135,9 @@ export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -13397,7 +13457,7 @@ export interface RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -13412,7 +13472,9 @@ export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -13525,16 +13587,16 @@ export const RobotsTxtTopUserAgentsDirectiveResponseMeta =
 export interface RobotsTxtTopUserAgentsDirectiveResponseTop0Item {
   name: string;
   value: number;
-  fully?: number;
-  partially?: number;
+  fully?: number | null;
+  partially?: number | null;
 }
 export const RobotsTxtTopUserAgentsDirectiveResponseTop0Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       value: S.Number,
-      fully: S.optional(S.Number),
-      partially: S.optional(S.Number),
+      fully: S.optional(S.NullOr(S.Number)),
+      partially: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "RobotsTxtTopUserAgentsDirectiveResponseTop0Item",
@@ -13756,7 +13818,7 @@ export interface EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -13771,7 +13833,9 @@ export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -14164,7 +14228,7 @@ export interface EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -14179,7 +14243,9 @@ export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -14531,7 +14597,7 @@ export interface EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -14546,7 +14612,9 @@ export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -14925,7 +14993,7 @@ export interface EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -14940,7 +15008,9 @@ export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -15306,7 +15376,7 @@ export interface EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -15321,7 +15391,9 @@ export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -15715,7 +15787,7 @@ export interface EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -15730,7 +15802,9 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -16084,7 +16158,7 @@ export interface EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -16099,7 +16173,9 @@ export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -16479,7 +16555,7 @@ export interface EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -16494,7 +16570,9 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotat
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -16948,7 +17026,7 @@ export interface As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -16963,7 +17041,9 @@ export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -17430,7 +17510,7 @@ export interface As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -17445,7 +17525,9 @@ export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -17743,7 +17825,7 @@ export interface As112TopDnssecResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TopDnssecResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -17758,7 +17840,9 @@ export const As112TopDnssecResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -18217,7 +18301,7 @@ export interface DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -18232,7 +18316,9 @@ export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -18740,7 +18826,7 @@ export interface DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -18755,7 +18841,9 @@ export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -19213,7 +19301,7 @@ export interface DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -19228,7 +19316,9 @@ export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -19719,7 +19809,7 @@ export interface DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -19734,7 +19824,9 @@ export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -20228,7 +20320,7 @@ export interface DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -20243,7 +20335,9 @@ export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -20738,7 +20832,7 @@ export interface DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -20753,7 +20847,9 @@ export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -21031,7 +21127,7 @@ export interface RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -21046,7 +21142,9 @@ export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -21432,7 +21530,7 @@ export interface AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -21447,7 +21545,9 @@ export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -21860,7 +21960,7 @@ export interface AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -21875,7 +21975,9 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -22368,7 +22470,7 @@ export interface As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -22383,7 +22485,9 @@ export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -22842,7 +22946,7 @@ export interface As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -22857,7 +22961,9 @@ export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -23155,7 +23261,7 @@ export interface As112TopEdnsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TopEdnsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -23169,7 +23275,7 @@ export const As112TopEdnsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -23509,7 +23615,7 @@ export interface EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -23524,7 +23630,9 @@ export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -23927,7 +24035,7 @@ export interface EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -23942,7 +24050,9 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -24177,7 +24287,7 @@ export const AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocation
 export interface AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem {
   asn: string;
   name: string;
-  locations?: AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
+  locations?: AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations | null;
 }
 export const AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -24185,7 +24295,9 @@ export const AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem =
       asn: S.String,
       name: S.String,
       locations: S.optional(
-        AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations,
+        S.NullOr(
+          AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations,
+        ),
       ),
     }),
   ).annotate({
@@ -24283,10 +24395,10 @@ export interface AnnotationsOutagesGetResponseAnnotationsItem {
   originsDetails: AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsList;
   outage: AnnotationsOutagesGetResponseAnnotationsItemOutage;
   startDate: string;
-  description?: string;
-  endDate?: string;
-  linkedUrl?: string;
-  scope?: string;
+  description?: string | null;
+  endDate?: string | null;
+  linkedUrl?: string | null;
+  scope?: string | null;
 }
 export const AnnotationsOutagesGetResponseAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -24304,10 +24416,10 @@ export const AnnotationsOutagesGetResponseAnnotationsItem =
         AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsList,
       outage: AnnotationsOutagesGetResponseAnnotationsItemOutage,
       startDate: S.String,
-      description: S.optional(S.String),
-      endDate: S.optional(S.String),
-      linkedUrl: S.optional(S.String),
-      scope: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
+      endDate: S.optional(S.NullOr(S.String)),
+      linkedUrl: S.optional(S.NullOr(S.String)),
+      scope: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "AnnotationsOutagesGetResponseAnnotationsItem",
@@ -24528,7 +24640,7 @@ export interface BotsGetResponseBot {
   userAgentPatterns: BotsGetResponseBotUserAgentPatternsList;
   userAgents: BotsGetResponseBotUserAgentsList;
   /** The URL of the agent's [Web Bot Auth](https://blog.cloudflare.com/web-bot-auth/) resource. Null for bots not verified via request signature. */
-  signatureAgentUrl?: string;
+  signatureAgentUrl?: string | null;
 }
 export const BotsGetResponseBot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24541,7 +24653,7 @@ export const BotsGetResponseBot = /*@__PURE__*/ S.suspend(() =>
     slug: S.String,
     userAgentPatterns: BotsGetResponseBotUserAgentPatternsList,
     userAgents: BotsGetResponseBotUserAgentsList,
-    signatureAgentUrl: S.optional(S.String),
+    signatureAgentUrl: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "BotsGetResponseBot",
@@ -25176,7 +25288,7 @@ export interface EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -25191,7 +25303,9 @@ export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -25594,7 +25708,7 @@ export interface EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -25609,7 +25723,9 @@ export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -25981,7 +26097,7 @@ export interface EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -25996,7 +26112,9 @@ export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -26368,7 +26486,7 @@ export interface EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -26383,7 +26501,9 @@ export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -26613,14 +26733,14 @@ export interface EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem {
   locationAlpha2: string;
   locationName: string;
   /** Estimated users per location. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       locationAlpha2: S.String,
       locationName: S.String,
-      estimatedUsers: S.optional(S.Number),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem",
@@ -26636,13 +26756,13 @@ export const EntitiesAsnsGetResponseAsnEstimatedUsersLocationsList =
 export interface EntitiesAsnsGetResponseAsnEstimatedUsers {
   locations: EntitiesAsnsGetResponseAsnEstimatedUsersLocationsList;
   /** Total estimated users. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsGetResponseAsnEstimatedUsers = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       locations: EntitiesAsnsGetResponseAsnEstimatedUsersLocationsList,
-      estimatedUsers: S.optional(S.Number),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "EntitiesAsnsGetResponseAsnEstimatedUsers",
@@ -26651,17 +26771,17 @@ export const EntitiesAsnsGetResponseAsnEstimatedUsers = /*@__PURE__*/ S.suspend(
 export interface EntitiesAsnsGetResponseAsnRelatedItem {
   asn: number;
   name: string;
-  aka?: string;
+  aka?: string | null;
   /** Total estimated users. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsGetResponseAsnRelatedItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       asn: S.Number,
       name: S.String,
-      aka: S.optional(S.String),
-      estimatedUsers: S.optional(S.Number),
+      aka: S.optional(S.NullOr(S.String)),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "EntitiesAsnsGetResponseAsnRelatedItem",
@@ -26685,7 +26805,7 @@ export interface EntitiesAsnsGetResponseAsn {
   /** Regional Internet Registry. */
   source: string;
   website: string;
-  aka?: string;
+  aka?: string | null;
 }
 export const EntitiesAsnsGetResponseAsn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26699,7 +26819,7 @@ export const EntitiesAsnsGetResponseAsn = /*@__PURE__*/ S.suspend(() =>
     related: EntitiesAsnsGetResponseAsnRelatedList,
     source: S.String,
     website: S.String,
-    aka: S.optional(S.String),
+    aka: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EntitiesAsnsGetResponseAsn",
@@ -26821,9 +26941,9 @@ export interface GeolocationsGetResponseGeolocationParentParent {
   name: string;
   /** The type of the geolocation. */
   type: GeolocationsGetResponseGeolocationParentParentType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsGetResponseGeolocationParentParent =
   /*@__PURE__*/ S.suspend(() =>
@@ -26833,8 +26953,8 @@ export const GeolocationsGetResponseGeolocationParentParent =
       longitude: S.String,
       name: S.String,
       type: GeolocationsGetResponseGeolocationParentParentType,
-      code: S.optional(S.String),
-      locale: S.optional(S.String),
+      code: S.optional(S.NullOr(S.String)),
+      locale: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "GeolocationsGetResponseGeolocationParentParent",
@@ -26857,9 +26977,9 @@ export interface GeolocationsGetResponseGeolocationParent {
   parent: GeolocationsGetResponseGeolocationParentParent;
   /** The type of the geolocation. */
   type: GeolocationsGetResponseGeolocationParentType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsGetResponseGeolocationParent = /*@__PURE__*/ S.suspend(
   () =>
@@ -26870,8 +26990,8 @@ export const GeolocationsGetResponseGeolocationParent = /*@__PURE__*/ S.suspend(
       name: S.String,
       parent: GeolocationsGetResponseGeolocationParentParent,
       type: GeolocationsGetResponseGeolocationParentType,
-      code: S.optional(S.String),
-      locale: S.optional(S.String),
+      code: S.optional(S.NullOr(S.String)),
+      locale: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "GeolocationsGetResponseGeolocationParent",
@@ -26893,9 +27013,9 @@ export interface GeolocationsGetResponseGeolocation {
   parent: GeolocationsGetResponseGeolocationParent;
   /** The type of the geolocation. */
   type: GeolocationsGetResponseGeolocationType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsGetResponseGeolocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26905,8 +27025,8 @@ export const GeolocationsGetResponseGeolocation = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: GeolocationsGetResponseGeolocationParent,
     type: GeolocationsGetResponseGeolocationType,
-    code: S.optional(S.String),
-    locale: S.optional(S.String),
+    code: S.optional(S.NullOr(S.String)),
+    locale: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GeolocationsGetResponseGeolocation",
@@ -27189,7 +27309,7 @@ export interface HttpAsesGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -27203,7 +27323,7 @@ export const HttpAsesGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -27631,7 +27751,7 @@ export interface HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -27646,7 +27766,9 @@ export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -28094,7 +28216,7 @@ export interface HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -28109,7 +28231,9 @@ export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -28552,7 +28676,7 @@ export interface HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -28567,7 +28691,9 @@ export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -29007,7 +29133,7 @@ export interface HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -29022,7 +29148,9 @@ export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -29470,7 +29598,7 @@ export interface HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -29485,7 +29613,9 @@ export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -29922,7 +30052,7 @@ export interface HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -29937,7 +30067,9 @@ export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -30344,7 +30476,7 @@ export interface HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -30359,7 +30491,9 @@ export const HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -30794,7 +30928,7 @@ export interface HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -30809,7 +30943,9 @@ export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -31230,7 +31366,7 @@ export interface HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -31245,7 +31381,9 @@ export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -31691,7 +31829,7 @@ export interface HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -31706,7 +31844,9 @@ export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -32178,7 +32318,7 @@ export interface HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -32193,7 +32333,9 @@ export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -32654,7 +32796,7 @@ export interface HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -32669,7 +32811,9 @@ export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -33128,7 +33272,7 @@ export interface HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -33143,7 +33287,9 @@ export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -33609,7 +33755,7 @@ export interface HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -33624,7 +33770,9 @@ export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -34083,7 +34231,7 @@ export interface HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -34098,7 +34246,9 @@ export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -34532,7 +34682,7 @@ export interface HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -34547,7 +34697,9 @@ export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -35001,7 +35153,7 @@ export interface HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -35016,7 +35168,9 @@ export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -35270,17 +35424,17 @@ export const RankingDomainGetResponseDetails0TopLocationsList =
 export interface RankingDomainGetResponseDetails0 {
   categories: RankingDomainGetResponseDetails0CategoriesList;
   /** Only available in POPULAR ranking for the most recent ranking. */
-  bucket?: string;
-  rank?: number;
-  topLocations?: RankingDomainGetResponseDetails0TopLocationsList;
+  bucket?: string | null;
+  rank?: number | null;
+  topLocations?: RankingDomainGetResponseDetails0TopLocationsList | null;
 }
 export const RankingDomainGetResponseDetails0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: RankingDomainGetResponseDetails0CategoriesList,
-    bucket: S.optional(S.String),
-    rank: S.optional(S.Number),
+    bucket: S.optional(S.NullOr(S.String)),
+    rank: S.optional(S.NullOr(S.Number)),
     topLocations: S.optional(
-      RankingDomainGetResponseDetails0TopLocationsList.pipe(
+      S.NullOr(RankingDomainGetResponseDetails0TopLocationsList).pipe(
         T.Body("top_locations"),
       ),
     ),
@@ -35413,7 +35567,7 @@ export const TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations 
 export interface TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails {
   asn: string;
   name: string;
-  locations?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations;
+  locations?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations | null;
 }
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -35421,7 +35575,9 @@ export const TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails =
       asn: S.String,
       name: S.String,
       locations: S.optional(
-        TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations,
+        S.NullOr(
+          TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations,
+        ),
       ),
     }),
   ).annotate({
@@ -35469,11 +35625,11 @@ export interface TrafficAnomaliesGetResponseTrafficAnomaliesItem {
   status: string;
   type: string;
   uuid: string;
-  asnDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails;
-  endDate?: string;
-  locationDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails;
-  originDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails;
-  visibleInDataSources?: TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList;
+  asnDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails | null;
+  endDate?: string | null;
+  locationDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails | null;
+  originDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails | null;
+  visibleInDataSources?: TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList | null;
 }
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -35483,17 +35639,21 @@ export const TrafficAnomaliesGetResponseTrafficAnomaliesItem =
       type: S.String,
       uuid: S.String,
       asnDetails: S.optional(
-        TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails,
+        S.NullOr(TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails),
       ),
-      endDate: S.optional(S.String),
+      endDate: S.optional(S.NullOr(S.String)),
       locationDetails: S.optional(
-        TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails,
+        S.NullOr(
+          TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails,
+        ),
       ),
       originDetails: S.optional(
-        TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails,
+        S.NullOr(TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails),
       ),
       visibleInDataSources: S.optional(
-        TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList,
+        S.NullOr(
+          TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList,
+        ),
       ),
     }),
   ).annotate({
@@ -35889,7 +36049,7 @@ export interface QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -35904,7 +36064,9 @@ export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -36265,7 +36427,7 @@ export interface AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -36280,7 +36442,9 @@ export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -36711,7 +36875,7 @@ export interface AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceIn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -36726,7 +36890,9 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -37171,7 +37337,7 @@ export interface HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -37186,7 +37352,9 @@ export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -37669,7 +37837,7 @@ export interface HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -37684,7 +37852,9 @@ export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -38118,7 +38288,7 @@ export interface AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -38133,7 +38303,9 @@ export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -38614,7 +38786,7 @@ export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -38629,7 +38801,9 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoA
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -39103,7 +39277,7 @@ export interface HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -39118,7 +39292,9 @@ export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -39598,7 +39774,7 @@ export interface HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -39613,7 +39789,9 @@ export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -39992,7 +40170,7 @@ export interface AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -40007,7 +40185,9 @@ export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -40404,7 +40584,7 @@ export interface AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -40419,7 +40599,9 @@ export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -40753,7 +40935,7 @@ export interface AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -40768,7 +40950,9 @@ export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -41196,7 +41380,7 @@ export interface AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -41211,7 +41395,9 @@ export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -41698,7 +41884,7 @@ export interface AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -41713,7 +41899,9 @@ export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -42141,7 +42329,7 @@ export interface AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -42156,7 +42344,9 @@ export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -42325,14 +42515,14 @@ export interface EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem {
   locationAlpha2: string;
   locationName: string;
   /** Estimated users per location. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       locationAlpha2: S.String,
       locationName: S.String,
-      estimatedUsers: S.optional(S.Number),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem",
@@ -42348,13 +42538,13 @@ export const EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList =
 export interface EntitiesAsnsIpResponseAsnEstimatedUsers {
   locations: EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList;
   /** Total estimated users. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsIpResponseAsnEstimatedUsers = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       locations: EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList,
-      estimatedUsers: S.optional(S.Number),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "EntitiesAsnsIpResponseAsnEstimatedUsers",
@@ -42363,17 +42553,17 @@ export const EntitiesAsnsIpResponseAsnEstimatedUsers = /*@__PURE__*/ S.suspend(
 export interface EntitiesAsnsIpResponseAsnRelatedItem {
   asn: number;
   name: string;
-  aka?: string;
+  aka?: string | null;
   /** Total estimated users. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsIpResponseAsnRelatedItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       asn: S.Number,
       name: S.String,
-      aka: S.optional(S.String),
-      estimatedUsers: S.optional(S.Number),
+      aka: S.optional(S.NullOr(S.String)),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "EntitiesAsnsIpResponseAsnRelatedItem",
@@ -42396,7 +42586,7 @@ export interface EntitiesAsnsIpResponseAsn {
   /** Regional Internet Registry. */
   source: string;
   website: string;
-  aka?: string;
+  aka?: string | null;
 }
 export const EntitiesAsnsIpResponseAsn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -42409,7 +42599,7 @@ export const EntitiesAsnsIpResponseAsn = /*@__PURE__*/ S.suspend(() =>
     related: EntitiesAsnsIpResponseAsnRelatedList,
     source: S.String,
     website: S.String,
-    aka: S.optional(S.String),
+    aka: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EntitiesAsnsIpResponseAsn",
@@ -42722,7 +42912,7 @@ export interface As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -42737,7 +42927,9 @@ export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -43212,7 +43404,7 @@ export interface As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -43227,7 +43419,9 @@ export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -43531,7 +43725,7 @@ export interface As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -43546,7 +43740,9 @@ export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -43867,7 +44063,7 @@ export interface AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -43882,7 +44078,9 @@ export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -44269,7 +44467,7 @@ export interface AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInf
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -44284,7 +44482,9 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -44728,7 +44928,7 @@ export interface AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -44743,7 +44943,9 @@ export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -45220,7 +45422,7 @@ export interface AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInf
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -45235,7 +45437,9 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -45728,7 +45932,7 @@ export interface DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -45743,7 +45947,9 @@ export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -46238,7 +46444,7 @@ export interface DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -46253,7 +46459,9 @@ export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -46614,7 +46822,7 @@ export interface EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -46629,7 +46837,9 @@ export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -47032,7 +47242,7 @@ export interface EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -47047,7 +47257,9 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -47493,7 +47705,7 @@ export interface HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -47508,7 +47720,9 @@ export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -47978,7 +48192,7 @@ export interface HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -47993,7 +48207,9 @@ export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -48269,7 +48485,7 @@ export const AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations =
 export interface AnnotationsListResponseAnnotationsItemAsnsDetailsItem {
   asn: string;
   name: string;
-  locations?: AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations;
+  locations?: AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations | null;
 }
 export const AnnotationsListResponseAnnotationsItemAsnsDetailsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -48277,7 +48493,9 @@ export const AnnotationsListResponseAnnotationsItemAsnsDetailsItem =
       asn: S.String,
       name: S.String,
       locations: S.optional(
-        AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations,
+        S.NullOr(
+          AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations,
+        ),
       ),
     }),
   ).annotate({
@@ -48371,10 +48589,10 @@ export interface AnnotationsListResponseAnnotationsItem {
   originsDetails: AnnotationsListResponseAnnotationsItemOriginsDetailsList;
   outage: AnnotationsListResponseAnnotationsItemOutage;
   startDate: string;
-  description?: string;
-  endDate?: string;
-  linkedUrl?: string;
-  scope?: string;
+  description?: string | null;
+  endDate?: string | null;
+  linkedUrl?: string | null;
+  scope?: string | null;
 }
 export const AnnotationsListResponseAnnotationsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -48391,10 +48609,10 @@ export const AnnotationsListResponseAnnotationsItem = /*@__PURE__*/ S.suspend(
       originsDetails: AnnotationsListResponseAnnotationsItemOriginsDetailsList,
       outage: AnnotationsListResponseAnnotationsItemOutage,
       startDate: S.String,
-      description: S.optional(S.String),
-      endDate: S.optional(S.String),
-      linkedUrl: S.optional(S.String),
-      scope: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
+      endDate: S.optional(S.NullOr(S.String)),
+      linkedUrl: S.optional(S.NullOr(S.String)),
+      scope: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "AnnotationsListResponseAnnotationsItem",
@@ -49194,12 +49412,12 @@ export const ListEntityAsnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EntitiesAsnsListResponseAsnsItemEstimatedUsers {
   /** Total estimated users. */
-  estimatedUsers?: number;
+  estimatedUsers?: number | null;
 }
 export const EntitiesAsnsListResponseAsnsItemEstimatedUsers =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      estimatedUsers: S.optional(S.Number),
+      estimatedUsers: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "EntitiesAsnsListResponseAsnsItemEstimatedUsers",
@@ -49211,9 +49429,9 @@ export interface EntitiesAsnsListResponseAsnsItem {
   countryName: string;
   estimatedUsers: EntitiesAsnsListResponseAsnsItemEstimatedUsers;
   name: string;
-  aka?: string;
-  orgName?: string;
-  website?: string;
+  aka?: string | null;
+  orgName?: string | null;
+  website?: string | null;
 }
 export const EntitiesAsnsListResponseAsnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -49222,9 +49440,9 @@ export const EntitiesAsnsListResponseAsnsItem = /*@__PURE__*/ S.suspend(() =>
     countryName: S.String,
     estimatedUsers: EntitiesAsnsListResponseAsnsItemEstimatedUsers,
     name: S.String,
-    aka: S.optional(S.String),
-    orgName: S.optional(S.String),
-    website: S.optional(S.String),
+    aka: S.optional(S.NullOr(S.String)),
+    orgName: S.optional(S.NullOr(S.String)),
+    website: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EntitiesAsnsListResponseAsnsItem",
@@ -49385,9 +49603,9 @@ export interface GeolocationsListResponseGeolocationsItemParentParent {
   name: string;
   /** The type of the geolocation. */
   type: GeolocationsListResponseGeolocationsItemParentParentType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsListResponseGeolocationsItemParentParent =
   /*@__PURE__*/ S.suspend(() =>
@@ -49397,8 +49615,8 @@ export const GeolocationsListResponseGeolocationsItemParentParent =
       longitude: S.String,
       name: S.String,
       type: GeolocationsListResponseGeolocationsItemParentParentType,
-      code: S.optional(S.String),
-      locale: S.optional(S.String),
+      code: S.optional(S.NullOr(S.String)),
+      locale: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "GeolocationsListResponseGeolocationsItemParentParent",
@@ -49421,9 +49639,9 @@ export interface GeolocationsListResponseGeolocationsItemParent {
   parent: GeolocationsListResponseGeolocationsItemParentParent;
   /** The type of the geolocation. */
   type: GeolocationsListResponseGeolocationsItemParentType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsListResponseGeolocationsItemParent =
   /*@__PURE__*/ S.suspend(() =>
@@ -49434,8 +49652,8 @@ export const GeolocationsListResponseGeolocationsItemParent =
       name: S.String,
       parent: GeolocationsListResponseGeolocationsItemParentParent,
       type: GeolocationsListResponseGeolocationsItemParentType,
-      code: S.optional(S.String),
-      locale: S.optional(S.String),
+      code: S.optional(S.NullOr(S.String)),
+      locale: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "GeolocationsListResponseGeolocationsItemParent",
@@ -49458,9 +49676,9 @@ export interface GeolocationsListResponseGeolocationsItem {
   parent: GeolocationsListResponseGeolocationsItemParent;
   /** The type of the geolocation. */
   type: GeolocationsListResponseGeolocationsItemType;
-  code?: string;
+  code?: string | null;
   /** BCP 47 locale code used for the geolocation name translation */
-  locale?: string;
+  locale?: string | null;
 }
 export const GeolocationsListResponseGeolocationsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -49471,8 +49689,8 @@ export const GeolocationsListResponseGeolocationsItem = /*@__PURE__*/ S.suspend(
       name: S.String,
       parent: GeolocationsListResponseGeolocationsItemParent,
       type: GeolocationsListResponseGeolocationsItemType,
-      code: S.optional(S.String),
-      locale: S.optional(S.String),
+      code: S.optional(S.NullOr(S.String)),
+      locale: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "GeolocationsListResponseGeolocationsItem",
@@ -49702,7 +49920,7 @@ export interface As112TopLocationsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -49717,7 +49935,9 @@ export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -50257,7 +50477,7 @@ export interface DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -50272,7 +50492,9 @@ export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -50568,7 +50790,7 @@ export interface NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -50583,7 +50805,9 @@ export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -50874,7 +51098,7 @@ export interface QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -50889,7 +51113,9 @@ export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -51266,7 +51492,7 @@ export interface EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -51281,7 +51507,9 @@ export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -51692,7 +51920,7 @@ export interface EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInf
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -51707,7 +51935,9 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -52170,7 +52400,7 @@ export interface AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -52185,7 +52415,9 @@ export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -52688,7 +52920,7 @@ export interface AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidence
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -52703,7 +52935,9 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfo
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -53187,7 +53421,7 @@ export interface DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -53202,7 +53436,9 @@ export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -53718,7 +53954,7 @@ export interface DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -53733,7 +53969,9 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -54183,7 +54421,7 @@ export interface AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -54198,7 +54436,9 @@ export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -54678,7 +54918,7 @@ export interface AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfi
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -54693,7 +54933,9 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenc
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -55068,7 +55310,7 @@ export interface AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -55083,7 +55325,9 @@ export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -55385,7 +55629,7 @@ export interface AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceIn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -55400,7 +55644,9 @@ export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -55746,7 +55992,7 @@ export interface AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -55761,7 +56007,9 @@ export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -56182,7 +56430,7 @@ export interface AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -56197,7 +56445,9 @@ export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -56625,7 +56875,7 @@ export interface AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -56640,7 +56890,9 @@ export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -57098,7 +57350,7 @@ export interface OriginsSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const OriginsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -57113,7 +57365,9 @@ export const OriginsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -57404,7 +57658,7 @@ export interface OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -57419,7 +57673,9 @@ export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -57746,7 +58002,7 @@ export interface OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -57761,7 +58017,9 @@ export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -58150,7 +58408,7 @@ export interface HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -58165,7 +58423,9 @@ export const HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -58601,7 +58861,7 @@ export interface HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -58616,7 +58876,9 @@ export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -59149,7 +59411,7 @@ export interface HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -59164,7 +59426,9 @@ export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -59661,7 +59925,7 @@ export interface HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -59676,7 +59940,9 @@ export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -60339,7 +60605,7 @@ export interface As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -60354,7 +60620,9 @@ export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -60810,7 +61078,7 @@ export interface As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -60825,7 +61093,9 @@ export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -61179,7 +61449,7 @@ export interface AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -61194,7 +61464,9 @@ export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -61578,7 +61850,7 @@ export interface AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -61593,7 +61865,9 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -62081,7 +62355,7 @@ export interface DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -62096,7 +62370,9 @@ export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -62575,7 +62851,7 @@ export interface DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -62590,7 +62866,9 @@ export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -62957,7 +63235,7 @@ export interface As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -62972,7 +63250,9 @@ export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -63337,7 +63617,7 @@ export interface As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -63352,7 +63632,9 @@ export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -63716,7 +63998,7 @@ export interface DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -63731,7 +64013,9 @@ export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -64117,7 +64401,7 @@ export interface DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -64132,7 +64416,9 @@ export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -64859,7 +65145,7 @@ export interface DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -64874,7 +65160,9 @@ export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -65342,7 +65630,7 @@ export interface DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -65357,7 +65645,9 @@ export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -65775,7 +66065,7 @@ export interface As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -65790,7 +66080,9 @@ export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -66232,7 +66524,7 @@ export interface As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -66247,7 +66539,9 @@ export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotat
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -66717,7 +67011,7 @@ export interface DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -66732,7 +67026,9 @@ export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -67255,7 +67551,7 @@ export interface DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -67270,7 +67566,9 @@ export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -67791,7 +68089,7 @@ export interface EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -67806,7 +68104,9 @@ export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -68202,7 +68502,7 @@ export interface EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -68217,7 +68517,9 @@ export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -68568,7 +68870,7 @@ export interface EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -68583,7 +68885,9 @@ export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -68973,7 +69277,7 @@ export interface EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -68988,7 +69292,9 @@ export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -69339,7 +69645,7 @@ export interface EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -69354,7 +69660,9 @@ export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -69732,7 +70040,7 @@ export interface EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnot
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -69747,7 +70055,9 @@ export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotatio
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -70116,7 +70426,7 @@ export interface EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsI
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -70131,7 +70441,9 @@ export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItem 
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -70528,7 +70840,7 @@ export interface EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -70543,7 +70855,9 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotat
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -71083,7 +71397,7 @@ export interface AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -71098,7 +71412,9 @@ export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -71485,7 +71801,7 @@ export interface AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -71500,7 +71816,9 @@ export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -71850,7 +72168,7 @@ export interface BotsSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BotsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BotsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BotsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -71864,7 +72182,7 @@ export const BotsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BotsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(BotsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -72209,7 +72527,7 @@ export interface BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -72224,7 +72542,9 @@ export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -72692,7 +73012,7 @@ export interface CtSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: CtSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: CtSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const CtSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -72705,7 +73025,7 @@ export const CtSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        CtSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(CtSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -73101,7 +73421,7 @@ export interface NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -73116,7 +73436,9 @@ export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -73376,7 +73698,7 @@ export interface PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -73391,7 +73713,9 @@ export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -73669,7 +73993,7 @@ export interface QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -73684,7 +74008,9 @@ export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -73939,7 +74265,7 @@ export interface QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -73954,7 +74280,9 @@ export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -74248,7 +74576,7 @@ export interface TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -74263,7 +74591,9 @@ export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -74566,7 +74896,7 @@ export interface AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -74581,7 +74911,9 @@ export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -75002,7 +75334,7 @@ export interface As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -75017,7 +75349,9 @@ export const As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -75339,7 +75673,7 @@ export interface AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -75354,7 +75688,9 @@ export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -75768,7 +76104,7 @@ export interface AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -75783,7 +76119,9 @@ export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -76327,7 +76665,7 @@ export interface DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -76341,7 +76679,7 @@ export const DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -76684,7 +77022,7 @@ export interface EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -76699,7 +77037,9 @@ export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -77038,7 +77378,7 @@ export interface EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -77053,7 +77393,9 @@ export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -77504,7 +77846,7 @@ export interface HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -77519,7 +77861,9 @@ export const HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -77845,7 +78189,7 @@ export interface LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -77860,7 +78204,9 @@ export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -78170,7 +78516,7 @@ export interface NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -78185,7 +78531,9 @@ export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -78566,7 +78914,7 @@ export interface AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -78581,7 +78929,9 @@ export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -78900,7 +79250,7 @@ export interface AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -78915,7 +79265,9 @@ export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -79187,7 +79539,7 @@ export interface AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -79202,7 +79554,9 @@ export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -79503,7 +79857,7 @@ export interface AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInf
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -79518,7 +79872,9 @@ export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -79905,7 +80261,7 @@ export interface EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -79920,7 +80276,9 @@ export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotat
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -80350,7 +80708,7 @@ export interface EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfiden
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -80365,7 +80723,9 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceIn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -80804,7 +81164,7 @@ export interface AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -80819,7 +81179,9 @@ export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -81088,7 +81450,7 @@ export interface AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -81103,7 +81465,9 @@ export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -81514,7 +81878,7 @@ export interface As112TimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -81529,7 +81893,9 @@ export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -81879,7 +82245,7 @@ export interface AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -81894,7 +82260,9 @@ export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -82321,7 +82689,7 @@ export interface AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -82336,7 +82704,9 @@ export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -82633,7 +83003,7 @@ export interface BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -82648,7 +83018,9 @@ export const BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -82901,7 +83273,7 @@ export interface BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -82916,7 +83288,9 @@ export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -83094,7 +83468,7 @@ export interface BgpIpsTimeseriesResponseMeta {
   normalization: BgpIpsTimeseriesResponseMetaNormalization;
   /** Measurement units for the results. */
   units: BgpIpsTimeseriesResponseMetaUnitsList;
-  delay?: BgpIpsTimeseriesResponseMetaDelay;
+  delay?: BgpIpsTimeseriesResponseMetaDelay | null;
 }
 export const BgpIpsTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -83104,7 +83478,7 @@ export const BgpIpsTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.String,
     normalization: BgpIpsTimeseriesResponseMetaNormalization,
     units: BgpIpsTimeseriesResponseMetaUnitsList,
-    delay: S.optional(BgpIpsTimeseriesResponseMetaDelay),
+    delay: S.optional(S.NullOr(BgpIpsTimeseriesResponseMetaDelay)),
   }),
 ).annotate({
   identifier: "BgpIpsTimeseriesResponseMeta",
@@ -83619,7 +83993,7 @@ export interface BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -83634,7 +84008,9 @@ export const BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -84070,7 +84446,7 @@ export interface CtTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const CtTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -84084,7 +84460,7 @@ export const CtTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -84604,7 +84980,7 @@ export interface DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -84619,7 +84995,9 @@ export const DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -85039,7 +85417,7 @@ export interface AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -85054,7 +85432,9 @@ export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -85452,7 +85832,7 @@ export interface BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -85467,7 +85847,9 @@ export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -85889,7 +86271,7 @@ export interface BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -85904,7 +86286,9 @@ export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -86429,7 +86813,7 @@ export interface CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -86444,7 +86828,9 @@ export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -87097,7 +87483,7 @@ export interface NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -87112,7 +87498,9 @@ export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -87407,7 +87795,7 @@ export interface PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -87422,7 +87810,9 @@ export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -87756,7 +88146,7 @@ export interface QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -87771,7 +88161,9 @@ export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -88092,7 +88484,7 @@ export interface RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -88107,7 +88499,9 @@ export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -88418,7 +88812,7 @@ export interface RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceIn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -88433,7 +88827,9 @@ export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -88777,7 +89173,7 @@ export interface TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnno
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -88792,7 +89188,9 @@ export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -89203,7 +89601,7 @@ export interface AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotati
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -89218,7 +89616,9 @@ export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsI
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -89702,7 +90102,7 @@ export interface As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsIte
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -89717,7 +90117,9 @@ export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -90117,7 +90519,7 @@ export interface AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -90132,7 +90534,9 @@ export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -90623,7 +91027,7 @@ export interface AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -90638,7 +91042,9 @@ export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -91264,7 +91670,7 @@ export interface DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -91279,7 +91685,9 @@ export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -91697,7 +92105,7 @@ export interface EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -91712,7 +92120,9 @@ export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -92132,7 +92542,7 @@ export interface EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -92147,7 +92557,9 @@ export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -92680,7 +93092,7 @@ export interface HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -92695,7 +93107,9 @@ export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -93123,7 +93537,7 @@ export interface LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -93138,7 +93552,9 @@ export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnota
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -93621,7 +94037,7 @@ export interface HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -93636,7 +94052,9 @@ export const HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -93940,7 +94358,7 @@ export interface NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -93955,7 +94373,9 @@ export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -94387,7 +94807,7 @@ export interface TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -94402,7 +94822,9 @@ export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -94737,7 +95159,7 @@ export interface TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnota
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -94752,7 +95174,9 @@ export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotation
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -95099,7 +95523,7 @@ export interface EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -95114,7 +95538,9 @@ export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -95508,7 +95934,7 @@ export interface EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceIn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -95523,7 +95949,9 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAn
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -95995,7 +96423,7 @@ export interface HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItem 
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -96010,7 +96438,9 @@ export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -96493,7 +96923,7 @@ export interface HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotat
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -96508,7 +96938,9 @@ export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotations
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -96831,7 +97263,7 @@ export interface RankingTopResponseMetaConfidenceInfoAnnotationsItem {
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RankingTopResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RankingTopResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RankingTopResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -96844,7 +97276,7 @@ export const RankingTopResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RankingTopResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(RankingTopResponseMetaConfidenceInfoAnnotationsItemTagsList),
       ),
     }),
   ).annotate({
@@ -96973,14 +97405,14 @@ export interface RankingTopResponseTop0Item {
   domain: string;
   rank: number;
   /** Only available in TRENDING rankings. */
-  pctRankChange?: number;
+  pctRankChange?: number | null;
 }
 export const RankingTopResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: RankingTopResponseTop0ItemCategoriesList,
     domain: S.String,
     rank: S.Number,
-    pctRankChange: S.optional(S.Number),
+    pctRankChange: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "RankingTopResponseTop0Item",
@@ -97116,7 +97548,7 @@ export interface RankingInternetServicesTopResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -97131,7 +97563,9 @@ export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -97474,7 +97908,7 @@ export interface AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItem
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -97489,7 +97923,9 @@ export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -97801,7 +98237,7 @@ export interface AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotation
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -97816,7 +98252,9 @@ export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsIte
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -98155,7 +98593,7 @@ export interface AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotations
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -98170,7 +98608,9 @@ export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItem
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -98552,7 +98992,7 @@ export interface AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAn
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -98567,7 +99007,9 @@ export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnota
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -98916,7 +99358,7 @@ export interface AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -98931,7 +99373,9 @@ export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -99328,7 +99772,7 @@ export interface AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -99343,7 +99787,9 @@ export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -99677,7 +100123,7 @@ export interface AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -99692,7 +100138,9 @@ export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -100120,7 +100568,7 @@ export interface AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotatio
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -100135,7 +100583,9 @@ export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsIt
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -100622,7 +101072,7 @@ export interface AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfo
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -100637,7 +101087,9 @@ export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnno
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({
@@ -101065,7 +101517,7 @@ export interface AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsIt
   isInstantaneous: boolean;
   linkedUrl: string;
   startDate: string;
-  tags?: AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList;
+  tags?: AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList | null;
 }
 export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -101080,7 +101532,9 @@ export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
       linkedUrl: S.String,
       startDate: S.String,
       tags: S.optional(
-        AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        S.NullOr(
+          AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemTagsList,
+        ),
       ),
     }),
   ).annotate({

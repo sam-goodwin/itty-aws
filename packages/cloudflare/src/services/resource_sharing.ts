@@ -74,17 +74,19 @@ export interface CreateRecipientRequest {
   /** Share identifier tag. */
   shareId: string;
   /** Organization identifier. */
-  organizationId?: string;
+  organizationId?: string | null;
   /** The account that will receive the share. */
-  recipientAccountId?: string;
+  recipientAccountId?: string | null;
 }
 export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
-    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
+    organizationId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("organization_id")),
+    ),
     recipientAccountId: S.optional(
-      S.String.pipe(T.Body("recipient_account_id")),
+      S.NullOr(S.String).pipe(T.Body("recipient_account_id")),
     ),
   })
     .pipe(
@@ -146,7 +148,7 @@ export interface CreateRecipientResponse {
   created: string;
   /** When the share was modified. */
   modified: string;
-  resources?: RecipientsCreateResponseResourcesList;
+  resources?: RecipientsCreateResponseResourcesList | null;
 }
 export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -157,7 +159,7 @@ export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     created: S.String,
     modified: S.String,
-    resources: S.optional(RecipientsCreateResponseResourcesList),
+    resources: S.optional(S.NullOr(RecipientsCreateResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecipientResponse",
@@ -262,18 +264,20 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestRecipientsItem {
   /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
-  accountId?: string;
+  accountId?: string | null;
   /** Organization identifier. */
-  organizationId?: string;
+  organizationId?: string | null;
   /** The account that will receive the share. */
-  recipientAccountId?: string;
+  recipientAccountId?: string | null;
 }
 export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
+    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+    organizationId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("organization_id")),
+    ),
     recipientAccountId: S.optional(
-      S.String.pipe(T.Body("recipient_account_id")),
+      S.NullOr(S.String).pipe(T.Body("recipient_account_id")),
     ),
   }),
 ).annotate({
@@ -435,16 +439,16 @@ export interface CreateResourceSharingResponse {
   status: CreateResponseStatus;
   targetType: CreateResponseTargetType;
   /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatedRecipientCount?: number;
+  associatedRecipientCount?: number | null;
   /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatingRecipientCount?: number;
+  associatingRecipientCount?: number | null;
   /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatedRecipientCount?: number;
+  disassociatedRecipientCount?: number | null;
   /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatingRecipientCount?: number;
-  kind?: CreateResponseKind;
+  disassociatingRecipientCount?: number | null;
+  kind?: CreateResponseKind | null;
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
-  resources?: CreateResponseResourcesList;
+  resources?: CreateResponseResourcesList | null;
 }
 export const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -458,19 +462,19 @@ export const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     status: CreateResponseStatus,
     targetType: CreateResponseTargetType.pipe(T.Body("target_type")),
     associatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
     ),
     associatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
     ),
     disassociatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
     ),
     disassociatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
     ),
-    kind: S.optional(CreateResponseKind),
-    resources: S.optional(CreateResponseResourcesList),
+    kind: S.optional(S.NullOr(CreateResponseKind)),
+    resources: S.optional(S.NullOr(CreateResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceSharingResponse",
@@ -549,7 +553,7 @@ export interface DeleteRecipientResponse {
   created: string;
   /** When the share was modified. */
   modified: string;
-  resources?: RecipientsDeleteResponseResourcesList;
+  resources?: RecipientsDeleteResponseResourcesList | null;
 }
 export const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -560,7 +564,7 @@ export const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     created: S.String,
     modified: S.String,
-    resources: S.optional(RecipientsDeleteResponseResourcesList),
+    resources: S.optional(S.NullOr(RecipientsDeleteResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRecipientResponse",
@@ -752,16 +756,16 @@ export interface DeleteResourceSharingResponse {
   status: DeleteResponseStatus;
   targetType: DeleteResponseTargetType;
   /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatedRecipientCount?: number;
+  associatedRecipientCount?: number | null;
   /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatingRecipientCount?: number;
+  associatingRecipientCount?: number | null;
   /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatedRecipientCount?: number;
+  disassociatedRecipientCount?: number | null;
   /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatingRecipientCount?: number;
-  kind?: DeleteResponseKind;
+  disassociatingRecipientCount?: number | null;
+  kind?: DeleteResponseKind | null;
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
-  resources?: DeleteResponseResourcesList;
+  resources?: DeleteResponseResourcesList | null;
 }
 export const DeleteResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -775,19 +779,19 @@ export const DeleteResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     status: DeleteResponseStatus,
     targetType: DeleteResponseTargetType.pipe(T.Body("target_type")),
     associatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
     ),
     associatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
     ),
     disassociatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
     ),
     disassociatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
     ),
-    kind: S.optional(DeleteResponseKind),
-    resources: S.optional(DeleteResponseResourcesList),
+    kind: S.optional(S.NullOr(DeleteResponseKind)),
+    resources: S.optional(S.NullOr(DeleteResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteResourceSharingResponse",
@@ -868,7 +872,7 @@ export interface GetRecipientResponse {
   created: string;
   /** When the share was modified. */
   modified: string;
-  resources?: RecipientsGetResponseResourcesList;
+  resources?: RecipientsGetResponseResourcesList | null;
 }
 export const GetRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -879,7 +883,7 @@ export const GetRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     created: S.String,
     modified: S.String,
-    resources: S.optional(RecipientsGetResponseResourcesList),
+    resources: S.optional(S.NullOr(RecipientsGetResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecipientResponse",
@@ -1076,16 +1080,16 @@ export interface GetResourceSharingResponse {
   status: GetResponseStatus;
   targetType: GetResponseTargetType;
   /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatedRecipientCount?: number;
+  associatedRecipientCount?: number | null;
   /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatingRecipientCount?: number;
+  associatingRecipientCount?: number | null;
   /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatedRecipientCount?: number;
+  disassociatedRecipientCount?: number | null;
   /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatingRecipientCount?: number;
-  kind?: GetResponseKind;
+  disassociatingRecipientCount?: number | null;
+  kind?: GetResponseKind | null;
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
-  resources?: GetResponseResourcesList;
+  resources?: GetResponseResourcesList | null;
 }
 export const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1099,19 +1103,19 @@ export const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     status: GetResponseStatus,
     targetType: GetResponseTargetType.pipe(T.Body("target_type")),
     associatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
     ),
     associatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
     ),
     disassociatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
     ),
     disassociatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
     ),
-    kind: S.optional(GetResponseKind),
-    resources: S.optional(GetResponseResourcesList),
+    kind: S.optional(S.NullOr(GetResponseKind)),
+    resources: S.optional(S.NullOr(GetResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceSharingResponse",
@@ -1195,7 +1199,7 @@ export interface RecipientsListResultItem {
   created: string;
   /** When the share was modified. */
   modified: string;
-  resources?: RecipientsListResultItemResourcesList;
+  resources?: RecipientsListResultItemResourcesList | null;
 }
 export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1206,7 +1210,7 @@ export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
     ),
     created: S.String,
     modified: S.String,
-    resources: S.optional(RecipientsListResultItemResourcesList),
+    resources: S.optional(S.NullOr(RecipientsListResultItemResourcesList)),
   }),
 ).annotate({
   identifier: "RecipientsListResultItem",
@@ -1529,16 +1533,16 @@ export interface ListResultItem {
   status: ListResultItemStatus;
   targetType: ListResultItemTargetType;
   /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatedRecipientCount?: number;
+  associatedRecipientCount?: number | null;
   /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatingRecipientCount?: number;
+  associatingRecipientCount?: number | null;
   /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatedRecipientCount?: number;
+  disassociatedRecipientCount?: number | null;
   /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatingRecipientCount?: number;
-  kind?: ListResultItemKind;
+  disassociatingRecipientCount?: number | null;
+  kind?: ListResultItemKind | null;
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
-  resources?: ListResultItemResourcesList;
+  resources?: ListResultItemResourcesList | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1552,19 +1556,19 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     status: ListResultItemStatus,
     targetType: ListResultItemTargetType.pipe(T.Body("target_type")),
     associatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
     ),
     associatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
     ),
     disassociatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
     ),
     disassociatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
     ),
-    kind: S.optional(ListResultItemKind),
-    resources: S.optional(ListResultItemResourcesList),
+    kind: S.optional(S.NullOr(ListResultItemKind)),
+    resources: S.optional(S.NullOr(ListResultItemResourcesList)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -1780,16 +1784,16 @@ export interface UpdateResourceSharingResponse {
   status: UpdateResponseStatus;
   targetType: UpdateResponseTargetType;
   /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatedRecipientCount?: number;
+  associatedRecipientCount?: number | null;
   /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  associatingRecipientCount?: number;
+  associatingRecipientCount?: number | null;
   /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatedRecipientCount?: number;
+  disassociatedRecipientCount?: number | null;
   /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
-  disassociatingRecipientCount?: number;
-  kind?: UpdateResponseKind;
+  disassociatingRecipientCount?: number | null;
+  kind?: UpdateResponseKind | null;
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
-  resources?: UpdateResponseResourcesList;
+  resources?: UpdateResponseResourcesList | null;
 }
 export const UpdateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1803,19 +1807,19 @@ export const UpdateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     status: UpdateResponseStatus,
     targetType: UpdateResponseTargetType.pipe(T.Body("target_type")),
     associatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
     ),
     associatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("associating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
     ),
     disassociatedRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociated_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
     ),
     disassociatingRecipientCount: S.optional(
-      S.Number.pipe(T.Body("disassociating_recipient_count")),
+      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
     ),
-    kind: S.optional(UpdateResponseKind),
-    resources: S.optional(UpdateResponseResourcesList),
+    kind: S.optional(S.NullOr(UpdateResponseKind)),
+    resources: S.optional(S.NullOr(UpdateResponseResourcesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceSharingResponse",

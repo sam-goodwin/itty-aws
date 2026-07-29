@@ -113,28 +113,28 @@ export const GetResponsePolicyList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SecurityTxtFile {
-  acknowledgments?: GetResponseAcknowledgmentsList;
-  canonical?: GetResponseCanonicalList;
-  contact?: GetResponseContactList;
-  enabled?: boolean;
-  encryption?: GetResponseEncryptionList;
-  expires?: string;
-  hiring?: GetResponseHiringList;
-  policy?: GetResponsePolicyList;
-  preferredLanguages?: string;
+  acknowledgments?: GetResponseAcknowledgmentsList | null;
+  canonical?: GetResponseCanonicalList | null;
+  contact?: GetResponseContactList | null;
+  enabled?: boolean | null;
+  encryption?: GetResponseEncryptionList | null;
+  expires?: string | null;
+  hiring?: GetResponseHiringList | null;
+  policy?: GetResponsePolicyList | null;
+  preferredLanguages?: string | null;
 }
 export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    acknowledgments: S.optional(GetResponseAcknowledgmentsList),
-    canonical: S.optional(GetResponseCanonicalList),
-    contact: S.optional(GetResponseContactList),
-    enabled: S.optional(S.Boolean),
-    encryption: S.optional(GetResponseEncryptionList),
-    expires: S.optional(S.String),
-    hiring: S.optional(GetResponseHiringList),
-    policy: S.optional(GetResponsePolicyList),
+    acknowledgments: S.optional(S.NullOr(GetResponseAcknowledgmentsList)),
+    canonical: S.optional(S.NullOr(GetResponseCanonicalList)),
+    contact: S.optional(S.NullOr(GetResponseContactList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    encryption: S.optional(S.NullOr(GetResponseEncryptionList)),
+    expires: S.optional(S.NullOr(S.String)),
+    hiring: S.optional(S.NullOr(GetResponseHiringList)),
+    policy: S.optional(S.NullOr(GetResponsePolicyList)),
     preferredLanguages: S.optional(
-      S.String.pipe(T.Body("preferred_languages")),
+      S.NullOr(S.String).pipe(T.Body("preferred_languages")),
     ),
   }),
 ).annotate({
@@ -181,29 +181,29 @@ export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
 export interface PutSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
-  acknowledgments?: UpdateRequestAcknowledgmentsList;
-  canonical?: UpdateRequestCanonicalList;
-  contact?: UpdateRequestContactList;
-  enabled?: boolean;
-  encryption?: UpdateRequestEncryptionList;
-  expires?: string;
-  hiring?: UpdateRequestHiringList;
-  policy?: UpdateRequestPolicyList;
-  preferredLanguages?: string;
+  acknowledgments?: UpdateRequestAcknowledgmentsList | null;
+  canonical?: UpdateRequestCanonicalList | null;
+  contact?: UpdateRequestContactList | null;
+  enabled?: boolean | null;
+  encryption?: UpdateRequestEncryptionList | null;
+  expires?: string | null;
+  hiring?: UpdateRequestHiringList | null;
+  policy?: UpdateRequestPolicyList | null;
+  preferredLanguages?: string | null;
 }
 export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
-    canonical: S.optional(UpdateRequestCanonicalList),
-    contact: S.optional(UpdateRequestContactList),
-    enabled: S.optional(S.Boolean),
-    encryption: S.optional(UpdateRequestEncryptionList),
-    expires: S.optional(S.String),
-    hiring: S.optional(UpdateRequestHiringList),
-    policy: S.optional(UpdateRequestPolicyList),
+    acknowledgments: S.optional(S.NullOr(UpdateRequestAcknowledgmentsList)),
+    canonical: S.optional(S.NullOr(UpdateRequestCanonicalList)),
+    contact: S.optional(S.NullOr(UpdateRequestContactList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    encryption: S.optional(S.NullOr(UpdateRequestEncryptionList)),
+    expires: S.optional(S.NullOr(S.String)),
+    hiring: S.optional(S.NullOr(UpdateRequestHiringList)),
+    policy: S.optional(S.NullOr(UpdateRequestPolicyList)),
     preferredLanguages: S.optional(
-      S.String.pipe(T.Body("preferred_languages")),
+      S.NullOr(S.String).pipe(T.Body("preferred_languages")),
     ),
   })
     .pipe(

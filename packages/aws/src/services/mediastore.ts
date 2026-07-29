@@ -142,7 +142,11 @@ export const CreateContainerInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContainerInput>;
 export type Endpoint = string;
 export type ContainerARN = string;
-export type ContainerStatus = "ACTIVE" | "CREATING" | "DELETING";
+export type ContainerStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | (string & {});
 export const ContainerStatus = /*@__PURE__*/ S.String;
 
 export type ContainerAccessLoggingEnabled = boolean;
@@ -366,10 +370,10 @@ export const GetCorsPolicyInput = /*@__PURE__*/ S.suspend(() =>
 export type Origin = string;
 export type AllowedOrigins = string[];
 export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
-export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD";
+export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD" | (string & {});
 export const MethodName = /*@__PURE__*/ S.String;
 
-export type AllowedMethods = (MethodName | (string & {}))[];
+export type AllowedMethods = MethodName[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(MethodName);
 export type Header = string;
 export type AllowedHeaders = string[];
@@ -379,7 +383,7 @@ export type ExposeHeaders = string[];
 export const ExposeHeaders = /*@__PURE__*/ S.Array(S.String);
 export interface CorsRule {
   AllowedOrigins: string[];
-  AllowedMethods?: (MethodName | (string & {}))[];
+  AllowedMethods?: MethodName[];
   AllowedHeaders: string[];
   MaxAgeSeconds?: number;
   ExposeHeaders?: string[];
@@ -448,7 +452,7 @@ export const GetMetricPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricPolicyInput",
 }) as any as S.Schema<GetMetricPolicyInput>;
-export type ContainerLevelMetrics = "ENABLED" | "DISABLED";
+export type ContainerLevelMetrics = "ENABLED" | "DISABLED" | (string & {});
 export const ContainerLevelMetrics = /*@__PURE__*/ S.String;
 
 export type ObjectGroup = string;
@@ -465,7 +469,7 @@ export const MetricPolicyRule = /*@__PURE__*/ S.suspend(() =>
 export type MetricPolicyRules = MetricPolicyRule[];
 export const MetricPolicyRules = /*@__PURE__*/ S.Array(MetricPolicyRule);
 export interface MetricPolicy {
-  ContainerLevelMetrics: ContainerLevelMetrics | (string & {});
+  ContainerLevelMetrics: ContainerLevelMetrics;
   MetricPolicyRules?: MetricPolicyRule[];
 }
 export const MetricPolicy = /*@__PURE__*/ S.suspend(() =>

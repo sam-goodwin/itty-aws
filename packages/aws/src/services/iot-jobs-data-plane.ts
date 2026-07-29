@@ -179,7 +179,8 @@ export type JobExecutionStatus =
   | "TIMED_OUT"
   | "REJECTED"
   | "REMOVED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const JobExecutionStatus = /*@__PURE__*/ S.String;
 
 export type DetailsKey = string;
@@ -397,7 +398,7 @@ export type IncludeExecutionState = boolean;
 export interface UpdateJobExecutionRequest {
   jobId: string;
   thingName: string;
-  status: JobExecutionStatus | (string & {});
+  status: JobExecutionStatus;
   statusDetails?: { [key: string]: string | undefined };
   stepTimeoutInMinutes?: number;
   expectedVersion?: number;

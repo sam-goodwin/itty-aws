@@ -144,13 +144,14 @@ export type TaggableResourceType =
   | "BatchPrediction"
   | "DataSource"
   | "Evaluation"
-  | "MLModel";
+  | "MLModel"
+  | (string & {});
 export const TaggableResourceType = /*@__PURE__*/ S.String;
 
 export interface AddTagsInput {
   Tags: Tag[];
   ResourceId: string;
-  ResourceType: TaggableResourceType | (string & {});
+  ResourceType: TaggableResourceType;
 }
 export const AddTagsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -475,7 +476,11 @@ export const CreateEvaluationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEvaluationOutput",
 }) as any as S.Schema<CreateEvaluationOutput>;
-export type MLModelType = "REGRESSION" | "BINARY" | "MULTICLASS";
+export type MLModelType =
+  | "REGRESSION"
+  | "BINARY"
+  | "MULTICLASS"
+  | (string & {});
 export const MLModelType = /*@__PURE__*/ S.String;
 
 export type StringType = string;
@@ -488,7 +493,7 @@ export type Recipe = string;
 export interface CreateMLModelInput {
   MLModelId: string;
   MLModelName?: string;
-  MLModelType: MLModelType | (string & {});
+  MLModelType: MLModelType;
   Parameters?: { [key: string]: string | undefined };
   TrainingDataSourceId: string;
   Recipe?: string;
@@ -546,7 +551,12 @@ export const CreateRealtimeEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type IntegerType = number;
 export type EpochTime = Date;
 export type VipURL = string;
-export type RealtimeEndpointStatus = "NONE" | "READY" | "UPDATING" | "FAILED";
+export type RealtimeEndpointStatus =
+  | "NONE"
+  | "READY"
+  | "UPDATING"
+  | "FAILED"
+  | (string & {});
 export const RealtimeEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface RealtimeEndpointInfo {
@@ -716,7 +726,7 @@ export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteTagsInput {
   TagKeys: string[];
   ResourceId: string;
-  ResourceType: TaggableResourceType | (string & {});
+  ResourceType: TaggableResourceType;
 }
 export const DeleteTagsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -757,16 +767,17 @@ export type BatchPredictionFilterVariable =
   | "IAMUser"
   | "MLModelId"
   | "DataSourceId"
-  | "DataURI";
+  | "DataURI"
+  | (string & {});
 export const BatchPredictionFilterVariable = /*@__PURE__*/ S.String;
 
 export type ComparatorValue = string;
-export type SortOrder = "asc" | "dsc";
+export type SortOrder = "asc" | "dsc" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export type PageLimit = number;
 export interface DescribeBatchPredictionsInput {
-  FilterVariable?: BatchPredictionFilterVariable | (string & {});
+  FilterVariable?: BatchPredictionFilterVariable;
   EQ?: string;
   GT?: string;
   LT?: string;
@@ -774,7 +785,7 @@ export interface DescribeBatchPredictionsInput {
   LE?: string;
   NE?: string;
   Prefix?: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
   NextToken?: string;
   Limit?: number;
 }
@@ -811,7 +822,8 @@ export type EntityStatus =
   | "INPROGRESS"
   | "FAILED"
   | "COMPLETED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const EntityStatus = /*@__PURE__*/ S.String;
 
 export type Message = string;
@@ -876,11 +888,12 @@ export type DataSourceFilterVariable =
   | "Status"
   | "Name"
   | "DataLocationS3"
-  | "IAMUser";
+  | "IAMUser"
+  | (string & {});
 export const DataSourceFilterVariable = /*@__PURE__*/ S.String;
 
 export interface DescribeDataSourcesInput {
-  FilterVariable?: DataSourceFilterVariable | (string & {});
+  FilterVariable?: DataSourceFilterVariable;
   EQ?: string;
   GT?: string;
   LT?: string;
@@ -888,7 +901,7 @@ export interface DescribeDataSourcesInput {
   LE?: string;
   NE?: string;
   Prefix?: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
   NextToken?: string;
   Limit?: number;
 }
@@ -1016,11 +1029,12 @@ export type EvaluationFilterVariable =
   | "IAMUser"
   | "MLModelId"
   | "DataSourceId"
-  | "DataURI";
+  | "DataURI"
+  | (string & {});
 export const EvaluationFilterVariable = /*@__PURE__*/ S.String;
 
 export interface DescribeEvaluationsInput {
-  FilterVariable?: EvaluationFilterVariable | (string & {});
+  FilterVariable?: EvaluationFilterVariable;
   EQ?: string;
   GT?: string;
   LT?: string;
@@ -1028,7 +1042,7 @@ export interface DescribeEvaluationsInput {
   LE?: string;
   NE?: string;
   Prefix?: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
   NextToken?: string;
   Limit?: number;
 }
@@ -1134,11 +1148,12 @@ export type MLModelFilterVariable =
   | "RealtimeEndpointStatus"
   | "MLModelType"
   | "Algorithm"
-  | "TrainingDataURI";
+  | "TrainingDataURI"
+  | (string & {});
 export const MLModelFilterVariable = /*@__PURE__*/ S.String;
 
 export interface DescribeMLModelsInput {
-  FilterVariable?: MLModelFilterVariable | (string & {});
+  FilterVariable?: MLModelFilterVariable;
   EQ?: string;
   GT?: string;
   LT?: string;
@@ -1146,7 +1161,7 @@ export interface DescribeMLModelsInput {
   LE?: string;
   NE?: string;
   Prefix?: string;
-  SortOrder?: SortOrder | (string & {});
+  SortOrder?: SortOrder;
   NextToken?: string;
   Limit?: number;
 }
@@ -1178,7 +1193,7 @@ export const DescribeMLModelsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeMLModelsInput",
 }) as any as S.Schema<DescribeMLModelsInput>;
 export type MLModelName = string;
-export type Algorithm = "sgd";
+export type Algorithm = "sgd" | (string & {});
 export const Algorithm = /*@__PURE__*/ S.String;
 
 export type ScoreThreshold = number;
@@ -1244,7 +1259,7 @@ export const DescribeMLModelsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMLModelsOutput>;
 export interface DescribeTagsInput {
   ResourceId: string;
-  ResourceType: TaggableResourceType | (string & {});
+  ResourceType: TaggableResourceType;
 }
 export const DescribeTagsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceId: S.String, ResourceType: TaggableResourceType }).pipe(
@@ -1568,7 +1583,10 @@ export const ScoreValuePerLabelMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number.pipe(S.optional),
 );
-export type DetailsAttributes = "PredictiveModelType" | "Algorithm";
+export type DetailsAttributes =
+  | "PredictiveModelType"
+  | "Algorithm"
+  | (string & {});
 export const DetailsAttributes = /*@__PURE__*/ S.String;
 
 export type DetailsValue = string;

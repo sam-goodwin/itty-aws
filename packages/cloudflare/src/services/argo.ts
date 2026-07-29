@@ -79,14 +79,14 @@ export interface GetSmartRoutingResponse {
   /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingGetResponseValue;
   /** Specifies the time when the setting was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
     value: SmartRoutingGetResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSmartRoutingResponse",
@@ -127,14 +127,14 @@ export interface GetTieredCachingResponse {
   /** Value of the Tiered Cache zone setting. */
   value: TieredCachingGetResponseValue;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingGetResponseId,
     editable: S.Boolean,
     value: TieredCachingGetResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTieredCachingResponse",
@@ -178,14 +178,14 @@ export interface PatchSmartRoutingResponse {
   /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingEditResponseValue;
   /** Specifies the time when the setting was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
     value: SmartRoutingEditResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSmartRoutingResponse",
@@ -232,14 +232,14 @@ export interface PatchTieredCachingResponse {
   /** Value of the Tiered Cache zone setting. */
   value: TieredCachingEditResponseValue;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingEditResponseId,
     editable: S.Boolean,
     value: TieredCachingEditResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTieredCachingResponse",

@@ -41,13 +41,13 @@ export interface DismissInsightForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   issueId: string;
-  dismiss?: boolean;
+  dismiss?: boolean | null;
 }
 export const DismissInsightForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
-    dismiss: S.optional(S.Boolean),
+    dismiss: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -72,13 +72,13 @@ export interface DismissInsightForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   issueId: string;
-  dismiss?: boolean;
+  dismiss?: boolean | null;
 }
 export const DismissInsightForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
-    dismiss: S.optional(S.Boolean),
+    dismiss: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -206,13 +206,13 @@ export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightClassForAccountRequest>;
 
 export interface InsightsClassGetResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const InsightsClassGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    value: S.optional(S.String),
+    count: S.optional(S.NullOr(S.Number)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InsightsClassGetResultItem",
@@ -437,13 +437,13 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightSeverityForAccountRequest>;
 
 export interface InsightsSeverityGetResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const InsightsSeverityGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    value: S.optional(S.String),
+    count: S.optional(S.NullOr(S.Number)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InsightsSeverityGetResultItem",
@@ -631,13 +631,13 @@ export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightTypeForAccountRequest>;
 
 export interface InsightsTypeGetResultItem {
-  count?: number;
-  value?: string;
+  count?: number | null;
+  value?: string | null;
 }
 export const InsightsTypeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    value: S.optional(S.String),
+    count: S.optional(S.NullOr(S.Number)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InsightsTypeGetResultItem",
@@ -781,40 +781,44 @@ export const InsightsAuditLogsListByInsightResultItemFieldChanged =
 
 export interface InsightsAuditLogsListByInsightResultItem {
   /** UUIDv7 identifier for the audit log entry, time-ordered. */
-  id?: string;
+  id?: string | null;
   /** The timestamp when the change occurred. */
-  changedAt?: string;
+  changedAt?: string | null;
   /** The actor that made the change. 'system' for automated changes, or a user identifier. */
-  changedBy?: string;
+  changedBy?: string | null;
   /** The value of the field after the change. Null if the field was cleared. */
-  currentValue?: string;
+  currentValue?: string | null;
   /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListByInsightResultItemFieldChanged;
+  fieldChanged?: InsightsAuditLogsListByInsightResultItemFieldChanged | null;
   /** The ID of the insight this audit log entry relates to. */
-  issueId?: string;
+  issueId?: string | null;
   /** The value of the field before the change. Null if the field was not previously set. */
-  previousValue?: string;
+  previousValue?: string | null;
   /** Optional rationale provided for the change. */
-  rationale?: string;
+  rationale?: string | null;
   /** The zone ID associated with the insight. Only present for zone-level insights. */
-  zoneId?: number;
+  zoneId?: number | null;
 }
 export const InsightsAuditLogsListByInsightResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
-      changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
-      changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
-      currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
+      id: S.optional(S.NullOr(S.String)),
+      changedAt: S.optional(S.NullOr(S.String).pipe(T.Body("changed_at"))),
+      changedBy: S.optional(S.NullOr(S.String).pipe(T.Body("changed_by"))),
+      currentValue: S.optional(
+        S.NullOr(S.String).pipe(T.Body("current_value")),
+      ),
       fieldChanged: S.optional(
-        InsightsAuditLogsListByInsightResultItemFieldChanged.pipe(
+        S.NullOr(InsightsAuditLogsListByInsightResultItemFieldChanged).pipe(
           T.Body("field_changed"),
         ),
       ),
-      issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
-      previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
-      rationale: S.optional(S.String),
-      zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
+      issueId: S.optional(S.NullOr(S.String).pipe(T.Body("issue_id"))),
+      previousValue: S.optional(
+        S.NullOr(S.String).pipe(T.Body("previous_value")),
+      ),
+      rationale: S.optional(S.NullOr(S.String)),
+      zoneId: S.optional(S.NullOr(S.Number).pipe(T.Body("zone_id"))),
     }),
 ).annotate({
   identifier: "InsightsAuditLogsListByInsightResultItem",
@@ -956,37 +960,41 @@ export const InsightsAuditLogsListResultItemFieldChanged =
 
 export interface InsightsAuditLogsListResultItem {
   /** UUIDv7 identifier for the audit log entry, time-ordered. */
-  id?: string;
+  id?: string | null;
   /** The timestamp when the change occurred. */
-  changedAt?: string;
+  changedAt?: string | null;
   /** The actor that made the change. 'system' for automated changes, or a user identifier. */
-  changedBy?: string;
+  changedBy?: string | null;
   /** The value of the field after the change. Null if the field was cleared. */
-  currentValue?: string;
+  currentValue?: string | null;
   /** The field that was changed. */
-  fieldChanged?: InsightsAuditLogsListResultItemFieldChanged;
+  fieldChanged?: InsightsAuditLogsListResultItemFieldChanged | null;
   /** The ID of the insight this audit log entry relates to. */
-  issueId?: string;
+  issueId?: string | null;
   /** The value of the field before the change. Null if the field was not previously set. */
-  previousValue?: string;
+  previousValue?: string | null;
   /** Optional rationale provided for the change. */
-  rationale?: string;
+  rationale?: string | null;
   /** The zone ID associated with the insight. Only present for zone-level insights. */
-  zoneId?: number;
+  zoneId?: number | null;
 }
 export const InsightsAuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
-    changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
-    currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
+    id: S.optional(S.NullOr(S.String)),
+    changedAt: S.optional(S.NullOr(S.String).pipe(T.Body("changed_at"))),
+    changedBy: S.optional(S.NullOr(S.String).pipe(T.Body("changed_by"))),
+    currentValue: S.optional(S.NullOr(S.String).pipe(T.Body("current_value"))),
     fieldChanged: S.optional(
-      InsightsAuditLogsListResultItemFieldChanged.pipe(T.Body("field_changed")),
+      S.NullOr(InsightsAuditLogsListResultItemFieldChanged).pipe(
+        T.Body("field_changed"),
+      ),
     ),
-    issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
-    previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
-    rationale: S.optional(S.String),
-    zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
+    issueId: S.optional(S.NullOr(S.String).pipe(T.Body("issue_id"))),
+    previousValue: S.optional(
+      S.NullOr(S.String).pipe(T.Body("previous_value")),
+    ),
+    rationale: S.optional(S.NullOr(S.String)),
+    zoneId: S.optional(S.NullOr(S.Number).pipe(T.Body("zone_id"))),
   }),
 ).annotate({
   identifier: "InsightsAuditLogsListResultItem",
@@ -1179,14 +1187,16 @@ export const InsightsListResponseIssuesItemIssueType = /*@__PURE__*/ S.String;
 
 export interface InsightsListResponseIssuesItemPayload {
   /** Describes the method used to detect insight. */
-  detectionMethod?: string;
-  zoneTag?: string;
+  detectionMethod?: string | null;
+  zoneTag?: string | null;
 }
 export const InsightsListResponseIssuesItemPayload = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      detectionMethod: S.optional(S.String.pipe(T.Body("detection_method"))),
-      zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+      detectionMethod: S.optional(
+        S.NullOr(S.String).pipe(T.Body("detection_method")),
+      ),
+      zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
     }),
 ).annotate({
   identifier: "InsightsListResponseIssuesItemPayload",
@@ -1209,45 +1219,47 @@ export const InsightsListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
 export interface InsightsListResponseIssuesItem {
-  id?: string;
-  dismissed?: boolean;
+  id?: string | null;
+  dismissed?: boolean | null;
   /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
-  hasExtendedContext?: boolean;
-  issueClass?: string;
-  issueType?: InsightsListResponseIssuesItemIssueType;
-  payload?: InsightsListResponseIssuesItemPayload;
-  resolveLink?: string;
-  resolveText?: string;
-  severity?: InsightsListResponseIssuesItemSeverity;
-  since?: string;
+  hasExtendedContext?: boolean | null;
+  issueClass?: string | null;
+  issueType?: InsightsListResponseIssuesItemIssueType | null;
+  payload?: InsightsListResponseIssuesItemPayload | null;
+  resolveLink?: string | null;
+  resolveText?: string | null;
+  severity?: InsightsListResponseIssuesItemSeverity | null;
+  since?: string | null;
   /** The current status of the insight. */
-  status?: InsightsListResponseIssuesItemStatus;
-  subject?: string;
-  timestamp?: string;
+  status?: InsightsListResponseIssuesItemStatus | null;
+  subject?: string | null;
+  timestamp?: string | null;
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
-  userClassification?: InsightsListResponseIssuesItemUserClassification;
+  userClassification?: InsightsListResponseIssuesItemUserClassification | null;
 }
 export const InsightsListResponseIssuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    dismissed: S.optional(S.Boolean),
+    id: S.optional(S.NullOr(S.String)),
+    dismissed: S.optional(S.NullOr(S.Boolean)),
     hasExtendedContext: S.optional(
-      S.Boolean.pipe(T.Body("has_extended_context")),
+      S.NullOr(S.Boolean).pipe(T.Body("has_extended_context")),
     ),
-    issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
+    issueClass: S.optional(S.NullOr(S.String).pipe(T.Body("issue_class"))),
     issueType: S.optional(
-      InsightsListResponseIssuesItemIssueType.pipe(T.Body("issue_type")),
+      S.NullOr(InsightsListResponseIssuesItemIssueType).pipe(
+        T.Body("issue_type"),
+      ),
     ),
-    payload: S.optional(InsightsListResponseIssuesItemPayload),
-    resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
-    resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
-    severity: S.optional(InsightsListResponseIssuesItemSeverity),
-    since: S.optional(S.String),
-    status: S.optional(InsightsListResponseIssuesItemStatus),
-    subject: S.optional(S.String),
-    timestamp: S.optional(S.String),
+    payload: S.optional(S.NullOr(InsightsListResponseIssuesItemPayload)),
+    resolveLink: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_link"))),
+    resolveText: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_text"))),
+    severity: S.optional(S.NullOr(InsightsListResponseIssuesItemSeverity)),
+    since: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(InsightsListResponseIssuesItemStatus)),
+    subject: S.optional(S.NullOr(S.String)),
+    timestamp: S.optional(S.NullOr(S.String)),
     userClassification: S.optional(
-      InsightsListResponseIssuesItemUserClassification.pipe(
+      S.NullOr(InsightsListResponseIssuesItemUserClassification).pipe(
         T.Body("user_classification"),
       ),
     ),
@@ -1265,19 +1277,19 @@ export const InsightsListResponseIssuesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListInsightsResponse {
   /** Indicates the total number of results. */
-  count?: number;
-  issues?: InsightsListResponseIssuesList;
+  count?: number | null;
+  issues?: InsightsListResponseIssuesList | null;
   /** Specifies the current page within paginated list of results. */
-  page?: number;
+  page?: number | null;
   /** Sets the number of results per page of results. */
-  perPage?: number;
+  perPage?: number | null;
 }
 export const ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    issues: S.optional(InsightsListResponseIssuesList),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    count: S.optional(S.NullOr(S.Number)),
+    issues: S.optional(S.NullOr(InsightsListResponseIssuesList)),
+    page: S.optional(S.NullOr(S.Number)),
+    perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightsResponse",
@@ -1359,9 +1371,10 @@ export interface PatchInsightClassificationForAccountRequest {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   classification?:
     | InsightsClassificationUpdateRequestClassification
-    | (string & {});
+    | (string & {})
+    | null;
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
-  rationale?: string;
+  rationale?: string | null;
 }
 export const PatchInsightClassificationForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1369,9 +1382,9 @@ export const PatchInsightClassificationForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        InsightsClassificationUpdateRequestClassification,
+        S.NullOr(InsightsClassificationUpdateRequestClassification),
       ),
-      rationale: S.optional(S.String),
+      rationale: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({
@@ -1400,9 +1413,10 @@ export interface PatchInsightClassificationForZoneRequest {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   classification?:
     | InsightsClassificationUpdateRequestClassification
-    | (string & {});
+    | (string & {})
+    | null;
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
-  rationale?: string;
+  rationale?: string | null;
 }
 export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1410,9 +1424,9 @@ export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        InsightsClassificationUpdateRequestClassification,
+        S.NullOr(InsightsClassificationUpdateRequestClassification),
       ),
-      rationale: S.optional(S.String),
+      rationale: S.optional(S.NullOr(S.String)),
     })
       .pipe(
         T.Http({

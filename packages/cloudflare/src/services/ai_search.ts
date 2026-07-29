@@ -367,18 +367,19 @@ export const InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
 export interface InstancesChatCompletionsRequestAiSearchOptionsCache {
   cacheThreshold?:
     | InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold.pipe(
-          T.Body("cache_threshold"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold,
+        ).pipe(T.Body("cache_threshold")),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsRequestAiSearchOptionsCache",
@@ -419,20 +420,25 @@ export const InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
       model: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        ),
       ),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite",
@@ -445,19 +451,22 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
   model?:
     | InstancesChatCompletionsRequestAiSearchOptionsRerankingModel
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
       model: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRerankingModel,
+        S.NullOr(InstancesChatCompletionsRequestAiSearchOptionsRerankingModel),
       ),
     }),
   ).annotate({
@@ -475,14 +484,17 @@ export interface InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByI
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -522,78 +534,93 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalTyp
 
 export interface InstancesChatCompletionsRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        ),
       ),
       fusionMethod: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsRequestAiSearchOptionsRetrieval",
   }) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsRetrieval>;
 
 export interface InstancesChatCompletionsRequestAiSearchOptions {
-  cache?: InstancesChatCompletionsRequestAiSearchOptionsCache;
-  queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
-  reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
-  retrieval?: InstancesChatCompletionsRequestAiSearchOptionsRetrieval;
+  cache?: InstancesChatCompletionsRequestAiSearchOptionsCache | null;
+  queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking | null;
+  retrieval?: InstancesChatCompletionsRequestAiSearchOptionsRetrieval | null;
 }
 export const InstancesChatCompletionsRequestAiSearchOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cache: S.optional(InstancesChatCompletionsRequestAiSearchOptionsCache),
+      cache: S.optional(
+        S.NullOr(InstancesChatCompletionsRequestAiSearchOptionsCache),
+      ),
       queryRewrite: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite.pipe(
-          T.Body("query_rewrite"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite,
+        ).pipe(T.Body("query_rewrite")),
       ),
       reranking: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsReranking,
+        S.NullOr(InstancesChatCompletionsRequestAiSearchOptionsReranking),
       ),
       retrieval: S.optional(
-        InstancesChatCompletionsRequestAiSearchOptionsRetrieval,
+        S.NullOr(InstancesChatCompletionsRequestAiSearchOptionsRetrieval),
       ),
     }),
   ).annotate({
@@ -638,9 +665,9 @@ export interface ChatCompletionsInstanceRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   messages: InstancesChatCompletionsRequestMessagesList;
-  aiSearchOptions?: InstancesChatCompletionsRequestAiSearchOptions;
-  model?: InstancesChatCompletionsRequestModel | (string & {});
-  stream?: boolean;
+  aiSearchOptions?: InstancesChatCompletionsRequestAiSearchOptions | null;
+  model?: InstancesChatCompletionsRequestModel | (string & {}) | null;
+  stream?: boolean | null;
 }
 export const ChatCompletionsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -648,12 +675,12 @@ export const ChatCompletionsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     messages: InstancesChatCompletionsRequestMessagesList,
     aiSearchOptions: S.optional(
-      InstancesChatCompletionsRequestAiSearchOptions.pipe(
+      S.NullOr(InstancesChatCompletionsRequestAiSearchOptions).pipe(
         T.Body("ai_search_options"),
       ),
     ),
-    model: S.optional(InstancesChatCompletionsRequestModel),
-    stream: S.optional(S.Boolean),
+    model: S.optional(S.NullOr(InstancesChatCompletionsRequestModel)),
+    stream: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -772,13 +799,13 @@ export const InstancesChatCompletionsResponseChoicesItemMessage =
 
 export interface InstancesChatCompletionsResponseChoicesItem {
   message: InstancesChatCompletionsResponseChoicesItemMessage;
-  index?: number;
+  index?: number | null;
 }
 export const InstancesChatCompletionsResponseChoicesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       message: InstancesChatCompletionsResponseChoicesItemMessage,
-      index: S.optional(S.Number),
+      index: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsResponseChoicesItem",
@@ -802,17 +829,17 @@ export const InstancesChatCompletionsResponseChunksItemItemMetadataMap =
 
 export interface InstancesChatCompletionsResponseChunksItemItem {
   key: string;
-  metadata?: InstancesChatCompletionsResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: InstancesChatCompletionsResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const InstancesChatCompletionsResponseChunksItemItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
       metadata: S.optional(
-        InstancesChatCompletionsResponseChunksItemItemMetadataMap,
+        S.NullOr(InstancesChatCompletionsResponseChunksItemItemMetadataMap),
       ),
-      timestamp: S.optional(S.Number),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsResponseChunksItemItem",
@@ -824,26 +851,30 @@ export const InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMetho
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsResponseChunksItemScoringDetails {
-  fusionMethod?: InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const InstancesChatCompletionsResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier: "InstancesChatCompletionsResponseChunksItemScoringDetails",
@@ -854,8 +885,8 @@ export interface InstancesChatCompletionsResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: InstancesChatCompletionsResponseChunksItemItem;
-  scoringDetails?: InstancesChatCompletionsResponseChunksItemScoringDetails;
+  item?: InstancesChatCompletionsResponseChunksItemItem | null;
+  scoringDetails?: InstancesChatCompletionsResponseChunksItemScoringDetails | null;
 }
 export const InstancesChatCompletionsResponseChunksItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -864,9 +895,11 @@ export const InstancesChatCompletionsResponseChunksItem =
       score: S.Number,
       text: S.String,
       type: S.String,
-      item: S.optional(InstancesChatCompletionsResponseChunksItemItem),
+      item: S.optional(
+        S.NullOr(InstancesChatCompletionsResponseChunksItemItem),
+      ),
       scoringDetails: S.optional(
-        InstancesChatCompletionsResponseChunksItemScoringDetails.pipe(
+        S.NullOr(InstancesChatCompletionsResponseChunksItemScoringDetails).pipe(
           T.Body("scoring_details"),
         ),
       ),
@@ -885,17 +918,17 @@ export const InstancesChatCompletionsResponseChunksList = /*@__PURE__*/ S.Array(
 export interface ChatCompletionsInstanceResponse {
   choices: InstancesChatCompletionsResponseChoicesList;
   chunks: InstancesChatCompletionsResponseChunksList;
-  id?: string;
-  model?: string;
-  object?: string;
+  id?: string | null;
+  model?: string | null;
+  object?: string | null;
 }
 export const ChatCompletionsInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choices: InstancesChatCompletionsResponseChoicesList,
     chunks: InstancesChatCompletionsResponseChunksList,
-    id: S.optional(S.String),
-    model: S.optional(S.String),
-    object: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    model: S.optional(S.NullOr(S.String)),
+    object: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsInstanceResponse",
@@ -916,18 +949,19 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold 
 export interface NamespacesChatCompletionsRequestAiSearchOptionsCache {
   cacheThreshold?:
     | NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold.pipe(
-          T.Body("cache_threshold"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold,
+        ).pipe(T.Body("cache_threshold")),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsRequestAiSearchOptionsCache",
@@ -968,20 +1002,25 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
       model: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        ),
       ),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite",
@@ -994,19 +1033,22 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
   model?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
       model: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel,
+        S.NullOr(NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel),
       ),
     }),
   ).annotate({
@@ -1024,14 +1066,17 @@ export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostBy
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -1071,53 +1116,66 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalTy
 
 export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        ),
       ),
       fusionMethod: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsRequestAiSearchOptionsRetrieval",
@@ -1125,10 +1183,10 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrieval =
 
 export interface NamespacesChatCompletionsRequestAiSearchOptions {
   instanceIds: NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList;
-  cache?: NamespacesChatCompletionsRequestAiSearchOptionsCache;
-  queryRewrite?: NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite;
-  reranking?: NamespacesChatCompletionsRequestAiSearchOptionsReranking;
-  retrieval?: NamespacesChatCompletionsRequestAiSearchOptionsRetrieval;
+  cache?: NamespacesChatCompletionsRequestAiSearchOptionsCache | null;
+  queryRewrite?: NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: NamespacesChatCompletionsRequestAiSearchOptionsReranking | null;
+  retrieval?: NamespacesChatCompletionsRequestAiSearchOptionsRetrieval | null;
 }
 export const NamespacesChatCompletionsRequestAiSearchOptions =
   /*@__PURE__*/ S.suspend(() =>
@@ -1137,17 +1195,19 @@ export const NamespacesChatCompletionsRequestAiSearchOptions =
         NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList.pipe(
           T.Body("instance_ids"),
         ),
-      cache: S.optional(NamespacesChatCompletionsRequestAiSearchOptionsCache),
+      cache: S.optional(
+        S.NullOr(NamespacesChatCompletionsRequestAiSearchOptionsCache),
+      ),
       queryRewrite: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite.pipe(
-          T.Body("query_rewrite"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite,
+        ).pipe(T.Body("query_rewrite")),
       ),
       reranking: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsReranking,
+        S.NullOr(NamespacesChatCompletionsRequestAiSearchOptionsReranking),
       ),
       retrieval: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrieval,
+        S.NullOr(NamespacesChatCompletionsRequestAiSearchOptionsRetrieval),
       ),
     }),
   ).annotate({
@@ -1304,8 +1364,8 @@ export interface ChatCompletionsNamespaceRequest {
   name: string;
   aiSearchOptions: NamespacesChatCompletionsRequestAiSearchOptions;
   messages: NamespacesChatCompletionsRequestMessagesList;
-  model?: NamespacesChatCompletionsRequestModel | (string & {});
-  stream?: boolean;
+  model?: NamespacesChatCompletionsRequestModel | (string & {}) | null;
+  stream?: boolean | null;
 }
 export const ChatCompletionsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1315,8 +1375,8 @@ export const ChatCompletionsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("ai_search_options"),
     ),
     messages: NamespacesChatCompletionsRequestMessagesList,
-    model: S.optional(NamespacesChatCompletionsRequestModel),
-    stream: S.optional(S.Boolean),
+    model: S.optional(S.NullOr(NamespacesChatCompletionsRequestModel)),
+    stream: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -1435,13 +1495,13 @@ export const NamespacesChatCompletionsResponseChoicesItemMessage =
 
 export interface NamespacesChatCompletionsResponseChoicesItem {
   message: NamespacesChatCompletionsResponseChoicesItemMessage;
-  index?: number;
+  index?: number | null;
 }
 export const NamespacesChatCompletionsResponseChoicesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       message: NamespacesChatCompletionsResponseChoicesItemMessage,
-      index: S.optional(S.Number),
+      index: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsResponseChoicesItem",
@@ -1465,17 +1525,17 @@ export const NamespacesChatCompletionsResponseChunksItemItemMetadataMap =
 
 export interface NamespacesChatCompletionsResponseChunksItemItem {
   key: string;
-  metadata?: NamespacesChatCompletionsResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: NamespacesChatCompletionsResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const NamespacesChatCompletionsResponseChunksItemItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
       metadata: S.optional(
-        NamespacesChatCompletionsResponseChunksItemItemMetadataMap,
+        S.NullOr(NamespacesChatCompletionsResponseChunksItemItemMetadataMap),
       ),
-      timestamp: S.optional(S.Number),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsResponseChunksItemItem",
@@ -1487,26 +1547,30 @@ export const NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMeth
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsResponseChunksItemScoringDetails {
-  fusionMethod?: NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const NamespacesChatCompletionsResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier: "NamespacesChatCompletionsResponseChunksItemScoringDetails",
@@ -1518,8 +1582,8 @@ export interface NamespacesChatCompletionsResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: NamespacesChatCompletionsResponseChunksItemItem;
-  scoringDetails?: NamespacesChatCompletionsResponseChunksItemScoringDetails;
+  item?: NamespacesChatCompletionsResponseChunksItemItem | null;
+  scoringDetails?: NamespacesChatCompletionsResponseChunksItemScoringDetails | null;
 }
 export const NamespacesChatCompletionsResponseChunksItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1529,11 +1593,13 @@ export const NamespacesChatCompletionsResponseChunksItem =
       score: S.Number,
       text: S.String,
       type: S.String,
-      item: S.optional(NamespacesChatCompletionsResponseChunksItemItem),
+      item: S.optional(
+        S.NullOr(NamespacesChatCompletionsResponseChunksItemItem),
+      ),
       scoringDetails: S.optional(
-        NamespacesChatCompletionsResponseChunksItemScoringDetails.pipe(
-          T.Body("scoring_details"),
-        ),
+        S.NullOr(
+          NamespacesChatCompletionsResponseChunksItemScoringDetails,
+        ).pipe(T.Body("scoring_details")),
       ),
     }),
   ).annotate({
@@ -1551,17 +1617,17 @@ export const NamespacesChatCompletionsResponseChunksList =
 export interface ChatCompletionsNamespaceResponse {
   choices: NamespacesChatCompletionsResponseChoicesList;
   chunks: NamespacesChatCompletionsResponseChunksList;
-  id?: string;
-  model?: string;
-  object?: string;
+  id?: string | null;
+  model?: string | null;
+  object?: string | null;
 }
 export const ChatCompletionsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choices: NamespacesChatCompletionsResponseChoicesList,
     chunks: NamespacesChatCompletionsResponseChunksList,
-    id: S.optional(S.String),
-    model: S.optional(S.String),
-    object: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    model: S.optional(S.NullOr(S.String)),
+    object: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceResponse",
@@ -1689,18 +1755,19 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheT
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache {
   cacheThreshold?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold.pipe(
-          T.Body("cache_threshold"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold,
+        ).pipe(T.Body("cache_threshold")),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache",
@@ -1741,20 +1808,25 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrit
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
       model: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel,
+        ),
       ),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -1767,19 +1839,24 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingMo
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
   model?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
       model: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel,
+        ),
       ),
     }),
   ).annotate({
@@ -1798,14 +1875,17 @@ export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetriev
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -1845,53 +1925,66 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRe
 
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap,
+        ),
       ),
       fusionMethod: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier:
@@ -1899,27 +1992,31 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval>;
 
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptions {
-  cache?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache;
-  queryRewrite?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
-  reranking?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking;
-  retrieval?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval;
+  cache?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache | null;
+  queryRewrite?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking | null;
+  retrieval?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval | null;
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cache: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache,
+        S.NullOr(NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache),
       ),
       queryRewrite: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite.pipe(
-          T.Body("query_rewrite"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite,
+        ).pipe(T.Body("query_rewrite")),
       ),
       reranking: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking,
+        ),
       ),
       retrieval: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrieval,
+        ),
       ),
     }),
   ).annotate({
@@ -1966,9 +2063,9 @@ export interface ChatCompletionsNamespaceInstanceRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   messages: NamespacesInstancesChatCompletionsRequestMessagesList;
-  aiSearchOptions?: NamespacesInstancesChatCompletionsRequestAiSearchOptions;
-  model?: NamespacesInstancesChatCompletionsRequestModel | (string & {});
-  stream?: boolean;
+  aiSearchOptions?: NamespacesInstancesChatCompletionsRequestAiSearchOptions | null;
+  model?: NamespacesInstancesChatCompletionsRequestModel | (string & {}) | null;
+  stream?: boolean | null;
 }
 export const ChatCompletionsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1978,12 +2075,14 @@ export const ChatCompletionsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       messages: NamespacesInstancesChatCompletionsRequestMessagesList,
       aiSearchOptions: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptions.pipe(
+        S.NullOr(NamespacesInstancesChatCompletionsRequestAiSearchOptions).pipe(
           T.Body("ai_search_options"),
         ),
       ),
-      model: S.optional(NamespacesInstancesChatCompletionsRequestModel),
-      stream: S.optional(S.Boolean),
+      model: S.optional(
+        S.NullOr(NamespacesInstancesChatCompletionsRequestModel),
+      ),
+      stream: S.optional(S.NullOr(S.Boolean)),
     })
       .pipe(
         T.Http({
@@ -2103,13 +2202,13 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessage =
 
 export interface NamespacesInstancesChatCompletionsResponseChoicesItem {
   message: NamespacesInstancesChatCompletionsResponseChoicesItemMessage;
-  index?: number;
+  index?: number | null;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       message: NamespacesInstancesChatCompletionsResponseChoicesItemMessage,
-      index: S.optional(S.Number),
+      index: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesChatCompletionsResponseChoicesItem",
@@ -2132,17 +2231,19 @@ export const NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap
 
 export interface NamespacesInstancesChatCompletionsResponseChunksItemItem {
   key: string;
-  metadata?: NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const NamespacesInstancesChatCompletionsResponseChunksItemItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
       metadata: S.optional(
-        NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap,
+        S.NullOr(
+          NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap,
+        ),
       ),
-      timestamp: S.optional(S.Number),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesChatCompletionsResponseChunksItemItem",
@@ -2154,26 +2255,30 @@ export const NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsF
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails {
-  fusionMethod?: NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier:
@@ -2185,8 +2290,8 @@ export interface NamespacesInstancesChatCompletionsResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: NamespacesInstancesChatCompletionsResponseChunksItemItem;
-  scoringDetails?: NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails;
+  item?: NamespacesInstancesChatCompletionsResponseChunksItemItem | null;
+  scoringDetails?: NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails | null;
 }
 export const NamespacesInstancesChatCompletionsResponseChunksItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2196,12 +2301,12 @@ export const NamespacesInstancesChatCompletionsResponseChunksItem =
       text: S.String,
       type: S.String,
       item: S.optional(
-        NamespacesInstancesChatCompletionsResponseChunksItemItem,
+        S.NullOr(NamespacesInstancesChatCompletionsResponseChunksItemItem),
       ),
       scoringDetails: S.optional(
-        NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails.pipe(
-          T.Body("scoring_details"),
-        ),
+        S.NullOr(
+          NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails,
+        ).pipe(T.Body("scoring_details")),
       ),
     }),
   ).annotate({
@@ -2219,18 +2324,18 @@ export const NamespacesInstancesChatCompletionsResponseChunksList =
 export interface ChatCompletionsNamespaceInstanceResponse {
   choices: NamespacesInstancesChatCompletionsResponseChoicesList;
   chunks: NamespacesInstancesChatCompletionsResponseChunksList;
-  id?: string;
-  model?: string;
-  object?: string;
+  id?: string | null;
+  model?: string | null;
+  object?: string | null;
 }
 export const ChatCompletionsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       choices: NamespacesInstancesChatCompletionsResponseChoicesList,
       chunks: NamespacesInstancesChatCompletionsResponseChunksList,
-      id: S.optional(S.String),
-      model: S.optional(S.String),
-      object: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
+      model: S.optional(S.NullOr(S.String)),
+      object: S.optional(S.NullOr(S.String)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceInstanceResponse",
@@ -2277,17 +2382,17 @@ export const NamespacesInstancesItemsChunksResultItemItemMetadataMap =
 
 export interface NamespacesInstancesItemsChunksResultItemItem {
   key: string;
-  metadata?: NamespacesInstancesItemsChunksResultItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: NamespacesInstancesItemsChunksResultItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const NamespacesInstancesItemsChunksResultItemItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
       metadata: S.optional(
-        NamespacesInstancesItemsChunksResultItemItemMetadataMap,
+        S.NullOr(NamespacesInstancesItemsChunksResultItemItemMetadataMap),
       ),
-      timestamp: S.optional(S.Number),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesItemsChunksResultItemItem",
@@ -2297,8 +2402,8 @@ export interface NamespacesInstancesItemsChunksResultItem {
   id: string;
   item: NamespacesInstancesItemsChunksResultItemItem;
   text: string;
-  endByte?: number;
-  startByte?: number;
+  endByte?: number | null;
+  startByte?: number | null;
 }
 export const NamespacesInstancesItemsChunksResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -2306,8 +2411,8 @@ export const NamespacesInstancesItemsChunksResultItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       item: NamespacesInstancesItemsChunksResultItemItem,
       text: S.String,
-      endByte: S.optional(S.Number.pipe(T.Body("end_byte"))),
-      startByte: S.optional(S.Number.pipe(T.Body("start_byte"))),
+      endByte: S.optional(S.NullOr(S.Number).pipe(T.Body("end_byte"))),
+      startByte: S.optional(S.NullOr(S.Number).pipe(T.Body("start_byte"))),
     }),
 ).annotate({
   identifier: "NamespacesInstancesItemsChunksResultItem",
@@ -2452,13 +2557,14 @@ export interface InstancesCreateRequestIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
   keywordTokenizer?:
     | InstancesCreateRequestIndexingOptionsKeywordTokenizer
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesCreateRequestIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesCreateRequestIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesCreateRequestIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -2468,15 +2574,15 @@ export const InstancesCreateRequestIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesCreateRequestIndexingOptions>;
 
 export interface InstancesCreateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesCreateRequestMetadata",
@@ -2491,12 +2597,12 @@ export const InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -2511,15 +2617,15 @@ export const InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesCreateRequestPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateRequestPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesCreateRequestPublicEndpointParamsMcp",
@@ -2532,19 +2638,20 @@ export const InstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesCreateRequestPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
+  periodMs?: number | null;
+  requests?: number | null;
   technique?:
     | InstancesCreateRequestPublicEndpointParamsRateLimitTechnique
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesCreateRequestPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesCreateRequestPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesCreateRequestPublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -2553,54 +2660,54 @@ export const InstancesCreateRequestPublicEndpointParamsRateLimit =
 
 export interface InstancesCreateRequestPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateRequestPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesCreateRequestPublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesCreateRequestPublicEndpointParams {
-  authorizedHosts?: InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesCreateRequestPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
-  rateLimit?: InstancesCreateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesCreateRequestPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesCreateRequestPublicEndpointParamsMcp | null;
+  rateLimit?: InstancesCreateRequestPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesCreateRequestPublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesCreateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesCreateRequestPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesCreateRequestPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesCreateRequestPublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesCreateRequestPublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesCreateRequestPublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
+        S.NullOr(InstancesCreateRequestPublicEndpointParamsSearchEndpoint).pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -2628,14 +2735,15 @@ export interface InstancesCreateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | InstancesCreateRequestRetrievalOptionsBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesCreateRequestRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesCreateRequestRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesCreateRequestRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -2657,22 +2765,23 @@ export const InstancesCreateRequestRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesCreateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesCreateRequestRetrievalOptionsBoostByList;
+  boostBy?: InstancesCreateRequestRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
   keywordMatchMode?:
     | InstancesCreateRequestRetrievalOptionsKeywordMatchMode
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesCreateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesCreateRequestRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesCreateRequestRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesCreateRequestRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesCreateRequestRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -2767,35 +2876,37 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSit
 
 export interface InstancesCreateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesCreateRequestSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -2813,50 +2924,53 @@ export const WebCrawlerCrawlOptionsSource = /*@__PURE__*/ S.String;
 
 export interface WebCrawlerCrawlOptions {
   /** Maximum crawl depth from the seed URL. */
-  depth?: number;
-  includeExternalLinks?: boolean;
-  includeSubdomains?: boolean;
-  maxAge?: number;
+  depth?: number | null;
+  includeExternalLinks?: boolean | null;
+  includeSubdomains?: boolean | null;
+  maxAge?: number | null;
   /** Where the crawler discovers URLs: sitemaps, page links, or both. Use links for sitemap-less seeds (avoids missing_sitemap rejections). */
-  source?: WebCrawlerCrawlOptionsSource | (string & {});
+  source?: WebCrawlerCrawlOptionsSource | (string & {}) | null;
 }
 export const WebCrawlerCrawlOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    depth: S.optional(S.Number),
+    depth: S.optional(S.NullOr(S.Number)),
     includeExternalLinks: S.optional(
-      S.Boolean.pipe(T.Body("include_external_links")),
+      S.NullOr(S.Boolean).pipe(T.Body("include_external_links")),
     ),
-    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-    maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
-    source: S.optional(WebCrawlerCrawlOptionsSource),
+    includeSubdomains: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("include_subdomains")),
+    ),
+    maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+    source: S.optional(S.NullOr(WebCrawlerCrawlOptionsSource)),
   }),
 ).annotate({
   identifier: "WebCrawlerCrawlOptions",
 }) as any as S.Schema<WebCrawlerCrawlOptions>;
 
 export interface InstancesCreateRequestSourceParamsWebCrawler {
-  parseOptions?: InstancesCreateRequestSourceParamsWebCrawlerParseOptions;
+  parseOptions?: InstancesCreateRequestSourceParamsWebCrawlerParseOptions | null;
   parseType?:
     | InstancesCreateRequestSourceParamsWebCrawlerParseType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesCreateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerParseOptions.pipe(
+        S.NullOr(InstancesCreateRequestSourceParamsWebCrawlerParseOptions).pipe(
           T.Body("parse_options"),
         ),
       ),
       parseType: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesCreateRequestSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -2865,29 +2979,33 @@ export const InstancesCreateRequestSourceParamsWebCrawler =
 
 export interface InstancesCreateRequestSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesCreateRequestSourceParamsExcludeItemsList;
+  excludeItems?: InstancesCreateRequestSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesCreateRequestSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesCreateRequestSourceParamsWebCrawler;
+  includeItems?: InstancesCreateRequestSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesCreateRequestSourceParamsWebCrawler | null;
 }
 export const InstancesCreateRequestSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesCreateRequestSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesCreateRequestSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesCreateRequestSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesCreateRequestSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesCreateRequestSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesCreateRequestSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -2912,103 +3030,129 @@ export interface CreateInstanceRequest {
   accountId: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesCreateRequestAiSearchModel | (string & {});
-  cache?: boolean;
-  cacheThreshold?: InstancesCreateRequestCacheThreshold | (string & {});
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesCreateRequestAiSearchModel | (string & {}) | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesCreateRequestCacheThreshold | (string & {}) | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesCreateRequestCacheTtl | (number & {});
-  chunk?: boolean;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  customMetadata?: InstancesCreateRequestCustomMetadataList;
-  embeddingModel?: InstancesCreateRequestEmbeddingModel | (string & {});
-  fusionMethod?: InstancesCreateRequestFusionMethod | (string & {});
+  cacheTtl?: InstancesCreateRequestCacheTtl | (number & {}) | null;
+  chunk?: boolean | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  customMetadata?: InstancesCreateRequestCustomMetadataList | null;
+  embeddingModel?: InstancesCreateRequestEmbeddingModel | (string & {}) | null;
+  fusionMethod?: InstancesCreateRequestFusionMethod | (string & {}) | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesCreateRequestIndexMethod;
-  indexingOptions?: InstancesCreateRequestIndexingOptions;
-  maxNumResults?: number;
-  metadata?: InstancesCreateRequestMetadata;
-  publicEndpointParams?: InstancesCreateRequestPublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesCreateRequestRerankingModel | (string & {});
-  retrievalOptions?: InstancesCreateRequestRetrievalOptions;
-  rewriteModel?: InstancesCreateRequestRewriteModel | (string & {});
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesCreateRequestSourceParams;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
+  indexingOptions?: InstancesCreateRequestIndexingOptions | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesCreateRequestMetadata | null;
+  publicEndpointParams?: InstancesCreateRequestPublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesCreateRequestRerankingModel | (string & {}) | null;
+  retrievalOptions?: InstancesCreateRequestRetrievalOptions | null;
+  rewriteModel?: InstancesCreateRequestRewriteModel | (string & {}) | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesCreateRequestSourceParams | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesCreateRequestSyncInterval | (number & {});
-  tokenId?: string;
-  type?: InstancesCreateRequestType | (string & {});
+  syncInterval?: InstancesCreateRequestSyncInterval | (number & {}) | null;
+  tokenId?: string | null;
+  type?: InstancesCreateRequestType | (string & {}) | null;
 }
 export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesCreateRequestAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesCreateRequestAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesCreateRequestCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesCreateRequestCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesCreateRequestCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesCreateRequestCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunk: S.optional(S.Boolean),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
+    chunk: S.optional(S.NullOr(S.Boolean)),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
     customMetadata: S.optional(
-      InstancesCreateRequestCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesCreateRequestCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesCreateRequestEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesCreateRequestEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
     fusionMethod: S.optional(
-      InstancesCreateRequestFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesCreateRequestFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesCreateRequestIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesCreateRequestIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesCreateRequestMetadata),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesCreateRequestMetadata)),
     publicEndpointParams: S.optional(
-      InstancesCreateRequestPublicEndpointParams.pipe(
+      S.NullOr(InstancesCreateRequestPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesCreateRequestRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesCreateRequestRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesCreateRequestRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesCreateRequestRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesCreateRequestRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesCreateRequestRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesCreateRequestSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesCreateRequestSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
     syncInterval: S.optional(
-      InstancesCreateRequestSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesCreateRequestSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesCreateRequestType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -3145,13 +3289,13 @@ export const InstancesCreateResponseIndexingOptionsKeywordTokenizer =
 
 export interface InstancesCreateResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: InstancesCreateResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: InstancesCreateResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const InstancesCreateResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesCreateResponseIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesCreateResponseIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -3161,15 +3305,15 @@ export const InstancesCreateResponseIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesCreateResponseIndexingOptions>;
 
 export interface InstancesCreateResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesCreateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesCreateResponseMetadata",
@@ -3184,12 +3328,12 @@ export const InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -3204,15 +3348,15 @@ export const InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesCreateResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesCreateResponsePublicEndpointParamsMcp",
@@ -3225,17 +3369,17 @@ export const InstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesCreateResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: InstancesCreateResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: InstancesCreateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const InstancesCreateResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesCreateResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesCreateResponsePublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -3244,56 +3388,56 @@ export const InstancesCreateResponsePublicEndpointParamsRateLimit =
 
 export interface InstancesCreateResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesCreateResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesCreateResponsePublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesCreateResponsePublicEndpointParams {
-  authorizedHosts?: InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesCreateResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesCreateResponsePublicEndpointParamsMcp;
-  rateLimit?: InstancesCreateResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesCreateResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
+  rateLimit?: InstancesCreateResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesCreateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesCreateResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesCreateResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesCreateResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesCreateResponsePublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesCreateResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesCreateResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -3317,14 +3461,14 @@ export interface InstancesCreateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: InstancesCreateResponseRetrievalOptionsBoostByItemDirection;
+  direction?: InstancesCreateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesCreateResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesCreateResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesCreateResponseRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -3346,20 +3490,20 @@ export const InstancesCreateResponseRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesCreateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesCreateResponseRetrievalOptionsBoostByList;
+  boostBy?: InstancesCreateResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: InstancesCreateResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: InstancesCreateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const InstancesCreateResponseRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesCreateResponseRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesCreateResponseRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesCreateResponseRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesCreateResponseRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -3454,35 +3598,37 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSi
 
 export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -3496,26 +3642,26 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesCreateResponseSourceParamsWebCrawler {
-  parseOptions?: InstancesCreateResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: InstancesCreateResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: InstancesCreateResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: InstancesCreateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesCreateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          InstancesCreateResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesCreateResponseSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -3524,29 +3670,33 @@ export const InstancesCreateResponseSourceParamsWebCrawler =
 
 export interface InstancesCreateResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesCreateResponseSourceParamsExcludeItemsList;
+  excludeItems?: InstancesCreateResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesCreateResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesCreateResponseSourceParamsWebCrawler;
+  includeItems?: InstancesCreateResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesCreateResponseSourceParamsWebCrawler | null;
 }
 export const InstancesCreateResponseSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesCreateResponseSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesCreateResponseSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesCreateResponseSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesCreateResponseSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesCreateResponseSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesCreateResponseSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -3573,120 +3723,150 @@ export interface CreateInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesCreateResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: InstancesCreateResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesCreateResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesCreateResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesCreateResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: InstancesCreateResponseCustomMetadataList;
-  embeddingModel?: InstancesCreateResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: InstancesCreateResponseFusionMethod;
+  cacheTtl?: InstancesCreateResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: InstancesCreateResponseCustomMetadataList | null;
+  embeddingModel?: InstancesCreateResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: InstancesCreateResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesCreateResponseIndexMethod;
-  indexingOptions?: InstancesCreateResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: InstancesCreateResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: InstancesCreateResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesCreateResponseRerankingModel;
-  retrievalOptions?: InstancesCreateResponseRetrievalOptions;
-  rewriteModel?: InstancesCreateResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesCreateResponseSourceParams;
-  status?: string;
+  indexMethod?: InstancesCreateResponseIndexMethod | null;
+  indexingOptions?: InstancesCreateResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesCreateResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: InstancesCreateResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesCreateResponseRerankingModel | null;
+  retrievalOptions?: InstancesCreateResponseRetrievalOptions | null;
+  rewriteModel?: InstancesCreateResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesCreateResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesCreateResponseSyncInterval;
-  tokenId?: string;
-  type?: InstancesCreateResponseType;
+  syncInterval?: InstancesCreateResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: InstancesCreateResponseType | null;
 }
 export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesCreateResponseAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesCreateResponseAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesCreateResponseCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesCreateResponseCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesCreateResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesCreateResponseCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      InstancesCreateResponseCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesCreateResponseCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesCreateResponseEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesCreateResponseEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      InstancesCreateResponseFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesCreateResponseFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesCreateResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateResponseIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesCreateResponseIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesCreateResponseIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesCreateResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      InstancesCreateResponsePublicEndpointParams.pipe(
+      S.NullOr(InstancesCreateResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesCreateResponseRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesCreateResponseRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesCreateResponseRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesCreateResponseRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesCreateResponseRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesCreateResponseRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesCreateResponseSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesCreateResponseSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      InstancesCreateResponseSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesCreateResponseSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesCreateResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesCreateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceResponse",
@@ -3696,13 +3876,13 @@ export interface CreateInstanceJobRequest {
   accountId: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  description?: string;
+  description?: string | null;
 }
 export const CreateInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3723,21 +3903,21 @@ export const InstancesJobsCreateResponseSource = /*@__PURE__*/ S.String;
 export interface CreateInstanceJobResponse {
   id: string;
   source: InstancesJobsCreateResponseSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const CreateInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: InstancesJobsCreateResponseSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceJobResponse",
@@ -3747,13 +3927,13 @@ export interface CreateNamespaceRequest {
   accountId: string;
   name: string;
   /** Optional description for the namespace. Max 256 characters. */
-  description?: string;
+  description?: string | null;
 }
 export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3772,13 +3952,13 @@ export interface CreateNamespaceResponse {
   createdAt: string;
   name: string;
   /** Optional description for the namespace. Max 256 characters. */
-  description?: string;
+  description?: string | null;
 }
 export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceResponse",
@@ -3917,15 +4097,16 @@ export interface NamespacesInstancesCreateRequestIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
   keywordTokenizer?:
     | NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesCreateRequestIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -3933,16 +4114,18 @@ export const NamespacesInstancesCreateRequestIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesCreateRequestIndexingOptions>;
 
 export interface NamespacesInstancesCreateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
 ).annotate({
   identifier: "NamespacesInstancesCreateRequestMetadata",
@@ -3957,12 +4140,12 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHosts
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -3977,15 +4160,15 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsLi
   ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesCreateRequestPublicEndpointParamsMcp",
@@ -3997,19 +4180,22 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechni
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
+  periodMs?: number | null;
+  requests?: number | null;
   technique?:
     | NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -4018,12 +4204,12 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -4031,44 +4217,46 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint 
   }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesCreateRequestPublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesCreateRequestPublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesCreateRequestPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesCreateRequestPublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -4092,14 +4280,17 @@ export interface NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -4121,24 +4312,25 @@ export const NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesCreateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesCreateRequestRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesCreateRequestRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesCreateRequestRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesCreateRequestRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -4234,35 +4426,37 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsS
 
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -4277,28 +4471,29 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions;
+  parseOptions?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions | null;
   parseType?:
     | NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -4307,30 +4502,32 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawler =
 
 export interface NamespacesInstancesCreateRequestSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesCreateRequestSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesCreateRequestSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesCreateRequestSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesCreateRequestSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesCreateRequestSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesCreateRequestSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesCreateRequestSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateRequestSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesCreateRequestSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -4359,132 +4556,155 @@ export interface CreateNamespaceInstanceRequest {
   name: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesCreateRequestAiSearchModel | (string & {});
-  cache?: boolean;
+  aiGatewayId?: string | null;
+  aiSearchModel?:
+    | NamespacesInstancesCreateRequestAiSearchModel
+    | (string & {})
+    | null;
+  cache?: boolean | null;
   cacheThreshold?:
     | NamespacesInstancesCreateRequestCacheThreshold
-    | (string & {});
+    | (string & {})
+    | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesCreateRequestCacheTtl | (number & {});
-  chunk?: boolean;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  customMetadata?: NamespacesInstancesCreateRequestCustomMetadataList;
+  cacheTtl?: NamespacesInstancesCreateRequestCacheTtl | (number & {}) | null;
+  chunk?: boolean | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  customMetadata?: NamespacesInstancesCreateRequestCustomMetadataList | null;
   embeddingModel?:
     | NamespacesInstancesCreateRequestEmbeddingModel
-    | (string & {});
-  fusionMethod?: NamespacesInstancesCreateRequestFusionMethod | (string & {});
+    | (string & {})
+    | null;
+  fusionMethod?:
+    | NamespacesInstancesCreateRequestFusionMethod
+    | (string & {})
+    | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesCreateRequestIndexMethod;
-  indexingOptions?: NamespacesInstancesCreateRequestIndexingOptions;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesCreateRequestMetadata;
-  publicEndpointParams?: NamespacesInstancesCreateRequestPublicEndpointParams;
-  reranking?: boolean;
+  indexMethod?: NamespacesInstancesCreateRequestIndexMethod | null;
+  indexingOptions?: NamespacesInstancesCreateRequestIndexingOptions | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesCreateRequestMetadata | null;
+  publicEndpointParams?: NamespacesInstancesCreateRequestPublicEndpointParams | null;
+  reranking?: boolean | null;
   rerankingModel?:
     | NamespacesInstancesCreateRequestRerankingModel
-    | (string & {});
-  retrievalOptions?: NamespacesInstancesCreateRequestRetrievalOptions;
-  rewriteModel?: NamespacesInstancesCreateRequestRewriteModel | (string & {});
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesCreateRequestSourceParams;
+    | (string & {})
+    | null;
+  retrievalOptions?: NamespacesInstancesCreateRequestRetrievalOptions | null;
+  rewriteModel?:
+    | NamespacesInstancesCreateRequestRewriteModel
+    | (string & {})
+    | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesCreateRequestSourceParams | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesCreateRequestSyncInterval | (number & {});
-  tokenId?: string;
-  type?: NamespacesInstancesCreateRequestType | (string & {});
+  syncInterval?:
+    | NamespacesInstancesCreateRequestSyncInterval
+    | (number & {})
+    | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesCreateRequestType | (string & {}) | null;
 }
 export const CreateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String,
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesCreateRequestAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesCreateRequestCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesCreateRequestCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesCreateRequestCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunk: S.optional(S.Boolean),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
+    chunk: S.optional(S.NullOr(S.Boolean)),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
     customMetadata: S.optional(
-      NamespacesInstancesCreateRequestCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesCreateRequestEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
     fusionMethod: S.optional(
-      NamespacesInstancesCreateRequestFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesCreateRequestIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesCreateRequestIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesCreateRequestMetadata),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesCreateRequestMetadata)),
     publicEndpointParams: S.optional(
-      NamespacesInstancesCreateRequestPublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesCreateRequestRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesCreateRequestRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesCreateRequestRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesCreateRequestSourceParams.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
     syncInterval: S.optional(
-      NamespacesInstancesCreateRequestSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesCreateRequestSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesCreateRequestType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesCreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -4628,15 +4848,15 @@ export const NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer =
 
 export interface NamespacesInstancesCreateResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const NamespacesInstancesCreateResponseIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -4644,16 +4864,18 @@ export const NamespacesInstancesCreateResponseIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesCreateResponseIndexingOptions>;
 
 export interface NamespacesInstancesCreateResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesCreateResponseMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesCreateResponseMetadata",
@@ -4668,12 +4890,12 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHost
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -4688,15 +4910,15 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsL
   ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesCreateResponsePublicEndpointParamsMcp",
@@ -4708,17 +4930,19 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechn
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -4728,12 +4952,12 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -4741,44 +4965,46 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint
   }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesCreateResponsePublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesCreateResponsePublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesCreateResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesCreateResponsePublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -4800,14 +5026,16 @@ export interface NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection;
+  direction?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -4829,22 +5057,22 @@ export const NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesCreateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const NamespacesInstancesCreateResponseRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesCreateResponseRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -4940,35 +5168,37 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
 
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -4983,26 +5213,26 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -5011,30 +5241,32 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawler =
 
 export interface NamespacesInstancesCreateResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesCreateResponseSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesCreateResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesCreateResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesCreateResponseSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesCreateResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesCreateResponseSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesCreateResponseSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesCreateResponseSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesCreateResponseSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -5064,142 +5296,154 @@ export interface CreateNamespaceInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesCreateResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: NamespacesInstancesCreateResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: NamespacesInstancesCreateResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: NamespacesInstancesCreateResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesCreateResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: NamespacesInstancesCreateResponseCustomMetadataList;
-  embeddingModel?: NamespacesInstancesCreateResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: NamespacesInstancesCreateResponseFusionMethod;
+  cacheTtl?: NamespacesInstancesCreateResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: NamespacesInstancesCreateResponseCustomMetadataList | null;
+  embeddingModel?: NamespacesInstancesCreateResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: NamespacesInstancesCreateResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesCreateResponseIndexMethod;
-  indexingOptions?: NamespacesInstancesCreateResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesCreateResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: NamespacesInstancesCreateResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: NamespacesInstancesCreateResponseRerankingModel;
-  retrievalOptions?: NamespacesInstancesCreateResponseRetrievalOptions;
-  rewriteModel?: NamespacesInstancesCreateResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesCreateResponseSourceParams;
-  status?: string;
+  indexMethod?: NamespacesInstancesCreateResponseIndexMethod | null;
+  indexingOptions?: NamespacesInstancesCreateResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesCreateResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: NamespacesInstancesCreateResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: NamespacesInstancesCreateResponseRerankingModel | null;
+  retrievalOptions?: NamespacesInstancesCreateResponseRetrievalOptions | null;
+  rewriteModel?: NamespacesInstancesCreateResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesCreateResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesCreateResponseSyncInterval;
-  tokenId?: string;
-  type?: NamespacesInstancesCreateResponseType;
+  syncInterval?: NamespacesInstancesCreateResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesCreateResponseType | null;
 }
 export const CreateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesCreateResponseAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesCreateResponseCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesCreateResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesCreateResponseCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      NamespacesInstancesCreateResponseCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesCreateResponseEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      NamespacesInstancesCreateResponseFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesCreateResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesCreateResponseIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesCreateResponseIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesCreateResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesCreateResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      NamespacesInstancesCreateResponsePublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesCreateResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesCreateResponseRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesCreateResponseRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesCreateResponseRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesCreateResponseSourceParams.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      NamespacesInstancesCreateResponseSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesCreateResponseSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesCreateResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesCreateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceResponse",
@@ -5210,14 +5454,14 @@ export interface CreateNamespaceInstanceJobRequest {
   name: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  description?: string;
+  description?: string | null;
 }
 export const CreateNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -5239,21 +5483,21 @@ export const NamespacesInstancesJobsCreateResponseSource =
 export interface CreateNamespaceInstanceJobResponse {
   id: string;
   source: NamespacesInstancesJobsCreateResponseSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const CreateNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: NamespacesInstancesJobsCreateResponseSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceJobResponse",
@@ -5274,7 +5518,7 @@ export interface CreateOrUpdateNamespaceInstanceItemRequest {
     | NamespacesInstancesItemsCreateOrUpdateRequestNextAction
     | (string & {});
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
-  waitForCompletion?: boolean;
+  waitForCompletion?: boolean | null;
 }
 export const CreateOrUpdateNamespaceInstanceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5287,7 +5531,7 @@ export const CreateOrUpdateNamespaceInstanceItemRequest =
         T.Body("next_action"),
       ),
       waitForCompletion: S.optional(
-        S.Boolean.pipe(T.Body("wait_for_completion")),
+        S.NullOr(S.Boolean).pipe(T.Body("wait_for_completion")),
       ),
     })
       .pipe(
@@ -5332,7 +5576,7 @@ export interface CreateOrUpdateNamespaceInstanceItemResponse {
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string;
   status: NamespacesInstancesItemsCreateOrUpdateResponseStatus;
-  error?: string;
+  error?: string | null;
 }
 export const CreateOrUpdateNamespaceInstanceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -5350,7 +5594,7 @@ export const CreateOrUpdateNamespaceInstanceItemResponse =
       ),
       sourceId: S.String.pipe(T.Body("source_id")),
       status: NamespacesInstancesItemsCreateOrUpdateResponseStatus,
-      error: S.optional(S.String),
+      error: S.optional(S.NullOr(S.String)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateOrUpdateNamespaceInstanceItemResponse",
@@ -5361,7 +5605,7 @@ export interface CreateTokenRequest {
   cfApiId: string;
   cfApiKey: string;
   name: string;
-  legacy?: boolean;
+  legacy?: boolean | null;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5369,7 +5613,7 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     cfApiId: S.String.pipe(T.Body("cf_api_id")),
     cfApiKey: S.String.pipe(T.Body("cf_api_key")),
     name: S.String,
-    legacy: S.optional(S.Boolean),
+    legacy: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -5390,10 +5634,10 @@ export interface CreateTokenResponse {
   createdAt: string;
   modifiedAt: string;
   name: string;
-  createdBy?: string;
-  enabled?: boolean;
-  legacy?: boolean;
-  modifiedBy?: string;
+  createdBy?: string | null;
+  enabled?: boolean | null;
+  legacy?: boolean | null;
+  modifiedBy?: string | null;
 }
 export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5402,10 +5646,10 @@ export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    enabled: S.optional(S.Boolean),
-    legacy: S.optional(S.Boolean),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    legacy: S.optional(S.NullOr(S.Boolean)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
@@ -5555,13 +5799,13 @@ export const InstancesDeleteResponseIndexingOptionsKeywordTokenizer =
 
 export interface InstancesDeleteResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: InstancesDeleteResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: InstancesDeleteResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const InstancesDeleteResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesDeleteResponseIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesDeleteResponseIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -5571,15 +5815,15 @@ export const InstancesDeleteResponseIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesDeleteResponseIndexingOptions>;
 
 export interface InstancesDeleteResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesDeleteResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesDeleteResponseMetadata",
@@ -5594,12 +5838,12 @@ export const InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -5614,15 +5858,15 @@ export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesDeleteResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesDeleteResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesDeleteResponsePublicEndpointParamsMcp",
@@ -5635,17 +5879,17 @@ export const InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesDeleteResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const InstancesDeleteResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -5654,56 +5898,56 @@ export const InstancesDeleteResponsePublicEndpointParamsRateLimit =
 
 export interface InstancesDeleteResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesDeleteResponsePublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesDeleteResponsePublicEndpointParams {
-  authorizedHosts?: InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesDeleteResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesDeleteResponsePublicEndpointParamsMcp;
-  rateLimit?: InstancesDeleteResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesDeleteResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesDeleteResponsePublicEndpointParamsMcp | null;
+  rateLimit?: InstancesDeleteResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesDeleteResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesDeleteResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesDeleteResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesDeleteResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesDeleteResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesDeleteResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -5727,14 +5971,14 @@ export interface InstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: InstancesDeleteResponseRetrievalOptionsBoostByItemDirection;
+  direction?: InstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesDeleteResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesDeleteResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesDeleteResponseRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -5756,20 +6000,20 @@ export const InstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesDeleteResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesDeleteResponseRetrievalOptionsBoostByList;
+  boostBy?: InstancesDeleteResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: InstancesDeleteResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: InstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const InstancesDeleteResponseRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesDeleteResponseRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesDeleteResponseRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesDeleteResponseRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesDeleteResponseRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -5864,35 +6108,37 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSi
 
 export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -5906,26 +6152,26 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesDeleteResponseSourceParamsWebCrawler {
-  parseOptions?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: InstancesDeleteResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: InstancesDeleteResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesDeleteResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          InstancesDeleteResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesDeleteResponseSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -5934,29 +6180,33 @@ export const InstancesDeleteResponseSourceParamsWebCrawler =
 
 export interface InstancesDeleteResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesDeleteResponseSourceParamsExcludeItemsList;
+  excludeItems?: InstancesDeleteResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesDeleteResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesDeleteResponseSourceParamsWebCrawler;
+  includeItems?: InstancesDeleteResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesDeleteResponseSourceParamsWebCrawler | null;
 }
 export const InstancesDeleteResponseSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesDeleteResponseSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesDeleteResponseSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesDeleteResponseSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesDeleteResponseSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesDeleteResponseSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesDeleteResponseSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -5983,120 +6233,150 @@ export interface DeleteInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesDeleteResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: InstancesDeleteResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesDeleteResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesDeleteResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesDeleteResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: InstancesDeleteResponseCustomMetadataList;
-  embeddingModel?: InstancesDeleteResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: InstancesDeleteResponseFusionMethod;
+  cacheTtl?: InstancesDeleteResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: InstancesDeleteResponseCustomMetadataList | null;
+  embeddingModel?: InstancesDeleteResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: InstancesDeleteResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesDeleteResponseIndexMethod;
-  indexingOptions?: InstancesDeleteResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: InstancesDeleteResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: InstancesDeleteResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesDeleteResponseRerankingModel;
-  retrievalOptions?: InstancesDeleteResponseRetrievalOptions;
-  rewriteModel?: InstancesDeleteResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesDeleteResponseSourceParams;
-  status?: string;
+  indexMethod?: InstancesDeleteResponseIndexMethod | null;
+  indexingOptions?: InstancesDeleteResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesDeleteResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: InstancesDeleteResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesDeleteResponseRerankingModel | null;
+  retrievalOptions?: InstancesDeleteResponseRetrievalOptions | null;
+  rewriteModel?: InstancesDeleteResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesDeleteResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesDeleteResponseSyncInterval;
-  tokenId?: string;
-  type?: InstancesDeleteResponseType;
+  syncInterval?: InstancesDeleteResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: InstancesDeleteResponseType | null;
 }
 export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesDeleteResponseAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesDeleteResponseAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesDeleteResponseCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesDeleteResponseCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesDeleteResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesDeleteResponseCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      InstancesDeleteResponseCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesDeleteResponseCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesDeleteResponseEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesDeleteResponseEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      InstancesDeleteResponseFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesDeleteResponseFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesDeleteResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesDeleteResponseIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesDeleteResponseIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesDeleteResponseIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesDeleteResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesDeleteResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      InstancesDeleteResponsePublicEndpointParams.pipe(
+      S.NullOr(InstancesDeleteResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesDeleteResponseRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesDeleteResponseRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesDeleteResponseRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesDeleteResponseRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesDeleteResponseRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesDeleteResponseRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesDeleteResponseSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesDeleteResponseSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      InstancesDeleteResponseSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesDeleteResponseSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesDeleteResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesDeleteResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteInstanceResponse",
@@ -6283,15 +6563,15 @@ export const NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer =
 
 export interface NamespacesInstancesDeleteResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const NamespacesInstancesDeleteResponseIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -6299,16 +6579,18 @@ export const NamespacesInstancesDeleteResponseIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesDeleteResponseIndexingOptions>;
 
 export interface NamespacesInstancesDeleteResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesDeleteResponseMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesDeleteResponseMetadata",
@@ -6323,12 +6605,12 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHost
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -6343,15 +6625,15 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsL
   ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesDeleteResponsePublicEndpointParamsMcp",
@@ -6363,17 +6645,19 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechn
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -6383,12 +6667,12 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -6396,44 +6680,46 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint
   }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesDeleteResponsePublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesDeleteResponsePublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesDeleteResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesDeleteResponsePublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -6455,14 +6741,16 @@ export interface NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection;
+  direction?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -6484,22 +6772,22 @@ export const NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesDeleteResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const NamespacesInstancesDeleteResponseRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -6595,35 +6883,37 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
 
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -6638,26 +6928,26 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -6666,30 +6956,32 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawler =
 
 export interface NamespacesInstancesDeleteResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesDeleteResponseSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesDeleteResponseSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesDeleteResponseSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesDeleteResponseSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -6719,142 +7011,154 @@ export interface DeleteNamespaceInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesDeleteResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: NamespacesInstancesDeleteResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: NamespacesInstancesDeleteResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: NamespacesInstancesDeleteResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesDeleteResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: NamespacesInstancesDeleteResponseCustomMetadataList;
-  embeddingModel?: NamespacesInstancesDeleteResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: NamespacesInstancesDeleteResponseFusionMethod;
+  cacheTtl?: NamespacesInstancesDeleteResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: NamespacesInstancesDeleteResponseCustomMetadataList | null;
+  embeddingModel?: NamespacesInstancesDeleteResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: NamespacesInstancesDeleteResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesDeleteResponseIndexMethod;
-  indexingOptions?: NamespacesInstancesDeleteResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesDeleteResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: NamespacesInstancesDeleteResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: NamespacesInstancesDeleteResponseRerankingModel;
-  retrievalOptions?: NamespacesInstancesDeleteResponseRetrievalOptions;
-  rewriteModel?: NamespacesInstancesDeleteResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesDeleteResponseSourceParams;
-  status?: string;
+  indexMethod?: NamespacesInstancesDeleteResponseIndexMethod | null;
+  indexingOptions?: NamespacesInstancesDeleteResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesDeleteResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: NamespacesInstancesDeleteResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: NamespacesInstancesDeleteResponseRerankingModel | null;
+  retrievalOptions?: NamespacesInstancesDeleteResponseRetrievalOptions | null;
+  rewriteModel?: NamespacesInstancesDeleteResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesDeleteResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesDeleteResponseSyncInterval;
-  tokenId?: string;
-  type?: NamespacesInstancesDeleteResponseType;
+  syncInterval?: NamespacesInstancesDeleteResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesDeleteResponseType | null;
 }
 export const DeleteNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesDeleteResponseAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesDeleteResponseCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesDeleteResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesDeleteResponseCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      NamespacesInstancesDeleteResponseCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesDeleteResponseEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      NamespacesInstancesDeleteResponseFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesDeleteResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesDeleteResponseIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesDeleteResponseIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesDeleteResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesDeleteResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      NamespacesInstancesDeleteResponsePublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesDeleteResponseRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesDeleteResponseRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesDeleteResponseRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesDeleteResponseSourceParams.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      NamespacesInstancesDeleteResponseSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesDeleteResponseSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesDeleteResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesDeleteResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceInstanceResponse",
@@ -6991,21 +7295,21 @@ export const InstancesJobsGetResponseSource = /*@__PURE__*/ S.String;
 export interface GetInstanceJobResponse {
   id: string;
   source: InstancesJobsGetResponseSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const GetInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: InstancesJobsGetResponseSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInstanceJobResponse",
@@ -7064,7 +7368,7 @@ export interface GetNamespaceInstanceItemResponse {
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string;
   status: NamespacesInstancesItemsGetResponseStatus;
-  error?: string;
+  error?: string | null;
 }
 export const GetNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7081,7 +7385,7 @@ export const GetNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsGetResponseStatus,
-    error: S.optional(S.String),
+    error: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceItemResponse",
@@ -7120,21 +7424,21 @@ export const NamespacesInstancesJobsGetResponseSource = /*@__PURE__*/ S.String;
 export interface GetNamespaceInstanceJobResponse {
   id: string;
   source: NamespacesInstancesJobsGetResponseSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const GetNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: NamespacesInstancesJobsGetResponseSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceJobResponse",
@@ -7172,21 +7476,21 @@ export const InstancesJobsListResultItemSource = /*@__PURE__*/ S.String;
 export interface InstancesJobsListResultItem {
   id: string;
   source: InstancesJobsListResultItemSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const InstancesJobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: InstancesJobsListResultItemSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "InstancesJobsListResultItem",
@@ -7380,13 +7684,13 @@ export const InstancesListResultItemIndexingOptionsKeywordTokenizer =
 
 export interface InstancesListResultItemIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: InstancesListResultItemIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: InstancesListResultItemIndexingOptionsKeywordTokenizer | null;
 }
 export const InstancesListResultItemIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesListResultItemIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesListResultItemIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -7396,15 +7700,15 @@ export const InstancesListResultItemIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesListResultItemIndexingOptions>;
 
 export interface InstancesListResultItemMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesListResultItemMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesListResultItemMetadata",
@@ -7419,12 +7723,12 @@ export const InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -7439,15 +7743,15 @@ export const InstancesListResultItemPublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesListResultItemPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesListResultItemPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesListResultItemPublicEndpointParamsMcp",
@@ -7460,17 +7764,17 @@ export const InstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItemPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: InstancesListResultItemPublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: InstancesListResultItemPublicEndpointParamsRateLimitTechnique | null;
 }
 export const InstancesListResultItemPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesListResultItemPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesListResultItemPublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -7479,56 +7783,56 @@ export const InstancesListResultItemPublicEndpointParamsRateLimit =
 
 export interface InstancesListResultItemPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesListResultItemPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesListResultItemPublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesListResultItemPublicEndpointParams {
-  authorizedHosts?: InstancesListResultItemPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesListResultItemPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesListResultItemPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesListResultItemPublicEndpointParamsMcp;
-  rateLimit?: InstancesListResultItemPublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesListResultItemPublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesListResultItemPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesListResultItemPublicEndpointParamsMcp | null;
+  rateLimit?: InstancesListResultItemPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesListResultItemPublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesListResultItemPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesListResultItemPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesListResultItemPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesListResultItemPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesListResultItemPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesListResultItemPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesListResultItemPublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesListResultItemPublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesListResultItemPublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesListResultItemPublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          InstancesListResultItemPublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -7552,14 +7856,14 @@ export interface InstancesListResultItemRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: InstancesListResultItemRetrievalOptionsBoostByItemDirection;
+  direction?: InstancesListResultItemRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesListResultItemRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesListResultItemRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesListResultItemRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -7581,20 +7885,20 @@ export const InstancesListResultItemRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesListResultItemRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesListResultItemRetrievalOptionsBoostByList;
+  boostBy?: InstancesListResultItemRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: InstancesListResultItemRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: InstancesListResultItemRetrievalOptionsKeywordMatchMode | null;
 }
 export const InstancesListResultItemRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesListResultItemRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesListResultItemRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesListResultItemRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesListResultItemRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -7689,35 +7993,37 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSi
 
 export interface InstancesListResultItemSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -7731,26 +8037,26 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItemSourceParamsWebCrawler {
-  parseOptions?: InstancesListResultItemSourceParamsWebCrawlerParseOptions;
-  parseType?: InstancesListResultItemSourceParamsWebCrawlerParseType;
+  parseOptions?: InstancesListResultItemSourceParamsWebCrawlerParseOptions | null;
+  parseType?: InstancesListResultItemSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesListResultItemSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          InstancesListResultItemSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesListResultItemSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -7759,29 +8065,33 @@ export const InstancesListResultItemSourceParamsWebCrawler =
 
 export interface InstancesListResultItemSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesListResultItemSourceParamsExcludeItemsList;
+  excludeItems?: InstancesListResultItemSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesListResultItemSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesListResultItemSourceParamsWebCrawler;
+  includeItems?: InstancesListResultItemSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesListResultItemSourceParamsWebCrawler | null;
 }
 export const InstancesListResultItemSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesListResultItemSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesListResultItemSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesListResultItemSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesListResultItemSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesListResultItemSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesListResultItemSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -7807,120 +8117,150 @@ export interface InstancesListResultItem {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesListResultItemAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: InstancesListResultItemCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesListResultItemAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesListResultItemCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesListResultItemCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: InstancesListResultItemCustomMetadataList;
-  embeddingModel?: InstancesListResultItemEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: InstancesListResultItemFusionMethod;
+  cacheTtl?: InstancesListResultItemCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: InstancesListResultItemCustomMetadataList | null;
+  embeddingModel?: InstancesListResultItemEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: InstancesListResultItemFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesListResultItemIndexMethod;
-  indexingOptions?: InstancesListResultItemIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: InstancesListResultItemMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: InstancesListResultItemPublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesListResultItemRerankingModel;
-  retrievalOptions?: InstancesListResultItemRetrievalOptions;
-  rewriteModel?: InstancesListResultItemRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesListResultItemSourceParams;
-  status?: string;
+  indexMethod?: InstancesListResultItemIndexMethod | null;
+  indexingOptions?: InstancesListResultItemIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesListResultItemMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: InstancesListResultItemPublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesListResultItemRerankingModel | null;
+  retrievalOptions?: InstancesListResultItemRetrievalOptions | null;
+  rewriteModel?: InstancesListResultItemRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesListResultItemSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesListResultItemSyncInterval;
-  tokenId?: string;
-  type?: InstancesListResultItemType;
+  syncInterval?: InstancesListResultItemSyncInterval | null;
+  tokenId?: string | null;
+  type?: InstancesListResultItemType | null;
 }
 export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesListResultItemAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesListResultItemAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesListResultItemCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesListResultItemCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesListResultItemCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesListResultItemCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      InstancesListResultItemCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesListResultItemCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesListResultItemEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesListResultItemEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      InstancesListResultItemFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesListResultItemFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesListResultItemIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesListResultItemIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesListResultItemIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesListResultItemIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesListResultItemMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesListResultItemMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      InstancesListResultItemPublicEndpointParams.pipe(
+      S.NullOr(InstancesListResultItemPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesListResultItemRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesListResultItemRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesListResultItemRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesListResultItemRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesListResultItemRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesListResultItemRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesListResultItemSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesListResultItemSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      InstancesListResultItemSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesListResultItemSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesListResultItemType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesListResultItemType)),
   }),
 ).annotate({
   identifier: "InstancesListResultItem",
@@ -8037,7 +8377,7 @@ export interface NamespacesInstancesItemsListResultItem {
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string;
   status: NamespacesInstancesItemsListResultItemStatus;
-  error?: string;
+  error?: string | null;
 }
 export const NamespacesInstancesItemsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -8055,7 +8395,7 @@ export const NamespacesInstancesItemsListResultItem = /*@__PURE__*/ S.suspend(
       ),
       sourceId: S.String.pipe(T.Body("source_id")),
       status: NamespacesInstancesItemsListResultItemStatus,
-      error: S.optional(S.String),
+      error: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "NamespacesInstancesItemsListResultItem",
@@ -8117,22 +8457,22 @@ export const NamespacesInstancesJobsListResultItemSource =
 export interface NamespacesInstancesJobsListResultItem {
   id: string;
   source: NamespacesInstancesJobsListResultItemSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const NamespacesInstancesJobsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
       source: NamespacesInstancesJobsListResultItemSource,
-      description: S.optional(S.String),
-      endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-      lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-      startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+      description: S.optional(S.NullOr(S.String)),
+      endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+      endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+      lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+      startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
     }),
 ).annotate({
   identifier: "NamespacesInstancesJobsListResultItem",
@@ -8343,15 +8683,15 @@ export const NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer =
 
 export interface NamespacesInstancesListResultItemIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer | null;
 }
 export const NamespacesInstancesListResultItemIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -8359,16 +8699,18 @@ export const NamespacesInstancesListResultItemIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesListResultItemIndexingOptions>;
 
 export interface NamespacesInstancesListResultItemMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesListResultItemMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesListResultItemMetadata",
@@ -8383,12 +8725,12 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHost
 
 export interface NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -8403,15 +8745,15 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsL
   ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesListResultItemPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesListResultItemPublicEndpointParamsMcp",
@@ -8423,17 +8765,19 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechn
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesListResultItemPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -8443,12 +8787,12 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -8456,44 +8800,46 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint
   }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesListResultItemPublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesListResultItemPublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesListResultItemPublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesListResultItemPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesListResultItemPublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -8515,14 +8861,16 @@ export interface NamespacesInstancesListResultItemRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection;
+  direction?: NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesListResultItemRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -8544,22 +8892,22 @@ export const NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesListResultItemRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesListResultItemRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesListResultItemRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode | null;
 }
 export const NamespacesInstancesListResultItemRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesListResultItemRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -8655,35 +9003,37 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
 
 export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -8698,26 +9048,26 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesListResultItemSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions;
-  parseType?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType;
+  parseOptions?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions | null;
+  parseType?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesListResultItemSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -8726,30 +9076,32 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawler =
 
 export interface NamespacesInstancesListResultItemSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesListResultItemSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesListResultItemSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesListResultItemSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesListResultItemSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesListResultItemSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesListResultItemSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesListResultItemSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesListResultItemSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesListResultItemSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesListResultItemSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesListResultItemSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -8778,142 +9130,154 @@ export interface NamespacesInstancesListResultItem {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesListResultItemAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: NamespacesInstancesListResultItemCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: NamespacesInstancesListResultItemAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: NamespacesInstancesListResultItemCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesListResultItemCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: NamespacesInstancesListResultItemCustomMetadataList;
-  embeddingModel?: NamespacesInstancesListResultItemEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: NamespacesInstancesListResultItemFusionMethod;
+  cacheTtl?: NamespacesInstancesListResultItemCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: NamespacesInstancesListResultItemCustomMetadataList | null;
+  embeddingModel?: NamespacesInstancesListResultItemEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: NamespacesInstancesListResultItemFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesListResultItemIndexMethod;
-  indexingOptions?: NamespacesInstancesListResultItemIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesListResultItemMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: NamespacesInstancesListResultItemPublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: NamespacesInstancesListResultItemRerankingModel;
-  retrievalOptions?: NamespacesInstancesListResultItemRetrievalOptions;
-  rewriteModel?: NamespacesInstancesListResultItemRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesListResultItemSourceParams;
-  status?: string;
+  indexMethod?: NamespacesInstancesListResultItemIndexMethod | null;
+  indexingOptions?: NamespacesInstancesListResultItemIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesListResultItemMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: NamespacesInstancesListResultItemPublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: NamespacesInstancesListResultItemRerankingModel | null;
+  retrievalOptions?: NamespacesInstancesListResultItemRetrievalOptions | null;
+  rewriteModel?: NamespacesInstancesListResultItemRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesListResultItemSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesListResultItemSyncInterval;
-  tokenId?: string;
-  type?: NamespacesInstancesListResultItemType;
+  syncInterval?: NamespacesInstancesListResultItemSyncInterval | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesListResultItemType | null;
 }
 export const NamespacesInstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesListResultItemAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesListResultItemAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesListResultItemCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesListResultItemCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesListResultItemCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesListResultItemCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      NamespacesInstancesListResultItemCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesListResultItemCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesListResultItemEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesListResultItemEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      NamespacesInstancesListResultItemFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesListResultItemFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesListResultItemIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesListResultItemIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesListResultItemIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesListResultItemIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesListResultItemMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesListResultItemMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      NamespacesInstancesListResultItemPublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesListResultItemPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesListResultItemRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesListResultItemRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesListResultItemRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesListResultItemRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesListResultItemRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesListResultItemRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesListResultItemSourceParams.pipe(
+      S.NullOr(NamespacesInstancesListResultItemSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      NamespacesInstancesListResultItemSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesListResultItemSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesListResultItemType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesListResultItemType)),
   }),
 ).annotate({
   identifier: "NamespacesInstancesListResultItem",
@@ -8972,13 +9336,13 @@ export interface NamespacesListResultItem {
   createdAt: string;
   name: string;
   /** Optional description for the namespace. Max 256 characters. */
-  description?: string;
+  description?: string | null;
 }
 export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "NamespacesListResultItem",
@@ -9038,10 +9402,10 @@ export interface TokensListResultItem {
   createdAt: string;
   modifiedAt: string;
   name: string;
-  createdBy?: string;
-  enabled?: boolean;
-  legacy?: boolean;
-  modifiedBy?: string;
+  createdBy?: string | null;
+  enabled?: boolean | null;
+  legacy?: boolean | null;
+  modifiedBy?: string | null;
 }
 export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9050,10 +9414,10 @@ export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    enabled: S.optional(S.Boolean),
-    legacy: S.optional(S.Boolean),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    legacy: S.optional(S.NullOr(S.Boolean)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
   }),
 ).annotate({
   identifier: "TokensListResultItem",
@@ -9306,21 +9670,21 @@ export const NamespacesInstancesJobsUpdateResponseSource =
 export interface PatchNamespaceInstanceJobResponse {
   id: string;
   source: NamespacesInstancesJobsUpdateResponseSource;
-  description?: string;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  description?: string | null;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const PatchNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: NamespacesInstancesJobsUpdateResponseSource,
-    description: S.optional(S.String),
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    description: S.optional(S.NullOr(S.String)),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNamespaceInstanceJobResponse",
@@ -9470,13 +9834,13 @@ export const InstancesReadResponseIndexingOptionsKeywordTokenizer =
 
 export interface InstancesReadResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: InstancesReadResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: InstancesReadResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const InstancesReadResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesReadResponseIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesReadResponseIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -9486,15 +9850,15 @@ export const InstancesReadResponseIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesReadResponseIndexingOptions>;
 
 export interface InstancesReadResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesReadResponseMetadata",
@@ -9509,12 +9873,12 @@ export const InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -9529,15 +9893,15 @@ export const InstancesReadResponsePublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesReadResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesReadResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesReadResponsePublicEndpointParamsMcp",
@@ -9550,17 +9914,17 @@ export const InstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesReadResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: InstancesReadResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: InstancesReadResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const InstancesReadResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesReadResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesReadResponsePublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -9569,54 +9933,54 @@ export const InstancesReadResponsePublicEndpointParamsRateLimit =
 
 export interface InstancesReadResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesReadResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesReadResponsePublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesReadResponsePublicEndpointParams {
-  authorizedHosts?: InstancesReadResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesReadResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesReadResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesReadResponsePublicEndpointParamsMcp;
-  rateLimit?: InstancesReadResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesReadResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesReadResponsePublicEndpointParamsMcp | null;
+  rateLimit?: InstancesReadResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesReadResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesReadResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesReadResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesReadResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesReadResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesReadResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesReadResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesReadResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesReadResponsePublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesReadResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesReadResponsePublicEndpointParamsSearchEndpoint.pipe(
+        S.NullOr(InstancesReadResponsePublicEndpointParamsSearchEndpoint).pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -9642,14 +10006,14 @@ export interface InstancesReadResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: InstancesReadResponseRetrievalOptionsBoostByItemDirection;
+  direction?: InstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesReadResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesReadResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesReadResponseRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -9671,20 +10035,20 @@ export const InstancesReadResponseRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesReadResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesReadResponseRetrievalOptionsBoostByList;
+  boostBy?: InstancesReadResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: InstancesReadResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: InstancesReadResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const InstancesReadResponseRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesReadResponseRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesReadResponseRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesReadResponseRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesReadResponseRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -9779,35 +10143,37 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSite
 
 export interface InstancesReadResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -9821,26 +10187,26 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesReadResponseSourceParamsWebCrawler {
-  parseOptions?: InstancesReadResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: InstancesReadResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: InstancesReadResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: InstancesReadResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesReadResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerParseOptions.pipe(
+        S.NullOr(InstancesReadResponseSourceParamsWebCrawlerParseOptions).pipe(
           T.Body("parse_options"),
         ),
       ),
       parseType: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesReadResponseSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -9849,29 +10215,33 @@ export const InstancesReadResponseSourceParamsWebCrawler =
 
 export interface InstancesReadResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesReadResponseSourceParamsExcludeItemsList;
+  excludeItems?: InstancesReadResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesReadResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesReadResponseSourceParamsWebCrawler;
+  includeItems?: InstancesReadResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesReadResponseSourceParamsWebCrawler | null;
 }
 export const InstancesReadResponseSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesReadResponseSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesReadResponseSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesReadResponseSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesReadResponseSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesReadResponseSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesReadResponseSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -9898,120 +10268,142 @@ export interface ReadInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesReadResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: InstancesReadResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesReadResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesReadResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesReadResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: InstancesReadResponseCustomMetadataList;
-  embeddingModel?: InstancesReadResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: InstancesReadResponseFusionMethod;
+  cacheTtl?: InstancesReadResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: InstancesReadResponseCustomMetadataList | null;
+  embeddingModel?: InstancesReadResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: InstancesReadResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesReadResponseIndexMethod;
-  indexingOptions?: InstancesReadResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: InstancesReadResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: InstancesReadResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesReadResponseRerankingModel;
-  retrievalOptions?: InstancesReadResponseRetrievalOptions;
-  rewriteModel?: InstancesReadResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesReadResponseSourceParams;
-  status?: string;
+  indexMethod?: InstancesReadResponseIndexMethod | null;
+  indexingOptions?: InstancesReadResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesReadResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: InstancesReadResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesReadResponseRerankingModel | null;
+  retrievalOptions?: InstancesReadResponseRetrievalOptions | null;
+  rewriteModel?: InstancesReadResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesReadResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesReadResponseSyncInterval;
-  tokenId?: string;
-  type?: InstancesReadResponseType;
+  syncInterval?: InstancesReadResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: InstancesReadResponseType | null;
 }
 export const ReadInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesReadResponseAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesReadResponseAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesReadResponseCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesReadResponseCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesReadResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesReadResponseCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      InstancesReadResponseCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesReadResponseCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesReadResponseEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesReadResponseEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      InstancesReadResponseFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesReadResponseFusionMethod).pipe(T.Body("fusion_method")),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesReadResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesReadResponseIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesReadResponseIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesReadResponseIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesReadResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesReadResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      InstancesReadResponsePublicEndpointParams.pipe(
+      S.NullOr(InstancesReadResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesReadResponseRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesReadResponseRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesReadResponseRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesReadResponseRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesReadResponseRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesReadResponseRewriteModel).pipe(T.Body("rewrite_model")),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesReadResponseSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesReadResponseSourceParams).pipe(T.Body("source_params")),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      InstancesReadResponseSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesReadResponseSyncInterval).pipe(T.Body("sync_interval")),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesReadResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesReadResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadInstanceResponse",
@@ -10043,13 +10435,13 @@ export interface ReadNamespaceResponse {
   createdAt: string;
   name: string;
   /** Optional description for the namespace. Max 256 characters. */
-  description?: string;
+  description?: string | null;
 }
 export const ReadNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceResponse",
@@ -10207,15 +10599,15 @@ export const NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer =
 
 export interface NamespacesInstancesReadResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const NamespacesInstancesReadResponseIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -10223,16 +10615,18 @@ export const NamespacesInstancesReadResponseIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesReadResponseIndexingOptions>;
 
 export interface NamespacesInstancesReadResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
 ).annotate({
   identifier: "NamespacesInstancesReadResponseMetadata",
@@ -10247,12 +10641,12 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsL
 
 export interface NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -10267,15 +10661,15 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsLis
   ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesReadResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesReadResponsePublicEndpointParamsMcp",
@@ -10287,17 +10681,19 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechniq
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesReadResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -10306,12 +10702,12 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -10319,44 +10715,46 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint =
   }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesReadResponsePublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesReadResponsePublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesReadResponsePublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesReadResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesReadResponsePublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -10378,14 +10776,16 @@ export interface NamespacesInstancesReadResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection;
+  direction?: NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -10407,22 +10807,22 @@ export const NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesReadResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesReadResponseRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesReadResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const NamespacesInstancesReadResponseRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesReadResponseRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -10518,35 +10918,37 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSp
 
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -10561,26 +10963,26 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesReadResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -10589,30 +10991,32 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawler =
 
 export interface NamespacesInstancesReadResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesReadResponseSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesReadResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesReadResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesReadResponseSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesReadResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesReadResponseSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesReadResponseSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesReadResponseSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesReadResponseSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesReadResponseSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesReadResponseSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -10642,134 +11046,154 @@ export interface ReadNamespaceInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesReadResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: NamespacesInstancesReadResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: NamespacesInstancesReadResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: NamespacesInstancesReadResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesReadResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: NamespacesInstancesReadResponseCustomMetadataList;
-  embeddingModel?: NamespacesInstancesReadResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: NamespacesInstancesReadResponseFusionMethod;
+  cacheTtl?: NamespacesInstancesReadResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: NamespacesInstancesReadResponseCustomMetadataList | null;
+  embeddingModel?: NamespacesInstancesReadResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: NamespacesInstancesReadResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesReadResponseIndexMethod;
-  indexingOptions?: NamespacesInstancesReadResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesReadResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: NamespacesInstancesReadResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: NamespacesInstancesReadResponseRerankingModel;
-  retrievalOptions?: NamespacesInstancesReadResponseRetrievalOptions;
-  rewriteModel?: NamespacesInstancesReadResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesReadResponseSourceParams;
-  status?: string;
+  indexMethod?: NamespacesInstancesReadResponseIndexMethod | null;
+  indexingOptions?: NamespacesInstancesReadResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesReadResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: NamespacesInstancesReadResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: NamespacesInstancesReadResponseRerankingModel | null;
+  retrievalOptions?: NamespacesInstancesReadResponseRetrievalOptions | null;
+  rewriteModel?: NamespacesInstancesReadResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesReadResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesReadResponseSyncInterval;
-  tokenId?: string;
-  type?: NamespacesInstancesReadResponseType;
+  syncInterval?: NamespacesInstancesReadResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesReadResponseType | null;
 }
 export const ReadNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesReadResponseAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesReadResponseAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesReadResponseCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesReadResponseCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesReadResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesReadResponseCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      NamespacesInstancesReadResponseCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesReadResponseCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesReadResponseEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesReadResponseEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      NamespacesInstancesReadResponseFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(NamespacesInstancesReadResponseFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesReadResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesReadResponseIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesReadResponseIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesReadResponseIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesReadResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesReadResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      NamespacesInstancesReadResponsePublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesReadResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesReadResponseRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesReadResponseRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesReadResponseRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesReadResponseRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesReadResponseRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(NamespacesInstancesReadResponseRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesReadResponseSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(NamespacesInstancesReadResponseSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      NamespacesInstancesReadResponseSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(NamespacesInstancesReadResponseSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesReadResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesReadResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceInstanceResponse",
@@ -10803,10 +11227,10 @@ export interface ReadTokenResponse {
   createdAt: string;
   modifiedAt: string;
   name: string;
-  createdBy?: string;
-  enabled?: boolean;
-  legacy?: boolean;
-  modifiedBy?: string;
+  createdBy?: string | null;
+  enabled?: boolean | null;
+  legacy?: boolean | null;
+  modifiedBy?: string | null;
 }
 export const ReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10815,10 +11239,10 @@ export const ReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    enabled: S.optional(S.Boolean),
-    legacy: S.optional(S.Boolean),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    legacy: S.optional(S.NullOr(S.Boolean)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadTokenResponse",
@@ -10835,18 +11259,19 @@ export const InstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
 export interface InstancesSearchRequestAiSearchOptionsCache {
   cacheThreshold?:
     | InstancesSearchRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const InstancesSearchRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        InstancesSearchRequestAiSearchOptionsCacheCacheThreshold.pipe(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsCacheCacheThreshold).pipe(
           T.Body("cache_threshold"),
         ),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesSearchRequestAiSearchOptionsCache",
@@ -10887,18 +11312,23 @@ export const InstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
 export interface InstancesSearchRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | InstancesSearchRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const InstancesSearchRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      model: S.optional(InstancesSearchRequestAiSearchOptionsQueryRewriteModel),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      model: S.optional(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsQueryRewriteModel),
+      ),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier: "InstancesSearchRequestAiSearchOptionsQueryRewrite",
@@ -10911,16 +11341,23 @@ export const InstancesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
 export interface InstancesSearchRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
-  model?: InstancesSearchRequestAiSearchOptionsRerankingModel | (string & {});
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
+  model?:
+    | InstancesSearchRequestAiSearchOptionsRerankingModel
+    | (string & {})
+    | null;
 }
 export const InstancesSearchRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      model: S.optional(InstancesSearchRequestAiSearchOptionsRerankingModel),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      model: S.optional(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsRerankingModel),
+      ),
     }),
   ).annotate({
     identifier: "InstancesSearchRequestAiSearchOptionsReranking",
@@ -10937,14 +11374,17 @@ export interface InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -10988,75 +11428,90 @@ export const InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
 
 export interface InstancesSearchRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesSearchRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: InstancesSearchRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const InstancesSearchRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          InstancesSearchRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap),
       ),
       fusionMethod: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier: "InstancesSearchRequestAiSearchOptionsRetrieval",
   }) as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrieval>;
 
 export interface InstancesSearchRequestAiSearchOptions {
-  cache?: InstancesSearchRequestAiSearchOptionsCache;
-  queryRewrite?: InstancesSearchRequestAiSearchOptionsQueryRewrite;
-  reranking?: InstancesSearchRequestAiSearchOptionsReranking;
-  retrieval?: InstancesSearchRequestAiSearchOptionsRetrieval;
+  cache?: InstancesSearchRequestAiSearchOptionsCache | null;
+  queryRewrite?: InstancesSearchRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: InstancesSearchRequestAiSearchOptionsReranking | null;
+  retrieval?: InstancesSearchRequestAiSearchOptionsRetrieval | null;
 }
 export const InstancesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cache: S.optional(InstancesSearchRequestAiSearchOptionsCache),
+      cache: S.optional(S.NullOr(InstancesSearchRequestAiSearchOptionsCache)),
       queryRewrite: S.optional(
-        InstancesSearchRequestAiSearchOptionsQueryRewrite.pipe(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsQueryRewrite).pipe(
           T.Body("query_rewrite"),
         ),
       ),
-      reranking: S.optional(InstancesSearchRequestAiSearchOptionsReranking),
-      retrieval: S.optional(InstancesSearchRequestAiSearchOptionsRetrieval),
+      reranking: S.optional(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsReranking),
+      ),
+      retrieval: S.optional(
+        S.NullOr(InstancesSearchRequestAiSearchOptionsRetrieval),
+      ),
     }),
 ).annotate({
   identifier: "InstancesSearchRequestAiSearchOptions",
@@ -11171,21 +11626,23 @@ export interface SearchInstanceRequest {
   accountId: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  aiSearchOptions?: InstancesSearchRequestAiSearchOptions;
+  aiSearchOptions?: InstancesSearchRequestAiSearchOptions | null;
   /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
-  messages?: InstancesSearchRequestMessagesList;
+  messages?: InstancesSearchRequestMessagesList | null;
   /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
-  query?: string;
+  query?: string | null;
 }
 export const SearchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     aiSearchOptions: S.optional(
-      InstancesSearchRequestAiSearchOptions.pipe(T.Body("ai_search_options")),
+      S.NullOr(InstancesSearchRequestAiSearchOptions).pipe(
+        T.Body("ai_search_options"),
+      ),
     ),
-    messages: S.optional(InstancesSearchRequestMessagesList),
-    query: S.optional(S.String),
+    messages: S.optional(S.NullOr(InstancesSearchRequestMessagesList)),
+    query: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -11210,15 +11667,17 @@ export const InstancesSearchResponseChunksItemItemMetadataMap =
 
 export interface InstancesSearchResponseChunksItemItem {
   key: string;
-  metadata?: InstancesSearchResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: InstancesSearchResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const InstancesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       key: S.String,
-      metadata: S.optional(InstancesSearchResponseChunksItemItemMetadataMap),
-      timestamp: S.optional(S.Number),
+      metadata: S.optional(
+        S.NullOr(InstancesSearchResponseChunksItemItemMetadataMap),
+      ),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "InstancesSearchResponseChunksItemItem",
@@ -11231,26 +11690,30 @@ export const InstancesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
 export interface InstancesSearchResponseChunksItemScoringDetails {
-  fusionMethod?: InstancesSearchResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: InstancesSearchResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const InstancesSearchResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        InstancesSearchResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          InstancesSearchResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier: "InstancesSearchResponseChunksItemScoringDetails",
@@ -11261,8 +11724,8 @@ export interface InstancesSearchResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: InstancesSearchResponseChunksItemItem;
-  scoringDetails?: InstancesSearchResponseChunksItemScoringDetails;
+  item?: InstancesSearchResponseChunksItemItem | null;
+  scoringDetails?: InstancesSearchResponseChunksItemScoringDetails | null;
 }
 export const InstancesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11270,9 +11733,9 @@ export const InstancesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
     score: S.Number,
     text: S.String,
     type: S.String,
-    item: S.optional(InstancesSearchResponseChunksItemItem),
+    item: S.optional(S.NullOr(InstancesSearchResponseChunksItemItem)),
     scoringDetails: S.optional(
-      InstancesSearchResponseChunksItemScoringDetails.pipe(
+      S.NullOr(InstancesSearchResponseChunksItemScoringDetails).pipe(
         T.Body("scoring_details"),
       ),
     ),
@@ -11294,13 +11757,13 @@ export const InstancesSearchResponseQueryKind = /*@__PURE__*/ S.String;
 export interface SearchInstanceResponse {
   chunks: InstancesSearchResponseChunksList;
   queryKind: InstancesSearchResponseQueryKind;
-  searchQuery?: string;
+  searchQuery?: string | null;
 }
 export const SearchInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: InstancesSearchResponseChunksList,
     queryKind: InstancesSearchResponseQueryKind.pipe(T.Body("query_kind")),
-    searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
+    searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchInstanceResponse",
@@ -11324,18 +11787,19 @@ export const NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold =
 export interface NamespacesSearchRequestAiSearchOptionsCache {
   cacheThreshold?:
     | NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const NamespacesSearchRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold.pipe(
-          T.Body("cache_threshold"),
-        ),
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold,
+        ).pipe(T.Body("cache_threshold")),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesSearchRequestAiSearchOptionsCache",
@@ -11376,20 +11840,23 @@ export const NamespacesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | NamespacesSearchRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const NamespacesSearchRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
       model: S.optional(
-        NamespacesSearchRequestAiSearchOptionsQueryRewriteModel,
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsQueryRewriteModel),
       ),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesSearchRequestAiSearchOptionsQueryRewrite",
@@ -11402,16 +11869,23 @@ export const NamespacesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
-  model?: NamespacesSearchRequestAiSearchOptionsRerankingModel | (string & {});
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
+  model?:
+    | NamespacesSearchRequestAiSearchOptionsRerankingModel
+    | (string & {})
+    | null;
 }
 export const NamespacesSearchRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      model: S.optional(NamespacesSearchRequestAiSearchOptionsRerankingModel),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      model: S.optional(
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsRerankingModel),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesSearchRequestAiSearchOptionsReranking",
@@ -11428,14 +11902,17 @@ export interface NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -11479,53 +11956,64 @@ export const NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType =
 
 export interface NamespacesSearchRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const NamespacesSearchRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap),
       ),
       fusionMethod: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesSearchRequestAiSearchOptionsRetrieval",
@@ -11533,10 +12021,10 @@ export const NamespacesSearchRequestAiSearchOptionsRetrieval =
 
 export interface NamespacesSearchRequestAiSearchOptions {
   instanceIds: NamespacesSearchRequestAiSearchOptionsInstanceIdsList;
-  cache?: NamespacesSearchRequestAiSearchOptionsCache;
-  queryRewrite?: NamespacesSearchRequestAiSearchOptionsQueryRewrite;
-  reranking?: NamespacesSearchRequestAiSearchOptionsReranking;
-  retrieval?: NamespacesSearchRequestAiSearchOptionsRetrieval;
+  cache?: NamespacesSearchRequestAiSearchOptionsCache | null;
+  queryRewrite?: NamespacesSearchRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: NamespacesSearchRequestAiSearchOptionsReranking | null;
+  retrieval?: NamespacesSearchRequestAiSearchOptionsRetrieval | null;
 }
 export const NamespacesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
   () =>
@@ -11544,14 +12032,18 @@ export const NamespacesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
       instanceIds: NamespacesSearchRequestAiSearchOptionsInstanceIdsList.pipe(
         T.Body("instance_ids"),
       ),
-      cache: S.optional(NamespacesSearchRequestAiSearchOptionsCache),
+      cache: S.optional(S.NullOr(NamespacesSearchRequestAiSearchOptionsCache)),
       queryRewrite: S.optional(
-        NamespacesSearchRequestAiSearchOptionsQueryRewrite.pipe(
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsQueryRewrite).pipe(
           T.Body("query_rewrite"),
         ),
       ),
-      reranking: S.optional(NamespacesSearchRequestAiSearchOptionsReranking),
-      retrieval: S.optional(NamespacesSearchRequestAiSearchOptionsRetrieval),
+      reranking: S.optional(
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsReranking),
+      ),
+      retrieval: S.optional(
+        S.NullOr(NamespacesSearchRequestAiSearchOptionsRetrieval),
+      ),
     }),
 ).annotate({
   identifier: "NamespacesSearchRequestAiSearchOptions",
@@ -11667,9 +12159,9 @@ export interface SearchNamespaceRequest {
   name: string;
   aiSearchOptions: NamespacesSearchRequestAiSearchOptions;
   /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
-  messages?: NamespacesSearchRequestMessagesList;
+  messages?: NamespacesSearchRequestMessagesList | null;
   /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
-  query?: string;
+  query?: string | null;
 }
 export const SearchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11678,8 +12170,8 @@ export const SearchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     aiSearchOptions: NamespacesSearchRequestAiSearchOptions.pipe(
       T.Body("ai_search_options"),
     ),
-    messages: S.optional(NamespacesSearchRequestMessagesList),
-    query: S.optional(S.String),
+    messages: S.optional(S.NullOr(NamespacesSearchRequestMessagesList)),
+    query: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -11704,15 +12196,17 @@ export const NamespacesSearchResponseChunksItemItemMetadataMap =
 
 export interface NamespacesSearchResponseChunksItemItem {
   key: string;
-  metadata?: NamespacesSearchResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: NamespacesSearchResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const NamespacesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       key: S.String,
-      metadata: S.optional(NamespacesSearchResponseChunksItemItemMetadataMap),
-      timestamp: S.optional(S.Number),
+      metadata: S.optional(
+        S.NullOr(NamespacesSearchResponseChunksItemItemMetadataMap),
+      ),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "NamespacesSearchResponseChunksItemItem",
@@ -11725,26 +12219,30 @@ export const NamespacesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchResponseChunksItemScoringDetails {
-  fusionMethod?: NamespacesSearchResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: NamespacesSearchResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const NamespacesSearchResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        NamespacesSearchResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesSearchResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier: "NamespacesSearchResponseChunksItemScoringDetails",
@@ -11756,8 +12254,8 @@ export interface NamespacesSearchResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: NamespacesSearchResponseChunksItemItem;
-  scoringDetails?: NamespacesSearchResponseChunksItemScoringDetails;
+  item?: NamespacesSearchResponseChunksItemItem | null;
+  scoringDetails?: NamespacesSearchResponseChunksItemScoringDetails | null;
 }
 export const NamespacesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11766,9 +12264,9 @@ export const NamespacesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
     score: S.Number,
     text: S.String,
     type: S.String,
-    item: S.optional(NamespacesSearchResponseChunksItemItem),
+    item: S.optional(S.NullOr(NamespacesSearchResponseChunksItemItem)),
     scoringDetails: S.optional(
-      NamespacesSearchResponseChunksItemScoringDetails.pipe(
+      S.NullOr(NamespacesSearchResponseChunksItemScoringDetails).pipe(
         T.Body("scoring_details"),
       ),
     ),
@@ -11809,15 +12307,15 @@ export const NamespacesSearchResponseErrorsList = /*@__PURE__*/ S.Array(
 export interface SearchNamespaceResponse {
   chunks: NamespacesSearchResponseChunksList;
   queryKind: NamespacesSearchResponseQueryKind;
-  errors?: NamespacesSearchResponseErrorsList;
-  searchQuery?: string;
+  errors?: NamespacesSearchResponseErrorsList | null;
+  searchQuery?: string | null;
 }
 export const SearchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: NamespacesSearchResponseChunksList,
     queryKind: NamespacesSearchResponseQueryKind.pipe(T.Body("query_kind")),
-    errors: S.optional(NamespacesSearchResponseErrorsList),
-    searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
+    errors: S.optional(S.NullOr(NamespacesSearchResponseErrorsList)),
+    searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceResponse",
@@ -11831,18 +12329,19 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold 
 export interface NamespacesInstancesSearchRequestAiSearchOptionsCache {
   cacheThreshold?:
     | NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold
-    | (string & {});
-  enabled?: boolean;
+    | (string & {})
+    | null;
+  enabled?: boolean | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheThreshold: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold.pipe(
-          T.Body("cache_threshold"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold,
+        ).pipe(T.Body("cache_threshold")),
       ),
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesSearchRequestAiSearchOptionsCache",
@@ -11883,20 +12382,25 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite {
-  enabled?: boolean;
+  enabled?: boolean | null;
   model?:
     | NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel
-    | (string & {});
-  rewritePrompt?: string;
+    | (string & {})
+    | null;
+  rewritePrompt?: string | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
+      enabled: S.optional(S.NullOr(S.Boolean)),
       model: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel,
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel,
+        ),
       ),
-      rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+      rewritePrompt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("rewrite_prompt")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite",
@@ -11909,19 +12413,22 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesSearchRequestAiSearchOptionsReranking {
-  enabled?: boolean;
-  matchThreshold?: number;
+  enabled?: boolean | null;
+  matchThreshold?: number | null;
   model?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsReranking =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
       model: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel,
+        S.NullOr(NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel),
       ),
     }),
   ).annotate({
@@ -11939,14 +12446,17 @@ export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostBy
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -11986,78 +12496,93 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalTy
 
 export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrieval {
   /** Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList;
-  contextExpansion?: number;
-  filters?: NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap;
+  boostBy?: NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList | null;
+  contextExpansion?: number | null;
+  filters?: NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap | null;
   fusionMethod?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod
-    | (string & {});
+    | (string & {})
+    | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode
-    | (string & {});
-  matchThreshold?: number;
-  maxNumResults?: number;
+    | (string & {})
+    | null;
+  matchThreshold?: number | null;
+  maxNumResults?: number | null;
   retrievalType?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType
-    | (string & {});
-  returnOnFailure?: boolean;
+    | (string & {})
+    | null;
+  returnOnFailure?: boolean | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrieval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
-      contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
+      contextExpansion: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("context_expansion")),
+      ),
       filters: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap,
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap,
+        ),
       ),
       fusionMethod: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
-      matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-      maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+      matchThreshold: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("match_threshold")),
+      ),
+      maxNumResults: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+      ),
       retrievalType: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType.pipe(
-          T.Body("retrieval_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType,
+        ).pipe(T.Body("retrieval_type")),
       ),
-      returnOnFailure: S.optional(S.Boolean.pipe(T.Body("return_on_failure"))),
+      returnOnFailure: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("return_on_failure")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesSearchRequestAiSearchOptionsRetrieval",
   }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrieval>;
 
 export interface NamespacesInstancesSearchRequestAiSearchOptions {
-  cache?: NamespacesInstancesSearchRequestAiSearchOptionsCache;
-  queryRewrite?: NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite;
-  reranking?: NamespacesInstancesSearchRequestAiSearchOptionsReranking;
-  retrieval?: NamespacesInstancesSearchRequestAiSearchOptionsRetrieval;
+  cache?: NamespacesInstancesSearchRequestAiSearchOptionsCache | null;
+  queryRewrite?: NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite | null;
+  reranking?: NamespacesInstancesSearchRequestAiSearchOptionsReranking | null;
+  retrieval?: NamespacesInstancesSearchRequestAiSearchOptionsRetrieval | null;
 }
 export const NamespacesInstancesSearchRequestAiSearchOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cache: S.optional(NamespacesInstancesSearchRequestAiSearchOptionsCache),
+      cache: S.optional(
+        S.NullOr(NamespacesInstancesSearchRequestAiSearchOptionsCache),
+      ),
       queryRewrite: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite.pipe(
-          T.Body("query_rewrite"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite,
+        ).pipe(T.Body("query_rewrite")),
       ),
       reranking: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsReranking,
+        S.NullOr(NamespacesInstancesSearchRequestAiSearchOptionsReranking),
       ),
       retrieval: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrieval,
+        S.NullOr(NamespacesInstancesSearchRequestAiSearchOptionsRetrieval),
       ),
     }),
   ).annotate({
@@ -12179,11 +12704,11 @@ export interface SearchNamespaceInstanceRequest {
   name: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  aiSearchOptions?: NamespacesInstancesSearchRequestAiSearchOptions;
+  aiSearchOptions?: NamespacesInstancesSearchRequestAiSearchOptions | null;
   /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
-  messages?: NamespacesInstancesSearchRequestMessagesList;
+  messages?: NamespacesInstancesSearchRequestMessagesList | null;
   /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
-  query?: string;
+  query?: string | null;
 }
 export const SearchNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12191,12 +12716,14 @@ export const SearchNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     aiSearchOptions: S.optional(
-      NamespacesInstancesSearchRequestAiSearchOptions.pipe(
+      S.NullOr(NamespacesInstancesSearchRequestAiSearchOptions).pipe(
         T.Body("ai_search_options"),
       ),
     ),
-    messages: S.optional(NamespacesInstancesSearchRequestMessagesList),
-    query: S.optional(S.String),
+    messages: S.optional(
+      S.NullOr(NamespacesInstancesSearchRequestMessagesList),
+    ),
+    query: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -12221,17 +12748,17 @@ export const NamespacesInstancesSearchResponseChunksItemItemMetadataMap =
 
 export interface NamespacesInstancesSearchResponseChunksItemItem {
   key: string;
-  metadata?: NamespacesInstancesSearchResponseChunksItemItemMetadataMap;
-  timestamp?: number;
+  metadata?: NamespacesInstancesSearchResponseChunksItemItemMetadataMap | null;
+  timestamp?: number | null;
 }
 export const NamespacesInstancesSearchResponseChunksItemItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
       metadata: S.optional(
-        NamespacesInstancesSearchResponseChunksItemItemMetadataMap,
+        S.NullOr(NamespacesInstancesSearchResponseChunksItemItemMetadataMap),
       ),
-      timestamp: S.optional(S.Number),
+      timestamp: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesSearchResponseChunksItemItem",
@@ -12243,26 +12770,30 @@ export const NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMeth
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesSearchResponseChunksItemScoringDetails {
-  fusionMethod?: NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod;
-  keywordRank?: number;
-  keywordScore?: number;
-  rerankingScore?: number;
-  vectorRank?: number;
-  vectorScore?: number;
+  fusionMethod?: NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod | null;
+  keywordRank?: number | null;
+  keywordScore?: number | null;
+  rerankingScore?: number | null;
+  vectorRank?: number | null;
+  vectorScore?: number | null;
 }
 export const NamespacesInstancesSearchResponseChunksItemScoringDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fusionMethod: S.optional(
-        NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod.pipe(
-          T.Body("fusion_method"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod,
+        ).pipe(T.Body("fusion_method")),
       ),
-      keywordRank: S.optional(S.Number.pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.Number.pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.Number.pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.Number.pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.Number.pipe(T.Body("vector_score"))),
+      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
+      keywordScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("keyword_score")),
+      ),
+      rerankingScore: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("reranking_score")),
+      ),
+      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
+      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
     }),
   ).annotate({
     identifier: "NamespacesInstancesSearchResponseChunksItemScoringDetails",
@@ -12273,8 +12804,8 @@ export interface NamespacesInstancesSearchResponseChunksItem {
   score: number;
   text: string;
   type: string;
-  item?: NamespacesInstancesSearchResponseChunksItemItem;
-  scoringDetails?: NamespacesInstancesSearchResponseChunksItemScoringDetails;
+  item?: NamespacesInstancesSearchResponseChunksItemItem | null;
+  scoringDetails?: NamespacesInstancesSearchResponseChunksItemScoringDetails | null;
 }
 export const NamespacesInstancesSearchResponseChunksItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -12283,11 +12814,13 @@ export const NamespacesInstancesSearchResponseChunksItem =
       score: S.Number,
       text: S.String,
       type: S.String,
-      item: S.optional(NamespacesInstancesSearchResponseChunksItemItem),
+      item: S.optional(
+        S.NullOr(NamespacesInstancesSearchResponseChunksItemItem),
+      ),
       scoringDetails: S.optional(
-        NamespacesInstancesSearchResponseChunksItemScoringDetails.pipe(
-          T.Body("scoring_details"),
-        ),
+        S.NullOr(
+          NamespacesInstancesSearchResponseChunksItemScoringDetails,
+        ).pipe(T.Body("scoring_details")),
       ),
     }),
   ).annotate({
@@ -12312,7 +12845,7 @@ export const NamespacesInstancesSearchResponseQueryKind =
 export interface SearchNamespaceInstanceResponse {
   chunks: NamespacesInstancesSearchResponseChunksList;
   queryKind: NamespacesInstancesSearchResponseQueryKind;
-  searchQuery?: string;
+  searchQuery?: string | null;
 }
 export const SearchNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12320,7 +12853,7 @@ export const SearchNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     queryKind: NamespacesInstancesSearchResponseQueryKind.pipe(
       T.Body("query_kind"),
     ),
-    searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
+    searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceInstanceResponse",
@@ -12379,14 +12912,14 @@ export const InstancesStatsResponseEngineVectorize = /*@__PURE__*/ S.suspend(
 
 export interface InstancesStatsResponseEngine {
   /** R2 bucket storage usage in bytes. */
-  r2?: InstancesStatsResponseEngineR2;
+  r2?: InstancesStatsResponseEngineR2 | null;
   /** Vectorize index metadata (dimensions, vector count). */
-  vectorize?: InstancesStatsResponseEngineVectorize;
+  vectorize?: InstancesStatsResponseEngineVectorize | null;
 }
 export const InstancesStatsResponseEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    r2: S.optional(InstancesStatsResponseEngineR2),
-    vectorize: S.optional(InstancesStatsResponseEngineVectorize),
+    r2: S.optional(S.NullOr(InstancesStatsResponseEngineR2)),
+    vectorize: S.optional(S.NullOr(InstancesStatsResponseEngineVectorize)),
   }),
 ).annotate({
   identifier: "InstancesStatsResponseEngine",
@@ -12411,41 +12944,41 @@ export const InstancesStatsResponseIndexSourceErrorsMap =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsInstanceResponse {
-  completed?: number;
+  completed?: number | null;
   /** True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case. */
-  degraded?: boolean;
+  degraded?: boolean | null;
   /** Engine-specific metadata. Present only for managed (v3) instances. */
-  engine?: InstancesStatsResponseEngine;
-  error?: number;
-  fileEmbedErrors?: InstancesStatsResponseFileEmbedErrorsMap;
-  indexSourceErrors?: InstancesStatsResponseIndexSourceErrorsMap;
-  lastActivity?: string;
-  outdated?: number;
-  queued?: number;
-  running?: number;
-  skipped?: number;
+  engine?: InstancesStatsResponseEngine | null;
+  error?: number | null;
+  fileEmbedErrors?: InstancesStatsResponseFileEmbedErrorsMap | null;
+  indexSourceErrors?: InstancesStatsResponseIndexSourceErrorsMap | null;
+  lastActivity?: string | null;
+  outdated?: number | null;
+  queued?: number | null;
+  running?: number | null;
+  skipped?: number | null;
 }
 export const StatsInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    completed: S.optional(S.Number),
-    degraded: S.optional(S.Boolean),
-    engine: S.optional(InstancesStatsResponseEngine),
-    error: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.Number)),
+    degraded: S.optional(S.NullOr(S.Boolean)),
+    engine: S.optional(S.NullOr(InstancesStatsResponseEngine)),
+    error: S.optional(S.NullOr(S.Number)),
     fileEmbedErrors: S.optional(
-      InstancesStatsResponseFileEmbedErrorsMap.pipe(
+      S.NullOr(InstancesStatsResponseFileEmbedErrorsMap).pipe(
         T.Body("file_embed_errors"),
       ),
     ),
     indexSourceErrors: S.optional(
-      InstancesStatsResponseIndexSourceErrorsMap.pipe(
+      S.NullOr(InstancesStatsResponseIndexSourceErrorsMap).pipe(
         T.Body("index_source_errors"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    outdated: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    running: S.optional(S.Number),
-    skipped: S.optional(S.Number),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    outdated: S.optional(S.NullOr(S.Number)),
+    queued: S.optional(S.NullOr(S.Number)),
+    running: S.optional(S.NullOr(S.Number)),
+    skipped: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsInstanceResponse",
@@ -12507,15 +13040,17 @@ export const NamespacesInstancesStatsResponseEngineVectorize =
 
 export interface NamespacesInstancesStatsResponseEngine {
   /** R2 bucket storage usage in bytes. */
-  r2?: NamespacesInstancesStatsResponseEngineR2;
+  r2?: NamespacesInstancesStatsResponseEngineR2 | null;
   /** Vectorize index metadata (dimensions, vector count). */
-  vectorize?: NamespacesInstancesStatsResponseEngineVectorize;
+  vectorize?: NamespacesInstancesStatsResponseEngineVectorize | null;
 }
 export const NamespacesInstancesStatsResponseEngine = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      r2: S.optional(NamespacesInstancesStatsResponseEngineR2),
-      vectorize: S.optional(NamespacesInstancesStatsResponseEngineVectorize),
+      r2: S.optional(S.NullOr(NamespacesInstancesStatsResponseEngineR2)),
+      vectorize: S.optional(
+        S.NullOr(NamespacesInstancesStatsResponseEngineVectorize),
+      ),
     }),
 ).annotate({
   identifier: "NamespacesInstancesStatsResponseEngine",
@@ -12541,41 +13076,41 @@ export const NamespacesInstancesStatsResponseIndexSourceErrorsMap =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsNamespaceInstanceResponse {
-  completed?: number;
+  completed?: number | null;
   /** True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case. */
-  degraded?: boolean;
+  degraded?: boolean | null;
   /** Engine-specific metadata. Present only for managed (v3) instances. */
-  engine?: NamespacesInstancesStatsResponseEngine;
-  error?: number;
-  fileEmbedErrors?: NamespacesInstancesStatsResponseFileEmbedErrorsMap;
-  indexSourceErrors?: NamespacesInstancesStatsResponseIndexSourceErrorsMap;
-  lastActivity?: string;
-  outdated?: number;
-  queued?: number;
-  running?: number;
-  skipped?: number;
+  engine?: NamespacesInstancesStatsResponseEngine | null;
+  error?: number | null;
+  fileEmbedErrors?: NamespacesInstancesStatsResponseFileEmbedErrorsMap | null;
+  indexSourceErrors?: NamespacesInstancesStatsResponseIndexSourceErrorsMap | null;
+  lastActivity?: string | null;
+  outdated?: number | null;
+  queued?: number | null;
+  running?: number | null;
+  skipped?: number | null;
 }
 export const StatsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    completed: S.optional(S.Number),
-    degraded: S.optional(S.Boolean),
-    engine: S.optional(NamespacesInstancesStatsResponseEngine),
-    error: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.Number)),
+    degraded: S.optional(S.NullOr(S.Boolean)),
+    engine: S.optional(S.NullOr(NamespacesInstancesStatsResponseEngine)),
+    error: S.optional(S.NullOr(S.Number)),
     fileEmbedErrors: S.optional(
-      NamespacesInstancesStatsResponseFileEmbedErrorsMap.pipe(
+      S.NullOr(NamespacesInstancesStatsResponseFileEmbedErrorsMap).pipe(
         T.Body("file_embed_errors"),
       ),
     ),
     indexSourceErrors: S.optional(
-      NamespacesInstancesStatsResponseIndexSourceErrorsMap.pipe(
+      S.NullOr(NamespacesInstancesStatsResponseIndexSourceErrorsMap).pipe(
         T.Body("index_source_errors"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    outdated: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    running: S.optional(S.Number),
-    skipped: S.optional(S.Number),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    outdated: S.optional(S.NullOr(S.Number)),
+    queued: S.optional(S.NullOr(S.Number)),
+    running: S.optional(S.NullOr(S.Number)),
+    skipped: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsNamespaceInstanceResponse",
@@ -12593,7 +13128,7 @@ export interface SyncNamespaceInstanceItemRequest {
   itemId: string;
   nextAction: NamespacesInstancesItemsSyncRequestNextAction | (string & {});
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
-  waitForCompletion?: boolean;
+  waitForCompletion?: boolean | null;
 }
 export const SyncNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12605,7 +13140,7 @@ export const SyncNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("next_action"),
     ),
     waitForCompletion: S.optional(
-      S.Boolean.pipe(T.Body("wait_for_completion")),
+      S.NullOr(S.Boolean).pipe(T.Body("wait_for_completion")),
     ),
   })
     .pipe(
@@ -12648,7 +13183,7 @@ export interface SyncNamespaceInstanceItemResponse {
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string;
   status: NamespacesInstancesItemsSyncResponseStatus;
-  error?: string;
+  error?: string | null;
 }
 export const SyncNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12665,7 +13200,7 @@ export const SyncNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsSyncResponseStatus,
-    error: S.optional(S.String),
+    error: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SyncNamespaceInstanceItemResponse",
@@ -12796,13 +13331,14 @@ export interface InstancesUpdateRequestIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
   keywordTokenizer?:
     | InstancesUpdateRequestIndexingOptionsKeywordTokenizer
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesUpdateRequestIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesUpdateRequestIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesUpdateRequestIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -12812,15 +13348,15 @@ export const InstancesUpdateRequestIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesUpdateRequestIndexingOptions>;
 
 export interface InstancesUpdateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesUpdateRequestMetadata",
@@ -12835,12 +13371,12 @@ export const InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -12855,15 +13391,15 @@ export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesUpdateRequestPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateRequestPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesUpdateRequestPublicEndpointParamsMcp",
@@ -12876,19 +13412,20 @@ export const InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateRequestPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
+  periodMs?: number | null;
+  requests?: number | null;
   technique?:
     | InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesUpdateRequestPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -12897,54 +13434,54 @@ export const InstancesUpdateRequestPublicEndpointParamsRateLimit =
 
 export interface InstancesUpdateRequestPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesUpdateRequestPublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesUpdateRequestPublicEndpointParams {
-  authorizedHosts?: InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesUpdateRequestPublicEndpointParamsMcp;
-  rateLimit?: InstancesUpdateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesUpdateRequestPublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesUpdateRequestPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesUpdateRequestPublicEndpointParamsMcp | null;
+  rateLimit?: InstancesUpdateRequestPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesUpdateRequestPublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesUpdateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesUpdateRequestPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesUpdateRequestPublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesUpdateRequestPublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsSearchEndpoint.pipe(
+        S.NullOr(InstancesUpdateRequestPublicEndpointParamsSearchEndpoint).pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -12972,14 +13509,15 @@ export interface InstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | InstancesUpdateRequestRetrievalOptionsBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesUpdateRequestRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesUpdateRequestRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesUpdateRequestRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -13001,22 +13539,23 @@ export const InstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesUpdateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesUpdateRequestRetrievalOptionsBoostByList;
+  boostBy?: InstancesUpdateRequestRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
   keywordMatchMode?:
     | InstancesUpdateRequestRetrievalOptionsKeywordMatchMode
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const InstancesUpdateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesUpdateRequestRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesUpdateRequestRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesUpdateRequestRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesUpdateRequestRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -13111,35 +13650,37 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSit
 
 export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -13153,28 +13694,29 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateRequestSourceParamsWebCrawler {
-  parseOptions?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
+  parseOptions?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptions | null;
   parseType?:
     | InstancesUpdateRequestSourceParamsWebCrawlerParseType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesUpdateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptions.pipe(
+        S.NullOr(InstancesUpdateRequestSourceParamsWebCrawlerParseOptions).pipe(
           T.Body("parse_options"),
         ),
       ),
       parseType: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesUpdateRequestSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -13183,29 +13725,33 @@ export const InstancesUpdateRequestSourceParamsWebCrawler =
 
 export interface InstancesUpdateRequestSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesUpdateRequestSourceParamsExcludeItemsList;
+  excludeItems?: InstancesUpdateRequestSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesUpdateRequestSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesUpdateRequestSourceParamsWebCrawler;
+  includeItems?: InstancesUpdateRequestSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesUpdateRequestSourceParamsWebCrawler | null;
 }
 export const InstancesUpdateRequestSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesUpdateRequestSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesUpdateRequestSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesUpdateRequestSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesUpdateRequestSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesUpdateRequestSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesUpdateRequestSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -13259,118 +13805,147 @@ export const InstancesUpdateRequestSyncInterval = /*@__PURE__*/ S.Number;
 export interface UpdateInstanceRequest {
   accountId: string;
   id: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesUpdateRequestAiSearchModel | (string & {});
-  cache?: boolean;
-  cacheThreshold?: InstancesUpdateRequestCacheThreshold | (string & {});
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesUpdateRequestAiSearchModel | (string & {}) | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesUpdateRequestCacheThreshold | (string & {}) | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesUpdateRequestCacheTtl | (number & {});
-  chunk?: boolean;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  customMetadata?: InstancesUpdateRequestCustomMetadataList;
-  embeddingModel?: InstancesUpdateRequestEmbeddingModel | (string & {});
-  fusionMethod?: InstancesUpdateRequestFusionMethod | (string & {});
+  cacheTtl?: InstancesUpdateRequestCacheTtl | (number & {}) | null;
+  chunk?: boolean | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  customMetadata?: InstancesUpdateRequestCustomMetadataList | null;
+  embeddingModel?: InstancesUpdateRequestEmbeddingModel | (string & {}) | null;
+  fusionMethod?: InstancesUpdateRequestFusionMethod | (string & {}) | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesUpdateRequestIndexMethod;
-  indexingOptions?: InstancesUpdateRequestIndexingOptions;
-  maxNumResults?: number;
-  metadata?: InstancesUpdateRequestMetadata;
-  paused?: boolean;
-  publicEndpointParams?: InstancesUpdateRequestPublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesUpdateRequestRerankingModel | (string & {});
-  retrievalOptions?: InstancesUpdateRequestRetrievalOptions;
-  rewriteModel?: InstancesUpdateRequestRewriteModel | (string & {});
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesUpdateRequestSourceParams;
-  summarization?: boolean;
-  summarizationModel?: InstancesUpdateRequestSummarizationModel | (string & {});
+  indexMethod?: InstancesUpdateRequestIndexMethod | null;
+  indexingOptions?: InstancesUpdateRequestIndexingOptions | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesUpdateRequestMetadata | null;
+  paused?: boolean | null;
+  publicEndpointParams?: InstancesUpdateRequestPublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesUpdateRequestRerankingModel | (string & {}) | null;
+  retrievalOptions?: InstancesUpdateRequestRetrievalOptions | null;
+  rewriteModel?: InstancesUpdateRequestRewriteModel | (string & {}) | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesUpdateRequestSourceParams | null;
+  summarization?: boolean | null;
+  summarizationModel?:
+    | InstancesUpdateRequestSummarizationModel
+    | (string & {})
+    | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesUpdateRequestSyncInterval | (number & {});
-  systemPromptAiSearch?: string;
-  systemPromptIndexSummarization?: string;
-  systemPromptRewriteQuery?: string;
-  tokenId?: string;
+  syncInterval?: InstancesUpdateRequestSyncInterval | (number & {}) | null;
+  systemPromptAiSearch?: string | null;
+  systemPromptIndexSummarization?: string | null;
+  systemPromptRewriteQuery?: string | null;
+  tokenId?: string | null;
 }
 export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesUpdateRequestAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesUpdateRequestAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesUpdateRequestCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesUpdateRequestCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesUpdateRequestCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesUpdateRequestCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunk: S.optional(S.Boolean),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
+    chunk: S.optional(S.NullOr(S.Boolean)),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
     customMetadata: S.optional(
-      InstancesUpdateRequestCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesUpdateRequestCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesUpdateRequestEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesUpdateRequestEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
     fusionMethod: S.optional(
-      InstancesUpdateRequestFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesUpdateRequestFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     indexMethod: S.optional(
-      InstancesUpdateRequestIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesUpdateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesUpdateRequestIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesUpdateRequestIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesUpdateRequestMetadata),
-    paused: S.optional(S.Boolean),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesUpdateRequestMetadata)),
+    paused: S.optional(S.NullOr(S.Boolean)),
     publicEndpointParams: S.optional(
-      InstancesUpdateRequestPublicEndpointParams.pipe(
+      S.NullOr(InstancesUpdateRequestPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesUpdateRequestRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesUpdateRequestRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesUpdateRequestRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesUpdateRequestRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesUpdateRequestRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesUpdateRequestRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesUpdateRequestSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesUpdateRequestSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    summarization: S.optional(S.Boolean),
+    summarization: S.optional(S.NullOr(S.Boolean)),
     summarizationModel: S.optional(
-      InstancesUpdateRequestSummarizationModel.pipe(
+      S.NullOr(InstancesUpdateRequestSummarizationModel).pipe(
         T.Body("summarization_model"),
       ),
     ),
     syncInterval: S.optional(
-      InstancesUpdateRequestSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesUpdateRequestSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
     systemPromptAiSearch: S.optional(
-      S.String.pipe(T.Body("system_prompt_ai_search")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_ai_search")),
     ),
     systemPromptIndexSummarization: S.optional(
-      S.String.pipe(T.Body("system_prompt_index_summarization")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_index_summarization")),
     ),
     systemPromptRewriteQuery: S.optional(
-      S.String.pipe(T.Body("system_prompt_rewrite_query")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_rewrite_query")),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
   })
     .pipe(
       T.Http({
@@ -13507,13 +14082,13 @@ export const InstancesUpdateResponseIndexingOptionsKeywordTokenizer =
 
 export interface InstancesUpdateResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: InstancesUpdateResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: InstancesUpdateResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const InstancesUpdateResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       keywordTokenizer: S.optional(
-        InstancesUpdateResponseIndexingOptionsKeywordTokenizer.pipe(
+        S.NullOr(InstancesUpdateResponseIndexingOptionsKeywordTokenizer).pipe(
           T.Body("keyword_tokenizer"),
         ),
       ),
@@ -13523,15 +14098,15 @@ export const InstancesUpdateResponseIndexingOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesUpdateResponseIndexingOptions>;
 
 export interface InstancesUpdateResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const InstancesUpdateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
     ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
   }),
 ).annotate({
   identifier: "InstancesUpdateResponseMetadata",
@@ -13546,12 +14121,12 @@ export const InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
 
 export interface InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -13566,15 +14141,15 @@ export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
   ) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesUpdateResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesUpdateResponsePublicEndpointParamsMcp",
@@ -13587,17 +14162,17 @@ export const InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const InstancesUpdateResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique),
       ),
     }),
   ).annotate({
@@ -13606,56 +14181,56 @@ export const InstancesUpdateResponsePublicEndpointParamsRateLimit =
 
 export interface InstancesUpdateResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const InstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "InstancesUpdateResponsePublicEndpointParamsSearchEndpoint",
   }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface InstancesUpdateResponsePublicEndpointParams {
-  authorizedHosts?: InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: InstancesUpdateResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: InstancesUpdateResponsePublicEndpointParamsMcp;
-  rateLimit?: InstancesUpdateResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesUpdateResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: InstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: InstancesUpdateResponsePublicEndpointParamsMcp | null;
+  rateLimit?: InstancesUpdateResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: InstancesUpdateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesUpdateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesUpdateResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(S.NullOr(InstancesUpdateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsRateLimit.pipe(
+        S.NullOr(InstancesUpdateResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesUpdateResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -13679,14 +14254,14 @@ export interface InstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: InstancesUpdateResponseRetrievalOptionsBoostByItemDirection;
+  direction?: InstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesUpdateResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        InstancesUpdateResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(InstancesUpdateResponseRetrievalOptionsBoostByItemDirection),
       ),
     }),
   ).annotate({
@@ -13708,20 +14283,20 @@ export const InstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
 
 export interface InstancesUpdateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: InstancesUpdateResponseRetrievalOptionsBoostByList;
+  boostBy?: InstancesUpdateResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: InstancesUpdateResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: InstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const InstancesUpdateResponseRetrievalOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       boostBy: S.optional(
-        InstancesUpdateResponseRetrievalOptionsBoostByList.pipe(
+        S.NullOr(InstancesUpdateResponseRetrievalOptionsBoostByList).pipe(
           T.Body("boost_by"),
         ),
       ),
       keywordMatchMode: S.optional(
-        InstancesUpdateResponseRetrievalOptionsKeywordMatchMode.pipe(
+        S.NullOr(InstancesUpdateResponseRetrievalOptionsKeywordMatchMode).pipe(
           T.Body("keyword_match_mode"),
         ),
       ),
@@ -13816,35 +14391,37 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSi
 
 export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -13858,26 +14435,26 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateResponseSourceParamsWebCrawler {
-  parseOptions?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: InstancesUpdateResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: InstancesUpdateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const InstancesUpdateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          InstancesUpdateResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerParseType.pipe(
+        S.NullOr(InstancesUpdateResponseSourceParamsWebCrawlerParseType).pipe(
           T.Body("parse_type"),
         ),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -13886,29 +14463,33 @@ export const InstancesUpdateResponseSourceParamsWebCrawler =
 
 export interface InstancesUpdateResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: InstancesUpdateResponseSourceParamsExcludeItemsList;
+  excludeItems?: InstancesUpdateResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: InstancesUpdateResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: InstancesUpdateResponseSourceParamsWebCrawler;
+  includeItems?: InstancesUpdateResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: InstancesUpdateResponseSourceParamsWebCrawler | null;
 }
 export const InstancesUpdateResponseSourceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeItems: S.optional(
-      InstancesUpdateResponseSourceParamsExcludeItemsList.pipe(
+      S.NullOr(InstancesUpdateResponseSourceParamsExcludeItemsList).pipe(
         T.Body("exclude_items"),
       ),
     ),
     includeItems: S.optional(
-      InstancesUpdateResponseSourceParamsIncludeItemsList.pipe(
+      S.NullOr(InstancesUpdateResponseSourceParamsIncludeItemsList).pipe(
         T.Body("include_items"),
       ),
     ),
-    prefix: S.optional(S.String),
-    r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+    prefix: S.optional(S.NullOr(S.String)),
+    r2Jurisdiction: S.optional(
+      S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+    ),
     webCrawler: S.optional(
-      InstancesUpdateResponseSourceParamsWebCrawler.pipe(T.Body("web_crawler")),
+      S.NullOr(InstancesUpdateResponseSourceParamsWebCrawler).pipe(
+        T.Body("web_crawler"),
+      ),
     ),
   }),
 ).annotate({
@@ -13935,120 +14516,150 @@ export interface UpdateInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: InstancesUpdateResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: InstancesUpdateResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: InstancesUpdateResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: InstancesUpdateResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: InstancesUpdateResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: InstancesUpdateResponseCustomMetadataList;
-  embeddingModel?: InstancesUpdateResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: InstancesUpdateResponseFusionMethod;
+  cacheTtl?: InstancesUpdateResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: InstancesUpdateResponseCustomMetadataList | null;
+  embeddingModel?: InstancesUpdateResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: InstancesUpdateResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesUpdateResponseIndexMethod;
-  indexingOptions?: InstancesUpdateResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: InstancesUpdateResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: InstancesUpdateResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: InstancesUpdateResponseRerankingModel;
-  retrievalOptions?: InstancesUpdateResponseRetrievalOptions;
-  rewriteModel?: InstancesUpdateResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: InstancesUpdateResponseSourceParams;
-  status?: string;
+  indexMethod?: InstancesUpdateResponseIndexMethod | null;
+  indexingOptions?: InstancesUpdateResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: InstancesUpdateResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: InstancesUpdateResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: InstancesUpdateResponseRerankingModel | null;
+  retrievalOptions?: InstancesUpdateResponseRetrievalOptions | null;
+  rewriteModel?: InstancesUpdateResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: InstancesUpdateResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: InstancesUpdateResponseSyncInterval;
-  tokenId?: string;
-  type?: InstancesUpdateResponseType;
+  syncInterval?: InstancesUpdateResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: InstancesUpdateResponseType | null;
 }
 export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      InstancesUpdateResponseAiSearchModel.pipe(T.Body("ai_search_model")),
+      S.NullOr(InstancesUpdateResponseAiSearchModel).pipe(
+        T.Body("ai_search_model"),
+      ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      InstancesUpdateResponseCacheThreshold.pipe(T.Body("cache_threshold")),
+      S.NullOr(InstancesUpdateResponseCacheThreshold).pipe(
+        T.Body("cache_threshold"),
+      ),
     ),
     cacheTtl: S.optional(
-      InstancesUpdateResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(InstancesUpdateResponseCacheTtl).pipe(T.Body("cache_ttl")),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      InstancesUpdateResponseCustomMetadataList.pipe(T.Body("custom_metadata")),
+      S.NullOr(InstancesUpdateResponseCustomMetadataList).pipe(
+        T.Body("custom_metadata"),
+      ),
     ),
     embeddingModel: S.optional(
-      InstancesUpdateResponseEmbeddingModel.pipe(T.Body("embedding_model")),
+      S.NullOr(InstancesUpdateResponseEmbeddingModel).pipe(
+        T.Body("embedding_model"),
+      ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      InstancesUpdateResponseFusionMethod.pipe(T.Body("fusion_method")),
+      S.NullOr(InstancesUpdateResponseFusionMethod).pipe(
+        T.Body("fusion_method"),
+      ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      InstancesUpdateResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(InstancesUpdateResponseIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
-      InstancesUpdateResponseIndexingOptions.pipe(T.Body("indexing_options")),
+      S.NullOr(InstancesUpdateResponseIndexingOptions).pipe(
+        T.Body("indexing_options"),
+      ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesUpdateResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(InstancesUpdateResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      InstancesUpdateResponsePublicEndpointParams.pipe(
+      S.NullOr(InstancesUpdateResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      InstancesUpdateResponseRerankingModel.pipe(T.Body("reranking_model")),
+      S.NullOr(InstancesUpdateResponseRerankingModel).pipe(
+        T.Body("reranking_model"),
+      ),
     ),
     retrievalOptions: S.optional(
-      InstancesUpdateResponseRetrievalOptions.pipe(T.Body("retrieval_options")),
+      S.NullOr(InstancesUpdateResponseRetrievalOptions).pipe(
+        T.Body("retrieval_options"),
+      ),
     ),
     rewriteModel: S.optional(
-      InstancesUpdateResponseRewriteModel.pipe(T.Body("rewrite_model")),
+      S.NullOr(InstancesUpdateResponseRewriteModel).pipe(
+        T.Body("rewrite_model"),
+      ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      InstancesUpdateResponseSourceParams.pipe(T.Body("source_params")),
+      S.NullOr(InstancesUpdateResponseSourceParams).pipe(
+        T.Body("source_params"),
+      ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      InstancesUpdateResponseSyncInterval.pipe(T.Body("sync_interval")),
+      S.NullOr(InstancesUpdateResponseSyncInterval).pipe(
+        T.Body("sync_interval"),
+      ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(InstancesUpdateResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(InstancesUpdateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateInstanceResponse",
@@ -14083,13 +14694,13 @@ export interface UpdateNamespaceResponse {
   createdAt: string;
   name: string;
   /** Optional description for the namespace. Max 256 characters. */
-  description?: string;
+  description?: string | null;
 }
 export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceResponse",
@@ -14228,15 +14839,16 @@ export interface NamespacesInstancesUpdateRequestIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
   keywordTokenizer?:
     | NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesUpdateRequestIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -14244,16 +14856,18 @@ export const NamespacesInstancesUpdateRequestIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesUpdateRequestIndexingOptions>;
 
 export interface NamespacesInstancesUpdateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
 ).annotate({
   identifier: "NamespacesInstancesUpdateRequestMetadata",
@@ -14268,12 +14882,12 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHosts
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -14288,15 +14902,15 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsLi
   ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesUpdateRequestPublicEndpointParamsMcp",
@@ -14308,19 +14922,22 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechni
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
+  periodMs?: number | null;
+  requests?: number | null;
   technique?:
     | NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -14329,12 +14946,12 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -14342,44 +14959,46 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint 
   }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesUpdateRequestPublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesUpdateRequestPublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesUpdateRequestPublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesUpdateRequestPublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -14403,14 +15022,17 @@ export interface NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -14432,24 +15054,25 @@ export const NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesUpdateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const NamespacesInstancesUpdateRequestRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -14545,35 +15168,37 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsS
 
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -14588,28 +15213,29 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
+  parseOptions?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions | null;
   parseType?:
     | NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType
-    | (string & {});
+    | (string & {})
+    | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -14618,30 +15244,32 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawler =
 
 export interface NamespacesInstancesUpdateRequestSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesUpdateRequestSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesUpdateRequestSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesUpdateRequestSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesUpdateRequestSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -14700,149 +15328,173 @@ export interface UpdateNamespaceInstanceRequest {
   accountId: string;
   name: string;
   id: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesUpdateRequestAiSearchModel | (string & {});
-  cache?: boolean;
+  aiGatewayId?: string | null;
+  aiSearchModel?:
+    | NamespacesInstancesUpdateRequestAiSearchModel
+    | (string & {})
+    | null;
+  cache?: boolean | null;
   cacheThreshold?:
     | NamespacesInstancesUpdateRequestCacheThreshold
-    | (string & {});
+    | (string & {})
+    | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesUpdateRequestCacheTtl | (number & {});
-  chunk?: boolean;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  customMetadata?: NamespacesInstancesUpdateRequestCustomMetadataList;
+  cacheTtl?: NamespacesInstancesUpdateRequestCacheTtl | (number & {}) | null;
+  chunk?: boolean | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  customMetadata?: NamespacesInstancesUpdateRequestCustomMetadataList | null;
   embeddingModel?:
     | NamespacesInstancesUpdateRequestEmbeddingModel
-    | (string & {});
-  fusionMethod?: NamespacesInstancesUpdateRequestFusionMethod | (string & {});
+    | (string & {})
+    | null;
+  fusionMethod?:
+    | NamespacesInstancesUpdateRequestFusionMethod
+    | (string & {})
+    | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesUpdateRequestIndexMethod;
-  indexingOptions?: NamespacesInstancesUpdateRequestIndexingOptions;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesUpdateRequestMetadata;
-  paused?: boolean;
-  publicEndpointParams?: NamespacesInstancesUpdateRequestPublicEndpointParams;
-  reranking?: boolean;
+  indexMethod?: NamespacesInstancesUpdateRequestIndexMethod | null;
+  indexingOptions?: NamespacesInstancesUpdateRequestIndexingOptions | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesUpdateRequestMetadata | null;
+  paused?: boolean | null;
+  publicEndpointParams?: NamespacesInstancesUpdateRequestPublicEndpointParams | null;
+  reranking?: boolean | null;
   rerankingModel?:
     | NamespacesInstancesUpdateRequestRerankingModel
-    | (string & {});
-  retrievalOptions?: NamespacesInstancesUpdateRequestRetrievalOptions;
-  rewriteModel?: NamespacesInstancesUpdateRequestRewriteModel | (string & {});
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesUpdateRequestSourceParams;
-  summarization?: boolean;
+    | (string & {})
+    | null;
+  retrievalOptions?: NamespacesInstancesUpdateRequestRetrievalOptions | null;
+  rewriteModel?:
+    | NamespacesInstancesUpdateRequestRewriteModel
+    | (string & {})
+    | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesUpdateRequestSourceParams | null;
+  summarization?: boolean | null;
   summarizationModel?:
     | NamespacesInstancesUpdateRequestSummarizationModel
-    | (string & {});
+    | (string & {})
+    | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesUpdateRequestSyncInterval | (number & {});
-  systemPromptAiSearch?: string;
-  systemPromptIndexSummarization?: string;
-  systemPromptRewriteQuery?: string;
-  tokenId?: string;
+  syncInterval?:
+    | NamespacesInstancesUpdateRequestSyncInterval
+    | (number & {})
+    | null;
+  systemPromptAiSearch?: string | null;
+  systemPromptIndexSummarization?: string | null;
+  systemPromptRewriteQuery?: string | null;
+  tokenId?: string | null;
 }
 export const UpdateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesUpdateRequestAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesUpdateRequestCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesUpdateRequestCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesUpdateRequestCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunk: S.optional(S.Boolean),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
+    chunk: S.optional(S.NullOr(S.Boolean)),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
     customMetadata: S.optional(
-      NamespacesInstancesUpdateRequestCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesUpdateRequestEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
     fusionMethod: S.optional(
-      NamespacesInstancesUpdateRequestFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesUpdateRequestIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesUpdateRequestIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesUpdateRequestIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesUpdateRequestMetadata),
-    paused: S.optional(S.Boolean),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesUpdateRequestMetadata)),
+    paused: S.optional(S.NullOr(S.Boolean)),
     publicEndpointParams: S.optional(
-      NamespacesInstancesUpdateRequestPublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestPublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesUpdateRequestRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesUpdateRequestRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesUpdateRequestRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesUpdateRequestSourceParams.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
-    summarization: S.optional(S.Boolean),
+    summarization: S.optional(S.NullOr(S.Boolean)),
     summarizationModel: S.optional(
-      NamespacesInstancesUpdateRequestSummarizationModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestSummarizationModel).pipe(
         T.Body("summarization_model"),
       ),
     ),
     syncInterval: S.optional(
-      NamespacesInstancesUpdateRequestSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesUpdateRequestSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
     systemPromptAiSearch: S.optional(
-      S.String.pipe(T.Body("system_prompt_ai_search")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_ai_search")),
     ),
     systemPromptIndexSummarization: S.optional(
-      S.String.pipe(T.Body("system_prompt_index_summarization")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_index_summarization")),
     ),
     systemPromptRewriteQuery: S.optional(
-      S.String.pipe(T.Body("system_prompt_rewrite_query")),
+      S.NullOr(S.String).pipe(T.Body("system_prompt_rewrite_query")),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
   })
     .pipe(
       T.Http({
@@ -14986,15 +15638,15 @@ export const NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer =
 
 export interface NamespacesInstancesUpdateResponseIndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter. */
-  keywordTokenizer?: NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer;
+  keywordTokenizer?: NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer | null;
 }
 export const NamespacesInstancesUpdateResponseIndexingOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywordTokenizer: S.optional(
-        NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer.pipe(
-          T.Body("keyword_tokenizer"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer,
+        ).pipe(T.Body("keyword_tokenizer")),
       ),
     }),
   ).annotate({
@@ -15002,16 +15654,18 @@ export const NamespacesInstancesUpdateResponseIndexingOptions =
   }) as any as S.Schema<NamespacesInstancesUpdateResponseIndexingOptions>;
 
 export interface NamespacesInstancesUpdateResponseMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
 }
 export const NamespacesInstancesUpdateResponseMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
       ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
+      workerDomain: S.optional(
+        S.NullOr(S.String).pipe(T.Body("worker_domain")),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesInstancesUpdateResponseMetadata",
@@ -15026,12 +15680,12 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHost
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -15046,15 +15700,15 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsL
   ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParamsMcp {
-  description?: string;
+  description?: string | null;
   /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "NamespacesInstancesUpdateResponsePublicEndpointParamsMcp",
@@ -15066,17 +15720,19 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechn
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit {
-  periodMs?: number;
-  requests?: number;
-  technique?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique;
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
+      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+      requests: S.optional(S.NullOr(S.Number)),
       technique: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique,
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique,
+        ),
       ),
     }),
   ).annotate({
@@ -15086,12 +15742,12 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit =
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint {
   /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
+  disabled?: boolean | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.Boolean),
+      disabled: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -15099,44 +15755,46 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint
   }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint>;
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParams {
-  authorizedHosts?: NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  authorizedHosts?: NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList | null;
+  chatCompletionsEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
-  customDomains?: NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList;
-  enabled?: boolean;
-  mcp?: NamespacesInstancesUpdateResponsePublicEndpointParamsMcp;
-  rateLimit?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint;
+  customDomains?: NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
+  enabled?: boolean | null;
+  mcp?: NamespacesInstancesUpdateResponsePublicEndpointParamsMcp | null;
+  rateLimit?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit | null;
+  searchEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizedHosts: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList.pipe(
-          T.Body("authorized_hosts"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList,
+        ).pipe(T.Body("authorized_hosts")),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint.pipe(
-          T.Body("chat_completions_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+        ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList.pipe(
-          T.Body("custom_domains"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList,
+        ).pipe(T.Body("custom_domains")),
       ),
-      enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesUpdateResponsePublicEndpointParamsMcp),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      mcp: S.optional(
+        S.NullOr(NamespacesInstancesUpdateResponsePublicEndpointParamsMcp),
+      ),
       rateLimit: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit.pipe(
-          T.Body("rate_limit"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit,
+        ).pipe(T.Body("rate_limit")),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint.pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -15158,14 +15816,16 @@ export interface NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
-  direction?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection;
+  direction?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       field: S.String,
       direction: S.optional(
-        NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection,
+        S.NullOr(
+          NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection,
+        ),
       ),
     }),
   ).annotate({
@@ -15187,22 +15847,22 @@ export const NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
 
 export interface NamespacesInstancesUpdateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
-  boostBy?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList;
+  boostBy?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList | null;
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'. */
-  keywordMatchMode?: NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode;
+  keywordMatchMode?: NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export const NamespacesInstancesUpdateResponseRetrievalOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostBy: S.optional(
-        NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList.pipe(
-          T.Body("boost_by"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList,
+        ).pipe(T.Body("boost_by")),
       ),
       keywordMatchMode: S.optional(
-        NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode.pipe(
-          T.Body("keyword_match_mode"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode,
+        ).pipe(T.Body("keyword_match_mode")),
       ),
     }),
   ).annotate({
@@ -15298,35 +15958,37 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
 
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
-  contentSelector?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList;
+  contentSelector?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
-  includeHeaders?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
-  includeImages?: boolean;
+  includeHeaders?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
+  includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
-  specificSitemaps?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
-  useBrowserRendering?: boolean;
+  specificSitemaps?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
+  useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contentSelector: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
+        ).pipe(T.Body("content_selector")),
       ),
       includeHeaders: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
+        ).pipe(T.Body("include_headers")),
       ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+      includeImages: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("include_images")),
+      ),
       specificSitemaps: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
+        ).pipe(T.Body("specific_sitemaps")),
       ),
       useBrowserRendering: S.optional(
-        S.Boolean.pipe(T.Body("use_browser_rendering")),
+        S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
       ),
     }),
   ).annotate({
@@ -15341,26 +16003,26 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawler {
-  parseOptions?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions;
-  parseType?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType;
+  parseOptions?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions | null;
+  parseType?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
-  crawlOptions?: WebCrawlerCrawlOptions;
+  crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parseOptions: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions.pipe(
-          T.Body("parse_options"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions,
+        ).pipe(T.Body("parse_options")),
       ),
       parseType: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType.pipe(
-          T.Body("parse_type"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType,
+        ).pipe(T.Body("parse_type")),
       ),
       crawlOptions: S.optional(
-        WebCrawlerCrawlOptions.pipe(T.Body("crawl_options")),
+        S.NullOr(WebCrawlerCrawlOptions).pipe(T.Body("crawl_options")),
       ),
     }),
   ).annotate({
@@ -15369,30 +16031,32 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawler =
 
 export interface NamespacesInstancesUpdateResponseSourceParams {
   /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced) */
-  excludeItems?: NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList;
+  excludeItems?: NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList | null;
   /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post) */
-  includeItems?: NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList;
-  prefix?: string;
-  r2Jurisdiction?: string;
-  webCrawler?: NamespacesInstancesUpdateResponseSourceParamsWebCrawler;
+  includeItems?: NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: NamespacesInstancesUpdateResponseSourceParamsWebCrawler | null;
 }
 export const NamespacesInstancesUpdateResponseSourceParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeItems: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList.pipe(
-          T.Body("exclude_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList,
+        ).pipe(T.Body("exclude_items")),
       ),
       includeItems: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList.pipe(
-          T.Body("include_items"),
-        ),
+        S.NullOr(
+          NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList,
+        ).pipe(T.Body("include_items")),
       ),
-      prefix: S.optional(S.String),
-      r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
+      prefix: S.optional(S.NullOr(S.String)),
+      r2Jurisdiction: S.optional(
+        S.NullOr(S.String).pipe(T.Body("r2_jurisdiction")),
+      ),
       webCrawler: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawler.pipe(
+        S.NullOr(NamespacesInstancesUpdateResponseSourceParamsWebCrawler).pipe(
           T.Body("web_crawler"),
         ),
       ),
@@ -15422,142 +16086,154 @@ export interface UpdateNamespaceInstanceResponse {
   id: string;
   createdAt: string;
   modifiedAt: string;
-  aiGatewayId?: string;
-  aiSearchModel?: NamespacesInstancesUpdateResponseAiSearchModel;
-  cache?: boolean;
-  cacheThreshold?: NamespacesInstancesUpdateResponseCacheThreshold;
+  aiGatewayId?: string | null;
+  aiSearchModel?: NamespacesInstancesUpdateResponseAiSearchModel | null;
+  cache?: boolean | null;
+  cacheThreshold?: NamespacesInstancesUpdateResponseCacheThreshold | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
-  cacheTtl?: NamespacesInstancesUpdateResponseCacheTtl;
-  chunkOverlap?: number;
-  chunkSize?: number;
-  createdBy?: string;
-  customMetadata?: NamespacesInstancesUpdateResponseCustomMetadataList;
-  embeddingModel?: NamespacesInstancesUpdateResponseEmbeddingModel;
-  enable?: boolean;
-  engineVersion?: number;
-  fusionMethod?: NamespacesInstancesUpdateResponseFusionMethod;
+  cacheTtl?: NamespacesInstancesUpdateResponseCacheTtl | null;
+  chunkOverlap?: number | null;
+  chunkSize?: number | null;
+  createdBy?: string | null;
+  customMetadata?: NamespacesInstancesUpdateResponseCustomMetadataList | null;
+  embeddingModel?: NamespacesInstancesUpdateResponseEmbeddingModel | null;
+  enable?: boolean | null;
+  engineVersion?: number | null;
+  fusionMethod?: NamespacesInstancesUpdateResponseFusionMethod | null;
   /** Deprecated — use index_method instead. */
-  hybridSearchEnabled?: boolean;
+  hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesUpdateResponseIndexMethod;
-  indexingOptions?: NamespacesInstancesUpdateResponseIndexingOptions;
-  lastActivity?: string;
-  maxNumResults?: number;
-  metadata?: NamespacesInstancesUpdateResponseMetadata;
-  modifiedBy?: string;
-  namespace?: string;
-  paused?: boolean;
-  publicEndpointId?: string;
-  publicEndpointParams?: NamespacesInstancesUpdateResponsePublicEndpointParams;
-  reranking?: boolean;
-  rerankingModel?: NamespacesInstancesUpdateResponseRerankingModel;
-  retrievalOptions?: NamespacesInstancesUpdateResponseRetrievalOptions;
-  rewriteModel?: NamespacesInstancesUpdateResponseRewriteModel;
-  rewriteQuery?: boolean;
-  scoreThreshold?: number;
-  source?: string;
-  sourceParams?: NamespacesInstancesUpdateResponseSourceParams;
-  status?: string;
+  indexMethod?: NamespacesInstancesUpdateResponseIndexMethod | null;
+  indexingOptions?: NamespacesInstancesUpdateResponseIndexingOptions | null;
+  lastActivity?: string | null;
+  maxNumResults?: number | null;
+  metadata?: NamespacesInstancesUpdateResponseMetadata | null;
+  modifiedBy?: string | null;
+  namespace?: string | null;
+  paused?: boolean | null;
+  publicEndpointId?: string | null;
+  publicEndpointParams?: NamespacesInstancesUpdateResponsePublicEndpointParams | null;
+  reranking?: boolean | null;
+  rerankingModel?: NamespacesInstancesUpdateResponseRerankingModel | null;
+  retrievalOptions?: NamespacesInstancesUpdateResponseRetrievalOptions | null;
+  rewriteModel?: NamespacesInstancesUpdateResponseRewriteModel | null;
+  rewriteQuery?: boolean | null;
+  scoreThreshold?: number | null;
+  source?: string | null;
+  sourceParams?: NamespacesInstancesUpdateResponseSourceParams | null;
+  status?: string | null;
   /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
-  syncInterval?: NamespacesInstancesUpdateResponseSyncInterval;
-  tokenId?: string;
-  type?: NamespacesInstancesUpdateResponseType;
+  syncInterval?: NamespacesInstancesUpdateResponseSyncInterval | null;
+  tokenId?: string | null;
+  type?: NamespacesInstancesUpdateResponseType | null;
 }
 export const UpdateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
-    aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
+    aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
     aiSearchModel: S.optional(
-      NamespacesInstancesUpdateResponseAiSearchModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseAiSearchModel).pipe(
         T.Body("ai_search_model"),
       ),
     ),
-    cache: S.optional(S.Boolean),
+    cache: S.optional(S.NullOr(S.Boolean)),
     cacheThreshold: S.optional(
-      NamespacesInstancesUpdateResponseCacheThreshold.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseCacheThreshold).pipe(
         T.Body("cache_threshold"),
       ),
     ),
     cacheTtl: S.optional(
-      NamespacesInstancesUpdateResponseCacheTtl.pipe(T.Body("cache_ttl")),
+      S.NullOr(NamespacesInstancesUpdateResponseCacheTtl).pipe(
+        T.Body("cache_ttl"),
+      ),
     ),
-    chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
-    chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+    chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     customMetadata: S.optional(
-      NamespacesInstancesUpdateResponseCustomMetadataList.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseCustomMetadataList).pipe(
         T.Body("custom_metadata"),
       ),
     ),
     embeddingModel: S.optional(
-      NamespacesInstancesUpdateResponseEmbeddingModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseEmbeddingModel).pipe(
         T.Body("embedding_model"),
       ),
     ),
-    enable: S.optional(S.Boolean),
-    engineVersion: S.optional(S.Number.pipe(T.Body("engine_version"))),
+    enable: S.optional(S.NullOr(S.Boolean)),
+    engineVersion: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("engine_version")),
+    ),
     fusionMethod: S.optional(
-      NamespacesInstancesUpdateResponseFusionMethod.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseFusionMethod).pipe(
         T.Body("fusion_method"),
       ),
     ),
     hybridSearchEnabled: S.optional(
-      S.Boolean.pipe(T.Body("hybrid_search_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesUpdateResponseIndexMethod.pipe(T.Body("index_method")),
+      S.NullOr(NamespacesInstancesUpdateResponseIndexMethod).pipe(
+        T.Body("index_method"),
+      ),
     ),
     indexingOptions: S.optional(
-      NamespacesInstancesUpdateResponseIndexingOptions.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseIndexingOptions).pipe(
         T.Body("indexing_options"),
       ),
     ),
-    lastActivity: S.optional(S.String.pipe(T.Body("last_activity"))),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesUpdateResponseMetadata),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    namespace: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    publicEndpointId: S.optional(S.String.pipe(T.Body("public_endpoint_id"))),
+    lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
+    ),
+    metadata: S.optional(S.NullOr(NamespacesInstancesUpdateResponseMetadata)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    namespace: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    publicEndpointId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("public_endpoint_id")),
+    ),
     publicEndpointParams: S.optional(
-      NamespacesInstancesUpdateResponsePublicEndpointParams.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponsePublicEndpointParams).pipe(
         T.Body("public_endpoint_params"),
       ),
     ),
-    reranking: S.optional(S.Boolean),
+    reranking: S.optional(S.NullOr(S.Boolean)),
     rerankingModel: S.optional(
-      NamespacesInstancesUpdateResponseRerankingModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseRerankingModel).pipe(
         T.Body("reranking_model"),
       ),
     ),
     retrievalOptions: S.optional(
-      NamespacesInstancesUpdateResponseRetrievalOptions.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseRetrievalOptions).pipe(
         T.Body("retrieval_options"),
       ),
     ),
     rewriteModel: S.optional(
-      NamespacesInstancesUpdateResponseRewriteModel.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseRewriteModel).pipe(
         T.Body("rewrite_model"),
       ),
     ),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-    source: S.optional(S.String),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
+    source: S.optional(S.NullOr(S.String)),
     sourceParams: S.optional(
-      NamespacesInstancesUpdateResponseSourceParams.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseSourceParams).pipe(
         T.Body("source_params"),
       ),
     ),
-    status: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
     syncInterval: S.optional(
-      NamespacesInstancesUpdateResponseSyncInterval.pipe(
+      S.NullOr(NamespacesInstancesUpdateResponseSyncInterval).pipe(
         T.Body("sync_interval"),
       ),
     ),
-    tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-    type: S.optional(NamespacesInstancesUpdateResponseType),
+    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+    type: S.optional(S.NullOr(NamespacesInstancesUpdateResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceInstanceResponse",
@@ -15569,7 +16245,7 @@ export interface UpdateTokenRequest {
   cfApiId: string;
   cfApiKey: string;
   name: string;
-  legacy?: boolean;
+  legacy?: boolean | null;
 }
 export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15578,7 +16254,7 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     cfApiId: S.String.pipe(T.Body("cf_api_id")),
     cfApiKey: S.String.pipe(T.Body("cf_api_key")),
     name: S.String,
-    legacy: S.optional(S.Boolean),
+    legacy: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -15599,10 +16275,10 @@ export interface UpdateTokenResponse {
   createdAt: string;
   modifiedAt: string;
   name: string;
-  createdBy?: string;
-  enabled?: boolean;
-  legacy?: boolean;
-  modifiedBy?: string;
+  createdBy?: string | null;
+  enabled?: boolean | null;
+  legacy?: boolean | null;
+  modifiedBy?: string | null;
 }
 export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15611,10 +16287,10 @@ export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    enabled: S.optional(S.Boolean),
-    legacy: S.optional(S.Boolean),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    legacy: S.optional(S.NullOr(S.Boolean)),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenResponse",
@@ -15674,7 +16350,7 @@ export interface UploadNamespaceInstanceItemResponse {
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string;
   status: NamespacesInstancesItemsUploadResponseStatus;
-  error?: string;
+  error?: string | null;
 }
 export const UploadNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15691,7 +16367,7 @@ export const UploadNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsUploadResponseStatus,
-    error: S.optional(S.String),
+    error: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UploadNamespaceInstanceItemResponse",

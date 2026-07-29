@@ -240,7 +240,8 @@ export type Comparator =
   | "Exists"
   | "DoesNotExist"
   | "In"
-  | "NotIn";
+  | "NotIn"
+  | (string & {});
 export const Comparator = /*@__PURE__*/ S.String;
 
 export type IntegerList = number[];
@@ -258,16 +259,17 @@ export const LocaleList = /*@__PURE__*/ S.Array(Locale);
 export type HITAccessActions =
   | "Accept"
   | "PreviewAndAccept"
-  | "DiscoverPreviewAndAccept";
+  | "DiscoverPreviewAndAccept"
+  | (string & {});
 export const HITAccessActions = /*@__PURE__*/ S.String;
 
 export interface QualificationRequirement {
   QualificationTypeId: string;
-  Comparator: Comparator | (string & {});
+  Comparator: Comparator;
   IntegerValues?: number[];
   LocaleValues?: Locale[];
   RequiredToPreview?: boolean;
-  ActionsGuarded?: HITAccessActions | (string & {});
+  ActionsGuarded?: HITAccessActions;
 }
 export const QualificationRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -390,14 +392,16 @@ export type HITStatus =
   | "Unassignable"
   | "Reviewable"
   | "Reviewing"
-  | "Disposed";
+  | "Disposed"
+  | (string & {});
 export const HITStatus = /*@__PURE__*/ S.String;
 
 export type HITReviewStatus =
   | "NotReviewed"
   | "MarkedForReview"
   | "ReviewedAppropriate"
-  | "ReviewedInappropriate";
+  | "ReviewedInappropriate"
+  | (string & {});
 export const HITReviewStatus = /*@__PURE__*/ S.String;
 
 export interface HIT {
@@ -542,14 +546,14 @@ export const CreateHITWithHITTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHITWithHITTypeResponse",
 }) as any as S.Schema<CreateHITWithHITTypeResponse>;
-export type QualificationTypeStatus = "Active" | "Inactive";
+export type QualificationTypeStatus = "Active" | "Inactive" | (string & {});
 export const QualificationTypeStatus = /*@__PURE__*/ S.String;
 
 export interface CreateQualificationTypeRequest {
   Name: string;
   Keywords?: string;
   Description: string;
-  QualificationTypeStatus: QualificationTypeStatus | (string & {});
+  QualificationTypeStatus: QualificationTypeStatus;
   RetryDelayInSeconds?: number;
   Test?: string;
   AnswerKey?: string;
@@ -799,7 +803,11 @@ export const GetAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssignmentRequest",
 }) as any as S.Schema<GetAssignmentRequest>;
-export type AssignmentStatus = "Submitted" | "Approved" | "Rejected";
+export type AssignmentStatus =
+  | "Submitted"
+  | "Approved"
+  | "Rejected"
+  | (string & {});
 export const AssignmentStatus = /*@__PURE__*/ S.String;
 
 export interface Assignment {
@@ -913,7 +921,7 @@ export const GetQualificationScoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQualificationScoreRequest",
 }) as any as S.Schema<GetQualificationScoreRequest>;
-export type QualificationStatus = "Granted" | "Revoked";
+export type QualificationStatus = "Granted" | "Revoked" | (string & {});
 export const QualificationStatus = /*@__PURE__*/ S.String;
 
 export interface Qualification {
@@ -970,13 +978,13 @@ export const GetQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQualificationTypeResponse>;
 export type PaginationToken = string;
 export type ResultSize = number;
-export type AssignmentStatusList = (AssignmentStatus | (string & {}))[];
+export type AssignmentStatusList = AssignmentStatus[];
 export const AssignmentStatusList = /*@__PURE__*/ S.Array(AssignmentStatus);
 export interface ListAssignmentsForHITRequest {
   HITId: string;
   NextToken?: string;
   MaxResults?: number;
-  AssignmentStatuses?: (AssignmentStatus | (string & {}))[];
+  AssignmentStatuses?: AssignmentStatus[];
 }
 export const ListAssignmentsForHITRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1254,12 +1262,12 @@ export const ListQualificationTypesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListQualificationTypesResponse",
 }) as any as S.Schema<ListQualificationTypesResponse>;
-export type ReviewableHITStatus = "Reviewable" | "Reviewing";
+export type ReviewableHITStatus = "Reviewable" | "Reviewing" | (string & {});
 export const ReviewableHITStatus = /*@__PURE__*/ S.String;
 
 export interface ListReviewableHITsRequest {
   HITTypeId?: string;
-  Status?: ReviewableHITStatus | (string & {});
+  Status?: ReviewableHITStatus;
   NextToken?: string;
   MaxResults?: number;
 }
@@ -1297,14 +1305,14 @@ export const ListReviewableHITsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListReviewableHITsResponse",
 }) as any as S.Schema<ListReviewableHITsResponse>;
-export type ReviewPolicyLevel = "Assignment" | "HIT";
+export type ReviewPolicyLevel = "Assignment" | "HIT" | (string & {});
 export const ReviewPolicyLevel = /*@__PURE__*/ S.String;
 
-export type ReviewPolicyLevelList = (ReviewPolicyLevel | (string & {}))[];
+export type ReviewPolicyLevelList = ReviewPolicyLevel[];
 export const ReviewPolicyLevelList = /*@__PURE__*/ S.Array(ReviewPolicyLevel);
 export interface ListReviewPolicyResultsForHITRequest {
   HITId: string;
-  PolicyLevels?: (ReviewPolicyLevel | (string & {}))[];
+  PolicyLevels?: ReviewPolicyLevel[];
   RetrieveActions?: boolean;
   RetrieveResults?: boolean;
   NextToken?: string;
@@ -1359,7 +1367,8 @@ export type ReviewActionStatus =
   | "Intended"
   | "Succeeded"
   | "Failed"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ReviewActionStatus = /*@__PURE__*/ S.String;
 
 export interface ReviewActionDetail {
@@ -1466,7 +1475,7 @@ export const ListWorkerBlocksResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkerBlocksResponse>;
 export interface ListWorkersWithQualificationTypeRequest {
   QualificationTypeId: string;
-  Status?: QualificationStatus | (string & {});
+  Status?: QualificationStatus;
   NextToken?: string;
   MaxResults?: number;
 }
@@ -1534,7 +1543,10 @@ export const NotifyWorkersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyWorkersRequest",
 }) as any as S.Schema<NotifyWorkersRequest>;
-export type NotifyWorkersFailureCode = "SoftFailure" | "HardFailure";
+export type NotifyWorkersFailureCode =
+  | "SoftFailure"
+  | "HardFailure"
+  | (string & {});
 export const NotifyWorkersFailureCode = /*@__PURE__*/ S.String;
 
 export interface NotifyWorkersFailureStatus {
@@ -1652,7 +1664,7 @@ export const SendBonusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendBonusResponse",
 }) as any as S.Schema<SendBonusResponse>;
-export type NotificationTransport = "Email" | "SQS" | "SNS";
+export type NotificationTransport = "Email" | "SQS" | "SNS" | (string & {});
 export const NotificationTransport = /*@__PURE__*/ S.String;
 
 export type EventType =
@@ -1667,16 +1679,17 @@ export type EventType =
   | "HITReviewable"
   | "HITExtended"
   | "HITDisposed"
-  | "Ping";
+  | "Ping"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypeList = (EventType | (string & {}))[];
+export type EventTypeList = EventType[];
 export const EventTypeList = /*@__PURE__*/ S.Array(EventType);
 export interface NotificationSpecification {
   Destination: string;
-  Transport: NotificationTransport | (string & {});
+  Transport: NotificationTransport;
   Version: string;
-  EventTypes: (EventType | (string & {}))[];
+  EventTypes: EventType[];
 }
 export const NotificationSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1690,7 +1703,7 @@ export const NotificationSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationSpecification>;
 export interface SendTestEventNotificationRequest {
   Notification: NotificationSpecification;
-  TestEventType: EventType | (string & {});
+  TestEventType: EventType;
 }
 export const SendTestEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1827,7 +1840,7 @@ export const UpdateNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateQualificationTypeRequest {
   QualificationTypeId: string;
   Description?: string;
-  QualificationTypeStatus?: QualificationTypeStatus | (string & {});
+  QualificationTypeStatus?: QualificationTypeStatus;
   Test?: string;
   AnswerKey?: string;
   TestDurationInSeconds?: number;

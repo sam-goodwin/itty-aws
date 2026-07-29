@@ -160,7 +160,7 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
 export type TableName = string;
-export type OpenTableFormat = "ICEBERG";
+export type OpenTableFormat = "ICEBERG" | (string & {});
 export const OpenTableFormat = /*@__PURE__*/ S.String;
 
 export interface SchemaField {
@@ -185,7 +185,7 @@ export interface IcebergSchema {
 export const IcebergSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fields: SchemaFieldList }),
 ).annotate({ identifier: "IcebergSchema" }) as any as S.Schema<IcebergSchema>;
-export type SchemaV2FieldType = "struct";
+export type SchemaV2FieldType = "struct" | (string & {});
 export const SchemaV2FieldType = /*@__PURE__*/ S.String;
 
 export interface SchemaV2Field {
@@ -209,7 +209,7 @@ export const SchemaV2FieldList = /*@__PURE__*/ S.Array(SchemaV2Field);
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export interface IcebergSchemaV2 {
-  type: SchemaV2FieldType | (string & {});
+  type: SchemaV2FieldType;
   fields: SchemaV2Field[];
   schemaId?: number;
   identifierFieldIds?: number[];
@@ -261,17 +261,17 @@ export const IcebergPartitionSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IcebergPartitionSpec",
 }) as any as S.Schema<IcebergPartitionSpec>;
-export type IcebergSortDirection = "asc" | "desc";
+export type IcebergSortDirection = "asc" | "desc" | (string & {});
 export const IcebergSortDirection = /*@__PURE__*/ S.String;
 
-export type IcebergNullOrder = "nulls-first" | "nulls-last";
+export type IcebergNullOrder = "nulls-first" | "nulls-last" | (string & {});
 export const IcebergNullOrder = /*@__PURE__*/ S.String;
 
 export interface IcebergSortField {
   sourceId: number;
   transform: string;
-  direction: IcebergSortDirection | (string & {});
-  nullOrder: IcebergNullOrder | (string & {});
+  direction: IcebergSortDirection;
+  nullOrder: IcebergNullOrder;
 }
 export const IcebergSortField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -323,11 +323,11 @@ export type TableMetadata = { iceberg: IcebergMetadata };
 export const TableMetadata = /*@__PURE__*/ S.Union([
   S.Struct({ iceberg: IcebergMetadata }),
 ]);
-export type SSEAlgorithm = "AES256" | "aws:kms";
+export type SSEAlgorithm = "AES256" | "aws:kms" | (string & {});
 export const SSEAlgorithm = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
-  sseAlgorithm: SSEAlgorithm | (string & {});
+  sseAlgorithm: SSEAlgorithm;
   kmsKeyArn?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -335,11 +335,11 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
-export type StorageClass = "STANDARD" | "INTELLIGENT_TIERING";
+export type StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
 
 export interface StorageClassConfiguration {
-  storageClass: StorageClass | (string & {});
+  storageClass: StorageClass;
 }
 export const StorageClassConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ storageClass: StorageClass }),
@@ -354,7 +354,7 @@ export interface CreateTableRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
-  format: OpenTableFormat | (string & {});
+  format: OpenTableFormat;
   metadata?: TableMetadata;
   encryptionConfiguration?: EncryptionConfiguration;
   storageClassConfiguration?: StorageClassConfiguration;
@@ -750,7 +750,7 @@ export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableRequest",
 }) as any as S.Schema<GetTableRequest>;
-export type TableType = "customer" | "aws";
+export type TableType = "customer" | "aws" | (string & {});
 export const TableType = /*@__PURE__*/ S.String;
 
 export type MetadataLocation = string;
@@ -832,7 +832,7 @@ export const GetTableBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableBucketRequest",
 }) as any as S.Schema<GetTableBucketRequest>;
-export type TableBucketType = "customer" | "aws";
+export type TableBucketType = "customer" | "aws" | (string & {});
 export const TableBucketType = /*@__PURE__*/ S.String;
 
 export interface GetTableBucketResponse {
@@ -902,10 +902,12 @@ export const GetTableBucketMaintenanceConfigurationRequest =
   ).annotate({
     identifier: "GetTableBucketMaintenanceConfigurationRequest",
   }) as any as S.Schema<GetTableBucketMaintenanceConfigurationRequest>;
-export type TableBucketMaintenanceType = "icebergUnreferencedFileRemoval";
+export type TableBucketMaintenanceType =
+  | "icebergUnreferencedFileRemoval"
+  | (string & {});
 export const TableBucketMaintenanceType = /*@__PURE__*/ S.String;
 
-export type MaintenanceStatus = "enabled" | "disabled";
+export type MaintenanceStatus = "enabled" | "disabled" | (string & {});
 export const MaintenanceStatus = /*@__PURE__*/ S.String;
 
 export type PositiveInteger = number;
@@ -931,7 +933,7 @@ export const TableBucketMaintenanceSettings = /*@__PURE__*/ S.Union([
   }),
 ]);
 export interface TableBucketMaintenanceConfigurationValue {
-  status?: MaintenanceStatus | (string & {});
+  status?: MaintenanceStatus;
   settings?: TableBucketMaintenanceSettings;
 }
 export const TableBucketMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(
@@ -1178,15 +1180,21 @@ export const GetTableMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetTableMaintenanceConfigurationRequest>;
 export type TableMaintenanceType =
   | "icebergCompaction"
-  | "icebergSnapshotManagement";
+  | "icebergSnapshotManagement"
+  | (string & {});
 export const TableMaintenanceType = /*@__PURE__*/ S.String;
 
-export type IcebergCompactionStrategy = "auto" | "binpack" | "sort" | "z-order";
+export type IcebergCompactionStrategy =
+  | "auto"
+  | "binpack"
+  | "sort"
+  | "z-order"
+  | (string & {});
 export const IcebergCompactionStrategy = /*@__PURE__*/ S.String;
 
 export interface IcebergCompactionSettings {
   targetFileSizeMB?: number;
-  strategy?: IcebergCompactionStrategy | (string & {});
+  strategy?: IcebergCompactionStrategy;
 }
 export const IcebergCompactionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1222,7 +1230,7 @@ export const TableMaintenanceSettings = /*@__PURE__*/ S.Union([
   S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
 ]);
 export interface TableMaintenanceConfigurationValue {
-  status?: MaintenanceStatus | (string & {});
+  status?: MaintenanceStatus;
   settings?: TableMaintenanceSettings;
 }
 export const TableMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(() =>
@@ -1284,10 +1292,16 @@ export const GetTableMaintenanceJobStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export type TableMaintenanceJobType =
   | "icebergCompaction"
   | "icebergSnapshotManagement"
-  | "icebergUnreferencedFileRemoval";
+  | "icebergUnreferencedFileRemoval"
+  | (string & {});
 export const TableMaintenanceJobType = /*@__PURE__*/ S.String;
 
-export type JobStatus = "Not_Yet_Run" | "Successful" | "Failed" | "Disabled";
+export type JobStatus =
+  | "Not_Yet_Run"
+  | "Successful"
+  | "Failed"
+  | "Disabled"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface TableMaintenanceJobStatusValue {
@@ -1414,7 +1428,10 @@ export const GetTableRecordExpirationConfigurationRequest =
   ).annotate({
     identifier: "GetTableRecordExpirationConfigurationRequest",
   }) as any as S.Schema<GetTableRecordExpirationConfigurationRequest>;
-export type TableRecordExpirationStatus = "enabled" | "disabled";
+export type TableRecordExpirationStatus =
+  | "enabled"
+  | "disabled"
+  | (string & {});
 export const TableRecordExpirationStatus = /*@__PURE__*/ S.String;
 
 export interface TableRecordExpirationSettings {
@@ -1426,7 +1443,7 @@ export const TableRecordExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableRecordExpirationSettings",
 }) as any as S.Schema<TableRecordExpirationSettings>;
 export interface TableRecordExpirationConfigurationValue {
-  status?: TableRecordExpirationStatus | (string & {});
+  status?: TableRecordExpirationStatus;
   settings?: TableRecordExpirationSettings;
 }
 export const TableRecordExpirationConfigurationValue = /*@__PURE__*/ S.suspend(
@@ -1469,7 +1486,8 @@ export type TableRecordExpirationJobStatus =
   | "NotYetRun"
   | "Successful"
   | "Failed"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const TableRecordExpirationJobStatus = /*@__PURE__*/ S.String;
 
 export interface TableRecordExpirationJobMetrics {
@@ -1571,7 +1589,11 @@ export const GetTableReplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableReplicationStatusRequest",
 }) as any as S.Schema<GetTableReplicationStatusRequest>;
-export type ReplicationStatus = "pending" | "completed" | "failed";
+export type ReplicationStatus =
+  | "pending"
+  | "completed"
+  | "failed"
+  | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface LastSuccessfulReplicatedUpdate {
@@ -1723,7 +1745,7 @@ export interface ListTableBucketsRequest {
   prefix?: string;
   continuationToken?: string;
   maxBuckets?: number;
-  type?: TableBucketType | (string & {});
+  type?: TableBucketType;
 }
 export const ListTableBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1903,7 +1925,7 @@ export const PutTableBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTableBucketEncryptionResponse>;
 export interface PutTableBucketMaintenanceConfigurationRequest {
   tableBucketARN: string;
-  type: TableBucketMaintenanceType | (string & {});
+  type: TableBucketMaintenanceType;
   value: TableBucketMaintenanceConfigurationValue;
 }
 export const PutTableBucketMaintenanceConfigurationRequest =
@@ -2048,7 +2070,7 @@ export interface PutTableMaintenanceConfigurationRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
-  type: TableMaintenanceType | (string & {});
+  type: TableMaintenanceType;
   value: TableMaintenanceConfigurationValue;
 }
 export const PutTableMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(

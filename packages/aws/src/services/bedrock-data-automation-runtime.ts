@@ -135,7 +135,8 @@ export type AutomationJobStatus =
   | "InProgress"
   | "Success"
   | "ServiceError"
-  | "ClientError";
+  | "ClientError"
+  | (string & {});
 export const AutomationJobStatus = /*@__PURE__*/ S.String;
 
 export type S3Uri = string;
@@ -183,12 +184,12 @@ export const SyncInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyncInputConfiguration",
 }) as any as S.Schema<SyncInputConfiguration>;
 export type DataAutomationArn = string;
-export type DataAutomationStage = "LIVE" | "DEVELOPMENT";
+export type DataAutomationStage = "LIVE" | "DEVELOPMENT" | (string & {});
 export const DataAutomationStage = /*@__PURE__*/ S.String;
 
 export interface DataAutomationConfiguration {
   dataAutomationProjectArn: string;
-  stage?: DataAutomationStage | (string & {});
+  stage?: DataAutomationStage;
 }
 export const DataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -200,13 +201,13 @@ export const DataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataAutomationConfiguration>;
 export type BlueprintArn = string;
 export type BlueprintVersion = string;
-export type BlueprintStage = "DEVELOPMENT" | "LIVE";
+export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
 export const BlueprintStage = /*@__PURE__*/ S.String;
 
 export interface Blueprint {
   blueprintArn: string;
   version?: string;
-  stage?: BlueprintStage | (string & {});
+  stage?: BlueprintStage;
 }
 export const Blueprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -260,10 +261,15 @@ export const InvokeDataAutomationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeDataAutomationRequest",
 }) as any as S.Schema<InvokeDataAutomationRequest>;
-export type SemanticModality = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO";
+export type SemanticModality =
+  | "DOCUMENT"
+  | "IMAGE"
+  | "AUDIO"
+  | "VIDEO"
+  | (string & {});
 export const SemanticModality = /*@__PURE__*/ S.String;
 
-export type CustomOutputStatus = "MATCH" | "NO_MATCH";
+export type CustomOutputStatus = "MATCH" | "NO_MATCH" | (string & {});
 export const CustomOutputStatus = /*@__PURE__*/ S.String;
 
 export interface OutputSegment {

@@ -231,15 +231,19 @@ export const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainNameString = string;
 export type DomainList = string[];
 export const DomainList = /*@__PURE__*/ S.Array(S.String);
-export type CertificateManagedBy = "CLOUDFRONT";
+export type CertificateManagedBy = "CLOUDFRONT" | (string & {});
 export const CertificateManagedBy = /*@__PURE__*/ S.String;
 
 export type ValidationEmailList = string[];
 export const ValidationEmailList = /*@__PURE__*/ S.Array(S.String);
-export type DomainStatus = "PENDING_VALIDATION" | "SUCCESS" | "FAILED";
+export type DomainStatus =
+  | "PENDING_VALIDATION"
+  | "SUCCESS"
+  | "FAILED"
+  | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
 
-export type RecordType = "CNAME";
+export type RecordType = "CNAME" | (string & {});
 export const RecordType = /*@__PURE__*/ S.String;
 
 export interface ResourceRecord {
@@ -260,7 +264,7 @@ export const HttpRedirect = /*@__PURE__*/ S.suspend(() =>
     RedirectTo: S.optional(S.String),
   }),
 ).annotate({ identifier: "HttpRedirect" }) as any as S.Schema<HttpRedirect>;
-export type ValidationMethod = "EMAIL" | "DNS" | "HTTP";
+export type ValidationMethod = "EMAIL" | "DNS" | "HTTP" | (string & {});
 export const ValidationMethod = /*@__PURE__*/ S.String;
 
 export interface DomainValidation {
@@ -294,7 +298,8 @@ export type CertificateStatus =
   | "EXPIRED"
   | "VALIDATION_TIMED_OUT"
   | "REVOKED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 export type RevocationReason =
@@ -308,7 +313,8 @@ export type RevocationReason =
   | "CERTIFICATE_HOLD"
   | "REMOVE_FROM_CRL"
   | "PRIVILEGE_WITHDRAWN"
-  | "A_A_COMPROMISE";
+  | "A_A_COMPROMISE"
+  | (string & {});
 export const RevocationReason = /*@__PURE__*/ S.String;
 
 export type KeyAlgorithm =
@@ -318,7 +324,8 @@ export type KeyAlgorithm =
   | "RSA_4096"
   | "EC_prime256v1"
   | "EC_secp384r1"
-  | "EC_secp521r1";
+  | "EC_secp521r1"
+  | (string & {});
 export const KeyAlgorithm = /*@__PURE__*/ S.String;
 
 export type InUseList = string[];
@@ -340,17 +347,23 @@ export type FailureReason =
   | "PCA_INVALID_DURATION"
   | "PCA_ACCESS_DENIED"
   | "SLR_NOT_FOUND"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const FailureReason = /*@__PURE__*/ S.String;
 
-export type CertificateType = "IMPORTED" | "AMAZON_ISSUED" | "PRIVATE";
+export type CertificateType =
+  | "IMPORTED"
+  | "AMAZON_ISSUED"
+  | "PRIVATE"
+  | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
 
 export type RenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
   | "SUCCESS"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RenewalStatus = /*@__PURE__*/ S.String;
 
 export interface RenewalSummary {
@@ -378,7 +391,8 @@ export type KeyUsageName =
   | "ENCIPHER_ONLY"
   | "DECIPHER_ONLY"
   | "ANY"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const KeyUsageName = /*@__PURE__*/ S.String;
 
 export interface KeyUsage {
@@ -401,7 +415,8 @@ export type ExtendedKeyUsageName =
   | "IPSEC_USER"
   | "ANY"
   | "NONE"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const ExtendedKeyUsageName = /*@__PURE__*/ S.String;
 
 export interface ExtendedKeyUsage {
@@ -418,20 +433,21 @@ export const ExtendedKeyUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendedKeyUsage>;
 export type ExtendedKeyUsageList = ExtendedKeyUsage[];
 export const ExtendedKeyUsageList = /*@__PURE__*/ S.Array(ExtendedKeyUsage);
-export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE";
+export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
 export const RenewalEligibility = /*@__PURE__*/ S.String;
 
-export type CertificateTransparencyLoggingPreference = "ENABLED" | "DISABLED";
+export type CertificateTransparencyLoggingPreference =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const CertificateTransparencyLoggingPreference = /*@__PURE__*/ S.String;
 
-export type CertificateExport = "ENABLED" | "DISABLED";
+export type CertificateExport = "ENABLED" | "DISABLED" | (string & {});
 export const CertificateExport = /*@__PURE__*/ S.String;
 
 export interface CertificateOptions {
-  CertificateTransparencyLoggingPreference?:
-    | CertificateTransparencyLoggingPreference
-    | (string & {});
-  Export?: CertificateExport | (string & {});
+  CertificateTransparencyLoggingPreference?: CertificateTransparencyLoggingPreference;
+  Export?: CertificateExport;
 }
 export const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -620,24 +636,21 @@ export const ImportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportCertificateResponse",
 }) as any as S.Schema<ImportCertificateResponse>;
-export type CertificateStatuses = (CertificateStatus | (string & {}))[];
+export type CertificateStatuses = CertificateStatus[];
 export const CertificateStatuses = /*@__PURE__*/ S.Array(CertificateStatus);
-export type ExtendedKeyUsageFilterList = (
-  | ExtendedKeyUsageName
-  | (string & {})
-)[];
+export type ExtendedKeyUsageFilterList = ExtendedKeyUsageName[];
 export const ExtendedKeyUsageFilterList =
   /*@__PURE__*/ S.Array(ExtendedKeyUsageName);
-export type KeyUsageFilterList = (KeyUsageName | (string & {}))[];
+export type KeyUsageFilterList = KeyUsageName[];
 export const KeyUsageFilterList = /*@__PURE__*/ S.Array(KeyUsageName);
-export type KeyAlgorithmList = (KeyAlgorithm | (string & {}))[];
+export type KeyAlgorithmList = KeyAlgorithm[];
 export const KeyAlgorithmList = /*@__PURE__*/ S.Array(KeyAlgorithm);
 export interface Filters {
-  extendedKeyUsage?: (ExtendedKeyUsageName | (string & {}))[];
-  keyUsage?: (KeyUsageName | (string & {}))[];
-  keyTypes?: (KeyAlgorithm | (string & {}))[];
-  exportOption?: CertificateExport | (string & {});
-  managedBy?: CertificateManagedBy | (string & {});
+  extendedKeyUsage?: ExtendedKeyUsageName[];
+  keyUsage?: KeyUsageName[];
+  keyTypes?: KeyAlgorithm[];
+  exportOption?: CertificateExport;
+  managedBy?: CertificateManagedBy;
 }
 export const Filters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -650,19 +663,19 @@ export const Filters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filters" }) as any as S.Schema<Filters>;
 export type NextToken = string;
 export type MaxItems = number;
-export type SortBy = "CREATED_AT";
+export type SortBy = "CREATED_AT" | (string & {});
 export const SortBy = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListCertificatesRequest {
-  CertificateStatuses?: (CertificateStatus | (string & {}))[];
+  CertificateStatuses?: CertificateStatus[];
   Includes?: Filters;
   NextToken?: string;
   MaxItems?: number;
-  SortBy?: SortBy | (string & {});
-  SortOrder?: SortOrder | (string & {});
+  SortBy?: SortBy;
+  SortOrder?: SortOrder;
 }
 export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -833,15 +846,15 @@ export const DomainValidationOptionList = /*@__PURE__*/ S.Array(
 export type PcaArn = string;
 export interface RequestCertificateRequest {
   DomainName: string;
-  ValidationMethod?: ValidationMethod | (string & {});
+  ValidationMethod?: ValidationMethod;
   SubjectAlternativeNames?: string[];
   IdempotencyToken?: string;
   DomainValidationOptions?: DomainValidationOption[];
   Options?: CertificateOptions;
   CertificateAuthorityArn?: string;
   Tags?: Tag[];
-  KeyAlgorithm?: KeyAlgorithm | (string & {});
-  ManagedBy?: CertificateManagedBy | (string & {});
+  KeyAlgorithm?: KeyAlgorithm;
+  ManagedBy?: CertificateManagedBy;
 }
 export const RequestCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -893,7 +906,7 @@ export const ResendValidationEmailResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResendValidationEmailResponse>;
 export interface RevokeCertificateRequest {
   CertificateArn: string;
-  RevocationReason: RevocationReason | (string & {});
+  RevocationReason: RevocationReason;
 }
 export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -920,12 +933,12 @@ export const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
   }),
 ) as any as S.Schema<CertificateFilterStatementList>;
 export type FilterString = string;
-export type ComparisonOperator = "CONTAINS" | "EQUALS";
+export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export interface CommonNameFilter {
   Value: string;
-  ComparisonOperator: ComparisonOperator | (string & {});
+  ComparisonOperator: ComparisonOperator;
 }
 export const CommonNameFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
@@ -938,7 +951,7 @@ export const SubjectFilter = /*@__PURE__*/ S.Union([
 ]);
 export interface DnsNameFilter {
   Value: string;
-  ComparisonOperator: ComparisonOperator | (string & {});
+  ComparisonOperator: ComparisonOperator;
 }
 export const DnsNameFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
@@ -982,7 +995,7 @@ export type X509AttributeFilter =
   | {
       Subject?: never;
       SubjectAlternativeName?: never;
-      ExtendedKeyUsage: ExtendedKeyUsageName | (string & {});
+      ExtendedKeyUsage: ExtendedKeyUsageName;
       KeyUsage?: never;
       KeyAlgorithm?: never;
       SerialNumber?: never;
@@ -993,7 +1006,7 @@ export type X509AttributeFilter =
       Subject?: never;
       SubjectAlternativeName?: never;
       ExtendedKeyUsage?: never;
-      KeyUsage: KeyUsageName | (string & {});
+      KeyUsage: KeyUsageName;
       KeyAlgorithm?: never;
       SerialNumber?: never;
       NotAfter?: never;
@@ -1004,7 +1017,7 @@ export type X509AttributeFilter =
       SubjectAlternativeName?: never;
       ExtendedKeyUsage?: never;
       KeyUsage?: never;
-      KeyAlgorithm: KeyAlgorithm | (string & {});
+      KeyAlgorithm: KeyAlgorithm;
       SerialNumber?: never;
       NotAfter?: never;
       NotBefore?: never;
@@ -1051,7 +1064,7 @@ export const X509AttributeFilter = /*@__PURE__*/ S.Union([
 ]);
 export type AcmCertificateMetadataFilter =
   | {
-      Status: CertificateStatus | (string & {});
+      Status: CertificateStatus;
       RenewalStatus?: never;
       Type?: never;
       InUse?: never;
@@ -1062,7 +1075,7 @@ export type AcmCertificateMetadataFilter =
     }
   | {
       Status?: never;
-      RenewalStatus: RenewalStatus | (string & {});
+      RenewalStatus: RenewalStatus;
       Type?: never;
       InUse?: never;
       Exported?: never;
@@ -1073,7 +1086,7 @@ export type AcmCertificateMetadataFilter =
   | {
       Status?: never;
       RenewalStatus?: never;
-      Type: CertificateType | (string & {});
+      Type: CertificateType;
       InUse?: never;
       Exported?: never;
       ExportOption?: never;
@@ -1106,7 +1119,7 @@ export type AcmCertificateMetadataFilter =
       Type?: never;
       InUse?: never;
       Exported?: never;
-      ExportOption: CertificateExport | (string & {});
+      ExportOption: CertificateExport;
       ManagedBy?: never;
       ValidationMethod?: never;
     }
@@ -1117,7 +1130,7 @@ export type AcmCertificateMetadataFilter =
       InUse?: never;
       Exported?: never;
       ExportOption?: never;
-      ManagedBy: CertificateManagedBy | (string & {});
+      ManagedBy: CertificateManagedBy;
       ValidationMethod?: never;
     }
   | {
@@ -1128,7 +1141,7 @@ export type AcmCertificateMetadataFilter =
       Exported?: never;
       ExportOption?: never;
       ManagedBy?: never;
-      ValidationMethod: ValidationMethod | (string & {});
+      ValidationMethod: ValidationMethod;
     };
 export const AcmCertificateMetadataFilter = /*@__PURE__*/ S.Union([
   S.Struct({ Status: CertificateStatus }),
@@ -1213,18 +1226,22 @@ export type SearchCertificatesSortBy =
   | "MANAGED_BY"
   | "EXPORT_OPTION"
   | "VALIDATION_METHOD"
-  | "IMPORTED_AT";
+  | "IMPORTED_AT"
+  | (string & {});
 export const SearchCertificatesSortBy = /*@__PURE__*/ S.String;
 
-export type SearchCertificatesSortOrder = "ASCENDING" | "DESCENDING";
+export type SearchCertificatesSortOrder =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const SearchCertificatesSortOrder = /*@__PURE__*/ S.String;
 
 export interface SearchCertificatesRequest {
   FilterStatement?: CertificateFilterStatement;
   MaxResults?: number;
   NextToken?: string;
-  SortBy?: SearchCertificatesSortBy | (string & {});
-  SortOrder?: SearchCertificatesSortOrder | (string & {});
+  SortBy?: SearchCertificatesSortBy;
+  SortOrder?: SearchCertificatesSortOrder;
 }
 export const SearchCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -127,7 +127,7 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
 export type Name = string;
 export type Description = string;
 export type Repository = string;
-export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE";
+export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE" | (string & {});
 export const Platform = /*@__PURE__*/ S.String;
 
 export type ComputeRoleArn = string;
@@ -183,7 +183,8 @@ export type Stage =
   | "BETA"
   | "DEVELOPMENT"
   | "EXPERIMENTAL"
-  | "PULL_REQUEST";
+  | "PULL_REQUEST"
+  | (string & {});
 export const Stage = /*@__PURE__*/ S.String;
 
 export type Framework = string;
@@ -192,7 +193,7 @@ export type EnablePerformanceMode = boolean;
 export type EnablePullRequestPreview = boolean;
 export type PullRequestEnvironmentName = string;
 export interface AutoBranchCreationConfig {
-  stage?: Stage | (string & {});
+  stage?: Stage;
   framework?: string;
   enableAutoBuild?: boolean;
   environmentVariables?: { [key: string]: string | undefined };
@@ -219,20 +220,27 @@ export const AutoBranchCreationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoBranchCreationConfig",
 }) as any as S.Schema<AutoBranchCreationConfig>;
-export type BuildComputeType = "STANDARD_8GB" | "LARGE_16GB" | "XLARGE_72GB";
+export type BuildComputeType =
+  | "STANDARD_8GB"
+  | "LARGE_16GB"
+  | "XLARGE_72GB"
+  | (string & {});
 export const BuildComputeType = /*@__PURE__*/ S.String;
 
 export interface JobConfig {
-  buildComputeType: BuildComputeType | (string & {});
+  buildComputeType: BuildComputeType;
 }
 export const JobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buildComputeType: BuildComputeType }),
 ).annotate({ identifier: "JobConfig" }) as any as S.Schema<JobConfig>;
-export type CacheConfigType = "AMPLIFY_MANAGED" | "AMPLIFY_MANAGED_NO_COOKIES";
+export type CacheConfigType =
+  | "AMPLIFY_MANAGED"
+  | "AMPLIFY_MANAGED_NO_COOKIES"
+  | (string & {});
 export const CacheConfigType = /*@__PURE__*/ S.String;
 
 export interface CacheConfig {
-  type: CacheConfigType | (string & {});
+  type: CacheConfigType;
 }
 export const CacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: CacheConfigType }),
@@ -241,7 +249,7 @@ export interface CreateAppRequest {
   name: string;
   description?: string;
   repository?: string;
-  platform?: Platform | (string & {});
+  platform?: Platform;
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
   oauthToken?: string | redacted.Redacted<string>;
@@ -323,7 +331,7 @@ export const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductionBranch",
 }) as any as S.Schema<ProductionBranch>;
-export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4";
+export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4" | (string & {});
 export const RepositoryCloneMethod = /*@__PURE__*/ S.String;
 
 export type WebhookCreateTime = Date;
@@ -333,7 +341,8 @@ export type WafStatus =
   | "ASSOCIATION_FAILED"
   | "ASSOCIATION_SUCCESS"
   | "DISASSOCIATING"
-  | "DISASSOCIATION_FAILED";
+  | "DISASSOCIATION_FAILED"
+  | (string & {});
 export const WafStatus = /*@__PURE__*/ S.String;
 
 export type StatusReason = string;
@@ -498,7 +507,7 @@ export interface CreateBranchRequest {
   appId: string;
   branchName: string;
   description?: string;
-  stage?: Stage | (string & {});
+  stage?: Stage;
   framework?: string;
   enableNotification?: boolean;
   enableAutoBuild?: boolean;
@@ -710,12 +719,12 @@ export type AutoSubDomainCreationPattern = string;
 export type AutoSubDomainCreationPatterns = string[];
 export const AutoSubDomainCreationPatterns = /*@__PURE__*/ S.Array(S.String);
 export type AutoSubDomainIAMRole = string;
-export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM";
+export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM" | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
 
 export type CertificateArn = string;
 export interface CertificateSettings {
-  type: CertificateType | (string & {});
+  type: CertificateType;
   customCertificateArn?: string;
 }
 export const CertificateSettings = /*@__PURE__*/ S.suspend(() =>
@@ -769,7 +778,8 @@ export type DomainStatus =
   | "FAILED"
   | "CREATING"
   | "REQUESTING_CERTIFICATE"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 export type UpdateStatus =
@@ -779,7 +789,8 @@ export type UpdateStatus =
   | "PENDING_DEPLOYMENT"
   | "AWAITING_APP_CNAME"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
 
 export type CertificateVerificationDNSRecord = string;
@@ -1065,15 +1076,21 @@ export type JobStatus =
   | "FAILED"
   | "SUCCEED"
   | "CANCELLING"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type EndTime = Date;
-export type JobType = "RELEASE" | "RETRY" | "MANUAL" | "WEB_HOOK";
+export type JobType =
+  | "RELEASE"
+  | "RETRY"
+  | "MANUAL"
+  | "WEB_HOOK"
+  | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 export type SourceUrl = string;
-export type SourceUrlType = "ZIP" | "BUCKET_PREFIX";
+export type SourceUrlType = "ZIP" | "BUCKET_PREFIX" | (string & {});
 export const SourceUrlType = /*@__PURE__*/ S.String;
 
 export interface JobSummary {
@@ -1727,7 +1744,7 @@ export interface StartDeploymentRequest {
   branchName: string;
   jobId?: string;
   sourceUrl?: string;
-  sourceUrlType?: SourceUrlType | (string & {});
+  sourceUrlType?: SourceUrlType;
 }
 export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1766,7 +1783,7 @@ export interface StartJobRequest {
   appId: string;
   branchName: string;
   jobId?: string;
-  jobType: JobType | (string & {});
+  jobType: JobType;
   jobReason?: string;
   commitId?: string;
   commitMessage?: string;
@@ -1898,7 +1915,7 @@ export interface UpdateAppRequest {
   appId: string;
   name?: string;
   description?: string;
-  platform?: Platform | (string & {});
+  platform?: Platform;
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
   environmentVariables?: { [key: string]: string | undefined };
@@ -1969,7 +1986,7 @@ export interface UpdateBranchRequest {
   branchName: string;
   description?: string;
   framework?: string;
-  stage?: Stage | (string & {});
+  stage?: Stage;
   enableNotification?: boolean;
   enableAutoBuild?: boolean;
   enableSkewProtection?: boolean;

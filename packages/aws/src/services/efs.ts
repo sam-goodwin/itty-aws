@@ -395,7 +395,8 @@ export type LifeCycleState =
   | "updating"
   | "deleting"
   | "deleted"
-  | "error";
+  | "error"
+  | (string & {});
 export const LifeCycleState = /*@__PURE__*/ S.String;
 
 export interface AccessPointDescription {
@@ -427,12 +428,16 @@ export const AccessPointDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessPointDescription",
 }) as any as S.Schema<AccessPointDescription>;
 export type CreationToken = string;
-export type PerformanceMode = "generalPurpose" | "maxIO";
+export type PerformanceMode = "generalPurpose" | "maxIO" | (string & {});
 export const PerformanceMode = /*@__PURE__*/ S.String;
 
 export type Encrypted = boolean;
 export type KmsKeyId = string;
-export type ThroughputMode = "bursting" | "provisioned" | "elastic";
+export type ThroughputMode =
+  | "bursting"
+  | "provisioned"
+  | "elastic"
+  | (string & {});
 export const ThroughputMode = /*@__PURE__*/ S.String;
 
 export type ProvisionedThroughputInMibps = number;
@@ -440,10 +445,10 @@ export type AvailabilityZoneName = string;
 export type Backup = boolean;
 export interface CreateFileSystemRequest {
   CreationToken: string;
-  PerformanceMode?: PerformanceMode | (string & {});
+  PerformanceMode?: PerformanceMode;
   Encrypted?: boolean;
   KmsKeyId?: string;
-  ThroughputMode?: ThroughputMode | (string & {});
+  ThroughputMode?: ThroughputMode;
   ProvisionedThroughputInMibps?: number;
   AvailabilityZoneName?: string;
   Backup?: boolean;
@@ -497,7 +502,8 @@ export type AvailabilityZoneId = string;
 export type ReplicationOverwriteProtection =
   | "ENABLED"
   | "DISABLED"
-  | "REPLICATING";
+  | "REPLICATING"
+  | (string & {});
 export const ReplicationOverwriteProtection = /*@__PURE__*/ S.String;
 
 export interface FileSystemProtectionDescription {
@@ -557,7 +563,11 @@ export const FileSystemDescription = /*@__PURE__*/ S.suspend(() =>
 export type SubnetId = string;
 export type IpAddress = string;
 export type Ipv6Address = string;
-export type IpAddressType = "IPV4_ONLY" | "IPV6_ONLY" | "DUAL_STACK";
+export type IpAddressType =
+  | "IPV4_ONLY"
+  | "IPV6_ONLY"
+  | "DUAL_STACK"
+  | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type SecurityGroup = string;
@@ -568,7 +578,7 @@ export interface CreateMountTargetRequest {
   SubnetId: string;
   IpAddress?: string;
   Ipv6Address?: string;
-  IpAddressType?: IpAddressType | (string & {});
+  IpAddressType?: IpAddressType;
   SecurityGroups?: string[];
 }
 export const CreateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -678,7 +688,8 @@ export type ReplicationStatus =
   | "DELETING"
   | "ERROR"
   | "PAUSED"
-  | "PAUSING";
+  | "PAUSING"
+  | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
 
 export type StatusMessage = string;
@@ -859,12 +870,15 @@ export const DeleteMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMountTargetResponse",
 }) as any as S.Schema<DeleteMountTargetResponse>;
-export type DeletionMode = "ALL_CONFIGURATIONS" | "LOCAL_CONFIGURATION_ONLY";
+export type DeletionMode =
+  | "ALL_CONFIGURATIONS"
+  | "LOCAL_CONFIGURATION_ONLY"
+  | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
 
 export interface DeleteReplicationConfigurationRequest {
   SourceFileSystemId: string;
-  DeletionMode?: DeletionMode | (string & {});
+  DeletionMode?: DeletionMode;
 }
 export const DeleteReplicationConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -986,10 +1000,10 @@ export const DescribeAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountPreferencesRequest",
 }) as any as S.Schema<DescribeAccountPreferencesRequest>;
-export type ResourceIdType = "LONG_ID" | "SHORT_ID";
+export type ResourceIdType = "LONG_ID" | "SHORT_ID" | (string & {});
 export const ResourceIdType = /*@__PURE__*/ S.String;
 
-export type Resource = "FILE_SYSTEM" | "MOUNT_TARGET";
+export type Resource = "FILE_SYSTEM" | "MOUNT_TARGET" | (string & {});
 export const Resource = /*@__PURE__*/ S.String;
 
 export type Resources = Resource[];
@@ -1038,11 +1052,16 @@ export const DescribeBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBackupPolicyRequest",
 }) as any as S.Schema<DescribeBackupPolicyRequest>;
-export type Status = "ENABLED" | "ENABLING" | "DISABLED" | "DISABLING";
+export type Status =
+  | "ENABLED"
+  | "ENABLING"
+  | "DISABLED"
+  | "DISABLING"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface BackupPolicy {
-  Status: Status | (string & {});
+  Status: Status;
 }
 export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: Status }),
@@ -1163,10 +1182,13 @@ export type TransitionToIARules =
   | "AFTER_1_DAY"
   | "AFTER_180_DAYS"
   | "AFTER_270_DAYS"
-  | "AFTER_365_DAYS";
+  | "AFTER_365_DAYS"
+  | (string & {});
 export const TransitionToIARules = /*@__PURE__*/ S.String;
 
-export type TransitionToPrimaryStorageClassRules = "AFTER_1_ACCESS";
+export type TransitionToPrimaryStorageClassRules =
+  | "AFTER_1_ACCESS"
+  | (string & {});
 export const TransitionToPrimaryStorageClassRules = /*@__PURE__*/ S.String;
 
 export type TransitionToArchiveRules =
@@ -1178,15 +1200,14 @@ export type TransitionToArchiveRules =
   | "AFTER_90_DAYS"
   | "AFTER_180_DAYS"
   | "AFTER_270_DAYS"
-  | "AFTER_365_DAYS";
+  | "AFTER_365_DAYS"
+  | (string & {});
 export const TransitionToArchiveRules = /*@__PURE__*/ S.String;
 
 export interface LifecyclePolicy {
-  TransitionToIA?: TransitionToIARules | (string & {});
-  TransitionToPrimaryStorageClass?:
-    | TransitionToPrimaryStorageClassRules
-    | (string & {});
-  TransitionToArchive?: TransitionToArchiveRules | (string & {});
+  TransitionToIA?: TransitionToIARules;
+  TransitionToPrimaryStorageClass?: TransitionToPrimaryStorageClassRules;
+  TransitionToArchive?: TransitionToArchiveRules;
 }
 export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1433,7 +1454,7 @@ export const ModifyMountTargetSecurityGroupsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ModifyMountTargetSecurityGroupsResponse",
 }) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>;
 export interface PutAccountPreferencesRequest {
-  ResourceIdType: ResourceIdType | (string & {});
+  ResourceIdType: ResourceIdType;
 }
 export const PutAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceIdType: ResourceIdType }).pipe(
@@ -1591,7 +1612,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateFileSystemRequest {
   FileSystemId: string;
-  ThroughputMode?: ThroughputMode | (string & {});
+  ThroughputMode?: ThroughputMode;
   ProvisionedThroughputInMibps?: number;
 }
 export const UpdateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1614,9 +1635,7 @@ export const UpdateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFileSystemRequest>;
 export interface UpdateFileSystemProtectionRequest {
   FileSystemId: string;
-  ReplicationOverwriteProtection?:
-    | ReplicationOverwriteProtection
-    | (string & {});
+  ReplicationOverwriteProtection?: ReplicationOverwriteProtection;
 }
 export const UpdateFileSystemProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

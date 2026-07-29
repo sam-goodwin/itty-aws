@@ -3533,7 +3533,9 @@ export const AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAc
 
 export type AccountTagsUpdateRequestResourceType =
   | AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelWorkerVersion
-  | AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelBase;
+  | (string & {})
+  | AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelBase
+  | (string & {});
 export const AccountTagsUpdateRequestResourceType =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
@@ -3553,9 +3555,9 @@ export interface PutAccountTagRequest {
   /** Enum for base account-level resource types (those with no extra required fields). */
   resourceType: AccountTagsUpdateRequestResourceType;
   /** Worker ID is required only for worker_version resources */
-  workerId?: string;
+  workerId?: string | null;
   /** Contains key-value pairs of tags. */
-  tags?: AccountTagsUpdateRequestTagsMap;
+  tags?: AccountTagsUpdateRequestTagsMap | null;
   ifMatch?: string;
 }
 export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3565,8 +3567,8 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
     resourceType: AccountTagsUpdateRequestResourceType.pipe(
       T.Body("resource_type"),
     ),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-    tags: S.optional(AccountTagsUpdateRequestTagsMap),
+    workerId: S.optional(S.NullOr(S.String).pipe(T.Body("worker_id"))),
+    tags: S.optional(S.NullOr(AccountTagsUpdateRequestTagsMap)),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(
@@ -4651,7 +4653,9 @@ export const ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneL
 
 export type ZoneTagsUpdateRequestResourceType =
   | ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelBase
-  | ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy;
+  | (string & {})
+  | ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy
+  | (string & {});
 export const ZoneTagsUpdateRequestResourceType = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], []]),
 );
@@ -4672,9 +4676,9 @@ export interface PutZoneTagRequest {
   /** Enum for base zone-level resource types (those with no extra required fields). */
   resourceType: ZoneTagsUpdateRequestResourceType;
   /** Contains key-value pairs of tags. */
-  tags?: ZoneTagsUpdateRequestTagsMap;
+  tags?: ZoneTagsUpdateRequestTagsMap | null;
   /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
+  accessApplicationId?: string | null;
   ifMatch?: string;
 }
 export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4684,9 +4688,9 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
     resourceType: ZoneTagsUpdateRequestResourceType.pipe(
       T.Body("resource_type"),
     ),
-    tags: S.optional(ZoneTagsUpdateRequestTagsMap),
+    tags: S.optional(S.NullOr(ZoneTagsUpdateRequestTagsMap)),
     accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
+      S.NullOr(S.String).pipe(T.Body("access_application_id")),
     ),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })

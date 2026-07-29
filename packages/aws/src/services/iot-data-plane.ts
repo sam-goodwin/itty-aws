@@ -528,7 +528,10 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionsResponse>;
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
-export type PayloadFormatIndicator = "UNSPECIFIED_BYTES" | "UTF8_DATA";
+export type PayloadFormatIndicator =
+  | "UNSPECIFIED_BYTES"
+  | "UTF8_DATA"
+  | (string & {});
 export const PayloadFormatIndicator = /*@__PURE__*/ S.String;
 
 export type ContentType = string;
@@ -541,7 +544,7 @@ export interface PublishRequest {
   retain?: boolean;
   payload?: T.StreamingInputBody;
   userProperties?: string;
-  payloadFormatIndicator?: PayloadFormatIndicator | (string & {});
+  payloadFormatIndicator?: PayloadFormatIndicator;
   contentType?: string;
   responseTopic?: string;
   correlationData?: string;
@@ -593,7 +596,7 @@ export interface SendDirectMessageRequest {
   timeout?: number;
   payload?: T.StreamingInputBody;
   userProperties?: string;
-  payloadFormatIndicator?: PayloadFormatIndicator | (string & {});
+  payloadFormatIndicator?: PayloadFormatIndicator;
   correlationData?: string;
 }
 export const SendDirectMessageRequest = /*@__PURE__*/ S.suspend(() =>

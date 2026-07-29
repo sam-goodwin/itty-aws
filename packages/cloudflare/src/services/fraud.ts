@@ -74,16 +74,16 @@ export interface GetResponseAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: GetResponseAuthenticationSettingsFailureCriteriaKind;
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList;
+  statusCodes?: GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList | null;
 }
 export const GetResponseAuthenticationSettingsFailureCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: GetResponseAuthenticationSettingsFailureCriteriaKind,
       statusCodes: S.optional(
-        GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -106,16 +106,16 @@ export interface GetResponseAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: GetResponseAuthenticationSettingsSuccessCriteriaKind;
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList;
+  statusCodes?: GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList | null;
 }
 export const GetResponseAuthenticationSettingsSuccessCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: GetResponseAuthenticationSettingsSuccessCriteriaKind,
       statusCodes: S.optional(
-        GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -124,19 +124,19 @@ export const GetResponseAuthenticationSettingsSuccessCriteria =
 
 export interface GetResponseAuthenticationSettings {
   /** Criterion for identifying failed login responses. */
-  failureCriteria?: GetResponseAuthenticationSettingsFailureCriteria;
+  failureCriteria?: GetResponseAuthenticationSettingsFailureCriteria | null;
   /** Criterion for identifying successful login responses. */
-  successCriteria?: GetResponseAuthenticationSettingsSuccessCriteria;
+  successCriteria?: GetResponseAuthenticationSettingsSuccessCriteria | null;
 }
 export const GetResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCriteria: S.optional(
-      GetResponseAuthenticationSettingsFailureCriteria.pipe(
+      S.NullOr(GetResponseAuthenticationSettingsFailureCriteria).pipe(
         T.Body("failure_criteria"),
       ),
     ),
     successCriteria: S.optional(
-      GetResponseAuthenticationSettingsSuccessCriteria.pipe(
+      S.NullOr(GetResponseAuthenticationSettingsSuccessCriteria).pipe(
         T.Body("success_criteria"),
       ),
     ),
@@ -156,22 +156,26 @@ export const GetResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetFraudResponse {
   /** Configuration for classifying login authentication outcomes based on the origin response. */
-  authenticationSettings?: GetResponseAuthenticationSettings;
+  authenticationSettings?: GetResponseAuthenticationSettings | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: GetResponseUserProfiles;
+  userProfiles?: GetResponseUserProfiles | null;
   /** List of expressions to detect usernames in write HTTP requests. */
-  usernameExpressions?: GetResponseUsernameExpressionsList;
+  usernameExpressions?: GetResponseUsernameExpressionsList | null;
 }
 export const GetFraudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSettings: S.optional(
-      GetResponseAuthenticationSettings.pipe(T.Body("authentication_settings")),
+      S.NullOr(GetResponseAuthenticationSettings).pipe(
+        T.Body("authentication_settings"),
+      ),
     ),
     userProfiles: S.optional(
-      GetResponseUserProfiles.pipe(T.Body("user_profiles")),
+      S.NullOr(GetResponseUserProfiles).pipe(T.Body("user_profiles")),
     ),
     usernameExpressions: S.optional(
-      GetResponseUsernameExpressionsList.pipe(T.Body("username_expressions")),
+      S.NullOr(GetResponseUsernameExpressionsList).pipe(
+        T.Body("username_expressions"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -194,16 +198,16 @@ export interface UpdateRequestAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
+  statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList | null;
 }
 export const UpdateRequestAuthenticationSettingsFailureCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind,
       statusCodes: S.optional(
-        UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -226,16 +230,16 @@ export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
+  statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList | null;
 }
 export const UpdateRequestAuthenticationSettingsSuccessCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind,
       statusCodes: S.optional(
-        UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -244,19 +248,19 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteria =
 
 export interface UpdateRequestAuthenticationSettings {
   /** Criterion for identifying failed login responses. */
-  failureCriteria?: UpdateRequestAuthenticationSettingsFailureCriteria;
+  failureCriteria?: UpdateRequestAuthenticationSettingsFailureCriteria | null;
   /** Criterion for identifying successful login responses. */
-  successCriteria?: UpdateRequestAuthenticationSettingsSuccessCriteria;
+  successCriteria?: UpdateRequestAuthenticationSettingsSuccessCriteria | null;
 }
 export const UpdateRequestAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCriteria: S.optional(
-      UpdateRequestAuthenticationSettingsFailureCriteria.pipe(
+      S.NullOr(UpdateRequestAuthenticationSettingsFailureCriteria).pipe(
         T.Body("failure_criteria"),
       ),
     ),
     successCriteria: S.optional(
-      UpdateRequestAuthenticationSettingsSuccessCriteria.pipe(
+      S.NullOr(UpdateRequestAuthenticationSettingsSuccessCriteria).pipe(
         T.Body("success_criteria"),
       ),
     ),
@@ -277,25 +281,27 @@ export interface PutFraudRequest {
   /** Identifier. */
   zoneId: string;
   /** Configuration for classifying login authentication outcomes based on the origin response. */
-  authenticationSettings?: UpdateRequestAuthenticationSettings;
+  authenticationSettings?: UpdateRequestAuthenticationSettings | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: UpdateRequestUserProfiles | (string & {});
+  userProfiles?: UpdateRequestUserProfiles | (string & {}) | null;
   /** List of expressions to detect usernames in write HTTP requests. */
-  usernameExpressions?: UpdateRequestUsernameExpressionsList;
+  usernameExpressions?: UpdateRequestUsernameExpressionsList | null;
 }
 export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     authenticationSettings: S.optional(
-      UpdateRequestAuthenticationSettings.pipe(
+      S.NullOr(UpdateRequestAuthenticationSettings).pipe(
         T.Body("authentication_settings"),
       ),
     ),
     userProfiles: S.optional(
-      UpdateRequestUserProfiles.pipe(T.Body("user_profiles")),
+      S.NullOr(UpdateRequestUserProfiles).pipe(T.Body("user_profiles")),
     ),
     usernameExpressions: S.optional(
-      UpdateRequestUsernameExpressionsList.pipe(T.Body("username_expressions")),
+      S.NullOr(UpdateRequestUsernameExpressionsList).pipe(
+        T.Body("username_expressions"),
+      ),
     ),
   })
     .pipe(
@@ -326,16 +332,16 @@ export interface UpdateResponseAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateResponseAuthenticationSettingsFailureCriteriaKind;
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList;
+  statusCodes?: UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList | null;
 }
 export const UpdateResponseAuthenticationSettingsFailureCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateResponseAuthenticationSettingsFailureCriteriaKind,
       statusCodes: S.optional(
-        UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -358,16 +364,16 @@ export interface UpdateResponseAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateResponseAuthenticationSettingsSuccessCriteriaKind;
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList;
+  statusCodes?: UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList | null;
 }
 export const UpdateResponseAuthenticationSettingsSuccessCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateResponseAuthenticationSettingsSuccessCriteriaKind,
       statusCodes: S.optional(
-        UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
-          T.Body("status_codes"),
-        ),
+        S.NullOr(
+          UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList,
+        ).pipe(T.Body("status_codes")),
       ),
     }),
   ).annotate({
@@ -376,20 +382,20 @@ export const UpdateResponseAuthenticationSettingsSuccessCriteria =
 
 export interface UpdateResponseAuthenticationSettings {
   /** Criterion for identifying failed login responses. */
-  failureCriteria?: UpdateResponseAuthenticationSettingsFailureCriteria;
+  failureCriteria?: UpdateResponseAuthenticationSettingsFailureCriteria | null;
   /** Criterion for identifying successful login responses. */
-  successCriteria?: UpdateResponseAuthenticationSettingsSuccessCriteria;
+  successCriteria?: UpdateResponseAuthenticationSettingsSuccessCriteria | null;
 }
 export const UpdateResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       failureCriteria: S.optional(
-        UpdateResponseAuthenticationSettingsFailureCriteria.pipe(
+        S.NullOr(UpdateResponseAuthenticationSettingsFailureCriteria).pipe(
           T.Body("failure_criteria"),
         ),
       ),
       successCriteria: S.optional(
-        UpdateResponseAuthenticationSettingsSuccessCriteria.pipe(
+        S.NullOr(UpdateResponseAuthenticationSettingsSuccessCriteria).pipe(
           T.Body("success_criteria"),
         ),
       ),
@@ -409,24 +415,24 @@ export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutFraudResponse {
   /** Configuration for classifying login authentication outcomes based on the origin response. */
-  authenticationSettings?: UpdateResponseAuthenticationSettings;
+  authenticationSettings?: UpdateResponseAuthenticationSettings | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: UpdateResponseUserProfiles;
+  userProfiles?: UpdateResponseUserProfiles | null;
   /** List of expressions to detect usernames in write HTTP requests. */
-  usernameExpressions?: UpdateResponseUsernameExpressionsList;
+  usernameExpressions?: UpdateResponseUsernameExpressionsList | null;
 }
 export const PutFraudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSettings: S.optional(
-      UpdateResponseAuthenticationSettings.pipe(
+      S.NullOr(UpdateResponseAuthenticationSettings).pipe(
         T.Body("authentication_settings"),
       ),
     ),
     userProfiles: S.optional(
-      UpdateResponseUserProfiles.pipe(T.Body("user_profiles")),
+      S.NullOr(UpdateResponseUserProfiles).pipe(T.Body("user_profiles")),
     ),
     usernameExpressions: S.optional(
-      UpdateResponseUsernameExpressionsList.pipe(
+      S.NullOr(UpdateResponseUsernameExpressionsList).pipe(
         T.Body("username_expressions"),
       ),
     ),

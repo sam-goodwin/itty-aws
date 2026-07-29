@@ -75,7 +75,7 @@ export interface GetOriginPostQuantumEncryptionResponse {
   /** Value of the Origin Post Quantum Encryption Setting. */
   value: GetResponseValue;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -83,7 +83,7 @@ export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
       id: GetResponseId,
       editable: S.Boolean,
       value: GetResponseValue,
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginPostQuantumEncryptionResponse",
@@ -131,7 +131,7 @@ export interface PutOriginPostQuantumEncryptionResponse {
   /** Value of the Origin Post Quantum Encryption Setting. */
   value: UpdateResponseValue;
   /** Last time this setting was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
 }
 export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -139,7 +139,7 @@ export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
       id: UpdateResponseId,
       editable: S.Boolean,
       value: UpdateResponseValue,
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginPostQuantumEncryptionResponse",

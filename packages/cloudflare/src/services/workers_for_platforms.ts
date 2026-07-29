@@ -280,9 +280,9 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretK
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -294,8 +294,8 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
       type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
       usages:
         DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier:
@@ -330,9 +330,9 @@ export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** Map of secret names to secret values: */
-  secrets?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets;
+  secrets?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets | null;
   /** Optional version tags to apply to the new script version. */
-  versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
+  versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap | null;
 }
 export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -341,12 +341,12 @@ export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       secrets: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets,
+        S.NullOr(DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets),
       ),
       versionTags: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(
-          T.Body("version_tags"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap,
+        ).pipe(T.Body("version_tags")),
       ),
     })
       .pipe(
@@ -429,9 +429,9 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey {
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -442,8 +442,8 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey =
       type: DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType,
       usages:
         DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey",
@@ -475,12 +475,12 @@ export interface CreateDispatchNamespaceRequest {
   /** Identifier. */
   accountId: string;
   /** The name of the dispatch namespace. */
-  name?: string;
+  name?: string | null;
 }
 export const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -497,32 +497,36 @@ export const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDispatchNamespaceResponse {
   /** Identifier. */
-  createdBy?: string;
+  createdBy?: string | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Identifier. */
-  modifiedBy?: string;
+  modifiedBy?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** API Resource UUID tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** Name of the Workers for Platforms dispatch namespace. */
-  namespaceName?: string;
+  namespaceName?: string | null;
   /** The current number of scripts in this Dispatch Namespace. */
-  scriptCount?: number;
+  scriptCount?: number | null;
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
-  trustedWorkers?: boolean;
+  trustedWorkers?: boolean | null;
 }
 export const CreateDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
-    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
-    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("namespace_name")),
+    ),
+    scriptCount: S.optional(S.NullOr(S.Number).pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("trusted_workers")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDispatchNamespaceResponse",
@@ -603,17 +607,17 @@ export const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDispatchNamespaceScriptAssetUploadResponse {
   /** The requests to make to upload assets. */
-  buckets?: DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList;
+  buckets?: DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList | null;
   /** A JWT to use as authentication for uploading assets. */
-  jwt?: string;
+  jwt?: string | null;
 }
 export const CreateDispatchNamespaceScriptAssetUploadResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       buckets: S.optional(
-        DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList,
+        S.NullOr(DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList),
       ),
-      jwt: S.optional(S.String),
+      jwt: S.optional(S.NullOr(S.String)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateDispatchNamespaceScriptAssetUploadResponse",
@@ -789,32 +793,36 @@ export const GetDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceResponse {
   /** Identifier. */
-  createdBy?: string;
+  createdBy?: string | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Identifier. */
-  modifiedBy?: string;
+  modifiedBy?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** API Resource UUID tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** Name of the Workers for Platforms dispatch namespace. */
-  namespaceName?: string;
+  namespaceName?: string | null;
   /** The current number of scripts in this Dispatch Namespace. */
-  scriptCount?: number;
+  scriptCount?: number | null;
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
-  trustedWorkers?: boolean;
+  trustedWorkers?: boolean | null;
 }
 export const GetDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
-    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
-    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("namespace_name")),
+    ),
+    scriptCount: S.optional(S.NullOr(S.Number).pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("trusted_workers")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceResponse",
@@ -850,14 +858,14 @@ export interface DispatchNamespacesScriptsGetResponseScriptCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version */
-  crossVersionCache?: boolean;
+  crossVersionCache?: boolean | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(
-        S.Boolean.pipe(T.Body("cross_version_cache")),
+        S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache")),
       ),
     }),
   ).annotate({
@@ -887,17 +895,19 @@ export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlers
 
 export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
-  handlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList;
+  handlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList | null;
   /** The name of the export. */
-  name?: string;
+  name?: string | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       handlers: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList,
+        ),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem",
@@ -923,11 +933,11 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
   /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
   invocationLogs: boolean;
   /** A list of destinations where logs will be exported to. */
-  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList;
+  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList | null;
   /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether log persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
@@ -935,10 +945,14 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs =
       enabled: S.Boolean,
       invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList,
+        ),
       ),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityLogs",
@@ -958,29 +972,33 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropag
 
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
-  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList;
+  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList | null;
   /** Whether traces are enabled for the Worker. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether trace persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy;
+  propagationPolicy?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
-      propagationPolicy: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy.pipe(
-          T.Body("propagation_policy"),
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList,
         ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
+      propagationPolicy: S.optional(
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy,
+        ).pipe(T.Body("propagation_policy")),
       ),
     }),
   ).annotate({
@@ -991,22 +1009,24 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
   /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Log settings for the Worker. */
-  logs?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogs;
+  logs?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogs | null;
   /** Trace settings for the Worker. */
-  traces?: DispatchNamespacesScriptsGetResponseScriptObservabilityTraces;
+  traces?: DispatchNamespacesScriptsGetResponseScriptObservabilityTraces | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
       logs: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservabilityLogs,
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityLogs),
       ),
       traces: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservabilityTraces,
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTraces),
       ),
     }),
   ).annotate({
@@ -1029,17 +1049,21 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1057,17 +1081,21 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1085,17 +1113,21 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1113,17 +1145,21 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase3 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1148,18 +1184,22 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode,
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1184,18 +1224,22 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase5 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
       mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1220,18 +1264,22 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase6 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
       mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1314,9 +1362,9 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7 {
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status;
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1324,9 +1372,13 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7 =
       mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode,
       target:
         DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status,
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status,
+        ),
       ),
     }),
   ).annotate({
@@ -1379,16 +1431,16 @@ export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
   /** Optional dispatch namespace the script belongs to. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsGetResponseScriptTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      environment: S.optional(S.String),
-      namespace: S.optional(S.String),
+      environment: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsGetResponseScriptTailConsumersItem",
@@ -1410,108 +1462,114 @@ export const DispatchNamespacesScriptsGetResponseScriptUsageModel =
 
 export interface DispatchNamespacesScriptsGetResponseScript {
   /** The name used to identify the script. */
-  id?: string;
+  id?: string | null;
   /** Global CacheW configuration for the Worker. When caching is on, */
-  cacheOptions?: DispatchNamespacesScriptsGetResponseScriptCacheOptions;
+  cacheOptions?: DispatchNamespacesScriptsGetResponseScriptCacheOptions | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
-  compatibilityDate?: string;
+  compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
-  compatibilityFlags?: DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList;
+  compatibilityFlags?: DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Hashed script content, can be used in a If-None-Match header when updating. */
-  etag?: string;
+  etag?: string | null;
   /** The names of handlers exported as part of the default export. */
-  handlers?: DispatchNamespacesScriptsGetResponseScriptHandlersList;
+  handlers?: DispatchNamespacesScriptsGetResponseScriptHandlersList | null;
   /** Whether a Worker contains assets. */
-  hasAssets?: boolean;
+  hasAssets?: boolean | null;
   /** Whether a Worker contains modules. */
-  hasModules?: boolean;
+  hasModules?: boolean | null;
   /** The client most recently used to deploy this Worker. */
-  lastDeployedFrom?: string;
+  lastDeployedFrom?: string | null;
   /** Whether Logpush is turned on for the Worker. */
-  logpush?: boolean;
+  logpush?: boolean | null;
   /** The tag of the Durable Object migration that was most recently applied for this Worker. */
-  migrationTag?: string;
+  migrationTag?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Named exports, such as Durable Object class implementations and named entrypoints. */
-  namedHandlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersList;
+  namedHandlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersList | null;
   /** Observability settings for the Worker. */
-  observability?: DispatchNamespacesScriptsGetResponseScriptObservability;
+  observability?: DispatchNamespacesScriptsGetResponseScriptObservability | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: DispatchNamespacesScriptsGetResponseScriptPlacement;
+  placement?: DispatchNamespacesScriptsGetResponseScriptPlacement | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
+  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
+  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus | null;
   /** The immutable ID of the script. */
-  tag?: string;
+  tag?: string | null;
   /** Tags associated with the Worker. */
-  tags?: DispatchNamespacesScriptsGetResponseScriptTagsList;
+  tags?: DispatchNamespacesScriptsGetResponseScriptTagsList | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: DispatchNamespacesScriptsGetResponseScriptTailConsumersList;
+  tailConsumers?: DispatchNamespacesScriptsGetResponseScriptTailConsumersList | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: DispatchNamespacesScriptsGetResponseScriptUsageModel;
+  usageModel?: DispatchNamespacesScriptsGetResponseScriptUsageModel | null;
 }
 export const DispatchNamespacesScriptsGetResponseScript =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
       cacheOptions: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptCacheOptions.pipe(
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
           T.Body("cache_options"),
         ),
       ),
       compatibilityDate: S.optional(
-        S.String.pipe(T.Body("compatibility_date")),
+        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList.pipe(
-          T.Body("compatibility_flags"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList,
+        ).pipe(T.Body("compatibility_flags")),
       ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      etag: S.optional(S.String),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      etag: S.optional(S.NullOr(S.String)),
       handlers: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptHandlersList,
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptHandlersList),
       ),
-      hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
-      hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
-      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
-      logpush: S.optional(S.Boolean),
-      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+      hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+      lastDeployedFrom: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_deployed_from")),
+      ),
+      logpush: S.optional(S.NullOr(S.Boolean)),
+      migrationTag: S.optional(
+        S.NullOr(S.String).pipe(T.Body("migration_tag")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       namedHandlers: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptNamedHandlersList.pipe(
-          T.Body("named_handlers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptNamedHandlersList,
+        ).pipe(T.Body("named_handlers")),
       ),
       observability: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptObservability,
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservability),
       ),
       placement: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacement,
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacement),
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementMode.pipe(
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementMode).pipe(
           T.Body("placement_mode"),
         ),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementStatus.pipe(
-          T.Body("placement_status"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptPlacementStatus,
+        ).pipe(T.Body("placement_status")),
       ),
-      tag: S.optional(S.String),
-      tags: S.optional(DispatchNamespacesScriptsGetResponseScriptTagsList),
+      tag: S.optional(S.NullOr(S.String)),
+      tags: S.optional(
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptTagsList),
+      ),
       tailConsumers: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptTailConsumersList.pipe(
-          T.Body("tail_consumers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsGetResponseScriptTailConsumersList,
+        ).pipe(T.Body("tail_consumers")),
       ),
       usageModel: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptUsageModel.pipe(
+        S.NullOr(DispatchNamespacesScriptsGetResponseScriptUsageModel).pipe(
           T.Body("usage_model"),
         ),
       ),
@@ -1523,19 +1581,21 @@ export const DispatchNamespacesScriptsGetResponseScript =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptResponse {
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Name of the Workers for Platforms dispatch namespace. */
-  dispatchNamespace?: string;
+  dispatchNamespace?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
-  script?: DispatchNamespacesScriptsGetResponseScript;
+  modifiedOn?: string | null;
+  script?: DispatchNamespacesScriptsGetResponseScript | null;
 }
 export const GetDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    dispatchNamespace: S.optional(S.String.pipe(T.Body("dispatch_namespace"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    script: S.optional(DispatchNamespacesScriptsGetResponseScript),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    dispatchNamespace: S.optional(
+      S.NullOr(S.String).pipe(T.Body("dispatch_namespace")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    script: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScript)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptResponse",
@@ -1601,7 +1661,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemAISearch {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAISearchType;
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemAISearch =
   /*@__PURE__*/ S.suspend(() =>
@@ -1609,7 +1669,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAISearch =
       instanceName: S.String.pipe(T.Body("instance_name")),
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemAISearchType,
-      namespace: S.optional(S.String),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemAISearch",
@@ -1717,7 +1777,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemD1 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemD1Type;
   /** Identifier of the D1 database to bind to. */
-  id?: string;
+  id?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemD1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1725,7 +1785,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemD1 =
       databaseId: S.String.pipe(T.Body("database_id")),
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemD1Type,
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemD1",
@@ -1783,18 +1843,18 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutb
 
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Environment of the outbound worker. */
-  environment?: string;
+  environment?: string | null;
   /** Name of the outbound worker. */
-  service?: string;
+  service?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-      service: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
+      service: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -1803,18 +1863,22 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutb
 
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
-  params?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList;
+  params?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
-  worker?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
+  worker?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       params: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList,
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList,
+        ),
       ),
       worker: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker,
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker,
+        ),
       ),
     }),
   ).annotate({
@@ -1830,7 +1894,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType;
   /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound;
+  outbound?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -1839,7 +1903,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace =
       namespace: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType,
       outbound: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound,
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound,
+        ),
       ),
     }),
   ).annotate({
@@ -1858,28 +1924,28 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDurableObjectName
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType;
   /** The exported class name of the Durable Object. */
-  className?: string;
+  className?: string | null;
   /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
+  dispatchNamespace?: string | null;
   /** The environment of the script_name to bind to. */
-  environment?: string;
+  environment?: string | null;
   /** Namespace identifier tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType,
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
       dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
+        S.NullOr(S.String).pipe(T.Body("dispatch_namespace")),
       ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      environment: S.optional(S.NullOr(S.String)),
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier:
@@ -1921,17 +1987,17 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemInherit {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
+  oldName?: string | null;
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
+  versionId?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemInherit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemInheritType,
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
+      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemInherit",
@@ -2125,7 +2191,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple {
   /** The period in seconds. */
   period: number;
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
-  mitigationTimeout?: number;
+  mitigationTimeout?: number | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple =
   /*@__PURE__*/ S.suspend(() =>
@@ -2133,7 +2199,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple =
       limit: S.Number,
       period: S.Number,
       mitigationTimeout: S.optional(
-        S.Number.pipe(T.Body("mitigation_timeout")),
+        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
       ),
     }),
   ).annotate({
@@ -2185,7 +2251,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemR2Bucket {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemR2BucketType;
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction;
+  jurisdiction?: DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemR2Bucket =
   /*@__PURE__*/ S.suspend(() =>
@@ -2194,7 +2260,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemR2Bucket =
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemR2BucketType,
       jurisdiction: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction,
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction,
+        ),
       ),
     }),
   ).annotate({
@@ -2250,11 +2318,11 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSendEmail {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemSendEmailType;
   /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList;
+  allowedDestinationAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList | null;
   /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList;
+  allowedSenderAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList | null;
   /** Destination address for the email. */
-  destinationAddress?: string;
+  destinationAddress?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemSendEmail =
   /*@__PURE__*/ S.suspend(() =>
@@ -2262,17 +2330,17 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSendEmail =
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemSendEmailType,
       allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList,
+        ).pipe(T.Body("allowed_destination_addresses")),
       ),
       allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList,
+        ).pipe(T.Body("allowed_sender_addresses")),
       ),
       destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
+        S.NullOr(S.String).pipe(T.Body("destination_address")),
       ),
     }),
   ).annotate({
@@ -2292,9 +2360,9 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemService {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemServiceType;
   /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemService =
   /*@__PURE__*/ S.suspend(() =>
@@ -2302,8 +2370,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemService =
       name: S.String,
       service: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemServiceType,
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemService",
@@ -2474,9 +2542,9 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSecretKey {
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -2486,8 +2554,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSecretKey =
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType,
       usages: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemSecretKey",
@@ -2506,9 +2574,9 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemWorkflow {
   /** Name of the Workflow to bind to. */
   workflowName: string;
   /** Class name of the Workflow. Should only be provided if the Workflow belongs to this script. */
-  className?: string;
+  className?: string | null;
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemWorkflow =
   /*@__PURE__*/ S.suspend(() =>
@@ -2516,8 +2584,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemWorkflow =
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemWorkflowType,
       workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemWorkflow",
@@ -2582,17 +2650,17 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType;
   /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
+  networkId?: string | null;
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
+  tunnelId?: string | null;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType,
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork",
@@ -2850,9 +2918,9 @@ export interface DispatchNamespacesScriptsSecretsGetResultSecretKey {
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSecretsGetResultSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -2862,8 +2930,8 @@ export const DispatchNamespacesScriptsSecretsGetResultSecretKey =
       name: S.String,
       type: DispatchNamespacesScriptsSecretsGetResultSecretKeyType,
       usages: DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsGetResultSecretKey",
@@ -2949,7 +3017,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearc
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType;
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch =
   /*@__PURE__*/ S.suspend(() =>
@@ -2957,7 +3025,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch =
       instanceName: S.String.pipe(T.Body("instance_name")),
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType,
-      namespace: S.optional(S.String),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3071,7 +3139,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type;
   /** Identifier of the D1 database to bind to. */
-  id?: string;
+  id?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -3079,7 +3147,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 =
       databaseId: S.String.pipe(T.Body("database_id")),
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type,
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1",
@@ -3138,18 +3206,18 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNam
 
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Environment of the outbound worker. */
-  environment?: string;
+  environment?: string | null;
   /** Name of the outbound worker. */
-  service?: string;
+  service?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-      service: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
+      service: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3158,18 +3226,22 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNam
 
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
-  params?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList;
+  params?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
-  worker?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker;
+  worker?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       params: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList,
+        ),
       ),
       worker: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker,
+        ),
       ),
     }),
   ).annotate({
@@ -3185,7 +3257,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatc
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType;
   /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound;
+  outbound?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -3194,7 +3266,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNam
       namespace: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType,
       outbound: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound,
+        ),
       ),
     }),
   ).annotate({
@@ -3213,28 +3287,28 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurable
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType;
   /** The exported class name of the Durable Object. */
-  className?: string;
+  className?: string | null;
   /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
+  dispatchNamespace?: string | null;
   /** The environment of the script_name to bind to. */
-  environment?: string;
+  environment?: string | null;
   /** Namespace identifier tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
       dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
+        S.NullOr(S.String).pipe(T.Body("dispatch_namespace")),
       ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      environment: S.optional(S.NullOr(S.String)),
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier:
@@ -3277,17 +3351,17 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
+  oldName?: string | null;
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
+  versionId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType,
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
+      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
     }),
   ).annotate({
     identifier:
@@ -3491,7 +3565,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelim
   /** The period in seconds. */
   period: number;
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
-  mitigationTimeout?: number;
+  mitigationTimeout?: number | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple =
   /*@__PURE__*/ S.suspend(() =>
@@ -3499,7 +3573,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSi
       limit: S.Number,
       period: S.Number,
       mitigationTimeout: S.optional(
-        S.Number.pipe(T.Body("mitigation_timeout")),
+        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
       ),
     }),
   ).annotate({
@@ -3554,7 +3628,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucke
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType;
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction;
+  jurisdiction?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket =
   /*@__PURE__*/ S.suspend(() =>
@@ -3563,7 +3637,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket =
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType,
       jurisdiction: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction,
+        ),
       ),
     }),
   ).annotate({
@@ -3621,11 +3697,11 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEma
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType;
   /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList;
+  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList | null;
   /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList;
+  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList | null;
   /** Destination address for the email. */
-  destinationAddress?: string;
+  destinationAddress?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail =
   /*@__PURE__*/ S.suspend(() =>
@@ -3633,17 +3709,17 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail =
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType,
       allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList,
+        ).pipe(T.Body("allowed_destination_addresses")),
       ),
       allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList,
+        ).pipe(T.Body("allowed_sender_addresses")),
       ),
       destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
+        S.NullOr(S.String).pipe(T.Body("destination_address")),
       ),
     }),
   ).annotate({
@@ -3664,9 +3740,9 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemService
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType;
   /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemService =
   /*@__PURE__*/ S.suspend(() =>
@@ -3674,8 +3750,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemService =
       name: S.String,
       service: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType,
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -3848,9 +3924,9 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretK
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -3862,8 +3938,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey =
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType,
       usages:
         DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier:
@@ -3883,9 +3959,9 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflo
   /** Name of the Workflow to bind to. */
   workflowName: string;
   /** Class name of the Workflow. Should only be provided if the Workflow belongs to this script. */
-  className?: string;
+  className?: string | null;
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow =
   /*@__PURE__*/ S.suspend(() =>
@@ -3893,8 +3969,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow =
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType,
       workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier:
@@ -3962,17 +4038,17 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetw
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType;
   /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
+  networkId?: string | null;
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
+  tunnelId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType,
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier:
@@ -4081,14 +4157,14 @@ export interface DispatchNamespacesScriptsSettingsGetResponseCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version */
-  crossVersionCache?: boolean;
+  crossVersionCache?: boolean | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(
-        S.Boolean.pipe(T.Body("cross_version_cache")),
+        S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache")),
       ),
     }),
   ).annotate({
@@ -4125,14 +4201,14 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValue {
   /** The kind of export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueType;
   /** Cache override for this entrypoint. It applies only to */
-  cache?: DispatchNamespacesScriptsSettingsGetResponseExportsValueCache;
+  cache?: DispatchNamespacesScriptsSettingsGetResponseExportsValueCache | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: DispatchNamespacesScriptsSettingsGetResponseExportsValueType,
       cache: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueCache,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsValueCache),
       ),
     }),
   ).annotate({
@@ -4152,15 +4228,15 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsMap =
 
 export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
-  cpuMs?: number;
+  cpuMs?: number | null;
   /** The number of subrequests this Worker can make per request. */
-  subrequests?: number;
+  subrequests?: number | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
-      subrequests: S.optional(S.Number),
+      cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseLimits",
@@ -4188,14 +4264,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMig
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem {
-  from?: string;
-  to?: string;
+  from?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4210,16 +4286,16 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMig
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem {
-  from?: string;
-  fromScript?: string;
-  to?: string;
+  from?: string | null;
+  fromScript?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      fromScript: S.optional(S.NullOr(S.String).pipe(T.Body("from_script"))),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4235,49 +4311,49 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMig
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList;
+  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList | null;
   /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList;
+  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList | null;
   /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList;
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList | null;
   /** Tag to set as the latest migration tag. */
-  newTag?: string;
+  newTag?: string | null;
   /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
+  oldTag?: string | null;
   /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList;
+  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList | null;
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList;
+  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList,
+        ).pipe(T.Body("deleted_classes")),
       ),
       newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList,
+        ).pipe(T.Body("new_classes")),
       ),
       newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList,
+        ).pipe(T.Body("new_sqlite_classes")),
       ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
       renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList,
+        ).pipe(T.Body("renamed_classes")),
       ),
       transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList,
+        ).pipe(T.Body("transferred_classes")),
       ),
     }),
   ).annotate({
@@ -4307,14 +4383,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem {
-  from?: string;
-  to?: string;
+  from?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4329,16 +4405,16 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem {
-  from?: string;
-  fromScript?: string;
-  to?: string;
+  from?: string | null;
+  fromScript?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      fromScript: S.optional(S.NullOr(S.String).pipe(T.Body("from_script"))),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -4354,43 +4430,43 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList;
+  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList | null;
   /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList;
+  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList | null;
   /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList;
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList | null;
   /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList;
+  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList | null;
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList;
+  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
+        ).pipe(T.Body("deleted_classes")),
       ),
       newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
+        ).pipe(T.Body("new_classes")),
       ),
       newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
+        ).pipe(T.Body("new_sqlite_classes")),
       ),
       renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
+        ).pipe(T.Body("renamed_classes")),
       ),
       transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
+        ).pipe(T.Body("transferred_classes")),
       ),
     }),
   ).annotate({
@@ -4407,19 +4483,21 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
 
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
-  newTag?: string;
+  newTag?: string | null;
   /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
+  oldTag?: string | null;
   /** Migrations to apply in order. */
-  steps?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList;
+  steps?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
       steps: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
+        ),
       ),
     }),
   ).annotate({
@@ -4459,11 +4537,11 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
   /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
   invocationLogs: boolean;
   /** A list of destinations where logs will be exported to. */
-  destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList;
+  destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList | null;
   /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether log persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
@@ -4471,10 +4549,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs =
       enabled: S.Boolean,
       invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList,
+        ),
       ),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs",
@@ -4494,29 +4576,33 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesProp
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
-  destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList;
+  destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList | null;
   /** Whether traces are enabled for the Worker. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether trace persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy;
+  propagationPolicy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
-      propagationPolicy: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy.pipe(
-          T.Body("propagation_policy"),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList,
         ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
+      propagationPolicy: S.optional(
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy,
+        ).pipe(T.Body("propagation_policy")),
       ),
     }),
   ).annotate({
@@ -4528,22 +4614,26 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
   /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Log settings for the Worker. */
-  logs?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs;
+  logs?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs | null;
   /** Trace settings for the Worker. */
-  traces?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces;
+  traces?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
       logs: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs),
       ),
       traces: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces,
+        ),
       ),
     }),
   ).annotate({
@@ -4784,16 +4874,16 @@ export interface DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
   /** Optional dispatch namespace the script belongs to. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      environment: S.optional(S.String),
-      namespace: S.optional(S.String),
+      environment: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem",
@@ -4816,73 +4906,77 @@ export const DispatchNamespacesScriptsSettingsGetResponseUsageModel =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptSettingResponse {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
-  bindings?: DispatchNamespacesScriptsSettingsGetResponseBindingsList;
+  bindings?: DispatchNamespacesScriptsSettingsGetResponseBindingsList | null;
   /** Global CacheW configuration for the Worker. When caching is on, */
-  cacheOptions?: DispatchNamespacesScriptsSettingsGetResponseCacheOptions;
+  cacheOptions?: DispatchNamespacesScriptsSettingsGetResponseCacheOptions | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
-  compatibilityDate?: string;
+  compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
-  compatibilityFlags?: DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList;
+  compatibilityFlags?: DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList | null;
   /** Declarative exports for the Worker. Worker entrypoint entries */
-  exports?: DispatchNamespacesScriptsSettingsGetResponseExportsMap;
+  exports?: DispatchNamespacesScriptsSettingsGetResponseExportsMap | null;
   /** Limits to apply for this Worker. */
-  limits?: DispatchNamespacesScriptsSettingsGetResponseLimits;
+  limits?: DispatchNamespacesScriptsSettingsGetResponseLimits | null;
   /** Whether Logpush is turned on for the Worker. */
-  logpush?: boolean;
+  logpush?: boolean | null;
   /** Migrations to apply for Durable Objects associated with this Worker. */
-  migrations?: DispatchNamespacesScriptsSettingsGetResponseMigrations;
+  migrations?: DispatchNamespacesScriptsSettingsGetResponseMigrations | null;
   /** Observability settings for the Worker. */
-  observability?: DispatchNamespacesScriptsSettingsGetResponseObservability;
+  observability?: DispatchNamespacesScriptsSettingsGetResponseObservability | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: DispatchNamespacesScriptsSettingsGetResponsePlacement;
+  placement?: DispatchNamespacesScriptsSettingsGetResponsePlacement | null;
   /** Tags associated with the Worker. */
-  tags?: DispatchNamespacesScriptsSettingsGetResponseTagsList;
+  tags?: DispatchNamespacesScriptsSettingsGetResponseTagsList | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: DispatchNamespacesScriptsSettingsGetResponseTailConsumersList;
+  tailConsumers?: DispatchNamespacesScriptsSettingsGetResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: DispatchNamespacesScriptsSettingsGetResponseUsageModel;
+  usageModel?: DispatchNamespacesScriptsSettingsGetResponseUsageModel | null;
 }
 export const GetDispatchNamespaceScriptSettingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bindings: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsList,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsList),
       ),
       cacheOptions: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseCacheOptions.pipe(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseCacheOptions).pipe(
           T.Body("cache_options"),
         ),
       ),
       compatibilityDate: S.optional(
-        S.String.pipe(T.Body("compatibility_date")),
+        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList.pipe(
-          T.Body("compatibility_flags"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList,
+        ).pipe(T.Body("compatibility_flags")),
       ),
       exports: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseExportsMap,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsMap),
       ),
-      limits: S.optional(DispatchNamespacesScriptsSettingsGetResponseLimits),
-      logpush: S.optional(S.Boolean),
+      limits: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseLimits),
+      ),
+      logpush: S.optional(S.NullOr(S.Boolean)),
       migrations: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrations,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseMigrations),
       ),
       observability: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservability,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservability),
       ),
       placement: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponsePlacement,
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponsePlacement),
       ),
-      tags: S.optional(DispatchNamespacesScriptsSettingsGetResponseTagsList),
+      tags: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseTagsList),
+      ),
       tailConsumers: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseTailConsumersList.pipe(
-          T.Body("tail_consumers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsGetResponseTailConsumersList,
+        ).pipe(T.Body("tail_consumers")),
       ),
       usageModel: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseUsageModel.pipe(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseUsageModel).pipe(
           T.Body("usage_model"),
         ),
       ),
@@ -4913,32 +5007,36 @@ export const ListDispatchNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DispatchNamespacesListResultItem {
   /** Identifier. */
-  createdBy?: string;
+  createdBy?: string | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Identifier. */
-  modifiedBy?: string;
+  modifiedBy?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** API Resource UUID tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** Name of the Workers for Platforms dispatch namespace. */
-  namespaceName?: string;
+  namespaceName?: string | null;
   /** The current number of scripts in this Dispatch Namespace. */
-  scriptCount?: number;
+  scriptCount?: number | null;
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
-  trustedWorkers?: boolean;
+  trustedWorkers?: boolean | null;
 }
 export const DispatchNamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
-    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
-    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
+    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("namespace_name")),
+    ),
+    scriptCount: S.optional(S.NullOr(S.Number).pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("trusted_workers")),
+    ),
   }),
 ).annotate({
   identifier: "DispatchNamespacesListResultItem",
@@ -5060,9 +5158,9 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSecretsListResultItemSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -5072,8 +5170,8 @@ export const DispatchNamespacesScriptsSecretsListResultItemSecretKey =
       name: S.String,
       type: DispatchNamespacesScriptsSecretsListResultItemSecretKeyType,
       usages: DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsListResultItemSecretKey",
@@ -5227,7 +5325,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISear
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType;
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch =
   /*@__PURE__*/ S.suspend(() =>
@@ -5235,7 +5333,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch =
       instanceName: S.String.pipe(T.Body("instance_name")),
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType,
-      namespace: S.optional(S.String),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -5349,7 +5447,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type;
   /** Identifier of the D1 database to bind to. */
-  id?: string;
+  id?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -5357,7 +5455,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 =
       databaseId: S.String.pipe(T.Body("database_id")),
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type,
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1",
@@ -5416,18 +5514,18 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNa
 
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Environment of the outbound worker. */
-  environment?: string;
+  environment?: string | null;
   /** Name of the outbound worker. */
-  service?: string;
+  service?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-      service: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
+      service: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -5436,18 +5534,22 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNa
 
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
-  params?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList;
+  params?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
-  worker?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker;
+  worker?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       params: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList,
+        ),
       ),
       worker: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker,
+        ),
       ),
     }),
   ).annotate({
@@ -5463,7 +5565,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispat
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType;
   /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound;
+  outbound?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -5472,7 +5574,9 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNa
       namespace: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType,
       outbound: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound,
+        ),
       ),
     }),
   ).annotate({
@@ -5491,28 +5595,28 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurabl
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType;
   /** The exported class name of the Durable Object. */
-  className?: string;
+  className?: string | null;
   /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
+  dispatchNamespace?: string | null;
   /** The environment of the script_name to bind to. */
-  environment?: string;
+  environment?: string | null;
   /** Namespace identifier tag. */
-  namespaceId?: string;
+  namespaceId?: string | null;
   /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
       dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
+        S.NullOr(S.String).pipe(T.Body("dispatch_namespace")),
       ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      environment: S.optional(S.NullOr(S.String)),
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier:
@@ -5555,17 +5659,17 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheri
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
+  oldName?: string | null;
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
+  versionId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType,
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
+      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
     }),
   ).annotate({
     identifier:
@@ -5771,7 +5875,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemRateli
   /** The period in seconds. */
   period: number;
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
-  mitigationTimeout?: number;
+  mitigationTimeout?: number | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple =
   /*@__PURE__*/ S.suspend(() =>
@@ -5779,7 +5883,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitS
       limit: S.Number,
       period: S.Number,
       mitigationTimeout: S.optional(
-        S.Number.pipe(T.Body("mitigation_timeout")),
+        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
       ),
     }),
   ).annotate({
@@ -5834,7 +5938,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Buck
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType;
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction;
+  jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket =
   /*@__PURE__*/ S.suspend(() =>
@@ -5843,7 +5947,9 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket =
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType,
       jurisdiction: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction,
+        ),
       ),
     }),
   ).annotate({
@@ -5901,11 +6007,11 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEm
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType;
   /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList;
+  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList | null;
   /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList;
+  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList | null;
   /** Destination address for the email. */
-  destinationAddress?: string;
+  destinationAddress?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail =
   /*@__PURE__*/ S.suspend(() =>
@@ -5913,17 +6019,17 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail 
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType,
       allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList,
+        ).pipe(T.Body("allowed_destination_addresses")),
       ),
       allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList,
+        ).pipe(T.Body("allowed_sender_addresses")),
       ),
       destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
+        S.NullOr(S.String).pipe(T.Body("destination_address")),
       ),
     }),
   ).annotate({
@@ -5944,9 +6050,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemServic
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType;
   /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
+  entrypoint?: string | null;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemService =
   /*@__PURE__*/ S.suspend(() =>
@@ -5954,8 +6060,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemService =
       name: S.String,
       service: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType,
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
+      entrypoint: S.optional(S.NullOr(S.String)),
+      environment: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6128,9 +6234,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -6142,8 +6248,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey 
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType,
       usages:
         DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier:
@@ -6163,9 +6269,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkfl
   /** Name of the Workflow to bind to. */
   workflowName: string;
   /** Class name of the Workflow. Should only be provided if the Workflow belongs to this script. */
-  className?: string;
+  className?: string | null;
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
-  scriptName?: string;
+  scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow =
   /*@__PURE__*/ S.suspend(() =>
@@ -6173,8 +6279,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow =
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType,
       workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier:
@@ -6242,17 +6348,17 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNet
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType;
   /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
+  networkId?: string | null;
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
+  tunnelId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType,
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier:
@@ -6361,14 +6467,14 @@ export interface DispatchNamespacesScriptsSettingsEditResponseCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version */
-  crossVersionCache?: boolean;
+  crossVersionCache?: boolean | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(
-        S.Boolean.pipe(T.Body("cross_version_cache")),
+        S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache")),
       ),
     }),
   ).annotate({
@@ -6406,14 +6512,16 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValue {
   /** The kind of export. */
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueType;
   /** Cache override for this entrypoint. It applies only to */
-  cache?: DispatchNamespacesScriptsSettingsEditResponseExportsValueCache;
+  cache?: DispatchNamespacesScriptsSettingsEditResponseExportsValueCache | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: DispatchNamespacesScriptsSettingsEditResponseExportsValueType,
       cache: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueCache,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseExportsValueCache,
+        ),
       ),
     }),
   ).annotate({
@@ -6433,15 +6541,15 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsMap =
 
 export interface DispatchNamespacesScriptsSettingsEditResponseLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
-  cpuMs?: number;
+  cpuMs?: number | null;
   /** The number of subrequests this Worker can make per request. */
-  subrequests?: number;
+  subrequests?: number | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
-      subrequests: S.optional(S.Number),
+      cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponseLimits",
@@ -6469,14 +6577,14 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMi
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem {
-  from?: string;
-  to?: string;
+  from?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6491,16 +6599,16 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMi
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem {
-  from?: string;
-  fromScript?: string;
-  to?: string;
+  from?: string | null;
+  fromScript?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      fromScript: S.optional(S.NullOr(S.String).pipe(T.Body("from_script"))),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6516,49 +6624,49 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMi
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList;
+  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList | null;
   /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList;
+  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList | null;
   /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList;
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList | null;
   /** Tag to set as the latest migration tag. */
-  newTag?: string;
+  newTag?: string | null;
   /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
+  oldTag?: string | null;
   /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList;
+  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList | null;
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList;
+  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList,
+        ).pipe(T.Body("deleted_classes")),
       ),
       newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList,
+        ).pipe(T.Body("new_classes")),
       ),
       newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList,
+        ).pipe(T.Body("new_sqlite_classes")),
       ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
       renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList,
+        ).pipe(T.Body("renamed_classes")),
       ),
       transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList,
+        ).pipe(T.Body("transferred_classes")),
       ),
     }),
   ).annotate({
@@ -6588,14 +6696,14 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem {
-  from?: string;
-  to?: string;
+  from?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6610,16 +6718,16 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem {
-  from?: string;
-  fromScript?: string;
-  to?: string;
+  from?: string | null;
+  fromScript?: string | null;
+  to?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.String),
-      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
-      to: S.optional(S.String),
+      from: S.optional(S.NullOr(S.String)),
+      fromScript: S.optional(S.NullOr(S.String).pipe(T.Body("from_script"))),
+      to: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -6635,43 +6743,43 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList;
+  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList | null;
   /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList;
+  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList | null;
   /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList;
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList | null;
   /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList;
+  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList | null;
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList;
+  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
+        ).pipe(T.Body("deleted_classes")),
       ),
       newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
+        ).pipe(T.Body("new_classes")),
       ),
       newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
+        ).pipe(T.Body("new_sqlite_classes")),
       ),
       renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
+        ).pipe(T.Body("renamed_classes")),
       ),
       transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
+        ).pipe(T.Body("transferred_classes")),
       ),
     }),
   ).annotate({
@@ -6688,19 +6796,21 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
 
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
-  newTag?: string;
+  newTag?: string | null;
   /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
+  oldTag?: string | null;
   /** Migrations to apply in order. */
-  steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList;
+  steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
       steps: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList,
+        ),
       ),
     }),
   ).annotate({
@@ -6740,11 +6850,11 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs 
   /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
   invocationLogs: boolean;
   /** A list of destinations where logs will be exported to. */
-  destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList;
+  destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList | null;
   /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether log persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
@@ -6752,10 +6862,14 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
       enabled: S.Boolean,
       invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList,
+        ),
       ),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -6776,29 +6890,33 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPro
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
-  destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList;
+  destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList | null;
   /** Whether traces are enabled for the Worker. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether trace persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy;
+  propagationPolicy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
-      propagationPolicy: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy.pipe(
-          T.Body("propagation_policy"),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList,
         ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
+      propagationPolicy: S.optional(
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy,
+        ).pipe(T.Body("propagation_policy")),
       ),
     }),
   ).annotate({
@@ -6810,22 +6928,28 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
   /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Log settings for the Worker. */
-  logs?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs;
+  logs?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs | null;
   /** Trace settings for the Worker. */
-  traces?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces;
+  traces?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
       logs: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs,
+        ),
       ),
       traces: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces,
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces,
+        ),
       ),
     }),
   ).annotate({
@@ -7067,16 +7191,16 @@ export interface DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem 
   /** Name of Worker that is to be the consumer. */
   service: string;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
   /** Optional dispatch namespace the script belongs to. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      environment: S.optional(S.String),
-      namespace: S.optional(S.String),
+      environment: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -7100,73 +7224,77 @@ export const DispatchNamespacesScriptsSettingsEditResponseUsageModel =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDispatchNamespaceScriptSettingResponse {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
-  bindings?: DispatchNamespacesScriptsSettingsEditResponseBindingsList;
+  bindings?: DispatchNamespacesScriptsSettingsEditResponseBindingsList | null;
   /** Global CacheW configuration for the Worker. When caching is on, */
-  cacheOptions?: DispatchNamespacesScriptsSettingsEditResponseCacheOptions;
+  cacheOptions?: DispatchNamespacesScriptsSettingsEditResponseCacheOptions | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
-  compatibilityDate?: string;
+  compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
-  compatibilityFlags?: DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList;
+  compatibilityFlags?: DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList | null;
   /** Declarative exports for the Worker. Worker entrypoint entries */
-  exports?: DispatchNamespacesScriptsSettingsEditResponseExportsMap;
+  exports?: DispatchNamespacesScriptsSettingsEditResponseExportsMap | null;
   /** Limits to apply for this Worker. */
-  limits?: DispatchNamespacesScriptsSettingsEditResponseLimits;
+  limits?: DispatchNamespacesScriptsSettingsEditResponseLimits | null;
   /** Whether Logpush is turned on for the Worker. */
-  logpush?: boolean;
+  logpush?: boolean | null;
   /** Migrations to apply for Durable Objects associated with this Worker. */
-  migrations?: DispatchNamespacesScriptsSettingsEditResponseMigrations;
+  migrations?: DispatchNamespacesScriptsSettingsEditResponseMigrations | null;
   /** Observability settings for the Worker. */
-  observability?: DispatchNamespacesScriptsSettingsEditResponseObservability;
+  observability?: DispatchNamespacesScriptsSettingsEditResponseObservability | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: DispatchNamespacesScriptsSettingsEditResponsePlacement;
+  placement?: DispatchNamespacesScriptsSettingsEditResponsePlacement | null;
   /** Tags associated with the Worker. */
-  tags?: DispatchNamespacesScriptsSettingsEditResponseTagsList;
+  tags?: DispatchNamespacesScriptsSettingsEditResponseTagsList | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: DispatchNamespacesScriptsSettingsEditResponseTailConsumersList;
+  tailConsumers?: DispatchNamespacesScriptsSettingsEditResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: DispatchNamespacesScriptsSettingsEditResponseUsageModel;
+  usageModel?: DispatchNamespacesScriptsSettingsEditResponseUsageModel | null;
 }
 export const PatchDispatchNamespaceScriptSettingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bindings: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsList,
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseBindingsList),
       ),
       cacheOptions: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseCacheOptions.pipe(
-          T.Body("cache_options"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseCacheOptions,
+        ).pipe(T.Body("cache_options")),
       ),
       compatibilityDate: S.optional(
-        S.String.pipe(T.Body("compatibility_date")),
+        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList.pipe(
-          T.Body("compatibility_flags"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList,
+        ).pipe(T.Body("compatibility_flags")),
       ),
       exports: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseExportsMap,
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseExportsMap),
       ),
-      limits: S.optional(DispatchNamespacesScriptsSettingsEditResponseLimits),
-      logpush: S.optional(S.Boolean),
+      limits: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseLimits),
+      ),
+      logpush: S.optional(S.NullOr(S.Boolean)),
       migrations: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrations,
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseMigrations),
       ),
       observability: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservability,
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservability),
       ),
       placement: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponsePlacement,
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponsePlacement),
       ),
-      tags: S.optional(DispatchNamespacesScriptsSettingsEditResponseTagsList),
+      tags: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseTagsList),
+      ),
       tailConsumers: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseTailConsumersList.pipe(
-          T.Body("tail_consumers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsSettingsEditResponseTailConsumersList,
+        ).pipe(T.Body("tail_consumers")),
       ),
       usageModel: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseUsageModel.pipe(
+        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseUsageModel).pipe(
           T.Body("usage_model"),
         ),
       ),
@@ -7187,30 +7315,30 @@ export const PutDispatchNamespaceScriptMetadataStringList =
 
 /** JSON-encoded metadata about the uploaded parts and Worker configuration. See https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
 export interface PutDispatchNamespaceScriptMetadata {
-  annotations?: unknown;
-  assets?: unknown;
-  bindings?: unknown;
-  bodyPart?: string;
-  cache?: unknown;
-  compatibilityDate?: string;
-  compatibilityFlags?: PutDispatchNamespaceScriptMetadataStringList;
-  containers?: unknown;
-  keepAssets?: boolean;
-  keepBindings?: PutDispatchNamespaceScriptMetadataStringList;
-  limits?: unknown;
-  logpush?: boolean;
-  mainModule?: string;
-  migrations?: unknown;
-  observability?: unknown;
-  placement?: unknown;
-  tags?: PutDispatchNamespaceScriptMetadataStringList;
-  tailConsumers?: unknown;
-  usageModel?: string;
+  annotations?: unknown | null;
+  assets?: unknown | null;
+  bindings?: unknown | null;
+  bodyPart?: string | null;
+  cache?: unknown | null;
+  compatibilityDate?: string | null;
+  compatibilityFlags?: PutDispatchNamespaceScriptMetadataStringList | null;
+  containers?: unknown | null;
+  keepAssets?: boolean | null;
+  keepBindings?: PutDispatchNamespaceScriptMetadataStringList | null;
+  limits?: unknown | null;
+  logpush?: boolean | null;
+  mainModule?: string | null;
+  migrations?: unknown | null;
+  observability?: unknown | null;
+  placement?: unknown | null;
+  tags?: PutDispatchNamespaceScriptMetadataStringList | null;
+  tailConsumers?: unknown | null;
+  usageModel?: string | null;
 }
 export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7316,7 +7444,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     assets: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7422,7 +7550,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     bindings: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7527,9 +7655,9 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
+    bodyPart: S.optional(S.NullOr(S.String).pipe(T.Body("body_part"))),
     cache: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7634,14 +7762,16 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("compatibility_date")),
+    ),
     compatibilityFlags: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(
+      S.NullOr(PutDispatchNamespaceScriptMetadataStringList).pipe(
         T.Body("compatibility_flags"),
       ),
     ),
     containers: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7746,14 +7876,14 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
+    keepAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("keep_assets"))),
     keepBindings: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(
+      S.NullOr(PutDispatchNamespaceScriptMetadataStringList).pipe(
         T.Body("keep_bindings"),
       ),
     ),
     limits: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7858,10 +7988,10 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    logpush: S.optional(S.Boolean),
-    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
     migrations: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7967,7 +8097,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     observability: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -8073,7 +8203,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     placement: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -8178,9 +8308,9 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    tags: S.optional(PutDispatchNamespaceScriptMetadataStringList),
+    tags: S.optional(S.NullOr(PutDispatchNamespaceScriptMetadataStringList)),
     tailConsumers: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(S.Unknown).pipe(
         T.Body("tail_consumers"),
         T.KeyDictionary({
           abrLevel: "abr_level",
@@ -8286,7 +8416,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+    usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
   }),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptMetadata",
@@ -8305,7 +8435,7 @@ export interface PutDispatchNamespaceScriptRequest {
     | (string & {});
   metadata: PutDispatchNamespaceScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
-  files?: (File | Blob)[];
+  files?: File | Blob | (File | Blob)[];
 }
 export const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8440,14 +8570,14 @@ export interface DispatchNamespacesScriptsUpdateResponseCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version */
-  crossVersionCache?: boolean;
+  crossVersionCache?: boolean | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(
-        S.Boolean.pipe(T.Body("cross_version_cache")),
+        S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache")),
       ),
     }),
   ).annotate({
@@ -8476,17 +8606,19 @@ export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersLis
 
 export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
-  handlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList;
+  handlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList | null;
   /** The name of the export. */
-  name?: string;
+  name?: string | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       handlers: S.optional(
-        DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList,
+        S.NullOr(
+          DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList,
+        ),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsUpdateResponseNamedHandlersItem",
@@ -8512,11 +8644,11 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
   invocationLogs: boolean;
   /** A list of destinations where logs will be exported to. */
-  destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList;
+  destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList | null;
   /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether log persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
@@ -8524,10 +8656,14 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
       enabled: S.Boolean,
       invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList,
+        S.NullOr(
+          DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList,
+        ),
       ),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsUpdateResponseObservabilityLogs",
@@ -8547,29 +8683,33 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagati
 
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
-  destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList;
+  destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList | null;
   /** Whether traces are enabled for the Worker. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether trace persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy;
+  propagationPolicy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
-      propagationPolicy: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy.pipe(
-          T.Body("propagation_policy"),
+        S.NullOr(
+          DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList,
         ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
+      propagationPolicy: S.optional(
+        S.NullOr(
+          DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy,
+        ).pipe(T.Body("propagation_policy")),
       ),
     }),
   ).annotate({
@@ -8580,22 +8720,24 @@ export interface DispatchNamespacesScriptsUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
   /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Log settings for the Worker. */
-  logs?: DispatchNamespacesScriptsUpdateResponseObservabilityLogs;
+  logs?: DispatchNamespacesScriptsUpdateResponseObservabilityLogs | null;
   /** Trace settings for the Worker. */
-  traces?: DispatchNamespacesScriptsUpdateResponseObservabilityTraces;
+  traces?: DispatchNamespacesScriptsUpdateResponseObservabilityTraces | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
       logs: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityLogs,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityLogs),
       ),
       traces: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityTraces,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTraces),
       ),
     }),
   ).annotate({
@@ -8617,17 +8759,19 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase0Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase0Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase0Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase0Status),
       ),
     }),
   ).annotate({
@@ -8645,17 +8789,19 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase1Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase1Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase1Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase1Status),
       ),
     }),
   ).annotate({
@@ -8673,17 +8819,19 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase2Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase2Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase2Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase2Status),
       ),
     }),
   ).annotate({
@@ -8701,17 +8849,19 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase3Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase3Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase3 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase3Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase3Status),
       ),
     }),
   ).annotate({
@@ -8736,18 +8886,20 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase4Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase4Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode,
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase4Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase4Status),
       ),
     }),
   ).annotate({
@@ -8772,18 +8924,20 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase5Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase5Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase5 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
       mode: DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase5Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase5Status),
       ),
     }),
   ).annotate({
@@ -8808,18 +8962,20 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase6Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase6Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
       mode: DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase6Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase6Status),
       ),
     }),
   ).annotate({
@@ -8902,18 +9058,20 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase7 {
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase7Status;
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementCase7Status | null;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase7 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode,
       target: DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase7Status,
+        S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase7Status),
       ),
     }),
   ).annotate({
@@ -8966,16 +9124,16 @@ export interface DispatchNamespacesScriptsUpdateResponseTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
   /** Optional dispatch namespace the script belongs to. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      environment: S.optional(S.String),
-      namespace: S.optional(S.String),
+      environment: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsUpdateResponseTailConsumersItem",
@@ -8999,103 +9157,111 @@ export const DispatchNamespacesScriptsUpdateResponseUsageModel =
 export interface PutDispatchNamespaceScriptResponse {
   startupTimeMs: number;
   /** The name used to identify the script. */
-  id?: string;
+  id?: string | null;
   /** Global CacheW configuration for the Worker. When caching is on, */
-  cacheOptions?: DispatchNamespacesScriptsUpdateResponseCacheOptions;
+  cacheOptions?: DispatchNamespacesScriptsUpdateResponseCacheOptions | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
-  compatibilityDate?: string;
+  compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
-  compatibilityFlags?: DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList;
+  compatibilityFlags?: DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** The entry point for the script. */
-  entryPoint?: string;
+  entryPoint?: string | null;
   /** Hashed script content, can be used in a If-None-Match header when updating. */
-  etag?: string;
+  etag?: string | null;
   /** The names of handlers exported as part of the default export. */
-  handlers?: DispatchNamespacesScriptsUpdateResponseHandlersList;
+  handlers?: DispatchNamespacesScriptsUpdateResponseHandlersList | null;
   /** Whether a Worker contains assets. */
-  hasAssets?: boolean;
+  hasAssets?: boolean | null;
   /** Whether a Worker contains modules. */
-  hasModules?: boolean;
+  hasModules?: boolean | null;
   /** The client most recently used to deploy this Worker. */
-  lastDeployedFrom?: string;
+  lastDeployedFrom?: string | null;
   /** Whether Logpush is turned on for the Worker. */
-  logpush?: boolean;
+  logpush?: boolean | null;
   /** The tag of the Durable Object migration that was most recently applied for this Worker. */
-  migrationTag?: string;
+  migrationTag?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Named exports, such as Durable Object class implementations and named entrypoints. */
-  namedHandlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersList;
+  namedHandlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersList | null;
   /** Observability settings for the Worker. */
-  observability?: DispatchNamespacesScriptsUpdateResponseObservability;
+  observability?: DispatchNamespacesScriptsUpdateResponseObservability | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: DispatchNamespacesScriptsUpdateResponsePlacement;
-  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
-  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
+  placement?: DispatchNamespacesScriptsUpdateResponsePlacement | null;
+  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode | null;
+  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus | null;
   /** The immutable ID of the script. */
-  tag?: string;
+  tag?: string | null;
   /** Tags associated with the Worker. */
-  tags?: DispatchNamespacesScriptsUpdateResponseTagsList;
+  tags?: DispatchNamespacesScriptsUpdateResponseTagsList | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: DispatchNamespacesScriptsUpdateResponseTailConsumersList;
+  tailConsumers?: DispatchNamespacesScriptsUpdateResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel;
+  usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel | null;
 }
 export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
     cacheOptions: S.optional(
-      DispatchNamespacesScriptsUpdateResponseCacheOptions.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseCacheOptions).pipe(
         T.Body("cache_options"),
       ),
     ),
-    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-    compatibilityFlags: S.optional(
-      DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList.pipe(
-        T.Body("compatibility_flags"),
-      ),
+    compatibilityDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("compatibility_date")),
     ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    entryPoint: S.optional(S.String.pipe(T.Body("entry_point"))),
-    etag: S.optional(S.String),
-    handlers: S.optional(DispatchNamespacesScriptsUpdateResponseHandlersList),
-    hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
-    hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
-    lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
-    logpush: S.optional(S.Boolean),
-    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    compatibilityFlags: S.optional(
+      S.NullOr(
+        DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList,
+      ).pipe(T.Body("compatibility_flags")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    entryPoint: S.optional(S.NullOr(S.String).pipe(T.Body("entry_point"))),
+    etag: S.optional(S.NullOr(S.String)),
+    handlers: S.optional(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseHandlersList),
+    ),
+    hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+    hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+    lastDeployedFrom: S.optional(
+      S.NullOr(S.String).pipe(T.Body("last_deployed_from")),
+    ),
+    logpush: S.optional(S.NullOr(S.Boolean)),
+    migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     namedHandlers: S.optional(
-      DispatchNamespacesScriptsUpdateResponseNamedHandlersList.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseNamedHandlersList).pipe(
         T.Body("named_handlers"),
       ),
     ),
     observability: S.optional(
-      DispatchNamespacesScriptsUpdateResponseObservability,
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseObservability),
     ),
-    placement: S.optional(DispatchNamespacesScriptsUpdateResponsePlacement),
+    placement: S.optional(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacement),
+    ),
     placementMode: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementMode.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementMode).pipe(
         T.Body("placement_mode"),
       ),
     ),
     placementStatus: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementStatus.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementStatus).pipe(
         T.Body("placement_status"),
       ),
     ),
-    tag: S.optional(S.String),
-    tags: S.optional(DispatchNamespacesScriptsUpdateResponseTagsList),
+    tag: S.optional(S.NullOr(S.String)),
+    tags: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseTagsList)),
     tailConsumers: S.optional(
-      DispatchNamespacesScriptsUpdateResponseTailConsumersList.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseTailConsumersList).pipe(
         T.Body("tail_consumers"),
       ),
     ),
     usageModel: S.optional(
-      DispatchNamespacesScriptsUpdateResponseUsageModel.pipe(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseUsageModel).pipe(
         T.Body("usage_model"),
       ),
     ),
@@ -9143,14 +9309,14 @@ export interface DispatchNamespacesScriptsContentUpdateResponseCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version */
-  crossVersionCache?: boolean;
+  crossVersionCache?: boolean | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(
-        S.Boolean.pipe(T.Body("cross_version_cache")),
+        S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache")),
       ),
     }),
   ).annotate({
@@ -9180,17 +9346,19 @@ export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHand
 
 export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
-  handlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList;
+  handlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList | null;
   /** The name of the export. */
-  name?: string;
+  name?: string | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       handlers: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList,
+        ),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -9217,11 +9385,11 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs
   /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
   invocationLogs: boolean;
   /** A list of destinations where logs will be exported to. */
-  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList;
+  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList | null;
   /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether log persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
@@ -9229,10 +9397,14 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
       enabled: S.Boolean,
       invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList,
+        ),
       ),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
     }),
   ).annotate({
     identifier:
@@ -9253,29 +9425,33 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPr
 
 export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
-  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList;
+  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList | null;
   /** Whether traces are enabled for the Worker. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Whether trace persistence is enabled for the Worker. */
-  persist?: boolean;
+  persist?: boolean | null;
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
-  propagationPolicy?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy;
+  propagationPolicy?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.Boolean),
-      propagationPolicy: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy.pipe(
-          T.Body("propagation_policy"),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList,
         ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
+      persist: S.optional(S.NullOr(S.Boolean)),
+      propagationPolicy: S.optional(
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy,
+        ).pipe(T.Body("propagation_policy")),
       ),
     }),
   ).annotate({
@@ -9287,22 +9463,28 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
   /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
-  headSamplingRate?: number;
+  headSamplingRate?: number | null;
   /** Log settings for the Worker. */
-  logs?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs;
+  logs?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs | null;
   /** Trace settings for the Worker. */
-  traces?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces;
+  traces?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      headSamplingRate: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+      ),
       logs: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs,
+        ),
       ),
       traces: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces,
+        ),
       ),
     }),
   ).annotate({
@@ -9323,17 +9505,21 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9349,17 +9535,21 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9375,17 +9565,21 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9401,17 +9595,21 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9434,18 +9632,22 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode,
       region: S.String,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9468,18 +9670,22 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hostname: S.String,
       mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9502,18 +9708,22 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
       mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9594,9 +9804,9 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 {
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList;
   /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
+  lastAnalyzedAt?: string | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status;
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 =
   /*@__PURE__*/ S.suspend(() =>
@@ -9604,9 +9814,13 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 =
       mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode,
       target:
         DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList,
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      lastAnalyzedAt: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_analyzed_at")),
+      ),
       status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status,
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status,
+        ),
       ),
     }),
   ).annotate({
@@ -9660,16 +9874,16 @@ export interface DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem
   /** Name of Worker that is to be the consumer. */
   service: string;
   /** Optional environment if the Worker utilizes one. */
-  environment?: string;
+  environment?: string | null;
   /** Optional dispatch namespace the script belongs to. */
-  namespace?: string;
+  namespace?: string | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      environment: S.optional(S.String),
-      namespace: S.optional(S.String),
+      environment: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier:
@@ -9693,108 +9907,114 @@ export const DispatchNamespacesScriptsContentUpdateResponseUsageModel =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptContentResponse {
   /** The name used to identify the script. */
-  id?: string;
+  id?: string | null;
   /** Global CacheW configuration for the Worker. When caching is on, */
-  cacheOptions?: DispatchNamespacesScriptsContentUpdateResponseCacheOptions;
+  cacheOptions?: DispatchNamespacesScriptsContentUpdateResponseCacheOptions | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
-  compatibilityDate?: string;
+  compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
-  compatibilityFlags?: DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList;
+  compatibilityFlags?: DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList | null;
   /** When the script was created. */
-  createdOn?: string;
+  createdOn?: string | null;
   /** Hashed script content, can be used in a If-None-Match header when updating. */
-  etag?: string;
+  etag?: string | null;
   /** The names of handlers exported as part of the default export. */
-  handlers?: DispatchNamespacesScriptsContentUpdateResponseHandlersList;
+  handlers?: DispatchNamespacesScriptsContentUpdateResponseHandlersList | null;
   /** Whether a Worker contains assets. */
-  hasAssets?: boolean;
+  hasAssets?: boolean | null;
   /** Whether a Worker contains modules. */
-  hasModules?: boolean;
+  hasModules?: boolean | null;
   /** The client most recently used to deploy this Worker. */
-  lastDeployedFrom?: string;
+  lastDeployedFrom?: string | null;
   /** Whether Logpush is turned on for the Worker. */
-  logpush?: boolean;
+  logpush?: boolean | null;
   /** The tag of the Durable Object migration that was most recently applied for this Worker. */
-  migrationTag?: string;
+  migrationTag?: string | null;
   /** When the script was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Named exports, such as Durable Object class implementations and named entrypoints. */
-  namedHandlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList;
+  namedHandlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList | null;
   /** Observability settings for the Worker. */
-  observability?: DispatchNamespacesScriptsContentUpdateResponseObservability;
+  observability?: DispatchNamespacesScriptsContentUpdateResponseObservability | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: DispatchNamespacesScriptsContentUpdateResponsePlacement;
+  placement?: DispatchNamespacesScriptsContentUpdateResponsePlacement | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
+  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode | null;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
+  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus | null;
   /** The immutable ID of the script. */
-  tag?: string;
+  tag?: string | null;
   /** Tags associated with the Worker. */
-  tags?: DispatchNamespacesScriptsContentUpdateResponseTagsList;
+  tags?: DispatchNamespacesScriptsContentUpdateResponseTagsList | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: DispatchNamespacesScriptsContentUpdateResponseTailConsumersList;
+  tailConsumers?: DispatchNamespacesScriptsContentUpdateResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: DispatchNamespacesScriptsContentUpdateResponseUsageModel;
+  usageModel?: DispatchNamespacesScriptsContentUpdateResponseUsageModel | null;
 }
 export const PutDispatchNamespaceScriptContentResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
+      id: S.optional(S.NullOr(S.String)),
       cacheOptions: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseCacheOptions.pipe(
-          T.Body("cache_options"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseCacheOptions,
+        ).pipe(T.Body("cache_options")),
       ),
       compatibilityDate: S.optional(
-        S.String.pipe(T.Body("compatibility_date")),
+        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList.pipe(
-          T.Body("compatibility_flags"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList,
+        ).pipe(T.Body("compatibility_flags")),
       ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      etag: S.optional(S.String),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      etag: S.optional(S.NullOr(S.String)),
       handlers: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseHandlersList,
+        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseHandlersList),
       ),
-      hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
-      hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
-      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
-      logpush: S.optional(S.Boolean),
-      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+      hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+      lastDeployedFrom: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_deployed_from")),
+      ),
+      logpush: S.optional(S.NullOr(S.Boolean)),
+      migrationTag: S.optional(
+        S.NullOr(S.String).pipe(T.Body("migration_tag")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       namedHandlers: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList.pipe(
-          T.Body("named_handlers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList,
+        ).pipe(T.Body("named_handlers")),
       ),
       observability: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseObservability,
+        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservability),
       ),
       placement: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacement,
+        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacement),
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementMode.pipe(
-          T.Body("placement_mode"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementMode,
+        ).pipe(T.Body("placement_mode")),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus.pipe(
-          T.Body("placement_status"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponsePlacementStatus,
+        ).pipe(T.Body("placement_status")),
       ),
-      tag: S.optional(S.String),
-      tags: S.optional(DispatchNamespacesScriptsContentUpdateResponseTagsList),
+      tag: S.optional(S.NullOr(S.String)),
+      tags: S.optional(
+        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseTagsList),
+      ),
       tailConsumers: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseTailConsumersList.pipe(
-          T.Body("tail_consumers"),
-        ),
+        S.NullOr(
+          DispatchNamespacesScriptsContentUpdateResponseTailConsumersList,
+        ).pipe(T.Body("tail_consumers")),
       ),
       usageModel: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponseUsageModel.pipe(
+        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseUsageModel).pipe(
           T.Body("usage_model"),
         ),
       ),
@@ -9847,19 +10067,22 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The secret value to use. */
-  text?: string;
+  text?: string | null;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsUpdateRequestType | (string & {});
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
+  algorithm?: unknown | null;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsUpdateRequestFormat | (string & {});
+  format?:
+    | DispatchNamespacesScriptsSecretsUpdateRequestFormat
+    | (string & {})
+    | null;
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsUpdateRequestUsagesList;
+  usages?: DispatchNamespacesScriptsSecretsUpdateRequestUsagesList | null;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9868,15 +10091,17 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       name: S.String,
-      text: S.optional(S.String),
+      text: S.optional(S.NullOr(S.String)),
       type: DispatchNamespacesScriptsSecretsUpdateRequestType,
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsUpdateRequestUsagesList,
+      algorithm: S.optional(S.NullOr(S.Unknown)),
+      format: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
       ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      usages: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSecretsUpdateRequestUsagesList),
+      ),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     })
       .pipe(
         T.Http({
@@ -9958,9 +10183,9 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
+  keyBase64?: string | null;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
+  keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -9970,8 +10195,8 @@ export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey =
       name: S.String,
       type: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType,
       usages: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsUpdateResultSecretKey",

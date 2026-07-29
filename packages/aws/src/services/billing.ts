@@ -224,14 +224,14 @@ export const AssociateSourceViewsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateSourceViewsResponse>;
 export type BillingViewName = string | redacted.Redacted<string>;
 export type BillingViewDescription = string | redacted.Redacted<string>;
-export type Dimension = "LINKED_ACCOUNT";
+export type Dimension = "LINKED_ACCOUNT" | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface DimensionValues {
-  key: Dimension | (string & {});
+  key: Dimension;
   values: string[];
 }
 export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
@@ -387,7 +387,8 @@ export type BillingViewType =
   | "BILLING_GROUP"
   | "CUSTOM"
   | "BILLING_TRANSFER"
-  | "BILLING_TRANSFER_SHOWBACK";
+  | "BILLING_TRANSFER_SHOWBACK"
+  | (string & {});
 export const BillingViewType = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
@@ -395,7 +396,8 @@ export type BillingViewStatus =
   | "HEALTHY"
   | "UNHEALTHY"
   | "CREATING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BillingViewStatus = /*@__PURE__*/ S.String;
 
 export type BillingViewStatusReason =
@@ -406,7 +408,8 @@ export type BillingViewStatusReason =
   | "CYCLIC_DEPENDENCY"
   | "SOURCE_VIEW_DEPTH_EXCEEDED"
   | "AGGREGATE_SOURCE"
-  | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT";
+  | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT"
+  | (string & {});
 export const BillingViewStatusReason = /*@__PURE__*/ S.String;
 
 export type BillingViewStatusReasons = BillingViewStatusReason[];
@@ -504,14 +507,14 @@ export const ActiveTimeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveTimeRange>;
 export type BillingViewArnList = string[];
 export const BillingViewArnList = /*@__PURE__*/ S.Array(S.String);
-export type BillingViewTypeList = (BillingViewType | (string & {}))[];
+export type BillingViewTypeList = BillingViewType[];
 export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
-export type SearchOption = "STARTS_WITH";
+export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = /*@__PURE__*/ S.String;
 
 export type SearchValue = string;
 export interface StringSearch {
-  searchOption: SearchOption | (string & {});
+  searchOption: SearchOption;
   searchValue: string;
 }
 export const StringSearch = /*@__PURE__*/ S.suspend(() =>
@@ -524,7 +527,7 @@ export type PageToken = string;
 export interface ListBillingViewsRequest {
   activeTimeRange?: ActiveTimeRange;
   arns?: string[];
-  billingViewTypes?: (BillingViewType | (string & {}))[];
+  billingViewTypes?: BillingViewType[];
   names?: StringSearch[];
   ownerAccountId?: string;
   sourceAccountId?: string;
@@ -703,7 +706,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type FieldName = string;

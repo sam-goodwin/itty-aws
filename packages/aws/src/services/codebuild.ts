@@ -165,7 +165,8 @@ export type StatusType =
   | "FAULT"
   | "TIMED_OUT"
   | "IN_PROGRESS"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 export type BuildBatchPhaseType =
@@ -175,7 +176,8 @@ export type BuildBatchPhaseType =
   | "COMBINE_ARTIFACTS"
   | "SUCCEEDED"
   | "FAILED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const BuildBatchPhaseType = /*@__PURE__*/ S.String;
 
 export interface PhaseContext {
@@ -218,7 +220,8 @@ export type SourceType =
   | "S3"
   | "BITBUCKET"
   | "GITHUB_ENTERPRISE"
-  | "NO_SOURCE";
+  | "NO_SOURCE"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export type GitCloneDepth = number;
@@ -230,11 +233,15 @@ export const GitSubmodulesConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GitSubmodulesConfig",
 }) as any as S.Schema<GitSubmodulesConfig>;
-export type SourceAuthType = "OAUTH" | "CODECONNECTIONS" | "SECRETS_MANAGER";
+export type SourceAuthType =
+  | "OAUTH"
+  | "CODECONNECTIONS"
+  | "SECRETS_MANAGER"
+  | (string & {});
 export const SourceAuthType = /*@__PURE__*/ S.String;
 
 export interface SourceAuth {
-  type: SourceAuthType | (string & {});
+  type: SourceAuthType;
   resource?: string;
 }
 export const SourceAuth = /*@__PURE__*/ S.suspend(() =>
@@ -250,7 +257,7 @@ export const BuildStatusConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BuildStatusConfig",
 }) as any as S.Schema<BuildStatusConfig>;
 export interface ProjectSource {
-  type: SourceType | (string & {});
+  type: SourceType;
   location?: string;
   gitCloneDepth?: number;
   gitSubmodulesConfig?: GitSubmodulesConfig;
@@ -289,7 +296,7 @@ export const ProjectSourceVersion = /*@__PURE__*/ S.suspend(() =>
 export type ProjectSecondarySourceVersions = ProjectSourceVersion[];
 export const ProjectSecondarySourceVersions =
   /*@__PURE__*/ S.Array(ProjectSourceVersion);
-export type BucketOwnerAccess = "NONE" | "READ_ONLY" | "FULL";
+export type BucketOwnerAccess = "NONE" | "READ_ONLY" | "FULL" | (string & {});
 export const BucketOwnerAccess = /*@__PURE__*/ S.String;
 
 export interface BuildArtifacts {
@@ -314,21 +321,22 @@ export const BuildArtifacts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildArtifacts" }) as any as S.Schema<BuildArtifacts>;
 export type BuildArtifactsList = BuildArtifacts[];
 export const BuildArtifactsList = /*@__PURE__*/ S.Array(BuildArtifacts);
-export type CacheType = "NO_CACHE" | "S3" | "LOCAL";
+export type CacheType = "NO_CACHE" | "S3" | "LOCAL" | (string & {});
 export const CacheType = /*@__PURE__*/ S.String;
 
 export type CacheMode =
   | "LOCAL_DOCKER_LAYER_CACHE"
   | "LOCAL_SOURCE_CACHE"
-  | "LOCAL_CUSTOM_CACHE";
+  | "LOCAL_CUSTOM_CACHE"
+  | (string & {});
 export const CacheMode = /*@__PURE__*/ S.String;
 
-export type ProjectCacheModes = (CacheMode | (string & {}))[];
+export type ProjectCacheModes = CacheMode[];
 export const ProjectCacheModes = /*@__PURE__*/ S.Array(CacheMode);
 export interface ProjectCache {
-  type: CacheType | (string & {});
+  type: CacheType;
   location?: string;
-  modes?: (CacheMode | (string & {}))[];
+  modes?: CacheMode[];
   cacheNamespace?: string;
 }
 export const ProjectCache = /*@__PURE__*/ S.suspend(() =>
@@ -351,7 +359,8 @@ export type EnvironmentType =
   | "LINUX_EC2"
   | "ARM_EC2"
   | "WINDOWS_EC2"
-  | "MAC_ARM";
+  | "MAC_ARM"
+  | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 export type ComputeType =
@@ -366,17 +375,18 @@ export type ComputeType =
   | "BUILD_LAMBDA_8GB"
   | "BUILD_LAMBDA_10GB"
   | "ATTRIBUTE_BASED_COMPUTE"
-  | "CUSTOM_INSTANCE_TYPE";
+  | "CUSTOM_INSTANCE_TYPE"
+  | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
 
-export type MachineType = "GENERAL" | "NVME";
+export type MachineType = "GENERAL" | "NVME" | (string & {});
 export const MachineType = /*@__PURE__*/ S.String;
 
 export interface ComputeConfiguration {
   vCpu?: number;
   memory?: number;
   disk?: number;
-  machineType?: MachineType | (string & {});
+  machineType?: MachineType;
   instanceType?: string;
 }
 export const ComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -399,13 +409,14 @@ export const ProjectFleet = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentVariableType =
   | "PLAINTEXT"
   | "PARAMETER_STORE"
-  | "SECRETS_MANAGER";
+  | "SECRETS_MANAGER"
+  | (string & {});
 export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 
 export interface EnvironmentVariable {
   name: string;
   value: string;
-  type?: EnvironmentVariableType | (string & {});
+  type?: EnvironmentVariableType;
 }
 export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -418,12 +429,12 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentVariable>;
 export type EnvironmentVariables = EnvironmentVariable[];
 export const EnvironmentVariables = /*@__PURE__*/ S.Array(EnvironmentVariable);
-export type CredentialProviderType = "SECRETS_MANAGER";
+export type CredentialProviderType = "SECRETS_MANAGER" | (string & {});
 export const CredentialProviderType = /*@__PURE__*/ S.String;
 
 export interface RegistryCredential {
   credential: string;
-  credentialProvider: CredentialProviderType | (string & {});
+  credentialProvider: CredentialProviderType;
 }
 export const RegistryCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -433,7 +444,10 @@ export const RegistryCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegistryCredential",
 }) as any as S.Schema<RegistryCredential>;
-export type ImagePullCredentialsType = "CODEBUILD" | "SERVICE_ROLE";
+export type ImagePullCredentialsType =
+  | "CODEBUILD"
+  | "SERVICE_ROLE"
+  | (string & {});
 export const ImagePullCredentialsType = /*@__PURE__*/ S.String;
 
 export type SecurityGroupIds = string[];
@@ -448,7 +462,7 @@ export const DockerServerStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DockerServerStatus",
 }) as any as S.Schema<DockerServerStatus>;
 export interface DockerServer {
-  computeType: ComputeType | (string & {});
+  computeType: ComputeType;
   securityGroupIds?: string[];
   status?: DockerServerStatus;
 }
@@ -460,16 +474,16 @@ export const DockerServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DockerServer" }) as any as S.Schema<DockerServer>;
 export interface ProjectEnvironment {
-  type: EnvironmentType | (string & {});
+  type: EnvironmentType;
   image: string;
-  computeType: ComputeType | (string & {});
+  computeType: ComputeType;
   computeConfiguration?: ComputeConfiguration;
   fleet?: ProjectFleet;
   environmentVariables?: EnvironmentVariable[];
   privilegedMode?: boolean;
   certificate?: string;
   registryCredential?: RegistryCredential;
-  imagePullCredentialsType?: ImagePullCredentialsType | (string & {});
+  imagePullCredentialsType?: ImagePullCredentialsType;
   dockerServer?: DockerServer;
 }
 export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
@@ -489,11 +503,11 @@ export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectEnvironment",
 }) as any as S.Schema<ProjectEnvironment>;
-export type LogsConfigStatusType = "ENABLED" | "DISABLED";
+export type LogsConfigStatusType = "ENABLED" | "DISABLED" | (string & {});
 export const LogsConfigStatusType = /*@__PURE__*/ S.String;
 
 export interface CloudWatchLogsConfig {
-  status: LogsConfigStatusType | (string & {});
+  status: LogsConfigStatusType;
   groupName?: string;
   streamName?: string;
 }
@@ -507,10 +521,10 @@ export const CloudWatchLogsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudWatchLogsConfig",
 }) as any as S.Schema<CloudWatchLogsConfig>;
 export interface S3LogsConfig {
-  status: LogsConfigStatusType | (string & {});
+  status: LogsConfigStatusType;
   location?: string;
   encryptionDisabled?: boolean;
-  bucketOwnerAccess?: BucketOwnerAccess | (string & {});
+  bucketOwnerAccess?: BucketOwnerAccess;
 }
 export const S3LogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -544,11 +558,11 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
     securityGroupIds: S.optional(SecurityGroupIds),
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type FileSystemType = "EFS";
+export type FileSystemType = "EFS" | (string & {});
 export const FileSystemType = /*@__PURE__*/ S.String;
 
 export interface ProjectFileSystemLocation {
-  type?: FileSystemType | (string & {});
+  type?: FileSystemType;
   location?: string;
   mountPoint?: string;
   identifier?: string;
@@ -589,7 +603,8 @@ export const BatchRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchRestrictions>;
 export type BatchReportModeType =
   | "REPORT_INDIVIDUAL_BUILDS"
-  | "REPORT_AGGREGATED_BATCH";
+  | "REPORT_AGGREGATED_BATCH"
+  | (string & {});
 export const BatchReportModeType = /*@__PURE__*/ S.String;
 
 export interface ProjectBuildBatchConfig {
@@ -597,7 +612,7 @@ export interface ProjectBuildBatchConfig {
   combineArtifacts?: boolean;
   restrictions?: BatchRestrictions;
   timeoutInMins?: number;
-  batchReportMode?: BatchReportModeType | (string & {});
+  batchReportMode?: BatchReportModeType;
 }
 export const ProjectBuildBatchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -612,7 +627,11 @@ export const ProjectBuildBatchConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectBuildBatchConfig>;
 export type Identifiers = string[];
 export const Identifiers = /*@__PURE__*/ S.Array(S.String);
-export type ArtifactsType = "CODEPIPELINE" | "S3" | "NO_ARTIFACTS";
+export type ArtifactsType =
+  | "CODEPIPELINE"
+  | "S3"
+  | "NO_ARTIFACTS"
+  | (string & {});
 export const ArtifactsType = /*@__PURE__*/ S.String;
 
 export interface ResolvedArtifact {
@@ -773,7 +792,8 @@ export type BuildPhaseType =
   | "POST_BUILD"
   | "UPLOAD_ARTIFACTS"
   | "FINALIZING"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const BuildPhaseType = /*@__PURE__*/ S.String;
 
 export interface BuildPhase {
@@ -972,7 +992,7 @@ export const BatchGetCommandExecutionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetCommandExecutionsInput",
 }) as any as S.Schema<BatchGetCommandExecutionsInput>;
 export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type CommandType = "SHELL";
+export type CommandType = "SHELL" | (string & {});
 export const CommandType = /*@__PURE__*/ S.String;
 
 export interface CommandExecution {
@@ -1044,7 +1064,8 @@ export type FleetStatusCode =
   | "DELETING"
   | "CREATE_FAILED"
   | "UPDATE_ROLLBACK_FAILED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const FleetStatusCode = /*@__PURE__*/ S.String;
 
 export type FleetContextCode =
@@ -1052,7 +1073,8 @@ export type FleetContextCode =
   | "UPDATE_FAILED"
   | "ACTION_REQUIRED"
   | "PENDING_DELETION"
-  | "INSUFFICIENT_CAPACITY";
+  | "INSUFFICIENT_CAPACITY"
+  | (string & {});
 export const FleetContextCode = /*@__PURE__*/ S.String;
 
 export interface FleetStatus {
@@ -1068,14 +1090,14 @@ export const FleetStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FleetStatus" }) as any as S.Schema<FleetStatus>;
 export type FleetCapacity = number;
-export type FleetScalingType = "TARGET_TRACKING_SCALING";
+export type FleetScalingType = "TARGET_TRACKING_SCALING" | (string & {});
 export const FleetScalingType = /*@__PURE__*/ S.String;
 
-export type FleetScalingMetricType = "FLEET_UTILIZATION_RATE";
+export type FleetScalingMetricType = "FLEET_UTILIZATION_RATE" | (string & {});
 export const FleetScalingMetricType = /*@__PURE__*/ S.String;
 
 export interface TargetTrackingScalingConfiguration {
-  metricType?: FleetScalingMetricType | (string & {});
+  metricType?: FleetScalingMetricType;
   targetValue?: number;
 }
 export const TargetTrackingScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1109,23 +1131,23 @@ export const ScalingConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingConfigurationOutput",
 }) as any as S.Schema<ScalingConfigurationOutput>;
-export type FleetOverflowBehavior = "QUEUE" | "ON_DEMAND";
+export type FleetOverflowBehavior = "QUEUE" | "ON_DEMAND" | (string & {});
 export const FleetOverflowBehavior = /*@__PURE__*/ S.String;
 
-export type FleetProxyRuleBehavior = "ALLOW_ALL" | "DENY_ALL";
+export type FleetProxyRuleBehavior = "ALLOW_ALL" | "DENY_ALL" | (string & {});
 export const FleetProxyRuleBehavior = /*@__PURE__*/ S.String;
 
-export type FleetProxyRuleType = "DOMAIN" | "IP";
+export type FleetProxyRuleType = "DOMAIN" | "IP" | (string & {});
 export const FleetProxyRuleType = /*@__PURE__*/ S.String;
 
-export type FleetProxyRuleEffectType = "ALLOW" | "DENY";
+export type FleetProxyRuleEffectType = "ALLOW" | "DENY" | (string & {});
 export const FleetProxyRuleEffectType = /*@__PURE__*/ S.String;
 
 export type FleetProxyRuleEntities = string[];
 export const FleetProxyRuleEntities = /*@__PURE__*/ S.Array(S.String);
 export interface FleetProxyRule {
-  type: FleetProxyRuleType | (string & {});
-  effect: FleetProxyRuleEffectType | (string & {});
+  type: FleetProxyRuleType;
+  effect: FleetProxyRuleEffectType;
   entities: string[];
 }
 export const FleetProxyRule = /*@__PURE__*/ S.suspend(() =>
@@ -1138,7 +1160,7 @@ export const FleetProxyRule = /*@__PURE__*/ S.suspend(() =>
 export type FleetProxyRules = FleetProxyRule[];
 export const FleetProxyRules = /*@__PURE__*/ S.Array(FleetProxyRule);
 export interface ProxyConfiguration {
-  defaultBehavior?: FleetProxyRuleBehavior | (string & {});
+  defaultBehavior?: FleetProxyRuleBehavior;
   orderedProxyRules?: FleetProxyRule[];
 }
 export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1228,23 +1250,23 @@ export const BatchGetProjectsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetProjectsInput>;
 export type ProjectName = string;
 export type ProjectDescription = string;
-export type ArtifactNamespace = "NONE" | "BUILD_ID";
+export type ArtifactNamespace = "NONE" | "BUILD_ID" | (string & {});
 export const ArtifactNamespace = /*@__PURE__*/ S.String;
 
-export type ArtifactPackaging = "NONE" | "ZIP";
+export type ArtifactPackaging = "NONE" | "ZIP" | (string & {});
 export const ArtifactPackaging = /*@__PURE__*/ S.String;
 
 export interface ProjectArtifacts {
-  type: ArtifactsType | (string & {});
+  type: ArtifactsType;
   location?: string;
   path?: string;
-  namespaceType?: ArtifactNamespace | (string & {});
+  namespaceType?: ArtifactNamespace;
   name?: string;
-  packaging?: ArtifactPackaging | (string & {});
+  packaging?: ArtifactPackaging;
   overrideArtifactName?: boolean;
   encryptionDisabled?: boolean;
   artifactIdentifier?: string;
-  bucketOwnerAccess?: BucketOwnerAccess | (string & {});
+  bucketOwnerAccess?: BucketOwnerAccess;
 }
 export const ProjectArtifacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1277,11 +1299,12 @@ export type WebhookFilterType =
   | "TAG_NAME"
   | "RELEASE_NAME"
   | "REPOSITORY_NAME"
-  | "ORGANIZATION_NAME";
+  | "ORGANIZATION_NAME"
+  | (string & {});
 export const WebhookFilterType = /*@__PURE__*/ S.String;
 
 export interface WebhookFilter {
-  type: WebhookFilterType | (string & {});
+  type: WebhookFilterType;
   pattern: string;
   excludeMatchedPattern?: boolean;
 }
@@ -1299,19 +1322,21 @@ export const FilterGroups = /*@__PURE__*/ S.Array(FilterGroup);
 export type WebhookBuildType =
   | "BUILD"
   | "BUILD_BATCH"
-  | "RUNNER_BUILDKITE_BUILD";
+  | "RUNNER_BUILDKITE_BUILD"
+  | (string & {});
 export const WebhookBuildType = /*@__PURE__*/ S.String;
 
 export type WebhookScopeType =
   | "GITHUB_ORGANIZATION"
   | "GITHUB_GLOBAL"
-  | "GITLAB_GROUP";
+  | "GITLAB_GROUP"
+  | (string & {});
 export const WebhookScopeType = /*@__PURE__*/ S.String;
 
 export interface ScopeConfiguration {
   name: string;
   domain?: string;
-  scope: WebhookScopeType | (string & {});
+  scope: WebhookScopeType;
 }
 export const ScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1326,13 +1351,15 @@ export type WebhookStatus =
   | "CREATING"
   | "CREATE_FAILED"
   | "ACTIVE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const WebhookStatus = /*@__PURE__*/ S.String;
 
 export type PullRequestBuildCommentApproval =
   | "DISABLED"
   | "ALL_PULL_REQUESTS"
-  | "FORK_PULL_REQUESTS";
+  | "FORK_PULL_REQUESTS"
+  | (string & {});
 export const PullRequestBuildCommentApproval = /*@__PURE__*/ S.String;
 
 export type PullRequestBuildApproverRole =
@@ -1349,19 +1376,17 @@ export type PullRequestBuildApproverRole =
   | "GITLAB_OWNER"
   | "BITBUCKET_READ"
   | "BITBUCKET_WRITE"
-  | "BITBUCKET_ADMIN";
+  | "BITBUCKET_ADMIN"
+  | (string & {});
 export const PullRequestBuildApproverRole = /*@__PURE__*/ S.String;
 
-export type PullRequestBuildApproverRoles = (
-  | PullRequestBuildApproverRole
-  | (string & {})
-)[];
+export type PullRequestBuildApproverRoles = PullRequestBuildApproverRole[];
 export const PullRequestBuildApproverRoles = /*@__PURE__*/ S.Array(
   PullRequestBuildApproverRole,
 );
 export interface PullRequestBuildPolicy {
-  requiresCommentApproval: PullRequestBuildCommentApproval | (string & {});
-  approverRoles?: (PullRequestBuildApproverRole | (string & {}))[];
+  requiresCommentApproval: PullRequestBuildCommentApproval;
+  approverRoles?: PullRequestBuildApproverRole[];
 }
 export const PullRequestBuildPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1413,7 +1438,7 @@ export const ProjectBadge = /*@__PURE__*/ S.suspend(() =>
     badgeRequestUrl: S.optional(S.String),
   }),
 ).annotate({ identifier: "ProjectBadge" }) as any as S.Schema<ProjectBadge>;
-export type ProjectVisibilityType = "PUBLIC_READ" | "PRIVATE";
+export type ProjectVisibilityType = "PUBLIC_READ" | "PRIVATE" | (string & {});
 export const ProjectVisibilityType = /*@__PURE__*/ S.String;
 
 export interface Project {
@@ -1507,20 +1532,20 @@ export const BatchGetReportGroupsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetReportGroupsInput",
 }) as any as S.Schema<BatchGetReportGroupsInput>;
 export type ReportGroupName = string;
-export type ReportType = "TEST" | "CODE_COVERAGE";
+export type ReportType = "TEST" | "CODE_COVERAGE" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
 
-export type ReportExportConfigType = "S3" | "NO_EXPORT";
+export type ReportExportConfigType = "S3" | "NO_EXPORT" | (string & {});
 export const ReportExportConfigType = /*@__PURE__*/ S.String;
 
-export type ReportPackagingType = "ZIP" | "NONE";
+export type ReportPackagingType = "ZIP" | "NONE" | (string & {});
 export const ReportPackagingType = /*@__PURE__*/ S.String;
 
 export interface S3ReportExportConfig {
   bucket?: string;
   bucketOwner?: string;
   path?: string;
-  packaging?: ReportPackagingType | (string & {});
+  packaging?: ReportPackagingType;
   encryptionKey?: string;
   encryptionDisabled?: boolean;
 }
@@ -1537,7 +1562,7 @@ export const S3ReportExportConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3ReportExportConfig",
 }) as any as S.Schema<S3ReportExportConfig>;
 export interface ReportExportConfig {
-  exportConfigType?: ReportExportConfigType | (string & {});
+  exportConfigType?: ReportExportConfigType;
   s3Destination?: S3ReportExportConfig;
 }
 export const ReportExportConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1548,7 +1573,7 @@ export const ReportExportConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReportExportConfig",
 }) as any as S.Schema<ReportExportConfig>;
-export type ReportGroupStatusType = "ACTIVE" | "DELETING";
+export type ReportGroupStatusType = "ACTIVE" | "DELETING" | (string & {});
 export const ReportGroupStatusType = /*@__PURE__*/ S.String;
 
 export interface ReportGroup {
@@ -1604,7 +1629,8 @@ export type ReportStatusType =
   | "SUCCEEDED"
   | "FAILED"
   | "INCOMPLETE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ReportStatusType = /*@__PURE__*/ S.String;
 
 export type ReportStatusCounts = { [key: string]: number | undefined };
@@ -1811,7 +1837,7 @@ export const BatchGetSandboxesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetSandboxesOutput",
 }) as any as S.Schema<BatchGetSandboxesOutput>;
 export interface ScalingConfigurationInput {
-  scalingType?: FleetScalingType | (string & {});
+  scalingType?: FleetScalingType;
   targetTrackingScalingConfigs?: TargetTrackingScalingConfiguration[];
   maxCapacity?: number;
 }
@@ -1829,11 +1855,11 @@ export const ScalingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateFleetInput {
   name: string;
   baseCapacity: number;
-  environmentType: EnvironmentType | (string & {});
-  computeType: ComputeType | (string & {});
+  environmentType: EnvironmentType;
+  computeType: ComputeType;
   computeConfiguration?: ComputeConfiguration;
   scalingConfiguration?: ScalingConfigurationInput;
-  overflowBehavior?: FleetOverflowBehavior | (string & {});
+  overflowBehavior?: FleetOverflowBehavior;
   vpcConfig?: VpcConfig;
   proxyConfiguration?: ProxyConfiguration;
   imageId?: string;
@@ -1932,7 +1958,7 @@ export const CreateProjectOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectOutput>;
 export interface CreateReportGroupInput {
   name: string;
-  type: ReportType | (string & {});
+  type: ReportType;
   exportConfig: ReportExportConfig;
   tags?: Tag[];
 }
@@ -1960,7 +1986,7 @@ export interface CreateWebhookInput {
   projectName: string;
   branchFilter?: string;
   filterGroups?: WebhookFilter[][];
-  buildType?: WebhookBuildType | (string & {});
+  buildType?: WebhookBuildType;
   manualCreation?: boolean;
   scopeConfiguration?: ScopeConfiguration;
   pullRequestBuildPolicy?: PullRequestBuildPolicy;
@@ -2128,20 +2154,21 @@ export const DeleteWebhookOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebhookOutput",
 }) as any as S.Schema<DeleteWebhookOutput>;
 export type PageSize = number;
-export type SortOrderType = "ASCENDING" | "DESCENDING";
+export type SortOrderType = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrderType = /*@__PURE__*/ S.String;
 
 export type ReportCodeCoverageSortByType =
   | "LINE_COVERAGE_PERCENTAGE"
-  | "FILE_PATH";
+  | "FILE_PATH"
+  | (string & {});
 export const ReportCodeCoverageSortByType = /*@__PURE__*/ S.String;
 
 export interface DescribeCodeCoveragesInput {
   reportArn: string;
   nextToken?: string;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
-  sortBy?: ReportCodeCoverageSortByType | (string & {});
+  sortOrder?: SortOrderType;
+  sortBy?: ReportCodeCoverageSortByType;
   minLineCoveragePercentage?: number;
   maxLineCoveragePercentage?: number;
 }
@@ -2272,13 +2299,14 @@ export type ReportGroupTrendFieldType =
   | "LINES_MISSED"
   | "BRANCH_COVERAGE"
   | "BRANCHES_COVERED"
-  | "BRANCHES_MISSED";
+  | "BRANCHES_MISSED"
+  | (string & {});
 export const ReportGroupTrendFieldType = /*@__PURE__*/ S.String;
 
 export interface GetReportGroupTrendInput {
   reportGroupArn: string;
   numOfReports?: number;
-  trendField: ReportGroupTrendFieldType | (string & {});
+  trendField: ReportGroupTrendFieldType;
 }
 export const GetReportGroupTrendInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2352,7 +2380,8 @@ export type ServerType =
   | "BITBUCKET"
   | "GITHUB_ENTERPRISE"
   | "GITLAB"
-  | "GITLAB_SELF_MANAGED";
+  | "GITLAB_SELF_MANAGED"
+  | (string & {});
 export const ServerType = /*@__PURE__*/ S.String;
 
 export type AuthType =
@@ -2360,14 +2389,15 @@ export type AuthType =
   | "BASIC_AUTH"
   | "PERSONAL_ACCESS_TOKEN"
   | "CODECONNECTIONS"
-  | "SECRETS_MANAGER";
+  | "SECRETS_MANAGER"
+  | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
 
 export interface ImportSourceCredentialsInput {
   username?: string;
   token: string | redacted.Redacted<string>;
-  serverType: ServerType | (string & {});
-  authType: AuthType | (string & {});
+  serverType: ServerType;
+  authType: AuthType;
   shouldOverwrite?: boolean;
 }
 export const ImportSourceCredentialsInput = /*@__PURE__*/ S.suspend(() =>
@@ -2408,7 +2438,7 @@ export const InvalidateProjectCacheOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvalidateProjectCacheOutput",
 }) as any as S.Schema<InvalidateProjectCacheOutput>;
 export interface BuildBatchFilter {
-  status?: StatusType | (string & {});
+  status?: StatusType;
 }
 export const BuildBatchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(StatusType) }),
@@ -2418,7 +2448,7 @@ export const BuildBatchFilter = /*@__PURE__*/ S.suspend(() =>
 export interface ListBuildBatchesInput {
   filter?: BuildBatchFilter;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListBuildBatchesInput = /*@__PURE__*/ S.suspend(() =>
@@ -2446,7 +2476,7 @@ export interface ListBuildBatchesForProjectInput {
   projectName?: string;
   filter?: BuildBatchFilter;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListBuildBatchesForProjectInput = /*@__PURE__*/ S.suspend(() =>
@@ -2472,7 +2502,7 @@ export const ListBuildBatchesForProjectOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBuildBatchesForProjectOutput",
 }) as any as S.Schema<ListBuildBatchesForProjectOutput>;
 export interface ListBuildsInput {
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListBuildsInput = /*@__PURE__*/ S.suspend(() =>
@@ -2496,7 +2526,7 @@ export const ListBuildsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuildsOutput>;
 export interface ListBuildsForProjectInput {
   projectName: string;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListBuildsForProjectInput = /*@__PURE__*/ S.suspend(() =>
@@ -2523,7 +2553,7 @@ export type SensitiveString = string | redacted.Redacted<string>;
 export interface ListCommandExecutionsForSandboxInput {
   sandboxId: string;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string | redacted.Redacted<string>;
 }
 export const ListCommandExecutionsForSandboxInput = /*@__PURE__*/ S.suspend(
@@ -2564,7 +2594,8 @@ export type PlatformType =
   | "DEBIAN"
   | "AMAZON_LINUX"
   | "UBUNTU"
-  | "WINDOWS_SERVER";
+  | "WINDOWS_SERVER"
+  | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
 
 export type LanguageType =
@@ -2577,7 +2608,8 @@ export type LanguageType =
   | "ANDROID"
   | "DOTNET"
   | "BASE"
-  | "PHP";
+  | "PHP"
+  | (string & {});
 export const LanguageType = /*@__PURE__*/ S.String;
 
 export type ImageVersions = string[];
@@ -2634,14 +2666,18 @@ export const ListCuratedEnvironmentImagesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCuratedEnvironmentImagesOutput",
 }) as any as S.Schema<ListCuratedEnvironmentImagesOutput>;
-export type FleetSortByType = "NAME" | "CREATED_TIME" | "LAST_MODIFIED_TIME";
+export type FleetSortByType =
+  | "NAME"
+  | "CREATED_TIME"
+  | "LAST_MODIFIED_TIME"
+  | (string & {});
 export const FleetSortByType = /*@__PURE__*/ S.String;
 
 export interface ListFleetsInput {
   nextToken?: string | redacted.Redacted<string>;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
-  sortBy?: FleetSortByType | (string & {});
+  sortOrder?: SortOrderType;
+  sortBy?: FleetSortByType;
 }
 export const ListFleetsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2666,12 +2702,16 @@ export const ListFleetsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFleetsOutput",
 }) as any as S.Schema<ListFleetsOutput>;
-export type ProjectSortByType = "NAME" | "CREATED_TIME" | "LAST_MODIFIED_TIME";
+export type ProjectSortByType =
+  | "NAME"
+  | "CREATED_TIME"
+  | "LAST_MODIFIED_TIME"
+  | (string & {});
 export const ProjectSortByType = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInput {
-  sortBy?: ProjectSortByType | (string & {});
-  sortOrder?: SortOrderType | (string & {});
+  sortBy?: ProjectSortByType;
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListProjectsInput = /*@__PURE__*/ S.suspend(() =>
@@ -2700,12 +2740,13 @@ export const ListProjectsOutput = /*@__PURE__*/ S.suspend(() =>
 export type ReportGroupSortByType =
   | "NAME"
   | "CREATED_TIME"
-  | "LAST_MODIFIED_TIME";
+  | "LAST_MODIFIED_TIME"
+  | (string & {});
 export const ReportGroupSortByType = /*@__PURE__*/ S.String;
 
 export interface ListReportGroupsInput {
-  sortOrder?: SortOrderType | (string & {});
-  sortBy?: ReportGroupSortByType | (string & {});
+  sortOrder?: SortOrderType;
+  sortBy?: ReportGroupSortByType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -2734,13 +2775,13 @@ export const ListReportGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReportGroupsOutput",
 }) as any as S.Schema<ListReportGroupsOutput>;
 export interface ReportFilter {
-  status?: ReportStatusType | (string & {});
+  status?: ReportStatusType;
 }
 export const ReportFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(ReportStatusType) }),
 ).annotate({ identifier: "ReportFilter" }) as any as S.Schema<ReportFilter>;
 export interface ListReportsInput {
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
   maxResults?: number;
   filter?: ReportFilter;
@@ -2772,7 +2813,7 @@ export const ListReportsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListReportsForReportGroupInput {
   reportGroupArn: string;
   nextToken?: string;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   maxResults?: number;
   filter?: ReportFilter;
 }
@@ -2803,7 +2844,7 @@ export const ListReportsForReportGroupOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReportsForReportGroupOutput>;
 export interface ListSandboxesInput {
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string;
 }
 export const ListSandboxesInput = /*@__PURE__*/ S.suspend(() =>
@@ -2829,7 +2870,7 @@ export const ListSandboxesOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListSandboxesForProjectInput {
   projectName: string;
   maxResults?: number;
-  sortOrder?: SortOrderType | (string & {});
+  sortOrder?: SortOrderType;
   nextToken?: string | redacted.Redacted<string>;
 }
 export const ListSandboxesForProjectInput = /*@__PURE__*/ S.suspend(() =>
@@ -2853,12 +2894,12 @@ export const ListSandboxesForProjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSandboxesForProjectOutput",
 }) as any as S.Schema<ListSandboxesForProjectOutput>;
-export type SharedResourceSortByType = "ARN" | "MODIFIED_TIME";
+export type SharedResourceSortByType = "ARN" | "MODIFIED_TIME" | (string & {});
 export const SharedResourceSortByType = /*@__PURE__*/ S.String;
 
 export interface ListSharedProjectsInput {
-  sortBy?: SharedResourceSortByType | (string & {});
-  sortOrder?: SortOrderType | (string & {});
+  sortBy?: SharedResourceSortByType;
+  sortOrder?: SortOrderType;
   maxResults?: number;
   nextToken?: string;
 }
@@ -2889,8 +2930,8 @@ export const ListSharedProjectsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSharedProjectsOutput",
 }) as any as S.Schema<ListSharedProjectsOutput>;
 export interface ListSharedReportGroupsInput {
-  sortOrder?: SortOrderType | (string & {});
-  sortBy?: SharedResourceSortByType | (string & {});
+  sortOrder?: SortOrderType;
+  sortBy?: SharedResourceSortByType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -2995,13 +3036,16 @@ export const RetryBuildOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetryBuildOutput",
 }) as any as S.Schema<RetryBuildOutput>;
-export type RetryBuildBatchType = "RETRY_ALL_BUILDS" | "RETRY_FAILED_BUILDS";
+export type RetryBuildBatchType =
+  | "RETRY_ALL_BUILDS"
+  | "RETRY_FAILED_BUILDS"
+  | (string & {});
 export const RetryBuildBatchType = /*@__PURE__*/ S.String;
 
 export interface RetryBuildBatchInput {
   id?: string;
   idempotencyToken?: string;
-  retryType?: RetryBuildBatchType | (string & {});
+  retryType?: RetryBuildBatchType;
 }
 export const RetryBuildBatchInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3030,7 +3074,7 @@ export interface StartBuildInput {
   artifactsOverride?: ProjectArtifacts;
   secondaryArtifactsOverride?: ProjectArtifacts[];
   environmentVariablesOverride?: EnvironmentVariable[];
-  sourceTypeOverride?: SourceType | (string & {});
+  sourceTypeOverride?: SourceType;
   sourceLocationOverride?: string;
   sourceAuthOverride?: SourceAuth;
   gitCloneDepthOverride?: number;
@@ -3039,9 +3083,9 @@ export interface StartBuildInput {
   insecureSslOverride?: boolean;
   reportBuildStatusOverride?: boolean;
   buildStatusConfigOverride?: BuildStatusConfig;
-  environmentTypeOverride?: EnvironmentType | (string & {});
+  environmentTypeOverride?: EnvironmentType;
   imageOverride?: string;
-  computeTypeOverride?: ComputeType | (string & {});
+  computeTypeOverride?: ComputeType;
   certificateOverride?: string;
   cacheOverride?: ProjectCache;
   serviceRoleOverride?: string;
@@ -3052,7 +3096,7 @@ export interface StartBuildInput {
   idempotencyToken?: string;
   logsConfigOverride?: LogsConfig;
   registryCredentialOverride?: RegistryCredential;
-  imagePullCredentialsTypeOverride?: ImagePullCredentialsType | (string & {});
+  imagePullCredentialsTypeOverride?: ImagePullCredentialsType;
   debugSessionEnabled?: boolean;
   fleetOverride?: ProjectFleet;
   autoRetryLimitOverride?: number;
@@ -3114,7 +3158,7 @@ export interface StartBuildBatchInput {
   artifactsOverride?: ProjectArtifacts;
   secondaryArtifactsOverride?: ProjectArtifacts[];
   environmentVariablesOverride?: EnvironmentVariable[];
-  sourceTypeOverride?: SourceType | (string & {});
+  sourceTypeOverride?: SourceType;
   sourceLocationOverride?: string;
   sourceAuthOverride?: SourceAuth;
   gitCloneDepthOverride?: number;
@@ -3122,9 +3166,9 @@ export interface StartBuildBatchInput {
   buildspecOverride?: string;
   insecureSslOverride?: boolean;
   reportBuildBatchStatusOverride?: boolean;
-  environmentTypeOverride?: EnvironmentType | (string & {});
+  environmentTypeOverride?: EnvironmentType;
   imageOverride?: string;
-  computeTypeOverride?: ComputeType | (string & {});
+  computeTypeOverride?: ComputeType;
   certificateOverride?: string;
   cacheOverride?: ProjectCache;
   serviceRoleOverride?: string;
@@ -3135,7 +3179,7 @@ export interface StartBuildBatchInput {
   idempotencyToken?: string;
   logsConfigOverride?: LogsConfig;
   registryCredentialOverride?: RegistryCredential;
-  imagePullCredentialsTypeOverride?: ImagePullCredentialsType | (string & {});
+  imagePullCredentialsTypeOverride?: ImagePullCredentialsType;
   buildBatchConfigOverride?: ProjectBuildBatchConfig;
   debugSessionEnabled?: boolean;
 }
@@ -3189,7 +3233,7 @@ export const StartBuildBatchOutput = /*@__PURE__*/ S.suspend(() =>
 export interface StartCommandExecutionInput {
   sandboxId: string;
   command: string | redacted.Redacted<string>;
-  type?: CommandType | (string & {});
+  type?: CommandType;
 }
 export const StartCommandExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3317,11 +3361,11 @@ export const StopSandboxOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFleetInput {
   arn: string;
   baseCapacity?: number;
-  environmentType?: EnvironmentType | (string & {});
-  computeType?: ComputeType | (string & {});
+  environmentType?: EnvironmentType;
+  computeType?: ComputeType;
   computeConfiguration?: ComputeConfiguration;
   scalingConfiguration?: ScalingConfigurationInput;
-  overflowBehavior?: FleetOverflowBehavior | (string & {});
+  overflowBehavior?: FleetOverflowBehavior;
   vpcConfig?: VpcConfig;
   proxyConfiguration?: ProxyConfiguration;
   imageId?: string;
@@ -3420,7 +3464,7 @@ export const UpdateProjectOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectOutput>;
 export interface UpdateProjectVisibilityInput {
   projectArn: string;
-  projectVisibility: ProjectVisibilityType | (string & {});
+  projectVisibility: ProjectVisibilityType;
   resourceAccessRole?: string;
 }
 export const UpdateProjectVisibilityInput = /*@__PURE__*/ S.suspend(() =>
@@ -3477,7 +3521,7 @@ export interface UpdateWebhookInput {
   branchFilter?: string;
   rotateSecret?: boolean;
   filterGroups?: WebhookFilter[][];
-  buildType?: WebhookBuildType | (string & {});
+  buildType?: WebhookBuildType;
   pullRequestBuildPolicy?: PullRequestBuildPolicy;
 }
 export const UpdateWebhookInput = /*@__PURE__*/ S.suspend(() =>

@@ -46,11 +46,11 @@ export const BulkDeleteFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface BulkDeleteResultItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
 }
 export const BulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "BulkDeleteResultItem",
@@ -70,23 +70,23 @@ export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface BulkUpdateRequestBodyItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "BulkUpdateRequestBodyItem",
@@ -115,23 +115,23 @@ export const BulkPutFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface BulkUpdateResultItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "BulkUpdateResultItem",
@@ -159,23 +159,23 @@ export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestBodyItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const CreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateRequestBodyItem",
@@ -206,23 +206,23 @@ export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateResultItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const CreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateResultItem",
@@ -310,23 +310,23 @@ export const GetFilterRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetFilterResponse {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFilterResponse",
@@ -369,23 +369,23 @@ export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItem {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -415,22 +415,22 @@ export interface UpdateFilterRequest {
   /** The unique identifier of the filter. */
   filterId: string;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -447,23 +447,23 @@ export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateFilterResponse {
   /** The unique identifier of the filter. */
-  id?: string;
+  id?: string | null;
   /** An informative summary of the filter. */
-  description?: string;
+  description?: string | null;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
+  expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
+  paused?: boolean | null;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
+  ref?: string | null;
 }
 export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.NullOr(S.String)),
+    paused: S.optional(S.NullOr(S.Boolean)),
+    ref: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateFilterResponse",

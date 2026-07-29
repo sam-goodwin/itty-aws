@@ -139,7 +139,7 @@ export type StatementId = string;
 export type QIamAction = string;
 export type QIamActions = string[];
 export const QIamActions = /*@__PURE__*/ S.Array(S.String);
-export type PermissionConditionOperator = "StringEquals";
+export type PermissionConditionOperator = "StringEquals" | (string & {});
 export const PermissionConditionOperator = /*@__PURE__*/ S.String;
 
 export type PermissionConditionKey = string;
@@ -147,7 +147,7 @@ export type PermissionConditionValue = string;
 export type PermissionConditionValues = string[];
 export const PermissionConditionValues = /*@__PURE__*/ S.Array(S.String);
 export interface PermissionCondition {
-  conditionOperator: PermissionConditionOperator | (string & {});
+  conditionOperator: PermissionConditionOperator;
   conditionKey: string;
   conditionValues: string[];
 }
@@ -242,7 +242,8 @@ export type ErrorCode =
   | "InternalError"
   | "InvalidRequest"
   | "ResourceInactive"
-  | "ResourceNotFound";
+  | "ResourceNotFound"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -352,21 +353,22 @@ export type ContentType =
   | "MS_EXCEL"
   | "CSV"
   | "JSON"
-  | "MD";
+  | "MD"
+  | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
 export type Title = string;
 export type UserId = string;
-export type ReadAccessType = "ALLOW" | "DENY";
+export type ReadAccessType = "ALLOW" | "DENY" | (string & {});
 export const ReadAccessType = /*@__PURE__*/ S.String;
 
-export type MembershipType = "INDEX" | "DATASOURCE";
+export type MembershipType = "INDEX" | "DATASOURCE" | (string & {});
 export const MembershipType = /*@__PURE__*/ S.String;
 
 export interface PrincipalUser {
   id?: string;
-  access: ReadAccessType | (string & {});
-  membershipType?: MembershipType | (string & {});
+  access: ReadAccessType;
+  membershipType?: MembershipType;
 }
 export const PrincipalUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -378,8 +380,8 @@ export const PrincipalUser = /*@__PURE__*/ S.suspend(() =>
 export type GroupName = string;
 export interface PrincipalGroup {
   name?: string;
-  access: ReadAccessType | (string & {});
-  membershipType?: MembershipType | (string & {});
+  access: ReadAccessType;
+  membershipType?: MembershipType;
 }
 export const PrincipalGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -397,12 +399,12 @@ export const Principal = /*@__PURE__*/ S.Union([
 ]);
 export type Principals = Principal[];
 export const Principals = /*@__PURE__*/ S.Array(Principal);
-export type MemberRelation = "AND" | "OR";
+export type MemberRelation = "AND" | "OR" | (string & {});
 export const MemberRelation = /*@__PURE__*/ S.String;
 
 export interface AccessControl {
   principals: Principal[];
-  memberRelation?: MemberRelation | (string & {});
+  memberRelation?: MemberRelation;
 }
 export const AccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -414,7 +416,7 @@ export type AccessControls = AccessControl[];
 export const AccessControls = /*@__PURE__*/ S.Array(AccessControl);
 export interface AccessConfiguration {
   accessControls: AccessControl[];
-  memberRelation?: MemberRelation | (string & {});
+  memberRelation?: MemberRelation;
 }
 export const AccessConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -435,12 +437,13 @@ export type DocumentEnrichmentConditionOperator =
   | "NOT_CONTAINS"
   | "EXISTS"
   | "NOT_EXISTS"
-  | "BEGINS_WITH";
+  | "BEGINS_WITH"
+  | (string & {});
 export const DocumentEnrichmentConditionOperator = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeCondition {
   key: string;
-  operator: DocumentEnrichmentConditionOperator | (string & {});
+  operator: DocumentEnrichmentConditionOperator;
   value?: DocumentAttributeValue;
 }
 export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
@@ -452,13 +455,13 @@ export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentAttributeCondition",
 }) as any as S.Schema<DocumentAttributeCondition>;
-export type AttributeValueOperator = "DELETE";
+export type AttributeValueOperator = "DELETE" | (string & {});
 export const AttributeValueOperator = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeTarget {
   key: string;
   value?: DocumentAttributeValue;
-  attributeValueOperator?: AttributeValueOperator | (string & {});
+  attributeValueOperator?: AttributeValueOperator;
 }
 export const DocumentAttributeTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -469,13 +472,13 @@ export const DocumentAttributeTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentAttributeTarget",
 }) as any as S.Schema<DocumentAttributeTarget>;
-export type DocumentContentOperator = "DELETE";
+export type DocumentContentOperator = "DELETE" | (string & {});
 export const DocumentContentOperator = /*@__PURE__*/ S.String;
 
 export interface InlineDocumentEnrichmentConfiguration {
   condition?: DocumentAttributeCondition;
   target?: DocumentAttributeTarget;
-  documentContentOperator?: DocumentContentOperator | (string & {});
+  documentContentOperator?: DocumentContentOperator;
 }
 export const InlineDocumentEnrichmentConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -524,33 +527,33 @@ export const DocumentEnrichmentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentEnrichmentConfiguration",
 }) as any as S.Schema<DocumentEnrichmentConfiguration>;
-export type ImageExtractionStatus = "ENABLED" | "DISABLED";
+export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ImageExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface ImageExtractionConfiguration {
-  imageExtractionStatus: ImageExtractionStatus | (string & {});
+  imageExtractionStatus: ImageExtractionStatus;
 }
 export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageExtractionStatus: ImageExtractionStatus }),
 ).annotate({
   identifier: "ImageExtractionConfiguration",
 }) as any as S.Schema<ImageExtractionConfiguration>;
-export type AudioExtractionStatus = "ENABLED" | "DISABLED";
+export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AudioExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface AudioExtractionConfiguration {
-  audioExtractionStatus: AudioExtractionStatus | (string & {});
+  audioExtractionStatus: AudioExtractionStatus;
 }
 export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audioExtractionStatus: AudioExtractionStatus }),
 ).annotate({
   identifier: "AudioExtractionConfiguration",
 }) as any as S.Schema<AudioExtractionConfiguration>;
-export type VideoExtractionStatus = "ENABLED" | "DISABLED";
+export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const VideoExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface VideoExtractionConfiguration {
-  videoExtractionStatus: VideoExtractionStatus | (string & {});
+  videoExtractionStatus: VideoExtractionStatus;
 }
 export const VideoExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ videoExtractionStatus: VideoExtractionStatus }),
@@ -575,7 +578,7 @@ export interface Document {
   id: string;
   attributes?: DocumentAttribute[];
   content?: DocumentContent;
-  contentType?: ContentType | (string & {});
+  contentType?: ContentType;
   title?: string;
   accessConfiguration?: AccessConfiguration;
   documentEnrichmentConfiguration?: DocumentEnrichmentConfiguration;
@@ -661,7 +664,7 @@ export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSubscriptionRequest",
 }) as any as S.Schema<CancelSubscriptionRequest>;
 export type SubscriptionArn = string;
-export type SubscriptionType = "Q_LITE" | "Q_BUSINESS";
+export type SubscriptionType = "Q_LITE" | "Q_BUSINESS" | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionDetails {
@@ -691,7 +694,11 @@ export const UserGroups = /*@__PURE__*/ S.Array(S.String);
 export type ConversationId = string;
 export type MessageId = string;
 export type ClientToken = string;
-export type ChatMode = "RETRIEVAL_MODE" | "CREATOR_MODE" | "PLUGIN_MODE";
+export type ChatMode =
+  | "RETRIEVAL_MODE"
+  | "CREATOR_MODE"
+  | "PLUGIN_MODE"
+  | (string & {});
 export const ChatMode = /*@__PURE__*/ S.String;
 
 export type PluginId = string;
@@ -756,7 +763,7 @@ export const AttributeFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeFilter",
 }) as any as S.Schema<AttributeFilter>;
 export interface ConfigurationEvent {
-  chatMode?: ChatMode | (string & {});
+  chatMode?: ChatMode;
   chatModeConfiguration?: ChatModeConfiguration;
   attributeFilter?: AttributeFilter;
 }
@@ -960,7 +967,10 @@ export const ChatInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "ChatInput" }) as any as S.Schema<ChatInput>;
-export type SystemMessageType = "RESPONSE" | "GROUNDED_RESPONSE";
+export type SystemMessageType =
+  | "RESPONSE"
+  | "GROUNDED_RESPONSE"
+  | (string & {});
 export const SystemMessageType = /*@__PURE__*/ S.String;
 
 export interface TextOutputEvent {
@@ -1002,7 +1012,7 @@ export const ImageSourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageSourceDetails",
 }) as any as S.Schema<ImageSourceDetails>;
-export type AudioExtractionType = "TRANSCRIPT" | "SUMMARY";
+export type AudioExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
 export const AudioExtractionType = /*@__PURE__*/ S.String;
 
 export interface AudioSourceDetails {
@@ -1023,7 +1033,7 @@ export const AudioSourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioSourceDetails",
 }) as any as S.Schema<AudioSourceDetails>;
-export type VideoExtractionType = "TRANSCRIPT" | "SUMMARY";
+export type VideoExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
 export const VideoExtractionType = /*@__PURE__*/ S.String;
 
 export interface VideoSourceDetails {
@@ -1148,10 +1158,16 @@ export type PluginType =
   | "MICROSOFT_EXCHANGE"
   | "PAGERDUTY_ADVANCE"
   | "SMARTSHEET"
-  | "ASANA";
+  | "ASANA"
+  | (string & {});
 export const PluginType = /*@__PURE__*/ S.String;
 
-export type ActionPayloadFieldType = "STRING" | "NUMBER" | "ARRAY" | "BOOLEAN";
+export type ActionPayloadFieldType =
+  | "STRING"
+  | "NUMBER"
+  | "ARRAY"
+  | "BOOLEAN"
+  | (string & {});
 export const ActionPayloadFieldType = /*@__PURE__*/ S.String;
 
 export interface ActionReviewPayloadFieldAllowedValue {
@@ -1224,7 +1240,7 @@ export const ActionReviewEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionReviewEvent",
 }) as any as S.Schema<ActionReviewEvent>;
-export type AttachmentStatus = "FAILED" | "SUCCESS";
+export type AttachmentStatus = "FAILED" | "SUCCESS" | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface AttachmentOutput {
@@ -1358,7 +1374,7 @@ export interface ChatSyncInput {
   conversationId?: string;
   parentMessageId?: string;
   attributeFilter?: AttributeFilter;
-  chatMode?: ChatMode | (string & {});
+  chatMode?: ChatMode;
   chatModeConfiguration?: ChatModeConfiguration;
   clientToken?: string;
 }
@@ -1607,7 +1623,8 @@ export type IdentityType =
   | "AWS_IAM_IDP_OIDC"
   | "AWS_IAM_IDC"
   | "AWS_QUICKSIGHT_IDP"
-  | "ANONYMOUS";
+  | "ANONYMOUS"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export type IAMIdentityProviderArn = string;
@@ -1636,33 +1653,33 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
-export type AttachmentsControlMode = "ENABLED" | "DISABLED";
+export type AttachmentsControlMode = "ENABLED" | "DISABLED" | (string & {});
 export const AttachmentsControlMode = /*@__PURE__*/ S.String;
 
 export interface AttachmentsConfiguration {
-  attachmentsControlMode: AttachmentsControlMode | (string & {});
+  attachmentsControlMode: AttachmentsControlMode;
 }
 export const AttachmentsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ attachmentsControlMode: AttachmentsControlMode }),
 ).annotate({
   identifier: "AttachmentsConfiguration",
 }) as any as S.Schema<AttachmentsConfiguration>;
-export type QAppsControlMode = "ENABLED" | "DISABLED";
+export type QAppsControlMode = "ENABLED" | "DISABLED" | (string & {});
 export const QAppsControlMode = /*@__PURE__*/ S.String;
 
 export interface QAppsConfiguration {
-  qAppsControlMode: QAppsControlMode | (string & {});
+  qAppsControlMode: QAppsControlMode;
 }
 export const QAppsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ qAppsControlMode: QAppsControlMode }),
 ).annotate({
   identifier: "QAppsConfiguration",
 }) as any as S.Schema<QAppsConfiguration>;
-export type PersonalizationControlMode = "ENABLED" | "DISABLED";
+export type PersonalizationControlMode = "ENABLED" | "DISABLED" | (string & {});
 export const PersonalizationControlMode = /*@__PURE__*/ S.String;
 
 export interface PersonalizationConfiguration {
-  personalizationControlMode: PersonalizationControlMode | (string & {});
+  personalizationControlMode: PersonalizationControlMode;
 }
 export const PersonalizationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ personalizationControlMode: PersonalizationControlMode }),
@@ -1681,7 +1698,7 @@ export const QuickSightConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateApplicationRequest {
   displayName: string;
   roleArn?: string;
-  identityType?: IdentityType | (string & {});
+  identityType?: IdentityType;
   iamIdentityProviderArn?: string;
   identityCenterInstanceArn?: string;
   clientIdsForOIDC?: string[];
@@ -1737,7 +1754,7 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
 export type DisplayName = string;
-export type ResponseConfigurationType = "ALL";
+export type ResponseConfigurationType = "ALL" | (string & {});
 export const ResponseConfigurationType = /*@__PURE__*/ S.String;
 
 export type Instruction = string;
@@ -1774,7 +1791,7 @@ export const ResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponseConfiguration",
 }) as any as S.Schema<ResponseConfiguration>;
 export type ResponseConfigurations = {
-  [key in ResponseConfigurationType | (string & {})]?: ResponseConfiguration;
+  [key in ResponseConfigurationType]?: ResponseConfiguration;
 };
 export const ResponseConfigurations = /*@__PURE__*/ S.Record(
   ResponseConfigurationType,
@@ -1852,7 +1869,8 @@ export const ActionConfigurationList =
 export type DataAccessorName = string | redacted.Redacted<string>;
 export type DataAccessorAuthenticationType =
   | "AWS_IAM_IDC_TTI"
-  | "AWS_IAM_IDC_AUTH_CODE";
+  | "AWS_IAM_IDC_AUTH_CODE"
+  | (string & {});
 export const DataAccessorAuthenticationType = /*@__PURE__*/ S.String;
 
 export type IdcTrustedTokenIssuerArn = string;
@@ -1878,7 +1896,7 @@ export type DataAccessorExternalId = string;
 export type DataAccessorExternalIds = string[];
 export const DataAccessorExternalIds = /*@__PURE__*/ S.Array(S.String);
 export interface DataAccessorAuthenticationDetail {
-  authenticationType: DataAccessorAuthenticationType | (string & {});
+  authenticationType: DataAccessorAuthenticationType;
   authenticationConfiguration?: DataAccessorAuthenticationConfiguration;
   externalIds?: string[];
 }
@@ -2022,7 +2040,7 @@ export const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataSourceResponse",
 }) as any as S.Schema<CreateDataSourceResponse>;
 export type IndexName = string;
-export type IndexType = "ENTERPRISE" | "STARTER";
+export type IndexType = "ENTERPRISE" | "STARTER" | (string & {});
 export const IndexType = /*@__PURE__*/ S.String;
 
 export type IndexCapacityInteger = number;
@@ -2038,7 +2056,7 @@ export interface CreateIndexRequest {
   applicationId: string;
   displayName: string;
   description?: string;
-  type?: IndexType | (string & {});
+  type?: IndexType;
   tags?: Tag[];
   capacityConfiguration?: IndexCapacityConfiguration;
   clientToken?: string;
@@ -2151,7 +2169,7 @@ export const PluginAuthConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ idcAuthConfiguration: IdcAuthConfiguration }),
 ]);
 export type PluginDescription = string;
-export type APISchemaType = "OPEN_API_V3";
+export type APISchemaType = "OPEN_API_V3" | (string & {});
 export const APISchemaType = /*@__PURE__*/ S.String;
 
 export type Payload = string | redacted.Redacted<string>;
@@ -2164,7 +2182,7 @@ export const APISchema = /*@__PURE__*/ S.Union([
 ]);
 export interface CustomPluginConfiguration {
   description: string;
-  apiSchemaType: APISchemaType | (string & {});
+  apiSchemaType: APISchemaType;
   apiSchema?: APISchema;
 }
 export const CustomPluginConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2179,7 +2197,7 @@ export const CustomPluginConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePluginRequest {
   applicationId: string;
   displayName: string;
-  type: PluginType | (string & {});
+  type: PluginType;
   authConfiguration: PluginAuthConfiguration;
   serverUrl?: string;
   customPluginConfiguration?: CustomPluginConfiguration;
@@ -2217,7 +2235,8 @@ export type PluginBuildStatus =
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const PluginBuildStatus = /*@__PURE__*/ S.String;
 
 export interface CreatePluginResponse {
@@ -2234,7 +2253,7 @@ export const CreatePluginResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePluginResponse",
 }) as any as S.Schema<CreatePluginResponse>;
-export type RetrieverType = "NATIVE_INDEX" | "KENDRA_INDEX";
+export type RetrieverType = "NATIVE_INDEX" | "KENDRA_INDEX" | (string & {});
 export const RetrieverType = /*@__PURE__*/ S.String;
 
 export type RetrieverName = string;
@@ -2245,17 +2264,19 @@ export type DocumentAttributeBoostingLevel =
   | "HIGH"
   | "VERY_HIGH"
   | "ONE"
-  | "TWO";
+  | "TWO"
+  | (string & {});
 export const DocumentAttributeBoostingLevel = /*@__PURE__*/ S.String;
 
 export type NumberAttributeBoostingType =
   | "PRIORITIZE_LARGER_VALUES"
-  | "PRIORITIZE_SMALLER_VALUES";
+  | "PRIORITIZE_SMALLER_VALUES"
+  | (string & {});
 export const NumberAttributeBoostingType = /*@__PURE__*/ S.String;
 
 export interface NumberAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
-  boostingType?: NumberAttributeBoostingType | (string & {});
+  boostingLevel: DocumentAttributeBoostingLevel;
+  boostingType?: NumberAttributeBoostingType;
 }
 export const NumberAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -2275,23 +2296,21 @@ export type StringAttributeValueBoostingLevel =
   | "TWO"
   | "THREE"
   | "FOUR"
-  | "FIVE";
+  | "FIVE"
+  | (string & {});
 export const StringAttributeValueBoostingLevel = /*@__PURE__*/ S.String;
 
 export type StringAttributeValueBoosting = {
-  [key: string]: StringAttributeValueBoostingLevel | (string & {}) | undefined;
+  [key: string]: StringAttributeValueBoostingLevel | undefined;
 };
 export const StringAttributeValueBoosting = /*@__PURE__*/ S.Record(
   S.String,
   StringAttributeValueBoostingLevel.pipe(S.optional),
 );
 export interface StringAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
+  boostingLevel: DocumentAttributeBoostingLevel;
   attributeValueBoosting?: {
-    [key: string]:
-      | StringAttributeValueBoostingLevel
-      | (string & {})
-      | undefined;
+    [key: string]: StringAttributeValueBoostingLevel | undefined;
   };
 }
 export const StringAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
@@ -2305,7 +2324,7 @@ export const StringAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StringAttributeBoostingConfiguration>;
 export type BoostingDurationInSeconds = number;
 export interface DateAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
+  boostingLevel: DocumentAttributeBoostingLevel;
   boostingDurationInSeconds?: number;
 }
 export const DateAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2317,7 +2336,7 @@ export const DateAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DateAttributeBoostingConfiguration",
 }) as any as S.Schema<DateAttributeBoostingConfiguration>;
 export interface StringListAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
+  boostingLevel: DocumentAttributeBoostingLevel;
 }
 export const StringListAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
   () => S.Struct({ boostingLevel: DocumentAttributeBoostingLevel }),
@@ -2404,7 +2423,7 @@ export const RetrieverConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export interface CreateRetrieverRequest {
   applicationId: string;
-  type: RetrieverType | (string & {});
+  type: RetrieverType;
   displayName: string;
   configuration: RetrieverConfiguration;
   roleArn?: string;
@@ -2462,7 +2481,7 @@ export const SubscriptionPrincipal = /*@__PURE__*/ S.Union([
 export interface CreateSubscriptionRequest {
   applicationId: string;
   principal: SubscriptionPrincipal;
-  type: SubscriptionType | (string & {});
+  type: SubscriptionType;
   clientToken?: string;
 }
 export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2551,7 +2570,10 @@ export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 export type WebExperienceTitle = string;
 export type WebExperienceSubtitle = string;
 export type WebExperienceWelcomeMessage = string;
-export type WebExperienceSamplePromptsControlMode = "ENABLED" | "DISABLED";
+export type WebExperienceSamplePromptsControlMode =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const WebExperienceSamplePromptsControlMode = /*@__PURE__*/ S.String;
 
 export type Origin = string;
@@ -2624,9 +2646,7 @@ export interface CreateWebExperienceRequest {
   title?: string;
   subtitle?: string;
   welcomeMessage?: string;
-  samplePromptsControlMode?:
-    | WebExperienceSamplePromptsControlMode
-    | (string & {});
+  samplePromptsControlMode?: WebExperienceSamplePromptsControlMode;
   origins?: string[];
   roleArn?: string;
   tags?: Tag[];
@@ -3127,7 +3147,8 @@ export type ApplicationStatus =
   | "ACTIVE"
   | "DELETING"
   | "FAILED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface AppliedAttachmentsConfiguration {
@@ -3138,12 +3159,12 @@ export const AppliedAttachmentsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AppliedAttachmentsConfiguration",
 }) as any as S.Schema<AppliedAttachmentsConfiguration>;
-export type AutoSubscriptionStatus = "ENABLED" | "DISABLED";
+export type AutoSubscriptionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AutoSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface AutoSubscriptionConfiguration {
-  autoSubscribe?: AutoSubscriptionStatus | (string & {});
-  defaultSubscriptionType?: SubscriptionType | (string & {});
+  autoSubscribe?: AutoSubscriptionStatus;
+  defaultSubscriptionType?: SubscriptionType;
 }
 export const AutoSubscriptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3229,10 +3250,11 @@ export const GetChatControlsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChatControlsConfigurationRequest>;
 export type ResponseScope =
   | "ENTERPRISE_CONTENT_ONLY"
-  | "EXTENDED_KNOWLEDGE_ENABLED";
+  | "EXTENDED_KNOWLEDGE_ENABLED"
+  | (string & {});
 export const ResponseScope = /*@__PURE__*/ S.String;
 
-export type OrchestrationControl = "ENABLED" | "DISABLED";
+export type OrchestrationControl = "ENABLED" | "DISABLED" | (string & {});
 export const OrchestrationControl = /*@__PURE__*/ S.String;
 
 export interface AppliedOrchestrationConfiguration {
@@ -3276,7 +3298,10 @@ export const UsersAndGroups = /*@__PURE__*/ S.suspend(() =>
     userGroups: S.optional(UserGroups),
   }),
 ).annotate({ identifier: "UsersAndGroups" }) as any as S.Schema<UsersAndGroups>;
-export type RuleType = "CONTENT_BLOCKER_RULE" | "CONTENT_RETRIEVAL_RULE";
+export type RuleType =
+  | "CONTENT_BLOCKER_RULE"
+  | "CONTENT_RETRIEVAL_RULE"
+  | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 export interface ContentBlockerRule {
@@ -3319,7 +3344,7 @@ export const RuleConfiguration = /*@__PURE__*/ S.Union([
 export interface Rule {
   includedUsersAndGroups?: UsersAndGroups;
   excludedUsersAndGroups?: UsersAndGroups;
-  ruleType: RuleType | (string & {});
+  ruleType: RuleType;
   ruleConfiguration?: RuleConfiguration;
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -3350,7 +3375,7 @@ export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicConfiguration>;
 export type TopicConfigurations = TopicConfiguration[];
 export const TopicConfigurations = /*@__PURE__*/ S.Array(TopicConfiguration);
-export type CreatorModeControl = "ENABLED" | "DISABLED";
+export type CreatorModeControl = "ENABLED" | "DISABLED" | (string & {});
 export const CreatorModeControl = /*@__PURE__*/ S.String;
 
 export interface AppliedCreatorModeConfiguration {
@@ -3361,11 +3386,14 @@ export const AppliedCreatorModeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AppliedCreatorModeConfiguration",
 }) as any as S.Schema<AppliedCreatorModeConfiguration>;
-export type HallucinationReductionControl = "ENABLED" | "DISABLED";
+export type HallucinationReductionControl =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const HallucinationReductionControl = /*@__PURE__*/ S.String;
 
 export interface HallucinationReductionConfiguration {
-  hallucinationReductionControl?: HallucinationReductionControl | (string & {});
+  hallucinationReductionControl?: HallucinationReductionControl;
 }
 export const HallucinationReductionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3429,7 +3457,8 @@ export type ChatResponseConfigurationStatus =
   | "CREATING"
   | "UPDATING"
   | "FAILED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ChatResponseConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface ChatResponseConfigurationDetail {
@@ -3555,7 +3584,8 @@ export type DataSourceStatus =
   | "ACTIVE"
   | "DELETING"
   | "FAILED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 export interface GetDataSourceResponse {
@@ -3602,7 +3632,7 @@ export const GetDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataSourceResponse",
 }) as any as S.Schema<GetDataSourceResponse>;
-export type OutputFormat = "RAW" | "EXTRACTED";
+export type OutputFormat = "RAW" | "EXTRACTED" | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface GetDocumentContentRequest {
@@ -3610,7 +3640,7 @@ export interface GetDocumentContentRequest {
   indexId: string;
   dataSourceId?: string;
   documentId: string;
-  outputFormat?: OutputFormat | (string & {});
+  outputFormat?: OutputFormat;
 }
 export const GetDocumentContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3677,7 +3707,8 @@ export type GroupStatus =
   | "SUCCEEDED"
   | "PROCESSING"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const GroupStatus = /*@__PURE__*/ S.String;
 
 export interface GroupStatusDetail {
@@ -3737,20 +3768,26 @@ export type IndexStatus =
   | "ACTIVE"
   | "DELETING"
   | "FAILED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export type DocumentMetadataConfigurationName = string;
-export type AttributeType = "STRING" | "STRING_LIST" | "NUMBER" | "DATE";
+export type AttributeType =
+  | "STRING"
+  | "STRING_LIST"
+  | "NUMBER"
+  | "DATE"
+  | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
 
-export type Status = "ENABLED" | "DISABLED";
+export type Status = "ENABLED" | "DISABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeConfiguration {
   name?: string;
-  type?: AttributeType | (string & {});
-  search?: Status | (string & {});
+  type?: AttributeType;
+  search?: Status;
 }
 export const DocumentAttributeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3887,7 +3924,7 @@ export const GetPluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPluginRequest",
 }) as any as S.Schema<GetPluginRequest>;
-export type PluginState = "ENABLED" | "DISABLED";
+export type PluginState = "ENABLED" | "DISABLED" | (string & {});
 export const PluginState = /*@__PURE__*/ S.String;
 
 export interface GetPluginResponse {
@@ -3971,7 +4008,7 @@ export const GetRetrieverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRetrieverRequest",
 }) as any as S.Schema<GetRetrieverRequest>;
-export type RetrieverStatus = "CREATING" | "ACTIVE" | "FAILED";
+export type RetrieverStatus = "CREATING" | "ACTIVE" | "FAILED" | (string & {});
 export const RetrieverStatus = /*@__PURE__*/ S.String;
 
 export interface GetRetrieverResponse {
@@ -4061,7 +4098,8 @@ export type WebExperienceStatus =
   | "ACTIVE"
   | "DELETING"
   | "FAILED"
-  | "PENDING_AUTH_CONFIG";
+  | "PENDING_AUTH_CONFIG"
+  | (string & {});
 export const WebExperienceStatus = /*@__PURE__*/ S.String;
 
 export type SamlMetadataXML = string;
@@ -4515,7 +4553,8 @@ export type DataSourceSyncJobStatus =
   | "INCOMPLETE"
   | "STOPPING"
   | "ABORTED"
-  | "SYNCING_INDEXING";
+  | "SYNCING_INDEXING"
+  | (string & {});
 export const DataSourceSyncJobStatus = /*@__PURE__*/ S.String;
 
 export interface ListDataSourceSyncJobsRequest {
@@ -4526,7 +4565,7 @@ export interface ListDataSourceSyncJobsRequest {
   maxResults?: number;
   startTime?: Date;
   endTime?: Date;
-  statusFilter?: DataSourceSyncJobStatus | (string & {});
+  statusFilter?: DataSourceSyncJobStatus;
 }
 export const ListDataSourceSyncJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4656,7 +4695,8 @@ export type DocumentStatus =
   | "FAILED"
   | "DELETING"
   | "DELETED"
-  | "DOCUMENT_FAILED_TO_INDEX";
+  | "DOCUMENT_FAILED_TO_INDEX"
+  | (string & {});
 export const DocumentStatus = /*@__PURE__*/ S.String;
 
 export interface DocumentDetails {
@@ -4829,7 +4869,7 @@ export const ListMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMessagesRequest",
 }) as any as S.Schema<ListMessagesRequest>;
 export type MessageBody = string;
-export type MessageType = "USER" | "SYSTEM";
+export type MessageType = "USER" | "SYSTEM" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
 
 export interface Message {
@@ -4978,7 +5018,7 @@ export const ListPluginsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPluginsResponse>;
 export type MaxResultsIntegerForListPluginTypeActions = number;
 export interface ListPluginTypeActionsRequest {
-  pluginType: PluginType | (string & {});
+  pluginType: PluginType;
   nextToken?: string;
   maxResults?: number;
 }
@@ -5036,7 +5076,8 @@ export type PluginTypeCategory =
   | "Project management"
   | "Communication"
   | "Productivity"
-  | "Ticketing and incident management";
+  | "Ticketing and incident management"
+  | (string & {});
 export const PluginTypeCategory = /*@__PURE__*/ S.String;
 
 export interface PluginTypeMetadataSummary {
@@ -5267,7 +5308,7 @@ export const ListWebExperiencesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWebExperiencesResponse",
 }) as any as S.Schema<ListWebExperiencesResponse>;
 export type SystemMessageId = string;
-export type MessageUsefulness = "USEFUL" | "NOT_USEFUL";
+export type MessageUsefulness = "USEFUL" | "NOT_USEFUL" | (string & {});
 export const MessageUsefulness = /*@__PURE__*/ S.String;
 
 export type MessageUsefulnessReason =
@@ -5282,13 +5323,14 @@ export type MessageUsefulnessReason =
   | "NOT_BASED_ON_DOCUMENTS"
   | "NOT_COMPLETE"
   | "NOT_CONCISE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const MessageUsefulnessReason = /*@__PURE__*/ S.String;
 
 export type MessageUsefulnessComment = string;
 export interface MessageUsefulnessFeedback {
-  usefulness: MessageUsefulness | (string & {});
-  reason?: MessageUsefulnessReason | (string & {});
+  usefulness: MessageUsefulness;
+  reason?: MessageUsefulnessReason;
   comment?: string;
   submittedAt: Date;
 }
@@ -5344,7 +5386,7 @@ export const PutFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutFeedbackResponse>;
 export interface MemberGroup {
   groupName: string;
-  type?: MembershipType | (string & {});
+  type?: MembershipType;
 }
 export const MemberGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groupName: S.String, type: S.optional(MembershipType) }),
@@ -5354,7 +5396,7 @@ export const MemberGroups = /*@__PURE__*/ S.Array(MemberGroup);
 export type DataSourceUserId = string;
 export interface MemberUser {
   userId: string;
-  type?: MembershipType | (string & {});
+  type?: MembershipType;
 }
 export const MemberUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.String, type: S.optional(MembershipType) }),
@@ -5378,7 +5420,7 @@ export interface PutGroupRequest {
   indexId: string;
   groupName: string;
   dataSourceId?: string;
-  type: MembershipType | (string & {});
+  type: MembershipType;
   groupMembers: GroupMembers;
   roleArn?: string;
 }
@@ -5464,7 +5506,8 @@ export type ScoreConfidence =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "NOT_AVAILABLE";
+  | "NOT_AVAILABLE"
+  | (string & {});
 export const ScoreConfidence = /*@__PURE__*/ S.String;
 
 export interface ScoreAttributes {
@@ -5673,7 +5716,7 @@ export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
 export interface OrchestrationConfiguration {
-  control: OrchestrationControl | (string & {});
+  control: OrchestrationControl;
 }
 export const OrchestrationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ control: OrchestrationControl }),
@@ -5695,7 +5738,7 @@ export const BlockedPhrasesConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "BlockedPhrasesConfigurationUpdate",
 }) as any as S.Schema<BlockedPhrasesConfigurationUpdate>;
 export interface CreatorModeConfiguration {
-  creatorModeControl: CreatorModeControl | (string & {});
+  creatorModeControl: CreatorModeControl;
 }
 export const CreatorModeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ creatorModeControl: CreatorModeControl }),
@@ -5705,7 +5748,7 @@ export const CreatorModeConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChatControlsConfigurationRequest {
   applicationId: string;
   clientToken?: string;
-  responseScope?: ResponseScope | (string & {});
+  responseScope?: ResponseScope;
   orchestrationConfiguration?: OrchestrationConfiguration;
   blockedPhrasesConfigurationUpdate?: BlockedPhrasesConfigurationUpdate;
   topicConfigurationsToCreateOrUpdate?: TopicConfiguration[];
@@ -5920,7 +5963,7 @@ export interface UpdatePluginRequest {
   applicationId: string;
   pluginId: string;
   displayName?: string;
-  state?: PluginState | (string & {});
+  state?: PluginState;
   serverUrl?: string;
   customPluginConfiguration?: CustomPluginConfiguration;
   authConfiguration?: PluginAuthConfiguration;
@@ -5995,7 +6038,7 @@ export const UpdateRetrieverResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSubscriptionRequest {
   applicationId: string;
   subscriptionId: string;
-  type: SubscriptionType | (string & {});
+  type: SubscriptionType;
 }
 export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6082,9 +6125,7 @@ export interface UpdateWebExperienceRequest {
   title?: string;
   subtitle?: string;
   welcomeMessage?: string;
-  samplePromptsControlMode?:
-    | WebExperienceSamplePromptsControlMode
-    | (string & {});
+  samplePromptsControlMode?: WebExperienceSamplePromptsControlMode;
   identityProviderConfiguration?: IdentityProviderConfiguration;
   origins?: string[];
   browserExtensionConfiguration?: BrowserExtensionConfiguration;
@@ -6129,7 +6170,8 @@ export const UpdateWebExperienceResponse = /*@__PURE__*/ S.suspend(() =>
 export type ValidationExceptionReason =
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
-  | "UNKNOWN_OPERATION";
+  | "UNKNOWN_OPERATION"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

@@ -444,7 +444,7 @@ export type NamespacedFunctionName = string;
 export type Action = string;
 export type Principal = string;
 export type Arn = string;
-export type FunctionUrlAuthType = "NONE" | "AWS_IAM";
+export type FunctionUrlAuthType = "NONE" | "AWS_IAM" | (string & {});
 export const FunctionUrlAuthType = /*@__PURE__*/ S.String;
 
 export type InvokedViaFunctionUrl = boolean;
@@ -458,7 +458,7 @@ export interface AddPermissionRequest {
   Action: string;
   Principal: string;
   SourceArn?: string;
-  FunctionUrlAuthType?: FunctionUrlAuthType | (string & {});
+  FunctionUrlAuthType?: FunctionUrlAuthType;
   InvokedViaFunctionUrl?: boolean;
   SourceAccount?: string;
   EventSourceToken?: string;
@@ -514,11 +514,18 @@ export type OperationType =
   | "STEP"
   | "WAIT"
   | "CALLBACK"
-  | "CHAINED_INVOKE";
+  | "CHAINED_INVOKE"
+  | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type OperationSubType = string;
-export type OperationAction = "START" | "SUCCEED" | "FAIL" | "RETRY" | "CANCEL";
+export type OperationAction =
+  | "START"
+  | "SUCCEED"
+  | "FAIL"
+  | "RETRY"
+  | "CANCEL"
+  | (string & {});
 export const OperationAction = /*@__PURE__*/ S.String;
 
 export type OperationPayload = string | redacted.Redacted<string>;
@@ -588,9 +595,9 @@ export interface OperationUpdate {
   Id: string;
   ParentId?: string;
   Name?: string;
-  Type: OperationType | (string & {});
+  Type: OperationType;
   SubType?: string;
-  Action: OperationAction | (string & {});
+  Action: OperationAction;
   Payload?: string | redacted.Redacted<string>;
   Error?: ErrorObject;
   ContextOptions?: ContextOptions;
@@ -658,7 +665,8 @@ export type OperationStatus =
   | "FAILED"
   | "CANCELLED"
   | "TIMED_OUT"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export type InputPayload = string | redacted.Redacted<string>;
@@ -895,16 +903,16 @@ export const CapacityProviderPermissionsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityProviderPermissionsConfig",
 }) as any as S.Schema<CapacityProviderPermissionsConfig>;
-export type Architecture = "x86_64" | "arm64";
+export type Architecture = "x86_64" | "arm64" | (string & {});
 export const Architecture = /*@__PURE__*/ S.String;
 
-export type ArchitecturesList = (Architecture | (string & {}))[];
+export type ArchitecturesList = Architecture[];
 export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
 export type InstanceType = string;
 export type InstanceTypeSet = string[];
 export const InstanceTypeSet = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceRequirements {
-  Architectures?: (Architecture | (string & {}))[];
+  Architectures?: Architecture[];
   AllowedInstanceTypes?: string[];
   ExcludedInstanceTypes?: string[];
 }
@@ -918,16 +926,17 @@ export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceRequirements",
 }) as any as S.Schema<InstanceRequirements>;
 export type CapacityProviderMaxVCpuCount = number;
-export type CapacityProviderScalingMode = "Auto" | "Manual";
+export type CapacityProviderScalingMode = "Auto" | "Manual" | (string & {});
 export const CapacityProviderScalingMode = /*@__PURE__*/ S.String;
 
 export type CapacityProviderPredefinedMetricType =
-  "LambdaCapacityProviderAverageCPUUtilization";
+  | "LambdaCapacityProviderAverageCPUUtilization"
+  | (string & {});
 export const CapacityProviderPredefinedMetricType = /*@__PURE__*/ S.String;
 
 export type MetricTargetValue = number;
 export interface TargetTrackingScalingPolicy {
-  PredefinedMetricType: CapacityProviderPredefinedMetricType | (string & {});
+  PredefinedMetricType: CapacityProviderPredefinedMetricType;
   TargetValue: number;
 }
 export const TargetTrackingScalingPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -944,7 +953,7 @@ export const CapacityProviderScalingPoliciesList = /*@__PURE__*/ S.Array(
 );
 export interface CapacityProviderScalingConfig {
   MaxVCpuCount?: number;
-  ScalingMode?: CapacityProviderScalingMode | (string & {});
+  ScalingMode?: CapacityProviderScalingMode;
   ScalingPolicies?: TargetTrackingScalingPolicy[];
 }
 export const CapacityProviderScalingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -961,11 +970,11 @@ export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export type PropagateTagsMode = "None" | "Explicit";
+export type PropagateTagsMode = "None" | "Explicit" | (string & {});
 export const PropagateTagsMode = /*@__PURE__*/ S.String;
 
 export interface PropagateTags {
-  Mode?: PropagateTagsMode | (string & {});
+  Mode?: PropagateTagsMode;
   ExplicitTags?: { [key: string]: string | undefined };
 }
 export const PropagateTags = /*@__PURE__*/ S.suspend(() =>
@@ -1012,7 +1021,8 @@ export type CapacityProviderState =
   | "Pending"
   | "Active"
   | "Failed"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const CapacityProviderState = /*@__PURE__*/ S.String;
 
 export type KMSKeyArn = string;
@@ -1060,11 +1070,11 @@ export const AllowedPublishers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllowedPublishers",
 }) as any as S.Schema<AllowedPublishers>;
-export type CodeSigningPolicy = "Warn" | "Enforce";
+export type CodeSigningPolicy = "Warn" | "Enforce" | (string & {});
 export const CodeSigningPolicy = /*@__PURE__*/ S.String;
 
 export interface CodeSigningPolicies {
-  UntrustedArtifactOnDeployment?: CodeSigningPolicy | (string & {});
+  UntrustedArtifactOnDeployment?: CodeSigningPolicy;
 }
 export const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UntrustedArtifactOnDeployment: S.optional(CodeSigningPolicy) }),
@@ -1146,29 +1156,31 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
 export type EventSourceMappingMetric =
   | "EventCount"
   | "ErrorCount"
-  | "KafkaMetrics";
+  | "KafkaMetrics"
+  | (string & {});
 export const EventSourceMappingMetric = /*@__PURE__*/ S.String;
 
-export type EventSourceMappingMetricList = (
-  | EventSourceMappingMetric
-  | (string & {})
-)[];
+export type EventSourceMappingMetricList = EventSourceMappingMetric[];
 export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(
   EventSourceMappingMetric,
 );
 export interface EventSourceMappingMetricsConfig {
-  Metrics?: (EventSourceMappingMetric | (string & {}))[];
+  Metrics?: EventSourceMappingMetric[];
 }
 export const EventSourceMappingMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Metrics: S.optional(EventSourceMappingMetricList) }),
 ).annotate({
   identifier: "EventSourceMappingMetricsConfig",
 }) as any as S.Schema<EventSourceMappingMetricsConfig>;
-export type EventSourceMappingSystemLogLevel = "DEBUG" | "INFO" | "WARN";
+export type EventSourceMappingSystemLogLevel =
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | (string & {});
 export const EventSourceMappingSystemLogLevel = /*@__PURE__*/ S.String;
 
 export interface EventSourceMappingLoggingConfig {
-  SystemLogLevel?: EventSourceMappingSystemLogLevel | (string & {});
+  SystemLogLevel?: EventSourceMappingSystemLogLevel;
 }
 export const EventSourceMappingLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SystemLogLevel: S.optional(EventSourceMappingSystemLogLevel) }),
@@ -1184,7 +1196,11 @@ export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
 export type MaximumBatchingWindowInSeconds = number;
 export type ParallelizationFactor = number;
-export type EventSourcePosition = "TRIM_HORIZON" | "LATEST" | "AT_TIMESTAMP";
+export type EventSourcePosition =
+  | "TRIM_HORIZON"
+  | "LATEST"
+  | "AT_TIMESTAMP"
+  | (string & {});
 export const EventSourcePosition = /*@__PURE__*/ S.String;
 
 export type DestinationArn = string;
@@ -1230,12 +1246,13 @@ export type SourceAccessType =
   | "SASL_SCRAM_256_AUTH"
   | "VIRTUAL_HOST"
   | "CLIENT_CERTIFICATE_TLS_AUTH"
-  | "SERVER_ROOT_CA_CERTIFICATE";
+  | "SERVER_ROOT_CA_CERTIFICATE"
+  | (string & {});
 export const SourceAccessType = /*@__PURE__*/ S.String;
 
 export type URI = string;
 export interface SourceAccessConfiguration {
-  Type?: SourceAccessType | (string & {});
+  Type?: SourceAccessType;
   URI?: string;
 }
 export const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1247,13 +1264,13 @@ export type SourceAccessConfigurations = SourceAccessConfiguration[];
 export const SourceAccessConfigurations = /*@__PURE__*/ S.Array(
   SourceAccessConfiguration,
 );
-export type EndPointType = "KAFKA_BOOTSTRAP_SERVERS";
+export type EndPointType = "KAFKA_BOOTSTRAP_SERVERS" | (string & {});
 export const EndPointType = /*@__PURE__*/ S.String;
 
 export type Endpoint = string;
 export type EndpointLists = string[];
 export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
-export type Endpoints = { [key in EndPointType | (string & {})]?: string[] };
+export type Endpoints = { [key in EndPointType]?: string[] };
 export const Endpoints = /*@__PURE__*/ S.Record(
   EndPointType,
   EndpointLists.pipe(S.optional),
@@ -1266,24 +1283,25 @@ export const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelfManagedEventSource",
 }) as any as S.Schema<SelfManagedEventSource>;
-export type FunctionResponseType = "ReportBatchItemFailures";
+export type FunctionResponseType = "ReportBatchItemFailures" | (string & {});
 export const FunctionResponseType = /*@__PURE__*/ S.String;
 
-export type FunctionResponseTypeList = (FunctionResponseType | (string & {}))[];
+export type FunctionResponseTypeList = FunctionResponseType[];
 export const FunctionResponseTypeList =
   /*@__PURE__*/ S.Array(FunctionResponseType);
 export type SchemaRegistryUri = string;
-export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE";
+export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE" | (string & {});
 export const SchemaRegistryEventRecordFormat = /*@__PURE__*/ S.String;
 
 export type KafkaSchemaRegistryAuthType =
   | "BASIC_AUTH"
   | "CLIENT_CERTIFICATE_TLS_AUTH"
-  | "SERVER_ROOT_CA_CERTIFICATE";
+  | "SERVER_ROOT_CA_CERTIFICATE"
+  | (string & {});
 export const KafkaSchemaRegistryAuthType = /*@__PURE__*/ S.String;
 
 export interface KafkaSchemaRegistryAccessConfig {
-  Type?: KafkaSchemaRegistryAuthType | (string & {});
+  Type?: KafkaSchemaRegistryAuthType;
   URI?: string;
 }
 export const KafkaSchemaRegistryAccessConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1299,11 +1317,11 @@ export type KafkaSchemaRegistryAccessConfigList =
 export const KafkaSchemaRegistryAccessConfigList = /*@__PURE__*/ S.Array(
   KafkaSchemaRegistryAccessConfig,
 );
-export type KafkaSchemaValidationAttribute = "KEY" | "VALUE";
+export type KafkaSchemaValidationAttribute = "KEY" | "VALUE" | (string & {});
 export const KafkaSchemaValidationAttribute = /*@__PURE__*/ S.String;
 
 export interface KafkaSchemaValidationConfig {
-  Attribute?: KafkaSchemaValidationAttribute | (string & {});
+  Attribute?: KafkaSchemaValidationAttribute;
 }
 export const KafkaSchemaValidationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attribute: S.optional(KafkaSchemaValidationAttribute) }),
@@ -1316,7 +1334,7 @@ export const KafkaSchemaValidationConfigList = /*@__PURE__*/ S.Array(
 );
 export interface KafkaSchemaRegistryConfig {
   SchemaRegistryURI?: string;
-  EventRecordFormat?: SchemaRegistryEventRecordFormat | (string & {});
+  EventRecordFormat?: SchemaRegistryEventRecordFormat;
   AccessConfigs?: KafkaSchemaRegistryAccessConfig[];
   SchemaValidationConfigs?: KafkaSchemaValidationConfig[];
 }
@@ -1356,13 +1374,13 @@ export const SelfManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
 export type DatabaseName = string;
 export type CollectionName = string;
-export type FullDocument = "UpdateLookup" | "Default";
+export type FullDocument = "UpdateLookup" | "Default" | (string & {});
 export const FullDocument = /*@__PURE__*/ S.String;
 
 export interface DocumentDBEventSourceConfig {
   DatabaseName?: string;
   CollectionName?: string;
-  FullDocument?: FullDocument | (string & {});
+  FullDocument?: FullDocument;
 }
 export const DocumentDBEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1402,7 +1420,7 @@ export interface CreateEventSourceMappingRequest {
   ScalingConfig?: ScalingConfig;
   MaximumBatchingWindowInSeconds?: number;
   ParallelizationFactor?: number;
-  StartingPosition?: EventSourcePosition | (string & {});
+  StartingPosition?: EventSourcePosition;
   StartingPositionTimestamp?: Date;
   DestinationConfig?: DestinationConfig;
   MaximumRecordAgeInSeconds?: number;
@@ -1414,7 +1432,7 @@ export interface CreateEventSourceMappingRequest {
   Queues?: string[];
   SourceAccessConfigurations?: SourceAccessConfiguration[];
   SelfManagedEventSource?: SelfManagedEventSource;
-  FunctionResponseTypes?: (FunctionResponseType | (string & {}))[];
+  FunctionResponseTypes?: FunctionResponseType[];
   AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
   SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
@@ -1608,14 +1626,15 @@ export type Runtime =
   | "ruby4.0"
   | "provided"
   | "provided.al2"
-  | "provided.al2023";
+  | "provided.al2023"
+  | (string & {});
 export const Runtime = /*@__PURE__*/ S.String;
 
 export type Handler = string;
 export type S3Bucket = string;
 export type S3Key = string;
 export type S3ObjectVersion = string;
-export type S3ObjectStorageMode = "COPY" | "REFERENCE";
+export type S3ObjectStorageMode = "COPY" | "REFERENCE" | (string & {});
 export const S3ObjectStorageMode = /*@__PURE__*/ S.String;
 
 export interface FunctionCode {
@@ -1623,7 +1642,7 @@ export interface FunctionCode {
   S3Bucket?: string;
   S3Key?: string;
   S3ObjectVersion?: string;
-  S3ObjectStorageMode?: S3ObjectStorageMode | (string & {});
+  S3ObjectStorageMode?: S3ObjectStorageMode;
   ImageUri?: string;
   SourceKMSKeyArn?: string;
 }
@@ -1640,7 +1659,7 @@ export const FunctionCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionCode" }) as any as S.Schema<FunctionCode>;
 export type Timeout = number;
 export type MemorySize = number;
-export type FunctionVersionLatestPublished = "LATEST_PUBLISHED";
+export type FunctionVersionLatestPublished = "LATEST_PUBLISHED" | (string & {});
 export const FunctionVersionLatestPublished = /*@__PURE__*/ S.String;
 
 export type SubnetIds = string[];
@@ -1659,7 +1678,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
     Ipv6AllowedForDualStack: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type PackageType = "Zip" | "Image";
+export type PackageType = "Zip" | "Image" | (string & {});
 export const PackageType = /*@__PURE__*/ S.String;
 
 export type ResourceArn = string;
@@ -1686,11 +1705,11 @@ export interface Environment {
 export const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Variables: S.optional(EnvironmentVariables) }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
-export type TracingMode = "Active" | "PassThrough";
+export type TracingMode = "Active" | "PassThrough" | (string & {});
 export const TracingMode = /*@__PURE__*/ S.String;
 
 export interface TracingConfig {
-  Mode?: TracingMode | (string & {});
+  Mode?: TracingMode;
 }
 export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(TracingMode) }),
@@ -1735,16 +1754,16 @@ export const EphemeralStorage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EphemeralStorage",
 }) as any as S.Schema<EphemeralStorage>;
-export type SnapStartApplyOn = "PublishedVersions" | "None";
+export type SnapStartApplyOn = "PublishedVersions" | "None" | (string & {});
 export const SnapStartApplyOn = /*@__PURE__*/ S.String;
 
 export interface SnapStart {
-  ApplyOn?: SnapStartApplyOn | (string & {});
+  ApplyOn?: SnapStartApplyOn;
 }
 export const SnapStart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplyOn: S.optional(SnapStartApplyOn) }),
 ).annotate({ identifier: "SnapStart" }) as any as S.Schema<SnapStart>;
-export type LogFormat = "JSON" | "Text";
+export type LogFormat = "JSON" | "Text" | (string & {});
 export const LogFormat = /*@__PURE__*/ S.String;
 
 export type ApplicationLogLevel =
@@ -1753,17 +1772,18 @@ export type ApplicationLogLevel =
   | "INFO"
   | "WARN"
   | "ERROR"
-  | "FATAL";
+  | "FATAL"
+  | (string & {});
 export const ApplicationLogLevel = /*@__PURE__*/ S.String;
 
-export type SystemLogLevel = "DEBUG" | "INFO" | "WARN";
+export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
 export const SystemLogLevel = /*@__PURE__*/ S.String;
 
 export type LogGroup = string;
 export interface LoggingConfig {
-  LogFormat?: LogFormat | (string & {});
-  ApplicationLogLevel?: ApplicationLogLevel | (string & {});
-  SystemLogLevel?: SystemLogLevel | (string & {});
+  LogFormat?: LogFormat;
+  ApplicationLogLevel?: ApplicationLogLevel;
+  SystemLogLevel?: SystemLogLevel;
   LogGroup?: string;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1774,11 +1794,11 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
     LogGroup: S.optional(S.String),
   }),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
-export type TenantIsolationMode = "PER_TENANT";
+export type TenantIsolationMode = "PER_TENANT" | (string & {});
 export const TenantIsolationMode = /*@__PURE__*/ S.String;
 
 export interface TenancyConfig {
-  TenantIsolationMode: TenantIsolationMode | (string & {});
+  TenantIsolationMode: TenantIsolationMode;
 }
 export const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TenantIsolationMode: TenantIsolationMode }),
@@ -1825,7 +1845,7 @@ export const DurableConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DurableConfig" }) as any as S.Schema<DurableConfig>;
 export interface CreateFunctionRequest {
   FunctionName: string;
-  Runtime?: Runtime | (string & {});
+  Runtime?: Runtime;
   Role: string;
   Handler?: string;
   Code: FunctionCode;
@@ -1833,9 +1853,9 @@ export interface CreateFunctionRequest {
   Timeout?: number;
   MemorySize?: number;
   Publish?: boolean;
-  PublishTo?: FunctionVersionLatestPublished | (string & {});
+  PublishTo?: FunctionVersionLatestPublished;
   VpcConfig?: VpcConfig;
-  PackageType?: PackageType | (string & {});
+  PackageType?: PackageType;
   DeadLetterConfig?: DeadLetterConfig;
   Environment?: Environment;
   KMSKeyArn?: string;
@@ -1845,7 +1865,7 @@ export interface CreateFunctionRequest {
   FileSystemConfigs?: FileSystemConfig[];
   CodeSigningConfigArn?: string;
   ImageConfig?: ImageConfig;
-  Architectures?: (Architecture | (string & {}))[];
+  Architectures?: Architecture[];
   EphemeralStorage?: EphemeralStorage;
   SnapStart?: SnapStart;
   LoggingConfig?: LoggingConfig;
@@ -1971,7 +1991,8 @@ export type State =
   | "Deactivating"
   | "Deactivated"
   | "ActiveNonInvocable"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 export type StateReason = string;
@@ -2015,10 +2036,15 @@ export type StateReasonCode =
   | "FunctionError.InitResourceExhausted"
   | "DisallowedByVpcEncryptionControl"
   | "DrainingDurableExecutions"
-  | "Creating";
+  | "Creating"
+  | (string & {});
 export const StateReasonCode = /*@__PURE__*/ S.String;
 
-export type LastUpdateStatus = "Successful" | "Failed" | "InProgress";
+export type LastUpdateStatus =
+  | "Successful"
+  | "Failed"
+  | "InProgress"
+  | (string & {});
 export const LastUpdateStatus = /*@__PURE__*/ S.String;
 
 export type LastUpdateStatusReason = string;
@@ -2058,7 +2084,8 @@ export type LastUpdateStatusReasonCode =
   | "FunctionError.TooManyExtensions"
   | "FunctionError.InitResourceExhausted"
   | "DisallowedByVpcEncryptionControl"
-  | "Creating";
+  | "Creating"
+  | (string & {});
 export const LastUpdateStatusReasonCode = /*@__PURE__*/ S.String;
 
 export interface ImageConfigError {
@@ -2085,7 +2112,7 @@ export const ImageConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageConfigResponse",
 }) as any as S.Schema<ImageConfigResponse>;
-export type SnapStartOptimizationStatus = "On" | "Off";
+export type SnapStartOptimizationStatus = "On" | "Off" | (string & {});
 export const SnapStartOptimizationStatus = /*@__PURE__*/ S.String;
 
 export interface SnapStartResponse {
@@ -2244,15 +2271,15 @@ export const Cors = /*@__PURE__*/ S.suspend(() =>
     MaxAge: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Cors" }) as any as S.Schema<Cors>;
-export type InvokeMode = "BUFFERED" | "RESPONSE_STREAM";
+export type InvokeMode = "BUFFERED" | "RESPONSE_STREAM" | (string & {});
 export const InvokeMode = /*@__PURE__*/ S.String;
 
 export interface CreateFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
-  AuthType: FunctionUrlAuthType | (string & {});
+  AuthType: FunctionUrlAuthType;
   Cors?: Cors;
-  InvokeMode?: InvokeMode | (string & {});
+  InvokeMode?: InvokeMode;
 }
 export const CreateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2777,7 +2804,8 @@ export type ExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "TIMED_OUT"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export type XAmznTraceId = string;
@@ -2876,7 +2904,8 @@ export type EventType =
   | "CallbackSucceeded"
   | "CallbackFailed"
   | "CallbackTimedOut"
-  | "InvocationCompleted";
+  | "InvocationCompleted"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventId = number;
@@ -3526,7 +3555,7 @@ export const GetFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFunctionRecursionConfigRequest",
 }) as any as S.Schema<GetFunctionRecursionConfigRequest>;
-export type RecursiveLoop = "Allow" | "Terminate";
+export type RecursiveLoop = "Allow" | "Terminate" | (string & {});
 export const RecursiveLoop = /*@__PURE__*/ S.String;
 
 export interface GetFunctionRecursionConfigResponse {
@@ -3680,9 +3709,9 @@ export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "LayerVersionContentOutput",
 }) as any as S.Schema<LayerVersionContentOutput>;
 export type LayerArn = string;
-export type CompatibleArchitectures = (Architecture | (string & {}))[];
+export type CompatibleArchitectures = Architecture[];
 export const CompatibleArchitectures = /*@__PURE__*/ S.Array(Architecture);
-export type CompatibleRuntimes = (Runtime | (string & {}))[];
+export type CompatibleRuntimes = Runtime[];
 export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
 export type LicenseInfo = string;
 export interface GetLayerVersionResponse {
@@ -3824,7 +3853,8 @@ export type NonNegativeInteger = number;
 export type ProvisionedConcurrencyStatusEnum =
   | "IN_PROGRESS"
   | "READY"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ProvisionedConcurrencyStatusEnum = /*@__PURE__*/ S.String;
 
 export interface GetProvisionedConcurrencyConfigResponse {
@@ -3872,7 +3902,11 @@ export const GetRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRuntimeManagementConfigRequest",
 }) as any as S.Schema<GetRuntimeManagementConfigRequest>;
-export type UpdateRuntimeOn = "Auto" | "Manual" | "FunctionUpdate";
+export type UpdateRuntimeOn =
+  | "Auto"
+  | "Manual"
+  | "FunctionUpdate"
+  | (string & {});
 export const UpdateRuntimeOn = /*@__PURE__*/ S.String;
 
 export interface GetRuntimeManagementConfigResponse {
@@ -3889,16 +3923,20 @@ export const GetRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRuntimeManagementConfigResponse",
 }) as any as S.Schema<GetRuntimeManagementConfigResponse>;
-export type InvocationType = "Event" | "RequestResponse" | "DryRun";
+export type InvocationType =
+  | "Event"
+  | "RequestResponse"
+  | "DryRun"
+  | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
 
-export type LogType = "None" | "Tail";
+export type LogType = "None" | "Tail" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
 export interface InvocationRequest {
   FunctionName: string;
-  InvocationType?: InvocationType | (string & {});
-  LogType?: LogType | (string & {});
+  InvocationType?: InvocationType;
+  LogType?: LogType;
   ClientContext?: string;
   DurableExecutionName?: string;
   Payload?: T.StreamingInputBody;
@@ -3996,13 +4034,16 @@ export const InvokeAsyncResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeAsyncResponse",
 }) as any as S.Schema<InvokeAsyncResponse>;
-export type ResponseStreamingInvocationType = "RequestResponse" | "DryRun";
+export type ResponseStreamingInvocationType =
+  | "RequestResponse"
+  | "DryRun"
+  | (string & {});
 export const ResponseStreamingInvocationType = /*@__PURE__*/ S.String;
 
 export interface InvokeWithResponseStreamRequest {
   FunctionName: string;
-  InvocationType?: ResponseStreamingInvocationType | (string & {});
-  LogType?: LogType | (string & {});
+  InvocationType?: ResponseStreamingInvocationType;
+  LogType?: LogType;
   ClientContext?: string;
   Qualifier?: string;
   Payload?: T.StreamingInputBody;
@@ -4146,7 +4187,7 @@ export const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAliasesResponse>;
 export type MaxFiftyListItems = number;
 export interface ListCapacityProvidersRequest {
-  State?: CapacityProviderState | (string & {});
+  State?: CapacityProviderState;
   Marker?: string;
   MaxItems?: number;
 }
@@ -4217,13 +4258,13 @@ export const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCodeSigningConfigsResponse",
 }) as any as S.Schema<ListCodeSigningConfigsResponse>;
-export type ExecutionStatusList = (ExecutionStatus | (string & {}))[];
+export type ExecutionStatusList = ExecutionStatus[];
 export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
 export interface ListDurableExecutionsByFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
   DurableExecutionName?: string;
-  Statuses?: (ExecutionStatus | (string & {}))[];
+  Statuses?: ExecutionStatus[];
   StartedAfter?: Date;
   StartedBefore?: Date;
   ReverseOrder?: boolean;
@@ -4384,12 +4425,12 @@ export const ListFunctionEventInvokeConfigsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListFunctionEventInvokeConfigsResponse",
 }) as any as S.Schema<ListFunctionEventInvokeConfigsResponse>;
 export type MasterRegion = string;
-export type FunctionVersion = "ALL";
+export type FunctionVersion = "ALL" | (string & {});
 export const FunctionVersion = /*@__PURE__*/ S.String;
 
 export interface ListFunctionsRequest {
   MasterRegion?: string;
-  FunctionVersion?: FunctionVersion | (string & {});
+  FunctionVersion?: FunctionVersion;
   Marker?: string;
   MaxItems?: number;
 }
@@ -4592,8 +4633,8 @@ export const ListFunctionVersionsByCapacityProviderResponse =
   }) as any as S.Schema<ListFunctionVersionsByCapacityProviderResponse>;
 export type MaxLayerListItems = number;
 export interface ListLayersRequest {
-  CompatibleArchitecture?: Architecture | (string & {});
-  CompatibleRuntime?: Runtime | (string & {});
+  CompatibleArchitecture?: Architecture;
+  CompatibleRuntime?: Runtime;
   Marker?: string;
   MaxItems?: number;
 }
@@ -4669,8 +4710,8 @@ export const ListLayersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLayersResponse",
 }) as any as S.Schema<ListLayersResponse>;
 export interface ListLayerVersionsRequest {
-  CompatibleArchitecture?: Architecture | (string & {});
-  CompatibleRuntime?: Runtime | (string & {});
+  CompatibleArchitecture?: Architecture;
+  CompatibleRuntime?: Runtime;
   LayerName: string;
   Marker?: string;
   MaxItems?: number;
@@ -4852,7 +4893,7 @@ export interface LayerVersionContentInput {
   S3Bucket?: string;
   S3Key?: string;
   S3ObjectVersion?: string;
-  S3ObjectStorageMode?: S3ObjectStorageMode | (string & {});
+  S3ObjectStorageMode?: S3ObjectStorageMode;
   ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
 export const LayerVersionContentInput = /*@__PURE__*/ S.suspend(() =>
@@ -4870,8 +4911,8 @@ export interface PublishLayerVersionRequest {
   LayerName: string;
   Description?: string;
   Content: LayerVersionContentInput;
-  CompatibleArchitectures?: (Architecture | (string & {}))[];
-  CompatibleRuntimes?: (Runtime | (string & {}))[];
+  CompatibleArchitectures?: Architecture[];
+  CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
 export const PublishLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4929,7 +4970,7 @@ export interface PublishVersionRequest {
   CodeSha256?: string;
   Description?: string;
   RevisionId?: string;
-  PublishTo?: FunctionVersionLatestPublished | (string & {});
+  PublishTo?: FunctionVersionLatestPublished;
 }
 export const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5043,7 +5084,7 @@ export const PutFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutFunctionEventInvokeConfigRequest>;
 export interface PutFunctionRecursionConfigRequest {
   FunctionName: string;
-  RecursiveLoop: RecursiveLoop | (string & {});
+  RecursiveLoop: RecursiveLoop;
 }
 export const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5158,7 +5199,7 @@ export const PutProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(
 export interface PutRuntimeManagementConfigRequest {
   FunctionName: string;
   Qualifier?: string;
-  UpdateRuntimeOn: UpdateRuntimeOn | (string & {});
+  UpdateRuntimeOn: UpdateRuntimeOn;
   RuntimeVersionArn?: string;
 }
 export const PutRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5566,7 +5607,7 @@ export interface UpdateEventSourceMappingRequest {
   MaximumRetryAttempts?: number;
   TumblingWindowInSeconds?: number;
   SourceAccessConfigurations?: SourceAccessConfiguration[];
-  FunctionResponseTypes?: (FunctionResponseType | (string & {}))[];
+  FunctionResponseTypes?: FunctionResponseType[];
   AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
   SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
@@ -5622,11 +5663,11 @@ export interface UpdateFunctionCodeRequest {
   S3Bucket?: string;
   S3Key?: string;
   S3ObjectVersion?: string;
-  S3ObjectStorageMode?: S3ObjectStorageMode | (string & {});
+  S3ObjectStorageMode?: S3ObjectStorageMode;
   ImageUri?: string;
-  Architectures?: (Architecture | (string & {}))[];
+  Architectures?: Architecture[];
   Publish?: boolean;
-  PublishTo?: FunctionVersionLatestPublished | (string & {});
+  PublishTo?: FunctionVersionLatestPublished;
   DryRun?: boolean;
   RevisionId?: string;
   SourceKMSKeyArn?: string;
@@ -5671,7 +5712,7 @@ export interface UpdateFunctionConfigurationRequest {
   MemorySize?: number;
   VpcConfig?: VpcConfig;
   Environment?: Environment;
-  Runtime?: Runtime | (string & {});
+  Runtime?: Runtime;
   DeadLetterConfig?: DeadLetterConfig;
   KMSKeyArn?: string;
   TracingConfig?: TracingConfig;
@@ -5758,9 +5799,9 @@ export const UpdateFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(
 export interface UpdateFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
-  AuthType?: FunctionUrlAuthType | (string & {});
+  AuthType?: FunctionUrlAuthType;
   Cors?: Cors;
-  InvokeMode?: InvokeMode | (string & {});
+  InvokeMode?: InvokeMode;
 }
 export const UpdateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5813,7 +5854,8 @@ export type ThrottleReason =
   | "ReservedFunctionConcurrentInvocationLimitExceeded"
   | "ReservedFunctionInvocationRateLimitExceeded"
   | "CallerRateLimitExceeded"
-  | "ConcurrentSnapshotCreateLimitExceeded";
+  | "ConcurrentSnapshotCreateLimitExceeded"
+  | (string & {});
 export const ThrottleReason = /*@__PURE__*/ S.String;
 
 export type AddLayerVersionPermissionError =

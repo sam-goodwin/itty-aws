@@ -690,16 +690,17 @@ export const PreparedStatementParameters = /*@__PURE__*/ S.Array(
   S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 );
 export type ConsistentRead = boolean;
-export type ReturnValuesOnConditionCheckFailure = "ALL_OLD" | "NONE";
+export type ReturnValuesOnConditionCheckFailure =
+  | "ALL_OLD"
+  | "NONE"
+  | (string & {});
 export const ReturnValuesOnConditionCheckFailure = /*@__PURE__*/ S.String;
 
 export interface BatchStatementRequest {
   Statement: string;
   Parameters?: AttributeValue[];
   ConsistentRead?: boolean;
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const BatchStatementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -715,12 +716,16 @@ export const BatchStatementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchStatementRequest>;
 export type PartiQLBatchRequest = BatchStatementRequest[];
 export const PartiQLBatchRequest = /*@__PURE__*/ S.Array(BatchStatementRequest);
-export type ReturnConsumedCapacity = "INDEXES" | "TOTAL" | "NONE";
+export type ReturnConsumedCapacity =
+  | "INDEXES"
+  | "TOTAL"
+  | "NONE"
+  | (string & {});
 export const ReturnConsumedCapacity = /*@__PURE__*/ S.String;
 
 export interface BatchExecuteStatementInput {
   Statements: BatchStatementRequest[];
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
 export const BatchExecuteStatementInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -751,7 +756,8 @@ export type BatchStatementErrorCodeEnum =
   | "InternalServerError"
   | "ResourceNotFound"
   | "AccessDenied"
-  | "DuplicateItem";
+  | "DuplicateItem"
+  | (string & {});
 export const BatchStatementErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
@@ -897,7 +903,7 @@ export const BatchGetRequestMap = /*@__PURE__*/ S.Record(
 );
 export interface BatchGetItemInput {
   RequestItems: { [key: string]: KeysAndAttributes | undefined };
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
 export const BatchGetItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -982,13 +988,13 @@ export const BatchWriteItemRequestMap = /*@__PURE__*/ S.Record(
   S.String,
   WriteRequests.pipe(S.optional),
 );
-export type ReturnItemCollectionMetrics = "SIZE" | "NONE";
+export type ReturnItemCollectionMetrics = "SIZE" | "NONE" | (string & {});
 export const ReturnItemCollectionMetrics = /*@__PURE__*/ S.String;
 
 export interface BatchWriteItemInput {
   RequestItems: { [key: string]: WriteRequest[] | undefined };
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
-  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
 }
 export const BatchWriteItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1085,10 +1091,10 @@ export const CreateBackupInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBackupInput>;
 export type BackupArn = string;
 export type BackupSizeBytes = number;
-export type BackupStatus = "CREATING" | "DELETED" | "AVAILABLE";
+export type BackupStatus = "CREATING" | "DELETED" | "AVAILABLE" | (string & {});
 export const BackupStatus = /*@__PURE__*/ S.String;
 
-export type BackupType = "USER" | "SYSTEM" | "AWS_BACKUP";
+export type BackupType = "USER" | "SYSTEM" | "AWS_BACKUP" | (string & {});
 export const BackupType = /*@__PURE__*/ S.String;
 
 export type BackupCreationDateTime = Date;
@@ -1163,7 +1169,8 @@ export type ReplicaStatus =
   | "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
   | "ARCHIVING"
   | "ARCHIVED"
-  | "REPLICATION_NOT_AUTHORIZED";
+  | "REPLICATION_NOT_AUTHORIZED"
+  | (string & {});
 export const ReplicaStatus = /*@__PURE__*/ S.String;
 
 export type ReplicaStatusDescription = string;
@@ -1195,7 +1202,8 @@ export type TableStatus =
   | "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
   | "ARCHIVING"
   | "ARCHIVED"
-  | "REPLICATION_NOT_AUTHORIZED";
+  | "REPLICATION_NOT_AUTHORIZED"
+  | (string & {});
 export const TableStatus = /*@__PURE__*/ S.String;
 
 export interface TableWarmThroughputDescription {
@@ -1212,7 +1220,12 @@ export const TableWarmThroughputDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableWarmThroughputDescription",
 }) as any as S.Schema<TableWarmThroughputDescription>;
-export type IndexStatus = "CREATING" | "UPDATING" | "DELETING" | "ACTIVE";
+export type IndexStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "ACTIVE"
+  | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalSecondaryIndexWarmThroughputDescription {
@@ -1252,7 +1265,10 @@ export type ReplicaGlobalSecondaryIndexDescriptionList =
 export const ReplicaGlobalSecondaryIndexDescriptionList = /*@__PURE__*/ S.Array(
   ReplicaGlobalSecondaryIndexDescription,
 );
-export type TableClass = "STANDARD" | "STANDARD_INFREQUENT_ACCESS";
+export type TableClass =
+  | "STANDARD"
+  | "STANDARD_INFREQUENT_ACCESS"
+  | (string & {});
 export const TableClass = /*@__PURE__*/ S.String;
 
 export interface TableClassSummary {
@@ -1272,7 +1288,8 @@ export const TableClassSummary = /*@__PURE__*/ S.suspend(() =>
 export type GlobalTableSettingsReplicationMode =
   | "ENABLED"
   | "DISABLED"
-  | "ENABLED_WITH_OVERRIDES";
+  | "ENABLED_WITH_OVERRIDES"
+  | (string & {});
 export const GlobalTableSettingsReplicationMode = /*@__PURE__*/ S.String;
 
 export interface ReplicaDescription {
@@ -1318,7 +1335,12 @@ export const ReplicaDescription = /*@__PURE__*/ S.suspend(() =>
 export type ReplicaDescriptionList = ReplicaDescription[];
 export const ReplicaDescriptionList = /*@__PURE__*/ S.Array(ReplicaDescription);
 export type GlobalTableArnString = string;
-export type GlobalTableStatus = "CREATING" | "ACTIVE" | "DELETING" | "UPDATING";
+export type GlobalTableStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "UPDATING"
+  | (string & {});
 export const GlobalTableStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalTableDescription {
@@ -1352,12 +1374,12 @@ export const CreateGlobalTableOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGlobalTableOutput",
 }) as any as S.Schema<CreateGlobalTableOutput>;
 export type KeySchemaAttributeName = string;
-export type ScalarAttributeType = "S" | "N" | "B";
+export type ScalarAttributeType = "S" | "N" | "B" | (string & {});
 export const ScalarAttributeType = /*@__PURE__*/ S.String;
 
 export interface AttributeDefinition {
   AttributeName: string;
-  AttributeType: ScalarAttributeType | (string & {});
+  AttributeType: ScalarAttributeType;
 }
 export const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, AttributeType: ScalarAttributeType }),
@@ -1366,12 +1388,12 @@ export const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttributeDefinition>;
 export type AttributeDefinitions = AttributeDefinition[];
 export const AttributeDefinitions = /*@__PURE__*/ S.Array(AttributeDefinition);
-export type KeyType = "HASH" | "RANGE";
+export type KeyType = "HASH" | "RANGE" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface KeySchemaElement {
   AttributeName: string;
-  KeyType: KeyType | (string & {});
+  KeyType: KeyType;
 }
 export const KeySchemaElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, KeyType: KeyType }),
@@ -1380,14 +1402,14 @@ export const KeySchemaElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeySchemaElement>;
 export type KeySchema = KeySchemaElement[];
 export const KeySchema = /*@__PURE__*/ S.Array(KeySchemaElement);
-export type ProjectionType = "ALL" | "KEYS_ONLY" | "INCLUDE";
+export type ProjectionType = "ALL" | "KEYS_ONLY" | "INCLUDE" | (string & {});
 export const ProjectionType = /*@__PURE__*/ S.String;
 
 export type NonKeyAttributeName = string;
 export type NonKeyAttributeNameList = string[];
 export const NonKeyAttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface Projection {
-  ProjectionType?: ProjectionType | (string & {});
+  ProjectionType?: ProjectionType;
   NonKeyAttributes?: string[];
 }
 export const Projection = /*@__PURE__*/ S.suspend(() =>
@@ -1467,7 +1489,7 @@ export const GlobalSecondaryIndex = /*@__PURE__*/ S.suspend(() =>
 export type GlobalSecondaryIndexList = GlobalSecondaryIndex[];
 export const GlobalSecondaryIndexList =
   /*@__PURE__*/ S.Array(GlobalSecondaryIndex);
-export type BillingMode = "PROVISIONED" | "PAY_PER_REQUEST";
+export type BillingMode = "PROVISIONED" | "PAY_PER_REQUEST" | (string & {});
 export const BillingMode = /*@__PURE__*/ S.String;
 
 export type StreamEnabled = boolean;
@@ -1475,12 +1497,13 @@ export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
-  | "KEYS_ONLY";
+  | "KEYS_ONLY"
+  | (string & {});
 export const StreamViewType = /*@__PURE__*/ S.String;
 
 export interface StreamSpecification {
   StreamEnabled: boolean;
-  StreamViewType?: StreamViewType | (string & {});
+  StreamViewType?: StreamViewType;
 }
 export const StreamSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1491,12 +1514,12 @@ export const StreamSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamSpecification",
 }) as any as S.Schema<StreamSpecification>;
 export type SSEEnabled = boolean;
-export type SSEType = "AES256" | "KMS";
+export type SSEType = "AES256" | "KMS" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
 
 export interface SSESpecification {
   Enabled?: boolean;
-  SSEType?: SSEType | (string & {});
+  SSEType?: SSEType;
   KMSMasterKeyId?: string;
 }
 export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
@@ -1527,20 +1550,18 @@ export interface CreateTableInput {
   KeySchema?: KeySchemaElement[];
   LocalSecondaryIndexes?: LocalSecondaryIndex[];
   GlobalSecondaryIndexes?: GlobalSecondaryIndex[];
-  BillingMode?: BillingMode | (string & {});
+  BillingMode?: BillingMode;
   ProvisionedThroughput?: ProvisionedThroughput;
   StreamSpecification?: StreamSpecification;
   SSESpecification?: SSESpecification;
   Tags?: Tag[];
-  TableClass?: TableClass | (string & {});
+  TableClass?: TableClass;
   DeletionProtectionEnabled?: boolean;
   WarmThroughput?: WarmThroughput;
   ResourcePolicy?: string;
   OnDemandThroughput?: OnDemandThroughput;
   GlobalTableSourceArn?: string;
-  GlobalTableSettingsReplicationMode?:
-    | GlobalTableSettingsReplicationMode
-    | (string & {});
+  GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
 }
 export const CreateTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1677,7 +1698,7 @@ export const GlobalSecondaryIndexDescriptionList = /*@__PURE__*/ S.Array(
   GlobalSecondaryIndexDescription,
 );
 export type StreamArn = string;
-export type WitnessStatus = "CREATING" | "DELETING" | "ACTIVE";
+export type WitnessStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const WitnessStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalTableWitnessDescription {
@@ -1716,7 +1737,8 @@ export type SSEStatus =
   | "ENABLED"
   | "DISABLING"
   | "DISABLED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const SSEStatus = /*@__PURE__*/ S.String;
 
 export type KMSMasterKeyArn = string;
@@ -1753,7 +1775,7 @@ export const ArchivalSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ArchivalSummary",
 }) as any as S.Schema<ArchivalSummary>;
-export type MultiRegionConsistency = "EVENTUAL" | "STRONG";
+export type MultiRegionConsistency = "EVENTUAL" | "STRONG" | (string & {});
 export const MultiRegionConsistency = /*@__PURE__*/ S.String;
 
 export interface TableDescription {
@@ -1924,7 +1946,8 @@ export type TimeToLiveStatus =
   | "ENABLING"
   | "DISABLING"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const TimeToLiveStatus = /*@__PURE__*/ S.String;
 
 export type TimeToLiveAttributeName = string;
@@ -1993,7 +2016,8 @@ export type ComparisonOperator =
   | "NULL"
   | "CONTAINS"
   | "NOT_CONTAINS"
-  | "BEGINS_WITH";
+  | "BEGINS_WITH"
+  | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type AttributeValueList = AttributeValue[];
@@ -2003,7 +2027,7 @@ export const AttributeValueList = /*@__PURE__*/ S.Array(
 export interface ExpectedAttributeValue {
   Value?: AttributeValue;
   Exists?: boolean;
-  ComparisonOperator?: ComparisonOperator | (string & {});
+  ComparisonOperator?: ComparisonOperator;
   AttributeValueList?: AttributeValue[];
 }
 export const ExpectedAttributeValue = /*@__PURE__*/ S.suspend(() =>
@@ -2023,7 +2047,7 @@ export const ExpectedAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   ExpectedAttributeValue.pipe(S.optional),
 );
-export type ConditionalOperator = "AND" | "OR";
+export type ConditionalOperator = "AND" | "OR" | (string & {});
 export const ConditionalOperator = /*@__PURE__*/ S.String;
 
 export type ReturnValue =
@@ -2031,7 +2055,8 @@ export type ReturnValue =
   | "ALL_OLD"
   | "UPDATED_OLD"
   | "ALL_NEW"
-  | "UPDATED_NEW";
+  | "UPDATED_NEW"
+  | (string & {});
 export const ReturnValue = /*@__PURE__*/ S.String;
 
 export type ConditionExpression = string;
@@ -2049,16 +2074,14 @@ export interface DeleteItemInput {
   TableName: string;
   Key: { [key: string]: AttributeValue | undefined };
   Expected?: { [key: string]: ExpectedAttributeValue | undefined };
-  ConditionalOperator?: ConditionalOperator | (string & {});
-  ReturnValues?: ReturnValue | (string & {});
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
-  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics | (string & {});
+  ConditionalOperator?: ConditionalOperator;
+  ReturnValues?: ReturnValue;
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const DeleteItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2205,10 +2228,10 @@ export const DescribeContinuousBackupsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeContinuousBackupsInput",
 }) as any as S.Schema<DescribeContinuousBackupsInput>;
-export type ContinuousBackupsStatus = "ENABLED" | "DISABLED";
+export type ContinuousBackupsStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ContinuousBackupsStatus = /*@__PURE__*/ S.String;
 
-export type PointInTimeRecoveryStatus = "ENABLED" | "DISABLED";
+export type PointInTimeRecoveryStatus = "ENABLED" | "DISABLED" | (string & {});
 export const PointInTimeRecoveryStatus = /*@__PURE__*/ S.String;
 
 export type RecoveryPeriodInDays = number;
@@ -2284,7 +2307,8 @@ export type ContributorInsightsStatus =
   | "ENABLED"
   | "DISABLING"
   | "DISABLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ContributorInsightsStatus = /*@__PURE__*/ S.String;
 
 export type LastUpdateDateTime = Date;
@@ -2304,7 +2328,8 @@ export const FailureException = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FailureException>;
 export type ContributorInsightsMode =
   | "ACCESSED_AND_THROTTLED_KEYS"
-  | "THROTTLED_KEYS";
+  | "THROTTLED_KEYS"
+  | (string & {});
 export const ContributorInsightsMode = /*@__PURE__*/ S.String;
 
 export interface DescribeContributorInsightsOutput {
@@ -2383,7 +2408,11 @@ export const DescribeExportInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExportInput",
 }) as any as S.Schema<DescribeExportInput>;
-export type ExportStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED";
+export type ExportStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
 
 export type ExportStartTime = Date;
@@ -2394,28 +2423,28 @@ export type ClientToken = string;
 export type S3Bucket = string;
 export type S3BucketOwner = string;
 export type S3Prefix = string;
-export type S3SseAlgorithm = "AES256" | "KMS";
+export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SseAlgorithm = /*@__PURE__*/ S.String;
 
 export type S3SseKmsKeyId = string;
 export type FailureCode = string;
 export type FailureMessage = string;
-export type ExportFormat = "DYNAMODB_JSON" | "ION";
+export type ExportFormat = "DYNAMODB_JSON" | "ION" | (string & {});
 export const ExportFormat = /*@__PURE__*/ S.String;
 
 export type BilledSizeBytes = number;
-export type ExportType = "FULL_EXPORT" | "INCREMENTAL_EXPORT";
+export type ExportType = "FULL_EXPORT" | "INCREMENTAL_EXPORT" | (string & {});
 export const ExportType = /*@__PURE__*/ S.String;
 
 export type ExportFromTime = Date;
 export type ExportToTime = Date;
-export type ExportViewType = "NEW_IMAGE" | "NEW_AND_OLD_IMAGES";
+export type ExportViewType = "NEW_IMAGE" | "NEW_AND_OLD_IMAGES" | (string & {});
 export const ExportViewType = /*@__PURE__*/ S.String;
 
 export interface IncrementalExportSpecification {
   ExportFromTime?: Date;
   ExportToTime?: Date;
-  ExportViewType?: ExportViewType | (string & {});
+  ExportViewType?: ExportViewType;
 }
 export const IncrementalExportSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2692,7 +2721,8 @@ export type ImportStatus =
   | "COMPLETED"
   | "CANCELLING"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
 
 export interface S3BucketSource {
@@ -2709,7 +2739,7 @@ export const S3BucketSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3BucketSource" }) as any as S.Schema<S3BucketSource>;
 export type ErrorCount = number;
 export type CloudWatchLogGroupArn = string;
-export type InputFormat = "DYNAMODB_JSON" | "ION" | "CSV";
+export type InputFormat = "DYNAMODB_JSON" | "ION" | "CSV" | (string & {});
 export const InputFormat = /*@__PURE__*/ S.String;
 
 export type CsvDelimiter = string;
@@ -2734,14 +2764,14 @@ export const InputFormatOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputFormatOptions",
 }) as any as S.Schema<InputFormatOptions>;
-export type InputCompressionType = "GZIP" | "ZSTD" | "NONE";
+export type InputCompressionType = "GZIP" | "ZSTD" | "NONE" | (string & {});
 export const InputCompressionType = /*@__PURE__*/ S.String;
 
 export interface TableCreationParameters {
   TableName: string;
   AttributeDefinitions: AttributeDefinition[];
   KeySchema: KeySchemaElement[];
-  BillingMode?: BillingMode | (string & {});
+  BillingMode?: BillingMode;
   ProvisionedThroughput?: ProvisionedThroughput;
   OnDemandThroughput?: OnDemandThroughput;
   SSESpecification?: SSESpecification;
@@ -2844,12 +2874,14 @@ export type DestinationStatus =
   | "DISABLING"
   | "DISABLED"
   | "ENABLE_FAILED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const DestinationStatus = /*@__PURE__*/ S.String;
 
 export type ApproximateCreationDateTimePrecision =
   | "MILLISECOND"
-  | "MICROSECOND";
+  | "MICROSECOND"
+  | (string & {});
 export const ApproximateCreationDateTimePrecision = /*@__PURE__*/ S.String;
 
 export interface KinesisDataStreamDestination {
@@ -3071,9 +3103,7 @@ export const DescribeTimeToLiveOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTimeToLiveOutput",
 }) as any as S.Schema<DescribeTimeToLiveOutput>;
 export interface EnableKinesisStreamingConfiguration {
-  ApproximateCreationDateTimePrecision?:
-    | ApproximateCreationDateTimePrecision
-    | (string & {});
+  ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
 export const EnableKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3135,11 +3165,9 @@ export interface ExecuteStatementInput {
   Parameters?: AttributeValue[];
   ConsistentRead?: boolean;
   NextToken?: string;
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
   Limit?: number;
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const ExecuteStatementInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3185,9 +3213,7 @@ export const ExecuteStatementOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ParameterizedStatement {
   Statement: string;
   Parameters?: AttributeValue[];
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const ParameterizedStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3208,7 +3234,7 @@ export type ClientRequestToken = string;
 export interface ExecuteTransactionInput {
   TransactStatements: ParameterizedStatement[];
   ClientRequestToken?: string;
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
 export const ExecuteTransactionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3256,10 +3282,10 @@ export interface ExportTableToPointInTimeInput {
   S3Bucket: string;
   S3BucketOwner?: string;
   S3Prefix?: string;
-  S3SseAlgorithm?: S3SseAlgorithm | (string & {});
+  S3SseAlgorithm?: S3SseAlgorithm;
   S3SseKmsKeyId?: string;
-  ExportFormat?: ExportFormat | (string & {});
-  ExportType?: ExportType | (string & {});
+  ExportFormat?: ExportFormat;
+  ExportType?: ExportType;
   IncrementalExportSpecification?: IncrementalExportSpecification;
 }
 export const ExportTableToPointInTimeInput = /*@__PURE__*/ S.suspend(() =>
@@ -3302,7 +3328,7 @@ export interface GetItemInput {
   Key: { [key: string]: AttributeValue | undefined };
   AttributesToGet?: string[];
   ConsistentRead?: boolean;
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
   ProjectionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
 }
@@ -3370,9 +3396,9 @@ export const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ImportTableInput {
   ClientToken?: string;
   S3BucketSource: S3BucketSource;
-  InputFormat: InputFormat | (string & {});
+  InputFormat: InputFormat;
   InputFormatOptions?: InputFormatOptions;
-  InputCompressionType?: InputCompressionType | (string & {});
+  InputCompressionType?: InputCompressionType;
   TableCreationParameters: TableCreationParameters;
 }
 export const ImportTableInput = /*@__PURE__*/ S.suspend(() =>
@@ -3408,7 +3434,12 @@ export const ImportTableOutput = /*@__PURE__*/ S.suspend(() =>
 export type BackupsInputLimit = number;
 export type TimeRangeLowerBound = Date;
 export type TimeRangeUpperBound = Date;
-export type BackupTypeFilter = "USER" | "SYSTEM" | "AWS_BACKUP" | "ALL";
+export type BackupTypeFilter =
+  | "USER"
+  | "SYSTEM"
+  | "AWS_BACKUP"
+  | "ALL"
+  | (string & {});
 export const BackupTypeFilter = /*@__PURE__*/ S.String;
 
 export interface ListBackupsInput {
@@ -3417,7 +3448,7 @@ export interface ListBackupsInput {
   TimeRangeLowerBound?: Date;
   TimeRangeUpperBound?: Date;
   ExclusiveStartBackupArn?: string;
-  BackupType?: BackupTypeFilter | (string & {});
+  BackupType?: BackupTypeFilter;
 }
 export const ListBackupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3783,16 +3814,14 @@ export interface PutItemInput {
   TableName: string;
   Item: { [key: string]: AttributeValue | undefined };
   Expected?: { [key: string]: ExpectedAttributeValue | undefined };
-  ReturnValues?: ReturnValue | (string & {});
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
-  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics | (string & {});
-  ConditionalOperator?: ConditionalOperator | (string & {});
+  ReturnValues?: ReturnValue;
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
+  ConditionalOperator?: ConditionalOperator;
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const PutItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3874,12 +3903,13 @@ export type Select =
   | "ALL_ATTRIBUTES"
   | "ALL_PROJECTED_ATTRIBUTES"
   | "SPECIFIC_ATTRIBUTES"
-  | "COUNT";
+  | "COUNT"
+  | (string & {});
 export const Select = /*@__PURE__*/ S.String;
 
 export interface Condition {
   AttributeValueList?: AttributeValue[];
-  ComparisonOperator: ComparisonOperator | (string & {});
+  ComparisonOperator: ComparisonOperator;
 }
 export const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3901,16 +3931,16 @@ export type KeyExpression = string;
 export interface QueryInput {
   TableName: string;
   IndexName?: string;
-  Select?: Select | (string & {});
+  Select?: Select;
   AttributesToGet?: string[];
   Limit?: number;
   ConsistentRead?: boolean;
   KeyConditions?: { [key: string]: Condition | undefined };
   QueryFilter?: { [key: string]: Condition | undefined };
-  ConditionalOperator?: ConditionalOperator | (string & {});
+  ConditionalOperator?: ConditionalOperator;
   ScanIndexForward?: boolean;
   ExclusiveStartKey?: { [key: string]: AttributeValue | undefined };
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
   ProjectionExpression?: string;
   FilterExpression?: string;
   KeyConditionExpression?: string;
@@ -3967,7 +3997,7 @@ export const QueryOutput = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreTableFromBackupInput {
   TargetTableName: string;
   BackupArn: string;
-  BillingModeOverride?: BillingMode | (string & {});
+  BillingModeOverride?: BillingMode;
   GlobalSecondaryIndexOverride?: GlobalSecondaryIndex[];
   LocalSecondaryIndexOverride?: LocalSecondaryIndex[];
   ProvisionedThroughputOverride?: ProvisionedThroughput;
@@ -4012,7 +4042,7 @@ export interface RestoreTableToPointInTimeInput {
   TargetTableName: string;
   UseLatestRestorableTime?: boolean;
   RestoreDateTime?: Date;
-  BillingModeOverride?: BillingMode | (string & {});
+  BillingModeOverride?: BillingMode;
   GlobalSecondaryIndexOverride?: GlobalSecondaryIndex[];
   LocalSecondaryIndexOverride?: LocalSecondaryIndex[];
   ProvisionedThroughputOverride?: ProvisionedThroughput;
@@ -4063,11 +4093,11 @@ export interface ScanInput {
   IndexName?: string;
   AttributesToGet?: string[];
   Limit?: number;
-  Select?: Select | (string & {});
+  Select?: Select;
   ScanFilter?: { [key: string]: Condition | undefined };
-  ConditionalOperator?: ConditionalOperator | (string & {});
+  ConditionalOperator?: ConditionalOperator;
   ExclusiveStartKey?: { [key: string]: AttributeValue | undefined };
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
   TotalSegments?: number;
   Segment?: number;
   ProjectionExpression?: string;
@@ -4176,7 +4206,7 @@ export type TransactGetItemList = TransactGetItem[];
 export const TransactGetItemList = /*@__PURE__*/ S.Array(TransactGetItem);
 export interface TransactGetItemsInput {
   TransactItems: TransactGetItem[];
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
 export const TransactGetItemsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4214,9 +4244,7 @@ export interface ConditionCheck {
   ConditionExpression: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const ConditionCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4236,9 +4264,7 @@ export interface Put {
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const Put = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4258,9 +4284,7 @@ export interface Delete {
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const Delete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4282,9 +4306,7 @@ export interface Update {
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const Update = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4319,8 +4341,8 @@ export type TransactWriteItemList = TransactWriteItem[];
 export const TransactWriteItemList = /*@__PURE__*/ S.Array(TransactWriteItem);
 export interface TransactWriteItemsInput {
   TransactItems: TransactWriteItem[];
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
-  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics | (string & {});
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
   ClientRequestToken?: string;
 }
 export const TransactWriteItemsInput = /*@__PURE__*/ S.suspend(() =>
@@ -4431,14 +4453,14 @@ export const UpdateContinuousBackupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateContinuousBackupsOutput",
 }) as any as S.Schema<UpdateContinuousBackupsOutput>;
-export type ContributorInsightsAction = "ENABLE" | "DISABLE";
+export type ContributorInsightsAction = "ENABLE" | "DISABLE" | (string & {});
 export const ContributorInsightsAction = /*@__PURE__*/ S.String;
 
 export interface UpdateContributorInsightsInput {
   TableName: string;
   IndexName?: string;
-  ContributorInsightsAction: ContributorInsightsAction | (string & {});
-  ContributorInsightsMode?: ContributorInsightsMode | (string & {});
+  ContributorInsightsAction: ContributorInsightsAction;
+  ContributorInsightsMode?: ContributorInsightsMode;
 }
 export const UpdateContributorInsightsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4632,7 +4654,7 @@ export interface ReplicaSettingsUpdate {
   ReplicaProvisionedReadCapacityUnits?: number;
   ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
   ReplicaGlobalSecondaryIndexSettingsUpdate?: ReplicaGlobalSecondaryIndexSettingsUpdate[];
-  ReplicaTableClass?: TableClass | (string & {});
+  ReplicaTableClass?: TableClass;
 }
 export const ReplicaSettingsUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4655,7 +4677,7 @@ export const ReplicaSettingsUpdateList = /*@__PURE__*/ S.Array(
 );
 export interface UpdateGlobalTableSettingsInput {
   GlobalTableName: string;
-  GlobalTableBillingMode?: BillingMode | (string & {});
+  GlobalTableBillingMode?: BillingMode;
   GlobalTableProvisionedWriteCapacityUnits?: number;
   GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
   GlobalTableGlobalSecondaryIndexSettingsUpdate?: GlobalTableGlobalSecondaryIndexSettingsUpdate[];
@@ -4699,12 +4721,12 @@ export const UpdateGlobalTableSettingsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateGlobalTableSettingsOutput",
 }) as any as S.Schema<UpdateGlobalTableSettingsOutput>;
-export type AttributeAction = "ADD" | "PUT" | "DELETE";
+export type AttributeAction = "ADD" | "PUT" | "DELETE" | (string & {});
 export const AttributeAction = /*@__PURE__*/ S.String;
 
 export interface AttributeValueUpdate {
   Value?: AttributeValue;
-  Action?: AttributeAction | (string & {});
+  Action?: AttributeAction;
 }
 export const AttributeValueUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4726,17 +4748,15 @@ export interface UpdateItemInput {
   Key: { [key: string]: AttributeValue | undefined };
   AttributeUpdates?: { [key: string]: AttributeValueUpdate | undefined };
   Expected?: { [key: string]: ExpectedAttributeValue | undefined };
-  ConditionalOperator?: ConditionalOperator | (string & {});
-  ReturnValues?: ReturnValue | (string & {});
-  ReturnConsumedCapacity?: ReturnConsumedCapacity | (string & {});
-  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics | (string & {});
+  ConditionalOperator?: ConditionalOperator;
+  ReturnValues?: ReturnValue;
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
   UpdateExpression?: string;
   ConditionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
-  ReturnValuesOnConditionCheckFailure?:
-    | ReturnValuesOnConditionCheckFailure
-    | (string & {});
+  ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
 export const UpdateItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4784,9 +4804,7 @@ export const UpdateItemOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateItemOutput",
 }) as any as S.Schema<UpdateItemOutput>;
 export interface UpdateKinesisStreamingConfiguration {
-  ApproximateCreationDateTimePrecision?:
-    | ApproximateCreationDateTimePrecision
-    | (string & {});
+  ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
 export const UpdateKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4929,7 +4947,7 @@ export interface CreateReplicationGroupMemberAction {
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
-  TableClassOverride?: TableClass | (string & {});
+  TableClassOverride?: TableClass;
 }
 export const CreateReplicationGroupMemberAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4949,7 +4967,7 @@ export interface UpdateReplicationGroupMemberAction {
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
-  TableClassOverride?: TableClass | (string & {});
+  TableClassOverride?: TableClass;
 }
 export const UpdateReplicationGroupMemberAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5022,21 +5040,19 @@ export const GlobalTableWitnessGroupUpdateList = /*@__PURE__*/ S.Array(
 export interface UpdateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
-  BillingMode?: BillingMode | (string & {});
+  BillingMode?: BillingMode;
   ProvisionedThroughput?: ProvisionedThroughput;
   GlobalSecondaryIndexUpdates?: GlobalSecondaryIndexUpdate[];
   StreamSpecification?: StreamSpecification;
   SSESpecification?: SSESpecification;
   ReplicaUpdates?: ReplicationGroupUpdate[];
-  TableClass?: TableClass | (string & {});
+  TableClass?: TableClass;
   DeletionProtectionEnabled?: boolean;
-  MultiRegionConsistency?: MultiRegionConsistency | (string & {});
+  MultiRegionConsistency?: MultiRegionConsistency;
   GlobalTableWitnessUpdates?: GlobalTableWitnessGroupUpdate[];
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
-  GlobalTableSettingsReplicationMode?:
-    | GlobalTableSettingsReplicationMode
-    | (string & {});
+  GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
 }
 export const UpdateTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

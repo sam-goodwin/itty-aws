@@ -705,7 +705,8 @@ export type ServiceUpdateStatus =
   | "available"
   | "in-progress"
   | "complete"
-  | "scheduled";
+  | "scheduled"
+  | (string & {});
 export const ServiceUpdateStatus = /*@__PURE__*/ S.String;
 
 export interface PendingModifiedServiceUpdate {
@@ -787,7 +788,7 @@ export type ShardList = Shard[];
 export const ShardList = /*@__PURE__*/ S.Array(
   Shard.pipe(T.XmlName("Shard")).annotate({ identifier: "Shard" }),
 );
-export type AZStatus = "singleaz" | "multiaz";
+export type AZStatus = "singleaz" | "multiaz" | (string & {});
 export const AZStatus = /*@__PURE__*/ S.String;
 
 export interface SecurityGroupMembership {
@@ -806,13 +807,13 @@ export type SecurityGroupMembershipList = SecurityGroupMembership[];
 export const SecurityGroupMembershipList = /*@__PURE__*/ S.Array(
   SecurityGroupMembership,
 );
-export type DataTieringStatus = "true" | "false";
+export type DataTieringStatus = "true" | "false" | (string & {});
 export const DataTieringStatus = /*@__PURE__*/ S.String;
 
-export type NetworkType = "ipv4" | "ipv6" | "dual_stack";
+export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
-export type IpDiscovery = "ipv4" | "ipv6";
+export type IpDiscovery = "ipv4" | "ipv6" | (string & {});
 export const IpDiscovery = /*@__PURE__*/ S.String;
 
 export interface Cluster {
@@ -1159,8 +1160,8 @@ export interface CreateClusterRequest {
   EngineVersion?: string;
   AutoMinorVersionUpgrade?: boolean;
   DataTiering?: boolean;
-  NetworkType?: NetworkType | (string & {});
-  IpDiscovery?: IpDiscovery | (string & {});
+  NetworkType?: NetworkType;
+  IpDiscovery?: IpDiscovery;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1472,13 +1473,13 @@ export const CreateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSubnetGroupResponse",
 }) as any as S.Schema<CreateSubnetGroupResponse>;
-export type InputAuthenticationType = "password" | "iam";
+export type InputAuthenticationType = "password" | "iam" | (string & {});
 export const InputAuthenticationType = /*@__PURE__*/ S.String;
 
 export type PasswordListInput = string[];
 export const PasswordListInput = /*@__PURE__*/ S.Array(S.String);
 export interface AuthenticationMode {
-  Type?: InputAuthenticationType | (string & {});
+  Type?: InputAuthenticationType;
   Passwords?: Array<string | redacted.Redacted<string>>;
 }
 export const AuthenticationMode = /*@__PURE__*/ S.suspend(() =>
@@ -1518,7 +1519,11 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUserRequest>;
 export type ACLNameList = string[];
 export const ACLNameList = /*@__PURE__*/ S.Array(S.String);
-export type AuthenticationType = "password" | "no-password" | "iam";
+export type AuthenticationType =
+  | "password"
+  | "no-password"
+  | "iam"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export interface Authentication {
@@ -1888,12 +1893,13 @@ export type SourceType =
   | "subnet-group"
   | "cluster"
   | "user"
-  | "acl";
+  | "acl"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsRequest {
   SourceName?: string;
-  SourceType?: SourceType | (string & {});
+  SourceType?: SourceType;
   StartTime?: Date;
   EndTime?: Date;
   Duration?: number;
@@ -2387,13 +2393,13 @@ export const DescribeReservedNodesOfferingsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeReservedNodesOfferingsResponse",
 }) as any as S.Schema<DescribeReservedNodesOfferingsResponse>;
-export type ServiceUpdateStatusList = (ServiceUpdateStatus | (string & {}))[];
+export type ServiceUpdateStatusList = ServiceUpdateStatus[];
 export const ServiceUpdateStatusList =
   /*@__PURE__*/ S.Array(ServiceUpdateStatus);
 export interface DescribeServiceUpdatesRequest {
   ServiceUpdateName?: string;
   ClusterNames?: string[];
-  Status?: (ServiceUpdateStatus | (string & {}))[];
+  Status?: ServiceUpdateStatus[];
   MaxResults?: number;
   NextToken?: string;
 }
@@ -2418,7 +2424,7 @@ export const DescribeServiceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeServiceUpdatesRequest",
 }) as any as S.Schema<DescribeServiceUpdatesRequest>;
-export type ServiceUpdateType = "security-update";
+export type ServiceUpdateType = "security-update" | (string & {});
 export const ServiceUpdateType = /*@__PURE__*/ S.String;
 
 export interface ServiceUpdate {
@@ -2906,7 +2912,7 @@ export interface UpdateClusterRequest {
   ReplicaConfiguration?: ReplicaConfigurationRequest;
   ShardConfiguration?: ShardConfigurationRequest;
   ACLName?: string;
-  IpDiscovery?: IpDiscovery | (string & {});
+  IpDiscovery?: IpDiscovery;
 }
 export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2948,7 +2954,7 @@ export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateClusterResponse",
 }) as any as S.Schema<UpdateClusterResponse>;
-export type UpdateStrategy = "coordinated" | "uncoordinated";
+export type UpdateStrategy = "coordinated" | "uncoordinated" | (string & {});
 export const UpdateStrategy = /*@__PURE__*/ S.String;
 
 export interface UpdateMultiRegionClusterRequest {
@@ -2958,7 +2964,7 @@ export interface UpdateMultiRegionClusterRequest {
   EngineVersion?: string;
   ShardConfiguration?: ShardConfigurationRequest;
   MultiRegionParameterGroupName?: string;
-  UpdateStrategy?: UpdateStrategy | (string & {});
+  UpdateStrategy?: UpdateStrategy;
 }
 export const UpdateMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

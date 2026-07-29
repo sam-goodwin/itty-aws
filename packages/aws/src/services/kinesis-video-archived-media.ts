@@ -134,7 +134,8 @@ export type StreamName = string;
 export type ResourceARN = string;
 export type ClipFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
-  | "SERVER_TIMESTAMP";
+  | "SERVER_TIMESTAMP"
+  | (string & {});
 export const ClipFragmentSelectorType = /*@__PURE__*/ S.String;
 
 export interface ClipTimestampRange {
@@ -150,7 +151,7 @@ export const ClipTimestampRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClipTimestampRange",
 }) as any as S.Schema<ClipTimestampRange>;
 export interface ClipFragmentSelector {
-  FragmentSelectorType: ClipFragmentSelectorType | (string & {});
+  FragmentSelectorType: ClipFragmentSelectorType;
   TimestampRange: ClipTimestampRange;
 }
 export const ClipFragmentSelector = /*@__PURE__*/ S.suspend(() =>
@@ -193,18 +194,23 @@ export const GetClipOutput = /*@__PURE__*/ S.suspend(() =>
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
   }),
 ).annotate({ identifier: "GetClipOutput" }) as any as S.Schema<GetClipOutput>;
-export type DASHPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND";
+export type DASHPlaybackMode =
+  | "LIVE"
+  | "LIVE_REPLAY"
+  | "ON_DEMAND"
+  | (string & {});
 export const DASHPlaybackMode = /*@__PURE__*/ S.String;
 
-export type DASHDisplayFragmentTimestamp = "ALWAYS" | "NEVER";
+export type DASHDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
 export const DASHDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
 
-export type DASHDisplayFragmentNumber = "ALWAYS" | "NEVER";
+export type DASHDisplayFragmentNumber = "ALWAYS" | "NEVER" | (string & {});
 export const DASHDisplayFragmentNumber = /*@__PURE__*/ S.String;
 
 export type DASHFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
-  | "SERVER_TIMESTAMP";
+  | "SERVER_TIMESTAMP"
+  | (string & {});
 export const DASHFragmentSelectorType = /*@__PURE__*/ S.String;
 
 export interface DASHTimestampRange {
@@ -220,7 +226,7 @@ export const DASHTimestampRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "DASHTimestampRange",
 }) as any as S.Schema<DASHTimestampRange>;
 export interface DASHFragmentSelector {
-  FragmentSelectorType?: DASHFragmentSelectorType | (string & {});
+  FragmentSelectorType?: DASHFragmentSelectorType;
   TimestampRange?: DASHTimestampRange;
 }
 export const DASHFragmentSelector = /*@__PURE__*/ S.suspend(() =>
@@ -236,9 +242,9 @@ export type DASHMaxResults = number;
 export interface GetDASHStreamingSessionURLInput {
   StreamName?: string;
   StreamARN?: string;
-  PlaybackMode?: DASHPlaybackMode | (string & {});
-  DisplayFragmentTimestamp?: DASHDisplayFragmentTimestamp | (string & {});
-  DisplayFragmentNumber?: DASHDisplayFragmentNumber | (string & {});
+  PlaybackMode?: DASHPlaybackMode;
+  DisplayFragmentTimestamp?: DASHDisplayFragmentTimestamp;
+  DisplayFragmentNumber?: DASHDisplayFragmentNumber;
   DASHFragmentSelector?: DASHFragmentSelector;
   Expires?: number;
   MaxManifestFragmentResults?: number;
@@ -275,10 +281,17 @@ export const GetDASHStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDASHStreamingSessionURLOutput",
 }) as any as S.Schema<GetDASHStreamingSessionURLOutput>;
-export type HLSPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND";
+export type HLSPlaybackMode =
+  | "LIVE"
+  | "LIVE_REPLAY"
+  | "ON_DEMAND"
+  | (string & {});
 export const HLSPlaybackMode = /*@__PURE__*/ S.String;
 
-export type HLSFragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP";
+export type HLSFragmentSelectorType =
+  | "PRODUCER_TIMESTAMP"
+  | "SERVER_TIMESTAMP"
+  | (string & {});
 export const HLSFragmentSelectorType = /*@__PURE__*/ S.String;
 
 export interface HLSTimestampRange {
@@ -294,7 +307,7 @@ export const HLSTimestampRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "HLSTimestampRange",
 }) as any as S.Schema<HLSTimestampRange>;
 export interface HLSFragmentSelector {
-  FragmentSelectorType?: HLSFragmentSelectorType | (string & {});
+  FragmentSelectorType?: HLSFragmentSelectorType;
   TimestampRange?: HLSTimestampRange;
 }
 export const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
@@ -305,24 +318,28 @@ export const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HLSFragmentSelector",
 }) as any as S.Schema<HLSFragmentSelector>;
-export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS";
+export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS" | (string & {});
 export const ContainerFormat = /*@__PURE__*/ S.String;
 
-export type HLSDiscontinuityMode = "ALWAYS" | "NEVER" | "ON_DISCONTINUITY";
+export type HLSDiscontinuityMode =
+  | "ALWAYS"
+  | "NEVER"
+  | "ON_DISCONTINUITY"
+  | (string & {});
 export const HLSDiscontinuityMode = /*@__PURE__*/ S.String;
 
-export type HLSDisplayFragmentTimestamp = "ALWAYS" | "NEVER";
+export type HLSDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
 export const HLSDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
 
 export type HLSMaxResults = number;
 export interface GetHLSStreamingSessionURLInput {
   StreamName?: string;
   StreamARN?: string;
-  PlaybackMode?: HLSPlaybackMode | (string & {});
+  PlaybackMode?: HLSPlaybackMode;
   HLSFragmentSelector?: HLSFragmentSelector;
-  ContainerFormat?: ContainerFormat | (string & {});
-  DiscontinuityMode?: HLSDiscontinuityMode | (string & {});
-  DisplayFragmentTimestamp?: HLSDisplayFragmentTimestamp | (string & {});
+  ContainerFormat?: ContainerFormat;
+  DiscontinuityMode?: HLSDiscontinuityMode;
+  DisplayFragmentTimestamp?: HLSDisplayFragmentTimestamp;
   Expires?: number;
   MaxMediaPlaylistFragmentResults?: number;
 }
@@ -359,20 +376,21 @@ export const GetHLSStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHLSStreamingSessionURLOutput",
 }) as any as S.Schema<GetHLSStreamingSessionURLOutput>;
-export type ImageSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP";
+export type ImageSelectorType =
+  | "PRODUCER_TIMESTAMP"
+  | "SERVER_TIMESTAMP"
+  | (string & {});
 export const ImageSelectorType = /*@__PURE__*/ S.String;
 
 export type SamplingInterval = number;
-export type Format = "JPEG" | "PNG";
+export type Format = "JPEG" | "PNG" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
-export type FormatConfigKey = "JPEGQuality";
+export type FormatConfigKey = "JPEGQuality" | (string & {});
 export const FormatConfigKey = /*@__PURE__*/ S.String;
 
 export type FormatConfigValue = string;
-export type FormatConfig = {
-  [key in FormatConfigKey | (string & {})]?: string;
-};
+export type FormatConfig = { [key in FormatConfigKey]?: string };
 export const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   S.String.pipe(S.optional),
@@ -384,11 +402,11 @@ export type NextToken = string;
 export interface GetImagesInput {
   StreamName?: string;
   StreamARN?: string;
-  ImageSelectorType: ImageSelectorType | (string & {});
+  ImageSelectorType: ImageSelectorType;
   StartTimestamp: Date;
   EndTimestamp: Date;
   SamplingInterval?: number;
-  Format: Format | (string & {});
+  Format: Format;
   FormatConfig?: { [key: string]: string | undefined };
   WidthPixels?: number;
   HeightPixels?: number;
@@ -420,7 +438,7 @@ export const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetImagesInput" }) as any as S.Schema<GetImagesInput>;
-export type ImageError = "NO_MEDIA" | "MEDIA_ERROR";
+export type ImageError = "NO_MEDIA" | "MEDIA_ERROR" | (string & {});
 export const ImageError = /*@__PURE__*/ S.String;
 
 export type ImageContent = string;
@@ -486,7 +504,10 @@ export const GetMediaForFragmentListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMediaForFragmentListOutput",
 }) as any as S.Schema<GetMediaForFragmentListOutput>;
 export type ListFragmentsMaxResults = number;
-export type FragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP";
+export type FragmentSelectorType =
+  | "PRODUCER_TIMESTAMP"
+  | "SERVER_TIMESTAMP"
+  | (string & {});
 export const FragmentSelectorType = /*@__PURE__*/ S.String;
 
 export interface TimestampRange {
@@ -500,7 +521,7 @@ export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
 export interface FragmentSelector {
-  FragmentSelectorType: FragmentSelectorType | (string & {});
+  FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;
 }
 export const FragmentSelector = /*@__PURE__*/ S.suspend(() =>

@@ -59,22 +59,22 @@ export const CreateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAssetResponse {
   /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
+  description?: string | null;
+  lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
+  name?: string | null;
   /** The size of the asset content in bytes. */
-  sizeBytes?: number;
+  sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    name: S.optional(S.NullOr(S.String)),
+    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetResponse",
@@ -195,22 +195,22 @@ export const GetAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAssetResponse {
   /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
+  description?: string | null;
+  lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
+  name?: string | null;
   /** The size of the asset content in bytes. */
-  sizeBytes?: number;
+  sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
-  url?: string;
+  url?: string | null;
 }
 export const GetAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    name: S.optional(S.NullOr(S.String)),
+    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssetResponse",
@@ -285,29 +285,31 @@ export const GetResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomPageResponse {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: GetResponseRequiredTokensList;
+  id?: string | null;
+  createdOn?: string | null;
+  description?: string | null;
+  modifiedOn?: string | null;
+  previewTarget?: string | null;
+  requiredTokens?: GetResponseRequiredTokensList | null;
   /** The custom page state. */
-  state?: GetResponseState;
+  state?: GetResponseState | null;
   /** The URL associated with the custom page. */
-  url?: string;
+  url?: string | null;
 }
 export const GetCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      GetResponseRequiredTokensList.pipe(T.Body("required_tokens")),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(
+      S.NullOr(S.String).pipe(T.Body("preview_target")),
     ),
-    state: S.optional(GetResponseState),
-    url: S.optional(S.String),
+    requiredTokens: S.optional(
+      S.NullOr(GetResponseRequiredTokensList).pipe(T.Body("required_tokens")),
+    ),
+    state: S.optional(S.NullOr(GetResponseState)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomPageResponse",
@@ -362,22 +364,22 @@ export const ListAssetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AssetsListResultItem {
   /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
+  description?: string | null;
+  lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
+  name?: string | null;
   /** The size of the asset content in bytes. */
-  sizeBytes?: number;
+  sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
-  url?: string;
+  url?: string | null;
 }
 export const AssetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    name: S.optional(S.NullOr(S.String)),
+    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AssetsListResultItem",
@@ -456,29 +458,33 @@ export type ListResultItemState = "default" | "customized";
 export const ListResultItemState = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: ListResultItemRequiredTokensList;
+  id?: string | null;
+  createdOn?: string | null;
+  description?: string | null;
+  modifiedOn?: string | null;
+  previewTarget?: string | null;
+  requiredTokens?: ListResultItemRequiredTokensList | null;
   /** The custom page state. */
-  state?: ListResultItemState;
+  state?: ListResultItemState | null;
   /** The URL associated with the custom page. */
-  url?: string;
+  url?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      ListResultItemRequiredTokensList.pipe(T.Body("required_tokens")),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(
+      S.NullOr(S.String).pipe(T.Body("preview_target")),
     ),
-    state: S.optional(ListResultItemState),
-    url: S.optional(S.String),
+    requiredTokens: S.optional(
+      S.NullOr(ListResultItemRequiredTokensList).pipe(
+        T.Body("required_tokens"),
+      ),
+    ),
+    state: S.optional(S.NullOr(ListResultItemState)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -577,29 +583,33 @@ export const UpdateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomPageResponse {
-  id?: string;
-  createdOn?: string;
-  description?: string;
-  modifiedOn?: string;
-  previewTarget?: string;
-  requiredTokens?: UpdateResponseRequiredTokensList;
+  id?: string | null;
+  createdOn?: string | null;
+  description?: string | null;
+  modifiedOn?: string | null;
+  previewTarget?: string | null;
+  requiredTokens?: UpdateResponseRequiredTokensList | null;
   /** The custom page state. */
-  state?: UpdateResponseState;
+  state?: UpdateResponseState | null;
   /** The URL associated with the custom page. */
-  url?: string;
+  url?: string | null;
 }
 export const PutCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
-    requiredTokens: S.optional(
-      UpdateResponseRequiredTokensList.pipe(T.Body("required_tokens")),
+    id: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(
+      S.NullOr(S.String).pipe(T.Body("preview_target")),
     ),
-    state: S.optional(UpdateResponseState),
-    url: S.optional(S.String),
+    requiredTokens: S.optional(
+      S.NullOr(UpdateResponseRequiredTokensList).pipe(
+        T.Body("required_tokens"),
+      ),
+    ),
+    state: S.optional(S.NullOr(UpdateResponseState)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageResponse",
@@ -666,22 +676,22 @@ export const UpdateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
-  description?: string;
-  lastUpdated?: string;
+  description?: string | null;
+  lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
-  name?: string;
+  name?: string | null;
   /** The size of the asset content in bytes. */
-  sizeBytes?: number;
+  sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
-  url?: string;
+  url?: string | null;
 }
 export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    name: S.optional(S.String),
-    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
-    url: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+    name: S.optional(S.NullOr(S.String)),
+    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetResponse",

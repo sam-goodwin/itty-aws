@@ -96,21 +96,27 @@ export type MetricStatistic =
   | "Avg"
   | "Count"
   | "StdDev"
-  | "Last";
+  | "Last"
+  | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
-export type Period = "OneMinute" | "FiveMinute" | "OneHour" | "IterationNumber";
+export type Period =
+  | "OneMinute"
+  | "FiveMinute"
+  | "OneHour"
+  | "IterationNumber"
+  | (string & {});
 export const Period = /*@__PURE__*/ S.String;
 
-export type XAxisType = "IterationNumber" | "Timestamp";
+export type XAxisType = "IterationNumber" | "Timestamp" | (string & {});
 export const XAxisType = /*@__PURE__*/ S.String;
 
 export interface MetricQuery {
   MetricName?: string;
   ResourceArn?: string;
-  MetricStat?: MetricStatistic | (string & {});
-  Period?: Period | (string & {});
-  XAxisType?: XAxisType | (string & {});
+  MetricStat?: MetricStatistic;
+  Period?: Period;
+  XAxisType?: XAxisType;
   Start?: number;
   End?: number;
 }
@@ -148,7 +154,8 @@ export type MetricQueryResultStatus =
   | "Complete"
   | "Truncated"
   | "InternalError"
-  | "ValidationError";
+  | "ValidationError"
+  | (string & {});
 export const MetricQueryResultStatus = /*@__PURE__*/ S.String;
 
 export type Message = string;
@@ -229,7 +236,8 @@ export type PutMetricsErrorCode =
   | "METRIC_LIMIT_EXCEEDED"
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
-  | "CONFLICT_ERROR";
+  | "CONFLICT_ERROR"
+  | (string & {});
 export const PutMetricsErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchPutMetricsError_ {

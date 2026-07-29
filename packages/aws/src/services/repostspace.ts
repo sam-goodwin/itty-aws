@@ -151,14 +151,19 @@ export type ChannelId = string;
 export type AccessorId = string;
 export type AccessorIdList = string[];
 export const AccessorIdList = /*@__PURE__*/ S.Array(S.String);
-export type ChannelRole = "ASKER" | "EXPERT" | "MODERATOR" | "SUPPORTREQUESTOR";
+export type ChannelRole =
+  | "ASKER"
+  | "EXPERT"
+  | "MODERATOR"
+  | "SUPPORTREQUESTOR"
+  | (string & {});
 export const ChannelRole = /*@__PURE__*/ S.String;
 
 export interface BatchAddChannelRoleToAccessorsInput {
   spaceId: string;
   channelId: string;
   accessorIds: string[];
-  channelRole: ChannelRole | (string & {});
+  channelRole: ChannelRole;
 }
 export const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -207,13 +212,14 @@ export type Role =
   | "EXPERT"
   | "MODERATOR"
   | "ADMINISTRATOR"
-  | "SUPPORTREQUESTOR";
+  | "SUPPORTREQUESTOR"
+  | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 export interface BatchAddRoleInput {
   spaceId: string;
   accessorIds: string[];
-  role: Role | (string & {});
+  role: Role;
 }
 export const BatchAddRoleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -246,7 +252,7 @@ export interface BatchRemoveChannelRoleFromAccessorsInput {
   spaceId: string;
   channelId: string;
   accessorIds: string[];
-  channelRole: ChannelRole | (string & {});
+  channelRole: ChannelRole;
 }
 export const BatchRemoveChannelRoleFromAccessorsInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -284,7 +290,7 @@ export const BatchRemoveChannelRoleFromAccessorsOutput =
 export interface BatchRemoveRoleInput {
   spaceId: string;
   accessorIds: string[];
-  role: Role | (string & {});
+  role: Role;
 }
 export const BatchRemoveRoleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -348,7 +354,7 @@ export const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateChannelOutput>;
 export type SpaceName = string | redacted.Redacted<string>;
 export type SpaceSubdomain = string;
-export type TierLevel = "BASIC" | "STANDARD";
+export type TierLevel = "BASIC" | "STANDARD" | (string & {});
 export const TierLevel = /*@__PURE__*/ S.String;
 
 export type SpaceDescription = string | redacted.Redacted<string>;
@@ -358,14 +364,14 @@ export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type Arn = string;
-export type FeatureEnableParameter = "ENABLED" | "DISABLED";
+export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureEnableParameter = /*@__PURE__*/ S.String;
 
 export type EmailDomain = string | redacted.Redacted<string>;
 export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
 export const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
-  enabled?: FeatureEnableParameter | (string & {});
+  enabled?: FeatureEnableParameter;
   allowedDomains?: (string | redacted.Redacted<string>)[];
 }
 export const SupportedEmailDomainsParameters = /*@__PURE__*/ S.suspend(() =>
@@ -379,7 +385,7 @@ export const SupportedEmailDomainsParameters = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSpaceInput {
   name: string | redacted.Redacted<string>;
   subdomain: string;
-  tier: TierLevel | (string & {});
+  tier: TierLevel;
   description?: string | redacted.Redacted<string>;
   userKMSKey?: string;
   tags?: { [key: string]: string | undefined };
@@ -502,7 +508,8 @@ export type ChannelStatus =
   | "CREATE_FAILED"
   | "DELETED"
   | "DELETING"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const ChannelStatus = /*@__PURE__*/ S.String;
 
 export interface GetChannelOutput {
@@ -547,12 +554,16 @@ export const GetSpaceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSpaceInput" }) as any as S.Schema<GetSpaceInput>;
 export type ProvisioningStatus = string;
-export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED";
+export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED" | (string & {});
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type ClientId = string;
 export type IdentityStoreId = string;
-export type VanityDomainStatus = "PENDING" | "APPROVED" | "UNAPPROVED";
+export type VanityDomainStatus =
+  | "PENDING"
+  | "APPROVED"
+  | "UNAPPROVED"
+  | (string & {});
 export const VanityDomainStatus = /*@__PURE__*/ S.String;
 
 export type Url = string;
@@ -570,7 +581,11 @@ export const Roles = /*@__PURE__*/ S.Record(
 );
 export type UserCount = number;
 export type ContentSize = number;
-export type FeatureEnableStatus = "ENABLED" | "DISABLED" | "NOT_ALLOWED";
+export type FeatureEnableStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "NOT_ALLOWED"
+  | (string & {});
 export const FeatureEnableStatus = /*@__PURE__*/ S.String;
 
 export interface SupportedEmailDomainsStatus {
@@ -953,7 +968,7 @@ export const UpdateChannelOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSpaceInput {
   spaceId: string;
   description?: string | redacted.Redacted<string>;
-  tier?: TierLevel | (string & {});
+  tier?: TierLevel;
   roleArn?: string;
   supportedEmailDomains?: SupportedEmailDomainsParameters;
 }
@@ -987,7 +1002,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

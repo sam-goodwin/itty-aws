@@ -431,12 +431,12 @@ export const ComponentBindingProperties = /*@__PURE__*/ S.Record(
   S.String,
   ComponentBindingPropertiesValue.pipe(S.optional),
 );
-export type SortDirection = "ASC" | "DESC";
+export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
 
 export interface SortProperty {
   field: string;
-  direction: SortDirection | (string & {});
+  direction: SortDirection;
 }
 export const SortProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ field: S.String, direction: SortDirection }),
@@ -615,14 +615,14 @@ export const FormDataTypeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FormDataTypeConfig",
 }) as any as S.Schema<FormDataTypeConfig>;
-export type FormActionType = "create" | "update";
+export type FormActionType = "create" | "update" | (string & {});
 export const FormActionType = /*@__PURE__*/ S.String;
 
-export type FixedPosition = "first";
+export type FixedPosition = "first" | (string & {});
 export const FixedPosition = /*@__PURE__*/ S.String;
 
 export type FieldPosition =
-  | { fixed: FixedPosition | (string & {}); rightOf?: never; below?: never }
+  | { fixed: FixedPosition; rightOf?: never; below?: never }
   | { fixed?: never; rightOf: string; below?: never }
   | { fixed?: never; rightOf?: never; below: string };
 export const FieldPosition = /*@__PURE__*/ S.Union([
@@ -715,13 +715,17 @@ export const ValueMappings = /*@__PURE__*/ S.suspend(() =>
     bindingProperties: S.optional(FormInputBindingProperties),
   }),
 ).annotate({ identifier: "ValueMappings" }) as any as S.Schema<ValueMappings>;
-export type StorageAccessLevel = "public" | "protected" | "private";
+export type StorageAccessLevel =
+  | "public"
+  | "protected"
+  | "private"
+  | (string & {});
 export const StorageAccessLevel = /*@__PURE__*/ S.String;
 
 export type StrValues = string[];
 export const StrValues = /*@__PURE__*/ S.Array(S.String);
 export interface FileUploaderFieldConfig {
-  accessLevel: StorageAccessLevel | (string & {});
+  accessLevel: StorageAccessLevel;
   acceptedFileTypes: string[];
   showThumbnails?: boolean;
   isResumable?: boolean;
@@ -869,7 +873,11 @@ export const SectionalElementMap = /*@__PURE__*/ S.Record(
   S.String,
   SectionalElement.pipe(S.optional),
 );
-export type FormButtonsPosition = "top" | "bottom" | "top_and_bottom";
+export type FormButtonsPosition =
+  | "top"
+  | "bottom"
+  | "top_and_bottom"
+  | (string & {});
 export const FormButtonsPosition = /*@__PURE__*/ S.String;
 
 export interface FormButton {
@@ -885,7 +893,7 @@ export const FormButton = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FormButton" }) as any as S.Schema<FormButton>;
 export interface FormCTA {
-  position?: FormButtonsPosition | (string & {});
+  position?: FormButtonsPosition;
   clear?: FormButton;
   cancel?: FormButton;
   submit?: FormButton;
@@ -902,7 +910,7 @@ export type LabelDecorator = string;
 export interface CreateFormData {
   name: string;
   dataType: FormDataTypeConfig;
-  formActionType: FormActionType | (string & {});
+  formActionType: FormActionType;
   fields: { [key: string]: FieldConfig | undefined };
   style: FormStyle;
   sectionalElements: { [key: string]: SectionalElement | undefined };
@@ -1411,13 +1419,13 @@ export const GetCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCodegenJobRequest",
 }) as any as S.Schema<GetCodegenJobRequest>;
-export type JSModule = "es2020" | "esnext";
+export type JSModule = "es2020" | "esnext" | (string & {});
 export const JSModule = /*@__PURE__*/ S.String;
 
-export type JSTarget = "es2015" | "es2020";
+export type JSTarget = "es2015" | "es2020" | (string & {});
 export const JSTarget = /*@__PURE__*/ S.String;
 
-export type JSScript = "jsx" | "tsx" | "js";
+export type JSScript = "jsx" | "tsx" | "js" | (string & {});
 export const JSScript = /*@__PURE__*/ S.String;
 
 export interface GraphQLRenderConfig {
@@ -1477,9 +1485,9 @@ export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface ReactStartCodegenJobData {
-  module?: JSModule | (string & {});
-  target?: JSTarget | (string & {});
-  script?: JSScript | (string & {});
+  module?: JSModule;
+  target?: JSTarget;
+  script?: JSScript;
   renderTypeDeclarations?: boolean;
   inlineSourceMap?: boolean;
   apiConfiguration?: ApiConfiguration;
@@ -1502,7 +1510,7 @@ export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
 export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
   S.Struct({ react: ReactStartCodegenJobData }),
 ]);
-export type CodegenJobGenericDataSourceType = "DataStore";
+export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
 export const CodegenJobGenericDataSourceType = /*@__PURE__*/ S.String;
 
 export type CodegenGenericDataFieldDataType =
@@ -1522,10 +1530,15 @@ export type CodegenGenericDataFieldDataType =
   | "AWSPhone"
   | "Enum"
   | "Model"
-  | "NonModel";
+  | "NonModel"
+  | (string & {});
 export const CodegenGenericDataFieldDataType = /*@__PURE__*/ S.String;
 
-export type GenericDataRelationshipType = "HAS_MANY" | "HAS_ONE" | "BELONGS_TO";
+export type GenericDataRelationshipType =
+  | "HAS_MANY"
+  | "HAS_ONE"
+  | "BELONGS_TO"
+  | (string & {});
 export const GenericDataRelationshipType = /*@__PURE__*/ S.String;
 
 export type RelatedModelFieldsList = string[];
@@ -1533,7 +1546,7 @@ export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
 export type AssociatedFieldsList = string[];
 export const AssociatedFieldsList = /*@__PURE__*/ S.Array(S.String);
 export interface CodegenGenericDataRelationshipType {
-  type: GenericDataRelationshipType | (string & {});
+  type: GenericDataRelationshipType;
   relatedModelName: string;
   relatedModelFields?: string[];
   canUnlinkAssociatedModel?: boolean;
@@ -1559,7 +1572,7 @@ export const CodegenGenericDataRelationshipType = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodegenGenericDataRelationshipType",
 }) as any as S.Schema<CodegenGenericDataRelationshipType>;
 export interface CodegenGenericDataField {
-  dataType: CodegenGenericDataFieldDataType | (string & {});
+  dataType: CodegenGenericDataFieldDataType;
   dataTypeValue: string;
   required: boolean;
   readOnly: boolean;
@@ -1648,7 +1661,7 @@ export const CodegenGenericDataNonModels = /*@__PURE__*/ S.Record(
   CodegenGenericDataNonModel.pipe(S.optional),
 );
 export interface CodegenJobGenericDataSchema {
-  dataSourceType: CodegenJobGenericDataSourceType | (string & {});
+  dataSourceType: CodegenJobGenericDataSourceType;
   models: { [key: string]: CodegenGenericDataModel | undefined };
   enums: { [key: string]: CodegenGenericDataEnum | undefined };
   nonModels: { [key: string]: CodegenGenericDataNonModel | undefined };
@@ -1675,7 +1688,11 @@ export const CodegenFeatureFlags = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CodegenFeatureFlags",
 }) as any as S.Schema<CodegenFeatureFlags>;
-export type CodegenJobStatus = "in_progress" | "failed" | "succeeded";
+export type CodegenJobStatus =
+  | "in_progress"
+  | "failed"
+  | "succeeded"
+  | (string & {});
 export const CodegenJobStatus = /*@__PURE__*/ S.String;
 
 export interface CodegenJobAsset {
@@ -2453,7 +2470,7 @@ export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFormData {
   name?: string;
   dataType?: FormDataTypeConfig;
-  formActionType?: FormActionType | (string & {});
+  formActionType?: FormActionType;
   fields?: { [key: string]: FieldConfig | undefined };
   style?: FormStyle;
   sectionalElements?: { [key: string]: SectionalElement | undefined };

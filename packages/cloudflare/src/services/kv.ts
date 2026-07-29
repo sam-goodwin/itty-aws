@@ -142,17 +142,17 @@ export const NamespacesBulkDeleteResponseUnsuccessfulKeysList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkDeleteNamespacesResponse {
   /** Number of keys successfully updated. */
-  successfulKeyCount?: number;
+  successfulKeyCount?: number | null;
   /** Name of the keys that failed to be fully updated. They should be retried. */
-  unsuccessfulKeys?: NamespacesBulkDeleteResponseUnsuccessfulKeysList;
+  unsuccessfulKeys?: NamespacesBulkDeleteResponseUnsuccessfulKeysList | null;
 }
 export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(
-      S.Number.pipe(T.Body("successful_key_count")),
+      S.NullOr(S.Number).pipe(T.Body("successful_key_count")),
     ),
     unsuccessfulKeys: S.optional(
-      NamespacesBulkDeleteResponseUnsuccessfulKeysList.pipe(
+      S.NullOr(NamespacesBulkDeleteResponseUnsuccessfulKeysList).pipe(
         T.Body("unsuccessful_keys"),
       ),
     ),
@@ -177,17 +177,17 @@ export interface BulkGetNamespacesRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesBulkGetRequestType | (string & {});
+  type?: NamespacesBulkGetRequestType | (string & {}) | null;
   /** Whether to include metadata in the response. */
-  withMetadata?: boolean;
+  withMetadata?: boolean | null;
 }
 export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keys: NamespacesBulkGetRequestKeysList,
-    type: S.optional(NamespacesBulkGetRequestType),
-    withMetadata: S.optional(S.Boolean),
+    type: S.optional(S.NullOr(NamespacesBulkGetRequestType)),
+    withMetadata: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -220,12 +220,14 @@ export const NamespacesBulkGetResultWorkersKVBulkGetResultValues =
 
 export interface NamespacesBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
-  values?: NamespacesBulkGetResultWorkersKVBulkGetResultValues;
+  values?: NamespacesBulkGetResultWorkersKVBulkGetResultValues | null;
 }
 export const NamespacesBulkGetResultWorkersKVBulkGetResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      values: S.optional(NamespacesBulkGetResultWorkersKVBulkGetResultValues),
+      values: S.optional(
+        S.NullOr(NamespacesBulkGetResultWorkersKVBulkGetResultValues),
+      ),
     }),
   ).annotate({
     identifier: "NamespacesBulkGetResultWorkersKVBulkGetResult",
@@ -237,14 +239,14 @@ export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValues
   /** The value associated with the key. */
   value: unknown;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number;
+  expiration?: number | null;
 }
 export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.Unknown,
       value: S.Unknown,
-      expiration: S.optional(S.Number),
+      expiration: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -265,13 +267,15 @@ export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap 
 
 export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata {
   /** Requested keys are paired with their values and metadata in an object. */
-  values?: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+  values?: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap | null;
 }
 export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       values: S.optional(
-        NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+        S.NullOr(
+          NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+        ),
       ),
     }),
   ).annotate({
@@ -298,22 +302,24 @@ export interface NamespacesBulkUpdateRequestBodyItem {
   /** A UTF-8 encoded string to be stored, up to 25 MiB in length. */
   value: string;
   /** Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. */
-  base64?: boolean;
+  base64?: boolean | null;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number;
+  expiration?: number | null;
   /** Expires the key after a number of seconds. Must be at least 60. */
-  expirationTtl?: number;
+  expirationTtl?: number | null;
   /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
-    base64: S.optional(S.Boolean),
-    expiration: S.optional(S.Number),
-    expirationTtl: S.optional(S.Number.pipe(T.Body("expiration_ttl"))),
-    metadata: S.optional(S.Unknown),
+    base64: S.optional(S.NullOr(S.Boolean)),
+    expiration: S.optional(S.NullOr(S.Number)),
+    expirationTtl: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("expiration_ttl")),
+    ),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "NamespacesBulkUpdateRequestBodyItem",
@@ -359,17 +365,17 @@ export const NamespacesBulkUpdateResponseUnsuccessfulKeysList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkPutNamespacesResponse {
   /** Number of keys successfully updated. */
-  successfulKeyCount?: number;
+  successfulKeyCount?: number | null;
   /** Name of the keys that failed to be fully updated. They should be retried. */
-  unsuccessfulKeys?: NamespacesBulkUpdateResponseUnsuccessfulKeysList;
+  unsuccessfulKeys?: NamespacesBulkUpdateResponseUnsuccessfulKeysList | null;
 }
 export const BulkPutNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(
-      S.Number.pipe(T.Body("successful_key_count")),
+      S.NullOr(S.Number).pipe(T.Body("successful_key_count")),
     ),
     unsuccessfulKeys: S.optional(
-      NamespacesBulkUpdateResponseUnsuccessfulKeysList.pipe(
+      S.NullOr(NamespacesBulkUpdateResponseUnsuccessfulKeysList).pipe(
         T.Body("unsuccessful_keys"),
       ),
     ),
@@ -408,14 +414,14 @@ export interface CreateNamespaceResponse {
   /** A human-readable string name for a Namespace. */
   title: string;
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
-  supportsUrlEncoding?: boolean;
+  supportsUrlEncoding?: boolean | null;
 }
 export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
     supportsUrlEncoding: S.optional(
-      S.Boolean.pipe(T.Body("supports_url_encoding")),
+      S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -515,14 +521,14 @@ export interface GetNamespaceResponse {
   /** A human-readable string name for a Namespace. */
   title: string;
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
-  supportsUrlEncoding?: boolean;
+  supportsUrlEncoding?: boolean | null;
 }
 export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
     supportsUrlEncoding: S.optional(
-      S.Boolean.pipe(T.Body("supports_url_encoding")),
+      S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -631,15 +637,15 @@ export interface NamespacesKeysListResultItem {
   /** A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL. */
   name: string;
   /** The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire. */
-  expiration?: number;
+  expiration?: number | null;
   /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    expiration: S.optional(S.Number),
-    metadata: S.optional(S.Unknown),
+    expiration: S.optional(S.NullOr(S.Number)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   }),
 ).annotate({
   identifier: "NamespacesKeysListResultItem",
@@ -709,14 +715,14 @@ export interface NamespacesListResultItem {
   /** A human-readable string name for a Namespace. */
   title: string;
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
-  supportsUrlEncoding?: boolean;
+  supportsUrlEncoding?: boolean | null;
 }
 export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
     supportsUrlEncoding: S.optional(
-      S.Boolean.pipe(T.Body("supports_url_encoding")),
+      S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding")),
     ),
   }),
 ).annotate({
@@ -783,17 +789,17 @@ export const NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesKeysBulkDeleteResponse {
   /** Number of keys successfully updated. */
-  successfulKeyCount?: number;
+  successfulKeyCount?: number | null;
   /** Name of the keys that failed to be fully updated. They should be retried. */
-  unsuccessfulKeys?: NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList;
+  unsuccessfulKeys?: NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList | null;
 }
 export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(
-      S.Number.pipe(T.Body("successful_key_count")),
+      S.NullOr(S.Number).pipe(T.Body("successful_key_count")),
     ),
     unsuccessfulKeys: S.optional(
-      NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList.pipe(
+      S.NullOr(NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList).pipe(
         T.Body("unsuccessful_keys"),
       ),
     ),
@@ -818,17 +824,17 @@ export interface NamespacesKeysBulkGetRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesKeysBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesKeysBulkGetRequestType | (string & {});
+  type?: NamespacesKeysBulkGetRequestType | (string & {}) | null;
   /** Whether to include metadata in the response. */
-  withMetadata?: boolean;
+  withMetadata?: boolean | null;
 }
 export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keys: NamespacesKeysBulkGetRequestKeysList,
-    type: S.optional(NamespacesKeysBulkGetRequestType),
-    withMetadata: S.optional(S.Boolean),
+    type: S.optional(S.NullOr(NamespacesKeysBulkGetRequestType)),
+    withMetadata: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -861,13 +867,13 @@ export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues =
 
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
-  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues;
+  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues | null;
 }
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       values: S.optional(
-        NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues,
+        S.NullOr(NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues),
       ),
     }),
   ).annotate({
@@ -880,14 +886,14 @@ export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataVa
   /** The value associated with the key. */
   value: unknown;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number;
+  expiration?: number | null;
 }
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.Unknown,
       value: S.Unknown,
-      expiration: S.optional(S.Number),
+      expiration: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier:
@@ -908,13 +914,15 @@ export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValues
 
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata {
   /** Requested keys are paired with their values and metadata in an object. */
-  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap | null;
 }
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       values: S.optional(
-        NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+        S.NullOr(
+          NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+        ),
       ),
     }),
   ).annotate({
@@ -941,23 +949,25 @@ export interface NamespacesKeysBulkUpdateRequestBodyItem {
   /** A UTF-8 encoded string to be stored, up to 25 MiB in length. */
   value: string;
   /** Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. */
-  base64?: boolean;
+  base64?: boolean | null;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number;
+  expiration?: number | null;
   /** Expires the key after a number of seconds. Must be at least 60. */
-  expirationTtl?: number;
+  expirationTtl?: number | null;
   /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const NamespacesKeysBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       key: S.String,
       value: S.String,
-      base64: S.optional(S.Boolean),
-      expiration: S.optional(S.Number),
-      expirationTtl: S.optional(S.Number.pipe(T.Body("expiration_ttl"))),
-      metadata: S.optional(S.Unknown),
+      base64: S.optional(S.NullOr(S.Boolean)),
+      expiration: S.optional(S.NullOr(S.Number)),
+      expirationTtl: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("expiration_ttl")),
+      ),
+      metadata: S.optional(S.NullOr(S.Unknown)),
     }),
 ).annotate({
   identifier: "NamespacesKeysBulkUpdateRequestBodyItem",
@@ -1004,17 +1014,17 @@ export const NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesKeysBulkUpdateResponse {
   /** Number of keys successfully updated. */
-  successfulKeyCount?: number;
+  successfulKeyCount?: number | null;
   /** Name of the keys that failed to be fully updated. They should be retried. */
-  unsuccessfulKeys?: NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList;
+  unsuccessfulKeys?: NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList | null;
 }
 export const NamespacesKeysBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(
-      S.Number.pipe(T.Body("successful_key_count")),
+      S.NullOr(S.Number).pipe(T.Body("successful_key_count")),
     ),
     unsuccessfulKeys: S.optional(
-      NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList.pipe(
+      S.NullOr(NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList).pipe(
         T.Body("unsuccessful_keys"),
       ),
     ),
@@ -1035,9 +1045,9 @@ export interface PutNamespaceValueRequest {
   /** Expires the key after a number of seconds. Must be at least 60. */
   expirationTtl?: number;
   /** A byte sequence to be stored, up to 25 MiB in length. */
-  value: string;
+  value: string | File | Blob;
   /** Associates arbitrary JSON data with a key/value pair. */
-  metadata?: unknown;
+  metadata?: unknown | null;
 }
 export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1047,7 +1057,7 @@ export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     expiration: S.optional(S.Number.pipe(T.Query())),
     expirationTtl: S.optional(S.Number.pipe(T.Query("expiration_ttl"))),
     value: S.String,
-    metadata: S.optional(S.Unknown),
+    metadata: S.optional(S.NullOr(S.Unknown)),
   })
     .pipe(
       T.Http({
@@ -1102,14 +1112,14 @@ export interface UpdateNamespaceResponse {
   /** A human-readable string name for a Namespace. */
   title: string;
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
-  supportsUrlEncoding?: boolean;
+  supportsUrlEncoding?: boolean | null;
 }
 export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
     supportsUrlEncoding: S.optional(
-      S.Boolean.pipe(T.Body("supports_url_encoding")),
+      S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

@@ -80,15 +80,15 @@ export const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList =
 
 export interface RulesBulkCreateRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesBulkCreateRequestBodyItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operationIds: S.optional(
-        RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
-          T.Body("operation_ids"),
-        ),
+        S.NullOr(
+          RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList,
+        ).pipe(T.Body("operation_ids")),
       ),
     }),
   ).annotate({
@@ -111,13 +111,13 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList =
 
 export interface RulesBulkCreateRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList;
+  host?: RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList | null;
 }
 export const RulesBulkCreateRequestBodyItemSelectorIncludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.optional(
-        RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList,
+        S.NullOr(RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList),
       ),
     }),
   ).annotate({
@@ -133,15 +133,19 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeList =
 
 export interface RulesBulkCreateRequestBodyItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesBulkCreateRequestBodyItemSelectorExcludeList;
+  exclude?: RulesBulkCreateRequestBodyItemSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesBulkCreateRequestBodyItemSelectorIncludeList;
+  include?: RulesBulkCreateRequestBodyItemSelectorIncludeList | null;
 }
 export const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      exclude: S.optional(RulesBulkCreateRequestBodyItemSelectorExcludeList),
-      include: S.optional(RulesBulkCreateRequestBodyItemSelectorIncludeList),
+      exclude: S.optional(
+        S.NullOr(RulesBulkCreateRequestBodyItemSelectorExcludeList),
+      ),
+      include: S.optional(
+        S.NullOr(RulesBulkCreateRequestBodyItemSelectorIncludeList),
+      ),
     }),
 ).annotate({
   identifier: "RulesBulkCreateRequestBodyItemSelector",
@@ -214,15 +218,15 @@ export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
 
 export interface RulesBulkCreateResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesBulkCreateResultItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operationIds: S.optional(
-        RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList.pipe(
-          T.Body("operation_ids"),
-        ),
+        S.NullOr(
+          RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList,
+        ).pipe(T.Body("operation_ids")),
       ),
     }),
   ).annotate({
@@ -245,12 +249,14 @@ export const RulesBulkCreateResultItemSelectorIncludeItemHostList =
 
 export interface RulesBulkCreateResultItemSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesBulkCreateResultItemSelectorIncludeItemHostList;
+  host?: RulesBulkCreateResultItemSelectorIncludeItemHostList | null;
 }
 export const RulesBulkCreateResultItemSelectorIncludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(RulesBulkCreateResultItemSelectorIncludeItemHostList),
+      host: S.optional(
+        S.NullOr(RulesBulkCreateResultItemSelectorIncludeItemHostList),
+      ),
     }),
   ).annotate({
     identifier: "RulesBulkCreateResultItemSelectorIncludeItem",
@@ -265,14 +271,14 @@ export const RulesBulkCreateResultItemSelectorIncludeList =
 
 export interface RulesBulkCreateResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesBulkCreateResultItemSelectorExcludeList;
+  exclude?: RulesBulkCreateResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesBulkCreateResultItemSelectorIncludeList;
+  include?: RulesBulkCreateResultItemSelectorIncludeList | null;
 }
 export const RulesBulkCreateResultItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesBulkCreateResultItemSelectorExcludeList),
-    include: S.optional(RulesBulkCreateResultItemSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesBulkCreateResultItemSelector",
@@ -292,9 +298,9 @@ export interface RulesBulkCreateResultItem {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -304,9 +310,9 @@ export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesBulkCreateResultItemSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesBulkCreateResultItem",
@@ -350,12 +356,12 @@ export const RulesBulkEditRequestBodyItemPositionAPIShieldIndex =
 
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldBefore {
   /** Move rule to before rule with this ID. */
-  before?: string;
+  before?: string | null;
 }
 export const RulesBulkEditRequestBodyItemPositionAPIShieldBefore =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.String),
+      before: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldBefore",
@@ -363,12 +369,12 @@ export const RulesBulkEditRequestBodyItemPositionAPIShieldBefore =
 
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldAfter {
   /** Move rule to after rule with this ID. */
-  after?: string;
+  after?: string | null;
 }
 export const RulesBulkEditRequestBodyItemPositionAPIShieldAfter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.String),
+      after: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldAfter",
@@ -392,15 +398,15 @@ export const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
 
 export interface RulesBulkEditRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesBulkEditRequestBodyItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operationIds: S.optional(
-        RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
-          T.Body("operation_ids"),
-        ),
+        S.NullOr(
+          RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList,
+        ).pipe(T.Body("operation_ids")),
       ),
     }),
   ).annotate({
@@ -423,12 +429,14 @@ export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
 
 export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesBulkEditRequestBodyItemSelectorIncludeItemHostList;
+  host?: RulesBulkEditRequestBodyItemSelectorIncludeItemHostList | null;
 }
 export const RulesBulkEditRequestBodyItemSelectorIncludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(RulesBulkEditRequestBodyItemSelectorIncludeItemHostList),
+      host: S.optional(
+        S.NullOr(RulesBulkEditRequestBodyItemSelectorIncludeItemHostList),
+      ),
     }),
   ).annotate({
     identifier: "RulesBulkEditRequestBodyItemSelectorIncludeItem",
@@ -443,15 +451,19 @@ export const RulesBulkEditRequestBodyItemSelectorIncludeList =
 
 export interface RulesBulkEditRequestBodyItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesBulkEditRequestBodyItemSelectorExcludeList;
+  exclude?: RulesBulkEditRequestBodyItemSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesBulkEditRequestBodyItemSelectorIncludeList;
+  include?: RulesBulkEditRequestBodyItemSelectorIncludeList | null;
 }
 export const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      exclude: S.optional(RulesBulkEditRequestBodyItemSelectorExcludeList),
-      include: S.optional(RulesBulkEditRequestBodyItemSelectorIncludeList),
+      exclude: S.optional(
+        S.NullOr(RulesBulkEditRequestBodyItemSelectorExcludeList),
+      ),
+      include: S.optional(
+        S.NullOr(RulesBulkEditRequestBodyItemSelectorIncludeList),
+      ),
     }),
 ).annotate({
   identifier: "RulesBulkEditRequestBodyItemSelector",
@@ -461,30 +473,30 @@ export interface RulesBulkEditRequestBodyItem {
   /** Rule ID this patch applies to */
   id: string;
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action?: RulesBulkEditRequestBodyItemAction | (string & {});
+  action?: RulesBulkEditRequestBodyItemAction | (string & {}) | null;
   /** A human-readable description that gives more details than `title`. */
-  description?: string;
+  description?: string | null;
   /** Toggle rule on or off. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
-  expression?: string;
+  expression?: string | null;
   /** Update rule order among zone rules. */
-  position?: RulesBulkEditRequestBodyItemPosition;
+  position?: RulesBulkEditRequestBodyItemPosition | null;
   /** Select operations covered by this rule. */
-  selector?: RulesBulkEditRequestBodyItemSelector;
+  selector?: RulesBulkEditRequestBodyItemSelector | null;
   /** A human-readable name for the rule. */
-  title?: string;
+  title?: string | null;
 }
 export const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    action: S.optional(RulesBulkEditRequestBodyItemAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    position: S.optional(RulesBulkEditRequestBodyItemPosition),
-    selector: S.optional(RulesBulkEditRequestBodyItemSelector),
-    title: S.optional(S.String),
+    action: S.optional(S.NullOr(RulesBulkEditRequestBodyItemAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(RulesBulkEditRequestBodyItemPosition)),
+    selector: S.optional(S.NullOr(RulesBulkEditRequestBodyItemSelector)),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RulesBulkEditRequestBodyItem",
@@ -529,15 +541,15 @@ export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
 
 export interface RulesBulkEditResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesBulkEditResultItemSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesBulkEditResultItemSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesBulkEditResultItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operationIds: S.optional(
-        RulesBulkEditResultItemSelectorExcludeItemOperationIdsList.pipe(
-          T.Body("operation_ids"),
-        ),
+        S.NullOr(
+          RulesBulkEditResultItemSelectorExcludeItemOperationIdsList,
+        ).pipe(T.Body("operation_ids")),
       ),
     }),
   ).annotate({
@@ -558,12 +570,14 @@ export const RulesBulkEditResultItemSelectorIncludeItemHostList =
 
 export interface RulesBulkEditResultItemSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesBulkEditResultItemSelectorIncludeItemHostList;
+  host?: RulesBulkEditResultItemSelectorIncludeItemHostList | null;
 }
 export const RulesBulkEditResultItemSelectorIncludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(RulesBulkEditResultItemSelectorIncludeItemHostList),
+      host: S.optional(
+        S.NullOr(RulesBulkEditResultItemSelectorIncludeItemHostList),
+      ),
     }),
   ).annotate({
     identifier: "RulesBulkEditResultItemSelectorIncludeItem",
@@ -577,14 +591,14 @@ export const RulesBulkEditResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesBulkEditResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesBulkEditResultItemSelectorExcludeList;
+  exclude?: RulesBulkEditResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesBulkEditResultItemSelectorIncludeList;
+  include?: RulesBulkEditResultItemSelectorIncludeList | null;
 }
 export const RulesBulkEditResultItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesBulkEditResultItemSelectorExcludeList),
-    include: S.optional(RulesBulkEditResultItemSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesBulkEditResultItemSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesBulkEditResultItemSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesBulkEditResultItemSelector",
@@ -604,9 +618,9 @@ export interface RulesBulkEditResultItem {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -616,9 +630,9 @@ export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesBulkEditResultItemSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesBulkEditResultItem",
@@ -1048,13 +1062,13 @@ export const RulesCreateRequestSelectorExcludeItemOperationIdsList =
 
 export interface RulesCreateRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesCreateRequestSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesCreateRequestSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       operationIds: S.optional(
-        RulesCreateRequestSelectorExcludeItemOperationIdsList.pipe(
+        S.NullOr(RulesCreateRequestSelectorExcludeItemOperationIdsList).pipe(
           T.Body("operation_ids"),
         ),
       ),
@@ -1077,12 +1091,12 @@ export const RulesCreateRequestSelectorIncludeItemHostList =
 
 export interface RulesCreateRequestSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesCreateRequestSelectorIncludeItemHostList;
+  host?: RulesCreateRequestSelectorIncludeItemHostList | null;
 }
 export const RulesCreateRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      host: S.optional(RulesCreateRequestSelectorIncludeItemHostList),
+      host: S.optional(S.NullOr(RulesCreateRequestSelectorIncludeItemHostList)),
     }),
 ).annotate({
   identifier: "RulesCreateRequestSelectorIncludeItem",
@@ -1096,14 +1110,14 @@ export const RulesCreateRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesCreateRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesCreateRequestSelectorExcludeList;
+  exclude?: RulesCreateRequestSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesCreateRequestSelectorIncludeList;
+  include?: RulesCreateRequestSelectorIncludeList | null;
 }
 export const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesCreateRequestSelectorExcludeList),
-    include: S.optional(RulesCreateRequestSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesCreateRequestSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesCreateRequestSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesCreateRequestSelector",
@@ -1159,13 +1173,13 @@ export const RulesCreateResponseSelectorExcludeItemOperationIdsList =
 
 export interface RulesCreateResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesCreateResponseSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesCreateResponseSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesCreateResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       operationIds: S.optional(
-        RulesCreateResponseSelectorExcludeItemOperationIdsList.pipe(
+        S.NullOr(RulesCreateResponseSelectorExcludeItemOperationIdsList).pipe(
           T.Body("operation_ids"),
         ),
       ),
@@ -1188,12 +1202,14 @@ export const RulesCreateResponseSelectorIncludeItemHostList =
 
 export interface RulesCreateResponseSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesCreateResponseSelectorIncludeItemHostList;
+  host?: RulesCreateResponseSelectorIncludeItemHostList | null;
 }
 export const RulesCreateResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      host: S.optional(RulesCreateResponseSelectorIncludeItemHostList),
+      host: S.optional(
+        S.NullOr(RulesCreateResponseSelectorIncludeItemHostList),
+      ),
     }),
 ).annotate({
   identifier: "RulesCreateResponseSelectorIncludeItem",
@@ -1207,14 +1223,14 @@ export const RulesCreateResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesCreateResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesCreateResponseSelectorExcludeList;
+  exclude?: RulesCreateResponseSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesCreateResponseSelectorIncludeList;
+  include?: RulesCreateResponseSelectorIncludeList | null;
 }
 export const RulesCreateResponseSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesCreateResponseSelectorExcludeList),
-    include: S.optional(RulesCreateResponseSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesCreateResponseSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesCreateResponseSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesCreateResponseSelector",
@@ -1235,9 +1251,9 @@ export interface CreateRuleResponse {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1247,9 +1263,9 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesCreateResponseSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -1281,11 +1297,11 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigurationResponse {
   /** UUID. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigurationResponse",
@@ -1568,12 +1584,12 @@ export const RulesGetResponseSelectorExcludeItemOperationIdsList =
 
 export interface RulesGetResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesGetResponseSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesGetResponseSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
-      RulesGetResponseSelectorExcludeItemOperationIdsList.pipe(
+      S.NullOr(RulesGetResponseSelectorExcludeItemOperationIdsList).pipe(
         T.Body("operation_ids"),
       ),
     ),
@@ -1596,11 +1612,11 @@ export const RulesGetResponseSelectorIncludeItemHostList =
 
 export interface RulesGetResponseSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesGetResponseSelectorIncludeItemHostList;
+  host?: RulesGetResponseSelectorIncludeItemHostList | null;
 }
 export const RulesGetResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(RulesGetResponseSelectorIncludeItemHostList),
+    host: S.optional(S.NullOr(RulesGetResponseSelectorIncludeItemHostList)),
   }),
 ).annotate({
   identifier: "RulesGetResponseSelectorIncludeItem",
@@ -1614,14 +1630,14 @@ export const RulesGetResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesGetResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesGetResponseSelectorExcludeList;
+  exclude?: RulesGetResponseSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesGetResponseSelectorIncludeList;
+  include?: RulesGetResponseSelectorIncludeList | null;
 }
 export const RulesGetResponseSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesGetResponseSelectorExcludeList),
-    include: S.optional(RulesGetResponseSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesGetResponseSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesGetResponseSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesGetResponseSelector",
@@ -1642,9 +1658,9 @@ export interface GetRuleResponse {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1654,9 +1670,9 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesGetResponseSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
@@ -1972,13 +1988,13 @@ export const RulesListResultItemSelectorExcludeItemOperationIdsList =
 
 export interface RulesListResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesListResultItemSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesListResultItemSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesListResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       operationIds: S.optional(
-        RulesListResultItemSelectorExcludeItemOperationIdsList.pipe(
+        S.NullOr(RulesListResultItemSelectorExcludeItemOperationIdsList).pipe(
           T.Body("operation_ids"),
         ),
       ),
@@ -2001,12 +2017,14 @@ export const RulesListResultItemSelectorIncludeItemHostList =
 
 export interface RulesListResultItemSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesListResultItemSelectorIncludeItemHostList;
+  host?: RulesListResultItemSelectorIncludeItemHostList | null;
 }
 export const RulesListResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      host: S.optional(RulesListResultItemSelectorIncludeItemHostList),
+      host: S.optional(
+        S.NullOr(RulesListResultItemSelectorIncludeItemHostList),
+      ),
     }),
 ).annotate({
   identifier: "RulesListResultItemSelectorIncludeItem",
@@ -2020,14 +2038,14 @@ export const RulesListResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesListResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesListResultItemSelectorExcludeList;
+  exclude?: RulesListResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesListResultItemSelectorIncludeList;
+  include?: RulesListResultItemSelectorIncludeList | null;
 }
 export const RulesListResultItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesListResultItemSelectorExcludeList),
-    include: S.optional(RulesListResultItemSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesListResultItemSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesListResultItemSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesListResultItemSelector",
@@ -2047,9 +2065,9 @@ export interface RulesListResultItem {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2059,9 +2077,9 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesListResultItemSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesListResultItem",
@@ -2097,18 +2115,20 @@ export interface PatchConfigurationRequest {
   zoneId: string;
   /** UUID. */
   configId: string;
-  description?: string;
-  title?: string;
-  tokenSources?: ConfigurationEditRequestTokenSourcesList;
+  description?: string | null;
+  title?: string | null;
+  tokenSources?: ConfigurationEditRequestTokenSourcesList | null;
 }
 export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    title: S.optional(S.NullOr(S.String)),
     tokenSources: S.optional(
-      ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
+      S.NullOr(ConfigurationEditRequestTokenSourcesList).pipe(
+        T.Body("token_sources"),
+      ),
     ),
   })
     .pipe(
@@ -2131,18 +2151,20 @@ export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConfigurationResponse {
   /** UUID. */
-  id?: string;
-  description?: string;
-  title?: string;
-  tokenSources?: ConfigurationEditResponseTokenSourcesList;
+  id?: string | null;
+  description?: string | null;
+  title?: string | null;
+  tokenSources?: ConfigurationEditResponseTokenSourcesList | null;
 }
 export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    title: S.optional(S.NullOr(S.String)),
     tokenSources: S.optional(
-      ConfigurationEditResponseTokenSourcesList.pipe(T.Body("token_sources")),
+      S.NullOr(ConfigurationEditResponseTokenSourcesList).pipe(
+        T.Body("token_sources"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2167,12 +2189,12 @@ export const RulesEditRequestPositionAPIShieldIndex = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestPositionAPIShieldBefore {
   /** Move rule to before rule with this ID. */
-  before?: string;
+  before?: string | null;
 }
 export const RulesEditRequestPositionAPIShieldBefore = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      before: S.optional(S.String),
+      before: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "RulesEditRequestPositionAPIShieldBefore",
@@ -2180,12 +2202,12 @@ export const RulesEditRequestPositionAPIShieldBefore = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestPositionAPIShieldAfter {
   /** Move rule to after rule with this ID. */
-  after?: string;
+  after?: string | null;
 }
 export const RulesEditRequestPositionAPIShieldAfter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      after: S.optional(S.String),
+      after: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "RulesEditRequestPositionAPIShieldAfter",
@@ -2207,12 +2229,12 @@ export const RulesEditRequestSelectorExcludeItemOperationIdsList =
 
 export interface RulesEditRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
-      RulesEditRequestSelectorExcludeItemOperationIdsList.pipe(
+      S.NullOr(RulesEditRequestSelectorExcludeItemOperationIdsList).pipe(
         T.Body("operation_ids"),
       ),
     ),
@@ -2235,11 +2257,11 @@ export const RulesEditRequestSelectorIncludeItemHostList =
 
 export interface RulesEditRequestSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesEditRequestSelectorIncludeItemHostList;
+  host?: RulesEditRequestSelectorIncludeItemHostList | null;
 }
 export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(RulesEditRequestSelectorIncludeItemHostList),
+    host: S.optional(S.NullOr(RulesEditRequestSelectorIncludeItemHostList)),
   }),
 ).annotate({
   identifier: "RulesEditRequestSelectorIncludeItem",
@@ -2253,14 +2275,14 @@ export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesEditRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesEditRequestSelectorExcludeList;
+  exclude?: RulesEditRequestSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesEditRequestSelectorIncludeList;
+  include?: RulesEditRequestSelectorIncludeList | null;
 }
 export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesEditRequestSelectorExcludeList),
-    include: S.optional(RulesEditRequestSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesEditRequestSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesEditRequestSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesEditRequestSelector",
@@ -2272,31 +2294,31 @@ export interface PatchRuleRequest {
   /** UUID. */
   ruleId: string;
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action?: RulesEditRequestAction | (string & {});
+  action?: RulesEditRequestAction | (string & {}) | null;
   /** A human-readable description that gives more details than `title`. */
-  description?: string;
+  description?: string | null;
   /** Toggle rule on or off. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
-  expression?: string;
+  expression?: string | null;
   /** Update rule order among zone rules. */
-  position?: RulesEditRequestPosition;
+  position?: RulesEditRequestPosition | null;
   /** Select operations covered by this rule. */
-  selector?: RulesEditRequestSelector;
+  selector?: RulesEditRequestSelector | null;
   /** A human-readable name for the rule. */
-  title?: string;
+  title?: string | null;
 }
 export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    action: S.optional(RulesEditRequestAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    position: S.optional(RulesEditRequestPosition),
-    selector: S.optional(RulesEditRequestSelector),
-    title: S.optional(S.String),
+    action: S.optional(S.NullOr(RulesEditRequestAction)),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    expression: S.optional(S.NullOr(S.String)),
+    position: S.optional(S.NullOr(RulesEditRequestPosition)),
+    selector: S.optional(S.NullOr(RulesEditRequestSelector)),
+    title: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -2322,13 +2344,13 @@ export const RulesEditResponseSelectorExcludeItemOperationIdsList =
 
 export interface RulesEditResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
-  operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList;
+  operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList | null;
 }
 export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       operationIds: S.optional(
-        RulesEditResponseSelectorExcludeItemOperationIdsList.pipe(
+        S.NullOr(RulesEditResponseSelectorExcludeItemOperationIdsList).pipe(
           T.Body("operation_ids"),
         ),
       ),
@@ -2351,12 +2373,12 @@ export const RulesEditResponseSelectorIncludeItemHostList =
 
 export interface RulesEditResponseSelectorIncludeItem {
   /** Included hostnames. */
-  host?: RulesEditResponseSelectorIncludeItemHostList;
+  host?: RulesEditResponseSelectorIncludeItemHostList | null;
 }
 export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      host: S.optional(RulesEditResponseSelectorIncludeItemHostList),
+      host: S.optional(S.NullOr(RulesEditResponseSelectorIncludeItemHostList)),
     }),
 ).annotate({
   identifier: "RulesEditResponseSelectorIncludeItem",
@@ -2370,14 +2392,14 @@ export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
 
 export interface RulesEditResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesEditResponseSelectorExcludeList;
+  exclude?: RulesEditResponseSelectorExcludeList | null;
   /** Select all matching operations. */
-  include?: RulesEditResponseSelectorIncludeList;
+  include?: RulesEditResponseSelectorIncludeList | null;
 }
 export const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesEditResponseSelectorExcludeList),
-    include: S.optional(RulesEditResponseSelectorIncludeList),
+    exclude: S.optional(S.NullOr(RulesEditResponseSelectorExcludeList)),
+    include: S.optional(S.NullOr(RulesEditResponseSelectorIncludeList)),
   }),
 ).annotate({
   identifier: "RulesEditResponseSelector",
@@ -2398,9 +2420,9 @@ export interface PatchRuleResponse {
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id?: string | null;
+  createdAt?: string | null;
+  lastUpdated?: string | null;
 }
 export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2410,9 +2432,9 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesEditResponseSelector,
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleResponse",

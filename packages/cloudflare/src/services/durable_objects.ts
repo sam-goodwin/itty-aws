@@ -77,14 +77,14 @@ export const ListNamespaceObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface NamespacesObjectsListResultItem {
   /** ID of the Durable Object. */
-  id?: string;
+  id?: string | null;
   /** Whether the Durable Object has stored data. */
-  hasStoredData?: boolean;
+  hasStoredData?: boolean | null;
 }
 export const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    hasStoredData: S.optional(S.Boolean),
+    id: S.optional(S.NullOr(S.String)),
+    hasStoredData: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "NamespacesObjectsListResultItem",
@@ -138,19 +138,19 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespacesRequest>;
 
 export interface NamespacesListResultItem {
-  id?: string;
-  class?: string;
-  name?: string;
-  script?: string;
-  useSqlite?: boolean;
+  id?: string | null;
+  class?: string | null;
+  name?: string | null;
+  script?: string | null;
+  useSqlite?: boolean | null;
 }
 export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    class: S.optional(S.String),
-    name: S.optional(S.String),
-    script: S.optional(S.String),
-    useSqlite: S.optional(S.Boolean.pipe(T.Body("use_sqlite"))),
+    id: S.optional(S.NullOr(S.String)),
+    class: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    script: S.optional(S.NullOr(S.String)),
+    useSqlite: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_sqlite"))),
   }),
 ).annotate({
   identifier: "NamespacesListResultItem",

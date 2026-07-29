@@ -170,11 +170,11 @@ export class TrimmedDataAccessException extends S.TaggedErrorClass<TrimmedDataAc
 export type StreamArn = string;
 export type PositiveIntegerObject = number;
 export type ShardId = string;
-export type ShardFilterType = "CHILD_SHARDS";
+export type ShardFilterType = "CHILD_SHARDS" | (string & {});
 export const ShardFilterType = /*@__PURE__*/ S.String;
 
 export interface ShardFilter {
-  Type?: ShardFilterType | (string & {});
+  Type?: ShardFilterType;
   ShardId?: string;
 }
 export const ShardFilter = /*@__PURE__*/ S.suspend(() =>
@@ -209,19 +209,25 @@ export const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStreamInput",
 }) as any as S.Schema<DescribeStreamInput>;
-export type StreamStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED";
+export type StreamStatus =
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "DISABLED"
+  | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
 
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
-  | "KEYS_ONLY";
+  | "KEYS_ONLY"
+  | (string & {});
 export const StreamViewType = /*@__PURE__*/ S.String;
 
 export type TableName = string;
 export type KeySchemaAttributeName = string;
-export type KeyType = "HASH" | "RANGE";
+export type KeyType = "HASH" | "RANGE" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface KeySchemaElement {
@@ -318,7 +324,7 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordsInput",
 }) as any as S.Schema<GetRecordsInput>;
-export type OperationType = "INSERT" | "MODIFY" | "REMOVE";
+export type OperationType = "INSERT" | "MODIFY" | "REMOVE" | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type AttributeName = string;
@@ -560,13 +566,14 @@ export type ShardIteratorType =
   | "TRIM_HORIZON"
   | "LATEST"
   | "AT_SEQUENCE_NUMBER"
-  | "AFTER_SEQUENCE_NUMBER";
+  | "AFTER_SEQUENCE_NUMBER"
+  | (string & {});
 export const ShardIteratorType = /*@__PURE__*/ S.String;
 
 export interface GetShardIteratorInput {
   StreamArn: string;
   ShardId: string;
-  ShardIteratorType: ShardIteratorType | (string & {});
+  ShardIteratorType: ShardIteratorType;
   SequenceNumber?: string;
 }
 export const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>

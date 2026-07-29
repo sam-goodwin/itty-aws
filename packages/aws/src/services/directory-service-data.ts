@@ -188,14 +188,15 @@ export const AddGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddGroupMemberResult",
 }) as any as S.Schema<AddGroupMemberResult>;
-export type GroupType = "Distribution" | "Security";
+export type GroupType = "Distribution" | "Security" | (string & {});
 export const GroupType = /*@__PURE__*/ S.String;
 
 export type GroupScope =
   | "DomainLocal"
   | "Global"
   | "Universal"
-  | "BuiltinLocal";
+  | "BuiltinLocal"
+  | (string & {});
 export const GroupScope = /*@__PURE__*/ S.String;
 
 export type LdapDisplayName = string;
@@ -233,8 +234,8 @@ export const Attributes = /*@__PURE__*/ S.Record(
 export interface CreateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
-  GroupType?: GroupType | (string & {});
-  GroupScope?: GroupScope | (string & {});
+  GroupType?: GroupType;
+  GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
   ClientToken?: string;
 }
@@ -557,7 +558,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
-export type MemberType = "USER" | "GROUP" | "COMPUTER";
+export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -927,16 +928,16 @@ export const SearchUsersResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchUsersResult",
 }) as any as S.Schema<SearchUsersResult>;
-export type UpdateType = "ADD" | "REPLACE" | "REMOVE";
+export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export interface UpdateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
-  GroupType?: GroupType | (string & {});
-  GroupScope?: GroupScope | (string & {});
+  GroupType?: GroupType;
+  GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
-  UpdateType?: UpdateType | (string & {});
+  UpdateType?: UpdateType;
   ClientToken?: string;
 }
 export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -975,7 +976,7 @@ export interface UpdateUserRequest {
   GivenName?: string | redacted.Redacted<string>;
   Surname?: string | redacted.Redacted<string>;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
-  UpdateType?: UpdateType | (string & {});
+  UpdateType?: UpdateType;
   ClientToken?: string;
 }
 export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1012,7 +1013,8 @@ export type ExceptionMessage = string;
 export type AccessDeniedReason =
   | "IAM_AUTH"
   | "DIRECTORY_AUTH"
-  | "DATA_DISABLED";
+  | "DATA_DISABLED"
+  | (string & {});
 export const AccessDeniedReason = /*@__PURE__*/ S.String;
 
 export type DirectoryUnavailableReason =
@@ -1020,7 +1022,8 @@ export type DirectoryUnavailableReason =
   | "DIRECTORY_TIMEOUT"
   | "DIRECTORY_RESOURCES_EXCEEDED"
   | "NO_DISK_SPACE"
-  | "TRUST_AUTH_FAILURE";
+  | "TRUST_AUTH_FAILURE"
+  | (string & {});
 export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -1038,7 +1041,8 @@ export type ValidationExceptionReason =
   | "MISSING_ATTRIBUTE"
   | "ATTRIBUTE_EXISTS"
   | "LDAP_SIZE_LIMIT_EXCEEDED"
-  | "LDAP_UNSUPPORTED_OPERATION";
+  | "LDAP_UNSUPPORTED_OPERATION"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type AddGroupMemberError =

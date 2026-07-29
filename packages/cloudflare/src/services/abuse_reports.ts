@@ -90,7 +90,9 @@ export const CreateRequestHostNotificationAbuseGeneral = /*@__PURE__*/ S.String;
 
 export type CreateRequestHostNotification =
   | CreateRequestHostNotificationEnum
-  | CreateRequestHostNotificationAbuseGeneral;
+  | (string & {})
+  | CreateRequestHostNotificationAbuseGeneral
+  | (string & {});
 export const CreateRequestHostNotification = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], []]),
 );
@@ -111,8 +113,11 @@ export const CreateRequestOwnerNotificationAbuseChildren =
 
 export type CreateRequestOwnerNotification =
   | CreateRequestOwnerNotificationEnum
+  | (string & {})
   | CreateRequestOwnerNotificationAbuseGeneral
-  | CreateRequestOwnerNotificationAbuseChildren;
+  | (string & {})
+  | CreateRequestOwnerNotificationAbuseChildren
+  | (string & {});
 export const CreateRequestOwnerNotification = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], [], []]),
 );
@@ -176,11 +181,12 @@ export interface CreateRequestRegWhoRequest {
   /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
   regWhoRequestedDataElements: CreateRequestRegWhoRequestRegWhoRequestedDataElementsList;
   /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
-  regWhoAuthorizationStatement?: string;
+  regWhoAuthorizationStatement?: string | null;
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?:
     | CreateRequestRegWhoRequestRegWhoRequestorType
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -199,10 +205,10 @@ export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("reg_who_requested_data_elements"),
       ),
     regWhoAuthorizationStatement: S.optional(
-      S.String.pipe(T.Body("reg_who_authorization_statement")),
+      S.NullOr(S.String).pipe(T.Body("reg_who_authorization_statement")),
     ),
     regWhoRequestorType: S.optional(
-      CreateRequestRegWhoRequestRegWhoRequestorType.pipe(
+      S.NullOr(CreateRequestRegWhoRequestRegWhoRequestorType).pipe(
         T.Body("reg_who_requestor_type"),
       ),
     ),
@@ -218,110 +224,126 @@ export interface CreateAbuseReportRequest {
   /** The report type for submitted reports. */
   act: CreateRequestAct | (string & {});
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  address1?: string;
+  address1?: string | null;
   /** The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  agentName?: string;
+  agentName?: string | null;
   /** Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports */
-  agree?: CreateRequestAgree | (number & {});
+  agree?: CreateRequestAgree | (number & {}) | null;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  city?: string;
+  city?: string | null;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  country?: string;
+  country?: string | null;
   /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   email: string;
   /** Should match the value provided in `email` */
   email2: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  hostNotification?: CreateRequestHostNotification;
+  hostNotification?: CreateRequestHostNotification | null;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   name: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  originalWork?: string;
+  originalWork?: string | null;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
   ownerNotification: CreateRequestOwnerNotification;
   /** Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports */
-  signature?: string;
+  signature?: string | null;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  state?: string;
+  state?: string | null;
   /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   urls: string;
   /** Any additional comments about the infringement not exceeding 2000 characters */
-  comments?: string;
+  comments?: string | null;
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  company?: string;
+  company?: string | null;
   /** Text containing 2 characters */
-  reportedCountry?: string;
+  reportedCountry?: string | null;
   /** Text not exceeding 255 characters */
-  reportedUserAgent?: string;
+  reportedUserAgent?: string | null;
   /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  tele?: string;
+  tele?: string | null;
   /** Text not exceeding 255 characters */
-  title?: string;
+  title?: string | null;
   /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
-  justification?: string;
+  justification?: string | null;
   /** Text not exceeding 1000 characters */
-  trademarkNumber?: string;
+  trademarkNumber?: string | null;
   /** Text not exceeding 1000 characters */
-  trademarkOffice?: string;
+  trademarkOffice?: string | null;
   /** Text not exceeding 1000 characters */
-  trademarkSymbol?: string;
+  trademarkSymbol?: string | null;
   /** A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  destinationIps?: string;
+  destinationIps?: string | null;
   /** A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols. */
-  portsProtocols?: string;
+  portsProtocols?: string | null;
   /** A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  sourceIps?: string;
+  sourceIps?: string | null;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ncmecNotification?: CreateRequestNcmecNotification | (string & {});
+  ncmecNotification?: CreateRequestNcmecNotification | (string & {}) | null;
   /** RDP-mandated fields for registrar WHOIS data disclosure requests. */
-  regWhoRequest?: CreateRequestRegWhoRequest;
+  regWhoRequest?: CreateRequestRegWhoRequest | null;
   /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
-  ncseiSubjectRepresentation?: boolean;
+  ncseiSubjectRepresentation?: boolean | null;
 }
 export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
     act: CreateRequestAct,
-    address1: S.optional(S.String),
-    agentName: S.optional(S.String.pipe(T.Body("agent_name"))),
-    agree: S.optional(CreateRequestAgree),
-    city: S.optional(S.String),
-    country: S.optional(S.String),
+    address1: S.optional(S.NullOr(S.String)),
+    agentName: S.optional(S.NullOr(S.String).pipe(T.Body("agent_name"))),
+    agree: S.optional(S.NullOr(CreateRequestAgree)),
+    city: S.optional(S.NullOr(S.String)),
+    country: S.optional(S.NullOr(S.String)),
     email: S.String,
     email2: S.String,
     hostNotification: S.optional(
-      CreateRequestHostNotification.pipe(T.Body("host_notification")),
+      S.NullOr(CreateRequestHostNotification).pipe(T.Body("host_notification")),
     ),
     name: S.String,
-    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
+    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
     ownerNotification: CreateRequestOwnerNotification.pipe(
       T.Body("owner_notification"),
     ),
-    signature: S.optional(S.String),
-    state: S.optional(S.String),
+    signature: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(S.String)),
     urls: S.String,
-    comments: S.optional(S.String),
-    company: S.optional(S.String),
-    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
-    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
-    tele: S.optional(S.String),
-    title: S.optional(S.String),
-    justification: S.optional(S.String),
-    trademarkNumber: S.optional(S.String.pipe(T.Body("trademark_number"))),
-    trademarkOffice: S.optional(S.String.pipe(T.Body("trademark_office"))),
-    trademarkSymbol: S.optional(S.String.pipe(T.Body("trademark_symbol"))),
-    destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
-    portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
-    sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
+    comments: S.optional(S.NullOr(S.String)),
+    company: S.optional(S.NullOr(S.String)),
+    reportedCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("reported_country")),
+    ),
+    reportedUserAgent: S.optional(
+      S.NullOr(S.String).pipe(T.Body("reported_user_agent")),
+    ),
+    tele: S.optional(S.NullOr(S.String)),
+    title: S.optional(S.NullOr(S.String)),
+    justification: S.optional(S.NullOr(S.String)),
+    trademarkNumber: S.optional(
+      S.NullOr(S.String).pipe(T.Body("trademark_number")),
+    ),
+    trademarkOffice: S.optional(
+      S.NullOr(S.String).pipe(T.Body("trademark_office")),
+    ),
+    trademarkSymbol: S.optional(
+      S.NullOr(S.String).pipe(T.Body("trademark_symbol")),
+    ),
+    destinationIps: S.optional(
+      S.NullOr(S.String).pipe(T.Body("destination_ips")),
+    ),
+    portsProtocols: S.optional(
+      S.NullOr(S.String).pipe(T.Body("ports_protocols")),
+    ),
+    sourceIps: S.optional(S.NullOr(S.String).pipe(T.Body("source_ips"))),
     ncmecNotification: S.optional(
-      CreateRequestNcmecNotification.pipe(T.Body("ncmec_notification")),
+      S.NullOr(CreateRequestNcmecNotification).pipe(
+        T.Body("ncmec_notification"),
+      ),
     ),
     regWhoRequest: S.optional(
-      CreateRequestRegWhoRequest.pipe(T.Body("reg_who_request")),
+      S.NullOr(CreateRequestRegWhoRequest).pipe(T.Body("reg_who_request")),
     ),
     ncseiSubjectRepresentation: S.optional(
-      S.Boolean.pipe(T.Body("ncsei_subject_representation")),
+      S.NullOr(S.Boolean).pipe(T.Body("ncsei_subject_representation")),
     ),
   })
     .pipe(
@@ -402,17 +424,17 @@ export type GetResponseType =
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 export interface GetResponseSubmitter {
-  company?: string;
-  email?: string;
-  name?: string;
-  telephone?: string;
+  company?: string | null;
+  email?: string | null;
+  name?: string | null;
+  telephone?: string | null;
 }
 export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    company: S.optional(S.String),
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    telephone: S.optional(S.String),
+    company: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    telephone: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseSubmitter",
@@ -438,12 +460,12 @@ export interface GetResponse {
   /** The abuse report type */
   type: GetResponseType;
   /** Justification for the report. */
-  justification?: string;
+  justification?: string | null;
   /** Original work / Targeted brand in the alleged abuse. */
-  originalWork?: string;
+  originalWork?: string | null;
   /** Information about the submitter of the report. */
-  submitter?: GetResponseSubmitter;
-  urls?: GetResponseUrlsList;
+  submitter?: GetResponseSubmitter | null;
+  urls?: GetResponseUrlsList | null;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -455,10 +477,10 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     status: GetResponseStatus,
     type: GetResponseType,
-    justification: S.optional(S.String),
-    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
-    submitter: S.optional(GetResponseSubmitter),
-    urls: S.optional(GetResponseUrlsList),
+    justification: S.optional(S.NullOr(S.String)),
+    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
+    submitter: S.optional(S.NullOr(GetResponseSubmitter)),
+    urls: S.optional(S.NullOr(GetResponseUrlsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -574,17 +596,17 @@ export type ListResponseReportsItemType =
 export const ListResponseReportsItemType = /*@__PURE__*/ S.String;
 
 export interface ListResponseReportsItemSubmitter {
-  company?: string;
-  email?: string;
-  name?: string;
-  telephone?: string;
+  company?: string | null;
+  email?: string | null;
+  name?: string | null;
+  telephone?: string | null;
 }
 export const ListResponseReportsItemSubmitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    company: S.optional(S.String),
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    telephone: S.optional(S.String),
+    company: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    telephone: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResponseReportsItemSubmitter",
@@ -609,12 +631,12 @@ export interface ListResponseReportsItem {
   /** The abuse report type */
   type: ListResponseReportsItemType;
   /** Justification for the report. */
-  justification?: string;
+  justification?: string | null;
   /** Original work / Targeted brand in the alleged abuse. */
-  originalWork?: string;
+  originalWork?: string | null;
   /** Information about the submitter of the report. */
-  submitter?: ListResponseReportsItemSubmitter;
-  urls?: ListResponseReportsItemUrlsList;
+  submitter?: ListResponseReportsItemSubmitter | null;
+  urls?: ListResponseReportsItemUrlsList | null;
 }
 export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -626,10 +648,10 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
     ),
     status: ListResponseReportsItemStatus,
     type: ListResponseReportsItemType,
-    justification: S.optional(S.String),
-    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
-    submitter: S.optional(ListResponseReportsItemSubmitter),
-    urls: S.optional(ListResponseReportsItemUrlsList),
+    justification: S.optional(S.NullOr(S.String)),
+    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
+    submitter: S.optional(S.NullOr(ListResponseReportsItemSubmitter)),
+    urls: S.optional(S.NullOr(ListResponseReportsItemUrlsList)),
   }),
 ).annotate({
   identifier: "ListResponseReportsItem",

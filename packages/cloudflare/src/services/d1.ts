@@ -152,26 +152,29 @@ export interface CreateDatabaseRequest {
   /** D1 database name. */
   name: string;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseCreateRequestJurisdiction | (string & {});
+  jurisdiction?: DatabaseCreateRequestJurisdiction | (string & {}) | null;
   /** Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user. */
   primaryLocationHint?:
     | DatabaseCreateRequestPrimaryLocationHint
-    | (string & {});
+    | (string & {})
+    | null;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseCreateRequestReadReplication;
+  readReplication?: DatabaseCreateRequestReadReplication | null;
 }
 export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    jurisdiction: S.optional(DatabaseCreateRequestJurisdiction),
+    jurisdiction: S.optional(S.NullOr(DatabaseCreateRequestJurisdiction)),
     primaryLocationHint: S.optional(
-      DatabaseCreateRequestPrimaryLocationHint.pipe(
+      S.NullOr(DatabaseCreateRequestPrimaryLocationHint).pipe(
         T.Body("primary_location_hint"),
       ),
     ),
     readReplication: S.optional(
-      DatabaseCreateRequestReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseCreateRequestReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
   })
     .pipe(
@@ -208,32 +211,34 @@ export const DatabaseCreateResponseReadReplication = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The D1 database's size, in bytes. */
-  fileSize?: number;
+  fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseCreateResponseJurisdiction;
+  jurisdiction?: DatabaseCreateResponseJurisdiction | null;
   /** D1 database name. */
-  name?: string;
-  numTables?: number;
+  name?: string | null;
+  numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseCreateResponseReadReplication;
+  readReplication?: DatabaseCreateResponseReadReplication | null;
   /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
+  uuid?: string | null;
+  version?: string | null;
 }
 export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(DatabaseCreateResponseJurisdiction),
-    name: S.optional(S.String),
-    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
+    jurisdiction: S.optional(S.NullOr(DatabaseCreateResponseJurisdiction)),
+    name: S.optional(S.NullOr(S.String)),
+    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
     readReplication: S.optional(
-      DatabaseCreateResponseReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseCreateResponseReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDatabaseResponse",
@@ -279,17 +284,17 @@ export const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
 
 export interface DatabaseExportRequestDumpOptions {
   /** Export only the table definitions, not their contents */
-  noData?: boolean;
+  noData?: boolean | null;
   /** Export only each table's contents, not its definition */
-  noSchema?: boolean;
+  noSchema?: boolean | null;
   /** Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables. */
-  tables?: DatabaseExportRequestDumpOptionsTablesList;
+  tables?: DatabaseExportRequestDumpOptionsTablesList | null;
 }
 export const DatabaseExportRequestDumpOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    noData: S.optional(S.Boolean.pipe(T.Body("no_data"))),
-    noSchema: S.optional(S.Boolean.pipe(T.Body("no_schema"))),
-    tables: S.optional(DatabaseExportRequestDumpOptionsTablesList),
+    noData: S.optional(S.NullOr(S.Boolean).pipe(T.Body("no_data"))),
+    noSchema: S.optional(S.NullOr(S.Boolean).pipe(T.Body("no_schema"))),
+    tables: S.optional(S.NullOr(DatabaseExportRequestDumpOptionsTablesList)),
   }),
 ).annotate({
   identifier: "DatabaseExportRequestDumpOptions",
@@ -303,8 +308,8 @@ export interface ExportDatabaseRequest {
   /** Specifies that you will poll this endpoint until the export completes */
   outputFormat: DatabaseExportRequestOutputFormat | (string & {});
   /** To poll an in-progress export, provide the current bookmark (returned by your first polling response) */
-  currentBookmark?: string;
-  dumpOptions?: DatabaseExportRequestDumpOptions;
+  currentBookmark?: string | null;
+  dumpOptions?: DatabaseExportRequestDumpOptions | null;
 }
 export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -313,9 +318,11 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     outputFormat: DatabaseExportRequestOutputFormat.pipe(
       T.Body("output_format"),
     ),
-    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
+    currentBookmark: S.optional(
+      S.NullOr(S.String).pipe(T.Body("current_bookmark")),
+    ),
     dumpOptions: S.optional(
-      DatabaseExportRequestDumpOptions.pipe(T.Body("dump_options")),
+      S.NullOr(DatabaseExportRequestDumpOptions).pipe(T.Body("dump_options")),
     ),
   })
     .pipe(
@@ -337,14 +344,14 @@ export const DatabaseExportResponseMessagesList = /*@__PURE__*/ S.Array(
 
 export interface DatabaseExportResponseResult {
   /** The generated SQL filename. */
-  filename?: string;
+  filename?: string | null;
   /** The URL to download the exported SQL. Available for one hour. */
-  signedUrl?: string;
+  signedUrl?: string | null;
 }
 export const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filename: S.optional(S.String),
-    signedUrl: S.optional(S.String.pipe(T.Body("signed_url"))),
+    filename: S.optional(S.NullOr(S.String)),
+    signedUrl: S.optional(S.NullOr(S.String).pipe(T.Body("signed_url"))),
   }),
 ).annotate({
   identifier: "DatabaseExportResponseResult",
@@ -359,26 +366,26 @@ export const DatabaseExportResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ExportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task. */
-  atBookmark?: string;
+  atBookmark?: string | null;
   /** Only present when status = 'error'. Contains the error message. */
-  error?: string;
+  error?: string | null;
   /** Logs since the last time you polled */
-  messages?: DatabaseExportResponseMessagesList;
+  messages?: DatabaseExportResponseMessagesList | null;
   /** Only present when status = 'complete' */
-  result?: DatabaseExportResponseResult;
-  status?: DatabaseExportResponseStatus;
-  success?: boolean;
-  type?: DatabaseExportResponseType;
+  result?: DatabaseExportResponseResult | null;
+  status?: DatabaseExportResponseStatus | null;
+  success?: boolean | null;
+  type?: DatabaseExportResponseType | null;
 }
 export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    atBookmark: S.optional(S.String.pipe(T.Body("at_bookmark"))),
-    error: S.optional(S.String),
-    messages: S.optional(DatabaseExportResponseMessagesList),
-    result: S.optional(DatabaseExportResponseResult),
-    status: S.optional(DatabaseExportResponseStatus),
-    success: S.optional(S.Boolean),
-    type: S.optional(DatabaseExportResponseType),
+    atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
+    error: S.optional(S.NullOr(S.String)),
+    messages: S.optional(S.NullOr(DatabaseExportResponseMessagesList)),
+    result: S.optional(S.NullOr(DatabaseExportResponseResult)),
+    status: S.optional(S.NullOr(DatabaseExportResponseStatus)),
+    success: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(DatabaseExportResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportDatabaseResponse",
@@ -414,12 +421,12 @@ export const GetBookmarkDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBookmarkDatabaseTimeTravelResponse {
   /** A bookmark representing a specific state of the database at a specific point in time. */
-  bookmark?: string;
+  bookmark?: string | null;
 }
 export const GetBookmarkDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bookmark: S.optional(S.String),
+      bookmark: S.optional(S.NullOr(S.String)),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBookmarkDatabaseTimeTravelResponse",
@@ -491,32 +498,34 @@ export const DatabaseGetResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The D1 database's size, in bytes. */
-  fileSize?: number;
+  fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseGetResponseJurisdiction;
+  jurisdiction?: DatabaseGetResponseJurisdiction | null;
   /** D1 database name. */
-  name?: string;
-  numTables?: number;
+  name?: string | null;
+  numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseGetResponseReadReplication;
+  readReplication?: DatabaseGetResponseReadReplication | null;
   /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
+  uuid?: string | null;
+  version?: string | null;
 }
 export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(DatabaseGetResponseJurisdiction),
-    name: S.optional(S.String),
-    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
+    jurisdiction: S.optional(S.NullOr(DatabaseGetResponseJurisdiction)),
+    name: S.optional(S.NullOr(S.String)),
+    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
     readReplication: S.optional(
-      DatabaseGetResponseReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseGetResponseReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatabaseResponse",
@@ -533,20 +542,22 @@ export interface ImportDatabaseRequest {
   /** Indicates you have a new SQL file to upload. */
   action: DatabaseImportRequestAction | (string & {});
   /** Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag?: string;
+  etag?: string | null;
   /** The filename you have successfully uploaded. */
-  filename?: string;
+  filename?: string | null;
   /** This identifies the currently-running import, checking its status. */
-  currentBookmark?: string;
+  currentBookmark?: string | null;
 }
 export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     action: DatabaseImportRequestAction,
-    etag: S.optional(S.String),
-    filename: S.optional(S.String),
-    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
+    etag: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    currentBookmark: S.optional(
+      S.NullOr(S.String).pipe(T.Body("current_bookmark")),
+    ),
   })
     .pipe(
       T.Http({
@@ -577,12 +588,14 @@ export const DatabaseImportResponseResultMetaServedByRegion =
 
 export interface DatabaseImportResponseResultMetaTimings {
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number;
+  sqlDurationMs?: number | null;
 }
 export const DatabaseImportResponseResultMetaTimings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      sqlDurationMs: S.optional(S.Number.pipe(T.Body("sql_duration_ms"))),
+      sqlDurationMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
+      ),
     }),
 ).annotate({
   identifier: "DatabaseImportResponseResultMetaTimings",
@@ -590,45 +603,47 @@ export const DatabaseImportResponseResultMetaTimings = /*@__PURE__*/ S.suspend(
 
 export interface DatabaseImportResponseResultMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
-  changedDb?: boolean;
+  changedDb?: boolean | null;
   /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
-  changes?: number;
+  changes?: number | null;
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  duration?: number;
+  duration?: number | null;
   /** The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this. */
-  lastRowId?: number;
+  lastRowId?: number | null;
   /** Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned). */
-  rowsRead?: number;
+  rowsRead?: number | null;
   /** Number of rows written during the SQL query execution, including indices. */
-  rowsWritten?: number;
+  rowsWritten?: number | null;
   /** The three letters airport code of the colo that handled the query. */
-  servedByColo?: string;
+  servedByColo?: string | null;
   /** Denotes if the query has been handled by the database primary instance. */
-  servedByPrimary?: boolean;
+  servedByPrimary?: boolean | null;
   /** Region location hint of the database instance that handled the query. */
-  servedByRegion?: DatabaseImportResponseResultMetaServedByRegion;
+  servedByRegion?: DatabaseImportResponseResultMetaServedByRegion | null;
   /** Size of the database after the query committed, in bytes. */
-  sizeAfter?: number;
+  sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseImportResponseResultMetaTimings;
+  timings?: DatabaseImportResponseResultMetaTimings | null;
 }
 export const DatabaseImportResponseResultMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    changedDb: S.optional(S.Boolean.pipe(T.Body("changed_db"))),
-    changes: S.optional(S.Number),
-    duration: S.optional(S.Number),
-    lastRowId: S.optional(S.Number.pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.Number.pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.Number.pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.String.pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(S.Boolean.pipe(T.Body("served_by_primary"))),
+    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
+    changes: S.optional(S.NullOr(S.Number)),
+    duration: S.optional(S.NullOr(S.Number)),
+    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
+    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
+    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
+    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
+    servedByPrimary: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("served_by_primary")),
+    ),
     servedByRegion: S.optional(
-      DatabaseImportResponseResultMetaServedByRegion.pipe(
+      S.NullOr(DatabaseImportResponseResultMetaServedByRegion).pipe(
         T.Body("served_by_region"),
       ),
     ),
-    sizeAfter: S.optional(S.Number.pipe(T.Body("size_after"))),
-    timings: S.optional(DatabaseImportResponseResultMetaTimings),
+    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
+    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
   }),
 ).annotate({
   identifier: "DatabaseImportResponseResultMeta",
@@ -636,16 +651,18 @@ export const DatabaseImportResponseResultMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DatabaseImportResponseResult {
   /** The time-travel bookmark if you need restore your D1 to directly after the import succeeded. */
-  finalBookmark?: string;
-  meta?: DatabaseImportResponseResultMeta;
+  finalBookmark?: string | null;
+  meta?: DatabaseImportResponseResultMeta | null;
   /** The total number of queries that were executed during the import. */
-  numQueries?: number;
+  numQueries?: number | null;
 }
 export const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    finalBookmark: S.optional(S.String.pipe(T.Body("final_bookmark"))),
-    meta: S.optional(DatabaseImportResponseResultMeta),
-    numQueries: S.optional(S.Number.pipe(T.Body("num_queries"))),
+    finalBookmark: S.optional(
+      S.NullOr(S.String).pipe(T.Body("final_bookmark")),
+    ),
+    meta: S.optional(S.NullOr(DatabaseImportResponseResultMeta)),
+    numQueries: S.optional(S.NullOr(S.Number).pipe(T.Body("num_queries"))),
   }),
 ).annotate({
   identifier: "DatabaseImportResponseResult",
@@ -660,32 +677,32 @@ export const DatabaseImportResponseType = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ImportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished. */
-  atBookmark?: string;
+  atBookmark?: string | null;
   /** Only present when status = 'error'. Contains the error message that prevented the import from succeeding. */
-  error?: string;
+  error?: string | null;
   /** Derived from the database ID and etag, to use in avoiding repeated uploads. Only returned when for the 'init' action. */
-  filename?: string;
+  filename?: string | null;
   /** Logs since the last time you polled */
-  messages?: DatabaseImportResponseMessagesList;
+  messages?: DatabaseImportResponseMessagesList | null;
   /** Only present when status = 'complete' */
-  result?: DatabaseImportResponseResult;
-  status?: DatabaseImportResponseStatus;
-  success?: boolean;
-  type?: DatabaseImportResponseType;
+  result?: DatabaseImportResponseResult | null;
+  status?: DatabaseImportResponseStatus | null;
+  success?: boolean | null;
+  type?: DatabaseImportResponseType | null;
   /** The R2 presigned URL to use for uploading. Only returned when for the 'init' action. */
-  uploadUrl?: string;
+  uploadUrl?: string | null;
 }
 export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    atBookmark: S.optional(S.String.pipe(T.Body("at_bookmark"))),
-    error: S.optional(S.String),
-    filename: S.optional(S.String),
-    messages: S.optional(DatabaseImportResponseMessagesList),
-    result: S.optional(DatabaseImportResponseResult),
-    status: S.optional(DatabaseImportResponseStatus),
-    success: S.optional(S.Boolean),
-    type: S.optional(DatabaseImportResponseType),
-    uploadUrl: S.optional(S.String.pipe(T.Body("upload_url"))),
+    atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
+    error: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.NullOr(S.String)),
+    messages: S.optional(S.NullOr(DatabaseImportResponseMessagesList)),
+    result: S.optional(S.NullOr(DatabaseImportResponseResult)),
+    status: S.optional(S.NullOr(DatabaseImportResponseStatus)),
+    success: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(DatabaseImportResponseType)),
+    uploadUrl: S.optional(S.NullOr(S.String).pipe(T.Body("upload_url"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportDatabaseResponse",
@@ -725,22 +742,22 @@ export const DatabaseListResultItemJurisdiction = /*@__PURE__*/ S.String;
 
 export interface DatabaseListResultItem {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseListResultItemJurisdiction;
+  jurisdiction?: DatabaseListResultItemJurisdiction | null;
   /** D1 database name. */
-  name?: string;
+  name?: string | null;
   /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
+  uuid?: string | null;
+  version?: string | null;
 }
 export const DatabaseListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    jurisdiction: S.optional(DatabaseListResultItemJurisdiction),
-    name: S.optional(S.String),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    jurisdiction: S.optional(S.NullOr(DatabaseListResultItemJurisdiction)),
+    name: S.optional(S.NullOr(S.String)),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DatabaseListResultItem",
@@ -787,14 +804,16 @@ export interface PatchDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseEditRequestReadReplication;
+  readReplication?: DatabaseEditRequestReadReplication | null;
 }
 export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     readReplication: S.optional(
-      DatabaseEditRequestReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseEditRequestReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
   })
     .pipe(
@@ -830,32 +849,34 @@ export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The D1 database's size, in bytes. */
-  fileSize?: number;
+  fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseEditResponseJurisdiction;
+  jurisdiction?: DatabaseEditResponseJurisdiction | null;
   /** D1 database name. */
-  name?: string;
-  numTables?: number;
+  name?: string | null;
+  numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseEditResponseReadReplication;
+  readReplication?: DatabaseEditResponseReadReplication | null;
   /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
+  uuid?: string | null;
+  version?: string | null;
 }
 export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(DatabaseEditResponseJurisdiction),
-    name: S.optional(S.String),
-    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
+    jurisdiction: S.optional(S.NullOr(DatabaseEditResponseJurisdiction)),
+    name: S.optional(S.NullOr(S.String)),
+    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
     readReplication: S.optional(
-      DatabaseEditResponseReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseEditResponseReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDatabaseResponse",
@@ -874,12 +895,12 @@ export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
 export interface DatabaseQueryRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseQueryRequestBatchItemParamsList;
+  params?: DatabaseQueryRequestBatchItemParamsList | null;
 }
 export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
-    params: S.optional(DatabaseQueryRequestBatchItemParamsList),
+    params: S.optional(S.NullOr(DatabaseQueryRequestBatchItemParamsList)),
   }),
 ).annotate({
   identifier: "DatabaseQueryRequestBatchItem",
@@ -897,17 +918,17 @@ export interface QueryDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string;
-  params?: DatabaseQueryRequestParamsList;
-  batch?: DatabaseQueryRequestBatchList;
+  sql?: string | null;
+  params?: DatabaseQueryRequestParamsList | null;
+  batch?: DatabaseQueryRequestBatchList | null;
 }
 export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.String),
-    params: S.optional(DatabaseQueryRequestParamsList),
-    batch: S.optional(DatabaseQueryRequestBatchList),
+    sql: S.optional(S.NullOr(S.String)),
+    params: S.optional(S.NullOr(DatabaseQueryRequestParamsList)),
+    batch: S.optional(S.NullOr(DatabaseQueryRequestBatchList)),
   })
     .pipe(
       T.Http({
@@ -932,11 +953,13 @@ export const DatabaseQueryResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
 export interface DatabaseQueryResultItemMetaTimings {
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number;
+  sqlDurationMs?: number | null;
 }
 export const DatabaseQueryResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sqlDurationMs: S.optional(S.Number.pipe(T.Body("sql_duration_ms"))),
+    sqlDurationMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
+    ),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItemMetaTimings",
@@ -944,45 +967,47 @@ export const DatabaseQueryResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
 
 export interface DatabaseQueryResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
-  changedDb?: boolean;
+  changedDb?: boolean | null;
   /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
-  changes?: number;
+  changes?: number | null;
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  duration?: number;
+  duration?: number | null;
   /** The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this. */
-  lastRowId?: number;
+  lastRowId?: number | null;
   /** Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned). */
-  rowsRead?: number;
+  rowsRead?: number | null;
   /** Number of rows written during the SQL query execution, including indices. */
-  rowsWritten?: number;
+  rowsWritten?: number | null;
   /** The three letters airport code of the colo that handled the query. */
-  servedByColo?: string;
+  servedByColo?: string | null;
   /** Denotes if the query has been handled by the database primary instance. */
-  servedByPrimary?: boolean;
+  servedByPrimary?: boolean | null;
   /** Region location hint of the database instance that handled the query. */
-  servedByRegion?: DatabaseQueryResultItemMetaServedByRegion;
+  servedByRegion?: DatabaseQueryResultItemMetaServedByRegion | null;
   /** Size of the database after the query committed, in bytes. */
-  sizeAfter?: number;
+  sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseQueryResultItemMetaTimings;
+  timings?: DatabaseQueryResultItemMetaTimings | null;
 }
 export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    changedDb: S.optional(S.Boolean.pipe(T.Body("changed_db"))),
-    changes: S.optional(S.Number),
-    duration: S.optional(S.Number),
-    lastRowId: S.optional(S.Number.pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.Number.pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.Number.pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.String.pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(S.Boolean.pipe(T.Body("served_by_primary"))),
+    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
+    changes: S.optional(S.NullOr(S.Number)),
+    duration: S.optional(S.NullOr(S.Number)),
+    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
+    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
+    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
+    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
+    servedByPrimary: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("served_by_primary")),
+    ),
     servedByRegion: S.optional(
-      DatabaseQueryResultItemMetaServedByRegion.pipe(
+      S.NullOr(DatabaseQueryResultItemMetaServedByRegion).pipe(
         T.Body("served_by_region"),
       ),
     ),
-    sizeAfter: S.optional(S.Number.pipe(T.Body("size_after"))),
-    timings: S.optional(DatabaseQueryResultItemMetaTimings),
+    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
+    timings: S.optional(S.NullOr(DatabaseQueryResultItemMetaTimings)),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItemMeta",
@@ -994,15 +1019,15 @@ export const DatabaseQueryResultItemResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatabaseQueryResultItemResultsList>;
 
 export interface DatabaseQueryResultItem {
-  meta?: DatabaseQueryResultItemMeta;
-  results?: DatabaseQueryResultItemResultsList;
-  success?: boolean;
+  meta?: DatabaseQueryResultItemMeta | null;
+  results?: DatabaseQueryResultItemResultsList | null;
+  success?: boolean | null;
 }
 export const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: S.optional(DatabaseQueryResultItemMeta),
-    results: S.optional(DatabaseQueryResultItemResultsList),
-    success: S.optional(S.Boolean),
+    meta: S.optional(S.NullOr(DatabaseQueryResultItemMeta)),
+    results: S.optional(S.NullOr(DatabaseQueryResultItemResultsList)),
+    success: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItem",
@@ -1041,12 +1066,12 @@ export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
 export interface DatabaseRawRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseRawRequestBatchItemParamsList;
+  params?: DatabaseRawRequestBatchItemParamsList | null;
 }
 export const DatabaseRawRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
-    params: S.optional(DatabaseRawRequestBatchItemParamsList),
+    params: S.optional(S.NullOr(DatabaseRawRequestBatchItemParamsList)),
   }),
 ).annotate({
   identifier: "DatabaseRawRequestBatchItem",
@@ -1063,17 +1088,17 @@ export interface RawDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string;
-  params?: DatabaseRawRequestParamsList;
-  batch?: DatabaseRawRequestBatchList;
+  sql?: string | null;
+  params?: DatabaseRawRequestParamsList | null;
+  batch?: DatabaseRawRequestBatchList | null;
 }
 export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.String),
-    params: S.optional(DatabaseRawRequestParamsList),
-    batch: S.optional(DatabaseRawRequestBatchList),
+    sql: S.optional(S.NullOr(S.String)),
+    params: S.optional(S.NullOr(DatabaseRawRequestParamsList)),
+    batch: S.optional(S.NullOr(DatabaseRawRequestBatchList)),
   })
     .pipe(
       T.Http({
@@ -1098,11 +1123,13 @@ export const DatabaseRawResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
 export interface DatabaseRawResultItemMetaTimings {
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number;
+  sqlDurationMs?: number | null;
 }
 export const DatabaseRawResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sqlDurationMs: S.optional(S.Number.pipe(T.Body("sql_duration_ms"))),
+    sqlDurationMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
+    ),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItemMetaTimings",
@@ -1110,43 +1137,47 @@ export const DatabaseRawResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
 
 export interface DatabaseRawResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
-  changedDb?: boolean;
+  changedDb?: boolean | null;
   /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
-  changes?: number;
+  changes?: number | null;
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  duration?: number;
+  duration?: number | null;
   /** The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this. */
-  lastRowId?: number;
+  lastRowId?: number | null;
   /** Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned). */
-  rowsRead?: number;
+  rowsRead?: number | null;
   /** Number of rows written during the SQL query execution, including indices. */
-  rowsWritten?: number;
+  rowsWritten?: number | null;
   /** The three letters airport code of the colo that handled the query. */
-  servedByColo?: string;
+  servedByColo?: string | null;
   /** Denotes if the query has been handled by the database primary instance. */
-  servedByPrimary?: boolean;
+  servedByPrimary?: boolean | null;
   /** Region location hint of the database instance that handled the query. */
-  servedByRegion?: DatabaseRawResultItemMetaServedByRegion;
+  servedByRegion?: DatabaseRawResultItemMetaServedByRegion | null;
   /** Size of the database after the query committed, in bytes. */
-  sizeAfter?: number;
+  sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseRawResultItemMetaTimings;
+  timings?: DatabaseRawResultItemMetaTimings | null;
 }
 export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    changedDb: S.optional(S.Boolean.pipe(T.Body("changed_db"))),
-    changes: S.optional(S.Number),
-    duration: S.optional(S.Number),
-    lastRowId: S.optional(S.Number.pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.Number.pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.Number.pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.String.pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(S.Boolean.pipe(T.Body("served_by_primary"))),
-    servedByRegion: S.optional(
-      DatabaseRawResultItemMetaServedByRegion.pipe(T.Body("served_by_region")),
+    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
+    changes: S.optional(S.NullOr(S.Number)),
+    duration: S.optional(S.NullOr(S.Number)),
+    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
+    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
+    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
+    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
+    servedByPrimary: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("served_by_primary")),
     ),
-    sizeAfter: S.optional(S.Number.pipe(T.Body("size_after"))),
-    timings: S.optional(DatabaseRawResultItemMetaTimings),
+    servedByRegion: S.optional(
+      S.NullOr(DatabaseRawResultItemMetaServedByRegion).pipe(
+        T.Body("served_by_region"),
+      ),
+    ),
+    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
+    timings: S.optional(S.NullOr(DatabaseRawResultItemMetaTimings)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItemMeta",
@@ -1163,28 +1194,28 @@ export const DatabaseRawResultItemResultsRowsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
 
 export interface DatabaseRawResultItemResults {
-  columns?: DatabaseRawResultItemResultsColumnsList;
-  rows?: DatabaseRawResultItemResultsRowsList;
+  columns?: DatabaseRawResultItemResultsColumnsList | null;
+  rows?: DatabaseRawResultItemResultsRowsList | null;
 }
 export const DatabaseRawResultItemResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    columns: S.optional(DatabaseRawResultItemResultsColumnsList),
-    rows: S.optional(DatabaseRawResultItemResultsRowsList),
+    columns: S.optional(S.NullOr(DatabaseRawResultItemResultsColumnsList)),
+    rows: S.optional(S.NullOr(DatabaseRawResultItemResultsRowsList)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItemResults",
 }) as any as S.Schema<DatabaseRawResultItemResults>;
 
 export interface DatabaseRawResultItem {
-  meta?: DatabaseRawResultItemMeta;
-  results?: DatabaseRawResultItemResults;
-  success?: boolean;
+  meta?: DatabaseRawResultItemMeta | null;
+  results?: DatabaseRawResultItemResults | null;
+  success?: boolean | null;
 }
 export const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: S.optional(DatabaseRawResultItemMeta),
-    results: S.optional(DatabaseRawResultItemResults),
-    success: S.optional(S.Boolean),
+    meta: S.optional(S.NullOr(DatabaseRawResultItemMeta)),
+    results: S.optional(S.NullOr(DatabaseRawResultItemResults)),
+    success: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItem",
@@ -1242,17 +1273,19 @@ export const RestoreDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RestoreDatabaseTimeTravelResponse {
   /** The new bookmark representing the state of the database after the restore operation. */
-  bookmark?: string;
+  bookmark?: string | null;
   /** A message describing the result of the restore operation. */
-  message?: string;
+  message?: string | null;
   /** The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed. */
-  previousBookmark?: string;
+  previousBookmark?: string | null;
 }
 export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bookmark: S.optional(S.String),
-    message: S.optional(S.String),
-    previousBookmark: S.optional(S.String.pipe(T.Body("previous_bookmark"))),
+    bookmark: S.optional(S.NullOr(S.String)),
+    message: S.optional(S.NullOr(S.String)),
+    previousBookmark: S.optional(
+      S.NullOr(S.String).pipe(T.Body("previous_bookmark")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RestoreDatabaseTimeTravelResponse",
@@ -1324,32 +1357,34 @@ export const DatabaseUpdateResponseReadReplication = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
+  createdAt?: string | null;
   /** The D1 database's size, in bytes. */
-  fileSize?: number;
+  fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseUpdateResponseJurisdiction;
+  jurisdiction?: DatabaseUpdateResponseJurisdiction | null;
   /** D1 database name. */
-  name?: string;
-  numTables?: number;
+  name?: string | null;
+  numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseUpdateResponseReadReplication;
+  readReplication?: DatabaseUpdateResponseReadReplication | null;
   /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
+  uuid?: string | null;
+  version?: string | null;
 }
 export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(DatabaseUpdateResponseJurisdiction),
-    name: S.optional(S.String),
-    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
+    jurisdiction: S.optional(S.NullOr(DatabaseUpdateResponseJurisdiction)),
+    name: S.optional(S.NullOr(S.String)),
+    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
     readReplication: S.optional(
-      DatabaseUpdateResponseReadReplication.pipe(T.Body("read_replication")),
+      S.NullOr(DatabaseUpdateResponseReadReplication).pipe(
+        T.Body("read_replication"),
+      ),
     ),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDatabaseResponse",

@@ -107,91 +107,111 @@ export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProfileResponse {
   /** Billing item identifier tag. */
-  id?: string;
-  accountType?: string;
-  address?: string;
-  address2?: string;
-  balance?: string;
-  cardExpiryMonth?: number;
-  cardExpiryYear?: number;
-  cardNumber?: string;
-  city?: string;
-  company?: string;
-  country?: string;
-  createdOn?: string;
-  deviceData?: string;
-  editedOn?: string;
-  enterpriseBillingEmail?: string;
-  enterprisePrimaryEmail?: string;
-  firstName?: string;
-  isPartner?: boolean;
-  lastName?: string;
-  nextBillDate?: string;
-  paymentAddress?: string;
-  paymentAddress2?: string;
-  paymentCity?: string;
-  paymentCountry?: string;
-  paymentEmail?: string;
-  paymentFirstName?: string;
-  paymentGateway?: string;
-  paymentLastName?: string;
-  paymentNonce?: string;
-  paymentState?: string;
-  paymentZipcode?: string;
-  primaryEmail?: string;
-  state?: string;
-  taxIdType?: string;
-  telephone?: string;
-  useLegacy?: boolean;
-  validationCode?: string;
-  vat?: string;
-  zipcode?: string;
+  id?: string | null;
+  accountType?: string | null;
+  address?: string | null;
+  address2?: string | null;
+  balance?: string | null;
+  cardExpiryMonth?: number | null;
+  cardExpiryYear?: number | null;
+  cardNumber?: string | null;
+  city?: string | null;
+  company?: string | null;
+  country?: string | null;
+  createdOn?: string | null;
+  deviceData?: string | null;
+  editedOn?: string | null;
+  enterpriseBillingEmail?: string | null;
+  enterprisePrimaryEmail?: string | null;
+  firstName?: string | null;
+  isPartner?: boolean | null;
+  lastName?: string | null;
+  nextBillDate?: string | null;
+  paymentAddress?: string | null;
+  paymentAddress2?: string | null;
+  paymentCity?: string | null;
+  paymentCountry?: string | null;
+  paymentEmail?: string | null;
+  paymentFirstName?: string | null;
+  paymentGateway?: string | null;
+  paymentLastName?: string | null;
+  paymentNonce?: string | null;
+  paymentState?: string | null;
+  paymentZipcode?: string | null;
+  primaryEmail?: string | null;
+  state?: string | null;
+  taxIdType?: string | null;
+  telephone?: string | null;
+  useLegacy?: boolean | null;
+  validationCode?: string | null;
+  vat?: string | null;
+  zipcode?: string | null;
 }
 export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    accountType: S.optional(S.String.pipe(T.Body("account_type"))),
-    address: S.optional(S.String),
-    address2: S.optional(S.String),
-    balance: S.optional(S.String),
-    cardExpiryMonth: S.optional(S.Number.pipe(T.Body("card_expiry_month"))),
-    cardExpiryYear: S.optional(S.Number.pipe(T.Body("card_expiry_year"))),
-    cardNumber: S.optional(S.String.pipe(T.Body("card_number"))),
-    city: S.optional(S.String),
-    company: S.optional(S.String),
-    country: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deviceData: S.optional(S.String.pipe(T.Body("device_data"))),
-    editedOn: S.optional(S.String.pipe(T.Body("edited_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
+    address: S.optional(S.NullOr(S.String)),
+    address2: S.optional(S.NullOr(S.String)),
+    balance: S.optional(S.NullOr(S.String)),
+    cardExpiryMonth: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("card_expiry_month")),
+    ),
+    cardExpiryYear: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("card_expiry_year")),
+    ),
+    cardNumber: S.optional(S.NullOr(S.String).pipe(T.Body("card_number"))),
+    city: S.optional(S.NullOr(S.String)),
+    company: S.optional(S.NullOr(S.String)),
+    country: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deviceData: S.optional(S.NullOr(S.String).pipe(T.Body("device_data"))),
+    editedOn: S.optional(S.NullOr(S.String).pipe(T.Body("edited_on"))),
     enterpriseBillingEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_billing_email")),
+      S.NullOr(S.String).pipe(T.Body("enterprise_billing_email")),
     ),
     enterprisePrimaryEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_primary_email")),
+      S.NullOr(S.String).pipe(T.Body("enterprise_primary_email")),
     ),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    isPartner: S.optional(S.Boolean.pipe(T.Body("is_partner"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    nextBillDate: S.optional(S.String.pipe(T.Body("next_bill_date"))),
-    paymentAddress: S.optional(S.String.pipe(T.Body("payment_address"))),
-    paymentAddress2: S.optional(S.String.pipe(T.Body("payment_address2"))),
-    paymentCity: S.optional(S.String.pipe(T.Body("payment_city"))),
-    paymentCountry: S.optional(S.String.pipe(T.Body("payment_country"))),
-    paymentEmail: S.optional(S.String.pipe(T.Body("payment_email"))),
-    paymentFirstName: S.optional(S.String.pipe(T.Body("payment_first_name"))),
-    paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
-    paymentLastName: S.optional(S.String.pipe(T.Body("payment_last_name"))),
-    paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
-    paymentState: S.optional(S.String.pipe(T.Body("payment_state"))),
-    paymentZipcode: S.optional(S.String.pipe(T.Body("payment_zipcode"))),
-    primaryEmail: S.optional(S.String.pipe(T.Body("primary_email"))),
-    state: S.optional(S.String),
-    taxIdType: S.optional(S.String.pipe(T.Body("tax_id_type"))),
-    telephone: S.optional(S.String),
-    useLegacy: S.optional(S.Boolean.pipe(T.Body("use_legacy"))),
-    validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
-    vat: S.optional(S.String),
-    zipcode: S.optional(S.String),
+    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
+    isPartner: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_partner"))),
+    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    nextBillDate: S.optional(S.NullOr(S.String).pipe(T.Body("next_bill_date"))),
+    paymentAddress: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_address")),
+    ),
+    paymentAddress2: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_address2")),
+    ),
+    paymentCity: S.optional(S.NullOr(S.String).pipe(T.Body("payment_city"))),
+    paymentCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_country")),
+    ),
+    paymentEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_email"))),
+    paymentFirstName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_first_name")),
+    ),
+    paymentGateway: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_gateway")),
+    ),
+    paymentLastName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_last_name")),
+    ),
+    paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
+    paymentState: S.optional(S.NullOr(S.String).pipe(T.Body("payment_state"))),
+    paymentZipcode: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_zipcode")),
+    ),
+    primaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("primary_email"))),
+    state: S.optional(S.NullOr(S.String)),
+    taxIdType: S.optional(S.NullOr(S.String).pipe(T.Body("tax_id_type"))),
+    telephone: S.optional(S.NullOr(S.String)),
+    useLegacy: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_legacy"))),
+    validationCode: S.optional(
+      S.NullOr(S.String).pipe(T.Body("validation_code")),
+    ),
+    vat: S.optional(S.NullOr(S.String)),
+    zipcode: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProfileResponse",
@@ -263,45 +283,45 @@ export interface UsageGetResultItem {
   /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
   xBillableMetricName: string;
   /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
-  billedCost?: number;
+  billedCost?: number | null;
   /** Currency that a charge was billed in (ISO 4217). */
-  billingCurrency?: string;
+  billingCurrency?: string | null;
   /** Exclusive end of the billing cycle that contains this usage record. */
-  billingPeriodEnd?: string;
+  billingPeriodEnd?: string | null;
   /** Inclusive start of the billing cycle that contains this usage record. */
-  billingPeriodStart?: string;
+  billingPeriodStart?: string | null;
   /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
-  chargeClass?: UsageGetResultItemChargeClass;
+  chargeClass?: UsageGetResultItemChargeClass | null;
   /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
-  contractedCost?: number;
+  contractedCost?: number | null;
   /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
-  contractedUnitPrice?: number;
+  contractedUnitPrice?: number | null;
   /** The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge. */
-  effectiveCost?: number;
+  effectiveCost?: number | null;
   /** Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity. */
-  listCost?: number;
+  listCost?: number | null;
   /** Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts. */
-  listUnitPrice?: number;
+  listUnitPrice?: number | null;
   /** Volume of a given service used or purchased, based on the PricingUnit. */
-  pricingQuantity?: number;
+  pricingQuantity?: number | null;
   /** Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing. */
-  pricingUnit?: string;
+  pricingUnit?: string | null;
   /** Provider-assigned identifier for an isolated geographic area where a service is provided. */
-  regionId?: string;
+  regionId?: string | null;
   /** Name of an isolated geographic area where a service is provided. */
-  regionName?: string;
+  regionName?: string | null;
   /** Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID. */
-  subAccountId?: string;
+  subAccountId?: string | null;
   /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
-  subAccountName?: string;
+  subAccountName?: string | null;
   /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
-  xBillableMetricId?: string;
+  xBillableMetricId?: string | null;
   /** The product family the charge belongs to (e.g., "R2", "Workers"). Cloudflare extension; replaces FOCUS ServiceName. */
-  xProductFamilyName?: string;
+  xProductFamilyName?: string | null;
   /** The identifier for the Cloudflare zone (zone tag). Cloudflare extension. */
-  xZoneId?: string;
+  xZoneId?: string | null;
   /** The display name of the Cloudflare zone. Cloudflare extension. */
-  xZoneName?: string;
+  xZoneName?: string | null;
 }
 export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -322,32 +342,46 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
     serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
     xBillableMetricName: S.String.pipe(T.Body("x_BillableMetricName")),
-    billedCost: S.optional(S.Number.pipe(T.Body("BilledCost"))),
-    billingCurrency: S.optional(S.String.pipe(T.Body("BillingCurrency"))),
-    billingPeriodEnd: S.optional(S.String.pipe(T.Body("BillingPeriodEnd"))),
-    billingPeriodStart: S.optional(S.String.pipe(T.Body("BillingPeriodStart"))),
+    billedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("BilledCost"))),
+    billingCurrency: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingCurrency")),
+    ),
+    billingPeriodEnd: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd")),
+    ),
+    billingPeriodStart: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingPeriodStart")),
+    ),
     chargeClass: S.optional(
-      UsageGetResultItemChargeClass.pipe(T.Body("ChargeClass")),
+      S.NullOr(UsageGetResultItemChargeClass).pipe(T.Body("ChargeClass")),
     ),
-    contractedCost: S.optional(S.Number.pipe(T.Body("ContractedCost"))),
+    contractedCost: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("ContractedCost")),
+    ),
     contractedUnitPrice: S.optional(
-      S.Number.pipe(T.Body("ContractedUnitPrice")),
+      S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice")),
     ),
-    effectiveCost: S.optional(S.Number.pipe(T.Body("EffectiveCost"))),
-    listCost: S.optional(S.Number.pipe(T.Body("ListCost"))),
-    listUnitPrice: S.optional(S.Number.pipe(T.Body("ListUnitPrice"))),
-    pricingQuantity: S.optional(S.Number.pipe(T.Body("PricingQuantity"))),
-    pricingUnit: S.optional(S.String.pipe(T.Body("PricingUnit"))),
-    regionId: S.optional(S.String.pipe(T.Body("RegionId"))),
-    regionName: S.optional(S.String.pipe(T.Body("RegionName"))),
-    subAccountId: S.optional(S.String.pipe(T.Body("SubAccountId"))),
-    subAccountName: S.optional(S.String.pipe(T.Body("SubAccountName"))),
-    xBillableMetricId: S.optional(S.String.pipe(T.Body("x_BillableMetricId"))),
+    effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
+    listCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ListCost"))),
+    listUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ListUnitPrice"))),
+    pricingQuantity: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("PricingQuantity")),
+    ),
+    pricingUnit: S.optional(S.NullOr(S.String).pipe(T.Body("PricingUnit"))),
+    regionId: S.optional(S.NullOr(S.String).pipe(T.Body("RegionId"))),
+    regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
+    subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
+    subAccountName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("SubAccountName")),
+    ),
+    xBillableMetricId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_BillableMetricId")),
+    ),
     xProductFamilyName: S.optional(
-      S.String.pipe(T.Body("x_ProductFamilyName")),
+      S.NullOr(S.String).pipe(T.Body("x_ProductFamilyName")),
     ),
-    xZoneId: S.optional(S.String.pipe(T.Body("x_ZoneId"))),
-    xZoneName: S.optional(S.String.pipe(T.Body("x_ZoneName"))),
+    xZoneId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneId"))),
+    xZoneName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneName"))),
   }),
 ).annotate({
   identifier: "UsageGetResultItem",
@@ -415,13 +449,13 @@ export interface UsagePaygoResultItem {
   /** Identifies the Cloudflare service. */
   serviceName: string;
   /** Identifies the product family for the Cloudflare service. */
-  serviceFamilyName?: string;
+  serviceFamilyName?: string | null;
   /** The identifier for the Cloudflare subscription. */
-  subscriptionId?: string;
+  subscriptionId?: string | null;
   /** The identifier for the Cloudflare zone (zone tag). */
-  zoneId?: string;
+  zoneId?: string | null;
   /** The display name of the Cloudflare zone. */
-  zoneName?: string;
+  zoneName?: string | null;
 }
 export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -436,10 +470,14 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
     cumulatedPricingQuantity: S.Number.pipe(T.Body("CumulatedPricingQuantity")),
     pricingQuantity: S.Number.pipe(T.Body("PricingQuantity")),
     serviceName: S.String.pipe(T.Body("ServiceName")),
-    serviceFamilyName: S.optional(S.String.pipe(T.Body("ServiceFamilyName"))),
-    subscriptionId: S.optional(S.String.pipe(T.Body("SubscriptionId"))),
-    zoneId: S.optional(S.String.pipe(T.Body("ZoneId"))),
-    zoneName: S.optional(S.String.pipe(T.Body("ZoneName"))),
+    serviceFamilyName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("ServiceFamilyName")),
+    ),
+    subscriptionId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("SubscriptionId")),
+    ),
+    zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("ZoneId"))),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("ZoneName"))),
   }),
 ).annotate({
   identifier: "UsagePaygoResultItem",

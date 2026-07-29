@@ -297,7 +297,7 @@ export const DeleteIdentitiesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIdentitiesInput",
 }) as any as S.Schema<DeleteIdentitiesInput>;
-export type ErrorCode = "AccessDenied" | "InternalServerError";
+export type ErrorCode = "AccessDenied" | "InternalServerError" | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface UnprocessedIdentityId {
@@ -520,10 +520,13 @@ export const RolesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type RoleMappingType = "Token" | "Rules";
+export type RoleMappingType = "Token" | "Rules" | (string & {});
 export const RoleMappingType = /*@__PURE__*/ S.String;
 
-export type AmbiguousRoleResolutionType = "AuthenticatedRole" | "Deny";
+export type AmbiguousRoleResolutionType =
+  | "AuthenticatedRole"
+  | "Deny"
+  | (string & {});
 export const AmbiguousRoleResolutionType = /*@__PURE__*/ S.String;
 
 export type ClaimName = string;
@@ -531,13 +534,14 @@ export type MappingRuleMatchType =
   | "Equals"
   | "Contains"
   | "StartsWith"
-  | "NotEqual";
+  | "NotEqual"
+  | (string & {});
 export const MappingRuleMatchType = /*@__PURE__*/ S.String;
 
 export type ClaimValue = string;
 export interface MappingRule {
   Claim: string;
-  MatchType: MappingRuleMatchType | (string & {});
+  MatchType: MappingRuleMatchType;
   Value: string;
   RoleARN: string;
 }
@@ -560,8 +564,8 @@ export const RulesConfigurationType = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesConfigurationType",
 }) as any as S.Schema<RulesConfigurationType>;
 export interface RoleMapping {
-  Type: RoleMappingType | (string & {});
-  AmbiguousRoleResolution?: AmbiguousRoleResolutionType | (string & {});
+  Type: RoleMappingType;
+  AmbiguousRoleResolution?: AmbiguousRoleResolutionType;
   RulesConfiguration?: RulesConfigurationType;
 }
 export const RoleMapping = /*@__PURE__*/ S.suspend(() =>

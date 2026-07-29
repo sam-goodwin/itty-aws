@@ -136,13 +136,15 @@ export type AiSearchRequestModel =
 export const AiSearchRequestModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestRankingOptions {
-  ranker?: string;
-  scoreThreshold?: number;
+  ranker?: string | null;
+  scoreThreshold?: number | null;
 }
 export const AiSearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ranker: S.optional(S.String),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
+    ranker: S.optional(S.NullOr(S.String)),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
   }),
 ).annotate({
   identifier: "AiSearchRequestRankingOptions",
@@ -152,13 +154,13 @@ export type AiSearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const AiSearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestReranking {
-  enabled?: boolean;
-  model?: AiSearchRequestRerankingModel | (string & {});
+  enabled?: boolean | null;
+  model?: AiSearchRequestRerankingModel | (string & {}) | null;
 }
 export const AiSearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    model: S.optional(AiSearchRequestRerankingModel),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    model: S.optional(S.NullOr(AiSearchRequestRerankingModel)),
   }),
 ).annotate({
   identifier: "AiSearchRequestReranking",
@@ -169,30 +171,32 @@ export interface AiSearchRequest {
   /** rag id */
   id: string;
   query: string;
-  filters?: AiSearchRequestFilters;
-  maxNumResults?: number;
-  model?: AiSearchRequestModel | (string & {});
-  rankingOptions?: AiSearchRequestRankingOptions;
-  reranking?: AiSearchRequestReranking;
-  rewriteQuery?: boolean;
-  stream?: boolean;
-  systemPrompt?: string;
+  filters?: AiSearchRequestFilters | null;
+  maxNumResults?: number | null;
+  model?: AiSearchRequestModel | (string & {}) | null;
+  rankingOptions?: AiSearchRequestRankingOptions | null;
+  reranking?: AiSearchRequestReranking | null;
+  rewriteQuery?: boolean | null;
+  stream?: boolean | null;
+  systemPrompt?: string | null;
 }
 export const AiSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
-    filters: S.optional(AiSearchRequestFilters),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    model: S.optional(AiSearchRequestModel),
-    rankingOptions: S.optional(
-      AiSearchRequestRankingOptions.pipe(T.Body("ranking_options")),
+    filters: S.optional(S.NullOr(AiSearchRequestFilters)),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    reranking: S.optional(AiSearchRequestReranking),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
-    stream: S.optional(S.Boolean),
-    systemPrompt: S.optional(S.String.pipe(T.Body("system_prompt"))),
+    model: S.optional(S.NullOr(AiSearchRequestModel)),
+    rankingOptions: S.optional(
+      S.NullOr(AiSearchRequestRankingOptions).pipe(T.Body("ranking_options")),
+    ),
+    reranking: S.optional(S.NullOr(AiSearchRequestReranking)),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    stream: S.optional(S.NullOr(S.Boolean)),
+    systemPrompt: S.optional(S.NullOr(S.String).pipe(T.Body("system_prompt"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -205,13 +209,13 @@ export const AiSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiSearchRequest>;
 
 export interface AiSearchResponseDataItemContentItem {
-  text?: string;
-  type?: string;
+  text?: string | null;
+  type?: string | null;
 }
 export const AiSearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    text: S.optional(S.String),
-    type: S.optional(S.String),
+    text: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AiSearchResponseDataItemContentItem",
@@ -225,18 +229,18 @@ export const AiSearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
 
 export interface AiSearchResponseDataItem {
   score: number;
-  attributes?: unknown;
-  content?: AiSearchResponseDataItemContentList;
-  fileId?: string;
-  filename?: string;
+  attributes?: unknown | null;
+  content?: AiSearchResponseDataItemContentList | null;
+  fileId?: string | null;
+  filename?: string | null;
 }
 export const AiSearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.Number,
-    attributes: S.optional(S.Unknown),
-    content: S.optional(AiSearchResponseDataItemContentList),
-    fileId: S.optional(S.String.pipe(T.Body("file_id"))),
-    filename: S.optional(S.String),
+    attributes: S.optional(S.NullOr(S.Unknown)),
+    content: S.optional(S.NullOr(AiSearchResponseDataItemContentList)),
+    fileId: S.optional(S.NullOr(S.String).pipe(T.Body("file_id"))),
+    filename: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AiSearchResponseDataItem",
@@ -251,19 +255,19 @@ export const AiSearchResponseDataList = /*@__PURE__*/ S.Array(
 export interface AiSearchResponse {
   response: string;
   searchQuery: string;
-  data?: AiSearchResponseDataList;
-  hasMore?: boolean;
-  nextPage?: string;
-  object?: string;
+  data?: AiSearchResponseDataList | null;
+  hasMore?: boolean | null;
+  nextPage?: string | null;
+  object?: string | null;
 }
 export const AiSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.String,
     searchQuery: S.String.pipe(T.Body("search_query")),
-    data: S.optional(AiSearchResponseDataList),
-    hasMore: S.optional(S.Boolean.pipe(T.Body("has_more"))),
-    nextPage: S.optional(S.String.pipe(T.Body("next_page"))),
-    object: S.optional(S.String),
+    data: S.optional(S.NullOr(AiSearchResponseDataList)),
+    hasMore: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_more"))),
+    nextPage: S.optional(S.NullOr(S.String).pipe(T.Body("next_page"))),
+    object: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AiSearchResponse",
@@ -348,19 +352,19 @@ export const JobsGetResponseSource = /*@__PURE__*/ S.String;
 export interface JobsGetResponse {
   id: string;
   source: JobsGetResponseSource;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: JobsGetResponseSource,
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "JobsGetResponse",
@@ -396,19 +400,19 @@ export const JobsListResultItemSource = /*@__PURE__*/ S.String;
 export interface JobsListResultItem {
   id: string;
   source: JobsListResultItemSource;
-  endReason?: string;
-  endedAt?: string;
-  lastSeenAt?: string;
-  startedAt?: string;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
 }
 export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: JobsListResultItemSource,
-    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "JobsListResultItem",
@@ -575,13 +579,15 @@ export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface SearchRequestRankingOptions {
-  ranker?: string;
-  scoreThreshold?: number;
+  ranker?: string | null;
+  scoreThreshold?: number | null;
 }
 export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ranker: S.optional(S.String),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
+    ranker: S.optional(S.NullOr(S.String)),
+    scoreThreshold: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
+    ),
   }),
 ).annotate({
   identifier: "SearchRequestRankingOptions",
@@ -591,13 +597,13 @@ export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const SearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface SearchRequestReranking {
-  enabled?: boolean;
-  model?: SearchRequestRerankingModel | (string & {});
+  enabled?: boolean | null;
+  model?: SearchRequestRerankingModel | (string & {}) | null;
 }
 export const SearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    model: S.optional(SearchRequestRerankingModel),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    model: S.optional(S.NullOr(SearchRequestRerankingModel)),
   }),
 ).annotate({
   identifier: "SearchRequestReranking",
@@ -608,24 +614,26 @@ export interface SearchRequest {
   /** rag id */
   id: string;
   query: string;
-  filters?: SearchRequestFilters;
-  maxNumResults?: number;
-  rankingOptions?: SearchRequestRankingOptions;
-  reranking?: SearchRequestReranking;
-  rewriteQuery?: boolean;
+  filters?: SearchRequestFilters | null;
+  maxNumResults?: number | null;
+  rankingOptions?: SearchRequestRankingOptions | null;
+  reranking?: SearchRequestReranking | null;
+  rewriteQuery?: boolean | null;
 }
 export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
-    filters: S.optional(SearchRequestFilters),
-    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    rankingOptions: S.optional(
-      SearchRequestRankingOptions.pipe(T.Body("ranking_options")),
+    filters: S.optional(S.NullOr(SearchRequestFilters)),
+    maxNumResults: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    reranking: S.optional(SearchRequestReranking),
-    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
+    rankingOptions: S.optional(
+      S.NullOr(SearchRequestRankingOptions).pipe(T.Body("ranking_options")),
+    ),
+    reranking: S.optional(S.NullOr(SearchRequestReranking)),
+    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -636,13 +644,13 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export interface SearchResponseDataItemContentItem {
-  text?: string;
-  type?: string;
+  text?: string | null;
+  type?: string | null;
 }
 export const SearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    text: S.optional(S.String),
-    type: S.optional(S.String),
+    text: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SearchResponseDataItemContentItem",
@@ -656,18 +664,18 @@ export const SearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
 
 export interface SearchResponseDataItem {
   score: number;
-  attributes?: unknown;
-  content?: SearchResponseDataItemContentList;
-  fileId?: string;
-  filename?: string;
+  attributes?: unknown | null;
+  content?: SearchResponseDataItemContentList | null;
+  fileId?: string | null;
+  filename?: string | null;
 }
 export const SearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.Number,
-    attributes: S.optional(S.Unknown),
-    content: S.optional(SearchResponseDataItemContentList),
-    fileId: S.optional(S.String.pipe(T.Body("file_id"))),
-    filename: S.optional(S.String),
+    attributes: S.optional(S.NullOr(S.Unknown)),
+    content: S.optional(S.NullOr(SearchResponseDataItemContentList)),
+    fileId: S.optional(S.NullOr(S.String).pipe(T.Body("file_id"))),
+    filename: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SearchResponseDataItem",
@@ -681,18 +689,18 @@ export const SearchResponseDataList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchResponse {
   searchQuery: string;
-  data?: SearchResponseDataList;
-  hasMore?: boolean;
-  nextPage?: string;
-  object?: string;
+  data?: SearchResponseDataList | null;
+  hasMore?: boolean | null;
+  nextPage?: string | null;
+  object?: string | null;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchQuery: S.String.pipe(T.Body("search_query")),
-    data: S.optional(SearchResponseDataList),
-    hasMore: S.optional(S.Boolean.pipe(T.Body("has_more"))),
-    nextPage: S.optional(S.String.pipe(T.Body("next_page"))),
-    object: S.optional(S.String),
+    data: S.optional(S.NullOr(SearchResponseDataList)),
+    hasMore: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_more"))),
+    nextPage: S.optional(S.NullOr(S.String).pipe(T.Body("next_page"))),
+    object: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 

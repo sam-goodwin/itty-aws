@@ -756,13 +756,14 @@ export type RangeMode =
   | "LAST"
   | "LAST_BEFORE_MISSING_VALUES"
   | "INCLUSIVE"
-  | "EXCLUSIVE";
+  | "EXCLUSIVE"
+  | (string & {});
 export const RangeMode = /*@__PURE__*/ S.String;
 
 export interface TypedAttributeValueRange {
-  StartMode: RangeMode | (string & {});
+  StartMode: RangeMode;
   StartValue?: TypedAttributeValue;
-  EndMode: RangeMode | (string & {});
+  EndMode: RangeMode;
   EndValue?: TypedAttributeValue;
 }
 export const TypedAttributeValueRange = /*@__PURE__*/ S.suspend(() =>
@@ -906,13 +907,13 @@ export const BatchReadOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchReadOperation>;
 export type BatchReadOperationList = BatchReadOperation[];
 export const BatchReadOperationList = /*@__PURE__*/ S.Array(BatchReadOperation);
-export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL";
+export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL" | (string & {});
 export const ConsistencyLevel = /*@__PURE__*/ S.String;
 
 export interface BatchReadRequest {
   DirectoryArn: string;
   Operations: BatchReadOperation[];
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const BatchReadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1236,7 +1237,8 @@ export type BatchReadExceptionType =
   | "NotPolicyException"
   | "DirectoryNotEnabledException"
   | "LimitExceededException"
-  | "InternalServiceException";
+  | "InternalServiceException"
+  | (string & {});
 export const BatchReadExceptionType = /*@__PURE__*/ S.String;
 
 export type ExceptionMessage = string;
@@ -1323,11 +1325,11 @@ export const BatchDetachObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetachObject",
 }) as any as S.Schema<BatchDetachObject>;
-export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE";
+export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE" | (string & {});
 export const UpdateActionType = /*@__PURE__*/ S.String;
 
 export interface ObjectAttributeAction {
-  ObjectAttributeActionType?: UpdateActionType | (string & {});
+  ObjectAttributeActionType?: UpdateActionType;
   ObjectAttributeUpdateValue?: TypedAttributeValue;
 }
 export const ObjectAttributeAction = /*@__PURE__*/ S.suspend(() =>
@@ -1490,7 +1492,7 @@ export const BatchDetachTypedLink = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDetachTypedLink",
 }) as any as S.Schema<BatchDetachTypedLink>;
 export interface LinkAttributeAction {
-  AttributeActionType?: UpdateActionType | (string & {});
+  AttributeActionType?: UpdateActionType;
   AttributeUpdateValue?: TypedAttributeValue;
 }
 export const LinkAttributeAction = /*@__PURE__*/ S.suspend(() =>
@@ -1797,7 +1799,8 @@ export type FacetAttributeType =
   | "BOOLEAN"
   | "NUMBER"
   | "DATETIME"
-  | "VARIANT";
+  | "VARIANT"
+  | (string & {});
 export const FacetAttributeType = /*@__PURE__*/ S.String;
 
 export type RuleKey = string;
@@ -1805,7 +1808,8 @@ export type RuleType =
   | "BINARY_LENGTH"
   | "NUMBER_COMPARISON"
   | "STRING_FROM_SET"
-  | "STRING_LENGTH";
+  | "STRING_LENGTH"
+  | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 export type RuleParameterKey = string;
@@ -1816,7 +1820,7 @@ export const RuleParameterMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface Rule {
-  Type?: RuleType | (string & {});
+  Type?: RuleType;
   Parameters?: { [key: string]: string | undefined };
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -1828,7 +1832,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 export type RuleMap = { [key: string]: Rule | undefined };
 export const RuleMap = /*@__PURE__*/ S.Record(S.String, Rule.pipe(S.optional));
 export interface FacetAttributeDefinition {
-  Type: FacetAttributeType | (string & {});
+  Type: FacetAttributeType;
   DefaultValue?: TypedAttributeValue;
   IsImmutable?: boolean;
   Rules?: { [key: string]: Rule | undefined };
@@ -1852,14 +1856,17 @@ export const FacetAttributeReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FacetAttributeReference",
 }) as any as S.Schema<FacetAttributeReference>;
-export type RequiredAttributeBehavior = "REQUIRED_ALWAYS" | "NOT_REQUIRED";
+export type RequiredAttributeBehavior =
+  | "REQUIRED_ALWAYS"
+  | "NOT_REQUIRED"
+  | (string & {});
 export const RequiredAttributeBehavior = /*@__PURE__*/ S.String;
 
 export interface FacetAttribute {
   Name: string;
   AttributeDefinition?: FacetAttributeDefinition;
   AttributeReference?: FacetAttributeReference;
-  RequiredBehavior?: RequiredAttributeBehavior | (string & {});
+  RequiredBehavior?: RequiredAttributeBehavior;
 }
 export const FacetAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1871,18 +1878,23 @@ export const FacetAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetAttribute" }) as any as S.Schema<FacetAttribute>;
 export type FacetAttributeList = FacetAttribute[];
 export const FacetAttributeList = /*@__PURE__*/ S.Array(FacetAttribute);
-export type ObjectType = "NODE" | "LEAF_NODE" | "POLICY" | "INDEX";
+export type ObjectType =
+  | "NODE"
+  | "LEAF_NODE"
+  | "POLICY"
+  | "INDEX"
+  | (string & {});
 export const ObjectType = /*@__PURE__*/ S.String;
 
-export type FacetStyle = "STATIC" | "DYNAMIC";
+export type FacetStyle = "STATIC" | "DYNAMIC" | (string & {});
 export const FacetStyle = /*@__PURE__*/ S.String;
 
 export interface CreateFacetRequest {
   SchemaArn: string;
   Name: string;
   Attributes?: FacetAttribute[];
-  ObjectType?: ObjectType | (string & {});
-  FacetStyle?: FacetStyle | (string & {});
+  ObjectType?: ObjectType;
+  FacetStyle?: FacetStyle;
 }
 export const CreateFacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2014,11 +2026,11 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSchemaResponse>;
 export interface TypedLinkAttributeDefinition {
   Name: string;
-  Type: FacetAttributeType | (string & {});
+  Type: FacetAttributeType;
   DefaultValue?: TypedAttributeValue;
   IsImmutable?: boolean;
   Rules?: { [key: string]: Rule | undefined };
-  RequiredBehavior: RequiredAttributeBehavior | (string & {});
+  RequiredBehavior: RequiredAttributeBehavior;
 }
 export const TypedLinkAttributeDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2465,7 +2477,7 @@ export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDirectoryRequest",
 }) as any as S.Schema<GetDirectoryRequest>;
-export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED";
+export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
 export const DirectoryState = /*@__PURE__*/ S.String;
 
 export interface Directory {
@@ -2537,7 +2549,7 @@ export interface GetLinkAttributesRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: string[];
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const GetLinkAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2572,7 +2584,7 @@ export const GetLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
   SchemaFacet: SchemaFacet;
   AttributeNames: string[];
 }
@@ -2612,7 +2624,7 @@ export const GetObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetObjectInformationRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const GetObjectInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2757,7 +2769,7 @@ export interface ListAttachedIndicesRequest {
   TargetReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListAttachedIndicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2832,7 +2844,7 @@ export const ListDevelopmentSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDirectoriesRequest {
   NextToken?: string;
   MaxResults?: number;
-  state?: DirectoryState | (string & {});
+  state?: DirectoryState;
 }
 export const ListDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2953,7 +2965,7 @@ export interface ListIncomingTypedLinksRequest {
   FilterTypedLink?: TypedLinkSchemaAndFacetName;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListIncomingTypedLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2998,7 +3010,7 @@ export interface ListIndexRequest {
   IndexReference: ObjectReference;
   MaxResults?: number;
   NextToken?: string;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3078,7 +3090,7 @@ export interface ListObjectAttributesRequest {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
   FacetFilter?: SchemaFacet;
 }
 export const ListObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3124,7 +3136,7 @@ export interface ListObjectChildrenRequest {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListObjectChildrenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3208,7 +3220,7 @@ export interface ListObjectParentsRequest {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
   IncludeAllLinksToEachParent?: boolean;
 }
 export const ListObjectParentsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3263,7 +3275,7 @@ export interface ListObjectPoliciesRequest {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListObjectPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3309,7 +3321,7 @@ export interface ListOutgoingTypedLinksRequest {
   FilterTypedLink?: TypedLinkSchemaAndFacetName;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListOutgoingTypedLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3353,7 +3365,7 @@ export interface ListPolicyAttachmentsRequest {
   PolicyReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
-  ConsistencyLevel?: ConsistencyLevel | (string & {});
+  ConsistencyLevel?: ConsistencyLevel;
 }
 export const ListPolicyAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3751,7 +3763,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface FacetAttributeUpdate {
   Attribute?: FacetAttribute;
-  Action?: UpdateActionType | (string & {});
+  Action?: UpdateActionType;
 }
 export const FacetAttributeUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3768,7 +3780,7 @@ export interface UpdateFacetRequest {
   SchemaArn: string;
   Name: string;
   AttributeUpdates?: FacetAttributeUpdate[];
-  ObjectType?: ObjectType | (string & {});
+  ObjectType?: ObjectType;
 }
 export const UpdateFacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3895,7 +3907,7 @@ export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSchemaResponse>;
 export interface TypedLinkFacetAttributeUpdate {
   Attribute: TypedLinkAttributeDefinition;
-  Action: UpdateActionType | (string & {});
+  Action: UpdateActionType;
 }
 export const TypedLinkFacetAttributeUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4036,7 +4048,8 @@ export type BatchWriteExceptionType =
   | "NotPolicyException"
   | "DirectoryNotEnabledException"
   | "LimitExceededException"
-  | "UnsupportedIndexTypeException";
+  | "UnsupportedIndexTypeException"
+  | (string & {});
 export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
 
 export type AddFacetToObjectError =

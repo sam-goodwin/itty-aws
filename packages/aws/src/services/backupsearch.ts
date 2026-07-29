@@ -127,13 +127,14 @@ export type SearchJobState =
   | "COMPLETED"
   | "STOPPING"
   | "STOPPED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SearchJobState = /*@__PURE__*/ S.String;
 
-export type ResourceType = "S3" | "EBS";
+export type ResourceType = "S3" | "EBS" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceTypeList = (ResourceType | (string & {}))[];
+export type ResourceTypeList = ResourceType[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export interface BackupCreationTimeFilter {
   CreatedAfter?: Date;
@@ -158,7 +159,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 ).pipe(T.Sparse());
 export interface SearchScope {
-  BackupResourceTypes: (ResourceType | (string & {}))[];
+  BackupResourceTypes: ResourceType[];
   BackupResourceCreationTime?: BackupCreationTimeFilter;
   SourceResourceArns?: string[];
   BackupResourceArns?: string[];
@@ -181,12 +182,13 @@ export type StringConditionOperator =
   | "BEGINS_WITH"
   | "ENDS_WITH"
   | "DOES_NOT_BEGIN_WITH"
-  | "DOES_NOT_END_WITH";
+  | "DOES_NOT_END_WITH"
+  | (string & {});
 export const StringConditionOperator = /*@__PURE__*/ S.String;
 
 export interface StringCondition {
   Value: string;
-  Operator?: StringConditionOperator | (string & {});
+  Operator?: StringConditionOperator;
 }
 export const StringCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, Operator: S.optional(StringConditionOperator) }),
@@ -199,12 +201,13 @@ export type LongConditionOperator =
   | "EQUALS_TO"
   | "NOT_EQUALS_TO"
   | "LESS_THAN_EQUAL_TO"
-  | "GREATER_THAN_EQUAL_TO";
+  | "GREATER_THAN_EQUAL_TO"
+  | (string & {});
 export const LongConditionOperator = /*@__PURE__*/ S.String;
 
 export interface LongCondition {
   Value: number;
-  Operator?: LongConditionOperator | (string & {});
+  Operator?: LongConditionOperator;
 }
 export const LongCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.Number, Operator: S.optional(LongConditionOperator) }),
@@ -215,12 +218,13 @@ export type TimeConditionOperator =
   | "EQUALS_TO"
   | "NOT_EQUALS_TO"
   | "LESS_THAN_EQUAL_TO"
-  | "GREATER_THAN_EQUAL_TO";
+  | "GREATER_THAN_EQUAL_TO"
+  | (string & {});
 export const TimeConditionOperator = /*@__PURE__*/ S.String;
 
 export interface TimeCondition {
   Value: Date;
-  Operator?: TimeConditionOperator | (string & {});
+  Operator?: TimeConditionOperator;
 }
 export const TimeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -330,7 +334,11 @@ export const GetSearchResultExportJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSearchResultExportJobInput",
 }) as any as S.Schema<GetSearchResultExportJobInput>;
 export type ExportJobArn = string;
-export type ExportJobStatus = "RUNNING" | "FAILED" | "COMPLETED";
+export type ExportJobStatus =
+  | "RUNNING"
+  | "FAILED"
+  | "COMPLETED"
+  | (string & {});
 export const ExportJobStatus = /*@__PURE__*/ S.String;
 
 export interface S3ExportSpecification {
@@ -536,7 +544,7 @@ export const ListSearchJobResultsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchJobResultsOutput",
 }) as any as S.Schema<ListSearchJobResultsOutput>;
 export interface ListSearchJobsInput {
-  ByStatus?: SearchJobState | (string & {});
+  ByStatus?: SearchJobState;
   NextToken?: string;
   MaxResults?: number;
 }
@@ -594,7 +602,7 @@ export const ListSearchJobsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchJobsOutput",
 }) as any as S.Schema<ListSearchJobsOutput>;
 export interface ListSearchResultExportJobsInput {
-  Status?: ExportJobStatus | (string & {});
+  Status?: ExportJobStatus;
   SearchJobIdentifier?: string;
   NextToken?: string;
   MaxResults?: number;

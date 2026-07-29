@@ -534,12 +534,11 @@ export type QueueAttributeName =
   | "DeduplicationScope"
   | "FifoThroughputLimit"
   | "RedriveAllowPolicy"
-  | "SqsManagedSseEnabled";
+  | "SqsManagedSseEnabled"
+  | (string & {});
 export const QueueAttributeName = /*@__PURE__*/ S.String;
 
-export type QueueAttributeMap = {
-  [key in QueueAttributeName | (string & {})]?: string;
-};
+export type QueueAttributeMap = { [key in QueueAttributeName]?: string };
 export const QueueAttributeMap = /*@__PURE__*/ S.Record(
   QueueAttributeName.pipe(T.XmlName("Name")),
   S.String.pipe(T.XmlName("Value")).pipe(S.optional),
@@ -672,11 +671,11 @@ export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteQueueResponse",
 }) as any as S.Schema<DeleteQueueResponse>;
-export type AttributeNameList = (QueueAttributeName | (string & {}))[];
+export type AttributeNameList = QueueAttributeName[];
 export const AttributeNameList = /*@__PURE__*/ S.Array(QueueAttributeName);
 export interface GetQueueAttributesRequest {
   QueueUrl: string;
-  AttributeNames?: (QueueAttributeName | (string & {}))[];
+  AttributeNames?: QueueAttributeName[];
 }
 export const GetQueueAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -890,13 +889,11 @@ export type MessageSystemAttributeName =
   | "MessageDeduplicationId"
   | "MessageGroupId"
   | "AWSTraceHeader"
-  | "DeadLetterQueueSourceArn";
+  | "DeadLetterQueueSourceArn"
+  | (string & {});
 export const MessageSystemAttributeName = /*@__PURE__*/ S.String;
 
-export type MessageSystemAttributeList = (
-  | MessageSystemAttributeName
-  | (string & {})
-)[];
+export type MessageSystemAttributeList = MessageSystemAttributeName[];
 export const MessageSystemAttributeList = /*@__PURE__*/ S.Array(
   MessageSystemAttributeName,
 );
@@ -905,8 +902,8 @@ export type MessageAttributeNameList = string[];
 export const MessageAttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ReceiveMessageRequest {
   QueueUrl: string;
-  AttributeNames?: (QueueAttributeName | (string & {}))[];
-  MessageSystemAttributeNames?: (MessageSystemAttributeName | (string & {}))[];
+  AttributeNames?: QueueAttributeName[];
+  MessageSystemAttributeNames?: MessageSystemAttributeName[];
   MessageAttributeNames?: string[];
   MaxNumberOfMessages?: number;
   VisibilityTimeout?: number;
@@ -1045,7 +1042,9 @@ export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemovePermissionResponse",
 }) as any as S.Schema<RemovePermissionResponse>;
-export type MessageSystemAttributeNameForSends = "AWSTraceHeader";
+export type MessageSystemAttributeNameForSends =
+  | "AWSTraceHeader"
+  | (string & {});
 export const MessageSystemAttributeNameForSends = /*@__PURE__*/ S.String;
 
 export interface MessageSystemAttributeValue {
@@ -1073,9 +1072,7 @@ export const MessageSystemAttributeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageSystemAttributeValue",
 }) as any as S.Schema<MessageSystemAttributeValue>;
 export type MessageBodySystemAttributeMap = {
-  [key in
-    | MessageSystemAttributeNameForSends
-    | (string & {})]?: MessageSystemAttributeValue;
+  [key in MessageSystemAttributeNameForSends]?: MessageSystemAttributeValue;
 };
 export const MessageBodySystemAttributeMap = /*@__PURE__*/ S.Record(
   MessageSystemAttributeNameForSends.pipe(T.XmlName("Name")),

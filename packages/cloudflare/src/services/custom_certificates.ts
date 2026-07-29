@@ -82,11 +82,11 @@ export type CreateRequestGeoRestrictionsLabel =
 export const CreateRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateRequestGeoRestrictions {
-  label?: CreateRequestGeoRestrictionsLabel | (string & {});
+  label?: CreateRequestGeoRestrictionsLabel | (string & {}) | null;
 }
 export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(CreateRequestGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(CreateRequestGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "CreateRequestGeoRestrictions",
@@ -101,35 +101,35 @@ export interface CreateCustomCertificateRequest {
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestBundleMethod | (string & {});
+  bundleMethod?: CreateRequestBundleMethod | (string & {}) | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** The environment to deploy the certificate to, defaults to production. */
-  deploy?: CreateRequestDeploy | (string & {});
+  deploy?: CreateRequestDeploy | (string & {}) | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: CreateRequestGeoRestrictions;
+  geoRestrictions?: CreateRequestGeoRestrictions | null;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
-  policy?: string;
+  policy?: string | null;
   /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
-  privateKey?: string;
+  privateKey?: string | null;
   /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
-  type?: CreateRequestType | (string & {});
+  type?: CreateRequestType | (string & {}) | null;
 }
 export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
     bundleMethod: S.optional(
-      CreateRequestBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(CreateRequestBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    deploy: S.optional(CreateRequestDeploy),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    deploy: S.optional(S.NullOr(CreateRequestDeploy)),
     geoRestrictions: S.optional(
-      CreateRequestGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(CreateRequestGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    policy: S.optional(S.String),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-    type: S.optional(CreateRequestType),
+    policy: S.optional(S.NullOr(S.String)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    type: S.optional(S.NullOr(CreateRequestType)),
   })
     .pipe(
       T.Http({
@@ -153,11 +153,11 @@ export type CreateResponseGeoRestrictionsLabel =
 export const CreateResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGeoRestrictions {
-  label?: CreateResponseGeoRestrictionsLabel;
+  label?: CreateResponseGeoRestrictionsLabel | null;
 }
 export const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(CreateResponseGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(CreateResponseGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "CreateResponseGeoRestrictions",
@@ -211,7 +211,7 @@ export interface CreateResponseKeylessServer {
   /** Status of the Keyless SSL. */
   status: CreateResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: CreateResponseKeylessServerTunnel;
+  tunnel?: CreateResponseKeylessServerTunnel | null;
 }
 export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,7 +224,7 @@ export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     permissions: CreateResponseKeylessServerPermissionsList,
     port: S.Number,
     status: CreateResponseKeylessServerStatus,
-    tunnel: S.optional(CreateResponseKeylessServerTunnel),
+    tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
   }),
 ).annotate({
   identifier: "CreateResponseKeylessServer",
@@ -245,55 +245,55 @@ export interface CreateCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateResponseBundleMethod;
+  bundleMethod?: CreateResponseBundleMethod | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** When the certificate from the authority expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: CreateResponseGeoRestrictions;
-  hosts?: CreateResponseHostsList;
+  geoRestrictions?: CreateResponseGeoRestrictions | null;
+  hosts?: CreateResponseHostsList | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: CreateResponseKeylessServer;
+  issuer?: string | null;
+  keylessServer?: CreateResponseKeylessServer | null;
   /** When the certificate was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
+  policyRestrictions?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the zone's custom SSL. */
-  status?: CreateResponseStatus;
+  status?: CreateResponseStatus | null;
   /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     bundleMethod: S.optional(
-      CreateResponseBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(CreateResponseBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
-      CreateResponseGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(CreateResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    hosts: S.optional(CreateResponseHostsList),
-    issuer: S.optional(S.String),
+    hosts: S.optional(S.NullOr(CreateResponseHostsList)),
+    issuer: S.optional(S.NullOr(S.String)),
     keylessServer: S.optional(
-      CreateResponseKeylessServer.pipe(T.Body("keyless_server")),
+      S.NullOr(CreateResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
     ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(CreateResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(CreateResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCertificateResponse",
@@ -325,11 +325,11 @@ export const DeleteCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomCertificateResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCertificateResponse",
@@ -365,11 +365,11 @@ export type GetResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const GetResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface GetResponseGeoRestrictions {
-  label?: GetResponseGeoRestrictionsLabel;
+  label?: GetResponseGeoRestrictionsLabel | null;
 }
 export const GetResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(GetResponseGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(GetResponseGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "GetResponseGeoRestrictions",
@@ -423,7 +423,7 @@ export interface GetResponseKeylessServer {
   /** Status of the Keyless SSL. */
   status: GetResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: GetResponseKeylessServerTunnel;
+  tunnel?: GetResponseKeylessServerTunnel | null;
 }
 export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -436,7 +436,7 @@ export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     permissions: GetResponseKeylessServerPermissionsList,
     port: S.Number,
     status: GetResponseKeylessServerStatus,
-    tunnel: S.optional(GetResponseKeylessServerTunnel),
+    tunnel: S.optional(S.NullOr(GetResponseKeylessServerTunnel)),
   }),
 ).annotate({
   identifier: "GetResponseKeylessServer",
@@ -457,55 +457,55 @@ export interface GetCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: GetResponseBundleMethod;
+  bundleMethod?: GetResponseBundleMethod | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** When the certificate from the authority expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: GetResponseGeoRestrictions;
-  hosts?: GetResponseHostsList;
+  geoRestrictions?: GetResponseGeoRestrictions | null;
+  hosts?: GetResponseHostsList | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: GetResponseKeylessServer;
+  issuer?: string | null;
+  keylessServer?: GetResponseKeylessServer | null;
   /** When the certificate was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
+  policyRestrictions?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the zone's custom SSL. */
-  status?: GetResponseStatus;
+  status?: GetResponseStatus | null;
   /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     bundleMethod: S.optional(
-      GetResponseBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(GetResponseBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
-      GetResponseGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(GetResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    hosts: S.optional(GetResponseHostsList),
-    issuer: S.optional(S.String),
+    hosts: S.optional(S.NullOr(GetResponseHostsList)),
+    issuer: S.optional(S.NullOr(S.String)),
     keylessServer: S.optional(
-      GetResponseKeylessServer.pipe(T.Body("keyless_server")),
+      S.NullOr(GetResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
     ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(GetResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(GetResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCertificateResponse",
@@ -564,11 +564,11 @@ export type ListResultItemGeoRestrictionsLabel =
 export const ListResultItemGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGeoRestrictions {
-  label?: ListResultItemGeoRestrictionsLabel;
+  label?: ListResultItemGeoRestrictionsLabel | null;
 }
 export const ListResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(ListResultItemGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(ListResultItemGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "ListResultItemGeoRestrictions",
@@ -622,7 +622,7 @@ export interface ListResultItemKeylessServer {
   /** Status of the Keyless SSL. */
   status: ListResultItemKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: ListResultItemKeylessServerTunnel;
+  tunnel?: ListResultItemKeylessServerTunnel | null;
 }
 export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -635,7 +635,7 @@ export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
     permissions: ListResultItemKeylessServerPermissionsList,
     port: S.Number,
     status: ListResultItemKeylessServerStatus,
-    tunnel: S.optional(ListResultItemKeylessServerTunnel),
+    tunnel: S.optional(S.NullOr(ListResultItemKeylessServerTunnel)),
   }),
 ).annotate({
   identifier: "ListResultItemKeylessServer",
@@ -655,55 +655,55 @@ export interface ListResultItem {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: ListResultItemBundleMethod;
+  bundleMethod?: ListResultItemBundleMethod | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** When the certificate from the authority expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: ListResultItemGeoRestrictions;
-  hosts?: ListResultItemHostsList;
+  geoRestrictions?: ListResultItemGeoRestrictions | null;
+  hosts?: ListResultItemHostsList | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: ListResultItemKeylessServer;
+  issuer?: string | null;
+  keylessServer?: ListResultItemKeylessServer | null;
   /** When the certificate was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
+  policyRestrictions?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the zone's custom SSL. */
-  status?: ListResultItemStatus;
+  status?: ListResultItemStatus | null;
   /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     bundleMethod: S.optional(
-      ListResultItemBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(ListResultItemBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
-      ListResultItemGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(ListResultItemGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    hosts: S.optional(ListResultItemHostsList),
-    issuer: S.optional(S.String),
+    hosts: S.optional(S.NullOr(ListResultItemHostsList)),
+    issuer: S.optional(S.NullOr(S.String)),
     keylessServer: S.optional(
-      ListResultItemKeylessServer.pipe(T.Body("keyless_server")),
+      S.NullOr(ListResultItemKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
     ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(ListResultItemStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(ListResultItemStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -737,11 +737,11 @@ export type EditRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditRequestGeoRestrictions {
-  label?: EditRequestGeoRestrictionsLabel | (string & {});
+  label?: EditRequestGeoRestrictionsLabel | (string & {}) | null;
 }
 export const EditRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(EditRequestGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(EditRequestGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "EditRequestGeoRestrictions",
@@ -753,35 +753,35 @@ export interface PatchCustomCertificateRequest {
   /** Identifier. */
   customCertificateId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: EditRequestBundleMethod | (string & {});
+  bundleMethod?: EditRequestBundleMethod | (string & {}) | null;
   /** The zone's SSL certificate or certificate and the intermediate(s). */
-  certificate?: string;
+  certificate?: string | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** The environment to deploy the certificate to, defaults to production. */
-  deploy?: EditRequestDeploy | (string & {});
+  deploy?: EditRequestDeploy | (string & {}) | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: EditRequestGeoRestrictions;
+  geoRestrictions?: EditRequestGeoRestrictions | null;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
-  policy?: string;
+  policy?: string | null;
   /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
-  privateKey?: string;
+  privateKey?: string | null;
 }
 export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
     bundleMethod: S.optional(
-      EditRequestBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(EditRequestBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    certificate: S.optional(S.String),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    deploy: S.optional(EditRequestDeploy),
+    certificate: S.optional(S.NullOr(S.String)),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    deploy: S.optional(S.NullOr(EditRequestDeploy)),
     geoRestrictions: S.optional(
-      EditRequestGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(EditRequestGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    policy: S.optional(S.String),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    policy: S.optional(S.NullOr(S.String)),
+    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
   })
     .pipe(
       T.Http({
@@ -802,11 +802,11 @@ export type EditResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditResponseGeoRestrictions {
-  label?: EditResponseGeoRestrictionsLabel;
+  label?: EditResponseGeoRestrictionsLabel | null;
 }
 export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    label: S.optional(EditResponseGeoRestrictionsLabel),
+    label: S.optional(S.NullOr(EditResponseGeoRestrictionsLabel)),
   }),
 ).annotate({
   identifier: "EditResponseGeoRestrictions",
@@ -860,7 +860,7 @@ export interface EditResponseKeylessServer {
   /** Status of the Keyless SSL. */
   status: EditResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditResponseKeylessServerTunnel;
+  tunnel?: EditResponseKeylessServerTunnel | null;
 }
 export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -873,7 +873,7 @@ export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     permissions: EditResponseKeylessServerPermissionsList,
     port: S.Number,
     status: EditResponseKeylessServerStatus,
-    tunnel: S.optional(EditResponseKeylessServerTunnel),
+    tunnel: S.optional(S.NullOr(EditResponseKeylessServerTunnel)),
   }),
 ).annotate({
   identifier: "EditResponseKeylessServer",
@@ -894,55 +894,55 @@ export interface PatchCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: EditResponseBundleMethod;
+  bundleMethod?: EditResponseBundleMethod | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** When the certificate from the authority expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: EditResponseGeoRestrictions;
-  hosts?: EditResponseHostsList;
+  geoRestrictions?: EditResponseGeoRestrictions | null;
+  hosts?: EditResponseHostsList | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: EditResponseKeylessServer;
+  issuer?: string | null;
+  keylessServer?: EditResponseKeylessServer | null;
   /** When the certificate was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
+  policyRestrictions?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the zone's custom SSL. */
-  status?: EditResponseStatus;
+  status?: EditResponseStatus | null;
   /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     bundleMethod: S.optional(
-      EditResponseBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(EditResponseBundleMethod).pipe(T.Body("bundle_method")),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
-      EditResponseGeoRestrictions.pipe(T.Body("geo_restrictions")),
+      S.NullOr(EditResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
     ),
-    hosts: S.optional(EditResponseHostsList),
-    issuer: S.optional(S.String),
+    hosts: S.optional(S.NullOr(EditResponseHostsList)),
+    issuer: S.optional(S.NullOr(S.String)),
     keylessServer: S.optional(
-      EditResponseKeylessServer.pipe(T.Body("keyless_server")),
+      S.NullOr(EditResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
     ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(EditResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(EditResponseStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomCertificateResponse",
@@ -950,15 +950,15 @@ export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PrioritizeUpdateRequestCertificatesItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
 }
 export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
-      priority: S.optional(S.Number),
+      id: S.optional(S.NullOr(S.String)),
+      priority: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "PrioritizeUpdateRequestCertificatesItem",
@@ -1007,12 +1007,14 @@ export const PrioritizeUpdateResultItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
 export interface PrioritizeUpdateResultItemGeoRestrictions {
-  label?: PrioritizeUpdateResultItemGeoRestrictionsLabel;
+  label?: PrioritizeUpdateResultItemGeoRestrictionsLabel | null;
 }
 export const PrioritizeUpdateResultItemGeoRestrictions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(PrioritizeUpdateResultItemGeoRestrictionsLabel),
+      label: S.optional(
+        S.NullOr(PrioritizeUpdateResultItemGeoRestrictionsLabel),
+      ),
     }),
   ).annotate({
     identifier: "PrioritizeUpdateResultItemGeoRestrictions",
@@ -1072,7 +1074,7 @@ export interface PrioritizeUpdateResultItemKeylessServer {
   /** Status of the Keyless SSL. */
   status: PrioritizeUpdateResultItemKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: PrioritizeUpdateResultItemKeylessServerTunnel;
+  tunnel?: PrioritizeUpdateResultItemKeylessServerTunnel | null;
 }
 export const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(
   () =>
@@ -1086,7 +1088,9 @@ export const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(
       permissions: PrioritizeUpdateResultItemKeylessServerPermissionsList,
       port: S.Number,
       status: PrioritizeUpdateResultItemKeylessServerStatus,
-      tunnel: S.optional(PrioritizeUpdateResultItemKeylessServerTunnel),
+      tunnel: S.optional(
+        S.NullOr(PrioritizeUpdateResultItemKeylessServerTunnel),
+      ),
     }),
 ).annotate({
   identifier: "PrioritizeUpdateResultItemKeylessServer",
@@ -1106,57 +1110,61 @@ export interface PrioritizeUpdateResultItem {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: PrioritizeUpdateResultItemBundleMethod;
+  bundleMethod?: PrioritizeUpdateResultItemBundleMethod | null;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
+  customCsrId?: string | null;
   /** When the certificate from the authority expires. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: PrioritizeUpdateResultItemGeoRestrictions;
-  hosts?: PrioritizeUpdateResultItemHostsList;
+  geoRestrictions?: PrioritizeUpdateResultItemGeoRestrictions | null;
+  hosts?: PrioritizeUpdateResultItemHostsList | null;
   /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: PrioritizeUpdateResultItemKeylessServer;
+  issuer?: string | null;
+  keylessServer?: PrioritizeUpdateResultItemKeylessServer | null;
   /** When the certificate was last modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
+  policyRestrictions?: string | null;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
+  priority?: number | null;
   /** The type of hash used for the certificate. */
-  signature?: string;
+  signature?: string | null;
   /** Status of the zone's custom SSL. */
-  status?: PrioritizeUpdateResultItemStatus;
+  status?: PrioritizeUpdateResultItemStatus | null;
   /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
+  uploadedOn?: string | null;
 }
 export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     bundleMethod: S.optional(
-      PrioritizeUpdateResultItemBundleMethod.pipe(T.Body("bundle_method")),
+      S.NullOr(PrioritizeUpdateResultItemBundleMethod).pipe(
+        T.Body("bundle_method"),
+      ),
     ),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
-      PrioritizeUpdateResultItemGeoRestrictions.pipe(
+      S.NullOr(PrioritizeUpdateResultItemGeoRestrictions).pipe(
         T.Body("geo_restrictions"),
       ),
     ),
-    hosts: S.optional(PrioritizeUpdateResultItemHostsList),
-    issuer: S.optional(S.String),
+    hosts: S.optional(S.NullOr(PrioritizeUpdateResultItemHostsList)),
+    issuer: S.optional(S.NullOr(S.String)),
     keylessServer: S.optional(
-      PrioritizeUpdateResultItemKeylessServer.pipe(T.Body("keyless_server")),
+      S.NullOr(PrioritizeUpdateResultItemKeylessServer).pipe(
+        T.Body("keyless_server"),
+      ),
     ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
     ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(PrioritizeUpdateResultItemStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(PrioritizeUpdateResultItemStatus)),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({
   identifier: "PrioritizeUpdateResultItem",

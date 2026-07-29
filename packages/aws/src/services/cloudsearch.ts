@@ -292,10 +292,16 @@ export type AnalysisSchemeLanguage =
   | "th"
   | "tr"
   | "zh-Hans"
-  | "zh-Hant";
+  | "zh-Hant"
+  | (string & {});
 export const AnalysisSchemeLanguage = /*@__PURE__*/ S.String;
 
-export type AlgorithmicStemming = "none" | "minimal" | "light" | "full";
+export type AlgorithmicStemming =
+  | "none"
+  | "minimal"
+  | "light"
+  | "full"
+  | (string & {});
 export const AlgorithmicStemming = /*@__PURE__*/ S.String;
 
 export interface AnalysisOptions {
@@ -303,7 +309,7 @@ export interface AnalysisOptions {
   Stopwords?: string;
   StemmingDictionary?: string;
   JapaneseTokenizationDictionary?: string;
-  AlgorithmicStemming?: AlgorithmicStemming | (string & {});
+  AlgorithmicStemming?: AlgorithmicStemming;
 }
 export const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -318,7 +324,7 @@ export const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisOptions>;
 export interface AnalysisScheme {
   AnalysisSchemeName: string;
-  AnalysisSchemeLanguage: AnalysisSchemeLanguage | (string & {});
+  AnalysisSchemeLanguage: AnalysisSchemeLanguage;
   AnalysisOptions?: AnalysisOptions;
 }
 export const AnalysisScheme = /*@__PURE__*/ S.suspend(() =>
@@ -353,7 +359,8 @@ export type OptionState =
   | "RequiresIndexDocuments"
   | "Processing"
   | "Active"
-  | "FailedToValidate";
+  | "FailedToValidate"
+  | (string & {});
 export const OptionState = /*@__PURE__*/ S.String;
 
 export interface OptionStatus {
@@ -445,7 +452,8 @@ export type IndexFieldType =
   | "double-array"
   | "literal-array"
   | "text-array"
-  | "date-array";
+  | "date-array"
+  | (string & {});
 export const IndexFieldType = /*@__PURE__*/ S.String;
 
 export interface IntOptions {
@@ -651,7 +659,7 @@ export const DateArrayOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DateArrayOptions>;
 export interface IndexField {
   IndexFieldName: string;
-  IndexFieldType: IndexFieldType | (string & {});
+  IndexFieldType: IndexFieldType;
   IntOptions?: IntOptions;
   DoubleOptions?: DoubleOptions;
   LiteralOptions?: LiteralOptions;
@@ -717,12 +725,12 @@ export const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefineIndexFieldResponse",
 }) as any as S.Schema<DefineIndexFieldResponse>;
-export type SuggesterFuzzyMatching = "none" | "low" | "high";
+export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
 export const SuggesterFuzzyMatching = /*@__PURE__*/ S.String;
 
 export interface DocumentSuggesterOptions {
   SourceField: string;
-  FuzzyMatching?: SuggesterFuzzyMatching | (string & {});
+  FuzzyMatching?: SuggesterFuzzyMatching;
   SortExpression?: string;
 }
 export const DocumentSuggesterOptions = /*@__PURE__*/ S.suspend(() =>
@@ -1012,12 +1020,13 @@ export const DescribeDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDomainEndpointOptionsRequest>;
 export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
-  | "Policy-Min-TLS-1-2-2019-07";
+  | "Policy-Min-TLS-1-2-2019-07"
+  | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
-  TLSSecurityPolicy?: TLSSecurityPolicy | (string & {});
+  TLSSecurityPolicy?: TLSSecurityPolicy;
 }
 export const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1182,11 +1191,12 @@ export type PartitionInstanceType =
   | "search.previousgeneration.small"
   | "search.previousgeneration.large"
   | "search.previousgeneration.xlarge"
-  | "search.previousgeneration.2xlarge";
+  | "search.previousgeneration.2xlarge"
+  | (string & {});
 export const PartitionInstanceType = /*@__PURE__*/ S.String;
 
 export interface ScalingParameters {
-  DesiredInstanceType?: PartitionInstanceType | (string & {});
+  DesiredInstanceType?: PartitionInstanceType;
   DesiredReplicationCount?: number;
   DesiredPartitionCount?: number;
 }

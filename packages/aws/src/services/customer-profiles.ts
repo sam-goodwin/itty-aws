@@ -160,13 +160,13 @@ export const BatchGetCalculatedAttributeForProfileIdList =
   /*@__PURE__*/ S.Array(S.String);
 export type Start = number;
 export type End = number;
-export type RangeUnit = "DAYS";
+export type RangeUnit = "DAYS" | (string & {});
 export const RangeUnit = /*@__PURE__*/ S.String;
 
 export interface RangeOverride {
   Start: number;
   End?: number;
-  Unit: RangeUnit | (string & {});
+  Unit: RangeUnit;
 }
 export const RangeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Start: S.Number, End: S.optional(S.Number), Unit: RangeUnit }),
@@ -310,10 +310,10 @@ export const BatchGetProfileErrorList = /*@__PURE__*/ S.Array(
 );
 export type SensitiveString1To255 = string | redacted.Redacted<string>;
 export type SensitiveString1To1000 = string | redacted.Redacted<string>;
-export type PartyType = "INDIVIDUAL" | "BUSINESS" | "OTHER";
+export type PartyType = "INDIVIDUAL" | "BUSINESS" | "OTHER" | (string & {});
 export const PartyType = /*@__PURE__*/ S.String;
 
-export type Gender = "MALE" | "FEMALE" | "UNSPECIFIED";
+export type Gender = "MALE" | "FEMALE" | "UNSPECIFIED" | (string & {});
 export const Gender = /*@__PURE__*/ S.String;
 
 export interface Address {
@@ -361,7 +361,7 @@ export const FoundByKeyValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FoundByKeyValue>;
 export type FoundByList = FoundByKeyValue[];
 export const FoundByList = /*@__PURE__*/ S.Array(FoundByKeyValue);
-export type ProfileType = "ACCOUNT_PROFILE" | "PROFILE";
+export type ProfileType = "ACCOUNT_PROFILE" | "PROFILE" | (string & {});
 export const ProfileType = /*@__PURE__*/ S.String;
 
 export type ContactType =
@@ -371,14 +371,15 @@ export type ContactType =
   | "BusinessPhoneNumber"
   | "EmailAddress"
   | "PersonalEmailAddress"
-  | "BusinessEmailAddress";
+  | "BusinessEmailAddress"
+  | (string & {});
 export const ContactType = /*@__PURE__*/ S.String;
 
 export interface ContactPreference {
   KeyName?: string;
   KeyValue?: string;
   ProfileId?: string;
-  ContactType?: ContactType | (string & {});
+  ContactType?: ContactType;
 }
 export const ContactPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -583,7 +584,7 @@ export const AttributeDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeDetails",
 }) as any as S.Schema<AttributeDetails>;
 export type Value = number;
-export type Unit = "DAYS";
+export type Unit = "DAYS" | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
 
 export type ValueRangeStart = number;
@@ -597,7 +598,7 @@ export const ValueRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValueRange" }) as any as S.Schema<ValueRange>;
 export interface Range {
   Value?: number;
-  Unit?: Unit | (string & {});
+  Unit?: Unit;
   ValueRange?: ValueRange;
   TimestampSource?: string;
   TimestampFormat?: string;
@@ -616,12 +617,13 @@ export type Operator =
   | "EQUAL_TO"
   | "GREATER_THAN"
   | "LESS_THAN"
-  | "NOT_EQUAL_TO";
+  | "NOT_EQUAL_TO"
+  | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface Threshold {
   Value: string;
-  Operator: Operator | (string & {});
+  Operator: Operator;
 }
 export const Threshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, Operator: Operator }),
@@ -638,10 +640,10 @@ export const Conditions = /*@__PURE__*/ S.suspend(() =>
     Threshold: S.optional(Threshold),
   }),
 ).annotate({ identifier: "Conditions" }) as any as S.Schema<Conditions>;
-export type Include = "ALL" | "ANY" | "NONE";
+export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 export const Include = /*@__PURE__*/ S.String;
 
-export type Type = "ALL" | "ANY" | "NONE";
+export type Type = "ALL" | "ANY" | "NONE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export type FilterDimensionType =
@@ -659,13 +661,14 @@ export type FilterDimensionType =
   | "LESS_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN_OR_EQUAL"
-  | "EQUAL";
+  | "EQUAL"
+  | (string & {});
 export const FilterDimensionType = /*@__PURE__*/ S.String;
 
 export type ValueList = string[];
 export const ValueList = /*@__PURE__*/ S.Array(S.String);
 export interface FilterAttributeDimension {
-  DimensionType: FilterDimensionType | (string & {});
+  DimensionType: FilterDimensionType;
   Values: string[];
 }
 export const FilterAttributeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -691,7 +694,7 @@ export const FilterDimension = /*@__PURE__*/ S.suspend(() =>
 export type FilterDimensionList = FilterDimension[];
 export const FilterDimensionList = /*@__PURE__*/ S.Array(FilterDimension);
 export interface FilterGroup {
-  Type: Type | (string & {});
+  Type: Type;
   Dimensions: FilterDimension[];
 }
 export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
@@ -700,7 +703,7 @@ export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
 export type GroupList = FilterGroup[];
 export const GroupList = /*@__PURE__*/ S.Array(FilterGroup);
 export interface Filter {
-  Include: Include | (string & {});
+  Include: Include;
   Groups: FilterGroup[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -714,7 +717,8 @@ export type Statistic =
   | "MINIMUM"
   | "MAXIMUM"
   | "AVERAGE"
-  | "MAX_OCCURRENCE";
+  | "MAX_OCCURRENCE"
+  | (string & {});
 export const Statistic = /*@__PURE__*/ S.String;
 
 export type OptionalBoolean = boolean;
@@ -733,7 +737,7 @@ export interface CreateCalculatedAttributeDefinitionRequest {
   AttributeDetails: AttributeDetails;
   Conditions?: Conditions;
   Filter?: Filter;
-  Statistic: Statistic | (string & {});
+  Statistic: Statistic;
   UseHistoricalData?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
@@ -772,7 +776,8 @@ export type ReadinessStatus =
   | "PREPARING"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReadinessStatus = /*@__PURE__*/ S.String;
 
 export type PercentageInteger = number;
@@ -833,12 +838,13 @@ export type JobScheduleDayOfTheWeek =
   | "WEDNESDAY"
   | "THURSDAY"
   | "FRIDAY"
-  | "SATURDAY";
+  | "SATURDAY"
+  | (string & {});
 export const JobScheduleDayOfTheWeek = /*@__PURE__*/ S.String;
 
 export type JobScheduleTime = string;
 export interface JobSchedule {
-  DayOfTheWeek: JobScheduleDayOfTheWeek | (string & {});
+  DayOfTheWeek: JobScheduleDayOfTheWeek;
   Time: string;
 }
 export const JobSchedule = /*@__PURE__*/ S.suspend(() =>
@@ -854,11 +860,11 @@ export interface Consolidation {
 export const Consolidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MatchingAttributesList: MatchingAttributesList }),
 ).annotate({ identifier: "Consolidation" }) as any as S.Schema<Consolidation>;
-export type ConflictResolvingModel = "RECENCY" | "SOURCE";
+export type ConflictResolvingModel = "RECENCY" | "SOURCE" | (string & {});
 export const ConflictResolvingModel = /*@__PURE__*/ S.String;
 
 export interface ConflictResolution {
-  ConflictResolvingModel: ConflictResolvingModel | (string & {});
+  ConflictResolvingModel: ConflictResolvingModel;
   SourceName?: string;
 }
 export const ConflictResolution = /*@__PURE__*/ S.suspend(() =>
@@ -931,7 +937,10 @@ export type MatchingRules = MatchingRule[];
 export const MatchingRules = /*@__PURE__*/ S.Array(MatchingRule);
 export type MaxAllowedRuleLevelForMerging = number;
 export type MaxAllowedRuleLevelForMatching = number;
-export type AttributeMatchingModel = "ONE_TO_ONE" | "MANY_TO_MANY";
+export type AttributeMatchingModel =
+  | "ONE_TO_ONE"
+  | "MANY_TO_MANY"
+  | (string & {});
 export const AttributeMatchingModel = /*@__PURE__*/ S.String;
 
 export type AddressList = string[];
@@ -941,7 +950,7 @@ export const PhoneNumberList = /*@__PURE__*/ S.Array(S.String);
 export type EmailList = string[];
 export const EmailList = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeTypesSelector {
-  AttributeMatchingModel: AttributeMatchingModel | (string & {});
+  AttributeMatchingModel: AttributeMatchingModel;
   Address?: string[];
   PhoneNumber?: string[];
   EmailAddress?: string[];
@@ -1035,7 +1044,11 @@ export const MatchingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MatchingResponse",
 }) as any as S.Schema<MatchingResponse>;
-export type RuleBasedMatchingStatus = "PENDING" | "IN_PROGRESS" | "ACTIVE";
+export type RuleBasedMatchingStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "ACTIVE"
+  | (string & {});
 export const RuleBasedMatchingStatus = /*@__PURE__*/ S.String;
 
 export interface RuleBasedMatchingResponse {
@@ -1102,7 +1115,7 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResponse",
 }) as any as S.Schema<CreateDomainResponse>;
-export type LayoutType = "PROFILE_EXPLORER";
+export type LayoutType = "PROFILE_EXPLORER" | (string & {});
 export const LayoutType = /*@__PURE__*/ S.String;
 
 export type SensitiveString1To2000000 = string | redacted.Redacted<string>;
@@ -1112,7 +1125,7 @@ export interface CreateDomainLayoutRequest {
   Description: string | redacted.Redacted<string>;
   DisplayName: string;
   IsDefault?: boolean;
-  LayoutType: LayoutType | (string & {});
+  LayoutType: LayoutType;
   Layout: string | redacted.Redacted<string>;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1223,7 +1236,8 @@ export type ComparisonOperator =
   | "AFTER"
   | "ON"
   | "BETWEEN"
-  | "NOT_BETWEEN";
+  | "NOT_BETWEEN"
+  | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type EventTriggerValues = string[];
@@ -1231,7 +1245,7 @@ export const EventTriggerValues = /*@__PURE__*/ S.Array(S.String);
 export interface ObjectAttribute {
   Source?: string;
   FieldName?: string;
-  ComparisonOperator: ComparisonOperator | (string & {});
+  ComparisonOperator: ComparisonOperator;
   Values: string[];
 }
 export const ObjectAttribute = /*@__PURE__*/ S.suspend(() =>
@@ -1258,12 +1272,16 @@ export type EventTriggerDimensions = EventTriggerDimension[];
 export const EventTriggerDimensions = /*@__PURE__*/ S.Array(
   EventTriggerDimension,
 );
-export type EventTriggerLogicalOperator = "ANY" | "ALL" | "NONE";
+export type EventTriggerLogicalOperator =
+  | "ANY"
+  | "ALL"
+  | "NONE"
+  | (string & {});
 export const EventTriggerLogicalOperator = /*@__PURE__*/ S.String;
 
 export interface EventTriggerCondition {
   EventTriggerDimensions: EventTriggerDimension[];
-  LogicalOperator: EventTriggerLogicalOperator | (string & {});
+  LogicalOperator: EventTriggerLogicalOperator;
 }
 export const EventTriggerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1278,13 +1296,19 @@ export const EventTriggerConditions = /*@__PURE__*/ S.Array(
   EventTriggerCondition,
 );
 export type OptionalLong = number;
-export type PeriodUnit = "MINUTES" | "HOURS" | "DAYS" | "WEEKS" | "MONTHS";
+export type PeriodUnit =
+  | "MINUTES"
+  | "HOURS"
+  | "DAYS"
+  | "WEEKS"
+  | "MONTHS"
+  | (string & {});
 export const PeriodUnit = /*@__PURE__*/ S.String;
 
 export type MaxSize60 = number;
 export type MaxSize1000 = number;
 export interface Period {
-  Unit: PeriodUnit | (string & {});
+  Unit: PeriodUnit;
   Value: number;
   MaxInvocationsPerProfile?: number;
   Unlimited?: boolean;
@@ -1373,7 +1397,7 @@ export const CreateEventTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventTriggerResponse",
 }) as any as S.Schema<CreateEventTriggerResponse>;
-export type WorkflowType = "APPFLOW_INTEGRATION";
+export type WorkflowType = "APPFLOW_INTEGRATION" | (string & {});
 export const WorkflowType = /*@__PURE__*/ S.String;
 
 export type FlowDescription = string;
@@ -1385,7 +1409,8 @@ export type SourceConnectorType =
   | "Marketo"
   | "Zendesk"
   | "Servicenow"
-  | "S3";
+  | "S3"
+  | (string & {});
 export const SourceConnectorType = /*@__PURE__*/ S.String;
 
 export type DatetimeTypeFieldName = string;
@@ -1466,7 +1491,7 @@ export const SourceConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceConnectorProperties>;
 export interface SourceFlowConfig {
   ConnectorProfileName?: string;
-  ConnectorType: SourceConnectorType | (string & {});
+  ConnectorType: SourceConnectorType;
   IncrementalPullConfig?: IncrementalPullConfig;
   SourceConnectorProperties: SourceConnectorProperties;
 }
@@ -1496,7 +1521,8 @@ export type MarketoConnectorOperator =
   | "VALIDATE_NON_ZERO"
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
-  | "NO_OP";
+  | "NO_OP"
+  | (string & {});
 export const MarketoConnectorOperator = /*@__PURE__*/ S.String;
 
 export type S3ConnectorOperator =
@@ -1519,7 +1545,8 @@ export type S3ConnectorOperator =
   | "VALIDATE_NON_ZERO"
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
-  | "NO_OP";
+  | "NO_OP"
+  | (string & {});
 export const S3ConnectorOperator = /*@__PURE__*/ S.String;
 
 export type SalesforceConnectorOperator =
@@ -1543,7 +1570,8 @@ export type SalesforceConnectorOperator =
   | "VALIDATE_NON_ZERO"
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
-  | "NO_OP";
+  | "NO_OP"
+  | (string & {});
 export const SalesforceConnectorOperator = /*@__PURE__*/ S.String;
 
 export type ServiceNowConnectorOperator =
@@ -1567,7 +1595,8 @@ export type ServiceNowConnectorOperator =
   | "VALIDATE_NON_ZERO"
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
-  | "NO_OP";
+  | "NO_OP"
+  | (string & {});
 export const ServiceNowConnectorOperator = /*@__PURE__*/ S.String;
 
 export type ZendeskConnectorOperator =
@@ -1584,15 +1613,16 @@ export type ZendeskConnectorOperator =
   | "VALIDATE_NON_ZERO"
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
-  | "NO_OP";
+  | "NO_OP"
+  | (string & {});
 export const ZendeskConnectorOperator = /*@__PURE__*/ S.String;
 
 export interface ConnectorOperator {
-  Marketo?: MarketoConnectorOperator | (string & {});
-  S3?: S3ConnectorOperator | (string & {});
-  Salesforce?: SalesforceConnectorOperator | (string & {});
-  ServiceNow?: ServiceNowConnectorOperator | (string & {});
-  Zendesk?: ZendeskConnectorOperator | (string & {});
+  Marketo?: MarketoConnectorOperator;
+  S3?: S3ConnectorOperator;
+  Salesforce?: SalesforceConnectorOperator;
+  ServiceNow?: ServiceNowConnectorOperator;
+  Zendesk?: ZendeskConnectorOperator;
 }
 export const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1623,13 +1653,12 @@ export type OperatorPropertiesKeys =
   | "TRUNCATE_LENGTH"
   | "MATH_OPERATION_FIELDS_ORDER"
   | "CONCAT_FORMAT"
-  | "SUBFIELD_CATEGORY_MAP";
+  | "SUBFIELD_CATEGORY_MAP"
+  | (string & {});
 export const OperatorPropertiesKeys = /*@__PURE__*/ S.String;
 
 export type Property = string;
-export type TaskPropertiesMap = {
-  [key in OperatorPropertiesKeys | (string & {})]?: string;
-};
+export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
   S.String.pipe(S.optional),
@@ -1641,7 +1670,8 @@ export type TaskType =
   | "Mask"
   | "Merge"
   | "Truncate"
-  | "Validate";
+  | "Validate"
+  | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
 
 export interface Task {
@@ -1649,7 +1679,7 @@ export interface Task {
   DestinationField?: string;
   SourceFields: string[];
   TaskProperties?: { [key: string]: string | undefined };
-  TaskType: TaskType | (string & {});
+  TaskType: TaskType;
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1662,18 +1692,18 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 export type Tasks = Task[];
 export const Tasks = /*@__PURE__*/ S.Array(Task);
-export type TriggerType = "Scheduled" | "Event" | "OnDemand";
+export type TriggerType = "Scheduled" | "Event" | "OnDemand" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 export type ScheduleExpression = string;
-export type DataPullMode = "Incremental" | "Complete";
+export type DataPullMode = "Incremental" | "Complete" | (string & {});
 export const DataPullMode = /*@__PURE__*/ S.String;
 
 export type Timezone = string;
 export type ScheduleOffset = number;
 export interface ScheduledTriggerProperties {
   ScheduleExpression: string;
-  DataPullMode?: DataPullMode | (string & {});
+  DataPullMode?: DataPullMode;
   ScheduleStartTime?: Date;
   ScheduleEndTime?: Date;
   Timezone?: string;
@@ -1708,7 +1738,7 @@ export const TriggerProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerProperties",
 }) as any as S.Schema<TriggerProperties>;
 export interface TriggerConfig {
-  TriggerType: TriggerType | (string & {});
+  TriggerType: TriggerType;
   TriggerProperties?: TriggerProperties;
 }
 export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1767,7 +1797,7 @@ export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
 export type RoleArn = string;
 export interface CreateIntegrationWorkflowRequest {
   DomainName: string;
-  WorkflowType: WorkflowType | (string & {});
+  WorkflowType: WorkflowType;
   IntegrationConfig: IntegrationConfig;
   ObjectTypeName: string;
   RoleArn: string;
@@ -1810,13 +1840,13 @@ export interface CreateProfileRequest {
   DomainName: string;
   AccountNumber?: string | redacted.Redacted<string>;
   AdditionalInformation?: string | redacted.Redacted<string>;
-  PartyType?: PartyType | (string & {});
+  PartyType?: PartyType;
   BusinessName?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
   MiddleName?: string | redacted.Redacted<string>;
   LastName?: string | redacted.Redacted<string>;
   BirthDate?: string | redacted.Redacted<string>;
-  Gender?: Gender | (string & {});
+  Gender?: Gender;
   PhoneNumber?: string | redacted.Redacted<string>;
   MobilePhoneNumber?: string | redacted.Redacted<string>;
   HomePhoneNumber?: string | redacted.Redacted<string>;
@@ -1831,7 +1861,7 @@ export interface CreateProfileRequest {
   Attributes?: { [key: string]: string | undefined };
   PartyTypeString?: string | redacted.Redacted<string>;
   GenderString?: string | redacted.Redacted<string>;
-  ProfileType?: ProfileType | (string & {});
+  ProfileType?: ProfileType;
   EngagementPreferences?: EngagementPreferences;
 }
 export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1889,7 +1919,8 @@ export type RecommenderRecipeName =
   | "frequently-paired-items"
   | "popular-items"
   | "trending-now"
-  | "personalized-ranking";
+  | "personalized-ranking"
+  | (string & {});
 export const RecommenderRecipeName = /*@__PURE__*/ S.String;
 
 export type EventParametersEventTypeString = string;
@@ -1954,7 +1985,7 @@ export const RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
-  RecommenderRecipeName: RecommenderRecipeName | (string & {});
+  RecommenderRecipeName: RecommenderRecipeName;
   RecommenderConfig?: RecommenderConfig;
   Description?: string | redacted.Redacted<string>;
   RecommenderSchemaName?: string;
@@ -2038,16 +2069,16 @@ export const CreateRecommenderFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderFilterResponse",
 }) as any as S.Schema<CreateRecommenderFilterResponse>;
-export type ContentType = "STRING" | "NUMBER";
+export type ContentType = "STRING" | "NUMBER" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
-export type FeatureType = "TEXTUAL" | "CATEGORICAL";
+export type FeatureType = "TEXTUAL" | "CATEGORICAL" | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
 
 export interface RecommenderSchemaField {
   TargetFieldName: string;
-  ContentType?: ContentType | (string & {});
-  FeatureType?: FeatureType | (string & {});
+  ContentType?: ContentType;
+  FeatureType?: FeatureType;
 }
 export const RecommenderSchemaField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2097,7 +2128,7 @@ export const CreateRecommenderSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderSchemaRequest",
 }) as any as S.Schema<CreateRecommenderSchemaRequest>;
-export type RecommenderSchemaStatus = "ACTIVE" | "DELETING";
+export type RecommenderSchemaStatus = "ACTIVE" | "DELETING" | (string & {});
 export const RecommenderSchemaStatus = /*@__PURE__*/ S.String;
 
 export interface CreateRecommenderSchemaResponse {
@@ -2126,13 +2157,14 @@ export type StringDimensionType =
   | "EXCLUSIVE"
   | "CONTAINS"
   | "BEGINS_WITH"
-  | "ENDS_WITH";
+  | "ENDS_WITH"
+  | (string & {});
 export const StringDimensionType = /*@__PURE__*/ S.String;
 
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface ProfileDimension {
-  DimensionType: StringDimensionType | (string & {});
+  DimensionType: StringDimensionType;
   Values: string[];
 }
 export const ProfileDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2143,7 +2175,7 @@ export const ProfileDimension = /*@__PURE__*/ S.suspend(() =>
 export type ExtraLengthValues = string[];
 export const ExtraLengthValues = /*@__PURE__*/ S.Array(S.String);
 export interface ExtraLengthValueProfileDimension {
-  DimensionType: StringDimensionType | (string & {});
+  DimensionType: StringDimensionType;
   Values: string[];
 }
 export const ExtraLengthValueProfileDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2156,13 +2188,14 @@ export type DateDimensionType =
   | "AFTER"
   | "BETWEEN"
   | "NOT_BETWEEN"
-  | "ON";
+  | "ON"
+  | (string & {});
 export const DateDimensionType = /*@__PURE__*/ S.String;
 
 export type DateValues = string[];
 export const DateValues = /*@__PURE__*/ S.Array(S.String);
 export interface DateDimension {
-  DimensionType: DateDimensionType | (string & {});
+  DimensionType: DateDimensionType;
   Values: string[];
 }
 export const DateDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2203,11 +2236,12 @@ export type AttributeDimensionType =
   | "LESS_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN_OR_EQUAL"
-  | "EQUAL";
+  | "EQUAL"
+  | (string & {});
 export const AttributeDimensionType = /*@__PURE__*/ S.String;
 
 export interface AttributeDimension {
-  DimensionType: AttributeDimensionType | (string & {});
+  DimensionType: AttributeDimensionType;
   Values: string[];
 }
 export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2222,14 +2256,17 @@ export const CustomAttributes = /*@__PURE__*/ S.Record(
   S.String,
   AttributeDimension.pipe(S.optional),
 );
-export type ProfileTypeDimensionType = "INCLUSIVE" | "EXCLUSIVE";
+export type ProfileTypeDimensionType =
+  | "INCLUSIVE"
+  | "EXCLUSIVE"
+  | (string & {});
 export const ProfileTypeDimensionType = /*@__PURE__*/ S.String;
 
-export type ProfileTypeValues = (ProfileType | (string & {}))[];
+export type ProfileTypeValues = ProfileType[];
 export const ProfileTypeValues = /*@__PURE__*/ S.Array(ProfileType);
 export interface ProfileTypeDimension {
-  DimensionType: ProfileTypeDimensionType | (string & {});
-  Values: (ProfileType | (string & {}))[];
+  DimensionType: ProfileTypeDimensionType;
+  Values: ProfileType[];
 }
 export const ProfileTypeDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2292,7 +2329,7 @@ export const ProfileAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfileAttributes",
 }) as any as S.Schema<ProfileAttributes>;
 export interface CalculatedAttributeDimension {
-  DimensionType: AttributeDimensionType | (string & {});
+  DimensionType: AttributeDimensionType;
   Values: string[];
   ConditionOverrides?: ConditionOverrides;
 }
@@ -2334,14 +2371,14 @@ export const SourceSegment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceSegment" }) as any as S.Schema<SourceSegment>;
 export type SourceSegmentList = SourceSegment[];
 export const SourceSegmentList = /*@__PURE__*/ S.Array(SourceSegment);
-export type IncludeOptions = "ALL" | "ANY" | "NONE";
+export type IncludeOptions = "ALL" | "ANY" | "NONE" | (string & {});
 export const IncludeOptions = /*@__PURE__*/ S.String;
 
 export interface Group {
   Dimensions?: Dimension[];
   SourceSegments?: SourceSegment[];
-  SourceType?: IncludeOptions | (string & {});
-  Type?: IncludeOptions | (string & {});
+  SourceType?: IncludeOptions;
+  Type?: IncludeOptions;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2355,7 +2392,7 @@ export type SegmentGroupList = Group[];
 export const SegmentGroupList = /*@__PURE__*/ S.Array(Group);
 export interface SegmentGroup {
   Groups?: Group[];
-  Include?: IncludeOptions | (string & {});
+  Include?: IncludeOptions;
 }
 export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2364,20 +2401,20 @@ export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SegmentGroup" }) as any as S.Schema<SegmentGroup>;
 export type SensitiveString1To50000 = string | redacted.Redacted<string>;
-export type SegmentSortDataType = "STRING" | "NUMBER" | "DATE";
+export type SegmentSortDataType = "STRING" | "NUMBER" | "DATE" | (string & {});
 export const SegmentSortDataType = /*@__PURE__*/ S.String;
 
-export type SegmentSortOrder = "ASC" | "DESC";
+export type SegmentSortOrder = "ASC" | "DESC" | (string & {});
 export const SegmentSortOrder = /*@__PURE__*/ S.String;
 
-export type SortAttributeType = "PROFILE" | "CALCULATED";
+export type SortAttributeType = "PROFILE" | "CALCULATED" | (string & {});
 export const SortAttributeType = /*@__PURE__*/ S.String;
 
 export interface SortAttribute {
   Name: string;
-  DataType?: SegmentSortDataType | (string & {});
-  Order: SegmentSortOrder | (string & {});
-  Type?: SortAttributeType | (string & {});
+  DataType?: SegmentSortDataType;
+  Order: SegmentSortOrder;
+  Type?: SortAttributeType;
 }
 export const SortAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2454,7 +2491,7 @@ export const CreateSegmentDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSegmentDefinitionResponse>;
 export interface SegmentGroupStructure {
   Groups?: Group[];
-  Include?: IncludeOptions | (string & {});
+  Include?: IncludeOptions;
 }
 export const SegmentGroupStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2505,13 +2542,13 @@ export const CreateSegmentEstimateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSegmentEstimateResponse",
 }) as any as S.Schema<CreateSegmentEstimateResponse>;
-export type DataFormat = "CSV" | "JSONL" | "ORC";
+export type DataFormat = "CSV" | "JSONL" | "ORC" | (string & {});
 export const DataFormat = /*@__PURE__*/ S.String;
 
 export interface CreateSegmentSnapshotRequest {
   DomainName: string;
   SegmentDefinitionName: string;
-  DataFormat: DataFormat | (string & {});
+  DataFormat: DataFormat;
   EncryptionKey?: string;
   RoleArn?: string;
   DestinationUri?: string;
@@ -2553,13 +2590,14 @@ export type FieldContentType =
   | "NUMBER"
   | "PHONE_NUMBER"
   | "EMAIL_ADDRESS"
-  | "NAME";
+  | "NAME"
+  | (string & {});
 export const FieldContentType = /*@__PURE__*/ S.String;
 
 export interface ObjectTypeField {
   Source?: string;
   Target?: string;
-  ContentType?: FieldContentType | (string & {});
+  ContentType?: FieldContentType;
 }
 export const ObjectTypeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3157,15 +3195,16 @@ export type StandardIdentifier =
   | "UNIQUE"
   | "SECONDARY"
   | "LOOKUP_ONLY"
-  | "NEW_ONLY";
+  | "NEW_ONLY"
+  | (string & {});
 export const StandardIdentifier = /*@__PURE__*/ S.String;
 
-export type StandardIdentifierList = (StandardIdentifier | (string & {}))[];
+export type StandardIdentifierList = StandardIdentifier[];
 export const StandardIdentifierList = /*@__PURE__*/ S.Array(StandardIdentifier);
 export type FieldNameList = string[];
 export const FieldNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ObjectTypeKey {
-  StandardIdentifiers?: (StandardIdentifier | (string & {}))[];
+  StandardIdentifiers?: StandardIdentifier[];
   FieldNames?: string[];
 }
 export const ObjectTypeKey = /*@__PURE__*/ S.suspend(() =>
@@ -3509,8 +3548,8 @@ export type DomainObjectTypeFieldName = string;
 export interface DomainObjectTypeField {
   Source: string;
   Target: string;
-  ContentType?: ContentType | (string & {});
-  FeatureType?: FeatureType | (string & {});
+  ContentType?: ContentType;
+  FeatureType?: FeatureType;
 }
 export const DomainObjectTypeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3575,10 +3614,13 @@ export const GetEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventStreamRequest",
 }) as any as S.Schema<GetEventStreamRequest>;
-export type EventStreamState = "RUNNING" | "STOPPED";
+export type EventStreamState = "RUNNING" | "STOPPED" | (string & {});
 export const EventStreamState = /*@__PURE__*/ S.String;
 
-export type EventStreamDestinationStatus = "HEALTHY" | "UNHEALTHY";
+export type EventStreamDestinationStatus =
+  | "HEALTHY"
+  | "UNHEALTHY"
+  | (string & {});
 export const EventStreamDestinationStatus = /*@__PURE__*/ S.String;
 
 export interface EventStreamDestinationDetails {
@@ -3700,7 +3742,8 @@ export type IdentityResolutionJobStatus =
   | "MERGING"
   | "COMPLETED"
   | "PARTIAL_SUCCESS"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const IdentityResolutionJobStatus = /*@__PURE__*/ S.String;
 
 export type S3KeyName = string;
@@ -3796,7 +3839,7 @@ export const ObjectTypeNames = /*@__PURE__*/ S.Record(
 );
 export type EventTriggerNames = string[];
 export const EventTriggerNames = /*@__PURE__*/ S.Array(S.String);
-export type Scope = "PROFILE" | "DOMAIN";
+export type Scope = "PROFILE" | "DOMAIN" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
 
 export interface GetIntegrationResponse {
@@ -4004,7 +4047,8 @@ export type ActionType =
   | "DELETED_BY_CUSTOMER"
   | "EXPIRED"
   | "MERGED"
-  | "DELETED_BY_MERGE";
+  | "DELETED_BY_MERGE"
+  | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 export interface GetProfileHistoryRecordResponse {
@@ -4326,7 +4370,8 @@ export type RecommenderStatus =
   | "STOPPING"
   | "INACTIVE"
   | "STARTING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const RecommenderStatus = /*@__PURE__*/ S.String;
 
 export interface RecommenderUpdate {
@@ -4360,7 +4405,8 @@ export type TrainingMetricName =
   | "normalized_discounted_cumulative_gain_at_25"
   | "precision_at_5"
   | "precision_at_10"
-  | "precision_at_25";
+  | "precision_at_25"
+  | (string & {});
 export const TrainingMetricName = /*@__PURE__*/ S.String;
 
 export type Metrics = { [key in TrainingMetricName]?: number };
@@ -4443,7 +4489,8 @@ export type RecommenderFilterStatus =
   | "PENDING"
   | "IN_PROGRESS"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const RecommenderFilterStatus = /*@__PURE__*/ S.String;
 
 export interface GetRecommenderFilterResponse {
@@ -4534,7 +4581,7 @@ export const GetSegmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSegmentDefinitionRequest",
 }) as any as S.Schema<GetSegmentDefinitionRequest>;
-export type SegmentType = "CLASSIC" | "ENHANCED";
+export type SegmentType = "CLASSIC" | "ENHANCED" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
 
 export interface GetSegmentDefinitionResponse {
@@ -4589,7 +4636,7 @@ export const GetSegmentEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSegmentEstimateRequest",
 }) as any as S.Schema<GetSegmentEstimateRequest>;
-export type EstimateStatus = "RUNNING" | "SUCCEEDED" | "FAILED";
+export type EstimateStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | (string & {});
 export const EstimateStatus = /*@__PURE__*/ S.String;
 
 export interface GetSegmentEstimateResponse {
@@ -4641,7 +4688,7 @@ export const GetSegmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSegmentMembershipRequest",
 }) as any as S.Schema<GetSegmentMembershipRequest>;
 export type ProfileId = string;
-export type QueryResult = "PRESENT" | "ABSENT";
+export type QueryResult = "PRESENT" | "ABSENT" | (string & {});
 export const QueryResult = /*@__PURE__*/ S.String;
 
 export interface ProfileQueryResult {
@@ -4720,7 +4767,11 @@ export const GetSegmentSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSegmentSnapshotRequest",
 }) as any as S.Schema<GetSegmentSnapshotRequest>;
-export type SegmentSnapshotStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED";
+export type SegmentSnapshotStatus =
+  | "COMPLETED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | (string & {});
 export const SegmentSnapshotStatus = /*@__PURE__*/ S.String;
 
 export interface GetSegmentSnapshotResponse {
@@ -4745,14 +4796,17 @@ export const GetSegmentSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSegmentSnapshotResponse",
 }) as any as S.Schema<GetSegmentSnapshotResponse>;
-export type MatchType = "RULE_BASED_MATCHING" | "ML_BASED_MATCHING";
+export type MatchType =
+  | "RULE_BASED_MATCHING"
+  | "ML_BASED_MATCHING"
+  | (string & {});
 export const MatchType = /*@__PURE__*/ S.String;
 
 export interface GetSimilarProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
   DomainName: string;
-  MatchType: MatchType | (string & {});
+  MatchType: MatchType;
   SearchKey: string;
   SearchValue: string;
 }
@@ -4828,10 +4882,14 @@ export type UploadJobStatus =
   | "PARTIALLY_SUCCEEDED"
   | "SUCCEEDED"
   | "FAILED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const UploadJobStatus = /*@__PURE__*/ S.String;
 
-export type StatusReason = "VALIDATION_FAILURE" | "INTERNAL_FAILURE";
+export type StatusReason =
+  | "VALIDATION_FAILURE"
+  | "INTERNAL_FAILURE"
+  | (string & {});
 export const StatusReason = /*@__PURE__*/ S.String;
 
 export interface ResultsSummary {
@@ -4943,7 +5001,8 @@ export type Status =
   | "FAILED"
   | "SPLIT"
   | "RETRY"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface AppflowIntegrationWorkflowAttributes {
@@ -5878,7 +5937,7 @@ export interface ListProfileHistoryRecordsRequest {
   ObjectTypeName?: string;
   NextToken?: string;
   MaxResults?: number;
-  ActionType?: ActionType | (string & {});
+  ActionType?: ActionType;
   PerformedBy?: string;
 }
 export const ListProfileHistoryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6552,8 +6611,8 @@ export const ListUploadJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUploadJobsResponse>;
 export interface ListWorkflowsRequest {
   DomainName: string;
-  WorkflowType?: WorkflowType | (string & {});
-  Status?: Status | (string & {});
+  WorkflowType?: WorkflowType;
+  Status?: Status;
   QueryStartDate?: Date;
   QueryEndDate?: Date;
   NextToken?: string;
@@ -6775,7 +6834,7 @@ export interface PutIntegrationRequest {
   FlowDefinition?: FlowDefinition;
   RoleArn?: string;
   EventTriggerNames?: string[];
-  Scope?: Scope | (string & {});
+  Scope?: Scope;
 }
 export const PutIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6960,7 +7019,7 @@ export const AdditionalSearchKey = /*@__PURE__*/ S.suspend(() =>
 export type AdditionalSearchKeysList = AdditionalSearchKey[];
 export const AdditionalSearchKeysList =
   /*@__PURE__*/ S.Array(AdditionalSearchKey);
-export type LogicalOperator = "AND" | "OR";
+export type LogicalOperator = "AND" | "OR" | (string & {});
 export const LogicalOperator = /*@__PURE__*/ S.String;
 
 export interface SearchProfilesRequest {
@@ -6970,7 +7029,7 @@ export interface SearchProfilesRequest {
   KeyName: string;
   Values: string[];
   AdditionalSearchKeys?: AdditionalSearchKey[];
-  LogicalOperator?: LogicalOperator | (string & {});
+  LogicalOperator?: LogicalOperator;
 }
 export const SearchProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7314,7 +7373,7 @@ export interface UpdateDomainLayoutRequest {
   Description?: string | redacted.Redacted<string>;
   DisplayName?: string;
   IsDefault?: boolean;
-  LayoutType?: LayoutType | (string & {});
+  LayoutType?: LayoutType;
   Layout?: string | redacted.Redacted<string>;
 }
 export const UpdateDomainLayoutRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7469,13 +7528,13 @@ export interface UpdateProfileRequest {
   ProfileId: string;
   AdditionalInformation?: string | redacted.Redacted<string>;
   AccountNumber?: string | redacted.Redacted<string>;
-  PartyType?: PartyType | (string & {});
+  PartyType?: PartyType;
   BusinessName?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
   MiddleName?: string | redacted.Redacted<string>;
   LastName?: string | redacted.Redacted<string>;
   BirthDate?: string | redacted.Redacted<string>;
-  Gender?: Gender | (string & {});
+  Gender?: Gender;
   PhoneNumber?: string | redacted.Redacted<string>;
   MobilePhoneNumber?: string | redacted.Redacted<string>;
   HomePhoneNumber?: string | redacted.Redacted<string>;
@@ -7490,7 +7549,7 @@ export interface UpdateProfileRequest {
   Attributes?: { [key: string]: string | undefined };
   PartyTypeString?: string | redacted.Redacted<string>;
   GenderString?: string | redacted.Redacted<string>;
-  ProfileType?: ProfileType | (string & {});
+  ProfileType?: ProfileType;
   EngagementPreferences?: EngagementPreferences;
 }
 export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>

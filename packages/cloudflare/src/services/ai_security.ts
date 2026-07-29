@@ -57,11 +57,11 @@ export const GetAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const GetAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "GetAiSecurityResponse",
@@ -109,11 +109,11 @@ export const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
-  topics?: CustomTopicsGetResponseTopicsList;
+  topics?: CustomTopicsGetResponseTopicsList | null;
 }
 export const GetCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    topics: S.optional(CustomTopicsGetResponseTopicsList),
+    topics: S.optional(S.NullOr(CustomTopicsGetResponseTopicsList)),
   }),
 ).annotate({
   identifier: "GetCustomTopicResponse",
@@ -123,12 +123,12 @@ export interface PutAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -143,11 +143,11 @@ export const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const PutAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "PutAiSecurityResponse",
@@ -178,12 +178,12 @@ export interface PutCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Custom topic categories for AI Security for Apps content detection. */
-  topics?: CustomTopicsUpdateRequestTopicsList;
+  topics?: CustomTopicsUpdateRequestTopicsList | null;
 }
 export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    topics: S.optional(CustomTopicsUpdateRequestTopicsList),
+    topics: S.optional(S.NullOr(CustomTopicsUpdateRequestTopicsList)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -220,11 +220,11 @@ export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
-  topics?: CustomTopicsUpdateResponseTopicsList;
+  topics?: CustomTopicsUpdateResponseTopicsList | null;
 }
 export const PutCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    topics: S.optional(CustomTopicsUpdateResponseTopicsList),
+    topics: S.optional(S.NullOr(CustomTopicsUpdateResponseTopicsList)),
   }),
 ).annotate({
   identifier: "PutCustomTopicResponse",

@@ -90,7 +90,7 @@ export interface ListResponseManagedRequestHeadersItem {
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
   hasConflict: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: ListResponseManagedRequestHeadersItemConflictsWithList;
+  conflictsWith?: ListResponseManagedRequestHeadersItemConflictsWithList | null;
 }
 export const ListResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -99,7 +99,7 @@ export const ListResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
       enabled: S.Boolean,
       hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
       conflictsWith: S.optional(
-        ListResponseManagedRequestHeadersItemConflictsWithList.pipe(
+        S.NullOr(ListResponseManagedRequestHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),
@@ -129,7 +129,7 @@ export interface ListResponseManagedResponseHeadersItem {
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
   hasConflict: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: ListResponseManagedResponseHeadersItemConflictsWithList;
+  conflictsWith?: ListResponseManagedResponseHeadersItemConflictsWithList | null;
 }
 export const ListResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -138,7 +138,7 @@ export const ListResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
       enabled: S.Boolean,
       hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
       conflictsWith: S.optional(
-        ListResponseManagedResponseHeadersItemConflictsWithList.pipe(
+        S.NullOr(ListResponseManagedResponseHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),
@@ -186,18 +186,18 @@ export interface EditRequestManagedRequestHeadersItem {
   /** Whether the Managed Transform is enabled. */
   enabled: boolean;
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
-  hasConflict?: boolean;
+  hasConflict?: boolean | null;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: EditRequestManagedRequestHeadersItemConflictsWithList;
+  conflictsWith?: EditRequestManagedRequestHeadersItemConflictsWithList | null;
 }
 export const EditRequestManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
       enabled: S.Boolean,
-      hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
+      hasConflict: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_conflict"))),
       conflictsWith: S.optional(
-        EditRequestManagedRequestHeadersItemConflictsWithList.pipe(
+        S.NullOr(EditRequestManagedRequestHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),
@@ -225,18 +225,18 @@ export interface EditRequestManagedResponseHeadersItem {
   /** Whether the Managed Transform is enabled. */
   enabled: boolean;
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
-  hasConflict?: boolean;
+  hasConflict?: boolean | null;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: EditRequestManagedResponseHeadersItemConflictsWithList;
+  conflictsWith?: EditRequestManagedResponseHeadersItemConflictsWithList | null;
 }
 export const EditRequestManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
       enabled: S.Boolean,
-      hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
+      hasConflict: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_conflict"))),
       conflictsWith: S.optional(
-        EditRequestManagedResponseHeadersItemConflictsWithList.pipe(
+        S.NullOr(EditRequestManagedResponseHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),
@@ -255,20 +255,20 @@ export interface PatchManagedTransformRequest {
   /** The unique ID of the zone. */
   zoneId: string;
   /** The list of Managed Request Transforms. */
-  managedRequestHeaders?: EditRequestManagedRequestHeadersList;
+  managedRequestHeaders?: EditRequestManagedRequestHeadersList | null;
   /** The list of Managed Response Transforms. */
-  managedResponseHeaders?: EditRequestManagedResponseHeadersList;
+  managedResponseHeaders?: EditRequestManagedResponseHeadersList | null;
 }
 export const PatchManagedTransformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     managedRequestHeaders: S.optional(
-      EditRequestManagedRequestHeadersList.pipe(
+      S.NullOr(EditRequestManagedRequestHeadersList).pipe(
         T.Body("managed_request_headers"),
       ),
     ),
     managedResponseHeaders: S.optional(
-      EditRequestManagedResponseHeadersList.pipe(
+      S.NullOr(EditRequestManagedResponseHeadersList).pipe(
         T.Body("managed_response_headers"),
       ),
     ),
@@ -300,7 +300,7 @@ export interface EditResponseManagedRequestHeadersItem {
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
   hasConflict: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: EditResponseManagedRequestHeadersItemConflictsWithList;
+  conflictsWith?: EditResponseManagedRequestHeadersItemConflictsWithList | null;
 }
 export const EditResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -309,7 +309,7 @@ export const EditResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
       enabled: S.Boolean,
       hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
       conflictsWith: S.optional(
-        EditResponseManagedRequestHeadersItemConflictsWithList.pipe(
+        S.NullOr(EditResponseManagedRequestHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),
@@ -339,7 +339,7 @@ export interface EditResponseManagedResponseHeadersItem {
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
   hasConflict: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
-  conflictsWith?: EditResponseManagedResponseHeadersItemConflictsWithList;
+  conflictsWith?: EditResponseManagedResponseHeadersItemConflictsWithList | null;
 }
 export const EditResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -348,7 +348,7 @@ export const EditResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
       enabled: S.Boolean,
       hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
       conflictsWith: S.optional(
-        EditResponseManagedResponseHeadersItemConflictsWithList.pipe(
+        S.NullOr(EditResponseManagedResponseHeadersItemConflictsWithList).pipe(
           T.Body("conflicts_with"),
         ),
       ),

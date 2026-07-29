@@ -170,13 +170,13 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
 
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation {
   type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType;
-  value?: unknown;
+  value?: unknown | null;
 }
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType,
-      value: S.optional(S.Unknown),
+      value: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
@@ -313,13 +313,13 @@ export const GetTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTenantRequest>;
 
 export interface GetResponseTenantContacts {
-  email?: string;
-  website?: string;
+  email?: string | null;
+  website?: string | null;
 }
 export const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.String),
-    website: S.optional(S.String),
+    email: S.optional(S.NullOr(S.String)),
+    website: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseTenantContacts",
@@ -331,13 +331,13 @@ export const GetResponseTenantLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseTenantLabelsList>;
 
 export interface GetResponseTenantMetadataDnsNsPool {
-  primary?: string;
-  secondary?: string;
+  primary?: string | null;
+  secondary?: string | null;
 }
 export const GetResponseTenantMetadataDnsNsPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    primary: S.optional(S.String),
-    secondary: S.optional(S.String),
+    primary: S.optional(S.NullOr(S.String)),
+    secondary: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponseTenantMetadataDnsNsPool",
@@ -355,11 +355,11 @@ export const GetResponseTenantMetadataDns = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTenantMetadataDns>;
 
 export interface GetResponseTenantMetadata {
-  dns?: GetResponseTenantMetadataDns;
+  dns?: GetResponseTenantMetadataDns | null;
 }
 export const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dns: S.optional(GetResponseTenantMetadataDns),
+    dns: S.optional(S.NullOr(GetResponseTenantMetadataDns)),
   }),
 ).annotate({
   identifier: "GetResponseTenantMetadata",
@@ -410,7 +410,7 @@ export interface GetTenantResponse {
   tenantTag: string;
   tenantType: string;
   tenantUnits: GetResponseTenantUnitsList;
-  customerId?: string;
+  customerId?: string | null;
 }
 export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -425,7 +425,7 @@ export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
     tenantTag: S.String.pipe(T.Body("tenant_tag")),
     tenantType: S.String.pipe(T.Body("tenant_type")),
     tenantUnits: GetResponseTenantUnitsList.pipe(T.Body("tenant_units")),
-    customerId: S.optional(S.String.pipe(T.Body("customer_id"))),
+    customerId: S.optional(S.NullOr(S.String).pipe(T.Body("customer_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantResponse",

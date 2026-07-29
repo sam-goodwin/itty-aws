@@ -59,7 +59,7 @@ export interface CnisCreateRequestBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisCreateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67,7 +67,7 @@ export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisCreateRequestBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisCreateRequestBgp",
@@ -80,7 +80,7 @@ export interface CreateCniRequest {
   account: string;
   interconnect: string;
   magic: CnisCreateRequestMagic;
-  bgp?: CnisCreateRequestBgp;
+  bgp?: CnisCreateRequestBgp | null;
 }
 export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -88,7 +88,7 @@ export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     interconnect: S.String,
     magic: CnisCreateRequestMagic,
-    bgp: S.optional(CnisCreateRequestBgp),
+    bgp: S.optional(S.NullOr(CnisCreateRequestBgp)),
   })
     .pipe(
       T.Http({
@@ -128,7 +128,7 @@ export interface CnisCreateResponseBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisCreateResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -136,7 +136,7 @@ export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisCreateResponseBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisCreateResponseBgp",
@@ -154,7 +154,7 @@ export interface CreateCniResponse {
   magic: CnisCreateResponseMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisCreateResponseBgp;
+  bgp?: CnisCreateResponseBgp | null;
 }
 export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -164,7 +164,7 @@ export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisCreateResponseMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(CnisCreateResponseBgp),
+    bgp: S.optional(S.NullOr(CnisCreateResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCniResponse",
@@ -189,23 +189,23 @@ export interface CreateInterconnectRequest {
   /** Customer account tag */
   accountId: string;
   account: string;
-  slotId?: string;
+  slotId?: string | null;
   type: string;
-  speed?: string;
+  speed?: string | null;
   /** Bandwidth structure as visible through the customer-facing API. */
-  bandwidth?: InterconnectsCreateRequestBandwidth | (string & {});
+  bandwidth?: InterconnectsCreateRequestBandwidth | (string & {}) | null;
   /** Pairing key provided by GCP */
-  pairingKey?: string;
+  pairingKey?: string | null;
 }
 export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     account: S.String,
-    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    slotId: S.optional(S.NullOr(S.String).pipe(T.Body("slot_id"))),
     type: S.String,
-    speed: S.optional(S.String),
-    bandwidth: S.optional(InterconnectsCreateRequestBandwidth),
-    pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
+    speed: S.optional(S.NullOr(S.String)),
+    bandwidth: S.optional(S.NullOr(InterconnectsCreateRequestBandwidth)),
+    pairingKey: S.optional(S.NullOr(S.String).pipe(T.Body("pairing_key"))),
   })
     .pipe(
       T.Http({
@@ -331,7 +331,7 @@ export interface CnisGetResponseBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisGetResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisGetResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -339,7 +339,7 @@ export const CnisGetResponseBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisGetResponseBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisGetResponseBgp",
@@ -357,7 +357,7 @@ export interface GetCniResponse {
   magic: CnisGetResponseMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisGetResponseBgp;
+  bgp?: CnisGetResponseBgp | null;
 }
 export const GetCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -367,7 +367,7 @@ export const GetCniResponse = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisGetResponseMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(CnisGetResponseBgp),
+    bgp: S.optional(S.NullOr(CnisGetResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetCniResponse" }) as any as S.Schema<GetCniResponse>;
 
@@ -480,7 +480,7 @@ export interface GetSlotResponse {
   site: string;
   speed: string;
   /** Customer account tag */
-  account?: string;
+  account?: string | null;
 }
 export const GetSlotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -489,7 +489,7 @@ export const GetSlotResponse = /*@__PURE__*/ S.suspend(() =>
     occupied: S.Boolean,
     site: S.String,
     speed: S.String,
-    account: S.optional(S.String),
+    account: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSlotResponse",
@@ -552,7 +552,7 @@ export interface CnisListResponseItemsItemBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -560,7 +560,7 @@ export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisListResponseItemsItemBgp",
@@ -577,7 +577,7 @@ export interface CnisListResponseItemsItem {
   magic: CnisListResponseItemsItemMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisListResponseItemsItemBgp;
+  bgp?: CnisListResponseItemsItemBgp | null;
 }
 export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -587,7 +587,7 @@ export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisListResponseItemsItemMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(CnisListResponseItemsItemBgp),
+    bgp: S.optional(S.NullOr(CnisListResponseItemsItemBgp)),
   }),
 ).annotate({
   identifier: "CnisListResponseItemsItem",
@@ -601,12 +601,12 @@ export const CnisListResponseItemsList = /*@__PURE__*/ S.Array(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListCnisResponse {
   items: CnisListResponseItemsList;
-  next?: number;
+  next?: number | null;
 }
 export const ListCnisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: CnisListResponseItemsList,
-    next: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCnisResponse",
@@ -674,7 +674,7 @@ export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBody {
   slotId: string;
   speed: string;
   type: string;
-  owner?: string;
+  owner?: string | null;
 }
 export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBody =
   /*@__PURE__*/ S.suspend(() =>
@@ -687,7 +687,7 @@ export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBody =
       slotId: S.String.pipe(T.Body("slot_id")),
       speed: S.String,
       type: S.String,
-      owner: S.optional(S.String),
+      owner: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "InterconnectsListResponseItemsItemNscInterconnectPhysicalBody",
@@ -714,9 +714,9 @@ export interface InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody
   name: string;
   region: string;
   type: string;
-  owner?: string;
+  owner?: string | null;
   /** Bandwidth structure as visible through the customer-facing API. */
-  speed?: InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed;
+  speed?: InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed | null;
 }
 export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody =
   /*@__PURE__*/ S.suspend(() =>
@@ -725,9 +725,11 @@ export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody =
       name: S.String,
       region: S.String,
       type: S.String,
-      owner: S.optional(S.String),
+      owner: S.optional(S.NullOr(S.String)),
       speed: S.optional(
-        InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed,
+        S.NullOr(
+          InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed,
+        ),
       ),
     }),
   ).annotate({
@@ -754,12 +756,12 @@ export const InterconnectsListResponseItemsList = /*@__PURE__*/ S.Array(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListInterconnectsResponse {
   items: InterconnectsListResponseItemsList;
-  next?: number;
+  next?: number | null;
 }
 export const ListInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: InterconnectsListResponseItemsList,
-    next: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInterconnectsResponse",
@@ -829,7 +831,7 @@ export interface SlotsListResponseItemsItem {
   site: string;
   speed: string;
   /** Customer account tag */
-  account?: string;
+  account?: string | null;
 }
 export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -838,7 +840,7 @@ export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
     occupied: S.Boolean,
     site: S.String,
     speed: S.String,
-    account: S.optional(S.String),
+    account: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SlotsListResponseItemsItem",
@@ -852,12 +854,12 @@ export const SlotsListResponseItemsList = /*@__PURE__*/ S.Array(
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListSlotsResponse {
   items: SlotsListResponseItemsList;
-  next?: number;
+  next?: number | null;
 }
 export const ListSlotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: SlotsListResponseItemsList,
-    next: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSlotsResponse",
@@ -894,12 +896,12 @@ export const LoaInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PutSettingRequest {
   accountId: string;
-  defaultAsn?: number;
+  defaultAsn?: number | null;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultAsn: S.optional(S.Number.pipe(T.Body("default_asn"))),
+    defaultAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("default_asn"))),
   })
     .pipe(
       T.Http({
@@ -981,7 +983,7 @@ export interface CnisUpdateRequestBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -989,7 +991,7 @@ export const CnisUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisUpdateRequestBgp",
@@ -1009,7 +1011,7 @@ export interface UpdateCniRequest {
   magic: CnisUpdateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisUpdateRequestBgp;
+  bgp?: CnisUpdateRequestBgp | null;
 }
 export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1021,7 +1023,7 @@ export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisUpdateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(CnisUpdateRequestBgp),
+    bgp: S.optional(S.NullOr(CnisUpdateRequestBgp)),
   })
     .pipe(
       T.Http({
@@ -1061,7 +1063,7 @@ export interface CnisUpdateResponseBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisUpdateResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string;
+  md5Key?: string | null;
 }
 export const CnisUpdateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1069,7 +1071,7 @@ export const CnisUpdateResponseBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisUpdateResponseBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisUpdateResponseBgp",
@@ -1087,7 +1089,7 @@ export interface UpdateCniResponse {
   magic: CnisUpdateResponseMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisUpdateResponseBgp;
+  bgp?: CnisUpdateResponseBgp | null;
 }
 export const UpdateCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1097,7 +1099,7 @@ export const UpdateCniResponse = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisUpdateResponseMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(CnisUpdateResponseBgp),
+    bgp: S.optional(S.NullOr(CnisUpdateResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCniResponse",

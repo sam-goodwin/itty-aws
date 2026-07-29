@@ -103,7 +103,8 @@ export type AccountColor =
   | "green"
   | "yellow"
   | "orange"
-  | "red";
+  | "red"
+  | (string & {});
 export const AccountColor = /*@__PURE__*/ S.String;
 
 export type Service = string;
@@ -162,7 +163,7 @@ export const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesOutput",
 }) as any as S.Schema<ListServicesOutput>;
 export interface UpdateAccountCustomizationsInput {
-  accountColor?: AccountColor | (string & {});
+  accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }

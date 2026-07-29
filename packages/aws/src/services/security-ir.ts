@@ -110,10 +110,14 @@ export const BatchGetMemberAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 export type MembershipAccountRelationshipStatus =
   | "Associated"
   | "Disassociated"
-  | "Unassociated";
+  | "Unassociated"
+  | (string & {});
 export const MembershipAccountRelationshipStatus = /*@__PURE__*/ S.String;
 
-export type MembershipAccountRelationshipType = "Organization" | "Unrelated";
+export type MembershipAccountRelationshipType =
+  | "Organization"
+  | "Unrelated"
+  | (string & {});
 export const MembershipAccountRelationshipType = /*@__PURE__*/ S.String;
 
 export interface GetMembershipAccountDetailItem {
@@ -212,7 +216,8 @@ export type CaseStatus =
   | "Containment, Eradication and Recovery"
   | "Post-incident Activities"
   | "Ready to Close"
-  | "Closed";
+  | "Closed"
+  | (string & {});
 export const CaseStatus = /*@__PURE__*/ S.String;
 
 export interface CloseCaseResponse {
@@ -227,12 +232,15 @@ export const CloseCaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloseCaseResponse",
 }) as any as S.Schema<CloseCaseResponse>;
-export type ResolverType = "AWS" | "Self";
+export type ResolverType = "AWS" | "Self" | (string & {});
 export const ResolverType = /*@__PURE__*/ S.String;
 
 export type CaseTitle = string | redacted.Redacted<string>;
 export type CaseDescription = string | redacted.Redacted<string>;
-export type EngagementType = "Security Incident" | "Investigation";
+export type EngagementType =
+  | "Security Incident"
+  | "Investigation"
+  | (string & {});
 export const EngagementType = /*@__PURE__*/ S.String;
 
 export type ImpactedAccounts = string[];
@@ -304,11 +312,12 @@ export type AwsRegion =
   | "us-east-1"
   | "us-east-2"
   | "us-west-1"
-  | "us-west-2";
+  | "us-west-2"
+  | (string & {});
 export const AwsRegion = /*@__PURE__*/ S.String;
 
 export interface ImpactedAwsRegion {
-  region: AwsRegion | (string & {});
+  region: AwsRegion;
 }
 export const ImpactedAwsRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ region: AwsRegion }),
@@ -326,10 +335,10 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export interface CreateCaseRequest {
   clientToken?: string;
-  resolverType: ResolverType | (string & {});
+  resolverType: ResolverType;
   title: string | redacted.Redacted<string>;
   description: string | redacted.Redacted<string>;
-  engagementType: EngagementType | (string & {});
+  engagementType: EngagementType;
   reportedIncidentStartDate: Date;
   impactedAccounts: string[];
   watchers: Watcher[];
@@ -424,17 +433,18 @@ export type CommunicationType =
   | "Membership Cancelled"
   | "Register Delegated Administrator"
   | "Deregister Delegated Administrator"
-  | "Disable AWS Service Access";
+  | "Disable AWS Service Access"
+  | (string & {});
 export const CommunicationType = /*@__PURE__*/ S.String;
 
-export type CommunicationPreferences = (CommunicationType | (string & {}))[];
+export type CommunicationPreferences = CommunicationType[];
 export const CommunicationPreferences =
   /*@__PURE__*/ S.Array(CommunicationType);
 export interface IncidentResponder {
   name: string | redacted.Redacted<string>;
   jobTitle: string | redacted.Redacted<string>;
   email: string | redacted.Redacted<string>;
-  communicationPreferences?: (CommunicationType | (string & {}))[];
+  communicationPreferences?: CommunicationType[];
 }
 export const IncidentResponder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -448,11 +458,11 @@ export const IncidentResponder = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentResponder>;
 export type IncidentResponseTeam = IncidentResponder[];
 export const IncidentResponseTeam = /*@__PURE__*/ S.Array(IncidentResponder);
-export type OptInFeatureName = "Triage";
+export type OptInFeatureName = "Triage" | (string & {});
 export const OptInFeatureName = /*@__PURE__*/ S.String;
 
 export interface OptInFeature {
-  featureName: OptInFeatureName | (string & {});
+  featureName: OptInFeatureName;
   isEnabled: boolean;
 }
 export const OptInFeature = /*@__PURE__*/ S.suspend(() =>
@@ -513,19 +523,24 @@ export const GetCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetCaseRequest" }) as any as S.Schema<GetCaseRequest>;
 export type CaseArn = string;
-export type PendingAction = "Customer" | "None";
+export type PendingAction = "Customer" | "None" | (string & {});
 export const PendingAction = /*@__PURE__*/ S.String;
 
 export type ClosureCode =
   | "Investigation Completed"
   | "Not Resolved"
   | "False Positive"
-  | "Duplicate";
+  | "Duplicate"
+  | (string & {});
 export const ClosureCode = /*@__PURE__*/ S.String;
 
 export type AttachmentId = string;
 export type FileName = string | redacted.Redacted<string>;
-export type CaseAttachmentStatus = "Verified" | "Failed" | "Pending";
+export type CaseAttachmentStatus =
+  | "Verified"
+  | "Failed"
+  | "Pending"
+  | (string & {});
 export const CaseAttachmentStatus = /*@__PURE__*/ S.String;
 
 export type PrincipalId = string;
@@ -701,10 +716,14 @@ export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMembershipRequest",
 }) as any as S.Schema<GetMembershipRequest>;
 export type MembershipArn = string;
-export type MembershipStatus = "Active" | "Cancelled" | "Terminated";
+export type MembershipStatus =
+  | "Active"
+  | "Cancelled"
+  | "Terminated"
+  | (string & {});
 export const MembershipStatus = /*@__PURE__*/ S.String;
 
-export type CustomerType = "Standalone" | "Organization";
+export type CustomerType = "Standalone" | "Organization" | (string & {});
 export const CustomerType = /*@__PURE__*/ S.String;
 
 export type OrganizationalUnitId = string;
@@ -967,7 +986,11 @@ export const ListInvestigationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigationsRequest",
 }) as any as S.Schema<ListInvestigationsRequest>;
 export type InvestigationId = string;
-export type ActionType = "Evidence" | "Investigation" | "Summarization";
+export type ActionType =
+  | "Evidence"
+  | "Investigation"
+  | "Summarization"
+  | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 export type InvestigationTitle = string;
@@ -978,10 +1001,11 @@ export type ExecutionStatus =
   | "Waiting"
   | "Completed"
   | "Failed"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
-export type UsefulnessRating = "USEFUL" | "NOT_USEFUL";
+export type UsefulnessRating = "USEFUL" | "NOT_USEFUL" | (string & {});
 export const UsefulnessRating = /*@__PURE__*/ S.String;
 
 export type FeedbackComment = string;
@@ -1119,7 +1143,7 @@ export type ResultId = string;
 export interface SendFeedbackRequest {
   caseId: string;
   resultId: string;
-  usefulness: UsefulnessRating | (string & {});
+  usefulness: UsefulnessRating;
   comment?: string;
 }
 export const SendFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1212,7 +1236,7 @@ export interface UpdateCaseRequest {
   description?: string | redacted.Redacted<string>;
   reportedIncidentStartDate?: Date;
   actualIncidentStartDate?: Date;
-  engagementType?: EngagementType | (string & {});
+  engagementType?: EngagementType;
   watchersToAdd?: Watcher[];
   watchersToDelete?: Watcher[];
   threatActorIpAddressesToAdd?: ThreatActorIp[];
@@ -1306,12 +1330,13 @@ export type SelfManagedCaseStatus =
   | "Submitted"
   | "Detection and Analysis"
   | "Containment, Eradication and Recovery"
-  | "Post-incident Activities";
+  | "Post-incident Activities"
+  | (string & {});
 export const SelfManagedCaseStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateCaseStatusRequest {
   caseId: string;
-  caseStatus: SelfManagedCaseStatus | (string & {});
+  caseStatus: SelfManagedCaseStatus;
 }
 export const UpdateCaseStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1395,7 +1420,7 @@ export const UpdateMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMembershipResponse>;
 export interface UpdateResolverTypeRequest {
   caseId: string;
-  resolverType: ResolverType | (string & {});
+  resolverType: ResolverType;
 }
 export const UpdateResolverTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1435,7 +1460,8 @@ export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

@@ -263,7 +263,8 @@ export type AttachmentType =
   | "SITE_TO_SITE_VPN"
   | "VPC"
   | "DIRECT_CONNECT_GATEWAY"
-  | "TRANSIT_GATEWAY_ROUTE_TABLE";
+  | "TRANSIT_GATEWAY_ROUTE_TABLE"
+  | (string & {});
 export const AttachmentType = /*@__PURE__*/ S.String;
 
 export type AttachmentState =
@@ -275,7 +276,8 @@ export type AttachmentState =
   | "UPDATING"
   | "PENDING_NETWORK_UPDATE"
   | "PENDING_TAG_ACCEPTANCE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const AttachmentState = /*@__PURE__*/ S.String;
 
 export type ExternalRegionCode = string;
@@ -336,7 +338,8 @@ export type AttachmentErrorCode =
   | "DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"
   | "DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF"
   | "VPN_EXISTING_ASSOCIATIONS"
-  | "VPC_UNSUPPORTED_FEATURES";
+  | "VPC_UNSUPPORTED_FEATURES"
+  | (string & {});
 export const AttachmentErrorCode = /*@__PURE__*/ S.String;
 
 export type ServerSideString = string;
@@ -446,7 +449,8 @@ export type ConnectPeerAssociationState =
   | "PENDING"
   | "AVAILABLE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ConnectPeerAssociationState = /*@__PURE__*/ S.String;
 
 export interface ConnectPeerAssociation {
@@ -508,7 +512,8 @@ export type CustomerGatewayAssociationState =
   | "PENDING"
   | "AVAILABLE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const CustomerGatewayAssociationState = /*@__PURE__*/ S.String;
 
 export interface CustomerGatewayAssociation {
@@ -569,7 +574,8 @@ export type LinkAssociationState =
   | "PENDING"
   | "AVAILABLE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const LinkAssociationState = /*@__PURE__*/ S.String;
 
 export interface LinkAssociation {
@@ -630,7 +636,8 @@ export type TransitGatewayConnectPeerAssociationState =
   | "PENDING"
   | "AVAILABLE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const TransitGatewayConnectPeerAssociationState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayConnectPeerAssociation {
@@ -665,11 +672,11 @@ export const AssociateTransitGatewayConnectPeerResponse =
   ).annotate({
     identifier: "AssociateTransitGatewayConnectPeerResponse",
   }) as any as S.Schema<AssociateTransitGatewayConnectPeerResponse>;
-export type TunnelProtocol = "GRE" | "NO_ENCAP";
+export type TunnelProtocol = "GRE" | "NO_ENCAP" | (string & {});
 export const TunnelProtocol = /*@__PURE__*/ S.String;
 
 export interface ConnectAttachmentOptions {
-  Protocol?: TunnelProtocol | (string & {});
+  Protocol?: TunnelProtocol;
 }
 export const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocol: S.optional(TunnelProtocol) }),
@@ -766,7 +773,12 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConnectionRequest>;
 export type ConnectionId = string;
 export type ConnectionArn = string;
-export type ConnectionState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING";
+export type ConnectionState =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "UPDATING"
+  | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export interface Connection {
@@ -848,7 +860,12 @@ export const CreateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectPeerRequest",
 }) as any as S.Schema<CreateConnectPeerRequest>;
-export type ConnectPeerState = "CREATING" | "FAILED" | "AVAILABLE" | "DELETING";
+export type ConnectPeerState =
+  | "CREATING"
+  | "FAILED"
+  | "AVAILABLE"
+  | "DELETING"
+  | (string & {});
 export const ConnectPeerState = /*@__PURE__*/ S.String;
 
 export interface ConnectPeerBgpConfiguration {
@@ -895,7 +912,8 @@ export type ConnectPeerErrorCode =
   | "SUBNET_NOT_FOUND"
   | "IP_OUTSIDE_SUBNET_CIDR_RANGE"
   | "INVALID_INSIDE_CIDR_BLOCK"
-  | "NO_ASSOCIATED_CIDR_BLOCK";
+  | "NO_ASSOCIATED_CIDR_BLOCK"
+  | (string & {});
 export const ConnectPeerErrorCode = /*@__PURE__*/ S.String;
 
 export interface ConnectPeerError {
@@ -982,7 +1000,8 @@ export type CoreNetworkState =
   | "CREATING"
   | "UPDATING"
   | "AVAILABLE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const CoreNetworkState = /*@__PURE__*/ S.String;
 
 export interface CoreNetworkSegment {
@@ -1185,7 +1204,12 @@ export const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDeviceRequest",
 }) as any as S.Schema<CreateDeviceRequest>;
 export type DeviceArn = string;
-export type DeviceState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING";
+export type DeviceState =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "UPDATING"
+  | (string & {});
 export const DeviceState = /*@__PURE__*/ S.String;
 
 export interface Device {
@@ -1312,7 +1336,8 @@ export type GlobalNetworkState =
   | "PENDING"
   | "AVAILABLE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GlobalNetworkState = /*@__PURE__*/ S.String;
 
 export interface GlobalNetwork {
@@ -1386,7 +1411,12 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLinkRequest",
 }) as any as S.Schema<CreateLinkRequest>;
 export type LinkArn = string;
-export type LinkState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING";
+export type LinkState =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "UPDATING"
+  | (string & {});
 export const LinkState = /*@__PURE__*/ S.String;
 
 export interface Link {
@@ -1454,7 +1484,12 @@ export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteRequest",
 }) as any as S.Schema<CreateSiteRequest>;
 export type SiteArn = string;
-export type SiteState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING";
+export type SiteState =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "UPDATING"
+  | (string & {});
 export const SiteState = /*@__PURE__*/ S.String;
 
 export interface Site {
@@ -1564,10 +1599,15 @@ export const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTransitGatewayPeeringRequest",
 }) as any as S.Schema<CreateTransitGatewayPeeringRequest>;
 export type PeeringId = string;
-export type PeeringType = "TRANSIT_GATEWAY";
+export type PeeringType = "TRANSIT_GATEWAY" | (string & {});
 export const PeeringType = /*@__PURE__*/ S.String;
 
-export type PeeringState = "CREATING" | "FAILED" | "AVAILABLE" | "DELETING";
+export type PeeringState =
+  | "CREATING"
+  | "FAILED"
+  | "AVAILABLE"
+  | "DELETING"
+  | (string & {});
 export const PeeringState = /*@__PURE__*/ S.String;
 
 export type PeeringErrorCode =
@@ -1576,7 +1616,8 @@ export type PeeringErrorCode =
   | "MISSING_PERMISSIONS"
   | "INTERNAL_ERROR"
   | "EDGE_LOCATION_PEER_DUPLICATE"
-  | "INVALID_TRANSIT_GATEWAY_STATE";
+  | "INVALID_TRANSIT_GATEWAY_STATE"
+  | (string & {});
 export const PeeringErrorCode = /*@__PURE__*/ S.String;
 
 export interface PermissionsErrorContext {
@@ -1915,7 +1956,7 @@ export const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteCoreNetworkPolicyVersionRequest",
 }) as any as S.Schema<DeleteCoreNetworkPolicyVersionRequest>;
-export type CoreNetworkPolicyAlias = "LIVE" | "LATEST";
+export type CoreNetworkPolicyAlias = "LIVE" | "LATEST" | (string & {});
 export const CoreNetworkPolicyAlias = /*@__PURE__*/ S.String;
 
 export type ChangeSetState =
@@ -1924,7 +1965,8 @@ export type ChangeSetState =
   | "READY_TO_EXECUTE"
   | "EXECUTING"
   | "EXECUTION_SUCCEEDED"
-  | "OUT_OF_DATE";
+  | "OUT_OF_DATE"
+  | (string & {});
 export const ChangeSetState = /*@__PURE__*/ S.String;
 
 export interface CoreNetworkPolicyError {
@@ -2216,7 +2258,8 @@ export type TransitGatewayRegistrationState =
   | "AVAILABLE"
   | "DELETING"
   | "DELETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const TransitGatewayRegistrationState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayRegistrationStateReason {
@@ -2682,20 +2725,22 @@ export type ChangeType =
   | "CORE_NETWORK_CONFIGURATION"
   | "SEGMENTS_CONFIGURATION"
   | "SEGMENT_ACTIONS_CONFIGURATION"
-  | "ATTACHMENT_POLICIES_CONFIGURATION";
+  | "ATTACHMENT_POLICIES_CONFIGURATION"
+  | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
-export type ChangeAction = "ADD" | "MODIFY" | "REMOVE";
+export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
 
 export type ChangeStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "COMPLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ChangeStatus = /*@__PURE__*/ S.String;
 
-export type RoutingPolicyDirection = "inbound" | "outbound";
+export type RoutingPolicyDirection = "inbound" | "outbound" | (string & {});
 export const RoutingPolicyDirection = /*@__PURE__*/ S.String;
 
 export interface RoutingPolicyAssociationDetail {
@@ -2805,10 +2850,13 @@ export const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCoreNetworkChangeSetRequest",
 }) as any as S.Schema<GetCoreNetworkChangeSetRequest>;
-export type SegmentActionServiceInsertion = "send-via" | "send-to";
+export type SegmentActionServiceInsertion =
+  | "send-via"
+  | "send-to"
+  | (string & {});
 export const SegmentActionServiceInsertion = /*@__PURE__*/ S.String;
 
-export type SendViaMode = "dual-hop" | "single-hop";
+export type SendViaMode = "dual-hop" | "single-hop" | (string & {});
 export const SendViaMode = /*@__PURE__*/ S.String;
 
 export type WhenSentToSegmentsList = string[];
@@ -2957,7 +3005,7 @@ export const GetCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCoreNetworkPolicyRequest {
   CoreNetworkId: string;
   PolicyVersionId?: number;
-  Alias?: CoreNetworkPolicyAlias | (string & {});
+  Alias?: CoreNetworkPolicyAlias;
 }
 export const GetCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3460,15 +3508,15 @@ export const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RouteTableIdentifier",
 }) as any as S.Schema<RouteTableIdentifier>;
-export type RouteState = "ACTIVE" | "BLACKHOLE";
+export type RouteState = "ACTIVE" | "BLACKHOLE" | (string & {});
 export const RouteState = /*@__PURE__*/ S.String;
 
-export type RouteStateList = (RouteState | (string & {}))[];
+export type RouteStateList = RouteState[];
 export const RouteStateList = /*@__PURE__*/ S.Array(RouteState);
-export type RouteType = "PROPAGATED" | "STATIC";
+export type RouteType = "PROPAGATED" | "STATIC" | (string & {});
 export const RouteType = /*@__PURE__*/ S.String;
 
-export type RouteTypeList = (RouteType | (string & {}))[];
+export type RouteTypeList = RouteType[];
 export const RouteTypeList = /*@__PURE__*/ S.Array(RouteType);
 export type FilterName = string;
 export type FilterValue = string;
@@ -3487,8 +3535,8 @@ export interface GetNetworkRoutesRequest {
   SubnetOfMatches?: string[];
   SupernetOfMatches?: string[];
   PrefixListIds?: string[];
-  States?: (RouteState | (string & {}))[];
-  Types?: (RouteType | (string & {}))[];
+  States?: RouteState[];
+  Types?: RouteType[];
   DestinationFilters?: { [key: string]: string[] | undefined };
 }
 export const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3522,7 +3570,8 @@ export const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 export type RouteTableType =
   | "TRANSIT_GATEWAY_ROUTE_TABLE"
   | "CORE_NETWORK_SEGMENT"
-  | "NETWORK_FUNCTION_GROUP";
+  | "NETWORK_FUNCTION_GROUP"
+  | (string & {});
 export const RouteTableType = /*@__PURE__*/ S.String;
 
 export type TransitGatewayAttachmentId = string;
@@ -3630,10 +3679,10 @@ export const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNetworkTelemetryRequest",
 }) as any as S.Schema<GetNetworkTelemetryRequest>;
-export type ConnectionType = "BGP" | "IPSEC";
+export type ConnectionType = "BGP" | "IPSEC" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
-export type ConnectionStatus = "UP" | "DOWN";
+export type ConnectionStatus = "UP" | "DOWN" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface ConnectionHealth {
@@ -3740,7 +3789,11 @@ export const GetRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRouteAnalysisRequest",
 }) as any as S.Schema<GetRouteAnalysisRequest>;
-export type RouteAnalysisStatus = "RUNNING" | "COMPLETED" | "FAILED";
+export type RouteAnalysisStatus =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const RouteAnalysisStatus = /*@__PURE__*/ S.String;
 
 export type TransitGatewayAttachmentArn = string;
@@ -3758,7 +3811,10 @@ export const RouteAnalysisEndpointOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RouteAnalysisEndpointOptions",
 }) as any as S.Schema<RouteAnalysisEndpointOptions>;
-export type RouteAnalysisCompletionResultCode = "CONNECTED" | "NOT_CONNECTED";
+export type RouteAnalysisCompletionResultCode =
+  | "CONNECTED"
+  | "NOT_CONNECTED"
+  | (string & {});
 export const RouteAnalysisCompletionResultCode = /*@__PURE__*/ S.String;
 
 export type RouteAnalysisCompletionReasonCode =
@@ -3772,7 +3828,8 @@ export type RouteAnalysisCompletionReasonCode =
   | "TRANSIT_GATEWAY_ATTACHMENT_ATTACH_ARN_NO_MATCH"
   | "MAX_HOPS_EXCEEDED"
   | "POSSIBLE_MIDDLEBOX"
-  | "NO_DESTINATION_ARN_PROVIDED";
+  | "NO_DESTINATION_ARN_PROVIDED"
+  | (string & {});
 export const RouteAnalysisCompletionReasonCode = /*@__PURE__*/ S.String;
 
 export type ReasonContextKey = string;
@@ -4202,9 +4259,9 @@ export const ListAttachmentRoutingPolicyAssociationsResponse =
   }) as any as S.Schema<ListAttachmentRoutingPolicyAssociationsResponse>;
 export interface ListAttachmentsRequest {
   CoreNetworkId?: string;
-  AttachmentType?: AttachmentType | (string & {});
+  AttachmentType?: AttachmentType;
   EdgeLocation?: string;
-  State?: AttachmentState | (string & {});
+  State?: AttachmentState;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -4662,9 +4719,9 @@ export const ListOrganizationServiceAccessStatusResponse =
   }) as any as S.Schema<ListOrganizationServiceAccessStatusResponse>;
 export interface ListPeeringsRequest {
   CoreNetworkId?: string;
-  PeeringType?: PeeringType | (string & {});
+  PeeringType?: PeeringType;
   EdgeLocation?: string;
-  State?: PeeringState | (string & {});
+  State?: PeeringState;
   MaxResults?: number;
   NextToken?: string;
 }
@@ -5444,7 +5501,8 @@ export type ValidationExceptionReason =
   | "UnknownOperation"
   | "CannotParse"
   | "FieldValidationFailed"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

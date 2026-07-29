@@ -142,14 +142,14 @@ export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -159,16 +159,18 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
-      name: S.optional(S.String),
+      meta: S.optional(
+        S.NullOr(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
+      ),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItem",
@@ -244,16 +246,18 @@ export const TokensCreateRequestConditionRequestIpNotInList =
 
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensCreateRequestConditionRequestIpInList;
+  in?: TokensCreateRequestConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensCreateRequestConditionRequestIpNotInList;
+  notIn?: TokensCreateRequestConditionRequestIpNotInList | null;
 }
 export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(TokensCreateRequestConditionRequestIpInList),
+      in: S.optional(S.NullOr(TokensCreateRequestConditionRequestIpInList)),
       notIn: S.optional(
-        TokensCreateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
+        S.NullOr(TokensCreateRequestConditionRequestIpNotInList).pipe(
+          T.Body("not_in"),
+        ),
       ),
     }),
 ).annotate({
@@ -262,12 +266,14 @@ export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensCreateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensCreateRequestConditionRequestIp;
+  requestIp?: TokensCreateRequestConditionRequestIp | null;
 }
 export const TokensCreateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensCreateRequestConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensCreateRequestConditionRequestIp).pipe(
+        T.Body("request_ip"),
+      ),
     ),
   }),
 ).annotate({
@@ -279,19 +285,19 @@ export interface CreateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensCreateRequestPoliciesList;
-  condition?: TokensCreateRequestCondition;
+  condition?: TokensCreateRequestCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     policies: TokensCreateRequestPoliciesList,
-    condition: S.optional(TokensCreateRequestCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
+    condition: S.optional(S.NullOr(TokensCreateRequestCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
   })
     .pipe(T.Http({ method: "POST", uri: "/user/tokens", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -313,16 +319,18 @@ export const TokensCreateResponseConditionRequestIpNotInList =
 
 export interface TokensCreateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensCreateResponseConditionRequestIpInList;
+  in?: TokensCreateResponseConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensCreateResponseConditionRequestIpNotInList;
+  notIn?: TokensCreateResponseConditionRequestIpNotInList | null;
 }
 export const TokensCreateResponseConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(TokensCreateResponseConditionRequestIpInList),
+      in: S.optional(S.NullOr(TokensCreateResponseConditionRequestIpInList)),
       notIn: S.optional(
-        TokensCreateResponseConditionRequestIpNotInList.pipe(T.Body("not_in")),
+        S.NullOr(TokensCreateResponseConditionRequestIpNotInList).pipe(
+          T.Body("not_in"),
+        ),
       ),
     }),
 ).annotate({
@@ -331,12 +339,14 @@ export const TokensCreateResponseConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensCreateResponseCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensCreateResponseConditionRequestIp;
+  requestIp?: TokensCreateResponseConditionRequestIp | null;
 }
 export const TokensCreateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensCreateResponseConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensCreateResponseConditionRequestIp).pipe(
+        T.Body("request_ip"),
+      ),
     ),
   }),
 ).annotate({
@@ -347,14 +357,14 @@ export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensCreateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensCreateResponsePoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensCreateResponsePoliciesItemPermissionGroupsItemMeta",
@@ -364,18 +374,18 @@ export interface TokensCreateResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensCreateResponsePoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensCreateResponsePoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       meta: S.optional(
-        TokensCreateResponsePoliciesItemPermissionGroupsItemMeta,
+        S.NullOr(TokensCreateResponsePoliciesItemPermissionGroupsItemMeta),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensCreateResponsePoliciesItemPermissionGroupsItem",
@@ -446,40 +456,40 @@ export const TokensCreateResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTokenResponse {
   /** Token identifier tag. */
-  id?: string;
-  condition?: TokensCreateResponseCondition;
+  id?: string | null;
+  condition?: TokensCreateResponseCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time on which the token was created. */
-  issuedOn?: string;
+  issuedOn?: string | null;
   /** Last time the token was used. */
-  lastUsedOn?: string;
+  lastUsedOn?: string | null;
   /** Last time the token was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Token name. */
-  name?: string;
+  name?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?: TokensCreateResponsePoliciesList;
+  policies?: TokensCreateResponsePoliciesList | null;
   /** Status of the token. */
-  status?: TokensCreateResponseStatus;
+  status?: TokensCreateResponseStatus | null;
   /** The token value. */
-  value?: string;
+  value?: string | null;
 }
 export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    condition: S.optional(TokensCreateResponseCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
-    lastUsedOn: S.optional(S.String.pipe(T.Body("last_used_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-    policies: S.optional(TokensCreateResponsePoliciesList),
-    status: S.optional(TokensCreateResponseStatus),
-    value: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    condition: S.optional(S.NullOr(TokensCreateResponseCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
+    lastUsedOn: S.optional(S.NullOr(S.String).pipe(T.Body("last_used_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    policies: S.optional(S.NullOr(TokensCreateResponsePoliciesList)),
+    status: S.optional(S.NullOr(TokensCreateResponseStatus)),
+    value: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
@@ -508,11 +518,11 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteOrganizationResponse {
   /** Identifier */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOrganizationResponse",
@@ -541,11 +551,13 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteSubscriptionResponse {
   /** Subscription identifier tag. */
-  subscriptionId?: string;
+  subscriptionId?: string | null;
 }
 export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    subscriptionId: S.optional(S.String.pipe(T.Body("subscription_id"))),
+    subscriptionId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("subscription_id")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubscriptionResponse",
@@ -592,91 +604,111 @@ export const GetBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBillingProfileResponse {
   /** Billing item identifier tag. */
-  id?: string;
-  accountType?: string;
-  address?: string;
-  address2?: string;
-  balance?: string;
-  cardExpiryMonth?: number;
-  cardExpiryYear?: number;
-  cardNumber?: string;
-  city?: string;
-  company?: string;
-  country?: string;
-  createdOn?: string;
-  deviceData?: string;
-  editedOn?: string;
-  enterpriseBillingEmail?: string;
-  enterprisePrimaryEmail?: string;
-  firstName?: string;
-  isPartner?: boolean;
-  lastName?: string;
-  nextBillDate?: string;
-  paymentAddress?: string;
-  paymentAddress2?: string;
-  paymentCity?: string;
-  paymentCountry?: string;
-  paymentEmail?: string;
-  paymentFirstName?: string;
-  paymentGateway?: string;
-  paymentLastName?: string;
-  paymentNonce?: string;
-  paymentState?: string;
-  paymentZipcode?: string;
-  primaryEmail?: string;
-  state?: string;
-  taxIdType?: string;
-  telephone?: string;
-  useLegacy?: boolean;
-  validationCode?: string;
-  vat?: string;
-  zipcode?: string;
+  id?: string | null;
+  accountType?: string | null;
+  address?: string | null;
+  address2?: string | null;
+  balance?: string | null;
+  cardExpiryMonth?: number | null;
+  cardExpiryYear?: number | null;
+  cardNumber?: string | null;
+  city?: string | null;
+  company?: string | null;
+  country?: string | null;
+  createdOn?: string | null;
+  deviceData?: string | null;
+  editedOn?: string | null;
+  enterpriseBillingEmail?: string | null;
+  enterprisePrimaryEmail?: string | null;
+  firstName?: string | null;
+  isPartner?: boolean | null;
+  lastName?: string | null;
+  nextBillDate?: string | null;
+  paymentAddress?: string | null;
+  paymentAddress2?: string | null;
+  paymentCity?: string | null;
+  paymentCountry?: string | null;
+  paymentEmail?: string | null;
+  paymentFirstName?: string | null;
+  paymentGateway?: string | null;
+  paymentLastName?: string | null;
+  paymentNonce?: string | null;
+  paymentState?: string | null;
+  paymentZipcode?: string | null;
+  primaryEmail?: string | null;
+  state?: string | null;
+  taxIdType?: string | null;
+  telephone?: string | null;
+  useLegacy?: boolean | null;
+  validationCode?: string | null;
+  vat?: string | null;
+  zipcode?: string | null;
 }
 export const GetBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    accountType: S.optional(S.String.pipe(T.Body("account_type"))),
-    address: S.optional(S.String),
-    address2: S.optional(S.String),
-    balance: S.optional(S.String),
-    cardExpiryMonth: S.optional(S.Number.pipe(T.Body("card_expiry_month"))),
-    cardExpiryYear: S.optional(S.Number.pipe(T.Body("card_expiry_year"))),
-    cardNumber: S.optional(S.String.pipe(T.Body("card_number"))),
-    city: S.optional(S.String),
-    company: S.optional(S.String),
-    country: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deviceData: S.optional(S.String.pipe(T.Body("device_data"))),
-    editedOn: S.optional(S.String.pipe(T.Body("edited_on"))),
+    id: S.optional(S.NullOr(S.String)),
+    accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
+    address: S.optional(S.NullOr(S.String)),
+    address2: S.optional(S.NullOr(S.String)),
+    balance: S.optional(S.NullOr(S.String)),
+    cardExpiryMonth: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("card_expiry_month")),
+    ),
+    cardExpiryYear: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("card_expiry_year")),
+    ),
+    cardNumber: S.optional(S.NullOr(S.String).pipe(T.Body("card_number"))),
+    city: S.optional(S.NullOr(S.String)),
+    company: S.optional(S.NullOr(S.String)),
+    country: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deviceData: S.optional(S.NullOr(S.String).pipe(T.Body("device_data"))),
+    editedOn: S.optional(S.NullOr(S.String).pipe(T.Body("edited_on"))),
     enterpriseBillingEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_billing_email")),
+      S.NullOr(S.String).pipe(T.Body("enterprise_billing_email")),
     ),
     enterprisePrimaryEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_primary_email")),
+      S.NullOr(S.String).pipe(T.Body("enterprise_primary_email")),
     ),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    isPartner: S.optional(S.Boolean.pipe(T.Body("is_partner"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    nextBillDate: S.optional(S.String.pipe(T.Body("next_bill_date"))),
-    paymentAddress: S.optional(S.String.pipe(T.Body("payment_address"))),
-    paymentAddress2: S.optional(S.String.pipe(T.Body("payment_address2"))),
-    paymentCity: S.optional(S.String.pipe(T.Body("payment_city"))),
-    paymentCountry: S.optional(S.String.pipe(T.Body("payment_country"))),
-    paymentEmail: S.optional(S.String.pipe(T.Body("payment_email"))),
-    paymentFirstName: S.optional(S.String.pipe(T.Body("payment_first_name"))),
-    paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
-    paymentLastName: S.optional(S.String.pipe(T.Body("payment_last_name"))),
-    paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
-    paymentState: S.optional(S.String.pipe(T.Body("payment_state"))),
-    paymentZipcode: S.optional(S.String.pipe(T.Body("payment_zipcode"))),
-    primaryEmail: S.optional(S.String.pipe(T.Body("primary_email"))),
-    state: S.optional(S.String),
-    taxIdType: S.optional(S.String.pipe(T.Body("tax_id_type"))),
-    telephone: S.optional(S.String),
-    useLegacy: S.optional(S.Boolean.pipe(T.Body("use_legacy"))),
-    validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
-    vat: S.optional(S.String),
-    zipcode: S.optional(S.String),
+    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
+    isPartner: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_partner"))),
+    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    nextBillDate: S.optional(S.NullOr(S.String).pipe(T.Body("next_bill_date"))),
+    paymentAddress: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_address")),
+    ),
+    paymentAddress2: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_address2")),
+    ),
+    paymentCity: S.optional(S.NullOr(S.String).pipe(T.Body("payment_city"))),
+    paymentCountry: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_country")),
+    ),
+    paymentEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_email"))),
+    paymentFirstName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_first_name")),
+    ),
+    paymentGateway: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_gateway")),
+    ),
+    paymentLastName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_last_name")),
+    ),
+    paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
+    paymentState: S.optional(S.NullOr(S.String).pipe(T.Body("payment_state"))),
+    paymentZipcode: S.optional(
+      S.NullOr(S.String).pipe(T.Body("payment_zipcode")),
+    ),
+    primaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("primary_email"))),
+    state: S.optional(S.NullOr(S.String)),
+    taxIdType: S.optional(S.NullOr(S.String).pipe(T.Body("tax_id_type"))),
+    telephone: S.optional(S.NullOr(S.String)),
+    useLegacy: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_legacy"))),
+    validationCode: S.optional(
+      S.NullOr(S.String).pipe(T.Body("validation_code")),
+    ),
+    vat: S.optional(S.NullOr(S.String)),
+    zipcode: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingProfileResponse",
@@ -717,40 +749,42 @@ export interface GetInviteResponse {
   /** ID of the organization the user will be added to. */
   organizationId: string;
   /** Invite identifier tag. */
-  id?: string;
+  id?: string | null;
   /** When the invite is no longer active. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The email address of the user who created the invite. */
-  invitedBy?: string;
+  invitedBy?: string | null;
   /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
+  invitedMemberEmail?: string | null;
   /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
+  invitedOn?: string | null;
+  organizationIsEnforcingTwofactor?: boolean | null;
   /** Organization name. */
-  organizationName?: string;
+  organizationName?: string | null;
   /** List of role names the membership has for this account. */
-  roles?: InvitesGetResponseRolesList;
+  roles?: InvitesGetResponseRolesList | null;
   /** Current status of the invitation. */
-  status?: InvitesGetResponseStatus;
+  status?: InvitesGetResponseStatus | null;
 }
 export const GetInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
     organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    id: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.NullOr(S.String).pipe(T.Body("invited_by"))),
     invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
+      S.NullOr(S.String).pipe(T.Body("invited_member_email")),
     ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    invitedOn: S.optional(S.NullOr(S.String).pipe(T.Body("invited_on"))),
     organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+      S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
     ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesGetResponseRolesList),
-    status: S.optional(InvitesGetResponseStatus),
+    organizationName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("organization_name")),
+    ),
+    roles: S.optional(S.NullOr(InvitesGetResponseRolesList)),
+    status: S.optional(S.NullOr(InvitesGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInviteResponse",
@@ -819,29 +853,31 @@ export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsGetResultItemRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsGetResultItemRatePlanId;
+  id?: SubscriptionsGetResultItemRatePlanId | null;
   /** The currency applied to the rate plan subscription. */
-  currency?: string;
+  currency?: string | null;
   /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean;
+  externallyManaged?: boolean | null;
   /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean;
+  isContract?: boolean | null;
   /** The full name of the rate plan. */
-  publicName?: string;
+  publicName?: string | null;
   /** The scope that this rate plan applies to. */
-  scope?: string;
+  scope?: string | null;
   /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsGetResultItemRatePlanSetsList;
+  sets?: SubscriptionsGetResultItemRatePlanSetsList | null;
 }
 export const SubscriptionsGetResultItemRatePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(SubscriptionsGetResultItemRatePlanId),
-    currency: S.optional(S.String),
-    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
-    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
-    scope: S.optional(S.String),
-    sets: S.optional(SubscriptionsGetResultItemRatePlanSetsList),
+    id: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanId)),
+    currency: S.optional(S.NullOr(S.String)),
+    externallyManaged: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
+    ),
+    isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
+    scope: S.optional(S.NullOr(S.String)),
+    sets: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanSetsList)),
   }),
 ).annotate({
   identifier: "SubscriptionsGetResultItemRatePlan",
@@ -859,36 +895,38 @@ export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResultItem {
   /** Subscription identifier tag. */
-  id?: string;
+  id?: string | null;
   /** The monetary unit in which pricing information is displayed. */
-  currency?: string;
+  currency?: string | null;
   /** The end of the current period and also when the next billing is due. */
-  currentPeriodEnd?: string;
+  currentPeriodEnd?: string | null;
   /** When the current billing period started. May match initial_period_start if this is the first period. */
-  currentPeriodStart?: string;
+  currentPeriodStart?: string | null;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsGetResultItemFrequency;
+  frequency?: SubscriptionsGetResultItemFrequency | null;
   /** The price of the subscription that will be billed, in US dollars. */
-  price?: number;
+  price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsGetResultItemRatePlan;
+  ratePlan?: SubscriptionsGetResultItemRatePlan | null;
   /** The state that the subscription is in. */
-  state?: SubscriptionsGetResultItemState;
+  state?: SubscriptionsGetResultItemState | null;
 }
 export const SubscriptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    currency: S.optional(S.String),
-    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
+    id: S.optional(S.NullOr(S.String)),
+    currency: S.optional(S.NullOr(S.String)),
+    currentPeriodEnd: S.optional(
+      S.NullOr(S.String).pipe(T.Body("current_period_end")),
+    ),
     currentPeriodStart: S.optional(
-      S.String.pipe(T.Body("current_period_start")),
+      S.NullOr(S.String).pipe(T.Body("current_period_start")),
     ),
-    frequency: S.optional(SubscriptionsGetResultItemFrequency),
-    price: S.optional(S.Number),
+    frequency: S.optional(S.NullOr(SubscriptionsGetResultItemFrequency)),
+    price: S.optional(S.NullOr(S.Number)),
     ratePlan: S.optional(
-      SubscriptionsGetResultItemRatePlan.pipe(T.Body("rate_plan")),
+      S.NullOr(SubscriptionsGetResultItemRatePlan).pipe(T.Body("rate_plan")),
     ),
-    state: S.optional(SubscriptionsGetResultItemState),
+    state: S.optional(S.NullOr(SubscriptionsGetResultItemState)),
   }),
 ).annotate({
   identifier: "SubscriptionsGetResultItem",
@@ -941,15 +979,17 @@ export const TokensGetResponseConditionRequestIpNotInList =
 
 export interface TokensGetResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensGetResponseConditionRequestIpInList;
+  in?: TokensGetResponseConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensGetResponseConditionRequestIpNotInList;
+  notIn?: TokensGetResponseConditionRequestIpNotInList | null;
 }
 export const TokensGetResponseConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    in: S.optional(TokensGetResponseConditionRequestIpInList),
+    in: S.optional(S.NullOr(TokensGetResponseConditionRequestIpInList)),
     notIn: S.optional(
-      TokensGetResponseConditionRequestIpNotInList.pipe(T.Body("not_in")),
+      S.NullOr(TokensGetResponseConditionRequestIpNotInList).pipe(
+        T.Body("not_in"),
+      ),
     ),
   }),
 ).annotate({
@@ -958,12 +998,12 @@ export const TokensGetResponseConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
 
 export interface TokensGetResponseCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensGetResponseConditionRequestIp;
+  requestIp?: TokensGetResponseConditionRequestIp | null;
 }
 export const TokensGetResponseCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensGetResponseConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensGetResponseConditionRequestIp).pipe(T.Body("request_ip")),
     ),
   }),
 ).annotate({
@@ -974,14 +1014,14 @@ export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensGetResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensGetResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensGetResponsePoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensGetResponsePoliciesItemPermissionGroupsItemMeta",
@@ -991,16 +1031,18 @@ export interface TokensGetResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensGetResponsePoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensGetResponsePoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensGetResponsePoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(TokensGetResponsePoliciesItemPermissionGroupsItemMeta),
-      name: S.optional(S.String),
+      meta: S.optional(
+        S.NullOr(TokensGetResponsePoliciesItemPermissionGroupsItemMeta),
+      ),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensGetResponsePoliciesItemPermissionGroupsItem",
@@ -1070,37 +1112,37 @@ export const TokensGetResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTokenResponse {
   /** Token identifier tag. */
-  id?: string;
-  condition?: TokensGetResponseCondition;
+  id?: string | null;
+  condition?: TokensGetResponseCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time on which the token was created. */
-  issuedOn?: string;
+  issuedOn?: string | null;
   /** Last time the token was used. */
-  lastUsedOn?: string;
+  lastUsedOn?: string | null;
   /** Last time the token was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Token name. */
-  name?: string;
+  name?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?: TokensGetResponsePoliciesList;
+  policies?: TokensGetResponsePoliciesList | null;
   /** Status of the token. */
-  status?: TokensGetResponseStatus;
+  status?: TokensGetResponseStatus | null;
 }
 export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    condition: S.optional(TokensGetResponseCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
-    lastUsedOn: S.optional(S.String.pipe(T.Body("last_used_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-    policies: S.optional(TokensGetResponsePoliciesList),
-    status: S.optional(TokensGetResponseStatus),
+    id: S.optional(S.NullOr(S.String)),
+    condition: S.optional(S.NullOr(TokensGetResponseCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
+    lastUsedOn: S.optional(S.NullOr(S.String).pipe(T.Body("last_used_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    policies: S.optional(S.NullOr(TokensGetResponsePoliciesList)),
+    status: S.optional(S.NullOr(TokensGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTokenResponse",
@@ -1134,23 +1176,25 @@ export const GetResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseOrganizationsItem {
   /** Identifier */
-  id?: string;
+  id?: string | null;
   /** Organization name. */
-  name?: string;
+  name?: string | null;
   /** Access permissions for this User. */
-  permissions?: GetResponseOrganizationsItemPermissionsList;
+  permissions?: GetResponseOrganizationsItemPermissionsList | null;
   /** List of roles that a user has within an organization. */
-  roles?: GetResponseOrganizationsItemRolesList;
+  roles?: GetResponseOrganizationsItemRolesList | null;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: GetResponseOrganizationsItemStatus;
+  status?: GetResponseOrganizationsItemStatus | null;
 }
 export const GetResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(GetResponseOrganizationsItemPermissionsList),
-    roles: S.optional(GetResponseOrganizationsItemRolesList),
-    status: S.optional(GetResponseOrganizationsItemStatus),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    permissions: S.optional(
+      S.NullOr(GetResponseOrganizationsItemPermissionsList),
+    ),
+    roles: S.optional(S.NullOr(GetResponseOrganizationsItemRolesList)),
+    status: S.optional(S.NullOr(GetResponseOrganizationsItemStatus)),
   }),
 ).annotate({
   identifier: "GetResponseOrganizationsItem",
@@ -1168,54 +1212,56 @@ export interface GetUserResponse {
   /** Current email address of the user. */
   email: string;
   /** Lists the betas that the user is participating in. */
-  betas?: GetResponseBetasList;
+  betas?: GetResponseBetasList | null;
   /** The country in which the user lives. */
-  country?: string;
+  country?: string | null;
   /** User's first name */
-  firstName?: string;
+  firstName?: string | null;
   /** Indicates whether user has any business zones */
-  hasBusinessZones?: boolean;
+  hasBusinessZones?: boolean | null;
   /** Indicates whether user has any enterprise zones */
-  hasEnterpriseZones?: boolean;
+  hasEnterpriseZones?: boolean | null;
   /** Indicates whether user has any pro zones */
-  hasProZones?: boolean;
+  hasProZones?: boolean | null;
   /** User's last name */
-  lastName?: string;
-  organizations?: GetResponseOrganizationsList;
+  lastName?: string | null;
+  organizations?: GetResponseOrganizationsList | null;
   /** Indicates whether user has been suspended */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** User's telephone number */
-  telephone?: string;
+  telephone?: string | null;
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
-  twoFactorAuthenticationEnabled?: boolean;
+  twoFactorAuthenticationEnabled?: boolean | null;
   /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
-  twoFactorAuthenticationLocked?: boolean;
+  twoFactorAuthenticationLocked?: boolean | null;
   /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
+  zipcode?: string | null;
 }
 export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
-    betas: S.optional(GetResponseBetasList),
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
-    hasEnterpriseZones: S.optional(
-      S.Boolean.pipe(T.Body("has_enterprise_zones")),
+    betas: S.optional(S.NullOr(GetResponseBetasList)),
+    country: S.optional(S.NullOr(S.String)),
+    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
+    hasBusinessZones: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("has_business_zones")),
     ),
-    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    organizations: S.optional(GetResponseOrganizationsList),
-    suspended: S.optional(S.Boolean),
-    telephone: S.optional(S.String),
+    hasEnterpriseZones: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("has_enterprise_zones")),
+    ),
+    hasProZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_pro_zones"))),
+    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    organizations: S.optional(S.NullOr(GetResponseOrganizationsList)),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    telephone: S.optional(S.NullOr(S.String)),
     twoFactorAuthenticationEnabled: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("two_factor_authentication_enabled")),
     ),
     twoFactorAuthenticationLocked: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
+      S.NullOr(S.Boolean).pipe(T.Body("two_factor_authentication_locked")),
     ),
-    zipcode: S.optional(S.String),
+    zipcode: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUserResponse",
@@ -1223,11 +1269,11 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AuditLogsListRequestAction {
   /** Filters by the action type. */
-  type?: string;
+  type?: string | null;
 }
 export const AuditLogsListRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.String),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestAction",
@@ -1235,14 +1281,14 @@ export const AuditLogsListRequestAction = /*@__PURE__*/ S.suspend(() =>
 
 export interface AuditLogsListRequestActor {
   /** Filters by the email address of the actor that made the change. */
-  email?: string;
+  email?: string | null;
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
-  ip?: string;
+  ip?: string | null;
 }
 export const AuditLogsListRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.String),
-    ip: S.optional(S.String),
+    email: S.optional(S.NullOr(S.String)),
+    ip: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestActor",
@@ -1253,11 +1299,11 @@ export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface AuditLogsListRequestZone {
   /** Filters by the name of the zone associated to the change. */
-  name?: string;
+  name?: string | null;
 }
 export const AuditLogsListRequestZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestZone",
@@ -1266,8 +1312,8 @@ export const AuditLogsListRequestZone = /*@__PURE__*/ S.suspend(() =>
 export interface ListAuditLogsRequest {
   /** Finds a specific log by its ID. */
   id?: string;
-  action?: AuditLogsListRequestAction;
-  actor?: AuditLogsListRequestActor;
+  action?: AuditLogsListRequestAction | null;
+  actor?: AuditLogsListRequestActor | null;
   /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: string;
   /** Changes the direction of the chronological sorting. */
@@ -1282,13 +1328,17 @@ export interface ListAuditLogsRequest {
   perPage?: number;
   /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: string;
-  zone?: AuditLogsListRequestZone;
+  zone?: AuditLogsListRequestZone | null;
 }
 export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(AuditLogsListRequestAction.pipe(T.DeepQuery("action"))),
-    actor: S.optional(AuditLogsListRequestActor.pipe(T.DeepQuery("actor"))),
+    action: S.optional(
+      S.NullOr(AuditLogsListRequestAction).pipe(T.DeepQuery("action")),
+    ),
+    actor: S.optional(
+      S.NullOr(AuditLogsListRequestActor).pipe(T.DeepQuery("actor")),
+    ),
     before: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
     export: S.optional(S.Boolean.pipe(T.Query())),
@@ -1296,7 +1346,9 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-    zone: S.optional(AuditLogsListRequestZone.pipe(T.DeepQuery("zone"))),
+    zone: S.optional(
+      S.NullOr(AuditLogsListRequestZone).pipe(T.DeepQuery("zone")),
+    ),
   })
     .pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1345,11 +1397,11 @@ export const ListBillingHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingHistoriesRequest>;
 
 export interface BillingHistoryListResultItemZone {
-  name?: string;
+  name?: string | null;
 }
 export const BillingHistoryListResultItemZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "BillingHistoryListResultItemZone",
@@ -1434,40 +1486,42 @@ export interface InvitesListResultItem {
   /** ID of the organization the user will be added to. */
   organizationId: string;
   /** Invite identifier tag. */
-  id?: string;
+  id?: string | null;
   /** When the invite is no longer active. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The email address of the user who created the invite. */
-  invitedBy?: string;
+  invitedBy?: string | null;
   /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
+  invitedMemberEmail?: string | null;
   /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
+  invitedOn?: string | null;
+  organizationIsEnforcingTwofactor?: boolean | null;
   /** Organization name. */
-  organizationName?: string;
+  organizationName?: string | null;
   /** List of role names the membership has for this account. */
-  roles?: InvitesListResultItemRolesList;
+  roles?: InvitesListResultItemRolesList | null;
   /** Current status of the invitation. */
-  status?: InvitesListResultItemStatus;
+  status?: InvitesListResultItemStatus | null;
 }
 export const InvitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
     organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    id: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.NullOr(S.String).pipe(T.Body("invited_by"))),
     invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
+      S.NullOr(S.String).pipe(T.Body("invited_member_email")),
     ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    invitedOn: S.optional(S.NullOr(S.String).pipe(T.Body("invited_on"))),
     organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+      S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
     ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesListResultItemRolesList),
-    status: S.optional(InvitesListResultItemStatus),
+    organizationName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("organization_name")),
+    ),
+    roles: S.optional(S.NullOr(InvitesListResultItemRolesList)),
+    status: S.optional(S.NullOr(InvitesListResultItemStatus)),
   }),
 ).annotate({
   identifier: "InvitesListResultItem",
@@ -1552,23 +1606,25 @@ export const OrganizationsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationsListResultItem {
   /** Identifier */
-  id?: string;
+  id?: string | null;
   /** Organization name. */
-  name?: string;
+  name?: string | null;
   /** Access permissions for this User. */
-  permissions?: OrganizationsListResultItemPermissionsList;
+  permissions?: OrganizationsListResultItemPermissionsList | null;
   /** List of roles that a user has within an organization. */
-  roles?: OrganizationsListResultItemRolesList;
+  roles?: OrganizationsListResultItemRolesList | null;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: OrganizationsListResultItemStatus;
+  status?: OrganizationsListResultItemStatus | null;
 }
 export const OrganizationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(OrganizationsListResultItemPermissionsList),
-    roles: S.optional(OrganizationsListResultItemRolesList),
-    status: S.optional(OrganizationsListResultItemStatus),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    permissions: S.optional(
+      S.NullOr(OrganizationsListResultItemPermissionsList),
+    ),
+    roles: S.optional(S.NullOr(OrganizationsListResultItemRolesList)),
+    status: S.optional(S.NullOr(OrganizationsListResultItemStatus)),
   }),
 ).annotate({
   identifier: "OrganizationsListResultItem",
@@ -1629,18 +1685,20 @@ export const TenantsListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
 
 export interface TenantsListResultItemMeta {
   /** Enable features for Organizations. */
-  flags?: TenantsListResultItemMetaFlags;
+  flags?: TenantsListResultItemMetaFlags | null;
   /** Ordered chain of organization tags from the root organization down to */
-  hierarchyTags?: TenantsListResultItemMetaHierarchyTagsList;
-  managedBy?: string;
+  hierarchyTags?: TenantsListResultItemMetaHierarchyTagsList | null;
+  managedBy?: string | null;
 }
 export const TenantsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: S.optional(TenantsListResultItemMetaFlags),
+    flags: S.optional(S.NullOr(TenantsListResultItemMetaFlags)),
     hierarchyTags: S.optional(
-      TenantsListResultItemMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
+      S.NullOr(TenantsListResultItemMetaHierarchyTagsList).pipe(
+        T.Body("hierarchy_tags"),
+      ),
     ),
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
   }),
 ).annotate({
   identifier: "TenantsListResultItemMeta",
@@ -1683,8 +1741,8 @@ export interface TenantsListResultItem {
   createTime: string;
   meta: TenantsListResultItemMeta;
   name: string;
-  parent?: TenantsListResultItemParent;
-  profile?: TenantsListResultItemProfile;
+  parent?: TenantsListResultItemParent | null;
+  profile?: TenantsListResultItemProfile | null;
 }
 export const TenantsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1692,8 +1750,8 @@ export const TenantsListResultItem = /*@__PURE__*/ S.suspend(() =>
     createTime: S.String.pipe(T.Body("create_time")),
     meta: TenantsListResultItemMeta,
     name: S.String,
-    parent: S.optional(TenantsListResultItemParent),
-    profile: S.optional(TenantsListResultItemProfile),
+    parent: S.optional(S.NullOr(TenantsListResultItemParent)),
+    profile: S.optional(S.NullOr(TenantsListResultItemProfile)),
   }),
 ).annotate({
   identifier: "TenantsListResultItem",
@@ -1776,21 +1834,25 @@ export const TokensPermissionGroupsListResultItemScopesList =
 
 export interface TokensPermissionGroupsListResultItem {
   /** Public ID. */
-  id?: string;
+  id?: string | null;
   /** Product category that this permission group belongs to. */
-  category?: TokensPermissionGroupsListResultItemCategory;
+  category?: TokensPermissionGroupsListResultItemCategory | null;
   /** Permission Group Name */
-  name?: string;
+  name?: string | null;
   /** Resources to which the Permission Group is scoped */
-  scopes?: TokensPermissionGroupsListResultItemScopesList;
+  scopes?: TokensPermissionGroupsListResultItemScopesList | null;
 }
 export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.String),
-      category: S.optional(TokensPermissionGroupsListResultItemCategory),
-      name: S.optional(S.String),
-      scopes: S.optional(TokensPermissionGroupsListResultItemScopesList),
+      id: S.optional(S.NullOr(S.String)),
+      category: S.optional(
+        S.NullOr(TokensPermissionGroupsListResultItemCategory),
+      ),
+      name: S.optional(S.NullOr(S.String)),
+      scopes: S.optional(
+        S.NullOr(TokensPermissionGroupsListResultItemScopesList),
+      ),
     }),
 ).annotate({
   identifier: "TokensPermissionGroupsListResultItem",
@@ -1854,16 +1916,18 @@ export const TokensListResultItemConditionRequestIpNotInList =
 
 export interface TokensListResultItemConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensListResultItemConditionRequestIpInList;
+  in?: TokensListResultItemConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensListResultItemConditionRequestIpNotInList;
+  notIn?: TokensListResultItemConditionRequestIpNotInList | null;
 }
 export const TokensListResultItemConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(TokensListResultItemConditionRequestIpInList),
+      in: S.optional(S.NullOr(TokensListResultItemConditionRequestIpInList)),
       notIn: S.optional(
-        TokensListResultItemConditionRequestIpNotInList.pipe(T.Body("not_in")),
+        S.NullOr(TokensListResultItemConditionRequestIpNotInList).pipe(
+          T.Body("not_in"),
+        ),
       ),
     }),
 ).annotate({
@@ -1872,12 +1936,14 @@ export const TokensListResultItemConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensListResultItemCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensListResultItemConditionRequestIp;
+  requestIp?: TokensListResultItemConditionRequestIp | null;
 }
 export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensListResultItemConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensListResultItemConditionRequestIp).pipe(
+        T.Body("request_ip"),
+      ),
     ),
   }),
 ).annotate({
@@ -1888,14 +1954,14 @@ export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
 export const TokensListResultItemPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItemPoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensListResultItemPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensListResultItemPoliciesItemPermissionGroupsItemMeta",
@@ -1905,18 +1971,18 @@ export interface TokensListResultItemPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensListResultItemPoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensListResultItemPoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensListResultItemPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       meta: S.optional(
-        TokensListResultItemPoliciesItemPermissionGroupsItemMeta,
+        S.NullOr(TokensListResultItemPoliciesItemPermissionGroupsItemMeta),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensListResultItemPoliciesItemPermissionGroupsItem",
@@ -1986,37 +2052,37 @@ export const TokensListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItem {
   /** Token identifier tag. */
-  id?: string;
-  condition?: TokensListResultItemCondition;
+  id?: string | null;
+  condition?: TokensListResultItemCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time on which the token was created. */
-  issuedOn?: string;
+  issuedOn?: string | null;
   /** Last time the token was used. */
-  lastUsedOn?: string;
+  lastUsedOn?: string | null;
   /** Last time the token was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Token name. */
-  name?: string;
+  name?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?: TokensListResultItemPoliciesList;
+  policies?: TokensListResultItemPoliciesList | null;
   /** Status of the token. */
-  status?: TokensListResultItemStatus;
+  status?: TokensListResultItemStatus | null;
 }
 export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    condition: S.optional(TokensListResultItemCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
-    lastUsedOn: S.optional(S.String.pipe(T.Body("last_used_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-    policies: S.optional(TokensListResultItemPoliciesList),
-    status: S.optional(TokensListResultItemStatus),
+    id: S.optional(S.NullOr(S.String)),
+    condition: S.optional(S.NullOr(TokensListResultItemCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
+    lastUsedOn: S.optional(S.NullOr(S.String).pipe(T.Body("last_used_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    policies: S.optional(S.NullOr(TokensListResultItemPoliciesList)),
+    status: S.optional(S.NullOr(TokensListResultItemStatus)),
   }),
 ).annotate({
   identifier: "TokensListResultItem",
@@ -2083,40 +2149,42 @@ export interface PatchInviteResponse {
   /** ID of the organization the user will be added to. */
   organizationId: string;
   /** Invite identifier tag. */
-  id?: string;
+  id?: string | null;
   /** When the invite is no longer active. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The email address of the user who created the invite. */
-  invitedBy?: string;
+  invitedBy?: string | null;
   /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
+  invitedMemberEmail?: string | null;
   /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
+  invitedOn?: string | null;
+  organizationIsEnforcingTwofactor?: boolean | null;
   /** Organization name. */
-  organizationName?: string;
+  organizationName?: string | null;
   /** List of role names the membership has for this account. */
-  roles?: InvitesEditResponseRolesList;
+  roles?: InvitesEditResponseRolesList | null;
   /** Current status of the invitation. */
-  status?: InvitesEditResponseStatus;
+  status?: InvitesEditResponseStatus | null;
 }
 export const PatchInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
     organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    id: S.optional(S.NullOr(S.String)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.NullOr(S.String).pipe(T.Body("invited_by"))),
     invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
+      S.NullOr(S.String).pipe(T.Body("invited_member_email")),
     ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    invitedOn: S.optional(S.NullOr(S.String).pipe(T.Body("invited_on"))),
     organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+      S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
     ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesEditResponseRolesList),
-    status: S.optional(InvitesEditResponseStatus),
+    organizationName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("organization_name")),
+    ),
+    roles: S.optional(S.NullOr(InvitesEditResponseRolesList)),
+    status: S.optional(S.NullOr(InvitesEditResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchInviteResponse",
@@ -2124,23 +2192,23 @@ export const PatchInviteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PatchUserRequest {
   /** The country in which the user lives. */
-  country?: string;
+  country?: string | null;
   /** User's first name */
-  firstName?: string;
+  firstName?: string | null;
   /** User's last name */
-  lastName?: string;
+  lastName?: string | null;
   /** User's telephone number */
-  telephone?: string;
+  telephone?: string | null;
   /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
+  zipcode?: string | null;
 }
 export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    telephone: S.optional(S.String),
-    zipcode: S.optional(S.String),
+    country: S.optional(S.NullOr(S.String)),
+    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
+    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    telephone: S.optional(S.NullOr(S.String)),
+    zipcode: S.optional(S.NullOr(S.String)),
   })
     .pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2169,23 +2237,25 @@ export const EditResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseOrganizationsItem {
   /** Identifier */
-  id?: string;
+  id?: string | null;
   /** Organization name. */
-  name?: string;
+  name?: string | null;
   /** Access permissions for this User. */
-  permissions?: EditResponseOrganizationsItemPermissionsList;
+  permissions?: EditResponseOrganizationsItemPermissionsList | null;
   /** List of roles that a user has within an organization. */
-  roles?: EditResponseOrganizationsItemRolesList;
+  roles?: EditResponseOrganizationsItemRolesList | null;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: EditResponseOrganizationsItemStatus;
+  status?: EditResponseOrganizationsItemStatus | null;
 }
 export const EditResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(EditResponseOrganizationsItemPermissionsList),
-    roles: S.optional(EditResponseOrganizationsItemRolesList),
-    status: S.optional(EditResponseOrganizationsItemStatus),
+    id: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    permissions: S.optional(
+      S.NullOr(EditResponseOrganizationsItemPermissionsList),
+    ),
+    roles: S.optional(S.NullOr(EditResponseOrganizationsItemRolesList)),
+    status: S.optional(S.NullOr(EditResponseOrganizationsItemStatus)),
   }),
 ).annotate({
   identifier: "EditResponseOrganizationsItem",
@@ -2204,54 +2274,56 @@ export interface PatchUserResponse {
   /** Current email address of the user. */
   email: string;
   /** Lists the betas that the user is participating in. */
-  betas?: EditResponseBetasList;
+  betas?: EditResponseBetasList | null;
   /** The country in which the user lives. */
-  country?: string;
+  country?: string | null;
   /** User's first name */
-  firstName?: string;
+  firstName?: string | null;
   /** Indicates whether user has any business zones */
-  hasBusinessZones?: boolean;
+  hasBusinessZones?: boolean | null;
   /** Indicates whether user has any enterprise zones */
-  hasEnterpriseZones?: boolean;
+  hasEnterpriseZones?: boolean | null;
   /** Indicates whether user has any pro zones */
-  hasProZones?: boolean;
+  hasProZones?: boolean | null;
   /** User's last name */
-  lastName?: string;
-  organizations?: EditResponseOrganizationsList;
+  lastName?: string | null;
+  organizations?: EditResponseOrganizationsList | null;
   /** Indicates whether user has been suspended */
-  suspended?: boolean;
+  suspended?: boolean | null;
   /** User's telephone number */
-  telephone?: string;
+  telephone?: string | null;
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
-  twoFactorAuthenticationEnabled?: boolean;
+  twoFactorAuthenticationEnabled?: boolean | null;
   /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
-  twoFactorAuthenticationLocked?: boolean;
+  twoFactorAuthenticationLocked?: boolean | null;
   /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
+  zipcode?: string | null;
 }
 export const PatchUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
-    betas: S.optional(EditResponseBetasList),
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
-    hasEnterpriseZones: S.optional(
-      S.Boolean.pipe(T.Body("has_enterprise_zones")),
+    betas: S.optional(S.NullOr(EditResponseBetasList)),
+    country: S.optional(S.NullOr(S.String)),
+    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
+    hasBusinessZones: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("has_business_zones")),
     ),
-    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    organizations: S.optional(EditResponseOrganizationsList),
-    suspended: S.optional(S.Boolean),
-    telephone: S.optional(S.String),
+    hasEnterpriseZones: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("has_enterprise_zones")),
+    ),
+    hasProZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_pro_zones"))),
+    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    organizations: S.optional(S.NullOr(EditResponseOrganizationsList)),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    telephone: S.optional(S.NullOr(S.String)),
     twoFactorAuthenticationEnabled: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
+      S.NullOr(S.Boolean).pipe(T.Body("two_factor_authentication_enabled")),
     ),
     twoFactorAuthenticationLocked: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
+      S.NullOr(S.Boolean).pipe(T.Body("two_factor_authentication_locked")),
     ),
-    zipcode: S.optional(S.String),
+    zipcode: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserResponse",
@@ -2284,29 +2356,31 @@ export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
+  id?: SubscriptionsUpdateRequestRatePlanId | (string & {}) | null;
   /** The currency applied to the rate plan subscription. */
-  currency?: string;
+  currency?: string | null;
   /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean;
+  externallyManaged?: boolean | null;
   /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean;
+  isContract?: boolean | null;
   /** The full name of the rate plan. */
-  publicName?: string;
+  publicName?: string | null;
   /** The scope that this rate plan applies to. */
-  scope?: string;
+  scope?: string | null;
   /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
+  sets?: SubscriptionsUpdateRequestRatePlanSetsList | null;
 }
 export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
-    currency: S.optional(S.String),
-    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
-    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
-    scope: S.optional(S.String),
-    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
+    id: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanId)),
+    currency: S.optional(S.NullOr(S.String)),
+    externallyManaged: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
+    ),
+    isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
+    scope: S.optional(S.NullOr(S.String)),
+    sets: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanSetsList)),
   }),
 ).annotate({
   identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -2316,16 +2390,16 @@ export interface PutSubscriptionRequest {
   /** Subscription identifier tag. */
   identifier: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsUpdateRequestFrequency | (string & {});
+  frequency?: SubscriptionsUpdateRequestFrequency | (string & {}) | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsUpdateRequestRatePlan;
+  ratePlan?: SubscriptionsUpdateRequestRatePlan | null;
 }
 export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String.pipe(T.Label()),
-    frequency: S.optional(SubscriptionsUpdateRequestFrequency),
+    frequency: S.optional(S.NullOr(SubscriptionsUpdateRequestFrequency)),
     ratePlan: S.optional(
-      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
+      S.NullOr(SubscriptionsUpdateRequestRatePlan).pipe(T.Body("rate_plan")),
     ),
   })
     .pipe(
@@ -2378,14 +2452,14 @@ export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -2395,16 +2469,18 @@ export interface TokensUpdateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
-      name: S.optional(S.String),
+      meta: S.optional(
+        S.NullOr(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
+      ),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItem",
@@ -2480,16 +2556,18 @@ export const TokensUpdateRequestConditionRequestIpNotInList =
 
 export interface TokensUpdateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensUpdateRequestConditionRequestIpInList;
+  in?: TokensUpdateRequestConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensUpdateRequestConditionRequestIpNotInList;
+  notIn?: TokensUpdateRequestConditionRequestIpNotInList | null;
 }
 export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(TokensUpdateRequestConditionRequestIpInList),
+      in: S.optional(S.NullOr(TokensUpdateRequestConditionRequestIpInList)),
       notIn: S.optional(
-        TokensUpdateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
+        S.NullOr(TokensUpdateRequestConditionRequestIpNotInList).pipe(
+          T.Body("not_in"),
+        ),
       ),
     }),
 ).annotate({
@@ -2498,12 +2576,14 @@ export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensUpdateRequestConditionRequestIp;
+  requestIp?: TokensUpdateRequestConditionRequestIp | null;
 }
 export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensUpdateRequestConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensUpdateRequestConditionRequestIp).pipe(
+        T.Body("request_ip"),
+      ),
     ),
   }),
 ).annotate({
@@ -2520,23 +2600,23 @@ export interface UpdateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensUpdateRequestPoliciesList;
-  condition?: TokensUpdateRequestCondition;
+  condition?: TokensUpdateRequestCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
   /** Status of the token. */
-  status?: TokensUpdateRequestStatus | (string & {});
+  status?: TokensUpdateRequestStatus | (string & {}) | null;
 }
 export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
     name: S.String,
     policies: TokensUpdateRequestPoliciesList,
-    condition: S.optional(TokensUpdateRequestCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-    status: S.optional(TokensUpdateRequestStatus),
+    condition: S.optional(S.NullOr(TokensUpdateRequestCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    status: S.optional(S.NullOr(TokensUpdateRequestStatus)),
   })
     .pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2558,16 +2638,18 @@ export const TokensUpdateResponseConditionRequestIpNotInList =
 
 export interface TokensUpdateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensUpdateResponseConditionRequestIpInList;
+  in?: TokensUpdateResponseConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensUpdateResponseConditionRequestIpNotInList;
+  notIn?: TokensUpdateResponseConditionRequestIpNotInList | null;
 }
 export const TokensUpdateResponseConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(TokensUpdateResponseConditionRequestIpInList),
+      in: S.optional(S.NullOr(TokensUpdateResponseConditionRequestIpInList)),
       notIn: S.optional(
-        TokensUpdateResponseConditionRequestIpNotInList.pipe(T.Body("not_in")),
+        S.NullOr(TokensUpdateResponseConditionRequestIpNotInList).pipe(
+          T.Body("not_in"),
+        ),
       ),
     }),
 ).annotate({
@@ -2576,12 +2658,14 @@ export const TokensUpdateResponseConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensUpdateResponseCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensUpdateResponseConditionRequestIp;
+  requestIp?: TokensUpdateResponseConditionRequestIp | null;
 }
 export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      TokensUpdateResponseConditionRequestIp.pipe(T.Body("request_ip")),
+      S.NullOr(TokensUpdateResponseConditionRequestIp).pipe(
+        T.Body("request_ip"),
+      ),
     ),
   }),
 ).annotate({
@@ -2592,14 +2676,14 @@ export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
+  key?: string | null;
+  value?: string | null;
 }
 export const TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
+      key: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta",
@@ -2609,18 +2693,18 @@ export interface TokensUpdateResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta;
+  meta?: TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the permission group. */
-  name?: string;
+  name?: string | null;
 }
 export const TokensUpdateResponsePoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       meta: S.optional(
-        TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta,
+        S.NullOr(TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta),
       ),
-      name: S.optional(S.String),
+      name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "TokensUpdateResponsePoliciesItemPermissionGroupsItem",
@@ -2691,37 +2775,37 @@ export const TokensUpdateResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTokenResponse {
   /** Token identifier tag. */
-  id?: string;
-  condition?: TokensUpdateResponseCondition;
+  id?: string | null;
+  condition?: TokensUpdateResponseCondition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time on which the token was created. */
-  issuedOn?: string;
+  issuedOn?: string | null;
   /** Last time the token was used. */
-  lastUsedOn?: string;
+  lastUsedOn?: string | null;
   /** Last time the token was modified. */
-  modifiedOn?: string;
+  modifiedOn?: string | null;
   /** Token name. */
-  name?: string;
+  name?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?: TokensUpdateResponsePoliciesList;
+  policies?: TokensUpdateResponsePoliciesList | null;
   /** Status of the token. */
-  status?: TokensUpdateResponseStatus;
+  status?: TokensUpdateResponseStatus | null;
 }
 export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    condition: S.optional(TokensUpdateResponseCondition),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
-    lastUsedOn: S.optional(S.String.pipe(T.Body("last_used_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-    policies: S.optional(TokensUpdateResponsePoliciesList),
-    status: S.optional(TokensUpdateResponseStatus),
+    id: S.optional(S.NullOr(S.String)),
+    condition: S.optional(S.NullOr(TokensUpdateResponseCondition)),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
+    lastUsedOn: S.optional(S.NullOr(S.String).pipe(T.Body("last_used_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    policies: S.optional(S.NullOr(TokensUpdateResponsePoliciesList)),
+    status: S.optional(S.NullOr(TokensUpdateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenResponse",
@@ -2746,16 +2830,16 @@ export interface VerifyTokenResponse {
   /** Status of the token. */
   status: TokensVerifyResponseStatus;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string;
+  expiresOn?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string;
+  notBefore?: string | null;
 }
 export const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: TokensVerifyResponseStatus,
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
+    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerifyTokenResponse",

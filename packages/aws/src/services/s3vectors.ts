@@ -100,11 +100,11 @@ export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnava
 export type VectorBucketName = string;
 export type VectorBucketArn = string;
 export type IndexName = string;
-export type DataType = "float32";
+export type DataType = "float32" | (string & {});
 export const DataType = /*@__PURE__*/ S.String;
 
 export type Dimension = number;
-export type DistanceMetric = "euclidean" | "cosine";
+export type DistanceMetric = "euclidean" | "cosine" | (string & {});
 export const DistanceMetric = /*@__PURE__*/ S.String;
 
 export type MetadataKey = string;
@@ -118,12 +118,12 @@ export const MetadataConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MetadataConfiguration",
 }) as any as S.Schema<MetadataConfiguration>;
-export type SseType = "AES256" | "aws:kms";
+export type SseType = "AES256" | "aws:kms" | (string & {});
 export const SseType = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export interface EncryptionConfiguration {
-  sseType?: SseType | (string & {});
+  sseType?: SseType;
   kmsKeyArn?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -142,9 +142,9 @@ export interface CreateIndexInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
   indexName: string;
-  dataType: DataType | (string & {});
+  dataType: DataType;
   dimension: number;
-  distanceMetric: DistanceMetric | (string & {});
+  distanceMetric: DistanceMetric;
   metadataConfiguration?: MetadataConfiguration;
   encryptionConfiguration?: EncryptionConfiguration;
   tags?: { [key: string]: string | undefined };

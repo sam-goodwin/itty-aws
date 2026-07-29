@@ -164,7 +164,8 @@ export type VlanState =
   | "CREATED"
   | "DELETING"
   | "DELETED"
-  | "CREATE_FAILED";
+  | "CREATE_FAILED"
+  | (string & {});
 export const VlanState = /*@__PURE__*/ S.String;
 
 export type StateDetails = string;
@@ -224,7 +225,7 @@ export const AssociateEipToVlanResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateEipToVlanResponse",
 }) as any as S.Schema<AssociateEipToVlanResponse>;
 export type ConnectorId = string;
-export type EntitlementType = "WINDOWS_SERVER";
+export type EntitlementType = "WINDOWS_SERVER" | (string & {});
 export const EntitlementType = /*@__PURE__*/ S.String;
 
 export type VmId = string;
@@ -234,7 +235,7 @@ export interface CreateEntitlementRequest {
   clientToken?: string;
   environmentId: string;
   connectorId: string;
-  entitlementType: EntitlementType | (string & {});
+  entitlementType: EntitlementType;
   vmIds: string[];
 }
 export const CreateEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
@@ -257,7 +258,8 @@ export type EntitlementStatus =
   | "DELETED"
   | "AT_RISK"
   | "ENTITLEMENT_REMOVED"
-  | "CREATE_FAILED";
+  | "CREATE_FAILED"
+  | (string & {});
 export const EntitlementStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -323,7 +325,11 @@ export const ServiceAccessSecurityGroups = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceAccessSecurityGroups",
 }) as any as S.Schema<ServiceAccessSecurityGroups>;
 export type VpcId = string;
-export type VcfVersion = "VCF-5.2.1" | "VCF-5.2.2" | "SELF_DEPLOYED";
+export type VcfVersion =
+  | "VCF-5.2.1"
+  | "VCF-5.2.2"
+  | "SELF_DEPLOYED"
+  | (string & {});
 export const VcfVersion = /*@__PURE__*/ S.String;
 
 export interface InitialVlanInfo {
@@ -388,7 +394,7 @@ export type LicenseInfoList = LicenseInfo[];
 export const LicenseInfoList = /*@__PURE__*/ S.Array(LicenseInfo);
 export type HostName = string;
 export type KeyName = string;
-export type InstanceType = "i4i.metal" | "i7i.metal-24xl";
+export type InstanceType = "i4i.metal" | "i7i.metal-24xl" | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export type PlacementGroupId = string;
@@ -396,7 +402,7 @@ export type DedicatedHostId = string;
 export interface HostInfoForCreate {
   hostName: string;
   keyName: string;
-  instanceType: InstanceType | (string & {});
+  instanceType: InstanceType;
   placementGroupId?: string;
   dedicatedHostId?: string;
 }
@@ -445,7 +451,7 @@ export interface CreateEnvironmentRequest {
   serviceAccessSecurityGroups?: ServiceAccessSecurityGroups;
   vpcId: string;
   serviceAccessSubnetId: string;
-  vcfVersion: VcfVersion | (string & {});
+  vcfVersion: VcfVersion;
   termsAccepted: boolean;
   initialVlans: InitialVlans;
   connectivityInfo?: ConnectivityInfo;
@@ -482,11 +488,12 @@ export type EnvironmentState =
   | "CREATED"
   | "DELETING"
   | "DELETED"
-  | "CREATE_FAILED";
+  | "CREATE_FAILED"
+  | (string & {});
 export const EnvironmentState = /*@__PURE__*/ S.String;
 
 export type Arn = string;
-export type CheckResult = "PASSED" | "FAILED" | "UNKNOWN";
+export type CheckResult = "PASSED" | "FAILED" | "UNKNOWN" | (string & {});
 export const CheckResult = /*@__PURE__*/ S.String;
 
 export type CheckType =
@@ -502,7 +509,8 @@ export type CheckType =
   | "SDDC_MANAGER_HOST_COUNT"
   | "SDDC_MANAGER_KEY_COVERAGE"
   | "SDDC_MANAGER_KEY_REUSE"
-  | "CONNECTOR_HEALTH";
+  | "CONNECTOR_HEALTH"
+  | (string & {});
 export const CheckType = /*@__PURE__*/ S.String;
 
 export interface Check {
@@ -583,7 +591,11 @@ export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
-export type ConnectorType = "OPERATIONS_MANAGER" | "SDDC_MANAGER" | "VCENTER";
+export type ConnectorType =
+  | "OPERATIONS_MANAGER"
+  | "SDDC_MANAGER"
+  | "VCENTER"
+  | (string & {});
 export const ConnectorType = /*@__PURE__*/ S.String;
 
 export type ApplianceFqdn = string;
@@ -591,7 +603,7 @@ export type SecretIdentifier = string;
 export interface CreateEnvironmentConnectorRequest {
   clientToken?: string;
   environmentId: string;
-  type: ConnectorType | (string & {});
+  type: ConnectorType;
   applianceFqdn: string;
   secretIdentifier: string;
 }
@@ -615,7 +627,8 @@ export type ConnectorState =
   | "UPDATING"
   | "UPDATE_FAILED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ConnectorState = /*@__PURE__*/ S.String;
 
 export interface ConnectorCheck {
@@ -722,7 +735,8 @@ export type HostState =
   | "DELETING"
   | "DELETED"
   | "CREATE_FAILED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const HostState = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceId = string;
@@ -782,7 +796,7 @@ export interface DeleteEntitlementRequest {
   clientToken?: string;
   environmentId: string;
   connectorId: string;
-  entitlementType: EntitlementType | (string & {});
+  entitlementType: EntitlementType;
   vmIds: string[];
 }
 export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1066,12 +1080,12 @@ export const ListEnvironmentHostsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnvironmentHostsResponse",
 }) as any as S.Schema<ListEnvironmentHostsResponse>;
-export type EnvironmentStateList = (EnvironmentState | (string & {}))[];
+export type EnvironmentStateList = EnvironmentState[];
 export const EnvironmentStateList = /*@__PURE__*/ S.Array(EnvironmentState);
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
-  state?: (EnvironmentState | (string & {}))[];
+  state?: EnvironmentState[];
 }
 export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1156,7 +1170,7 @@ export interface ListVmEntitlementsRequest {
   maxResults?: number;
   environmentId: string;
   connectorId: string;
-  entitlementType: EntitlementType | (string & {});
+  entitlementType: EntitlementType;
 }
 export const ListVmEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1251,7 +1265,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

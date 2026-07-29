@@ -133,26 +133,37 @@ export const GetMedicalScribeStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMedicalScribeStreamRequest",
 }) as any as S.Schema<GetMedicalScribeStreamRequest>;
-export type MedicalScribeLanguageCode = "en-US";
+export type MedicalScribeLanguageCode = "en-US" | (string & {});
 export const MedicalScribeLanguageCode = /*@__PURE__*/ S.String;
 
 export type MedicalScribeMediaSampleRateHertz = number;
-export type MedicalScribeMediaEncoding = "pcm" | "ogg-opus" | "flac";
+export type MedicalScribeMediaEncoding =
+  | "pcm"
+  | "ogg-opus"
+  | "flac"
+  | (string & {});
 export const MedicalScribeMediaEncoding = /*@__PURE__*/ S.String;
 
 export type VocabularyName = string;
 export type VocabularyFilterName = string;
-export type MedicalScribeVocabularyFilterMethod = "remove" | "mask" | "tag";
+export type MedicalScribeVocabularyFilterMethod =
+  | "remove"
+  | "mask"
+  | "tag"
+  | (string & {});
 export const MedicalScribeVocabularyFilterMethod = /*@__PURE__*/ S.String;
 
 export type IamRoleArn = string;
 export type MedicalScribeChannelId = number;
-export type MedicalScribeParticipantRole = "PATIENT" | "CLINICIAN";
+export type MedicalScribeParticipantRole =
+  | "PATIENT"
+  | "CLINICIAN"
+  | (string & {});
 export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
-  ParticipantRole: MedicalScribeParticipantRole | (string & {});
+  ParticipantRole: MedicalScribeParticipantRole;
 }
 export const MedicalScribeChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189,7 +200,8 @@ export type MedicalScribeStreamStatus =
   | "IN_PROGRESS"
   | "PAUSED"
   | "FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const MedicalScribeStreamStatus = /*@__PURE__*/ S.String;
 
 export type BucketName = string;
@@ -200,12 +212,13 @@ export type MedicalScribeNoteTemplate =
   | "SIRP"
   | "BIRP"
   | "BEHAVIORAL_SOAP"
-  | "PHYSICAL_SOAP";
+  | "PHYSICAL_SOAP"
+  | (string & {});
 export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
 
 export interface ClinicalNoteGenerationSettings {
   OutputBucketName: string;
-  NoteTemplate?: MedicalScribeNoteTemplate | (string & {});
+  NoteTemplate?: MedicalScribeNoteTemplate;
 }
 export const ClinicalNoteGenerationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -230,7 +243,8 @@ export type Uri = string;
 export type ClinicalNoteGenerationStatus =
   | "IN_PROGRESS"
   | "FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const ClinicalNoteGenerationStatus = /*@__PURE__*/ S.String;
 
 export interface ClinicalNoteGenerationResult {
@@ -325,11 +339,12 @@ export type CallAnalyticsLanguageCode =
   | "en-AU"
   | "it-IT"
   | "de-DE"
-  | "pt-BR";
+  | "pt-BR"
+  | (string & {});
 export const CallAnalyticsLanguageCode = /*@__PURE__*/ S.String;
 
 export type MediaSampleRateHertz = number;
-export type MediaEncoding = "pcm" | "ogg-opus" | "flac";
+export type MediaEncoding = "pcm" | "ogg-opus" | "flac" | (string & {});
 export const MediaEncoding = /*@__PURE__*/ S.String;
 
 export type AudioChunk = Uint8Array;
@@ -340,12 +355,12 @@ export const AudioEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "AudioEvent" }) as any as S.Schema<AudioEvent>;
 export type ChannelId = number;
-export type ParticipantRole = "AGENT" | "CUSTOMER";
+export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
 
 export interface ChannelDefinition {
   ChannelId: number;
-  ParticipantRole: ParticipantRole | (string & {});
+  ParticipantRole: ParticipantRole;
 }
 export const ChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelId: S.Number, ParticipantRole: ParticipantRole }),
@@ -354,13 +369,16 @@ export const ChannelDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChannelDefinition>;
 export type ChannelDefinitions = ChannelDefinition[];
 export const ChannelDefinitions = /*@__PURE__*/ S.Array(ChannelDefinition);
-export type ContentRedactionOutput = "redacted" | "redacted_and_unredacted";
+export type ContentRedactionOutput =
+  | "redacted"
+  | "redacted_and_unredacted"
+  | (string & {});
 export const ContentRedactionOutput = /*@__PURE__*/ S.String;
 
 export interface PostCallAnalyticsSettings {
   OutputLocation: string;
   DataAccessRoleArn: string;
-  ContentRedactionOutput?: ContentRedactionOutput | (string & {});
+  ContentRedactionOutput?: ContentRedactionOutput;
   OutputEncryptionKMSKeyId?: string;
 }
 export const PostCallAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
@@ -394,42 +412,42 @@ export const AudioStream = /*@__PURE__*/ T.InputEventStream(
     S.Struct({ ConfigurationEvent: ConfigurationEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<AudioStream, Error, never>>;
-export type VocabularyFilterMethod = "remove" | "mask" | "tag";
+export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
 export const VocabularyFilterMethod = /*@__PURE__*/ S.String;
 
 export type ModelName = string;
 export type LanguageOptions = string;
 export type VocabularyNames = string;
 export type VocabularyFilterNames = string;
-export type PartialResultsStability = "high" | "medium" | "low";
+export type PartialResultsStability = "high" | "medium" | "low" | (string & {});
 export const PartialResultsStability = /*@__PURE__*/ S.String;
 
-export type ContentIdentificationType = "PII";
+export type ContentIdentificationType = "PII" | (string & {});
 export const ContentIdentificationType = /*@__PURE__*/ S.String;
 
-export type ContentRedactionType = "PII";
+export type ContentRedactionType = "PII" | (string & {});
 export const ContentRedactionType = /*@__PURE__*/ S.String;
 
 export type PiiEntityTypes = string;
 export interface StartCallAnalyticsStreamTranscriptionRequest {
-  LanguageCode?: CallAnalyticsLanguageCode | (string & {});
+  LanguageCode?: CallAnalyticsLanguageCode;
   MediaSampleRateHertz: number;
-  MediaEncoding: MediaEncoding | (string & {});
+  MediaEncoding: MediaEncoding;
   VocabularyName?: string;
   SessionId?: string;
   AudioStream: stream.Stream<AudioStream, Error, never>;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
+  VocabularyFilterMethod?: VocabularyFilterMethod;
   LanguageModelName?: string;
   IdentifyLanguage?: boolean;
   LanguageOptions?: string;
-  PreferredLanguage?: CallAnalyticsLanguageCode | (string & {});
+  PreferredLanguage?: CallAnalyticsLanguageCode;
   VocabularyNames?: string;
   VocabularyFilterNames?: string;
   EnablePartialResultsStabilization?: boolean;
-  PartialResultsStability?: PartialResultsStability | (string & {});
-  ContentIdentificationType?: ContentIdentificationType | (string & {});
-  ContentRedactionType?: ContentRedactionType | (string & {});
+  PartialResultsStability?: PartialResultsStability;
+  ContentIdentificationType?: ContentIdentificationType;
+  ContentRedactionType?: ContentRedactionType;
   PiiEntityTypes?: string;
 }
 export const StartCallAnalyticsStreamTranscriptionRequest =
@@ -504,7 +522,7 @@ export const StartCallAnalyticsStreamTranscriptionRequest =
     identifier: "StartCallAnalyticsStreamTranscriptionRequest",
   }) as any as S.Schema<StartCallAnalyticsStreamTranscriptionRequest>;
 export type RequestId = string;
-export type ItemType = "pronunciation" | "punctuation";
+export type ItemType = "pronunciation" | "punctuation" | (string & {});
 export const ItemType = /*@__PURE__*/ S.String;
 
 export type Confidence = number;
@@ -556,7 +574,12 @@ export const CallAnalyticsEntity = /*@__PURE__*/ S.suspend(() =>
 export type CallAnalyticsEntityList = CallAnalyticsEntity[];
 export const CallAnalyticsEntityList =
   /*@__PURE__*/ S.Array(CallAnalyticsEntity);
-export type Sentiment = "POSITIVE" | "NEGATIVE" | "MIXED" | "NEUTRAL";
+export type Sentiment =
+  | "POSITIVE"
+  | "NEGATIVE"
+  | "MIXED"
+  | "NEUTRAL"
+  | (string & {});
 export const Sentiment = /*@__PURE__*/ S.String;
 
 export interface CharacterOffsets {
@@ -858,22 +881,24 @@ export const MedicalScribeAudioEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MedicalScribeAudioEvent",
 }) as any as S.Schema<MedicalScribeAudioEvent>;
-export type MedicalScribeSessionControlEventType = "END_OF_SESSION";
+export type MedicalScribeSessionControlEventType =
+  | "END_OF_SESSION"
+  | (string & {});
 export const MedicalScribeSessionControlEventType = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeSessionControlEvent {
-  Type: MedicalScribeSessionControlEventType | (string & {});
+  Type: MedicalScribeSessionControlEventType;
 }
 export const MedicalScribeSessionControlEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: MedicalScribeSessionControlEventType }),
 ).annotate({
   identifier: "MedicalScribeSessionControlEvent",
 }) as any as S.Schema<MedicalScribeSessionControlEvent>;
-export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM";
+export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = /*@__PURE__*/ S.String;
 
 export interface MedicalScribePatientContext {
-  Pronouns?: Pronouns | (string & {});
+  Pronouns?: Pronouns;
 }
 export const MedicalScribePatientContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Pronouns: S.optional(Pronouns) }),
@@ -891,7 +916,7 @@ export const MedicalScribeContext = /*@__PURE__*/ S.suspend(() =>
 export interface MedicalScribeConfigurationEvent {
   VocabularyName?: string;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: MedicalScribeVocabularyFilterMethod | (string & {});
+  VocabularyFilterMethod?: MedicalScribeVocabularyFilterMethod;
   ResourceAccessRoleArn: string;
   ChannelDefinitions?: MedicalScribeChannelDefinition[];
   EncryptionSettings?: MedicalScribeEncryptionSettings;
@@ -937,9 +962,9 @@ export const MedicalScribeInputStream = /*@__PURE__*/ T.InputEventStream(
 ) as any as S.Schema<stream.Stream<MedicalScribeInputStream, Error, never>>;
 export interface StartMedicalScribeStreamRequest {
   SessionId?: string;
-  LanguageCode: MedicalScribeLanguageCode | (string & {});
+  LanguageCode: MedicalScribeLanguageCode;
   MediaSampleRateHertz: number;
-  MediaEncoding: MedicalScribeMediaEncoding | (string & {});
+  MediaEncoding: MedicalScribeMediaEncoding;
   InputStream: stream.Stream<MedicalScribeInputStream, Error, never>;
 }
 export const StartMedicalScribeStreamRequest = /*@__PURE__*/ S.suspend(() =>
@@ -970,7 +995,10 @@ export const StartMedicalScribeStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartMedicalScribeStreamRequest",
 }) as any as S.Schema<StartMedicalScribeStreamRequest>;
-export type MedicalScribeTranscriptItemType = "pronunciation" | "punctuation";
+export type MedicalScribeTranscriptItemType =
+  | "pronunciation"
+  | "punctuation"
+  | (string & {});
 export const MedicalScribeTranscriptItemType = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeTranscriptItem {
@@ -1233,7 +1261,8 @@ export type LanguageCode =
   | "ta-IN"
   | "te-IN"
   | "tr-TR"
-  | "uz-UZ";
+  | "uz-UZ"
+  | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export type Specialty =
@@ -1242,29 +1271,30 @@ export type Specialty =
   | "NEUROLOGY"
   | "ONCOLOGY"
   | "RADIOLOGY"
-  | "UROLOGY";
+  | "UROLOGY"
+  | (string & {});
 export const Specialty = /*@__PURE__*/ S.String;
 
-export type Type = "CONVERSATION" | "DICTATION";
+export type Type = "CONVERSATION" | "DICTATION" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export type NumberOfChannels = number;
-export type MedicalContentIdentificationType = "PHI";
+export type MedicalContentIdentificationType = "PHI" | (string & {});
 export const MedicalContentIdentificationType = /*@__PURE__*/ S.String;
 
 export interface StartMedicalStreamTranscriptionRequest {
-  LanguageCode: LanguageCode | (string & {});
+  LanguageCode: LanguageCode;
   MediaSampleRateHertz: number;
-  MediaEncoding: MediaEncoding | (string & {});
+  MediaEncoding: MediaEncoding;
   VocabularyName?: string;
-  Specialty: Specialty | (string & {});
-  Type: Type | (string & {});
+  Specialty: Specialty;
+  Type: Type;
   ShowSpeakerLabel?: boolean;
   SessionId?: string;
   AudioStream: stream.Stream<AudioStream, Error, never>;
   EnableChannelIdentification?: boolean;
   NumberOfChannels?: number;
-  ContentIdentificationType?: MedicalContentIdentificationType | (string & {});
+  ContentIdentificationType?: MedicalContentIdentificationType;
 }
 export const StartMedicalStreamTranscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1546,26 +1576,26 @@ export const StartMedicalStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StartMedicalStreamTranscriptionResponse>;
 export type SessionResumeWindow = number;
 export interface StartStreamTranscriptionRequest {
-  LanguageCode?: LanguageCode | (string & {});
+  LanguageCode?: LanguageCode;
   MediaSampleRateHertz: number;
-  MediaEncoding: MediaEncoding | (string & {});
+  MediaEncoding: MediaEncoding;
   VocabularyName?: string;
   SessionId?: string;
   AudioStream: stream.Stream<AudioStream, Error, never>;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
+  VocabularyFilterMethod?: VocabularyFilterMethod;
   ShowSpeakerLabel?: boolean;
   EnableChannelIdentification?: boolean;
   NumberOfChannels?: number;
   EnablePartialResultsStabilization?: boolean;
-  PartialResultsStability?: PartialResultsStability | (string & {});
-  ContentIdentificationType?: ContentIdentificationType | (string & {});
-  ContentRedactionType?: ContentRedactionType | (string & {});
+  PartialResultsStability?: PartialResultsStability;
+  ContentIdentificationType?: ContentIdentificationType;
+  ContentRedactionType?: ContentRedactionType;
   PiiEntityTypes?: string;
   LanguageModelName?: string;
   IdentifyLanguage?: boolean;
   LanguageOptions?: string;
-  PreferredLanguage?: LanguageCode | (string & {});
+  PreferredLanguage?: LanguageCode;
   IdentifyMultipleLanguages?: boolean;
   VocabularyNames?: string;
   VocabularyFilterNames?: string;

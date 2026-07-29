@@ -226,7 +226,8 @@ export type ClientToken = string;
 export type FindingPublishingFrequency =
   | "FIFTEEN_MINUTES"
   | "ONE_HOUR"
-  | "SIX_HOURS";
+  | "SIX_HOURS"
+  | (string & {});
 export const FindingPublishingFrequency = /*@__PURE__*/ S.String;
 
 export interface S3LogsConfiguration {
@@ -317,21 +318,23 @@ export type DetectorFeature =
   | "RDS_LOGIN_EVENTS"
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
-  | "RUNTIME_MONITORING";
+  | "RUNTIME_MONITORING"
+  | (string & {});
 export const DetectorFeature = /*@__PURE__*/ S.String;
 
-export type FeatureStatus = "ENABLED" | "DISABLED";
+export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 export type FeatureAdditionalConfiguration =
   | "EKS_ADDON_MANAGEMENT"
   | "ECS_FARGATE_AGENT_MANAGEMENT"
-  | "EC2_AGENT_MANAGEMENT";
+  | "EC2_AGENT_MANAGEMENT"
+  | (string & {});
 export const FeatureAdditionalConfiguration = /*@__PURE__*/ S.String;
 
 export interface DetectorAdditionalConfiguration {
-  Name?: FeatureAdditionalConfiguration | (string & {});
-  Status?: FeatureStatus | (string & {});
+  Name?: FeatureAdditionalConfiguration;
+  Status?: FeatureStatus;
 }
 export const DetectorAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -347,8 +350,8 @@ export const DetectorAdditionalConfigurations = /*@__PURE__*/ S.Array(
   DetectorAdditionalConfiguration,
 );
 export interface DetectorFeatureConfiguration {
-  Name?: DetectorFeature | (string & {});
-  Status?: FeatureStatus | (string & {});
+  Name?: DetectorFeature;
+  Status?: FeatureStatus;
   AdditionalConfiguration?: DetectorAdditionalConfiguration[];
 }
 export const DetectorFeatureConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -373,7 +376,7 @@ export const DetectorFeatureConfigurations = /*@__PURE__*/ S.Array(
 export interface CreateDetectorRequest {
   Enable?: boolean;
   ClientToken?: string;
-  FindingPublishingFrequency?: FindingPublishingFrequency | (string & {});
+  FindingPublishingFrequency?: FindingPublishingFrequency;
   DataSources?: DataSourceConfigurations;
   Tags?: { [key: string]: string | undefined };
   Features?: DetectorFeatureConfiguration[];
@@ -410,7 +413,7 @@ export const CreateDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDetectorRequest",
 }) as any as S.Schema<CreateDetectorRequest>;
-export type DataSourceStatus = "ENABLED" | "DISABLED";
+export type DataSourceStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 export interface EbsVolumesResult {
@@ -484,7 +487,7 @@ export const CreateDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDetectorResponse>;
 export type FilterName = string;
 export type FilterDescription = string;
-export type FilterAction = "NOOP" | "ARCHIVE";
+export type FilterAction = "NOOP" | "ARCHIVE" | (string & {});
 export const FilterAction = /*@__PURE__*/ S.String;
 
 export type FilterRank = number;
@@ -572,7 +575,7 @@ export interface CreateFilterRequest {
   DetectorId: string;
   Name?: string;
   Description?: string;
-  Action?: FilterAction | (string & {});
+  Action?: FilterAction;
   Rank?: number;
   FindingCriteria?: FindingCriteria;
   ClientToken?: string;
@@ -670,7 +673,8 @@ export type IpSetFormat =
   | "OTX_CSV"
   | "ALIEN_VAULT"
   | "PROOF_POINT"
-  | "FIRE_EYE";
+  | "FIRE_EYE"
+  | (string & {});
 export const IpSetFormat = /*@__PURE__*/ S.String;
 
 export type Location = string;
@@ -678,7 +682,7 @@ export type AccountId = string;
 export interface CreateIPSetRequest {
   DetectorId: string;
   Name?: string;
-  Format?: IpSetFormat | (string & {});
+  Format?: IpSetFormat;
   Location?: string;
   Activate?: boolean;
   ClientToken?: string;
@@ -761,11 +765,14 @@ export const CreateProtectedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProtectedResource",
 }) as any as S.Schema<CreateProtectedResource>;
-export type MalwareProtectionPlanTaggingActionStatus = "ENABLED" | "DISABLED";
+export type MalwareProtectionPlanTaggingActionStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const MalwareProtectionPlanTaggingActionStatus = /*@__PURE__*/ S.String;
 
 export interface MalwareProtectionPlanTaggingAction {
-  Status?: MalwareProtectionPlanTaggingActionStatus | (string & {});
+  Status?: MalwareProtectionPlanTaggingActionStatus;
 }
 export const MalwareProtectionPlanTaggingAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -894,7 +901,7 @@ export const CreateMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMembersResponse",
 }) as any as S.Schema<CreateMembersResponse>;
-export type DestinationType = "S3";
+export type DestinationType = "S3" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
 
 export interface DestinationProperties {
@@ -913,7 +920,7 @@ export const DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationProperties>;
 export interface CreatePublishingDestinationRequest {
   DetectorId: string;
-  DestinationType?: DestinationType | (string & {});
+  DestinationType?: DestinationType;
   DestinationProperties?: DestinationProperties;
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
@@ -1001,14 +1008,15 @@ export type ThreatEntitySetFormat =
   | "OTX_CSV"
   | "ALIEN_VAULT"
   | "PROOF_POINT"
-  | "FIRE_EYE";
+  | "FIRE_EYE"
+  | (string & {});
 export const ThreatEntitySetFormat = /*@__PURE__*/ S.String;
 
 export type ExpectedBucketOwner = string;
 export interface CreateThreatEntitySetRequest {
   DetectorId: string;
   Name?: string;
-  Format?: ThreatEntitySetFormat | (string & {});
+  Format?: ThreatEntitySetFormat;
   Location?: string;
   ExpectedBucketOwner?: string;
   Activate?: boolean;
@@ -1069,13 +1077,14 @@ export type ThreatIntelSetFormat =
   | "OTX_CSV"
   | "ALIEN_VAULT"
   | "PROOF_POINT"
-  | "FIRE_EYE";
+  | "FIRE_EYE"
+  | (string & {});
 export const ThreatIntelSetFormat = /*@__PURE__*/ S.String;
 
 export interface CreateThreatIntelSetRequest {
   DetectorId: string;
   Name?: string;
-  Format?: ThreatIntelSetFormat | (string & {});
+  Format?: ThreatIntelSetFormat;
   Location?: string;
   Activate?: boolean;
   ClientToken?: string;
@@ -1136,13 +1145,14 @@ export type TrustedEntitySetFormat =
   | "OTX_CSV"
   | "ALIEN_VAULT"
   | "PROOF_POINT"
-  | "FIRE_EYE";
+  | "FIRE_EYE"
+  | (string & {});
 export const TrustedEntitySetFormat = /*@__PURE__*/ S.String;
 
 export interface CreateTrustedEntitySetRequest {
   DetectorId: string;
   Name?: string;
-  Format?: TrustedEntitySetFormat | (string & {});
+  Format?: TrustedEntitySetFormat;
   Location?: string;
   ExpectedBucketOwner?: string;
   Activate?: boolean;
@@ -1542,7 +1552,8 @@ export type CriterionKey =
   | "GUARDDUTY_FINDING_ID"
   | "SCAN_START_TIME"
   | "SCAN_STATUS"
-  | "SCAN_TYPE";
+  | "SCAN_TYPE"
+  | (string & {});
 export const CriterionKey = /*@__PURE__*/ S.String;
 
 export type NonEmptyString = string;
@@ -1568,7 +1579,7 @@ export const FilterCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilterCondition",
 }) as any as S.Schema<FilterCondition>;
 export interface FilterCriterion {
-  CriterionKey?: CriterionKey | (string & {});
+  CriterionKey?: CriterionKey;
   FilterCondition?: FilterCondition;
 }
 export const FilterCriterion = /*@__PURE__*/ S.suspend(() =>
@@ -1594,12 +1605,12 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ FilterCriterion: "filterCriterion" }),
   ),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
-export type OrderBy = "ASC" | "DESC";
+export type OrderBy = "ASC" | "DESC" | (string & {});
 export const OrderBy = /*@__PURE__*/ S.String;
 
 export interface SortCriteria {
   AttributeName?: string;
-  OrderBy?: OrderBy | (string & {});
+  OrderBy?: OrderBy;
 }
 export const SortCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1643,10 +1654,15 @@ export const DescribeMalwareScansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMalwareScansRequest",
 }) as any as S.Schema<DescribeMalwareScansRequest>;
-export type ScanStatus = "RUNNING" | "COMPLETED" | "FAILED" | "SKIPPED";
+export type ScanStatus =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | "SKIPPED"
+  | (string & {});
 export const ScanStatus = /*@__PURE__*/ S.String;
 
-export type TriggerType = "BACKUP" | "GUARDDUTY";
+export type TriggerType = "BACKUP" | "GUARDDUTY" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 export interface TriggerDetails {
@@ -1678,7 +1694,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceDetails",
 }) as any as S.Schema<ResourceDetails>;
-export type ScanResult = "CLEAN" | "INFECTED";
+export type ScanResult = "CLEAN" | "INFECTED" | (string & {});
 export const ScanResult = /*@__PURE__*/ S.String;
 
 export interface ScanResultDetails {
@@ -1724,7 +1740,7 @@ export const VolumeDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeDetail" }) as any as S.Schema<VolumeDetail>;
 export type VolumeDetails = VolumeDetail[];
 export const VolumeDetails = /*@__PURE__*/ S.Array(VolumeDetail);
-export type ScanType = "GUARDDUTY_INITIATED" | "ON_DEMAND";
+export type ScanType = "GUARDDUTY_INITIATED" | "ON_DEMAND" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
 
 export interface Scan {
@@ -1920,16 +1936,18 @@ export type OrgFeature =
   | "RDS_LOGIN_EVENTS"
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
-  | "RUNTIME_MONITORING";
+  | "RUNTIME_MONITORING"
+  | (string & {});
 export const OrgFeature = /*@__PURE__*/ S.String;
 
-export type OrgFeatureStatus = "NEW" | "NONE" | "ALL";
+export type OrgFeatureStatus = "NEW" | "NONE" | "ALL" | (string & {});
 export const OrgFeatureStatus = /*@__PURE__*/ S.String;
 
 export type OrgFeatureAdditionalConfiguration =
   | "EKS_ADDON_MANAGEMENT"
   | "ECS_FARGATE_AGENT_MANAGEMENT"
-  | "EC2_AGENT_MANAGEMENT";
+  | "EC2_AGENT_MANAGEMENT"
+  | (string & {});
 export const OrgFeatureAdditionalConfiguration = /*@__PURE__*/ S.String;
 
 export interface OrganizationAdditionalConfigurationResult {
@@ -1978,7 +1996,7 @@ export type OrganizationFeaturesConfigurationsResults =
 export const OrganizationFeaturesConfigurationsResults = /*@__PURE__*/ S.Array(
   OrganizationFeatureConfigurationResult,
 );
-export type AutoEnableMembers = "NEW" | "ALL" | "NONE";
+export type AutoEnableMembers = "NEW" | "ALL" | "NONE" | (string & {});
 export const AutoEnableMembers = /*@__PURE__*/ S.String;
 
 export interface DescribeOrganizationConfigurationResponse {
@@ -2047,7 +2065,8 @@ export type PublishingStatus =
   | "PENDING_VERIFICATION"
   | "PUBLISHING"
   | "UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const PublishingStatus = /*@__PURE__*/ S.String;
 
 export interface DescribePublishingDestinationResponse {
@@ -2283,7 +2302,8 @@ export type CoverageFilterCriterionKey =
   | "EKS_CLUSTER_NAME"
   | "AGENT_VERSION"
   | "INSTANCE_ID"
-  | "CLUSTER_ARN";
+  | "CLUSTER_ARN"
+  | (string & {});
 export const CoverageFilterCriterionKey = /*@__PURE__*/ S.String;
 
 export interface CoverageFilterCondition {
@@ -2299,7 +2319,7 @@ export const CoverageFilterCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "CoverageFilterCondition",
 }) as any as S.Schema<CoverageFilterCondition>;
 export interface CoverageFilterCriterion {
-  CriterionKey?: CoverageFilterCriterionKey | (string & {});
+  CriterionKey?: CoverageFilterCriterionKey;
   FilterCondition?: CoverageFilterCondition;
 }
 export const CoverageFilterCriterion = /*@__PURE__*/ S.suspend(() =>
@@ -2331,20 +2351,18 @@ export const CoverageFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CoverageFilterCriteria>;
 export type CoverageStatisticsType =
   | "COUNT_BY_RESOURCE_TYPE"
-  | "COUNT_BY_COVERAGE_STATUS";
+  | "COUNT_BY_COVERAGE_STATUS"
+  | (string & {});
 export const CoverageStatisticsType = /*@__PURE__*/ S.String;
 
-export type CoverageStatisticsTypeList = (
-  | CoverageStatisticsType
-  | (string & {})
-)[];
+export type CoverageStatisticsTypeList = CoverageStatisticsType[];
 export const CoverageStatisticsTypeList = /*@__PURE__*/ S.Array(
   CoverageStatisticsType,
 );
 export interface GetCoverageStatisticsRequest {
   DetectorId: string;
   FilterCriteria?: CoverageFilterCriteria;
-  StatisticsType?: (CoverageStatisticsType | (string & {}))[];
+  StatisticsType?: CoverageStatisticsType[];
 }
 export const GetCoverageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2374,7 +2392,7 @@ export const GetCoverageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCoverageStatisticsRequest",
 }) as any as S.Schema<GetCoverageStatisticsRequest>;
-export type ResourceType = "EKS" | "ECS" | "EC2";
+export type ResourceType = "EKS" | "ECS" | "EC2" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type CountByResourceType = { [key in ResourceType]?: number };
@@ -2382,7 +2400,7 @@ export const CountByResourceType = /*@__PURE__*/ S.Record(
   ResourceType,
   S.Number.pipe(S.optional),
 );
-export type CoverageStatus = "HEALTHY" | "UNHEALTHY";
+export type CoverageStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoverageStatus = /*@__PURE__*/ S.String;
 
 export type CountByCoverageStatus = { [key in CoverageStatus]?: number };
@@ -2434,7 +2452,7 @@ export const GetDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDetectorRequest",
 }) as any as S.Schema<GetDetectorRequest>;
-export type DetectorStatus = "ENABLED" | "DISABLED";
+export type DetectorStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DetectorStatus = /*@__PURE__*/ S.String;
 
 export interface CloudTrailConfigurationResult {
@@ -2537,7 +2555,8 @@ export type DetectorFeatureResult =
   | "RDS_LOGIN_EVENTS"
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
-  | "RUNTIME_MONITORING";
+  | "RUNTIME_MONITORING"
+  | (string & {});
 export const DetectorFeatureResult = /*@__PURE__*/ S.String;
 
 export interface DetectorAdditionalConfigurationResult {
@@ -4514,10 +4533,15 @@ export const RuntimeDetails = /*@__PURE__*/ S.suspend(() =>
     Context: S.optional(RuntimeContext),
   }).pipe(S.encodeKeys({ Process: "process", Context: "context" })),
 ).annotate({ identifier: "RuntimeDetails" }) as any as S.Schema<RuntimeDetails>;
-export type ProfileType = "FREQUENCY";
+export type ProfileType = "FREQUENCY" | (string & {});
 export const ProfileType = /*@__PURE__*/ S.String;
 
-export type ProfileSubtype = "FREQUENT" | "INFREQUENT" | "UNSEEN" | "RARE";
+export type ProfileSubtype =
+  | "FREQUENT"
+  | "INFREQUENT"
+  | "UNSEEN"
+  | "RARE"
+  | (string & {});
 export const ProfileSubtype = /*@__PURE__*/ S.String;
 
 export type ObservationTexts = string[];
@@ -4635,7 +4659,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
-export type MfaStatus = "ENABLED" | "DISABLED";
+export type MfaStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MfaStatus = /*@__PURE__*/ S.String;
 
 export interface Session {
@@ -4713,16 +4737,20 @@ export type FindingResourceType =
   | "CLOUDFORMATION_STACK"
   | "EC2_LAUNCH_TEMPLATE"
   | "EC2_VPC"
-  | "EC2_IMAGE";
+  | "EC2_IMAGE"
+  | (string & {});
 export const FindingResourceType = /*@__PURE__*/ S.String;
 
-export type PublicAccessStatus = "BLOCKED" | "ALLOWED";
+export type PublicAccessStatus = "BLOCKED" | "ALLOWED" | (string & {});
 export const PublicAccessStatus = /*@__PURE__*/ S.String;
 
-export type PublicAclIgnoreBehavior = "IGNORED" | "NOT_IGNORED";
+export type PublicAclIgnoreBehavior = "IGNORED" | "NOT_IGNORED" | (string & {});
 export const PublicAclIgnoreBehavior = /*@__PURE__*/ S.String;
 
-export type PublicBucketRestrictBehavior = "RESTRICTED" | "NOT_RESTRICTED";
+export type PublicBucketRestrictBehavior =
+  | "RESTRICTED"
+  | "NOT_RESTRICTED"
+  | (string & {});
 export const PublicBucketRestrictBehavior = /*@__PURE__*/ S.String;
 
 export interface PublicAccessConfiguration {
@@ -4891,7 +4919,8 @@ export type ClusterStatus =
   | "DELETING"
   | "FAILED"
   | "UPDATING"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export type Ec2InstanceUid = string;
@@ -4932,7 +4961,8 @@ export type KubernetesResourcesTypes =
   | "DAEMONSETS"
   | "STATEFULSETS"
   | "REPLICASETS"
-  | "REPLICATIONCONTROLLERS";
+  | "REPLICATIONCONTROLLERS"
+  | (string & {});
 export const KubernetesResourcesTypes = /*@__PURE__*/ S.String;
 
 export interface KubernetesWorkload {
@@ -4973,7 +5003,8 @@ export type EcsClusterStatus =
   | "PROVISIONING"
   | "DEPROVISIONING"
   | "FAILED"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const EcsClusterStatus = /*@__PURE__*/ S.String;
 
 export interface EcsCluster {
@@ -4988,7 +5019,7 @@ export const EcsCluster = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ Status: "status", Ec2InstanceUids: "ec2InstanceUids" }),
   ),
 ).annotate({ identifier: "EcsCluster" }) as any as S.Schema<EcsCluster>;
-export type EcsLaunchType = "FARGATE" | "EC2";
+export type EcsLaunchType = "FARGATE" | "EC2" | (string & {});
 export const EcsLaunchType = /*@__PURE__*/ S.String;
 
 export interface EcsTask {
@@ -5202,7 +5233,7 @@ export const AutonomousSystem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutonomousSystem",
 }) as any as S.Schema<AutonomousSystem>;
-export type NetworkDirection = "INBOUND" | "OUTBOUND";
+export type NetworkDirection = "INBOUND" | "OUTBOUND" | (string & {});
 export const NetworkDirection = /*@__PURE__*/ S.String;
 
 export interface NetworkConnection {
@@ -5256,7 +5287,8 @@ export type SignalType =
   | "EKS_AUDIT_LOGS"
   | "FLOW_LOGS"
   | "DNS_LOGS"
-  | "RUNTIME_MONITORING";
+  | "RUNTIME_MONITORING"
+  | (string & {});
 export const SignalType = /*@__PURE__*/ S.String;
 
 export type SignalDescription = string;
@@ -5288,7 +5320,8 @@ export type IndicatorType =
   | "MALICIOUS_PACKAGE"
   | "MISCONFIGURATION"
   | "REACHABILITY"
-  | "SENSITIVE_DATA";
+  | "SENSITIVE_DATA"
+  | (string & {});
 export const IndicatorType = /*@__PURE__*/ S.String;
 
 export type IndicatorValueString = string;
@@ -5484,10 +5517,11 @@ export const Threats = /*@__PURE__*/ S.Array(Threat);
 export type MalwareProtectionScanType =
   | "BACKUP_INITIATED"
   | "ON_DEMAND"
-  | "GUARDDUTY_INITIATED";
+  | "GUARDDUTY_INITIATED"
+  | (string & {});
 export const MalwareProtectionScanType = /*@__PURE__*/ S.String;
 
-export type ScanCategory = "FULL_SCAN" | "INCREMENTAL_SCAN";
+export type ScanCategory = "FULL_SCAN" | "INCREMENTAL_SCAN" | (string & {});
 export const ScanCategory = /*@__PURE__*/ S.String;
 
 export interface IncrementalScanDetails {
@@ -5742,10 +5776,10 @@ export const GetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFindingsResponse",
 }) as any as S.Schema<GetFindingsResponse>;
-export type FindingStatisticType = "COUNT_BY_SEVERITY";
+export type FindingStatisticType = "COUNT_BY_SEVERITY" | (string & {});
 export const FindingStatisticType = /*@__PURE__*/ S.String;
 
-export type FindingStatisticTypes = (FindingStatisticType | (string & {}))[];
+export type FindingStatisticTypes = FindingStatisticType[];
 export const FindingStatisticTypes =
   /*@__PURE__*/ S.Array(FindingStatisticType);
 export type GroupByType =
@@ -5753,16 +5787,17 @@ export type GroupByType =
   | "DATE"
   | "FINDING_TYPE"
   | "RESOURCE"
-  | "SEVERITY";
+  | "SEVERITY"
+  | (string & {});
 export const GroupByType = /*@__PURE__*/ S.String;
 
 export type MaxResults100 = number;
 export interface GetFindingsStatisticsRequest {
   DetectorId: string;
-  FindingStatisticTypes?: (FindingStatisticType | (string & {}))[];
+  FindingStatisticTypes?: FindingStatisticType[];
   FindingCriteria?: FindingCriteria;
-  GroupBy?: GroupByType | (string & {});
-  OrderBy?: OrderBy | (string & {});
+  GroupBy?: GroupByType;
+  OrderBy?: OrderBy;
   MaxResults?: number;
 }
 export const GetFindingsStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6003,7 +6038,11 @@ export const GetInvestigationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInvestigationRequest",
 }) as any as S.Schema<GetInvestigationRequest>;
-export type InvestigationStatus = "RUNNING" | "COMPLETED" | "FAILED";
+export type InvestigationStatus =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const InvestigationStatus = /*@__PURE__*/ S.String;
 
 export type TriggeredBy = string;
@@ -6028,7 +6067,7 @@ export const InvestigationMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvestigationMetadata",
 }) as any as S.Schema<InvestigationMetadata>;
-export type CloudProvider = "AWS";
+export type CloudProvider = "AWS" | (string & {});
 export const CloudProvider = /*@__PURE__*/ S.String;
 
 export interface CloudDetails {
@@ -6049,11 +6088,17 @@ export const CloudDetails = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "CloudDetails" }) as any as S.Schema<CloudDetails>;
-export type RiskLevel = "Info" | "Low" | "Medium" | "High" | "Critical";
+export type RiskLevel =
+  | "Info"
+  | "Low"
+  | "Medium"
+  | "High"
+  | "Critical"
+  | (string & {});
 export const RiskLevel = /*@__PURE__*/ S.String;
 
 export type RiskDetails = string;
-export type Confidence = "Unknown" | "Low" | "Medium" | "High";
+export type Confidence = "Unknown" | "Low" | "Medium" | "High" | (string & {});
 export const Confidence = /*@__PURE__*/ S.String;
 
 export type InvestigationErrorDetails = string;
@@ -6182,7 +6227,8 @@ export type IpSetStatus =
   | "DEACTIVATING"
   | "ERROR"
   | "DELETE_PENDING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const IpSetStatus = /*@__PURE__*/ S.String;
 
 export interface GetIPSetResponse {
@@ -6238,7 +6284,11 @@ export const GetMalwareProtectionPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMalwareProtectionPlanRequest",
 }) as any as S.Schema<GetMalwareProtectionPlanRequest>;
-export type MalwareProtectionPlanStatus = "ACTIVE" | "WARNING" | "ERROR";
+export type MalwareProtectionPlanStatus =
+  | "ACTIVE"
+  | "WARNING"
+  | "ERROR"
+  | (string & {});
 export const MalwareProtectionPlanStatus = /*@__PURE__*/ S.String;
 
 export interface MalwareProtectionPlanStatusReason {
@@ -6318,7 +6368,8 @@ export type MalwareProtectionResourceType =
   | "EC2_RECOVERY_POINT"
   | "S3_RECOVERY_POINT"
   | "S3_BUCKET"
-  | "S3_POINT_IN_TIME_RECOVERY";
+  | "S3_POINT_IN_TIME_RECOVERY"
+  | (string & {});
 export const MalwareProtectionResourceType = /*@__PURE__*/ S.String;
 
 export type NonNegativeInteger = number;
@@ -6327,7 +6378,8 @@ export type MalwareProtectionScanStatus =
   | "COMPLETED"
   | "COMPLETED_WITH_ISSUES"
   | "FAILED"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const MalwareProtectionScanStatus = /*@__PURE__*/ S.String;
 
 export type ScanStatusReason =
@@ -6347,7 +6399,8 @@ export type ScanStatusReason =
   | "UNSUPPORTED_AMI"
   | "UNSUPPORTED_SNAPSHOT"
   | "UNSUPPORTED_COMPOSITE_RECOVERY_POINT"
-  | "ALL_FILES_SKIPPED_OR_FAILED";
+  | "ALL_FILES_SKIPPED_OR_FAILED"
+  | (string & {});
 export const ScanStatusReason = /*@__PURE__*/ S.String;
 
 export interface EbsSnapshot {
@@ -6451,10 +6504,13 @@ export const ScanConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScanConfiguration",
 }) as any as S.Schema<ScanConfiguration>;
-export type ScanResultStatus = "NO_THREATS_FOUND" | "THREATS_FOUND";
+export type ScanResultStatus =
+  | "NO_THREATS_FOUND"
+  | "THREATS_FOUND"
+  | (string & {});
 export const ScanResultStatus = /*@__PURE__*/ S.String;
 
-export type DetectionSource = "AMAZON" | "BITDEFENDER";
+export type DetectionSource = "AMAZON" | "BITDEFENDER" | (string & {});
 export const DetectionSource = /*@__PURE__*/ S.String;
 
 export interface ScanResultThreat {
@@ -6608,7 +6664,7 @@ export const GetMalwareScanSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMalwareScanSettingsRequest",
 }) as any as S.Schema<GetMalwareScanSettingsRequest>;
-export type ScanCriterionKey = "EC2_INSTANCE_TAG";
+export type ScanCriterionKey = "EC2_INSTANCE_TAG" | (string & {});
 export const ScanCriterionKey = /*@__PURE__*/ S.String;
 
 export interface ScanConditionPair {
@@ -6632,9 +6688,7 @@ export const ScanCondition = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ MapEquals: "mapEquals" }),
   ),
 ).annotate({ identifier: "ScanCondition" }) as any as S.Schema<ScanCondition>;
-export type ScanCriterion = {
-  [key in ScanCriterionKey | (string & {})]?: ScanCondition;
-};
+export type ScanCriterion = { [key in ScanCriterionKey]?: ScanCondition };
 export const ScanCriterion = /*@__PURE__*/ S.Record(
   ScanCriterionKey,
   ScanCondition.pipe(S.optional),
@@ -6651,7 +6705,10 @@ export const ScanResourceCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScanResourceCriteria",
 }) as any as S.Schema<ScanResourceCriteria>;
-export type EbsSnapshotPreservation = "NO_RETENTION" | "RETENTION_WITH_FINDING";
+export type EbsSnapshotPreservation =
+  | "NO_RETENTION"
+  | "RETENTION_WITH_FINDING"
+  | (string & {});
 export const EbsSnapshotPreservation = /*@__PURE__*/ S.String;
 
 export interface GetMalwareScanSettingsResponse {
@@ -7168,7 +7225,8 @@ export type FreeTrialFeatureResult =
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
   | "EC2_RUNTIME_MONITORING"
-  | "FARGATE_RUNTIME_MONITORING";
+  | "FARGATE_RUNTIME_MONITORING"
+  | (string & {});
 export const FreeTrialFeatureResult = /*@__PURE__*/ S.String;
 
 export interface FreeTrialFeatureConfigurationResult {
@@ -7269,7 +7327,8 @@ export type ThreatEntitySetStatus =
   | "DEACTIVATING"
   | "ERROR"
   | "DELETE_PENDING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ThreatEntitySetStatus = /*@__PURE__*/ S.String;
 
 export interface GetThreatEntitySetResponse {
@@ -7341,7 +7400,8 @@ export type ThreatIntelSetStatus =
   | "DEACTIVATING"
   | "ERROR"
   | "DELETE_PENDING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ThreatIntelSetStatus = /*@__PURE__*/ S.String;
 
 export interface GetThreatIntelSetResponse {
@@ -7404,7 +7464,8 @@ export type TrustedEntitySetStatus =
   | "DEACTIVATING"
   | "ERROR"
   | "DELETE_PENDING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const TrustedEntitySetStatus = /*@__PURE__*/ S.String;
 
 export interface GetTrustedEntitySetResponse {
@@ -7451,7 +7512,8 @@ export type UsageStatisticType =
   | "SUM_BY_RESOURCE"
   | "TOP_RESOURCES"
   | "SUM_BY_FEATURES"
-  | "TOP_ACCOUNTS_BY_FEATURE";
+  | "TOP_ACCOUNTS_BY_FEATURE"
+  | (string & {});
 export const UsageStatisticType = /*@__PURE__*/ S.String;
 
 export type DataSource =
@@ -7460,10 +7522,11 @@ export type DataSource =
   | "DNS_LOGS"
   | "S3_LOGS"
   | "KUBERNETES_AUDIT_LOGS"
-  | "EC2_MALWARE_SCAN";
+  | "EC2_MALWARE_SCAN"
+  | (string & {});
 export const DataSource = /*@__PURE__*/ S.String;
 
-export type DataSourceList = (DataSource | (string & {}))[];
+export type DataSourceList = DataSource[];
 export const DataSourceList = /*@__PURE__*/ S.Array(DataSource);
 export type ResourceList = string[];
 export const ResourceList = /*@__PURE__*/ S.Array(S.String);
@@ -7480,16 +7543,17 @@ export type UsageFeature =
   | "EC2_RUNTIME_MONITORING"
   | "FARGATE_RUNTIME_MONITORING"
   | "RDS_DBI_PROTECTION_PROVISIONED"
-  | "RDS_DBI_PROTECTION_SERVERLESS";
+  | "RDS_DBI_PROTECTION_SERVERLESS"
+  | (string & {});
 export const UsageFeature = /*@__PURE__*/ S.String;
 
-export type UsageFeatureList = (UsageFeature | (string & {}))[];
+export type UsageFeatureList = UsageFeature[];
 export const UsageFeatureList = /*@__PURE__*/ S.Array(UsageFeature);
 export interface UsageCriteria {
   AccountIds?: string[];
-  DataSources?: (DataSource | (string & {}))[];
+  DataSources?: DataSource[];
   Resources?: string[];
-  Features?: (UsageFeature | (string & {}))[];
+  Features?: UsageFeature[];
 }
 export const UsageCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7508,7 +7572,7 @@ export const UsageCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageCriteria" }) as any as S.Schema<UsageCriteria>;
 export interface GetUsageStatisticsRequest {
   DetectorId: string;
-  UsageStatisticType?: UsageStatisticType | (string & {});
+  UsageStatisticType?: UsageStatisticType;
   UsageCriteria?: UsageCriteria;
   Unit?: string;
   MaxResults?: number;
@@ -7746,12 +7810,13 @@ export type CoverageSortKey =
   | "CLUSTER_NAME"
   | "EKS_CLUSTER_NAME"
   | "ECS_CLUSTER_NAME"
-  | "INSTANCE_ID";
+  | "INSTANCE_ID"
+  | (string & {});
 export const CoverageSortKey = /*@__PURE__*/ S.String;
 
 export interface CoverageSortCriteria {
-  AttributeName?: CoverageSortKey | (string & {});
-  OrderBy?: OrderBy | (string & {});
+  AttributeName?: CoverageSortKey;
+  OrderBy?: OrderBy;
 }
 export const CoverageSortCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7809,7 +7874,11 @@ export const AddonDetails = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ AddonVersion: "addonVersion", AddonStatus: "addonStatus" }),
   ),
 ).annotate({ identifier: "AddonDetails" }) as any as S.Schema<AddonDetails>;
-export type ManagementType = "AUTO_MANAGED" | "MANUAL" | "DISABLED";
+export type ManagementType =
+  | "AUTO_MANAGED"
+  | "MANUAL"
+  | "DISABLED"
+  | (string & {});
 export const ManagementType = /*@__PURE__*/ S.String;
 
 export interface CoverageEksClusterDetails {
@@ -8115,12 +8184,13 @@ export type InvestigationSortField =
   | "END_TIME"
   | "STATUS"
   | "RISK_LEVEL"
-  | "CONFIDENCE";
+  | "CONFIDENCE"
+  | (string & {});
 export const InvestigationSortField = /*@__PURE__*/ S.String;
 
 export interface InvestigationSortCriteria {
-  AttributeName?: InvestigationSortField | (string & {});
-  OrderBy?: OrderBy | (string & {});
+  AttributeName?: InvestigationSortField;
+  OrderBy?: OrderBy;
 }
 export const InvestigationSortCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8374,11 +8444,12 @@ export type ListMalwareScansCriterionKey =
   | "RESOURCE_TYPE"
   | "SCAN_START_TIME"
   | "SCAN_STATUS"
-  | "SCAN_TYPE";
+  | "SCAN_TYPE"
+  | (string & {});
 export const ListMalwareScansCriterionKey = /*@__PURE__*/ S.String;
 
 export interface ListMalwareScansFilterCriterion {
-  ListMalwareScansCriterionKey?: ListMalwareScansCriterionKey | (string & {});
+  ListMalwareScansCriterionKey?: ListMalwareScansCriterionKey;
   FilterCondition?: FilterCondition;
 }
 export const ListMalwareScansFilterCriterion = /*@__PURE__*/ S.suspend(() =>
@@ -8557,7 +8628,7 @@ export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListOrganizationAdminAccountsRequest",
 }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
-export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS";
+export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS" | (string & {});
 export const AdminStatus = /*@__PURE__*/ S.String;
 
 export interface AdminAccount {
@@ -9103,7 +9174,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDetectorRequest {
   DetectorId: string;
   Enable?: boolean;
-  FindingPublishingFrequency?: FindingPublishingFrequency | (string & {});
+  FindingPublishingFrequency?: FindingPublishingFrequency;
   DataSources?: DataSourceConfigurations;
   Features?: DetectorFeatureConfiguration[];
 }
@@ -9146,7 +9217,7 @@ export interface UpdateFilterRequest {
   DetectorId: string;
   FilterName: string;
   Description?: string;
-  Action?: FilterAction | (string & {});
+  Action?: FilterAction;
   Rank?: number;
   FindingCriteria?: FindingCriteria;
 }
@@ -9191,13 +9262,13 @@ export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFilterResponse",
 }) as any as S.Schema<UpdateFilterResponse>;
-export type Feedback = "USEFUL" | "NOT_USEFUL";
+export type Feedback = "USEFUL" | "NOT_USEFUL" | (string & {});
 export const Feedback = /*@__PURE__*/ S.String;
 
 export interface UpdateFindingsFeedbackRequest {
   DetectorId: string;
   FindingIds?: string[];
-  Feedback?: Feedback | (string & {});
+  Feedback?: Feedback;
   Comments?: string | redacted.Redacted<string>;
 }
 export const UpdateFindingsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9350,7 +9421,7 @@ export const UpdateMalwareProtectionPlanResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMalwareScanSettingsRequest {
   DetectorId: string;
   ScanResourceCriteria?: ScanResourceCriteria;
-  EbsSnapshotPreservation?: EbsSnapshotPreservation | (string & {});
+  EbsSnapshotPreservation?: EbsSnapshotPreservation;
 }
 export const UpdateMalwareScanSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9387,8 +9458,8 @@ export const UpdateMalwareScanSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMalwareScanSettingsResponse",
 }) as any as S.Schema<UpdateMalwareScanSettingsResponse>;
 export interface MemberAdditionalConfiguration {
-  Name?: OrgFeatureAdditionalConfiguration | (string & {});
-  Status?: FeatureStatus | (string & {});
+  Name?: OrgFeatureAdditionalConfiguration;
+  Status?: FeatureStatus;
 }
 export const MemberAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9403,8 +9474,8 @@ export const MemberAdditionalConfigurations = /*@__PURE__*/ S.Array(
   MemberAdditionalConfiguration,
 );
 export interface MemberFeaturesConfiguration {
-  Name?: OrgFeature | (string & {});
-  Status?: FeatureStatus | (string & {});
+  Name?: OrgFeature;
+  Status?: FeatureStatus;
   AdditionalConfiguration?: MemberAdditionalConfiguration[];
 }
 export const MemberFeaturesConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -9566,8 +9637,8 @@ export const OrganizationDataSourceConfigurations = /*@__PURE__*/ S.suspend(
   identifier: "OrganizationDataSourceConfigurations",
 }) as any as S.Schema<OrganizationDataSourceConfigurations>;
 export interface OrganizationAdditionalConfiguration {
-  Name?: OrgFeatureAdditionalConfiguration | (string & {});
-  AutoEnable?: OrgFeatureStatus | (string & {});
+  Name?: OrgFeatureAdditionalConfiguration;
+  AutoEnable?: OrgFeatureStatus;
 }
 export const OrganizationAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9583,8 +9654,8 @@ export const OrganizationAdditionalConfigurations = /*@__PURE__*/ S.Array(
   OrganizationAdditionalConfiguration,
 );
 export interface OrganizationFeatureConfiguration {
-  Name?: OrgFeature | (string & {});
-  AutoEnable?: OrgFeatureStatus | (string & {});
+  Name?: OrgFeature;
+  AutoEnable?: OrgFeatureStatus;
   AdditionalConfiguration?: OrganizationAdditionalConfiguration[];
 }
 export const OrganizationFeatureConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -9612,7 +9683,7 @@ export interface UpdateOrganizationConfigurationRequest {
   AutoEnable?: boolean;
   DataSources?: OrganizationDataSourceConfigurations;
   Features?: OrganizationFeatureConfiguration[];
-  AutoEnableOrganizationMembers?: AutoEnableMembers | (string & {});
+  AutoEnableOrganizationMembers?: AutoEnableMembers;
 }
 export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>

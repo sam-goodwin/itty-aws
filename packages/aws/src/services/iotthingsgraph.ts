@@ -148,12 +148,12 @@ export const AssociateEntityToThingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateEntityToThingResponse",
 }) as any as S.Schema<AssociateEntityToThingResponse>;
-export type DefinitionLanguage = "GRAPHQL";
+export type DefinitionLanguage = "GRAPHQL" | (string & {});
 export const DefinitionLanguage = /*@__PURE__*/ S.String;
 
 export type DefinitionText = string;
 export interface DefinitionDocument {
-  language: DefinitionLanguage | (string & {});
+  language: DefinitionLanguage;
   text: string;
 }
 export const DefinitionDocument = /*@__PURE__*/ S.suspend(() =>
@@ -211,7 +211,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type DeploymentTarget = "GREENGRASS" | "CLOUD";
+export type DeploymentTarget = "GREENGRASS" | "CLOUD" | (string & {});
 export const DeploymentTarget = /*@__PURE__*/ S.String;
 
 export type GroupName = string;
@@ -233,7 +233,7 @@ export const MetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSystemInstanceRequest {
   tags?: Tag[];
   definition: DefinitionDocument;
-  target: DeploymentTarget | (string & {});
+  target: DeploymentTarget;
   greengrassGroupName?: string;
   s3BucketName?: string;
   metricsConfiguration?: MetricsConfiguration;
@@ -262,7 +262,8 @@ export type SystemInstanceDeploymentStatus =
   | "UNDEPLOY_IN_PROGRESS"
   | "FAILED"
   | "PENDING_DELETE"
-  | "DELETED_IN_TARGET";
+  | "DELETED_IN_TARGET"
+  | (string & {});
 export const SystemInstanceDeploymentStatus = /*@__PURE__*/ S.String;
 
 export type GreengrassGroupId = string;
@@ -501,12 +502,13 @@ export type EntityType =
   | "EVENT"
   | "PROPERTY"
   | "MAPPING"
-  | "ENUM";
+  | "ENUM"
+  | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface DissociateEntityFromThingRequest {
   thingName: string;
-  entityType: EntityType | (string & {});
+  entityType: EntityType;
 }
 export const DissociateEntityFromThingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ thingName: S.String, entityType: EntityType }).pipe(
@@ -635,10 +637,16 @@ export const GetNamespaceDeletionStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNamespaceDeletionStatusRequest",
 }) as any as S.Schema<GetNamespaceDeletionStatusRequest>;
-export type NamespaceDeletionStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED";
+export type NamespaceDeletionStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
 export const NamespaceDeletionStatus = /*@__PURE__*/ S.String;
 
-export type NamespaceDeletionStatusErrorCodes = "VALIDATION_FAILED";
+export type NamespaceDeletionStatusErrorCodes =
+  | "VALIDATION_FAILED"
+  | (string & {});
 export const NamespaceDeletionStatusErrorCodes = /*@__PURE__*/ S.String;
 
 export interface GetNamespaceDeletionStatusResponse {
@@ -786,7 +794,11 @@ export const GetUploadStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUploadStatusRequest",
 }) as any as S.Schema<GetUploadStatusRequest>;
-export type UploadStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED";
+export type UploadStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
 export const UploadStatus = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -848,7 +860,8 @@ export type FlowExecutionEventType =
   | "THING_ACTION_TASK"
   | "THING_ACTION_TASK_FAILED"
   | "THING_ACTION_TASK_SUCCEEDED"
-  | "ACKNOWLEDGE_TASK_MESSAGE";
+  | "ACKNOWLEDGE_TASK_MESSAGE"
+  | (string & {});
 export const FlowExecutionEventType = /*@__PURE__*/ S.String;
 
 export type FlowExecutionMessagePayload = string;
@@ -909,20 +922,21 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type EntityTypes = (EntityType | (string & {}))[];
+export type EntityTypes = EntityType[];
 export const EntityTypes = /*@__PURE__*/ S.Array(EntityType);
 export type EntityFilterName =
   | "NAME"
   | "NAMESPACE"
   | "SEMANTIC_TYPE_PATH"
-  | "REFERENCED_ENTITY_ID";
+  | "REFERENCED_ENTITY_ID"
+  | (string & {});
 export const EntityFilterName = /*@__PURE__*/ S.String;
 
 export type EntityFilterValue = string;
 export type EntityFilterValues = string[];
 export const EntityFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface EntityFilter {
-  name?: EntityFilterName | (string & {});
+  name?: EntityFilterName;
   value?: string[];
 }
 export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
@@ -934,7 +948,7 @@ export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
 export type EntityFilters = EntityFilter[];
 export const EntityFilters = /*@__PURE__*/ S.Array(EntityFilter);
 export interface SearchEntitiesRequest {
-  entityTypes: (EntityType | (string & {}))[];
+  entityTypes: EntityType[];
   filters?: EntityFilter[];
   nextToken?: string;
   maxResults?: number;
@@ -991,7 +1005,8 @@ export type FlowExecutionStatus =
   | "RUNNING"
   | "ABORTED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const FlowExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface FlowExecutionSummary {
@@ -1029,14 +1044,14 @@ export const SearchFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchFlowExecutionsResponse",
 }) as any as S.Schema<SearchFlowExecutionsResponse>;
-export type FlowTemplateFilterName = "DEVICE_MODEL_ID";
+export type FlowTemplateFilterName = "DEVICE_MODEL_ID" | (string & {});
 export const FlowTemplateFilterName = /*@__PURE__*/ S.String;
 
 export type FlowTemplateFilterValue = string;
 export type FlowTemplateFilterValues = string[];
 export const FlowTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface FlowTemplateFilter {
-  name: FlowTemplateFilterName | (string & {});
+  name: FlowTemplateFilterName;
   value: string[];
 }
 export const FlowTemplateFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1077,14 +1092,15 @@ export const SearchFlowTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 export type SystemInstanceFilterName =
   | "SYSTEM_TEMPLATE_ID"
   | "STATUS"
-  | "GREENGRASS_GROUP_NAME";
+  | "GREENGRASS_GROUP_NAME"
+  | (string & {});
 export const SystemInstanceFilterName = /*@__PURE__*/ S.String;
 
 export type SystemInstanceFilterValue = string;
 export type SystemInstanceFilterValues = string[];
 export const SystemInstanceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemInstanceFilter {
-  name?: SystemInstanceFilterName | (string & {});
+  name?: SystemInstanceFilterName;
   value?: string[];
 }
 export const SystemInstanceFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1130,14 +1146,14 @@ export const SearchSystemInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchSystemInstancesResponse",
 }) as any as S.Schema<SearchSystemInstancesResponse>;
-export type SystemTemplateFilterName = "FLOW_TEMPLATE_ID";
+export type SystemTemplateFilterName = "FLOW_TEMPLATE_ID" | (string & {});
 export const SystemTemplateFilterName = /*@__PURE__*/ S.String;
 
 export type SystemTemplateFilterValue = string;
 export type SystemTemplateFilterValues = string[];
 export const SystemTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemTemplateFilter {
-  name: SystemTemplateFilterName | (string & {});
+  name: SystemTemplateFilterName;
   value: string[];
 }
 export const SystemTemplateFilter = /*@__PURE__*/ S.suspend(() =>

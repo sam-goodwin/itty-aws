@@ -314,13 +314,14 @@ export type TypeHint =
   | "TIMESTAMP"
   | "DATE"
   | "TIME"
-  | "DECIMAL";
+  | "DECIMAL"
+  | (string & {});
 export const TypeHint = /*@__PURE__*/ S.String;
 
 export interface SqlParameter {
   name?: string;
   value?: Field;
-  typeHint?: TypeHint | (string & {});
+  typeHint?: TypeHint;
 }
 export const SqlParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -727,15 +728,15 @@ export const ExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteSqlResponse",
 }) as any as S.Schema<ExecuteSqlResponse>;
-export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG";
+export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG" | (string & {});
 export const DecimalReturnType = /*@__PURE__*/ S.String;
 
-export type LongReturnType = "STRING" | "LONG";
+export type LongReturnType = "STRING" | "LONG" | (string & {});
 export const LongReturnType = /*@__PURE__*/ S.String;
 
 export interface ResultSetOptions {
-  decimalReturnType?: DecimalReturnType | (string & {});
-  longReturnType?: LongReturnType | (string & {});
+  decimalReturnType?: DecimalReturnType;
+  longReturnType?: LongReturnType;
 }
 export const ResultSetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -745,7 +746,7 @@ export const ResultSetOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultSetOptions",
 }) as any as S.Schema<ResultSetOptions>;
-export type RecordsFormatType = "NONE" | "JSON";
+export type RecordsFormatType = "NONE" | "JSON" | (string & {});
 export const RecordsFormatType = /*@__PURE__*/ S.String;
 
 export interface ExecuteStatementRequest {
@@ -759,7 +760,7 @@ export interface ExecuteStatementRequest {
   includeResultMetadata?: boolean;
   continueAfterTimeout?: boolean;
   resultSetOptions?: ResultSetOptions;
-  formatRecordsAs?: RecordsFormatType | (string & {});
+  formatRecordsAs?: RecordsFormatType;
 }
 export const ExecuteStatementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

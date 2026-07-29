@@ -152,10 +152,11 @@ export type ResourceType =
   | "AWS::ApplicationInsights::Application"
   | "AWS::InternetMonitor::Monitor"
   | "AWS::ApplicationSignals::Service"
-  | "AWS::ApplicationSignals::ServiceLevelObjective";
+  | "AWS::ApplicationSignals::ServiceLevelObjective"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceTypesInput = (ResourceType | (string & {}))[];
+export type ResourceTypesInput = ResourceType[];
 export const ResourceTypesInput = /*@__PURE__*/ S.Array(ResourceType);
 export type ResourceIdentifier = string;
 export type TagKey = string;
@@ -197,7 +198,7 @@ export const LinkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkConfiguration>;
 export interface CreateLinkInput {
   LabelTemplate: string;
-  ResourceTypes: (ResourceType | (string & {}))[];
+  ResourceTypes: ResourceType[];
   SinkIdentifier: string;
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
@@ -693,7 +694,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceOutput>;
 export interface UpdateLinkInput {
   Identifier: string;
-  ResourceTypes: (ResourceType | (string & {}))[];
+  ResourceTypes: ResourceType[];
   LinkConfiguration?: LinkConfiguration;
   IncludeTags?: boolean;
 }

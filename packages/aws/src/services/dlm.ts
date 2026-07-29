@@ -126,24 +126,29 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
 ).pipe(C.withBadRequestError) {}
 export type ExecutionRoleArn = string;
 export type PolicyDescription = string;
-export type SettablePolicyStateValues = "ENABLED" | "DISABLED";
+export type SettablePolicyStateValues = "ENABLED" | "DISABLED" | (string & {});
 export const SettablePolicyStateValues = /*@__PURE__*/ S.String;
 
 export type PolicyTypeValues =
   | "EBS_SNAPSHOT_MANAGEMENT"
   | "IMAGE_MANAGEMENT"
-  | "EVENT_BASED_POLICY";
+  | "EVENT_BASED_POLICY"
+  | (string & {});
 export const PolicyTypeValues = /*@__PURE__*/ S.String;
 
-export type ResourceTypeValues = "VOLUME" | "INSTANCE";
+export type ResourceTypeValues = "VOLUME" | "INSTANCE" | (string & {});
 export const ResourceTypeValues = /*@__PURE__*/ S.String;
 
-export type ResourceTypeValuesList = (ResourceTypeValues | (string & {}))[];
+export type ResourceTypeValuesList = ResourceTypeValues[];
 export const ResourceTypeValuesList = /*@__PURE__*/ S.Array(ResourceTypeValues);
-export type ResourceLocationValues = "CLOUD" | "OUTPOST" | "LOCAL_ZONE";
+export type ResourceLocationValues =
+  | "CLOUD"
+  | "OUTPOST"
+  | "LOCAL_ZONE"
+  | (string & {});
 export const ResourceLocationValues = /*@__PURE__*/ S.String;
 
-export type ResourceLocationList = (ResourceLocationValues | (string & {}))[];
+export type ResourceLocationList = ResourceLocationValues[];
 export const ResourceLocationList = /*@__PURE__*/ S.Array(
   ResourceLocationValues,
 );
@@ -162,22 +167,28 @@ export type TagsToAddList = Tag[];
 export const TagsToAddList = /*@__PURE__*/ S.Array(Tag);
 export type VariableTagsList = Tag[];
 export const VariableTagsList = /*@__PURE__*/ S.Array(Tag);
-export type LocationValues = "CLOUD" | "OUTPOST_LOCAL" | "LOCAL_ZONE";
+export type LocationValues =
+  | "CLOUD"
+  | "OUTPOST_LOCAL"
+  | "LOCAL_ZONE"
+  | (string & {});
 export const LocationValues = /*@__PURE__*/ S.String;
 
 export type Interval = number;
-export type IntervalUnitValues = "HOURS";
+export type IntervalUnitValues = "HOURS" | (string & {});
 export const IntervalUnitValues = /*@__PURE__*/ S.String;
 
 export type TimesList = string[];
 export const TimesList = /*@__PURE__*/ S.Array(S.String);
 export type CronExpression = string;
-export type StageValues = "PRE" | "POST";
+export type StageValues = "PRE" | "POST" | (string & {});
 export const StageValues = /*@__PURE__*/ S.String;
 
-export type StagesList = (StageValues | (string & {}))[];
+export type StagesList = StageValues[];
 export const StagesList = /*@__PURE__*/ S.Array(StageValues);
-export type ExecutionHandlerServiceValues = "AWS_SYSTEMS_MANAGER";
+export type ExecutionHandlerServiceValues =
+  | "AWS_SYSTEMS_MANAGER"
+  | (string & {});
 export const ExecutionHandlerServiceValues = /*@__PURE__*/ S.String;
 
 export type ExecutionHandler = string;
@@ -185,8 +196,8 @@ export type ExecuteOperationOnScriptFailure = boolean;
 export type ScriptExecutionTimeout = number;
 export type ScriptMaximumRetryCount = number;
 export interface Script {
-  Stages?: (StageValues | (string & {}))[];
-  ExecutionHandlerService?: ExecutionHandlerServiceValues | (string & {});
+  Stages?: StageValues[];
+  ExecutionHandlerService?: ExecutionHandlerServiceValues;
   ExecutionHandler?: string;
   ExecuteOperationOnScriptFailure?: boolean;
   ExecutionTimeout?: number;
@@ -205,9 +216,9 @@ export const Script = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsList = Script[];
 export const ScriptsList = /*@__PURE__*/ S.Array(Script);
 export interface CreateRule {
-  Location?: LocationValues | (string & {});
+  Location?: LocationValues;
   Interval?: number;
-  IntervalUnit?: IntervalUnitValues | (string & {});
+  IntervalUnit?: IntervalUnitValues;
   Times?: string[];
   CronExpression?: string;
   Scripts?: Script[];
@@ -224,13 +235,18 @@ export const CreateRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRule" }) as any as S.Schema<CreateRule>;
 export type StandardTierRetainRuleCount = number;
 export type StandardTierRetainRuleInterval = number;
-export type RetentionIntervalUnitValues = "DAYS" | "WEEKS" | "MONTHS" | "YEARS";
+export type RetentionIntervalUnitValues =
+  | "DAYS"
+  | "WEEKS"
+  | "MONTHS"
+  | "YEARS"
+  | (string & {});
 export const RetentionIntervalUnitValues = /*@__PURE__*/ S.String;
 
 export interface RetainRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
 }
 export const RetainRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,7 +265,7 @@ export const AvailabilityZoneIdList = /*@__PURE__*/ S.Array(S.String);
 export interface FastRestoreRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
   AvailabilityZones?: string[];
   AvailabilityZoneIds?: string[];
 }
@@ -271,7 +287,7 @@ export type CmkArn = string;
 export type CopyTagsNullable = boolean;
 export interface CrossRegionCopyRetainRule {
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
 }
 export const CrossRegionCopyRetainRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -283,7 +299,7 @@ export const CrossRegionCopyRetainRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrossRegionCopyRetainRule>;
 export interface CrossRegionCopyDeprecateRule {
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
 }
 export const CrossRegionCopyDeprecateRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -323,7 +339,7 @@ export const ShareTargetAccountList = /*@__PURE__*/ S.Array(S.String);
 export interface ShareRule {
   TargetAccounts?: string[];
   UnshareInterval?: number;
-  UnshareIntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  UnshareIntervalUnit?: RetentionIntervalUnitValues;
 }
 export const ShareRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -337,7 +353,7 @@ export const ShareRules = /*@__PURE__*/ S.Array(ShareRule);
 export interface DeprecateRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
 }
 export const DeprecateRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -349,7 +365,7 @@ export const DeprecateRule = /*@__PURE__*/ S.suspend(() =>
 export interface RetentionArchiveTier {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
+  IntervalUnit?: RetentionIntervalUnitValues;
 }
 export const RetentionArchiveTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -420,17 +436,17 @@ export const Parameters = /*@__PURE__*/ S.suspend(() =>
     ExcludeDataVolumeTags: S.optional(ExcludeDataVolumeTagList),
   }),
 ).annotate({ identifier: "Parameters" }) as any as S.Schema<Parameters>;
-export type EventSourceValues = "MANAGED_CWE";
+export type EventSourceValues = "MANAGED_CWE" | (string & {});
 export const EventSourceValues = /*@__PURE__*/ S.String;
 
-export type EventTypeValues = "shareSnapshot";
+export type EventTypeValues = "shareSnapshot" | (string & {});
 export const EventTypeValues = /*@__PURE__*/ S.String;
 
 export type SnapshotOwnerList = string[];
 export const SnapshotOwnerList = /*@__PURE__*/ S.Array(S.String);
 export type DescriptionRegex = string;
 export interface EventParameters {
-  EventType?: EventTypeValues | (string & {});
+  EventType?: EventTypeValues;
   SnapshotOwner?: string[];
   DescriptionRegex?: string;
 }
@@ -444,7 +460,7 @@ export const EventParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventParameters",
 }) as any as S.Schema<EventParameters>;
 export interface EventSource {
-  Type?: EventSourceValues | (string & {});
+  Type?: EventSourceValues;
   Parameters?: EventParameters;
 }
 export const EventSource = /*@__PURE__*/ S.suspend(() =>
@@ -493,7 +509,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
-export type PolicyLanguageValues = "SIMPLIFIED" | "STANDARD";
+export type PolicyLanguageValues = "SIMPLIFIED" | "STANDARD" | (string & {});
 export const PolicyLanguageValues = /*@__PURE__*/ S.String;
 
 export type CreateInterval = number;
@@ -530,16 +546,16 @@ export const Exclusions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exclusions" }) as any as S.Schema<Exclusions>;
 export interface PolicyDetails {
-  PolicyType?: PolicyTypeValues | (string & {});
-  ResourceTypes?: (ResourceTypeValues | (string & {}))[];
-  ResourceLocations?: (ResourceLocationValues | (string & {}))[];
+  PolicyType?: PolicyTypeValues;
+  ResourceTypes?: ResourceTypeValues[];
+  ResourceLocations?: ResourceLocationValues[];
   TargetTags?: Tag[];
   Schedules?: Schedule[];
   Parameters?: Parameters;
   EventSource?: EventSource;
   Actions?: Action[];
-  PolicyLanguage?: PolicyLanguageValues | (string & {});
-  ResourceType?: ResourceTypeValues | (string & {});
+  PolicyLanguage?: PolicyLanguageValues;
+  ResourceType?: ResourceTypeValues;
   CreateInterval?: number;
   RetainInterval?: number;
   CopyTags?: boolean;
@@ -574,16 +590,16 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type DefaultPolicyTypeValues = "VOLUME" | "INSTANCE";
+export type DefaultPolicyTypeValues = "VOLUME" | "INSTANCE" | (string & {});
 export const DefaultPolicyTypeValues = /*@__PURE__*/ S.String;
 
 export interface CreateLifecyclePolicyRequest {
   ExecutionRoleArn?: string;
   Description?: string;
-  State?: SettablePolicyStateValues | (string & {});
+  State?: SettablePolicyStateValues;
   PolicyDetails?: PolicyDetails;
   Tags?: { [key: string]: string | undefined };
-  DefaultPolicy?: DefaultPolicyTypeValues | (string & {});
+  DefaultPolicy?: DefaultPolicyTypeValues;
   CreateInterval?: number;
   RetainInterval?: number;
   CopyTags?: boolean;
@@ -652,7 +668,11 @@ export const DeleteLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLifecyclePolicyResponse>;
 export type PolicyIdList = string[];
 export const PolicyIdList = /*@__PURE__*/ S.Array(S.String);
-export type GettablePolicyStateValues = "ENABLED" | "DISABLED" | "ERROR";
+export type GettablePolicyStateValues =
+  | "ENABLED"
+  | "DISABLED"
+  | "ERROR"
+  | (string & {});
 export const GettablePolicyStateValues = /*@__PURE__*/ S.String;
 
 export type TagFilter = string;
@@ -660,16 +680,20 @@ export type TargetTagsFilterList = string[];
 export const TargetTagsFilterList = /*@__PURE__*/ S.Array(S.String);
 export type TagsToAddFilterList = string[];
 export const TagsToAddFilterList = /*@__PURE__*/ S.Array(S.String);
-export type DefaultPoliciesTypeValues = "VOLUME" | "INSTANCE" | "ALL";
+export type DefaultPoliciesTypeValues =
+  | "VOLUME"
+  | "INSTANCE"
+  | "ALL"
+  | (string & {});
 export const DefaultPoliciesTypeValues = /*@__PURE__*/ S.String;
 
 export interface GetLifecyclePoliciesRequest {
   PolicyIds?: string[];
-  State?: GettablePolicyStateValues | (string & {});
-  ResourceTypes?: (ResourceTypeValues | (string & {}))[];
+  State?: GettablePolicyStateValues;
+  ResourceTypes?: ResourceTypeValues[];
   TargetTags?: string[];
   TagsToAdd?: string[];
-  DefaultPolicyType?: DefaultPoliciesTypeValues | (string & {});
+  DefaultPolicyType?: DefaultPoliciesTypeValues;
 }
 export const GetLifecyclePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -919,7 +943,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLifecyclePolicyRequest {
   PolicyId: string;
   ExecutionRoleArn?: string;
-  State?: SettablePolicyStateValues | (string & {});
+  State?: SettablePolicyStateValues;
   Description?: string;
   PolicyDetails?: PolicyDetails;
   CreateInterval?: number;

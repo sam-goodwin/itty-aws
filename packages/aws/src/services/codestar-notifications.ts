@@ -146,7 +146,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 export type Targets = Target[];
 export const Targets = /*@__PURE__*/ S.Array(Target);
-export type DetailType = "BASIC" | "FULL";
+export type DetailType = "BASIC" | "FULL" | (string & {});
 export const DetailType = /*@__PURE__*/ S.String;
 
 export type ClientRequestToken = string;
@@ -154,7 +154,7 @@ export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export type NotificationRuleStatus = "ENABLED" | "DISABLED";
+export type NotificationRuleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const NotificationRuleStatus = /*@__PURE__*/ S.String;
 
 export interface CreateNotificationRuleRequest {
@@ -162,10 +162,10 @@ export interface CreateNotificationRuleRequest {
   EventTypeIds: string[];
   Resource: string;
   Targets: Target[];
-  DetailType: DetailType | (string & {});
+  DetailType: DetailType;
   ClientRequestToken?: string;
   Tags?: { [key: string]: string | undefined };
-  Status?: NotificationRuleStatus | (string & {});
+  Status?: NotificationRuleStatus;
 }
 export const CreateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -295,7 +295,8 @@ export type TargetStatus =
   | "ACTIVE"
   | "UNREACHABLE"
   | "INACTIVE"
-  | "DEACTIVATED";
+  | "DEACTIVATED"
+  | (string & {});
 export const TargetStatus = /*@__PURE__*/ S.String;
 
 export interface TargetSummary {
@@ -349,12 +350,15 @@ export const DescribeNotificationRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNotificationRuleResult",
 }) as any as S.Schema<DescribeNotificationRuleResult>;
-export type ListEventTypesFilterName = "RESOURCE_TYPE" | "SERVICE_NAME";
+export type ListEventTypesFilterName =
+  | "RESOURCE_TYPE"
+  | "SERVICE_NAME"
+  | (string & {});
 export const ListEventTypesFilterName = /*@__PURE__*/ S.String;
 
 export type ListEventTypesFilterValue = string;
 export interface ListEventTypesFilter {
-  Name: ListEventTypesFilterName | (string & {});
+  Name: ListEventTypesFilterName;
   Value: string;
 }
 export const ListEventTypesFilter = /*@__PURE__*/ S.suspend(() =>
@@ -406,12 +410,13 @@ export type ListNotificationRulesFilterName =
   | "EVENT_TYPE_ID"
   | "CREATED_BY"
   | "RESOURCE"
-  | "TARGET_ADDRESS";
+  | "TARGET_ADDRESS"
+  | (string & {});
 export const ListNotificationRulesFilterName = /*@__PURE__*/ S.String;
 
 export type ListNotificationRulesFilterValue = string;
 export interface ListNotificationRulesFilter {
-  Name: ListNotificationRulesFilterName | (string & {});
+  Name: ListNotificationRulesFilterName;
   Value: string;
 }
 export const ListNotificationRulesFilter = /*@__PURE__*/ S.suspend(() =>
@@ -500,12 +505,13 @@ export const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
 export type ListTargetsFilterName =
   | "TARGET_TYPE"
   | "TARGET_ADDRESS"
-  | "TARGET_STATUS";
+  | "TARGET_STATUS"
+  | (string & {});
 export const ListTargetsFilterName = /*@__PURE__*/ S.String;
 
 export type ListTargetsFilterValue = string;
 export interface ListTargetsFilter {
-  Name: ListTargetsFilterName | (string & {});
+  Name: ListTargetsFilterName;
   Value: string;
 }
 export const ListTargetsFilter = /*@__PURE__*/ S.suspend(() =>
@@ -665,10 +671,10 @@ export const UntagResourceResult = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNotificationRuleRequest {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
-  Status?: NotificationRuleStatus | (string & {});
+  Status?: NotificationRuleStatus;
   EventTypeIds?: string[];
   Targets?: Target[];
-  DetailType?: DetailType | (string & {});
+  DetailType?: DetailType;
 }
 export const UpdateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

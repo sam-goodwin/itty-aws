@@ -148,11 +148,11 @@ export const Cors = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cors" }) as any as S.Schema<Cors>;
 export type Arn = string;
 export type StringWithLengthBetween0And1024 = string;
-export type IpAddressType = "ipv4" | "dualstack";
+export type IpAddressType = "ipv4" | "dualstack" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type StringWithLengthBetween1And128 = string;
-export type ProtocolType = "WEBSOCKET" | "HTTP";
+export type ProtocolType = "WEBSOCKET" | "HTTP" | (string & {});
 export const ProtocolType = /*@__PURE__*/ S.String;
 
 export type SelectionKey = string;
@@ -167,9 +167,9 @@ export interface CreateApiRequest {
   Description?: string;
   DisableSchemaValidation?: boolean;
   DisableExecuteApiEndpoint?: boolean;
-  IpAddressType?: IpAddressType | (string & {});
+  IpAddressType?: IpAddressType;
   Name?: string;
-  ProtocolType?: ProtocolType | (string & {});
+  ProtocolType?: ProtocolType;
   RouteKey?: string;
   RouteSelectionExpression?: string;
   Tags?: { [key: string]: string | undefined };
@@ -352,7 +352,7 @@ export const CreateApiMappingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApiMappingResponse",
 }) as any as S.Schema<CreateApiMappingResponse>;
 export type IntegerWithLengthBetween0And3600 = number;
-export type AuthorizerType = "REQUEST" | "JWT";
+export type AuthorizerType = "REQUEST" | "JWT" | (string & {});
 export const AuthorizerType = /*@__PURE__*/ S.String;
 
 export type IdentitySourceList = string[];
@@ -374,7 +374,7 @@ export interface CreateAuthorizerRequest {
   AuthorizerCredentialsArn?: string;
   AuthorizerPayloadFormatVersion?: string;
   AuthorizerResultTtlInSeconds?: number;
-  AuthorizerType?: AuthorizerType | (string & {});
+  AuthorizerType?: AuthorizerType;
   AuthorizerUri?: string;
   EnableSimpleResponses?: boolean;
   IdentitySource?: string[];
@@ -492,7 +492,11 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentRequest",
 }) as any as S.Schema<CreateDeploymentRequest>;
-export type DeploymentStatus = "PENDING" | "FAILED" | "DEPLOYED";
+export type DeploymentStatus =
+  | "PENDING"
+  | "FAILED"
+  | "DEPLOYED"
+  | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDeploymentResponse {
@@ -531,13 +535,14 @@ export type DomainNameStatus =
   | "AVAILABLE"
   | "UPDATING"
   | "PENDING_CERTIFICATE_REIMPORT"
-  | "PENDING_OWNERSHIP_VERIFICATION";
+  | "PENDING_OWNERSHIP_VERIFICATION"
+  | (string & {});
 export const DomainNameStatus = /*@__PURE__*/ S.String;
 
-export type EndpointType = "REGIONAL" | "EDGE";
+export type EndpointType = "REGIONAL" | "EDGE" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
 
-export type SecurityPolicy = "TLS_1_0" | "TLS_1_2";
+export type SecurityPolicy = "TLS_1_0" | "TLS_1_2" | (string & {});
 export const SecurityPolicy = /*@__PURE__*/ S.String;
 
 export interface DomainNameConfiguration {
@@ -545,12 +550,12 @@ export interface DomainNameConfiguration {
   CertificateArn?: string;
   CertificateName?: string;
   CertificateUploadDate?: Date;
-  DomainNameStatus?: DomainNameStatus | (string & {});
+  DomainNameStatus?: DomainNameStatus;
   DomainNameStatusMessage?: string;
-  EndpointType?: EndpointType | (string & {});
+  EndpointType?: EndpointType;
   HostedZoneId?: string;
-  IpAddressType?: IpAddressType | (string & {});
-  SecurityPolicy?: SecurityPolicy | (string & {});
+  IpAddressType?: IpAddressType;
+  SecurityPolicy?: SecurityPolicy;
   OwnershipVerificationCertificateArn?: string;
 }
 export const DomainNameConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -611,14 +616,15 @@ export const MutualTlsAuthenticationInput = /*@__PURE__*/ S.suspend(() =>
 export type RoutingMode =
   | "API_MAPPING_ONLY"
   | "ROUTING_RULE_ONLY"
-  | "ROUTING_RULE_THEN_API_MAPPING";
+  | "ROUTING_RULE_THEN_API_MAPPING"
+  | (string & {});
 export const RoutingMode = /*@__PURE__*/ S.String;
 
 export interface CreateDomainNameRequest {
   DomainName?: string;
   DomainNameConfigurations?: DomainNameConfiguration[];
   MutualTlsAuthentication?: MutualTlsAuthenticationInput;
-  RoutingMode?: RoutingMode | (string & {});
+  RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
@@ -704,10 +710,13 @@ export const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDomainNameResponse",
 }) as any as S.Schema<CreateDomainNameResponse>;
 export type StringWithLengthBetween1And1024 = string;
-export type ConnectionType = "INTERNET" | "VPC_LINK";
+export type ConnectionType = "INTERNET" | "VPC_LINK" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
-export type ContentHandlingStrategy = "CONVERT_TO_BINARY" | "CONVERT_TO_TEXT";
+export type ContentHandlingStrategy =
+  | "CONVERT_TO_BINARY"
+  | "CONVERT_TO_TEXT"
+  | (string & {});
 export const ContentHandlingStrategy = /*@__PURE__*/ S.String;
 
 export type IntegrationType =
@@ -715,13 +724,15 @@ export type IntegrationType =
   | "HTTP"
   | "MOCK"
   | "HTTP_PROXY"
-  | "AWS_PROXY";
+  | "AWS_PROXY"
+  | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
 
 export type PassthroughBehavior =
   | "WHEN_NO_MATCH"
   | "NEVER"
-  | "WHEN_NO_TEMPLATES";
+  | "WHEN_NO_TEMPLATES"
+  | (string & {});
 export const PassthroughBehavior = /*@__PURE__*/ S.String;
 
 export type IntegrationParameters = { [key: string]: string | undefined };
@@ -754,15 +765,15 @@ export const TlsConfigInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateIntegrationRequest {
   ApiId: string;
   ConnectionId?: string;
-  ConnectionType?: ConnectionType | (string & {});
-  ContentHandlingStrategy?: ContentHandlingStrategy | (string & {});
+  ConnectionType?: ConnectionType;
+  ContentHandlingStrategy?: ContentHandlingStrategy;
   CredentialsArn?: string;
   Description?: string;
   IntegrationMethod?: string;
   IntegrationSubtype?: string;
-  IntegrationType?: IntegrationType | (string & {});
+  IntegrationType?: IntegrationType;
   IntegrationUri?: string;
-  PassthroughBehavior?: PassthroughBehavior | (string & {});
+  PassthroughBehavior?: PassthroughBehavior;
   PayloadFormatVersion?: string;
   RequestParameters?: { [key: string]: string | undefined };
   RequestTemplates?: { [key: string]: string | undefined };
@@ -912,7 +923,7 @@ export const CreateIntegrationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIntegrationResult>;
 export interface CreateIntegrationResponseRequest {
   ApiId: string;
-  ContentHandlingStrategy?: ContentHandlingStrategy | (string & {});
+  ContentHandlingStrategy?: ContentHandlingStrategy;
   IntegrationId: string;
   IntegrationResponseKey?: string;
   ResponseParameters?: { [key: string]: string | undefined };
@@ -1251,7 +1262,8 @@ export type PublishStatus =
   | "PUBLISH_FAILED"
   | "DISABLE_IN_PROGRESS"
   | "DISABLE_FAILED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const PublishStatus = /*@__PURE__*/ S.String;
 
 export type __stringMin1Max2048 = string;
@@ -1582,14 +1594,14 @@ export const RestEndpointIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestEndpointIdentifier",
 }) as any as S.Schema<RestEndpointIdentifier>;
-export type TryItState = "ENABLED" | "DISABLED";
+export type TryItState = "ENABLED" | "DISABLED" | (string & {});
 export const TryItState = /*@__PURE__*/ S.String;
 
 export interface CreateProductRestEndpointPageRequest {
   DisplayContent?: EndpointDisplayContent;
   PortalProductId: string;
   RestEndpointIdentifier?: RestEndpointIdentifier;
-  TryItState?: TryItState | (string & {});
+  TryItState?: TryItState;
 }
 export const CreateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1642,7 +1654,7 @@ export const EndpointDisplayContentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EndpointDisplayContentResponse",
 }) as any as S.Schema<EndpointDisplayContentResponse>;
-export type Status = "AVAILABLE" | "IN_PROGRESS" | "FAILED";
+export type Status = "AVAILABLE" | "IN_PROGRESS" | "FAILED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface CreateProductRestEndpointPageResponse {
@@ -1694,7 +1706,12 @@ export const CreateProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProductRestEndpointPageResponse>;
 export type AuthorizationScopes = string[];
 export const AuthorizationScopes = /*@__PURE__*/ S.Array(S.String);
-export type AuthorizationType = "NONE" | "AWS_IAM" | "CUSTOM" | "JWT";
+export type AuthorizationType =
+  | "NONE"
+  | "AWS_IAM"
+  | "CUSTOM"
+  | "JWT"
+  | (string & {});
 export const AuthorizationType = /*@__PURE__*/ S.String;
 
 export type RouteModels = { [key: string]: string | undefined };
@@ -1723,7 +1740,7 @@ export interface CreateRouteRequest {
   ApiId: string;
   ApiKeyRequired?: boolean;
   AuthorizationScopes?: string[];
-  AuthorizationType?: AuthorizationType | (string & {});
+  AuthorizationType?: AuthorizationType;
   AuthorizerId?: string;
   ModelSelectionExpression?: string;
   OperationName?: string;
@@ -2074,13 +2091,13 @@ export const AccessLogSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessLogSettings",
 }) as any as S.Schema<AccessLogSettings>;
-export type LoggingLevel = "ERROR" | "INFO" | "OFF";
+export type LoggingLevel = "ERROR" | "INFO" | "OFF" | (string & {});
 export const LoggingLevel = /*@__PURE__*/ S.String;
 
 export interface RouteSettings {
   DataTraceEnabled?: boolean;
   DetailedMetricsEnabled?: boolean;
-  LoggingLevel?: LoggingLevel | (string & {});
+  LoggingLevel?: LoggingLevel;
   ThrottlingBurstLimit?: number;
   ThrottlingRateLimit?: number;
 }
@@ -2266,10 +2283,11 @@ export type VpcLinkStatus =
   | "AVAILABLE"
   | "DELETING"
   | "FAILED"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const VpcLinkStatus = /*@__PURE__*/ S.String;
 
-export type VpcLinkVersion = "V2";
+export type VpcLinkVersion = "V2" | (string & {});
 export const VpcLinkVersion = /*@__PURE__*/ S.String;
 
 export interface CreateVpcLinkResponse {
@@ -4163,7 +4181,8 @@ export const GetPortalRequest = /*@__PURE__*/ S.suspend(() =>
 export type PreviewStatus =
   | "PREVIEW_IN_PROGRESS"
   | "PREVIEW_FAILED"
-  | "PREVIEW_READY";
+  | "PREVIEW_READY"
+  | (string & {});
 export const PreviewStatus = /*@__PURE__*/ S.String;
 
 export interface Preview {
@@ -6069,7 +6088,7 @@ export interface UpdateApiRequest {
   Description?: string;
   DisableSchemaValidation?: boolean;
   DisableExecuteApiEndpoint?: boolean;
-  IpAddressType?: IpAddressType | (string & {});
+  IpAddressType?: IpAddressType;
   Name?: string;
   RouteKey?: string;
   RouteSelectionExpression?: string;
@@ -6252,7 +6271,7 @@ export interface UpdateAuthorizerRequest {
   AuthorizerId: string;
   AuthorizerPayloadFormatVersion?: string;
   AuthorizerResultTtlInSeconds?: number;
-  AuthorizerType?: AuthorizerType | (string & {});
+  AuthorizerType?: AuthorizerType;
   AuthorizerUri?: string;
   EnableSimpleResponses?: boolean;
   IdentitySource?: string[];
@@ -6412,7 +6431,7 @@ export interface UpdateDomainNameRequest {
   DomainName: string;
   DomainNameConfigurations?: DomainNameConfiguration[];
   MutualTlsAuthentication?: MutualTlsAuthenticationInput;
-  RoutingMode?: RoutingMode | (string & {});
+  RoutingMode?: RoutingMode;
 }
 export const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6476,16 +6495,16 @@ export const UpdateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateIntegrationRequest {
   ApiId: string;
   ConnectionId?: string;
-  ConnectionType?: ConnectionType | (string & {});
-  ContentHandlingStrategy?: ContentHandlingStrategy | (string & {});
+  ConnectionType?: ConnectionType;
+  ContentHandlingStrategy?: ContentHandlingStrategy;
   CredentialsArn?: string;
   Description?: string;
   IntegrationId: string;
   IntegrationMethod?: string;
   IntegrationSubtype?: string;
-  IntegrationType?: IntegrationType | (string & {});
+  IntegrationType?: IntegrationType;
   IntegrationUri?: string;
-  PassthroughBehavior?: PassthroughBehavior | (string & {});
+  PassthroughBehavior?: PassthroughBehavior;
   PayloadFormatVersion?: string;
   RequestParameters?: { [key: string]: string | undefined };
   RequestTemplates?: { [key: string]: string | undefined };
@@ -6631,7 +6650,7 @@ export const UpdateIntegrationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateIntegrationResult>;
 export interface UpdateIntegrationResponseRequest {
   ApiId: string;
-  ContentHandlingStrategy?: ContentHandlingStrategy | (string & {});
+  ContentHandlingStrategy?: ContentHandlingStrategy;
   IntegrationId: string;
   IntegrationResponseId: string;
   IntegrationResponseKey?: string;
@@ -7023,7 +7042,7 @@ export interface UpdateProductRestEndpointPageRequest {
   DisplayContent?: EndpointDisplayContent;
   PortalProductId: string;
   ProductRestEndpointPageId: string;
-  TryItState?: TryItState | (string & {});
+  TryItState?: TryItState;
 }
 export const UpdateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7108,7 +7127,7 @@ export interface UpdateRouteRequest {
   ApiId: string;
   ApiKeyRequired?: boolean;
   AuthorizationScopes?: string[];
-  AuthorizationType?: AuthorizationType | (string & {});
+  AuthorizationType?: AuthorizationType;
   AuthorizerId?: string;
   ModelSelectionExpression?: string;
   OperationName?: string;

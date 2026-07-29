@@ -124,23 +124,28 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ).pipe(C.withBadRequestError) {}
 export type GatewayId = string;
 export type LinkId = string;
-export type ResponderErrorMaskingAction = "NO_BID" | "PASSTHROUGH";
+export type ResponderErrorMaskingAction =
+  | "NO_BID"
+  | "PASSTHROUGH"
+  | (string & {});
 export const ResponderErrorMaskingAction = /*@__PURE__*/ S.String;
 
-export type ResponderErrorMaskingLoggingType = "NONE" | "METRIC" | "RESPONSE";
+export type ResponderErrorMaskingLoggingType =
+  | "NONE"
+  | "METRIC"
+  | "RESPONSE"
+  | (string & {});
 export const ResponderErrorMaskingLoggingType = /*@__PURE__*/ S.String;
 
-export type ResponderErrorMaskingLoggingTypes = (
-  | ResponderErrorMaskingLoggingType
-  | (string & {})
-)[];
+export type ResponderErrorMaskingLoggingTypes =
+  ResponderErrorMaskingLoggingType[];
 export const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(
   ResponderErrorMaskingLoggingType,
 );
 export interface ResponderErrorMaskingForHttpCode {
   httpCode: string;
-  action: ResponderErrorMaskingAction | (string & {});
-  loggingTypes: (ResponderErrorMaskingLoggingType | (string & {}))[];
+  action: ResponderErrorMaskingAction;
+  loggingTypes: ResponderErrorMaskingLoggingType[];
   responseLoggingPercentage?: number;
 }
 export const ResponderErrorMaskingForHttpCode = /*@__PURE__*/ S.suspend(() =>
@@ -237,10 +242,11 @@ export type LinkStatus =
   | "PENDING_UPDATE"
   | "PENDING_ISOLATION"
   | "ISOLATED"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const LinkStatus = /*@__PURE__*/ S.String;
 
-export type LinkDirection = "RESPONSE" | "REQUEST";
+export type LinkDirection = "RESPONSE" | "REQUEST" | (string & {});
 export const LinkDirection = /*@__PURE__*/ S.String;
 
 export type Version = string;
@@ -261,7 +267,7 @@ export const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NoBidModuleParameters",
 }) as any as S.Schema<NoBidModuleParameters>;
-export type FilterType = "INCLUDE" | "EXCLUDE";
+export type FilterType = "INCLUDE" | "EXCLUDE" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
 
 export type ValueList = string[];
@@ -308,7 +314,7 @@ export const Action = /*@__PURE__*/ S.Union([
   S.Struct({ headerTag: HeaderTagAction }),
 ]);
 export interface OpenRtbAttributeModuleParameters {
-  filterType: FilterType | (string & {});
+  filterType: FilterType;
   filterConfiguration: Filter[];
   action: Action;
   holdbackPercentage: number;
@@ -375,7 +381,8 @@ export type ConnectivityType =
   | "DEFAULT"
   | "PUBLIC_INGRESS"
   | "PUBLIC_EGRESS"
-  | "EXTERNAL_INBOUND";
+  | "EXTERNAL_INBOUND"
+  | (string & {});
 export const ConnectivityType = /*@__PURE__*/ S.String;
 
 export interface AcceptLinkResponse {
@@ -442,7 +449,8 @@ export type CertificateAssociationStatus =
   | "ASSOCIATED"
   | "PENDING_DISASSOCIATION"
   | "DISASSOCIATED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CertificateAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateCertificateResponse {
@@ -645,7 +653,8 @@ export type RuleStatus =
   | "UPDATE_IN_PROGRESS"
   | "DELETION_IN_PROGRESS"
   | "DELETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export interface CreateLinkRoutingRuleResponse {
@@ -750,7 +759,8 @@ export type RequesterGatewayStatus =
   | "PENDING_UPDATE"
   | "ISOLATED"
   | "PENDING_ISOLATION"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const RequesterGatewayStatus = /*@__PURE__*/ S.String;
 
 export interface CreateRequesterGatewayResponse {
@@ -767,13 +777,13 @@ export const CreateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRequesterGatewayResponse",
 }) as any as S.Schema<CreateRequesterGatewayResponse>;
-export type Protocol = "HTTP" | "HTTPS";
+export type Protocol = "HTTP" | "HTTPS" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type ProtocolList = (Protocol | (string & {}))[];
+export type ProtocolList = Protocol[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export interface ListenerConfig {
-  protocols: (Protocol | (string & {}))[];
+  protocols: Protocol[];
 }
 export const ListenerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ protocols: ProtocolList }),
@@ -802,7 +812,7 @@ export type StatusCodeMatcher = string;
 export interface HealthCheckConfig {
   port: number;
   path: string;
-  protocol?: Protocol | (string & {});
+  protocol?: Protocol;
   timeoutMs?: number;
   intervalSeconds?: number;
   statusCodeMatcher?: string;
@@ -868,7 +878,7 @@ export const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ autoScalingGroups: AutoScalingGroupsConfiguration }),
   S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
 ]);
-export type GatewayType = "EXTERNAL" | "INTERNAL";
+export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
 
 export interface CreateResponderGatewayRequest {
@@ -877,14 +887,14 @@ export interface CreateResponderGatewayRequest {
   securityGroupIds: string[];
   domainName?: string;
   port: number;
-  protocol: Protocol | (string & {});
+  protocol: Protocol;
   listenerConfig?: ListenerConfig;
   trustStoreConfiguration?: TrustStoreConfiguration;
   managedEndpointConfiguration?: ManagedEndpointConfiguration;
   clientToken: string;
   description?: string;
   tags?: { [key: string]: string | undefined };
-  gatewayType?: GatewayType | (string & {});
+  gatewayType?: GatewayType;
 }
 export const CreateResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -923,7 +933,8 @@ export type ResponderGatewayStatus =
   | "PENDING_UPDATE"
   | "ISOLATED"
   | "PENDING_ISOLATION"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const ResponderGatewayStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponderGatewayResponse {
@@ -2091,7 +2102,7 @@ export const UpdateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResponderGatewayRequest {
   domainName?: string;
   port: number;
-  protocol: Protocol | (string & {});
+  protocol: Protocol;
   listenerConfig?: ListenerConfig;
   trustStoreConfiguration?: TrustStoreConfiguration;
   managedEndpointConfiguration?: ManagedEndpointConfiguration;

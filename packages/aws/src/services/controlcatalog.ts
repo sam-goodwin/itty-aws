@@ -131,13 +131,22 @@ export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
 export type ControlAlias = string;
 export type ControlAliases = string[];
 export const ControlAliases = /*@__PURE__*/ S.Array(S.String);
-export type ControlBehavior = "PREVENTIVE" | "PROACTIVE" | "DETECTIVE";
+export type ControlBehavior =
+  | "PREVENTIVE"
+  | "PROACTIVE"
+  | "DETECTIVE"
+  | (string & {});
 export const ControlBehavior = /*@__PURE__*/ S.String;
 
-export type ControlSeverity = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+export type ControlSeverity =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL"
+  | (string & {});
 export const ControlSeverity = /*@__PURE__*/ S.String;
 
-export type ControlScope = "GLOBAL" | "REGIONAL";
+export type ControlScope = "GLOBAL" | "REGIONAL" | (string & {});
 export const ControlScope = /*@__PURE__*/ S.String;
 
 export type RegionCode = string;
@@ -166,10 +175,17 @@ export const ImplementationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImplementationDetails",
 }) as any as S.Schema<ImplementationDetails>;
-export type ParameterRequirementSummary = "REQUIRED" | "OPTIONAL" | "NONE";
+export type ParameterRequirementSummary =
+  | "REQUIRED"
+  | "OPTIONAL"
+  | "NONE"
+  | (string & {});
 export const ParameterRequirementSummary = /*@__PURE__*/ S.String;
 
-export type ControlParameterRequirement = "REQUIRED" | "OPTIONAL";
+export type ControlParameterRequirement =
+  | "REQUIRED"
+  | "OPTIONAL"
+  | (string & {});
 export const ControlParameterRequirement = /*@__PURE__*/ S.String;
 
 export interface ControlParameter {
@@ -334,15 +350,19 @@ export type ControlArnFilterList = string[];
 export const ControlArnFilterList = /*@__PURE__*/ S.Array(S.String);
 export type CommonControlArnFilterList = string[];
 export const CommonControlArnFilterList = /*@__PURE__*/ S.Array(S.String);
-export type MappingType = "FRAMEWORK" | "COMMON_CONTROL" | "RELATED_CONTROL";
+export type MappingType =
+  | "FRAMEWORK"
+  | "COMMON_CONTROL"
+  | "RELATED_CONTROL"
+  | (string & {});
 export const MappingType = /*@__PURE__*/ S.String;
 
-export type MappingTypeFilterList = (MappingType | (string & {}))[];
+export type MappingTypeFilterList = MappingType[];
 export const MappingTypeFilterList = /*@__PURE__*/ S.Array(MappingType);
 export interface ControlMappingFilter {
   ControlArns?: string[];
   CommonControlArns?: string[];
-  MappingTypes?: (MappingType | (string & {}))[];
+  MappingTypes?: MappingType[];
 }
 export const ControlMappingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -398,7 +418,8 @@ export const CommonControlMappingDetails = /*@__PURE__*/ S.suspend(() =>
 export type ControlRelationType =
   | "COMPLEMENTARY"
   | "ALTERNATIVE"
-  | "MUTUALLY_EXCLUSIVE";
+  | "MUTUALLY_EXCLUSIVE"
+  | (string & {});
 export const ControlRelationType = /*@__PURE__*/ S.String;
 
 export interface RelatedControlMappingDetails {

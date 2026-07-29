@@ -175,12 +175,12 @@ export const CopyBackupToRegionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyBackupToRegionResponse",
 }) as any as S.Schema<CopyBackupToRegionResponse>;
-export type BackupRetentionType = "DAYS";
+export type BackupRetentionType = "DAYS" | (string & {});
 export const BackupRetentionType = /*@__PURE__*/ S.String;
 
 export type BackupRetentionValue = string;
 export interface BackupRetentionPolicy {
-  Type?: BackupRetentionType | (string & {});
+  Type?: BackupRetentionType;
   Value?: string;
 }
 export const BackupRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -196,10 +196,10 @@ export type BackupArn = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
-export type NetworkType = "IPV4" | "DUALSTACK";
+export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
-export type ClusterMode = "FIPS" | "NON_FIPS";
+export type ClusterMode = "FIPS" | "NON_FIPS" | (string & {});
 export const ClusterMode = /*@__PURE__*/ S.String;
 
 export interface CreateClusterRequest {
@@ -207,9 +207,9 @@ export interface CreateClusterRequest {
   HsmType: string;
   SourceBackupId?: string;
   SubnetIds: string[];
-  NetworkType?: NetworkType | (string & {});
+  NetworkType?: NetworkType;
   TagList?: Tag[];
-  Mode?: ClusterMode | (string & {});
+  Mode?: ClusterMode;
 }
 export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -226,7 +226,7 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterRequest",
 }) as any as S.Schema<CreateClusterRequest>;
-export type BackupPolicy = "DEFAULT";
+export type BackupPolicy = "DEFAULT" | (string & {});
 export const BackupPolicy = /*@__PURE__*/ S.String;
 
 export type ExternalAz = string;
@@ -239,7 +239,8 @@ export type HsmState =
   | "ACTIVE"
   | "DEGRADED"
   | "DELETE_IN_PROGRESS"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const HsmState = /*@__PURE__*/ S.String;
 
 export interface Hsm {
@@ -283,7 +284,8 @@ export type ClusterState =
   | "ROLLBACK_IN_PROGRESS"
   | "DELETE_IN_PROGRESS"
   | "DELETED"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
 
 export type StateMessage = string;
@@ -402,7 +404,8 @@ export type BackupState =
   | "CREATE_IN_PROGRESS"
   | "READY"
   | "DELETED"
-  | "PENDING_DELETION";
+  | "PENDING_DELETION"
+  | (string & {});
 export const BackupState = /*@__PURE__*/ S.String;
 
 export interface Backup {

@@ -215,13 +215,13 @@ export class UnsupportedAvailabilityZoneException extends S.TaggedErrorClass<Uns
   },
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
-export type AccessScopeType = "cluster" | "namespace";
+export type AccessScopeType = "cluster" | "namespace" | (string & {});
 export const AccessScopeType = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface AccessScope {
-  type?: AccessScopeType | (string & {});
+  type?: AccessScopeType;
   namespaces?: string[];
 }
 export const AccessScope = /*@__PURE__*/ S.suspend(() =>
@@ -334,7 +334,12 @@ export const AssociateEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateEncryptionConfigRequest",
 }) as any as S.Schema<AssociateEncryptionConfigRequest>;
-export type UpdateStatus = "InProgress" | "Failed" | "Cancelled" | "Successful";
+export type UpdateStatus =
+  | "InProgress"
+  | "Failed"
+  | "Cancelled"
+  | "Successful"
+  | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
 
 export type UpdateType =
@@ -356,7 +361,8 @@ export type UpdateType =
   | "CapabilityUpdate"
   | "ControlPlaneScalingConfigUpdate"
   | "VendedLogsUpdate"
-  | "ControlPlaneEgressUpdate";
+  | "ControlPlaneEgressUpdate"
+  | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export type UpdateParamType =
@@ -410,7 +416,8 @@ export type UpdateParamType =
   | "WarmPoolMinSize"
   | "WarmPoolState"
   | "WarmPoolReuseOnScaleIn"
-  | "ControlPlaneEgressMode";
+  | "ControlPlaneEgressMode"
+  | (string & {});
 export const UpdateParamType = /*@__PURE__*/ S.String;
 
 export interface UpdateParam {
@@ -439,7 +446,8 @@ export type ErrorCode =
   | "ConfigurationConflict"
   | "AdmissionRequestDenied"
   | "UnsupportedAddonModification"
-  | "K8sResourceNotFound";
+  | "K8sResourceNotFound"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -623,7 +631,11 @@ export const CreateAccessEntryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessEntryResponse>;
 export type ClusterName = string;
 export type RoleArn = string;
-export type ResolveConflicts = "OVERWRITE" | "NONE" | "PRESERVE";
+export type ResolveConflicts =
+  | "OVERWRITE"
+  | "NONE"
+  | "PRESERVE"
+  | (string & {});
 export const ResolveConflicts = /*@__PURE__*/ S.String;
 
 export interface AddonPodIdentityAssociations {
@@ -653,7 +665,7 @@ export interface CreateAddonRequest {
   addonName: string;
   addonVersion?: string;
   serviceAccountRoleArn?: string;
-  resolveConflicts?: ResolveConflicts | (string & {});
+  resolveConflicts?: ResolveConflicts;
   clientRequestToken?: string;
   tags?: { [key: string]: string | undefined };
   configurationValues?: string;
@@ -693,7 +705,8 @@ export type AddonStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | "DEGRADED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const AddonStatus = /*@__PURE__*/ S.String;
 
 export type AddonIssueCode =
@@ -706,7 +719,8 @@ export type AddonIssueCode =
   | "UnsupportedAddonModification"
   | "K8sResourceNotFound"
   | "AddonSubscriptionNeeded"
-  | "AddonPermissionFailure";
+  | "AddonPermissionFailure"
+  | (string & {});
 export const AddonIssueCode = /*@__PURE__*/ S.String;
 
 export interface AddonIssue {
@@ -795,7 +809,7 @@ export const CreateAddonResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAddonResponse",
 }) as any as S.Schema<CreateAddonResponse>;
-export type CapabilityType = "ACK" | "KRO" | "ARGOCD";
+export type CapabilityType = "ACK" | "KRO" | "ARGOCD" | (string & {});
 export const CapabilityType = /*@__PURE__*/ S.String;
 
 export interface ArgoCdAwsIdcConfigRequest {
@@ -807,15 +821,15 @@ export const ArgoCdAwsIdcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ArgoCdAwsIdcConfigRequest",
 }) as any as S.Schema<ArgoCdAwsIdcConfigRequest>;
-export type ArgoCdRole = "ADMIN" | "EDITOR" | "VIEWER";
+export type ArgoCdRole = "ADMIN" | "EDITOR" | "VIEWER" | (string & {});
 export const ArgoCdRole = /*@__PURE__*/ S.String;
 
-export type SsoIdentityType = "SSO_USER" | "SSO_GROUP";
+export type SsoIdentityType = "SSO_USER" | "SSO_GROUP" | (string & {});
 export const SsoIdentityType = /*@__PURE__*/ S.String;
 
 export interface SsoIdentity {
   id: string;
-  type: SsoIdentityType | (string & {});
+  type: SsoIdentityType;
 }
 export const SsoIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: SsoIdentityType }),
@@ -823,7 +837,7 @@ export const SsoIdentity = /*@__PURE__*/ S.suspend(() =>
 export type SsoIdentityList = SsoIdentity[];
 export const SsoIdentityList = /*@__PURE__*/ S.Array(SsoIdentity);
 export interface ArgoCdRoleMapping {
-  role: ArgoCdRole | (string & {});
+  role: ArgoCdRole;
   identities: SsoIdentity[];
 }
 export const ArgoCdRoleMapping = /*@__PURE__*/ S.suspend(() =>
@@ -865,18 +879,18 @@ export const CapabilityConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapabilityConfigurationRequest",
 }) as any as S.Schema<CapabilityConfigurationRequest>;
-export type CapabilityDeletePropagationPolicy = "RETAIN";
+export type CapabilityDeletePropagationPolicy = "RETAIN" | (string & {});
 export const CapabilityDeletePropagationPolicy = /*@__PURE__*/ S.String;
 
 export interface CreateCapabilityRequest {
   capabilityName: string;
   clusterName: string;
   clientRequestToken?: string;
-  type: CapabilityType | (string & {});
+  type: CapabilityType;
   roleArn: string;
   configuration?: CapabilityConfigurationRequest;
   tags?: { [key: string]: string | undefined };
-  deletePropagationPolicy: CapabilityDeletePropagationPolicy | (string & {});
+  deletePropagationPolicy: CapabilityDeletePropagationPolicy;
 }
 export const CreateCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -908,7 +922,8 @@ export type CapabilityStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | "ACTIVE"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const CapabilityStatus = /*@__PURE__*/ S.String;
 
 export interface ArgoCdAwsIdcConfigResponse {
@@ -959,7 +974,10 @@ export const CapabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapabilityConfigurationResponse",
 }) as any as S.Schema<CapabilityConfigurationResponse>;
-export type CapabilityIssueCode = "AccessDenied" | "ClusterUnreachable";
+export type CapabilityIssueCode =
+  | "AccessDenied"
+  | "ClusterUnreachable"
+  | (string & {});
 export const CapabilityIssueCode = /*@__PURE__*/ S.String;
 
 export interface CapabilityIssue {
@@ -1028,7 +1046,8 @@ export type BoxedBoolean = boolean;
 export type ControlPlaneEgressModeType =
   | "AWS_MANAGED"
   | "CUSTOMER_ROUTED"
-  | "CUSTOMER_ISOLATED";
+  | "CUSTOMER_ISOLATED"
+  | (string & {});
 export const ControlPlaneEgressModeType = /*@__PURE__*/ S.String;
 
 export interface VpcConfigRequest {
@@ -1037,7 +1056,7 @@ export interface VpcConfigRequest {
   endpointPublicAccess?: boolean;
   endpointPrivateAccess?: boolean;
   publicAccessCidrs?: string[];
-  controlPlaneEgressMode?: ControlPlaneEgressModeType | (string & {});
+  controlPlaneEgressMode?: ControlPlaneEgressModeType;
 }
 export const VpcConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1051,7 +1070,7 @@ export const VpcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConfigRequest",
 }) as any as S.Schema<VpcConfigRequest>;
-export type IpFamily = "ipv4" | "ipv6";
+export type IpFamily = "ipv4" | "ipv6" | (string & {});
 export const IpFamily = /*@__PURE__*/ S.String;
 
 export interface ElasticLoadBalancing {
@@ -1064,7 +1083,7 @@ export const ElasticLoadBalancing = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticLoadBalancing>;
 export interface KubernetesNetworkConfigRequest {
   serviceIpv4Cidr?: string;
-  ipFamily?: IpFamily | (string & {});
+  ipFamily?: IpFamily;
   elasticLoadBalancing?: ElasticLoadBalancing;
 }
 export const KubernetesNetworkConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1081,13 +1100,14 @@ export type LogType =
   | "audit"
   | "authenticator"
   | "controllerManager"
-  | "scheduler";
+  | "scheduler"
+  | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
-export type LogTypes = (LogType | (string & {}))[];
+export type LogTypes = LogType[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogSetup {
-  types?: (LogType | (string & {}))[];
+  types?: LogType[];
   enabled?: boolean;
 }
 export const LogSetup = /*@__PURE__*/ S.suspend(() =>
@@ -1101,12 +1121,12 @@ export interface Logging {
 export const Logging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterLogging: S.optional(LogSetups) }),
 ).annotate({ identifier: "Logging" }) as any as S.Schema<Logging>;
-export type SpreadLevel = "host" | "rack";
+export type SpreadLevel = "host" | "rack" | (string & {});
 export const SpreadLevel = /*@__PURE__*/ S.String;
 
 export interface ControlPlanePlacementRequest {
   groupName?: string;
-  spreadLevel?: SpreadLevel | (string & {});
+  spreadLevel?: SpreadLevel;
 }
 export const ControlPlanePlacementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1117,7 +1137,7 @@ export const ControlPlanePlacementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ControlPlanePlacementRequest",
 }) as any as S.Schema<ControlPlanePlacementRequest>;
 export interface EtcdPlacementRequest {
-  spreadLevel?: SpreadLevel | (string & {});
+  spreadLevel?: SpreadLevel;
 }
 export const EtcdPlacementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spreadLevel: S.optional(SpreadLevel) }),
@@ -1142,12 +1162,16 @@ export const OutpostConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutpostConfigRequest",
 }) as any as S.Schema<OutpostConfigRequest>;
-export type AuthenticationMode = "API" | "API_AND_CONFIG_MAP" | "CONFIG_MAP";
+export type AuthenticationMode =
+  | "API"
+  | "API_AND_CONFIG_MAP"
+  | "CONFIG_MAP"
+  | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 export interface CreateAccessConfigRequest {
   bootstrapClusterCreatorAdminPermissions?: boolean;
-  authenticationMode?: AuthenticationMode | (string & {});
+  authenticationMode?: AuthenticationMode;
 }
 export const CreateAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1157,11 +1181,11 @@ export const CreateAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessConfigRequest",
 }) as any as S.Schema<CreateAccessConfigRequest>;
-export type SupportType = "STANDARD" | "EXTENDED";
+export type SupportType = "STANDARD" | "EXTENDED" | (string & {});
 export const SupportType = /*@__PURE__*/ S.String;
 
 export interface UpgradePolicyRequest {
-  supportType?: SupportType | (string & {});
+  supportType?: SupportType;
 }
 export const UpgradePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportType: S.optional(SupportType) }),
@@ -1241,11 +1265,12 @@ export type ProvisionedControlPlaneTier =
   | "tier-xl"
   | "tier-2xl"
   | "tier-4xl"
-  | "tier-8xl";
+  | "tier-8xl"
+  | (string & {});
 export const ProvisionedControlPlaneTier = /*@__PURE__*/ S.String;
 
 export interface ControlPlaneScalingConfig {
-  tier?: ProvisionedControlPlaneTier | (string & {});
+  tier?: ProvisionedControlPlaneTier;
 }
 export const ControlPlaneScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tier: S.optional(ProvisionedControlPlaneTier) }),
@@ -1365,7 +1390,8 @@ export type ClusterStatus =
   | "DELETING"
   | "FAILED"
   | "UPDATING"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export interface Certificate {
@@ -1413,7 +1439,8 @@ export type ClusterIssueCode =
   | "KmsKeyDisabled"
   | "StsRegionalEndpointDisabled"
   | "UnsupportedVersion"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const ClusterIssueCode = /*@__PURE__*/ S.String;
 
 export interface ClusterIssue {
@@ -1607,12 +1634,12 @@ export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClusterResponse",
 }) as any as S.Schema<CreateClusterResponse>;
 export type EksAnywhereSubscriptionName = string;
-export type EksAnywhereSubscriptionTermUnit = "MONTHS";
+export type EksAnywhereSubscriptionTermUnit = "MONTHS" | (string & {});
 export const EksAnywhereSubscriptionTermUnit = /*@__PURE__*/ S.String;
 
 export interface EksAnywhereSubscriptionTerm {
   duration?: number;
-  unit?: EksAnywhereSubscriptionTermUnit | (string & {});
+  unit?: EksAnywhereSubscriptionTermUnit;
 }
 export const EksAnywhereSubscriptionTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1622,14 +1649,14 @@ export const EksAnywhereSubscriptionTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EksAnywhereSubscriptionTerm",
 }) as any as S.Schema<EksAnywhereSubscriptionTerm>;
-export type EksAnywhereSubscriptionLicenseType = "Cluster";
+export type EksAnywhereSubscriptionLicenseType = "Cluster" | (string & {});
 export const EksAnywhereSubscriptionLicenseType = /*@__PURE__*/ S.String;
 
 export interface CreateEksAnywhereSubscriptionRequest {
   name: string;
   term: EksAnywhereSubscriptionTerm;
   licenseQuantity?: number;
-  licenseType?: EksAnywhereSubscriptionLicenseType | (string & {});
+  licenseType?: EksAnywhereSubscriptionLicenseType;
   autoRenew?: boolean;
   clientRequestToken?: string;
   tags?: { [key: string]: string | undefined };
@@ -1768,14 +1795,16 @@ export type FargateProfileStatus =
   | "ACTIVE"
   | "DELETING"
   | "CREATE_FAILED"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const FargateProfileStatus = /*@__PURE__*/ S.String;
 
 export type FargateProfileIssueCode =
   | "PodExecutionRoleAlreadyInUse"
   | "AccessDenied"
   | "ClusterUnreachable"
-  | "InternalFailure";
+  | "InternalFailure"
+  | (string & {});
 export const FargateProfileIssueCode = /*@__PURE__*/ S.String;
 
 export interface FargateProfileIssue {
@@ -1877,7 +1906,8 @@ export type AMITypes =
   | "AL2023_ARM_64_STANDARD"
   | "AL2023_x86_64_NEURON"
   | "AL2023_x86_64_NVIDIA"
-  | "AL2023_ARM_64_NVIDIA";
+  | "AL2023_ARM_64_NVIDIA"
+  | (string & {});
 export const AMITypes = /*@__PURE__*/ S.String;
 
 export interface RemoteAccessConfig {
@@ -1901,13 +1931,17 @@ export const LabelsMap = /*@__PURE__*/ S.Record(
 );
 export type TaintKey = string;
 export type TaintValue = string;
-export type TaintEffect = "NO_SCHEDULE" | "NO_EXECUTE" | "PREFER_NO_SCHEDULE";
+export type TaintEffect =
+  | "NO_SCHEDULE"
+  | "NO_EXECUTE"
+  | "PREFER_NO_SCHEDULE"
+  | (string & {});
 export const TaintEffect = /*@__PURE__*/ S.String;
 
 export interface Taint {
   key?: string;
   value?: string;
-  effect?: TaintEffect | (string & {});
+  effect?: TaintEffect;
 }
 export const Taint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1934,13 +1968,13 @@ export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateSpecification>;
 export type NonZeroInteger = number;
 export type PercentCapacity = number;
-export type NodegroupUpdateStrategies = "DEFAULT" | "MINIMAL";
+export type NodegroupUpdateStrategies = "DEFAULT" | "MINIMAL" | (string & {});
 export const NodegroupUpdateStrategies = /*@__PURE__*/ S.String;
 
 export interface NodegroupUpdateConfig {
   maxUnavailable?: number;
   maxUnavailablePercentage?: number;
-  updateStrategy?: NodegroupUpdateStrategies | (string & {});
+  updateStrategy?: NodegroupUpdateStrategies;
 }
 export const NodegroupUpdateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1951,14 +1985,14 @@ export const NodegroupUpdateConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NodegroupUpdateConfig",
 }) as any as S.Schema<NodegroupUpdateConfig>;
-export type RepairAction = "Replace" | "Reboot" | "NoAction";
+export type RepairAction = "Replace" | "Reboot" | "NoAction" | (string & {});
 export const RepairAction = /*@__PURE__*/ S.String;
 
 export interface NodeRepairConfigOverrides {
   nodeMonitoringCondition?: string;
   nodeUnhealthyReason?: string;
   minRepairWaitTimeMins?: number;
-  repairAction?: RepairAction | (string & {});
+  repairAction?: RepairAction;
 }
 export const NodeRepairConfigOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1994,17 +2028,25 @@ export const NodeRepairConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NodeRepairConfig",
 }) as any as S.Schema<NodeRepairConfig>;
-export type CapacityTypes = "ON_DEMAND" | "SPOT" | "CAPACITY_BLOCK";
+export type CapacityTypes =
+  | "ON_DEMAND"
+  | "SPOT"
+  | "CAPACITY_BLOCK"
+  | (string & {});
 export const CapacityTypes = /*@__PURE__*/ S.String;
 
-export type WarmPoolState = "STOPPED" | "RUNNING" | "HIBERNATED";
+export type WarmPoolState =
+  | "STOPPED"
+  | "RUNNING"
+  | "HIBERNATED"
+  | (string & {});
 export const WarmPoolState = /*@__PURE__*/ S.String;
 
 export interface WarmPoolConfig {
   enabled?: boolean;
   minSize?: number;
   maxGroupPreparedCapacity?: number;
-  poolState?: WarmPoolState | (string & {});
+  poolState?: WarmPoolState;
   reuseOnScaleIn?: boolean;
 }
 export const WarmPoolConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2023,7 +2065,7 @@ export interface CreateNodegroupRequest {
   diskSize?: number;
   subnets: string[];
   instanceTypes?: string[];
-  amiType?: AMITypes | (string & {});
+  amiType?: AMITypes;
   remoteAccess?: RemoteAccessConfig;
   nodeRole: string;
   labels?: { [key: string]: string | undefined };
@@ -2033,7 +2075,7 @@ export interface CreateNodegroupRequest {
   launchTemplate?: LaunchTemplateSpecification;
   updateConfig?: NodegroupUpdateConfig;
   nodeRepairConfig?: NodeRepairConfig;
-  capacityType?: CapacityTypes | (string & {});
+  capacityType?: CapacityTypes;
   version?: string;
   releaseVersion?: string;
   warmPoolConfig?: WarmPoolConfig;
@@ -2080,7 +2122,8 @@ export type NodegroupStatus =
   | "DELETING"
   | "CREATE_FAILED"
   | "DELETE_FAILED"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const NodegroupStatus = /*@__PURE__*/ S.String;
 
 export interface AutoScalingGroup {
@@ -2141,7 +2184,8 @@ export type NodegroupIssueCode =
   | "AutoScalingGroupInstanceRefreshActive"
   | "KubernetesLabelInvalid"
   | "Ec2LaunchTemplateVersionMaxLimitExceeded"
-  | "Ec2InstanceTypeDoesNotExist";
+  | "Ec2InstanceTypeDoesNotExist"
+  | (string & {});
 export const NodegroupIssueCode = /*@__PURE__*/ S.String;
 
 export interface Issue {
@@ -2859,13 +2903,15 @@ export type DescribeClusterVersionMaxResults = number;
 export type ClusterVersionStatus =
   | "unsupported"
   | "standard-support"
-  | "extended-support";
+  | "extended-support"
+  | (string & {});
 export const ClusterVersionStatus = /*@__PURE__*/ S.String;
 
 export type VersionStatus =
   | "UNSUPPORTED"
   | "STANDARD_SUPPORT"
-  | "EXTENDED_SUPPORT";
+  | "EXTENDED_SUPPORT"
+  | (string & {});
 export const VersionStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeClusterVersionsRequest {
@@ -2875,8 +2921,8 @@ export interface DescribeClusterVersionsRequest {
   defaultOnly?: boolean;
   includeAll?: boolean;
   clusterVersions?: string[];
-  status?: ClusterVersionStatus | (string & {});
-  versionStatus?: VersionStatus | (string & {});
+  status?: ClusterVersionStatus;
+  versionStatus?: VersionStatus;
 }
 export const DescribeClusterVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3043,7 +3089,7 @@ export const DescribeIdentityProviderConfigRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeIdentityProviderConfigRequest",
 }) as any as S.Schema<DescribeIdentityProviderConfigRequest>;
-export type ConfigStatus = "CREATING" | "DELETING" | "ACTIVE";
+export type ConfigStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const ConfigStatus = /*@__PURE__*/ S.String;
 
 export interface OidcIdentityProviderConfig {
@@ -3118,10 +3164,15 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInsightRequest",
 }) as any as S.Schema<DescribeInsightRequest>;
-export type Category = "UPGRADE_READINESS" | "MISCONFIGURATION";
+export type Category = "UPGRADE_READINESS" | "MISCONFIGURATION" | (string & {});
 export const Category = /*@__PURE__*/ S.String;
 
-export type InsightStatusValue = "PASSING" | "WARNING" | "ERROR" | "UNKNOWN";
+export type InsightStatusValue =
+  | "PASSING"
+  | "WARNING"
+  | "ERROR"
+  | "UNKNOWN"
+  | (string & {});
 export const InsightStatusValue = /*@__PURE__*/ S.String;
 
 export interface InsightStatus {
@@ -3283,7 +3334,11 @@ export const DescribeInsightsRefreshRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInsightsRefreshRequest",
 }) as any as S.Schema<DescribeInsightsRefreshRequest>;
-export type InsightsRefreshStatus = "IN_PROGRESS" | "FAILED" | "COMPLETED";
+export type InsightsRefreshStatus =
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETED"
+  | (string & {});
 export const InsightsRefreshStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeInsightsRefreshResponse {
@@ -3741,20 +3796,19 @@ export type EksAnywhereSubscriptionStatus =
   | "UPDATING"
   | "EXPIRING"
   | "EXPIRED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const EksAnywhereSubscriptionStatus = /*@__PURE__*/ S.String;
 
-export type EksAnywhereSubscriptionStatusValues = (
-  | EksAnywhereSubscriptionStatus
-  | (string & {})
-)[];
+export type EksAnywhereSubscriptionStatusValues =
+  EksAnywhereSubscriptionStatus[];
 export const EksAnywhereSubscriptionStatusValues = /*@__PURE__*/ S.Array(
   EksAnywhereSubscriptionStatus,
 );
 export interface ListEksAnywhereSubscriptionsRequest {
   maxResults?: number;
   nextToken?: string;
-  includeStatus?: (EksAnywhereSubscriptionStatus | (string & {}))[];
+  includeStatus?: EksAnywhereSubscriptionStatus[];
 }
 export const ListEksAnywhereSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3875,14 +3929,14 @@ export const ListIdentityProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIdentityProviderConfigsResponse",
 }) as any as S.Schema<ListIdentityProviderConfigsResponse>;
-export type CategoryList = (Category | (string & {}))[];
+export type CategoryList = Category[];
 export const CategoryList = /*@__PURE__*/ S.Array(Category);
-export type InsightStatusValueList = (InsightStatusValue | (string & {}))[];
+export type InsightStatusValueList = InsightStatusValue[];
 export const InsightStatusValueList = /*@__PURE__*/ S.Array(InsightStatusValue);
 export interface InsightsFilter {
-  categories?: (Category | (string & {}))[];
+  categories?: Category[];
   kubernetesVersions?: string[];
-  statuses?: (InsightStatusValue | (string & {}))[];
+  statuses?: InsightStatusValue[];
 }
 export const InsightsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4136,12 +4190,13 @@ export type ConnectorConfigProvider =
   | "TANZU"
   | "RANCHER"
   | "EC2"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const ConnectorConfigProvider = /*@__PURE__*/ S.String;
 
 export interface ConnectorConfigRequest {
   roleArn: string;
-  provider: ConnectorConfigProvider | (string & {});
+  provider: ConnectorConfigProvider;
 }
 export const ConnectorConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roleArn: S.String, provider: ConnectorConfigProvider }),
@@ -4312,7 +4367,7 @@ export interface UpdateAddonRequest {
   addonName: string;
   addonVersion?: string;
   serviceAccountRoleArn?: string;
-  resolveConflicts?: ResolveConflicts | (string & {});
+  resolveConflicts?: ResolveConflicts;
   clientRequestToken?: string;
   configurationValues?: string;
   podIdentityAssociations?: AddonPodIdentityAssociations[];
@@ -4389,7 +4444,7 @@ export interface UpdateCapabilityRequest {
   roleArn?: string;
   configuration?: UpdateCapabilityConfiguration;
   clientRequestToken?: string;
-  deletePropagationPolicy?: CapabilityDeletePropagationPolicy | (string & {});
+  deletePropagationPolicy?: CapabilityDeletePropagationPolicy;
 }
 export const UpdateCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4424,7 +4479,7 @@ export const UpdateCapabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCapabilityResponse",
 }) as any as S.Schema<UpdateCapabilityResponse>;
 export interface UpdateAccessConfigRequest {
-  authenticationMode?: AuthenticationMode | (string & {});
+  authenticationMode?: AuthenticationMode;
 }
 export const UpdateAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authenticationMode: S.optional(AuthenticationMode) }),

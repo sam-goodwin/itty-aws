@@ -68,14 +68,14 @@ export const CreateContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
-  modified?: string;
+  modified?: string | null;
   /** Defines the status of Content Scanning. */
-  value?: string;
+  value?: string | null;
 }
 export const CreateContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    value: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CreateContentScanningResponse",
@@ -121,14 +121,14 @@ export const CreatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PayloadsCreateResultItem {
   /** defines the unique ID for this custom scan expression. */
-  id?: string;
+  id?: string | null;
   /** Defines the ruleset expression to use in matching content objects. */
-  payload?: string;
+  payload?: string | null;
 }
 export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    payload: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    payload: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PayloadsCreateResultItem",
@@ -177,14 +177,14 @@ export const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PayloadsDeleteResultItem {
   /** defines the unique ID for this custom scan expression. */
-  id?: string;
+  id?: string | null;
   /** Defines the ruleset expression to use in matching content objects. */
-  payload?: string;
+  payload?: string | null;
 }
 export const PayloadsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    payload: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    payload: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PayloadsDeleteResultItem",
@@ -281,14 +281,14 @@ export const GetContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
-  modified?: string;
+  modified?: string | null;
   /** Defines the status of Content Scanning. */
-  value?: string;
+  value?: string | null;
 }
 export const GetContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    value: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetContentScanningResponse",
@@ -314,14 +314,14 @@ export const ListPayloadsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PayloadsListResultItem {
   /** defines the unique ID for this custom scan expression. */
-  id?: string;
+  id?: string | null;
   /** Defines the ruleset expression to use in matching content objects. */
-  payload?: string;
+  payload?: string | null;
 }
 export const PayloadsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    payload: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    payload: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PayloadsListResultItem",
@@ -368,14 +368,14 @@ export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsGetResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
-  modified?: string;
+  modified?: string | null;
   /** Defines the status of Content Scanning. */
-  value?: string;
+  value?: string | null;
 }
 export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    value: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SettingsGetResponse",
@@ -406,14 +406,14 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
-  modified?: string;
+  modified?: string | null;
   /** Defines the status of Content Scanning. */
-  value?: string;
+  value?: string | null;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    value: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 

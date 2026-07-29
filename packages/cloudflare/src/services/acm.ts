@@ -171,11 +171,11 @@ export const DeleteCustomTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomTrustStoreResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
 }
 export const DeleteCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomTrustStoreResponse",
@@ -281,22 +281,24 @@ export const TotalTlsGetResponseValidityPeriod = /*@__PURE__*/ S.Number;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: TotalTlsGetResponseCertificateAuthority;
+  certificateAuthority?: TotalTlsGetResponseCertificateAuthority | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
-  validityPeriod?: TotalTlsGetResponseValidityPeriod;
+  validityPeriod?: TotalTlsGetResponseValidityPeriod | null;
 }
 export const GetTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateAuthority: S.optional(
-      TotalTlsGetResponseCertificateAuthority.pipe(
+      S.NullOr(TotalTlsGetResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     validityPeriod: S.optional(
-      TotalTlsGetResponseValidityPeriod.pipe(T.Body("validity_period")),
+      S.NullOr(TotalTlsGetResponseValidityPeriod).pipe(
+        T.Body("validity_period"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -412,14 +414,15 @@ export interface TotalTlsUpdateRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?:
     | TotalTlsUpdateRequestCertificateAuthority
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     certificateAuthority: S.optional(
-      TotalTlsUpdateRequestCertificateAuthority.pipe(
+      S.NullOr(TotalTlsUpdateRequestCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -449,22 +452,24 @@ export const TotalTlsUpdateResponseValidityPeriod = /*@__PURE__*/ S.Number;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TotalTlsUpdateResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: TotalTlsUpdateResponseCertificateAuthority;
+  certificateAuthority?: TotalTlsUpdateResponseCertificateAuthority | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
-  validityPeriod?: TotalTlsUpdateResponseValidityPeriod;
+  validityPeriod?: TotalTlsUpdateResponseValidityPeriod | null;
 }
 export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateAuthority: S.optional(
-      TotalTlsUpdateResponseCertificateAuthority.pipe(
+      S.NullOr(TotalTlsUpdateResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     validityPeriod: S.optional(
-      TotalTlsUpdateResponseValidityPeriod.pipe(T.Body("validity_period")),
+      S.NullOr(TotalTlsUpdateResponseValidityPeriod).pipe(
+        T.Body("validity_period"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -485,14 +490,15 @@ export interface UpdateTotalTlRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?:
     | TotalTlsEditRequestCertificateAuthority
-    | (string & {});
+    | (string & {})
+    | null;
 }
 export const UpdateTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     certificateAuthority: S.optional(
-      TotalTlsEditRequestCertificateAuthority.pipe(
+      S.NullOr(TotalTlsEditRequestCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -521,22 +527,24 @@ export const TotalTlsEditResponseValidityPeriod = /*@__PURE__*/ S.Number;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: TotalTlsEditResponseCertificateAuthority;
+  certificateAuthority?: TotalTlsEditResponseCertificateAuthority | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
-  validityPeriod?: TotalTlsEditResponseValidityPeriod;
+  validityPeriod?: TotalTlsEditResponseValidityPeriod | null;
 }
 export const UpdateTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateAuthority: S.optional(
-      TotalTlsEditResponseCertificateAuthority.pipe(
+      S.NullOr(TotalTlsEditResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     validityPeriod: S.optional(
-      TotalTlsEditResponseValidityPeriod.pipe(T.Body("validity_period")),
+      S.NullOr(TotalTlsEditResponseValidityPeriod).pipe(
+        T.Body("validity_period"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

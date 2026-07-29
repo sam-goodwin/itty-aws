@@ -86,14 +86,14 @@ export interface CopyAudioTrackRequest {
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
   label: string;
   /** An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. */
-  url?: string;
+  url?: string | null;
 }
 export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
     label: S.String,
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -113,20 +113,20 @@ export const AudioTracksCopyResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CopyAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
+  default?: boolean | null;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
+  label?: string | null;
   /** Specifies the processing status of the video. */
-  status?: AudioTracksCopyResponseStatus;
+  status?: AudioTracksCopyResponseStatus | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
 }
 export const CopyAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    status: S.optional(AudioTracksCopyResponseStatus),
-    uid: S.optional(S.String),
+    default: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(AudioTracksCopyResponseStatus)),
+    uid: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CopyAudioTrackResponse",
@@ -167,20 +167,20 @@ export const CaptionsLanguageCreateResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
-  generated?: boolean;
+  generated?: boolean | null;
   /** The language label displayed in the native language to users. */
-  label?: string;
+  label?: string | null;
   /** The language tag in BCP 47 format. */
-  language?: string;
+  language?: string | null;
   /** The status of a generated caption. */
-  status?: CaptionsLanguageCreateResponseStatus;
+  status?: CaptionsLanguageCreateResponseStatus | null;
 }
 export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsLanguageCreateResponseStatus),
+    generated: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    language: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(CaptionsLanguageCreateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCaptionLanguageResponse",
@@ -193,11 +193,11 @@ export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface ClipCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string;
+  uid?: string | null;
 }
 export const ClipCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.String),
+    uid: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ClipCreateRequestWatermark",
@@ -213,24 +213,24 @@ export interface CreateClipRequest {
   /** Specifies the start time for the video clip in seconds. */
   startTimeSeconds: number;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: ClipCreateRequestAllowedOriginsList;
+  allowedOrigins?: ClipCreateRequestAllowedOriginsList | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** A video's URL. Preferred over 'url'. */
-  input?: string;
+  input?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** A name for the video. */
-  name?: string;
+  name?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A video's URL (legacy field, use 'input' instead). */
-  url?: string;
-  watermark?: ClipCreateRequestWatermark;
+  url?: string | null;
+  watermark?: ClipCreateRequestWatermark | null;
 }
 export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -238,16 +238,16 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
     clippedFromVideoUID: S.String,
     endTimeSeconds: S.Number,
     startTimeSeconds: S.Number,
-    allowedOrigins: S.optional(ClipCreateRequestAllowedOriginsList),
-    creator: S.optional(S.String),
-    input: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    name: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    url: S.optional(S.String),
-    watermark: S.optional(ClipCreateRequestWatermark),
+    allowedOrigins: S.optional(S.NullOr(ClipCreateRequestAllowedOriginsList)),
+    creator: S.optional(S.NullOr(S.String)),
+    input: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    name: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    url: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(ClipCreateRequestWatermark)),
   })
     .pipe(
       T.Http({
@@ -268,14 +268,14 @@ export const ClipCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface ClipCreateResponseInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
-  height?: number;
+  height?: number | null;
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
-  width?: number;
+  width?: number | null;
 }
 export const ClipCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
+    height: S.optional(S.NullOr(S.Number)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ClipCreateResponseInput",
@@ -283,33 +283,33 @@ export const ClipCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface ClipCreateResponsePlayback {
   /** DASH Media Presentation Description for the video. */
-  dash?: string;
+  dash?: string | null;
   /** The HLS manifest for the video. */
-  hls?: string;
+  hls?: string | null;
 }
 export const ClipCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dash: S.optional(S.String),
-    hls: S.optional(S.String),
+    dash: S.optional(S.NullOr(S.String)),
+    hls: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ClipCreateResponsePlayback",
 }) as any as S.Schema<ClipCreateResponsePlayback>;
 
 export interface ClipCreateResponsePublicDetails {
-  channelLink?: string;
-  logo?: string;
-  mediaId?: number;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const ClipCreateResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    mediaId: S.optional(S.Number.pipe(T.Body("media_id"))),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ClipCreateResponsePublicDetails",
@@ -327,20 +327,20 @@ export const ClipCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface ClipCreateResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
-  errorReasonCode?: string;
+  errorReasonCode?: string | null;
   /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
-  errorReasonText?: string;
+  errorReasonText?: string | null;
   /** Indicates the progress as a percentage between 0 and 100. */
-  pctComplete?: string;
+  pctComplete?: string | null;
   /** Specifies the processing status for all quality levels for a video. */
-  state?: ClipCreateResponseStatusState;
+  state?: ClipCreateResponseStatusState | null;
 }
 export const ClipCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorReasonCode: S.optional(S.String),
-    errorReasonText: S.optional(S.String),
-    pctComplete: S.optional(S.String),
-    state: S.optional(ClipCreateResponseStatusState),
+    errorReasonCode: S.optional(S.NullOr(S.String)),
+    errorReasonText: S.optional(S.NullOr(S.String)),
+    pctComplete: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(ClipCreateResponseStatusState)),
   }),
 ).annotate({
   identifier: "ClipCreateResponseStatus",
@@ -348,41 +348,41 @@ export const ClipCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
 
 export interface ClipCreateResponseWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const ClipCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ClipCreateResponseWatermark",
@@ -391,83 +391,83 @@ export const ClipCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClipResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: ClipCreateResponseAllowedOriginsList;
+  allowedOrigins?: ClipCreateResponseAllowedOriginsList | null;
   /** The unique identifier of the source video this video was clipped from. */
-  clippedFrom?: string;
+  clippedFrom?: string | null;
   /** The date and time the media item was created. */
-  created?: string;
+  created?: string | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
-  duration?: number;
-  input?: ClipCreateResponseInput;
+  duration?: number | null;
+  input?: ClipCreateResponseInput | null;
   /** The live input ID used to upload a video with Stream Live. */
-  liveInput?: string;
+  liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** The maximum size in bytes for the video upload. */
-  maxSizeBytes?: number;
+  maxSizeBytes?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the media item was last modified. */
-  modified?: string;
-  playback?: ClipCreateResponsePlayback;
+  modified?: string | null;
+  playback?: ClipCreateResponsePlayback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
-  preview?: string;
+  preview?: string | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: ClipCreateResponsePublicDetails;
+  publicDetails?: ClipCreateResponsePublicDetails | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStream?: boolean;
+  readyToStream?: boolean | null;
   /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStreamAt?: string;
+  readyToStreamAt?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The size of the media item in bytes. */
-  size?: number;
+  size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details. */
-  status?: ClipCreateResponseStatus;
+  status?: ClipCreateResponseStatus | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
-  thumbnail?: string;
+  thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
-  watermark?: ClipCreateResponseWatermark;
+  uploadExpiry?: string | null;
+  watermark?: ClipCreateResponseWatermark | null;
 }
 export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowedOrigins: S.optional(ClipCreateResponseAllowedOriginsList),
-    clippedFrom: S.optional(S.String),
-    created: S.optional(S.String),
-    creator: S.optional(S.String),
-    duration: S.optional(S.Number),
-    input: S.optional(ClipCreateResponseInput),
-    liveInput: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    maxSizeBytes: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    playback: S.optional(ClipCreateResponsePlayback),
-    preview: S.optional(S.String),
-    publicDetails: S.optional(ClipCreateResponsePublicDetails),
-    readyToStream: S.optional(S.Boolean),
-    readyToStreamAt: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    size: S.optional(S.Number),
-    status: S.optional(ClipCreateResponseStatus),
-    thumbnail: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploaded: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
-    watermark: S.optional(ClipCreateResponseWatermark),
+    allowedOrigins: S.optional(S.NullOr(ClipCreateResponseAllowedOriginsList)),
+    clippedFrom: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    duration: S.optional(S.NullOr(S.Number)),
+    input: S.optional(S.NullOr(ClipCreateResponseInput)),
+    liveInput: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    maxSizeBytes: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    playback: S.optional(S.NullOr(ClipCreateResponsePlayback)),
+    preview: S.optional(S.NullOr(S.String)),
+    publicDetails: S.optional(S.NullOr(ClipCreateResponsePublicDetails)),
+    readyToStream: S.optional(S.NullOr(S.Boolean)),
+    readyToStreamAt: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    size: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(ClipCreateResponseStatus)),
+    thumbnail: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(ClipCreateResponseWatermark)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateClipResponse",
@@ -480,11 +480,11 @@ export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface CopyCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string;
+  uid?: string | null;
 }
 export const CopyCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.String),
+    uid: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CopyCreateRequestWatermark",
@@ -494,40 +494,40 @@ export interface CreateCopyRequest {
   /** The account identifier tag. */
   accountId: string;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: CopyCreateRequestAllowedOriginsList;
+  allowedOrigins?: CopyCreateRequestAllowedOriginsList | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`. */
-  input?: string;
+  input?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** A video's name. Used for legacy compatibility. */
-  name?: string;
+  name?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`. */
-  url?: string;
-  watermark?: CopyCreateRequestWatermark;
+  url?: string | null;
+  watermark?: CopyCreateRequestWatermark | null;
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
 export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    allowedOrigins: S.optional(CopyCreateRequestAllowedOriginsList),
-    creator: S.optional(S.String),
-    input: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    name: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    url: S.optional(S.String),
-    watermark: S.optional(CopyCreateRequestWatermark),
+    allowedOrigins: S.optional(S.NullOr(CopyCreateRequestAllowedOriginsList)),
+    creator: S.optional(S.NullOr(S.String)),
+    input: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    name: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    url: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(CopyCreateRequestWatermark)),
     uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
@@ -549,14 +549,14 @@ export const CopyCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface CopyCreateResponseInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
-  height?: number;
+  height?: number | null;
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
-  width?: number;
+  width?: number | null;
 }
 export const CopyCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
+    height: S.optional(S.NullOr(S.Number)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CopyCreateResponseInput",
@@ -564,33 +564,33 @@ export const CopyCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface CopyCreateResponsePlayback {
   /** DASH Media Presentation Description for the video. */
-  dash?: string;
+  dash?: string | null;
   /** The HLS manifest for the video. */
-  hls?: string;
+  hls?: string | null;
 }
 export const CopyCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dash: S.optional(S.String),
-    hls: S.optional(S.String),
+    dash: S.optional(S.NullOr(S.String)),
+    hls: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CopyCreateResponsePlayback",
 }) as any as S.Schema<CopyCreateResponsePlayback>;
 
 export interface CopyCreateResponsePublicDetails {
-  channelLink?: string;
-  logo?: string;
-  mediaId?: number;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const CopyCreateResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    mediaId: S.optional(S.Number.pipe(T.Body("media_id"))),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CopyCreateResponsePublicDetails",
@@ -608,20 +608,20 @@ export const CopyCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface CopyCreateResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
-  errorReasonCode?: string;
+  errorReasonCode?: string | null;
   /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
-  errorReasonText?: string;
+  errorReasonText?: string | null;
   /** Indicates the progress as a percentage between 0 and 100. */
-  pctComplete?: string;
+  pctComplete?: string | null;
   /** Specifies the processing status for all quality levels for a video. */
-  state?: CopyCreateResponseStatusState;
+  state?: CopyCreateResponseStatusState | null;
 }
 export const CopyCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorReasonCode: S.optional(S.String),
-    errorReasonText: S.optional(S.String),
-    pctComplete: S.optional(S.String),
-    state: S.optional(CopyCreateResponseStatusState),
+    errorReasonCode: S.optional(S.NullOr(S.String)),
+    errorReasonText: S.optional(S.NullOr(S.String)),
+    pctComplete: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(CopyCreateResponseStatusState)),
   }),
 ).annotate({
   identifier: "CopyCreateResponseStatus",
@@ -629,41 +629,41 @@ export const CopyCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
 
 export interface CopyCreateResponseWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const CopyCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "CopyCreateResponseWatermark",
@@ -672,83 +672,83 @@ export const CopyCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCopyResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: CopyCreateResponseAllowedOriginsList;
+  allowedOrigins?: CopyCreateResponseAllowedOriginsList | null;
   /** The unique identifier of the source video this video was clipped from. */
-  clippedFrom?: string;
+  clippedFrom?: string | null;
   /** The date and time the media item was created. */
-  created?: string;
+  created?: string | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
-  duration?: number;
-  input?: CopyCreateResponseInput;
+  duration?: number | null;
+  input?: CopyCreateResponseInput | null;
   /** The live input ID used to upload a video with Stream Live. */
-  liveInput?: string;
+  liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** The maximum size in bytes for the video upload. */
-  maxSizeBytes?: number;
+  maxSizeBytes?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the media item was last modified. */
-  modified?: string;
-  playback?: CopyCreateResponsePlayback;
+  modified?: string | null;
+  playback?: CopyCreateResponsePlayback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
-  preview?: string;
+  preview?: string | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: CopyCreateResponsePublicDetails;
+  publicDetails?: CopyCreateResponsePublicDetails | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStream?: boolean;
+  readyToStream?: boolean | null;
   /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStreamAt?: string;
+  readyToStreamAt?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The size of the media item in bytes. */
-  size?: number;
+  size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details. */
-  status?: CopyCreateResponseStatus;
+  status?: CopyCreateResponseStatus | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
-  thumbnail?: string;
+  thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
-  watermark?: CopyCreateResponseWatermark;
+  uploadExpiry?: string | null;
+  watermark?: CopyCreateResponseWatermark | null;
 }
 export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowedOrigins: S.optional(CopyCreateResponseAllowedOriginsList),
-    clippedFrom: S.optional(S.String),
-    created: S.optional(S.String),
-    creator: S.optional(S.String),
-    duration: S.optional(S.Number),
-    input: S.optional(CopyCreateResponseInput),
-    liveInput: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    maxSizeBytes: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    playback: S.optional(CopyCreateResponsePlayback),
-    preview: S.optional(S.String),
-    publicDetails: S.optional(CopyCreateResponsePublicDetails),
-    readyToStream: S.optional(S.Boolean),
-    readyToStreamAt: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    size: S.optional(S.Number),
-    status: S.optional(CopyCreateResponseStatus),
-    thumbnail: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploaded: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
-    watermark: S.optional(CopyCreateResponseWatermark),
+    allowedOrigins: S.optional(S.NullOr(CopyCreateResponseAllowedOriginsList)),
+    clippedFrom: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    duration: S.optional(S.NullOr(S.Number)),
+    input: S.optional(S.NullOr(CopyCreateResponseInput)),
+    liveInput: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    maxSizeBytes: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    playback: S.optional(S.NullOr(CopyCreateResponsePlayback)),
+    preview: S.optional(S.NullOr(S.String)),
+    publicDetails: S.optional(S.NullOr(CopyCreateResponsePublicDetails)),
+    readyToStream: S.optional(S.NullOr(S.Boolean)),
+    readyToStreamAt: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    size: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(CopyCreateResponseStatus)),
+    thumbnail: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(CopyCreateResponseWatermark)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCopyResponse",
@@ -762,11 +762,11 @@ export const DirectUploadCreateRequestAllowedOriginsList =
 
 export interface DirectUploadCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string;
+  uid?: string | null;
 }
 export const DirectUploadCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.String),
+    uid: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DirectUploadCreateRequestWatermark",
@@ -778,20 +778,20 @@ export interface CreateDirectUploadRequest {
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
   maxDurationSeconds: number;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: DirectUploadCreateRequestAllowedOriginsList;
+  allowedOrigins?: DirectUploadCreateRequestAllowedOriginsList | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The date and time after upload when videos will not be accepted. */
-  expiry?: string;
+  expiry?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
-  watermark?: DirectUploadCreateRequestWatermark;
+  thumbnailTimestampPct?: number | null;
+  watermark?: DirectUploadCreateRequestWatermark | null;
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
@@ -799,14 +799,16 @@ export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     maxDurationSeconds: S.Number,
-    allowedOrigins: S.optional(DirectUploadCreateRequestAllowedOriginsList),
-    creator: S.optional(S.String),
-    expiry: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    watermark: S.optional(DirectUploadCreateRequestWatermark),
+    allowedOrigins: S.optional(
+      S.NullOr(DirectUploadCreateRequestAllowedOriginsList),
+    ),
+    creator: S.optional(S.NullOr(S.String)),
+    expiry: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    watermark: S.optional(S.NullOr(DirectUploadCreateRequestWatermark)),
     uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
@@ -823,41 +825,41 @@ export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DirectUploadCreateResponseWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const DirectUploadCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "DirectUploadCreateResponseWatermark",
@@ -866,19 +868,19 @@ export const DirectUploadCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDirectUploadResponse {
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request. */
-  uploadURL?: string;
-  watermark?: DirectUploadCreateResponseWatermark;
+  uploadURL?: string | null;
+  watermark?: DirectUploadCreateResponseWatermark | null;
 }
 export const CreateDirectUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scheduledDeletion: S.optional(S.String),
-    uid: S.optional(S.String),
-    uploadURL: S.optional(S.String),
-    watermark: S.optional(DirectUploadCreateResponseWatermark),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploadURL: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(DirectUploadCreateResponseWatermark)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDirectUploadResponse",
@@ -919,13 +921,13 @@ export interface DownloadsCreateResponseAudio {
   /** The status of a generated download. */
   status: DownloadsCreateResponseAudioStatus;
   /** The URL to access the generated download. */
-  url?: string;
+  url?: string | null;
 }
 export const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.Number,
     status: DownloadsCreateResponseAudioStatus,
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DownloadsCreateResponseAudio",
@@ -943,13 +945,13 @@ export interface DownloadsCreateResponseDefault {
   /** The status of a generated download. */
   status: DownloadsCreateResponseDefaultStatus;
   /** The URL to access the generated download. */
-  url?: string;
+  url?: string | null;
 }
 export const DownloadsCreateResponseDefault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.Number,
     status: DownloadsCreateResponseDefaultStatus,
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DownloadsCreateResponseDefault",
@@ -958,14 +960,14 @@ export const DownloadsCreateResponseDefault = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
-  audio?: DownloadsCreateResponseAudio;
+  audio?: DownloadsCreateResponseAudio | null;
   /** The default video download. Only present if this download type has been created. */
-  default?: DownloadsCreateResponseDefault;
+  default?: DownloadsCreateResponseDefault | null;
 }
 export const CreateDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(DownloadsCreateResponseAudio),
-    default: S.optional(DownloadsCreateResponseDefault),
+    audio: S.optional(S.NullOr(DownloadsCreateResponseAudio)),
+    default: S.optional(S.NullOr(DownloadsCreateResponseDefault)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDownloadResponse",
@@ -994,20 +996,20 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateKeyResponse {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time a signing key was created. */
-  created?: string;
+  created?: string | null;
   /** The signing key in JWK format. */
-  jwk?: string;
+  jwk?: string | null;
   /** The signing key in PEM format. */
-  pem?: string;
+  pem?: string | null;
 }
 export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    jwk: S.optional(S.String),
-    pem: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    jwk: S.optional(S.NullOr(S.String)),
+    pem: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateKeyResponse",
@@ -1024,25 +1026,25 @@ export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList;
+  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList | null;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
+  hideLiveViewerCount?: boolean | null;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateRequestRecordingMode | (string & {});
+  mode?: LiveInputsCreateRequestRecordingMode | (string & {}) | null;
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
+  timeoutSeconds?: number | null;
 }
 export const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      LiveInputsCreateRequestRecordingAllowedOriginsList,
+      S.NullOr(LiveInputsCreateRequestRecordingAllowedOriginsList),
     ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsCreateRequestRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
+    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+    mode: S.optional(S.NullOr(LiveInputsCreateRequestRecordingMode)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    timeoutSeconds: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateRequestRecording",
@@ -1052,27 +1054,27 @@ export interface CreateLiveInputRequest {
   /** Identifier. */
   accountId: string;
   /** Sets the creator ID asssociated with this live input. */
-  defaultCreator?: string;
+  defaultCreator?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
+  preferLowLatency?: boolean | null;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsCreateRequestRecording;
+  recording?: LiveInputsCreateRequestRecording | null;
 }
 export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultCreator: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    meta: S.optional(S.Unknown),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsCreateRequestRecording),
+    defaultCreator: S.optional(S.NullOr(S.String)),
+    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+    recording: S.optional(S.NullOr(LiveInputsCreateRequestRecording)),
   })
     .pipe(
       T.Http({
@@ -1097,25 +1099,25 @@ export const LiveInputsCreateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsCreateResponseRecordingAllowedOriginsList;
+  allowedOrigins?: LiveInputsCreateResponseRecordingAllowedOriginsList | null;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
+  hideLiveViewerCount?: boolean | null;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateResponseRecordingMode;
+  mode?: LiveInputsCreateResponseRecordingMode | null;
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
+  timeoutSeconds?: number | null;
 }
 export const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      LiveInputsCreateResponseRecordingAllowedOriginsList,
+      S.NullOr(LiveInputsCreateResponseRecordingAllowedOriginsList),
     ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsCreateResponseRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
+    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+    mode: S.optional(S.NullOr(LiveInputsCreateResponseRecordingMode)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    timeoutSeconds: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateResponseRecording",
@@ -1123,14 +1125,14 @@ export const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsCreateResponseRtmps {
   /** The secret key to use when streaming via RTMPS to a live input. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
+    streamKey: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateResponseRtmps",
@@ -1138,15 +1140,15 @@ export const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsCreateResponseRtmpsPlayback {
   /** The secret key to use for playback via RTMPS. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The URL used to play live video over RTMPS. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      streamKey: S.optional(S.String),
-      url: S.optional(S.String),
+      streamKey: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "LiveInputsCreateResponseRtmpsPlayback",
@@ -1154,17 +1156,17 @@ export const LiveInputsCreateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
 
 export interface LiveInputsCreateResponseSrt {
   /** The secret key to use when streaming via SRT to a live input. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use when streaming via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The SRT URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateResponseSrt",
@@ -1172,17 +1174,17 @@ export const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsCreateResponseSrtPlayback {
   /** The secret key to use for playback via SRT. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use for playback via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The URL used to play live video over SRT. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateResponseSrtPlayback",
@@ -1201,11 +1203,11 @@ export const LiveInputsCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseWebRTC {
   /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsCreateResponseWebRTC",
@@ -1213,12 +1215,12 @@ export const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsCreateResponseWebRTCPlayback {
   /** The URL used to play live video over WebRTC. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsCreateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "LiveInputsCreateResponseWebRTCPlayback",
@@ -1227,56 +1229,58 @@ export const LiveInputsCreateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLiveInputResponse {
   /** The date and time the live input was created. */
-  created?: string;
+  created?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
-  keysRotatedAt?: string;
+  keysRotatedAt?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the live input was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
+  preferLowLatency?: boolean | null;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsCreateResponseRecording;
+  recording?: LiveInputsCreateResponseRecording | null;
   /** Details for streaming to an live input using RTMPS. */
-  rtmps?: LiveInputsCreateResponseRtmps;
+  rtmps?: LiveInputsCreateResponseRtmps | null;
   /** Details for playback from an live input using RTMPS. */
-  rtmpsPlayback?: LiveInputsCreateResponseRtmpsPlayback;
+  rtmpsPlayback?: LiveInputsCreateResponseRtmpsPlayback | null;
   /** Details for streaming to a live input using SRT. */
-  srt?: LiveInputsCreateResponseSrt;
+  srt?: LiveInputsCreateResponseSrt | null;
   /** Details for playback from an live input using SRT. */
-  srtPlayback?: LiveInputsCreateResponseSrtPlayback;
+  srtPlayback?: LiveInputsCreateResponseSrtPlayback | null;
   /** The connection status of a live input. */
-  status?: LiveInputsCreateResponseStatus;
+  status?: LiveInputsCreateResponseStatus | null;
   /** A unique identifier for a live input. */
-  uid?: string;
+  uid?: string | null;
   /** Details for streaming to a live input using WebRTC. */
-  webRTC?: LiveInputsCreateResponseWebRTC;
+  webRTC?: LiveInputsCreateResponseWebRTC | null;
   /** Details for playback from a live input using WebRTC. */
-  webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback;
+  webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback | null;
 }
 export const CreateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    keysRotatedAt: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsCreateResponseRecording),
-    rtmps: S.optional(LiveInputsCreateResponseRtmps),
-    rtmpsPlayback: S.optional(LiveInputsCreateResponseRtmpsPlayback),
-    srt: S.optional(LiveInputsCreateResponseSrt),
-    srtPlayback: S.optional(LiveInputsCreateResponseSrtPlayback),
-    status: S.optional(LiveInputsCreateResponseStatus),
-    uid: S.optional(S.String),
-    webRTC: S.optional(LiveInputsCreateResponseWebRTC),
-    webRTCPlayback: S.optional(LiveInputsCreateResponseWebRTCPlayback),
+    created: S.optional(S.NullOr(S.String)),
+    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    keysRotatedAt: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+    recording: S.optional(S.NullOr(LiveInputsCreateResponseRecording)),
+    rtmps: S.optional(S.NullOr(LiveInputsCreateResponseRtmps)),
+    rtmpsPlayback: S.optional(S.NullOr(LiveInputsCreateResponseRtmpsPlayback)),
+    srt: S.optional(S.NullOr(LiveInputsCreateResponseSrt)),
+    srtPlayback: S.optional(S.NullOr(LiveInputsCreateResponseSrtPlayback)),
+    status: S.optional(S.NullOr(LiveInputsCreateResponseStatus)),
+    uid: S.optional(S.NullOr(S.String)),
+    webRTC: S.optional(S.NullOr(LiveInputsCreateResponseWebRTC)),
+    webRTCPlayback: S.optional(
+      S.NullOr(LiveInputsCreateResponseWebRTCPlayback),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLiveInputResponse",
@@ -1292,7 +1296,7 @@ export interface CreateLiveInputOutputRequest {
   /** The URL an output uses to restream. */
   url: string;
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1300,7 +1304,7 @@ export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
     streamKey: S.String,
     url: S.String,
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -1317,20 +1321,20 @@ export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLiveInputOutputResponse {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** A unique identifier for the output. */
-  uid?: string;
+  uid?: string | null;
   /** The URL an output uses to restream. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    streamKey: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLiveInputOutputResponse",
@@ -1403,20 +1407,20 @@ export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
 
 export interface TokenCreateRequestAccessRulesItem {
   /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
-  action?: TokenCreateRequestAccessRulesItemAction | (string & {});
+  action?: TokenCreateRequestAccessRulesItemAction | (string & {}) | null;
   /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
-  country?: TokenCreateRequestAccessRulesItemCountryList;
+  country?: TokenCreateRequestAccessRulesItemCountryList | null;
   /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
-  ip?: TokenCreateRequestAccessRulesItemIpList;
+  ip?: TokenCreateRequestAccessRulesItemIpList | null;
   /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
-  type?: TokenCreateRequestAccessRulesItemType | (string & {});
+  type?: TokenCreateRequestAccessRulesItemType | (string & {}) | null;
 }
 export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(TokenCreateRequestAccessRulesItemAction),
-    country: S.optional(TokenCreateRequestAccessRulesItemCountryList),
-    ip: S.optional(TokenCreateRequestAccessRulesItemIpList),
-    type: S.optional(TokenCreateRequestAccessRulesItemType),
+    action: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemAction)),
+    country: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemCountryList)),
+    ip: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemIpList)),
+    type: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemType)),
   }),
 ).annotate({
   identifier: "TokenCreateRequestAccessRulesItem",
@@ -1430,11 +1434,11 @@ export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
 
 export interface TokenCreateRequestFlags {
   /** Whether to return the original video without transformations. */
-  original?: boolean;
+  original?: boolean | null;
 }
 export const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    original: S.optional(S.Boolean),
+    original: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "TokenCreateRequestFlags",
@@ -1446,31 +1450,31 @@ export interface CreateTokenRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
   /** The optional ID of a Stream signing key. If present, the `pem` field is also required. */
-  id?: string;
+  id?: string | null;
   /** The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated. */
-  accessRules?: TokenCreateRequestAccessRulesList;
+  accessRules?: TokenCreateRequestAccessRulesList | null;
   /** The optional boolean value that enables using signed tokens to access MP4 download links for a video. */
-  downloadable?: boolean;
+  downloadable?: boolean | null;
   /** The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing. */
-  exp?: number;
+  exp?: number | null;
   /** Optional flags for the signed token. */
-  flags?: TokenCreateRequestFlags;
+  flags?: TokenCreateRequestFlags | null;
   /** The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing. */
-  nbf?: number;
+  nbf?: number | null;
   /** The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required. */
-  pem?: string;
+  pem?: string | null;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    accessRules: S.optional(TokenCreateRequestAccessRulesList),
-    downloadable: S.optional(S.Boolean),
-    exp: S.optional(S.Number),
-    flags: S.optional(TokenCreateRequestFlags),
-    nbf: S.optional(S.Number),
-    pem: S.optional(S.String),
+    id: S.optional(S.NullOr(S.String)),
+    accessRules: S.optional(S.NullOr(TokenCreateRequestAccessRulesList)),
+    downloadable: S.optional(S.NullOr(S.Boolean)),
+    exp: S.optional(S.NullOr(S.Number)),
+    flags: S.optional(S.NullOr(TokenCreateRequestFlags)),
+    nbf: S.optional(S.NullOr(S.Number)),
+    pem: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1487,11 +1491,11 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTokenResponse {
   /** The signed token used with the signed URLs feature. */
-  token?: string;
+  token?: string | null;
 }
 export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    token: S.optional(S.String),
+    token: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
@@ -1501,27 +1505,27 @@ export interface CreateWatermarkRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** URL of the watermark image to copy. */
-  url?: string;
+  url?: string | null;
 }
 export const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    url: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    url: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1538,41 +1542,41 @@ export const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWatermarkResponse {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const CreateWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWatermarkResponse",
@@ -1860,17 +1864,17 @@ export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRequestAllowedOriginsList>;
 
 export interface EditRequestPublicDetails {
-  channelLink?: string;
-  logo?: string;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const EditRequestPublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditRequestPublicDetails",
@@ -1882,40 +1886,40 @@ export interface EditStreamRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: EditRequestAllowedOriginsList;
+  allowedOrigins?: EditRequestAllowedOriginsList | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: EditRequestPublicDetails;
+  publicDetails?: EditRequestPublicDetails | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** The unique identifier for the video. Can be used to verify the video being updated. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
+  uploadExpiry?: string | null;
 }
 export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
-    allowedOrigins: S.optional(EditRequestAllowedOriginsList),
-    creator: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    publicDetails: S.optional(EditRequestPublicDetails),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
+    allowedOrigins: S.optional(S.NullOr(EditRequestAllowedOriginsList)),
+    creator: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    publicDetails: S.optional(S.NullOr(EditRequestPublicDetails)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1936,14 +1940,14 @@ export const EditResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface EditResponseInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
-  height?: number;
+  height?: number | null;
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
-  width?: number;
+  width?: number | null;
 }
 export const EditResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
+    height: S.optional(S.NullOr(S.Number)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditResponseInput",
@@ -1951,33 +1955,33 @@ export const EditResponseInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponsePlayback {
   /** DASH Media Presentation Description for the video. */
-  dash?: string;
+  dash?: string | null;
   /** The HLS manifest for the video. */
-  hls?: string;
+  hls?: string | null;
 }
 export const EditResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dash: S.optional(S.String),
-    hls: S.optional(S.String),
+    dash: S.optional(S.NullOr(S.String)),
+    hls: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponsePlayback",
 }) as any as S.Schema<EditResponsePlayback>;
 
 export interface EditResponsePublicDetails {
-  channelLink?: string;
-  logo?: string;
-  mediaId?: number;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const EditResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    mediaId: S.optional(S.Number.pipe(T.Body("media_id"))),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EditResponsePublicDetails",
@@ -1995,20 +1999,20 @@ export const EditResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface EditResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
-  errorReasonCode?: string;
+  errorReasonCode?: string | null;
   /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
-  errorReasonText?: string;
+  errorReasonText?: string | null;
   /** Indicates the progress as a percentage between 0 and 100. */
-  pctComplete?: string;
+  pctComplete?: string | null;
   /** Specifies the processing status for all quality levels for a video. */
-  state?: EditResponseStatusState;
+  state?: EditResponseStatusState | null;
 }
 export const EditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorReasonCode: S.optional(S.String),
-    errorReasonText: S.optional(S.String),
-    pctComplete: S.optional(S.String),
-    state: S.optional(EditResponseStatusState),
+    errorReasonCode: S.optional(S.NullOr(S.String)),
+    errorReasonText: S.optional(S.NullOr(S.String)),
+    pctComplete: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(EditResponseStatusState)),
   }),
 ).annotate({
   identifier: "EditResponseStatus",
@@ -2016,41 +2020,41 @@ export const EditResponseStatus = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditResponseWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const EditResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "EditResponseWatermark",
@@ -2059,83 +2063,83 @@ export const EditResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: EditResponseAllowedOriginsList;
+  allowedOrigins?: EditResponseAllowedOriginsList | null;
   /** The unique identifier of the source video this video was clipped from. */
-  clippedFrom?: string;
+  clippedFrom?: string | null;
   /** The date and time the media item was created. */
-  created?: string;
+  created?: string | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
-  duration?: number;
-  input?: EditResponseInput;
+  duration?: number | null;
+  input?: EditResponseInput | null;
   /** The live input ID used to upload a video with Stream Live. */
-  liveInput?: string;
+  liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** The maximum size in bytes for the video upload. */
-  maxSizeBytes?: number;
+  maxSizeBytes?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the media item was last modified. */
-  modified?: string;
-  playback?: EditResponsePlayback;
+  modified?: string | null;
+  playback?: EditResponsePlayback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
-  preview?: string;
+  preview?: string | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: EditResponsePublicDetails;
+  publicDetails?: EditResponsePublicDetails | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStream?: boolean;
+  readyToStream?: boolean | null;
   /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStreamAt?: string;
+  readyToStreamAt?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The size of the media item in bytes. */
-  size?: number;
+  size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details. */
-  status?: EditResponseStatus;
+  status?: EditResponseStatus | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
-  thumbnail?: string;
+  thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
-  watermark?: EditResponseWatermark;
+  uploadExpiry?: string | null;
+  watermark?: EditResponseWatermark | null;
 }
 export const EditStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowedOrigins: S.optional(EditResponseAllowedOriginsList),
-    clippedFrom: S.optional(S.String),
-    created: S.optional(S.String),
-    creator: S.optional(S.String),
-    duration: S.optional(S.Number),
-    input: S.optional(EditResponseInput),
-    liveInput: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    maxSizeBytes: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    playback: S.optional(EditResponsePlayback),
-    preview: S.optional(S.String),
-    publicDetails: S.optional(EditResponsePublicDetails),
-    readyToStream: S.optional(S.Boolean),
-    readyToStreamAt: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    size: S.optional(S.Number),
-    status: S.optional(EditResponseStatus),
-    thumbnail: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploaded: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
-    watermark: S.optional(EditResponseWatermark),
+    allowedOrigins: S.optional(S.NullOr(EditResponseAllowedOriginsList)),
+    clippedFrom: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    duration: S.optional(S.NullOr(S.Number)),
+    input: S.optional(S.NullOr(EditResponseInput)),
+    liveInput: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    maxSizeBytes: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    playback: S.optional(S.NullOr(EditResponsePlayback)),
+    preview: S.optional(S.NullOr(S.String)),
+    publicDetails: S.optional(S.NullOr(EditResponsePublicDetails)),
+    readyToStream: S.optional(S.NullOr(S.Boolean)),
+    readyToStreamAt: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    size: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(EditResponseStatus)),
+    thumbnail: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(EditResponseWatermark)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditStreamResponse",
@@ -2172,20 +2176,20 @@ export const AudioTracksGetResponseAudioItemStatus = /*@__PURE__*/ S.String;
 
 export interface AudioTracksGetResponseAudioItem {
   /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
+  default?: boolean | null;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
+  label?: string | null;
   /** Specifies the processing status of the video. */
-  status?: AudioTracksGetResponseAudioItemStatus;
+  status?: AudioTracksGetResponseAudioItemStatus | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
 }
 export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    status: S.optional(AudioTracksGetResponseAudioItemStatus),
-    uid: S.optional(S.String),
+    default: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(AudioTracksGetResponseAudioItemStatus)),
+    uid: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AudioTracksGetResponseAudioItem",
@@ -2200,11 +2204,11 @@ export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAudioTrackResponse {
   /** Array of audio tracks for the video. */
-  audio?: AudioTracksGetResponseAudioList;
+  audio?: AudioTracksGetResponseAudioList | null;
 }
 export const GetAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(AudioTracksGetResponseAudioList),
+    audio: S.optional(S.NullOr(AudioTracksGetResponseAudioList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAudioTrackResponse",
@@ -2238,20 +2242,20 @@ export const CaptionsGetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface CaptionsGetResultItem {
   /** Whether the caption was generated via AI. */
-  generated?: boolean;
+  generated?: boolean | null;
   /** The language label displayed in the native language to users. */
-  label?: string;
+  label?: string | null;
   /** The language tag in BCP 47 format. */
-  language?: string;
+  language?: string | null;
   /** The status of a generated caption. */
-  status?: CaptionsGetResultItemStatus;
+  status?: CaptionsGetResultItemStatus | null;
 }
 export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsGetResultItemStatus),
+    generated: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    language: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(CaptionsGetResultItemStatus)),
   }),
 ).annotate({
   identifier: "CaptionsGetResultItem",
@@ -2312,20 +2316,20 @@ export const CaptionsLanguageGetResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
-  generated?: boolean;
+  generated?: boolean | null;
   /** The language label displayed in the native language to users. */
-  label?: string;
+  label?: string | null;
   /** The language tag in BCP 47 format. */
-  language?: string;
+  language?: string | null;
   /** The status of a generated caption. */
-  status?: CaptionsLanguageGetResponseStatus;
+  status?: CaptionsLanguageGetResponseStatus | null;
 }
 export const GetCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsLanguageGetResponseStatus),
+    generated: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    language: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(CaptionsLanguageGetResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCaptionLanguageResponse",
@@ -2396,13 +2400,13 @@ export interface DownloadsGetResponseAudio {
   /** The status of a generated download. */
   status: DownloadsGetResponseAudioStatus;
   /** The URL to access the generated download. */
-  url?: string;
+  url?: string | null;
 }
 export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.Number,
     status: DownloadsGetResponseAudioStatus,
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DownloadsGetResponseAudio",
@@ -2420,13 +2424,13 @@ export interface DownloadsGetResponseDefault {
   /** The status of a generated download. */
   status: DownloadsGetResponseDefaultStatus;
   /** The URL to access the generated download. */
-  url?: string;
+  url?: string | null;
 }
 export const DownloadsGetResponseDefault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.Number,
     status: DownloadsGetResponseDefaultStatus,
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "DownloadsGetResponseDefault",
@@ -2435,14 +2439,14 @@ export const DownloadsGetResponseDefault = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
-  audio?: DownloadsGetResponseAudio;
+  audio?: DownloadsGetResponseAudio | null;
   /** The default video download. Only present if this download type has been created. */
-  default?: DownloadsGetResponseDefault;
+  default?: DownloadsGetResponseDefault | null;
 }
 export const GetDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(DownloadsGetResponseAudio),
-    default: S.optional(DownloadsGetResponseDefault),
+    audio: S.optional(S.NullOr(DownloadsGetResponseAudio)),
+    default: S.optional(S.NullOr(DownloadsGetResponseDefault)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDownloadResponse",
@@ -2498,17 +2502,17 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface KeysGetResultItem {
   /** Identifier. */
-  id?: string;
+  id?: string | null;
   /** The date and time a signing key was created. */
-  created?: string;
+  created?: string | null;
   /** The unique identifier for the signing key. */
-  keyId?: string;
+  keyId?: string | null;
 }
 export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    keyId: S.optional(S.String.pipe(T.Body("key_id"))),
+    id: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    keyId: S.optional(S.NullOr(S.String).pipe(T.Body("key_id"))),
   }),
 ).annotate({
   identifier: "KeysGetResultItem",
@@ -2566,25 +2570,25 @@ export const LiveInputsGetResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsGetResponseRecordingAllowedOriginsList;
+  allowedOrigins?: LiveInputsGetResponseRecordingAllowedOriginsList | null;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
+  hideLiveViewerCount?: boolean | null;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsGetResponseRecordingMode;
+  mode?: LiveInputsGetResponseRecordingMode | null;
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
+  timeoutSeconds?: number | null;
 }
 export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      LiveInputsGetResponseRecordingAllowedOriginsList,
+      S.NullOr(LiveInputsGetResponseRecordingAllowedOriginsList),
     ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsGetResponseRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
+    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+    mode: S.optional(S.NullOr(LiveInputsGetResponseRecordingMode)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    timeoutSeconds: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseRecording",
@@ -2592,14 +2596,14 @@ export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsGetResponseRtmps {
   /** The secret key to use when streaming via RTMPS to a live input. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseRtmps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
+    streamKey: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseRtmps",
@@ -2607,14 +2611,14 @@ export const LiveInputsGetResponseRtmps = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsGetResponseRtmpsPlayback {
   /** The secret key to use for playback via RTMPS. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The URL used to play live video over RTMPS. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
+    streamKey: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseRtmpsPlayback",
@@ -2622,17 +2626,17 @@ export const LiveInputsGetResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsGetResponseSrt {
   /** The secret key to use when streaming via SRT to a live input. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use when streaming via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The SRT URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseSrt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseSrt",
@@ -2640,17 +2644,17 @@ export const LiveInputsGetResponseSrt = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsGetResponseSrtPlayback {
   /** The secret key to use for playback via SRT. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use for playback via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The URL used to play live video over SRT. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseSrtPlayback",
@@ -2669,11 +2673,11 @@ export const LiveInputsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseWebRTC {
   /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseWebRTC",
@@ -2681,11 +2685,11 @@ export const LiveInputsGetResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsGetResponseWebRTCPlayback {
   /** The URL used to play live video over WebRTC. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsGetResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsGetResponseWebRTCPlayback",
@@ -2694,56 +2698,56 @@ export const LiveInputsGetResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLiveInputResponse {
   /** The date and time the live input was created. */
-  created?: string;
+  created?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
-  keysRotatedAt?: string;
+  keysRotatedAt?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the live input was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
+  preferLowLatency?: boolean | null;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsGetResponseRecording;
+  recording?: LiveInputsGetResponseRecording | null;
   /** Details for streaming to an live input using RTMPS. */
-  rtmps?: LiveInputsGetResponseRtmps;
+  rtmps?: LiveInputsGetResponseRtmps | null;
   /** Details for playback from an live input using RTMPS. */
-  rtmpsPlayback?: LiveInputsGetResponseRtmpsPlayback;
+  rtmpsPlayback?: LiveInputsGetResponseRtmpsPlayback | null;
   /** Details for streaming to a live input using SRT. */
-  srt?: LiveInputsGetResponseSrt;
+  srt?: LiveInputsGetResponseSrt | null;
   /** Details for playback from an live input using SRT. */
-  srtPlayback?: LiveInputsGetResponseSrtPlayback;
+  srtPlayback?: LiveInputsGetResponseSrtPlayback | null;
   /** The connection status of a live input. */
-  status?: LiveInputsGetResponseStatus;
+  status?: LiveInputsGetResponseStatus | null;
   /** A unique identifier for a live input. */
-  uid?: string;
+  uid?: string | null;
   /** Details for streaming to a live input using WebRTC. */
-  webRTC?: LiveInputsGetResponseWebRTC;
+  webRTC?: LiveInputsGetResponseWebRTC | null;
   /** Details for playback from a live input using WebRTC. */
-  webRTCPlayback?: LiveInputsGetResponseWebRTCPlayback;
+  webRTCPlayback?: LiveInputsGetResponseWebRTCPlayback | null;
 }
 export const GetLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    keysRotatedAt: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsGetResponseRecording),
-    rtmps: S.optional(LiveInputsGetResponseRtmps),
-    rtmpsPlayback: S.optional(LiveInputsGetResponseRtmpsPlayback),
-    srt: S.optional(LiveInputsGetResponseSrt),
-    srtPlayback: S.optional(LiveInputsGetResponseSrtPlayback),
-    status: S.optional(LiveInputsGetResponseStatus),
-    uid: S.optional(S.String),
-    webRTC: S.optional(LiveInputsGetResponseWebRTC),
-    webRTCPlayback: S.optional(LiveInputsGetResponseWebRTCPlayback),
+    created: S.optional(S.NullOr(S.String)),
+    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    keysRotatedAt: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+    recording: S.optional(S.NullOr(LiveInputsGetResponseRecording)),
+    rtmps: S.optional(S.NullOr(LiveInputsGetResponseRtmps)),
+    rtmpsPlayback: S.optional(S.NullOr(LiveInputsGetResponseRtmpsPlayback)),
+    srt: S.optional(S.NullOr(LiveInputsGetResponseSrt)),
+    srtPlayback: S.optional(S.NullOr(LiveInputsGetResponseSrtPlayback)),
+    status: S.optional(S.NullOr(LiveInputsGetResponseStatus)),
+    uid: S.optional(S.NullOr(S.String)),
+    webRTC: S.optional(S.NullOr(LiveInputsGetResponseWebRTC)),
+    webRTCPlayback: S.optional(S.NullOr(LiveInputsGetResponseWebRTCPlayback)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLiveInputResponse",
@@ -2779,14 +2783,14 @@ export const GetResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface GetResponseInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
-  height?: number;
+  height?: number | null;
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
-  width?: number;
+  width?: number | null;
 }
 export const GetResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
+    height: S.optional(S.NullOr(S.Number)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GetResponseInput",
@@ -2794,33 +2798,33 @@ export const GetResponseInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponsePlayback {
   /** DASH Media Presentation Description for the video. */
-  dash?: string;
+  dash?: string | null;
   /** The HLS manifest for the video. */
-  hls?: string;
+  hls?: string | null;
 }
 export const GetResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dash: S.optional(S.String),
-    hls: S.optional(S.String),
+    dash: S.optional(S.NullOr(S.String)),
+    hls: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponsePlayback",
 }) as any as S.Schema<GetResponsePlayback>;
 
 export interface GetResponsePublicDetails {
-  channelLink?: string;
-  logo?: string;
-  mediaId?: number;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const GetResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    mediaId: S.optional(S.Number.pipe(T.Body("media_id"))),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "GetResponsePublicDetails",
@@ -2838,20 +2842,20 @@ export const GetResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface GetResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
-  errorReasonCode?: string;
+  errorReasonCode?: string | null;
   /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
-  errorReasonText?: string;
+  errorReasonText?: string | null;
   /** Indicates the progress as a percentage between 0 and 100. */
-  pctComplete?: string;
+  pctComplete?: string | null;
   /** Specifies the processing status for all quality levels for a video. */
-  state?: GetResponseStatusState;
+  state?: GetResponseStatusState | null;
 }
 export const GetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorReasonCode: S.optional(S.String),
-    errorReasonText: S.optional(S.String),
-    pctComplete: S.optional(S.String),
-    state: S.optional(GetResponseStatusState),
+    errorReasonCode: S.optional(S.NullOr(S.String)),
+    errorReasonText: S.optional(S.NullOr(S.String)),
+    pctComplete: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(GetResponseStatusState)),
   }),
 ).annotate({
   identifier: "GetResponseStatus",
@@ -2859,41 +2863,41 @@ export const GetResponseStatus = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const GetResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GetResponseWatermark",
@@ -2902,83 +2906,83 @@ export const GetResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: GetResponseAllowedOriginsList;
+  allowedOrigins?: GetResponseAllowedOriginsList | null;
   /** The unique identifier of the source video this video was clipped from. */
-  clippedFrom?: string;
+  clippedFrom?: string | null;
   /** The date and time the media item was created. */
-  created?: string;
+  created?: string | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
-  duration?: number;
-  input?: GetResponseInput;
+  duration?: number | null;
+  input?: GetResponseInput | null;
   /** The live input ID used to upload a video with Stream Live. */
-  liveInput?: string;
+  liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** The maximum size in bytes for the video upload. */
-  maxSizeBytes?: number;
+  maxSizeBytes?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the media item was last modified. */
-  modified?: string;
-  playback?: GetResponsePlayback;
+  modified?: string | null;
+  playback?: GetResponsePlayback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
-  preview?: string;
+  preview?: string | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: GetResponsePublicDetails;
+  publicDetails?: GetResponsePublicDetails | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStream?: boolean;
+  readyToStream?: boolean | null;
   /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStreamAt?: string;
+  readyToStreamAt?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The size of the media item in bytes. */
-  size?: number;
+  size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details. */
-  status?: GetResponseStatus;
+  status?: GetResponseStatus | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
-  thumbnail?: string;
+  thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
-  watermark?: GetResponseWatermark;
+  uploadExpiry?: string | null;
+  watermark?: GetResponseWatermark | null;
 }
 export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowedOrigins: S.optional(GetResponseAllowedOriginsList),
-    clippedFrom: S.optional(S.String),
-    created: S.optional(S.String),
-    creator: S.optional(S.String),
-    duration: S.optional(S.Number),
-    input: S.optional(GetResponseInput),
-    liveInput: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    maxSizeBytes: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    playback: S.optional(GetResponsePlayback),
-    preview: S.optional(S.String),
-    publicDetails: S.optional(GetResponsePublicDetails),
-    readyToStream: S.optional(S.Boolean),
-    readyToStreamAt: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    size: S.optional(S.Number),
-    status: S.optional(GetResponseStatus),
-    thumbnail: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploaded: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
-    watermark: S.optional(GetResponseWatermark),
+    allowedOrigins: S.optional(S.NullOr(GetResponseAllowedOriginsList)),
+    clippedFrom: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    duration: S.optional(S.NullOr(S.Number)),
+    input: S.optional(S.NullOr(GetResponseInput)),
+    liveInput: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    maxSizeBytes: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    playback: S.optional(S.NullOr(GetResponsePlayback)),
+    preview: S.optional(S.NullOr(S.String)),
+    publicDetails: S.optional(S.NullOr(GetResponsePublicDetails)),
+    readyToStream: S.optional(S.NullOr(S.Boolean)),
+    readyToStreamAt: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    size: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(GetResponseStatus)),
+    thumbnail: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(GetResponseWatermark)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStreamResponse",
@@ -3010,41 +3014,41 @@ export const GetWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWatermarkResponse {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const GetWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWatermarkResponse",
@@ -3073,17 +3077,17 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWebhookResponse {
   /** The date and time the webhook was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
+  notificationUrl?: string | null;
   /** The secret used to verify webhook signatures. */
-  secret?: string;
+  secret?: string | null;
 }
 export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String),
-    secret: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    notificationUrl: S.optional(S.NullOr(S.String)),
+    secret: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWebhookResponse",
@@ -3114,20 +3118,20 @@ export const ListLiveInputOutputsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsOutputsListResultItem {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** A unique identifier for the output. */
-  uid?: string;
+  uid?: string | null;
   /** The URL an output uses to restream. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    streamKey: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsOutputsListResultItem",
@@ -3179,27 +3183,27 @@ export const ListLiveInputsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsListResponseLiveInputsItem {
   /** The date and time the live input was created. */
-  created?: string;
+  created?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the live input was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** A unique identifier for a live input. */
-  uid?: string;
+  uid?: string | null;
 }
 export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      created: S.optional(S.String),
-      deleteRecordingAfterDays: S.optional(S.Number),
-      enabled: S.optional(S.Boolean),
-      meta: S.optional(S.Unknown),
-      modified: S.optional(S.String),
-      uid: S.optional(S.String),
+      created: S.optional(S.NullOr(S.String)),
+      deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      meta: S.optional(S.NullOr(S.Unknown)),
+      modified: S.optional(S.NullOr(S.String)),
+      uid: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "LiveInputsListResponseLiveInputsItem",
@@ -3213,17 +3217,17 @@ export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListLiveInputsResponse {
-  liveInputs?: LiveInputsListResponseLiveInputsList;
+  liveInputs?: LiveInputsListResponseLiveInputsList | null;
   /** The total number of remaining live inputs based on cursor position. */
-  range?: number;
+  range?: number | null;
   /** The total number of live inputs that match the provided filters. */
-  total?: number;
+  total?: number | null;
 }
 export const ListLiveInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    liveInputs: S.optional(LiveInputsListResponseLiveInputsList),
-    range: S.optional(S.Number),
-    total: S.optional(S.Number),
+    liveInputs: S.optional(S.NullOr(LiveInputsListResponseLiveInputsList)),
+    range: S.optional(S.NullOr(S.Number)),
+    total: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLiveInputsResponse",
@@ -3311,14 +3315,14 @@ export const ListResultItemAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItemInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
-  height?: number;
+  height?: number | null;
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
-  width?: number;
+  width?: number | null;
 }
 export const ListResultItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    height: S.optional(S.Number),
-    width: S.optional(S.Number),
+    height: S.optional(S.NullOr(S.Number)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ListResultItemInput",
@@ -3326,33 +3330,33 @@ export const ListResultItemInput = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemPlayback {
   /** DASH Media Presentation Description for the video. */
-  dash?: string;
+  dash?: string | null;
   /** The HLS manifest for the video. */
-  hls?: string;
+  hls?: string | null;
 }
 export const ListResultItemPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dash: S.optional(S.String),
-    hls: S.optional(S.String),
+    dash: S.optional(S.NullOr(S.String)),
+    hls: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemPlayback",
 }) as any as S.Schema<ListResultItemPlayback>;
 
 export interface ListResultItemPublicDetails {
-  channelLink?: string;
-  logo?: string;
-  mediaId?: number;
-  shareLink?: string;
-  title?: string;
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
 }
 export const ListResultItemPublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
-    logo: S.optional(S.String),
-    mediaId: S.optional(S.Number.pipe(T.Body("media_id"))),
-    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
-    title: S.optional(S.String),
+    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+    logo: S.optional(S.NullOr(S.String)),
+    mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+    title: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ListResultItemPublicDetails",
@@ -3370,20 +3374,20 @@ export const ListResultItemStatusState = /*@__PURE__*/ S.String;
 
 export interface ListResultItemStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
-  errorReasonCode?: string;
+  errorReasonCode?: string | null;
   /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
-  errorReasonText?: string;
+  errorReasonText?: string | null;
   /** Indicates the progress as a percentage between 0 and 100. */
-  pctComplete?: string;
+  pctComplete?: string | null;
   /** Specifies the processing status for all quality levels for a video. */
-  state?: ListResultItemStatusState;
+  state?: ListResultItemStatusState | null;
 }
 export const ListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorReasonCode: S.optional(S.String),
-    errorReasonText: S.optional(S.String),
-    pctComplete: S.optional(S.String),
-    state: S.optional(ListResultItemStatusState),
+    errorReasonCode: S.optional(S.NullOr(S.String)),
+    errorReasonText: S.optional(S.NullOr(S.String)),
+    pctComplete: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(ListResultItemStatusState)),
   }),
 ).annotate({
   identifier: "ListResultItemStatus",
@@ -3391,41 +3395,41 @@ export const ListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemWatermark {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const ListResultItemWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "ListResultItemWatermark",
@@ -3433,83 +3437,83 @@ export const ListResultItemWatermark = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItem {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: ListResultItemAllowedOriginsList;
+  allowedOrigins?: ListResultItemAllowedOriginsList | null;
   /** The unique identifier of the source video this video was clipped from. */
-  clippedFrom?: string;
+  clippedFrom?: string | null;
   /** The date and time the media item was created. */
-  created?: string;
+  created?: string | null;
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
-  duration?: number;
-  input?: ListResultItemInput;
+  duration?: number | null;
+  input?: ListResultItemInput | null;
   /** The live input ID used to upload a video with Stream Live. */
-  liveInput?: string;
+  liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number;
+  maxDurationSeconds?: number | null;
   /** The maximum size in bytes for the video upload. */
-  maxSizeBytes?: number;
+  maxSizeBytes?: number | null;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the media item was last modified. */
-  modified?: string;
-  playback?: ListResultItemPlayback;
+  modified?: string | null;
+  playback?: ListResultItemPlayback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
-  preview?: string;
+  preview?: string | null;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: ListResultItemPublicDetails;
+  publicDetails?: ListResultItemPublicDetails | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStream?: boolean;
+  readyToStream?: boolean | null;
   /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
-  readyToStreamAt?: string;
+  readyToStreamAt?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string;
+  scheduledDeletion?: string | null;
   /** The size of the media item in bytes. */
-  size?: number;
+  size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details. */
-  status?: ListResultItemStatus;
+  status?: ListResultItemStatus | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
-  thumbnail?: string;
+  thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number;
+  thumbnailTimestampPct?: number | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
   /** The date and time the media item was uploaded. */
-  uploaded?: string;
+  uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string;
-  watermark?: ListResultItemWatermark;
+  uploadExpiry?: string | null;
+  watermark?: ListResultItemWatermark | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowedOrigins: S.optional(ListResultItemAllowedOriginsList),
-    clippedFrom: S.optional(S.String),
-    created: S.optional(S.String),
-    creator: S.optional(S.String),
-    duration: S.optional(S.Number),
-    input: S.optional(ListResultItemInput),
-    liveInput: S.optional(S.String),
-    maxDurationSeconds: S.optional(S.Number),
-    maxSizeBytes: S.optional(S.Number),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    playback: S.optional(ListResultItemPlayback),
-    preview: S.optional(S.String),
-    publicDetails: S.optional(ListResultItemPublicDetails),
-    readyToStream: S.optional(S.Boolean),
-    readyToStreamAt: S.optional(S.String),
-    requireSignedURLs: S.optional(S.Boolean),
-    scheduledDeletion: S.optional(S.String),
-    size: S.optional(S.Number),
-    status: S.optional(ListResultItemStatus),
-    thumbnail: S.optional(S.String),
-    thumbnailTimestampPct: S.optional(S.Number),
-    uid: S.optional(S.String),
-    uploaded: S.optional(S.String),
-    uploadExpiry: S.optional(S.String),
-    watermark: S.optional(ListResultItemWatermark),
+    allowedOrigins: S.optional(S.NullOr(ListResultItemAllowedOriginsList)),
+    clippedFrom: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    creator: S.optional(S.NullOr(S.String)),
+    duration: S.optional(S.NullOr(S.Number)),
+    input: S.optional(S.NullOr(ListResultItemInput)),
+    liveInput: S.optional(S.NullOr(S.String)),
+    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+    maxSizeBytes: S.optional(S.NullOr(S.Number)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    playback: S.optional(S.NullOr(ListResultItemPlayback)),
+    preview: S.optional(S.NullOr(S.String)),
+    publicDetails: S.optional(S.NullOr(ListResultItemPublicDetails)),
+    readyToStream: S.optional(S.NullOr(S.Boolean)),
+    readyToStreamAt: S.optional(S.NullOr(S.String)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    scheduledDeletion: S.optional(S.NullOr(S.String)),
+    size: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(ListResultItemStatus)),
+    thumbnail: S.optional(S.NullOr(S.String)),
+    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    uploaded: S.optional(S.NullOr(S.String)),
+    uploadExpiry: S.optional(S.NullOr(S.String)),
+    watermark: S.optional(S.NullOr(ListResultItemWatermark)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -3555,41 +3559,41 @@ export const ListWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface WatermarksListResultItem {
   /** The date and a time a watermark profile was created. */
-  created?: string;
+  created?: string | null;
   /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
+  downloadedFrom?: string | null;
   /** The height of the image in pixels. */
-  height?: number;
+  height?: number | null;
   /** A short description of the watermark profile. */
-  name?: string;
+  name?: string | null;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
+  opacity?: number | null;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
+  padding?: number | null;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
+  position?: string | null;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
+  scale?: number | null;
   /** The size of the image in bytes. */
-  size?: number;
+  size?: number | null;
   /** The unique identifier for a watermark profile. */
-  uid?: string;
+  uid?: string | null;
   /** The width of the image in pixels. */
-  width?: number;
+  width?: number | null;
 }
 export const WatermarksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
+    created: S.optional(S.NullOr(S.String)),
+    downloadedFrom: S.optional(S.NullOr(S.String)),
+    height: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.NullOr(S.String)),
+    opacity: S.optional(S.NullOr(S.Number)),
+    padding: S.optional(S.NullOr(S.Number)),
+    position: S.optional(S.NullOr(S.String)),
+    scale: S.optional(S.NullOr(S.Number)),
+    size: S.optional(S.NullOr(S.Number)),
+    uid: S.optional(S.NullOr(S.String)),
+    width: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "WatermarksListResultItem",
@@ -3623,17 +3627,17 @@ export interface PatchAudioTrackRequest {
   /** The unique identifier for an additional audio track. */
   audioIdentifier: string;
   /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
+  default?: boolean | null;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
+  label?: string | null;
 }
 export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
     audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
+    default: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3653,20 +3657,20 @@ export const AudioTracksEditResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
+  default?: boolean | null;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
+  label?: string | null;
   /** Specifies the processing status of the video. */
-  status?: AudioTracksEditResponseStatus;
+  status?: AudioTracksEditResponseStatus | null;
   /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
+  uid?: string | null;
 }
 export const PatchAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    status: S.optional(AudioTracksEditResponseStatus),
-    uid: S.optional(S.String),
+    default: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(AudioTracksEditResponseStatus)),
+    uid: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAudioTrackResponse",
@@ -3676,12 +3680,12 @@ export interface PutWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
+  notificationUrl?: string | null;
 }
 export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    notificationUrl: S.optional(S.String),
+    notificationUrl: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3698,17 +3702,17 @@ export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutWebhookResponse {
   /** The date and time the webhook was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
+  notificationUrl?: string | null;
   /** The secret used to verify webhook signatures. */
-  secret?: string;
+  secret?: string | null;
 }
 export const PutWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String),
-    secret: S.optional(S.String),
+    modified: S.optional(S.NullOr(S.String)),
+    notificationUrl: S.optional(S.NullOr(S.String)),
+    secret: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutWebhookResponse",
@@ -3740,20 +3744,20 @@ export const StorageUsageVideoRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StorageUsageVideoResponse {
   /** A user-defined identifier for the media creator. */
-  creator?: string;
+  creator?: string | null;
   /** The total minutes of video content stored in the account. May contain decimal values. */
-  totalStorageMinutes?: number;
+  totalStorageMinutes?: number | null;
   /** The storage capacity alloted for the account. */
-  totalStorageMinutesLimit?: number;
+  totalStorageMinutesLimit?: number | null;
   /** The total count of videos associated with the account. */
-  videoCount?: number;
+  videoCount?: number | null;
 }
 export const StorageUsageVideoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    creator: S.optional(S.String),
-    totalStorageMinutes: S.optional(S.Number),
-    totalStorageMinutesLimit: S.optional(S.Number),
-    videoCount: S.optional(S.Number),
+    creator: S.optional(S.NullOr(S.String)),
+    totalStorageMinutes: S.optional(S.NullOr(S.Number)),
+    totalStorageMinutesLimit: S.optional(S.NullOr(S.Number)),
+    videoCount: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StorageUsageVideoResponse",
@@ -3794,20 +3798,20 @@ export const CaptionsLanguageUpdateResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
-  generated?: boolean;
+  generated?: boolean | null;
   /** The language label displayed in the native language to users. */
-  label?: string;
+  label?: string | null;
   /** The language tag in BCP 47 format. */
-  language?: string;
+  language?: string | null;
   /** The status of a generated caption. */
-  status?: CaptionsLanguageUpdateResponseStatus;
+  status?: CaptionsLanguageUpdateResponseStatus | null;
 }
 export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsLanguageUpdateResponseStatus),
+    generated: S.optional(S.NullOr(S.Boolean)),
+    label: S.optional(S.NullOr(S.String)),
+    language: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(CaptionsLanguageUpdateResponseStatus)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCaptionLanguageResponse",
@@ -3824,25 +3828,25 @@ export const LiveInputsUpdateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsUpdateRequestRecordingAllowedOriginsList;
+  allowedOrigins?: LiveInputsUpdateRequestRecordingAllowedOriginsList | null;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
+  hideLiveViewerCount?: boolean | null;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsUpdateRequestRecordingMode | (string & {});
+  mode?: LiveInputsUpdateRequestRecordingMode | (string & {}) | null;
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
+  timeoutSeconds?: number | null;
 }
 export const LiveInputsUpdateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      LiveInputsUpdateRequestRecordingAllowedOriginsList,
+      S.NullOr(LiveInputsUpdateRequestRecordingAllowedOriginsList),
     ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsUpdateRequestRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
+    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+    mode: S.optional(S.NullOr(LiveInputsUpdateRequestRecordingMode)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    timeoutSeconds: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateRequestRecording",
@@ -3854,28 +3858,28 @@ export interface UpdateLiveInputRequest {
   /** A unique identifier for a live input. */
   liveInputIdentifier: string;
   /** Sets the creator ID asssociated with this live input. */
-  defaultCreator?: string;
+  defaultCreator?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
+  preferLowLatency?: boolean | null;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsUpdateRequestRecording;
+  recording?: LiveInputsUpdateRequestRecording | null;
 }
 export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-    defaultCreator: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    meta: S.optional(S.Unknown),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsUpdateRequestRecording),
+    defaultCreator: S.optional(S.NullOr(S.String)),
+    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+    recording: S.optional(S.NullOr(LiveInputsUpdateRequestRecording)),
   })
     .pipe(
       T.Http({
@@ -3900,25 +3904,25 @@ export const LiveInputsUpdateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsUpdateResponseRecordingAllowedOriginsList;
+  allowedOrigins?: LiveInputsUpdateResponseRecordingAllowedOriginsList | null;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
+  hideLiveViewerCount?: boolean | null;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsUpdateResponseRecordingMode;
+  mode?: LiveInputsUpdateResponseRecordingMode | null;
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
+  requireSignedURLs?: boolean | null;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
+  timeoutSeconds?: number | null;
 }
 export const LiveInputsUpdateResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      LiveInputsUpdateResponseRecordingAllowedOriginsList,
+      S.NullOr(LiveInputsUpdateResponseRecordingAllowedOriginsList),
     ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsUpdateResponseRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
+    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+    mode: S.optional(S.NullOr(LiveInputsUpdateResponseRecordingMode)),
+    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    timeoutSeconds: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseRecording",
@@ -3926,14 +3930,14 @@ export const LiveInputsUpdateResponseRecording = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsUpdateResponseRtmps {
   /** The secret key to use when streaming via RTMPS to a live input. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
+    streamKey: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseRtmps",
@@ -3941,15 +3945,15 @@ export const LiveInputsUpdateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsUpdateResponseRtmpsPlayback {
   /** The secret key to use for playback via RTMPS. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** The URL used to play live video over RTMPS. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      streamKey: S.optional(S.String),
-      url: S.optional(S.String),
+      streamKey: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseRtmpsPlayback",
@@ -3957,17 +3961,17 @@ export const LiveInputsUpdateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
 
 export interface LiveInputsUpdateResponseSrt {
   /** The secret key to use when streaming via SRT to a live input. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use when streaming via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The SRT URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseSrt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseSrt",
@@ -3975,17 +3979,17 @@ export const LiveInputsUpdateResponseSrt = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsUpdateResponseSrtPlayback {
   /** The secret key to use for playback via SRT. */
-  passphrase?: string;
+  passphrase?: string | null;
   /** The identifier of the live input to use for playback via SRT. */
-  streamId?: string;
+  streamId?: string | null;
   /** The URL used to play live video over SRT. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
+    passphrase: S.optional(S.NullOr(S.String)),
+    streamId: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseSrtPlayback",
@@ -4004,11 +4008,11 @@ export const LiveInputsUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseWebRTC {
   /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    url: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseWebRTC",
@@ -4016,12 +4020,12 @@ export const LiveInputsUpdateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
 
 export interface LiveInputsUpdateResponseWebRTCPlayback {
   /** The URL used to play live video over WebRTC. */
-  url?: string;
+  url?: string | null;
 }
 export const LiveInputsUpdateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      url: S.optional(S.String),
+      url: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "LiveInputsUpdateResponseWebRTCPlayback",
@@ -4030,56 +4034,58 @@ export const LiveInputsUpdateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLiveInputResponse {
   /** The date and time the live input was created. */
-  created?: string;
+  created?: string | null;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
+  deleteRecordingAfterDays?: number | null;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
-  keysRotatedAt?: string;
+  keysRotatedAt?: string | null;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
+  meta?: unknown | null;
   /** The date and time the live input was last modified. */
-  modified?: string;
+  modified?: string | null;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
+  preferLowLatency?: boolean | null;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsUpdateResponseRecording;
+  recording?: LiveInputsUpdateResponseRecording | null;
   /** Details for streaming to an live input using RTMPS. */
-  rtmps?: LiveInputsUpdateResponseRtmps;
+  rtmps?: LiveInputsUpdateResponseRtmps | null;
   /** Details for playback from an live input using RTMPS. */
-  rtmpsPlayback?: LiveInputsUpdateResponseRtmpsPlayback;
+  rtmpsPlayback?: LiveInputsUpdateResponseRtmpsPlayback | null;
   /** Details for streaming to a live input using SRT. */
-  srt?: LiveInputsUpdateResponseSrt;
+  srt?: LiveInputsUpdateResponseSrt | null;
   /** Details for playback from an live input using SRT. */
-  srtPlayback?: LiveInputsUpdateResponseSrtPlayback;
+  srtPlayback?: LiveInputsUpdateResponseSrtPlayback | null;
   /** The connection status of a live input. */
-  status?: LiveInputsUpdateResponseStatus;
+  status?: LiveInputsUpdateResponseStatus | null;
   /** A unique identifier for a live input. */
-  uid?: string;
+  uid?: string | null;
   /** Details for streaming to a live input using WebRTC. */
-  webRTC?: LiveInputsUpdateResponseWebRTC;
+  webRTC?: LiveInputsUpdateResponseWebRTC | null;
   /** Details for playback from a live input using WebRTC. */
-  webRTCPlayback?: LiveInputsUpdateResponseWebRTCPlayback;
+  webRTCPlayback?: LiveInputsUpdateResponseWebRTCPlayback | null;
 }
 export const UpdateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    keysRotatedAt: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsUpdateResponseRecording),
-    rtmps: S.optional(LiveInputsUpdateResponseRtmps),
-    rtmpsPlayback: S.optional(LiveInputsUpdateResponseRtmpsPlayback),
-    srt: S.optional(LiveInputsUpdateResponseSrt),
-    srtPlayback: S.optional(LiveInputsUpdateResponseSrtPlayback),
-    status: S.optional(LiveInputsUpdateResponseStatus),
-    uid: S.optional(S.String),
-    webRTC: S.optional(LiveInputsUpdateResponseWebRTC),
-    webRTCPlayback: S.optional(LiveInputsUpdateResponseWebRTCPlayback),
+    created: S.optional(S.NullOr(S.String)),
+    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    keysRotatedAt: S.optional(S.NullOr(S.String)),
+    meta: S.optional(S.NullOr(S.Unknown)),
+    modified: S.optional(S.NullOr(S.String)),
+    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+    recording: S.optional(S.NullOr(LiveInputsUpdateResponseRecording)),
+    rtmps: S.optional(S.NullOr(LiveInputsUpdateResponseRtmps)),
+    rtmpsPlayback: S.optional(S.NullOr(LiveInputsUpdateResponseRtmpsPlayback)),
+    srt: S.optional(S.NullOr(LiveInputsUpdateResponseSrt)),
+    srtPlayback: S.optional(S.NullOr(LiveInputsUpdateResponseSrtPlayback)),
+    status: S.optional(S.NullOr(LiveInputsUpdateResponseStatus)),
+    uid: S.optional(S.NullOr(S.String)),
+    webRTC: S.optional(S.NullOr(LiveInputsUpdateResponseWebRTC)),
+    webRTCPlayback: S.optional(
+      S.NullOr(LiveInputsUpdateResponseWebRTCPlayback),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLiveInputResponse",
@@ -4117,20 +4123,20 @@ export const UpdateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLiveInputOutputResponse {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
+  streamKey?: string | null;
   /** A unique identifier for the output. */
-  uid?: string;
+  uid?: string | null;
   /** The URL an output uses to restream. */
-  url?: string;
+  url?: string | null;
 }
 export const UpdateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    streamKey: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLiveInputOutputResponse",

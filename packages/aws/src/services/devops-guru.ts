@@ -149,29 +149,27 @@ export const SnsChannelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SnsChannelConfig",
 }) as any as S.Schema<SnsChannelConfig>;
-export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH";
+export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const InsightSeverity = /*@__PURE__*/ S.String;
 
-export type InsightSeverities = (InsightSeverity | (string & {}))[];
+export type InsightSeverities = InsightSeverity[];
 export const InsightSeverities = /*@__PURE__*/ S.Array(InsightSeverity);
 export type NotificationMessageType =
   | "NEW_INSIGHT"
   | "CLOSED_INSIGHT"
   | "NEW_ASSOCIATION"
   | "SEVERITY_UPGRADED"
-  | "NEW_RECOMMENDATION";
+  | "NEW_RECOMMENDATION"
+  | (string & {});
 export const NotificationMessageType = /*@__PURE__*/ S.String;
 
-export type NotificationMessageTypes = (
-  | NotificationMessageType
-  | (string & {})
-)[];
+export type NotificationMessageTypes = NotificationMessageType[];
 export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
 );
 export interface NotificationFilterConfig {
-  Severities?: (InsightSeverity | (string & {}))[];
-  MessageTypes?: (NotificationMessageType | (string & {}))[];
+  Severities?: InsightSeverity[];
+  MessageTypes?: NotificationMessageType[];
 }
 export const NotificationFilterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -342,10 +340,10 @@ export const DescribeAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAnomalyRequest",
 }) as any as S.Schema<DescribeAnomalyRequest>;
-export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH";
+export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const AnomalySeverity = /*@__PURE__*/ S.String;
 
-export type AnomalyStatus = "ONGOING" | "CLOSED";
+export type AnomalyStatus = "ONGOING" | "CLOSED" | (string & {});
 export const AnomalyStatus = /*@__PURE__*/ S.String;
 
 export interface AnomalyTimeRange {
@@ -409,7 +407,8 @@ export type CloudWatchMetricsStat =
   | "Maximum"
   | "p99"
   | "p90"
-  | "p50";
+  | "p50"
+  | (string & {});
 export const CloudWatchMetricsStat = /*@__PURE__*/ S.String;
 
 export type CloudWatchMetricsUnit = string;
@@ -434,7 +433,8 @@ export const TimestampMetricValuePairList = /*@__PURE__*/ S.Array(
 export type CloudWatchMetricDataStatusCode =
   | "Complete"
   | "InternalError"
-  | "PartialData";
+  | "PartialData"
+  | (string & {});
 export const CloudWatchMetricDataStatusCode = /*@__PURE__*/ S.String;
 
 export interface CloudWatchMetricsDataSummary {
@@ -724,7 +724,7 @@ export const ProactiveAnomaly = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProactiveAnomaly",
 }) as any as S.Schema<ProactiveAnomaly>;
-export type AnomalyType = "CAUSAL" | "CONTEXTUAL";
+export type AnomalyType = "CAUSAL" | "CONTEXTUAL" | (string & {});
 export const AnomalyType = /*@__PURE__*/ S.String;
 
 export type AnomalyName = string;
@@ -789,11 +789,11 @@ export const DescribeEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventSourcesConfigRequest",
 }) as any as S.Schema<DescribeEventSourcesConfigRequest>;
-export type EventSourceOptInStatus = "ENABLED" | "DISABLED";
+export type EventSourceOptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const EventSourceOptInStatus = /*@__PURE__*/ S.String;
 
 export interface AmazonCodeGuruProfilerIntegration {
-  Status?: EventSourceOptInStatus | (string & {});
+  Status?: EventSourceOptInStatus;
 }
 export const AmazonCodeGuruProfilerIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(EventSourceOptInStatus) }),
@@ -840,12 +840,13 @@ export type InsightFeedbackOption =
   | "RECOMMENDATION_USEFUL"
   | "ALERT_TOO_SENSITIVE"
   | "DATA_NOISY_ANOMALY"
-  | "DATA_INCORRECT";
+  | "DATA_INCORRECT"
+  | (string & {});
 export const InsightFeedbackOption = /*@__PURE__*/ S.String;
 
 export interface InsightFeedback {
   Id?: string;
-  Feedback?: InsightFeedbackOption | (string & {});
+  Feedback?: InsightFeedbackOption;
 }
 export const InsightFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -885,7 +886,7 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInsightRequest",
 }) as any as S.Schema<DescribeInsightRequest>;
 export type InsightName = string;
-export type InsightStatus = "ONGOING" | "CLOSED";
+export type InsightStatus = "ONGOING" | "CLOSED" | (string & {});
 export const InsightStatus = /*@__PURE__*/ S.String;
 
 export interface InsightTimeRange {
@@ -1044,15 +1045,14 @@ export type OrganizationResourceCollectionType =
   | "AWS_CLOUD_FORMATION"
   | "AWS_SERVICE"
   | "AWS_ACCOUNT"
-  | "AWS_TAGS";
+  | "AWS_TAGS"
+  | (string & {});
 export const OrganizationResourceCollectionType = /*@__PURE__*/ S.String;
 
 export type UuidNextToken = string;
 export type OrganizationResourceCollectionMaxResults = number;
 export interface DescribeOrganizationResourceCollectionHealthRequest {
-  OrganizationResourceCollectionType:
-    | OrganizationResourceCollectionType
-    | (string & {});
+  OrganizationResourceCollectionType: OrganizationResourceCollectionType;
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
   NextToken?: string;
@@ -1136,7 +1136,8 @@ export type ServiceName =
   | "SNS"
   | "SQS"
   | "STEP_FUNCTIONS"
-  | "SWF";
+  | "SWF"
+  | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
 
 export interface ServiceInsightHealth {
@@ -1227,11 +1228,12 @@ export const DescribeOrganizationResourceCollectionHealthResponse =
 export type ResourceCollectionType =
   | "AWS_CLOUD_FORMATION"
   | "AWS_SERVICE"
-  | "AWS_TAGS";
+  | "AWS_TAGS"
+  | (string & {});
 export const ResourceCollectionType = /*@__PURE__*/ S.String;
 
 export interface DescribeResourceCollectionHealthRequest {
-  ResourceCollectionType: ResourceCollectionType | (string & {});
+  ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
 export const DescribeResourceCollectionHealthRequest = /*@__PURE__*/ S.suspend(
@@ -1289,7 +1291,7 @@ export const DescribeServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeServiceIntegrationRequest",
 }) as any as S.Schema<DescribeServiceIntegrationRequest>;
-export type OptInStatus = "ENABLED" | "DISABLED";
+export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OptInStatus = /*@__PURE__*/ S.String;
 
 export interface OpsCenterIntegration {
@@ -1311,7 +1313,8 @@ export const LogsAnomalyDetectionIntegration = /*@__PURE__*/ S.suspend(() =>
 export type KMSKeyId = string;
 export type ServerSideEncryptionType =
   | "CUSTOMER_MANAGED_KEY"
-  | "AWS_OWNED_KMS_KEY";
+  | "AWS_OWNED_KMS_KEY"
+  | (string & {});
 export const ServerSideEncryptionType = /*@__PURE__*/ S.String;
 
 export interface KMSServerSideEncryptionIntegration {
@@ -1412,10 +1415,13 @@ export const CostEstimationResourceCollectionFilter = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CostEstimationResourceCollectionFilter",
 }) as any as S.Schema<CostEstimationResourceCollectionFilter>;
-export type CostEstimationStatus = "ONGOING" | "COMPLETED";
+export type CostEstimationStatus = "ONGOING" | "COMPLETED" | (string & {});
 export const CostEstimationStatus = /*@__PURE__*/ S.String;
 
-export type CostEstimationServiceResourceState = "ACTIVE" | "INACTIVE";
+export type CostEstimationServiceResourceState =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
 export const CostEstimationServiceResourceState = /*@__PURE__*/ S.String;
 
 export type CostEstimationServiceResourceCount = number;
@@ -1473,7 +1479,7 @@ export const GetCostEstimationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCostEstimationResponse",
 }) as any as S.Schema<GetCostEstimationResponse>;
 export interface GetResourceCollectionRequest {
-  ResourceCollectionType: ResourceCollectionType | (string & {});
+  ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
 export const GetResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1552,10 +1558,10 @@ export const StartTimeRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StartTimeRange" }) as any as S.Schema<StartTimeRange>;
 export type ListAnomaliesForInsightMaxResults = number;
-export type ServiceNames = (ServiceName | (string & {}))[];
+export type ServiceNames = ServiceName[];
 export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
 export interface ServiceCollection {
-  ServiceNames?: (ServiceName | (string & {}))[];
+  ServiceNames?: ServiceName[];
 }
 export const ServiceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServiceNames: S.optional(ServiceNames) }),
@@ -1724,7 +1730,8 @@ export type LogAnomalyType =
   | "BLOCK_FORMAT"
   | "NUMERICAL_POINT"
   | "NUMERICAL_NAN"
-  | "NEW_FIELD_NAME";
+  | "NEW_FIELD_NAME"
+  | (string & {});
 export const LogAnomalyType = /*@__PURE__*/ S.String;
 
 export type LogAnomalyToken = string;
@@ -1818,19 +1825,23 @@ export type EventClass =
   | "DEPLOYMENT"
   | "SECURITY_CHANGE"
   | "CONFIG_CHANGE"
-  | "SCHEMA_CHANGE";
+  | "SCHEMA_CHANGE"
+  | (string & {});
 export const EventClass = /*@__PURE__*/ S.String;
 
 export type EventSource = string;
-export type EventDataSource = "AWS_CLOUD_TRAIL" | "AWS_CODE_DEPLOY";
+export type EventDataSource =
+  | "AWS_CLOUD_TRAIL"
+  | "AWS_CODE_DEPLOY"
+  | (string & {});
 export const EventDataSource = /*@__PURE__*/ S.String;
 
 export interface ListEventsFilters {
   InsightId?: string;
   EventTimeRange?: EventTimeRange;
-  EventClass?: EventClass | (string & {});
+  EventClass?: EventClass;
   EventSource?: string;
-  DataSource?: EventDataSource | (string & {});
+  DataSource?: EventDataSource;
   ResourceCollection?: ResourceCollection;
 }
 export const ListEventsFilters = /*@__PURE__*/ S.suspend(() =>
@@ -1923,11 +1934,11 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsResponse",
 }) as any as S.Schema<ListEventsResponse>;
-export type InsightType = "REACTIVE" | "PROACTIVE";
+export type InsightType = "REACTIVE" | "PROACTIVE" | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
 
 export interface ListInsightsOngoingStatusFilter {
-  Type: InsightType | (string & {});
+  Type: InsightType;
 }
 export const ListInsightsOngoingStatusFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: InsightType }),
@@ -1945,7 +1956,7 @@ export const EndTimeRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndTimeRange" }) as any as S.Schema<EndTimeRange>;
 export interface ListInsightsClosedStatusFilter {
-  Type: InsightType | (string & {});
+  Type: InsightType;
   EndTimeRange: EndTimeRange;
 }
 export const ListInsightsClosedStatusFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1954,7 +1965,7 @@ export const ListInsightsClosedStatusFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInsightsClosedStatusFilter",
 }) as any as S.Schema<ListInsightsClosedStatusFilter>;
 export interface ListInsightsAnyStatusFilter {
-  Type: InsightType | (string & {});
+  Type: InsightType;
   StartTimeRange: StartTimeRange;
 }
 export const ListInsightsAnyStatusFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2071,7 +2082,10 @@ export const ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsResponse",
 }) as any as S.Schema<ListInsightsResponse>;
-export type ResourcePermission = "FULL_PERMISSION" | "MISSING_PERMISSION";
+export type ResourcePermission =
+  | "FULL_PERMISSION"
+  | "MISSING_PERMISSION"
+  | (string & {});
 export const ResourcePermission = /*@__PURE__*/ S.String;
 
 export type ResourceTypeFilter =
@@ -2101,14 +2115,15 @@ export type ResourceTypeFilter =
   | "SNS_TOPIC"
   | "SQS_QUEUE"
   | "STEP_FUNCTIONS_ACTIVITY"
-  | "STEP_FUNCTIONS_STATE_MACHINE";
+  | "STEP_FUNCTIONS_STATE_MACHINE"
+  | (string & {});
 export const ResourceTypeFilter = /*@__PURE__*/ S.String;
 
-export type ResourceTypeFilters = (ResourceTypeFilter | (string & {}))[];
+export type ResourceTypeFilters = ResourceTypeFilter[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
 export interface ListMonitoredResourcesFilters {
-  ResourcePermission: ResourcePermission | (string & {});
-  ResourceTypeFilters: (ResourceTypeFilter | (string & {}))[];
+  ResourcePermission: ResourcePermission;
+  ResourceTypeFilters: ResourceTypeFilter[];
 }
 export const ListMonitoredResourcesFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2338,13 +2353,14 @@ export type Locale =
   | "KO_KR"
   | "PT_BR"
   | "ZH_CN"
-  | "ZH_TW";
+  | "ZH_TW"
+  | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
 
 export interface ListRecommendationsRequest {
   InsightId: string;
   NextToken?: string;
-  Locale?: Locale | (string & {});
+  Locale?: Locale;
   AccountId?: string;
 }
 export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2555,11 +2571,11 @@ export const RemoveNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveNotificationChannelResponse",
 }) as any as S.Schema<RemoveNotificationChannelResponse>;
-export type InsightStatuses = (InsightStatus | (string & {}))[];
+export type InsightStatuses = InsightStatus[];
 export const InsightStatuses = /*@__PURE__*/ S.Array(InsightStatus);
 export interface SearchInsightsFilters {
-  Severities?: (InsightSeverity | (string & {}))[];
-  Statuses?: (InsightStatus | (string & {}))[];
+  Severities?: InsightSeverity[];
+  Statuses?: InsightStatus[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
@@ -2579,7 +2595,7 @@ export interface SearchInsightsRequest {
   Filters?: SearchInsightsFilters;
   MaxResults?: number;
   NextToken?: string;
-  Type: InsightType | (string & {});
+  Type: InsightType;
 }
 export const SearchInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2618,8 +2634,8 @@ export const SearchInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SearchInsightsAccountIdList = string[];
 export const SearchInsightsAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchOrganizationInsightsFilters {
-  Severities?: (InsightSeverity | (string & {}))[];
-  Statuses?: (InsightStatus | (string & {}))[];
+  Severities?: InsightSeverity[];
+  Statuses?: InsightStatus[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
@@ -2640,7 +2656,7 @@ export interface SearchOrganizationInsightsRequest {
   Filters?: SearchOrganizationInsightsFilters;
   MaxResults?: number;
   NextToken?: string;
-  Type: InsightType | (string & {});
+  Type: InsightType;
 }
 export const SearchOrganizationInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2728,7 +2744,7 @@ export const UpdateEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEventSourcesConfigResponse",
 }) as any as S.Schema<UpdateEventSourcesConfigResponse>;
-export type UpdateResourceCollectionAction = "ADD" | "REMOVE";
+export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
 export const UpdateResourceCollectionAction = /*@__PURE__*/ S.String;
 
 export type UpdateStackNames = string[];
@@ -2769,7 +2785,7 @@ export const UpdateResourceCollectionFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceCollectionFilter",
 }) as any as S.Schema<UpdateResourceCollectionFilter>;
 export interface UpdateResourceCollectionRequest {
-  Action: UpdateResourceCollectionAction | (string & {});
+  Action: UpdateResourceCollectionAction;
   ResourceCollection: UpdateResourceCollectionFilter;
 }
 export const UpdateResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2796,7 +2812,7 @@ export const UpdateResourceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceCollectionResponse",
 }) as any as S.Schema<UpdateResourceCollectionResponse>;
 export interface OpsCenterIntegrationConfig {
-  OptInStatus?: OptInStatus | (string & {});
+  OptInStatus?: OptInStatus;
 }
 export const OpsCenterIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OptInStatus: S.optional(OptInStatus) }),
@@ -2804,7 +2820,7 @@ export const OpsCenterIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpsCenterIntegrationConfig",
 }) as any as S.Schema<OpsCenterIntegrationConfig>;
 export interface LogsAnomalyDetectionIntegrationConfig {
-  OptInStatus?: OptInStatus | (string & {});
+  OptInStatus?: OptInStatus;
 }
 export const LogsAnomalyDetectionIntegrationConfig = /*@__PURE__*/ S.suspend(
   () => S.Struct({ OptInStatus: S.optional(OptInStatus) }),
@@ -2813,8 +2829,8 @@ export const LogsAnomalyDetectionIntegrationConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
 export interface KMSServerSideEncryptionIntegrationConfig {
   KMSKeyId?: string;
-  OptInStatus?: OptInStatus | (string & {});
-  Type?: ServerSideEncryptionType | (string & {});
+  OptInStatus?: OptInStatus;
+  Type?: ServerSideEncryptionType;
 }
 export const KMSServerSideEncryptionIntegrationConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -2877,7 +2893,8 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | "INVALID_PARAMETER_COMBINATION"
-  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE";
+  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ErrorNameString = string;

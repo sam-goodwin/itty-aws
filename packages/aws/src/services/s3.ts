@@ -3251,7 +3251,7 @@ export class UnsupportedMediaType extends S.TaggedErrorClass<UnsupportedMediaTyp
 export type BucketName = string;
 export type ObjectKey = string;
 export type MultipartUploadId = string;
-export type RequestPayer = "requester";
+export type RequestPayer = "requester" | (string & {});
 export const RequestPayer = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
@@ -3260,7 +3260,7 @@ export interface AbortMultipartUploadRequest {
   Bucket: string;
   Key: string;
   UploadId: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   IfMatchInitiatedTime?: Date;
 }
@@ -3295,7 +3295,7 @@ export const AbortMultipartUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbortMultipartUploadRequest",
 }) as any as S.Schema<AbortMultipartUploadRequest>;
-export type RequestCharged = "requester";
+export type RequestCharged = "requester" | (string & {});
 export const RequestCharged = /*@__PURE__*/ S.String;
 
 export interface AbortMultipartUploadOutput {
@@ -3367,7 +3367,7 @@ export const CompletedMultipartUpload = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompletedMultipartUpload",
 }) as any as S.Schema<CompletedMultipartUpload>;
-export type ChecksumType = "COMPOSITE" | "FULL_OBJECT";
+export type ChecksumType = "COMPOSITE" | "FULL_OBJECT" | (string & {});
 export const ChecksumType = /*@__PURE__*/ S.String;
 
 export type MpuObjectSize = number;
@@ -3391,9 +3391,9 @@ export interface CompleteMultipartUploadRequest {
   ChecksumXXHASH64?: string;
   ChecksumXXHASH3?: string;
   ChecksumXXHASH128?: string;
-  ChecksumType?: ChecksumType | (string & {});
+  ChecksumType?: ChecksumType;
   MpuObjectSize?: number;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   IfMatch?: string;
   IfNoneMatch?: string;
@@ -3480,7 +3480,8 @@ export type ServerSideEncryption =
   | "AES256"
   | "aws:fsx"
   | "aws:kms"
-  | "aws:kms:dsse";
+  | "aws:kms:dsse"
+  | (string & {});
 export const ServerSideEncryption = /*@__PURE__*/ S.String;
 
 export type ObjectVersionId = string;
@@ -3551,7 +3552,8 @@ export type ObjectCannedACL =
   | "authenticated-read"
   | "aws-exec-read"
   | "bucket-owner-read"
-  | "bucket-owner-full-control";
+  | "bucket-owner-full-control"
+  | (string & {});
 export const ObjectCannedACL = /*@__PURE__*/ S.String;
 
 export type CacheControl = string;
@@ -3565,7 +3567,8 @@ export type ChecksumAlgorithm =
   | "MD5"
   | "XXHASH64"
   | "XXHASH3"
-  | "XXHASH128";
+  | "XXHASH128"
+  | (string & {});
 export const ChecksumAlgorithm = /*@__PURE__*/ S.String;
 
 export type ContentDisposition = string;
@@ -3589,13 +3592,13 @@ export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type MetadataDirective = "COPY" | "REPLACE";
+export type MetadataDirective = "COPY" | "REPLACE" | (string & {});
 export const MetadataDirective = /*@__PURE__*/ S.String;
 
-export type TaggingDirective = "COPY" | "REPLACE";
+export type TaggingDirective = "COPY" | "REPLACE" | (string & {});
 export const TaggingDirective = /*@__PURE__*/ S.String;
 
-export type AnnotationDirective = "COPY" | "EXCLUDE";
+export type AnnotationDirective = "COPY" | "EXCLUDE" | (string & {});
 export const AnnotationDirective = /*@__PURE__*/ S.String;
 
 export type StorageClass =
@@ -3611,7 +3614,8 @@ export type StorageClass =
   | "SNOW"
   | "EXPRESS_ONEZONE"
   | "FSX_OPENZFS"
-  | "FSX_ONTAP";
+  | "FSX_ONTAP"
+  | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
 
 export type WebsiteRedirectLocation = string;
@@ -3620,18 +3624,18 @@ export type CopySourceSSECustomerAlgorithm = string;
 export type CopySourceSSECustomerKey = string | redacted.Redacted<string>;
 export type CopySourceSSECustomerKeyMD5 = string;
 export type TaggingHeader = string;
-export type ObjectLockMode = "GOVERNANCE" | "COMPLIANCE";
+export type ObjectLockMode = "GOVERNANCE" | "COMPLIANCE" | (string & {});
 export const ObjectLockMode = /*@__PURE__*/ S.String;
 
 export type ObjectLockRetainUntilDate = Date;
-export type ObjectLockLegalHoldStatus = "ON" | "OFF";
+export type ObjectLockLegalHoldStatus = "ON" | "OFF" | (string & {});
 export const ObjectLockLegalHoldStatus = /*@__PURE__*/ S.String;
 
 export interface CopyObjectRequest {
-  ACL?: ObjectCannedACL | (string & {});
+  ACL?: ObjectCannedACL;
   Bucket: string;
   CacheControl?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ContentDisposition?: string;
   ContentEncoding?: string;
   ContentLanguage?: string;
@@ -3650,11 +3654,11 @@ export interface CopyObjectRequest {
   IfNoneMatch?: string;
   Key: string;
   Metadata?: { [key: string]: string | undefined };
-  MetadataDirective?: MetadataDirective | (string & {});
-  TaggingDirective?: TaggingDirective | (string & {});
-  AnnotationDirective?: AnnotationDirective | (string & {});
-  ServerSideEncryption?: ServerSideEncryption | (string & {});
-  StorageClass?: StorageClass | (string & {});
+  MetadataDirective?: MetadataDirective;
+  TaggingDirective?: TaggingDirective;
+  AnnotationDirective?: AnnotationDirective;
+  ServerSideEncryption?: ServerSideEncryption;
+  StorageClass?: StorageClass;
   WebsiteRedirectLocation?: string;
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
@@ -3665,11 +3669,11 @@ export interface CopyObjectRequest {
   CopySourceSSECustomerAlgorithm?: string;
   CopySourceSSECustomerKey?: string | redacted.Redacted<string>;
   CopySourceSSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   Tagging?: string;
-  ObjectLockMode?: ObjectLockMode | (string & {});
+  ObjectLockMode?: ObjectLockMode;
   ObjectLockRetainUntilDate?: Date;
-  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | (string & {});
+  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus;
   ExpectedBucketOwner?: string;
   ExpectedSourceBucketOwner?: string;
 }
@@ -3891,7 +3895,8 @@ export type BucketCannedACL =
   | "private"
   | "public-read"
   | "public-read-write"
-  | "authenticated-read";
+  | "authenticated-read"
+  | (string & {});
 export const BucketCannedACL = /*@__PURE__*/ S.String;
 
 export type BucketLocationConstraint =
@@ -3932,29 +3937,33 @@ export type BucketLocationConstraint =
   | "us-gov-east-1"
   | "us-gov-west-1"
   | "us-west-1"
-  | "us-west-2";
+  | "us-west-2"
+  | (string & {});
 export const BucketLocationConstraint = /*@__PURE__*/ S.String;
 
-export type LocationType = "AvailabilityZone" | "LocalZone";
+export type LocationType = "AvailabilityZone" | "LocalZone" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
 
 export type LocationNameAsString = string;
 export interface LocationInfo {
-  Type?: LocationType | (string & {});
+  Type?: LocationType;
   Name?: string;
 }
 export const LocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(LocationType), Name: S.optional(S.String) }),
 ).annotate({ identifier: "LocationInfo" }) as any as S.Schema<LocationInfo>;
-export type DataRedundancy = "SingleAvailabilityZone" | "SingleLocalZone";
+export type DataRedundancy =
+  | "SingleAvailabilityZone"
+  | "SingleLocalZone"
+  | (string & {});
 export const DataRedundancy = /*@__PURE__*/ S.String;
 
-export type BucketType = "Directory";
+export type BucketType = "Directory" | (string & {});
 export const BucketType = /*@__PURE__*/ S.String;
 
 export interface BucketInfo {
-  DataRedundancy?: DataRedundancy | (string & {});
-  Type?: BucketType | (string & {});
+  DataRedundancy?: DataRedundancy;
+  Type?: BucketType;
 }
 export const BucketInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3975,7 +3984,7 @@ export const TagSet = /*@__PURE__*/ S.Array(
   Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface CreateBucketConfiguration {
-  LocationConstraint?: BucketLocationConstraint | (string & {});
+  LocationConstraint?: BucketLocationConstraint;
   Location?: LocationInfo;
   Bucket?: BucketInfo;
   Tags?: Tag[];
@@ -3995,14 +4004,15 @@ export type ObjectLockEnabledForBucket = boolean;
 export type ObjectOwnership =
   | "BucketOwnerPreferred"
   | "ObjectWriter"
-  | "BucketOwnerEnforced";
+  | "BucketOwnerEnforced"
+  | (string & {});
 export const ObjectOwnership = /*@__PURE__*/ S.String;
 
-export type BucketNamespace = "account-regional" | "global";
+export type BucketNamespace = "account-regional" | "global" | (string & {});
 export const BucketNamespace = /*@__PURE__*/ S.String;
 
 export interface CreateBucketRequest {
-  ACL?: BucketCannedACL | (string & {});
+  ACL?: BucketCannedACL;
   Bucket: string;
   CreateBucketConfiguration?: CreateBucketConfiguration;
   GrantFullControl?: string;
@@ -4011,8 +4021,8 @@ export interface CreateBucketRequest {
   GrantWrite?: string;
   GrantWriteACP?: string;
   ObjectLockEnabledForBucket?: boolean;
-  ObjectOwnership?: ObjectOwnership | (string & {});
-  BucketNamespace?: BucketNamespace | (string & {});
+  ObjectOwnership?: ObjectOwnership;
+  BucketNamespace?: BucketNamespace;
 }
 export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4073,12 +4083,12 @@ export const CreateBucketOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketOutput",
 }) as any as S.Schema<CreateBucketOutput>;
 export type ContentMD5 = string;
-export type ExpirationState = "ENABLED" | "DISABLED";
+export type ExpirationState = "ENABLED" | "DISABLED" | (string & {});
 export const ExpirationState = /*@__PURE__*/ S.String;
 
 export type RecordExpirationDays = number;
 export interface RecordExpiration {
-  Expiration: ExpirationState | (string & {});
+  Expiration: ExpirationState;
   Days?: number;
 }
 export const RecordExpiration = /*@__PURE__*/ S.suspend(() =>
@@ -4086,12 +4096,12 @@ export const RecordExpiration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordExpiration",
 }) as any as S.Schema<RecordExpiration>;
-export type TableSseAlgorithm = "aws:kms" | "AES256";
+export type TableSseAlgorithm = "aws:kms" | "AES256" | (string & {});
 export const TableSseAlgorithm = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export interface MetadataTableEncryptionConfiguration {
-  SseAlgorithm: TableSseAlgorithm | (string & {});
+  SseAlgorithm: TableSseAlgorithm;
   KmsKeyArn?: string;
 }
 export const MetadataTableEncryptionConfiguration = /*@__PURE__*/ S.suspend(
@@ -4115,11 +4125,14 @@ export const JournalTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JournalTableConfiguration",
 }) as any as S.Schema<JournalTableConfiguration>;
-export type InventoryConfigurationState = "ENABLED" | "DISABLED";
+export type InventoryConfigurationState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const InventoryConfigurationState = /*@__PURE__*/ S.String;
 
 export interface InventoryTableConfiguration {
-  ConfigurationState: InventoryConfigurationState | (string & {});
+  ConfigurationState: InventoryConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
 }
 export const InventoryTableConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -4130,12 +4143,15 @@ export const InventoryTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InventoryTableConfiguration",
 }) as any as S.Schema<InventoryTableConfiguration>;
-export type AnnotationConfigurationState = "ENABLED" | "DISABLED";
+export type AnnotationConfigurationState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const AnnotationConfigurationState = /*@__PURE__*/ S.String;
 
 export type Role = string;
 export interface AnnotationTableConfiguration {
-  ConfigurationState: AnnotationConfigurationState | (string & {});
+  ConfigurationState: AnnotationConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
   Role?: string;
 }
@@ -4165,7 +4181,7 @@ export const MetadataConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBucketMetadataConfigurationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   MetadataConfiguration: MetadataConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -4230,7 +4246,7 @@ export const MetadataTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBucketMetadataTableConfigurationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   MetadataTableConfiguration: MetadataTableConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -4274,7 +4290,7 @@ export const CreateBucketMetadataTableConfigurationResponse =
     identifier: "CreateBucketMetadataTableConfigurationResponse",
   }) as any as S.Schema<CreateBucketMetadataTableConfigurationResponse>;
 export interface CreateMultipartUploadRequest {
-  ACL?: ObjectCannedACL | (string & {});
+  ACL?: ObjectCannedACL;
   Bucket: string;
   CacheControl?: string;
   ContentDisposition?: string;
@@ -4288,8 +4304,8 @@ export interface CreateMultipartUploadRequest {
   GrantWriteACP?: string;
   Key: string;
   Metadata?: { [key: string]: string | undefined };
-  ServerSideEncryption?: ServerSideEncryption | (string & {});
-  StorageClass?: StorageClass | (string & {});
+  ServerSideEncryption?: ServerSideEncryption;
+  StorageClass?: StorageClass;
   WebsiteRedirectLocation?: string;
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
@@ -4297,14 +4313,14 @@ export interface CreateMultipartUploadRequest {
   SSEKMSKeyId?: string | redacted.Redacted<string>;
   SSEKMSEncryptionContext?: string | redacted.Redacted<string>;
   BucketKeyEnabled?: boolean;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   Tagging?: string;
-  ObjectLockMode?: ObjectLockMode | (string & {});
+  ObjectLockMode?: ObjectLockMode;
   ObjectLockRetainUntilDate?: Date;
-  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | (string & {});
+  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus;
   ExpectedBucketOwner?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
-  ChecksumType?: ChecksumType | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
+  ChecksumType?: ChecksumType;
 }
 export const CreateMultipartUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4455,13 +4471,13 @@ export const CreateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMultipartUploadOutput",
 }) as any as S.Schema<CreateMultipartUploadOutput>;
-export type SessionMode = "ReadOnly" | "ReadWrite";
+export type SessionMode = "ReadOnly" | "ReadWrite" | (string & {});
 export const SessionMode = /*@__PURE__*/ S.String;
 
 export interface CreateSessionRequest {
-  SessionMode?: SessionMode | (string & {});
+  SessionMode?: SessionMode;
   Bucket: string;
-  ServerSideEncryption?: ServerSideEncryption | (string & {});
+  ServerSideEncryption?: ServerSideEncryption;
   SSEKMSKeyId?: string | redacted.Redacted<string>;
   SSEKMSEncryptionContext?: string | redacted.Redacted<string>;
   BucketKeyEnabled?: boolean;
@@ -5034,7 +5050,7 @@ export interface DeleteObjectRequest {
   Key: string;
   MFA?: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   BypassGovernanceRetention?: boolean;
   ExpectedBucketOwner?: string;
   IfMatch?: string;
@@ -5101,7 +5117,7 @@ export interface DeleteObjectAnnotationRequest {
   Key: string;
   AnnotationName: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   ObjectIfMatch?: string;
 }
@@ -5187,10 +5203,10 @@ export interface DeleteObjectsRequest {
   Bucket: string;
   Delete: Delete;
   MFA?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   BypassGovernanceRetention?: boolean;
   ExpectedBucketOwner?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
 }
 export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5373,11 +5389,11 @@ export const GetBucketAbacRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketAbacRequest",
 }) as any as S.Schema<GetBucketAbacRequest>;
-export type BucketAbacStatus = "Enabled" | "Disabled";
+export type BucketAbacStatus = "Enabled" | "Disabled" | (string & {});
 export const BucketAbacStatus = /*@__PURE__*/ S.String;
 
 export interface AbacStatus {
-  Status?: BucketAbacStatus | (string & {});
+  Status?: BucketAbacStatus;
 }
 export const AbacStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(BucketAbacStatus) }),
@@ -5397,7 +5413,7 @@ export const GetBucketAbacOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetBucketAccelerateConfigurationRequest {
   Bucket: string;
   ExpectedBucketOwner?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
 }
 export const GetBucketAccelerateConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5424,7 +5440,7 @@ export const GetBucketAccelerateConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketAccelerateConfigurationRequest",
 }) as any as S.Schema<GetBucketAccelerateConfigurationRequest>;
-export type BucketAccelerateStatus = "Enabled" | "Suspended";
+export type BucketAccelerateStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketAccelerateStatus = /*@__PURE__*/ S.String;
 
 export interface GetBucketAccelerateConfigurationOutput {
@@ -5478,7 +5494,11 @@ export const Owner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
 export type EmailAddress = string;
 export type URI = string;
-export type Type = "CanonicalUser" | "AmazonCustomerByEmail" | "Group";
+export type Type =
+  | "CanonicalUser"
+  | "AmazonCustomerByEmail"
+  | "Group"
+  | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface Grantee {
@@ -5486,7 +5506,7 @@ export interface Grantee {
   EmailAddress?: string;
   ID?: string;
   URI?: string;
-  Type: Type | (string & {});
+  Type: Type;
 }
 export const Grantee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5502,12 +5522,13 @@ export type Permission =
   | "WRITE"
   | "WRITE_ACP"
   | "READ"
-  | "READ_ACP";
+  | "READ_ACP"
+  | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface Grant {
   Grantee?: Grantee;
-  Permission?: Permission | (string & {});
+  Permission?: Permission;
 }
 export const Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5584,14 +5605,14 @@ export const AnalyticsFilter = /*@__PURE__*/ S.Union([
   S.Struct({ Tag: Tag }),
   S.Struct({ And: AnalyticsAndOperator }),
 ]);
-export type StorageClassAnalysisSchemaVersion = "V_1";
+export type StorageClassAnalysisSchemaVersion = "V_1" | (string & {});
 export const StorageClassAnalysisSchemaVersion = /*@__PURE__*/ S.String;
 
-export type AnalyticsS3ExportFileFormat = "CSV";
+export type AnalyticsS3ExportFileFormat = "CSV" | (string & {});
 export const AnalyticsS3ExportFileFormat = /*@__PURE__*/ S.String;
 
 export interface AnalyticsS3BucketDestination {
-  Format: AnalyticsS3ExportFileFormat | (string & {});
+  Format: AnalyticsS3ExportFileFormat;
   BucketAccountId?: string;
   Bucket: string;
   Prefix?: string;
@@ -5615,7 +5636,7 @@ export const AnalyticsExportDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalyticsExportDestination",
 }) as any as S.Schema<AnalyticsExportDestination>;
 export interface StorageClassAnalysisDataExport {
-  OutputSchemaVersion: StorageClassAnalysisSchemaVersion | (string & {});
+  OutputSchemaVersion: StorageClassAnalysisSchemaVersion;
   Destination: AnalyticsExportDestination;
 }
 export const StorageClassAnalysisDataExport = /*@__PURE__*/ S.suspend(() =>
@@ -5770,7 +5791,7 @@ export const GetBucketEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketEncryptionRequest",
 }) as any as S.Schema<GetBucketEncryptionRequest>;
 export interface ServerSideEncryptionByDefault {
-  SSEAlgorithm: ServerSideEncryption | (string & {});
+  SSEAlgorithm: ServerSideEncryption;
   KMSMasterKeyID?: string | redacted.Redacted<string>;
 }
 export const ServerSideEncryptionByDefault = /*@__PURE__*/ S.suspend(() =>
@@ -5781,15 +5802,15 @@ export const ServerSideEncryptionByDefault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerSideEncryptionByDefault",
 }) as any as S.Schema<ServerSideEncryptionByDefault>;
-export type EncryptionType = "NONE" | "SSE-C";
+export type EncryptionType = "NONE" | "SSE-C" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
-export type EncryptionTypeList = (EncryptionType | (string & {}))[];
+export type EncryptionTypeList = EncryptionType[];
 export const EncryptionTypeList = /*@__PURE__*/ S.Array(
   EncryptionType.pipe(T.XmlName("EncryptionType")),
 );
 export interface BlockedEncryptionTypes {
-  EncryptionType?: (EncryptionType | (string & {}))[];
+  EncryptionType?: EncryptionType[];
 }
 export const BlockedEncryptionTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5899,18 +5920,19 @@ export const IntelligentTieringFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IntelligentTieringFilter",
 }) as any as S.Schema<IntelligentTieringFilter>;
-export type IntelligentTieringStatus = "Enabled" | "Disabled";
+export type IntelligentTieringStatus = "Enabled" | "Disabled" | (string & {});
 export const IntelligentTieringStatus = /*@__PURE__*/ S.String;
 
 export type IntelligentTieringDays = number;
 export type IntelligentTieringAccessTier =
   | "ARCHIVE_ACCESS"
-  | "DEEP_ARCHIVE_ACCESS";
+  | "DEEP_ARCHIVE_ACCESS"
+  | (string & {});
 export const IntelligentTieringAccessTier = /*@__PURE__*/ S.String;
 
 export interface Tiering {
   Days: number;
-  AccessTier: IntelligentTieringAccessTier | (string & {});
+  AccessTier: IntelligentTieringAccessTier;
 }
 export const Tiering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Days: S.Number, AccessTier: IntelligentTieringAccessTier }),
@@ -5920,7 +5942,7 @@ export const TieringList = /*@__PURE__*/ S.Array(Tiering);
 export interface IntelligentTieringConfiguration {
   Id: string;
   Filter?: IntelligentTieringFilter;
-  Status: IntelligentTieringStatus | (string & {});
+  Status: IntelligentTieringStatus;
   Tierings: Tiering[];
 }
 export const IntelligentTieringConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -5979,7 +6001,7 @@ export const GetBucketInventoryConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketInventoryConfigurationRequest",
 }) as any as S.Schema<GetBucketInventoryConfigurationRequest>;
-export type InventoryFormat = "CSV" | "ORC" | "Parquet";
+export type InventoryFormat = "CSV" | "ORC" | "Parquet" | (string & {});
 export const InventoryFormat = /*@__PURE__*/ S.String;
 
 export interface SSES3 {}
@@ -6011,7 +6033,7 @@ export const InventoryEncryption = /*@__PURE__*/ S.suspend(() =>
 export interface InventoryS3BucketDestination {
   AccountId?: string;
   Bucket: string;
-  Format: InventoryFormat | (string & {});
+  Format: InventoryFormat;
   Prefix?: string;
   Encryption?: InventoryEncryption;
 }
@@ -6043,7 +6065,7 @@ export const InventoryFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InventoryFilter",
 }) as any as S.Schema<InventoryFilter>;
-export type InventoryIncludedObjectVersions = "All" | "Current";
+export type InventoryIncludedObjectVersions = "All" | "Current" | (string & {});
 export const InventoryIncludedObjectVersions = /*@__PURE__*/ S.String;
 
 export type InventoryOptionalField =
@@ -6062,21 +6084,19 @@ export type InventoryOptionalField =
   | "ChecksumAlgorithm"
   | "ObjectAccessControlList"
   | "ObjectOwner"
-  | "LifecycleExpirationDate";
+  | "LifecycleExpirationDate"
+  | (string & {});
 export const InventoryOptionalField = /*@__PURE__*/ S.String;
 
-export type InventoryOptionalFields = (
-  | InventoryOptionalField
-  | (string & {})
-)[];
+export type InventoryOptionalFields = InventoryOptionalField[];
 export const InventoryOptionalFields = /*@__PURE__*/ S.Array(
   InventoryOptionalField.pipe(T.XmlName("Field")),
 );
-export type InventoryFrequency = "Daily" | "Weekly";
+export type InventoryFrequency = "Daily" | "Weekly" | (string & {});
 export const InventoryFrequency = /*@__PURE__*/ S.String;
 
 export interface InventorySchedule {
-  Frequency: InventoryFrequency | (string & {});
+  Frequency: InventoryFrequency;
 }
 export const InventorySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Frequency: InventoryFrequency }),
@@ -6088,8 +6108,8 @@ export interface InventoryConfiguration {
   IsEnabled: boolean;
   Filter?: InventoryFilter;
   Id: string;
-  IncludedObjectVersions: InventoryIncludedObjectVersions | (string & {});
-  OptionalFields?: (InventoryOptionalField | (string & {}))[];
+  IncludedObjectVersions: InventoryIncludedObjectVersions;
+  OptionalFields?: InventoryOptionalField[];
   Schedule: InventorySchedule;
 }
 export const InventoryConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6196,7 +6216,7 @@ export const LifecycleRuleFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleRuleFilter",
 }) as any as S.Schema<LifecycleRuleFilter>;
-export type ExpirationStatus = "Enabled" | "Disabled";
+export type ExpirationStatus = "Enabled" | "Disabled" | (string & {});
 export const ExpirationStatus = /*@__PURE__*/ S.String;
 
 export type TransitionStorageClass =
@@ -6205,13 +6225,14 @@ export type TransitionStorageClass =
   | "ONEZONE_IA"
   | "INTELLIGENT_TIERING"
   | "DEEP_ARCHIVE"
-  | "GLACIER_IR";
+  | "GLACIER_IR"
+  | (string & {});
 export const TransitionStorageClass = /*@__PURE__*/ S.String;
 
 export interface Transition {
   Date?: Date;
   Days?: number;
-  StorageClass?: TransitionStorageClass | (string & {});
+  StorageClass?: TransitionStorageClass;
 }
 export const Transition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6225,7 +6246,7 @@ export const TransitionList = /*@__PURE__*/ S.Array(Transition);
 export type VersionCount = number;
 export interface NoncurrentVersionTransition {
   NoncurrentDays?: number;
-  StorageClass?: TransitionStorageClass | (string & {});
+  StorageClass?: TransitionStorageClass;
   NewerNoncurrentVersions?: number;
 }
 export const NoncurrentVersionTransition = /*@__PURE__*/ S.suspend(() =>
@@ -6267,7 +6288,7 @@ export interface LifecycleRule {
   ID?: string;
   Prefix?: string;
   Filter?: LifecycleRuleFilter;
-  Status: ExpirationStatus | (string & {});
+  Status: ExpirationStatus;
   Transitions?: Transition[];
   NoncurrentVersionTransitions?: NoncurrentVersionTransition[];
   NoncurrentVersionExpiration?: NoncurrentVersionExpiration;
@@ -6295,7 +6316,8 @@ export type LifecycleRules = LifecycleRule[];
 export const LifecycleRules = /*@__PURE__*/ S.Array(LifecycleRule);
 export type TransitionDefaultMinimumObjectSize =
   | "varies_by_storage_class"
-  | "all_storage_classes_128K";
+  | "all_storage_classes_128K"
+  | (string & {});
 export const TransitionDefaultMinimumObjectSize = /*@__PURE__*/ S.String;
 
 export interface GetBucketLifecycleConfigurationOutput {
@@ -6377,12 +6399,16 @@ export const GetBucketLoggingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketLoggingRequest",
 }) as any as S.Schema<GetBucketLoggingRequest>;
 export type TargetBucket = string;
-export type BucketLogsPermission = "FULL_CONTROL" | "READ" | "WRITE";
+export type BucketLogsPermission =
+  | "FULL_CONTROL"
+  | "READ"
+  | "WRITE"
+  | (string & {});
 export const BucketLogsPermission = /*@__PURE__*/ S.String;
 
 export interface TargetGrant {
   Grantee?: Grantee;
-  Permission?: BucketLogsPermission | (string & {});
+  Permission?: BucketLogsPermission;
 }
 export const TargetGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6399,11 +6425,11 @@ export interface SimplePrefix {}
 export const SimplePrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.XmlName("SimplePrefix")),
 ).annotate({ identifier: "SimplePrefix" }) as any as S.Schema<SimplePrefix>;
-export type PartitionDateSource = "EventTime" | "DeliveryTime";
+export type PartitionDateSource = "EventTime" | "DeliveryTime" | (string & {});
 export const PartitionDateSource = /*@__PURE__*/ S.String;
 
 export interface PartitionedPrefix {
-  PartitionDateSource?: PartitionDateSource | (string & {});
+  PartitionDateSource?: PartitionDateSource;
 }
 export const PartitionedPrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PartitionDateSource: S.optional(PartitionDateSource) }).pipe(
@@ -6478,7 +6504,7 @@ export const GetBucketMetadataConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketMetadataConfigurationRequest",
 }) as any as S.Schema<GetBucketMetadataConfigurationRequest>;
-export type S3TablesBucketType = "aws" | "customer";
+export type S3TablesBucketType = "aws" | "customer" | (string & {});
 export const S3TablesBucketType = /*@__PURE__*/ S.String;
 
 export type S3TablesNamespace = string;
@@ -6832,17 +6858,18 @@ export type Event =
   | "s3:ObjectTagging:Delete"
   | "s3:ObjectAnnotation:*"
   | "s3:ObjectAnnotation:Put"
-  | "s3:ObjectAnnotation:Delete";
+  | "s3:ObjectAnnotation:Delete"
+  | (string & {});
 export const Event = /*@__PURE__*/ S.String;
 
-export type EventList = (Event | (string & {}))[];
+export type EventList = Event[];
 export const EventList = /*@__PURE__*/ S.Array(Event);
-export type FilterRuleName = "prefix" | "suffix";
+export type FilterRuleName = "prefix" | "suffix" | (string & {});
 export const FilterRuleName = /*@__PURE__*/ S.String;
 
 export type FilterRuleValue = string;
 export interface FilterRule {
-  Name?: FilterRuleName | (string & {});
+  Name?: FilterRuleName;
   Value?: string;
 }
 export const FilterRule = /*@__PURE__*/ S.suspend(() =>
@@ -6876,7 +6903,7 @@ export const NotificationConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
 export interface TopicConfiguration {
   Id?: string;
   TopicArn: string;
-  Events: (Event | (string & {}))[];
+  Events: Event[];
   Filter?: NotificationConfigurationFilter;
 }
 export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6895,7 +6922,7 @@ export type QueueArn = string;
 export interface QueueConfiguration {
   Id?: string;
   QueueArn: string;
-  Events: (Event | (string & {}))[];
+  Events: Event[];
   Filter?: NotificationConfigurationFilter;
 }
 export const QueueConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6914,7 +6941,7 @@ export type LambdaFunctionArn = string;
 export interface LambdaFunctionConfiguration {
   Id?: string;
   LambdaFunctionArn: string;
-  Events: (Event | (string & {}))[];
+  Events: Event[];
   Filter?: NotificationConfigurationFilter;
 }
 export const LambdaFunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -6987,7 +7014,7 @@ export const GetBucketOwnershipControlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketOwnershipControlsRequest",
 }) as any as S.Schema<GetBucketOwnershipControlsRequest>;
 export interface OwnershipControlsRule {
-  ObjectOwnership: ObjectOwnership | (string & {});
+  ObjectOwnership: ObjectOwnership;
 }
 export const OwnershipControlsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ObjectOwnership: ObjectOwnership }),
@@ -7150,25 +7177,28 @@ export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationRuleFilter",
 }) as any as S.Schema<ReplicationRuleFilter>;
-export type ReplicationRuleStatus = "Enabled" | "Disabled";
+export type ReplicationRuleStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationRuleStatus = /*@__PURE__*/ S.String;
 
-export type SseKmsEncryptedObjectsStatus = "Enabled" | "Disabled";
+export type SseKmsEncryptedObjectsStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
 
 export interface SseKmsEncryptedObjects {
-  Status: SseKmsEncryptedObjectsStatus | (string & {});
+  Status: SseKmsEncryptedObjectsStatus;
 }
 export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: SseKmsEncryptedObjectsStatus }),
 ).annotate({
   identifier: "SseKmsEncryptedObjects",
 }) as any as S.Schema<SseKmsEncryptedObjects>;
-export type ReplicaModificationsStatus = "Enabled" | "Disabled";
+export type ReplicaModificationsStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
 
 export interface ReplicaModifications {
-  Status: ReplicaModificationsStatus | (string & {});
+  Status: ReplicaModificationsStatus;
 }
 export const ReplicaModifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: ReplicaModificationsStatus }),
@@ -7187,22 +7217,25 @@ export const SourceSelectionCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceSelectionCriteria",
 }) as any as S.Schema<SourceSelectionCriteria>;
-export type ExistingObjectReplicationStatus = "Enabled" | "Disabled";
+export type ExistingObjectReplicationStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ExistingObjectReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface ExistingObjectReplication {
-  Status: ExistingObjectReplicationStatus | (string & {});
+  Status: ExistingObjectReplicationStatus;
 }
 export const ExistingObjectReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: ExistingObjectReplicationStatus }),
 ).annotate({
   identifier: "ExistingObjectReplication",
 }) as any as S.Schema<ExistingObjectReplication>;
-export type OwnerOverride = "Destination";
+export type OwnerOverride = "Destination" | (string & {});
 export const OwnerOverride = /*@__PURE__*/ S.String;
 
 export interface AccessControlTranslation {
-  Owner: OwnerOverride | (string & {});
+  Owner: OwnerOverride;
 }
 export const AccessControlTranslation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Owner: OwnerOverride }),
@@ -7218,7 +7251,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
-export type ReplicationTimeStatus = "Enabled" | "Disabled";
+export type ReplicationTimeStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
 
 export type Minutes = number;
@@ -7231,7 +7264,7 @@ export const ReplicationTimeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationTimeValue",
 }) as any as S.Schema<ReplicationTimeValue>;
 export interface ReplicationTime {
-  Status: ReplicationTimeStatus | (string & {});
+  Status: ReplicationTimeStatus;
   Time: ReplicationTimeValue;
 }
 export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
@@ -7239,11 +7272,11 @@ export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationTime",
 }) as any as S.Schema<ReplicationTime>;
-export type MetricsStatus = "Enabled" | "Disabled";
+export type MetricsStatus = "Enabled" | "Disabled" | (string & {});
 export const MetricsStatus = /*@__PURE__*/ S.String;
 
 export interface Metrics {
-  Status: MetricsStatus | (string & {});
+  Status: MetricsStatus;
   EventThreshold?: ReplicationTimeValue;
 }
 export const Metrics = /*@__PURE__*/ S.suspend(() =>
@@ -7255,7 +7288,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
 export interface Destination {
   Bucket: string;
   Account?: string;
-  StorageClass?: StorageClass | (string & {});
+  StorageClass?: StorageClass;
   AccessControlTranslation?: AccessControlTranslation;
   EncryptionConfiguration?: EncryptionConfiguration;
   ReplicationTime?: ReplicationTime;
@@ -7272,11 +7305,14 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
     Metrics: S.optional(Metrics),
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
-export type DeleteMarkerReplicationStatus = "Enabled" | "Disabled";
+export type DeleteMarkerReplicationStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteMarkerReplication {
-  Status?: DeleteMarkerReplicationStatus | (string & {});
+  Status?: DeleteMarkerReplicationStatus;
 }
 export const DeleteMarkerReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(DeleteMarkerReplicationStatus) }),
@@ -7288,7 +7324,7 @@ export interface ReplicationRule {
   Priority?: number;
   Prefix?: string;
   Filter?: ReplicationRuleFilter;
-  Status: ReplicationRuleStatus | (string & {});
+  Status: ReplicationRuleStatus;
   SourceSelectionCriteria?: SourceSelectionCriteria;
   ExistingObjectReplication?: ExistingObjectReplication;
   Destination: Destination;
@@ -7360,7 +7396,7 @@ export const GetBucketRequestPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketRequestPaymentRequest",
 }) as any as S.Schema<GetBucketRequestPaymentRequest>;
-export type Payer = "Requester" | "BucketOwner";
+export type Payer = "Requester" | "BucketOwner" | (string & {});
 export const Payer = /*@__PURE__*/ S.String;
 
 export interface GetBucketRequestPaymentOutput {
@@ -7431,10 +7467,10 @@ export const GetBucketVersioningRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketVersioningRequest",
 }) as any as S.Schema<GetBucketVersioningRequest>;
-export type BucketVersioningStatus = "Enabled" | "Suspended";
+export type BucketVersioningStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketVersioningStatus = /*@__PURE__*/ S.String;
 
-export type MFADeleteStatus = "Enabled" | "Disabled";
+export type MFADeleteStatus = "Enabled" | "Disabled" | (string & {});
 export const MFADeleteStatus = /*@__PURE__*/ S.String;
 
 export interface GetBucketVersioningOutput {
@@ -7475,12 +7511,12 @@ export const GetBucketWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketWebsiteRequest",
 }) as any as S.Schema<GetBucketWebsiteRequest>;
 export type HostName = string;
-export type Protocol = "http" | "https";
+export type Protocol = "http" | "https" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 export interface RedirectAllRequestsTo {
   HostName: string;
-  Protocol?: Protocol | (string & {});
+  Protocol?: Protocol;
 }
 export const RedirectAllRequestsTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HostName: S.String, Protocol: S.optional(Protocol) }),
@@ -7518,7 +7554,7 @@ export type ReplaceKeyWith = string;
 export interface Redirect {
   HostName?: string;
   HttpRedirectCode?: string;
-  Protocol?: Protocol | (string & {});
+  Protocol?: Protocol;
   ReplaceKeyPrefixWith?: string;
   ReplaceKeyWith?: string;
 }
@@ -7569,7 +7605,7 @@ export type ResponseContentEncoding = string;
 export type ResponseContentLanguage = string;
 export type ResponseContentType = string;
 export type ResponseExpires = Date;
-export type ChecksumMode = "ENABLED";
+export type ChecksumMode = "ENABLED" | (string & {});
 export const ChecksumMode = /*@__PURE__*/ S.String;
 
 export interface GetObjectRequest {
@@ -7590,10 +7626,10 @@ export interface GetObjectRequest {
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   PartNumber?: number;
   ExpectedBucketOwner?: string;
-  ChecksumMode?: ChecksumMode | (string & {});
+  ChecksumMode?: ChecksumMode;
 }
 export const GetObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7684,7 +7720,8 @@ export type ReplicationStatus =
   | "PENDING"
   | "FAILED"
   | "REPLICA"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
 
 export type PartsCount = number;
@@ -7841,7 +7878,7 @@ export interface GetObjectAclRequest {
   Bucket: string;
   Key: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const GetObjectAclRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7890,9 +7927,9 @@ export interface GetObjectAnnotationRequest {
   Key: string;
   AnnotationName: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
-  ChecksumMode?: ChecksumMode | (string & {});
+  ChecksumMode?: ChecksumMode;
 }
 export const GetObjectAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8023,10 +8060,11 @@ export type ObjectAttributes =
   | "Checksum"
   | "ObjectParts"
   | "StorageClass"
-  | "ObjectSize";
+  | "ObjectSize"
+  | (string & {});
 export const ObjectAttributes = /*@__PURE__*/ S.String;
 
-export type ObjectAttributesList = (ObjectAttributes | (string & {}))[];
+export type ObjectAttributesList = ObjectAttributes[];
 export const ObjectAttributesList = /*@__PURE__*/ S.Array(ObjectAttributes);
 export interface GetObjectAttributesRequest {
   Bucket: string;
@@ -8037,9 +8075,9 @@ export interface GetObjectAttributesRequest {
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
-  ObjectAttributes: (ObjectAttributes | (string & {}))[];
+  ObjectAttributes: ObjectAttributes[];
 }
 export const GetObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8201,7 +8239,7 @@ export interface GetObjectLegalHoldRequest {
   Bucket: string;
   Key: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const GetObjectLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8230,7 +8268,7 @@ export const GetObjectLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectLegalHoldRequest",
 }) as any as S.Schema<GetObjectLegalHoldRequest>;
 export interface ObjectLockLegalHold {
-  Status?: ObjectLockLegalHoldStatus | (string & {});
+  Status?: ObjectLockLegalHoldStatus;
 }
 export const ObjectLockLegalHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(ObjectLockLegalHoldStatus) }),
@@ -8273,15 +8311,18 @@ export const GetObjectLockConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectLockConfigurationRequest",
 }) as any as S.Schema<GetObjectLockConfigurationRequest>;
-export type ObjectLockEnabled = "Enabled";
+export type ObjectLockEnabled = "Enabled" | (string & {});
 export const ObjectLockEnabled = /*@__PURE__*/ S.String;
 
-export type ObjectLockRetentionMode = "GOVERNANCE" | "COMPLIANCE";
+export type ObjectLockRetentionMode =
+  | "GOVERNANCE"
+  | "COMPLIANCE"
+  | (string & {});
 export const ObjectLockRetentionMode = /*@__PURE__*/ S.String;
 
 export type Years = number;
 export interface DefaultRetention {
-  Mode?: ObjectLockRetentionMode | (string & {});
+  Mode?: ObjectLockRetentionMode;
   Days?: number;
   Years?: number;
 }
@@ -8301,7 +8342,7 @@ export const ObjectLockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DefaultRetention: S.optional(DefaultRetention) }),
 ).annotate({ identifier: "ObjectLockRule" }) as any as S.Schema<ObjectLockRule>;
 export interface ObjectLockConfiguration {
-  ObjectLockEnabled?: ObjectLockEnabled | (string & {});
+  ObjectLockEnabled?: ObjectLockEnabled;
   Rule?: ObjectLockRule;
 }
 export const ObjectLockConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -8328,7 +8369,7 @@ export interface GetObjectRetentionRequest {
   Bucket: string;
   Key: string;
   VersionId?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const GetObjectRetentionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8357,7 +8398,7 @@ export const GetObjectRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectRetentionRequest",
 }) as any as S.Schema<GetObjectRetentionRequest>;
 export interface ObjectLockRetention {
-  Mode?: ObjectLockRetentionMode | (string & {});
+  Mode?: ObjectLockRetentionMode;
   RetainUntilDate?: Date;
 }
 export const ObjectLockRetention = /*@__PURE__*/ S.suspend(() =>
@@ -8387,7 +8428,7 @@ export interface GetObjectTaggingRequest {
   Key: string;
   VersionId?: string;
   ExpectedBucketOwner?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
 }
 export const GetObjectTaggingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8429,7 +8470,7 @@ export const GetObjectTaggingOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetObjectTorrentRequest {
   Bucket: string;
   Key: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const GetObjectTorrentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8599,10 +8640,10 @@ export interface HeadObjectRequest {
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   PartNumber?: number;
   ExpectedBucketOwner?: string;
-  ChecksumMode?: ChecksumMode | (string & {});
+  ChecksumMode?: ChecksumMode;
 }
 export const HeadObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8669,7 +8710,10 @@ export const HeadObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HeadObjectRequest",
 }) as any as S.Schema<HeadObjectRequest>;
-export type ArchiveStatus = "ARCHIVE_ACCESS" | "DEEP_ARCHIVE_ACCESS";
+export type ArchiveStatus =
+  | "ARCHIVE_ACCESS"
+  | "DEEP_ARCHIVE_ACCESS"
+  | (string & {});
 export const ArchiveStatus = /*@__PURE__*/ S.String;
 
 export interface HeadObjectOutput {
@@ -9158,7 +9202,7 @@ export const ListDirectoryBucketsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryBucketsOutput",
 }) as any as S.Schema<ListDirectoryBucketsOutput>;
 export type Delimiter = string;
-export type EncodingType = "url";
+export type EncodingType = "url" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
 
 export type KeyMarker = string;
@@ -9167,13 +9211,13 @@ export type UploadIdMarker = string;
 export interface ListMultipartUploadsRequest {
   Bucket: string;
   Delimiter?: string;
-  EncodingType?: EncodingType | (string & {});
+  EncodingType?: EncodingType;
   KeyMarker?: string;
   MaxUploads?: number;
   Prefix?: string;
   UploadIdMarker?: string;
   ExpectedBucketOwner?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
 }
 export const ListMultipartUploadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9299,7 +9343,7 @@ export interface ListObjectAnnotationsRequest {
   MaxAnnotationResults?: number;
   AnnotationPrefix?: string;
   ContinuationToken?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const ListObjectAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9402,26 +9446,23 @@ export const ListObjectAnnotationsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListObjectAnnotationsOutput>;
 export type Marker = string;
 export type MaxKeys = number;
-export type OptionalObjectAttributes = "RestoreStatus";
+export type OptionalObjectAttributes = "RestoreStatus" | (string & {});
 export const OptionalObjectAttributes = /*@__PURE__*/ S.String;
 
-export type OptionalObjectAttributesList = (
-  | OptionalObjectAttributes
-  | (string & {})
-)[];
+export type OptionalObjectAttributesList = OptionalObjectAttributes[];
 export const OptionalObjectAttributesList = /*@__PURE__*/ S.Array(
   OptionalObjectAttributes,
 );
 export interface ListObjectsRequest {
   Bucket: string;
   Delimiter?: string;
-  EncodingType?: EncodingType | (string & {});
+  EncodingType?: EncodingType;
   Marker?: string;
   MaxKeys?: number;
   Prefix?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
-  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
+  OptionalObjectAttributes?: OptionalObjectAttributes[];
 }
 export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9471,7 +9512,8 @@ export type ObjectStorageClass =
   | "SNOW"
   | "EXPRESS_ONEZONE"
   | "FSX_OPENZFS"
-  | "FSX_ONTAP";
+  | "FSX_ONTAP"
+  | (string & {});
 export const ObjectStorageClass = /*@__PURE__*/ S.String;
 
 export type IsRestoreInProgress = boolean;
@@ -9549,15 +9591,15 @@ export type StartAfter = string;
 export interface ListObjectsV2Request {
   Bucket: string;
   Delimiter?: string;
-  EncodingType?: EncodingType | (string & {});
+  EncodingType?: EncodingType;
   MaxKeys?: number;
   Prefix?: string;
   ContinuationToken?: string;
   FetchOwner?: boolean;
   StartAfter?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
-  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
+  OptionalObjectAttributes?: OptionalObjectAttributes[];
 }
 export const ListObjectsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9638,14 +9680,14 @@ export type VersionIdMarker = string;
 export interface ListObjectVersionsRequest {
   Bucket: string;
   Delimiter?: string;
-  EncodingType?: EncodingType | (string & {});
+  EncodingType?: EncodingType;
   KeyMarker?: string;
   MaxKeys?: number;
   Prefix?: string;
   VersionIdMarker?: string;
   ExpectedBucketOwner?: string;
-  RequestPayer?: RequestPayer | (string & {});
-  OptionalObjectAttributes?: (OptionalObjectAttributes | (string & {}))[];
+  RequestPayer?: RequestPayer;
+  OptionalObjectAttributes?: OptionalObjectAttributes[];
 }
 export const ListObjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9685,7 +9727,7 @@ export const ListObjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListObjectVersionsRequest",
 }) as any as S.Schema<ListObjectVersionsRequest>;
 export type NextVersionIdMarker = string;
-export type ObjectVersionStorageClass = "STANDARD";
+export type ObjectVersionStorageClass = "STANDARD" | (string & {});
 export const ObjectVersionStorageClass = /*@__PURE__*/ S.String;
 
 export type IsLatest = boolean;
@@ -9789,7 +9831,7 @@ export interface ListPartsRequest {
   MaxParts?: number;
   PartNumberMarker?: string;
   UploadId: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
@@ -9916,7 +9958,7 @@ export const ListPartsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketAbacRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
   AbacStatus: AbacStatus;
 }
@@ -9958,7 +10000,7 @@ export const PutBucketAbacResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketAbacResponse",
 }) as any as S.Schema<PutBucketAbacResponse>;
 export interface AccelerateConfiguration {
-  Status?: BucketAccelerateStatus | (string & {});
+  Status?: BucketAccelerateStatus;
 }
 export const AccelerateConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(BucketAccelerateStatus) }),
@@ -9969,7 +10011,7 @@ export interface PutBucketAccelerateConfigurationRequest {
   Bucket: string;
   AccelerateConfiguration: AccelerateConfiguration;
   ExpectedBucketOwner?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
 }
 export const PutBucketAccelerateConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10022,11 +10064,11 @@ export const AccessControlPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessControlPolicy",
 }) as any as S.Schema<AccessControlPolicy>;
 export interface PutBucketAclRequest {
-  ACL?: BucketCannedACL | (string & {});
+  ACL?: BucketCannedACL;
   AccessControlPolicy?: AccessControlPolicy;
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   GrantFullControl?: string;
   GrantRead?: string;
   GrantReadACP?: string;
@@ -10137,7 +10179,7 @@ export interface PutBucketCorsRequest {
   Bucket: string;
   CORSConfiguration: CORSConfiguration;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10182,7 +10224,7 @@ export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketEncryptionRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -10312,12 +10354,10 @@ export const BucketLifecycleConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketLifecycleConfiguration>;
 export interface PutBucketLifecycleConfigurationRequest {
   Bucket: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   LifecycleConfiguration?: BucketLifecycleConfiguration;
   ExpectedBucketOwner?: string;
-  TransitionDefaultMinimumObjectSize?:
-    | TransitionDefaultMinimumObjectSize
-    | (string & {});
+  TransitionDefaultMinimumObjectSize?: TransitionDefaultMinimumObjectSize;
 }
 export const PutBucketLifecycleConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10379,7 +10419,7 @@ export interface PutBucketLoggingRequest {
   Bucket: string;
   BucketLoggingStatus: BucketLoggingStatus;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const PutBucketLoggingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10506,7 +10546,7 @@ export interface PutBucketOwnershipControlsRequest {
   ContentMD5?: string;
   ExpectedBucketOwner?: string;
   OwnershipControls: OwnershipControls;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
 }
 export const PutBucketOwnershipControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10551,7 +10591,7 @@ export type ConfirmRemoveSelfBucketAccess = boolean;
 export interface PutBucketPolicyRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ConfirmRemoveSelfBucketAccess?: boolean;
   Policy: string;
   ExpectedBucketOwner?: string;
@@ -10599,7 +10639,7 @@ export type ObjectLockToken = string;
 export interface PutBucketReplicationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ReplicationConfiguration: ReplicationConfiguration;
   Token?: string;
   ExpectedBucketOwner?: string;
@@ -10647,7 +10687,7 @@ export const PutBucketReplicationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketReplicationResponse",
 }) as any as S.Schema<PutBucketReplicationResponse>;
 export interface RequestPaymentConfiguration {
-  Payer: Payer | (string & {});
+  Payer: Payer;
 }
 export const RequestPaymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Payer: Payer }),
@@ -10657,7 +10697,7 @@ export const RequestPaymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketRequestPaymentRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   RequestPaymentConfiguration: RequestPaymentConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -10709,7 +10749,7 @@ export const Tagging = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketTaggingRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   Tagging: Tagging;
   ExpectedBucketOwner?: string;
 }
@@ -10751,12 +10791,12 @@ export const PutBucketTaggingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketTaggingResponse",
 }) as any as S.Schema<PutBucketTaggingResponse>;
-export type MFADelete = "Enabled" | "Disabled";
+export type MFADelete = "Enabled" | "Disabled" | (string & {});
 export const MFADelete = /*@__PURE__*/ S.String;
 
 export interface VersioningConfiguration {
-  MFADelete?: MFADelete | (string & {});
-  Status?: BucketVersioningStatus | (string & {});
+  MFADelete?: MFADelete;
+  Status?: BucketVersioningStatus;
 }
 export const VersioningConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10769,7 +10809,7 @@ export const VersioningConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketVersioningRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   MFA?: string;
   VersioningConfiguration: VersioningConfiguration;
   ExpectedBucketOwner?: string;
@@ -10833,7 +10873,7 @@ export const WebsiteConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface PutBucketWebsiteRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   WebsiteConfiguration: WebsiteConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -10878,7 +10918,7 @@ export const PutBucketWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBucketWebsiteResponse>;
 export type WriteOffsetBytes = number;
 export interface PutObjectRequest {
-  ACL?: ObjectCannedACL | (string & {});
+  ACL?: ObjectCannedACL;
   Body?: T.StreamingInputBody;
   Bucket: string;
   CacheControl?: string;
@@ -10888,7 +10928,7 @@ export interface PutObjectRequest {
   ContentLength?: number;
   ContentMD5?: string;
   ContentType?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ChecksumCRC32?: string;
   ChecksumCRC32C?: string;
   ChecksumCRC64NVME?: string;
@@ -10909,8 +10949,8 @@ export interface PutObjectRequest {
   Key: string;
   WriteOffsetBytes?: number;
   Metadata?: { [key: string]: string | undefined };
-  ServerSideEncryption?: ServerSideEncryption | (string & {});
-  StorageClass?: StorageClass | (string & {});
+  ServerSideEncryption?: ServerSideEncryption;
+  StorageClass?: StorageClass;
   WebsiteRedirectLocation?: string;
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
@@ -10918,11 +10958,11 @@ export interface PutObjectRequest {
   SSEKMSKeyId?: string | redacted.Redacted<string>;
   SSEKMSEncryptionContext?: string | redacted.Redacted<string>;
   BucketKeyEnabled?: boolean;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   Tagging?: string;
-  ObjectLockMode?: ObjectLockMode | (string & {});
+  ObjectLockMode?: ObjectLockMode;
   ObjectLockRetainUntilDate?: Date;
-  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | (string & {});
+  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus;
   ExpectedBucketOwner?: string;
 }
 export const PutObjectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11139,18 +11179,18 @@ export const PutObjectOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutObjectOutput",
 }) as any as S.Schema<PutObjectOutput>;
 export interface PutObjectAclRequest {
-  ACL?: ObjectCannedACL | (string & {});
+  ACL?: ObjectCannedACL;
   AccessControlPolicy?: AccessControlPolicy;
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   GrantFullControl?: string;
   GrantRead?: string;
   GrantReadACP?: string;
   GrantWrite?: string;
   GrantWriteACP?: string;
   Key: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   VersionId?: string;
   ExpectedBucketOwner?: string;
 }
@@ -11221,7 +11261,7 @@ export interface PutObjectAnnotationRequest {
   AnnotationName: string;
   AnnotationPayload: T.StreamingInputBody;
   ObjectIfMatch?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ChecksumCRC32?: string;
   ChecksumCRC32C?: string;
   ChecksumCRC64NVME?: string;
@@ -11233,7 +11273,7 @@ export interface PutObjectAnnotationRequest {
   ChecksumXXHASH3?: string;
   ChecksumXXHASH128?: string;
   ContentMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const PutObjectAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11373,10 +11413,10 @@ export interface PutObjectLegalHoldRequest {
   Bucket: string;
   Key: string;
   LegalHold?: ObjectLockLegalHold;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   VersionId?: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const PutObjectLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11430,10 +11470,10 @@ export const PutObjectLegalHoldOutput = /*@__PURE__*/ S.suspend(() =>
 export interface PutObjectLockConfigurationRequest {
   Bucket: string;
   ObjectLockConfiguration?: ObjectLockConfiguration;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   Token?: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const PutObjectLockConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11489,11 +11529,11 @@ export interface PutObjectRetentionRequest {
   Bucket: string;
   Key: string;
   Retention?: ObjectLockRetention;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   VersionId?: string;
   BypassGovernanceRetention?: boolean;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const PutObjectRetentionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11552,10 +11592,10 @@ export interface PutObjectTaggingRequest {
   Key: string;
   VersionId?: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   Tagging: Tagging;
   ExpectedBucketOwner?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
 }
 export const PutObjectTaggingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11606,7 +11646,7 @@ export const PutObjectTaggingOutput = /*@__PURE__*/ S.suspend(() =>
 export interface PutPublicAccessBlockRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   PublicAccessBlockConfiguration: PublicAccessBlockConfiguration;
   ExpectedBucketOwner?: string;
 }
@@ -11720,22 +11760,22 @@ export const RenameObjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RenameObjectOutput",
 }) as any as S.Schema<RenameObjectOutput>;
-export type Tier = "Standard" | "Bulk" | "Expedited";
+export type Tier = "Standard" | "Bulk" | "Expedited" | (string & {});
 export const Tier = /*@__PURE__*/ S.String;
 
 export interface GlacierJobParameters {
-  Tier: Tier | (string & {});
+  Tier: Tier;
 }
 export const GlacierJobParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tier: Tier }),
 ).annotate({
   identifier: "GlacierJobParameters",
 }) as any as S.Schema<GlacierJobParameters>;
-export type RestoreRequestType = "SELECT";
+export type RestoreRequestType = "SELECT" | (string & {});
 export const RestoreRequestType = /*@__PURE__*/ S.String;
 
 export type Description = string;
-export type FileHeaderInfo = "USE" | "IGNORE" | "NONE";
+export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
 
 export type Comments = string;
@@ -11745,7 +11785,7 @@ export type FieldDelimiter = string;
 export type QuoteCharacter = string;
 export type AllowQuotedRecordDelimiter = boolean;
 export interface CSVInput {
-  FileHeaderInfo?: FileHeaderInfo | (string & {});
+  FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
@@ -11764,14 +11804,14 @@ export const CSVInput = /*@__PURE__*/ S.suspend(() =>
     AllowQuotedRecordDelimiter: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "CSVInput" }) as any as S.Schema<CSVInput>;
-export type CompressionType = "NONE" | "GZIP" | "BZIP2";
+export type CompressionType = "NONE" | "GZIP" | "BZIP2" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
 
-export type JSONType = "DOCUMENT" | "LINES";
+export type JSONType = "DOCUMENT" | "LINES" | (string & {});
 export const JSONType = /*@__PURE__*/ S.String;
 
 export interface JSONInput {
-  Type?: JSONType | (string & {});
+  Type?: JSONType;
 }
 export const JSONInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(JSONType) }),
@@ -11782,7 +11822,7 @@ export const ParquetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParquetInput" }) as any as S.Schema<ParquetInput>;
 export interface InputSerialization {
   CSV?: CSVInput;
-  CompressionType?: CompressionType | (string & {});
+  CompressionType?: CompressionType;
   JSON?: JSONInput;
   Parquet?: ParquetInput;
 }
@@ -11796,15 +11836,15 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputSerialization",
 }) as any as S.Schema<InputSerialization>;
-export type ExpressionType = "SQL";
+export type ExpressionType = "SQL" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
 
 export type Expression = string;
-export type QuoteFields = "ALWAYS" | "ASNEEDED";
+export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
 export const QuoteFields = /*@__PURE__*/ S.String;
 
 export interface CSVOutput {
-  QuoteFields?: QuoteFields | (string & {});
+  QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
   FieldDelimiter?: string;
@@ -11836,7 +11876,7 @@ export const OutputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputSerialization>;
 export interface SelectParameters {
   InputSerialization: InputSerialization;
-  ExpressionType: ExpressionType | (string & {});
+  ExpressionType: ExpressionType;
   Expression: string;
   OutputSerialization: OutputSerialization;
 }
@@ -11853,7 +11893,7 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 export type LocationPrefix = string;
 export type KMSContext = string;
 export interface Encryption {
-  EncryptionType: ServerSideEncryption | (string & {});
+  EncryptionType: ServerSideEncryption;
   KMSKeyId?: string | redacted.Redacted<string>;
   KMSContext?: string;
 }
@@ -11881,11 +11921,11 @@ export interface S3Location {
   BucketName: string;
   Prefix: string;
   Encryption?: Encryption;
-  CannedACL?: ObjectCannedACL | (string & {});
+  CannedACL?: ObjectCannedACL;
   AccessControlList?: Grant[];
   Tagging?: Tagging;
   UserMetadata?: MetadataEntry[];
-  StorageClass?: StorageClass | (string & {});
+  StorageClass?: StorageClass;
 }
 export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11908,8 +11948,8 @@ export const OutputLocation = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreRequest {
   Days?: number;
   GlacierJobParameters?: GlacierJobParameters;
-  Type?: RestoreRequestType | (string & {});
-  Tier?: Tier | (string & {});
+  Type?: RestoreRequestType;
+  Tier?: Tier;
   Description?: string;
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
@@ -11930,8 +11970,8 @@ export interface RestoreObjectRequest {
   Key: string;
   VersionId?: string;
   RestoreRequest?: RestoreRequest;
-  RequestPayer?: RequestPayer | (string & {});
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  RequestPayer?: RequestPayer;
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ExpectedBucketOwner?: string;
 }
 export const RestoreObjectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12010,7 +12050,7 @@ export interface SelectObjectContentRequest {
   SSECustomerKey?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
   Expression: string;
-  ExpressionType: ExpressionType | (string & {});
+  ExpressionType: ExpressionType;
   RequestProgress?: RequestProgress;
   InputSerialization: InputSerialization;
   OutputSerialization: OutputSerialization;
@@ -12175,7 +12215,7 @@ export const SelectObjectContentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SelectObjectContentOutput",
 }) as any as S.Schema<SelectObjectContentOutput>;
 export interface AnnotationTableConfigurationUpdates {
-  ConfigurationState: AnnotationConfigurationState | (string & {});
+  ConfigurationState: AnnotationConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
   Role?: string;
 }
@@ -12191,7 +12231,7 @@ export const AnnotationTableConfigurationUpdates = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBucketMetadataAnnotationTableConfigurationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   AnnotationTableConfiguration: AnnotationTableConfigurationUpdates;
   ExpectedBucketOwner?: string;
 }
@@ -12235,7 +12275,7 @@ export const UpdateBucketMetadataAnnotationTableConfigurationResponse =
     identifier: "UpdateBucketMetadataAnnotationTableConfigurationResponse",
   }) as any as S.Schema<UpdateBucketMetadataAnnotationTableConfigurationResponse>;
 export interface InventoryTableConfigurationUpdates {
-  ConfigurationState: InventoryConfigurationState | (string & {});
+  ConfigurationState: InventoryConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
 }
 export const InventoryTableConfigurationUpdates = /*@__PURE__*/ S.suspend(() =>
@@ -12249,7 +12289,7 @@ export const InventoryTableConfigurationUpdates = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBucketMetadataInventoryTableConfigurationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   InventoryTableConfiguration: InventoryTableConfigurationUpdates;
   ExpectedBucketOwner?: string;
 }
@@ -12303,7 +12343,7 @@ export const JournalTableConfigurationUpdates = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBucketMetadataJournalTableConfigurationRequest {
   Bucket: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   JournalTableConfiguration: JournalTableConfigurationUpdates;
   ExpectedBucketOwner?: string;
 }
@@ -12372,10 +12412,10 @@ export interface UpdateObjectEncryptionRequest {
   Key: string;
   VersionId?: string;
   ObjectEncryption: ObjectEncryption;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
 }
 export const UpdateObjectEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12428,7 +12468,7 @@ export interface UploadPartRequest {
   Bucket: string;
   ContentLength?: number;
   ContentMD5?: string;
-  ChecksumAlgorithm?: ChecksumAlgorithm | (string & {});
+  ChecksumAlgorithm?: ChecksumAlgorithm;
   ChecksumCRC32?: string;
   ChecksumCRC32C?: string;
   ChecksumCRC64NVME?: string;
@@ -12445,7 +12485,7 @@ export interface UploadPartRequest {
   SSECustomerAlgorithm?: string;
   SSECustomerKey?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
 }
 export const UploadPartRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12610,7 +12650,7 @@ export interface UploadPartCopyRequest {
   CopySourceSSECustomerAlgorithm?: string;
   CopySourceSSECustomerKey?: string | redacted.Redacted<string>;
   CopySourceSSECustomerKeyMD5?: string;
-  RequestPayer?: RequestPayer | (string & {});
+  RequestPayer?: RequestPayer;
   ExpectedBucketOwner?: string;
   ExpectedSourceBucketOwner?: string;
 }
@@ -12785,18 +12825,18 @@ export interface WriteGetObjectResponseRequest {
   LastModified?: Date;
   MissingMeta?: number;
   Metadata?: { [key: string]: string | undefined };
-  ObjectLockMode?: ObjectLockMode | (string & {});
-  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | (string & {});
+  ObjectLockMode?: ObjectLockMode;
+  ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus;
   ObjectLockRetainUntilDate?: Date;
   PartsCount?: number;
-  ReplicationStatus?: ReplicationStatus | (string & {});
-  RequestCharged?: RequestCharged | (string & {});
+  ReplicationStatus?: ReplicationStatus;
+  RequestCharged?: RequestCharged;
   Restore?: string;
-  ServerSideEncryption?: ServerSideEncryption | (string & {});
+  ServerSideEncryption?: ServerSideEncryption;
   SSECustomerAlgorithm?: string;
   SSEKMSKeyId?: string | redacted.Redacted<string>;
   SSECustomerKeyMD5?: string;
-  StorageClass?: StorageClass | (string & {});
+  StorageClass?: StorageClass;
   TagCount?: number;
   VersionId?: string;
   BucketKeyEnabled?: boolean;

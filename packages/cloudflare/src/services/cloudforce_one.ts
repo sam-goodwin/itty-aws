@@ -53,15 +53,15 @@ export const ThreatEventsBulkCreateRequestDataItemRawDataMap =
 
 export interface ThreatEventsBulkCreateRequestDataItemRaw {
   data: ThreatEventsBulkCreateRequestDataItemRawDataMap;
-  source?: string;
-  tlp?: string;
+  source?: string | null;
+  tlp?: string | null;
 }
 export const ThreatEventsBulkCreateRequestDataItemRaw = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: ThreatEventsBulkCreateRequestDataItemRawDataMap,
-      source: S.optional(S.String),
-      tlp: S.optional(S.String),
+      source: S.optional(S.NullOr(S.String)),
+      tlp: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "ThreatEventsBulkCreateRequestDataItemRaw",
@@ -102,18 +102,18 @@ export interface ThreatEventsBulkCreateRequestDataItem {
   event: string;
   raw: ThreatEventsBulkCreateRequestDataItemRaw;
   tlp: string;
-  accountId?: number;
-  attacker?: string;
-  attackerCountry?: string;
-  datasetId?: string;
-  indicator?: string;
+  accountId?: number | null;
+  attacker?: string | null;
+  attackerCountry?: string | null;
+  datasetId?: string | null;
+  indicator?: string | null;
   /** Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
-  indicators?: ThreatEventsBulkCreateRequestDataItemIndicatorsList;
-  indicatorType?: string;
-  insight?: string;
-  tags?: ThreatEventsBulkCreateRequestDataItemTagsList;
-  targetCountry?: string;
-  targetIndustry?: string;
+  indicators?: ThreatEventsBulkCreateRequestDataItemIndicatorsList | null;
+  indicatorType?: string | null;
+  insight?: string | null;
+  tags?: ThreatEventsBulkCreateRequestDataItemTagsList | null;
+  targetCountry?: string | null;
+  targetIndustry?: string | null;
 }
 export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -123,19 +123,19 @@ export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
       event: S.String,
       raw: ThreatEventsBulkCreateRequestDataItemRaw,
       tlp: S.String,
-      accountId: S.optional(S.Number),
-      attacker: S.optional(S.String),
-      attackerCountry: S.optional(S.String),
-      datasetId: S.optional(S.String),
-      indicator: S.optional(S.String),
+      accountId: S.optional(S.NullOr(S.Number)),
+      attacker: S.optional(S.NullOr(S.String)),
+      attackerCountry: S.optional(S.NullOr(S.String)),
+      datasetId: S.optional(S.NullOr(S.String)),
+      indicator: S.optional(S.NullOr(S.String)),
       indicators: S.optional(
-        ThreatEventsBulkCreateRequestDataItemIndicatorsList,
+        S.NullOr(ThreatEventsBulkCreateRequestDataItemIndicatorsList),
       ),
-      indicatorType: S.optional(S.String),
-      insight: S.optional(S.String),
-      tags: S.optional(ThreatEventsBulkCreateRequestDataItemTagsList),
-      targetCountry: S.optional(S.String),
-      targetIndustry: S.optional(S.String),
+      indicatorType: S.optional(S.NullOr(S.String)),
+      insight: S.optional(S.NullOr(S.String)),
+      tags: S.optional(S.NullOr(ThreatEventsBulkCreateRequestDataItemTagsList)),
+      targetCountry: S.optional(S.NullOr(S.String)),
+      targetIndustry: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "ThreatEventsBulkCreateRequestDataItem",
@@ -153,14 +153,14 @@ export interface BulkCreateThreatEventsRequest {
   data: ThreatEventsBulkCreateRequestDataList;
   datasetId: string;
   /** When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where. */
-  includeCreatedEvents?: boolean;
+  includeCreatedEvents?: boolean | null;
 }
 export const BulkCreateThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     data: ThreatEventsBulkCreateRequestDataList,
     datasetId: S.String,
-    includeCreatedEvents: S.optional(S.Boolean),
+    includeCreatedEvents: S.optional(S.NullOr(S.Boolean)),
   })
     .pipe(
       T.Http({
@@ -211,9 +211,9 @@ export interface BulkCreateThreatEventsResponse {
   /** Number of indicators queued for async processing */
   queuedIndicatorsCount: number;
   /** Correlation ID for async indicator processing */
-  createBulkEventsRequestId?: string;
+  createBulkEventsRequestId?: string | null;
   /** Array of created events with UUIDs and shard locations. Only present when includeCreatedEvents=true */
-  createdEvents?: ThreatEventsBulkCreateResponseCreatedEventsList;
+  createdEvents?: ThreatEventsBulkCreateResponseCreatedEventsList | null;
 }
 export const BulkCreateThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -221,8 +221,10 @@ export const BulkCreateThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
     createdTagsCount: S.Number,
     errorCount: S.Number,
     queuedIndicatorsCount: S.Number,
-    createBulkEventsRequestId: S.optional(S.String),
-    createdEvents: S.optional(ThreatEventsBulkCreateResponseCreatedEventsList),
+    createBulkEventsRequestId: S.optional(S.NullOr(S.String)),
+    createdEvents: S.optional(
+      S.NullOr(ThreatEventsBulkCreateResponseCreatedEventsList),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateThreatEventsResponse",
@@ -278,24 +280,24 @@ export interface CreateRequestRequest {
   /** Identifier. */
   accountId: string;
   /** Request content. */
-  content?: string;
+  content?: string | null;
   /** Priority for analyzing the request. */
-  priority?: string;
+  priority?: string | null;
   /** Requested information from request. */
-  requestType?: string;
+  requestType?: string | null;
   /** Brief description of the request. */
-  summary?: string;
+  summary?: string | null;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsCreateRequestTlp | (string & {});
+  tlp?: RequestsCreateRequestTlp | (string & {}) | null;
 }
 export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    content: S.optional(S.String),
-    priority: S.optional(S.String),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-    summary: S.optional(S.String),
-    tlp: S.optional(RequestsCreateRequestTlp),
+    content: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.String)),
+    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
+    summary: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(RequestsCreateRequestTlp)),
   })
     .pipe(
       T.Http({
@@ -341,15 +343,15 @@ export interface CreateRequestResponse {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsCreateResponseTlp;
   updated: string;
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsCreateResponseStatus;
+  status?: RequestsCreateResponseStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const CreateRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -361,11 +363,13 @@ export const CreateRequestResponse = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsCreateResponseTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsCreateResponseStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsCreateResponseStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestResponse",
@@ -406,19 +410,19 @@ export interface RequestsAssetsCreateResultItem {
   /** Asset name. */
   name: string;
   /** Defines the asset creation time. */
-  created?: string;
+  created?: string | null;
   /** Asset description. */
-  description?: string;
+  description?: string | null;
   /** Asset file type. */
-  fileType?: string;
+  fileType?: string | null;
 }
 export const RequestsAssetsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    fileType: S.optional(S.String.pipe(T.Body("file_type"))),
+    created: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
   }),
 ).annotate({
   identifier: "RequestsAssetsCreateResultItem",
@@ -451,13 +455,13 @@ export interface CreateRequestMessageRequest {
   /** UUID. */
   requestId: string;
   /** Content of message. */
-  content?: string;
+  content?: string | null;
 }
 export const CreateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-    content: S.optional(S.String),
+    content: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -484,7 +488,7 @@ export interface CreateRequestMessageResponse {
   /** Defines the message last updated time. */
   updated: string;
   /** Defines the message creation time. */
-  created?: string;
+  created?: string | null;
 }
 export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -493,7 +497,7 @@ export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
     content: S.String,
     isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
     updated: S.String,
-    created: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestMessageResponse",
@@ -604,16 +608,16 @@ export interface CreateScanConfigRequest {
   /** Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000. */
   ips: ScansConfigCreateRequestIpsList;
   /** Defines the number of days between each scan (0 = One-off scan). */
-  frequency?: number;
+  frequency?: number | null;
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
-  ports?: ScansConfigCreateRequestPortsList;
+  ports?: ScansConfigCreateRequestPortsList | null;
 }
 export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ips: ScansConfigCreateRequestIpsList,
-    frequency: S.optional(S.Number),
-    ports: S.optional(ScansConfigCreateRequestPortsList),
+    frequency: S.optional(S.NullOr(S.Number)),
+    ports: S.optional(S.NullOr(ScansConfigCreateRequestPortsList)),
   })
     .pipe(
       T.Http({
@@ -671,14 +675,14 @@ export const ThreatEventsCreateRequestRawDataMap = /*@__PURE__*/ S.Record(
 
 export interface ThreatEventsCreateRequestRaw {
   data: ThreatEventsCreateRequestRawDataMap;
-  source?: string;
-  tlp?: string;
+  source?: string | null;
+  tlp?: string | null;
 }
 export const ThreatEventsCreateRequestRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ThreatEventsCreateRequestRawDataMap,
-    source: S.optional(S.String),
-    tlp: S.optional(S.String),
+    source: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ThreatEventsCreateRequestRaw",
@@ -719,17 +723,17 @@ export interface CreateThreatEventRequest {
   event: string;
   raw: ThreatEventsCreateRequestRaw;
   tlp: string;
-  attacker?: string;
-  attackerCountry?: string;
-  datasetId?: string;
-  indicator?: string;
+  attacker?: string | null;
+  attackerCountry?: string | null;
+  datasetId?: string | null;
+  indicator?: string | null;
   /** Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
-  indicators?: ThreatEventsCreateRequestIndicatorsList;
-  indicatorType?: string;
-  insight?: string;
-  tags?: ThreatEventsCreateRequestTagsList;
-  targetCountry?: string;
-  targetIndustry?: string;
+  indicators?: ThreatEventsCreateRequestIndicatorsList | null;
+  indicatorType?: string | null;
+  insight?: string | null;
+  tags?: ThreatEventsCreateRequestTagsList | null;
+  targetCountry?: string | null;
+  targetIndustry?: string | null;
 }
 export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -739,16 +743,16 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
     event: S.String,
     raw: ThreatEventsCreateRequestRaw,
     tlp: S.String,
-    attacker: S.optional(S.String),
-    attackerCountry: S.optional(S.String),
-    datasetId: S.optional(S.String),
-    indicator: S.optional(S.String),
-    indicators: S.optional(ThreatEventsCreateRequestIndicatorsList),
-    indicatorType: S.optional(S.String),
-    insight: S.optional(S.String),
-    tags: S.optional(ThreatEventsCreateRequestTagsList),
-    targetCountry: S.optional(S.String),
-    targetIndustry: S.optional(S.String),
+    attacker: S.optional(S.NullOr(S.String)),
+    attackerCountry: S.optional(S.NullOr(S.String)),
+    datasetId: S.optional(S.NullOr(S.String)),
+    indicator: S.optional(S.NullOr(S.String)),
+    indicators: S.optional(S.NullOr(ThreatEventsCreateRequestIndicatorsList)),
+    indicatorType: S.optional(S.NullOr(S.String)),
+    insight: S.optional(S.NullOr(S.String)),
+    tags: S.optional(S.NullOr(ThreatEventsCreateRequestTagsList)),
+    targetCountry: S.optional(S.NullOr(S.String)),
+    targetIndustry: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -828,8 +832,8 @@ export interface CreateThreatEventResponse {
   targetIndustry: string;
   tlp: string;
   uuid: string;
-  insight?: string;
-  releasabilityId?: string;
+  insight?: string | null;
+  releasabilityId?: string | null;
 }
 export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -860,8 +864,8 @@ export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     targetIndustry: S.String,
     tlp: S.String,
     uuid: S.String,
-    insight: S.optional(S.String),
-    releasabilityId: S.optional(S.String),
+    insight: S.optional(S.NullOr(S.String)),
+    releasabilityId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventResponse",
@@ -884,18 +888,22 @@ export interface CreateThreatEventCategoryRequest {
   accountId: string;
   killChain: number;
   name: string;
-  mitreAttack?: ThreatEventsCategoriesCreateRequestMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesCreateRequestMitreCapecList;
-  shortname?: string;
+  mitreAttack?: ThreatEventsCategoriesCreateRequestMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesCreateRequestMitreCapecList | null;
+  shortname?: string | null;
 }
 export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     killChain: S.Number,
     name: S.String,
-    mitreAttack: S.optional(ThreatEventsCategoriesCreateRequestMitreAttackList),
-    mitreCapec: S.optional(ThreatEventsCategoriesCreateRequestMitreCapecList),
-    shortname: S.optional(S.String),
+    mitreAttack: S.optional(
+      S.NullOr(ThreatEventsCategoriesCreateRequestMitreAttackList),
+    ),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesCreateRequestMitreCapecList),
+    ),
+    shortname: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -926,9 +934,9 @@ export interface CreateThreatEventCategoryResponse {
   killChain: number;
   name: string;
   uuid: string;
-  mitreAttack?: ThreatEventsCategoriesCreateResponseMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesCreateResponseMitreCapecList;
-  shortname?: string;
+  mitreAttack?: ThreatEventsCategoriesCreateResponseMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesCreateResponseMitreCapecList | null;
+  shortname?: string | null;
 }
 export const CreateThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -936,10 +944,12 @@ export const CreateThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uuid: S.String,
     mitreAttack: S.optional(
-      ThreatEventsCategoriesCreateResponseMitreAttackList,
+      S.NullOr(ThreatEventsCategoriesCreateResponseMitreAttackList),
     ),
-    mitreCapec: S.optional(ThreatEventsCategoriesCreateResponseMitreCapecList),
-    shortname: S.optional(S.String),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesCreateResponseMitreCapecList),
+    ),
+    shortname: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventCategoryResponse",
@@ -976,14 +986,14 @@ export interface CreateThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
-  deletedAt?: string;
+  deletedAt?: string | null;
 }
 export const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
-    deletedAt: S.optional(S.String),
+    deletedAt: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventDatasetResponse",
@@ -1041,15 +1051,15 @@ export const ThreatEventsTagsCreateRequestAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateRequestAliasesItem {
   value: string;
-  confidence?: number;
-  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {});
+  confidence?: number | null;
+  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {}) | null;
 }
 export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.Number),
-      tlp: S.optional(ThreatEventsTagsCreateRequestAliasesItemTlp),
+      confidence: S.optional(S.NullOr(S.Number)),
+      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateRequestAliasesItemTlp)),
     }),
 ).annotate({
   identifier: "ThreatEventsTagsCreateRequestAliasesItem",
@@ -1083,13 +1093,13 @@ export const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
 
 export interface ThreatEventsTagsCreateRequestExternalReferencesItem {
   url: string;
-  description?: string;
+  description?: string | null;
 }
 export const ThreatEventsTagsCreateRequestExternalReferencesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       url: S.String,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateRequestExternalReferencesItem",
@@ -1112,15 +1122,20 @@ export const ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
   value: string;
-  confidence?: number;
-  tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp | (string & {});
+  confidence?: number | null;
+  tlp?:
+    | ThreatEventsTagsCreateRequestInternalAliasesItemTlp
+    | (string & {})
+    | null;
 }
 export const ThreatEventsTagsCreateRequestInternalAliasesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.Number),
-      tlp: S.optional(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
+      confidence: S.optional(S.NullOr(S.Number)),
+      tlp: S.optional(
+        S.NullOr(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
+      ),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateRequestInternalAliasesItem",
@@ -1145,81 +1160,84 @@ export interface CreateThreatEventTagRequest {
   /** Account ID. */
   accountId: string;
   value: string;
-  activeDuration?: string;
+  activeDuration?: string | null;
   /** Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated. */
-  actorCategory?: string;
+  actorCategory?: string | null;
   /** Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts. */
-  actorCategoryConfidence?: number;
+  actorCategoryConfidence?: number | null;
   /** Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts. */
-  aliases?: ThreatEventsTagsCreateRequestAliasesList;
-  aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList;
-  aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList;
-  analyticPriority?: number;
-  attributionConfidence?: string;
-  attributionConfidenceScore?: number;
-  attributionOrganization?: string;
-  categoryUuid?: string;
+  aliases?: ThreatEventsTagsCreateRequestAliasesList | null;
+  aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList | null;
+  aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList | null;
+  analyticPriority?: number | null;
+  attributionConfidence?: string | null;
+  attributionConfidenceScore?: number | null;
+  attributionOrganization?: string | null;
+  categoryUuid?: string | null;
   /** Date the actor was discovered (ISO YYYY-MM-DD). */
-  dateOfDiscovery?: string;
-  externalReferenceLinks?: ThreatEventsTagsCreateRequestExternalReferenceLinksList;
+  dateOfDiscovery?: string | null;
+  externalReferenceLinks?: ThreatEventsTagsCreateRequestExternalReferenceLinksList | null;
   /** Structured external references ({ url, description }). Public: returned to all accounts. */
-  externalReferences?: ThreatEventsTagsCreateRequestExternalReferencesList;
+  externalReferences?: ThreatEventsTagsCreateRequestExternalReferencesList | null;
   /** Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts. */
-  internalAliases?: ThreatEventsTagsCreateRequestInternalAliasesList;
-  internalDescription?: string;
+  internalAliases?: ThreatEventsTagsCreateRequestInternalAliasesList | null;
+  internalDescription?: string | null;
   /** Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage. */
-  motive?: string;
+  motive?: string | null;
   /** Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts. */
-  motiveConfidence?: number;
-  opsecLevel?: string;
+  motiveConfidence?: number | null;
+  opsecLevel?: string | null;
   /** Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
-  originCountryConfidence?: number;
-  originCountryISO?: string;
+  originCountryConfidence?: number | null;
+  originCountryISO?: string | null;
   /** TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
   originCountryTlp?:
     | ThreatEventsTagsCreateRequestOriginCountryTlp
-    | (string & {});
-  priority?: number;
-  sophisticationLevel?: string;
+    | (string & {})
+    | null;
+  priority?: number | null;
+  sophisticationLevel?: string | null;
 }
 export const CreateThreatEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     value: S.String,
-    activeDuration: S.optional(S.String),
-    actorCategory: S.optional(S.String),
-    actorCategoryConfidence: S.optional(S.Number),
-    aliases: S.optional(ThreatEventsTagsCreateRequestAliasesList),
+    activeDuration: S.optional(S.NullOr(S.String)),
+    actorCategory: S.optional(S.NullOr(S.String)),
+    actorCategoryConfidence: S.optional(S.NullOr(S.Number)),
+    aliases: S.optional(S.NullOr(ThreatEventsTagsCreateRequestAliasesList)),
     aliasGroupNames: S.optional(
-      ThreatEventsTagsCreateRequestAliasGroupNamesList,
+      S.NullOr(ThreatEventsTagsCreateRequestAliasGroupNamesList),
     ),
     aliasGroupNamesInternal: S.optional(
-      ThreatEventsTagsCreateRequestAliasGroupNamesInternalList,
+      S.NullOr(ThreatEventsTagsCreateRequestAliasGroupNamesInternalList),
     ),
-    analyticPriority: S.optional(S.Number),
-    attributionConfidence: S.optional(S.String),
-    attributionConfidenceScore: S.optional(S.Number),
-    attributionOrganization: S.optional(S.String),
-    categoryUuid: S.optional(S.String),
-    dateOfDiscovery: S.optional(S.String),
+    analyticPriority: S.optional(S.NullOr(S.Number)),
+    attributionConfidence: S.optional(S.NullOr(S.String)),
+    attributionConfidenceScore: S.optional(S.NullOr(S.Number)),
+    attributionOrganization: S.optional(S.NullOr(S.String)),
+    categoryUuid: S.optional(S.NullOr(S.String)),
+    dateOfDiscovery: S.optional(S.NullOr(S.String)),
     externalReferenceLinks: S.optional(
-      ThreatEventsTagsCreateRequestExternalReferenceLinksList,
+      S.NullOr(ThreatEventsTagsCreateRequestExternalReferenceLinksList),
     ),
     externalReferences: S.optional(
-      ThreatEventsTagsCreateRequestExternalReferencesList,
+      S.NullOr(ThreatEventsTagsCreateRequestExternalReferencesList),
     ),
     internalAliases: S.optional(
-      ThreatEventsTagsCreateRequestInternalAliasesList,
+      S.NullOr(ThreatEventsTagsCreateRequestInternalAliasesList),
     ),
-    internalDescription: S.optional(S.String),
-    motive: S.optional(S.String),
-    motiveConfidence: S.optional(S.Number),
-    opsecLevel: S.optional(S.String),
-    originCountryConfidence: S.optional(S.Number),
-    originCountryISO: S.optional(S.String),
-    originCountryTlp: S.optional(ThreatEventsTagsCreateRequestOriginCountryTlp),
-    priority: S.optional(S.Number),
-    sophisticationLevel: S.optional(S.String),
+    internalDescription: S.optional(S.NullOr(S.String)),
+    motive: S.optional(S.NullOr(S.String)),
+    motiveConfidence: S.optional(S.NullOr(S.Number)),
+    opsecLevel: S.optional(S.NullOr(S.String)),
+    originCountryConfidence: S.optional(S.NullOr(S.Number)),
+    originCountryISO: S.optional(S.NullOr(S.String)),
+    originCountryTlp: S.optional(
+      S.NullOr(ThreatEventsTagsCreateRequestOriginCountryTlp),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    sophisticationLevel: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -1243,15 +1261,15 @@ export const ThreatEventsTagsCreateResponseAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateResponseAliasesItem {
   value: string;
-  confidence?: number;
-  tlp?: ThreatEventsTagsCreateResponseAliasesItemTlp;
+  confidence?: number | null;
+  tlp?: ThreatEventsTagsCreateResponseAliasesItemTlp | null;
 }
 export const ThreatEventsTagsCreateResponseAliasesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.Number),
-      tlp: S.optional(ThreatEventsTagsCreateResponseAliasesItemTlp),
+      confidence: S.optional(S.NullOr(S.Number)),
+      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseAliasesItemTlp)),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateResponseAliasesItem",
@@ -1285,13 +1303,13 @@ export const ThreatEventsTagsCreateResponseExternalReferenceLinksList =
 
 export interface ThreatEventsTagsCreateResponseExternalReferencesItem {
   url: string;
-  description?: string;
+  description?: string | null;
 }
 export const ThreatEventsTagsCreateResponseExternalReferencesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       url: S.String,
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateResponseExternalReferencesItem",
@@ -1314,15 +1332,17 @@ export const ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateResponseInternalAliasesItem {
   value: string;
-  confidence?: number;
-  tlp?: ThreatEventsTagsCreateResponseInternalAliasesItemTlp;
+  confidence?: number | null;
+  tlp?: ThreatEventsTagsCreateResponseInternalAliasesItemTlp | null;
 }
 export const ThreatEventsTagsCreateResponseInternalAliasesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.Number),
-      tlp: S.optional(ThreatEventsTagsCreateResponseInternalAliasesItemTlp),
+      confidence: S.optional(S.NullOr(S.Number)),
+      tlp: S.optional(
+        S.NullOr(ThreatEventsTagsCreateResponseInternalAliasesItemTlp),
+      ),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateResponseInternalAliasesItem",
@@ -1347,82 +1367,82 @@ export const ThreatEventsTagsCreateResponseOriginCountryTlp =
 export interface CreateThreatEventTagResponse {
   uuid: string;
   value: string;
-  activeDuration?: string;
-  actorCategory?: string;
+  activeDuration?: string | null;
+  actorCategory?: string | null;
   /** Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts. */
-  actorCategoryConfidence?: number;
+  actorCategoryConfidence?: number | null;
   /** Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts. */
-  aliases?: ThreatEventsTagsCreateResponseAliasesList;
-  aliasGroupNames?: ThreatEventsTagsCreateResponseAliasGroupNamesList;
-  aliasGroupNamesInternal?: ThreatEventsTagsCreateResponseAliasGroupNamesInternalList;
-  analyticPriority?: number;
-  attributionConfidence?: string;
-  attributionConfidenceScore?: number;
-  attributionOrganization?: string;
-  categoryName?: string;
-  categoryUuid?: string;
-  dateOfDiscovery?: string;
-  externalReferenceLinks?: ThreatEventsTagsCreateResponseExternalReferenceLinksList;
+  aliases?: ThreatEventsTagsCreateResponseAliasesList | null;
+  aliasGroupNames?: ThreatEventsTagsCreateResponseAliasGroupNamesList | null;
+  aliasGroupNamesInternal?: ThreatEventsTagsCreateResponseAliasGroupNamesInternalList | null;
+  analyticPriority?: number | null;
+  attributionConfidence?: string | null;
+  attributionConfidenceScore?: number | null;
+  attributionOrganization?: string | null;
+  categoryName?: string | null;
+  categoryUuid?: string | null;
+  dateOfDiscovery?: string | null;
+  externalReferenceLinks?: ThreatEventsTagsCreateResponseExternalReferenceLinksList | null;
   /** Structured external references ({ url, description }). Public: returned to all accounts. */
-  externalReferences?: ThreatEventsTagsCreateResponseExternalReferencesList;
+  externalReferences?: ThreatEventsTagsCreateResponseExternalReferencesList | null;
   /** Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts. */
-  internalAliases?: ThreatEventsTagsCreateResponseInternalAliasesList;
-  internalDescription?: string;
-  motive?: string;
+  internalAliases?: ThreatEventsTagsCreateResponseInternalAliasesList | null;
+  internalDescription?: string | null;
+  motive?: string | null;
   /** Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts. */
-  motiveConfidence?: number;
-  opsecLevel?: string;
+  motiveConfidence?: number | null;
+  opsecLevel?: string | null;
   /** Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
-  originCountryConfidence?: number;
-  originCountryISO?: string;
-  originCountryISOAlpha3?: string;
+  originCountryConfidence?: number | null;
+  originCountryISO?: string | null;
+  originCountryISOAlpha3?: string | null;
   /** TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
-  originCountryTlp?: ThreatEventsTagsCreateResponseOriginCountryTlp;
-  priority?: number;
-  sophisticationLevel?: string;
+  originCountryTlp?: ThreatEventsTagsCreateResponseOriginCountryTlp | null;
+  priority?: number | null;
+  sophisticationLevel?: string | null;
 }
 export const CreateThreatEventTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     value: S.String,
-    activeDuration: S.optional(S.String),
-    actorCategory: S.optional(S.String),
-    actorCategoryConfidence: S.optional(S.Number),
-    aliases: S.optional(ThreatEventsTagsCreateResponseAliasesList),
+    activeDuration: S.optional(S.NullOr(S.String)),
+    actorCategory: S.optional(S.NullOr(S.String)),
+    actorCategoryConfidence: S.optional(S.NullOr(S.Number)),
+    aliases: S.optional(S.NullOr(ThreatEventsTagsCreateResponseAliasesList)),
     aliasGroupNames: S.optional(
-      ThreatEventsTagsCreateResponseAliasGroupNamesList,
+      S.NullOr(ThreatEventsTagsCreateResponseAliasGroupNamesList),
     ),
     aliasGroupNamesInternal: S.optional(
-      ThreatEventsTagsCreateResponseAliasGroupNamesInternalList,
+      S.NullOr(ThreatEventsTagsCreateResponseAliasGroupNamesInternalList),
     ),
-    analyticPriority: S.optional(S.Number),
-    attributionConfidence: S.optional(S.String),
-    attributionConfidenceScore: S.optional(S.Number),
-    attributionOrganization: S.optional(S.String),
-    categoryName: S.optional(S.String),
-    categoryUuid: S.optional(S.String),
-    dateOfDiscovery: S.optional(S.String),
+    analyticPriority: S.optional(S.NullOr(S.Number)),
+    attributionConfidence: S.optional(S.NullOr(S.String)),
+    attributionConfidenceScore: S.optional(S.NullOr(S.Number)),
+    attributionOrganization: S.optional(S.NullOr(S.String)),
+    categoryName: S.optional(S.NullOr(S.String)),
+    categoryUuid: S.optional(S.NullOr(S.String)),
+    dateOfDiscovery: S.optional(S.NullOr(S.String)),
     externalReferenceLinks: S.optional(
-      ThreatEventsTagsCreateResponseExternalReferenceLinksList,
+      S.NullOr(ThreatEventsTagsCreateResponseExternalReferenceLinksList),
     ),
     externalReferences: S.optional(
-      ThreatEventsTagsCreateResponseExternalReferencesList,
+      S.NullOr(ThreatEventsTagsCreateResponseExternalReferencesList),
     ),
     internalAliases: S.optional(
-      ThreatEventsTagsCreateResponseInternalAliasesList,
+      S.NullOr(ThreatEventsTagsCreateResponseInternalAliasesList),
     ),
-    internalDescription: S.optional(S.String),
-    motive: S.optional(S.String),
-    motiveConfidence: S.optional(S.Number),
-    opsecLevel: S.optional(S.String),
-    originCountryConfidence: S.optional(S.Number),
-    originCountryISO: S.optional(S.String),
-    originCountryISOAlpha3: S.optional(S.String),
+    internalDescription: S.optional(S.NullOr(S.String)),
+    motive: S.optional(S.NullOr(S.String)),
+    motiveConfidence: S.optional(S.NullOr(S.Number)),
+    opsecLevel: S.optional(S.NullOr(S.String)),
+    originCountryConfidence: S.optional(S.NullOr(S.Number)),
+    originCountryISO: S.optional(S.NullOr(S.String)),
+    originCountryISOAlpha3: S.optional(S.NullOr(S.String)),
     originCountryTlp: S.optional(
-      ThreatEventsTagsCreateResponseOriginCountryTlp,
+      S.NullOr(ThreatEventsTagsCreateResponseOriginCountryTlp),
     ),
-    priority: S.optional(S.Number),
-    sophisticationLevel: S.optional(S.String),
+    priority: S.optional(S.NullOr(S.Number)),
+    sophisticationLevel: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventTagResponse",
@@ -1743,15 +1763,15 @@ export interface GetRequestResponse {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsGetResponseTlp;
   updated: string;
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsGetResponseStatus;
+  status?: RequestsGetResponseStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const GetRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1763,11 +1783,13 @@ export const GetRequestResponse = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsGetResponseTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsGetResponseStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsGetResponseStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestResponse",
@@ -1786,13 +1808,13 @@ export interface GetRequestMessageRequest {
   /** Number of results per page. */
   perPage: number;
   /** Retrieve mes ges created after this time. */
-  after?: string;
+  after?: string | null;
   /** Retrieve messages created before this time. */
-  before?: string;
+  before?: string | null;
   /** Field to sort results by. */
-  sortBy?: string;
+  sortBy?: string | null;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsMessageGetRequestSortOrder | (string & {});
+  sortOrder?: RequestsMessageGetRequestSortOrder | (string & {}) | null;
 }
 export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1800,11 +1822,11 @@ export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     requestId: S.String.pipe(T.Label("request_id")),
     page: S.Number,
     perPage: S.Number.pipe(T.Body("per_page")),
-    after: S.optional(S.String),
-    before: S.optional(S.String),
-    sortBy: S.optional(S.String.pipe(T.Body("sort_by"))),
+    after: S.optional(S.NullOr(S.String)),
+    before: S.optional(S.NullOr(S.String)),
+    sortBy: S.optional(S.NullOr(S.String).pipe(T.Body("sort_by"))),
     sortOrder: S.optional(
-      RequestsMessageGetRequestSortOrder.pipe(T.Body("sort_order")),
+      S.NullOr(RequestsMessageGetRequestSortOrder).pipe(T.Body("sort_order")),
     ),
   })
     .pipe(
@@ -1831,7 +1853,7 @@ export interface RequestsMessageGetResultItem {
   /** Defines the message last updated time. */
   updated: string;
   /** Defines the message creation time. */
-  created?: string;
+  created?: string | null;
 }
 export const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1840,7 +1862,7 @@ export const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     content: S.String,
     isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
     updated: S.String,
-    created: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "RequestsMessageGetResultItem",
@@ -1921,15 +1943,15 @@ export interface GetRequestPriorityResponse {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsPriorityGetResponseTlp;
   updated: string;
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsPriorityGetResponseStatus;
+  status?: RequestsPriorityGetResponseStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const GetRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1941,11 +1963,13 @@ export const GetRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsPriorityGetResponseTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsPriorityGetResponseStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsPriorityGetResponseStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestPriorityResponse",
@@ -1975,15 +1999,15 @@ export const GetScanResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScanResultRequest>;
 
 export interface ScansResultsGetResponse1111Item {
-  number?: number;
-  proto?: string;
-  status?: string;
+  number?: number | null;
+  proto?: string | null;
+  status?: string | null;
 }
 export const ScansResultsGetResponse1111Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    number: S.optional(S.Number),
-    proto: S.optional(S.String),
-    status: S.optional(S.String),
+    number: S.optional(S.NullOr(S.Number)),
+    proto: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ScansResultsGetResponse1111Item",
@@ -2094,8 +2118,8 @@ export interface GetThreatEventResponse {
   targetIndustry: string;
   tlp: string;
   uuid: string;
-  insight?: string;
-  releasabilityId?: string;
+  insight?: string | null;
+  releasabilityId?: string | null;
 }
 export const GetThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2126,8 +2150,8 @@ export const GetThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     targetIndustry: S.String,
     tlp: S.String,
     uuid: S.String,
-    insight: S.optional(S.String),
-    releasabilityId: S.optional(S.String),
+    insight: S.optional(S.NullOr(S.String)),
+    releasabilityId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventResponse",
@@ -2173,18 +2197,22 @@ export interface GetThreatEventCategoryResponse {
   killChain: number;
   name: string;
   uuid: string;
-  mitreAttack?: ThreatEventsCategoriesGetResponseMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesGetResponseMitreCapecList;
-  shortname?: string;
+  mitreAttack?: ThreatEventsCategoriesGetResponseMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesGetResponseMitreCapecList | null;
+  shortname?: string | null;
 }
 export const GetThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     killChain: S.Number,
     name: S.String,
     uuid: S.String,
-    mitreAttack: S.optional(ThreatEventsCategoriesGetResponseMitreAttackList),
-    mitreCapec: S.optional(ThreatEventsCategoriesGetResponseMitreCapecList),
-    shortname: S.optional(S.String),
+    mitreAttack: S.optional(
+      S.NullOr(ThreatEventsCategoriesGetResponseMitreAttackList),
+    ),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesGetResponseMitreCapecList),
+    ),
+    shortname: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventCategoryResponse",
@@ -2218,14 +2246,14 @@ export interface GetThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
-  deletedAt?: string;
+  deletedAt?: string | null;
 }
 export const GetThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
-    deletedAt: S.optional(S.String),
+    deletedAt: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventDatasetResponse",
@@ -2457,18 +2485,22 @@ export interface ListThreatEventCategoriesResponse {
   killChain: number;
   name: string;
   uuid: string;
-  mitreAttack?: ThreatEventsCategoriesListResponseMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesListResponseMitreCapecList;
-  shortname?: string;
+  mitreAttack?: ThreatEventsCategoriesListResponseMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesListResponseMitreCapecList | null;
+  shortname?: string | null;
 }
 export const ListThreatEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     killChain: S.Number,
     name: S.String,
     uuid: S.String,
-    mitreAttack: S.optional(ThreatEventsCategoriesListResponseMitreAttackList),
-    mitreCapec: S.optional(ThreatEventsCategoriesListResponseMitreCapecList),
-    shortname: S.optional(S.String),
+    mitreAttack: S.optional(
+      S.NullOr(ThreatEventsCategoriesListResponseMitreAttackList),
+    ),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesListResponseMitreCapecList),
+    ),
+    shortname: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventCategoriesResponse",
@@ -2551,14 +2583,14 @@ export interface ListThreatEventDatasetsResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
-  deletedAt?: string;
+  deletedAt?: string | null;
 }
 export const ListThreatEventDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
-    deletedAt: S.optional(S.String),
+    deletedAt: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventDatasetsResponse",
@@ -2740,8 +2772,8 @@ export interface ListThreatEventsResponse {
   targetIndustry: string;
   tlp: string;
   uuid: string;
-  insight?: string;
-  releasabilityId?: string;
+  insight?: string | null;
+  releasabilityId?: string | null;
 }
 export const ListThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2772,8 +2804,8 @@ export const ListThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
     targetIndustry: S.String,
     tlp: S.String,
     uuid: S.String,
-    insight: S.optional(S.String),
-    releasabilityId: S.optional(S.String),
+    insight: S.optional(S.NullOr(S.String)),
+    releasabilityId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventsResponse",
@@ -2855,19 +2887,19 @@ export interface PatchScanConfigRequest {
   /** Defines the Config ID. */
   configId: string;
   /** Defines the number of days between each scan (0 = One-off scan). */
-  frequency?: number;
+  frequency?: number | null;
   /** Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000. */
-  ips?: ScansConfigEditRequestIpsList;
+  ips?: ScansConfigEditRequestIpsList | null;
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
-  ports?: ScansConfigEditRequestPortsList;
+  ports?: ScansConfigEditRequestPortsList | null;
 }
 export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
-    frequency: S.optional(S.Number),
-    ips: S.optional(ScansConfigEditRequestIpsList),
-    ports: S.optional(ScansConfigEditRequestPortsList),
+    frequency: S.optional(S.NullOr(S.Number)),
+    ips: S.optional(S.NullOr(ScansConfigEditRequestIpsList)),
+    ports: S.optional(S.NullOr(ScansConfigEditRequestPortsList)),
   })
     .pipe(
       T.Http({
@@ -2924,15 +2956,15 @@ export const ThreatEventsEditRequestRawDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ThreatEventsEditRequestRawDataMap>;
 
 export interface ThreatEventsEditRequestRaw {
-  data?: ThreatEventsEditRequestRawDataMap;
-  source?: string;
-  tlp?: string;
+  data?: ThreatEventsEditRequestRawDataMap | null;
+  source?: string | null;
+  tlp?: string | null;
 }
 export const ThreatEventsEditRequestRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(ThreatEventsEditRequestRawDataMap),
-    source: S.optional(S.String),
-    tlp: S.optional(S.String),
+    data: S.optional(S.NullOr(ThreatEventsEditRequestRawDataMap)),
+    source: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ThreatEventsEditRequestRaw",
@@ -2945,38 +2977,38 @@ export interface PatchThreatEventRequest {
   eventId: string;
   /** Dataset ID containing the event to update. */
   datasetId: string;
-  attacker?: string;
-  attackerCountry?: string;
-  category?: string;
-  createdAt?: string;
-  date?: string;
-  event?: string;
-  indicator?: string;
-  indicatorType?: string;
-  insight?: string;
-  raw?: ThreatEventsEditRequestRaw;
-  targetCountry?: string;
-  targetIndustry?: string;
-  tlp?: string;
+  attacker?: string | null;
+  attackerCountry?: string | null;
+  category?: string | null;
+  createdAt?: string | null;
+  date?: string | null;
+  event?: string | null;
+  indicator?: string | null;
+  indicatorType?: string | null;
+  insight?: string | null;
+  raw?: ThreatEventsEditRequestRaw | null;
+  targetCountry?: string | null;
+  targetIndustry?: string | null;
+  tlp?: string | null;
 }
 export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     datasetId: S.String,
-    attacker: S.optional(S.String),
-    attackerCountry: S.optional(S.String),
-    category: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    date: S.optional(S.String),
-    event: S.optional(S.String),
-    indicator: S.optional(S.String),
-    indicatorType: S.optional(S.String),
-    insight: S.optional(S.String),
-    raw: S.optional(ThreatEventsEditRequestRaw),
-    targetCountry: S.optional(S.String),
-    targetIndustry: S.optional(S.String),
-    tlp: S.optional(S.String),
+    attacker: S.optional(S.NullOr(S.String)),
+    attackerCountry: S.optional(S.NullOr(S.String)),
+    category: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    event: S.optional(S.NullOr(S.String)),
+    indicator: S.optional(S.NullOr(S.String)),
+    indicatorType: S.optional(S.NullOr(S.String)),
+    insight: S.optional(S.NullOr(S.String)),
+    raw: S.optional(S.NullOr(ThreatEventsEditRequestRaw)),
+    targetCountry: S.optional(S.NullOr(S.String)),
+    targetIndustry: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3054,8 +3086,8 @@ export interface PatchThreatEventResponse {
   targetIndustry: string;
   tlp: string;
   uuid: string;
-  insight?: string;
-  releasabilityId?: string;
+  insight?: string | null;
+  releasabilityId?: string | null;
 }
 export const PatchThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3086,8 +3118,8 @@ export const PatchThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     targetIndustry: S.String,
     tlp: S.String,
     uuid: S.String,
-    insight: S.optional(S.String),
-    releasabilityId: S.optional(S.String),
+    insight: S.optional(S.NullOr(S.String)),
+    releasabilityId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventResponse",
@@ -3110,21 +3142,25 @@ export interface PatchThreatEventCategoryRequest {
   accountId: string;
   /** Category UUID. */
   categoryId: string;
-  killChain?: number;
-  mitreAttack?: ThreatEventsCategoriesEditRequestMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesEditRequestMitreCapecList;
-  name?: string;
-  shortname?: string;
+  killChain?: number | null;
+  mitreAttack?: ThreatEventsCategoriesEditRequestMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesEditRequestMitreCapecList | null;
+  name?: string | null;
+  shortname?: string | null;
 }
 export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-    killChain: S.optional(S.Number),
-    mitreAttack: S.optional(ThreatEventsCategoriesEditRequestMitreAttackList),
-    mitreCapec: S.optional(ThreatEventsCategoriesEditRequestMitreCapecList),
-    name: S.optional(S.String),
-    shortname: S.optional(S.String),
+    killChain: S.optional(S.NullOr(S.Number)),
+    mitreAttack: S.optional(
+      S.NullOr(ThreatEventsCategoriesEditRequestMitreAttackList),
+    ),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesEditRequestMitreCapecList),
+    ),
+    name: S.optional(S.NullOr(S.String)),
+    shortname: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3155,18 +3191,22 @@ export interface PatchThreatEventCategoryResponse {
   killChain: number;
   name: string;
   uuid: string;
-  mitreAttack?: ThreatEventsCategoriesEditResponseMitreAttackList;
-  mitreCapec?: ThreatEventsCategoriesEditResponseMitreCapecList;
-  shortname?: string;
+  mitreAttack?: ThreatEventsCategoriesEditResponseMitreAttackList | null;
+  mitreCapec?: ThreatEventsCategoriesEditResponseMitreCapecList | null;
+  shortname?: string | null;
 }
 export const PatchThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     killChain: S.Number,
     name: S.String,
     uuid: S.String,
-    mitreAttack: S.optional(ThreatEventsCategoriesEditResponseMitreAttackList),
-    mitreCapec: S.optional(ThreatEventsCategoriesEditResponseMitreCapecList),
-    shortname: S.optional(S.String),
+    mitreAttack: S.optional(
+      S.NullOr(ThreatEventsCategoriesEditResponseMitreAttackList),
+    ),
+    mitreCapec: S.optional(
+      S.NullOr(ThreatEventsCategoriesEditResponseMitreCapecList),
+    ),
+    shortname: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventCategoryResponse",
@@ -3206,14 +3246,14 @@ export interface PatchThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
-  deletedAt?: string;
+  deletedAt?: string | null;
 }
 export const PatchThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
-    deletedAt: S.optional(S.String),
+    deletedAt: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventDatasetResponse",
@@ -3226,18 +3266,18 @@ export interface PatchThreatEventRawRequest {
   eventId: string;
   /** Raw Event UUID. */
   rawId: string;
-  data?: unknown;
-  source?: string;
-  tlp?: string;
+  data?: unknown | null;
+  source?: string | null;
+  tlp?: string | null;
 }
 export const PatchThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     rawId: S.String.pipe(T.Label("raw_id")),
-    data: S.optional(S.Unknown),
-    source: S.optional(S.String),
-    tlp: S.optional(S.String),
+    data: S.optional(S.NullOr(S.Unknown)),
+    source: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3288,22 +3328,24 @@ export const QuotaRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface QuotaRequestPriorityResponse {
   /** Anniversary date is when annual quota limit is refreshed. */
-  anniversaryDate?: string;
+  anniversaryDate?: string | null;
   /** Quarter anniversary date is when quota limit is refreshed each quarter. */
-  quarterAnniversaryDate?: string;
+  quarterAnniversaryDate?: string | null;
   /** Tokens for the quarter. */
-  quota?: number;
+  quota?: number | null;
   /** Tokens remaining for the quarter. */
-  remaining?: number;
+  remaining?: number | null;
 }
 export const QuotaRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    anniversaryDate: S.optional(S.String.pipe(T.Body("anniversary_date"))),
-    quarterAnniversaryDate: S.optional(
-      S.String.pipe(T.Body("quarter_anniversary_date")),
+    anniversaryDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("anniversary_date")),
     ),
-    quota: S.optional(S.Number),
-    remaining: S.optional(S.Number),
+    quarterAnniversaryDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date")),
+    ),
+    quota: S.optional(S.NullOr(S.Number)),
+    remaining: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QuotaRequestPriorityResponse",
@@ -3389,19 +3431,19 @@ export interface RequestsAssetsGetResultItem {
   /** Asset name. */
   name: string;
   /** Defines the asset creation time. */
-  created?: string;
+  created?: string | null;
   /** Asset description. */
-  description?: string;
+  description?: string | null;
   /** Asset file type. */
-  fileType?: string;
+  fileType?: string | null;
 }
 export const RequestsAssetsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    fileType: S.optional(S.String.pipe(T.Body("file_type"))),
+    created: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
   }),
 ).annotate({
   identifier: "RequestsAssetsGetResultItem",
@@ -3482,15 +3524,15 @@ export const RequestsConstantsResponseTlpList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RequestsConstantsResponse {
-  priority?: RequestsConstantsResponsePriorityList;
-  status?: RequestsConstantsResponseStatusList;
-  tlp?: RequestsConstantsResponseTlpList;
+  priority?: RequestsConstantsResponsePriorityList | null;
+  status?: RequestsConstantsResponseStatusList | null;
+  tlp?: RequestsConstantsResponseTlpList | null;
 }
 export const RequestsConstantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    priority: S.optional(RequestsConstantsResponsePriorityList),
-    status: S.optional(RequestsConstantsResponseStatusList),
-    tlp: S.optional(RequestsConstantsResponseTlpList),
+    priority: S.optional(S.NullOr(RequestsConstantsResponsePriorityList)),
+    status: S.optional(S.NullOr(RequestsConstantsResponseStatusList)),
+    tlp: S.optional(S.NullOr(RequestsConstantsResponseTlpList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsConstantsResponse",
@@ -3546,37 +3588,43 @@ export interface RequestsListRequest {
   /** Number of results per page. */
   perPage: number;
   /** Retrieve requests completed after this time. */
-  completedAfter?: string;
+  completedAfter?: string | null;
   /** Retrieve requests completed before this time. */
-  completedBefore?: string;
+  completedBefore?: string | null;
   /** Retrieve requests created after this time. */
-  createdAfter?: string;
+  createdAfter?: string | null;
   /** Retrieve requests created before this time. */
-  createdBefore?: string;
+  createdBefore?: string | null;
   /** Requested information from request. */
-  requestType?: string;
+  requestType?: string | null;
   /** Field to sort results by. */
-  sortBy?: string;
+  sortBy?: string | null;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsListRequestSortOrder | (string & {});
+  sortOrder?: RequestsListRequestSortOrder | (string & {}) | null;
   /** Request Status. */
-  status?: RequestsListRequestStatus | (string & {});
+  status?: RequestsListRequestStatus | (string & {}) | null;
 }
 export const RequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.Number,
     perPage: S.Number.pipe(T.Body("per_page")),
-    completedAfter: S.optional(S.String.pipe(T.Body("completed_after"))),
-    completedBefore: S.optional(S.String.pipe(T.Body("completed_before"))),
-    createdAfter: S.optional(S.String.pipe(T.Body("created_after"))),
-    createdBefore: S.optional(S.String.pipe(T.Body("created_before"))),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-    sortBy: S.optional(S.String.pipe(T.Body("sort_by"))),
-    sortOrder: S.optional(
-      RequestsListRequestSortOrder.pipe(T.Body("sort_order")),
+    completedAfter: S.optional(
+      S.NullOr(S.String).pipe(T.Body("completed_after")),
     ),
-    status: S.optional(RequestsListRequestStatus),
+    completedBefore: S.optional(
+      S.NullOr(S.String).pipe(T.Body("completed_before")),
+    ),
+    createdAfter: S.optional(S.NullOr(S.String).pipe(T.Body("created_after"))),
+    createdBefore: S.optional(
+      S.NullOr(S.String).pipe(T.Body("created_before")),
+    ),
+    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
+    sortBy: S.optional(S.NullOr(S.String).pipe(T.Body("sort_by"))),
+    sortOrder: S.optional(
+      S.NullOr(RequestsListRequestSortOrder).pipe(T.Body("sort_order")),
+    ),
+    status: S.optional(S.NullOr(RequestsListRequestStatus)),
   })
     .pipe(
       T.Http({
@@ -3625,15 +3673,15 @@ export interface RequestsListResultItem {
   /** Request last updated time. */
   updated: string;
   /** Request completion time. */
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsListResultItemStatus;
+  status?: RequestsListResultItemStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const RequestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3644,11 +3692,13 @@ export const RequestsListResultItem = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsListResultItemTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsListResultItemStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsListResultItemStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "RequestsListResultItem",
@@ -3689,22 +3739,24 @@ export const RequestsQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RequestsQuotaResponse {
   /** Anniversary date is when annual quota limit is refreshed. */
-  anniversaryDate?: string;
+  anniversaryDate?: string | null;
   /** Quarter anniversary date is when quota limit is refreshed each quarter. */
-  quarterAnniversaryDate?: string;
+  quarterAnniversaryDate?: string | null;
   /** Tokens for the quarter. */
-  quota?: number;
+  quota?: number | null;
   /** Tokens remaining for the quarter. */
-  remaining?: number;
+  remaining?: number | null;
 }
 export const RequestsQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    anniversaryDate: S.optional(S.String.pipe(T.Body("anniversary_date"))),
-    quarterAnniversaryDate: S.optional(
-      S.String.pipe(T.Body("quarter_anniversary_date")),
+    anniversaryDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("anniversary_date")),
     ),
-    quota: S.optional(S.Number),
-    remaining: S.optional(S.Number),
+    quarterAnniversaryDate: S.optional(
+      S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date")),
+    ),
+    quota: S.optional(S.NullOr(S.Number)),
+    remaining: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsQuotaResponse",
@@ -3751,25 +3803,25 @@ export interface RequestsUpdateRequest {
   /** UUID. */
   requestId: string;
   /** Request content. */
-  content?: string;
+  content?: string | null;
   /** Priority for analyzing the request. */
-  priority?: string;
+  priority?: string | null;
   /** Requested information from request. */
-  requestType?: string;
+  requestType?: string | null;
   /** Brief description of the request. */
-  summary?: string;
+  summary?: string | null;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsUpdateRequestTlp | (string & {});
+  tlp?: RequestsUpdateRequestTlp | (string & {}) | null;
 }
 export const RequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-    content: S.optional(S.String),
-    priority: S.optional(S.String),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-    summary: S.optional(S.String),
-    tlp: S.optional(RequestsUpdateRequestTlp),
+    content: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.String)),
+    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
+    summary: S.optional(S.NullOr(S.String)),
+    tlp: S.optional(S.NullOr(RequestsUpdateRequestTlp)),
   })
     .pipe(
       T.Http({
@@ -3815,15 +3867,15 @@ export interface RequestsUpdateResponse {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsUpdateResponseTlp;
   updated: string;
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsUpdateResponseStatus;
+  status?: RequestsUpdateResponseStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const RequestsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3835,11 +3887,13 @@ export const RequestsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsUpdateResponseTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsUpdateResponseStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsUpdateResponseStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsUpdateResponse",
@@ -3853,14 +3907,14 @@ export interface UpdateRequestAssetRequest {
   /** UUID. */
   assetId: string;
   /** Asset file to upload. */
-  source?: string;
+  source?: string | null;
 }
 export const UpdateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     assetId: S.String.pipe(T.Label("asset_id")),
-    source: S.optional(S.String),
+    source: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3881,19 +3935,19 @@ export interface UpdateRequestAssetResponse {
   /** Asset name. */
   name: string;
   /** Defines the asset creation time. */
-  created?: string;
+  created?: string | null;
   /** Asset description. */
-  description?: string;
+  description?: string | null;
   /** Asset file type. */
-  fileType?: string;
+  fileType?: string | null;
 }
 export const UpdateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    fileType: S.optional(S.String.pipe(T.Body("file_type"))),
+    created: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestAssetResponse",
@@ -3906,14 +3960,14 @@ export interface UpdateRequestMessageRequest {
   requestId: string;
   messageId: number;
   /** Content of message. */
-  content?: string;
+  content?: string | null;
 }
 export const UpdateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     messageId: S.Number.pipe(T.Label("message_id")),
-    content: S.optional(S.String),
+    content: S.optional(S.NullOr(S.String)),
   })
     .pipe(
       T.Http({
@@ -3940,7 +3994,7 @@ export interface UpdateRequestMessageResponse {
   /** Defines the message last updated time. */
   updated: string;
   /** Defines the message creation time. */
-  created?: string;
+  created?: string | null;
 }
 export const UpdateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3949,7 +4003,7 @@ export const UpdateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
     content: S.String,
     isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
     updated: S.String,
-    created: S.optional(S.String),
+    created: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestMessageResponse",
@@ -4035,15 +4089,15 @@ export interface UpdateRequestPriorityResponse {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsPriorityUpdateResponseTlp;
   updated: string;
-  completed?: string;
+  completed?: string | null;
   /** Tokens for the request messages. */
-  messageTokens?: number;
+  messageTokens?: number | null;
   /** Readable Request ID. */
-  readableId?: string;
+  readableId?: string | null;
   /** Request Status. */
-  status?: RequestsPriorityUpdateResponseStatus;
+  status?: RequestsPriorityUpdateResponseStatus | null;
   /** Tokens for the request. */
-  tokens?: number;
+  tokens?: number | null;
 }
 export const UpdateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4055,11 +4109,13 @@ export const UpdateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     summary: S.String,
     tlp: RequestsPriorityUpdateResponseTlp,
     updated: S.String,
-    completed: S.optional(S.String),
-    messageTokens: S.optional(S.Number.pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
-    status: S.optional(RequestsPriorityUpdateResponseStatus),
-    tokens: S.optional(S.Number),
+    completed: S.optional(S.NullOr(S.String)),
+    messageTokens: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("message_tokens")),
+    ),
+    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+    status: S.optional(S.NullOr(RequestsPriorityUpdateResponseStatus)),
+    tokens: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestPriorityResponse",
