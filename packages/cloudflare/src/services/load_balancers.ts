@@ -527,17 +527,12 @@ export const CreateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestAdaptiveRouting",
 }) as any as S.Schema<CreateRequestAdaptiveRouting>;
 
-export type CreateRequestCountryPoolsValueList = Array<string>;
-export const CreateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestCountryPoolsValueList>;
-
 export type CreateRequestCountryPoolsMap = {
-  [key: string]: CreateRequestCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateRequestCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateRequestCountryPoolsMap>;
 
 export type CreateRequestLocationStrategyMode = "pop" | "resolver_ip";
@@ -572,17 +567,10 @@ export const CreateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestNetworksList>;
 
-export type CreateRequestPopPoolsValueList = Array<string>;
-export const CreateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestPopPoolsValueList>;
-
-export type CreateRequestPopPoolsMap = {
-  [key: string]: CreateRequestPopPoolsValueList | undefined;
-};
+export type CreateRequestPopPoolsMap = { [key: string]: unknown | undefined };
 export const CreateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateRequestPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateRequestPopPoolsMap>;
 
 export type CreateRequestRandomSteeringPoolWeightsMap = {
@@ -610,17 +598,12 @@ export const CreateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRandomSteering",
 }) as any as S.Schema<CreateRequestRandomSteering>;
 
-export type CreateRequestRegionPoolsValueList = Array<string>;
-export const CreateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestRegionPoolsValueList>;
-
 export type CreateRequestRegionPoolsMap = {
-  [key: string]: CreateRequestRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateRequestRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateRequestRegionPoolsMap>;
 
 export interface CreateRequestRulesItemFixedResponse {
@@ -644,22 +627,13 @@ export const CreateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRulesItemFixedResponse",
 }) as any as S.Schema<CreateRequestRulesItemFixedResponse>;
 
-export type CreateRequestRulesItemOverridesCountryPoolsValueList =
-  Array<string>;
-export const CreateRequestRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsValueList>;
-
 export type CreateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | CreateRequestRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateRequestRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsMap>;
 
 export type CreateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -668,36 +642,22 @@ export const CreateRequestRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<CreateRequestRulesItemOverridesDefaultPoolsList>;
 
-export type CreateRequestRulesItemOverridesPopPoolsValueList = Array<string>;
-export const CreateRequestRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsValueList>;
-
 export type CreateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: CreateRequestRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateRequestRulesItemOverridesPopPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsMap>;
 
-export type CreateRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
-export const CreateRequestRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesRegionPoolsValueList>;
-
 export type CreateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]:
-    | CreateRequestRulesItemOverridesRegionPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateRequestRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateRequestRulesItemOverridesRegionPoolsMap>;
 
 export type CreateRequestRulesItemOverridesSessionAffinity =
@@ -1031,17 +991,12 @@ export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAdaptiveRouting",
 }) as any as S.Schema<CreateResponseAdaptiveRouting>;
 
-export type CreateResponseCountryPoolsValueList = Array<string>;
-export const CreateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseCountryPoolsValueList>;
-
 export type CreateResponseCountryPoolsMap = {
-  [key: string]: CreateResponseCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateResponseCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateResponseCountryPoolsMap>;
 
 export type CreateResponseDefaultPoolsList = Array<string>;
@@ -1083,17 +1038,10 @@ export const CreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseNetworksList>;
 
-export type CreateResponsePopPoolsValueList = Array<string>;
-export const CreateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponsePopPoolsValueList>;
-
-export type CreateResponsePopPoolsMap = {
-  [key: string]: CreateResponsePopPoolsValueList | undefined;
-};
+export type CreateResponsePopPoolsMap = { [key: string]: unknown | undefined };
 export const CreateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateResponsePopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateResponsePopPoolsMap>;
 
 export type CreateResponseRandomSteeringPoolWeightsMap = {
@@ -1126,17 +1074,12 @@ export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRandomSteering",
 }) as any as S.Schema<CreateResponseRandomSteering>;
 
-export type CreateResponseRegionPoolsValueList = Array<string>;
-export const CreateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseRegionPoolsValueList>;
-
 export type CreateResponseRegionPoolsMap = {
-  [key: string]: CreateResponseRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateResponseRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<CreateResponseRegionPoolsMap>;
 
 export interface CreateResponseRulesItemFixedResponse {
@@ -1161,22 +1104,13 @@ export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseRulesItemFixedResponse",
 }) as any as S.Schema<CreateResponseRulesItemFixedResponse>;
 
-export type CreateResponseRulesItemOverridesCountryPoolsValueList =
-  Array<string>;
-export const CreateResponseRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsValueList>;
-
 export type CreateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | CreateResponseRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateResponseRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsMap>;
 
 export type CreateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -1185,37 +1119,22 @@ export const CreateResponseRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<CreateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type CreateResponseRulesItemOverridesPopPoolsValueList = Array<string>;
-export const CreateResponseRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsValueList>;
-
 export type CreateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: CreateResponseRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateResponseRulesItemOverridesPopPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsMap>;
 
-export type CreateResponseRulesItemOverridesRegionPoolsValueList =
-  Array<string>;
-export const CreateResponseRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesRegionPoolsValueList>;
-
 export type CreateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]:
-    | CreateResponseRulesItemOverridesRegionPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CreateResponseRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<CreateResponseRulesItemOverridesRegionPoolsMap>;
 
 export type CreateResponseRulesItemOverridesSessionAffinity =
@@ -1543,17 +1462,12 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLoadBalancerResponse",
 }) as any as S.Schema<CreateLoadBalancerResponse>;
 
-export type MonitorsCreateRequestHeaderValueList = Array<string>;
-export const MonitorsCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsCreateRequestHeaderValueList>;
-
 export type MonitorsCreateRequestHeaderMap = {
-  [key: string]: MonitorsCreateRequestHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsCreateRequestHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsCreateRequestHeaderMap>;
 
 export type MonitorsCreateRequestType =
@@ -1633,17 +1547,12 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorRequest",
 }) as any as S.Schema<CreateMonitorRequest>;
 
-export type MonitorsCreateResponseHeaderValueList = Array<string>;
-export const MonitorsCreateResponseHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsCreateResponseHeaderValueList>;
-
 export type MonitorsCreateResponseHeaderMap = {
-  [key: string]: MonitorsCreateResponseHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsCreateResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsCreateResponseHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsCreateResponseHeaderMap>;
 
 export type MonitorsCreateResponseType =
@@ -1848,18 +1757,12 @@ export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorGroupResponse",
 }) as any as S.Schema<CreateMonitorGroupResponse>;
 
-export type MonitorsPreviewsCreateRequestHeaderValueList = Array<string>;
-export const MonitorsPreviewsCreateRequestHeaderValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderValueList>;
-
 export type MonitorsPreviewsCreateRequestHeaderMap = {
-  [key: string]: MonitorsPreviewsCreateRequestHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsPreviewsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsPreviewsCreateRequestHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderMap>;
 
 export type MonitorsPreviewsCreateRequestType =
@@ -2448,17 +2351,12 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePoolResponse",
 }) as any as S.Schema<CreatePoolResponse>;
 
-export type PoolsHealthCreateRequestHeaderValueList = Array<string>;
-export const PoolsHealthCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsHealthCreateRequestHeaderValueList>;
-
 export type PoolsHealthCreateRequestHeaderMap = {
-  [key: string]: PoolsHealthCreateRequestHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const PoolsHealthCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  PoolsHealthCreateRequestHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<PoolsHealthCreateRequestHeaderMap>;
 
 export type PoolsHealthCreateRequestType =
@@ -2780,17 +2678,10 @@ export const GetResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAdaptiveRouting",
 }) as any as S.Schema<GetResponseAdaptiveRouting>;
 
-export type GetResponseCountryPoolsValueList = Array<string>;
-export const GetResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseCountryPoolsValueList>;
-
-export type GetResponseCountryPoolsMap = {
-  [key: string]: GetResponseCountryPoolsValueList | undefined;
-};
+export type GetResponseCountryPoolsMap = { [key: string]: unknown | undefined };
 export const GetResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  GetResponseCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<GetResponseCountryPoolsMap>;
 
 export type GetResponseDefaultPoolsList = Array<string>;
@@ -2830,17 +2721,10 @@ export const GetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseNetworksList>;
 
-export type GetResponsePopPoolsValueList = Array<string>;
-export const GetResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponsePopPoolsValueList>;
-
-export type GetResponsePopPoolsMap = {
-  [key: string]: GetResponsePopPoolsValueList | undefined;
-};
+export type GetResponsePopPoolsMap = { [key: string]: unknown | undefined };
 export const GetResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  GetResponsePopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<GetResponsePopPoolsMap>;
 
 export type GetResponseRandomSteeringPoolWeightsMap = {
@@ -2872,17 +2756,10 @@ export const GetResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRandomSteering",
 }) as any as S.Schema<GetResponseRandomSteering>;
 
-export type GetResponseRegionPoolsValueList = Array<string>;
-export const GetResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseRegionPoolsValueList>;
-
-export type GetResponseRegionPoolsMap = {
-  [key: string]: GetResponseRegionPoolsValueList | undefined;
-};
+export type GetResponseRegionPoolsMap = { [key: string]: unknown | undefined };
 export const GetResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  GetResponseRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<GetResponseRegionPoolsMap>;
 
 export interface GetResponseRulesItemFixedResponse {
@@ -2906,19 +2783,13 @@ export const GetResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItemFixedResponse",
 }) as any as S.Schema<GetResponseRulesItemFixedResponse>;
 
-export type GetResponseRulesItemOverridesCountryPoolsValueList = Array<string>;
-export const GetResponseRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsValueList>;
-
 export type GetResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: GetResponseRulesItemOverridesCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const GetResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    GetResponseRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsMap>;
 
 export type GetResponseRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -2927,33 +2798,21 @@ export const GetResponseRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<GetResponseRulesItemOverridesDefaultPoolsList>;
 
-export type GetResponseRulesItemOverridesPopPoolsValueList = Array<string>;
-export const GetResponseRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsValueList>;
-
 export type GetResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: GetResponseRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const GetResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  GetResponseRulesItemOverridesPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsMap>;
 
-export type GetResponseRulesItemOverridesRegionPoolsValueList = Array<string>;
-export const GetResponseRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseRulesItemOverridesRegionPoolsValueList>;
-
 export type GetResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: GetResponseRulesItemOverridesRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const GetResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    GetResponseRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<GetResponseRulesItemOverridesRegionPoolsMap>;
 
 export type GetResponseRulesItemOverridesSessionAffinity =
@@ -3297,17 +3156,12 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMonitorRequest",
 }) as any as S.Schema<GetMonitorRequest>;
 
-export type MonitorsGetResponseHeaderValueList = Array<string>;
-export const MonitorsGetResponseHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsGetResponseHeaderValueList>;
-
 export type MonitorsGetResponseHeaderMap = {
-  [key: string]: MonitorsGetResponseHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsGetResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsGetResponseHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsGetResponseHeaderMap>;
 
 export type MonitorsGetResponseType =
@@ -4229,17 +4083,12 @@ export const ListResultItemAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemAdaptiveRouting",
 }) as any as S.Schema<ListResultItemAdaptiveRouting>;
 
-export type ListResultItemCountryPoolsValueList = Array<string>;
-export const ListResultItemCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemCountryPoolsValueList>;
-
 export type ListResultItemCountryPoolsMap = {
-  [key: string]: ListResultItemCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  ListResultItemCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemCountryPoolsMap>;
 
 export type ListResultItemDefaultPoolsList = Array<string>;
@@ -4281,17 +4130,10 @@ export const ListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemNetworksList>;
 
-export type ListResultItemPopPoolsValueList = Array<string>;
-export const ListResultItemPopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemPopPoolsValueList>;
-
-export type ListResultItemPopPoolsMap = {
-  [key: string]: ListResultItemPopPoolsValueList | undefined;
-};
+export type ListResultItemPopPoolsMap = { [key: string]: unknown | undefined };
 export const ListResultItemPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  ListResultItemPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemPopPoolsMap>;
 
 export type ListResultItemRandomSteeringPoolWeightsMap = {
@@ -4324,17 +4166,12 @@ export const ListResultItemRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemRandomSteering",
 }) as any as S.Schema<ListResultItemRandomSteering>;
 
-export type ListResultItemRegionPoolsValueList = Array<string>;
-export const ListResultItemRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemRegionPoolsValueList>;
-
 export type ListResultItemRegionPoolsMap = {
-  [key: string]: ListResultItemRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  ListResultItemRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemRegionPoolsMap>;
 
 export interface ListResultItemRulesItemFixedResponse {
@@ -4359,22 +4196,13 @@ export const ListResultItemRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemRulesItemFixedResponse",
 }) as any as S.Schema<ListResultItemRulesItemFixedResponse>;
 
-export type ListResultItemRulesItemOverridesCountryPoolsValueList =
-  Array<string>;
-export const ListResultItemRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsValueList>;
-
 export type ListResultItemRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | ListResultItemRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ListResultItemRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsMap>;
 
 export type ListResultItemRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -4383,37 +4211,22 @@ export const ListResultItemRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<ListResultItemRulesItemOverridesDefaultPoolsList>;
 
-export type ListResultItemRulesItemOverridesPopPoolsValueList = Array<string>;
-export const ListResultItemRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsValueList>;
-
 export type ListResultItemRulesItemOverridesPopPoolsMap = {
-  [key: string]: ListResultItemRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ListResultItemRulesItemOverridesPopPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsMap>;
 
-export type ListResultItemRulesItemOverridesRegionPoolsValueList =
-  Array<string>;
-export const ListResultItemRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesRegionPoolsValueList>;
-
 export type ListResultItemRulesItemOverridesRegionPoolsMap = {
-  [key: string]:
-    | ListResultItemRulesItemOverridesRegionPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ListResultItemRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<ListResultItemRulesItemOverridesRegionPoolsMap>;
 
 export type ListResultItemRulesItemOverridesSessionAffinity =
@@ -4876,17 +4689,12 @@ export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMonitorsRequest",
 }) as any as S.Schema<ListMonitorsRequest>;
 
-export type MonitorsListResultItemHeaderValueList = Array<string>;
-export const MonitorsListResultItemHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsListResultItemHeaderValueList>;
-
 export type MonitorsListResultItemHeaderMap = {
-  [key: string]: MonitorsListResultItemHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsListResultItemHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsListResultItemHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsListResultItemHeaderMap>;
 
 export type MonitorsListResultItemType =
@@ -5458,17 +5266,10 @@ export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestAdaptiveRouting",
 }) as any as S.Schema<EditRequestAdaptiveRouting>;
 
-export type EditRequestCountryPoolsValueList = Array<string>;
-export const EditRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestCountryPoolsValueList>;
-
-export type EditRequestCountryPoolsMap = {
-  [key: string]: EditRequestCountryPoolsValueList | undefined;
-};
+export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
 export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditRequestCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditRequestCountryPoolsMap>;
 
 export type EditRequestDefaultPoolsList = Array<string>;
@@ -5503,17 +5304,10 @@ export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestLocationStrategy",
 }) as any as S.Schema<EditRequestLocationStrategy>;
 
-export type EditRequestPopPoolsValueList = Array<string>;
-export const EditRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestPopPoolsValueList>;
-
-export type EditRequestPopPoolsMap = {
-  [key: string]: EditRequestPopPoolsValueList | undefined;
-};
+export type EditRequestPopPoolsMap = { [key: string]: unknown | undefined };
 export const EditRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditRequestPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditRequestPopPoolsMap>;
 
 export type EditRequestRandomSteeringPoolWeightsMap = {
@@ -5541,17 +5335,10 @@ export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRandomSteering",
 }) as any as S.Schema<EditRequestRandomSteering>;
 
-export type EditRequestRegionPoolsValueList = Array<string>;
-export const EditRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestRegionPoolsValueList>;
-
-export type EditRequestRegionPoolsMap = {
-  [key: string]: EditRequestRegionPoolsValueList | undefined;
-};
+export type EditRequestRegionPoolsMap = { [key: string]: unknown | undefined };
 export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditRequestRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditRequestRegionPoolsMap>;
 
 export interface EditRequestRulesItemFixedResponse {
@@ -5575,19 +5362,13 @@ export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRulesItemFixedResponse",
 }) as any as S.Schema<EditRequestRulesItemFixedResponse>;
 
-export type EditRequestRulesItemOverridesCountryPoolsValueList = Array<string>;
-export const EditRequestRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsValueList>;
-
 export type EditRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: EditRequestRulesItemOverridesCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EditRequestRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
 
 export type EditRequestRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -5596,33 +5377,21 @@ export const EditRequestRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
 
-export type EditRequestRulesItemOverridesPopPoolsValueList = Array<string>;
-export const EditRequestRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsValueList>;
-
 export type EditRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: EditRequestRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditRequestRulesItemOverridesPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
 
-export type EditRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
-export const EditRequestRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsValueList>;
-
 export type EditRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: EditRequestRulesItemOverridesRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EditRequestRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsMap>;
 
 export type EditRequestRulesItemOverridesSessionAffinity =
@@ -5954,17 +5723,12 @@ export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseAdaptiveRouting",
 }) as any as S.Schema<EditResponseAdaptiveRouting>;
 
-export type EditResponseCountryPoolsValueList = Array<string>;
-export const EditResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseCountryPoolsValueList>;
-
 export type EditResponseCountryPoolsMap = {
-  [key: string]: EditResponseCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditResponseCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditResponseCountryPoolsMap>;
 
 export type EditResponseDefaultPoolsList = Array<string>;
@@ -6006,17 +5770,10 @@ export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseNetworksList>;
 
-export type EditResponsePopPoolsValueList = Array<string>;
-export const EditResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponsePopPoolsValueList>;
-
-export type EditResponsePopPoolsMap = {
-  [key: string]: EditResponsePopPoolsValueList | undefined;
-};
+export type EditResponsePopPoolsMap = { [key: string]: unknown | undefined };
 export const EditResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditResponsePopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditResponsePopPoolsMap>;
 
 export type EditResponseRandomSteeringPoolWeightsMap = {
@@ -6048,17 +5805,10 @@ export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRandomSteering",
 }) as any as S.Schema<EditResponseRandomSteering>;
 
-export type EditResponseRegionPoolsValueList = Array<string>;
-export const EditResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseRegionPoolsValueList>;
-
-export type EditResponseRegionPoolsMap = {
-  [key: string]: EditResponseRegionPoolsValueList | undefined;
-};
+export type EditResponseRegionPoolsMap = { [key: string]: unknown | undefined };
 export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditResponseRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditResponseRegionPoolsMap>;
 
 export interface EditResponseRulesItemFixedResponse {
@@ -6082,21 +5832,13 @@ export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRulesItemFixedResponse",
 }) as any as S.Schema<EditResponseRulesItemFixedResponse>;
 
-export type EditResponseRulesItemOverridesCountryPoolsValueList = Array<string>;
-export const EditResponseRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsValueList>;
-
 export type EditResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | EditResponseRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EditResponseRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
 
 export type EditResponseRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -6105,33 +5847,21 @@ export const EditResponseRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
 
-export type EditResponseRulesItemOverridesPopPoolsValueList = Array<string>;
-export const EditResponseRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsValueList>;
-
 export type EditResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: EditResponseRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  EditResponseRulesItemOverridesPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
 
-export type EditResponseRulesItemOverridesRegionPoolsValueList = Array<string>;
-export const EditResponseRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsValueList>;
-
 export type EditResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: EditResponseRulesItemOverridesRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const EditResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EditResponseRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsMap>;
 
 export type EditResponseRulesItemOverridesSessionAffinity =
@@ -6453,17 +6183,12 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLoadBalancerResponse",
 }) as any as S.Schema<PatchLoadBalancerResponse>;
 
-export type MonitorsEditRequestHeaderValueList = Array<string>;
-export const MonitorsEditRequestHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsEditRequestHeaderValueList>;
-
 export type MonitorsEditRequestHeaderMap = {
-  [key: string]: MonitorsEditRequestHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsEditRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsEditRequestHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsEditRequestHeaderMap>;
 
 export type MonitorsEditRequestType =
@@ -6545,17 +6270,12 @@ export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorRequest",
 }) as any as S.Schema<PatchMonitorRequest>;
 
-export type MonitorsEditResponseHeaderValueList = Array<string>;
-export const MonitorsEditResponseHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsEditResponseHeaderValueList>;
-
 export type MonitorsEditResponseHeaderMap = {
-  [key: string]: MonitorsEditResponseHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsEditResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsEditResponseHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsEditResponseHeaderMap>;
 
 export type MonitorsEditResponseType =
@@ -7276,17 +6996,12 @@ export const UpdateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestAdaptiveRouting",
 }) as any as S.Schema<UpdateRequestAdaptiveRouting>;
 
-export type UpdateRequestCountryPoolsValueList = Array<string>;
-export const UpdateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestCountryPoolsValueList>;
-
 export type UpdateRequestCountryPoolsMap = {
-  [key: string]: UpdateRequestCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateRequestCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateRequestCountryPoolsMap>;
 
 export type UpdateRequestLocationStrategyMode = "pop" | "resolver_ip";
@@ -7321,17 +7036,10 @@ export const UpdateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestNetworksList>;
 
-export type UpdateRequestPopPoolsValueList = Array<string>;
-export const UpdateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestPopPoolsValueList>;
-
-export type UpdateRequestPopPoolsMap = {
-  [key: string]: UpdateRequestPopPoolsValueList | undefined;
-};
+export type UpdateRequestPopPoolsMap = { [key: string]: unknown | undefined };
 export const UpdateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateRequestPopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateRequestPopPoolsMap>;
 
 export type UpdateRequestRandomSteeringPoolWeightsMap = {
@@ -7359,17 +7067,12 @@ export const UpdateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRandomSteering",
 }) as any as S.Schema<UpdateRequestRandomSteering>;
 
-export type UpdateRequestRegionPoolsValueList = Array<string>;
-export const UpdateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestRegionPoolsValueList>;
-
 export type UpdateRequestRegionPoolsMap = {
-  [key: string]: UpdateRequestRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateRequestRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateRequestRegionPoolsMap>;
 
 export interface UpdateRequestRulesItemFixedResponse {
@@ -7393,22 +7096,13 @@ export const UpdateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRulesItemFixedResponse",
 }) as any as S.Schema<UpdateRequestRulesItemFixedResponse>;
 
-export type UpdateRequestRulesItemOverridesCountryPoolsValueList =
-  Array<string>;
-export const UpdateRequestRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsValueList>;
-
 export type UpdateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | UpdateRequestRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateRequestRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsMap>;
 
 export type UpdateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -7417,36 +7111,22 @@ export const UpdateRequestRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesDefaultPoolsList>;
 
-export type UpdateRequestRulesItemOverridesPopPoolsValueList = Array<string>;
-export const UpdateRequestRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsValueList>;
-
 export type UpdateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: UpdateRequestRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateRequestRulesItemOverridesPopPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsMap>;
 
-export type UpdateRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
-export const UpdateRequestRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesRegionPoolsValueList>;
-
 export type UpdateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]:
-    | UpdateRequestRulesItemOverridesRegionPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateRequestRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesRegionPoolsMap>;
 
 export type UpdateRequestRulesItemOverridesSessionAffinity =
@@ -7785,17 +7465,12 @@ export const UpdateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseAdaptiveRouting",
 }) as any as S.Schema<UpdateResponseAdaptiveRouting>;
 
-export type UpdateResponseCountryPoolsValueList = Array<string>;
-export const UpdateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseCountryPoolsValueList>;
-
 export type UpdateResponseCountryPoolsMap = {
-  [key: string]: UpdateResponseCountryPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateResponseCountryPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateResponseCountryPoolsMap>;
 
 export type UpdateResponseDefaultPoolsList = Array<string>;
@@ -7837,17 +7512,10 @@ export const UpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseNetworksList>;
 
-export type UpdateResponsePopPoolsValueList = Array<string>;
-export const UpdateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponsePopPoolsValueList>;
-
-export type UpdateResponsePopPoolsMap = {
-  [key: string]: UpdateResponsePopPoolsValueList | undefined;
-};
+export type UpdateResponsePopPoolsMap = { [key: string]: unknown | undefined };
 export const UpdateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateResponsePopPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateResponsePopPoolsMap>;
 
 export type UpdateResponseRandomSteeringPoolWeightsMap = {
@@ -7880,17 +7548,12 @@ export const UpdateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRandomSteering",
 }) as any as S.Schema<UpdateResponseRandomSteering>;
 
-export type UpdateResponseRegionPoolsValueList = Array<string>;
-export const UpdateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseRegionPoolsValueList>;
-
 export type UpdateResponseRegionPoolsMap = {
-  [key: string]: UpdateResponseRegionPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateResponseRegionPoolsValueList,
+  S.Unknown,
 ) as any as S.Schema<UpdateResponseRegionPoolsMap>;
 
 export interface UpdateResponseRulesItemFixedResponse {
@@ -7915,22 +7578,13 @@ export const UpdateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseRulesItemFixedResponse",
 }) as any as S.Schema<UpdateResponseRulesItemFixedResponse>;
 
-export type UpdateResponseRulesItemOverridesCountryPoolsValueList =
-  Array<string>;
-export const UpdateResponseRulesItemOverridesCountryPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsValueList>;
-
 export type UpdateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]:
-    | UpdateResponseRulesItemOverridesCountryPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateResponseRulesItemOverridesCountryPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsMap>;
 
 export type UpdateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
@@ -7939,37 +7593,22 @@ export const UpdateResponseRulesItemOverridesDefaultPoolsList =
     S.String,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type UpdateResponseRulesItemOverridesPopPoolsValueList = Array<string>;
-export const UpdateResponseRulesItemOverridesPopPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsValueList>;
-
 export type UpdateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: UpdateResponseRulesItemOverridesPopPoolsValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateResponseRulesItemOverridesPopPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsMap>;
 
-export type UpdateResponseRulesItemOverridesRegionPoolsValueList =
-  Array<string>;
-export const UpdateResponseRulesItemOverridesRegionPoolsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesRegionPoolsValueList>;
-
 export type UpdateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]:
-    | UpdateResponseRulesItemOverridesRegionPoolsValueList
-    | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UpdateResponseRulesItemOverridesRegionPoolsValueList,
+    S.Unknown,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesRegionPoolsMap>;
 
 export type UpdateResponseRulesItemOverridesSessionAffinity =
@@ -8297,17 +7936,12 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLoadBalancerResponse",
 }) as any as S.Schema<UpdateLoadBalancerResponse>;
 
-export type MonitorsUpdateRequestHeaderValueList = Array<string>;
-export const MonitorsUpdateRequestHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsUpdateRequestHeaderValueList>;
-
 export type MonitorsUpdateRequestHeaderMap = {
-  [key: string]: MonitorsUpdateRequestHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsUpdateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsUpdateRequestHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsUpdateRequestHeaderMap>;
 
 export type MonitorsUpdateRequestType =
@@ -8389,17 +8023,12 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorRequest",
 }) as any as S.Schema<UpdateMonitorRequest>;
 
-export type MonitorsUpdateResponseHeaderValueList = Array<string>;
-export const MonitorsUpdateResponseHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorsUpdateResponseHeaderValueList>;
-
 export type MonitorsUpdateResponseHeaderMap = {
-  [key: string]: MonitorsUpdateResponseHeaderValueList | undefined;
+  [key: string]: unknown | undefined;
 };
 export const MonitorsUpdateResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  MonitorsUpdateResponseHeaderValueList,
+  S.Unknown,
 ) as any as S.Schema<MonitorsUpdateResponseHeaderMap>;
 
 export type MonitorsUpdateResponseType =

@@ -681,10 +681,10 @@ export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateScriptSecretsResponse",
 }) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
 
-export type CreateAssetUploadBodyMap = { [key: string]: string | undefined };
+export type CreateAssetUploadBodyMap = { [key: string]: unknown | undefined };
 export const CreateAssetUploadBodyMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<CreateAssetUploadBodyMap>;
 
 export interface CreateAssetUploadRequest {
@@ -7932,6 +7932,20 @@ export const PutScriptBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptBindingArtifacts",
 }) as any as S.Schema<PutScriptBindingArtifacts>;
 
+export interface PutScriptBindingGeneric {
+  name: string;
+  /** Any binding kind — escape hatch for callers assembling bindings generically. */
+  type: string;
+}
+export const PutScriptBindingGeneric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptBindingGeneric",
+}) as any as S.Schema<PutScriptBindingGeneric>;
+
 export type PutScriptBinding =
   | PutScriptBindingAi
   | PutScriptBindingAiSearch
@@ -7969,7 +7983,8 @@ export type PutScriptBinding =
   | PutScriptBindingVpcService
   | PutScriptBindingVpcNetwork
   | PutScriptBindingWorkerLoader
-  | PutScriptBindingArtifacts;
+  | PutScriptBindingArtifacts
+  | PutScriptBindingGeneric;
 export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["name", "type"],
@@ -8023,6 +8038,7 @@ export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
     ["name", "networkId", "tunnelId", "type"],
     ["name", "type"],
     ["name", "namespace", "type"],
+    ["name", "type"],
   ]),
 );
 

@@ -694,6 +694,12 @@ export type CreateResponseSpendLimitsRulesItemLimitType = "cost";
 export const CreateResponseSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
 
+export type UntypedMetadataMap = { [key: string]: unknown | undefined };
+export const UntypedMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UntypedMetadataMap>;
+
 export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
 export const CreateResponseSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
@@ -753,7 +759,7 @@ export interface CreateResponseSpendLimitsRulesItem {
   window: number;
   id?: string | null;
   enabled?: boolean | null;
-  metadata?: unknown | null;
+  metadata?: UntypedMetadataMap | null;
   model?: CreateResponseSpendLimitsRulesItemModel | null;
   provider?: CreateResponseSpendLimitsRulesItemProvider | null;
   technique?: CreateResponseSpendLimitsRulesItemTechnique | null;
@@ -765,7 +771,7 @@ export const CreateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.NullOr(UntypedMetadataMap)),
     model: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemModel)),
     provider: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemProvider)),
     technique: S.optional(
@@ -4162,7 +4168,7 @@ export interface DeleteResponseSpendLimitsRulesItem {
   window: number;
   id?: string | null;
   enabled?: boolean | null;
-  metadata?: unknown | null;
+  metadata?: UntypedMetadataMap | null;
   model?: DeleteResponseSpendLimitsRulesItemModel | null;
   provider?: DeleteResponseSpendLimitsRulesItemProvider | null;
   technique?: DeleteResponseSpendLimitsRulesItemTechnique | null;
@@ -4174,7 +4180,7 @@ export const DeleteResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.NullOr(UntypedMetadataMap)),
     model: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemModel)),
     provider: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemProvider)),
     technique: S.optional(
@@ -5653,7 +5659,7 @@ export interface GetResponseSpendLimitsRulesItem {
   window: number;
   id?: string | null;
   enabled?: boolean | null;
-  metadata?: unknown | null;
+  metadata?: UntypedMetadataMap | null;
   model?: GetResponseSpendLimitsRulesItemModel | null;
   provider?: GetResponseSpendLimitsRulesItemProvider | null;
   technique?: GetResponseSpendLimitsRulesItemTechnique | null;
@@ -5665,7 +5671,7 @@ export const GetResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.NullOr(UntypedMetadataMap)),
     model: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemModel)),
     provider: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemProvider)),
     technique: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemTechnique)),
@@ -7945,7 +7951,7 @@ export interface ListResultItemSpendLimitsRulesItem {
   window: number;
   id?: string | null;
   enabled?: boolean | null;
-  metadata?: unknown | null;
+  metadata?: UntypedMetadataMap | null;
   model?: ListResultItemSpendLimitsRulesItemModel | null;
   provider?: ListResultItemSpendLimitsRulesItemProvider | null;
   technique?: ListResultItemSpendLimitsRulesItemTechnique | null;
@@ -7957,7 +7963,7 @@ export const ListResultItemSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.NullOr(UntypedMetadataMap)),
     model: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemModel)),
     provider: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemProvider)),
     technique: S.optional(
@@ -10579,7 +10585,7 @@ export interface UpdateRequestSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: unknown;
+  metadata?: UntypedMetadataMap;
   model?: UpdateRequestSpendLimitsRulesItemModel;
   provider?: UpdateRequestSpendLimitsRulesItemProvider;
   technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {});
@@ -10591,7 +10597,7 @@ export const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
+    metadata: S.optional(UntypedMetadataMap),
     model: S.optional(UpdateRequestSpendLimitsRulesItemModel),
     provider: S.optional(UpdateRequestSpendLimitsRulesItemProvider),
     technique: S.optional(UpdateRequestSpendLimitsRulesItemTechnique),
@@ -11169,7 +11175,7 @@ export interface UpdateResponseSpendLimitsRulesItem {
   window: number;
   id?: string | null;
   enabled?: boolean | null;
-  metadata?: unknown | null;
+  metadata?: UntypedMetadataMap | null;
   model?: UpdateResponseSpendLimitsRulesItemModel | null;
   provider?: UpdateResponseSpendLimitsRulesItemProvider | null;
   technique?: UpdateResponseSpendLimitsRulesItemTechnique | null;
@@ -11181,7 +11187,7 @@ export const UpdateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.NullOr(UntypedMetadataMap)),
     model: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemModel)),
     provider: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemProvider)),
     technique: S.optional(

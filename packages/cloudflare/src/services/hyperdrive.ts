@@ -305,8 +305,6 @@ export interface ConfigsCreateResponseOriginPublicDatabase {
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
@@ -319,7 +317,6 @@ export const ConfigsCreateResponseOriginPublicDatabase =
     S.Struct({
       database: S.String,
       host: S.String,
-      password: S.String,
       port: S.Number,
       scheme: ConfigsCreateResponseOriginPublicDatabaseScheme,
       user: S.String,
@@ -342,8 +339,6 @@ export interface ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudfl
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
   /** Set the user of your origin database. */
@@ -356,7 +351,6 @@ export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareT
       accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
       database: S.String,
       host: S.String,
-      password: S.String,
       scheme:
         ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
       user: S.String,
@@ -374,8 +368,6 @@ export const ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCSchem
 export interface ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the name of your origin database. */
   database: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme;
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
@@ -387,7 +379,6 @@ export const ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       database: S.String,
-      password: S.String,
       scheme:
         ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
       serviceId: S.String.pipe(T.Body("service_id")),
@@ -404,17 +395,16 @@ export type ConfigsCreateResponseOrigin =
   | ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsCreateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
+    ["database", "host", "port", "scheme", "user"],
     [
       "accessClientId",
       "accessClientSecret",
       "database",
       "host",
-      "password",
       "scheme",
       "user",
     ],
-    ["database", "password", "scheme", "serviceId", "user"],
+    ["database", "scheme", "serviceId", "user"],
   ]),
 );
 
@@ -581,8 +571,6 @@ export interface ConfigsGetResponseOriginPublicDatabase {
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
@@ -595,7 +583,6 @@ export const ConfigsGetResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
     S.Struct({
       database: S.String,
       host: S.String,
-      password: S.String,
       port: S.Number,
       scheme: ConfigsGetResponseOriginPublicDatabaseScheme,
       user: S.String,
@@ -618,8 +605,6 @@ export interface ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflare
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
   /** Set the user of your origin database. */
@@ -632,7 +617,6 @@ export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunn
       accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
       database: S.String,
       host: S.String,
-      password: S.String,
       scheme:
         ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
       user: S.String,
@@ -652,8 +636,6 @@ export const ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
 export interface ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the name of your origin database. */
   database: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme;
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
@@ -665,7 +647,6 @@ export const ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       database: S.String,
-      password: S.String,
       scheme: ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
       serviceId: S.String.pipe(T.Body("service_id")),
       user: S.String,
@@ -680,17 +661,16 @@ export type ConfigsGetResponseOrigin =
   | ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsGetResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
+    ["database", "host", "port", "scheme", "user"],
     [
       "accessClientId",
       "accessClientSecret",
       "database",
       "host",
-      "password",
       "scheme",
       "user",
     ],
-    ["database", "password", "scheme", "serviceId", "user"],
+    ["database", "scheme", "serviceId", "user"],
   ]),
 );
 
@@ -823,8 +803,6 @@ export interface ConfigsListResultItemOriginPublicDatabase {
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
@@ -837,7 +815,6 @@ export const ConfigsListResultItemOriginPublicDatabase =
     S.Struct({
       database: S.String,
       host: S.String,
-      password: S.String,
       port: S.Number,
       scheme: ConfigsListResultItemOriginPublicDatabaseScheme,
       user: S.String,
@@ -860,8 +837,6 @@ export interface ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudfl
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
   /** Set the user of your origin database. */
@@ -874,7 +849,6 @@ export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareT
       accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
       database: S.String,
       host: S.String,
-      password: S.String,
       scheme:
         ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
       user: S.String,
@@ -892,8 +866,6 @@ export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCSchem
 export interface ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the name of your origin database. */
   database: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme;
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
@@ -905,7 +877,6 @@ export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       database: S.String,
-      password: S.String,
       scheme:
         ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme,
       serviceId: S.String.pipe(T.Body("service_id")),
@@ -922,17 +893,16 @@ export type ConfigsListResultItemOrigin =
   | ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsListResultItemOrigin = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
+    ["database", "host", "port", "scheme", "user"],
     [
       "accessClientId",
       "accessClientSecret",
       "database",
       "host",
-      "password",
       "scheme",
       "user",
     ],
-    ["database", "password", "scheme", "serviceId", "user"],
+    ["database", "scheme", "serviceId", "user"],
   ]),
 );
 
@@ -1258,8 +1228,6 @@ export interface ConfigsEditResponseOriginPublicDatabase {
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
@@ -1272,7 +1240,6 @@ export const ConfigsEditResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
     S.Struct({
       database: S.String,
       host: S.String,
-      password: S.String,
       port: S.Number,
       scheme: ConfigsEditResponseOriginPublicDatabaseScheme,
       user: S.String,
@@ -1295,8 +1262,6 @@ export interface ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflar
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
   /** Set the user of your origin database. */
@@ -1309,7 +1274,6 @@ export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTun
       accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
       database: S.String,
       host: S.String,
-      password: S.String,
       scheme:
         ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
       user: S.String,
@@ -1327,8 +1291,6 @@ export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme 
 export interface ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the name of your origin database. */
   database: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme;
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
@@ -1340,7 +1302,6 @@ export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       database: S.String,
-      password: S.String,
       scheme:
         ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
       serviceId: S.String.pipe(T.Body("service_id")),
@@ -1356,17 +1317,16 @@ export type ConfigsEditResponseOrigin =
   | ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsEditResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
+    ["database", "host", "port", "scheme", "user"],
     [
       "accessClientId",
       "accessClientSecret",
       "database",
       "host",
-      "password",
       "scheme",
       "user",
     ],
-    ["database", "password", "scheme", "serviceId", "user"],
+    ["database", "scheme", "serviceId", "user"],
   ]),
 );
 
@@ -1704,8 +1664,6 @@ export interface ConfigsUpdateResponseOriginPublicDatabase {
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
   /** Specifies the URL scheme used to connect to your origin database. */
@@ -1718,7 +1676,6 @@ export const ConfigsUpdateResponseOriginPublicDatabase =
     S.Struct({
       database: S.String,
       host: S.String,
-      password: S.String,
       port: S.Number,
       scheme: ConfigsUpdateResponseOriginPublicDatabaseScheme,
       user: S.String,
@@ -1741,8 +1698,6 @@ export interface ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudfl
   database: string;
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme;
   /** Set the user of your origin database. */
@@ -1755,7 +1710,6 @@ export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareT
       accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
       database: S.String,
       host: S.String,
-      password: S.String,
       scheme:
         ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
       user: S.String,
@@ -1773,8 +1727,6 @@ export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCSchem
 export interface ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the name of your origin database. */
   database: string;
-  /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme: ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme;
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
@@ -1786,7 +1738,6 @@ export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       database: S.String,
-      password: S.String,
       scheme:
         ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
       serviceId: S.String.pipe(T.Body("service_id")),
@@ -1803,17 +1754,16 @@ export type ConfigsUpdateResponseOrigin =
   | ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsUpdateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
+    ["database", "host", "port", "scheme", "user"],
     [
       "accessClientId",
       "accessClientSecret",
       "database",
       "host",
-      "password",
       "scheme",
       "user",
     ],
-    ["database", "password", "scheme", "serviceId", "user"],
+    ["database", "scheme", "serviceId", "user"],
   ]),
 );
 

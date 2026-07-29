@@ -2,6 +2,19 @@
   "description": "otel destination headers and spend-limit rule metadata are freeform maps (Record<string, unknown> in alchemy props); dynamic-routing percentage outputs are numeric-keyed edge maps (Record<string, unknown> in alchemy props)",
   "patches": [
     {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai_gateway#UntypedMetadataMap",
+      "value": {
+        "type": "map",
+        "key": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#CreateResponseOtelItemHeadersMap/value/target",
       "value": "smithy.api#Document"
@@ -34,32 +47,32 @@
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#CreateResponseSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#DeleteResponseSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#GetResponseSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#ListResultItemSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#UpdateRequestSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_gateway#UpdateResponseSpendLimitsRulesItem/members/metadata/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.ai_gateway#UntypedMetadataMap"
     },
     {
       "op": "replace",

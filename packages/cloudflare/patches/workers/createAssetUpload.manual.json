@@ -22,8 +22,12 @@
       "path": "/shapes/com.cloudflare.workers#CreateAssetUploadBodyMap",
       "value": {
         "type": "map",
-        "key": { "target": "smithy.api#String" },
-        "value": { "target": "smithy.api#String" }
+        "key": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
       }
     },
     {

@@ -1703,41 +1703,6 @@ export const PresetsCreateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   identifier: "PresetsCreateRequestPermissionsMedia",
 }) as any as S.Schema<PresetsCreateRequestPermissionsMedia>;
 
-export type PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
-  | "FULL_ACCESS"
-  | "VIEW_ONLY";
-export const PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsCreateRequestPermissionsPluginsConfigValue {
-  accessControl?:
-    | PresetsCreateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {});
-  handlesViewOnly?: boolean;
-}
-export const PresetsCreateRequestPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        PresetsCreateRequestPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
-      ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
-    }),
-  ).annotate({
-    identifier: "PresetsCreateRequestPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsCreateRequestPermissionsPluginsConfigValue>;
-
-export type PresetsCreateRequestPermissionsPluginsConfigMap = {
-  [key: string]: PresetsCreateRequestPermissionsPluginsConfigValue | undefined;
-};
-export const PresetsCreateRequestPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsCreateRequestPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsCreateRequestPermissionsPluginsConfigMap>;
-
 export interface PresetsCreateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -1746,7 +1711,7 @@ export interface PresetsCreateRequestPermissionsPlugins {
   /** Can start plugins */
   canStart: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsCreateRequestPermissionsPluginsConfigMap;
+  config: unknown;
 }
 export const PresetsCreateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
   () =>
@@ -1754,7 +1719,7 @@ export const PresetsCreateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
       canClose: S.Boolean.pipe(T.Body("can_close")),
       canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
       canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsCreateRequestPermissionsPluginsConfigMap,
+      config: S.Unknown,
     }),
 ).annotate({
   identifier: "PresetsCreateRequestPermissionsPlugins",
@@ -2364,42 +2329,6 @@ export const PresetsCreateResponseDataPermissionsMedia =
     identifier: "PresetsCreateResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsCreateResponseDataPermissionsMedia>;
 
-export type PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY";
-export const PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsCreateResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl | null;
-  handlesViewOnly?: boolean | null;
-}
-export const PresetsCreateResponseDataPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        S.NullOr(
-          PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
-      ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsCreateResponseDataPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsCreateResponseDataPermissionsPluginsConfigValue>;
-
-export type PresetsCreateResponseDataPermissionsPluginsConfigMap = {
-  [key: string]:
-    | PresetsCreateResponseDataPermissionsPluginsConfigValue
-    | undefined;
-};
-export const PresetsCreateResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsCreateResponseDataPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsCreateResponseDataPermissionsPluginsConfigMap>;
-
 export interface PresetsCreateResponseDataPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -2408,7 +2337,7 @@ export interface PresetsCreateResponseDataPermissionsPlugins {
   /** Can start plugins */
   canStart: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsCreateResponseDataPermissionsPluginsConfigMap;
+  config: unknown;
 }
 export const PresetsCreateResponseDataPermissionsPlugins =
   /*@__PURE__*/ S.suspend(() =>
@@ -2416,7 +2345,7 @@ export const PresetsCreateResponseDataPermissionsPlugins =
       canClose: S.Boolean.pipe(T.Body("can_close")),
       canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
       canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsCreateResponseDataPermissionsPluginsConfigMap,
+      config: S.Unknown,
     }),
   ).annotate({
     identifier: "PresetsCreateResponseDataPermissionsPlugins",
@@ -3245,42 +3174,6 @@ export const PresetsDeleteResponseDataPermissionsMedia =
     identifier: "PresetsDeleteResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsDeleteResponseDataPermissionsMedia>;
 
-export type PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY";
-export const PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsDeleteResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl | null;
-  handlesViewOnly?: boolean | null;
-}
-export const PresetsDeleteResponseDataPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        S.NullOr(
-          PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
-      ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsDeleteResponseDataPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsDeleteResponseDataPermissionsPluginsConfigValue>;
-
-export type PresetsDeleteResponseDataPermissionsPluginsConfigMap = {
-  [key: string]:
-    | PresetsDeleteResponseDataPermissionsPluginsConfigValue
-    | undefined;
-};
-export const PresetsDeleteResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsDeleteResponseDataPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsDeleteResponseDataPermissionsPluginsConfigMap>;
-
 export interface PresetsDeleteResponseDataPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -3289,7 +3182,7 @@ export interface PresetsDeleteResponseDataPermissionsPlugins {
   /** Can start plugins */
   canStart: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsDeleteResponseDataPermissionsPluginsConfigMap;
+  config: unknown;
 }
 export const PresetsDeleteResponseDataPermissionsPlugins =
   /*@__PURE__*/ S.suspend(() =>
@@ -3297,7 +3190,7 @@ export const PresetsDeleteResponseDataPermissionsPlugins =
       canClose: S.Boolean.pipe(T.Body("can_close")),
       canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
       canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsDeleteResponseDataPermissionsPluginsConfigMap,
+      config: S.Unknown,
     }),
   ).annotate({
     identifier: "PresetsDeleteResponseDataPermissionsPlugins",
@@ -9972,42 +9865,6 @@ export const PresetsGetPresetByIdResponseDataPermissionsMedia =
     identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
 
-export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY";
-export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl | null;
-  handlesViewOnly?: boolean | null;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        S.NullOr(
-          PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
-      ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap = {
-  [key: string]:
-    | PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue
-    | undefined;
-};
-export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap>;
-
 export interface PresetsGetPresetByIdResponseDataPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -10016,7 +9873,7 @@ export interface PresetsGetPresetByIdResponseDataPermissionsPlugins {
   /** Can start plugins */
   canStart: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap;
+  config: unknown;
 }
 export const PresetsGetPresetByIdResponseDataPermissionsPlugins =
   /*@__PURE__*/ S.suspend(() =>
@@ -10024,7 +9881,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsPlugins =
       canClose: S.Boolean.pipe(T.Body("can_close")),
       canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
       canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap,
+      config: S.Unknown,
     }),
   ).annotate({
     identifier: "PresetsGetPresetByIdResponseDataPermissionsPlugins",
@@ -12661,41 +12518,6 @@ export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   identifier: "PresetsUpdateRequestPermissionsMedia",
 }) as any as S.Schema<PresetsUpdateRequestPermissionsMedia>;
 
-export type PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
-  | "FULL_ACCESS"
-  | "VIEW_ONLY";
-export const PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestPermissionsPluginsConfigValue {
-  accessControl?:
-    | PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {});
-  handlesViewOnly?: boolean;
-}
-export const PresetsUpdateRequestPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl.pipe(
-          T.Body("access_control"),
-        ),
-      ),
-      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigValue>;
-
-export type PresetsUpdateRequestPermissionsPluginsConfigMap = {
-  [key: string]: PresetsUpdateRequestPermissionsPluginsConfigValue | undefined;
-};
-export const PresetsUpdateRequestPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsUpdateRequestPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigMap>;
-
 export interface PresetsUpdateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose?: boolean;
@@ -12704,7 +12526,7 @@ export interface PresetsUpdateRequestPermissionsPlugins {
   /** Can start plugins */
   canStart?: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config?: PresetsUpdateRequestPermissionsPluginsConfigMap;
+  config?: unknown;
 }
 export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
   () =>
@@ -12712,7 +12534,7 @@ export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
       canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
       canEditConfig: S.optional(S.Boolean.pipe(T.Body("can_edit_config"))),
       canStart: S.optional(S.Boolean.pipe(T.Body("can_start"))),
-      config: S.optional(PresetsUpdateRequestPermissionsPluginsConfigMap),
+      config: S.optional(S.Unknown),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsPlugins",
@@ -13340,42 +13162,6 @@ export const PresetsUpdateResponseDataPermissionsMedia =
     identifier: "PresetsUpdateResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMedia>;
 
-export type PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
-  "FULL_ACCESS" | "VIEW_ONLY";
-export const PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataPermissionsPluginsConfigValue {
-  accessControl?: PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl | null;
-  handlesViewOnly?: boolean | null;
-}
-export const PresetsUpdateResponseDataPermissionsPluginsConfigValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessControl: S.optional(
-        S.NullOr(
-          PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
-      ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsPluginsConfigValue",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigValue>;
-
-export type PresetsUpdateResponseDataPermissionsPluginsConfigMap = {
-  [key: string]:
-    | PresetsUpdateResponseDataPermissionsPluginsConfigValue
-    | undefined;
-};
-export const PresetsUpdateResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PresetsUpdateResponseDataPermissionsPluginsConfigValue,
-  ) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigMap>;
-
 export interface PresetsUpdateResponseDataPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -13384,7 +13170,7 @@ export interface PresetsUpdateResponseDataPermissionsPlugins {
   /** Can start plugins */
   canStart: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsUpdateResponseDataPermissionsPluginsConfigMap;
+  config: unknown;
 }
 export const PresetsUpdateResponseDataPermissionsPlugins =
   /*@__PURE__*/ S.suspend(() =>
@@ -13392,7 +13178,7 @@ export const PresetsUpdateResponseDataPermissionsPlugins =
       canClose: S.Boolean.pipe(T.Body("can_close")),
       canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
       canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsUpdateResponseDataPermissionsPluginsConfigMap,
+      config: S.Unknown,
     }),
   ).annotate({
     identifier: "PresetsUpdateResponseDataPermissionsPlugins",

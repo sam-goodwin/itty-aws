@@ -943,7 +943,8 @@ export const CertificatePacksGetResponseValidationErrorsList =
 export type CertificatePacksGetResponseValidationMethod =
   | "txt"
   | "http"
-  | "email";
+  | "email"
+  | "cname";
 export const CertificatePacksGetResponseValidationMethod =
   /*@__PURE__*/ S.String;
 

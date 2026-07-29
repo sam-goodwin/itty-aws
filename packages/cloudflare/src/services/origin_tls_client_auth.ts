@@ -817,14 +817,14 @@ export interface HostnamesUpdateRequestConfigItem {
   /** Certificate identifier tag. */
   certId?: string;
   /** Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association. */
-  enabled?: boolean;
+  enabled?: boolean | null;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname?: string;
 }
 export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certId: S.optional(S.String.pipe(T.Body("cert_id"))),
-    enabled: S.optional(S.Boolean),
+    enabled: S.optional(S.NullOr(S.Boolean)),
     hostname: S.optional(S.String),
   }),
 ).annotate({

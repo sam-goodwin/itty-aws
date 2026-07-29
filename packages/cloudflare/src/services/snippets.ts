@@ -276,12 +276,8 @@ export const ListSnippetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSnippetsResponse>;
 
 export interface RulesUpdateRequestRulesItem {
-  /** Specify the unique ID of the rule. */
-  id: string;
   /** Define the expression that determines which traffic matches the rule. */
   expression: string;
-  /** Specify the timestamp of when the rule was last modified. */
-  lastUpdated: string;
   /** Identify the snippet. */
   snippetName: string;
   /** Provide an informative description of the rule. */
@@ -291,9 +287,7 @@ export interface RulesUpdateRequestRulesItem {
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     expression: S.String,
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),

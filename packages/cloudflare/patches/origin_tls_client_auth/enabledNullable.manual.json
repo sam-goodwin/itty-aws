@@ -3,17 +3,17 @@
   "patches": [
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.origin_tls_client_auth#GetHostnameResponse/members/enabled/traits/com.cloudflare.protocols~1nullable",
+      "path": "/shapes/com.cloudflare.origin_tls_client_auth#GetHostnameResponse/members/enabled/traits/com.cloudflare.protocols#nullable",
       "value": {}
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.origin_tls_client_auth#HostnamesUpdateRequestConfigItem/members/enabled/traits/com.cloudflare.protocols~1nullable",
+      "path": "/shapes/com.cloudflare.origin_tls_client_auth#HostnamesUpdateRequestConfigItem/members/enabled/traits/com.cloudflare.protocols#nullable",
       "value": {}
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.origin_tls_client_auth#HostnamesUpdateResultItem/members/enabled/traits/com.cloudflare.protocols~1nullable",
+      "path": "/shapes/com.cloudflare.origin_tls_client_auth#HostnamesUpdateResultItem/members/enabled/traits/com.cloudflare.protocols#nullable",
       "value": {}
     }
   ]
