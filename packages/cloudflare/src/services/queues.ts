@@ -298,7 +298,9 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType =
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageText {
   body?: string;
-  contentType?: MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType;
+  contentType?:
+    | MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType
+    | (string & {});
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
@@ -324,7 +326,9 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType =
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageJson {
   body?: unknown;
-  contentType?: MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType;
+  contentType?:
+    | MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType
+    | (string & {});
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
@@ -933,7 +937,7 @@ export interface SubscriptionsCreateRequestDestination {
   /** ID of the target queue */
   queueId: string;
   /** Type of destination */
-  type: SubscriptionsCreateRequestDestinationType;
+  type: SubscriptionsCreateRequestDestinationType | (string & {});
 }
 export const SubscriptionsCreateRequestDestination = /*@__PURE__*/ S.suspend(
   () =>
@@ -956,7 +960,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceImagesType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceImagesType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceImagesType
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
@@ -973,7 +979,7 @@ export const SubscriptionsCreateRequestSourceMqEventSourceKVType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceKV {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceKVType;
+  type?: SubscriptionsCreateRequestSourceMqEventSourceKVType | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
@@ -990,7 +996,7 @@ export const SubscriptionsCreateRequestSourceMqEventSourceR2Type =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceR2 {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceR2Type;
+  type?: SubscriptionsCreateRequestSourceMqEventSourceR2Type | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1008,7 +1014,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
@@ -1028,7 +1036,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceVectorizeType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceVectorize {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceVectorizeType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceVectorizeType
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
@@ -1050,7 +1060,9 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
@@ -1071,7 +1083,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerTyp
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType
+    | (string & {});
   /** Name of the worker */
   workerName?: string;
 }
@@ -1095,7 +1109,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType 
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType;
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType
+    | (string & {});
   /** Name of the workflow */
   workflowName?: string;
 }
@@ -3517,7 +3533,7 @@ export interface SubscriptionsUpdateRequestDestination {
   /** ID of the target queue */
   queueId: string;
   /** Type of destination */
-  type: SubscriptionsUpdateRequestDestinationType;
+  type: SubscriptionsUpdateRequestDestinationType | (string & {});
 }
 export const SubscriptionsUpdateRequestDestination = /*@__PURE__*/ S.suspend(
   () =>

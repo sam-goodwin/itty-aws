@@ -5270,7 +5270,9 @@ export interface CreateOrUpdateNamespaceInstanceItemRequest {
   id: string;
   /** Item key / filename. Must not exceed 128 characters. */
   key: string;
-  nextAction: NamespacesInstancesItemsCreateOrUpdateRequestNextAction;
+  nextAction:
+    | NamespacesInstancesItemsCreateOrUpdateRequestNextAction
+    | (string & {});
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
   waitForCompletion?: boolean;
 }
@@ -7221,7 +7223,7 @@ export interface ListInstancesRequest {
   /** Filter by namespace. */
   namespace?: string;
   /** Field to order results by. */
-  orderBy?: InstancesListRequestOrderBy;
+  orderBy?: InstancesListRequestOrderBy | (string & {});
   /** Order direction. */
   orderByDirection?: InstancesListRequestOrderByDirection | (string & {});
   /** Page number (1-indexed). */
@@ -8170,7 +8172,7 @@ export interface ListNamespaceInstancesRequest {
   /** Filter by namespace. */
   namespace?: string;
   /** Field to order results by. */
-  orderBy?: NamespacesInstancesListRequestOrderBy;
+  orderBy?: NamespacesInstancesListRequestOrderBy | (string & {});
   /** Order direction. */
   orderByDirection?:
     | NamespacesInstancesListRequestOrderByDirection
@@ -9274,7 +9276,7 @@ export interface PatchNamespaceInstanceJobRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   jobId: string;
-  action: NamespacesInstancesJobsUpdateRequestAction;
+  action: NamespacesInstancesJobsUpdateRequestAction | (string & {});
 }
 export const PatchNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12589,7 +12591,7 @@ export interface SyncNamespaceInstanceItemRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
-  nextAction: NamespacesInstancesItemsSyncRequestNextAction;
+  nextAction: NamespacesInstancesItemsSyncRequestNextAction | (string & {});
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
   waitForCompletion?: boolean;
 }

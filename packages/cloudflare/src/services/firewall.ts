@@ -554,7 +554,9 @@ export const AccessRulesCreateRequestConfigurationAccessRuleIPConfigurationTarge
 
 export interface AccessRulesCreateRequestConfigurationAccessRuleIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
-  target?: AccessRulesCreateRequestConfigurationAccessRuleIPConfigurationTarget;
+  target?:
+    | AccessRulesCreateRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -578,7 +580,9 @@ export const AccessRulesCreateRequestConfigurationIPV6ConfigurationTarget =
 
 export interface AccessRulesCreateRequestConfigurationIPV6Configuration {
   /** The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule. */
-  target?: AccessRulesCreateRequestConfigurationIPV6ConfigurationTarget;
+  target?:
+    | AccessRulesCreateRequestConfigurationIPV6ConfigurationTarget
+    | (string & {});
   /** The IPv6 address to match. */
   value?: string;
 }
@@ -601,7 +605,9 @@ export const AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTar
 
 export interface AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule. */
-  target?: AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTarget;
+  target?:
+    | AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {});
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges. */
   value?: string;
 }
@@ -624,7 +630,9 @@ export const AccessRulesCreateRequestConfigurationASNConfigurationTarget =
 
 export interface AccessRulesCreateRequestConfigurationASNConfiguration {
   /** The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule. */
-  target?: AccessRulesCreateRequestConfigurationASNConfigurationTarget;
+  target?:
+    | AccessRulesCreateRequestConfigurationASNConfigurationTarget
+    | (string & {});
   /** The AS number to match. */
   value?: string;
 }
@@ -647,7 +655,9 @@ export const AccessRulesCreateRequestConfigurationCountryConfigurationTarget =
 
 export interface AccessRulesCreateRequestConfigurationCountryConfiguration {
   /** The configuration target. You must set the target to `country` when specifying a country code in the rule. */
-  target?: AccessRulesCreateRequestConfigurationCountryConfigurationTarget;
+  target?:
+    | AccessRulesCreateRequestConfigurationCountryConfigurationTarget
+    | (string & {});
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string;
 }
@@ -966,7 +976,9 @@ export const LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget =
 
 export interface LockdownsCreateRequestConfigurationsLockdownIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget;
+  target?:
+    | LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -989,7 +1001,9 @@ export const LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
 
 export interface LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget;
+  target?:
+    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
+    | (string & {});
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
   value?: string;
 }
@@ -1324,7 +1338,7 @@ export const UaRulesCreateRequestConfigurationTarget = /*@__PURE__*/ S.String;
 
 export interface UaRulesCreateRequestConfiguration {
   /** The configuration target. You must set the target to `ua` when specifying a user agent in the rule. */
-  target?: UaRulesCreateRequestConfigurationTarget;
+  target?: UaRulesCreateRequestConfigurationTarget | (string & {});
   /** the user agent to exactly match */
   value?: string;
 }
@@ -4046,7 +4060,7 @@ export interface ListWafPackagesRequest {
   /** The name of the WAF package. */
   name?: string;
   /** The field used to sort returned packages. */
-  order?: WafPackagesListRequestOrder;
+  order?: WafPackagesListRequestOrder | (string & {});
   /** The page number of paginated results. */
   page?: number;
   /** The number of packages per page. */
@@ -4089,7 +4103,9 @@ export const AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget 
 
 export interface AccessRulesEditRequestConfigurationAccessRuleIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
-  target?: AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget;
+  target?:
+    | AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -4111,7 +4127,9 @@ export const AccessRulesEditRequestConfigurationIPV6ConfigurationTarget =
 
 export interface AccessRulesEditRequestConfigurationIPV6Configuration {
   /** The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule. */
-  target?: AccessRulesEditRequestConfigurationIPV6ConfigurationTarget;
+  target?:
+    | AccessRulesEditRequestConfigurationIPV6ConfigurationTarget
+    | (string & {});
   /** The IPv6 address to match. */
   value?: string;
 }
@@ -4134,7 +4152,9 @@ export const AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarge
 
 export interface AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule. */
-  target?: AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget;
+  target?:
+    | AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {});
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges. */
   value?: string;
 }
@@ -4157,7 +4177,9 @@ export const AccessRulesEditRequestConfigurationASNConfigurationTarget =
 
 export interface AccessRulesEditRequestConfigurationASNConfiguration {
   /** The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule. */
-  target?: AccessRulesEditRequestConfigurationASNConfigurationTarget;
+  target?:
+    | AccessRulesEditRequestConfigurationASNConfigurationTarget
+    | (string & {});
   /** The AS number to match. */
   value?: string;
 }
@@ -4180,7 +4202,9 @@ export const AccessRulesEditRequestConfigurationCountryConfigurationTarget =
 
 export interface AccessRulesEditRequestConfigurationCountryConfiguration {
   /** The configuration target. You must set the target to `country` when specifying a country code in the rule. */
-  target?: AccessRulesEditRequestConfigurationCountryConfigurationTarget;
+  target?:
+    | AccessRulesEditRequestConfigurationCountryConfigurationTarget
+    | (string & {});
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string;
 }
@@ -5244,7 +5268,9 @@ export const UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget =
 
 export interface UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
-  target?: UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget;
+  target?:
+    | UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -5266,7 +5292,9 @@ export const UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget =
 
 export interface UaRulesUpdateRequestConfigurationIPV6Configuration {
   /** The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule. */
-  target?: UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget;
+  target?:
+    | UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget
+    | (string & {});
   /** The IPv6 address to match. */
   value?: string;
 }
@@ -5289,7 +5317,9 @@ export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget 
 
 export interface UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule. */
-  target?: UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget;
+  target?:
+    | UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {});
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges. */
   value?: string;
 }
@@ -5311,7 +5341,9 @@ export const UaRulesUpdateRequestConfigurationASNConfigurationTarget =
 
 export interface UaRulesUpdateRequestConfigurationASNConfiguration {
   /** The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule. */
-  target?: UaRulesUpdateRequestConfigurationASNConfigurationTarget;
+  target?:
+    | UaRulesUpdateRequestConfigurationASNConfigurationTarget
+    | (string & {});
   /** The AS number to match. */
   value?: string;
 }
@@ -5334,7 +5366,9 @@ export const UaRulesUpdateRequestConfigurationCountryConfigurationTarget =
 
 export interface UaRulesUpdateRequestConfigurationCountryConfiguration {
   /** The configuration target. You must set the target to `country` when specifying a country code in the rule. */
-  target?: UaRulesUpdateRequestConfigurationCountryConfigurationTarget;
+  target?:
+    | UaRulesUpdateRequestConfigurationCountryConfigurationTarget
+    | (string & {});
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string;
 }

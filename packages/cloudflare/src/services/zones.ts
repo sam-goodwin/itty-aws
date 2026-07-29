@@ -8746,7 +8746,7 @@ export const SettingsBulkEditRequestBodyItemSSLRecommenderId =
 
 export interface SettingsBulkEditRequestBodyItemSSLRecommender {
   /** Enrollment value for SSL/TLS Recommender. */
-  id?: SettingsBulkEditRequestBodyItemSSLRecommenderId;
+  id?: SettingsBulkEditRequestBodyItemSSLRecommenderId | (string & {});
   /** ssl-recommender enrollment setting. */
   enabled?: boolean;
 }

@@ -428,20 +428,41 @@ export const generateService = (
     selected.map((op) => op.def.__input),
     shapeDeps,
   );
+  // Discriminant enums: single-value enums required by a union-arm
+  // structure (e.g. the worker binding `type: "ai"` literals). These stay
+  // CLOSED even on the request side — consumers and the union's TS
+  // narrowing rely on the exact literal (v0 parity).
+  const discriminantEnums = new Set<string>();
+  for (const d of Object.values(shapes) as any[]) {
+    if (d?.type !== "union") continue;
+    for (const um of Object.values(d.members ?? {}) as any[]) {
+      const arm = shapes[um.target];
+      if (arm?.type !== "structure") continue;
+      for (const am of Object.values(arm.members ?? {}) as any[]) {
+        const t = shapes[am.target];
+        if (
+          (t?.type === "enum" || t?.type === "intEnum") &&
+          Object.keys(t.members ?? {}).length === 1 &&
+          am.traits?.["smithy.api#required"] !== undefined
+        ) {
+          discriminantEnums.add(am.target);
+        }
+      }
+    }
+  }
   /**
    * TS reference with direction-aware enum openness. Any reference inside a
    * request-reachable shape re-opens the enum inline — including shapes
    * shared with responses (a value you can SEND must accept undocumented
    * members, and response runtime is open regardless). References inside
    * pure response/error shapes stay the plain closed alias, and so do
-   * SINGLE-value enums (they are discriminant literals like
-   * `type: "ai"`, not open value sets — v0 parity).
+   * union-arm discriminant literals.
    */
   const tsRefAt = (target: string, ownerId: string): string => {
     const base = tsRef(target);
     if (!requestReachable.has(ownerId)) return base;
+    if (discriminantEnums.has(target)) return base;
     const d = shapes[target];
-    if (Object.keys(d?.members ?? {}).length < 2) return base;
     if (d?.type === "enum") return `${base} | (string & {})`;
     if (d?.type === "intEnum") return `${base} | (number & {})`;
     return base;

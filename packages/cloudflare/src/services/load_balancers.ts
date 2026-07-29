@@ -189,7 +189,7 @@ export interface BulkPatchPoolsRequest {
   /** Identifier. */
   accountId: string;
   /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
-  notificationEmail?: PoolsBulkEditRequestNotificationEmail;
+  notificationEmail?: PoolsBulkEditRequestNotificationEmail | (string & {});
 }
 export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -338,12 +338,14 @@ export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
 
 export interface PoolsBulkEditResultItemOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsBulkEditResultItemOriginsItemHeaderHostList;
+  host?: PoolsBulkEditResultItemOriginsItemHeaderHostList;
 }
 export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Host: S.optional(PoolsBulkEditResultItemOriginsItemHeaderHostList),
+      host: S.optional(
+        PoolsBulkEditResultItemOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      ),
     }),
 ).annotate({
   identifier: "PoolsBulkEditResultItemOriginsItemHeader",
@@ -1914,11 +1916,13 @@ export const PoolsCreateRequestOriginsItemHeaderHostList =
 
 export interface PoolsCreateRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsCreateRequestOriginsItemHeaderHostList;
+  host?: PoolsCreateRequestOriginsItemHeaderHostList;
 }
 export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Host: S.optional(PoolsCreateRequestOriginsItemHeaderHostList),
+    host: S.optional(
+      PoolsCreateRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+    ),
   }),
 ).annotate({
   identifier: "PoolsCreateRequestOriginsItemHeader",
@@ -1982,7 +1986,7 @@ export interface PoolsCreateRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2243,12 +2247,14 @@ export const PoolsCreateResponseOriginsItemHeaderHostList =
 
 export interface PoolsCreateResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsCreateResponseOriginsItemHeaderHostList;
+  host?: PoolsCreateResponseOriginsItemHeaderHostList;
 }
 export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Host: S.optional(PoolsCreateResponseOriginsItemHeaderHostList),
+      host: S.optional(
+        PoolsCreateResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      ),
     }),
 ).annotate({
   identifier: "PoolsCreateResponseOriginsItemHeader",
@@ -3644,11 +3650,13 @@ export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsGetResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsGetResponseOriginsItemHeaderHostList;
+  host?: PoolsGetResponseOriginsItemHeaderHostList;
 }
 export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Host: S.optional(PoolsGetResponseOriginsItemHeaderHostList),
+    host: S.optional(
+      PoolsGetResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+    ),
   }),
 ).annotate({
   identifier: "PoolsGetResponseOriginsItemHeader",
@@ -4964,12 +4972,14 @@ export const PoolsListResultItemOriginsItemHeaderHostList =
 
 export interface PoolsListResultItemOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsListResultItemOriginsItemHeaderHostList;
+  host?: PoolsListResultItemOriginsItemHeaderHostList;
 }
 export const PoolsListResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Host: S.optional(PoolsListResultItemOriginsItemHeaderHostList),
+      host: S.optional(
+        PoolsListResultItemOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      ),
     }),
 ).annotate({
   identifier: "PoolsListResultItemOriginsItemHeader",
@@ -6573,7 +6583,7 @@ export interface PoolsEditRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6647,11 +6657,13 @@ export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsEditRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsEditRequestOriginsItemHeaderHostList;
+  host?: PoolsEditRequestOriginsItemHeaderHostList;
 }
 export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Host: S.optional(PoolsEditRequestOriginsItemHeaderHostList),
+    host: S.optional(
+      PoolsEditRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+    ),
   }),
 ).annotate({
   identifier: "PoolsEditRequestOriginsItemHeader",
@@ -6888,11 +6900,13 @@ export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 
 export interface PoolsEditResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsEditResponseOriginsItemHeaderHostList;
+  host?: PoolsEditResponseOriginsItemHeaderHostList;
 }
 export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Host: S.optional(PoolsEditResponseOriginsItemHeaderHostList),
+    host: S.optional(
+      PoolsEditResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+    ),
   }),
 ).annotate({
   identifier: "PoolsEditResponseOriginsItemHeader",
@@ -8334,11 +8348,13 @@ export const PoolsUpdateRequestOriginsItemHeaderHostList =
 
 export interface PoolsUpdateRequestOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsUpdateRequestOriginsItemHeaderHostList;
+  host?: PoolsUpdateRequestOriginsItemHeaderHostList;
 }
 export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Host: S.optional(PoolsUpdateRequestOriginsItemHeaderHostList),
+    host: S.optional(
+      PoolsUpdateRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
+    ),
   }),
 ).annotate({
   identifier: "PoolsUpdateRequestOriginsItemHeader",
@@ -8426,7 +8442,7 @@ export interface PoolsUpdateRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy;
+  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
 }
 export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8694,12 +8710,14 @@ export const PoolsUpdateResponseOriginsItemHeaderHostList =
 
 export interface PoolsUpdateResponseOriginsItemHeader {
   /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsUpdateResponseOriginsItemHeaderHostList;
+  host?: PoolsUpdateResponseOriginsItemHeaderHostList;
 }
 export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Host: S.optional(PoolsUpdateResponseOriginsItemHeaderHostList),
+      host: S.optional(
+        PoolsUpdateResponseOriginsItemHeaderHostList.pipe(T.Body("Host")),
+      ),
     }),
 ).annotate({
   identifier: "PoolsUpdateResponseOriginsItemHeader",

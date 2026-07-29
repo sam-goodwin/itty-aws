@@ -2756,7 +2756,7 @@ export interface CreatePcapRequest {
   /** The limit of packets contained in a packet capture. */
   packetLimit?: number;
   /** The system used to collect packet captures. */
-  system: PcapsCreateRequestSystem;
+  system: PcapsCreateRequestSystem | (string & {});
   /** The packet capture duration in seconds. */
   timeLimit: number;
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */

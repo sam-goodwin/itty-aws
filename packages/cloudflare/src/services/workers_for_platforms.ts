@@ -8300,7 +8300,9 @@ export interface PutDispatchNamespaceScriptRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the script. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: DispatchNamespacesScriptsUpdateRequestBindingsInherit;
+  bindingsInherit?:
+    | DispatchNamespacesScriptsUpdateRequestBindingsInherit
+    | (string & {});
   metadata: PutDispatchNamespaceScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
   files?: (File | Blob)[];

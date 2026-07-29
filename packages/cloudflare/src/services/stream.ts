@@ -1345,7 +1345,7 @@ export interface CreateStreamRequest {
   /** Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients. */
   directUser?: boolean;
   /** Specifies the TUS protocol version. This value must be included in every upload request. */
-  tusResumable: CreateRequestTusResumable;
+  tusResumable: CreateRequestTusResumable | (string & {});
   /** Indicates the size of the entire upload in bytes. The value must be a non-negative integer. */
   uploadLength: number;
   /** A user-defined identifier for the media creator. */

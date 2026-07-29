@@ -748,7 +748,7 @@ export const RegistrationsCreateRequestPrivacyMode = /*@__PURE__*/ S.String;
 export interface RegistrationsCreateRequest {
   /** Identifier */
   accountId: string;
-  Prefer?: string;
+  prefer?: string;
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
   /** Enable or disable automatic renewal. Defaults to `false` if omitted. */
@@ -756,14 +756,14 @@ export interface RegistrationsCreateRequest {
   /** Contact data for the registration request. */
   contacts?: RegistrationsCreateRequestContacts;
   /** WHOIS privacy mode for the registration. Defaults to `redaction`. */
-  privacyMode?: RegistrationsCreateRequestPrivacyMode;
+  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {});
   /** Number of years to register (1–10). If omitted, defaults to the */
   years?: number;
 }
 export const RegistrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    Prefer: S.optional(S.String.pipe(T.Header())),
+    prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     domainName: S.String.pipe(T.Body("domain_name")),
     autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
     contacts: S.optional(RegistrationsCreateRequestContacts),
@@ -867,7 +867,7 @@ export interface RegistrationsEditRequest {
   accountId: string;
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
-  Prefer?: RegistrationsEditRequestPrefer;
+  prefer?: RegistrationsEditRequestPrefer | (string & {});
   /** Enable or disable automatic renewal. */
   autoRenew?: boolean;
 }
@@ -875,7 +875,7 @@ export const RegistrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-    Prefer: S.optional(RegistrationsEditRequestPrefer.pipe(T.Header())),
+    prefer: S.optional(RegistrationsEditRequestPrefer.pipe(T.Header("Prefer"))),
     autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
   })
     .pipe(

@@ -817,7 +817,7 @@ export interface CreateConfigurationRequest {
   description: string;
   title: string;
   tokenSources: ConfigurationCreateRequestTokenSourcesList;
-  tokenType: ConfigurationCreateRequestTokenType;
+  tokenType: ConfigurationCreateRequestTokenType | (string & {});
 }
 export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

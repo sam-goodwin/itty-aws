@@ -72,7 +72,7 @@ export interface CreateEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
   /** type of check to perform */
-  checkType: EndpointHealthchecksCreateRequestCheckType;
+  checkType: EndpointHealthchecksCreateRequestCheckType | (string & {});
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
@@ -518,7 +518,7 @@ export interface UpdateEndpointHealthcheckRequest {
   /** UUID. */
   id: string;
   /** type of check to perform */
-  checkType: EndpointHealthchecksUpdateRequestCheckType;
+  checkType: EndpointHealthchecksUpdateRequestCheckType | (string & {});
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */

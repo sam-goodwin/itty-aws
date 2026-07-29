@@ -591,8 +591,9 @@ export type PoliciesCreateRequestFiltersTrafficExclusionsItem =
 export const PoliciesCreateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesCreateRequestFiltersTrafficExclusionsList =
-  Array<PoliciesCreateRequestFiltersTrafficExclusionsItem>;
+export type PoliciesCreateRequestFiltersTrafficExclusionsList = Array<
+  PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
+>;
 export const PoliciesCreateRequestFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesCreateRequestFiltersTrafficExclusionsItem,
@@ -3374,8 +3375,9 @@ export type PoliciesUpdateRequestFiltersTrafficExclusionsItem =
 export const PoliciesUpdateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersTrafficExclusionsList =
-  Array<PoliciesUpdateRequestFiltersTrafficExclusionsItem>;
+export type PoliciesUpdateRequestFiltersTrafficExclusionsList = Array<
+  PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
+>;
 export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesUpdateRequestFiltersTrafficExclusionsItem,

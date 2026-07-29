@@ -759,7 +759,9 @@ export interface PutHostnameIpfsUniversalPathContentListRequest {
   /** Specify the identifier of the hostname. */
   identifier: string;
   /** Behavior of the content list. */
-  action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction;
+  action:
+    | HostnamesIpfsUniversalPathsContentListsUpdateRequestAction
+    | (string & {});
   /** Provides content list entries. */
   entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList;
 }

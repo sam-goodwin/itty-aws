@@ -4923,25 +4923,25 @@ export const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface VersionDevtoolBrowserResponse {
   /** Browser name and version. */
-  Browser: string;
+  browser: string;
   /** Chrome DevTools Protocol version. */
-  ProtocolVersion: string;
+  protocolVersion: string;
   /** User agent string. */
-  UserAgent: string;
+  userAgent: string;
   /** V8 JavaScript engine version. */
-  V8Version: string;
+  v8Version: string;
   /** WebKit version. */
-  WebKitVersion: string;
+  webKitVersion: string;
   /** WebSocket URL for debugging the browser. */
   webSocketDebuggerUrl: string;
 }
 export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Browser: S.String,
-    ProtocolVersion: S.String.pipe(T.Body("Protocol-Version")),
-    UserAgent: S.String.pipe(T.Body("User-Agent")),
-    V8Version: S.String.pipe(T.Body("V8-Version")),
-    WebKitVersion: S.String.pipe(T.Body("WebKit-Version")),
+    browser: S.String.pipe(T.Body("Browser")),
+    protocolVersion: S.String.pipe(T.Body("Protocol-Version")),
+    userAgent: S.String.pipe(T.Body("User-Agent")),
+    v8Version: S.String.pipe(T.Body("V8-Version")),
+    webKitVersion: S.String.pipe(T.Body("WebKit-Version")),
     webSocketDebuggerUrl: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

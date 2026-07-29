@@ -265,7 +265,7 @@ export interface RulesCreateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesCreateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesCreateRequestMatchersItemField;
+  field?: RulesCreateRequestMatchersItemField | (string & {});
   /** Value for matcher. */
   value?: string;
 }
@@ -1358,7 +1358,7 @@ export const RulesCatchAllsUpdateRequestMatchersItemType =
 
 export interface RulesCatchAllsUpdateRequestMatchersItem {
   /** Type of matcher. Default is 'all'. */
-  type: RulesCatchAllsUpdateRequestMatchersItemType;
+  type: RulesCatchAllsUpdateRequestMatchersItemType | (string & {});
 }
 export const RulesCatchAllsUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1609,7 +1609,7 @@ export interface RulesUpdateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesUpdateRequestMatchersItemField;
+  field?: RulesUpdateRequestMatchersItemField | (string & {});
   /** Value for matcher. */
   value?: string;
 }

@@ -237,63 +237,63 @@ export const UsageGetResultItemChargeClass = /*@__PURE__*/ S.String;
 
 export interface UsageGetResultItem {
   /** Public identifier of the Cloudflare account (account tag). */
-  BillingAccountId: string;
+  billingAccountId: string;
   /** Display name of the Cloudflare account. */
-  BillingAccountName: string;
+  billingAccountName: string;
   /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
-  ChargeCategory: UsageGetResultItemChargeCategory;
+  chargeCategory: UsageGetResultItemChargeCategory;
   /** Self-contained summary of the charge's purpose and price. */
-  ChargeDescription: string;
+  chargeDescription: string;
   /** Indicates how often a charge occurs. Currently only "Usage-Based" is supported. */
-  ChargeFrequency: UsageGetResultItemChargeFrequency;
+  chargeFrequency: UsageGetResultItemChargeFrequency;
   /** Exclusive end of the time interval during which the usage was consumed. */
-  ChargePeriodEnd: string;
+  chargePeriodEnd: string;
   /** Inclusive start of the time interval during which the usage was consumed. */
-  ChargePeriodStart: string;
+  chargePeriodStart: string;
   /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
-  ConsumedQuantity: number;
+  consumedQuantity: number;
   /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
-  ConsumedUnit: string;
+  consumedUnit: string;
   /** Name of the entity providing the underlying infrastructure or platform. */
-  HostProviderName: string;
+  hostProviderName: string;
   /** Name of the entity responsible for invoicing for the services consumed. */
-  InvoiceIssuerName: string;
+  invoiceIssuerName: string;
   /** Name of the entity that made the services available for purchase. */
-  ServiceProviderName: string;
+  serviceProviderName: string;
   /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
   xBillableMetricName: string;
   /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
-  BilledCost?: number;
+  billedCost?: number;
   /** Currency that a charge was billed in (ISO 4217). */
-  BillingCurrency?: string;
+  billingCurrency?: string;
   /** Exclusive end of the billing cycle that contains this usage record. */
-  BillingPeriodEnd?: string;
+  billingPeriodEnd?: string;
   /** Inclusive start of the billing cycle that contains this usage record. */
-  BillingPeriodStart?: string;
+  billingPeriodStart?: string;
   /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
-  ChargeClass?: UsageGetResultItemChargeClass;
+  chargeClass?: UsageGetResultItemChargeClass;
   /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
-  ContractedCost?: number;
+  contractedCost?: number;
   /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
-  ContractedUnitPrice?: number;
+  contractedUnitPrice?: number;
   /** The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge. */
-  EffectiveCost?: number;
+  effectiveCost?: number;
   /** Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity. */
-  ListCost?: number;
+  listCost?: number;
   /** Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts. */
-  ListUnitPrice?: number;
+  listUnitPrice?: number;
   /** Volume of a given service used or purchased, based on the PricingUnit. */
-  PricingQuantity?: number;
+  pricingQuantity?: number;
   /** Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing. */
-  PricingUnit?: string;
+  pricingUnit?: string;
   /** Provider-assigned identifier for an isolated geographic area where a service is provided. */
-  RegionId?: string;
+  regionId?: string;
   /** Name of an isolated geographic area where a service is provided. */
-  RegionName?: string;
+  regionName?: string;
   /** Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID. */
-  SubAccountId?: string;
+  subAccountId?: string;
   /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
-  SubAccountName?: string;
+  subAccountName?: string;
   /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
   xBillableMetricId?: string;
   /** The product family the charge belongs to (e.g., "R2", "Workers"). Cloudflare extension; replaces FOCUS ServiceName. */
@@ -305,35 +305,43 @@ export interface UsageGetResultItem {
 }
 export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    BillingAccountId: S.String,
-    BillingAccountName: S.String,
-    ChargeCategory: UsageGetResultItemChargeCategory,
-    ChargeDescription: S.String,
-    ChargeFrequency: UsageGetResultItemChargeFrequency,
-    ChargePeriodEnd: S.String,
-    ChargePeriodStart: S.String,
-    ConsumedQuantity: S.Number,
-    ConsumedUnit: S.String,
-    HostProviderName: S.String,
-    InvoiceIssuerName: S.String,
-    ServiceProviderName: S.String,
+    billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
+    billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
+    chargeCategory: UsageGetResultItemChargeCategory.pipe(
+      T.Body("ChargeCategory"),
+    ),
+    chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
+    chargeFrequency: UsageGetResultItemChargeFrequency.pipe(
+      T.Body("ChargeFrequency"),
+    ),
+    chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
+    chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
+    consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
+    consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
+    hostProviderName: S.String.pipe(T.Body("HostProviderName")),
+    invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
+    serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
     xBillableMetricName: S.String.pipe(T.Body("x_BillableMetricName")),
-    BilledCost: S.optional(S.Number),
-    BillingCurrency: S.optional(S.String),
-    BillingPeriodEnd: S.optional(S.String),
-    BillingPeriodStart: S.optional(S.String),
-    ChargeClass: S.optional(UsageGetResultItemChargeClass),
-    ContractedCost: S.optional(S.Number),
-    ContractedUnitPrice: S.optional(S.Number),
-    EffectiveCost: S.optional(S.Number),
-    ListCost: S.optional(S.Number),
-    ListUnitPrice: S.optional(S.Number),
-    PricingQuantity: S.optional(S.Number),
-    PricingUnit: S.optional(S.String),
-    RegionId: S.optional(S.String),
-    RegionName: S.optional(S.String),
-    SubAccountId: S.optional(S.String),
-    SubAccountName: S.optional(S.String),
+    billedCost: S.optional(S.Number.pipe(T.Body("BilledCost"))),
+    billingCurrency: S.optional(S.String.pipe(T.Body("BillingCurrency"))),
+    billingPeriodEnd: S.optional(S.String.pipe(T.Body("BillingPeriodEnd"))),
+    billingPeriodStart: S.optional(S.String.pipe(T.Body("BillingPeriodStart"))),
+    chargeClass: S.optional(
+      UsageGetResultItemChargeClass.pipe(T.Body("ChargeClass")),
+    ),
+    contractedCost: S.optional(S.Number.pipe(T.Body("ContractedCost"))),
+    contractedUnitPrice: S.optional(
+      S.Number.pipe(T.Body("ContractedUnitPrice")),
+    ),
+    effectiveCost: S.optional(S.Number.pipe(T.Body("EffectiveCost"))),
+    listCost: S.optional(S.Number.pipe(T.Body("ListCost"))),
+    listUnitPrice: S.optional(S.Number.pipe(T.Body("ListUnitPrice"))),
+    pricingQuantity: S.optional(S.Number.pipe(T.Body("PricingQuantity"))),
+    pricingUnit: S.optional(S.String.pipe(T.Body("PricingUnit"))),
+    regionId: S.optional(S.String.pipe(T.Body("RegionId"))),
+    regionName: S.optional(S.String.pipe(T.Body("RegionName"))),
+    subAccountId: S.optional(S.String.pipe(T.Body("SubAccountId"))),
+    subAccountName: S.optional(S.String.pipe(T.Body("SubAccountName"))),
     xBillableMetricId: S.optional(S.String.pipe(T.Body("x_BillableMetricId"))),
     xProductFamilyName: S.optional(
       S.String.pipe(T.Body("x_ProductFamilyName")),
@@ -385,53 +393,53 @@ export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UsagePaygoResultItem {
   /** Specifies the billing currency code (ISO 4217). */
-  BillingCurrency: string;
+  billingCurrency: string;
   /** Indicates the start of the billing period. */
-  BillingPeriodStart: string;
+  billingPeriodStart: string;
   /** Indicates the end of the charge period. */
-  ChargePeriodEnd: string;
+  chargePeriodEnd: string;
   /** Indicates the start of the charge period. */
-  ChargePeriodStart: string;
+  chargePeriodStart: string;
   /** Specifies the quantity consumed during this charge period. */
-  ConsumedQuantity: number;
+  consumedQuantity: number;
   /** A display name for the unit of measurement used for the product (for example, "GB-months", "GB-seconds"). May be empty when the unit is implicit in the service name. */
-  ConsumedUnit: string;
+  consumedUnit: string;
   /** Specifies the cost for this charge period in the billing currency. */
-  ContractedCost: number;
+  contractedCost: number;
   /** Specifies the cumulated cost for the billing period in the billing currency. */
-  CumulatedContractedCost: number;
+  cumulatedContractedCost: number;
   /** Specifies the cumulated pricing quantity for the billing period. */
-  CumulatedPricingQuantity: number;
+  cumulatedPricingQuantity: number;
   /** Specifies the pricing quantity for this charge period. */
-  PricingQuantity: number;
+  pricingQuantity: number;
   /** Identifies the Cloudflare service. */
-  ServiceName: string;
+  serviceName: string;
   /** Identifies the product family for the Cloudflare service. */
-  ServiceFamilyName?: string;
+  serviceFamilyName?: string;
   /** The identifier for the Cloudflare subscription. */
-  SubscriptionId?: string;
+  subscriptionId?: string;
   /** The identifier for the Cloudflare zone (zone tag). */
-  ZoneId?: string;
+  zoneId?: string;
   /** The display name of the Cloudflare zone. */
-  ZoneName?: string;
+  zoneName?: string;
 }
 export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    BillingCurrency: S.String,
-    BillingPeriodStart: S.String,
-    ChargePeriodEnd: S.String,
-    ChargePeriodStart: S.String,
-    ConsumedQuantity: S.Number,
-    ConsumedUnit: S.String,
-    ContractedCost: S.Number,
-    CumulatedContractedCost: S.Number,
-    CumulatedPricingQuantity: S.Number,
-    PricingQuantity: S.Number,
-    ServiceName: S.String,
-    ServiceFamilyName: S.optional(S.String),
-    SubscriptionId: S.optional(S.String),
-    ZoneId: S.optional(S.String),
-    ZoneName: S.optional(S.String),
+    billingCurrency: S.String.pipe(T.Body("BillingCurrency")),
+    billingPeriodStart: S.String.pipe(T.Body("BillingPeriodStart")),
+    chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
+    chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
+    consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
+    consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
+    contractedCost: S.Number.pipe(T.Body("ContractedCost")),
+    cumulatedContractedCost: S.Number.pipe(T.Body("CumulatedContractedCost")),
+    cumulatedPricingQuantity: S.Number.pipe(T.Body("CumulatedPricingQuantity")),
+    pricingQuantity: S.Number.pipe(T.Body("PricingQuantity")),
+    serviceName: S.String.pipe(T.Body("ServiceName")),
+    serviceFamilyName: S.optional(S.String.pipe(T.Body("ServiceFamilyName"))),
+    subscriptionId: S.optional(S.String.pipe(T.Body("SubscriptionId"))),
+    zoneId: S.optional(S.String.pipe(T.Body("ZoneId"))),
+    zoneName: S.optional(S.String.pipe(T.Body("ZoneName"))),
   }),
 ).annotate({
   identifier: "UsagePaygoResultItem",

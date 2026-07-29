@@ -51,7 +51,7 @@ export const CreateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: CreateRequestActionsItemAlwaysUseHTTPSId;
+  id?: CreateRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const CreateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
@@ -73,7 +73,7 @@ export const CreateRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface CreateRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: CreateRequestActionsItemAutomaticHTTPSRewritesId;
+  id?: CreateRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
   value?: CreateRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
@@ -92,7 +92,7 @@ export const CreateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: CreateRequestActionsItemBrowserCacheTTLId;
+  id?: CreateRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
   value?: number;
 }
@@ -114,7 +114,7 @@ export const CreateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: CreateRequestActionsItemBrowserCheckId;
+  id?: CreateRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
   value?: CreateRequestActionsItemBrowserCheckValue | (string & {});
 }
@@ -135,7 +135,7 @@ export const CreateRequestActionsItemBypassCacheOnCookieId =
 
 export interface CreateRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: CreateRequestActionsItemBypassCacheOnCookieId;
+  id?: CreateRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -160,7 +160,7 @@ export const CreateRequestActionsItemCacheByDeviceTypeValue =
 
 export interface CreateRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: CreateRequestActionsItemCacheByDeviceTypeId;
+  id?: CreateRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
   value?: CreateRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
@@ -185,7 +185,7 @@ export const CreateRequestActionsItemCacheDeceptionArmorValue =
 
 export interface CreateRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: CreateRequestActionsItemCacheDeceptionArmorId;
+  id?: CreateRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
   value?: CreateRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
@@ -405,7 +405,7 @@ export const CreateRequestActionsItemCacheKeyFieldsValue =
 
 export interface CreateRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: CreateRequestActionsItemCacheKeyFieldsId;
+  id?: CreateRequestActionsItemCacheKeyFieldsId | (string & {});
   value?: CreateRequestActionsItemCacheKeyFieldsValue;
 }
 export const CreateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
@@ -431,7 +431,7 @@ export const CreateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: CreateRequestActionsItemCacheLevelId;
+  id?: CreateRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
   value?: CreateRequestActionsItemCacheLevelValue | (string & {});
 }
@@ -449,7 +449,7 @@ export const CreateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: CreateRequestActionsItemCacheOnCookieId;
+  id?: CreateRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -481,7 +481,7 @@ export const CreateRequestActionsItemCacheTTLByStatusValue =
 
 export interface CreateRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: CreateRequestActionsItemCacheTTLByStatusId;
+  id?: CreateRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
   value?: CreateRequestActionsItemCacheTTLByStatusValue;
 }
@@ -500,7 +500,7 @@ export const CreateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: CreateRequestActionsItemDisableAppsId;
+  id?: CreateRequestActionsItemDisableAppsId | (string & {});
 }
 export const CreateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -517,7 +517,7 @@ export const CreateRequestActionsItemDisablePerformanceId =
 
 export interface CreateRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: CreateRequestActionsItemDisablePerformanceId;
+  id?: CreateRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const CreateRequestActionsItemDisablePerformance =
   /*@__PURE__*/ S.suspend(() =>
@@ -533,7 +533,7 @@ export const CreateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: CreateRequestActionsItemDisableSecurityId;
+  id?: CreateRequestActionsItemDisableSecurityId | (string & {});
 }
 export const CreateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
@@ -549,7 +549,7 @@ export const CreateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: CreateRequestActionsItemDisableZarazId;
+  id?: CreateRequestActionsItemDisableZarazId | (string & {});
 }
 export const CreateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   () =>
@@ -565,7 +565,7 @@ export const CreateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: CreateRequestActionsItemEdgeCacheTTLId;
+  id?: CreateRequestActionsItemEdgeCacheTTLId | (string & {});
   value?: number;
 }
 export const CreateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
@@ -588,7 +588,7 @@ export const CreateRequestActionsItemEmailObfuscationValue =
 
 export interface CreateRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: CreateRequestActionsItemEmailObfuscationId;
+  id?: CreateRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
   value?: CreateRequestActionsItemEmailObfuscationValue | (string & {});
 }
@@ -613,7 +613,7 @@ export const CreateRequestActionsItemExplicitCacheControlValue =
 
 export interface CreateRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: CreateRequestActionsItemExplicitCacheControlId;
+  id?: CreateRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
   value?: CreateRequestActionsItemExplicitCacheControlValue | (string & {});
 }
@@ -658,7 +658,7 @@ export const CreateRequestActionsItemForwardingURLValue =
 
 export interface CreateRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: CreateRequestActionsItemForwardingURLId;
+  id?: CreateRequestActionsItemForwardingURLId | (string & {});
   value?: CreateRequestActionsItemForwardingURLValue;
 }
 export const CreateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
@@ -678,7 +678,7 @@ export const CreateRequestActionsItemHostHeaderOverrideId =
 
 export interface CreateRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: CreateRequestActionsItemHostHeaderOverrideId;
+  id?: CreateRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
   value?: string;
 }
@@ -701,7 +701,7 @@ export const CreateRequestActionsItemIPGeolocationValue =
 
 export interface CreateRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: CreateRequestActionsItemIPGeolocationId;
+  id?: CreateRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
   value?: CreateRequestActionsItemIPGeolocationValue | (string & {});
 }
@@ -723,7 +723,7 @@ export const CreateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: CreateRequestActionsItemMirageId;
+  id?: CreateRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
   value?: CreateRequestActionsItemMirageValue | (string & {});
 }
@@ -747,7 +747,7 @@ export const CreateRequestActionsItemOpportunisticEncryptionValue =
 
 export interface CreateRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: CreateRequestActionsItemOpportunisticEncryptionId;
+  id?: CreateRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
   value?: CreateRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
@@ -772,7 +772,7 @@ export const CreateRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface CreateRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: CreateRequestActionsItemOriginErrorPagePassThruId;
+  id?: CreateRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
   value?: CreateRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
@@ -794,7 +794,7 @@ export const CreateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: CreateRequestActionsItemPolishId;
+  id?: CreateRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
   value?: CreateRequestActionsItemPolishValue | (string & {});
 }
@@ -812,7 +812,7 @@ export const CreateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: CreateRequestActionsItemResolveOverrideId;
+  id?: CreateRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
   value?: string;
 }
@@ -836,7 +836,7 @@ export const CreateRequestActionsItemRespectStrongEtagValue =
 
 export interface CreateRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: CreateRequestActionsItemRespectStrongEtagId;
+  id?: CreateRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
   value?: CreateRequestActionsItemRespectStrongEtagValue | (string & {});
 }
@@ -860,7 +860,7 @@ export const CreateRequestActionsItemResponseBufferingValue =
 
 export interface CreateRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: CreateRequestActionsItemResponseBufferingId;
+  id?: CreateRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
   value?: CreateRequestActionsItemResponseBufferingValue | (string & {});
 }
@@ -882,7 +882,7 @@ export const CreateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: CreateRequestActionsItemRocketLoaderId;
+  id?: CreateRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
   value?: CreateRequestActionsItemRocketLoaderValue | (string & {});
 }
@@ -911,7 +911,7 @@ export const CreateRequestActionsItemSecurityLevelValue =
 
 export interface CreateRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: CreateRequestActionsItemSecurityLevelId;
+  id?: CreateRequestActionsItemSecurityLevelId | (string & {});
   value?: CreateRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const CreateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
@@ -935,7 +935,7 @@ export const CreateRequestActionsItemSortQueryStringForCacheValue =
 
 export interface CreateRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: CreateRequestActionsItemSortQueryStringForCacheId;
+  id?: CreateRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
   value?: CreateRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
@@ -962,7 +962,7 @@ export const CreateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: CreateRequestActionsItemSSLId;
+  id?: CreateRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
   value?: CreateRequestActionsItemSSLValue | (string & {});
 }
@@ -986,7 +986,7 @@ export const CreateRequestActionsItemTrueClientIPHeaderValue =
 
 export interface CreateRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: CreateRequestActionsItemTrueClientIPHeaderId;
+  id?: CreateRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
   value?: CreateRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
@@ -1008,7 +1008,7 @@ export const CreateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: CreateRequestActionsItemWAFId;
+  id?: CreateRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
   value?: CreateRequestActionsItemWAFValue | (string & {});
 }
@@ -1131,7 +1131,7 @@ export interface CreateRequestTargetsItem {
   /** String constraint. */
   constraint?: CreateRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: CreateRequestTargetsItemTarget;
+  target?: CreateRequestTargetsItemTarget | (string & {});
 }
 export const CreateRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4697,7 +4697,7 @@ export const EditRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: EditRequestActionsItemAlwaysUseHTTPSId;
+  id?: EditRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const EditRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
@@ -4719,7 +4719,7 @@ export const EditRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface EditRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: EditRequestActionsItemAutomaticHTTPSRewritesId;
+  id?: EditRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
   value?: EditRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
@@ -4738,7 +4738,7 @@ export const EditRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: EditRequestActionsItemBrowserCacheTTLId;
+  id?: EditRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
   value?: number;
 }
@@ -4760,7 +4760,7 @@ export const EditRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: EditRequestActionsItemBrowserCheckId;
+  id?: EditRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
   value?: EditRequestActionsItemBrowserCheckValue | (string & {});
 }
@@ -4780,7 +4780,7 @@ export const EditRequestActionsItemBypassCacheOnCookieId =
 
 export interface EditRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: EditRequestActionsItemBypassCacheOnCookieId;
+  id?: EditRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -4803,7 +4803,7 @@ export const EditRequestActionsItemCacheByDeviceTypeValue =
 
 export interface EditRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: EditRequestActionsItemCacheByDeviceTypeId;
+  id?: EditRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
   value?: EditRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
@@ -4828,7 +4828,7 @@ export const EditRequestActionsItemCacheDeceptionArmorValue =
 
 export interface EditRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: EditRequestActionsItemCacheDeceptionArmorId;
+  id?: EditRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
   value?: EditRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
@@ -5048,7 +5048,7 @@ export const EditRequestActionsItemCacheKeyFieldsValue =
 
 export interface EditRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: EditRequestActionsItemCacheKeyFieldsId;
+  id?: EditRequestActionsItemCacheKeyFieldsId | (string & {});
   value?: EditRequestActionsItemCacheKeyFieldsValue;
 }
 export const EditRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
@@ -5074,7 +5074,7 @@ export const EditRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: EditRequestActionsItemCacheLevelId;
+  id?: EditRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
   value?: EditRequestActionsItemCacheLevelValue | (string & {});
 }
@@ -5092,7 +5092,7 @@ export const EditRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: EditRequestActionsItemCacheOnCookieId;
+  id?: EditRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -5122,7 +5122,7 @@ export const EditRequestActionsItemCacheTTLByStatusValue =
 
 export interface EditRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: EditRequestActionsItemCacheTTLByStatusId;
+  id?: EditRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
   value?: EditRequestActionsItemCacheTTLByStatusValue;
 }
@@ -5141,7 +5141,7 @@ export const EditRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: EditRequestActionsItemDisableAppsId;
+  id?: EditRequestActionsItemDisableAppsId | (string & {});
 }
 export const EditRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5157,7 +5157,7 @@ export const EditRequestActionsItemDisablePerformanceId =
 
 export interface EditRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: EditRequestActionsItemDisablePerformanceId;
+  id?: EditRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const EditRequestActionsItemDisablePerformance = /*@__PURE__*/ S.suspend(
   () =>
@@ -5173,7 +5173,7 @@ export const EditRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: EditRequestActionsItemDisableSecurityId;
+  id?: EditRequestActionsItemDisableSecurityId | (string & {});
 }
 export const EditRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
@@ -5189,7 +5189,7 @@ export const EditRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: EditRequestActionsItemDisableZarazId;
+  id?: EditRequestActionsItemDisableZarazId | (string & {});
 }
 export const EditRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5204,7 +5204,7 @@ export const EditRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: EditRequestActionsItemEdgeCacheTTLId;
+  id?: EditRequestActionsItemEdgeCacheTTLId | (string & {});
   value?: number;
 }
 export const EditRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(() =>
@@ -5225,7 +5225,7 @@ export const EditRequestActionsItemEmailObfuscationValue =
 
 export interface EditRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: EditRequestActionsItemEmailObfuscationId;
+  id?: EditRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
   value?: EditRequestActionsItemEmailObfuscationValue | (string & {});
 }
@@ -5250,7 +5250,7 @@ export const EditRequestActionsItemExplicitCacheControlValue =
 
 export interface EditRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: EditRequestActionsItemExplicitCacheControlId;
+  id?: EditRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
   value?: EditRequestActionsItemExplicitCacheControlValue | (string & {});
 }
@@ -5295,7 +5295,7 @@ export const EditRequestActionsItemForwardingURLValue = /*@__PURE__*/ S.suspend(
 
 export interface EditRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: EditRequestActionsItemForwardingURLId;
+  id?: EditRequestActionsItemForwardingURLId | (string & {});
   value?: EditRequestActionsItemForwardingURLValue;
 }
 export const EditRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(() =>
@@ -5313,7 +5313,7 @@ export const EditRequestActionsItemHostHeaderOverrideId =
 
 export interface EditRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: EditRequestActionsItemHostHeaderOverrideId;
+  id?: EditRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
   value?: string;
 }
@@ -5335,7 +5335,7 @@ export const EditRequestActionsItemIPGeolocationValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: EditRequestActionsItemIPGeolocationId;
+  id?: EditRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
   value?: EditRequestActionsItemIPGeolocationValue | (string & {});
 }
@@ -5356,7 +5356,7 @@ export const EditRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: EditRequestActionsItemMirageId;
+  id?: EditRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
   value?: EditRequestActionsItemMirageValue | (string & {});
 }
@@ -5380,7 +5380,7 @@ export const EditRequestActionsItemOpportunisticEncryptionValue =
 
 export interface EditRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: EditRequestActionsItemOpportunisticEncryptionId;
+  id?: EditRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
   value?: EditRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
@@ -5405,7 +5405,7 @@ export const EditRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface EditRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: EditRequestActionsItemOriginErrorPagePassThruId;
+  id?: EditRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
   value?: EditRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
@@ -5427,7 +5427,7 @@ export const EditRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: EditRequestActionsItemPolishId;
+  id?: EditRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
   value?: EditRequestActionsItemPolishValue | (string & {});
 }
@@ -5445,7 +5445,7 @@ export const EditRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: EditRequestActionsItemResolveOverrideId;
+  id?: EditRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
   value?: string;
 }
@@ -5468,7 +5468,7 @@ export const EditRequestActionsItemRespectStrongEtagValue =
 
 export interface EditRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: EditRequestActionsItemRespectStrongEtagId;
+  id?: EditRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
   value?: EditRequestActionsItemRespectStrongEtagValue | (string & {});
 }
@@ -5491,7 +5491,7 @@ export const EditRequestActionsItemResponseBufferingValue =
 
 export interface EditRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: EditRequestActionsItemResponseBufferingId;
+  id?: EditRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
   value?: EditRequestActionsItemResponseBufferingValue | (string & {});
 }
@@ -5513,7 +5513,7 @@ export const EditRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: EditRequestActionsItemRocketLoaderId;
+  id?: EditRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
   value?: EditRequestActionsItemRocketLoaderValue | (string & {});
 }
@@ -5540,7 +5540,7 @@ export const EditRequestActionsItemSecurityLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: EditRequestActionsItemSecurityLevelId;
+  id?: EditRequestActionsItemSecurityLevelId | (string & {});
   value?: EditRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const EditRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(() =>
@@ -5563,7 +5563,7 @@ export const EditRequestActionsItemSortQueryStringForCacheValue =
 
 export interface EditRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: EditRequestActionsItemSortQueryStringForCacheId;
+  id?: EditRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
   value?: EditRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
@@ -5590,7 +5590,7 @@ export const EditRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: EditRequestActionsItemSSLId;
+  id?: EditRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
   value?: EditRequestActionsItemSSLValue | (string & {});
 }
@@ -5614,7 +5614,7 @@ export const EditRequestActionsItemTrueClientIPHeaderValue =
 
 export interface EditRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: EditRequestActionsItemTrueClientIPHeaderId;
+  id?: EditRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
   value?: EditRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
@@ -5636,7 +5636,7 @@ export const EditRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: EditRequestActionsItemWAFId;
+  id?: EditRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
   value?: EditRequestActionsItemWAFValue | (string & {});
 }
@@ -5761,7 +5761,7 @@ export interface EditRequestTargetsItem {
   /** String constraint. */
   constraint?: EditRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: EditRequestTargetsItemTarget;
+  target?: EditRequestTargetsItemTarget | (string & {});
 }
 export const EditRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6939,7 +6939,7 @@ export const UpdateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: UpdateRequestActionsItemAlwaysUseHTTPSId;
+  id?: UpdateRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const UpdateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
@@ -6961,7 +6961,7 @@ export const UpdateRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface UpdateRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: UpdateRequestActionsItemAutomaticHTTPSRewritesId;
+  id?: UpdateRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
   value?: UpdateRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
@@ -6980,7 +6980,7 @@ export const UpdateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: UpdateRequestActionsItemBrowserCacheTTLId;
+  id?: UpdateRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
   value?: number;
 }
@@ -7002,7 +7002,7 @@ export const UpdateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: UpdateRequestActionsItemBrowserCheckId;
+  id?: UpdateRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
   value?: UpdateRequestActionsItemBrowserCheckValue | (string & {});
 }
@@ -7023,7 +7023,7 @@ export const UpdateRequestActionsItemBypassCacheOnCookieId =
 
 export interface UpdateRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: UpdateRequestActionsItemBypassCacheOnCookieId;
+  id?: UpdateRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -7048,7 +7048,7 @@ export const UpdateRequestActionsItemCacheByDeviceTypeValue =
 
 export interface UpdateRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: UpdateRequestActionsItemCacheByDeviceTypeId;
+  id?: UpdateRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
   value?: UpdateRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
@@ -7073,7 +7073,7 @@ export const UpdateRequestActionsItemCacheDeceptionArmorValue =
 
 export interface UpdateRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: UpdateRequestActionsItemCacheDeceptionArmorId;
+  id?: UpdateRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
   value?: UpdateRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
@@ -7293,7 +7293,7 @@ export const UpdateRequestActionsItemCacheKeyFieldsValue =
 
 export interface UpdateRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: UpdateRequestActionsItemCacheKeyFieldsId;
+  id?: UpdateRequestActionsItemCacheKeyFieldsId | (string & {});
   value?: UpdateRequestActionsItemCacheKeyFieldsValue;
 }
 export const UpdateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
@@ -7319,7 +7319,7 @@ export const UpdateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: UpdateRequestActionsItemCacheLevelId;
+  id?: UpdateRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
   value?: UpdateRequestActionsItemCacheLevelValue | (string & {});
 }
@@ -7337,7 +7337,7 @@ export const UpdateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: UpdateRequestActionsItemCacheOnCookieId;
+  id?: UpdateRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
   value?: string;
 }
@@ -7369,7 +7369,7 @@ export const UpdateRequestActionsItemCacheTTLByStatusValue =
 
 export interface UpdateRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: UpdateRequestActionsItemCacheTTLByStatusId;
+  id?: UpdateRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
   value?: UpdateRequestActionsItemCacheTTLByStatusValue;
 }
@@ -7388,7 +7388,7 @@ export const UpdateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: UpdateRequestActionsItemDisableAppsId;
+  id?: UpdateRequestActionsItemDisableAppsId | (string & {});
 }
 export const UpdateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7405,7 +7405,7 @@ export const UpdateRequestActionsItemDisablePerformanceId =
 
 export interface UpdateRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: UpdateRequestActionsItemDisablePerformanceId;
+  id?: UpdateRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const UpdateRequestActionsItemDisablePerformance =
   /*@__PURE__*/ S.suspend(() =>
@@ -7421,7 +7421,7 @@ export const UpdateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: UpdateRequestActionsItemDisableSecurityId;
+  id?: UpdateRequestActionsItemDisableSecurityId | (string & {});
 }
 export const UpdateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
@@ -7437,7 +7437,7 @@ export const UpdateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: UpdateRequestActionsItemDisableZarazId;
+  id?: UpdateRequestActionsItemDisableZarazId | (string & {});
 }
 export const UpdateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   () =>
@@ -7453,7 +7453,7 @@ export const UpdateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: UpdateRequestActionsItemEdgeCacheTTLId;
+  id?: UpdateRequestActionsItemEdgeCacheTTLId | (string & {});
   value?: number;
 }
 export const UpdateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
@@ -7476,7 +7476,7 @@ export const UpdateRequestActionsItemEmailObfuscationValue =
 
 export interface UpdateRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: UpdateRequestActionsItemEmailObfuscationId;
+  id?: UpdateRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
   value?: UpdateRequestActionsItemEmailObfuscationValue | (string & {});
 }
@@ -7501,7 +7501,7 @@ export const UpdateRequestActionsItemExplicitCacheControlValue =
 
 export interface UpdateRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: UpdateRequestActionsItemExplicitCacheControlId;
+  id?: UpdateRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
   value?: UpdateRequestActionsItemExplicitCacheControlValue | (string & {});
 }
@@ -7546,7 +7546,7 @@ export const UpdateRequestActionsItemForwardingURLValue =
 
 export interface UpdateRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: UpdateRequestActionsItemForwardingURLId;
+  id?: UpdateRequestActionsItemForwardingURLId | (string & {});
   value?: UpdateRequestActionsItemForwardingURLValue;
 }
 export const UpdateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
@@ -7566,7 +7566,7 @@ export const UpdateRequestActionsItemHostHeaderOverrideId =
 
 export interface UpdateRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: UpdateRequestActionsItemHostHeaderOverrideId;
+  id?: UpdateRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
   value?: string;
 }
@@ -7589,7 +7589,7 @@ export const UpdateRequestActionsItemIPGeolocationValue =
 
 export interface UpdateRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: UpdateRequestActionsItemIPGeolocationId;
+  id?: UpdateRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
   value?: UpdateRequestActionsItemIPGeolocationValue | (string & {});
 }
@@ -7611,7 +7611,7 @@ export const UpdateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: UpdateRequestActionsItemMirageId;
+  id?: UpdateRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
   value?: UpdateRequestActionsItemMirageValue | (string & {});
 }
@@ -7635,7 +7635,7 @@ export const UpdateRequestActionsItemOpportunisticEncryptionValue =
 
 export interface UpdateRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: UpdateRequestActionsItemOpportunisticEncryptionId;
+  id?: UpdateRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
   value?: UpdateRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
@@ -7660,7 +7660,7 @@ export const UpdateRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface UpdateRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: UpdateRequestActionsItemOriginErrorPagePassThruId;
+  id?: UpdateRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
   value?: UpdateRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
@@ -7682,7 +7682,7 @@ export const UpdateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: UpdateRequestActionsItemPolishId;
+  id?: UpdateRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
   value?: UpdateRequestActionsItemPolishValue | (string & {});
 }
@@ -7700,7 +7700,7 @@ export const UpdateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: UpdateRequestActionsItemResolveOverrideId;
+  id?: UpdateRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
   value?: string;
 }
@@ -7724,7 +7724,7 @@ export const UpdateRequestActionsItemRespectStrongEtagValue =
 
 export interface UpdateRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: UpdateRequestActionsItemRespectStrongEtagId;
+  id?: UpdateRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
   value?: UpdateRequestActionsItemRespectStrongEtagValue | (string & {});
 }
@@ -7748,7 +7748,7 @@ export const UpdateRequestActionsItemResponseBufferingValue =
 
 export interface UpdateRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: UpdateRequestActionsItemResponseBufferingId;
+  id?: UpdateRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
   value?: UpdateRequestActionsItemResponseBufferingValue | (string & {});
 }
@@ -7770,7 +7770,7 @@ export const UpdateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: UpdateRequestActionsItemRocketLoaderId;
+  id?: UpdateRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
   value?: UpdateRequestActionsItemRocketLoaderValue | (string & {});
 }
@@ -7799,7 +7799,7 @@ export const UpdateRequestActionsItemSecurityLevelValue =
 
 export interface UpdateRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: UpdateRequestActionsItemSecurityLevelId;
+  id?: UpdateRequestActionsItemSecurityLevelId | (string & {});
   value?: UpdateRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const UpdateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
@@ -7823,7 +7823,7 @@ export const UpdateRequestActionsItemSortQueryStringForCacheValue =
 
 export interface UpdateRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: UpdateRequestActionsItemSortQueryStringForCacheId;
+  id?: UpdateRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
   value?: UpdateRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
@@ -7850,7 +7850,7 @@ export const UpdateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: UpdateRequestActionsItemSSLId;
+  id?: UpdateRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
   value?: UpdateRequestActionsItemSSLValue | (string & {});
 }
@@ -7874,7 +7874,7 @@ export const UpdateRequestActionsItemTrueClientIPHeaderValue =
 
 export interface UpdateRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: UpdateRequestActionsItemTrueClientIPHeaderId;
+  id?: UpdateRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
   value?: UpdateRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
@@ -7896,7 +7896,7 @@ export const UpdateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: UpdateRequestActionsItemWAFId;
+  id?: UpdateRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
   value?: UpdateRequestActionsItemWAFValue | (string & {});
 }
@@ -8019,7 +8019,7 @@ export interface UpdateRequestTargetsItem {
   /** String constraint. */
   constraint?: UpdateRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: UpdateRequestTargetsItemTarget;
+  target?: UpdateRequestTargetsItemTarget | (string & {});
 }
 export const UpdateRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

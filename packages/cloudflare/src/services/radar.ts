@@ -1877,18 +1877,18 @@ export const EmailRoutingSummaryArcResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface EmailRoutingSummaryArcResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailRoutingSummaryArcResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailRoutingSummaryArcResponseSummary0",
@@ -2306,16 +2306,22 @@ export const EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList =
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList>;
 
 export interface EmailRoutingTimeseriesGroupsArcResponseSerie0 {
-  FAIL: EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList;
-  NONE: EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList;
-  PASS: EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList;
+  fAIL: EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList;
+  nONE: EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList;
+  pASS: EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList;
 }
 export const EmailRoutingTimeseriesGroupsArcResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList,
-      NONE: EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList,
-      PASS: EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList,
+      fAIL: EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailRoutingTimeseriesGroupsArcResponseSerie0",
@@ -2642,18 +2648,18 @@ export const EmailSecuritySummaryArcResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface EmailSecuritySummaryArcResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailSecuritySummaryArcResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailSecuritySummaryArcResponseSummary0",
@@ -3060,16 +3066,22 @@ export const EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList>;
 
 export interface EmailSecurityTimeseriesGroupsArcResponseSerie0 {
-  FAIL: EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList;
-  NONE: EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList;
-  PASS: EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList;
+  fAIL: EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList;
+  nONE: EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList;
+  pASS: EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList;
 }
 export const EmailSecurityTimeseriesGroupsArcResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList,
-      NONE: EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList,
-      PASS: EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList,
+      fAIL: EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsArcResponseSerie0",
@@ -5585,11 +5597,11 @@ export const AttacksLayer3SummaryBitrateResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface AttacksLayer3SummaryBitrateResponseSummary0 {
   /** A numeric string. */
-  _1_GBPS_TO_10_GBPS: string;
+  "1_GBPS_TO_10_GBPS": string;
   /** A numeric string. */
-  _10_GBPS_TO_100_GBPS: string;
+  "10_GBPS_TO_100_GBPS": string;
   /** A numeric string. */
-  _500_MBPS_TO_1_GBPS: string;
+  "500_MBPS_TO_1_GBPS": string;
   /** A numeric string. */
   OVER_100_GBPS: string;
   /** A numeric string. */
@@ -5598,9 +5610,9 @@ export interface AttacksLayer3SummaryBitrateResponseSummary0 {
 export const AttacksLayer3SummaryBitrateResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _1_GBPS_TO_10_GBPS: S.String,
-      _10_GBPS_TO_100_GBPS: S.String,
-      _500_MBPS_TO_1_GBPS: S.String,
+      "1_GBPS_TO_10_GBPS": S.String.pipe(T.Body("_1_GBPS_TO_10_GBPS")),
+      "10_GBPS_TO_100_GBPS": S.String.pipe(T.Body("_10_GBPS_TO_100_GBPS")),
+      "500_MBPS_TO_1_GBPS": S.String.pipe(T.Body("_500_MBPS_TO_1_GBPS")),
       OVER_100_GBPS: S.String,
       UNDER_500_MBPS: S.String,
     }),
@@ -6052,9 +6064,9 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList 
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList>;
 
 export interface AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 {
-  _1_GBPS_TO_10_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList;
-  _10_GBPS_TO_100_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList;
-  _500_MBPS_TO_1_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList;
+  "1_GBPS_TO_10_GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList;
+  "10_GBPS_TO_100_GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList;
+  "500_MBPS_TO_1_GBPS": AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList;
   OVER_100_GBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList;
   timestamps: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0TimestampsList;
   UNDER_500_MBPS: AttacksLayer3TimeseriesGroupsBitrateResponseSerie0UNDER500MBPSList;
@@ -6062,12 +6074,18 @@ export interface AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 {
 export const AttacksLayer3TimeseriesGroupsBitrateResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _1_GBPS_TO_10_GBPS:
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList,
-      _10_GBPS_TO_100_GBPS:
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList,
-      _500_MBPS_TO_1_GBPS:
-        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList,
+      "1_GBPS_TO_10_GBPS":
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie01GBPSTO10GBPSList.pipe(
+          T.Body("_1_GBPS_TO_10_GBPS"),
+        ),
+      "10_GBPS_TO_100_GBPS":
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie010GBPSTO100GBPSList.pipe(
+          T.Body("_10_GBPS_TO_100_GBPS"),
+        ),
+      "500_MBPS_TO_1_GBPS":
+        AttacksLayer3TimeseriesGroupsBitrateResponseSerie0500MBPSTO1GBPSList.pipe(
+          T.Body("_500_MBPS_TO_1_GBPS"),
+        ),
       OVER_100_GBPS:
         AttacksLayer3TimeseriesGroupsBitrateResponseSerie0OVER100GBPSList,
       timestamps:
@@ -10448,14 +10466,14 @@ export const DnsSummaryCacheHitResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryCacheHitResponseSummary0 {
   /** A numeric string. */
-  NEGATIVE: string;
+  nEGATIVE: string;
   /** A numeric string. */
-  POSITIVE: string;
+  pOSITIVE: string;
 }
 export const DnsSummaryCacheHitResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NEGATIVE: S.String,
-    POSITIVE: S.String,
+    nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
+    pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
   }),
 ).annotate({
   identifier: "DnsSummaryCacheHitResponseSummary0",
@@ -10977,14 +10995,18 @@ export const DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList =
   ) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList>;
 
 export interface DnsTimeseriesGroupsCacheHitResponseSerie0 {
-  NEGATIVE: DnsTimeseriesGroupsCacheHitResponseSerie0NEGATIVEList;
-  POSITIVE: DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList;
+  nEGATIVE: DnsTimeseriesGroupsCacheHitResponseSerie0NEGATIVEList;
+  pOSITIVE: DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList;
 }
 export const DnsTimeseriesGroupsCacheHitResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NEGATIVE: DnsTimeseriesGroupsCacheHitResponseSerie0NEGATIVEList,
-      POSITIVE: DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList,
+      nEGATIVE: DnsTimeseriesGroupsCacheHitResponseSerie0NEGATIVEList.pipe(
+        T.Body("NEGATIVE"),
+      ),
+      pOSITIVE: DnsTimeseriesGroupsCacheHitResponseSerie0POSITIVEList.pipe(
+        T.Body("POSITIVE"),
+      ),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsCacheHitResponseSerie0",
@@ -11455,11 +11477,11 @@ export const BgpRpkiAspaChangesResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaChangesResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaChangesResponseAsnInfo {
-  _13335: BgpRpkiAspaChangesResponseAsnInfo13335;
+  "13335": BgpRpkiAspaChangesResponseAsnInfo13335;
 }
 export const BgpRpkiAspaChangesResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _13335: BgpRpkiAspaChangesResponseAsnInfo13335.pipe(T.Body("13335")),
+    "13335": BgpRpkiAspaChangesResponseAsnInfo13335,
   }),
 ).annotate({
   identifier: "BgpRpkiAspaChangesResponseAsnInfo",
@@ -11850,15 +11872,15 @@ export const LeakedCredentialsSummaryCompromisedResponseMeta =
 
 export interface LeakedCredentialsSummaryCompromisedResponseSummary0 {
   /** A numeric string. */
-  CLEAN: string;
+  cLEAN: string;
   /** A numeric string. */
-  COMPROMISED: string;
+  cOMPROMISED: string;
 }
 export const LeakedCredentialsSummaryCompromisedResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      CLEAN: S.String,
-      COMPROMISED: S.String,
+      cLEAN: S.String.pipe(T.Body("CLEAN")),
+      cOMPROMISED: S.String.pipe(T.Body("COMPROMISED")),
     }),
   ).annotate({
     identifier: "LeakedCredentialsSummaryCompromisedResponseSummary0",
@@ -12227,17 +12249,21 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0Timestamp
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0TimestampsList>;
 
 export interface LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0 {
-  CLEAN: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0CLEANList;
-  COMPROMISED: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0COMPROMISEDList;
+  cLEAN: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0CLEANList;
+  cOMPROMISED: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0COMPROMISEDList;
   timestamps: LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0TimestampsList;
 }
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      CLEAN:
-        LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0CLEANList,
-      COMPROMISED:
-        LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0COMPROMISEDList,
+      cLEAN:
+        LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0CLEANList.pipe(
+          T.Body("CLEAN"),
+        ),
+      cOMPROMISED:
+        LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0COMPROMISEDList.pipe(
+          T.Body("COMPROMISED"),
+        ),
       timestamps:
         LeakedCredentialsTimeseriesGroupsCompromisedResponseSerie0TimestampsList,
     }),
@@ -13273,7 +13299,9 @@ export interface DirectiveRobotsTxtTopUserAgentRequest {
   /** Array of names used to label the series in the response. */
   name?: RobotsTxtTopUserAgentsDirectiveRequestNameList;
   /** Filters results by user agent category. */
-  userAgentCategory?: RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory;
+  userAgentCategory?:
+    | RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory
+    | (string & {});
 }
 export const DirectiveRobotsTxtTopUserAgentRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -13854,18 +13882,18 @@ export const EmailRoutingSummaryDkimResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface EmailRoutingSummaryDkimResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailRoutingSummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailRoutingSummaryDkimResponseSummary0",
@@ -14287,16 +14315,22 @@ export const EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList =
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList>;
 
 export interface EmailRoutingTimeseriesGroupsDkimResponseSerie0 {
-  FAIL: EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList;
-  NONE: EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList;
-  PASS: EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList;
+  fAIL: EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList;
+  nONE: EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList;
+  pASS: EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList;
 }
 export const EmailRoutingTimeseriesGroupsDkimResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList,
-      NONE: EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList,
-      PASS: EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList,
+      fAIL: EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailRoutingTimeseriesGroupsDkimResponseSerie0",
@@ -14624,18 +14658,18 @@ export const EmailSecuritySummaryDkimResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailSecuritySummaryDkimResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailSecuritySummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailSecuritySummaryDkimResponseSummary0",
@@ -15042,16 +15076,22 @@ export const EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList>;
 
 export interface EmailSecurityTimeseriesGroupsDkimResponseSerie0 {
-  FAIL: EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList;
-  NONE: EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList;
-  PASS: EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList;
+  fAIL: EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList;
+  nONE: EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList;
+  pASS: EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList;
 }
 export const EmailSecurityTimeseriesGroupsDkimResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList,
-      NONE: EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList,
-      PASS: EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList,
+      fAIL: EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsDkimResponseSerie0",
@@ -15393,18 +15433,18 @@ export const EmailRoutingSummaryDmarcResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailRoutingSummaryDmarcResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailRoutingSummaryDmarcResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailRoutingSummaryDmarcResponseSummary0",
@@ -15826,16 +15866,22 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList =
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList>;
 
 export interface EmailRoutingTimeseriesGroupsDmarcResponseSerie0 {
-  FAIL: EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList;
-  NONE: EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList;
-  PASS: EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList;
+  fAIL: EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList;
+  nONE: EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList;
+  pASS: EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList;
 }
 export const EmailRoutingTimeseriesGroupsDmarcResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList,
-      NONE: EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList,
-      PASS: EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList,
+      fAIL: EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailRoutingTimeseriesGroupsDmarcResponseSerie0",
@@ -16165,18 +16211,18 @@ export const EmailSecuritySummaryDmarcResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailSecuritySummaryDmarcResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailSecuritySummaryDmarcResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummaryDmarcResponseSummary0",
@@ -16585,16 +16631,22 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList>;
 
 export interface EmailSecurityTimeseriesGroupsDmarcResponseSerie0 {
-  FAIL: EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList;
-  NONE: EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList;
-  PASS: EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList;
+  fAIL: EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList;
+  nONE: EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList;
+  pASS: EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList;
 }
 export const EmailSecurityTimeseriesGroupsDmarcResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList,
-      NONE: EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList,
-      PASS: EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList,
+      fAIL: EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsDmarcResponseSerie0",
@@ -17019,14 +17071,14 @@ export const As112SummaryDnssecResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface As112SummaryDnssecResponseSummary0 {
   /** A numeric string. */
-  NOTSUPPORTED: string;
+  nOTSUPPORTED: string;
   /** A numeric string. */
-  SUPPORTED: string;
+  sUPPORTED: string;
 }
 export const As112SummaryDnssecResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-    SUPPORTED: S.String,
+    nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
+    sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
   }),
 ).annotate({
   identifier: "As112SummaryDnssecResponseSummary0",
@@ -17521,17 +17573,19 @@ export const As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList =
   ) as any as S.Schema<As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList>;
 
 export interface As112TimeseriesGroupsDnssecResponseSerie0 {
-  NOTSUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0NOTSUPPORTEDList;
-  SUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList;
+  nOTSUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0NOTSUPPORTEDList;
+  sUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList;
 }
 export const As112TimeseriesGroupsDnssecResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSUPPORTED:
+      nOTSUPPORTED:
         As112TimeseriesGroupsDnssecResponseSerie0NOTSUPPORTEDList.pipe(
           T.Body("NOT_SUPPORTED"),
         ),
-      SUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList,
+      sUPPORTED: As112TimeseriesGroupsDnssecResponseSerie0SUPPORTEDList.pipe(
+        T.Body("SUPPORTED"),
+      ),
     }),
   ).annotate({
     identifier: "As112TimeseriesGroupsDnssecResponseSerie0",
@@ -18288,15 +18342,15 @@ export const DnsSummaryDnssecAwareResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryDnssecAwareResponseSummary0 {
   /** A numeric string. */
-  NOTSUPPORTED: string;
+  nOTSUPPORTED: string;
   /** A numeric string. */
-  SUPPORTED: string;
+  sUPPORTED: string;
 }
 export const DnsSummaryDnssecAwareResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-      SUPPORTED: S.String,
+      nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
+      sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
     }),
 ).annotate({
   identifier: "DnsSummaryDnssecAwareResponseSummary0",
@@ -18829,17 +18883,19 @@ export const DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList =
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList>;
 
 export interface DnsTimeseriesGroupsDnssecAwareResponseSerie0 {
-  NOTSUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0NOTSUPPORTEDList;
-  SUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList;
+  nOTSUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0NOTSUPPORTEDList;
+  sUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList;
 }
 export const DnsTimeseriesGroupsDnssecAwareResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSUPPORTED:
+      nOTSUPPORTED:
         DnsTimeseriesGroupsDnssecAwareResponseSerie0NOTSUPPORTEDList.pipe(
           T.Body("NOT_SUPPORTED"),
         ),
-      SUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList,
+      sUPPORTED: DnsTimeseriesGroupsDnssecAwareResponseSerie0SUPPORTEDList.pipe(
+        T.Body("SUPPORTED"),
+      ),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsDnssecAwareResponseSerie0",
@@ -19278,20 +19334,20 @@ export const DnsSummaryDnssecResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryDnssecResponseSummary0 {
   /** A numeric string. */
-  INSECURE: string;
+  iNSECURE: string;
   /** A numeric string. */
-  INVALID: string;
+  iNVALID: string;
   /** A numeric string. */
-  OTHER: string;
+  oTHER: string;
   /** A numeric string. */
-  SECURE: string;
+  sECURE: string;
 }
 export const DnsSummaryDnssecResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    INSECURE: S.String,
-    INVALID: S.String,
-    OTHER: S.String,
-    SECURE: S.String,
+    iNSECURE: S.String.pipe(T.Body("INSECURE")),
+    iNVALID: S.String.pipe(T.Body("INVALID")),
+    oTHER: S.String.pipe(T.Body("OTHER")),
+    sECURE: S.String.pipe(T.Body("SECURE")),
   }),
 ).annotate({
   identifier: "DnsSummaryDnssecResponseSummary0",
@@ -19816,18 +19872,26 @@ export const DnsTimeseriesGroupsDnssecResponseSerie0SECUREList =
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseSerie0SECUREList>;
 
 export interface DnsTimeseriesGroupsDnssecResponseSerie0 {
-  INSECURE: DnsTimeseriesGroupsDnssecResponseSerie0INSECUREList;
-  INVALID: DnsTimeseriesGroupsDnssecResponseSerie0INVALIDList;
-  OTHER: DnsTimeseriesGroupsDnssecResponseSerie0OTHERList;
-  SECURE: DnsTimeseriesGroupsDnssecResponseSerie0SECUREList;
+  iNSECURE: DnsTimeseriesGroupsDnssecResponseSerie0INSECUREList;
+  iNVALID: DnsTimeseriesGroupsDnssecResponseSerie0INVALIDList;
+  oTHER: DnsTimeseriesGroupsDnssecResponseSerie0OTHERList;
+  sECURE: DnsTimeseriesGroupsDnssecResponseSerie0SECUREList;
 }
 export const DnsTimeseriesGroupsDnssecResponseSerie0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      INSECURE: DnsTimeseriesGroupsDnssecResponseSerie0INSECUREList,
-      INVALID: DnsTimeseriesGroupsDnssecResponseSerie0INVALIDList,
-      OTHER: DnsTimeseriesGroupsDnssecResponseSerie0OTHERList,
-      SECURE: DnsTimeseriesGroupsDnssecResponseSerie0SECUREList,
+      iNSECURE: DnsTimeseriesGroupsDnssecResponseSerie0INSECUREList.pipe(
+        T.Body("INSECURE"),
+      ),
+      iNVALID: DnsTimeseriesGroupsDnssecResponseSerie0INVALIDList.pipe(
+        T.Body("INVALID"),
+      ),
+      oTHER: DnsTimeseriesGroupsDnssecResponseSerie0OTHERList.pipe(
+        T.Body("OTHER"),
+      ),
+      sECURE: DnsTimeseriesGroupsDnssecResponseSerie0SECUREList.pipe(
+        T.Body("SECURE"),
+      ),
     }),
 ).annotate({
   identifier: "DnsTimeseriesGroupsDnssecResponseSerie0",
@@ -20287,14 +20351,14 @@ export const DnsSummaryDnssecE2eResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryDnssecE2eResponseSummary0 {
   /** A numeric string. */
-  NEGATIVE: string;
+  nEGATIVE: string;
   /** A numeric string. */
-  POSITIVE: string;
+  pOSITIVE: string;
 }
 export const DnsSummaryDnssecE2eResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NEGATIVE: S.String,
-    POSITIVE: S.String,
+    nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
+    pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
   }),
 ).annotate({
   identifier: "DnsSummaryDnssecE2eResponseSummary0",
@@ -20817,14 +20881,18 @@ export const DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList =
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList>;
 
 export interface DnsTimeseriesGroupsDnssecE2eResponseSerie0 {
-  NEGATIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0NEGATIVEList;
-  POSITIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList;
+  nEGATIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0NEGATIVEList;
+  pOSITIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList;
 }
 export const DnsTimeseriesGroupsDnssecE2eResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NEGATIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0NEGATIVEList,
-      POSITIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList,
+      nEGATIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0NEGATIVEList.pipe(
+        T.Body("NEGATIVE"),
+      ),
+      pOSITIVE: DnsTimeseriesGroupsDnssecE2eResponseSerie0POSITIVEList.pipe(
+        T.Body("POSITIVE"),
+      ),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsDnssecE2eResponseSerie0",
@@ -20874,7 +20942,9 @@ export interface DomainCategoriesRobotsTxtTopRequest {
   /** Array of names used to label the series in the response. */
   name?: RobotsTxtTopDomainCategoriesRequestNameList;
   /** Filters results by user agent category. */
-  userAgentCategory?: RobotsTxtTopDomainCategoriesRequestUserAgentCategory;
+  userAgentCategory?:
+    | RobotsTxtTopDomainCategoriesRequestUserAgentCategory
+    | (string & {});
 }
 export const DomainCategoriesRobotsTxtTopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21489,13 +21559,13 @@ export const AttacksLayer3SummaryDurationResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface AttacksLayer3SummaryDurationResponseSummary0 {
   /** A numeric string. */
-  _1_HOUR_TO_3_HOURS: string;
+  "1_HOUR_TO_3_HOURS": string;
   /** A numeric string. */
-  _10_MINS_TO_20_MINS: string;
+  "10_MINS_TO_20_MINS": string;
   /** A numeric string. */
-  _20_MINS_TO_40_MINS: string;
+  "20_MINS_TO_40_MINS": string;
   /** A numeric string. */
-  _40_MINS_TO_1_HOUR: string;
+  "40_MINS_TO_1_HOUR": string;
   /** A numeric string. */
   OVER_3_HOURS: string;
   /** A numeric string. */
@@ -21504,10 +21574,10 @@ export interface AttacksLayer3SummaryDurationResponseSummary0 {
 export const AttacksLayer3SummaryDurationResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _1_HOUR_TO_3_HOURS: S.String,
-      _10_MINS_TO_20_MINS: S.String,
-      _20_MINS_TO_40_MINS: S.String,
-      _40_MINS_TO_1_HOUR: S.String,
+      "1_HOUR_TO_3_HOURS": S.String.pipe(T.Body("_1_HOUR_TO_3_HOURS")),
+      "10_MINS_TO_20_MINS": S.String.pipe(T.Body("_10_MINS_TO_20_MINS")),
+      "20_MINS_TO_40_MINS": S.String.pipe(T.Body("_20_MINS_TO_40_MINS")),
+      "40_MINS_TO_1_HOUR": S.String.pipe(T.Body("_40_MINS_TO_1_HOUR")),
       OVER_3_HOURS: S.String,
       UNDER_10_MINS: S.String,
     }),
@@ -21972,10 +22042,10 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList 
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList>;
 
 export interface AttacksLayer3TimeseriesGroupsDurationResponseSerie0 {
-  _1_HOUR_TO_3_HOURS: AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList;
-  _10_MINS_TO_20_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList;
-  _20_MINS_TO_40_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList;
-  _40_MINS_TO_1_HOUR: AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList;
+  "1_HOUR_TO_3_HOURS": AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList;
+  "10_MINS_TO_20_MINS": AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList;
+  "20_MINS_TO_40_MINS": AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList;
+  "40_MINS_TO_1_HOUR": AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList;
   OVER_3_HOURS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList;
   timestamps: AttacksLayer3TimeseriesGroupsDurationResponseSerie0TimestampsList;
   UNDER_10_MINS: AttacksLayer3TimeseriesGroupsDurationResponseSerie0UNDER10MINSList;
@@ -21983,14 +22053,22 @@ export interface AttacksLayer3TimeseriesGroupsDurationResponseSerie0 {
 export const AttacksLayer3TimeseriesGroupsDurationResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _1_HOUR_TO_3_HOURS:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList,
-      _10_MINS_TO_20_MINS:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList,
-      _20_MINS_TO_40_MINS:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList,
-      _40_MINS_TO_1_HOUR:
-        AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList,
+      "1_HOUR_TO_3_HOURS":
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie01HOURTO3HOURSList.pipe(
+          T.Body("_1_HOUR_TO_3_HOURS"),
+        ),
+      "10_MINS_TO_20_MINS":
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie010MINSTO20MINSList.pipe(
+          T.Body("_10_MINS_TO_20_MINS"),
+        ),
+      "20_MINS_TO_40_MINS":
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie020MINSTO40MINSList.pipe(
+          T.Body("_20_MINS_TO_40_MINS"),
+        ),
+      "40_MINS_TO_1_HOUR":
+        AttacksLayer3TimeseriesGroupsDurationResponseSerie040MINSTO1HOURList.pipe(
+          T.Body("_40_MINS_TO_1_HOUR"),
+        ),
       OVER_3_HOURS:
         AttacksLayer3TimeseriesGroupsDurationResponseSerie0OVER3HOURSList,
       timestamps:
@@ -22411,14 +22489,14 @@ export const As112SummaryEdnsResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface As112SummaryEdnsResponseSummary0 {
   /** A numeric string. */
-  NOTSUPPORTED: string;
+  nOTSUPPORTED: string;
   /** A numeric string. */
-  SUPPORTED: string;
+  sUPPORTED: string;
 }
 export const As112SummaryEdnsResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-    SUPPORTED: S.String,
+    nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
+    sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
   }),
 ).annotate({
   identifier: "As112SummaryEdnsResponseSummary0",
@@ -22907,17 +22985,19 @@ export const As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList =
   ) as any as S.Schema<As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList>;
 
 export interface As112TimeseriesGroupsEdnsResponseSerie0 {
-  NOTSUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0NOTSUPPORTEDList;
-  SUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList;
+  nOTSUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0NOTSUPPORTEDList;
+  sUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList;
 }
 export const As112TimeseriesGroupsEdnsResponseSerie0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NOTSUPPORTED:
+      nOTSUPPORTED:
         As112TimeseriesGroupsEdnsResponseSerie0NOTSUPPORTEDList.pipe(
           T.Body("NOT_SUPPORTED"),
         ),
-      SUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList,
+      sUPPORTED: As112TimeseriesGroupsEdnsResponseSerie0SUPPORTEDList.pipe(
+        T.Body("SUPPORTED"),
+      ),
     }),
 ).annotate({
   identifier: "As112TimeseriesGroupsEdnsResponseSerie0",
@@ -23556,15 +23636,15 @@ export const EmailRoutingSummaryEncryptedResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailRoutingSummaryEncryptedResponseSummary0 {
   /** A numeric string. */
-  ENCRYPTED: string;
+  eNCRYPTED: string;
   /** A numeric string. */
-  NOTENCRYPTED: string;
+  nOTENCRYPTED: string;
 }
 export const EmailRoutingSummaryEncryptedResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ENCRYPTED: S.String,
-      NOTENCRYPTED: S.String.pipe(T.Body("NOT_ENCRYPTED")),
+      eNCRYPTED: S.String.pipe(T.Body("ENCRYPTED")),
+      nOTENCRYPTED: S.String.pipe(T.Body("NOT_ENCRYPTED")),
     }),
   ).annotate({
     identifier: "EmailRoutingSummaryEncryptedResponseSummary0",
@@ -23994,15 +24074,17 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseSerie0NOTENCRYPTEDList
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseSerie0NOTENCRYPTEDList>;
 
 export interface EmailRoutingTimeseriesGroupsEncryptedResponseSerie0 {
-  ENCRYPTED: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0ENCRYPTEDList;
-  NOTENCRYPTED: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0NOTENCRYPTEDList;
+  eNCRYPTED: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0ENCRYPTEDList;
+  nOTENCRYPTED: EmailRoutingTimeseriesGroupsEncryptedResponseSerie0NOTENCRYPTEDList;
 }
 export const EmailRoutingTimeseriesGroupsEncryptedResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ENCRYPTED:
-        EmailRoutingTimeseriesGroupsEncryptedResponseSerie0ENCRYPTEDList,
-      NOTENCRYPTED:
+      eNCRYPTED:
+        EmailRoutingTimeseriesGroupsEncryptedResponseSerie0ENCRYPTEDList.pipe(
+          T.Body("ENCRYPTED"),
+        ),
+      nOTENCRYPTED:
         EmailRoutingTimeseriesGroupsEncryptedResponseSerie0NOTENCRYPTEDList.pipe(
           T.Body("NOT_ENCRYPTED"),
         ),
@@ -24366,14 +24448,14 @@ export const BgpTopAsesGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface BgpTopAsesGetResponseTop0Item {
   asn: number;
-  ASName: string;
+  aSName: string;
   /** Percentage of updates by this AS out of the total updates by all autonomous systems. */
   value: string;
 }
 export const BgpTopAsesGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.Number,
-    ASName: S.String,
+    aSName: S.String.pipe(T.Body("ASName")),
     value: S.String,
   }),
 ).annotate({
@@ -42765,15 +42847,15 @@ export const As112SummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface As112SummaryIpVersionResponseSummary0 {
   /** A numeric string. */
-  IPv4: string;
+  iPv4: string;
   /** A numeric string. */
-  IPv6: string;
+  iPv6: string;
 }
 export const As112SummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      IPv4: S.String,
-      IPv6: S.String,
+      iPv4: S.String.pipe(T.Body("IPv4")),
+      iPv6: S.String.pipe(T.Body("IPv6")),
     }),
 ).annotate({
   identifier: "As112SummaryIpVersionResponseSummary0",
@@ -43273,14 +43355,18 @@ export const As112TimeseriesGroupsIpVersionResponseSerie0IPv6List =
   ) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseSerie0IPv6List>;
 
 export interface As112TimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: As112TimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: As112TimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: As112TimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: As112TimeseriesGroupsIpVersionResponseSerie0IPv6List;
 }
 export const As112TimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: As112TimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: As112TimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: As112TimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: As112TimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
     }),
   ).annotate({
     identifier: "As112TimeseriesGroupsIpVersionResponseSerie0",
@@ -43908,15 +43994,15 @@ export const AttacksLayer3SummaryIpVersionResponseMeta =
 
 export interface AttacksLayer3SummaryIpVersionResponseSummary0 {
   /** A numeric string. */
-  IPv4: string;
+  iPv4: string;
   /** A numeric string. */
-  IPv6: string;
+  iPv6: string;
 }
 export const AttacksLayer3SummaryIpVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: S.String,
-      IPv6: S.String,
+      iPv4: S.String.pipe(T.Body("IPv4")),
+      iPv6: S.String.pipe(T.Body("IPv6")),
     }),
   ).annotate({
     identifier: "AttacksLayer3SummaryIpVersionResponseSummary0",
@@ -44339,15 +44425,19 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0TimestampsList 
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0TimestampsList>;
 
 export interface AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv6List;
   timestamps: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0TimestampsList;
 }
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
       timestamps:
         AttacksLayer3TimeseriesGroupsIpVersionResponseSerie0TimestampsList,
     }),
@@ -44764,14 +44854,14 @@ export const AttacksLayer7SummaryIpVersionResponseMeta =
   }) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMeta>;
 
 export interface AttacksLayer7SummaryIpVersionResponseSummary0 {
-  IPv4: string;
-  IPv6: string;
+  iPv4: string;
+  iPv6: string;
 }
 export const AttacksLayer7SummaryIpVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: S.String,
-      IPv6: S.String,
+      iPv4: S.String.pipe(T.Body("IPv4")),
+      iPv6: S.String.pipe(T.Body("IPv6")),
     }),
   ).annotate({
     identifier: "AttacksLayer7SummaryIpVersionResponseSummary0",
@@ -45286,15 +45376,19 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0TimestampsList 
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0TimestampsList>;
 
 export interface AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv6List;
   timestamps: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0TimestampsList;
 }
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
       timestamps:
         AttacksLayer7TimeseriesGroupsIpVersionResponseSerie0TimestampsList,
     }),
@@ -45757,14 +45851,14 @@ export const DnsSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryIpVersionResponseSummary0 {
   /** A numeric string. */
-  IPv4: string;
+  iPv4: string;
   /** A numeric string. */
-  IPv6: string;
+  iPv6: string;
 }
 export const DnsSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IPv4: S.String,
-    IPv6: S.String,
+    iPv4: S.String.pipe(T.Body("IPv4")),
+    iPv6: S.String.pipe(T.Body("IPv6")),
   }),
 ).annotate({
   identifier: "DnsSummaryIpVersionResponseSummary0",
@@ -46285,14 +46379,18 @@ export const DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List =
   ) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List>;
 
 export interface DnsTimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: DnsTimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: DnsTimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List;
 }
 export const DnsTimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: DnsTimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: DnsTimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: DnsTimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsIpVersionResponseSerie0",
@@ -46643,15 +46741,15 @@ export const EmailRoutingSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailRoutingSummaryIpVersionResponseSummary0 {
   /** A numeric string. */
-  IPv4: string;
+  iPv4: string;
   /** A numeric string. */
-  IPv6: string;
+  iPv6: string;
 }
 export const EmailRoutingSummaryIpVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: S.String,
-      IPv6: S.String,
+      iPv4: S.String.pipe(T.Body("IPv4")),
+      iPv6: S.String.pipe(T.Body("IPv6")),
     }),
   ).annotate({
     identifier: "EmailRoutingSummaryIpVersionResponseSummary0",
@@ -47081,14 +47179,18 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List =
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List>;
 
 export interface EmailRoutingTimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List;
 }
 export const EmailRoutingTimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: EmailRoutingTimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
     }),
   ).annotate({
     identifier: "EmailRoutingTimeseriesGroupsIpVersionResponseSerie0",
@@ -47515,15 +47617,15 @@ export const HttpSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryIpVersionResponseSummary0 {
   /** A numeric string. */
-  IPv4: string;
+  iPv4: string;
   /** A numeric string. */
-  IPv6: string;
+  iPv6: string;
 }
 export const HttpSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      IPv4: S.String,
-      IPv6: S.String,
+      iPv4: S.String.pipe(T.Body("IPv4")),
+      iPv6: S.String.pipe(T.Body("IPv6")),
     }),
 ).annotate({
   identifier: "HttpSummaryIpVersionResponseSummary0",
@@ -48024,15 +48126,19 @@ export const HttpTimeseriesGroupsIpVersionResponseSerie0TimestampsList =
   ) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseSerie0TimestampsList>;
 
 export interface HttpTimeseriesGroupsIpVersionResponseSerie0 {
-  IPv4: HttpTimeseriesGroupsIpVersionResponseSerie0IPv4List;
-  IPv6: HttpTimeseriesGroupsIpVersionResponseSerie0IPv6List;
+  iPv4: HttpTimeseriesGroupsIpVersionResponseSerie0IPv4List;
+  iPv6: HttpTimeseriesGroupsIpVersionResponseSerie0IPv6List;
   timestamps: HttpTimeseriesGroupsIpVersionResponseSerie0TimestampsList;
 }
 export const HttpTimeseriesGroupsIpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      IPv4: HttpTimeseriesGroupsIpVersionResponseSerie0IPv4List,
-      IPv6: HttpTimeseriesGroupsIpVersionResponseSerie0IPv6List,
+      iPv4: HttpTimeseriesGroupsIpVersionResponseSerie0IPv4List.pipe(
+        T.Body("IPv4"),
+      ),
+      iPv6: HttpTimeseriesGroupsIpVersionResponseSerie0IPv6List.pipe(
+        T.Body("IPv6"),
+      ),
       timestamps: HttpTimeseriesGroupsIpVersionResponseSerie0TimestampsList,
     }),
   ).annotate({
@@ -48713,7 +48819,7 @@ export interface ListBotsRequest {
   /** Filters results by bot operator. */
   botOperator?: string;
   /** Filters results by bot verification status. */
-  botVerificationStatus?: BotsListRequestBotVerificationStatus;
+  botVerificationStatus?: BotsListRequestBotVerificationStatus | (string & {});
   /** Format in which results will be returned. */
   format?: BotsListRequestFormat | (string & {});
   /** Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed. */
@@ -51287,15 +51393,15 @@ export const EmailSecuritySummaryMaliciousResponseMeta =
 
 export interface EmailSecuritySummaryMaliciousResponseSummary0 {
   /** A numeric string. */
-  MALICIOUS: string;
+  mALICIOUS: string;
   /** A numeric string. */
-  NOTMALICIOUS: string;
+  nOTMALICIOUS: string;
 }
 export const EmailSecuritySummaryMaliciousResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MALICIOUS: S.String,
-      NOTMALICIOUS: S.String.pipe(T.Body("NOT_MALICIOUS")),
+      mALICIOUS: S.String.pipe(T.Body("MALICIOUS")),
+      nOTMALICIOUS: S.String.pipe(T.Body("NOT_MALICIOUS")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummaryMaliciousResponseSummary0",
@@ -51735,15 +51841,17 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseSerie0NOTMALICIOUSLis
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseSerie0NOTMALICIOUSList>;
 
 export interface EmailSecurityTimeseriesGroupsMaliciousResponseSerie0 {
-  MALICIOUS: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0MALICIOUSList;
-  NOTMALICIOUS: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0NOTMALICIOUSList;
+  mALICIOUS: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0MALICIOUSList;
+  nOTMALICIOUS: EmailSecurityTimeseriesGroupsMaliciousResponseSerie0NOTMALICIOUSList;
 }
 export const EmailSecurityTimeseriesGroupsMaliciousResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MALICIOUS:
-        EmailSecurityTimeseriesGroupsMaliciousResponseSerie0MALICIOUSList,
-      NOTMALICIOUS:
+      mALICIOUS:
+        EmailSecurityTimeseriesGroupsMaliciousResponseSerie0MALICIOUSList.pipe(
+          T.Body("MALICIOUS"),
+        ),
+      nOTMALICIOUS:
         EmailSecurityTimeseriesGroupsMaliciousResponseSerie0NOTMALICIOUSList.pipe(
           T.Body("NOT_MALICIOUS"),
         ),
@@ -53206,15 +53314,15 @@ export const DnsSummaryMatchingAnswerResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface DnsSummaryMatchingAnswerResponseSummary0 {
   /** A numeric string. */
-  NEGATIVE: string;
+  nEGATIVE: string;
   /** A numeric string. */
-  POSITIVE: string;
+  pOSITIVE: string;
 }
 export const DnsSummaryMatchingAnswerResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NEGATIVE: S.String,
-      POSITIVE: S.String,
+      nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
+      pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
     }),
 ).annotate({
   identifier: "DnsSummaryMatchingAnswerResponseSummary0",
@@ -53754,14 +53862,20 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList =
   ) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList>;
 
 export interface DnsTimeseriesGroupsMatchingAnswerResponseSerie0 {
-  NEGATIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0NEGATIVEList;
-  POSITIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList;
+  nEGATIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0NEGATIVEList;
+  pOSITIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList;
 }
 export const DnsTimeseriesGroupsMatchingAnswerResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NEGATIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0NEGATIVEList,
-      POSITIVE: DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList,
+      nEGATIVE:
+        DnsTimeseriesGroupsMatchingAnswerResponseSerie0NEGATIVEList.pipe(
+          T.Body("NEGATIVE"),
+        ),
+      pOSITIVE:
+        DnsTimeseriesGroupsMatchingAnswerResponseSerie0POSITIVEList.pipe(
+          T.Body("POSITIVE"),
+        ),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsMatchingAnswerResponseSerie0",
@@ -58156,14 +58270,14 @@ export const HttpSummaryOsResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryOsResponseSummary0 {
   /** A numeric string. */
-  ANDROID: string;
+  aNDROID: string;
   /** A numeric string. */
-  IOS: string;
+  iOS: string;
 }
 export const HttpSummaryOsResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ANDROID: S.String,
-    IOS: S.String,
+    aNDROID: S.String.pipe(T.Body("ANDROID")),
+    iOS: S.String.pipe(T.Body("IOS")),
   }),
 ).annotate({
   identifier: "HttpSummaryOsResponseSummary0",
@@ -59161,15 +59275,15 @@ export const HttpSummaryPostQuantumResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryPostQuantumResponseSummary0 {
   /** A numeric string. */
-  NOTSUPPORTED: string;
+  nOTSUPPORTED: string;
   /** A numeric string. */
-  SUPPORTED: string;
+  sUPPORTED: string;
 }
 export const HttpSummaryPostQuantumResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-      SUPPORTED: S.String,
+      nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
+      sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
     }),
 ).annotate({
   identifier: "HttpSummaryPostQuantumResponseSummary0",
@@ -59697,18 +59811,21 @@ export const HttpTimeseriesGroupsPostQuantumResponseSerie0TimestampsList =
   ) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseSerie0TimestampsList>;
 
 export interface HttpTimeseriesGroupsPostQuantumResponseSerie0 {
-  NOTSUPPORTED: HttpTimeseriesGroupsPostQuantumResponseSerie0NOTSUPPORTEDList;
-  SUPPORTED: HttpTimeseriesGroupsPostQuantumResponseSerie0SUPPORTEDList;
+  nOTSUPPORTED: HttpTimeseriesGroupsPostQuantumResponseSerie0NOTSUPPORTEDList;
+  sUPPORTED: HttpTimeseriesGroupsPostQuantumResponseSerie0SUPPORTEDList;
   timestamps: HttpTimeseriesGroupsPostQuantumResponseSerie0TimestampsList;
 }
 export const HttpTimeseriesGroupsPostQuantumResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSUPPORTED:
+      nOTSUPPORTED:
         HttpTimeseriesGroupsPostQuantumResponseSerie0NOTSUPPORTEDList.pipe(
           T.Body("NOT_SUPPORTED"),
         ),
-      SUPPORTED: HttpTimeseriesGroupsPostQuantumResponseSerie0SUPPORTEDList,
+      sUPPORTED:
+        HttpTimeseriesGroupsPostQuantumResponseSerie0SUPPORTEDList.pipe(
+          T.Body("SUPPORTED"),
+        ),
       timestamps: HttpTimeseriesGroupsPostQuantumResponseSerie0TimestampsList,
     }),
   ).annotate({
@@ -60346,21 +60463,21 @@ export const As112SummaryProtocolResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface As112SummaryProtocolResponseSummary0 {
   /** A numeric string. */
-  HTTPS: string;
+  hTTPS: string;
   /** A numeric string. */
-  TCP: string;
+  tCP: string;
   /** A numeric string. */
-  TLS: string;
+  tLS: string;
   /** A numeric string. */
-  UDP: string;
+  uDP: string;
 }
 export const As112SummaryProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      HTTPS: S.String,
-      TCP: S.String,
-      TLS: S.String,
-      UDP: S.String,
+      hTTPS: S.String.pipe(T.Body("HTTPS")),
+      tCP: S.String.pipe(T.Body("TCP")),
+      tLS: S.String.pipe(T.Body("TLS")),
+      uDP: S.String.pipe(T.Body("UDP")),
     }),
 ).annotate({
   identifier: "As112SummaryProtocolResponseSummary0",
@@ -60847,18 +60964,26 @@ export const As112TimeseriesGroupsProtocolResponseSerie0UDPList =
   ) as any as S.Schema<As112TimeseriesGroupsProtocolResponseSerie0UDPList>;
 
 export interface As112TimeseriesGroupsProtocolResponseSerie0 {
-  HTTPS: As112TimeseriesGroupsProtocolResponseSerie0HTTPSList;
-  TCP: As112TimeseriesGroupsProtocolResponseSerie0TCPList;
-  TLS: As112TimeseriesGroupsProtocolResponseSerie0TLSList;
-  UDP: As112TimeseriesGroupsProtocolResponseSerie0UDPList;
+  hTTPS: As112TimeseriesGroupsProtocolResponseSerie0HTTPSList;
+  tCP: As112TimeseriesGroupsProtocolResponseSerie0TCPList;
+  tLS: As112TimeseriesGroupsProtocolResponseSerie0TLSList;
+  uDP: As112TimeseriesGroupsProtocolResponseSerie0UDPList;
 }
 export const As112TimeseriesGroupsProtocolResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTPS: As112TimeseriesGroupsProtocolResponseSerie0HTTPSList,
-      TCP: As112TimeseriesGroupsProtocolResponseSerie0TCPList,
-      TLS: As112TimeseriesGroupsProtocolResponseSerie0TLSList,
-      UDP: As112TimeseriesGroupsProtocolResponseSerie0UDPList,
+      hTTPS: As112TimeseriesGroupsProtocolResponseSerie0HTTPSList.pipe(
+        T.Body("HTTPS"),
+      ),
+      tCP: As112TimeseriesGroupsProtocolResponseSerie0TCPList.pipe(
+        T.Body("TCP"),
+      ),
+      tLS: As112TimeseriesGroupsProtocolResponseSerie0TLSList.pipe(
+        T.Body("TLS"),
+      ),
+      uDP: As112TimeseriesGroupsProtocolResponseSerie0UDPList.pipe(
+        T.Body("UDP"),
+      ),
     }),
   ).annotate({
     identifier: "As112TimeseriesGroupsProtocolResponseSerie0",
@@ -61181,21 +61306,21 @@ export const AttacksLayer3SummaryProtocolResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface AttacksLayer3SummaryProtocolResponseSummary0 {
   /** A numeric string. */
-  GRE: string;
+  gRE: string;
   /** A numeric string. */
-  ICMP: string;
+  iCMP: string;
   /** A numeric string. */
-  TCP: string;
+  tCP: string;
   /** A numeric string. */
-  UDP: string;
+  uDP: string;
 }
 export const AttacksLayer3SummaryProtocolResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      GRE: S.String,
-      ICMP: S.String,
-      TCP: S.String,
-      UDP: S.String,
+      gRE: S.String.pipe(T.Body("GRE")),
+      iCMP: S.String.pipe(T.Body("ICMP")),
+      tCP: S.String.pipe(T.Body("TCP")),
+      uDP: S.String.pipe(T.Body("UDP")),
     }),
   ).annotate({
     identifier: "AttacksLayer3SummaryProtocolResponseSummary0",
@@ -61621,21 +61746,29 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList =
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList>;
 
 export interface AttacksLayer3TimeseriesGroupsProtocolResponseSerie0 {
-  GRE: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0GREList;
-  ICMP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0ICMPList;
-  TCP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TCPList;
+  gRE: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0GREList;
+  iCMP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0ICMPList;
+  tCP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TCPList;
   timestamps: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TimestampsList;
-  UDP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList;
+  uDP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList;
 }
 export const AttacksLayer3TimeseriesGroupsProtocolResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      GRE: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0GREList,
-      ICMP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0ICMPList,
-      TCP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TCPList,
+      gRE: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0GREList.pipe(
+        T.Body("GRE"),
+      ),
+      iCMP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0ICMPList.pipe(
+        T.Body("ICMP"),
+      ),
+      tCP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TCPList.pipe(
+        T.Body("TCP"),
+      ),
       timestamps:
         AttacksLayer3TimeseriesGroupsProtocolResponseSerie0TimestampsList,
-      UDP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList,
+      uDP: AttacksLayer3TimeseriesGroupsProtocolResponseSerie0UDPList.pipe(
+        T.Body("UDP"),
+      ),
     }),
   ).annotate({
     identifier: "AttacksLayer3TimeseriesGroupsProtocolResponseSerie0",
@@ -62071,20 +62204,20 @@ export const DnsSummaryProtocolResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface DnsSummaryProtocolResponseSummary0 {
   /** A numeric string. */
-  HTTPS: string;
+  hTTPS: string;
   /** A numeric string. */
-  TCP: string;
+  tCP: string;
   /** A numeric string. */
-  TLS: string;
+  tLS: string;
   /** A numeric string. */
-  UDP: string;
+  uDP: string;
 }
 export const DnsSummaryProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HTTPS: S.String,
-    TCP: S.String,
-    TLS: S.String,
-    UDP: S.String,
+    hTTPS: S.String.pipe(T.Body("HTTPS")),
+    tCP: S.String.pipe(T.Body("TCP")),
+    tLS: S.String.pipe(T.Body("TLS")),
+    uDP: S.String.pipe(T.Body("UDP")),
   }),
 ).annotate({
   identifier: "DnsSummaryProtocolResponseSummary0",
@@ -62595,18 +62728,20 @@ export const DnsTimeseriesGroupsProtocolResponseSerie0UDPList =
   ) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseSerie0UDPList>;
 
 export interface DnsTimeseriesGroupsProtocolResponseSerie0 {
-  HTTPS: DnsTimeseriesGroupsProtocolResponseSerie0HTTPSList;
-  TCP: DnsTimeseriesGroupsProtocolResponseSerie0TCPList;
-  TLS: DnsTimeseriesGroupsProtocolResponseSerie0TLSList;
-  UDP: DnsTimeseriesGroupsProtocolResponseSerie0UDPList;
+  hTTPS: DnsTimeseriesGroupsProtocolResponseSerie0HTTPSList;
+  tCP: DnsTimeseriesGroupsProtocolResponseSerie0TCPList;
+  tLS: DnsTimeseriesGroupsProtocolResponseSerie0TLSList;
+  uDP: DnsTimeseriesGroupsProtocolResponseSerie0UDPList;
 }
 export const DnsTimeseriesGroupsProtocolResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTPS: DnsTimeseriesGroupsProtocolResponseSerie0HTTPSList,
-      TCP: DnsTimeseriesGroupsProtocolResponseSerie0TCPList,
-      TLS: DnsTimeseriesGroupsProtocolResponseSerie0TLSList,
-      UDP: DnsTimeseriesGroupsProtocolResponseSerie0UDPList,
+      hTTPS: DnsTimeseriesGroupsProtocolResponseSerie0HTTPSList.pipe(
+        T.Body("HTTPS"),
+      ),
+      tCP: DnsTimeseriesGroupsProtocolResponseSerie0TCPList.pipe(T.Body("TCP")),
+      tLS: DnsTimeseriesGroupsProtocolResponseSerie0TLSList.pipe(T.Body("TLS")),
+      uDP: DnsTimeseriesGroupsProtocolResponseSerie0UDPList.pipe(T.Body("UDP")),
     }),
   ).annotate({
     identifier: "DnsTimeseriesGroupsProtocolResponseSerie0",
@@ -67392,11 +67527,11 @@ export const BgpRpkiAspaSnapshotResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaSnapshotResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaSnapshotResponseAsnInfo {
-  _13335: BgpRpkiAspaSnapshotResponseAsnInfo13335;
+  "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335;
 }
 export const BgpRpkiAspaSnapshotResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _13335: BgpRpkiAspaSnapshotResponseAsnInfo13335.pipe(T.Body("13335")),
+    "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335,
   }),
 ).annotate({
   identifier: "BgpRpkiAspaSnapshotResponseAsnInfo",
@@ -67783,15 +67918,15 @@ export const EmailSecuritySummarySpamResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailSecuritySummarySpamResponseSummary0 {
   /** A numeric string. */
-  NOTSPAM: string;
+  nOTSPAM: string;
   /** A numeric string. */
-  SPAM: string;
+  sPAM: string;
 }
 export const EmailSecuritySummarySpamResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NOTSPAM: S.String.pipe(T.Body("NOT_SPAM")),
-      SPAM: S.String,
+      nOTSPAM: S.String.pipe(T.Body("NOT_SPAM")),
+      sPAM: S.String.pipe(T.Body("SPAM")),
     }),
 ).annotate({
   identifier: "EmailSecuritySummarySpamResponseSummary0",
@@ -68211,16 +68346,18 @@ export const EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList>;
 
 export interface EmailSecurityTimeseriesGroupsSpamResponseSerie0 {
-  NOTSPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0NOTSPAMList;
-  SPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList;
+  nOTSPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0NOTSPAMList;
+  sPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList;
 }
 export const EmailSecurityTimeseriesGroupsSpamResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0NOTSPAMList.pipe(
+      nOTSPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0NOTSPAMList.pipe(
         T.Body("NOT_SPAM"),
       ),
-      SPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList,
+      sPAM: EmailSecurityTimeseriesGroupsSpamResponseSerie0SPAMList.pipe(
+        T.Body("SPAM"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsSpamResponseSerie0",
@@ -68557,18 +68694,18 @@ export const EmailRoutingSummarySpfResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface EmailRoutingSummarySpfResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailRoutingSummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailRoutingSummarySpfResponseSummary0",
@@ -68986,16 +69123,22 @@ export const EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList =
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList>;
 
 export interface EmailRoutingTimeseriesGroupsSpfResponseSerie0 {
-  FAIL: EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList;
-  NONE: EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList;
-  PASS: EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList;
+  fAIL: EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList;
+  nONE: EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList;
+  pASS: EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList;
 }
 export const EmailRoutingTimeseriesGroupsSpfResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList,
-      NONE: EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList,
-      PASS: EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList,
+      fAIL: EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailRoutingTimeseriesGroupsSpfResponseSerie0",
@@ -69322,18 +69465,18 @@ export const EmailSecuritySummarySpfResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface EmailSecuritySummarySpfResponseSummary0 {
   /** A numeric string. */
-  FAIL: string;
+  fAIL: string;
   /** A numeric string. */
-  NONE: string;
+  nONE: string;
   /** A numeric string. */
-  PASS: string;
+  pASS: string;
 }
 export const EmailSecuritySummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      FAIL: S.String,
-      NONE: S.String,
-      PASS: S.String,
+      fAIL: S.String.pipe(T.Body("FAIL")),
+      nONE: S.String.pipe(T.Body("NONE")),
+      pASS: S.String.pipe(T.Body("PASS")),
     }),
 ).annotate({
   identifier: "EmailSecuritySummarySpfResponseSummary0",
@@ -69740,16 +69883,22 @@ export const EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList>;
 
 export interface EmailSecurityTimeseriesGroupsSpfResponseSerie0 {
-  FAIL: EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList;
-  NONE: EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList;
-  PASS: EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList;
+  fAIL: EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList;
+  nONE: EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList;
+  pASS: EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList;
 }
 export const EmailSecurityTimeseriesGroupsSpfResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FAIL: EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList,
-      NONE: EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList,
-      PASS: EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList,
+      fAIL: EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList.pipe(
+        T.Body("FAIL"),
+      ),
+      nONE: EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList.pipe(
+        T.Body("NONE"),
+      ),
+      pASS: EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList.pipe(
+        T.Body("PASS"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsSpfResponseSerie0",
@@ -70094,15 +70243,15 @@ export const EmailSecuritySummarySpoofResponseMeta = /*@__PURE__*/ S.suspend(
 
 export interface EmailSecuritySummarySpoofResponseSummary0 {
   /** A numeric string. */
-  NOTSPOOF: string;
+  nOTSPOOF: string;
   /** A numeric string. */
-  SPOOF: string;
+  sPOOF: string;
 }
 export const EmailSecuritySummarySpoofResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSPOOF: S.String.pipe(T.Body("NOT_SPOOF")),
-      SPOOF: S.String,
+      nOTSPOOF: S.String.pipe(T.Body("NOT_SPOOF")),
+      sPOOF: S.String.pipe(T.Body("SPOOF")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummarySpoofResponseSummary0",
@@ -70524,17 +70673,19 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList>;
 
 export interface EmailSecurityTimeseriesGroupsSpoofResponseSerie0 {
-  NOTSPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0NOTSPOOFList;
-  SPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList;
+  nOTSPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0NOTSPOOFList;
+  sPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList;
 }
 export const EmailSecurityTimeseriesGroupsSpoofResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      NOTSPOOF:
+      nOTSPOOF:
         EmailSecurityTimeseriesGroupsSpoofResponseSerie0NOTSPOOFList.pipe(
           T.Body("NOT_SPOOF"),
         ),
-      SPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList,
+      sPOOF: EmailSecurityTimeseriesGroupsSpoofResponseSerie0SPOOFList.pipe(
+        T.Body("SPOOF"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsSpoofResponseSerie0",
@@ -70672,7 +70823,7 @@ export const AgentReadinessSummaryRequestNameList = /*@__PURE__*/ S.Array(
 
 export interface SummaryAgentReadinessRequest {
   /** Specifies the agent readiness data dimension by which to group the results. */
-  dimension: AgentReadinessSummaryRequestDimension;
+  dimension: AgentReadinessSummaryRequestDimension | (string & {});
   /** Filters results by the specified date. */
   date?: string;
   /** Filters results by domain category. */
@@ -71537,8 +71688,9 @@ export const BotsSummaryRequestBotOperatorList = /*@__PURE__*/ S.Array(
 export type BotsSummaryRequestBotVerificationStatus = "VERIFIED";
 export const BotsSummaryRequestBotVerificationStatus = /*@__PURE__*/ S.String;
 
-export type BotsSummaryRequestBotVerificationStatusList =
-  Array<BotsSummaryRequestBotVerificationStatus>;
+export type BotsSummaryRequestBotVerificationStatusList = Array<
+  BotsSummaryRequestBotVerificationStatus | (string & {})
+>;
 export const BotsSummaryRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsSummaryRequestBotVerificationStatus,
@@ -72697,54 +72849,54 @@ export const CtSummaryResponseSummary0Case2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CtSummaryResponseSummary0Case2>;
 
 export interface CtSummaryResponseSummary0Case3 {
-  CERTIFICATE: string;
-  PRECERTIFICATE: string;
+  cERTIFICATE: string;
+  pRECERTIFICATE: string;
 }
 export const CtSummaryResponseSummary0Case3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    CERTIFICATE: S.String,
-    PRECERTIFICATE: S.String,
+    cERTIFICATE: S.String.pipe(T.Body("CERTIFICATE")),
+    pRECERTIFICATE: S.String.pipe(T.Body("PRECERTIFICATE")),
   }),
 ).annotate({
   identifier: "CtSummaryResponseSummary0Case3",
 }) as any as S.Schema<CtSummaryResponseSummary0Case3>;
 
 export interface CtSummaryResponseSummary0Case4 {
-  EXPIRED: string;
-  VALID: string;
+  eXPIRED: string;
+  vALID: string;
 }
 export const CtSummaryResponseSummary0Case4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    EXPIRED: S.String,
-    VALID: S.String,
+    eXPIRED: S.String.pipe(T.Body("EXPIRED")),
+    vALID: S.String.pipe(T.Body("VALID")),
   }),
 ).annotate({
   identifier: "CtSummaryResponseSummary0Case4",
 }) as any as S.Schema<CtSummaryResponseSummary0Case4>;
 
 export interface CtSummaryResponseSummary0Case5 {
-  NEGATIVE: string;
-  POSITIVE: string;
+  nEGATIVE: string;
+  pOSITIVE: string;
 }
 export const CtSummaryResponseSummary0Case5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NEGATIVE: S.String,
-    POSITIVE: S.String,
+    nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
+    pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
   }),
 ).annotate({
   identifier: "CtSummaryResponseSummary0Case5",
 }) as any as S.Schema<CtSummaryResponseSummary0Case5>;
 
 export interface CtSummaryResponseSummary0Case6 {
-  DSA: string;
-  ECDSA: string;
-  RSA: string;
+  dSA: string;
+  eCDSA: string;
+  rSA: string;
 }
 export const CtSummaryResponseSummary0Case6 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    DSA: S.String,
-    ECDSA: S.String,
-    RSA: S.String,
+    dSA: S.String.pipe(T.Body("DSA")),
+    eCDSA: S.String.pipe(T.Body("ECDSA")),
+    rSA: S.String.pipe(T.Body("RSA")),
   }),
 ).annotate({
   identifier: "CtSummaryResponseSummary0Case6",
@@ -72788,10 +72940,10 @@ export const CtSummaryResponseSummary0 = /*@__PURE__*/ S.Unknown.pipe(
       "gt_91d_lte_121d",
       "lte_3d",
     ],
-    ["CERTIFICATE", "PRECERTIFICATE"],
-    ["EXPIRED", "VALID"],
-    ["NEGATIVE", "POSITIVE"],
-    ["DSA", "ECDSA", "RSA"],
+    ["cERTIFICATE", "pRECERTIFICATE"],
+    ["eXPIRED", "vALID"],
+    ["nEGATIVE", "pOSITIVE"],
+    ["dSA", "eCDSA", "rSA"],
     ["domain", "extended", "organization", "unknown"],
   ]),
 );
@@ -73070,14 +73222,14 @@ export const NetflowsSummaryResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface NetflowsSummaryResponseSummary0 {
   /** A numeric string. */
-  HTTP: string;
+  hTTP: string;
   /** A numeric string. */
-  OTHER: string;
+  oTHER: string;
 }
 export const NetflowsSummaryResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HTTP: S.String,
-    OTHER: S.String,
+    hTTP: S.String.pipe(T.Body("HTTP")),
+    oTHER: S.String.pipe(T.Body("OTHER")),
   }),
 ).annotate({
   identifier: "NetflowsSummaryResponseSummary0",
@@ -73128,7 +73280,7 @@ export const PostQuantumOriginSummaryRequestNameList = /*@__PURE__*/ S.Array(
 
 export interface SummaryPostQuantumOriginRequest {
   /** Specifies the origin post-quantum data dimension by which to group the results. */
-  dimension: PostQuantumOriginSummaryRequestDimension;
+  dimension: PostQuantumOriginSummaryRequestDimension | (string & {});
   /** End of the date range (inclusive). */
   dateEnd?: PostQuantumOriginSummaryRequestDateEndList;
   /** Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters). */
@@ -79882,21 +80034,21 @@ export const EmailSecuritySummaryThreatCategoryResponseMeta =
 
 export interface EmailSecuritySummaryThreatCategoryResponseSummary0 {
   /** A numeric string. */
-  BrandImpersonation: string;
+  brandImpersonation: string;
   /** A numeric string. */
-  CredentialHarvester: string;
+  credentialHarvester: string;
   /** A numeric string. */
-  IdentityDeception: string;
+  identityDeception: string;
   /** A numeric string. */
-  Link: string;
+  link: string;
 }
 export const EmailSecuritySummaryThreatCategoryResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      BrandImpersonation: S.String,
-      CredentialHarvester: S.String,
-      IdentityDeception: S.String,
-      Link: S.String,
+      brandImpersonation: S.String.pipe(T.Body("BrandImpersonation")),
+      credentialHarvester: S.String.pipe(T.Body("CredentialHarvester")),
+      identityDeception: S.String.pipe(T.Body("IdentityDeception")),
+      link: S.String.pipe(T.Body("Link")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummaryThreatCategoryResponseSummary0",
@@ -80362,21 +80514,29 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList>;
 
 export interface EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0 {
-  BrandImpersonation: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0BrandImpersonationList;
-  CredentialHarvester: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0CredentialHarvesterList;
-  IdentityDeception: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0IdentityDeceptionList;
-  Link: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList;
+  brandImpersonation: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0BrandImpersonationList;
+  credentialHarvester: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0CredentialHarvesterList;
+  identityDeception: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0IdentityDeceptionList;
+  link: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList;
 }
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      BrandImpersonation:
-        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0BrandImpersonationList,
-      CredentialHarvester:
-        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0CredentialHarvesterList,
-      IdentityDeception:
-        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0IdentityDeceptionList,
-      Link: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList,
+      brandImpersonation:
+        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0BrandImpersonationList.pipe(
+          T.Body("BrandImpersonation"),
+        ),
+      credentialHarvester:
+        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0CredentialHarvesterList.pipe(
+          T.Body("CredentialHarvester"),
+        ),
+      identityDeception:
+        EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0IdentityDeceptionList.pipe(
+          T.Body("IdentityDeception"),
+        ),
+      link: EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0LinkList.pipe(
+        T.Body("Link"),
+      ),
     }),
   ).annotate({
     identifier: "EmailSecurityTimeseriesGroupsThreatCategoryResponseSerie0",
@@ -83294,8 +83454,9 @@ export type BotsTimeseriesRequestBotVerificationStatus = "VERIFIED";
 export const BotsTimeseriesRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
-export type BotsTimeseriesRequestBotVerificationStatusList =
-  Array<BotsTimeseriesRequestBotVerificationStatus>;
+export type BotsTimeseriesRequestBotVerificationStatusList = Array<
+  BotsTimeseriesRequestBotVerificationStatus | (string & {})
+>;
 export const BotsTimeseriesRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsTimeseriesRequestBotVerificationStatus,
@@ -85103,8 +85264,9 @@ export type BotsTimeseriesGroupsRequestBotVerificationStatus = "VERIFIED";
 export const BotsTimeseriesGroupsRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
-export type BotsTimeseriesGroupsRequestBotVerificationStatusList =
-  Array<BotsTimeseriesGroupsRequestBotVerificationStatus>;
+export type BotsTimeseriesGroupsRequestBotVerificationStatusList = Array<
+  BotsTimeseriesGroupsRequestBotVerificationStatus | (string & {})
+>;
 export const BotsTimeseriesGroupsRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsTimeseriesGroupsRequestBotVerificationStatus,
@@ -86514,14 +86676,19 @@ export const CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList =
   ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList>;
 
 export interface CtTimeseriesGroupsResponseSerie0Case3 {
-  CERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList;
-  PRECERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList;
+  cERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList;
+  pRECERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList;
 }
 export const CtTimeseriesGroupsResponseSerie0Case3 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      CERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList,
-      PRECERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList,
+      cERTIFICATE: CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList.pipe(
+        T.Body("CERTIFICATE"),
+      ),
+      pRECERTIFICATE:
+        CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList.pipe(
+          T.Body("PRECERTIFICATE"),
+        ),
     }),
 ).annotate({
   identifier: "CtTimeseriesGroupsResponseSerie0Case3",
@@ -86540,14 +86707,18 @@ export const CtTimeseriesGroupsResponseSerie0Case4VALIDList =
   ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case4VALIDList>;
 
 export interface CtTimeseriesGroupsResponseSerie0Case4 {
-  EXPIRED: CtTimeseriesGroupsResponseSerie0Case4EXPIREDList;
-  VALID: CtTimeseriesGroupsResponseSerie0Case4VALIDList;
+  eXPIRED: CtTimeseriesGroupsResponseSerie0Case4EXPIREDList;
+  vALID: CtTimeseriesGroupsResponseSerie0Case4VALIDList;
 }
 export const CtTimeseriesGroupsResponseSerie0Case4 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      EXPIRED: CtTimeseriesGroupsResponseSerie0Case4EXPIREDList,
-      VALID: CtTimeseriesGroupsResponseSerie0Case4VALIDList,
+      eXPIRED: CtTimeseriesGroupsResponseSerie0Case4EXPIREDList.pipe(
+        T.Body("EXPIRED"),
+      ),
+      vALID: CtTimeseriesGroupsResponseSerie0Case4VALIDList.pipe(
+        T.Body("VALID"),
+      ),
     }),
 ).annotate({
   identifier: "CtTimeseriesGroupsResponseSerie0Case4",
@@ -86566,14 +86737,18 @@ export const CtTimeseriesGroupsResponseSerie0Case5POSITIVEList =
   ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case5POSITIVEList>;
 
 export interface CtTimeseriesGroupsResponseSerie0Case5 {
-  NEGATIVE: CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList;
-  POSITIVE: CtTimeseriesGroupsResponseSerie0Case5POSITIVEList;
+  nEGATIVE: CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList;
+  pOSITIVE: CtTimeseriesGroupsResponseSerie0Case5POSITIVEList;
 }
 export const CtTimeseriesGroupsResponseSerie0Case5 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NEGATIVE: CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList,
-      POSITIVE: CtTimeseriesGroupsResponseSerie0Case5POSITIVEList,
+      nEGATIVE: CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList.pipe(
+        T.Body("NEGATIVE"),
+      ),
+      pOSITIVE: CtTimeseriesGroupsResponseSerie0Case5POSITIVEList.pipe(
+        T.Body("POSITIVE"),
+      ),
     }),
 ).annotate({
   identifier: "CtTimeseriesGroupsResponseSerie0Case5",
@@ -86598,16 +86773,18 @@ export const CtTimeseriesGroupsResponseSerie0Case6RSAList =
   ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case6RSAList>;
 
 export interface CtTimeseriesGroupsResponseSerie0Case6 {
-  DSA: CtTimeseriesGroupsResponseSerie0Case6DSAList;
-  ECDSA: CtTimeseriesGroupsResponseSerie0Case6ECDSAList;
-  RSA: CtTimeseriesGroupsResponseSerie0Case6RSAList;
+  dSA: CtTimeseriesGroupsResponseSerie0Case6DSAList;
+  eCDSA: CtTimeseriesGroupsResponseSerie0Case6ECDSAList;
+  rSA: CtTimeseriesGroupsResponseSerie0Case6RSAList;
 }
 export const CtTimeseriesGroupsResponseSerie0Case6 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      DSA: CtTimeseriesGroupsResponseSerie0Case6DSAList,
-      ECDSA: CtTimeseriesGroupsResponseSerie0Case6ECDSAList,
-      RSA: CtTimeseriesGroupsResponseSerie0Case6RSAList,
+      dSA: CtTimeseriesGroupsResponseSerie0Case6DSAList.pipe(T.Body("DSA")),
+      eCDSA: CtTimeseriesGroupsResponseSerie0Case6ECDSAList.pipe(
+        T.Body("ECDSA"),
+      ),
+      rSA: CtTimeseriesGroupsResponseSerie0Case6RSAList.pipe(T.Body("RSA")),
     }),
 ).annotate({
   identifier: "CtTimeseriesGroupsResponseSerie0Case6",
@@ -86677,10 +86854,10 @@ export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
       "gt_91d_lte_121d",
       "lte_3d",
     ],
-    ["CERTIFICATE", "PRECERTIFICATE"],
-    ["EXPIRED", "VALID"],
-    ["NEGATIVE", "POSITIVE"],
-    ["DSA", "ECDSA", "RSA"],
+    ["cERTIFICATE", "pRECERTIFICATE"],
+    ["eXPIRED", "vALID"],
+    ["nEGATIVE", "pOSITIVE"],
+    ["dSA", "eCDSA", "rSA"],
     ["domain", "extended", "organization", "unknown"],
   ]),
 );
@@ -87118,7 +87295,7 @@ export const PostQuantumOriginTimeseriesGroupsRequestNameList =
 
 export interface TimeseriesGroupsPostQuantumOriginRequest {
   /** Specifies the origin post-quantum data dimension by which to group the results. */
-  dimension: PostQuantumOriginTimeseriesGroupsRequestDimension;
+  dimension: PostQuantumOriginTimeseriesGroupsRequestDimension | (string & {});
   /** End of the date range (inclusive). */
   dateEnd?: PostQuantumOriginTimeseriesGroupsRequestDateEndList;
   /** Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters). */
@@ -95951,7 +96128,7 @@ export interface HttpSummaryTlsVersionResponseSummary0 {
   /** A numeric string. */
   TLS_1_3: string;
   /** A numeric string. */
-  TLSQUIC: string;
+  tLSQUIC: string;
 }
 export const HttpSummaryTlsVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
@@ -95960,7 +96137,7 @@ export const HttpSummaryTlsVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
       TLS_1_1: S.String.pipe(T.Body("TLS 1.1")),
       TLS_1_2: S.String.pipe(T.Body("TLS 1.2")),
       TLS_1_3: S.String.pipe(T.Body("TLS 1.3")),
-      TLSQUIC: S.String.pipe(T.Body("TLS QUIC")),
+      tLSQUIC: S.String.pipe(T.Body("TLS QUIC")),
     }),
 ).annotate({
   identifier: "HttpSummaryTlsVersionResponseSummary0",
@@ -96492,7 +96669,7 @@ export interface HttpTimeseriesGroupsTlsVersionResponseSerie0 {
   TLS_1_1: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
   TLS_1_2: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
   TLS_1_3: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
-  TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList;
+  tLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList;
 }
 export const HttpTimeseriesGroupsTlsVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -96510,7 +96687,7 @@ export const HttpTimeseriesGroupsTlsVersionResponseSerie0 =
       TLS_1_3: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
         T.Body("TLS 1.3"),
       ),
-      TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList.pipe(
+      tLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList.pipe(
         T.Body("TLS QUIC"),
       ),
     }),

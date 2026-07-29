@@ -12,7 +12,7 @@
  * injection, protocol/retry names, the import header, and route aliases.
  */
 
-import { camel } from "@distilled.cloud/core/codegen/naming";
+import { camel, lowerFirst } from "@distilled.cloud/core/codegen/naming";
 import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
 import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 import { dedupeScopeTwins } from "./dedupe-scope-twins.ts";
@@ -34,9 +34,15 @@ const makeCfSpec = (
   // Docs wire names are snake_case; the TS surface is camelCase.
   // Verbatim (emitted quoted) when camelizing would mangle the v0 surface:
   // dashed keys ("cve-2021-44228"), digit segments ("lan_1", "tls_1_3"),
-  // and $-prefixed keys ("$metadata"); everything else camelizes.
-  memberName: (n: string) =>
-    n.includes("-") || /_\d/.test(n) || n.startsWith("$") ? n : camel(n),
+  // and $-prefixed keys ("$metadata"). Leading underscores strip before
+  // camelizing ("_metadata" → "metadata", the converter's digit-prefix
+  // "_600" → "600"), and the first letter lowercases ("Host" → "host").
+  memberName: (n: string) => {
+    if (n.includes("-") || n.startsWith("$")) return n;
+    const stripped = n.replace(/^_+/, "");
+    if (/_\d/.test(stripped)) return stripped;
+    return lowerFirst(camel(stripped));
+  },
   nullableTrait: NULLABLE_TRAIT,
   errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 

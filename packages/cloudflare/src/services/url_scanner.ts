@@ -3859,12 +3859,12 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRules {
-  _: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape;
+  "": ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape.pipe(
+      "": ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape.pipe(
         T.Body("*"),
       ),
     }),
@@ -4510,7 +4510,7 @@ export const ScansGetResponseStatsTlsStatsList = /*@__PURE__*/ S.Array(
 export interface ScansGetResponseStats {
   domainStats: ScansGetResponseStatsDomainStatsList;
   ipStats: ScansGetResponseStatsIpStatsList;
-  IPv6Percentage: number;
+  iPv6Percentage: number;
   malicious: number;
   protocolStats: ScansGetResponseStatsProtocolStatsList;
   resourceStats: ScansGetResponseStatsResourceStatsList;
@@ -4526,7 +4526,7 @@ export const ScansGetResponseStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainStats: ScansGetResponseStatsDomainStatsList,
     ipStats: ScansGetResponseStatsIpStatsList,
-    IPv6Percentage: S.Number,
+    iPv6Percentage: S.Number.pipe(T.Body("IPv6Percentage")),
     malicious: S.Number,
     protocolStats: ScansGetResponseStatsProtocolStatsList,
     resourceStats: ScansGetResponseStatsResourceStatsList,
@@ -4782,7 +4782,7 @@ export const ScansHarResponseLogEntriesItemResponseHeadersList =
   ) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
 
 export interface ScansHarResponseLogEntriesItemResponse {
-  TransferSize: number;
+  transferSize: number;
   bodySize: number;
   content: ScansHarResponseLogEntriesItemResponseContent;
   headers: ScansHarResponseLogEntriesItemResponseHeadersList;
@@ -4795,7 +4795,7 @@ export interface ScansHarResponseLogEntriesItemResponse {
 export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      TransferSize: S.Number.pipe(T.Body("_transferSize")),
+      transferSize: S.Number.pipe(T.Body("_transferSize")),
       bodySize: S.Number,
       content: ScansHarResponseLogEntriesItemResponseContent,
       headers: ScansHarResponseLogEntriesItemResponseHeadersList,
@@ -4810,12 +4810,12 @@ export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansHarResponseLogEntriesItemResponse>;
 
 export interface ScansHarResponseLogEntriesItem {
-  InitialPriority: string;
-  InitiatorType: string;
-  Priority: string;
-  RequestId: string;
-  RequestTime: number;
-  ResourceType: string;
+  initialPriority: string;
+  initiatorType: string;
+  priority: string;
+  requestId: string;
+  requestTime: number;
+  resourceType: string;
   cache: unknown;
   connection: string;
   pageref: string;
@@ -4827,12 +4827,12 @@ export interface ScansHarResponseLogEntriesItem {
 }
 export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InitialPriority: S.String.pipe(T.Body("_initialPriority")),
-    InitiatorType: S.String.pipe(T.Body("_initiator_type")),
-    Priority: S.String.pipe(T.Body("_priority")),
-    RequestId: S.String.pipe(T.Body("_requestId")),
-    RequestTime: S.Number.pipe(T.Body("_requestTime")),
-    ResourceType: S.String.pipe(T.Body("_resourceType")),
+    initialPriority: S.String.pipe(T.Body("_initialPriority")),
+    initiatorType: S.String.pipe(T.Body("_initiator_type")),
+    priority: S.String.pipe(T.Body("_priority")),
+    requestId: S.String.pipe(T.Body("_requestId")),
+    requestTime: S.Number.pipe(T.Body("_requestTime")),
+    resourceType: S.String.pipe(T.Body("_resourceType")),
     cache: S.Unknown,
     connection: S.String,
     pageref: S.String,
@@ -5007,7 +5007,7 @@ export const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansListResponseResultsItemVerdicts>;
 
 export interface ScansListResponseResultsItem {
-  Id: string;
+  id: string;
   page: ScansListResponseResultsItemPage;
   result: string;
   stats: ScansListResponseResultsItemStats;
@@ -5016,7 +5016,7 @@ export interface ScansListResponseResultsItem {
 }
 export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Id: S.String.pipe(T.Body("_id")),
+    id: S.String.pipe(T.Body("_id")),
     page: ScansListResponseResultsItemPage,
     result: S.String,
     stats: ScansListResponseResultsItemStats,

@@ -250,7 +250,7 @@ export const RulesCreateRequestRulesAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestRules {
   /** The action to take when the expression matches. */
-  action: RulesCreateRequestRulesAction;
+  action: RulesCreateRequestRulesAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -435,8 +435,9 @@ export const CreateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type CreateRequestEnabledOriginCommandsItem = "revoke";
 export const CreateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsList =
-  Array<CreateRequestEnabledOriginCommandsItem>;
+export type CreateRequestEnabledOriginCommandsList = Array<
+  CreateRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   CreateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<CreateRequestEnabledOriginCommandsList>;
@@ -2199,7 +2200,7 @@ export interface PatchRuleRequest {
   /** The ID of the rule. */
   ruleId: string;
   /** The action to take when the expression matches. */
-  action: RulesEditRequestAction;
+  action: RulesEditRequestAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -2414,8 +2415,9 @@ export const EditRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type EditRequestEnabledOriginCommandsItem = "revoke";
 export const EditRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsList =
-  Array<EditRequestEnabledOriginCommandsItem>;
+export type EditRequestEnabledOriginCommandsList = Array<
+  EditRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const EditRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   EditRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<EditRequestEnabledOriginCommandsList>;
@@ -3031,7 +3033,7 @@ export const RulesUpdateRequestRulesItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
   /** The action to take when the expression matches. */
-  action: RulesUpdateRequestRulesItemAction;
+  action: RulesUpdateRequestRulesItemAction | (string & {});
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -3221,8 +3223,9 @@ export const UpdateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type UpdateRequestEnabledOriginCommandsItem = "revoke";
 export const UpdateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsList =
-  Array<UpdateRequestEnabledOriginCommandsItem>;
+export type UpdateRequestEnabledOriginCommandsList = Array<
+  UpdateRequestEnabledOriginCommandsItem | (string & {})
+>;
 export const UpdateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   UpdateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;

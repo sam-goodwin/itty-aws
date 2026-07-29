@@ -222,7 +222,7 @@ export interface CreateAbuseReportRequest {
   /** The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   agentName?: string;
   /** Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports */
-  agree?: CreateRequestAgree;
+  agree?: CreateRequestAgree | (number & {});
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   city?: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */

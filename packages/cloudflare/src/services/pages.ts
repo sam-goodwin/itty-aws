@@ -276,57 +276,11 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespace
     ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
-export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
-  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+export type UntypedBindingMap = { [key: string]: unknown | undefined };
+export const UntypedBindingMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UntypedBindingMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -528,7 +482,7 @@ export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Durable Object namespaces used for Pages Functions. */
   durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: ProjectsCreateRequestDeploymentConfigsPreviewEnvVars;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
@@ -596,11 +550,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreview =
           T.Body("durable_object_namespaces"),
         ),
       ),
-      envVars: S.optional(
-        ProjectsCreateRequestDeploymentConfigsPreviewEnvVars.pipe(
-          T.Body("env_vars"),
-        ),
-      ),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
       failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
         ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
@@ -752,59 +702,6 @@ export const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamesp
     S.String,
     ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
-
-export type ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
-  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;
@@ -1008,7 +905,7 @@ export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Durable Object namespaces used for Pages Functions. */
   durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: ProjectsCreateRequestDeploymentConfigsProductionEnvVars;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
@@ -1076,11 +973,7 @@ export const ProjectsCreateRequestDeploymentConfigsProduction =
           T.Body("durable_object_namespaces"),
         ),
       ),
-      envVars: S.optional(
-        ProjectsCreateRequestDeploymentConfigsProductionEnvVars.pipe(
-          T.Body("env_vars"),
-        ),
-      ),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
       failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
         ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
@@ -1397,57 +1290,6 @@ export const ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger =
     identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger",
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger>;
 
-export type ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText {
-  type: ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText>;
-
-export type ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText {
-  type: ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText>;
-
-export type ProjectsCreateResponseCanonicalDeploymentEnvVars =
-  | ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText
-  | ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText;
-export const ProjectsCreateResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsCreateResponseCanonicalDeploymentEnvironment =
   | "preview"
   | "production";
@@ -1655,7 +1497,7 @@ export interface ProjectsCreateResponseCanonicalDeployment {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsCreateResponseCanonicalDeploymentEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsCreateResponseCanonicalDeploymentEnvironment;
   /** If the deployment has been skipped. */
@@ -1692,9 +1534,7 @@ export const ProjectsCreateResponseCanonicalDeployment =
         ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger.pipe(
           T.Body("deployment_trigger"),
         ),
-      envVars: ProjectsCreateResponseCanonicalDeploymentEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       environment: ProjectsCreateResponseCanonicalDeploymentEnvironment,
       isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
       latestStage: ProjectsCreateResponseCanonicalDeploymentLatestStage.pipe(
@@ -1719,59 +1559,6 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsLis
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
-
-export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVars =
-  | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -2057,7 +1844,7 @@ export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsCreateResponseDeploymentConfigsPreviewEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -2107,9 +1894,7 @@ export const ProjectsCreateResponseDeploymentConfigsPreview =
         ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsCreateResponseDeploymentConfigsPreviewEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel: ProjectsCreateResponseDeploymentConfigsPreviewUsageModel.pipe(
         T.Body("usage_model"),
@@ -2188,59 +1973,6 @@ export const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlags
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
-
-export type ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsCreateResponseDeploymentConfigsProductionEnvVars =
-  | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsCreateResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -2529,7 +2261,7 @@ export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsCreateResponseDeploymentConfigsProductionEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -2579,9 +2311,7 @@ export const ProjectsCreateResponseDeploymentConfigsProduction =
         ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsCreateResponseDeploymentConfigsProductionEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel:
         ProjectsCreateResponseDeploymentConfigsProductionUsageModel.pipe(
@@ -3021,57 +2751,6 @@ export const ProjectsDeploymentsCreateResponseDeploymentTrigger =
     identifier: "ProjectsDeploymentsCreateResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
 
-export type ProjectsDeploymentsCreateResponseEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsDeploymentsCreateResponseEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsCreateResponseEnvVarsPlainText {
-  type: ProjectsDeploymentsCreateResponseEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsCreateResponseEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsCreateResponseEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsCreateResponseEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsDeploymentsCreateResponseEnvVarsPlainText>;
-
-export type ProjectsDeploymentsCreateResponseEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsDeploymentsCreateResponseEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsCreateResponseEnvVarsSecretText {
-  type: ProjectsDeploymentsCreateResponseEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsDeploymentsCreateResponseEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsCreateResponseEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsCreateResponseEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsDeploymentsCreateResponseEnvVarsSecretText>;
-
-export type ProjectsDeploymentsCreateResponseEnvVars =
-  | ProjectsDeploymentsCreateResponseEnvVarsPlainText
-  | ProjectsDeploymentsCreateResponseEnvVarsSecretText;
-export const ProjectsDeploymentsCreateResponseEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsDeploymentsCreateResponseEnvironment =
   | "preview"
   | "production";
@@ -3278,7 +2957,7 @@ export interface CreateProjectDeploymentResponse {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsDeploymentsCreateResponseDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsDeploymentsCreateResponseEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsDeploymentsCreateResponseEnvironment;
   /** If the deployment has been skipped. */
@@ -3313,7 +2992,7 @@ export const CreateProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     deploymentTrigger: ProjectsDeploymentsCreateResponseDeploymentTrigger.pipe(
       T.Body("deployment_trigger"),
     ),
-    envVars: ProjectsDeploymentsCreateResponseEnvVars.pipe(T.Body("env_vars")),
+    envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
     environment: ProjectsDeploymentsCreateResponseEnvironment,
     isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
     latestStage: ProjectsDeploymentsCreateResponseLatestStage.pipe(
@@ -3667,57 +3346,6 @@ export const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
     identifier: "ProjectsGetResponseCanonicalDeploymentDeploymentTrigger",
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
 
-export type ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText {
-  type: ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText>;
-
-export type ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText {
-  type: ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText>;
-
-export type ProjectsGetResponseCanonicalDeploymentEnvVars =
-  | ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText
-  | ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText;
-export const ProjectsGetResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsGetResponseCanonicalDeploymentEnvironment =
   | "preview"
   | "production";
@@ -3925,7 +3553,7 @@ export interface ProjectsGetResponseCanonicalDeployment {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsGetResponseCanonicalDeploymentDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsGetResponseCanonicalDeploymentEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsGetResponseCanonicalDeploymentEnvironment;
   /** If the deployment has been skipped. */
@@ -3962,9 +3590,7 @@ export const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(
         ProjectsGetResponseCanonicalDeploymentDeploymentTrigger.pipe(
           T.Body("deployment_trigger"),
         ),
-      envVars: ProjectsGetResponseCanonicalDeploymentEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       environment: ProjectsGetResponseCanonicalDeploymentEnvironment,
       isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
       latestStage: ProjectsGetResponseCanonicalDeploymentLatestStage.pipe(
@@ -3989,57 +3615,6 @@ export const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
-
-export type ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsGetResponseDeploymentConfigsPreviewEnvVars =
-  | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsGetResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -4322,7 +3897,7 @@ export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsGetResponseDeploymentConfigsPreviewEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -4372,9 +3947,7 @@ export const ProjectsGetResponseDeploymentConfigsPreview =
         ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsGetResponseDeploymentConfigsPreviewEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel: ProjectsGetResponseDeploymentConfigsPreviewUsageModel.pipe(
         T.Body("usage_model"),
@@ -4453,59 +4026,6 @@ export const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsLis
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
-
-export type ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsGetResponseDeploymentConfigsProductionEnvVars =
-  | ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsGetResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -4791,7 +4311,7 @@ export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsGetResponseDeploymentConfigsProductionEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -4841,9 +4361,7 @@ export const ProjectsGetResponseDeploymentConfigsProduction =
         ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsGetResponseDeploymentConfigsProductionEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel: ProjectsGetResponseDeploymentConfigsProductionUsageModel.pipe(
         T.Body("usage_model"),
@@ -5247,55 +4765,6 @@ export const ProjectsDeploymentsGetResponseDeploymentTrigger =
     identifier: "ProjectsDeploymentsGetResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
 
-export type ProjectsDeploymentsGetResponseEnvVarsPlainTextType = "plain_text";
-export const ProjectsDeploymentsGetResponseEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsGetResponseEnvVarsPlainText {
-  type: ProjectsDeploymentsGetResponseEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsGetResponseEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsGetResponseEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsGetResponseEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsDeploymentsGetResponseEnvVarsPlainText>;
-
-export type ProjectsDeploymentsGetResponseEnvVarsSecretTextType = "secret_text";
-export const ProjectsDeploymentsGetResponseEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsGetResponseEnvVarsSecretText {
-  type: ProjectsDeploymentsGetResponseEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsDeploymentsGetResponseEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsGetResponseEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsGetResponseEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsDeploymentsGetResponseEnvVarsSecretText>;
-
-export type ProjectsDeploymentsGetResponseEnvVars =
-  | ProjectsDeploymentsGetResponseEnvVarsPlainText
-  | ProjectsDeploymentsGetResponseEnvVarsSecretText;
-export const ProjectsDeploymentsGetResponseEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsDeploymentsGetResponseEnvironment =
   | "preview"
   | "production";
@@ -5499,7 +4968,7 @@ export interface GetProjectDeploymentResponse {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsDeploymentsGetResponseDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsDeploymentsGetResponseEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsDeploymentsGetResponseEnvironment;
   /** If the deployment has been skipped. */
@@ -5534,7 +5003,7 @@ export const GetProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     deploymentTrigger: ProjectsDeploymentsGetResponseDeploymentTrigger.pipe(
       T.Body("deployment_trigger"),
     ),
-    envVars: ProjectsDeploymentsGetResponseEnvVars.pipe(T.Body("env_vars")),
+    envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
     environment: ProjectsDeploymentsGetResponseEnvironment,
     isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
     latestStage: ProjectsDeploymentsGetResponseLatestStage.pipe(
@@ -5864,57 +5333,6 @@ export const ProjectsDeploymentsListResultItemDeploymentTrigger =
     identifier: "ProjectsDeploymentsListResultItemDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
 
-export type ProjectsDeploymentsListResultItemEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsDeploymentsListResultItemEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsListResultItemEnvVarsPlainText {
-  type: ProjectsDeploymentsListResultItemEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsListResultItemEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsListResultItemEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsListResultItemEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsDeploymentsListResultItemEnvVarsPlainText>;
-
-export type ProjectsDeploymentsListResultItemEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsDeploymentsListResultItemEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsListResultItemEnvVarsSecretText {
-  type: ProjectsDeploymentsListResultItemEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsDeploymentsListResultItemEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsListResultItemEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsListResultItemEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsDeploymentsListResultItemEnvVarsSecretText>;
-
-export type ProjectsDeploymentsListResultItemEnvVars =
-  | ProjectsDeploymentsListResultItemEnvVarsPlainText
-  | ProjectsDeploymentsListResultItemEnvVarsSecretText;
-export const ProjectsDeploymentsListResultItemEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsDeploymentsListResultItemEnvironment =
   | "preview"
   | "production";
@@ -6120,7 +5538,7 @@ export interface ProjectsDeploymentsListResultItem {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsDeploymentsListResultItemDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsDeploymentsListResultItemEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsDeploymentsListResultItemEnvironment;
   /** If the deployment has been skipped. */
@@ -6155,7 +5573,7 @@ export const ProjectsDeploymentsListResultItem = /*@__PURE__*/ S.suspend(() =>
     deploymentTrigger: ProjectsDeploymentsListResultItemDeploymentTrigger.pipe(
       T.Body("deployment_trigger"),
     ),
-    envVars: ProjectsDeploymentsListResultItemEnvVars.pipe(T.Body("env_vars")),
+    envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
     environment: ProjectsDeploymentsListResultItemEnvironment,
     isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
     latestStage: ProjectsDeploymentsListResultItemLatestStage.pipe(
@@ -6453,57 +5871,6 @@ export const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
     identifier: "ProjectsListResultItemCanonicalDeploymentDeploymentTrigger",
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
 
-export type ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText {
-  type: ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText>;
-
-export type ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText {
-  type: ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText>;
-
-export type ProjectsListResultItemCanonicalDeploymentEnvVars =
-  | ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText
-  | ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText;
-export const ProjectsListResultItemCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsListResultItemCanonicalDeploymentEnvironment =
   | "preview"
   | "production";
@@ -6711,7 +6078,7 @@ export interface ProjectsListResultItemCanonicalDeployment {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsListResultItemCanonicalDeploymentDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsListResultItemCanonicalDeploymentEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsListResultItemCanonicalDeploymentEnvironment;
   /** If the deployment has been skipped. */
@@ -6748,9 +6115,7 @@ export const ProjectsListResultItemCanonicalDeployment =
         ProjectsListResultItemCanonicalDeploymentDeploymentTrigger.pipe(
           T.Body("deployment_trigger"),
         ),
-      envVars: ProjectsListResultItemCanonicalDeploymentEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       environment: ProjectsListResultItemCanonicalDeploymentEnvironment,
       isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
       latestStage: ProjectsListResultItemCanonicalDeploymentLatestStage.pipe(
@@ -6775,59 +6140,6 @@ export const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsLis
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
-
-export type ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsListResultItemDeploymentConfigsPreviewEnvVars =
-  | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsListResultItemDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -7113,7 +6425,7 @@ export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsListResultItemDeploymentConfigsPreviewEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -7163,9 +6475,7 @@ export const ProjectsListResultItemDeploymentConfigsPreview =
         ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsListResultItemDeploymentConfigsPreviewEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel: ProjectsListResultItemDeploymentConfigsPreviewUsageModel.pipe(
         T.Body("usage_model"),
@@ -7244,59 +6554,6 @@ export const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlags
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
-
-export type ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsListResultItemDeploymentConfigsProductionEnvVars =
-  | ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsListResultItemDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -7585,7 +6842,7 @@ export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsListResultItemDeploymentConfigsProductionEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -7635,9 +6892,7 @@ export const ProjectsListResultItemDeploymentConfigsProduction =
         ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsListResultItemDeploymentConfigsProductionEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel:
         ProjectsListResultItemDeploymentConfigsProductionUsageModel.pipe(
@@ -8086,57 +7341,6 @@ export const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesM
     ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
-export type ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
-  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export interface ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
 }
@@ -8335,7 +7539,7 @@ export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Durable Object namespaces used for Pages Functions. */
   durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: ProjectsEditRequestDeploymentConfigsPreviewEnvVars;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
@@ -8403,11 +7607,7 @@ export const ProjectsEditRequestDeploymentConfigsPreview =
           T.Body("durable_object_namespaces"),
         ),
       ),
-      envVars: S.optional(
-        ProjectsEditRequestDeploymentConfigsPreviewEnvVars.pipe(
-          T.Body("env_vars"),
-        ),
-      ),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
       failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
         ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
@@ -8558,59 +7758,6 @@ export const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespac
     S.String,
     ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue,
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
-
-export type ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsEditRequestDeploymentConfigsProductionEnvVars =
-  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsEditRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export interface ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;
@@ -8813,7 +7960,7 @@ export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Durable Object namespaces used for Pages Functions. */
   durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: ProjectsEditRequestDeploymentConfigsProductionEnvVars;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
@@ -8881,11 +8028,7 @@ export const ProjectsEditRequestDeploymentConfigsProduction =
           T.Body("durable_object_namespaces"),
         ),
       ),
-      envVars: S.optional(
-        ProjectsEditRequestDeploymentConfigsProductionEnvVars.pipe(
-          T.Body("env_vars"),
-        ),
-      ),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
       failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
         ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
@@ -9202,57 +8345,6 @@ export const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
     identifier: "ProjectsEditResponseCanonicalDeploymentDeploymentTrigger",
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
 
-export type ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText {
-  type: ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText>;
-
-export type ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText {
-  type: ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText>;
-
-export type ProjectsEditResponseCanonicalDeploymentEnvVars =
-  | ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText
-  | ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText;
-export const ProjectsEditResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsEditResponseCanonicalDeploymentEnvironment =
   | "preview"
   | "production";
@@ -9460,7 +8552,7 @@ export interface ProjectsEditResponseCanonicalDeployment {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsEditResponseCanonicalDeploymentDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsEditResponseCanonicalDeploymentEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsEditResponseCanonicalDeploymentEnvironment;
   /** If the deployment has been skipped. */
@@ -9497,9 +8589,7 @@ export const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(
         ProjectsEditResponseCanonicalDeploymentDeploymentTrigger.pipe(
           T.Body("deployment_trigger"),
         ),
-      envVars: ProjectsEditResponseCanonicalDeploymentEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       environment: ProjectsEditResponseCanonicalDeploymentEnvironment,
       isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
       latestStage: ProjectsEditResponseCanonicalDeploymentLatestStage.pipe(
@@ -9524,57 +8614,6 @@ export const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList 
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
-
-export type ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText {
-  type: ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText>;
-
-export type ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText {
-  type: ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText>;
-
-export type ProjectsEditResponseDeploymentConfigsPreviewEnvVars =
-  | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText;
-export const ProjectsEditResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -9858,7 +8897,7 @@ export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsEditResponseDeploymentConfigsPreviewEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -9908,9 +8947,7 @@ export const ProjectsEditResponseDeploymentConfigsPreview =
         ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsEditResponseDeploymentConfigsPreviewEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel: ProjectsEditResponseDeploymentConfigsPreviewUsageModel.pipe(
         T.Body("usage_model"),
@@ -9989,59 +9026,6 @@ export const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsLi
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
-
-export type ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText {
-  type: ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText>;
-
-export type ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText {
-  type: ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText>;
-
-export type ProjectsEditResponseDeploymentConfigsProductionEnvVars =
-  | ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText;
-export const ProjectsEditResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -10328,7 +9312,7 @@ export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Compatibility flags used for Pages Functions. */
   compatibilityFlags: ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsEditResponseDeploymentConfigsProductionEnvVars;
+  envVars: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
   failOpen: boolean;
   /** The usage model for Pages Functions. */
@@ -10378,9 +9362,7 @@ export const ProjectsEditResponseDeploymentConfigsProduction =
         ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
           T.Body("compatibility_flags"),
         ),
-      envVars: ProjectsEditResponseDeploymentConfigsProductionEnvVars.pipe(
-        T.Body("env_vars"),
-      ),
+      envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
       failOpen: S.Boolean.pipe(T.Body("fail_open")),
       usageModel:
         ProjectsEditResponseDeploymentConfigsProductionUsageModel.pipe(
@@ -10948,56 +9930,6 @@ export const ProjectsDeploymentsRetryResponseDeploymentTrigger =
     identifier: "ProjectsDeploymentsRetryResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
 
-export type ProjectsDeploymentsRetryResponseEnvVarsPlainTextType = "plain_text";
-export const ProjectsDeploymentsRetryResponseEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsRetryResponseEnvVarsPlainText {
-  type: ProjectsDeploymentsRetryResponseEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsRetryResponseEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsRetryResponseEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsRetryResponseEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsDeploymentsRetryResponseEnvVarsPlainText>;
-
-export type ProjectsDeploymentsRetryResponseEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsDeploymentsRetryResponseEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsRetryResponseEnvVarsSecretText {
-  type: ProjectsDeploymentsRetryResponseEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsDeploymentsRetryResponseEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsRetryResponseEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsRetryResponseEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsDeploymentsRetryResponseEnvVarsSecretText>;
-
-export type ProjectsDeploymentsRetryResponseEnvVars =
-  | ProjectsDeploymentsRetryResponseEnvVarsPlainText
-  | ProjectsDeploymentsRetryResponseEnvVarsSecretText;
-export const ProjectsDeploymentsRetryResponseEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
-
 export type ProjectsDeploymentsRetryResponseEnvironment =
   | "preview"
   | "production";
@@ -11203,7 +10135,7 @@ export interface RetryProjectDeploymentResponse {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsDeploymentsRetryResponseDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsDeploymentsRetryResponseEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsDeploymentsRetryResponseEnvironment;
   /** If the deployment has been skipped. */
@@ -11238,7 +10170,7 @@ export const RetryProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     deploymentTrigger: ProjectsDeploymentsRetryResponseDeploymentTrigger.pipe(
       T.Body("deployment_trigger"),
     ),
-    envVars: ProjectsDeploymentsRetryResponseEnvVars.pipe(T.Body("env_vars")),
+    envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
     environment: ProjectsDeploymentsRetryResponseEnvironment,
     isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
     latestStage: ProjectsDeploymentsRetryResponseLatestStage.pipe(
@@ -11361,57 +10293,6 @@ export const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
   ).annotate({
     identifier: "ProjectsDeploymentsRollbackResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
-
-export type ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType =
-  "plain_text";
-export const ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsRollbackResponseEnvVarsPlainText {
-  type: ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsRollbackResponseEnvVarsPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsRollbackResponseEnvVarsPlainText",
-  }) as any as S.Schema<ProjectsDeploymentsRollbackResponseEnvVarsPlainText>;
-
-export type ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType =
-  "secret_text";
-export const ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType =
-  /*@__PURE__*/ S.String;
-
-export interface ProjectsDeploymentsRollbackResponseEnvVarsSecretText {
-  type: ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType;
-  /** Secret value. */
-  value: string;
-}
-export const ProjectsDeploymentsRollbackResponseEnvVarsSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsRollbackResponseEnvVarsSecretText",
-  }) as any as S.Schema<ProjectsDeploymentsRollbackResponseEnvVarsSecretText>;
-
-export type ProjectsDeploymentsRollbackResponseEnvVars =
-  | ProjectsDeploymentsRollbackResponseEnvVarsPlainText
-  | ProjectsDeploymentsRollbackResponseEnvVarsSecretText;
-export const ProjectsDeploymentsRollbackResponseEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
 
 export type ProjectsDeploymentsRollbackResponseEnvironment =
   | "preview"
@@ -11619,7 +10500,7 @@ export interface RollbackProjectDeploymentResponse {
   /** Info about what caused the deployment. */
   deploymentTrigger: ProjectsDeploymentsRollbackResponseDeploymentTrigger;
   /** Environment variables used for builds and Pages Functions. */
-  envVars: ProjectsDeploymentsRollbackResponseEnvVars;
+  envVars: UntypedBindingMap;
   /** Type of deploy. */
   environment: ProjectsDeploymentsRollbackResponseEnvironment;
   /** If the deployment has been skipped. */
@@ -11655,9 +10536,7 @@ export const RollbackProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
       ProjectsDeploymentsRollbackResponseDeploymentTrigger.pipe(
         T.Body("deployment_trigger"),
       ),
-    envVars: ProjectsDeploymentsRollbackResponseEnvVars.pipe(
-      T.Body("env_vars"),
-    ),
+    envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
     environment: ProjectsDeploymentsRollbackResponseEnvironment,
     isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
     latestStage: ProjectsDeploymentsRollbackResponseLatestStage.pipe(

@@ -5152,7 +5152,7 @@ export interface ObservabilityDestinationsCreateRequestConfiguration {
   logpushDataset:
     | ObservabilityDestinationsCreateRequestConfigurationLogpushDataset
     | (string & {});
-  type: ObservabilityDestinationsCreateRequestConfigurationType;
+  type: ObservabilityDestinationsCreateRequestConfigurationType | (string & {});
   url: string;
 }
 export const ObservabilityDestinationsCreateRequestConfiguration =
@@ -5446,7 +5446,9 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersOb
     | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6306,7 +6308,9 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6434,7 +6438,9 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWor
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6905,7 +6911,7 @@ export interface CreateScriptDeploymentRequest {
   scriptName: string;
   /** If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed. */
   force?: boolean;
-  strategy: ScriptsDeploymentsCreateRequestStrategy;
+  strategy: ScriptsDeploymentsCreateRequestStrategy | (string & {});
   versions: ScriptsDeploymentsCreateRequestVersionsList;
   annotations?: ScriptsDeploymentsCreateRequestAnnotations;
 }
@@ -8689,7 +8695,7 @@ export interface CreateScriptVersionRequest {
   /** Name of the script. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit;
+  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit | (string & {});
 }
 export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10934,7 +10940,7 @@ export interface GetBetaWorkerVersionRequest {
   /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
   versionId: string;
   /** Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size. */
-  include?: BetaWorkersVersionsGetRequestInclude;
+  include?: BetaWorkersVersionsGetRequestInclude | (string & {});
 }
 export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14278,7 +14284,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
+  metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -14286,26 +14292,26 @@ export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
+  containers?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
+  workers?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
 }
 export const ObservabilitySharedQueriesGetResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata:
+      metadata:
         ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
           T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilitySharedQueriesGetResponseEventsEventsItemSource,
       timestamp: S.Number,
-      Containers: S.optional(
+      containers: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap.pipe(
           T.Body("$containers"),
         ),
       ),
-      Workers: S.optional(
+      workers: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers.pipe(
           T.Body("$workers"),
         ),
@@ -14346,19 +14352,19 @@ export const ObservabilitySharedQueriesGetResponseEventsFieldsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsFieldsList>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates {
-  Count: number;
-  Interval: number;
-  FirstSeen?: string;
-  LastSeen?: string;
+  count: number;
+  interval: number;
+  firstSeen?: string;
+  lastSeen?: string;
   bin?: unknown;
 }
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Count: S.Number.pipe(T.Body("_count")),
-      Interval: S.Number.pipe(T.Body("_interval")),
-      FirstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
-      LastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
       bin: S.optional(S.Unknown),
     }),
   ).annotate({
@@ -14869,7 +14875,7 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
 
 export interface ObservabilitySharedQueriesGetResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata: ObservabilitySharedQueriesGetResponseInvocationsValueItemMetadata;
+  metadata: ObservabilitySharedQueriesGetResponseInvocationsValueItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -14877,26 +14883,26 @@ export interface ObservabilitySharedQueriesGetResponseInvocationsValueItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers?: ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap;
+  containers?: ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers?: ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers;
+  workers?: ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers;
 }
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata:
+      metadata:
         ObservabilitySharedQueriesGetResponseInvocationsValueItemMetadata.pipe(
           T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilitySharedQueriesGetResponseInvocationsValueItemSource,
       timestamp: S.Number,
-      Containers: S.optional(
+      containers: S.optional(
         ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap.pipe(
           T.Body("$containers"),
         ),
       ),
-      Workers: S.optional(
+      workers: S.optional(
         ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers.pipe(
           T.Body("$workers"),
         ),
@@ -19185,7 +19191,9 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWor
     | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -19310,7 +19318,9 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilit
     | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -23792,7 +23802,9 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersIte
     | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -23917,7 +23929,9 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservab
     | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -24555,7 +24569,7 @@ export const ObservabilityDestinationsUpdateRequestConfigurationType =
 
 export interface ObservabilityDestinationsUpdateRequestConfiguration {
   headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap;
-  type: ObservabilityDestinationsUpdateRequestConfigurationType;
+  type: ObservabilityDestinationsUpdateRequestConfigurationType | (string & {});
   url: string;
 }
 export const ObservabilityDestinationsUpdateRequestConfiguration =
@@ -27122,7 +27136,7 @@ export interface PutScriptRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsUpdateRequestBindingsInherit;
+  bindingsInherit?: ScriptsUpdateRequestBindingsInherit | (string & {});
   metadata: PutScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
   files?: (File | Blob)[];
@@ -29006,7 +29020,9 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Fil
     | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -29133,7 +29149,9 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersO
     | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -30731,7 +30749,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
+  metadata: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -30739,26 +30757,26 @@ export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
+  containers?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
+  workers?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
 }
 export const ObservabilityTelemetryQueryResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata:
+      metadata:
         ObservabilityTelemetryQueryResponseEventsEventsItemMetadata.pipe(
           T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilityTelemetryQueryResponseEventsEventsItemSource,
       timestamp: S.Number,
-      Containers: S.optional(
+      containers: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap.pipe(
           T.Body("$containers"),
         ),
       ),
-      Workers: S.optional(
+      workers: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemWorkers.pipe(
           T.Body("$workers"),
         ),
@@ -30799,19 +30817,19 @@ export const ObservabilityTelemetryQueryResponseEventsFieldsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsList>;
 
 export interface ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates {
-  Count: number;
-  Interval: number;
-  FirstSeen?: string;
-  LastSeen?: string;
+  count: number;
+  interval: number;
+  firstSeen?: string;
+  lastSeen?: string;
   bin?: unknown;
 }
 export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Count: S.Number.pipe(T.Body("_count")),
-      Interval: S.Number.pipe(T.Body("_interval")),
-      FirstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
-      LastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
       bin: S.optional(S.Unknown),
     }),
   ).annotate({
@@ -31324,7 +31342,7 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
 
 export interface ObservabilityTelemetryQueryResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata: ObservabilityTelemetryQueryResponseInvocationsValueItemMetadata;
+  metadata: ObservabilityTelemetryQueryResponseInvocationsValueItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -31332,26 +31350,26 @@ export interface ObservabilityTelemetryQueryResponseInvocationsValueItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers?: ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap;
+  containers?: ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers?: ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers;
+  workers?: ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers;
 }
 export const ObservabilityTelemetryQueryResponseInvocationsValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata:
+      metadata:
         ObservabilityTelemetryQueryResponseInvocationsValueItemMetadata.pipe(
           T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilityTelemetryQueryResponseInvocationsValueItemSource,
       timestamp: S.Number,
-      Containers: S.optional(
+      containers: S.optional(
         ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap.pipe(
           T.Body("$containers"),
         ),
       ),
-      Workers: S.optional(
+      workers: S.optional(
         ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers.pipe(
           T.Body("$workers"),
         ),
@@ -32272,7 +32290,9 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemW
     | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -32397,7 +32417,9 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabil
     | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind;
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }

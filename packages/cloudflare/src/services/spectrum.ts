@@ -100,7 +100,7 @@ export interface AppsCreateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsCreateRequestEdgeIpsDynamicConnectivity | (string & {});
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsCreateRequestEdgeIpsDynamicType;
+  type?: AppsCreateRequestEdgeIpsDynamicType | (string & {});
 }
 export const AppsCreateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -123,7 +123,7 @@ export interface AppsCreateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsCreateRequestEdgeIpsStaticIpsList;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsCreateRequestEdgeIpsStaticType;
+  type?: AppsCreateRequestEdgeIpsStaticType | (string & {});
 }
 export const AppsCreateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1875,7 +1875,7 @@ export interface AppsUpdateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsUpdateRequestEdgeIpsDynamicConnectivity | (string & {});
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
-  type?: AppsUpdateRequestEdgeIpsDynamicType;
+  type?: AppsUpdateRequestEdgeIpsDynamicType | (string & {});
 }
 export const AppsUpdateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1898,7 +1898,7 @@ export interface AppsUpdateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsUpdateRequestEdgeIpsStaticIpsList;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
-  type?: AppsUpdateRequestEdgeIpsStaticType;
+  type?: AppsUpdateRequestEdgeIpsStaticType | (string & {});
 }
 export const AppsUpdateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

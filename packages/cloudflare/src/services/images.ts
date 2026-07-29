@@ -868,11 +868,11 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface V2ListRequestMeta {
   /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
-  FieldOperator__?: unknown;
+  fieldOperator__?: unknown;
 }
 export const V2ListRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
+    fieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
   }),
 ).annotate({
   identifier: "V2ListRequestMeta",

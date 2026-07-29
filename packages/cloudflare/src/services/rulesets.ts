@@ -332,7 +332,7 @@ export interface RulesCreateRequestBodyChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodyChallengeRuleAction;
+  action?: RulesCreateRequestBodyChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -772,7 +772,7 @@ export interface RulesCreateRequestBodyJavaScriptChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodyJavaScriptChallengeRuleAction;
+  action?: RulesCreateRequestBodyJavaScriptChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -2377,7 +2377,7 @@ export interface RulesCreateRequestBodySetCacheControlRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodySetCacheControlRuleAction;
+  action?: RulesCreateRequestBodySetCacheControlRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesCreateRequestBodySetCacheControlRuleActionParameters;
   /** The categories of the rule. */
@@ -2823,7 +2823,7 @@ export interface RulesCreateRequestBodySetCacheTagsRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodySetCacheTagsRuleAction;
+  action?: RulesCreateRequestBodySetCacheTagsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesCreateRequestBodySetCacheTagsRuleActionParameters;
   /** The categories of the rule. */
@@ -3155,7 +3155,9 @@ export interface RulesCreateRequestBodyTransformResponseHTMLRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodyTransformResponseHTMLRuleAction;
+  action?:
+    | RulesCreateRequestBodyTransformResponseHTMLRuleAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters;
   /** The categories of the rule. */
@@ -9714,7 +9716,7 @@ export interface CreateRequestRulesItemBlockRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemBlockRuleAction;
+  action?: CreateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
@@ -9847,7 +9849,7 @@ export interface CreateRequestRulesItemChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemChallengeAction;
+  action?: CreateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -10024,7 +10026,7 @@ export interface CreateRequestRulesItemCompressResponseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemCompressResponseRuleAction;
+  action?: CreateRequestRulesItemCompressResponseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
@@ -10163,7 +10165,7 @@ export interface CreateRequestRulesItemDDoSDynamicRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemDDoSDynamicRuleAction;
+  action?: CreateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -10458,7 +10460,7 @@ export interface CreateRequestRulesItemExecuteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemExecuteRuleAction;
+  action?: CreateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
@@ -10595,7 +10597,7 @@ export interface CreateRequestRulesItemForceConnectionCloseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemForceConnectionCloseRuleAction;
+  action?: CreateRequestRulesItemForceConnectionCloseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -10729,7 +10731,7 @@ export interface CreateRequestRulesItemJSChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemJSChallengeAction;
+  action?: CreateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -10858,7 +10860,7 @@ export interface CreateRequestRulesItemLogRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemLogRuleAction;
+  action?: CreateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -11150,7 +11152,7 @@ export interface CreateRequestRulesItemLogCustomFieldRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemLogCustomFieldRuleAction;
+  action?: CreateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
@@ -11290,7 +11292,7 @@ export interface CreateRequestRulesItemManagedChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemManagedChallengeRuleAction;
+  action?: CreateRequestRulesItemManagedChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -11516,7 +11518,7 @@ export interface CreateRequestRulesItemRedirectRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRedirectRuleAction;
+  action?: CreateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
@@ -11873,7 +11875,7 @@ export interface CreateRequestRulesItemRewriteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRewriteRuleAction;
+  action?: CreateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
@@ -12054,7 +12056,7 @@ export interface CreateRequestRulesItemRouteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRouteRuleAction;
+  action?: CreateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
@@ -12200,7 +12202,7 @@ export interface CreateRequestRulesItemScoreRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemScoreRuleAction;
+  action?: CreateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
@@ -12407,7 +12409,7 @@ export interface CreateRequestRulesItemServeErrorRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemServeErrorRuleAction;
+  action?: CreateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
@@ -13468,7 +13470,7 @@ export interface CreateRequestRulesItemSetCacheControl {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetCacheControlAction;
+  action?: CreateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
@@ -14243,7 +14245,7 @@ export interface CreateRequestRulesItemSetCacheSettingsRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetCacheSettingsRuleAction;
+  action?: CreateRequestRulesItemSetCacheSettingsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
@@ -14574,7 +14576,7 @@ export interface CreateRequestRulesItemSetCacheTags {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetCacheTagsAction;
+  action?: CreateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
@@ -14875,7 +14877,7 @@ export interface CreateRequestRulesItemSetConfigRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetConfigRuleAction;
+  action?: CreateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
@@ -15016,7 +15018,7 @@ export const CreateRequestRulesItemSkipRuleActionParametersRulesetsList =
 
 export interface CreateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
-  phase?: CreateRequestRulesItemSkipRuleActionParametersPhase;
+  phase?: CreateRequestRulesItemSkipRuleActionParametersPhase | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
   phases?: CreateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
@@ -15024,7 +15026,9 @@ export interface CreateRequestRulesItemSkipRuleActionParameters {
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
   rules?: CreateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
-  ruleset?: CreateRequestRulesItemSkipRuleActionParametersRuleset;
+  ruleset?:
+    | CreateRequestRulesItemSkipRuleActionParametersRuleset
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
   rulesets?: CreateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
@@ -15132,7 +15136,7 @@ export interface CreateRequestRulesItemSkipRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSkipRuleAction;
+  action?: CreateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
@@ -15282,7 +15286,7 @@ export interface CreateRequestRulesItemTransformResponseHTML {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemTransformResponseHTMLAction;
+  action?: CreateRequestRulesItemTransformResponseHTMLAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: CreateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */
@@ -53515,7 +53519,7 @@ export interface RulesEditRequestBodyChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodyChallengeRuleAction;
+  action?: RulesEditRequestBodyChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -53951,7 +53955,7 @@ export interface RulesEditRequestBodyJavaScriptChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodyJavaScriptChallengeRuleAction;
+  action?: RulesEditRequestBodyJavaScriptChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -55544,7 +55548,7 @@ export interface RulesEditRequestBodySetCacheControlRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodySetCacheControlRuleAction;
+  action?: RulesEditRequestBodySetCacheControlRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesEditRequestBodySetCacheControlRuleActionParameters;
   /** The categories of the rule. */
@@ -55987,7 +55991,7 @@ export interface RulesEditRequestBodySetCacheTagsRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodySetCacheTagsRuleAction;
+  action?: RulesEditRequestBodySetCacheTagsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesEditRequestBodySetCacheTagsRuleActionParameters;
   /** The categories of the rule. */
@@ -56316,7 +56320,7 @@ export interface RulesEditRequestBodyTransformResponseHTMLRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodyTransformResponseHTMLRuleAction;
+  action?: RulesEditRequestBodyTransformResponseHTMLRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: RulesEditRequestBodyTransformResponseHTMLRuleActionParameters;
   /** The categories of the rule. */
@@ -62808,7 +62812,7 @@ export interface PhasesUpdateRequestRulesItemBlockRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemBlockRuleAction;
+  action?: PhasesUpdateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
@@ -62945,7 +62949,7 @@ export interface PhasesUpdateRequestRulesItemChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemChallengeAction;
+  action?: PhasesUpdateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -63126,7 +63130,9 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemCompressResponseRuleAction;
+  action?:
+    | PhasesUpdateRequestRulesItemCompressResponseRuleAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
@@ -63269,7 +63275,7 @@ export interface PhasesUpdateRequestRulesItemDDoSDynamicRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemDDoSDynamicRuleAction;
+  action?: PhasesUpdateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -63570,7 +63576,7 @@ export interface PhasesUpdateRequestRulesItemExecuteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemExecuteRuleAction;
+  action?: PhasesUpdateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
@@ -63710,7 +63716,9 @@ export interface PhasesUpdateRequestRulesItemForceConnectionCloseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction;
+  action?:
+    | PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -63848,7 +63856,7 @@ export interface PhasesUpdateRequestRulesItemJSChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemJSChallengeAction;
+  action?: PhasesUpdateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -63980,7 +63988,7 @@ export interface PhasesUpdateRequestRulesItemLogRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemLogRuleAction;
+  action?: PhasesUpdateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -64274,7 +64282,7 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemLogCustomFieldRuleAction;
+  action?: PhasesUpdateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
@@ -64416,7 +64424,9 @@ export interface PhasesUpdateRequestRulesItemManagedChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemManagedChallengeRuleAction;
+  action?:
+    | PhasesUpdateRequestRulesItemManagedChallengeRuleAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -64649,7 +64659,7 @@ export interface PhasesUpdateRequestRulesItemRedirectRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemRedirectRuleAction;
+  action?: PhasesUpdateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
@@ -65016,7 +65026,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemRewriteRuleAction;
+  action?: PhasesUpdateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
@@ -65203,7 +65213,7 @@ export interface PhasesUpdateRequestRulesItemRouteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemRouteRuleAction;
+  action?: PhasesUpdateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
@@ -65353,7 +65363,7 @@ export interface PhasesUpdateRequestRulesItemScoreRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemScoreRuleAction;
+  action?: PhasesUpdateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
@@ -65565,7 +65575,7 @@ export interface PhasesUpdateRequestRulesItemServeErrorRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemServeErrorRuleAction;
+  action?: PhasesUpdateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
@@ -66631,7 +66641,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControl {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSetCacheControlAction;
+  action?: PhasesUpdateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
@@ -67409,7 +67419,9 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction;
+  action?:
+    | PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
@@ -67745,7 +67757,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheTags {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSetCacheTagsAction;
+  action?: PhasesUpdateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
@@ -68052,7 +68064,7 @@ export interface PhasesUpdateRequestRulesItemSetConfigRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSetConfigRuleAction;
+  action?: PhasesUpdateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
@@ -68203,7 +68215,9 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
 
 export interface PhasesUpdateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
-  phase?: PhasesUpdateRequestRulesItemSkipRuleActionParametersPhase;
+  phase?:
+    | PhasesUpdateRequestRulesItemSkipRuleActionParametersPhase
+    | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
   phases?: PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
@@ -68211,7 +68225,9 @@ export interface PhasesUpdateRequestRulesItemSkipRuleActionParameters {
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
   rules?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
-  ruleset?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset;
+  ruleset?:
+    | PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
   rulesets?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
@@ -68323,7 +68339,7 @@ export interface PhasesUpdateRequestRulesItemSkipRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSkipRuleAction;
+  action?: PhasesUpdateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
@@ -68477,7 +68493,9 @@ export interface PhasesUpdateRequestRulesItemTransformResponseHTML {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemTransformResponseHTMLAction;
+  action?:
+    | PhasesUpdateRequestRulesItemTransformResponseHTMLAction
+    | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */
@@ -75289,7 +75307,7 @@ export interface UpdateRequestRulesItemBlockRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemBlockRuleAction;
+  action?: UpdateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
@@ -75422,7 +75440,7 @@ export interface UpdateRequestRulesItemChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemChallengeAction;
+  action?: UpdateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -75599,7 +75617,7 @@ export interface UpdateRequestRulesItemCompressResponseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemCompressResponseRuleAction;
+  action?: UpdateRequestRulesItemCompressResponseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
@@ -75738,7 +75756,7 @@ export interface UpdateRequestRulesItemDDoSDynamicRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemDDoSDynamicRuleAction;
+  action?: UpdateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -76033,7 +76051,7 @@ export interface UpdateRequestRulesItemExecuteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemExecuteRuleAction;
+  action?: UpdateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
@@ -76170,7 +76188,7 @@ export interface UpdateRequestRulesItemForceConnectionCloseRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemForceConnectionCloseRuleAction;
+  action?: UpdateRequestRulesItemForceConnectionCloseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -76304,7 +76322,7 @@ export interface UpdateRequestRulesItemJSChallenge {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemJSChallengeAction;
+  action?: UpdateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -76433,7 +76451,7 @@ export interface UpdateRequestRulesItemLogRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemLogRuleAction;
+  action?: UpdateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -76725,7 +76743,7 @@ export interface UpdateRequestRulesItemLogCustomFieldRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemLogCustomFieldRuleAction;
+  action?: UpdateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
@@ -76865,7 +76883,7 @@ export interface UpdateRequestRulesItemManagedChallengeRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemManagedChallengeRuleAction;
+  action?: UpdateRequestRulesItemManagedChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: unknown;
   /** The categories of the rule. */
@@ -77091,7 +77109,7 @@ export interface UpdateRequestRulesItemRedirectRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRedirectRuleAction;
+  action?: UpdateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
@@ -77448,7 +77466,7 @@ export interface UpdateRequestRulesItemRewriteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRewriteRuleAction;
+  action?: UpdateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
@@ -77629,7 +77647,7 @@ export interface UpdateRequestRulesItemRouteRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRouteRuleAction;
+  action?: UpdateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
@@ -77775,7 +77793,7 @@ export interface UpdateRequestRulesItemScoreRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemScoreRuleAction;
+  action?: UpdateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
@@ -77982,7 +78000,7 @@ export interface UpdateRequestRulesItemServeErrorRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemServeErrorRuleAction;
+  action?: UpdateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
@@ -79043,7 +79061,7 @@ export interface UpdateRequestRulesItemSetCacheControl {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetCacheControlAction;
+  action?: UpdateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
@@ -79818,7 +79836,7 @@ export interface UpdateRequestRulesItemSetCacheSettingsRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetCacheSettingsRuleAction;
+  action?: UpdateRequestRulesItemSetCacheSettingsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
@@ -80149,7 +80167,7 @@ export interface UpdateRequestRulesItemSetCacheTags {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetCacheTagsAction;
+  action?: UpdateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
@@ -80450,7 +80468,7 @@ export interface UpdateRequestRulesItemSetConfigRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetConfigRuleAction;
+  action?: UpdateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
@@ -80591,7 +80609,7 @@ export const UpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
 
 export interface UpdateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
-  phase?: UpdateRequestRulesItemSkipRuleActionParametersPhase;
+  phase?: UpdateRequestRulesItemSkipRuleActionParametersPhase | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
   phases?: UpdateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
@@ -80599,7 +80617,9 @@ export interface UpdateRequestRulesItemSkipRuleActionParameters {
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
   rules?: UpdateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
-  ruleset?: UpdateRequestRulesItemSkipRuleActionParametersRuleset;
+  ruleset?:
+    | UpdateRequestRulesItemSkipRuleActionParametersRuleset
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
   rulesets?: UpdateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
@@ -80707,7 +80727,7 @@ export interface UpdateRequestRulesItemSkipRule {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSkipRuleAction;
+  action?: UpdateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
@@ -80857,7 +80877,7 @@ export interface UpdateRequestRulesItemTransformResponseHTML {
   /** The unique ID of the rule. */
   id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemTransformResponseHTMLAction;
+  action?: UpdateRequestRulesItemTransformResponseHTMLAction | (string & {});
   /** The parameters configuring the rule's action. */
   actionParameters?: UpdateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */

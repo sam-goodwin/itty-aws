@@ -142,7 +142,7 @@ export const CreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: CreateRequestTcpConfigMethod;
+  method?: CreateRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -479,7 +479,7 @@ export const PreviewsCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsCreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: PreviewsCreateRequestTcpConfigMethod;
+  method?: PreviewsCreateRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -1502,7 +1502,7 @@ export const EditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface EditRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: EditRequestTcpConfigMethod;
+  method?: EditRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
@@ -1835,7 +1835,7 @@ export const UpdateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: UpdateRequestTcpConfigMethod;
+  method?: UpdateRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }

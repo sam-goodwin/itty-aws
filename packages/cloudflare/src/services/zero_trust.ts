@@ -4102,7 +4102,9 @@ export const AccessApplicationsCreateRequestDestinationsItemPublicDestinationTyp
   /*@__PURE__*/ S.String;
 
 export interface AccessApplicationsCreateRequestDestinationsItemPublicDestination {
-  type?: AccessApplicationsCreateRequestDestinationsItemPublicDestinationType;
+  type?:
+    | AccessApplicationsCreateRequestDestinationsItemPublicDestinationType
+    | (string & {});
   /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
   uri?: string;
 }
@@ -4140,7 +4142,9 @@ export interface AccessApplicationsCreateRequestDestinationsItemPrivateDestinati
     | (string & {});
   /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
   portRange?: string;
-  type?: AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType;
+  type?:
+    | AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType
+    | (string & {});
   /** The VNET ID to match the destination. When omitted, all VNETs will match. */
   vnetId?: string;
 }
@@ -4173,7 +4177,9 @@ export const AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDe
 export interface AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestination {
   /** The MCP server id configured in ai-controls. */
   mcpServerId?: string;
-  type?: AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType;
+  type?:
+    | AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType
+    | (string & {});
 }
 export const AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestination =
   /*@__PURE__*/ S.suspend(() =>
@@ -4474,7 +4480,10 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -4486,7 +4495,10 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -5790,7 +5802,10 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList =
-  Array<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem>;
+  Array<
+    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem
+    | (string & {})
+  >;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem,
@@ -7195,7 +7210,9 @@ export interface AccessApplicationsCreateRequestTargetCriteriaInfrastructureAppl
   /** The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols. */
   port: number;
   /** The communication protocol your application secures. */
-  protocol: AccessApplicationsCreateRequestTargetCriteriaInfrastructureApplicationItemProtocol;
+  protocol:
+    | AccessApplicationsCreateRequestTargetCriteriaInfrastructureApplicationItemProtocol
+    | (string & {});
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: AccessApplicationsCreateRequestTargetCriteriaInfrastructureApplicationItemTargetAttributesMap;
 }
@@ -7250,7 +7267,9 @@ export interface AccessApplicationsCreateRequestTargetCriteriaBrowserRDPApplicat
   /** The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols. */
   port: number;
   /** The communication protocol your application secures. */
-  protocol: AccessApplicationsCreateRequestTargetCriteriaBrowserRDPApplicationItemProtocol;
+  protocol:
+    | AccessApplicationsCreateRequestTargetCriteriaBrowserRDPApplicationItemProtocol
+    | (string & {});
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: AccessApplicationsCreateRequestTargetCriteriaBrowserRDPApplicationItemTargetAttributesMap;
 }
@@ -26863,7 +26882,10 @@ export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedCli
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -26875,7 +26897,10 @@ export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedCli
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -29497,7 +29522,10 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Connecti
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -29509,7 +29537,10 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Connecti
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -34092,7 +34123,10 @@ export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalT
   /*@__PURE__*/ S.String;
 
 export type AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -34104,7 +34138,10 @@ export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemote
   /*@__PURE__*/ S.String;
 
 export type AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -36511,7 +36548,7 @@ export interface DevicesDexTestsCreateRequestData {
   /** The type of test. */
   kind: DevicesDexTestsCreateRequestDataKind | (string & {});
   /** The HTTP request method type. */
-  method?: DevicesDexTestsCreateRequestDataMethod;
+  method?: DevicesDexTestsCreateRequestDataMethod | (string & {});
 }
 export const DevicesDexTestsCreateRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -36779,7 +36816,7 @@ export interface CreateDeviceNetworkRequest {
   /** The name of the device managed network. This name must be unique. */
   name: string;
   /** The type of device managed network. */
-  type: DevicesNetworksCreateRequestType;
+  type: DevicesNetworksCreateRequestType | (string & {});
 }
 export const CreateDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41096,7 +41133,7 @@ export type DlpEmailRulesCreateRequestActionAction = "Block";
 export const DlpEmailRulesCreateRequestActionAction = /*@__PURE__*/ S.String;
 
 export interface DlpEmailRulesCreateRequestAction {
-  action: DlpEmailRulesCreateRequestActionAction;
+  action: DlpEmailRulesCreateRequestActionAction | (string & {});
   message?: string;
 }
 export const DlpEmailRulesCreateRequestAction = /*@__PURE__*/ S.suspend(() =>
@@ -41288,7 +41325,7 @@ export const DlpEntriesCreateRequestPatternValidation = /*@__PURE__*/ S.String;
 
 export interface DlpEntriesCreateRequestPattern {
   regex: string;
-  validation?: DlpEntriesCreateRequestPatternValidation;
+  validation?: DlpEntriesCreateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCreateRequestPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41589,7 +41626,9 @@ export const DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternVa
 
 export interface DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern {
   regex: string;
-  validation?: DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternValidation;
+  validation?:
+    | DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternValidation
+    | (string & {});
 }
 export const DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern =
   /*@__PURE__*/ S.suspend(() =>
@@ -50514,7 +50553,9 @@ export const RiskScoringIntegrationsCreateRequestIntegrationType =
 
 export interface CreateRiskScoringIntegrationRequest {
   accountId: string;
-  integrationType: RiskScoringIntegrationsCreateRequestIntegrationType;
+  integrationType:
+    | RiskScoringIntegrationsCreateRequestIntegrationType
+    | (string & {});
   /** The base url of the tenant, e.g. "https://tenant.okta.com". */
   tenantUrl: string;
   /** A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). */
@@ -50736,8 +50777,9 @@ export type TunnelsCloudflaredManagementCreateRequestResourcesItem = "logs";
 export const TunnelsCloudflaredManagementCreateRequestResourcesItem =
   /*@__PURE__*/ S.String;
 
-export type TunnelsCloudflaredManagementCreateRequestResourcesList =
-  Array<TunnelsCloudflaredManagementCreateRequestResourcesItem>;
+export type TunnelsCloudflaredManagementCreateRequestResourcesList = Array<
+  TunnelsCloudflaredManagementCreateRequestResourcesItem | (string & {})
+>;
 export const TunnelsCloudflaredManagementCreateRequestResourcesList =
   /*@__PURE__*/ S.Array(
     TunnelsCloudflaredManagementCreateRequestResourcesItem,
@@ -54339,7 +54381,7 @@ export const DlpEntriesCustomCreateRequestPatternValidation =
 
 export interface DlpEntriesCustomCreateRequestPattern {
   regex: string;
-  validation?: DlpEntriesCustomCreateRequestPatternValidation;
+  validation?: DlpEntriesCustomCreateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCustomCreateRequestPattern = /*@__PURE__*/ S.suspend(
   () =>
@@ -129946,7 +129988,7 @@ export interface ListDexDeviceIspsRequest {
   /** Page number of paginated results. Mutually exclusive with cursor. */
   page?: number;
   /** The field to sort results by. */
-  sortBy?: DexDevicesIspsListRequestSortBy;
+  sortBy?: DexDevicesIspsListRequestSortBy | (string & {});
   /** The order to sort results. */
   sortOrder?: DexDevicesIspsListRequestSortOrder | (string & {});
   /** End time for the query in ISO 8601 format. */
@@ -153519,7 +153561,9 @@ export const AccessApplicationsUpdateRequestDestinationsItemPublicDestinationTyp
   /*@__PURE__*/ S.String;
 
 export interface AccessApplicationsUpdateRequestDestinationsItemPublicDestination {
-  type?: AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType;
+  type?:
+    | AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType
+    | (string & {});
   /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
   uri?: string;
 }
@@ -153557,7 +153601,9 @@ export interface AccessApplicationsUpdateRequestDestinationsItemPrivateDestinati
     | (string & {});
   /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
   portRange?: string;
-  type?: AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType;
+  type?:
+    | AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType
+    | (string & {});
   /** The VNET ID to match the destination. When omitted, all VNETs will match. */
   vnetId?: string;
 }
@@ -153590,7 +153636,9 @@ export const AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDe
 export interface AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestination {
   /** The MCP server id configured in ai-controls. */
   mcpServerId?: string;
-  type?: AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType;
+  type?:
+    | AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType
+    | (string & {});
 }
 export const AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestination =
   /*@__PURE__*/ S.suspend(() =>
@@ -153891,7 +153939,10 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -153903,7 +153954,10 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -155207,7 +155261,10 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList =
-  Array<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem>;
+  Array<
+    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem
+    | (string & {})
+  >;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsItem,
@@ -156612,7 +156669,9 @@ export interface AccessApplicationsUpdateRequestTargetCriteriaInfrastructureAppl
   /** The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols. */
   port: number;
   /** The communication protocol your application secures. */
-  protocol: AccessApplicationsUpdateRequestTargetCriteriaInfrastructureApplicationItemProtocol;
+  protocol:
+    | AccessApplicationsUpdateRequestTargetCriteriaInfrastructureApplicationItemProtocol
+    | (string & {});
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: AccessApplicationsUpdateRequestTargetCriteriaInfrastructureApplicationItemTargetAttributesMap;
 }
@@ -156667,7 +156726,9 @@ export interface AccessApplicationsUpdateRequestTargetCriteriaBrowserRDPApplicat
   /** The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols. */
   port: number;
   /** The communication protocol your application secures. */
-  protocol: AccessApplicationsUpdateRequestTargetCriteriaBrowserRDPApplicationItemProtocol;
+  protocol:
+    | AccessApplicationsUpdateRequestTargetCriteriaBrowserRDPApplicationItemProtocol
+    | (string & {});
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: AccessApplicationsUpdateRequestTargetCriteriaBrowserRDPApplicationItemTargetAttributesMap;
 }
@@ -176286,7 +176347,10 @@ export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedCli
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -176298,7 +176362,10 @@ export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedCli
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -181830,7 +181897,10 @@ export const AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalT
   /*@__PURE__*/ S.String;
 
 export type AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
-  Array<AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem>;
+  Array<
+    | AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem
+    | (string & {})
+  >;
 export const AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList =
   /*@__PURE__*/ S.Array(
     AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem,
@@ -181842,7 +181912,10 @@ export const AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemote
   /*@__PURE__*/ S.String;
 
 export type AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
-  Array<AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem>;
+  Array<
+    | AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem
+    | (string & {})
+  >;
 export const AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList =
   /*@__PURE__*/ S.Array(
     AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsItem,
@@ -184137,7 +184210,7 @@ export interface DevicesDexTestsUpdateRequestData {
   /** The type of test. */
   kind: DevicesDexTestsUpdateRequestDataKind | (string & {});
   /** The HTTP request method type. */
-  method?: DevicesDexTestsUpdateRequestDataMethod;
+  method?: DevicesDexTestsUpdateRequestDataMethod | (string & {});
 }
 export const DevicesDexTestsUpdateRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -184336,7 +184409,7 @@ export interface UpdateDeviceNetworkRequest {
   /** The name of the device managed network. This name must be unique. */
   name?: string;
   /** The type of device managed network. */
-  type?: DevicesNetworksUpdateRequestType;
+  type?: DevicesNetworksUpdateRequestType | (string & {});
 }
 export const UpdateDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -186781,7 +186854,7 @@ export type DlpEmailRulesUpdateRequestActionAction = "Block";
 export const DlpEmailRulesUpdateRequestActionAction = /*@__PURE__*/ S.String;
 
 export interface DlpEmailRulesUpdateRequestAction {
-  action: DlpEmailRulesUpdateRequestActionAction;
+  action: DlpEmailRulesUpdateRequestActionAction | (string & {});
   message?: string;
 }
 export const DlpEmailRulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
@@ -186975,7 +187048,7 @@ export const DlpEntriesUpdateRequestPatternValidation = /*@__PURE__*/ S.String;
 
 export interface DlpEntriesUpdateRequestPattern {
   regex: string;
-  validation?: DlpEntriesUpdateRequestPatternValidation;
+  validation?: DlpEntriesUpdateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesUpdateRequestPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -187389,7 +187462,7 @@ export const DlpEntriesCustomUpdateRequestPatternValidation =
 
 export interface DlpEntriesCustomUpdateRequestPattern {
   regex: string;
-  validation?: DlpEntriesCustomUpdateRequestPatternValidation;
+  validation?: DlpEntriesCustomUpdateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCustomUpdateRequestPattern = /*@__PURE__*/ S.suspend(
   () =>
@@ -187687,7 +187760,9 @@ export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPat
 
 export interface DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern {
   regex: string;
-  validation?: DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPatternValidation;
+  validation?:
+    | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPatternValidation
+    | (string & {});
 }
 export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern =
   /*@__PURE__*/ S.suspend(() =>

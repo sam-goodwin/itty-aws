@@ -256,10 +256,10 @@ export interface CreateRequestDestination {
   compression: CreateRequestDestinationCompression;
   credentials: CreateRequestDestinationCredentials;
   /** Specifies the format of data to deliver. */
-  format: CreateRequestDestinationFormat;
+  format: CreateRequestDestinationFormat | (string & {});
   path: CreateRequestDestinationPath;
   /** Specifies the type of destination. */
-  type: CreateRequestDestinationType;
+  type: CreateRequestDestinationType | (string & {});
 }
 export const CreateRequestDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4502,10 +4502,10 @@ export interface UpdateRequestDestination {
   batch: UpdateRequestDestinationBatch;
   compression: UpdateRequestDestinationCompression;
   /** Specifies the format of data to deliver. */
-  format: UpdateRequestDestinationFormat;
+  format: UpdateRequestDestinationFormat | (string & {});
   path: UpdateRequestDestinationPath;
   /** Specifies the type of destination. */
-  type: UpdateRequestDestinationType;
+  type: UpdateRequestDestinationType | (string & {});
   credentials?: UpdateRequestDestinationCredentials;
 }
 export const UpdateRequestDestination = /*@__PURE__*/ S.suspend(() =>

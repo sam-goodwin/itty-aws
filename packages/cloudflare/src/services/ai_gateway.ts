@@ -274,7 +274,7 @@ export interface CreateAiGatewayRequest {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: CreateRequestWorkersAiBillingMode;
+  workersAiBillingMode?: CreateRequestWorkersAiBillingMode | (string & {});
   zdr?: boolean;
 }
 export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
@@ -460,37 +460,37 @@ export type CreateResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const CreateResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGuardrailsPrompt {
-  P1?: CreateResponseGuardrailsPromptP1;
-  S1?: CreateResponseGuardrailsPromptS1;
-  S10?: CreateResponseGuardrailsPromptS10;
-  S11?: CreateResponseGuardrailsPromptS11;
-  S12?: CreateResponseGuardrailsPromptS12;
-  S13?: CreateResponseGuardrailsPromptS13;
-  S2?: CreateResponseGuardrailsPromptS2;
-  S3?: CreateResponseGuardrailsPromptS3;
-  S4?: CreateResponseGuardrailsPromptS4;
-  S5?: CreateResponseGuardrailsPromptS5;
-  S6?: CreateResponseGuardrailsPromptS6;
-  S7?: CreateResponseGuardrailsPromptS7;
-  S8?: CreateResponseGuardrailsPromptS8;
-  S9?: CreateResponseGuardrailsPromptS9;
+  p1?: CreateResponseGuardrailsPromptP1;
+  s1?: CreateResponseGuardrailsPromptS1;
+  s10?: CreateResponseGuardrailsPromptS10;
+  s11?: CreateResponseGuardrailsPromptS11;
+  s12?: CreateResponseGuardrailsPromptS12;
+  s13?: CreateResponseGuardrailsPromptS13;
+  s2?: CreateResponseGuardrailsPromptS2;
+  s3?: CreateResponseGuardrailsPromptS3;
+  s4?: CreateResponseGuardrailsPromptS4;
+  s5?: CreateResponseGuardrailsPromptS5;
+  s6?: CreateResponseGuardrailsPromptS6;
+  s7?: CreateResponseGuardrailsPromptS7;
+  s8?: CreateResponseGuardrailsPromptS8;
+  s9?: CreateResponseGuardrailsPromptS9;
 }
 export const CreateResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(CreateResponseGuardrailsPromptP1),
-    S1: S.optional(CreateResponseGuardrailsPromptS1),
-    S10: S.optional(CreateResponseGuardrailsPromptS10),
-    S11: S.optional(CreateResponseGuardrailsPromptS11),
-    S12: S.optional(CreateResponseGuardrailsPromptS12),
-    S13: S.optional(CreateResponseGuardrailsPromptS13),
-    S2: S.optional(CreateResponseGuardrailsPromptS2),
-    S3: S.optional(CreateResponseGuardrailsPromptS3),
-    S4: S.optional(CreateResponseGuardrailsPromptS4),
-    S5: S.optional(CreateResponseGuardrailsPromptS5),
-    S6: S.optional(CreateResponseGuardrailsPromptS6),
-    S7: S.optional(CreateResponseGuardrailsPromptS7),
-    S8: S.optional(CreateResponseGuardrailsPromptS8),
-    S9: S.optional(CreateResponseGuardrailsPromptS9),
+    p1: S.optional(CreateResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(CreateResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(CreateResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(CreateResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(CreateResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(CreateResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(CreateResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(CreateResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(CreateResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(CreateResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(CreateResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(CreateResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(CreateResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(CreateResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "CreateResponseGuardrailsPrompt",
@@ -539,37 +539,37 @@ export type CreateResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const CreateResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGuardrailsResponse {
-  P1?: CreateResponseGuardrailsResponseP1;
-  S1?: CreateResponseGuardrailsResponseS1;
-  S10?: CreateResponseGuardrailsResponseS10;
-  S11?: CreateResponseGuardrailsResponseS11;
-  S12?: CreateResponseGuardrailsResponseS12;
-  S13?: CreateResponseGuardrailsResponseS13;
-  S2?: CreateResponseGuardrailsResponseS2;
-  S3?: CreateResponseGuardrailsResponseS3;
-  S4?: CreateResponseGuardrailsResponseS4;
-  S5?: CreateResponseGuardrailsResponseS5;
-  S6?: CreateResponseGuardrailsResponseS6;
-  S7?: CreateResponseGuardrailsResponseS7;
-  S8?: CreateResponseGuardrailsResponseS8;
-  S9?: CreateResponseGuardrailsResponseS9;
+  p1?: CreateResponseGuardrailsResponseP1;
+  s1?: CreateResponseGuardrailsResponseS1;
+  s10?: CreateResponseGuardrailsResponseS10;
+  s11?: CreateResponseGuardrailsResponseS11;
+  s12?: CreateResponseGuardrailsResponseS12;
+  s13?: CreateResponseGuardrailsResponseS13;
+  s2?: CreateResponseGuardrailsResponseS2;
+  s3?: CreateResponseGuardrailsResponseS3;
+  s4?: CreateResponseGuardrailsResponseS4;
+  s5?: CreateResponseGuardrailsResponseS5;
+  s6?: CreateResponseGuardrailsResponseS6;
+  s7?: CreateResponseGuardrailsResponseS7;
+  s8?: CreateResponseGuardrailsResponseS8;
+  s9?: CreateResponseGuardrailsResponseS9;
 }
 export const CreateResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(CreateResponseGuardrailsResponseP1),
-    S1: S.optional(CreateResponseGuardrailsResponseS1),
-    S10: S.optional(CreateResponseGuardrailsResponseS10),
-    S11: S.optional(CreateResponseGuardrailsResponseS11),
-    S12: S.optional(CreateResponseGuardrailsResponseS12),
-    S13: S.optional(CreateResponseGuardrailsResponseS13),
-    S2: S.optional(CreateResponseGuardrailsResponseS2),
-    S3: S.optional(CreateResponseGuardrailsResponseS3),
-    S4: S.optional(CreateResponseGuardrailsResponseS4),
-    S5: S.optional(CreateResponseGuardrailsResponseS5),
-    S6: S.optional(CreateResponseGuardrailsResponseS6),
-    S7: S.optional(CreateResponseGuardrailsResponseS7),
-    S8: S.optional(CreateResponseGuardrailsResponseS8),
-    S9: S.optional(CreateResponseGuardrailsResponseS9),
+    p1: S.optional(CreateResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(CreateResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(CreateResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(CreateResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(CreateResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(CreateResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(CreateResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(CreateResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(CreateResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(CreateResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(CreateResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(CreateResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(CreateResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(CreateResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "CreateResponseGuardrailsResponse",
@@ -594,11 +594,11 @@ export type CreateResponseLogManagementStrategy =
 export const CreateResponseLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type CreateResponseOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const CreateResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<CreateResponseOtelItemHeadersMap>;
 
 export type CreateResponseOtelItemContentType = "json" | "protobuf";
@@ -637,53 +637,6 @@ export const CreateResponseRetryBackoff = /*@__PURE__*/ S.String;
 export type CreateResponseSpendLimitsRulesItemLimitType = "cost";
 export const CreateResponseSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
-
-export type CreateResponseSpendLimitsRulesItemMetadataModeMode = "partition";
-export const CreateResponseSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface CreateResponseSpendLimitsRulesItemMetadataMode {
-  mode: CreateResponseSpendLimitsRulesItemMetadataModeMode;
-}
-export const CreateResponseSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateResponseSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "CreateResponseSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<CreateResponseSpendLimitsRulesItemMetadataMode>;
-
-export type CreateResponseSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const CreateResponseSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface CreateResponseSpendLimitsRulesItemMetadataCase1 {
-  mode: CreateResponseSpendLimitsRulesItemMetadataCase1Mode;
-  values: CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const CreateResponseSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateResponseSpendLimitsRulesItemMetadataCase1Mode,
-      values: CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "CreateResponseSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<CreateResponseSpendLimitsRulesItemMetadataCase1>;
-
-export type CreateResponseSpendLimitsRulesItemMetadata =
-  | CreateResponseSpendLimitsRulesItemMetadataMode
-  | CreateResponseSpendLimitsRulesItemMetadataCase1;
-export const CreateResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
 
 export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
 export const CreateResponseSpendLimitsRulesItemModelMode =
@@ -744,7 +697,7 @@ export interface CreateResponseSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: CreateResponseSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: CreateResponseSpendLimitsRulesItemModel;
   provider?: CreateResponseSpendLimitsRulesItemProvider;
   technique?: CreateResponseSpendLimitsRulesItemTechnique;
@@ -756,7 +709,7 @@ export const CreateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(CreateResponseSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(CreateResponseSpendLimitsRulesItemModel),
     provider: S.optional(CreateResponseSpendLimitsRulesItemProvider),
     technique: S.optional(CreateResponseSpendLimitsRulesItemTechnique),
@@ -4000,37 +3953,37 @@ export type DeleteResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const DeleteResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseGuardrailsPrompt {
-  P1?: DeleteResponseGuardrailsPromptP1;
-  S1?: DeleteResponseGuardrailsPromptS1;
-  S10?: DeleteResponseGuardrailsPromptS10;
-  S11?: DeleteResponseGuardrailsPromptS11;
-  S12?: DeleteResponseGuardrailsPromptS12;
-  S13?: DeleteResponseGuardrailsPromptS13;
-  S2?: DeleteResponseGuardrailsPromptS2;
-  S3?: DeleteResponseGuardrailsPromptS3;
-  S4?: DeleteResponseGuardrailsPromptS4;
-  S5?: DeleteResponseGuardrailsPromptS5;
-  S6?: DeleteResponseGuardrailsPromptS6;
-  S7?: DeleteResponseGuardrailsPromptS7;
-  S8?: DeleteResponseGuardrailsPromptS8;
-  S9?: DeleteResponseGuardrailsPromptS9;
+  p1?: DeleteResponseGuardrailsPromptP1;
+  s1?: DeleteResponseGuardrailsPromptS1;
+  s10?: DeleteResponseGuardrailsPromptS10;
+  s11?: DeleteResponseGuardrailsPromptS11;
+  s12?: DeleteResponseGuardrailsPromptS12;
+  s13?: DeleteResponseGuardrailsPromptS13;
+  s2?: DeleteResponseGuardrailsPromptS2;
+  s3?: DeleteResponseGuardrailsPromptS3;
+  s4?: DeleteResponseGuardrailsPromptS4;
+  s5?: DeleteResponseGuardrailsPromptS5;
+  s6?: DeleteResponseGuardrailsPromptS6;
+  s7?: DeleteResponseGuardrailsPromptS7;
+  s8?: DeleteResponseGuardrailsPromptS8;
+  s9?: DeleteResponseGuardrailsPromptS9;
 }
 export const DeleteResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(DeleteResponseGuardrailsPromptP1),
-    S1: S.optional(DeleteResponseGuardrailsPromptS1),
-    S10: S.optional(DeleteResponseGuardrailsPromptS10),
-    S11: S.optional(DeleteResponseGuardrailsPromptS11),
-    S12: S.optional(DeleteResponseGuardrailsPromptS12),
-    S13: S.optional(DeleteResponseGuardrailsPromptS13),
-    S2: S.optional(DeleteResponseGuardrailsPromptS2),
-    S3: S.optional(DeleteResponseGuardrailsPromptS3),
-    S4: S.optional(DeleteResponseGuardrailsPromptS4),
-    S5: S.optional(DeleteResponseGuardrailsPromptS5),
-    S6: S.optional(DeleteResponseGuardrailsPromptS6),
-    S7: S.optional(DeleteResponseGuardrailsPromptS7),
-    S8: S.optional(DeleteResponseGuardrailsPromptS8),
-    S9: S.optional(DeleteResponseGuardrailsPromptS9),
+    p1: S.optional(DeleteResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(DeleteResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(DeleteResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(DeleteResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(DeleteResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(DeleteResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(DeleteResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(DeleteResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(DeleteResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(DeleteResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(DeleteResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(DeleteResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(DeleteResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(DeleteResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "DeleteResponseGuardrailsPrompt",
@@ -4079,37 +4032,37 @@ export type DeleteResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const DeleteResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseGuardrailsResponse {
-  P1?: DeleteResponseGuardrailsResponseP1;
-  S1?: DeleteResponseGuardrailsResponseS1;
-  S10?: DeleteResponseGuardrailsResponseS10;
-  S11?: DeleteResponseGuardrailsResponseS11;
-  S12?: DeleteResponseGuardrailsResponseS12;
-  S13?: DeleteResponseGuardrailsResponseS13;
-  S2?: DeleteResponseGuardrailsResponseS2;
-  S3?: DeleteResponseGuardrailsResponseS3;
-  S4?: DeleteResponseGuardrailsResponseS4;
-  S5?: DeleteResponseGuardrailsResponseS5;
-  S6?: DeleteResponseGuardrailsResponseS6;
-  S7?: DeleteResponseGuardrailsResponseS7;
-  S8?: DeleteResponseGuardrailsResponseS8;
-  S9?: DeleteResponseGuardrailsResponseS9;
+  p1?: DeleteResponseGuardrailsResponseP1;
+  s1?: DeleteResponseGuardrailsResponseS1;
+  s10?: DeleteResponseGuardrailsResponseS10;
+  s11?: DeleteResponseGuardrailsResponseS11;
+  s12?: DeleteResponseGuardrailsResponseS12;
+  s13?: DeleteResponseGuardrailsResponseS13;
+  s2?: DeleteResponseGuardrailsResponseS2;
+  s3?: DeleteResponseGuardrailsResponseS3;
+  s4?: DeleteResponseGuardrailsResponseS4;
+  s5?: DeleteResponseGuardrailsResponseS5;
+  s6?: DeleteResponseGuardrailsResponseS6;
+  s7?: DeleteResponseGuardrailsResponseS7;
+  s8?: DeleteResponseGuardrailsResponseS8;
+  s9?: DeleteResponseGuardrailsResponseS9;
 }
 export const DeleteResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(DeleteResponseGuardrailsResponseP1),
-    S1: S.optional(DeleteResponseGuardrailsResponseS1),
-    S10: S.optional(DeleteResponseGuardrailsResponseS10),
-    S11: S.optional(DeleteResponseGuardrailsResponseS11),
-    S12: S.optional(DeleteResponseGuardrailsResponseS12),
-    S13: S.optional(DeleteResponseGuardrailsResponseS13),
-    S2: S.optional(DeleteResponseGuardrailsResponseS2),
-    S3: S.optional(DeleteResponseGuardrailsResponseS3),
-    S4: S.optional(DeleteResponseGuardrailsResponseS4),
-    S5: S.optional(DeleteResponseGuardrailsResponseS5),
-    S6: S.optional(DeleteResponseGuardrailsResponseS6),
-    S7: S.optional(DeleteResponseGuardrailsResponseS7),
-    S8: S.optional(DeleteResponseGuardrailsResponseS8),
-    S9: S.optional(DeleteResponseGuardrailsResponseS9),
+    p1: S.optional(DeleteResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(DeleteResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(DeleteResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(DeleteResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(DeleteResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(DeleteResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(DeleteResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(DeleteResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(DeleteResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(DeleteResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(DeleteResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(DeleteResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(DeleteResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(DeleteResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "DeleteResponseGuardrailsResponse",
@@ -4134,11 +4087,11 @@ export type DeleteResponseLogManagementStrategy =
 export const DeleteResponseLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type DeleteResponseOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const DeleteResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<DeleteResponseOtelItemHeadersMap>;
 
 export type DeleteResponseOtelItemContentType = "json" | "protobuf";
@@ -4177,53 +4130,6 @@ export const DeleteResponseRetryBackoff = /*@__PURE__*/ S.String;
 export type DeleteResponseSpendLimitsRulesItemLimitType = "cost";
 export const DeleteResponseSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
-
-export type DeleteResponseSpendLimitsRulesItemMetadataModeMode = "partition";
-export const DeleteResponseSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface DeleteResponseSpendLimitsRulesItemMetadataMode {
-  mode: DeleteResponseSpendLimitsRulesItemMetadataModeMode;
-}
-export const DeleteResponseSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: DeleteResponseSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "DeleteResponseSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<DeleteResponseSpendLimitsRulesItemMetadataMode>;
-
-export type DeleteResponseSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const DeleteResponseSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface DeleteResponseSpendLimitsRulesItemMetadataCase1 {
-  mode: DeleteResponseSpendLimitsRulesItemMetadataCase1Mode;
-  values: DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const DeleteResponseSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: DeleteResponseSpendLimitsRulesItemMetadataCase1Mode,
-      values: DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "DeleteResponseSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<DeleteResponseSpendLimitsRulesItemMetadataCase1>;
-
-export type DeleteResponseSpendLimitsRulesItemMetadata =
-  | DeleteResponseSpendLimitsRulesItemMetadataMode
-  | DeleteResponseSpendLimitsRulesItemMetadataCase1;
-export const DeleteResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
 
 export type DeleteResponseSpendLimitsRulesItemModelMode = "filter";
 export const DeleteResponseSpendLimitsRulesItemModelMode =
@@ -4284,7 +4190,7 @@ export interface DeleteResponseSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: DeleteResponseSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: DeleteResponseSpendLimitsRulesItemModel;
   provider?: DeleteResponseSpendLimitsRulesItemProvider;
   technique?: DeleteResponseSpendLimitsRulesItemTechnique;
@@ -4296,7 +4202,7 @@ export const DeleteResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(DeleteResponseSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(DeleteResponseSpendLimitsRulesItemModel),
     provider: S.optional(DeleteResponseSpendLimitsRulesItemProvider),
     technique: S.optional(DeleteResponseSpendLimitsRulesItemTechnique),
@@ -5526,37 +5432,37 @@ export type GetResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const GetResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface GetResponseGuardrailsPrompt {
-  P1?: GetResponseGuardrailsPromptP1;
-  S1?: GetResponseGuardrailsPromptS1;
-  S10?: GetResponseGuardrailsPromptS10;
-  S11?: GetResponseGuardrailsPromptS11;
-  S12?: GetResponseGuardrailsPromptS12;
-  S13?: GetResponseGuardrailsPromptS13;
-  S2?: GetResponseGuardrailsPromptS2;
-  S3?: GetResponseGuardrailsPromptS3;
-  S4?: GetResponseGuardrailsPromptS4;
-  S5?: GetResponseGuardrailsPromptS5;
-  S6?: GetResponseGuardrailsPromptS6;
-  S7?: GetResponseGuardrailsPromptS7;
-  S8?: GetResponseGuardrailsPromptS8;
-  S9?: GetResponseGuardrailsPromptS9;
+  p1?: GetResponseGuardrailsPromptP1;
+  s1?: GetResponseGuardrailsPromptS1;
+  s10?: GetResponseGuardrailsPromptS10;
+  s11?: GetResponseGuardrailsPromptS11;
+  s12?: GetResponseGuardrailsPromptS12;
+  s13?: GetResponseGuardrailsPromptS13;
+  s2?: GetResponseGuardrailsPromptS2;
+  s3?: GetResponseGuardrailsPromptS3;
+  s4?: GetResponseGuardrailsPromptS4;
+  s5?: GetResponseGuardrailsPromptS5;
+  s6?: GetResponseGuardrailsPromptS6;
+  s7?: GetResponseGuardrailsPromptS7;
+  s8?: GetResponseGuardrailsPromptS8;
+  s9?: GetResponseGuardrailsPromptS9;
 }
 export const GetResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(GetResponseGuardrailsPromptP1),
-    S1: S.optional(GetResponseGuardrailsPromptS1),
-    S10: S.optional(GetResponseGuardrailsPromptS10),
-    S11: S.optional(GetResponseGuardrailsPromptS11),
-    S12: S.optional(GetResponseGuardrailsPromptS12),
-    S13: S.optional(GetResponseGuardrailsPromptS13),
-    S2: S.optional(GetResponseGuardrailsPromptS2),
-    S3: S.optional(GetResponseGuardrailsPromptS3),
-    S4: S.optional(GetResponseGuardrailsPromptS4),
-    S5: S.optional(GetResponseGuardrailsPromptS5),
-    S6: S.optional(GetResponseGuardrailsPromptS6),
-    S7: S.optional(GetResponseGuardrailsPromptS7),
-    S8: S.optional(GetResponseGuardrailsPromptS8),
-    S9: S.optional(GetResponseGuardrailsPromptS9),
+    p1: S.optional(GetResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(GetResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(GetResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(GetResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(GetResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(GetResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(GetResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(GetResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(GetResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(GetResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(GetResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(GetResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(GetResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(GetResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "GetResponseGuardrailsPrompt",
@@ -5605,37 +5511,37 @@ export type GetResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const GetResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface GetResponseGuardrailsResponse {
-  P1?: GetResponseGuardrailsResponseP1;
-  S1?: GetResponseGuardrailsResponseS1;
-  S10?: GetResponseGuardrailsResponseS10;
-  S11?: GetResponseGuardrailsResponseS11;
-  S12?: GetResponseGuardrailsResponseS12;
-  S13?: GetResponseGuardrailsResponseS13;
-  S2?: GetResponseGuardrailsResponseS2;
-  S3?: GetResponseGuardrailsResponseS3;
-  S4?: GetResponseGuardrailsResponseS4;
-  S5?: GetResponseGuardrailsResponseS5;
-  S6?: GetResponseGuardrailsResponseS6;
-  S7?: GetResponseGuardrailsResponseS7;
-  S8?: GetResponseGuardrailsResponseS8;
-  S9?: GetResponseGuardrailsResponseS9;
+  p1?: GetResponseGuardrailsResponseP1;
+  s1?: GetResponseGuardrailsResponseS1;
+  s10?: GetResponseGuardrailsResponseS10;
+  s11?: GetResponseGuardrailsResponseS11;
+  s12?: GetResponseGuardrailsResponseS12;
+  s13?: GetResponseGuardrailsResponseS13;
+  s2?: GetResponseGuardrailsResponseS2;
+  s3?: GetResponseGuardrailsResponseS3;
+  s4?: GetResponseGuardrailsResponseS4;
+  s5?: GetResponseGuardrailsResponseS5;
+  s6?: GetResponseGuardrailsResponseS6;
+  s7?: GetResponseGuardrailsResponseS7;
+  s8?: GetResponseGuardrailsResponseS8;
+  s9?: GetResponseGuardrailsResponseS9;
 }
 export const GetResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(GetResponseGuardrailsResponseP1),
-    S1: S.optional(GetResponseGuardrailsResponseS1),
-    S10: S.optional(GetResponseGuardrailsResponseS10),
-    S11: S.optional(GetResponseGuardrailsResponseS11),
-    S12: S.optional(GetResponseGuardrailsResponseS12),
-    S13: S.optional(GetResponseGuardrailsResponseS13),
-    S2: S.optional(GetResponseGuardrailsResponseS2),
-    S3: S.optional(GetResponseGuardrailsResponseS3),
-    S4: S.optional(GetResponseGuardrailsResponseS4),
-    S5: S.optional(GetResponseGuardrailsResponseS5),
-    S6: S.optional(GetResponseGuardrailsResponseS6),
-    S7: S.optional(GetResponseGuardrailsResponseS7),
-    S8: S.optional(GetResponseGuardrailsResponseS8),
-    S9: S.optional(GetResponseGuardrailsResponseS9),
+    p1: S.optional(GetResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(GetResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(GetResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(GetResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(GetResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(GetResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(GetResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(GetResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(GetResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(GetResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(GetResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(GetResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(GetResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(GetResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "GetResponseGuardrailsResponse",
@@ -5660,11 +5566,11 @@ export type GetResponseLogManagementStrategy =
 export const GetResponseLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type GetResponseOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const GetResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<GetResponseOtelItemHeadersMap>;
 
 export type GetResponseOtelItemContentType = "json" | "protobuf";
@@ -5702,53 +5608,6 @@ export const GetResponseRetryBackoff = /*@__PURE__*/ S.String;
 
 export type GetResponseSpendLimitsRulesItemLimitType = "cost";
 export const GetResponseSpendLimitsRulesItemLimitType = /*@__PURE__*/ S.String;
-
-export type GetResponseSpendLimitsRulesItemMetadataModeMode = "partition";
-export const GetResponseSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface GetResponseSpendLimitsRulesItemMetadataMode {
-  mode: GetResponseSpendLimitsRulesItemMetadataModeMode;
-}
-export const GetResponseSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetResponseSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "GetResponseSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<GetResponseSpendLimitsRulesItemMetadataMode>;
-
-export type GetResponseSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const GetResponseSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type GetResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const GetResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface GetResponseSpendLimitsRulesItemMetadataCase1 {
-  mode: GetResponseSpendLimitsRulesItemMetadataCase1Mode;
-  values: GetResponseSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const GetResponseSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetResponseSpendLimitsRulesItemMetadataCase1Mode,
-      values: GetResponseSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "GetResponseSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<GetResponseSpendLimitsRulesItemMetadataCase1>;
-
-export type GetResponseSpendLimitsRulesItemMetadata =
-  | GetResponseSpendLimitsRulesItemMetadataMode
-  | GetResponseSpendLimitsRulesItemMetadataCase1;
-export const GetResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
 
 export type GetResponseSpendLimitsRulesItemModelMode = "filter";
 export const GetResponseSpendLimitsRulesItemModelMode = /*@__PURE__*/ S.String;
@@ -5806,7 +5665,7 @@ export interface GetResponseSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: GetResponseSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: GetResponseSpendLimitsRulesItemModel;
   provider?: GetResponseSpendLimitsRulesItemProvider;
   technique?: GetResponseSpendLimitsRulesItemTechnique;
@@ -5818,7 +5677,7 @@ export const GetResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(GetResponseSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(GetResponseSpendLimitsRulesItemModel),
     provider: S.optional(GetResponseSpendLimitsRulesItemProvider),
     technique: S.optional(GetResponseSpendLimitsRulesItemTechnique),
@@ -7845,37 +7704,37 @@ export type ListResultItemGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const ListResultItemGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGuardrailsPrompt {
-  P1?: ListResultItemGuardrailsPromptP1;
-  S1?: ListResultItemGuardrailsPromptS1;
-  S10?: ListResultItemGuardrailsPromptS10;
-  S11?: ListResultItemGuardrailsPromptS11;
-  S12?: ListResultItemGuardrailsPromptS12;
-  S13?: ListResultItemGuardrailsPromptS13;
-  S2?: ListResultItemGuardrailsPromptS2;
-  S3?: ListResultItemGuardrailsPromptS3;
-  S4?: ListResultItemGuardrailsPromptS4;
-  S5?: ListResultItemGuardrailsPromptS5;
-  S6?: ListResultItemGuardrailsPromptS6;
-  S7?: ListResultItemGuardrailsPromptS7;
-  S8?: ListResultItemGuardrailsPromptS8;
-  S9?: ListResultItemGuardrailsPromptS9;
+  p1?: ListResultItemGuardrailsPromptP1;
+  s1?: ListResultItemGuardrailsPromptS1;
+  s10?: ListResultItemGuardrailsPromptS10;
+  s11?: ListResultItemGuardrailsPromptS11;
+  s12?: ListResultItemGuardrailsPromptS12;
+  s13?: ListResultItemGuardrailsPromptS13;
+  s2?: ListResultItemGuardrailsPromptS2;
+  s3?: ListResultItemGuardrailsPromptS3;
+  s4?: ListResultItemGuardrailsPromptS4;
+  s5?: ListResultItemGuardrailsPromptS5;
+  s6?: ListResultItemGuardrailsPromptS6;
+  s7?: ListResultItemGuardrailsPromptS7;
+  s8?: ListResultItemGuardrailsPromptS8;
+  s9?: ListResultItemGuardrailsPromptS9;
 }
 export const ListResultItemGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(ListResultItemGuardrailsPromptP1),
-    S1: S.optional(ListResultItemGuardrailsPromptS1),
-    S10: S.optional(ListResultItemGuardrailsPromptS10),
-    S11: S.optional(ListResultItemGuardrailsPromptS11),
-    S12: S.optional(ListResultItemGuardrailsPromptS12),
-    S13: S.optional(ListResultItemGuardrailsPromptS13),
-    S2: S.optional(ListResultItemGuardrailsPromptS2),
-    S3: S.optional(ListResultItemGuardrailsPromptS3),
-    S4: S.optional(ListResultItemGuardrailsPromptS4),
-    S5: S.optional(ListResultItemGuardrailsPromptS5),
-    S6: S.optional(ListResultItemGuardrailsPromptS6),
-    S7: S.optional(ListResultItemGuardrailsPromptS7),
-    S8: S.optional(ListResultItemGuardrailsPromptS8),
-    S9: S.optional(ListResultItemGuardrailsPromptS9),
+    p1: S.optional(ListResultItemGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(ListResultItemGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(ListResultItemGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(ListResultItemGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(ListResultItemGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(ListResultItemGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(ListResultItemGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(ListResultItemGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(ListResultItemGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(ListResultItemGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(ListResultItemGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(ListResultItemGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(ListResultItemGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(ListResultItemGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "ListResultItemGuardrailsPrompt",
@@ -7924,37 +7783,37 @@ export type ListResultItemGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const ListResultItemGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGuardrailsResponse {
-  P1?: ListResultItemGuardrailsResponseP1;
-  S1?: ListResultItemGuardrailsResponseS1;
-  S10?: ListResultItemGuardrailsResponseS10;
-  S11?: ListResultItemGuardrailsResponseS11;
-  S12?: ListResultItemGuardrailsResponseS12;
-  S13?: ListResultItemGuardrailsResponseS13;
-  S2?: ListResultItemGuardrailsResponseS2;
-  S3?: ListResultItemGuardrailsResponseS3;
-  S4?: ListResultItemGuardrailsResponseS4;
-  S5?: ListResultItemGuardrailsResponseS5;
-  S6?: ListResultItemGuardrailsResponseS6;
-  S7?: ListResultItemGuardrailsResponseS7;
-  S8?: ListResultItemGuardrailsResponseS8;
-  S9?: ListResultItemGuardrailsResponseS9;
+  p1?: ListResultItemGuardrailsResponseP1;
+  s1?: ListResultItemGuardrailsResponseS1;
+  s10?: ListResultItemGuardrailsResponseS10;
+  s11?: ListResultItemGuardrailsResponseS11;
+  s12?: ListResultItemGuardrailsResponseS12;
+  s13?: ListResultItemGuardrailsResponseS13;
+  s2?: ListResultItemGuardrailsResponseS2;
+  s3?: ListResultItemGuardrailsResponseS3;
+  s4?: ListResultItemGuardrailsResponseS4;
+  s5?: ListResultItemGuardrailsResponseS5;
+  s6?: ListResultItemGuardrailsResponseS6;
+  s7?: ListResultItemGuardrailsResponseS7;
+  s8?: ListResultItemGuardrailsResponseS8;
+  s9?: ListResultItemGuardrailsResponseS9;
 }
 export const ListResultItemGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(ListResultItemGuardrailsResponseP1),
-    S1: S.optional(ListResultItemGuardrailsResponseS1),
-    S10: S.optional(ListResultItemGuardrailsResponseS10),
-    S11: S.optional(ListResultItemGuardrailsResponseS11),
-    S12: S.optional(ListResultItemGuardrailsResponseS12),
-    S13: S.optional(ListResultItemGuardrailsResponseS13),
-    S2: S.optional(ListResultItemGuardrailsResponseS2),
-    S3: S.optional(ListResultItemGuardrailsResponseS3),
-    S4: S.optional(ListResultItemGuardrailsResponseS4),
-    S5: S.optional(ListResultItemGuardrailsResponseS5),
-    S6: S.optional(ListResultItemGuardrailsResponseS6),
-    S7: S.optional(ListResultItemGuardrailsResponseS7),
-    S8: S.optional(ListResultItemGuardrailsResponseS8),
-    S9: S.optional(ListResultItemGuardrailsResponseS9),
+    p1: S.optional(ListResultItemGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(ListResultItemGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(ListResultItemGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(ListResultItemGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(ListResultItemGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(ListResultItemGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(ListResultItemGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(ListResultItemGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(ListResultItemGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(ListResultItemGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(ListResultItemGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(ListResultItemGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(ListResultItemGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(ListResultItemGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "ListResultItemGuardrailsResponse",
@@ -7979,11 +7838,11 @@ export type ListResultItemLogManagementStrategy =
 export const ListResultItemLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type ListResultItemOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const ListResultItemOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemOtelItemHeadersMap>;
 
 export type ListResultItemOtelItemContentType = "json" | "protobuf";
@@ -8022,53 +7881,6 @@ export const ListResultItemRetryBackoff = /*@__PURE__*/ S.String;
 export type ListResultItemSpendLimitsRulesItemLimitType = "cost";
 export const ListResultItemSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
-
-export type ListResultItemSpendLimitsRulesItemMetadataModeMode = "partition";
-export const ListResultItemSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface ListResultItemSpendLimitsRulesItemMetadataMode {
-  mode: ListResultItemSpendLimitsRulesItemMetadataModeMode;
-}
-export const ListResultItemSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: ListResultItemSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "ListResultItemSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<ListResultItemSpendLimitsRulesItemMetadataMode>;
-
-export type ListResultItemSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const ListResultItemSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface ListResultItemSpendLimitsRulesItemMetadataCase1 {
-  mode: ListResultItemSpendLimitsRulesItemMetadataCase1Mode;
-  values: ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const ListResultItemSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: ListResultItemSpendLimitsRulesItemMetadataCase1Mode,
-      values: ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "ListResultItemSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<ListResultItemSpendLimitsRulesItemMetadataCase1>;
-
-export type ListResultItemSpendLimitsRulesItemMetadata =
-  | ListResultItemSpendLimitsRulesItemMetadataMode
-  | ListResultItemSpendLimitsRulesItemMetadataCase1;
-export const ListResultItemSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
 
 export type ListResultItemSpendLimitsRulesItemModelMode = "filter";
 export const ListResultItemSpendLimitsRulesItemModelMode =
@@ -8129,7 +7941,7 @@ export interface ListResultItemSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: ListResultItemSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: ListResultItemSpendLimitsRulesItemModel;
   provider?: ListResultItemSpendLimitsRulesItemProvider;
   technique?: ListResultItemSpendLimitsRulesItemTechnique;
@@ -8141,7 +7953,7 @@ export const ListResultItemSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(ListResultItemSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(ListResultItemSpendLimitsRulesItemModel),
     provider: S.optional(ListResultItemSpendLimitsRulesItemProvider),
     technique: S.optional(ListResultItemSpendLimitsRulesItemTechnique),
@@ -10581,37 +10393,37 @@ export type UpdateRequestGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsPrompt {
-  P1?: UpdateRequestGuardrailsPromptP1 | (string & {});
-  S1?: UpdateRequestGuardrailsPromptS1 | (string & {});
-  S10?: UpdateRequestGuardrailsPromptS10 | (string & {});
-  S11?: UpdateRequestGuardrailsPromptS11 | (string & {});
-  S12?: UpdateRequestGuardrailsPromptS12 | (string & {});
-  S13?: UpdateRequestGuardrailsPromptS13 | (string & {});
-  S2?: UpdateRequestGuardrailsPromptS2 | (string & {});
-  S3?: UpdateRequestGuardrailsPromptS3 | (string & {});
-  S4?: UpdateRequestGuardrailsPromptS4 | (string & {});
-  S5?: UpdateRequestGuardrailsPromptS5 | (string & {});
-  S6?: UpdateRequestGuardrailsPromptS6 | (string & {});
-  S7?: UpdateRequestGuardrailsPromptS7 | (string & {});
-  S8?: UpdateRequestGuardrailsPromptS8 | (string & {});
-  S9?: UpdateRequestGuardrailsPromptS9 | (string & {});
+  p1?: UpdateRequestGuardrailsPromptP1 | (string & {});
+  s1?: UpdateRequestGuardrailsPromptS1 | (string & {});
+  s10?: UpdateRequestGuardrailsPromptS10 | (string & {});
+  s11?: UpdateRequestGuardrailsPromptS11 | (string & {});
+  s12?: UpdateRequestGuardrailsPromptS12 | (string & {});
+  s13?: UpdateRequestGuardrailsPromptS13 | (string & {});
+  s2?: UpdateRequestGuardrailsPromptS2 | (string & {});
+  s3?: UpdateRequestGuardrailsPromptS3 | (string & {});
+  s4?: UpdateRequestGuardrailsPromptS4 | (string & {});
+  s5?: UpdateRequestGuardrailsPromptS5 | (string & {});
+  s6?: UpdateRequestGuardrailsPromptS6 | (string & {});
+  s7?: UpdateRequestGuardrailsPromptS7 | (string & {});
+  s8?: UpdateRequestGuardrailsPromptS8 | (string & {});
+  s9?: UpdateRequestGuardrailsPromptS9 | (string & {});
 }
 export const UpdateRequestGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(UpdateRequestGuardrailsPromptP1),
-    S1: S.optional(UpdateRequestGuardrailsPromptS1),
-    S10: S.optional(UpdateRequestGuardrailsPromptS10),
-    S11: S.optional(UpdateRequestGuardrailsPromptS11),
-    S12: S.optional(UpdateRequestGuardrailsPromptS12),
-    S13: S.optional(UpdateRequestGuardrailsPromptS13),
-    S2: S.optional(UpdateRequestGuardrailsPromptS2),
-    S3: S.optional(UpdateRequestGuardrailsPromptS3),
-    S4: S.optional(UpdateRequestGuardrailsPromptS4),
-    S5: S.optional(UpdateRequestGuardrailsPromptS5),
-    S6: S.optional(UpdateRequestGuardrailsPromptS6),
-    S7: S.optional(UpdateRequestGuardrailsPromptS7),
-    S8: S.optional(UpdateRequestGuardrailsPromptS8),
-    S9: S.optional(UpdateRequestGuardrailsPromptS9),
+    p1: S.optional(UpdateRequestGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateRequestGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateRequestGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateRequestGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateRequestGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateRequestGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateRequestGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateRequestGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateRequestGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateRequestGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateRequestGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateRequestGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateRequestGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateRequestGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsPrompt",
@@ -10660,37 +10472,37 @@ export type UpdateRequestGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsResponse {
-  P1?: UpdateRequestGuardrailsResponseP1 | (string & {});
-  S1?: UpdateRequestGuardrailsResponseS1 | (string & {});
-  S10?: UpdateRequestGuardrailsResponseS10 | (string & {});
-  S11?: UpdateRequestGuardrailsResponseS11 | (string & {});
-  S12?: UpdateRequestGuardrailsResponseS12 | (string & {});
-  S13?: UpdateRequestGuardrailsResponseS13 | (string & {});
-  S2?: UpdateRequestGuardrailsResponseS2 | (string & {});
-  S3?: UpdateRequestGuardrailsResponseS3 | (string & {});
-  S4?: UpdateRequestGuardrailsResponseS4 | (string & {});
-  S5?: UpdateRequestGuardrailsResponseS5 | (string & {});
-  S6?: UpdateRequestGuardrailsResponseS6 | (string & {});
-  S7?: UpdateRequestGuardrailsResponseS7 | (string & {});
-  S8?: UpdateRequestGuardrailsResponseS8 | (string & {});
-  S9?: UpdateRequestGuardrailsResponseS9 | (string & {});
+  p1?: UpdateRequestGuardrailsResponseP1 | (string & {});
+  s1?: UpdateRequestGuardrailsResponseS1 | (string & {});
+  s10?: UpdateRequestGuardrailsResponseS10 | (string & {});
+  s11?: UpdateRequestGuardrailsResponseS11 | (string & {});
+  s12?: UpdateRequestGuardrailsResponseS12 | (string & {});
+  s13?: UpdateRequestGuardrailsResponseS13 | (string & {});
+  s2?: UpdateRequestGuardrailsResponseS2 | (string & {});
+  s3?: UpdateRequestGuardrailsResponseS3 | (string & {});
+  s4?: UpdateRequestGuardrailsResponseS4 | (string & {});
+  s5?: UpdateRequestGuardrailsResponseS5 | (string & {});
+  s6?: UpdateRequestGuardrailsResponseS6 | (string & {});
+  s7?: UpdateRequestGuardrailsResponseS7 | (string & {});
+  s8?: UpdateRequestGuardrailsResponseS8 | (string & {});
+  s9?: UpdateRequestGuardrailsResponseS9 | (string & {});
 }
 export const UpdateRequestGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(UpdateRequestGuardrailsResponseP1),
-    S1: S.optional(UpdateRequestGuardrailsResponseS1),
-    S10: S.optional(UpdateRequestGuardrailsResponseS10),
-    S11: S.optional(UpdateRequestGuardrailsResponseS11),
-    S12: S.optional(UpdateRequestGuardrailsResponseS12),
-    S13: S.optional(UpdateRequestGuardrailsResponseS13),
-    S2: S.optional(UpdateRequestGuardrailsResponseS2),
-    S3: S.optional(UpdateRequestGuardrailsResponseS3),
-    S4: S.optional(UpdateRequestGuardrailsResponseS4),
-    S5: S.optional(UpdateRequestGuardrailsResponseS5),
-    S6: S.optional(UpdateRequestGuardrailsResponseS6),
-    S7: S.optional(UpdateRequestGuardrailsResponseS7),
-    S8: S.optional(UpdateRequestGuardrailsResponseS8),
-    S9: S.optional(UpdateRequestGuardrailsResponseS9),
+    p1: S.optional(UpdateRequestGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateRequestGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateRequestGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateRequestGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateRequestGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateRequestGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateRequestGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateRequestGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateRequestGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateRequestGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateRequestGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateRequestGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateRequestGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateRequestGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsResponse",
@@ -10715,11 +10527,11 @@ export type UpdateRequestLogManagementStrategy =
 export const UpdateRequestLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type UpdateRequestOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateRequestOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<UpdateRequestOtelItemHeadersMap>;
 
 export type UpdateRequestOtelItemContentType = "json" | "protobuf";
@@ -10759,53 +10571,6 @@ export type UpdateRequestSpendLimitsRulesItemLimitType = "cost";
 export const UpdateRequestSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestSpendLimitsRulesItemMetadataModeMode = "partition";
-export const UpdateRequestSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface UpdateRequestSpendLimitsRulesItemMetadataMode {
-  mode: UpdateRequestSpendLimitsRulesItemMetadataModeMode;
-}
-export const UpdateRequestSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateRequestSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<UpdateRequestSpendLimitsRulesItemMetadataMode>;
-
-export type UpdateRequestSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const UpdateRequestSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface UpdateRequestSpendLimitsRulesItemMetadataCase1 {
-  mode: UpdateRequestSpendLimitsRulesItemMetadataCase1Mode;
-  values: UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const UpdateRequestSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateRequestSpendLimitsRulesItemMetadataCase1Mode,
-      values: UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<UpdateRequestSpendLimitsRulesItemMetadataCase1>;
-
-export type UpdateRequestSpendLimitsRulesItemMetadata =
-  | UpdateRequestSpendLimitsRulesItemMetadataMode
-  | UpdateRequestSpendLimitsRulesItemMetadataCase1;
-export const UpdateRequestSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
-
 export type UpdateRequestSpendLimitsRulesItemModelMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
@@ -10817,7 +10582,7 @@ export const UpdateRequestSpendLimitsRulesItemModelValuesList =
   ) as any as S.Schema<UpdateRequestSpendLimitsRulesItemModelValuesList>;
 
 export interface UpdateRequestSpendLimitsRulesItemModel {
-  mode: UpdateRequestSpendLimitsRulesItemModelMode;
+  mode: UpdateRequestSpendLimitsRulesItemModelMode | (string & {});
   values: UpdateRequestSpendLimitsRulesItemModelValuesList;
 }
 export const UpdateRequestSpendLimitsRulesItemModel = /*@__PURE__*/ S.suspend(
@@ -10841,7 +10606,7 @@ export const UpdateRequestSpendLimitsRulesItemProviderValuesList =
   ) as any as S.Schema<UpdateRequestSpendLimitsRulesItemProviderValuesList>;
 
 export interface UpdateRequestSpendLimitsRulesItemProvider {
-  mode: UpdateRequestSpendLimitsRulesItemProviderMode;
+  mode: UpdateRequestSpendLimitsRulesItemProviderMode | (string & {});
   values: UpdateRequestSpendLimitsRulesItemProviderValuesList;
 }
 export const UpdateRequestSpendLimitsRulesItemProvider =
@@ -10860,11 +10625,11 @@ export const UpdateRequestSpendLimitsRulesItemTechnique =
 
 export interface UpdateRequestSpendLimitsRulesItem {
   limit: number;
-  limitType: UpdateRequestSpendLimitsRulesItemLimitType;
+  limitType: UpdateRequestSpendLimitsRulesItemLimitType | (string & {});
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: UpdateRequestSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: UpdateRequestSpendLimitsRulesItemModel;
   provider?: UpdateRequestSpendLimitsRulesItemProvider;
   technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {});
@@ -10876,7 +10641,7 @@ export const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(UpdateRequestSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(UpdateRequestSpendLimitsRulesItemModel),
     provider: S.optional(UpdateRequestSpendLimitsRulesItemProvider),
     technique: S.optional(UpdateRequestSpendLimitsRulesItemTechnique),
@@ -10967,7 +10732,7 @@ export interface UpdateAiGatewayRequest {
   storeId?: string;
   stripe?: UpdateRequestStripe;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?: UpdateRequestWorkersAiBillingMode;
+  workersAiBillingMode?: UpdateRequestWorkersAiBillingMode | (string & {});
   zdr?: boolean;
 }
 export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11161,37 +10926,37 @@ export type UpdateResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const UpdateResponseGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseGuardrailsPrompt {
-  P1?: UpdateResponseGuardrailsPromptP1;
-  S1?: UpdateResponseGuardrailsPromptS1;
-  S10?: UpdateResponseGuardrailsPromptS10;
-  S11?: UpdateResponseGuardrailsPromptS11;
-  S12?: UpdateResponseGuardrailsPromptS12;
-  S13?: UpdateResponseGuardrailsPromptS13;
-  S2?: UpdateResponseGuardrailsPromptS2;
-  S3?: UpdateResponseGuardrailsPromptS3;
-  S4?: UpdateResponseGuardrailsPromptS4;
-  S5?: UpdateResponseGuardrailsPromptS5;
-  S6?: UpdateResponseGuardrailsPromptS6;
-  S7?: UpdateResponseGuardrailsPromptS7;
-  S8?: UpdateResponseGuardrailsPromptS8;
-  S9?: UpdateResponseGuardrailsPromptS9;
+  p1?: UpdateResponseGuardrailsPromptP1;
+  s1?: UpdateResponseGuardrailsPromptS1;
+  s10?: UpdateResponseGuardrailsPromptS10;
+  s11?: UpdateResponseGuardrailsPromptS11;
+  s12?: UpdateResponseGuardrailsPromptS12;
+  s13?: UpdateResponseGuardrailsPromptS13;
+  s2?: UpdateResponseGuardrailsPromptS2;
+  s3?: UpdateResponseGuardrailsPromptS3;
+  s4?: UpdateResponseGuardrailsPromptS4;
+  s5?: UpdateResponseGuardrailsPromptS5;
+  s6?: UpdateResponseGuardrailsPromptS6;
+  s7?: UpdateResponseGuardrailsPromptS7;
+  s8?: UpdateResponseGuardrailsPromptS8;
+  s9?: UpdateResponseGuardrailsPromptS9;
 }
 export const UpdateResponseGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(UpdateResponseGuardrailsPromptP1),
-    S1: S.optional(UpdateResponseGuardrailsPromptS1),
-    S10: S.optional(UpdateResponseGuardrailsPromptS10),
-    S11: S.optional(UpdateResponseGuardrailsPromptS11),
-    S12: S.optional(UpdateResponseGuardrailsPromptS12),
-    S13: S.optional(UpdateResponseGuardrailsPromptS13),
-    S2: S.optional(UpdateResponseGuardrailsPromptS2),
-    S3: S.optional(UpdateResponseGuardrailsPromptS3),
-    S4: S.optional(UpdateResponseGuardrailsPromptS4),
-    S5: S.optional(UpdateResponseGuardrailsPromptS5),
-    S6: S.optional(UpdateResponseGuardrailsPromptS6),
-    S7: S.optional(UpdateResponseGuardrailsPromptS7),
-    S8: S.optional(UpdateResponseGuardrailsPromptS8),
-    S9: S.optional(UpdateResponseGuardrailsPromptS9),
+    p1: S.optional(UpdateResponseGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateResponseGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateResponseGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateResponseGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateResponseGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateResponseGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateResponseGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateResponseGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateResponseGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateResponseGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateResponseGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateResponseGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateResponseGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateResponseGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateResponseGuardrailsPrompt",
@@ -11240,37 +11005,37 @@ export type UpdateResponseGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const UpdateResponseGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseGuardrailsResponse {
-  P1?: UpdateResponseGuardrailsResponseP1;
-  S1?: UpdateResponseGuardrailsResponseS1;
-  S10?: UpdateResponseGuardrailsResponseS10;
-  S11?: UpdateResponseGuardrailsResponseS11;
-  S12?: UpdateResponseGuardrailsResponseS12;
-  S13?: UpdateResponseGuardrailsResponseS13;
-  S2?: UpdateResponseGuardrailsResponseS2;
-  S3?: UpdateResponseGuardrailsResponseS3;
-  S4?: UpdateResponseGuardrailsResponseS4;
-  S5?: UpdateResponseGuardrailsResponseS5;
-  S6?: UpdateResponseGuardrailsResponseS6;
-  S7?: UpdateResponseGuardrailsResponseS7;
-  S8?: UpdateResponseGuardrailsResponseS8;
-  S9?: UpdateResponseGuardrailsResponseS9;
+  p1?: UpdateResponseGuardrailsResponseP1;
+  s1?: UpdateResponseGuardrailsResponseS1;
+  s10?: UpdateResponseGuardrailsResponseS10;
+  s11?: UpdateResponseGuardrailsResponseS11;
+  s12?: UpdateResponseGuardrailsResponseS12;
+  s13?: UpdateResponseGuardrailsResponseS13;
+  s2?: UpdateResponseGuardrailsResponseS2;
+  s3?: UpdateResponseGuardrailsResponseS3;
+  s4?: UpdateResponseGuardrailsResponseS4;
+  s5?: UpdateResponseGuardrailsResponseS5;
+  s6?: UpdateResponseGuardrailsResponseS6;
+  s7?: UpdateResponseGuardrailsResponseS7;
+  s8?: UpdateResponseGuardrailsResponseS8;
+  s9?: UpdateResponseGuardrailsResponseS9;
 }
 export const UpdateResponseGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    P1: S.optional(UpdateResponseGuardrailsResponseP1),
-    S1: S.optional(UpdateResponseGuardrailsResponseS1),
-    S10: S.optional(UpdateResponseGuardrailsResponseS10),
-    S11: S.optional(UpdateResponseGuardrailsResponseS11),
-    S12: S.optional(UpdateResponseGuardrailsResponseS12),
-    S13: S.optional(UpdateResponseGuardrailsResponseS13),
-    S2: S.optional(UpdateResponseGuardrailsResponseS2),
-    S3: S.optional(UpdateResponseGuardrailsResponseS3),
-    S4: S.optional(UpdateResponseGuardrailsResponseS4),
-    S5: S.optional(UpdateResponseGuardrailsResponseS5),
-    S6: S.optional(UpdateResponseGuardrailsResponseS6),
-    S7: S.optional(UpdateResponseGuardrailsResponseS7),
-    S8: S.optional(UpdateResponseGuardrailsResponseS8),
-    S9: S.optional(UpdateResponseGuardrailsResponseS9),
+    p1: S.optional(UpdateResponseGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateResponseGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateResponseGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateResponseGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateResponseGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateResponseGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateResponseGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateResponseGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateResponseGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateResponseGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateResponseGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateResponseGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateResponseGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateResponseGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateResponseGuardrailsResponse",
@@ -11295,11 +11060,11 @@ export type UpdateResponseLogManagementStrategy =
 export const UpdateResponseLogManagementStrategy = /*@__PURE__*/ S.String;
 
 export type UpdateResponseOtelItemHeadersMap = {
-  [key: string]: string | undefined;
+  [key: string]: unknown | undefined;
 };
 export const UpdateResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<UpdateResponseOtelItemHeadersMap>;
 
 export type UpdateResponseOtelItemContentType = "json" | "protobuf";
@@ -11338,53 +11103,6 @@ export const UpdateResponseRetryBackoff = /*@__PURE__*/ S.String;
 export type UpdateResponseSpendLimitsRulesItemLimitType = "cost";
 export const UpdateResponseSpendLimitsRulesItemLimitType =
   /*@__PURE__*/ S.String;
-
-export type UpdateResponseSpendLimitsRulesItemMetadataModeMode = "partition";
-export const UpdateResponseSpendLimitsRulesItemMetadataModeMode =
-  /*@__PURE__*/ S.String;
-
-export interface UpdateResponseSpendLimitsRulesItemMetadataMode {
-  mode: UpdateResponseSpendLimitsRulesItemMetadataModeMode;
-}
-export const UpdateResponseSpendLimitsRulesItemMetadataMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateResponseSpendLimitsRulesItemMetadataModeMode,
-    }),
-  ).annotate({
-    identifier: "UpdateResponseSpendLimitsRulesItemMetadataMode",
-  }) as any as S.Schema<UpdateResponseSpendLimitsRulesItemMetadataMode>;
-
-export type UpdateResponseSpendLimitsRulesItemMetadataCase1Mode = "filter";
-export const UpdateResponseSpendLimitsRulesItemMetadataCase1Mode =
-  /*@__PURE__*/ S.String;
-
-export type UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  Array<string>;
-export const UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList>;
-
-export interface UpdateResponseSpendLimitsRulesItemMetadataCase1 {
-  mode: UpdateResponseSpendLimitsRulesItemMetadataCase1Mode;
-  values: UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList;
-}
-export const UpdateResponseSpendLimitsRulesItemMetadataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateResponseSpendLimitsRulesItemMetadataCase1Mode,
-      values: UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList,
-    }),
-  ).annotate({
-    identifier: "UpdateResponseSpendLimitsRulesItemMetadataCase1",
-  }) as any as S.Schema<UpdateResponseSpendLimitsRulesItemMetadataCase1>;
-
-export type UpdateResponseSpendLimitsRulesItemMetadata =
-  | UpdateResponseSpendLimitsRulesItemMetadataMode
-  | UpdateResponseSpendLimitsRulesItemMetadataCase1;
-export const UpdateResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
 
 export type UpdateResponseSpendLimitsRulesItemModelMode = "filter";
 export const UpdateResponseSpendLimitsRulesItemModelMode =
@@ -11445,7 +11163,7 @@ export interface UpdateResponseSpendLimitsRulesItem {
   window: number;
   id?: string;
   enabled?: boolean;
-  metadata?: UpdateResponseSpendLimitsRulesItemMetadata;
+  metadata?: unknown;
   model?: UpdateResponseSpendLimitsRulesItemModel;
   provider?: UpdateResponseSpendLimitsRulesItemProvider;
   technique?: UpdateResponseSpendLimitsRulesItemTechnique;
@@ -11457,7 +11175,7 @@ export const UpdateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
     window: S.Number,
     id: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    metadata: S.optional(UpdateResponseSpendLimitsRulesItemMetadata),
+    metadata: S.optional(S.Unknown),
     model: S.optional(UpdateResponseSpendLimitsRulesItemModel),
     provider: S.optional(UpdateResponseSpendLimitsRulesItemProvider),
     technique: S.optional(UpdateResponseSpendLimitsRulesItemTechnique),

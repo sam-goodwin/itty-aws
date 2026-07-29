@@ -2994,7 +2994,7 @@ export interface ListBucketsRequest {
   /** Bucket names to filter by. Only buckets with this phrase in their name will be returned. */
   nameContains?: string;
   /** Field to order buckets by. */
-  order?: BucketsListRequestOrder;
+  order?: BucketsListRequestOrder | (string & {});
   /** Maximum number of buckets to return in a single call. */
   perPage?: number;
   /** Bucket name to start searching after. Buckets are ordered lexicographically. */
@@ -3873,7 +3873,9 @@ export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransiti
 
 export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition {
   maxAge: number;
-  type: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType;
+  type:
+    | BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4027,7 +4029,9 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemSt
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition;
-  storageClass: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass;
+  storageClass:
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass
+    | (string & {});
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4281,7 +4285,9 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyAws {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
+    | (string & {});
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4301,7 +4307,9 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
+    | (string & {});
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4338,7 +4346,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   accessKeyId?: string;
   /** Name of the AWS S3 bucket. */
   bucket?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider
+    | (string & {});
   /** Name of the AWS availability zone. */
   region?: string;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
@@ -4370,7 +4380,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyGcs {
   clientEmail?: string;
   /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
   privateKey?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider
+    | (string & {});
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
@@ -4395,7 +4407,9 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyS3 {
   accessKeyId?: string;
   /** URL to the S3-compatible API of the bucket. */
   bucketUrl?: string;
-  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider;
+  provider?:
+    | BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider
+    | (string & {});
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
   secretAccessKey?: string;
 }
@@ -4724,7 +4738,7 @@ export interface TargetSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
   secret: SuperSlurperConnectivityPrecheckTargetRequestSecret;
-  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor;
+  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
   jurisdiction?:
     | SuperSlurperConnectivityPrecheckTargetRequestJurisdiction
     | (string & {});
