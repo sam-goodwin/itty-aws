@@ -90,6 +90,15 @@
           "message": { "includes": "location access test failed" }
         }
       ]
+    },
+    "createTask": {
+      "syntheticErrors": [
+        {
+          "name": "LocationAccessTestFailed",
+          "from": "InvalidRequestException",
+          "message": { "includes": "location access test failed" }
+        }
+      ]
     }
   },
   "errorCategories": {

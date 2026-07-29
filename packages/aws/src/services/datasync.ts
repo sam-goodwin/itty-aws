@@ -3000,6 +3000,7 @@ export const createLocationSmb: API.OperationMethod<
 export type CreateTaskError =
   | InternalException
   | InvalidRequestException
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Configures a *task*, which defines where and how DataSync
@@ -3021,7 +3022,11 @@ export const createTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskRequest,
   output: CreateTaskResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationAccessTestFailed,
+  ],
   operationName: "CreateTask",
 }));
 export type DeleteAgentError =

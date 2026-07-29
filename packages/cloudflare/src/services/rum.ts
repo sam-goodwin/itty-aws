@@ -48,6 +48,14 @@ export class RulesetNotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export class RumSiteQuotaExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RumSiteQuotaExceeded>()("RumSiteQuotaExceeded", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10014 }],
+) {}
+
 export class SiteNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
     code: Schema.Number,
@@ -868,7 +876,10 @@ export const CreateSiteInfoResponse =
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateSiteInfoResponse>;
 
-export type CreateSiteInfoError = DefaultErrors | Forbidden;
+export type CreateSiteInfoError =
+  | DefaultErrors
+  | Forbidden
+  | RumSiteQuotaExceeded;
 
 export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoRequest,
@@ -878,7 +889,7 @@ export const createSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteInfoRequest,
   output: CreateSiteInfoResponse,
-  errors: [Forbidden],
+  errors: [Forbidden, RumSiteQuotaExceeded],
 }));
 
 export interface UpdateSiteInfoRequest {

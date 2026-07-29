@@ -24,6 +24,22 @@ export class DestinationNotVerified extends T.applyErrorMatchers(
   [{ code: 2054 }],
 ) {}
 
+export class EmailAddressCreatedTooRecently extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EmailAddressCreatedTooRecently>()(
+    "EmailAddressCreatedTooRecently",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2032 }],
+) {}
+
+export class EmailAddressNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EmailAddressNotFound>()("EmailAddressNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2015 }],
+) {}
+
 export class EmailRoutingRuleNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<EmailRoutingRuleNotFound>()(
     "EmailRoutingRuleNotFound",
@@ -879,7 +895,10 @@ export const DeleteAddressResponse = /*@__PURE__*/ Schema.suspend(() =>
   }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAddressResponse>;
 
-export type DeleteAddressError = DefaultErrors;
+export type DeleteAddressError =
+  | DefaultErrors
+  | EmailAddressNotFound
+  | EmailAddressCreatedTooRecently;
 
 export const deleteAddress: API.OperationMethod<
   DeleteAddressRequest,
@@ -889,7 +908,7 @@ export const deleteAddress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddressRequest,
   output: DeleteAddressResponse,
-  errors: [],
+  errors: [EmailAddressNotFound, EmailAddressCreatedTooRecently],
 }));
 
 // =============================================================================
