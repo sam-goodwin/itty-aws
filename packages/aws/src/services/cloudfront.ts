@@ -8798,7 +8798,7 @@ export const ListOriginAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOriginAccessControlsRequest>;
 export interface OriginAccessControlSummary {
   Id: string;
-  Description: string;
+  Description?: string;
   Name: string;
   SigningProtocol: OriginAccessControlSigningProtocols;
   SigningBehavior: OriginAccessControlSigningBehaviors;
@@ -8807,7 +8807,7 @@ export interface OriginAccessControlSummary {
 export const OriginAccessControlSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
-    Description: S.String,
+    Description: S.optional(S.String),
     Name: S.String,
     SigningProtocol: OriginAccessControlSigningProtocols,
     SigningBehavior: OriginAccessControlSigningBehaviors,

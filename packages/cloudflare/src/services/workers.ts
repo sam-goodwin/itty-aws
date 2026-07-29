@@ -7064,9 +7064,9 @@ export interface PutScriptMetadataAnnotations {
 }
 export const PutScriptMetadataAnnotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    workersMessage: S.optional(S.String.pipe(T.Body("workers_message"))),
-    workersTag: S.optional(S.String.pipe(T.Body("workers_tag"))),
-    workersAlias: S.optional(S.String.pipe(T.Body("workers_alias"))),
+    workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+    workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+    workersAlias: S.optional(S.String.pipe(T.Body("workers/alias"))),
   }),
 ).annotate({
   identifier: "PutScriptMetadataAnnotations",

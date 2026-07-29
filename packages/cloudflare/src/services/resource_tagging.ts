@@ -63,9 +63,9 @@ export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
-    resourceId: S.optional(S.String.pipe(T.Query("resource_id"))),
-    resourceType: S.optional(S.String.pipe(T.Query("resource_type"))),
-    workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
+    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
   })
     .pipe(
       T.Http({
@@ -101,10 +101,10 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
-    resourceId: S.optional(S.String.pipe(T.Query("resource_id"))),
-    resourceType: S.optional(S.String.pipe(T.Query("resource_type"))),
+    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
     accessApplicationId: S.optional(
-      S.String.pipe(T.Query("access_application_id")),
+      S.String.pipe(T.Body("access_application_id")),
     ),
   })
     .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }))

@@ -112,6 +112,13 @@
           "optional": true
         }
       }
+    },
+    "OriginAccessControlSummary": {
+      "members": {
+        "Description": {
+          "optional": true
+        }
+      }
     }
   }
 }

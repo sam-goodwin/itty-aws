@@ -1,5 +1,5 @@
 {
-  "description": "Docs gap: the tag DELETE endpoints list no query parameters, but the API identifies WHICH resource to untag via query params (account: resource_id/resource_type/worker_id; zone: resource_id/resource_type/access_application_id) — without them the operation cannot target a resource and the schema-driven serializer would drop them.",
+  "description": "tag delete/update target params ride in the JSON body (query params are rejected with Invalid delete payload)",
   "patches": [
     {
       "op": "add",
@@ -7,8 +7,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "resource_id",
-          "smithy.api#documentation": "Identifier of the resource to remove tags from."
+          "smithy.api#documentation": "Identifier of the resource to remove tags from.",
+          "smithy.api#jsonName": "resource_id"
         }
       }
     },
@@ -18,8 +18,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "resource_type",
-          "smithy.api#documentation": "Type of the resource to remove tags from."
+          "smithy.api#documentation": "Type of the resource to remove tags from.",
+          "smithy.api#jsonName": "resource_type"
         }
       }
     },
@@ -29,8 +29,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "worker_id",
-          "smithy.api#documentation": "Identifier of the Worker to remove tags from."
+          "smithy.api#documentation": "Identifier of the Worker to remove tags from.",
+          "smithy.api#jsonName": "worker_id"
         }
       }
     },
@@ -40,8 +40,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "resource_id",
-          "smithy.api#documentation": "Identifier of the resource to remove tags from."
+          "smithy.api#documentation": "Identifier of the resource to remove tags from.",
+          "smithy.api#jsonName": "resource_id"
         }
       }
     },
@@ -51,8 +51,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "resource_type",
-          "smithy.api#documentation": "Type of the resource to remove tags from."
+          "smithy.api#documentation": "Type of the resource to remove tags from.",
+          "smithy.api#jsonName": "resource_type"
         }
       }
     },
@@ -62,8 +62,8 @@
       "value": {
         "target": "smithy.api#String",
         "traits": {
-          "smithy.api#httpQuery": "access_application_id",
-          "smithy.api#documentation": "Identifier of the Access application to remove tags from."
+          "smithy.api#documentation": "Identifier of the Access application to remove tags from.",
+          "smithy.api#jsonName": "access_application_id"
         }
       }
     }

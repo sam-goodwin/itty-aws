@@ -226,6 +226,14 @@ export class FromEmailAddressNotVerifiedException extends S.TaggedErrorClass<Fro
     T.HttpError(400),
   ),
 ).pipe(C.withBadRequestError) {}
+export class IdentityNotVerified extends S.TaggedErrorClass<IdentityNotVerified>()(
+  "IdentityNotVerified",
+  {},
+  T.SyntheticError({
+    from: "InvalidParameterValue",
+    message: { includes: "Identity is not verified" },
+  }),
+) {}
 export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
   "InvalidCloudWatchDestinationException",
   {
@@ -280,6 +288,10 @@ export class InvalidLambdaFunctionException extends S.TaggedErrorClass<InvalidLa
     T.HttpError(400),
   ),
 ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
+  "InvalidParameterValue",
+  {},
+) {}
 export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
   "InvalidPolicyException",
   { message: S.optional(S.String) },
@@ -3460,6 +3472,8 @@ export type CreateReceiptRuleError =
   | LimitExceededException
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
+  | InvalidParameterValue
+  | IdentityNotVerified
   | CommonErrors;
 /**
  * Creates a receipt rule.
@@ -3485,6 +3499,8 @@ export const createReceiptRule: API.OperationMethod<
     LimitExceededException,
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
+    InvalidParameterValue,
+    IdentityNotVerified,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5289,6 +5305,8 @@ export type UpdateReceiptRuleError =
   | LimitExceededException
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
+  | InvalidParameterValue
+  | IdentityNotVerified
   | CommonErrors;
 /**
  * Updates a receipt rule.
@@ -5313,6 +5331,8 @@ export const updateReceiptRule: API.OperationMethod<
     LimitExceededException,
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
+    InvalidParameterValue,
+    IdentityNotVerified,
   ],
   protocol: AwsProtocol,
   retry: Retry,

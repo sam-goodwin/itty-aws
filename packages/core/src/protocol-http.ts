@@ -151,8 +151,11 @@ export const mapKeys = (
 
   // Discriminated union whose cases the API returns merged (every case's
   // keys present, `null` for the inactive ones). Map wire names, then keep
-  // only the active case's keys — the case with the most present, non-null
-  // keys (ties break by declaration order).
+  // only the active case's keys. A case does NOT need every key present —
+  // arms carry optional members the wire may omit — so the active case is
+  // the one that best EXPLAINS the value: most present, non-null keys
+  // covered, minus present keys the case cannot explain (ties break by
+  // coverage, then declaration order).
   const unionCases = getAnn(ast, unionCasesSymbol) as
     | ReadonlyArray<ReadonlyArray<string>>
     | undefined;
@@ -160,15 +163,29 @@ export const mapKeys = (
     const obj = (
       dict ? mapKeysByDictionary(dict, value, "decode") : value
     ) as Record<string, unknown>;
-    let best: { keys: ReadonlyArray<string>; score: number } | undefined;
+    const present = Object.keys(obj).filter(
+      (k) => obj[k] !== undefined && obj[k] !== null,
+    );
+    let best:
+      | { keys: ReadonlyArray<string>; score: number; matched: number }
+      | undefined;
     for (const keys of unionCases) {
-      let score = 0;
-      let viable = true;
-      for (const k of keys) {
-        if (obj[k] !== undefined && obj[k] !== null) score++;
-        else viable = false;
+      const set = new Set(keys);
+      let matched = 0;
+      let excess = 0;
+      for (const k of present) {
+        if (set.has(k)) matched++;
+        else excess++;
       }
-      if (viable && (!best || score > best.score)) best = { keys, score };
+      const score = matched - excess;
+      if (
+        matched > 0 &&
+        (!best ||
+          score > best.score ||
+          (score === best.score && matched > best.matched))
+      ) {
+        best = { keys, score, matched };
+      }
     }
     if (best) {
       const out: Record<string, unknown> = {};

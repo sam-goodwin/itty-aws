@@ -146,15 +146,22 @@
         "type": "structure",
         "members": {
           "workers_message": {
-            "target": "smithy.api#String"
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#jsonName": "workers/message"
+            }
           },
           "workers_tag": {
-            "target": "smithy.api#String"
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#jsonName": "workers/tag"
+            }
           },
           "workers_alias": {
             "target": "smithy.api#String",
             "traits": {
-              "smithy.api#documentation": "Alias to point at this version (e.g. for gradual deployments)."
+              "smithy.api#documentation": "Alias to point at this version (e.g. for gradual deployments).",
+              "smithy.api#jsonName": "workers/alias"
             }
           }
         }
