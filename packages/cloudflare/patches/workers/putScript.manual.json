@@ -150,6 +150,12 @@
           },
           "workers_tag": {
             "target": "smithy.api#String"
+          },
+          "workers_alias": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Alias to point at this version (e.g. for gradual deployments)."
+            }
           }
         }
       }

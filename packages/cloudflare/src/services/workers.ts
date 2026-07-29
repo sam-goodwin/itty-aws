@@ -7059,11 +7059,14 @@ export const CreateScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutScriptMetadataAnnotations {
   workersMessage?: string;
   workersTag?: string;
+  /** Alias to point at this version (e.g. for gradual deployments). */
+  workersAlias?: string;
 }
 export const PutScriptMetadataAnnotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workersMessage: S.optional(S.String.pipe(T.Body("workers_message"))),
     workersTag: S.optional(S.String.pipe(T.Body("workers_tag"))),
+    workersAlias: S.optional(S.String.pipe(T.Body("workers_alias"))),
   }),
 ).annotate({
   identifier: "PutScriptMetadataAnnotations",
