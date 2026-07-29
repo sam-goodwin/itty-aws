@@ -138,7 +138,7 @@ export interface MarketplaceAgreementsCreateRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
-  offerType: MarketplaceAgreementsCreateRequestOfferType | (string & {});
+  offerType: MarketplaceAgreementsCreateRequestOfferType;
   /** Publisher identifier string of image being deployed. */
   publisherId: string;
   /** Offer identifier string of image being deployed. */
@@ -250,7 +250,7 @@ export interface MarketplaceAgreementsGetRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
-  offerType: MarketplaceAgreementsGetRequestOfferType | (string & {});
+  offerType: MarketplaceAgreementsGetRequestOfferType;
   /** Publisher identifier string of image being deployed. */
   publisherId: string;
   /** Offer identifier string of image being deployed. */

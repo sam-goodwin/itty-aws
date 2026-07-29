@@ -1201,34 +1201,16 @@ export const V1CreateAProjectRequestRegionSelectionCase1 =
   }) as any as S.Schema<V1CreateAProjectRequestRegionSelectionCase1>;
 
 /** Region selection. Only one of region or region_selection can be specified. */
-export interface V1CreateAProjectRequestRegionSelection {
-  type:
-    | V1CreateAProjectRequestRegionSelectionCase0Type
-    | (string & {})
-    | V1CreateAProjectRequestRegionSelectionCase1Type
-    | (string & {});
-  /** Specific region code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
-  code:
-    | V1CreateAProjectRequestRegionSelectionCase0Code
-    | (string & {})
-    | V1CreateAProjectRequestRegionSelectionCase1Code
-    | (string & {});
-}
-export const V1CreateAProjectRequestRegionSelection = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.Union(
-        V1CreateAProjectRequestRegionSelectionCase0Type,
-        V1CreateAProjectRequestRegionSelectionCase1Type,
-      ),
-      code: S.Union(
-        V1CreateAProjectRequestRegionSelectionCase0Code,
-        V1CreateAProjectRequestRegionSelectionCase1Code,
-      ),
-    }),
-).annotate({
-  identifier: "V1CreateAProjectRequestRegionSelection",
-}) as any as S.Schema<V1CreateAProjectRequestRegionSelection>;
+export type V1CreateAProjectRequestRegionSelection =
+  | V1CreateAProjectRequestRegionSelectionCase0
+  | V1CreateAProjectRequestRegionSelectionCase1;
+export const V1CreateAProjectRequestRegionSelection =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "code"],
+      ["type", "code"],
+    ]),
+  );
 
 /** Desired instance size. Omit this field to always default to the smallest possible size. */
 export type V1CreateAProjectRequestDesiredInstanceSize =
@@ -2037,114 +2019,35 @@ export const V1CreateProjectSigningKeyRequestPrivateJwkCase3 =
     identifier: "V1CreateProjectSigningKeyRequestPrivateJwkCase3",
   }) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase3>;
 
-export interface V1CreateProjectSigningKeyRequestPrivateJwk {
-  kid?: string;
-  use?:
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Use
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Use
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Use
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Use
-    | (string & {});
-  key_ops?:
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList;
-  ext?: boolean;
-  kty:
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty
-    | (string & {});
-  alg?:
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Alg
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Alg
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Alg
-    | (string & {});
-  n?: string;
-  e?: V1CreateProjectSigningKeyRequestPrivateJwkCase0E | (string & {});
-  d?: string;
-  p?: string;
-  q?: string;
-  dp?: string;
-  dq?: string;
-  qi?: string;
-  crv?:
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv
-    | (string & {})
-    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv
-    | (string & {});
-  x?: string;
-  y?: string;
-  k?: string;
-}
+export type V1CreateProjectSigningKeyRequestPrivateJwk =
+  | V1CreateProjectSigningKeyRequestPrivateJwkCase0
+  | V1CreateProjectSigningKeyRequestPrivateJwkCase1
+  | V1CreateProjectSigningKeyRequestPrivateJwkCase2
+  | V1CreateProjectSigningKeyRequestPrivateJwkCase3;
 export const V1CreateProjectSigningKeyRequestPrivateJwk =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kid: S.optional(S.String),
-      use: S.optional(
-        S.Union(
-          V1CreateProjectSigningKeyRequestPrivateJwkCase0Use,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase1Use,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase2Use,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase3Use,
-        ),
-      ),
-      key_ops: S.optional(
-        S.Union(
-          V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList,
-        ),
-      ),
-      ext: S.optional(S.Boolean),
-      kty: S.Union(
-        V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty,
-        V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty,
-        V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty,
-        V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty,
-      ),
-      alg: S.optional(
-        S.Union(
-          V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase1Alg,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase2Alg,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase3Alg,
-        ),
-      ),
-      n: S.optional(S.String),
-      e: S.optional(V1CreateProjectSigningKeyRequestPrivateJwkCase0E),
-      d: S.optional(S.String),
-      p: S.optional(S.String),
-      q: S.optional(S.String),
-      dp: S.optional(S.String),
-      dq: S.optional(S.String),
-      qi: S.optional(S.String),
-      crv: S.optional(
-        S.Union(
-          V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv,
-          V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv,
-        ),
-      ),
-      x: S.optional(S.String),
-      y: S.optional(S.String),
-      k: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "V1CreateProjectSigningKeyRequestPrivateJwk",
-  }) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwk>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "kid",
+        "use",
+        "key_ops",
+        "ext",
+        "kty",
+        "alg",
+        "n",
+        "e",
+        "d",
+        "p",
+        "q",
+        "dp",
+        "dq",
+        "qi",
+      ],
+      ["kid", "use", "key_ops", "ext", "kty", "alg", "crv", "x", "y", "d"],
+      ["kid", "use", "key_ops", "ext", "kty", "alg", "crv", "x", "d"],
+      ["kid", "use", "key_ops", "ext", "kty", "alg", "k"],
+    ]),
+  );
 
 export interface V1CreateProjectSigningKeyRequest {
   /** Project ref */
@@ -4815,25 +4718,15 @@ export const DiskResponseAttributesCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskResponseAttributesCase1",
 }) as any as S.Schema<DiskResponseAttributesCase1>;
 
-export interface DiskResponseAttributes {
-  iops: number;
-  size_gb: number;
-  throughput_mibps?: number;
-  type: DiskResponseAttributesCase0Type | DiskResponseAttributesCase1Type;
-}
-export const DiskResponseAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iops: S.Number,
-    size_gb: S.Number,
-    throughput_mibps: S.optional(S.Number),
-    type: S.Union(
-      DiskResponseAttributesCase0Type,
-      DiskResponseAttributesCase1Type,
-    ),
-  }),
-).annotate({
-  identifier: "DiskResponseAttributes",
-}) as any as S.Schema<DiskResponseAttributes>;
+export type DiskResponseAttributes =
+  | DiskResponseAttributesCase0
+  | DiskResponseAttributesCase1;
+export const DiskResponseAttributes = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["iops", "size_gb", "throughput_mibps", "type"],
+    ["iops", "size_gb", "type"],
+  ]),
+);
 
 export interface DiskResponse {
   attributes: DiskResponseAttributes;
@@ -5008,20 +4901,13 @@ export const JitStateResponseCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "JitStateResponseCase1",
 }) as any as S.Schema<JitStateResponseCase1>;
 
-export interface JitStateResponse {
-  state: JitStateResponseCase0State | JitStateResponseCase1State;
-  appliedSuccessfully?: boolean;
-  unavailableReason?: JitStateResponseCase1UnavailableReason;
-}
-export const JitStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.Union(JitStateResponseCase0State, JitStateResponseCase1State),
-    appliedSuccessfully: S.optional(S.Boolean),
-    unavailableReason: S.optional(JitStateResponseCase1UnavailableReason),
-  }),
-).annotate({
-  identifier: "JitStateResponse",
-}) as any as S.Schema<JitStateResponse>;
+export type JitStateResponse = JitStateResponseCase0 | JitStateResponseCase1;
+export const JitStateResponse = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["state", "appliedSuccessfully"],
+    ["state", "unavailableReason"],
+  ]),
+);
 
 export type V1GetJitAccessConfigResponse = JitStateResponse;
 export const V1GetJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5324,27 +5210,18 @@ export const V1ListEntitlementsResponseEntitlementsItemConfigCase2 =
     identifier: "V1ListEntitlementsResponseEntitlementsItemConfigCase2",
   }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItemConfigCase2>;
 
-export interface V1ListEntitlementsResponseEntitlementsItemConfig {
-  enabled: boolean;
-  value?: number;
-  unlimited?: boolean;
-  unit?: string;
-  set?: V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList;
-}
+export type V1ListEntitlementsResponseEntitlementsItemConfig =
+  | V1ListEntitlementsResponseEntitlementsItemConfigCase0
+  | V1ListEntitlementsResponseEntitlementsItemConfigCase1
+  | V1ListEntitlementsResponseEntitlementsItemConfigCase2;
 export const V1ListEntitlementsResponseEntitlementsItemConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      value: S.optional(S.Number),
-      unlimited: S.optional(S.Boolean),
-      unit: S.optional(S.String),
-      set: S.optional(
-        V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "V1ListEntitlementsResponseEntitlementsItemConfig",
-  }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItemConfig>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["enabled"],
+      ["enabled", "value", "unlimited", "unit"],
+      ["enabled", "set"],
+    ]),
+  );
 
 export interface V1ListEntitlementsResponseEntitlementsItem {
   feature: V1ListEntitlementsResponseEntitlementsItemFeature;
@@ -6133,68 +6010,32 @@ export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase9 =
     identifier: "ProjectUpgradeEligibilityResponseValidationErrorsItemCase9",
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseValidationErrorsItemCase9>;
 
-export interface ProjectUpgradeEligibilityResponseValidationErrorsItem {
-  type:
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase0Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase1Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase2Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase3Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase4Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase5Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase7Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase8Type
-    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase9Type;
-  dependents?: ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList;
-  schema_name?: string;
-  table_name?: string;
-  index_name?: string;
-  function_name?: string;
-  lang_name?: string;
-  extension_name?: string;
-  fdw_name?: string;
-  fdw_handler_name?: string;
-  sequence_name?: string;
-  obj_type?: ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType;
-  obj_name?: string;
-  slot_name?: string;
-}
+export type ProjectUpgradeEligibilityResponseValidationErrorsItem =
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase0
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase1
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase2
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase3
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase4
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase5
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase7
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase8
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase9;
 export const ProjectUpgradeEligibilityResponseValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase0Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase1Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase2Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase3Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase4Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase5Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase7Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase8Type,
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase9Type,
-      ),
-      dependents: S.optional(
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList,
-      ),
-      schema_name: S.optional(S.String),
-      table_name: S.optional(S.String),
-      index_name: S.optional(S.String),
-      function_name: S.optional(S.String),
-      lang_name: S.optional(S.String),
-      extension_name: S.optional(S.String),
-      fdw_name: S.optional(S.String),
-      fdw_handler_name: S.optional(S.String),
-      sequence_name: S.optional(S.String),
-      obj_type: S.optional(
-        ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType,
-      ),
-      obj_name: S.optional(S.String),
-      slot_name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProjectUpgradeEligibilityResponseValidationErrorsItem",
-  }) as any as S.Schema<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "dependents"],
+      ["type", "schema_name", "table_name", "index_name"],
+      ["type", "schema_name", "function_name", "lang_name"],
+      ["type", "extension_name"],
+      ["type", "fdw_name", "fdw_handler_name"],
+      ["type", "schema_name", "table_name", "sequence_name"],
+      ["type", "obj_type", "schema_name", "obj_name"],
+      ["type", "slot_name"],
+      ["type"],
+      ["type"],
+    ]),
+  );
 
 export type ProjectUpgradeEligibilityResponseValidationErrorsList =
   Array<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
@@ -6254,24 +6095,12 @@ export const ProjectUpgradeEligibilityResponseWarningsItemCase2 =
     identifier: "ProjectUpgradeEligibilityResponseWarningsItemCase2",
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseWarningsItemCase2>;
 
-export interface ProjectUpgradeEligibilityResponseWarningsItem {
-  type:
-    | ProjectUpgradeEligibilityResponseWarningsItemCase0Type
-    | ProjectUpgradeEligibilityResponseWarningsItemCase1Type
-    | ProjectUpgradeEligibilityResponseWarningsItemCase2Type;
-}
+export type ProjectUpgradeEligibilityResponseWarningsItem =
+  | ProjectUpgradeEligibilityResponseWarningsItemCase0
+  | ProjectUpgradeEligibilityResponseWarningsItemCase1
+  | ProjectUpgradeEligibilityResponseWarningsItemCase2;
 export const ProjectUpgradeEligibilityResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectUpgradeEligibilityResponseWarningsItemCase0Type,
-        ProjectUpgradeEligibilityResponseWarningsItemCase1Type,
-        ProjectUpgradeEligibilityResponseWarningsItemCase2Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "ProjectUpgradeEligibilityResponseWarningsItem",
-  }) as any as S.Schema<ProjectUpgradeEligibilityResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["type"], ["type"]]));
 
 export type ProjectUpgradeEligibilityResponseWarningsList =
   Array<ProjectUpgradeEligibilityResponseWarningsItem>;
@@ -7386,31 +7215,17 @@ export const V1ServiceHealthResponseInfoCase2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ServiceHealthResponseInfoCase2",
 }) as any as S.Schema<V1ServiceHealthResponseInfoCase2>;
 
-export interface V1ServiceHealthResponseInfo {
-  name?: V1ServiceHealthResponseInfoCase0Name;
-  version?: string;
-  description?: string;
-  /** Deprecated. Use `status` instead. */
-  healthy?: boolean;
-  db_connected?: boolean;
-  replication_connected?: boolean;
-  connected_cluster?: number;
-  db_schema?: string;
-}
-export const V1ServiceHealthResponseInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(V1ServiceHealthResponseInfoCase0Name),
-    version: S.optional(S.String),
-    description: S.optional(S.String),
-    healthy: S.optional(S.Boolean),
-    db_connected: S.optional(S.Boolean),
-    replication_connected: S.optional(S.Boolean),
-    connected_cluster: S.optional(S.Number),
-    db_schema: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V1ServiceHealthResponseInfo",
-}) as any as S.Schema<V1ServiceHealthResponseInfo>;
+export type V1ServiceHealthResponseInfo =
+  | V1ServiceHealthResponseInfoCase0
+  | V1ServiceHealthResponseInfoCase1
+  | V1ServiceHealthResponseInfoCase2;
+export const V1ServiceHealthResponseInfo = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "version", "description"],
+    ["healthy", "db_connected", "replication_connected", "connected_cluster"],
+    ["db_schema"],
+  ]),
+);
 
 export interface V1ServiceHealthResponse {
   name: V1ServiceHealthResponseName;
@@ -8949,29 +8764,15 @@ export const JitListAccessResponseItemsItemCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "JitListAccessResponseItemsItemCase1",
 }) as any as S.Schema<JitListAccessResponseItemsItemCase1>;
 
-export interface JitListAccessResponseItemsItem {
-  user_id: string | unknown | null;
-  primary_email: string | null;
-  invite_id: unknown | string | null;
-  expires_at: unknown | string | null;
-  user_roles:
-    | JitListAccessResponseItemsItemCase0UserRolesList
-    | JitListAccessResponseItemsItemCase1UserRolesList;
-}
-export const JitListAccessResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.NullOr(S.Union(S.String, S.Unknown)),
-    primary_email: S.NullOr(S.String),
-    invite_id: S.NullOr(S.Union(S.Unknown, S.String)),
-    expires_at: S.NullOr(S.Union(S.Unknown, S.String)),
-    user_roles: S.Union(
-      JitListAccessResponseItemsItemCase0UserRolesList,
-      JitListAccessResponseItemsItemCase1UserRolesList,
-    ),
-  }),
-).annotate({
-  identifier: "JitListAccessResponseItemsItem",
-}) as any as S.Schema<JitListAccessResponseItemsItem>;
+export type JitListAccessResponseItemsItem =
+  | JitListAccessResponseItemsItemCase0
+  | JitListAccessResponseItemsItemCase1;
+export const JitListAccessResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
+    ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
+  ]),
+);
 
 export type JitListAccessResponseItemsList =
   Array<JitListAccessResponseItemsItem>;
@@ -9543,30 +9344,16 @@ export const V1ModifyDatabaseDiskRequestAttributesCase1 =
     identifier: "V1ModifyDatabaseDiskRequestAttributesCase1",
   }) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase1>;
 
-export interface V1ModifyDatabaseDiskRequestAttributes {
-  iops: number;
-  size_gb: number;
-  throughput_mibps?: number;
-  type:
-    | V1ModifyDatabaseDiskRequestAttributesCase0Type
-    | (string & {})
-    | V1ModifyDatabaseDiskRequestAttributesCase1Type
-    | (string & {});
-}
-export const V1ModifyDatabaseDiskRequestAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      iops: S.Number,
-      size_gb: S.Number,
-      throughput_mibps: S.optional(S.Number),
-      type: S.Union(
-        V1ModifyDatabaseDiskRequestAttributesCase0Type,
-        V1ModifyDatabaseDiskRequestAttributesCase1Type,
-      ),
-    }),
-).annotate({
-  identifier: "V1ModifyDatabaseDiskRequestAttributes",
-}) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributes>;
+export type V1ModifyDatabaseDiskRequestAttributes =
+  | V1ModifyDatabaseDiskRequestAttributesCase0
+  | V1ModifyDatabaseDiskRequestAttributesCase1;
+export const V1ModifyDatabaseDiskRequestAttributes =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["iops", "size_gb", "throughput_mibps", "type"],
+      ["iops", "size_gb", "type"],
+    ]),
+  );
 
 export interface V1ModifyDatabaseDiskRequest {
   /** Project ref */

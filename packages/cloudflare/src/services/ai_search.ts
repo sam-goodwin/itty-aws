@@ -251,9 +251,7 @@ export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Typ
 
 export interface InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -286,9 +284,7 @@ export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Typ
 
 export interface InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -304,32 +300,16 @@ export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
       "InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
-export interface InstancesChatCompletionsRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type InstancesChatCompletionsRequestMessagesItemContentCase1Item =
+  | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0
+  | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1;
 export const InstancesChatCompletionsRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type,
-        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesChatCompletionsRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<InstancesChatCompletionsRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type InstancesChatCompletionsRequestMessagesItemContentCase1List =
   Array<InstancesChatCompletionsRequestMessagesItemContentCase1Item>;
@@ -743,31 +723,16 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
       "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item {
-  text?: string;
-  type:
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
-  imageUrl?: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
-}
+export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
+    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item",
-  }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   Array<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
@@ -1196,9 +1161,7 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Ty
 
 export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1231,9 +1194,7 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Ty
 
 export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1249,32 +1210,16 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
       "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
-export interface NamespacesChatCompletionsRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
+  | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0
+  | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1;
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type,
-        NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1List =
   Array<NamespacesChatCompletionsRequestMessagesItemContentCase1Item>;
@@ -1441,31 +1386,16 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
       "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
-  imageUrl?: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
+    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item",
-  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1List =
   Array<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
@@ -1644,9 +1574,7 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1679,9 +1607,7 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1697,33 +1623,16 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
       "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
-export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
+    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0
+    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type,
-        NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1List =
   Array<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item>;
@@ -2144,31 +2053,16 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
       "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
-  imageUrl?: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
+    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   Array<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
@@ -5376,9 +5270,7 @@ export interface CreateOrUpdateNamespaceInstanceItemRequest {
   id: string;
   /** Item key / filename. Must not exceed 128 characters. */
   key: string;
-  nextAction:
-    | NamespacesInstancesItemsCreateOrUpdateRequestNextAction
-    | (string & {});
+  nextAction: NamespacesInstancesItemsCreateOrUpdateRequestNextAction;
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
   waitForCompletion?: boolean;
 }
@@ -7329,7 +7221,7 @@ export interface ListInstancesRequest {
   /** Filter by namespace. */
   namespace?: string;
   /** Field to order results by. */
-  orderBy?: InstancesListRequestOrderBy | (string & {});
+  orderBy?: InstancesListRequestOrderBy;
   /** Order direction. */
   orderByDirection?: InstancesListRequestOrderByDirection | (string & {});
   /** Page number (1-indexed). */
@@ -8278,7 +8170,7 @@ export interface ListNamespaceInstancesRequest {
   /** Filter by namespace. */
   namespace?: string;
   /** Field to order results by. */
-  orderBy?: NamespacesInstancesListRequestOrderBy | (string & {});
+  orderBy?: NamespacesInstancesListRequestOrderBy;
   /** Order direction. */
   orderByDirection?:
     | NamespacesInstancesListRequestOrderByDirection
@@ -9382,7 +9274,7 @@ export interface PatchNamespaceInstanceJobRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   jobId: string;
-  action: NamespacesInstancesJobsUpdateRequestAction | (string & {});
+  action: NamespacesInstancesJobsUpdateRequestAction;
 }
 export const PatchNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11175,9 +11067,7 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase0Type =
 
 export interface InstancesSearchRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | InstancesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: InstancesSearchRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11209,9 +11099,7 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
 
 export interface InstancesSearchRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | InstancesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: InstancesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11226,32 +11114,16 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase1 =
     identifier: "InstancesSearchRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1ItemCase1>;
 
-export interface InstancesSearchRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | InstancesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | InstancesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type InstancesSearchRequestMessagesItemContentCase1Item =
+  | InstancesSearchRequestMessagesItemContentCase1ItemCase0
+  | InstancesSearchRequestMessagesItemContentCase1ItemCase1;
 export const InstancesSearchRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        InstancesSearchRequestMessagesItemContentCase1ItemCase0Type,
-        InstancesSearchRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesSearchRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type InstancesSearchRequestMessagesItemContentCase1List =
   Array<InstancesSearchRequestMessagesItemContentCase1Item>;
@@ -11690,9 +11562,7 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type =
 
 export interface NamespacesSearchRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11724,9 +11594,7 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type =
 
 export interface NamespacesSearchRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11741,32 +11609,16 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1 =
     identifier: "NamespacesSearchRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1ItemCase1>;
 
-export interface NamespacesSearchRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesSearchRequestMessagesItemContentCase1Item =
+  | NamespacesSearchRequestMessagesItemContentCase1ItemCase0
+  | NamespacesSearchRequestMessagesItemContentCase1ItemCase1;
 export const NamespacesSearchRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type,
-        NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesSearchRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesSearchRequestMessagesItemContentCase1List =
   Array<NamespacesSearchRequestMessagesItemContentCase1Item>;
@@ -12217,9 +12069,7 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Ty
 
 export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0 {
   text: string;
-  type:
-    | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {});
+  type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -12252,9 +12102,7 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Ty
 
 export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 {
   imageUrl: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-  type:
-    | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
+  type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -12270,32 +12118,16 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 =
       "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1>;
 
-export interface NamespacesInstancesSearchRequestMessagesItemContentCase1Item {
-  text?: string;
-  type:
-    | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type
-    | (string & {})
-    | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type
-    | (string & {});
-  imageUrl?: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
-}
+export type NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
+  | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0
+  | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1;
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.Union(
-        NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type,
-        NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type,
-      ),
-      imageUrl: S.optional(
-        NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesSearchRequestMessagesItemContentCase1Item",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1Item>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["text", "type"],
+      ["imageUrl", "type"],
+    ]),
+  );
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1List =
   Array<NamespacesInstancesSearchRequestMessagesItemContentCase1Item>;
@@ -12757,7 +12589,7 @@ export interface SyncNamespaceInstanceItemRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
-  nextAction: NamespacesInstancesItemsSyncRequestNextAction | (string & {});
+  nextAction: NamespacesInstancesItemsSyncRequestNextAction;
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
   waitForCompletion?: boolean;
 }

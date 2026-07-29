@@ -316,9 +316,7 @@ export interface AdvancedThreatProtectionSettingsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** Name of the advanced threat protection settings. */
-  threatProtectionName:
-    | AdvancedThreatProtectionSettingsGetRequestThreatProtectionName
-    | (string & {});
+  threatProtectionName: AdvancedThreatProtectionSettingsGetRequestThreatProtectionName;
 }
 export const AdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5617,9 +5615,7 @@ export interface ServerThreatProtectionSettingsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** Name of the advanced threat protection settings. */
-  threatProtectionName:
-    | ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName
-    | (string & {});
+  threatProtectionName: ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName;
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsPropertiesInput;
 }
@@ -6086,7 +6082,7 @@ export const VirtualEndpointResourcePropertiesInputMembersList =
 /** Properties of a pair of virtual endpoints. */
 export interface VirtualEndpointResourcePropertiesInput {
   /** Type of endpoint for the virtual endpoints. */
-  endpointType?: VirtualEndpointType | (string & {});
+  endpointType?: VirtualEndpointType;
   /** List of servers that one of the virtual endpoints can refer to. */
   members?: VirtualEndpointResourcePropertiesInputMembersList;
 }

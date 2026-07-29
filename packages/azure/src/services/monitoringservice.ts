@@ -2495,7 +2495,7 @@ export const AzureMonitorWorkspaceLogsExporter = /*@__PURE__*/ S.suspend(() =>
 /** Exporter Info. */
 export interface Exporter {
   /** The type of exporter. */
-  type: ExporterType | (string & {});
+  type: ExporterType;
   /** The name of exporter. */
   name: string;
   /** Azure Monitor Workspace Logs specific configurations. */
@@ -2542,7 +2542,7 @@ export interface Pipeline {
   /** Name of the pipeline. */
   name: string;
   /** The type of pipeline */
-  type: PipelineType | (string & {});
+  type: PipelineType;
   /** Reference to receivers configured for the pipeline. */
   receivers: PipelineReceiversList;
   /** Reference to processors configured for the pipeline. */
@@ -2691,7 +2691,7 @@ export const PrivateKeySourceType = /*@__PURE__*/ S.String;
 /** Configuration for private key source location. */
 export interface PrivateKeySource {
   /** The type of private key source. Only kubernetesSecret is supported for security reasons. */
-  type: PrivateKeySourceType | (string & {});
+  type: PrivateKeySourceType;
   /** Location of the private key source. */
   location: string;
   /** Sub-location within the private key source. */

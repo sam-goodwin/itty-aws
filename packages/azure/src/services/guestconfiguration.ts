@@ -392,7 +392,7 @@ export const GuestConfigurationNavigationInputConfigurationProtectedParameterLis
 /** Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules. */
 export interface GuestConfigurationNavigationInput {
   /** Kind of the guest configuration. For example:DSC */
-  kind?: Kind | (string & {});
+  kind?: Kind;
   /** Name of the guest configuration. */
   name?: string;
   /** Version of the guest configuration. */

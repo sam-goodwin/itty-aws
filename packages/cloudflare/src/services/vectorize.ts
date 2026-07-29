@@ -136,31 +136,12 @@ export const IndexesCreateRequestConfigVectorizeIndexPresetConfiguration =
     identifier: "IndexesCreateRequestConfigVectorizeIndexPresetConfiguration",
   }) as any as S.Schema<IndexesCreateRequestConfigVectorizeIndexPresetConfiguration>;
 
-export interface IndexesCreateRequestConfig {
-  /** Specifies the number of dimensions for the index */
-  dimensions?: number;
-  /** Specifies the type of metric to use calculating distance. */
-  metric?:
-    | IndexesCreateRequestConfigIndexDimensionConfigurationMetric
-    | (string & {});
-  /** Specifies the preset to use for the index. */
-  preset?:
-    | IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset
-    | (string & {});
-}
-export const IndexesCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(S.Number),
-    metric: S.optional(
-      IndexesCreateRequestConfigIndexDimensionConfigurationMetric,
-    ),
-    preset: S.optional(
-      IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset,
-    ),
-  }),
-).annotate({
-  identifier: "IndexesCreateRequestConfig",
-}) as any as S.Schema<IndexesCreateRequestConfig>;
+export type IndexesCreateRequestConfig =
+  | IndexesCreateRequestConfigIndexDimensionConfiguration
+  | IndexesCreateRequestConfigVectorizeIndexPresetConfiguration;
+export const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["dimensions", "metric"], ["preset"]]),
+);
 
 export interface CreateIndexRequest {
   /** Identifier */

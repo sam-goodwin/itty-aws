@@ -799,7 +799,7 @@ export const LabPlansCreateOrUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 /** Identity for the resource. */
 export interface LabPlansCreateOrUpdateRequestIdentity {
   /** The identity type. */
-  type?: LabPlansCreateOrUpdateRequestIdentityType | (string & {});
+  type?: LabPlansCreateOrUpdateRequestIdentityType;
 }
 export const LabPlansCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
   () =>
@@ -1447,7 +1447,7 @@ export const LabPlansUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 /** Identity for the resource. */
 export interface LabPlansUpdateRequestIdentity {
   /** The identity type. */
-  type?: LabPlansUpdateRequestIdentityType | (string & {});
+  type?: LabPlansUpdateRequestIdentityType;
 }
 export const LabPlansUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

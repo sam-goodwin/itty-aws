@@ -9604,7 +9604,7 @@ export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
 /** Open authentication access policy defined by user. */
 export interface OpenAuthenticationAccessPolicy {
   /** Type of provider for OAuth. */
-  type?: OpenAuthenticationProviderType | (string & {});
+  type?: OpenAuthenticationProviderType;
   /** The access policy claims. */
   claims?: OpenAuthenticationAccessPolicyClaimsList;
 }

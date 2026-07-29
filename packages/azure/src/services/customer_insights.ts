@@ -350,7 +350,7 @@ export const ConnectorMappingFormatFormatType = /*@__PURE__*/ S.String;
 /** Connector mapping property format. */
 export interface ConnectorMappingFormat {
   /** The type mapping format. */
-  formatType: ConnectorMappingFormatFormatType | (string & {});
+  formatType: ConnectorMappingFormatFormatType;
   /** The character that signifies a break between columns. */
   columnDelimiter?: string;
   /** The oData language. */

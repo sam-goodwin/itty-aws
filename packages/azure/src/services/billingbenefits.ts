@@ -6415,7 +6415,7 @@ export interface ReservationOrderAliasRequestProperties {
   /** Represent benefit term in ISO 8601 format. */
   term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan | (string & {});
+  billingPlan?: BillingPlan;
   /** Type of the Applied Scope. */
   appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
@@ -7103,7 +7103,7 @@ export interface SavingsPlanOrderAliasPropertiesInput {
   /** Represent benefit term in ISO 8601 format. */
   term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan | (string & {});
+  billingPlan?: BillingPlan;
   /** Type of the Applied Scope. */
   appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. */
@@ -7565,7 +7565,7 @@ export interface PurchaseRequestPropertiesInput {
   /** Represent benefit term in ISO 8601 format. */
   term?: Term | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan | (string & {});
+  billingPlan?: BillingPlan;
   /** Type of the Applied Scope. */
   appliedScopeType?: AppliedScopeType | (string & {});
   /** Commitment towards the benefit. */

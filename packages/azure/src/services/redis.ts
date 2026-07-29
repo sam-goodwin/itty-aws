@@ -1354,7 +1354,7 @@ export interface PatchSchedulesCreateOrUpdateRequest {
   /** The name of the redis cache. */
   name: string;
   /** The name of the RedisPatchSchedule */
-  default: PatchSchedulesCreateOrUpdateRequestDefault | (string & {});
+  default: PatchSchedulesCreateOrUpdateRequestDefault;
   /** List of patch schedules for a Redis cache. */
   properties: ScheduleEntries;
 }
@@ -1416,7 +1416,7 @@ export interface PatchSchedulesDeleteRequest {
   /** The name of the redis cache. */
   name: string;
   /** The name of the RedisPatchSchedule */
-  default: PatchSchedulesDeleteRequestDefault | (string & {});
+  default: PatchSchedulesDeleteRequestDefault;
 }
 export const PatchSchedulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1454,7 +1454,7 @@ export interface PatchSchedulesGetRequest {
   /** The name of the redis cache. */
   name: string;
   /** The name of the RedisPatchSchedule */
-  default: PatchSchedulesGetRequestDefault | (string & {});
+  default: PatchSchedulesGetRequestDefault;
 }
 export const PatchSchedulesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

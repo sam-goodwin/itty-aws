@@ -250,7 +250,7 @@ export const RulesCreateRequestRulesAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestRules {
   /** The action to take when the expression matches. */
-  action: RulesCreateRequestRulesAction | (string & {});
+  action: RulesCreateRequestRulesAction;
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -435,9 +435,8 @@ export const CreateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type CreateRequestEnabledOriginCommandsItem = "revoke";
 export const CreateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsList = Array<
-  CreateRequestEnabledOriginCommandsItem | (string & {})
->;
+export type CreateRequestEnabledOriginCommandsList =
+  Array<CreateRequestEnabledOriginCommandsItem>;
 export const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   CreateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<CreateRequestEnabledOriginCommandsList>;
@@ -2185,23 +2184,13 @@ export const RulesEditRequestPositionAfter = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditRequestPositionAfter",
 }) as any as S.Schema<RulesEditRequestPositionAfter>;
 
-export interface RulesEditRequestPosition {
-  /** Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
-  index?: number;
-  /** Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the first rule in the ruleset. */
-  before?: string;
-  /** Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the last rule in the ruleset. */
-  after?: string;
-}
-export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.Number),
-    before: S.optional(S.String),
-    after: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesEditRequestPosition",
-}) as any as S.Schema<RulesEditRequestPosition>;
+export type RulesEditRequestPosition =
+  | RulesEditRequestPositionIndex
+  | RulesEditRequestPositionBefore
+  | RulesEditRequestPositionAfter;
+export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["index"], ["before"], ["after"]]),
+);
 
 export interface PatchRuleRequest {
   /** Identifier. */
@@ -2210,7 +2199,7 @@ export interface PatchRuleRequest {
   /** The ID of the rule. */
   ruleId: string;
   /** The action to take when the expression matches. */
-  action: RulesEditRequestAction | (string & {});
+  action: RulesEditRequestAction;
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -2425,9 +2414,8 @@ export const EditRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type EditRequestEnabledOriginCommandsItem = "revoke";
 export const EditRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsList = Array<
-  EditRequestEnabledOriginCommandsItem | (string & {})
->;
+export type EditRequestEnabledOriginCommandsList =
+  Array<EditRequestEnabledOriginCommandsItem>;
 export const EditRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   EditRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<EditRequestEnabledOriginCommandsList>;
@@ -3043,7 +3031,7 @@ export const RulesUpdateRequestRulesItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
   /** The action to take when the expression matches. */
-  action: RulesUpdateRequestRulesItemAction | (string & {});
+  action: RulesUpdateRequestRulesItemAction;
   /** Criteria defining when there is a match for the current rule. */
   expression: string;
   /** The description of the rule. */
@@ -3233,9 +3221,8 @@ export const UpdateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type UpdateRequestEnabledOriginCommandsItem = "revoke";
 export const UpdateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsList = Array<
-  UpdateRequestEnabledOriginCommandsItem | (string & {})
->;
+export type UpdateRequestEnabledOriginCommandsList =
+  Array<UpdateRequestEnabledOriginCommandsItem>;
 export const UpdateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   UpdateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;

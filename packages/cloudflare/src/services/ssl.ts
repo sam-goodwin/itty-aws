@@ -249,7 +249,7 @@ export interface CreateCertificatePackRequest {
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksCreateRequestHostsList;
   /** Type of certificate pack. */
-  type: CertificatePacksCreateRequestType | (string & {});
+  type: CertificatePacksCreateRequestType;
   /** Validation Method selected for the order. */
   validationMethod:
     | CertificatePacksCreateRequestValidationMethod
@@ -1306,7 +1306,7 @@ export interface ListCertificatePacksRequest {
   /** Number of certificate packs per page. */
   perPage?: number;
   /** Include Certificate Packs of all statuses, not just active ones. */
-  status?: CertificatePacksListRequestStatus | (string & {});
+  status?: CertificatePacksListRequestStatus;
 }
 export const ListCertificatePacksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

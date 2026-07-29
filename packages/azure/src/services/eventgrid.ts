@@ -469,7 +469,7 @@ export const EventTypeInfoInlineEventTypesMap = /*@__PURE__*/ S.Record(
 /** The event type information for Channels. */
 export interface EventTypeInfo {
   /** The kind of event type used. */
-  kind?: EventTypeInfoKind | (string & {});
+  kind?: EventTypeInfoKind;
   /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
   inlineEventTypes?: EventTypeInfoInlineEventTypesMap;
 }
@@ -523,7 +523,7 @@ export const ChannelPropertiesReadinessState = /*@__PURE__*/ S.String;
 /** Properties of the Channel. */
 export interface ChannelProperties {
   /** The type of the event channel which represents the direction flow of events. */
-  channelType?: ChannelPropertiesChannelType | (string & {});
+  channelType?: ChannelPropertiesChannelType;
   /** This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel. */
   partnerTopicInfo?: PartnerTopicInfo;
   /** Context or helpful message that can be used during the approval process by the subscriber. */
@@ -2096,7 +2096,7 @@ export const DeadLetterDestinationEndpointType = /*@__PURE__*/ S.String;
 /** Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class. */
 export interface DeadLetterDestination {
   /** Type of the endpoint for the dead letter destination */
-  endpointType: DeadLetterDestinationEndpointType | (string & {});
+  endpointType: DeadLetterDestinationEndpointType;
 }
 export const DeadLetterDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2881,9 +2881,7 @@ export const InputSchemaMappingInputSchemaMappingType = /*@__PURE__*/ S.String;
 /** By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only supported type of InputSchemaMapping is 'JsonInputSchemaMapping'. */
 export interface InputSchemaMapping {
   /** Type of the custom mapping */
-  inputSchemaMappingType:
-    | InputSchemaMappingInputSchemaMappingType
-    | (string & {});
+  inputSchemaMappingType: InputSchemaMappingInputSchemaMappingType;
 }
 export const InputSchemaMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2905,7 +2903,7 @@ export interface InboundIpRule {
   /** IP Address in CIDR notation e.g., 10.0.0.0/8. */
   ipMask?: string;
   /** Action to perform based on the match or no match of the IpMask. */
-  action?: InboundIpRuleAction | (string & {});
+  action?: InboundIpRuleAction;
 }
 export const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5709,7 +5707,7 @@ export interface StaticRoutingEnrichment {
   /** Static routing enrichment key. */
   key?: string;
   /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
-  valueType: StaticRoutingEnrichmentValueType | (string & {});
+  valueType: StaticRoutingEnrichmentValueType;
 }
 export const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5888,7 +5886,7 @@ export const NamespaceSkuName = /*@__PURE__*/ S.String;
 /** Represents available Sku pricing tiers. */
 export interface NamespaceSku {
   /** The name of the SKU. */
-  name?: NamespaceSkuName | (string & {});
+  name?: NamespaceSkuName;
   /** Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and max allowed capacity is 20. */
   capacity?: number;
 }
@@ -7017,9 +7015,7 @@ export interface SubscriptionPropertiesInput {
   /** Information about the delivery configuration of the event subscription. */
   deliveryConfiguration?: DeliveryConfiguration;
   /** The event delivery schema for the event subscription. */
-  eventDeliverySchema?:
-    | SubscriptionPropertiesInputEventDeliverySchema
-    | (string & {});
+  eventDeliverySchema?: SubscriptionPropertiesInputEventDeliverySchema;
   /** Information about the filter for the event subscription. */
   filtersConfiguration?: FiltersConfiguration;
   /** Expiration time of the event subscription. */
@@ -7544,9 +7540,7 @@ export interface SubscriptionUpdateParametersProperties {
   /** Information about the delivery configuration of the event subscription. */
   deliveryConfiguration?: DeliveryConfiguration;
   /** The event delivery schema for the event subscription. */
-  eventDeliverySchema?:
-    | SubscriptionUpdateParametersPropertiesEventDeliverySchema
-    | (string & {});
+  eventDeliverySchema?: SubscriptionUpdateParametersPropertiesEventDeliverySchema;
   /** Information about the filter for the event subscription. */
   filtersConfiguration?: FiltersConfiguration;
   /** Expiration time of the event subscription. */
@@ -7684,9 +7678,9 @@ export const NamespaceTopicPropertiesInputInputSchema = /*@__PURE__*/ S.String;
 /** Properties of the namespace topic. */
 export interface NamespaceTopicPropertiesInput {
   /** Publisher type of the namespace topic. */
-  publisherType?: NamespaceTopicPropertiesInputPublisherType | (string & {});
+  publisherType?: NamespaceTopicPropertiesInputPublisherType;
   /** This determines the format that is expected for incoming events published to the topic. */
-  inputSchema?: NamespaceTopicPropertiesInputInputSchema | (string & {});
+  inputSchema?: NamespaceTopicPropertiesInputInputSchema;
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }

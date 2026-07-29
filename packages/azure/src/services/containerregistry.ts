@@ -1154,7 +1154,7 @@ export const CredentialHealth = /*@__PURE__*/ S.suspend(() =>
 /** Authentication credential stored for an upstream. */
 export interface AuthCredential {
   /** The name of the credential. */
-  name?: CredentialName | (string & {});
+  name?: CredentialName;
   /** KeyVault Secret URI for accessing the username. */
   usernameSecretIdentifier?: string;
   /** KeyVault Secret URI for accessing the password. */
@@ -2104,7 +2104,7 @@ export interface RegistriesCheckNameAvailabilityRequest {
   /** The name of the container registry. */
   name: string;
   /** The resource type of the container registry. This field must be set to 'Microsoft.ContainerRegistry/registries'. */
-  type: ContainerRegistryResourceType | (string & {});
+  type: ContainerRegistryResourceType;
 }
 export const RegistriesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2163,7 +2163,7 @@ export const IPRuleAction = /*@__PURE__*/ S.String;
 /** IP rule with specific IP or IP range in CIDR format. */
 export interface IPRule {
   /** The action of IP ACL rule. */
-  action?: IPRuleAction | (string & {});
+  action?: IPRuleAction;
   /** Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed. */
   value: string;
 }
@@ -2222,7 +2222,7 @@ export const TrustPolicyStatus = /*@__PURE__*/ S.String;
 /** The content trust policy for a container registry. */
 export interface TrustPolicy {
   /** The type of trust policy. */
-  type?: TrustPolicyType | (string & {});
+  type?: TrustPolicyType;
   /** The value that indicates whether the policy is enabled or not. */
   status?: TrustPolicyStatus | (string & {});
 }

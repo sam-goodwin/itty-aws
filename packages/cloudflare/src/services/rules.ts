@@ -252,33 +252,19 @@ export const ListsItemsCreateRequestBodyItemListsListItemASNComment =
     identifier: "ListsItemsCreateRequestBodyItemListsListItemASNComment",
   }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemASNComment>;
 
-export interface ListsItemsCreateRequestBodyItem {
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip?: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-  /** The definition of the redirect. */
-  redirect?: ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect;
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname?: ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
-  /** Defines a non-negative 32 bit integer. */
-  asn?: number;
-}
-export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.optional(S.String),
-    comment: S.optional(S.String),
-    redirect: S.optional(
-      ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect,
-    ),
-    hostname: S.optional(
-      ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname,
-    ),
-    asn: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListsItemsCreateRequestBodyItem",
-}) as any as S.Schema<ListsItemsCreateRequestBodyItem>;
+export type ListsItemsCreateRequestBodyItem =
+  | ListsItemsCreateRequestBodyItemListsListItemIPComment
+  | ListsItemsCreateRequestBodyItemListsListItemRedirectComment
+  | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
+  | ListsItemsCreateRequestBodyItemListsListItemASNComment;
+export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ip", "comment"],
+    ["redirect", "comment"],
+    ["hostname", "comment"],
+    ["asn", "comment"],
+  ]),
+);
 
 export type ListsItemsCreateRequestBodyList =
   Array<ListsItemsCreateRequestBodyItem>;
@@ -571,33 +557,17 @@ export const ListsBulkOperationsGetResultListsBulkOperationFailed =
     identifier: "ListsBulkOperationsGetResultListsBulkOperationFailed",
   }) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationFailed>;
 
-export interface ListsBulkOperationsGetResult {
-  /** The unique operation ID of the asynchronous action. */
-  id: string;
-  /** The current status of the asynchronous operation. */
-  status:
-    | ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus
-    | ListsBulkOperationsGetResultListsBulkOperationCompletedStatus
-    | ListsBulkOperationsGetResultListsBulkOperationFailedStatus;
-  /** The RFC 3339 timestamp of when the operation was completed. */
-  completed?: string;
-  /** A message describing the error when the status is `failed`. */
-  error?: string;
-}
-export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: S.Union(
-      ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus,
-      ListsBulkOperationsGetResultListsBulkOperationCompletedStatus,
-      ListsBulkOperationsGetResultListsBulkOperationFailedStatus,
-    ),
-    completed: S.optional(S.String),
-    error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListsBulkOperationsGetResult",
-}) as any as S.Schema<ListsBulkOperationsGetResult>;
+export type ListsBulkOperationsGetResult =
+  | ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning
+  | ListsBulkOperationsGetResultListsBulkOperationCompleted
+  | ListsBulkOperationsGetResultListsBulkOperationFailed;
+export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "status"],
+    ["id", "completed", "status"],
+    ["id", "completed", "error", "status"],
+  ]),
+);
 
 export type GetListBulkOperationResponse = ListsBulkOperationsGetResult;
 export const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
@@ -791,38 +761,19 @@ export const ListsItemsGetResultListsListItemASNFull = /*@__PURE__*/ S.suspend(
   identifier: "ListsItemsGetResultListsListItemASNFull",
 }) as any as S.Schema<ListsItemsGetResultListsListItemASNFull>;
 
-export interface ListsItemsGetResult {
-  /** Defines the unique ID of the item in the List. */
-  id: string;
-  /** The RFC 3339 timestamp of when the list was created. */
-  createdOn: string;
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip?: string;
-  /** The RFC 3339 timestamp of when the list was last modified. */
-  modifiedOn: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname?: ListsItemsGetResultListsListItemHostnameFullHostname;
-  /** The definition of the redirect. */
-  redirect?: ListsItemsGetResultListsListItemRedirectFullRedirect;
-  /** Defines a non-negative 32 bit integer. */
-  asn?: number;
-}
-export const ListsItemsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    ip: S.optional(S.String),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    comment: S.optional(S.String),
-    hostname: S.optional(ListsItemsGetResultListsListItemHostnameFullHostname),
-    redirect: S.optional(ListsItemsGetResultListsListItemRedirectFullRedirect),
-    asn: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResult",
-}) as any as S.Schema<ListsItemsGetResult>;
+export type ListsItemsGetResult =
+  | ListsItemsGetResultListsListItemIPFull
+  | ListsItemsGetResultListsListItemHostnameFull
+  | ListsItemsGetResultListsListItemRedirectFull
+  | ListsItemsGetResultListsListItemASNFull;
+export const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "createdOn", "ip", "modifiedOn", "comment"],
+    ["id", "createdOn", "hostname", "modifiedOn", "comment"],
+    ["id", "createdOn", "modifiedOn", "redirect", "comment"],
+    ["id", "asn", "createdOn", "modifiedOn", "comment"],
+  ]),
+);
 
 export type GetListItemResponse = ListsItemsGetResult;
 export const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1019,42 +970,19 @@ export const ListsItemsListResultItemListsListItemASNFull =
     identifier: "ListsItemsListResultItemListsListItemASNFull",
   }) as any as S.Schema<ListsItemsListResultItemListsListItemASNFull>;
 
-export interface ListsItemsListResultItem {
-  /** Defines the unique ID of the item in the List. */
-  id: string;
-  /** The RFC 3339 timestamp of when the list was created. */
-  createdOn: string;
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip?: string;
-  /** The RFC 3339 timestamp of when the list was last modified. */
-  modifiedOn: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname?: ListsItemsListResultItemListsListItemHostnameFullHostname;
-  /** The definition of the redirect. */
-  redirect?: ListsItemsListResultItemListsListItemRedirectFullRedirect;
-  /** Defines a non-negative 32 bit integer. */
-  asn?: number;
-}
-export const ListsItemsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    ip: S.optional(S.String),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    comment: S.optional(S.String),
-    hostname: S.optional(
-      ListsItemsListResultItemListsListItemHostnameFullHostname,
-    ),
-    redirect: S.optional(
-      ListsItemsListResultItemListsListItemRedirectFullRedirect,
-    ),
-    asn: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListsItemsListResultItem",
-}) as any as S.Schema<ListsItemsListResultItem>;
+export type ListsItemsListResultItem =
+  | ListsItemsListResultItemListsListItemIPFull
+  | ListsItemsListResultItemListsListItemHostnameFull
+  | ListsItemsListResultItemListsListItemRedirectFull
+  | ListsItemsListResultItemListsListItemASNFull;
+export const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "createdOn", "ip", "modifiedOn", "comment"],
+    ["id", "createdOn", "hostname", "modifiedOn", "comment"],
+    ["id", "createdOn", "modifiedOn", "redirect", "comment"],
+    ["id", "asn", "createdOn", "modifiedOn", "comment"],
+  ]),
+);
 
 export type ListsItemsListResultList = Array<ListsItemsListResultItem>;
 export const ListsItemsListResultList = /*@__PURE__*/ S.Array(
@@ -1341,33 +1269,19 @@ export const ListsItemsUpdateRequestBodyItemListsListItemASNComment =
     identifier: "ListsItemsUpdateRequestBodyItemListsListItemASNComment",
   }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemASNComment>;
 
-export interface ListsItemsUpdateRequestBodyItem {
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip?: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-  /** The definition of the redirect. */
-  redirect?: ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect;
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname?: ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname;
-  /** Defines a non-negative 32 bit integer. */
-  asn?: number;
-}
-export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.optional(S.String),
-    comment: S.optional(S.String),
-    redirect: S.optional(
-      ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect,
-    ),
-    hostname: S.optional(
-      ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname,
-    ),
-    asn: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListsItemsUpdateRequestBodyItem",
-}) as any as S.Schema<ListsItemsUpdateRequestBodyItem>;
+export type ListsItemsUpdateRequestBodyItem =
+  | ListsItemsUpdateRequestBodyItemListsListItemIPComment
+  | ListsItemsUpdateRequestBodyItemListsListItemRedirectComment
+  | ListsItemsUpdateRequestBodyItemListsListItemHostnameComment
+  | ListsItemsUpdateRequestBodyItemListsListItemASNComment;
+export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ip", "comment"],
+    ["redirect", "comment"],
+    ["hostname", "comment"],
+    ["asn", "comment"],
+  ]),
+);
 
 export type ListsItemsUpdateRequestBodyList =
   Array<ListsItemsUpdateRequestBodyItem>;

@@ -24,7 +24,7 @@ export interface AccountsCheckNameAvailabilityRequest {
   /** The VideoIndexer account name. */
   name: string;
   /** The type of resource, Microsoft.VideoIndexer/accounts */
-  type: AccountsCheckNameAvailabilityRequestType | (string & {});
+  type: AccountsCheckNameAvailabilityRequestType;
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>

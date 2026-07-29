@@ -973,7 +973,7 @@ export interface BudgetComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: BudgetOperatorType | (string & {});
+  operator: BudgetOperatorType;
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
@@ -1554,7 +1554,7 @@ export interface TargetCostAllocationResource {
   /** Target resources for cost allocation. This list cannot contain more than 25 values. */
   values: TargetCostAllocationResourceValuesList;
   /** Method of cost allocation for the rule */
-  policyType: CostAllocationPolicyType | (string & {});
+  policyType: CostAllocationPolicyType;
 }
 export const TargetCostAllocationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2023,7 +2023,7 @@ export const DestinationType = /*@__PURE__*/ S.String;
 /** This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ). */
 export interface ExportDeliveryDestination {
   /** The export delivery destination type. Currently only 'AzureBlob' is supported. */
-  type?: DestinationType | (string & {});
+  type?: DestinationType;
   /** The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified. */
   resourceId?: string;
   /** The name of the container where exports will be uploaded. If the container does not exist it will be created. */
@@ -2919,7 +2919,7 @@ export interface ForecastAggregation {
   /** The name of the column to aggregate. */
   name: FunctionName | (string & {});
   /** The name of the aggregation function to use. */
-  function: FunctionType | (string & {});
+  function: FunctionType;
 }
 export const ForecastAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2966,7 +2966,7 @@ export interface ForecastComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: ForecastOperatorType | (string & {});
+  operator: ForecastOperatorType;
   /** Array of values to use for comparison */
   values: ForecastComparisonExpressionValuesList;
 }
@@ -3034,7 +3034,7 @@ export interface ForecastExternalCloudProviderUsageRequest {
   /** The type of the forecast. */
   type: ForecastType | (string & {});
   /** The time frame for pulling data for the forecast. If custom, then a specific time period must be provided. */
-  timeframe: ForecastTimeframe | (string & {});
+  timeframe: ForecastTimeframe;
   /** Has time period for pulling data for the forecast. */
   timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this forecast. */
@@ -3173,7 +3173,7 @@ export interface ForecastUsageRequest {
   /** The type of the forecast. */
   type: ForecastType | (string & {});
   /** The time frame for pulling data for the forecast. If custom, then a specific time period must be provided. */
-  timeframe: ForecastTimeframe | (string & {});
+  timeframe: ForecastTimeframe;
   /** Has time period for pulling data for the forecast. */
   timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this forecast. */
@@ -4449,7 +4449,7 @@ export interface QueryAggregation {
   /** The name of the column to aggregate. */
   name: string;
   /** The name of the aggregation function to use. */
-  function: FunctionType | (string & {});
+  function: FunctionType;
 }
 export const QueryAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4520,7 +4520,7 @@ export interface QueryComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: QueryOperatorType | (string & {});
+  operator: QueryOperatorType;
   /** Array of values to use for comparison */
   values: QueryComparisonExpressionValuesList;
 }
@@ -4895,7 +4895,7 @@ export type FileFormat = "Csv";
 export const FileFormat = /*@__PURE__*/ S.String;
 
 /** Destination of the view data. Currently only CSV format is supported. */
-export type FileDestinationFileFormatsList = Array<FileFormat | (string & {})>;
+export type FileDestinationFileFormatsList = Array<FileFormat>;
 export const FileDestinationFileFormatsList = /*@__PURE__*/ S.Array(
   FileFormat,
 ) as any as S.Schema<FileDestinationFileFormatsList>;
@@ -5492,9 +5492,9 @@ export interface SettingsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsCreateOrUpdateByScopeRequestType | (string & {});
+  type: SettingsCreateOrUpdateByScopeRequestType;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SettingsKind | (string & {});
+  kind: SettingsKind;
 }
 export const SettingsCreateOrUpdateByScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5546,7 +5546,7 @@ export interface SettingsDeleteByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsDeleteByScopeRequestType | (string & {});
+  type: SettingsDeleteByScopeRequestType;
 }
 export const SettingsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5578,7 +5578,7 @@ export interface SettingsGetByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
-  type: SettingsGetByScopeRequestType | (string & {});
+  type: SettingsGetByScopeRequestType;
 }
 export const SettingsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5738,7 +5738,7 @@ export interface ReportConfigAggregation {
   /** The name of the column to aggregate. */
   name: string;
   /** The name of the aggregation function to use. */
-  function: FunctionType | (string & {});
+  function: FunctionType;
 }
 export const ReportConfigAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5900,7 +5900,7 @@ export const ReportConfigDataset = /*@__PURE__*/ S.suspend(() =>
 /** The definition of a report config. */
 export interface ReportConfigDefinition {
   /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
-  type: ReportType | (string & {});
+  type: ReportType;
   /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
   timeframe: ReportTimeframeType | (string & {});
   /** Has time period for pulling data for the report. */

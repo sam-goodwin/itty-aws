@@ -184,7 +184,7 @@ export interface CreateSchemaRequest {
   /** Identifier. */
   zoneId: string;
   /** The kind of the schema */
-  kind: SchemasCreateRequestKind | (string & {});
+  kind: SchemasCreateRequestKind;
   /** A human-readable name for the schema */
   name: string;
   /** The raw schema, e.g., the OpenAPI schema, either as JSON or YAML */
@@ -701,10 +701,7 @@ export interface PatchSettingRequest {
     | SettingsEditRequestValidationDefaultMitigationAction
     | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?:
-    | SettingsEditRequestValidationOverrideMitigationAction
-    | (string & {})
-    | null;
+  validationOverrideMitigationAction?: SettingsEditRequestValidationOverrideMitigationAction | null;
 }
 export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -785,10 +782,7 @@ export interface PutSettingRequest {
     | SettingsUpdateRequestValidationDefaultMitigationAction
     | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?:
-    | SettingsUpdateRequestValidationOverrideMitigationAction
-    | (string & {})
-    | null;
+  validationOverrideMitigationAction?: SettingsUpdateRequestValidationOverrideMitigationAction | null;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

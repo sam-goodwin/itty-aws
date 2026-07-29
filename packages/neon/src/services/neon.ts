@@ -4408,26 +4408,9 @@ export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedEmailServer",
 }) as any as S.Schema<SharedEmailServer>;
 
-export interface NeonAuthEmailServerConfig {
-  host?: string;
-  port?: number;
-  username?: string;
-  password?: string | Redacted.Redacted<string>;
-  sender_email?: string;
-  sender_name?: string;
-}
-export const NeonAuthEmailServerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.String),
-    port: S.optional(S.Number),
-    username: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    sender_email: S.optional(S.String),
-    sender_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NeonAuthEmailServerConfig",
-}) as any as S.Schema<NeonAuthEmailServerConfig>;
+export type NeonAuthEmailServerConfig = StandardEmailServer | SharedEmailServer;
+export const NeonAuthEmailServerConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NeonAuthEmailServerConfig>;
 
 export type GetNeonAuthEmailProviderResponse = NeonAuthEmailServerConfig;
 export const GetNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>

@@ -756,7 +756,7 @@ export interface RegistrationsCreateRequest {
   /** Contact data for the registration request. */
   contacts?: RegistrationsCreateRequestContacts;
   /** WHOIS privacy mode for the registration. Defaults to `redaction`. */
-  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {});
+  privacyMode?: RegistrationsCreateRequestPrivacyMode;
   /** Number of years to register (1–10). If omitted, defaults to the */
   years?: number;
 }
@@ -867,7 +867,7 @@ export interface RegistrationsEditRequest {
   accountId: string;
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
-  Prefer?: RegistrationsEditRequestPrefer | (string & {});
+  Prefer?: RegistrationsEditRequestPrefer;
   /** Enable or disable automatic renewal. */
   autoRenew?: boolean;
 }

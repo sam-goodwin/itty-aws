@@ -2000,7 +2000,7 @@ export const LimitType = /*@__PURE__*/ S.String;
 /** LimitJson abstract class. */
 export interface LimitJsonObject {
   /** The limit object type. */
-  limitObjectType: LimitType | (string & {});
+  limitObjectType: LimitType;
 }
 export const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

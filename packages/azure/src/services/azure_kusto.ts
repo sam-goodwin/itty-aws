@@ -28,9 +28,7 @@ export interface AttachedDatabaseConfigurationsCheckNameAvailabilityRequest {
   /** Attached database resource name. */
   name: string;
   /** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
-  type:
-    | AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType
-    | (string & {});
+  type: AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType;
 }
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -567,9 +565,7 @@ export interface ClusterPrincipalAssignmentsCheckNameAvailabilityRequest {
   /** Principal Assignment resource name. */
   name: string;
   /** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
-  type:
-    | ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType
-    | (string & {});
+  type: ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType;
 }
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1057,7 +1053,7 @@ export interface ClustersCheckNameAvailabilityRequest {
   /** Cluster name. */
   name: string;
   /** The type of resource, Microsoft.Kusto/clusters. */
-  type: ClustersCheckNameAvailabilityRequestType | (string & {});
+  type: ClustersCheckNameAvailabilityRequestType;
 }
 export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3237,9 +3233,7 @@ export interface DatabasePrincipalAssignmentsCheckNameAvailabilityRequest {
   /** Principal Assignment resource name. */
   name: string;
   /** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
-  type:
-    | DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType
-    | (string & {});
+  type: DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType;
 }
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4116,7 +4110,7 @@ export interface DataConnectionsCheckNameAvailabilityRequest {
   /** Data Connection name. */
   name: string;
   /** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
-  type: DataConnectionsCheckNameAvailabilityRequestType | (string & {});
+  type: DataConnectionsCheckNameAvailabilityRequestType;
 }
 export const DataConnectionsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4553,7 +4547,7 @@ export interface ManagedPrivateEndpointsCheckNameAvailabilityRequest {
   /** Managed private endpoint resource name. */
   name: string;
   /** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
-  type: ManagedPrivateEndpointsCheckNameAvailabilityRequestType | (string & {});
+  type: ManagedPrivateEndpointsCheckNameAvailabilityRequestType;
 }
 export const ManagedPrivateEndpointsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5457,7 +5451,7 @@ export interface SandboxCustomImagesCheckNameAvailabilityRequest {
   /** Sandbox custom image resource name. */
   name: string;
   /** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
-  type: SandboxCustomImagesCheckNameAvailabilityRequestType | (string & {});
+  type: SandboxCustomImagesCheckNameAvailabilityRequestType;
 }
 export const SandboxCustomImagesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5486,7 +5480,7 @@ export const Language = /*@__PURE__*/ S.String;
 /** A class representing the properties of a sandbox custom image object. */
 export interface SandboxCustomImageProperties {
   /** The language name, for example Python. */
-  language: Language | (string & {});
+  language: Language;
   /** The version of the language. Either this property or baseImageName should be specified. */
   languageVersion?: string;
   /** The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified. */
@@ -5797,7 +5791,7 @@ export interface ScriptsCheckNameAvailabilityRequest {
   /** Script name. */
   name: string;
   /** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
-  type: ScriptsCheckNameAvailabilityRequestType | (string & {});
+  type: ScriptsCheckNameAvailabilityRequestType;
 }
 export const ScriptsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

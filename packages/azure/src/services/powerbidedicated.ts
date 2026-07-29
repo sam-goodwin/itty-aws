@@ -32,7 +32,7 @@ export interface AutoScaleVCoreProperties {
   /** The object ID of the capacity resource associated with the auto scale v-core resource. */
   capacityObjectId?: string;
   /** The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning. */
-  provisioningState?: VCoreProvisioningState | (string & {});
+  provisioningState?: VCoreProvisioningState;
 }
 export const AutoScaleVCoreProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -53,7 +53,7 @@ export interface AutoScaleVCoreSku {
   /** Name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier?: VCoreSkuTier | (string & {});
+  tier?: VCoreSkuTier;
   /** The capacity of an auto scale v-core resource. */
   capacity?: number;
 }

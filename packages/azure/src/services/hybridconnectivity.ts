@@ -892,7 +892,7 @@ export interface PublicCloudConnectorPropertiesInput {
   /** Cloud profile for AWS. */
   awsCloudProfile: AwsCloudProfile;
   /** Host cloud the public cloud connector. */
-  hostType: HostType | (string & {});
+  hostType: HostType;
 }
 export const PublicCloudConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

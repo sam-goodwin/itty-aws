@@ -518,7 +518,7 @@ export const SourceType = /*@__PURE__*/ S.String;
 /** Ingestion policy properties. */
 export interface IngestionSourcesPropertiesFormat {
   /** Ingestion source type. */
-  sourceType?: SourceType | (string & {});
+  sourceType?: SourceType;
   /** Resource ID. */
   resourceId?: string;
 }
@@ -542,7 +542,7 @@ export const IngestionPolicyPropertiesFormatIngestionSourcesList =
 /** Ingestion Policy properties. */
 export interface IngestionPolicyPropertiesFormat {
   /** The ingestion type. */
-  ingestionType?: IngestionType | (string & {});
+  ingestionType?: IngestionType;
   /** Ingestion Sources. */
   ingestionSources?: IngestionPolicyPropertiesFormatIngestionSourcesList;
 }
@@ -568,7 +568,7 @@ export const DestinationType = /*@__PURE__*/ S.String;
 /** Emission policy destination properties. */
 export interface EmissionPolicyDestination {
   /** Emission destination type. */
-  destinationType?: DestinationType | (string & {});
+  destinationType?: DestinationType;
 }
 export const EmissionPolicyDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -589,7 +589,7 @@ export const EmissionPoliciesPropertiesFormatEmissionDestinationsList =
 /** Emission policy properties. */
 export interface EmissionPoliciesPropertiesFormat {
   /** Emission format type. */
-  emissionType?: EmissionType | (string & {});
+  emissionType?: EmissionType;
   /** Emission policy destinations. */
   emissionDestinations?: EmissionPoliciesPropertiesFormatEmissionDestinationsList;
 }

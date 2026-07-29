@@ -220,9 +220,7 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretT
   /** The secret value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType
-    | (string & {});
+  type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText =
   /*@__PURE__*/ S.suspend(() =>
@@ -278,9 +276,7 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretK
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType
-    | (string & {});
+  type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType;
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -306,52 +302,16 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
       "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey>;
 
-export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType
-    | (string & {})
-    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType
-    | (string & {});
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?:
-    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat
-    | (string & {});
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
+export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets =
+  | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText
+  | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey;
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType,
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;
@@ -489,48 +449,16 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey =
     identifier: "DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey>;
 
-export interface DispatchNamespacesScriptsSecretsBulkUpdateResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsBulkUpdateResultSecretTextType
-    | DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
+export type DispatchNamespacesScriptsSecretsBulkUpdateResult =
+  | DispatchNamespacesScriptsSecretsBulkUpdateResultSecretText
+  | DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKey;
 export const DispatchNamespacesScriptsSecretsBulkUpdateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        DispatchNamespacesScriptsSecretsBulkUpdateResultSecretTextType,
-        DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateResult",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResult>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type BulkUpdateDispatchNamespaceScriptSecretsResponse =
   DispatchNamespacesScriptsSecretsBulkUpdateResult;
@@ -1357,25 +1285,14 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemH
       "DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost",
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost>;
 
-export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
+    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
+    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
+    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList =
   Array<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem>;
@@ -1416,70 +1333,28 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7 =
     identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase7",
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7>;
 
-export interface DispatchNamespacesScriptsGetResponseScriptPlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList;
-}
+export type DispatchNamespacesScriptsGetResponseScriptPlacement =
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase0
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase1
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase2
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase3
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase4
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase5
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase6
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7;
 export const DispatchNamespacesScriptsGetResponseScriptPlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode,
-        ),
-      ),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status,
-          DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   | "smart"
@@ -2723,234 +2598,96 @@ export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork>;
 
-export interface DispatchNamespacesScriptsBindingsGetResultItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsBindingsGetResultItemAIType
-    | DispatchNamespacesScriptsBindingsGetResultItemAISearchType
-    | DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType
-    | DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType
-    | DispatchNamespacesScriptsBindingsGetResultItemAssetsType
-    | DispatchNamespacesScriptsBindingsGetResultItemBrowserType
-    | DispatchNamespacesScriptsBindingsGetResultItemD1Type
-    | DispatchNamespacesScriptsBindingsGetResultItemDataBlobType
-    | DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType
-    | DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType
-    | DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType
-    | DispatchNamespacesScriptsBindingsGetResultItemInheritType
-    | DispatchNamespacesScriptsBindingsGetResultItemImagesType
-    | DispatchNamespacesScriptsBindingsGetResultItemJsonType
-    | DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType
-    | DispatchNamespacesScriptsBindingsGetResultItemMediaType
-    | DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType
-    | DispatchNamespacesScriptsBindingsGetResultItemPlainTextType
-    | DispatchNamespacesScriptsBindingsGetResultItemPipelinesType
-    | DispatchNamespacesScriptsBindingsGetResultItemQueueType
-    | DispatchNamespacesScriptsBindingsGetResultItemRatelimitType
-    | DispatchNamespacesScriptsBindingsGetResultItemR2BucketType
-    | DispatchNamespacesScriptsBindingsGetResultItemSecretTextType
-    | DispatchNamespacesScriptsBindingsGetResultItemSendEmailType
-    | DispatchNamespacesScriptsBindingsGetResultItemServiceType
-    | DispatchNamespacesScriptsBindingsGetResultItemTextBlobType
-    | DispatchNamespacesScriptsBindingsGetResultItemVectorizeType
-    | DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType
-    | DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType
-    | DispatchNamespacesScriptsBindingsGetResultItemFlagshipType
-    | DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType
-    | DispatchNamespacesScriptsBindingsGetResultItemWorkflowType
-    | DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType
-    | DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType
-    | DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type DispatchNamespacesScriptsBindingsGetResultItem =
+  | DispatchNamespacesScriptsBindingsGetResultItemAI
+  | DispatchNamespacesScriptsBindingsGetResultItemAISearch
+  | DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace
+  | DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine
+  | DispatchNamespacesScriptsBindingsGetResultItemAssets
+  | DispatchNamespacesScriptsBindingsGetResultItemBrowser
+  | DispatchNamespacesScriptsBindingsGetResultItemD1
+  | DispatchNamespacesScriptsBindingsGetResultItemDataBlob
+  | DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace
+  | DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace
+  | DispatchNamespacesScriptsBindingsGetResultItemHyperdrive
+  | DispatchNamespacesScriptsBindingsGetResultItemInherit
+  | DispatchNamespacesScriptsBindingsGetResultItemImages
+  | DispatchNamespacesScriptsBindingsGetResultItemJson
+  | DispatchNamespacesScriptsBindingsGetResultItemKVNamespace
+  | DispatchNamespacesScriptsBindingsGetResultItemMedia
+  | DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate
+  | DispatchNamespacesScriptsBindingsGetResultItemPlainText
+  | DispatchNamespacesScriptsBindingsGetResultItemPipelines
+  | DispatchNamespacesScriptsBindingsGetResultItemQueue
+  | DispatchNamespacesScriptsBindingsGetResultItemRatelimit
+  | DispatchNamespacesScriptsBindingsGetResultItemR2Bucket
+  | DispatchNamespacesScriptsBindingsGetResultItemSecretText
+  | DispatchNamespacesScriptsBindingsGetResultItemSendEmail
+  | DispatchNamespacesScriptsBindingsGetResultItemService
+  | DispatchNamespacesScriptsBindingsGetResultItemTextBlob
+  | DispatchNamespacesScriptsBindingsGetResultItemVectorize
+  | DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata
+  | DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret
+  | DispatchNamespacesScriptsBindingsGetResultItemFlagship
+  | DispatchNamespacesScriptsBindingsGetResultItemSecretKey
+  | DispatchNamespacesScriptsBindingsGetResultItemWorkflow
+  | DispatchNamespacesScriptsBindingsGetResultItemWasmModule
+  | DispatchNamespacesScriptsBindingsGetResultItemVPCService
+  | DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork;
 export const DispatchNamespacesScriptsBindingsGetResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        DispatchNamespacesScriptsBindingsGetResultItemAIType,
-        DispatchNamespacesScriptsBindingsGetResultItemAISearchType,
-        DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType,
-        DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType,
-        DispatchNamespacesScriptsBindingsGetResultItemAssetsType,
-        DispatchNamespacesScriptsBindingsGetResultItemBrowserType,
-        DispatchNamespacesScriptsBindingsGetResultItemD1Type,
-        DispatchNamespacesScriptsBindingsGetResultItemDataBlobType,
-        DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType,
-        DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType,
-        DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType,
-        DispatchNamespacesScriptsBindingsGetResultItemInheritType,
-        DispatchNamespacesScriptsBindingsGetResultItemImagesType,
-        DispatchNamespacesScriptsBindingsGetResultItemJsonType,
-        DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType,
-        DispatchNamespacesScriptsBindingsGetResultItemMediaType,
-        DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType,
-        DispatchNamespacesScriptsBindingsGetResultItemPlainTextType,
-        DispatchNamespacesScriptsBindingsGetResultItemPipelinesType,
-        DispatchNamespacesScriptsBindingsGetResultItemQueueType,
-        DispatchNamespacesScriptsBindingsGetResultItemRatelimitType,
-        DispatchNamespacesScriptsBindingsGetResultItemR2BucketType,
-        DispatchNamespacesScriptsBindingsGetResultItemSecretTextType,
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailType,
-        DispatchNamespacesScriptsBindingsGetResultItemServiceType,
-        DispatchNamespacesScriptsBindingsGetResultItemTextBlobType,
-        DispatchNamespacesScriptsBindingsGetResultItemVectorizeType,
-        DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType,
-        DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType,
-        DispatchNamespacesScriptsBindingsGetResultItemFlagshipType,
-        DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType,
-        DispatchNamespacesScriptsBindingsGetResultItemWorkflowType,
-        DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType,
-        DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType,
-        DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsBindingsGetResultList =
   Array<DispatchNamespacesScriptsBindingsGetResultItem>;
@@ -3132,48 +2869,16 @@ export const DispatchNamespacesScriptsSecretsGetResultSecretKey =
     identifier: "DispatchNamespacesScriptsSecretsGetResultSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretKey>;
 
-export interface DispatchNamespacesScriptsSecretsGetResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsGetResultSecretTextType
-    | DispatchNamespacesScriptsSecretsGetResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
+export type DispatchNamespacesScriptsSecretsGetResult =
+  | DispatchNamespacesScriptsSecretsGetResultSecretText
+  | DispatchNamespacesScriptsSecretsGetResultSecretKey;
 export const DispatchNamespacesScriptsSecretsGetResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        DispatchNamespacesScriptsSecretsGetResultSecretTextType,
-        DispatchNamespacesScriptsSecretsGetResultSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsGetResult",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResult>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type GetDispatchNamespaceScriptSecretResponse =
   DispatchNamespacesScriptsSecretsGetResult;
@@ -4274,234 +3979,96 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork 
       "DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork>;
 
-export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType
-    | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemService
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService
+  | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType,
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseBindingsItem>;
@@ -4860,61 +4427,24 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultip
       "DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface DispatchNamespacesScriptsSettingsGetResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type DispatchNamespacesScriptsSettingsGetResponseMigrations =
+  | DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration
+  | DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseMigrations",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
@@ -5187,25 +4717,14 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetIte
       "DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHost>;
 
-export interface DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
+    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemRegion
+    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHostname
+    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem>;
@@ -5231,45 +4750,28 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7 =
     identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementCase7",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7>;
 
-export interface DispatchNamespacesScriptsSettingsGetResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode
-    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode
-    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode
-    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode
-    | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList;
-}
+export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementMode
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementRegion
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementHostname
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementHost
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementCase4
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementCase5
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementCase6
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode,
-          DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode,
-          DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode,
-          DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode,
-          DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList =
   Array<string>;
@@ -5577,48 +5079,16 @@ export const DispatchNamespacesScriptsSecretsListResultItemSecretKey =
     identifier: "DispatchNamespacesScriptsSecretsListResultItemSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKey>;
 
-export interface DispatchNamespacesScriptsSecretsListResultItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsListResultItemSecretTextType
-    | DispatchNamespacesScriptsSecretsListResultItemSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
+export type DispatchNamespacesScriptsSecretsListResultItem =
+  | DispatchNamespacesScriptsSecretsListResultItemSecretText
+  | DispatchNamespacesScriptsSecretsListResultItemSecretKey;
 export const DispatchNamespacesScriptsSecretsListResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        DispatchNamespacesScriptsSecretsListResultItemSecretTextType,
-        DispatchNamespacesScriptsSecretsListResultItemSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsListResultItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSecretsListResultList =
   Array<DispatchNamespacesScriptsSecretsListResultItem>;
@@ -6789,234 +6259,96 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork
       "DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork>;
 
-export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType
-    | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemService
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService
+  | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType,
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseBindingsItem>;
@@ -7376,61 +6708,24 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMulti
       "DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface DispatchNamespacesScriptsSettingsEditResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type DispatchNamespacesScriptsSettingsEditResponseMigrations =
+  | DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration
+  | DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseMigrations",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
   Array<string>;
@@ -7705,25 +7000,14 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetIt
       "DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHost>;
 
-export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
+    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemRegion
+    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHostname
+    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem>;
@@ -7749,45 +7033,28 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7 =
     identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementCase7",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7>;
 
-export interface DispatchNamespacesScriptsSettingsEditResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode
-    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode
-    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode
-    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode
-    | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList;
-}
+export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementMode
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementRegion
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementHostname
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementHost
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementCase4
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementCase5
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementCase6
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode,
-          DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode,
-          DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode,
-          DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode,
-          DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList =
   Array<string>;
@@ -9033,9 +8300,7 @@ export interface PutDispatchNamespaceScriptRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the script. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?:
-    | DispatchNamespacesScriptsUpdateRequestBindingsInherit
-    | (string & {});
+  bindingsInherit?: DispatchNamespacesScriptsUpdateRequestBindingsInherit;
   metadata: PutDispatchNamespaceScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
   files?: (File | Blob)[];
@@ -9606,25 +8871,14 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost
       "DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost>;
 
-export interface DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemRegion
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHostname
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem>;
@@ -9664,70 +8918,28 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase7 =
     identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase7",
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase7>;
 
-export interface DispatchNamespacesScriptsUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase0Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase1Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase2Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase3Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase4Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase5Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase6Status
-    | DispatchNamespacesScriptsUpdateResponsePlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList;
-}
+export type DispatchNamespacesScriptsUpdateResponsePlacement =
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase0
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase1
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase2
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase3
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase4
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase5
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase6
+  | DispatchNamespacesScriptsUpdateResponsePlacementCase7;
 export const DispatchNamespacesScriptsUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode,
-        ),
-      ),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsUpdateResponsePlacementCase0Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase1Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase2Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase3Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase4Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase5Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase6Status,
-          DispatchNamespacesScriptsUpdateResponsePlacementCase7Status,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode =
   | "smart"
@@ -10353,25 +9565,14 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetI
       "DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHost>;
 
-export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
+    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemRegion
+    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHostname
+    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem>;
@@ -10410,70 +9611,28 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 =
     identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase7",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7>;
 
-export interface DispatchNamespacesScriptsContentUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status
-    | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList;
-}
+export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase0
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase1
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase2
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase3
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase4
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase5
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode,
-        ),
-      ),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.Union(
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status,
-          DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   | "smart"
@@ -10816,48 +9975,16 @@ export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey =
     identifier: "DispatchNamespacesScriptsSecretsUpdateResultSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKey>;
 
-export interface DispatchNamespacesScriptsSecretsUpdateResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | DispatchNamespacesScriptsSecretsUpdateResultSecretTextType
-    | DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
+export type DispatchNamespacesScriptsSecretsUpdateResult =
+  | DispatchNamespacesScriptsSecretsUpdateResultSecretText
+  | DispatchNamespacesScriptsSecretsUpdateResultSecretKey;
 export const DispatchNamespacesScriptsSecretsUpdateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        DispatchNamespacesScriptsSecretsUpdateResultSecretTextType,
-        DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsUpdateResult",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResult>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type PutDispatchNamespaceScriptSecretResponse =
   DispatchNamespacesScriptsSecretsUpdateResult;

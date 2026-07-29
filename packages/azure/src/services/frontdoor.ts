@@ -1035,7 +1035,7 @@ export const FrontDoorCertificateType = /*@__PURE__*/ S.String;
 /** Parameters required for enabling SSL with Front Door-managed certificates */
 export interface FrontDoorCertificateSourceParameters {
   /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
-  certificateType?: FrontDoorCertificateType | (string & {});
+  certificateType?: FrontDoorCertificateType;
 }
 export const FrontDoorCertificateSourceParameters = /*@__PURE__*/ S.suspend(
   () =>
@@ -1051,7 +1051,7 @@ export interface CustomHttpsConfiguration {
   /** Defines the source of the SSL certificate */
   certificateSource: FrontDoorCertificateSource | (string & {});
   /** Defines the TLS extension protocol that is used for secure delivery */
-  protocolType: FrontDoorTlsProtocolType | (string & {});
+  protocolType: FrontDoorTlsProtocolType;
   /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
   minimumTlsVersion: MinimumTLSVersion | (string & {});
   /** KeyVault certificate source parameters (if certificateSource=AzureKeyVault) */
@@ -1993,7 +1993,7 @@ export interface FrontendEndpointsEnableHttpsRequest {
   /** Defines the source of the SSL certificate */
   certificateSource: FrontDoorCertificateSource | (string & {});
   /** Defines the TLS extension protocol that is used for secure delivery */
-  protocolType: FrontDoorTlsProtocolType | (string & {});
+  protocolType: FrontDoorTlsProtocolType;
   /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
   minimumTlsVersion: MinimumTLSVersion | (string & {});
   /** KeyVault certificate source parameters (if certificateSource=AzureKeyVault) */
@@ -3250,7 +3250,7 @@ export interface ManagedRuleSetException {
   /** The variable to be evaluated for excluding the request. */
   matchVariable: ExceptionMatchVariable | (string & {});
   /** Comparison operator to apply to the selector when specifying which elements in the collection this exception applies to. */
-  selectorMatchOperator?: ExceptionSelectorMatchOperator | (string & {});
+  selectorMatchOperator?: ExceptionSelectorMatchOperator;
   /** When matchVariable is a collection, operator used to specify which elements in the collection this exception applies to. Currently supported only for RequestHeaderNames. */
   selector?: string;
   /** Comparison operator to apply to the value to be matched. */

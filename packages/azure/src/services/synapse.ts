@@ -40,9 +40,7 @@ export interface AzureADOnlyAuthenticationsCreateRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** name of the property */
-  azureADOnlyAuthenticationName:
-    | AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName
-    | (string & {});
+  azureADOnlyAuthenticationName: AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName;
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationPropertiesInput;
 }
@@ -130,9 +128,7 @@ export interface AzureADOnlyAuthenticationsGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** name of the property */
-  azureADOnlyAuthenticationName:
-    | AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName
-    | (string & {});
+  azureADOnlyAuthenticationName: AzureADOnlyAuthenticationsGetRequestAzureADOnlyAuthenticationName;
 }
 export const AzureADOnlyAuthenticationsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1053,9 +1049,7 @@ export interface DataMaskingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName:
-    | DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName;
   /** The properties of the data masking policy. */
   properties?: DataMaskingPolicyPropertiesInput;
 }
@@ -1157,9 +1151,7 @@ export interface DataMaskingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName:
-    | DataMaskingPoliciesGetRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingPoliciesGetRequestDataMaskingPolicyName;
 }
 export const DataMaskingPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1286,9 +1278,7 @@ export interface DataMaskingRulesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName:
-    | DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName;
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
   /** The properties of the resource. */
@@ -1421,9 +1411,7 @@ export interface DataMaskingRulesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName:
-    | DataMaskingRulesGetRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingRulesGetRequestDataMaskingPolicyName;
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
 }
@@ -1491,9 +1479,7 @@ export interface DataMaskingRulesListBySqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the data masking policy for which the masking rule applies. */
-  dataMaskingPolicyName:
-    | DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingRulesListBySqlPoolRequestDataMaskingPolicyName;
 }
 export const DataMaskingRulesListBySqlPoolRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1638,9 +1624,7 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
@@ -1705,9 +1689,7 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedSqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const ExtendedSqlPoolBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5694,9 +5676,7 @@ export interface SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
@@ -5764,9 +5744,7 @@ export interface SqlPoolBlobAuditingPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: SqlPoolBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const SqlPoolBlobAuditingPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6021,9 +5999,7 @@ export interface SqlPoolDataWarehouseUserActivitiesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The activity name of the Sql pool. */
-  dataWarehouseUserActivityName:
-    | SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName
-    | (string & {});
+  dataWarehouseUserActivityName: SqlPoolDataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName;
 }
 export const SqlPoolDataWarehouseUserActivitiesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6116,9 +6092,7 @@ export interface SqlPoolGeoBackupPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the geo backup policy. */
-  geoBackupPolicyName:
-    | SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName
-    | (string & {});
+  geoBackupPolicyName: SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName;
   /** The properties of the geo backup policy. */
   properties: GeoBackupPolicyPropertiesInput;
 }
@@ -6208,9 +6182,7 @@ export interface SqlPoolGeoBackupPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the geo backup policy. */
-  geoBackupPolicyName:
-    | SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName
-    | (string & {});
+  geoBackupPolicyName: SqlPoolGeoBackupPoliciesGetRequestGeoBackupPolicyName;
 }
 export const SqlPoolGeoBackupPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7792,9 +7764,7 @@ export interface SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Resource properties. */
   properties?: SecurityAlertPolicyPropertiesInput;
 }
@@ -7911,9 +7881,7 @@ export interface SqlPoolSecurityAlertPoliciesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: SqlPoolSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
 }
 export const SqlPoolSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8087,9 +8055,7 @@ export interface SqlPoolSensitivityLabelsCreateOrUpdateRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource;
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
@@ -8210,9 +8176,7 @@ export interface SqlPoolSensitivityLabelsDeleteRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SqlPoolSensitivityLabelsDeleteRequestSensitivityLabelSource;
 }
 export const SqlPoolSensitivityLabelsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8268,9 +8232,7 @@ export interface SqlPoolSensitivityLabelsDisableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SqlPoolSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource;
 }
 export const SqlPoolSensitivityLabelsDisableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8325,9 +8287,7 @@ export interface SqlPoolSensitivityLabelsEnableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SqlPoolSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource;
 }
 export const SqlPoolSensitivityLabelsEnableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9242,9 +9202,7 @@ export interface SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the transparent data encryption configuration. */
-  transparentDataEncryptionName:
-    | SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName
-    | (string & {});
+  transparentDataEncryptionName: SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName;
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
@@ -9312,9 +9270,7 @@ export interface SqlPoolTransparentDataEncryptionsGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the transparent data encryption configuration. */
-  transparentDataEncryptionName:
-    | SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName
-    | (string & {});
+  transparentDataEncryptionName: SqlPoolTransparentDataEncryptionsGetRequestTransparentDataEncryptionName;
 }
 export const SqlPoolTransparentDataEncryptionsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9586,9 +9542,7 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReques
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule). */
@@ -9675,9 +9629,7 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule). */
@@ -9740,9 +9692,7 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for server level rule). */
@@ -9817,9 +9767,7 @@ export interface SqlPoolVulnerabilityAssessmentScansExportRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9900,9 +9848,7 @@ export interface SqlPoolVulnerabilityAssessmentScansGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -10044,9 +9990,7 @@ export interface SqlPoolVulnerabilityAssessmentScansInitiateScanRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -10095,9 +10039,7 @@ export interface SqlPoolVulnerabilityAssessmentScansListRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentScansListRequestVulnerabilityAssessmentName;
 }
 export const SqlPoolVulnerabilityAssessmentScansListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10239,9 +10181,7 @@ export interface SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
@@ -10306,9 +10246,7 @@ export interface SqlPoolVulnerabilityAssessmentsDeleteRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const SqlPoolVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10354,9 +10292,7 @@ export interface SqlPoolVulnerabilityAssessmentsGetRequest {
   /** SQL pool name */
   sqlPoolName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlPoolVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const SqlPoolVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -11455,9 +11391,7 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequ
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
@@ -11521,9 +11455,7 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -11802,9 +11734,7 @@ export interface WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRe
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the dedicated sql minimal tls settings. */
-  dedicatedSQLminimalTlsSettingsName:
-    | WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName
-    | (string & {});
+  dedicatedSQLminimalTlsSettingsName: WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateRequestDedicatedSQLminimalTlsSettingsName;
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
@@ -11896,9 +11826,7 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateReque
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName:
-    | WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName;
   /** Resource properties. */
   properties?: EncryptionProtectorPropertiesInput;
 }
@@ -12000,9 +11928,7 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName:
-    | WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorGetRequestEncryptionProtectorName;
 }
 export const WorkspaceManagedSqlServerEncryptionProtectorGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12143,9 +12069,7 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the encryption protector. */
-  encryptionProtectorName:
-    | WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName;
 }
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12250,9 +12174,7 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUp
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
@@ -12316,9 +12238,7 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequest
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12656,9 +12576,7 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateReque
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyPropertiesInput;
 }
@@ -12783,9 +12701,7 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: WorkspaceManagedSqlServerSecurityAlertPolicyGetRequestSecurityAlertPolicyName;
 }
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13018,9 +12934,7 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
@@ -13084,9 +12998,7 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequest 
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13131,9 +13043,7 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequest {
   /** The name of the workspace. */
   workspaceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>

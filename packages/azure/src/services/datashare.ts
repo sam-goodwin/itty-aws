@@ -28,7 +28,7 @@ export const IdentityInputType = /*@__PURE__*/ S.String;
 /** Identity of resource */
 export interface IdentityInput {
   /** Identity Type */
-  type?: IdentityInputType | (string & {});
+  type?: IdentityInputType;
 }
 export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3673,7 +3673,7 @@ export interface SynchronizationSettingsCreateRequest {
   /** The name of the synchronizationSetting. */
   synchronizationSettingName: string;
   /** Kind of synchronization setting. */
-  kind: SynchronizationSettingsCreateRequestKind | (string & {});
+  kind: SynchronizationSettingsCreateRequestKind;
 }
 export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3915,7 +3915,7 @@ export interface TriggersCreateRequest {
   /** The name of the trigger. */
   triggerName: string;
   /** Kind of synchronization on trigger. */
-  kind: TriggersCreateRequestKind | (string & {});
+  kind: TriggersCreateRequestKind;
 }
 export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

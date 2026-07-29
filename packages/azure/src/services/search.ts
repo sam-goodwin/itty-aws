@@ -1299,7 +1299,7 @@ export interface ServicesCheckNameAvailabilityRequest {
   /** The search service name to validate. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. */
   name: string;
   /** The type of the resource whose name is to be validated. This value must always be 'searchServices'. */
-  type: ServicesCheckNameAvailabilityRequestType | (string & {});
+  type: ServicesCheckNameAvailabilityRequestType;
 }
 export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1407,9 +1407,8 @@ export type SearchDataExfiltrationProtection = "BlockAll";
 export const SearchDataExfiltrationProtection = /*@__PURE__*/ S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
-export type SearchServicePropertiesInputDataExfiltrationProtectionsList = Array<
-  SearchDataExfiltrationProtection | (string & {})
->;
+export type SearchServicePropertiesInputDataExfiltrationProtectionsList =
+  Array<SearchDataExfiltrationProtection>;
 export const SearchServicePropertiesInputDataExfiltrationProtectionsList =
   /*@__PURE__*/ S.Array(
     SearchDataExfiltrationProtection,

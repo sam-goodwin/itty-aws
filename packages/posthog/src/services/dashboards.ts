@@ -661,18 +661,11 @@ export const CustomEventConversionGoal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomEventConversionGoal>;
 
 /** Whether we should be comparing against a specific conversion goal */
-export interface TrendsQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
-export const TrendsQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    customEventName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TrendsQueryConversionGoal",
-}) as any as S.Schema<TrendsQueryConversionGoal>;
+export type TrendsQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
+export const TrendsQueryConversionGoal =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryConversionGoal>;
 
 export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export const DaysOfWeekEnum = /*@__PURE__*/ S.Number;
@@ -1865,86 +1858,32 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowVariablePropertyFilter",
 }) as any as S.Schema<WorkflowVariablePropertyFilter>;
 
-export interface TrendsQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const TrendsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "TrendsQueryPropertiesCase0Item",
-}) as any as S.Schema<TrendsQueryPropertiesCase0Item>;
+export type TrendsQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const TrendsQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryPropertiesCase0Item>;
 
 export type TrendsQueryPropertiesCase0List =
   Array<TrendsQueryPropertiesCase0Item>;
@@ -1952,97 +1891,33 @@ export const TrendsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   TrendsQueryPropertiesCase0Item,
 ) as any as S.Schema<TrendsQueryPropertiesCase0List>;
 
-export interface PropertyGroupFilterValueValuesItem {
-  /** Event properties */
-  type?:
-    | FilterLogicalOperator
-    | string
-    | LogPropertyFilterType
-    | SpanPropertyFilterType;
-  values?: PropertyGroupFilterValueValuesList;
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const PropertyGroupFilterValueValuesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(
-      S.Union(
-        FilterLogicalOperator,
-        S.String,
-        LogPropertyFilterType,
-        SpanPropertyFilterType,
-      ),
-    ),
-    values: S.optional(S.suspend(() => PropertyGroupFilterValueValuesList)),
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PropertyGroupFilterValueValuesItem",
-}) as any as S.Schema<PropertyGroupFilterValueValuesItem>;
+export type PropertyGroupFilterValueValuesItem =
+  | PropertyGroupFilterValue
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const PropertyGroupFilterValueValuesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
   Array<PropertyGroupFilterValueValuesItem>;
@@ -2316,38 +2191,11 @@ export const AccessControlFilterWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessControlFilterWarning",
 }) as any as S.Schema<AccessControlFilterWarning>;
 
-export interface TrendsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const TrendsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "TrendsQueryResponseWarningsItem",
-}) as any as S.Schema<TrendsQueryResponseWarningsItem>;
+export type TrendsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const TrendsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryResponseWarningsItem>;
 
 export type TrendsQueryResponseWarningsList =
   Array<TrendsQueryResponseWarningsItem>;
@@ -2402,86 +2250,32 @@ export const TrendsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsQueryResponse",
 }) as any as S.Schema<TrendsQueryResponse>;
 
-export interface EventsNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const EventsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EventsNodeFixedPropertiesItem",
-}) as any as S.Schema<EventsNodeFixedPropertiesItem>;
+export type EventsNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeFixedPropertiesItem>;
 
 export type EventsNodeFixedPropertiesList =
   Array<EventsNodeFixedPropertiesItem>;
@@ -2730,86 +2524,32 @@ export const EventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsNodeOrderByList>;
 
-export interface EventsNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const EventsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EventsNodePropertiesItem",
-}) as any as S.Schema<EventsNodePropertiesItem>;
+export type EventsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodePropertiesItem>;
 
 export type EventsNodePropertiesList = Array<EventsNodePropertiesItem>;
 export const EventsNodePropertiesList = /*@__PURE__*/ S.Array(
@@ -2872,86 +2612,32 @@ export const EventsNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventsNode" }) as any as S.Schema<EventsNode>;
 
-export interface ActionsNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ActionsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ActionsNodeFixedPropertiesItem",
-}) as any as S.Schema<ActionsNodeFixedPropertiesItem>;
+export type ActionsNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ActionsNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodeFixedPropertiesItem>;
 
 export type ActionsNodeFixedPropertiesList =
   Array<ActionsNodeFixedPropertiesItem>;
@@ -2970,86 +2656,32 @@ export type ActionsNodeMath =
 export const ActionsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodeMath>;
 
-export interface ActionsNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ActionsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ActionsNodePropertiesItem",
-}) as any as S.Schema<ActionsNodePropertiesItem>;
+export type ActionsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ActionsNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodePropertiesItem>;
 
 export type ActionsNodePropertiesList = Array<ActionsNodePropertiesItem>;
 export const ActionsNodePropertiesList = /*@__PURE__*/ S.Array(
@@ -3106,89 +2738,32 @@ export const ActionsNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionsNode" }) as any as S.Schema<ActionsNode>;
 
-export interface DataWarehouseNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const DataWarehouseNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "DataWarehouseNodeFixedPropertiesItem",
-}) as any as S.Schema<DataWarehouseNodeFixedPropertiesItem>;
+export type DataWarehouseNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const DataWarehouseNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodeFixedPropertiesItem>;
 
 export type DataWarehouseNodeFixedPropertiesList =
   Array<DataWarehouseNodeFixedPropertiesItem>;
@@ -3207,86 +2782,32 @@ export type DataWarehouseNodeMath =
 export const DataWarehouseNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodeMath>;
 
-export interface DataWarehouseNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const DataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "DataWarehouseNodePropertiesItem",
-}) as any as S.Schema<DataWarehouseNodePropertiesItem>;
+export type DataWarehouseNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const DataWarehouseNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodePropertiesItem>;
 
 export type DataWarehouseNodePropertiesList =
   Array<DataWarehouseNodePropertiesItem>;
@@ -3358,86 +2879,32 @@ export const DataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataWarehouseNode",
 }) as any as S.Schema<DataWarehouseNode>;
 
-export interface GroupNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const GroupNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GroupNodeFixedPropertiesItem",
-}) as any as S.Schema<GroupNodeFixedPropertiesItem>;
+export type GroupNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const GroupNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeFixedPropertiesItem>;
 
 export type GroupNodeFixedPropertiesList = Array<GroupNodeFixedPropertiesItem>;
 export const GroupNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
@@ -3455,107 +2922,9 @@ export type GroupNodeMath =
 export const GroupNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeMath>;
 
-export interface GroupNodeNodesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | DataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?: EventsNodeMath | ActionsNodeMath | DataWarehouseNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | DataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | DataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const GroupNodeNodesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          DataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(S.Union(EventsNodeMath, ActionsNodeMath, DataWarehouseNodeMath)),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          DataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          DataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Union(S.Number, S.String)),
-    distinct_id_field: S.optional(S.String),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    id_field: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupNodeNodesItem",
-}) as any as S.Schema<GroupNodeNodesItem>;
+export type GroupNodeNodesItem = EventsNode | ActionsNode | DataWarehouseNode;
+export const GroupNodeNodesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeNodesItem>;
 
 /** Entities to combine in this group */
 export type GroupNodeNodesList = Array<GroupNodeNodesItem>;
@@ -3568,86 +2937,32 @@ export const GroupNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupNodeOrderByList>;
 
-export interface GroupNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const GroupNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GroupNodePropertiesItem",
-}) as any as S.Schema<GroupNodePropertiesItem>;
+export type GroupNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const GroupNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodePropertiesItem>;
 
 export type GroupNodePropertiesList = Array<GroupNodePropertiesItem>;
 export const GroupNodePropertiesList = /*@__PURE__*/ S.Array(
@@ -3713,133 +3028,13 @@ export const GroupNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupNode" }) as any as S.Schema<GroupNode>;
 
-export interface TrendsQuerySeriesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | DataWarehouseNodeFixedPropertiesList
-    | GroupNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | DataWarehouseNodeMath
-    | GroupNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | GroupNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | DataWarehouseNodePropertiesList
-    | GroupNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | DataWarehouseNodeResponseMap
-    | GroupNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-  /** Entities to combine in this group */
-  nodes?: GroupNodeNodesList;
-  /** Group of entities combined with AND/OR operator */
-  operator?: FilterLogicalOperator;
-}
-export const TrendsQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          DataWarehouseNodeFixedPropertiesList,
-          GroupNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          DataWarehouseNodeMath,
-          GroupNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(
-      S.NullOr(S.Union(EventsNodeOrderByList, GroupNodeOrderByList)),
-    ),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          DataWarehouseNodePropertiesList,
-          GroupNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          DataWarehouseNodeResponseMap,
-          GroupNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Union(S.Number, S.String)),
-    distinct_id_field: S.optional(S.String),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    id_field: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-    nodes: S.optional(GroupNodeNodesList),
-    operator: S.optional(FilterLogicalOperator),
-  }),
-).annotate({
-  identifier: "TrendsQuerySeriesItem",
-}) as any as S.Schema<TrendsQuerySeriesItem>;
+export type TrendsQuerySeriesItem =
+  | EventsNode
+  | ActionsNode
+  | DataWarehouseNode
+  | GroupNode;
+export const TrendsQuerySeriesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQuerySeriesItem>;
 
 /** Events and actions to include */
 export type TrendsQuerySeriesList = Array<TrendsQuerySeriesItem>;
@@ -4235,89 +3430,32 @@ export type BreakdownAttributionType =
   | "step";
 export const BreakdownAttributionType = /*@__PURE__*/ S.String;
 
-export interface FunnelExclusionEventsNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type FunnelExclusionEventsNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const FunnelExclusionEventsNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "FunnelExclusionEventsNodeFixedPropertiesItem",
-  }) as any as S.Schema<FunnelExclusionEventsNodeFixedPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionEventsNodeFixedPropertiesList =
   Array<FunnelExclusionEventsNodeFixedPropertiesItem>;
@@ -4342,89 +3480,32 @@ export const FunnelExclusionEventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelExclusionEventsNodeOrderByList>;
 
-export interface FunnelExclusionEventsNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const FunnelExclusionEventsNodePropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "FunnelExclusionEventsNodePropertiesItem",
-}) as any as S.Schema<FunnelExclusionEventsNodePropertiesItem>;
+export type FunnelExclusionEventsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const FunnelExclusionEventsNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodePropertiesItem>;
 
 export type FunnelExclusionEventsNodePropertiesList =
   Array<FunnelExclusionEventsNodePropertiesItem>;
@@ -4498,89 +3579,32 @@ export const FunnelExclusionEventsNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelExclusionEventsNode",
 }) as any as S.Schema<FunnelExclusionEventsNode>;
 
-export interface FunnelExclusionActionsNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type FunnelExclusionActionsNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const FunnelExclusionActionsNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "FunnelExclusionActionsNodeFixedPropertiesItem",
-  }) as any as S.Schema<FunnelExclusionActionsNodeFixedPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionActionsNodeFixedPropertiesList =
   Array<FunnelExclusionActionsNodeFixedPropertiesItem>;
@@ -4600,89 +3624,32 @@ export type FunnelExclusionActionsNodeMath =
 export const FunnelExclusionActionsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodeMath>;
 
-export interface FunnelExclusionActionsNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const FunnelExclusionActionsNodePropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "FunnelExclusionActionsNodePropertiesItem",
-}) as any as S.Schema<FunnelExclusionActionsNodePropertiesItem>;
+export type FunnelExclusionActionsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const FunnelExclusionActionsNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodePropertiesItem>;
 
 export type FunnelExclusionActionsNodePropertiesList =
   Array<FunnelExclusionActionsNodePropertiesItem>;
@@ -4750,97 +3717,11 @@ export const FunnelExclusionActionsNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelExclusionActionsNode",
 }) as any as S.Schema<FunnelExclusionActionsNode>;
 
-export interface FunnelsFilterExclusionsItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | FunnelExclusionEventsNodeFixedPropertiesList
-    | FunnelExclusionActionsNodeFixedPropertiesList
-    | null;
-  funnelFromStep?: number;
-  funnelToStep?: number;
-  kind?: string;
-  limit?: number | null;
-  math?: FunnelExclusionEventsNodeMath | FunnelExclusionActionsNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: FunnelExclusionEventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | FunnelExclusionEventsNodePropertiesList
-    | FunnelExclusionActionsNodePropertiesList
-    | null;
-  response?:
-    | FunnelExclusionEventsNodeResponseMap
-    | FunnelExclusionActionsNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-}
-export const FunnelsFilterExclusionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          FunnelExclusionEventsNodeFixedPropertiesList,
-          FunnelExclusionActionsNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    funnelFromStep: S.optional(S.Number),
-    funnelToStep: S.optional(S.Number),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(FunnelExclusionEventsNodeMath, FunnelExclusionActionsNodeMath),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(FunnelExclusionEventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          FunnelExclusionEventsNodePropertiesList,
-          FunnelExclusionActionsNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          FunnelExclusionEventsNodeResponseMap,
-          FunnelExclusionActionsNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FunnelsFilterExclusionsItem",
-}) as any as S.Schema<FunnelsFilterExclusionsItem>;
+export type FunnelsFilterExclusionsItem =
+  | FunnelExclusionEventsNode
+  | FunnelExclusionActionsNode;
+export const FunnelsFilterExclusionsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsFilterExclusionsItem>;
 
 export type FunnelsFilterExclusionsList = Array<FunnelsFilterExclusionsItem>;
 export const FunnelsFilterExclusionsList = /*@__PURE__*/ S.Array(
@@ -4962,86 +3843,32 @@ export const FunnelsFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunnelsFilter" }) as any as S.Schema<FunnelsFilter>;
 
-export interface FunnelsQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const FunnelsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "FunnelsQueryPropertiesCase0Item",
-}) as any as S.Schema<FunnelsQueryPropertiesCase0Item>;
+export type FunnelsQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const FunnelsQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryPropertiesCase0Item>;
 
 export type FunnelsQueryPropertiesCase0List =
   Array<FunnelsQueryPropertiesCase0Item>;
@@ -5068,38 +3895,11 @@ export const FunnelsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<FunnelsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface FunnelsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const FunnelsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "FunnelsQueryResponseWarningsItem",
-}) as any as S.Schema<FunnelsQueryResponseWarningsItem>;
+export type FunnelsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const FunnelsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryResponseWarningsItem>;
 
 export type FunnelsQueryResponseWarningsList =
   Array<FunnelsQueryResponseWarningsItem>;
@@ -5152,89 +3952,32 @@ export const FunnelsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelsQueryResponse",
 }) as any as S.Schema<FunnelsQueryResponse>;
 
-export interface FunnelsDataWarehouseNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type FunnelsDataWarehouseNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const FunnelsDataWarehouseNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "FunnelsDataWarehouseNodeFixedPropertiesItem",
-  }) as any as S.Schema<FunnelsDataWarehouseNodeFixedPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodeFixedPropertiesItem>;
 
 export type FunnelsDataWarehouseNodeFixedPropertiesList =
   Array<FunnelsDataWarehouseNodeFixedPropertiesItem>;
@@ -5254,89 +3997,32 @@ export type FunnelsDataWarehouseNodeMath =
 export const FunnelsDataWarehouseNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodeMath>;
 
-export interface FunnelsDataWarehouseNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const FunnelsDataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "FunnelsDataWarehouseNodePropertiesItem",
-}) as any as S.Schema<FunnelsDataWarehouseNodePropertiesItem>;
+export type FunnelsDataWarehouseNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const FunnelsDataWarehouseNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodePropertiesItem>;
 
 export type FunnelsDataWarehouseNodePropertiesList =
   Array<FunnelsDataWarehouseNodePropertiesItem>;
@@ -5410,133 +4096,13 @@ export const FunnelsDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelsDataWarehouseNode",
 }) as any as S.Schema<FunnelsDataWarehouseNode>;
 
-export interface FunnelsQuerySeriesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | FunnelsDataWarehouseNodeFixedPropertiesList
-    | GroupNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | FunnelsDataWarehouseNodeMath
-    | GroupNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | GroupNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | FunnelsDataWarehouseNodePropertiesList
-    | GroupNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | FunnelsDataWarehouseNodeResponseMap
-    | GroupNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  aggregation_target_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-  /** Entities to combine in this group */
-  nodes?: GroupNodeNodesList;
-  /** Group of entities combined with AND/OR operator */
-  operator?: FilterLogicalOperator;
-}
-export const FunnelsQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          FunnelsDataWarehouseNodeFixedPropertiesList,
-          GroupNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          FunnelsDataWarehouseNodeMath,
-          GroupNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(
-      S.NullOr(S.Union(EventsNodeOrderByList, GroupNodeOrderByList)),
-    ),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          FunnelsDataWarehouseNodePropertiesList,
-          GroupNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          FunnelsDataWarehouseNodeResponseMap,
-          GroupNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Union(S.Number, S.String)),
-    aggregation_target_field: S.optional(S.String),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    id_field: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-    nodes: S.optional(GroupNodeNodesList),
-    operator: S.optional(FilterLogicalOperator),
-  }),
-).annotate({
-  identifier: "FunnelsQuerySeriesItem",
-}) as any as S.Schema<FunnelsQuerySeriesItem>;
+export type FunnelsQuerySeriesItem =
+  | EventsNode
+  | ActionsNode
+  | FunnelsDataWarehouseNode
+  | GroupNode;
+export const FunnelsQuerySeriesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQuerySeriesItem>;
 
 /** Events and actions to include */
 export type FunnelsQuerySeriesList = Array<FunnelsQuerySeriesItem>;
@@ -5597,86 +4163,32 @@ export const FunnelsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunnelsQuery" }) as any as S.Schema<FunnelsQuery>;
 
-export interface RetentionQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const RetentionQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RetentionQueryPropertiesCase0Item",
-}) as any as S.Schema<RetentionQueryPropertiesCase0Item>;
+export type RetentionQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const RetentionQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryPropertiesCase0Item>;
 
 export type RetentionQueryPropertiesCase0List =
   Array<RetentionQueryPropertiesCase0Item>;
@@ -5749,38 +4261,11 @@ export const RetentionQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RetentionQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RetentionQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const RetentionQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "RetentionQueryResponseWarningsItem",
-}) as any as S.Schema<RetentionQueryResponseWarningsItem>;
+export type RetentionQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const RetentionQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryResponseWarningsItem>;
 
 export type RetentionQueryResponseWarningsList =
   Array<RetentionQueryResponseWarningsItem>;
@@ -5871,86 +4356,32 @@ export const RetentionEntityId =
 export type RetentionEntityKind = "ActionsNode" | "EventsNode";
 export const RetentionEntityKind = /*@__PURE__*/ S.String;
 
-export interface RetentionEntityPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const RetentionEntityPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RetentionEntityPropertiesItem",
-}) as any as S.Schema<RetentionEntityPropertiesItem>;
+export type RetentionEntityPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const RetentionEntityPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionEntityPropertiesItem>;
 
 export type RetentionEntityPropertiesList =
   Array<RetentionEntityPropertiesItem>;
@@ -6217,86 +4648,32 @@ export const PathsFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathsFilter" }) as any as S.Schema<PathsFilter>;
 
-export interface PathsQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const PathsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PathsQueryPropertiesCase0Item",
-}) as any as S.Schema<PathsQueryPropertiesCase0Item>;
+export type PathsQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const PathsQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryPropertiesCase0Item>;
 
 export type PathsQueryPropertiesCase0List =
   Array<PathsQueryPropertiesCase0Item>;
@@ -6343,38 +4720,11 @@ export const PathsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<PathsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface PathsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const PathsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "PathsQueryResponseWarningsItem",
-}) as any as S.Schema<PathsQueryResponseWarningsItem>;
+export type PathsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const PathsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryResponseWarningsItem>;
 
 export type PathsQueryResponseWarningsList =
   Array<PathsQueryResponseWarningsItem>;
@@ -6468,86 +4818,32 @@ export const PathsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathsQuery" }) as any as S.Schema<PathsQuery>;
 
-export interface StickinessQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const StickinessQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "StickinessQueryPropertiesCase0Item",
-}) as any as S.Schema<StickinessQueryPropertiesCase0Item>;
+export type StickinessQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const StickinessQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryPropertiesCase0Item>;
 
 export type StickinessQueryPropertiesCase0List =
   Array<StickinessQueryPropertiesCase0Item>;
@@ -6588,38 +4884,11 @@ export const StickinessQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<StickinessQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface StickinessQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const StickinessQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "StickinessQueryResponseWarningsItem",
-}) as any as S.Schema<StickinessQueryResponseWarningsItem>;
+export type StickinessQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const StickinessQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryResponseWarningsItem>;
 
 export type StickinessQueryResponseWarningsList =
   Array<StickinessQueryResponseWarningsItem>;
@@ -6669,107 +4938,12 @@ export const StickinessQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StickinessQueryResponse",
 }) as any as S.Schema<StickinessQueryResponse>;
 
-export interface StickinessQuerySeriesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | DataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?: EventsNodeMath | ActionsNodeMath | DataWarehouseNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | DataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | DataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const StickinessQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          DataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(S.Union(EventsNodeMath, ActionsNodeMath, DataWarehouseNodeMath)),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          DataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          DataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Union(S.Number, S.String)),
-    distinct_id_field: S.optional(S.String),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    id_field: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StickinessQuerySeriesItem",
-}) as any as S.Schema<StickinessQuerySeriesItem>;
+export type StickinessQuerySeriesItem =
+  | EventsNode
+  | ActionsNode
+  | DataWarehouseNode;
+export const StickinessQuerySeriesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQuerySeriesItem>;
 
 /** Events and actions to include */
 export type StickinessQuerySeriesList = Array<StickinessQuerySeriesItem>;
@@ -6950,86 +5124,32 @@ export const LifecycleFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecycleFilter",
 }) as any as S.Schema<LifecycleFilter>;
 
-export interface LifecycleQueryPropertiesCase0Item {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const LifecycleQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "LifecycleQueryPropertiesCase0Item",
-}) as any as S.Schema<LifecycleQueryPropertiesCase0Item>;
+export type LifecycleQueryPropertiesCase0Item =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const LifecycleQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryPropertiesCase0Item>;
 
 export type LifecycleQueryPropertiesCase0List =
   Array<LifecycleQueryPropertiesCase0Item>;
@@ -7070,38 +5190,11 @@ export const LifecycleQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<LifecycleQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface LifecycleQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const LifecycleQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "LifecycleQueryResponseWarningsItem",
-}) as any as S.Schema<LifecycleQueryResponseWarningsItem>;
+export type LifecycleQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const LifecycleQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryResponseWarningsItem>;
 
 export type LifecycleQueryResponseWarningsList =
   Array<LifecycleQueryResponseWarningsItem>;
@@ -7151,89 +5244,32 @@ export const LifecycleQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecycleQueryResponse",
 }) as any as S.Schema<LifecycleQueryResponse>;
 
-export interface LifecycleDataWarehouseNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type LifecycleDataWarehouseNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const LifecycleDataWarehouseNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "LifecycleDataWarehouseNodeFixedPropertiesItem",
-  }) as any as S.Schema<LifecycleDataWarehouseNodeFixedPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodeFixedPropertiesItem>;
 
 export type LifecycleDataWarehouseNodeFixedPropertiesList =
   Array<LifecycleDataWarehouseNodeFixedPropertiesItem>;
@@ -7253,89 +5289,32 @@ export type LifecycleDataWarehouseNodeMath =
 export const LifecycleDataWarehouseNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodeMath>;
 
-export interface LifecycleDataWarehouseNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const LifecycleDataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "LifecycleDataWarehouseNodePropertiesItem",
-}) as any as S.Schema<LifecycleDataWarehouseNodePropertiesItem>;
+export type LifecycleDataWarehouseNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const LifecycleDataWarehouseNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodePropertiesItem>;
 
 export type LifecycleDataWarehouseNodePropertiesList =
   Array<LifecycleDataWarehouseNodePropertiesItem>;
@@ -7407,115 +5386,12 @@ export const LifecycleDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecycleDataWarehouseNode",
 }) as any as S.Schema<LifecycleDataWarehouseNode>;
 
-export interface LifecycleQuerySeriesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | LifecycleDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | LifecycleDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | LifecycleDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | LifecycleDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  aggregation_target_field?: string;
-  created_at_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const LifecycleQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          LifecycleDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          LifecycleDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          LifecycleDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          LifecycleDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Union(S.Number, S.String)),
-    aggregation_target_field: S.optional(S.String),
-    created_at_field: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LifecycleQuerySeriesItem",
-}) as any as S.Schema<LifecycleQuerySeriesItem>;
+export type LifecycleQuerySeriesItem =
+  | EventsNode
+  | ActionsNode
+  | LifecycleDataWarehouseNode;
+export const LifecycleQuerySeriesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQuerySeriesItem>;
 
 /** Events and actions to include */
 export type LifecycleQuerySeriesList = Array<LifecycleQuerySeriesItem>;
@@ -7601,18 +5477,11 @@ export type WebStatsBreakdown =
   | "FrustrationMetrics";
 export const WebStatsBreakdown = /*@__PURE__*/ S.String;
 
-export interface WebStatsTableQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
-export const WebStatsTableQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    customEventName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebStatsTableQueryConversionGoal",
-}) as any as S.Schema<WebStatsTableQueryConversionGoal>;
+export type WebStatsTableQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
+export const WebStatsTableQueryConversionGoal =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryConversionGoal>;
 
 export type WebAnalyticsOrderByFields =
   | "Visitors"
@@ -7646,41 +5515,13 @@ export const WebStatsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryOrderByItem,
 ) as any as S.Schema<WebStatsTableQueryOrderByList>;
 
-export interface WebStatsTableQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
-export const WebStatsTableQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WebStatsTableQueryPropertiesItem",
-}) as any as S.Schema<WebStatsTableQueryPropertiesItem>;
+export type WebStatsTableQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
+export const WebStatsTableQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryPropertiesItem>;
 
 export type WebStatsTableQueryPropertiesList =
   Array<WebStatsTableQueryPropertiesItem>;
@@ -7732,39 +5573,11 @@ export const WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<WebStatsTableQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface WebStatsTableQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const WebStatsTableQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-).annotate({
-  identifier: "WebStatsTableQueryResponseWarningsItem",
-}) as any as S.Schema<WebStatsTableQueryResponseWarningsItem>;
+export type WebStatsTableQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const WebStatsTableQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryResponseWarningsItem>;
 
 export type WebStatsTableQueryResponseWarningsList =
   Array<WebStatsTableQueryResponseWarningsItem>;
@@ -7914,18 +5727,11 @@ export const WebStatsTableQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebStatsTableQuery",
 }) as any as S.Schema<WebStatsTableQuery>;
 
-export interface WebOverviewQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
-export const WebOverviewQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    customEventName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebOverviewQueryConversionGoal",
-}) as any as S.Schema<WebOverviewQueryConversionGoal>;
+export type WebOverviewQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
+export const WebOverviewQueryConversionGoal =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryConversionGoal>;
 
 export type WebOverviewQueryOrderByItem =
   | WebAnalyticsOrderByFields
@@ -7938,41 +5744,13 @@ export const WebOverviewQueryOrderByList = /*@__PURE__*/ S.Array(
   WebOverviewQueryOrderByItem,
 ) as any as S.Schema<WebOverviewQueryOrderByList>;
 
-export interface WebOverviewQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
-export const WebOverviewQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WebOverviewQueryPropertiesItem",
-}) as any as S.Schema<WebOverviewQueryPropertiesItem>;
+export type WebOverviewQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
+export const WebOverviewQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryPropertiesItem>;
 
 export type WebOverviewQueryPropertiesList =
   Array<WebOverviewQueryPropertiesItem>;
@@ -8025,39 +5803,11 @@ export const WebOverviewQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<WebOverviewQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface WebOverviewQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const WebOverviewQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-).annotate({
-  identifier: "WebOverviewQueryResponseWarningsItem",
-}) as any as S.Schema<WebOverviewQueryResponseWarningsItem>;
+export type WebOverviewQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const WebOverviewQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryResponseWarningsItem>;
 
 export type WebOverviewQueryResponseWarningsList =
   Array<WebOverviewQueryResponseWarningsItem>;
@@ -8171,188 +5921,17 @@ export const WebOverviewQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebOverviewQuery",
 }) as any as S.Schema<WebOverviewQuery>;
 
-export interface InsightVizNodeSource {
-  /** Groups aggregation */
-  aggregation_group_type_index?: number | null;
-  /** Breakdown of the events and actions */
-  breakdownFilter?: BreakdownFilter | null;
-  /** Properties specific to the calendar heatmap display variant. Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`; ignored otherwise. */
-  calendarHeatmapFilter?: CalendarHeatmapFilter | null;
-  /** Compare to date range */
-  compareFilter?: CompareFilter | null;
-  /** Whether we should be comparing against a specific conversion goal */
-  conversionGoal?:
-    | TrendsQueryConversionGoal
-    | WebStatsTableQueryConversionGoal
-    | WebOverviewQueryConversionGoal
-    | null;
-  /** Colors used in the insight's visualization */
-  dataColorTheme?: number | null;
-  /** Date range for the query */
-  dateRange?: DateRange | null;
-  /** Exclude internal and test users by applying the respective filters */
-  filterTestAccounts?: boolean | null;
-  /** Granularity of the response. Can be one of `hour`, `day`, `week` or `month` */
-  interval?: IntervalType | null;
-  kind?: string;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  /** Property filters for all series */
-  properties?:
-    | TrendsQueryProperties
-    | FunnelsQueryProperties
-    | RetentionQueryProperties
-    | PathsQueryProperties
-    | StickinessQueryProperties
-    | LifecycleQueryProperties
-    | WebStatsTableQueryPropertiesList
-    | WebOverviewQueryPropertiesList
-    | null;
-  response?:
-    | TrendsQueryResponse
-    | FunnelsQueryResponse
-    | RetentionQueryResponse
-    | PathsQueryResponse
-    | StickinessQueryResponse
-    | LifecycleQueryResponse
-    | WebStatsTableQueryResponse
-    | WebOverviewQueryResponse
-    | null;
-  /** Sampling rate */
-  samplingFactor?: number | null;
-  /** Events and actions to include */
-  series?:
-    | TrendsQuerySeriesList
-    | FunnelsQuerySeriesList
-    | StickinessQuerySeriesList
-    | LifecycleQuerySeriesList;
-  /** Tags that will be added to the Query log comment */
-  tags?: QueryLogTags | null;
-  /** Properties specific to the trends insight */
-  trendsFilter?: TrendsFilter | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  /** Properties specific to the funnels insight */
-  funnelsFilter?: FunnelsFilter | null;
-  /** Properties specific to the retention insight */
-  retentionFilter?: RetentionFilter;
-  /** Used for displaying paths in relation to funnel steps. */
-  funnelPathsFilter?: FunnelPathsFilter | null;
-  /** Properties specific to the paths insight */
-  pathsFilter?: PathsFilter;
-  /** How many intervals comprise a period. Only used for cohorts, otherwise default 1. */
-  intervalCount?: number | null;
-  /** Properties specific to the stickiness insight */
-  stickinessFilter?: StickinessFilter | null;
-  /** For data warehouse based lifecycle insights when the aggregation target can't be mapped to persons or groups. */
-  customAggregationTarget?: boolean | null;
-  /** Properties specific to the lifecycle insight */
-  lifecycleFilter?: LifecycleFilter | null;
-  breakdownBy?: WebStatsBreakdown;
-  doPathCleaning?: boolean | null;
-  includeAvgTimeOnPage?: boolean | null;
-  includeBounceRate?: boolean | null;
-  includeHost?: boolean | null;
-  includeRevenue?: boolean | null;
-  includeScrollDepth?: boolean | null;
-  limit?: number | null;
-  offset?: number | null;
-  orderBy?: WebStatsTableQueryOrderByList | WebOverviewQueryOrderByList | null;
-  sampling?: WebAnalyticsSampling | null;
-  useSessionsTable?: boolean | null;
-  /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
-  useWebAnalyticsPrecompute?: boolean | null;
-}
-export const InsightVizNodeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
-    calendarHeatmapFilter: S.optional(S.NullOr(CalendarHeatmapFilter)),
-    compareFilter: S.optional(S.NullOr(CompareFilter)),
-    conversionGoal: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryConversionGoal,
-          WebStatsTableQueryConversionGoal,
-          WebOverviewQueryConversionGoal,
-        ),
-      ),
-    ),
-    dataColorTheme: S.optional(S.NullOr(S.Number)),
-    dateRange: S.optional(S.NullOr(DateRange)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
-    kind: S.optional(S.String),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryProperties,
-          FunnelsQueryProperties,
-          RetentionQueryProperties,
-          PathsQueryProperties,
-          StickinessQueryProperties,
-          LifecycleQueryProperties,
-          WebStatsTableQueryPropertiesList,
-          WebOverviewQueryPropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryResponse,
-          FunnelsQueryResponse,
-          RetentionQueryResponse,
-          PathsQueryResponse,
-          StickinessQueryResponse,
-          LifecycleQueryResponse,
-          WebStatsTableQueryResponse,
-          WebOverviewQueryResponse,
-        ),
-      ),
-    ),
-    samplingFactor: S.optional(S.NullOr(S.Number)),
-    series: S.optional(
-      S.Union(
-        TrendsQuerySeriesList,
-        FunnelsQuerySeriesList,
-        StickinessQuerySeriesList,
-        LifecycleQuerySeriesList,
-      ),
-    ),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    trendsFilter: S.optional(S.NullOr(TrendsFilter)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnelsFilter: S.optional(S.NullOr(FunnelsFilter)),
-    retentionFilter: S.optional(RetentionFilter),
-    funnelPathsFilter: S.optional(S.NullOr(FunnelPathsFilter)),
-    pathsFilter: S.optional(PathsFilter),
-    intervalCount: S.optional(S.NullOr(S.Number)),
-    stickinessFilter: S.optional(S.NullOr(StickinessFilter)),
-    customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
-    lifecycleFilter: S.optional(S.NullOr(LifecycleFilter)),
-    breakdownBy: S.optional(WebStatsBreakdown),
-    doPathCleaning: S.optional(S.NullOr(S.Boolean)),
-    includeAvgTimeOnPage: S.optional(S.NullOr(S.Boolean)),
-    includeBounceRate: S.optional(S.NullOr(S.Boolean)),
-    includeHost: S.optional(S.NullOr(S.Boolean)),
-    includeRevenue: S.optional(S.NullOr(S.Boolean)),
-    includeScrollDepth: S.optional(S.NullOr(S.Boolean)),
-    limit: S.optional(S.NullOr(S.Number)),
-    offset: S.optional(S.NullOr(S.Number)),
-    orderBy: S.optional(
-      S.NullOr(
-        S.Union(WebStatsTableQueryOrderByList, WebOverviewQueryOrderByList),
-      ),
-    ),
-    sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
-    useSessionsTable: S.optional(S.NullOr(S.Boolean)),
-    useWebAnalyticsPrecompute: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InsightVizNodeSource",
-}) as any as S.Schema<InsightVizNodeSource>;
+export type InsightVizNodeSource =
+  | TrendsQuery
+  | FunnelsQuery
+  | RetentionQuery
+  | PathsQuery
+  | StickinessQuery
+  | LifecycleQuery
+  | WebStatsTableQuery
+  | WebOverviewQuery;
+export const InsightVizNodeSource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<InsightVizNodeSource>;
 
 export interface ActionsPie {
   disableHoverOffset?: boolean | null;
@@ -8510,38 +6089,11 @@ export const ResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<ResponseUsedDataWarehouseSourcesList>;
 
-export interface ResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const ResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "ResponseWarningsItem",
-}) as any as S.Schema<ResponseWarningsItem>;
+export type ResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const ResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ResponseWarningsItem>;
 
 export type ResponseWarningsList = Array<ResponseWarningsItem>;
 export const ResponseWarningsList = /*@__PURE__*/ S.Array(
@@ -8632,38 +6184,11 @@ export const Response1UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response1UsedDataWarehouseSourcesList>;
 
-export interface Response1WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response1WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response1WarningsItem",
-}) as any as S.Schema<Response1WarningsItem>;
+export type Response1WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response1WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response1WarningsItem>;
 
 export type Response1WarningsList = Array<Response1WarningsItem>;
 export const Response1WarningsList = /*@__PURE__*/ S.Array(
@@ -8753,38 +6278,11 @@ export const Response2UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response2UsedDataWarehouseSourcesList>;
 
-export interface Response2WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response2WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response2WarningsItem",
-}) as any as S.Schema<Response2WarningsItem>;
+export type Response2WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response2WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response2WarningsItem>;
 
 export type Response2WarningsList = Array<Response2WarningsItem>;
 export const Response2WarningsList = /*@__PURE__*/ S.Array(
@@ -8942,38 +6440,11 @@ export const Response3UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response3UsedDataWarehouseSourcesList>;
 
-export interface Response3WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response3WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response3WarningsItem",
-}) as any as S.Schema<Response3WarningsItem>;
+export type Response3WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response3WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response3WarningsItem>;
 
 export type Response3WarningsList = Array<Response3WarningsItem>;
 export const Response3WarningsList = /*@__PURE__*/ S.Array(
@@ -9060,38 +6531,11 @@ export const Response4UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response4UsedDataWarehouseSourcesList>;
 
-export interface Response4WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response4WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response4WarningsItem",
-}) as any as S.Schema<Response4WarningsItem>;
+export type Response4WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response4WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response4WarningsItem>;
 
 export type Response4WarningsList = Array<Response4WarningsItem>;
 export const Response4WarningsList = /*@__PURE__*/ S.Array(
@@ -9172,38 +6616,11 @@ export const Response5UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response5UsedDataWarehouseSourcesList>;
 
-export interface Response5WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response5WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response5WarningsItem",
-}) as any as S.Schema<Response5WarningsItem>;
+export type Response5WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response5WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response5WarningsItem>;
 
 export type Response5WarningsList = Array<Response5WarningsItem>;
 export const Response5WarningsList = /*@__PURE__*/ S.Array(
@@ -9293,38 +6710,11 @@ export const Response6UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response6UsedDataWarehouseSourcesList>;
 
-export interface Response6WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response6WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response6WarningsItem",
-}) as any as S.Schema<Response6WarningsItem>;
+export type Response6WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response6WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response6WarningsItem>;
 
 export type Response6WarningsList = Array<Response6WarningsItem>;
 export const Response6WarningsList = /*@__PURE__*/ S.Array(
@@ -9409,38 +6799,11 @@ export const Response7UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response7UsedDataWarehouseSourcesList>;
 
-export interface Response7WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response7WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response7WarningsItem",
-}) as any as S.Schema<Response7WarningsItem>;
+export type Response7WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response7WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response7WarningsItem>;
 
 export type Response7WarningsList = Array<Response7WarningsItem>;
 export const Response7WarningsList = /*@__PURE__*/ S.Array(
@@ -9566,38 +6929,11 @@ export const Response8UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response8UsedDataWarehouseSourcesList>;
 
-export interface Response8WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response8WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response8WarningsItem",
-}) as any as S.Schema<Response8WarningsItem>;
+export type Response8WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response8WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response8WarningsItem>;
 
 export type Response8WarningsList = Array<Response8WarningsItem>;
 export const Response8WarningsList = /*@__PURE__*/ S.Array(
@@ -9667,38 +7003,11 @@ export const Response9UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response9UsedDataWarehouseSourcesList>;
 
-export interface Response9WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response9WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response9WarningsItem",
-}) as any as S.Schema<Response9WarningsItem>;
+export type Response9WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response9WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response9WarningsItem>;
 
 export type Response9WarningsList = Array<Response9WarningsItem>;
 export const Response9WarningsList = /*@__PURE__*/ S.Array(
@@ -9786,38 +7095,11 @@ export const Response10UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response10UsedDataWarehouseSourcesList>;
 
-export interface Response10WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response10WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response10WarningsItem",
-}) as any as S.Schema<Response10WarningsItem>;
+export type Response10WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response10WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response10WarningsItem>;
 
 export type Response10WarningsList = Array<Response10WarningsItem>;
 export const Response10WarningsList = /*@__PURE__*/ S.Array(
@@ -9895,38 +7177,11 @@ export const Response11UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response11UsedDataWarehouseSourcesList>;
 
-export interface Response11WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response11WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response11WarningsItem",
-}) as any as S.Schema<Response11WarningsItem>;
+export type Response11WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response11WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response11WarningsItem>;
 
 export type Response11WarningsList = Array<Response11WarningsItem>;
 export const Response11WarningsList = /*@__PURE__*/ S.Array(
@@ -9991,38 +7246,11 @@ export const Response12UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response12UsedDataWarehouseSourcesList>;
 
-export interface Response12WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response12WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response12WarningsItem",
-}) as any as S.Schema<Response12WarningsItem>;
+export type Response12WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response12WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response12WarningsItem>;
 
 export type Response12WarningsList = Array<Response12WarningsItem>;
 export const Response12WarningsList = /*@__PURE__*/ S.Array(
@@ -10111,38 +7339,11 @@ export const Response13UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response13UsedDataWarehouseSourcesList>;
 
-export interface Response13WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response13WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response13WarningsItem",
-}) as any as S.Schema<Response13WarningsItem>;
+export type Response13WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response13WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response13WarningsItem>;
 
 export type Response13WarningsList = Array<Response13WarningsItem>;
 export const Response13WarningsList = /*@__PURE__*/ S.Array(
@@ -10226,38 +7427,11 @@ export const Response14UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response14UsedDataWarehouseSourcesList>;
 
-export interface Response14WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response14WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response14WarningsItem",
-}) as any as S.Schema<Response14WarningsItem>;
+export type Response14WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response14WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response14WarningsItem>;
 
 export type Response14WarningsList = Array<Response14WarningsItem>;
 export const Response14WarningsList = /*@__PURE__*/ S.Array(
@@ -10320,38 +7494,11 @@ export const Response15UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response15UsedDataWarehouseSourcesList>;
 
-export interface Response15WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response15WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response15WarningsItem",
-}) as any as S.Schema<Response15WarningsItem>;
+export type Response15WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response15WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response15WarningsItem>;
 
 export type Response15WarningsList = Array<Response15WarningsItem>;
 export const Response15WarningsList = /*@__PURE__*/ S.Array(
@@ -10421,38 +7568,11 @@ export const Response16UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response16UsedDataWarehouseSourcesList>;
 
-export interface Response16WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response16WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response16WarningsItem",
-}) as any as S.Schema<Response16WarningsItem>;
+export type Response16WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response16WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response16WarningsItem>;
 
 export type Response16WarningsList = Array<Response16WarningsItem>;
 export const Response16WarningsList = /*@__PURE__*/ S.Array(
@@ -10571,38 +7691,11 @@ export const Response18UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response18UsedDataWarehouseSourcesList>;
 
-export interface Response18WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response18WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response18WarningsItem",
-}) as any as S.Schema<Response18WarningsItem>;
+export type Response18WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response18WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response18WarningsItem>;
 
 export type Response18WarningsList = Array<Response18WarningsItem>;
 export const Response18WarningsList = /*@__PURE__*/ S.Array(
@@ -10680,38 +7773,11 @@ export const Response19UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response19UsedDataWarehouseSourcesList>;
 
-export interface Response19WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response19WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response19WarningsItem",
-}) as any as S.Schema<Response19WarningsItem>;
+export type Response19WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response19WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response19WarningsItem>;
 
 export type Response19WarningsList = Array<Response19WarningsItem>;
 export const Response19WarningsList = /*@__PURE__*/ S.Array(
@@ -10791,38 +7857,11 @@ export const Response20UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response20UsedDataWarehouseSourcesList>;
 
-export interface Response20WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response20WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response20WarningsItem",
-}) as any as S.Schema<Response20WarningsItem>;
+export type Response20WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response20WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response20WarningsItem>;
 
 export type Response20WarningsList = Array<Response20WarningsItem>;
 export const Response20WarningsList = /*@__PURE__*/ S.Array(
@@ -11135,38 +8174,11 @@ export const Response21UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response21UsedDataWarehouseSourcesList>;
 
-export interface Response21WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response21WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response21WarningsItem",
-}) as any as S.Schema<Response21WarningsItem>;
+export type Response21WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response21WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response21WarningsItem>;
 
 export type Response21WarningsList = Array<Response21WarningsItem>;
 export const Response21WarningsList = /*@__PURE__*/ S.Array(
@@ -11301,38 +8313,11 @@ export const Response22UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response22UsedDataWarehouseSourcesList>;
 
-export interface Response22WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response22WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response22WarningsItem",
-}) as any as S.Schema<Response22WarningsItem>;
+export type Response22WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response22WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response22WarningsItem>;
 
 export type Response22WarningsList = Array<Response22WarningsItem>;
 export const Response22WarningsList = /*@__PURE__*/ S.Array(
@@ -11777,38 +8762,11 @@ export const Response25UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response25UsedDataWarehouseSourcesList>;
 
-export interface Response25WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response25WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response25WarningsItem",
-}) as any as S.Schema<Response25WarningsItem>;
+export type Response25WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response25WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response25WarningsItem>;
 
 export type Response25WarningsList = Array<Response25WarningsItem>;
 export const Response25WarningsList = /*@__PURE__*/ S.Array(
@@ -11889,38 +8847,11 @@ export const Response27UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response27UsedDataWarehouseSourcesList>;
 
-export interface Response27WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response27WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response27WarningsItem",
-}) as any as S.Schema<Response27WarningsItem>;
+export type Response27WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response27WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response27WarningsItem>;
 
 export type Response27WarningsList = Array<Response27WarningsItem>;
 export const Response27WarningsList = /*@__PURE__*/ S.Array(
@@ -12013,38 +8944,11 @@ export const Response28UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response28UsedDataWarehouseSourcesList>;
 
-export interface Response28WarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const Response28WarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "Response28WarningsItem",
-}) as any as S.Schema<Response28WarningsItem>;
+export type Response28WarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const Response28WarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<Response28WarningsItem>;
 
 export type Response28WarningsList = Array<Response28WarningsItem>;
 export const Response28WarningsList = /*@__PURE__*/ S.Array(
@@ -12217,86 +9121,32 @@ export const DataTableNodeShowPropertyFilter =
 export type HrefMatching = "contains" | "exact" | "regex";
 export const HrefMatching = /*@__PURE__*/ S.String;
 
-export interface EventsQueryActionStepPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const EventsQueryActionStepPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EventsQueryActionStepPropertiesItem",
-}) as any as S.Schema<EventsQueryActionStepPropertiesItem>;
+export type EventsQueryActionStepPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsQueryActionStepPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryActionStepPropertiesItem>;
 
 export type EventsQueryActionStepPropertiesList =
   Array<EventsQueryActionStepPropertiesItem>;
@@ -12349,86 +9199,32 @@ export const EventsQueryEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryEventsList>;
 
-export interface EventsQueryFixedPropertiesItemCase2 {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const EventsQueryFixedPropertiesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EventsQueryFixedPropertiesItemCase2",
-}) as any as S.Schema<EventsQueryFixedPropertiesItemCase2>;
+export type EventsQueryFixedPropertiesItemCase2 =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsQueryFixedPropertiesItemCase2 =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryFixedPropertiesItemCase2>;
 
 export type EventsQueryFixedPropertiesItem =
   | PropertyGroupFilter
@@ -12448,86 +9244,32 @@ export const EventsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryOrderByList>;
 
-export interface EventsQueryPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const EventsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EventsQueryPropertiesItem",
-}) as any as S.Schema<EventsQueryPropertiesItem>;
+export type EventsQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryPropertiesItem>;
 
 export type EventsQueryPropertiesList = Array<EventsQueryPropertiesItem>;
 export const EventsQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -12567,38 +9309,11 @@ export const EventsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<EventsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface EventsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const EventsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "EventsQueryResponseWarningsItem",
-}) as any as S.Schema<EventsQueryResponseWarningsItem>;
+export type EventsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const EventsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryResponseWarningsItem>;
 
 export type EventsQueryResponseWarningsList =
   Array<EventsQueryResponseWarningsItem>;
@@ -12719,38 +9434,11 @@ export const ActorsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<ActorsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface ActorsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const ActorsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "ActorsQueryResponseWarningsItem",
-}) as any as S.Schema<ActorsQueryResponseWarningsItem>;
+export type ActorsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const ActorsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryResponseWarningsItem>;
 
 export type ActorsQueryResponseWarningsList =
   Array<ActorsQueryResponseWarningsItem>;
@@ -12812,188 +9500,17 @@ export const ActorsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActorsQueryResponse",
 }) as any as S.Schema<ActorsQueryResponse>;
 
-export interface InsightActorsQuerySource {
-  /** Groups aggregation */
-  aggregation_group_type_index?: number | null;
-  /** Breakdown of the events and actions */
-  breakdownFilter?: BreakdownFilter | null;
-  /** Properties specific to the calendar heatmap display variant. Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`; ignored otherwise. */
-  calendarHeatmapFilter?: CalendarHeatmapFilter | null;
-  /** Compare to date range */
-  compareFilter?: CompareFilter | null;
-  /** Whether we should be comparing against a specific conversion goal */
-  conversionGoal?:
-    | TrendsQueryConversionGoal
-    | WebStatsTableQueryConversionGoal
-    | WebOverviewQueryConversionGoal
-    | null;
-  /** Colors used in the insight's visualization */
-  dataColorTheme?: number | null;
-  /** Date range for the query */
-  dateRange?: DateRange | null;
-  /** Exclude internal and test users by applying the respective filters */
-  filterTestAccounts?: boolean | null;
-  /** Granularity of the response. Can be one of `hour`, `day`, `week` or `month` */
-  interval?: IntervalType | null;
-  kind?: string;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  /** Property filters for all series */
-  properties?:
-    | TrendsQueryProperties
-    | FunnelsQueryProperties
-    | RetentionQueryProperties
-    | PathsQueryProperties
-    | StickinessQueryProperties
-    | LifecycleQueryProperties
-    | WebStatsTableQueryPropertiesList
-    | WebOverviewQueryPropertiesList
-    | null;
-  response?:
-    | TrendsQueryResponse
-    | FunnelsQueryResponse
-    | RetentionQueryResponse
-    | PathsQueryResponse
-    | StickinessQueryResponse
-    | LifecycleQueryResponse
-    | WebStatsTableQueryResponse
-    | WebOverviewQueryResponse
-    | null;
-  /** Sampling rate */
-  samplingFactor?: number | null;
-  /** Events and actions to include */
-  series?:
-    | TrendsQuerySeriesList
-    | FunnelsQuerySeriesList
-    | StickinessQuerySeriesList
-    | LifecycleQuerySeriesList;
-  /** Tags that will be added to the Query log comment */
-  tags?: QueryLogTags | null;
-  /** Properties specific to the trends insight */
-  trendsFilter?: TrendsFilter | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  /** Properties specific to the funnels insight */
-  funnelsFilter?: FunnelsFilter | null;
-  /** Properties specific to the retention insight */
-  retentionFilter?: RetentionFilter;
-  /** Used for displaying paths in relation to funnel steps. */
-  funnelPathsFilter?: FunnelPathsFilter | null;
-  /** Properties specific to the paths insight */
-  pathsFilter?: PathsFilter;
-  /** How many intervals comprise a period. Only used for cohorts, otherwise default 1. */
-  intervalCount?: number | null;
-  /** Properties specific to the stickiness insight */
-  stickinessFilter?: StickinessFilter | null;
-  /** For data warehouse based lifecycle insights when the aggregation target can't be mapped to persons or groups. */
-  customAggregationTarget?: boolean | null;
-  /** Properties specific to the lifecycle insight */
-  lifecycleFilter?: LifecycleFilter | null;
-  breakdownBy?: WebStatsBreakdown;
-  doPathCleaning?: boolean | null;
-  includeAvgTimeOnPage?: boolean | null;
-  includeBounceRate?: boolean | null;
-  includeHost?: boolean | null;
-  includeRevenue?: boolean | null;
-  includeScrollDepth?: boolean | null;
-  limit?: number | null;
-  offset?: number | null;
-  orderBy?: WebStatsTableQueryOrderByList | WebOverviewQueryOrderByList | null;
-  sampling?: WebAnalyticsSampling | null;
-  useSessionsTable?: boolean | null;
-  /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
-  useWebAnalyticsPrecompute?: boolean | null;
-}
-export const InsightActorsQuerySource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
-    calendarHeatmapFilter: S.optional(S.NullOr(CalendarHeatmapFilter)),
-    compareFilter: S.optional(S.NullOr(CompareFilter)),
-    conversionGoal: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryConversionGoal,
-          WebStatsTableQueryConversionGoal,
-          WebOverviewQueryConversionGoal,
-        ),
-      ),
-    ),
-    dataColorTheme: S.optional(S.NullOr(S.Number)),
-    dateRange: S.optional(S.NullOr(DateRange)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
-    kind: S.optional(S.String),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryProperties,
-          FunnelsQueryProperties,
-          RetentionQueryProperties,
-          PathsQueryProperties,
-          StickinessQueryProperties,
-          LifecycleQueryProperties,
-          WebStatsTableQueryPropertiesList,
-          WebOverviewQueryPropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryResponse,
-          FunnelsQueryResponse,
-          RetentionQueryResponse,
-          PathsQueryResponse,
-          StickinessQueryResponse,
-          LifecycleQueryResponse,
-          WebStatsTableQueryResponse,
-          WebOverviewQueryResponse,
-        ),
-      ),
-    ),
-    samplingFactor: S.optional(S.NullOr(S.Number)),
-    series: S.optional(
-      S.Union(
-        TrendsQuerySeriesList,
-        FunnelsQuerySeriesList,
-        StickinessQuerySeriesList,
-        LifecycleQuerySeriesList,
-      ),
-    ),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    trendsFilter: S.optional(S.NullOr(TrendsFilter)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnelsFilter: S.optional(S.NullOr(FunnelsFilter)),
-    retentionFilter: S.optional(RetentionFilter),
-    funnelPathsFilter: S.optional(S.NullOr(FunnelPathsFilter)),
-    pathsFilter: S.optional(PathsFilter),
-    intervalCount: S.optional(S.NullOr(S.Number)),
-    stickinessFilter: S.optional(S.NullOr(StickinessFilter)),
-    customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
-    lifecycleFilter: S.optional(S.NullOr(LifecycleFilter)),
-    breakdownBy: S.optional(WebStatsBreakdown),
-    doPathCleaning: S.optional(S.NullOr(S.Boolean)),
-    includeAvgTimeOnPage: S.optional(S.NullOr(S.Boolean)),
-    includeBounceRate: S.optional(S.NullOr(S.Boolean)),
-    includeHost: S.optional(S.NullOr(S.Boolean)),
-    includeRevenue: S.optional(S.NullOr(S.Boolean)),
-    includeScrollDepth: S.optional(S.NullOr(S.Boolean)),
-    limit: S.optional(S.NullOr(S.Number)),
-    offset: S.optional(S.NullOr(S.Number)),
-    orderBy: S.optional(
-      S.NullOr(
-        S.Union(WebStatsTableQueryOrderByList, WebOverviewQueryOrderByList),
-      ),
-    ),
-    sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
-    useSessionsTable: S.optional(S.NullOr(S.Boolean)),
-    useWebAnalyticsPrecompute: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InsightActorsQuerySource",
-}) as any as S.Schema<InsightActorsQuerySource>;
+export type InsightActorsQuerySource =
+  | TrendsQuery
+  | FunnelsQuery
+  | RetentionQuery
+  | PathsQuery
+  | StickinessQuery
+  | LifecycleQuery
+  | WebStatsTableQuery
+  | WebOverviewQuery;
+export const InsightActorsQuerySource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<InsightActorsQuerySource>;
 
 export interface InsightActorsQuery {
   breakdown?: InsightActorsQueryBreakdown | null;
@@ -13105,86 +9622,32 @@ export const EventsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventsQuery" }) as any as S.Schema<EventsQuery>;
 
-export interface PersonsNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const PersonsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PersonsNodeFixedPropertiesItem",
-}) as any as S.Schema<PersonsNodeFixedPropertiesItem>;
+export type PersonsNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const PersonsNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodeFixedPropertiesItem>;
 
 export type PersonsNodeFixedPropertiesList =
   Array<PersonsNodeFixedPropertiesItem>;
@@ -13192,86 +9655,32 @@ export const PersonsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   PersonsNodeFixedPropertiesItem,
 ) as any as S.Schema<PersonsNodeFixedPropertiesList>;
 
-export interface PersonsNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const PersonsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PersonsNodePropertiesItem",
-}) as any as S.Schema<PersonsNodePropertiesItem>;
+export type PersonsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const PersonsNodePropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodePropertiesItem>;
 
 export type PersonsNodePropertiesList = Array<PersonsNodePropertiesItem>;
 export const PersonsNodePropertiesList = /*@__PURE__*/ S.Array(
@@ -13319,41 +9728,14 @@ export const PersonsNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersonsNode" }) as any as S.Schema<PersonsNode>;
 
-export interface ActorsQueryFixedPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Person properties */
-  type?: string;
-  value?:
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | number
-    | HogQLPropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-}
-export const ActorsQueryFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          S.Number,
-          HogQLPropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ActorsQueryFixedPropertiesItem",
-}) as any as S.Schema<ActorsQueryFixedPropertiesItem>;
+export type ActorsQueryFixedPropertiesItem =
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | CohortPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter;
+export const ActorsQueryFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryFixedPropertiesItem>;
 
 export type ActorsQueryFixedPropertiesList =
   Array<ActorsQueryFixedPropertiesItem>;
@@ -13366,41 +9748,14 @@ export const ActorsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryOrderByList>;
 
-export interface ActorsQueryPropertiesCase0Item {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Person properties */
-  type?: string;
-  value?:
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | number
-    | HogQLPropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-}
-export const ActorsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          S.Number,
-          HogQLPropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ActorsQueryPropertiesCase0Item",
-}) as any as S.Schema<ActorsQueryPropertiesCase0Item>;
+export type ActorsQueryPropertiesCase0Item =
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | CohortPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter;
+export const ActorsQueryPropertiesCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryPropertiesCase0Item>;
 
 export type ActorsQueryPropertiesCase0List =
   Array<ActorsQueryPropertiesCase0Item>;
@@ -13484,195 +9839,39 @@ export const FunnelsActorsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelsActorsQuery",
 }) as any as S.Schema<FunnelsActorsQuery>;
 
-export interface FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | DataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?: EventsNodeMath | ActionsNodeMath | DataWarehouseNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | DataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | DataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
+export type FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity =
+  | EventsNode
+  | ActionsNode
+  | DataWarehouseNode;
 export const FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      custom_name: S.optional(S.NullOr(S.String)),
-      event: S.optional(S.NullOr(S.String)),
-      fixedProperties: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodeFixedPropertiesList,
-            ActionsNodeFixedPropertiesList,
-            DataWarehouseNodeFixedPropertiesList,
-          ),
-        ),
-      ),
-      kind: S.optional(S.String),
-      limit: S.optional(S.NullOr(S.Number)),
-      math: S.optional(
-        S.NullOr(
-          S.Union(EventsNodeMath, ActionsNodeMath, DataWarehouseNodeMath),
-        ),
-      ),
-      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-      math_hogql: S.optional(S.NullOr(S.String)),
-      math_multiplier: S.optional(S.NullOr(S.Number)),
-      math_property: S.optional(S.NullOr(S.String)),
-      math_property_revenue_currency: S.optional(
-        S.NullOr(RevenueCurrencyPropertyConfig),
-      ),
-      math_property_type: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-      orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-      properties: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodePropertiesList,
-            ActionsNodePropertiesList,
-            DataWarehouseNodePropertiesList,
-          ),
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodeResponseMap,
-            ActionsNodeResponseMap,
-            DataWarehouseNodeResponseMap,
-          ),
-        ),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Union(S.Number, S.String)),
-      distinct_id_field: S.optional(S.String),
-      dw_source_type: S.optional(S.NullOr(S.String)),
-      id_field: S.optional(S.String),
-      table_name: S.optional(S.String),
-      timestamp_field: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity",
-  }) as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity>;
 
-export interface FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier:
-      "FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem",
-  }) as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
 
 export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList =
   Array<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
@@ -13811,39 +10010,11 @@ export const FunnelCorrelationResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<FunnelCorrelationResponseUsedDataWarehouseSourcesList>;
 
-export interface FunnelCorrelationResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const FunnelCorrelationResponseWarningsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-).annotate({
-  identifier: "FunnelCorrelationResponseWarningsItem",
-}) as any as S.Schema<FunnelCorrelationResponseWarningsItem>;
+export type FunnelCorrelationResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const FunnelCorrelationResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationResponseWarningsItem>;
 
 export type FunnelCorrelationResponseWarningsList =
   Array<FunnelCorrelationResponseWarningsItem>;
@@ -13980,89 +10151,32 @@ export const FunnelCorrelationActorsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelCorrelationActorsQuery",
 }) as any as S.Schema<FunnelCorrelationActorsQuery>;
 
-export interface ExperimentEventExposureConfigPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type ExperimentEventExposureConfigPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const ExperimentEventExposureConfigPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "ExperimentEventExposureConfigPropertiesItem",
-  }) as any as S.Schema<ExperimentEventExposureConfigPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentEventExposureConfigPropertiesItem>;
 
 export type ExperimentEventExposureConfigPropertiesList =
   Array<ExperimentEventExposureConfigPropertiesItem>;
@@ -14100,73 +10214,11 @@ export const ExperimentEventExposureConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentEventExposureConfig>;
 
 /** Exposure configuration for filtering events. Defines when users were first exposed to the experiment. */
-export interface ExperimentActorsQueryExposureConfig {
-  event?: string;
-  kind?: string;
-  /** Properties configurable in the interface */
-  properties?:
-    | ExperimentEventExposureConfigPropertiesList
-    | ActionsNodePropertiesList
-    | null;
-  response?:
-    | ExperimentEventExposureConfigResponseMap
-    | ActionsNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  custom_name?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?: ActionsNodeFixedPropertiesList | null;
-  id?: number;
-  math?: ActionsNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-}
-export const ExperimentActorsQueryExposureConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          ExperimentEventExposureConfigPropertiesList,
-          ActionsNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          ExperimentEventExposureConfigResponseMap,
-          ActionsNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(ActionsNodeFixedPropertiesList)),
-    id: S.optional(S.Number),
-    math: S.optional(S.NullOr(ActionsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ExperimentActorsQueryExposureConfig",
-}) as any as S.Schema<ExperimentActorsQueryExposureConfig>;
+export type ExperimentActorsQueryExposureConfig =
+  | ExperimentEventExposureConfig
+  | ActionsNode;
+export const ExperimentActorsQueryExposureConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentActorsQueryExposureConfig>;
 
 export type ExperimentActorsQueryFunnelStepBreakdownCase3Item =
   | number
@@ -14205,89 +10257,32 @@ export const ExperimentMeanMetricResponseMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ExperimentMeanMetricResponseMap>;
 
-export interface ExperimentDataWarehouseNodeFixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type ExperimentDataWarehouseNodeFixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const ExperimentDataWarehouseNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "ExperimentDataWarehouseNodeFixedPropertiesItem",
-  }) as any as S.Schema<ExperimentDataWarehouseNodeFixedPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodeFixedPropertiesItem>;
 
 export type ExperimentDataWarehouseNodeFixedPropertiesList =
   Array<ExperimentDataWarehouseNodeFixedPropertiesItem>;
@@ -14307,89 +10302,32 @@ export type ExperimentDataWarehouseNodeMath =
 export const ExperimentDataWarehouseNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodeMath>;
 
-export interface ExperimentDataWarehouseNodePropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type ExperimentDataWarehouseNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const ExperimentDataWarehouseNodePropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "ExperimentDataWarehouseNodePropertiesItem",
-  }) as any as S.Schema<ExperimentDataWarehouseNodePropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodePropertiesItem>;
 
 export type ExperimentDataWarehouseNodePropertiesList =
   Array<ExperimentDataWarehouseNodePropertiesItem>;
@@ -14459,115 +10397,12 @@ export const ExperimentDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentDataWarehouseNode",
 }) as any as S.Schema<ExperimentDataWarehouseNode>;
 
-export interface ExperimentMeanMetricSource {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentMeanMetricSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          ExperimentDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          ExperimentDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          ExperimentDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          ExperimentDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-    data_warehouse_join_key: S.optional(S.String),
-    events_join_key: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentMeanMetricSource",
-}) as any as S.Schema<ExperimentMeanMetricSource>;
+export type ExperimentMeanMetricSource =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentMeanMetricSource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentMeanMetricSource>;
 
 export interface ExperimentMeanMetric {
   breakdownFilter?: BreakdownFilter | null;
@@ -14628,115 +10463,12 @@ export const ExperimentFunnelMetricResponseMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ExperimentFunnelMetricResponseMap>;
 
-export interface ExperimentFunnelMetricSeriesItem {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentFunnelMetricSeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          ExperimentDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          ExperimentDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          ExperimentDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          ExperimentDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-    data_warehouse_join_key: S.optional(S.String),
-    events_join_key: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentFunnelMetricSeriesItem",
-}) as any as S.Schema<ExperimentFunnelMetricSeriesItem>;
+export type ExperimentFunnelMetricSeriesItem =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentFunnelMetricSeriesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentFunnelMetricSeriesItem>;
 
 export type ExperimentFunnelMetricSeriesList =
   Array<ExperimentFunnelMetricSeriesItem>;
@@ -14786,115 +10518,12 @@ export const ExperimentFunnelMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentFunnelMetric",
 }) as any as S.Schema<ExperimentFunnelMetric>;
 
-export interface ExperimentRatioMetricDenominator {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentRatioMetricDenominator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          ExperimentDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          ExperimentDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          ExperimentDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          ExperimentDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-    data_warehouse_join_key: S.optional(S.String),
-    events_join_key: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentRatioMetricDenominator",
-}) as any as S.Schema<ExperimentRatioMetricDenominator>;
+export type ExperimentRatioMetricDenominator =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentRatioMetricDenominator =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRatioMetricDenominator>;
 
 export interface ExperimentMetricOutlierHandling {
   ignore_zeros?: boolean | null;
@@ -14913,115 +10542,12 @@ export const ExperimentMetricOutlierHandling = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentMetricOutlierHandling",
 }) as any as S.Schema<ExperimentMetricOutlierHandling>;
 
-export interface ExperimentRatioMetricNumerator {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentRatioMetricNumerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          ExperimentDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          ExperimentDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          ExperimentDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          ExperimentDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-    data_warehouse_join_key: S.optional(S.String),
-    events_join_key: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentRatioMetricNumerator",
-}) as any as S.Schema<ExperimentRatioMetricNumerator>;
+export type ExperimentRatioMetricNumerator =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentRatioMetricNumerator =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRatioMetricNumerator>;
 
 export type ExperimentRatioMetricResponseMap = {
   [key: string]: unknown | undefined;
@@ -15081,116 +10607,12 @@ export const ExperimentRatioMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentRatioMetric",
 }) as any as S.Schema<ExperimentRatioMetric>;
 
-export interface ExperimentRetentionMetricCompletionEvent {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentRetentionMetricCompletionEvent = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      custom_name: S.optional(S.NullOr(S.String)),
-      event: S.optional(S.NullOr(S.String)),
-      fixedProperties: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodeFixedPropertiesList,
-            ActionsNodeFixedPropertiesList,
-            ExperimentDataWarehouseNodeFixedPropertiesList,
-          ),
-        ),
-      ),
-      kind: S.optional(S.String),
-      limit: S.optional(S.NullOr(S.Number)),
-      math: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodeMath,
-            ActionsNodeMath,
-            ExperimentDataWarehouseNodeMath,
-          ),
-        ),
-      ),
-      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-      math_hogql: S.optional(S.NullOr(S.String)),
-      math_multiplier: S.optional(S.NullOr(S.Number)),
-      math_property: S.optional(S.NullOr(S.String)),
-      math_property_revenue_currency: S.optional(
-        S.NullOr(RevenueCurrencyPropertyConfig),
-      ),
-      math_property_type: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-      orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-      properties: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodePropertiesList,
-            ActionsNodePropertiesList,
-            ExperimentDataWarehouseNodePropertiesList,
-          ),
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          S.Union(
-            EventsNodeResponseMap,
-            ActionsNodeResponseMap,
-            ExperimentDataWarehouseNodeResponseMap,
-          ),
-        ),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Number),
-      data_warehouse_join_key: S.optional(S.String),
-      events_join_key: S.optional(S.String),
-      table_name: S.optional(S.String),
-      timestamp_field: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ExperimentRetentionMetricCompletionEvent",
-}) as any as S.Schema<ExperimentRetentionMetricCompletionEvent>;
+export type ExperimentRetentionMetricCompletionEvent =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentRetentionMetricCompletionEvent =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRetentionMetricCompletionEvent>;
 
 export type ExperimentRetentionMetricResponseMap = {
   [key: string]: unknown | undefined;
@@ -15200,115 +10622,12 @@ export const ExperimentRetentionMetricResponseMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ExperimentRetentionMetricResponseMap>;
 
-export interface ExperimentRetentionMetricStartEvent {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | ActionsNodeFixedPropertiesList
-    | ExperimentDataWarehouseNodeFixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | EventsNodeMath
-    | ActionsNodeMath
-    | ExperimentDataWarehouseNodeMath
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: EventsNodeOrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | ActionsNodePropertiesList
-    | ExperimentDataWarehouseNodePropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | ActionsNodeResponseMap
-    | ExperimentDataWarehouseNodeResponseMap
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number;
-  data_warehouse_join_key?: string;
-  events_join_key?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
-export const ExperimentRetentionMetricStartEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          ActionsNodeFixedPropertiesList,
-          ExperimentDataWarehouseNodeFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeMath,
-          ActionsNodeMath,
-          ExperimentDataWarehouseNodeMath,
-        ),
-      ),
-    ),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(EventsNodeOrderByList)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          ActionsNodePropertiesList,
-          ExperimentDataWarehouseNodePropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          ActionsNodeResponseMap,
-          ExperimentDataWarehouseNodeResponseMap,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    id: S.optional(S.Number),
-    data_warehouse_join_key: S.optional(S.String),
-    events_join_key: S.optional(S.String),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentRetentionMetricStartEvent",
-}) as any as S.Schema<ExperimentRetentionMetricStartEvent>;
+export type ExperimentRetentionMetricStartEvent =
+  | EventsNode
+  | ActionsNode
+  | ExperimentDataWarehouseNode;
+export const ExperimentRetentionMetricStartEvent =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRetentionMetricStartEvent>;
 
 export type StartHandling = "first_seen" | "last_seen";
 export const StartHandling = /*@__PURE__*/ S.String;
@@ -15363,98 +10682,13 @@ export const ExperimentRetentionMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentRetentionMetric",
 }) as any as S.Schema<ExperimentRetentionMetric>;
 
-export interface ExperimentQueryMetric {
-  breakdownFilter?: BreakdownFilter | null;
-  conversion_window?: number | null;
-  conversion_window_unit?: FunnelConversionWindowTimeUnit | null;
-  fingerprint?: string | null;
-  goal?: ExperimentMetricGoal | null;
-  ignore_zeros?: boolean | null;
-  isSharedMetric?: boolean | null;
-  kind?: string;
-  /** Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). */
-  lower_bound_percentile?: number | null;
-  metric_type?: string;
-  name?: string | null;
-  response?:
-    | ExperimentMeanMetricResponseMap
-    | ExperimentFunnelMetricResponseMap
-    | ExperimentRatioMetricResponseMap
-    | ExperimentRetentionMetricResponseMap
-    | null;
-  sharedMetricId?: number | null;
-  source?: ExperimentMeanMetricSource;
-  /** When set, reports the percentage of users whose per-user summed/counted value reaches or exceeds this threshold. Only meaningful for sum/count math types. */
-  threshold?: number | null;
-  /** Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). */
-  upper_bound_percentile?: number | null;
-  uuid?: string | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  funnel_order_type?: StepOrderValue | null;
-  series?: ExperimentFunnelMetricSeriesList;
-  denominator?: ExperimentRatioMetricDenominator;
-  denominator_outlier_handling?: ExperimentMetricOutlierHandling | null;
-  numerator?: ExperimentRatioMetricNumerator;
-  numerator_outlier_handling?: ExperimentMetricOutlierHandling | null;
-  completion_event?: ExperimentRetentionMetricCompletionEvent;
-  retention_window_end?: number;
-  retention_window_start?: number;
-  retention_window_unit?: FunnelConversionWindowTimeUnit;
-  start_event?: ExperimentRetentionMetricStartEvent;
-  start_handling?: StartHandling;
-}
-export const ExperimentQueryMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
-    conversion_window: S.optional(S.NullOr(S.Number)),
-    conversion_window_unit: S.optional(
-      S.NullOr(FunnelConversionWindowTimeUnit),
-    ),
-    fingerprint: S.optional(S.NullOr(S.String)),
-    goal: S.optional(S.NullOr(ExperimentMetricGoal)),
-    ignore_zeros: S.optional(S.NullOr(S.Boolean)),
-    isSharedMetric: S.optional(S.NullOr(S.Boolean)),
-    kind: S.optional(S.String),
-    lower_bound_percentile: S.optional(S.NullOr(S.Number)),
-    metric_type: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          ExperimentMeanMetricResponseMap,
-          ExperimentFunnelMetricResponseMap,
-          ExperimentRatioMetricResponseMap,
-          ExperimentRetentionMetricResponseMap,
-        ),
-      ),
-    ),
-    sharedMetricId: S.optional(S.NullOr(S.Number)),
-    source: S.optional(ExperimentMeanMetricSource),
-    threshold: S.optional(S.NullOr(S.Number)),
-    upper_bound_percentile: S.optional(S.NullOr(S.Number)),
-    uuid: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnel_order_type: S.optional(S.NullOr(StepOrderValue)),
-    series: S.optional(ExperimentFunnelMetricSeriesList),
-    denominator: S.optional(ExperimentRatioMetricDenominator),
-    denominator_outlier_handling: S.optional(
-      S.NullOr(ExperimentMetricOutlierHandling),
-    ),
-    numerator: S.optional(ExperimentRatioMetricNumerator),
-    numerator_outlier_handling: S.optional(
-      S.NullOr(ExperimentMetricOutlierHandling),
-    ),
-    completion_event: S.optional(ExperimentRetentionMetricCompletionEvent),
-    retention_window_end: S.optional(S.Number),
-    retention_window_start: S.optional(S.Number),
-    retention_window_unit: S.optional(FunnelConversionWindowTimeUnit),
-    start_event: S.optional(ExperimentRetentionMetricStartEvent),
-    start_handling: S.optional(StartHandling),
-  }),
-).annotate({
-  identifier: "ExperimentQueryMetric",
-}) as any as S.Schema<ExperimentQueryMetric>;
+export type ExperimentQueryMetric =
+  | ExperimentMeanMetric
+  | ExperimentFunnelMetric
+  | ExperimentRatioMetric
+  | ExperimentRetentionMetric;
+export const ExperimentQueryMetric =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryMetric>;
 
 export type PrecomputationMode = "precomputed" | "direct";
 export const PrecomputationMode = /*@__PURE__*/ S.String;
@@ -15804,98 +11038,13 @@ export const ExperimentQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentQueryResponseInsightItemMap,
 ) as any as S.Schema<ExperimentQueryResponseInsightList>;
 
-export interface ExperimentQueryResponseMetric {
-  breakdownFilter?: BreakdownFilter | null;
-  conversion_window?: number | null;
-  conversion_window_unit?: FunnelConversionWindowTimeUnit | null;
-  fingerprint?: string | null;
-  goal?: ExperimentMetricGoal | null;
-  ignore_zeros?: boolean | null;
-  isSharedMetric?: boolean | null;
-  kind?: string;
-  /** Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). */
-  lower_bound_percentile?: number | null;
-  metric_type?: string;
-  name?: string | null;
-  response?:
-    | ExperimentMeanMetricResponseMap
-    | ExperimentFunnelMetricResponseMap
-    | ExperimentRatioMetricResponseMap
-    | ExperimentRetentionMetricResponseMap
-    | null;
-  sharedMetricId?: number | null;
-  source?: ExperimentMeanMetricSource;
-  /** When set, reports the percentage of users whose per-user summed/counted value reaches or exceeds this threshold. Only meaningful for sum/count math types. */
-  threshold?: number | null;
-  /** Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). */
-  upper_bound_percentile?: number | null;
-  uuid?: string | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  funnel_order_type?: StepOrderValue | null;
-  series?: ExperimentFunnelMetricSeriesList;
-  denominator?: ExperimentRatioMetricDenominator;
-  denominator_outlier_handling?: ExperimentMetricOutlierHandling | null;
-  numerator?: ExperimentRatioMetricNumerator;
-  numerator_outlier_handling?: ExperimentMetricOutlierHandling | null;
-  completion_event?: ExperimentRetentionMetricCompletionEvent;
-  retention_window_end?: number;
-  retention_window_start?: number;
-  retention_window_unit?: FunnelConversionWindowTimeUnit;
-  start_event?: ExperimentRetentionMetricStartEvent;
-  start_handling?: StartHandling;
-}
-export const ExperimentQueryResponseMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
-    conversion_window: S.optional(S.NullOr(S.Number)),
-    conversion_window_unit: S.optional(
-      S.NullOr(FunnelConversionWindowTimeUnit),
-    ),
-    fingerprint: S.optional(S.NullOr(S.String)),
-    goal: S.optional(S.NullOr(ExperimentMetricGoal)),
-    ignore_zeros: S.optional(S.NullOr(S.Boolean)),
-    isSharedMetric: S.optional(S.NullOr(S.Boolean)),
-    kind: S.optional(S.String),
-    lower_bound_percentile: S.optional(S.NullOr(S.Number)),
-    metric_type: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          ExperimentMeanMetricResponseMap,
-          ExperimentFunnelMetricResponseMap,
-          ExperimentRatioMetricResponseMap,
-          ExperimentRetentionMetricResponseMap,
-        ),
-      ),
-    ),
-    sharedMetricId: S.optional(S.NullOr(S.Number)),
-    source: S.optional(ExperimentMeanMetricSource),
-    threshold: S.optional(S.NullOr(S.Number)),
-    upper_bound_percentile: S.optional(S.NullOr(S.Number)),
-    uuid: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnel_order_type: S.optional(S.NullOr(StepOrderValue)),
-    series: S.optional(ExperimentFunnelMetricSeriesList),
-    denominator: S.optional(ExperimentRatioMetricDenominator),
-    denominator_outlier_handling: S.optional(
-      S.NullOr(ExperimentMetricOutlierHandling),
-    ),
-    numerator: S.optional(ExperimentRatioMetricNumerator),
-    numerator_outlier_handling: S.optional(
-      S.NullOr(ExperimentMetricOutlierHandling),
-    ),
-    completion_event: S.optional(ExperimentRetentionMetricCompletionEvent),
-    retention_window_end: S.optional(S.Number),
-    retention_window_start: S.optional(S.Number),
-    retention_window_unit: S.optional(FunnelConversionWindowTimeUnit),
-    start_event: S.optional(ExperimentRetentionMetricStartEvent),
-    start_handling: S.optional(StartHandling),
-  }),
-).annotate({
-  identifier: "ExperimentQueryResponseMetric",
-}) as any as S.Schema<ExperimentQueryResponseMetric>;
+export type ExperimentQueryResponseMetric =
+  | ExperimentMeanMetric
+  | ExperimentFunnelMetric
+  | ExperimentRatioMetric
+  | ExperimentRetentionMetric;
+export const ExperimentQueryResponseMetric =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryResponseMetric>;
 
 export type ExperimentQueryResponseProbabilityMap = {
   [key: string]: number | undefined;
@@ -16109,86 +11258,32 @@ export const StickinessActorsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "StickinessActorsQuery",
 }) as any as S.Schema<StickinessActorsQuery>;
 
-export interface HogQLFiltersPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const HogQLFiltersPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HogQLFiltersPropertiesItem",
-}) as any as S.Schema<HogQLFiltersPropertiesItem>;
+export type HogQLFiltersPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const HogQLFiltersPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLFiltersPropertiesItem>;
 
 export type HogQLFiltersPropertiesList = Array<HogQLFiltersPropertiesItem>;
 export const HogQLFiltersPropertiesList = /*@__PURE__*/ S.Array(
@@ -16240,38 +11335,11 @@ export const HogQLQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<HogQLQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface HogQLQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const HogQLQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "HogQLQueryResponseWarningsItem",
-}) as any as S.Schema<HogQLQueryResponseWarningsItem>;
+export type HogQLQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const HogQLQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLQueryResponseWarningsItem>;
 
 export type HogQLQueryResponseWarningsList =
   Array<HogQLQueryResponseWarningsItem>;
@@ -16414,124 +11482,15 @@ export const HogQLQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLQuery" }) as any as S.Schema<HogQLQuery>;
 
-export interface ActorsQuerySource {
-  breakdown?: InsightActorsQueryBreakdown | null;
-  /** When the source funnel has compare-to-previous enabled, scopes the actors to a single period. The runner resolves `'previous'` to the shifted date range; `'current'` (or unset) uses the source's own date range. */
-  compare?: Compare | null;
-  day?: InsightActorsQueryDay | StickinessActorsQueryDay | null;
-  includeRecordings?: boolean | null;
-  /** An interval selected out of available intervals in source query. */
-  interval?: number | null;
-  kind?: string;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  response?: ActorsQueryResponse | HogQLQueryResponse | null;
-  series?: number | null;
-  source?:
-    | InsightActorsQuerySource
-    | FunnelsQuery
-    | FunnelCorrelationQuery
-    | ExperimentQuery
-    | StickinessQuery;
-  status?: string | null;
-  tags?: QueryLogTags | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  /** Index of the step for which we want to get the timestamp for, per person. Positive for converted persons, negative for dropped of persons. */
-  funnelStep?: number | null;
-  /** The breakdown value for which to get persons for. This is an array for person and event properties, a string for groups and an integer for cohorts. */
-  funnelStepBreakdown?:
-    | FunnelsActorsQueryFunnelStepBreakdown
-    | ExperimentActorsQueryFunnelStepBreakdown
-    | null;
-  funnelTrendsDropOff?: boolean | null;
-  /** Used together with `funnelTrendsDropOff` for funnels time conversion date for the persons modal. */
-  funnelTrendsEntrancePeriodStart?: string | null;
-  funnelCorrelationPersonConverted?: boolean | null;
-  funnelCorrelationPersonEntity?: FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity | null;
-  funnelCorrelationPropertyValues?: FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList | null;
-  /** Exposure configuration for filtering events. Defines when users were first exposed to the experiment. */
-  exposureConfig?: ExperimentActorsQueryExposureConfig | null;
-  /** Feature flag key for breakdown filtering. */
-  featureFlagKey?: string | null;
-  /** How to handle users with multiple variant exposures. */
-  multipleVariantHandling?: MultipleVariantHandling | null;
-  operator?: StickinessOperator | null;
-  /** Optional id of a direct-query-capable external data source to run against instead of ClickHouse — a pure-direct source, or a synced source with direct query enabled. */
-  connectionId?: string | null;
-  explain?: boolean | null;
-  filters?: HogQLFilters | null;
-  /** Client provided name of the query */
-  name?: string | null;
-  query?: string;
-  /** Run the selected connection query directly without translating it through HogQL first */
-  sendRawQuery?: boolean | null;
-  /** Constant values that can be referenced with the {placeholder} syntax in the query */
-  values?: HogQLQueryValuesMap | null;
-  /** Variables to be substituted into the query */
-  variables?: HogQLQueryVariablesMap | null;
-}
-export const ActorsQuerySource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdown: S.optional(S.NullOr(InsightActorsQueryBreakdown)),
-    compare: S.optional(S.NullOr(Compare)),
-    day: S.optional(
-      S.NullOr(S.Union(InsightActorsQueryDay, StickinessActorsQueryDay)),
-    ),
-    includeRecordings: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(S.Number)),
-    kind: S.optional(S.String),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    response: S.optional(
-      S.NullOr(S.Union(ActorsQueryResponse, HogQLQueryResponse)),
-    ),
-    series: S.optional(S.NullOr(S.Number)),
-    source: S.optional(
-      S.Union(
-        InsightActorsQuerySource,
-        FunnelsQuery,
-        FunnelCorrelationQuery,
-        ExperimentQuery,
-        StickinessQuery,
-      ),
-    ),
-    status: S.optional(S.NullOr(S.String)),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnelStep: S.optional(S.NullOr(S.Number)),
-    funnelStepBreakdown: S.optional(
-      S.NullOr(
-        S.Union(
-          FunnelsActorsQueryFunnelStepBreakdown,
-          ExperimentActorsQueryFunnelStepBreakdown,
-        ),
-      ),
-    ),
-    funnelTrendsDropOff: S.optional(S.NullOr(S.Boolean)),
-    funnelTrendsEntrancePeriodStart: S.optional(S.NullOr(S.String)),
-    funnelCorrelationPersonConverted: S.optional(S.NullOr(S.Boolean)),
-    funnelCorrelationPersonEntity: S.optional(
-      S.NullOr(FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity),
-    ),
-    funnelCorrelationPropertyValues: S.optional(
-      S.NullOr(FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList),
-    ),
-    exposureConfig: S.optional(S.NullOr(ExperimentActorsQueryExposureConfig)),
-    featureFlagKey: S.optional(S.NullOr(S.String)),
-    multipleVariantHandling: S.optional(S.NullOr(MultipleVariantHandling)),
-    operator: S.optional(S.NullOr(StickinessOperator)),
-    connectionId: S.optional(S.NullOr(S.String)),
-    explain: S.optional(S.NullOr(S.Boolean)),
-    filters: S.optional(S.NullOr(HogQLFilters)),
-    name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.String),
-    sendRawQuery: S.optional(S.NullOr(S.Boolean)),
-    values: S.optional(S.NullOr(HogQLQueryValuesMap)),
-    variables: S.optional(S.NullOr(HogQLQueryVariablesMap)),
-  }),
-).annotate({
-  identifier: "ActorsQuerySource",
-}) as any as S.Schema<ActorsQuerySource>;
+export type ActorsQuerySource =
+  | InsightActorsQuery
+  | FunnelsActorsQuery
+  | FunnelCorrelationActorsQuery
+  | ExperimentActorsQuery
+  | StickinessActorsQuery
+  | HogQLQuery;
+export const ActorsQuerySource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQuerySource>;
 
 export interface ActorsQuery {
   /** Currently only person filters supported. No filters for querying groups. See `filter_conditions()` in actor_strategies.py. */
@@ -16575,30 +11534,11 @@ export const GroupsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryOrderByList>;
 
-export interface GroupsQueryPropertiesItem {
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator;
-  type?: string;
-  value?: GroupPropertyFilterValue | HogQLPropertyFilterValue | null;
-}
-export const GroupsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(S.Union(GroupPropertyFilterValue, HogQLPropertyFilterValue)),
-    ),
-  }),
-).annotate({
-  identifier: "GroupsQueryPropertiesItem",
-}) as any as S.Schema<GroupsQueryPropertiesItem>;
+export type GroupsQueryPropertiesItem =
+  | GroupPropertyFilter
+  | HogQLPropertyFilter;
+export const GroupsQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupsQueryPropertiesItem>;
 
 export type GroupsQueryPropertiesList = Array<GroupsQueryPropertiesItem>;
 export const GroupsQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -16638,38 +11578,11 @@ export const GroupsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<GroupsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface GroupsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const GroupsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "GroupsQueryResponseWarningsItem",
-}) as any as S.Schema<GroupsQueryResponseWarningsItem>;
+export type GroupsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const GroupsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupsQueryResponseWarningsItem>;
 
 export type GroupsQueryResponseWarningsList =
   Array<GroupsQueryResponseWarningsItem>;
@@ -16769,19 +11682,11 @@ export const GroupsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupsQuery" }) as any as S.Schema<GroupsQuery>;
 
-export interface WebExternalClicksTableQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
+export type WebExternalClicksTableQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
 export const WebExternalClicksTableQueryConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionId: S.optional(S.Number),
-      customEventName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WebExternalClicksTableQueryConversionGoal",
-  }) as any as S.Schema<WebExternalClicksTableQueryConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryConversionGoal>;
 
 export type WebExternalClicksTableQueryOrderByItem =
   | WebAnalyticsOrderByFields
@@ -16795,42 +11700,13 @@ export const WebExternalClicksTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebExternalClicksTableQueryOrderByItem,
 ) as any as S.Schema<WebExternalClicksTableQueryOrderByList>;
 
-export interface WebExternalClicksTableQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
+export type WebExternalClicksTableQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
 export const WebExternalClicksTableQueryPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(PropertyOperator)),
-      type: S.optional(S.String),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "WebExternalClicksTableQueryPropertiesItem",
-  }) as any as S.Schema<WebExternalClicksTableQueryPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryPropertiesItem>;
 
 export type WebExternalClicksTableQueryPropertiesList =
   Array<WebExternalClicksTableQueryPropertiesItem>;
@@ -16869,39 +11745,11 @@ export const WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface WebExternalClicksTableQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type WebExternalClicksTableQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const WebExternalClicksTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "WebExternalClicksTableQueryResponseWarningsItem",
-  }) as any as S.Schema<WebExternalClicksTableQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryResponseWarningsItem>;
 
 export type WebExternalClicksTableQueryResponseWarningsList =
   Array<WebExternalClicksTableQueryResponseWarningsItem>;
@@ -17029,18 +11877,11 @@ export const WebExternalClicksTableQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebExternalClicksTableQuery",
 }) as any as S.Schema<WebExternalClicksTableQuery>;
 
-export interface WebGoalsQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
-export const WebGoalsQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    customEventName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebGoalsQueryConversionGoal",
-}) as any as S.Schema<WebGoalsQueryConversionGoal>;
+export type WebGoalsQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
+export const WebGoalsQueryConversionGoal =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryConversionGoal>;
 
 export type WebGoalsQueryOrderByItem =
   | WebAnalyticsOrderByFields
@@ -17053,41 +11894,13 @@ export const WebGoalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebGoalsQueryOrderByItem,
 ) as any as S.Schema<WebGoalsQueryOrderByList>;
 
-export interface WebGoalsQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
-export const WebGoalsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WebGoalsQueryPropertiesItem",
-}) as any as S.Schema<WebGoalsQueryPropertiesItem>;
+export type WebGoalsQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
+export const WebGoalsQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryPropertiesItem>;
 
 export type WebGoalsQueryPropertiesList = Array<WebGoalsQueryPropertiesItem>;
 export const WebGoalsQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -17121,38 +11934,11 @@ export const WebGoalsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<WebGoalsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface WebGoalsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const WebGoalsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "WebGoalsQueryResponseWarningsItem",
-}) as any as S.Schema<WebGoalsQueryResponseWarningsItem>;
+export type WebGoalsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const WebGoalsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryResponseWarningsItem>;
 
 export type WebGoalsQueryResponseWarningsList =
   Array<WebGoalsQueryResponseWarningsItem>;
@@ -17272,18 +12058,11 @@ export const WebGoalsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebGoalsQuery" }) as any as S.Schema<WebGoalsQuery>;
 
-export interface WebVitalsQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
-export const WebVitalsQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    customEventName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebVitalsQueryConversionGoal",
-}) as any as S.Schema<WebVitalsQueryConversionGoal>;
+export type WebVitalsQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
+export const WebVitalsQueryConversionGoal =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQueryConversionGoal>;
 
 export type WebVitalsQueryOrderByItem =
   | WebAnalyticsOrderByFields
@@ -17296,229 +12075,30 @@ export const WebVitalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsQueryOrderByItem,
 ) as any as S.Schema<WebVitalsQueryOrderByList>;
 
-export interface WebVitalsQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
-export const WebVitalsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WebVitalsQueryPropertiesItem",
-}) as any as S.Schema<WebVitalsQueryPropertiesItem>;
+export type WebVitalsQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
+export const WebVitalsQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQueryPropertiesItem>;
 
 export type WebVitalsQueryPropertiesList = Array<WebVitalsQueryPropertiesItem>;
 export const WebVitalsQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebVitalsQueryPropertiesItem,
 ) as any as S.Schema<WebVitalsQueryPropertiesList>;
 
-export interface WebVitalsQuerySource {
-  /** Groups aggregation */
-  aggregation_group_type_index?: number | null;
-  /** Breakdown of the events and actions */
-  breakdownFilter?: BreakdownFilter | null;
-  /** Properties specific to the calendar heatmap display variant. Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`; ignored otherwise. */
-  calendarHeatmapFilter?: CalendarHeatmapFilter | null;
-  /** Compare to date range */
-  compareFilter?: CompareFilter | null;
-  /** Whether we should be comparing against a specific conversion goal */
-  conversionGoal?:
-    | TrendsQueryConversionGoal
-    | WebStatsTableQueryConversionGoal
-    | WebOverviewQueryConversionGoal
-    | null;
-  /** Colors used in the insight's visualization */
-  dataColorTheme?: number | null;
-  /** Date range for the query */
-  dateRange?: DateRange | null;
-  /** Exclude internal and test users by applying the respective filters */
-  filterTestAccounts?: boolean | null;
-  /** Granularity of the response. Can be one of `hour`, `day`, `week` or `month` */
-  interval?: IntervalType | null;
-  kind?: string;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  /** Property filters for all series */
-  properties?:
-    | TrendsQueryProperties
-    | FunnelsQueryProperties
-    | RetentionQueryProperties
-    | PathsQueryProperties
-    | StickinessQueryProperties
-    | LifecycleQueryProperties
-    | WebStatsTableQueryPropertiesList
-    | WebOverviewQueryPropertiesList
-    | null;
-  response?:
-    | TrendsQueryResponse
-    | FunnelsQueryResponse
-    | RetentionQueryResponse
-    | PathsQueryResponse
-    | StickinessQueryResponse
-    | LifecycleQueryResponse
-    | WebStatsTableQueryResponse
-    | WebOverviewQueryResponse
-    | null;
-  /** Sampling rate */
-  samplingFactor?: number | null;
-  /** Events and actions to include */
-  series?:
-    | TrendsQuerySeriesList
-    | FunnelsQuerySeriesList
-    | StickinessQuerySeriesList
-    | LifecycleQuerySeriesList;
-  /** Tags that will be added to the Query log comment */
-  tags?: QueryLogTags | null;
-  /** Properties specific to the trends insight */
-  trendsFilter?: TrendsFilter | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  /** Properties specific to the funnels insight */
-  funnelsFilter?: FunnelsFilter | null;
-  /** Properties specific to the retention insight */
-  retentionFilter?: RetentionFilter;
-  /** Used for displaying paths in relation to funnel steps. */
-  funnelPathsFilter?: FunnelPathsFilter | null;
-  /** Properties specific to the paths insight */
-  pathsFilter?: PathsFilter;
-  /** How many intervals comprise a period. Only used for cohorts, otherwise default 1. */
-  intervalCount?: number | null;
-  /** Properties specific to the stickiness insight */
-  stickinessFilter?: StickinessFilter | null;
-  /** For data warehouse based lifecycle insights when the aggregation target can't be mapped to persons or groups. */
-  customAggregationTarget?: boolean | null;
-  /** Properties specific to the lifecycle insight */
-  lifecycleFilter?: LifecycleFilter | null;
-  breakdownBy?: WebStatsBreakdown;
-  doPathCleaning?: boolean | null;
-  includeAvgTimeOnPage?: boolean | null;
-  includeBounceRate?: boolean | null;
-  includeHost?: boolean | null;
-  includeRevenue?: boolean | null;
-  includeScrollDepth?: boolean | null;
-  limit?: number | null;
-  offset?: number | null;
-  orderBy?: WebStatsTableQueryOrderByList | WebOverviewQueryOrderByList | null;
-  sampling?: WebAnalyticsSampling | null;
-  useSessionsTable?: boolean | null;
-  /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
-  useWebAnalyticsPrecompute?: boolean | null;
-}
-export const WebVitalsQuerySource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
-    calendarHeatmapFilter: S.optional(S.NullOr(CalendarHeatmapFilter)),
-    compareFilter: S.optional(S.NullOr(CompareFilter)),
-    conversionGoal: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryConversionGoal,
-          WebStatsTableQueryConversionGoal,
-          WebOverviewQueryConversionGoal,
-        ),
-      ),
-    ),
-    dataColorTheme: S.optional(S.NullOr(S.Number)),
-    dateRange: S.optional(S.NullOr(DateRange)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
-    kind: S.optional(S.String),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryProperties,
-          FunnelsQueryProperties,
-          RetentionQueryProperties,
-          PathsQueryProperties,
-          StickinessQueryProperties,
-          LifecycleQueryProperties,
-          WebStatsTableQueryPropertiesList,
-          WebOverviewQueryPropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          TrendsQueryResponse,
-          FunnelsQueryResponse,
-          RetentionQueryResponse,
-          PathsQueryResponse,
-          StickinessQueryResponse,
-          LifecycleQueryResponse,
-          WebStatsTableQueryResponse,
-          WebOverviewQueryResponse,
-        ),
-      ),
-    ),
-    samplingFactor: S.optional(S.NullOr(S.Number)),
-    series: S.optional(
-      S.Union(
-        TrendsQuerySeriesList,
-        FunnelsQuerySeriesList,
-        StickinessQuerySeriesList,
-        LifecycleQuerySeriesList,
-      ),
-    ),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    trendsFilter: S.optional(S.NullOr(TrendsFilter)),
-    version: S.optional(S.NullOr(S.Number)),
-    funnelsFilter: S.optional(S.NullOr(FunnelsFilter)),
-    retentionFilter: S.optional(RetentionFilter),
-    funnelPathsFilter: S.optional(S.NullOr(FunnelPathsFilter)),
-    pathsFilter: S.optional(PathsFilter),
-    intervalCount: S.optional(S.NullOr(S.Number)),
-    stickinessFilter: S.optional(S.NullOr(StickinessFilter)),
-    customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
-    lifecycleFilter: S.optional(S.NullOr(LifecycleFilter)),
-    breakdownBy: S.optional(WebStatsBreakdown),
-    doPathCleaning: S.optional(S.NullOr(S.Boolean)),
-    includeAvgTimeOnPage: S.optional(S.NullOr(S.Boolean)),
-    includeBounceRate: S.optional(S.NullOr(S.Boolean)),
-    includeHost: S.optional(S.NullOr(S.Boolean)),
-    includeRevenue: S.optional(S.NullOr(S.Boolean)),
-    includeScrollDepth: S.optional(S.NullOr(S.Boolean)),
-    limit: S.optional(S.NullOr(S.Number)),
-    offset: S.optional(S.NullOr(S.Number)),
-    orderBy: S.optional(
-      S.NullOr(
-        S.Union(WebStatsTableQueryOrderByList, WebOverviewQueryOrderByList),
-      ),
-    ),
-    sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
-    useSessionsTable: S.optional(S.NullOr(S.Boolean)),
-    useWebAnalyticsPrecompute: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "WebVitalsQuerySource",
-}) as any as S.Schema<WebVitalsQuerySource>;
+export type WebVitalsQuerySource =
+  | TrendsQuery
+  | FunnelsQuery
+  | RetentionQuery
+  | PathsQuery
+  | StickinessQuery
+  | LifecycleQuery
+  | WebStatsTableQuery
+  | WebOverviewQuery;
+export const WebVitalsQuerySource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQuerySource>;
 
 export interface WebVitalsQuery {
   /** Groups aggregation - not used in Web Analytics but required for type compatibility */
@@ -17573,19 +12153,11 @@ export const WebVitalsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebVitalsQuery" }) as any as S.Schema<WebVitalsQuery>;
 
-export interface WebVitalsPathBreakdownQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
+export type WebVitalsPathBreakdownQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
 export const WebVitalsPathBreakdownQueryConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionId: S.optional(S.Number),
-      customEventName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WebVitalsPathBreakdownQueryConversionGoal",
-  }) as any as S.Schema<WebVitalsPathBreakdownQueryConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryConversionGoal>;
 
 export type WebVitalsMetric = "INP" | "LCP" | "CLS" | "FCP";
 export const WebVitalsMetric = /*@__PURE__*/ S.String;
@@ -17605,42 +12177,13 @@ export const WebVitalsPathBreakdownQueryOrderByList = /*@__PURE__*/ S.Array(
 export type WebVitalsPercentile = "p75" | "p90" | "p99";
 export const WebVitalsPercentile = /*@__PURE__*/ S.String;
 
-export interface WebVitalsPathBreakdownQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
+export type WebVitalsPathBreakdownQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
 export const WebVitalsPathBreakdownQueryPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(PropertyOperator)),
-      type: S.optional(S.String),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "WebVitalsPathBreakdownQueryPropertiesItem",
-  }) as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesItem>;
 
 export type WebVitalsPathBreakdownQueryPropertiesList =
   Array<WebVitalsPathBreakdownQueryPropertiesItem>;
@@ -17668,39 +12211,11 @@ export const WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface WebVitalsPathBreakdownQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type WebVitalsPathBreakdownQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const WebVitalsPathBreakdownQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "WebVitalsPathBreakdownQueryResponseWarningsItem",
-  }) as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsItem>;
 
 export type WebVitalsPathBreakdownQueryResponseWarningsList =
   Array<WebVitalsPathBreakdownQueryResponseWarningsItem>;
@@ -17884,39 +12399,11 @@ export const SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList
     DataWarehouseSourceUsage,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface SessionAttributionExplorerQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type SessionAttributionExplorerQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const SessionAttributionExplorerQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "SessionAttributionExplorerQueryResponseWarningsItem",
-  }) as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsItem>;
 
 export type SessionAttributionExplorerQueryResponseWarningsList =
   Array<SessionAttributionExplorerQueryResponseWarningsItem>;
@@ -18017,86 +12504,32 @@ export const SessionAttributionExplorerQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionAttributionExplorerQuery",
 }) as any as S.Schema<SessionAttributionExplorerQuery>;
 
-export interface SessionsQueryEventPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const SessionsQueryEventPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SessionsQueryEventPropertiesItem",
-}) as any as S.Schema<SessionsQueryEventPropertiesItem>;
+export type SessionsQueryEventPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const SessionsQueryEventPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryEventPropertiesItem>;
 
 export type SessionsQueryEventPropertiesList =
   Array<SessionsQueryEventPropertiesItem>;
@@ -18104,89 +12537,32 @@ export const SessionsQueryEventPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryEventPropertiesItem,
 ) as any as S.Schema<SessionsQueryEventPropertiesList>;
 
-export interface SessionsQueryFixedPropertiesItemCase2 {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const SessionsQueryFixedPropertiesItemCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "SessionsQueryFixedPropertiesItemCase2",
-}) as any as S.Schema<SessionsQueryFixedPropertiesItemCase2>;
+export type SessionsQueryFixedPropertiesItemCase2 =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const SessionsQueryFixedPropertiesItemCase2 =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryFixedPropertiesItemCase2>;
 
 export type SessionsQueryFixedPropertiesItem =
   | PropertyGroupFilter
@@ -18206,86 +12582,32 @@ export const SessionsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryOrderByList>;
 
-export interface SessionsQueryPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const SessionsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SessionsQueryPropertiesItem",
-}) as any as S.Schema<SessionsQueryPropertiesItem>;
+export type SessionsQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const SessionsQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryPropertiesItem>;
 
 export type SessionsQueryPropertiesList = Array<SessionsQueryPropertiesItem>;
 export const SessionsQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -18325,38 +12647,11 @@ export const SessionsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<SessionsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface SessionsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const SessionsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "SessionsQueryResponseWarningsItem",
-}) as any as S.Schema<SessionsQueryResponseWarningsItem>;
+export type SessionsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const SessionsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryResponseWarningsItem>;
 
 export type SessionsQueryResponseWarningsList =
   Array<SessionsQueryResponseWarningsItem>;
@@ -18546,39 +12841,11 @@ export const RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesLi
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueAnalyticsGrossRevenueQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueAnalyticsGrossRevenueQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
   Array<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
@@ -18701,39 +12968,11 @@ export const RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueAnalyticsMetricsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueAnalyticsMetricsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueAnalyticsMetricsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueAnalyticsMetricsQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMetricsQueryResponseWarningsList =
   Array<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
@@ -18862,39 +13101,11 @@ export const RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueAnalyticsMRRQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueAnalyticsMRRQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueAnalyticsMRRQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueAnalyticsMRRQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMRRQueryResponseWarningsList =
   Array<RevenueAnalyticsMRRQueryResponseWarningsItem>;
@@ -19006,39 +13217,11 @@ export const RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueAnalyticsOverviewQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueAnalyticsOverviewQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueAnalyticsOverviewQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueAnalyticsOverviewQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsOverviewQueryResponseWarningsList =
   Array<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
@@ -19152,39 +13335,11 @@ export const RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesLi
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueAnalyticsTopCustomersQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueAnalyticsTopCustomersQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseWarningsList =
   Array<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
@@ -19297,39 +13452,11 @@ export const RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueExampleEventsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueExampleEventsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueExampleEventsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueExampleEventsQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueExampleEventsQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleEventsQueryResponseWarningsItem>;
 
 export type RevenueExampleEventsQueryResponseWarningsList =
   Array<RevenueExampleEventsQueryResponseWarningsItem>;
@@ -19445,39 +13572,11 @@ export const RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSour
     DataWarehouseSourceUsage,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface RevenueExampleDataWarehouseTablesQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "RevenueExampleDataWarehouseTablesQueryResponseWarningsItem",
-  }) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
   Array<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
@@ -19577,103 +13676,38 @@ export const RevenueExampleDataWarehouseTablesQuery = /*@__PURE__*/ S.suspend(
   identifier: "RevenueExampleDataWarehouseTablesQuery",
 }) as any as S.Schema<RevenueExampleDataWarehouseTablesQuery>;
 
-export interface MarketingAnalyticsTableQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
+export type MarketingAnalyticsTableQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
 export const MarketingAnalyticsTableQueryConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionId: S.optional(S.Number),
-      customEventName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsTableQueryConversionGoal",
-  }) as any as S.Schema<MarketingAnalyticsTableQueryConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryConversionGoal>;
 
-export interface ConversionGoalFilter1FixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter1FixedPropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "ConversionGoalFilter1FixedPropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
+export type ConversionGoalFilter1FixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter1FixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
 
 export type ConversionGoalFilter1FixedPropertiesList =
   Array<ConversionGoalFilter1FixedPropertiesItem>;
@@ -19697,86 +13731,32 @@ export const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConversionGoalFilter1OrderByList>;
 
-export interface ConversionGoalFilter1PropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter1PropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ConversionGoalFilter1PropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
+export type ConversionGoalFilter1PropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter1PropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
 
 export type ConversionGoalFilter1PropertiesList =
   Array<ConversionGoalFilter1PropertiesItem>;
@@ -19864,89 +13844,32 @@ export const ConversionGoalFilter1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionGoalFilter1",
 }) as any as S.Schema<ConversionGoalFilter1>;
 
-export interface ConversionGoalFilter2FixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter2FixedPropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "ConversionGoalFilter2FixedPropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
+export type ConversionGoalFilter2FixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter2FixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
 
 export type ConversionGoalFilter2FixedPropertiesList =
   Array<ConversionGoalFilter2FixedPropertiesItem>;
@@ -19965,86 +13888,32 @@ export type ConversionGoalFilter2Math =
 export const ConversionGoalFilter2Math =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2Math>;
 
-export interface ConversionGoalFilter2PropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter2PropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ConversionGoalFilter2PropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
+export type ConversionGoalFilter2PropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter2PropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
 
 export type ConversionGoalFilter2PropertiesList =
   Array<ConversionGoalFilter2PropertiesItem>;
@@ -20126,89 +13995,32 @@ export const ConversionGoalFilter2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionGoalFilter2",
 }) as any as S.Schema<ConversionGoalFilter2>;
 
-export interface ConversionGoalFilter3FixedPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter3FixedPropertiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "ConversionGoalFilter3FixedPropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
+export type ConversionGoalFilter3FixedPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter3FixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
 
 export type ConversionGoalFilter3FixedPropertiesList =
   Array<ConversionGoalFilter3FixedPropertiesItem>;
@@ -20227,86 +14039,32 @@ export type ConversionGoalFilter3Math =
 export const ConversionGoalFilter3Math =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3Math>;
 
-export interface ConversionGoalFilter3PropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const ConversionGoalFilter3PropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ConversionGoalFilter3PropertiesItem",
-}) as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
+export type ConversionGoalFilter3PropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const ConversionGoalFilter3PropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
 
 export type ConversionGoalFilter3PropertiesList =
   Array<ConversionGoalFilter3PropertiesItem>;
@@ -20399,133 +14157,12 @@ export const ConversionGoalFilter3 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversionGoalFilter3>;
 
 /** Draft conversion goal that can be set in the UI without saving */
-export interface MarketingAnalyticsTableQueryDraftConversionGoal {
-  conversion_goal_id?: string;
-  conversion_goal_name?: string;
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | ConversionGoalFilter1FixedPropertiesList
-    | ConversionGoalFilter2FixedPropertiesList
-    | ConversionGoalFilter3FixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | ConversionGoalFilter1Math
-    | ConversionGoalFilter2Math
-    | ConversionGoalFilter3Math
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: ConversionGoalFilter1OrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | ConversionGoalFilter1PropertiesList
-    | ConversionGoalFilter2PropertiesList
-    | ConversionGoalFilter3PropertiesList
-    | null;
-  response?:
-    | ConversionGoalFilter1ResponseMap
-    | ConversionGoalFilter2ResponseMap
-    | ConversionGoalFilter3ResponseMap
-    | null;
-  schema_map?:
-    | ConversionGoalFilter1SchemaMapMap
-    | ConversionGoalFilter2SchemaMapMap
-    | ConversionGoalFilter3SchemaMapMap;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
+export type MarketingAnalyticsTableQueryDraftConversionGoal =
+  | ConversionGoalFilter1
+  | ConversionGoalFilter2
+  | ConversionGoalFilter3;
 export const MarketingAnalyticsTableQueryDraftConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversion_goal_id: S.optional(S.String),
-      conversion_goal_name: S.optional(S.String),
-      custom_name: S.optional(S.NullOr(S.String)),
-      event: S.optional(S.NullOr(S.String)),
-      fixedProperties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1FixedPropertiesList,
-            ConversionGoalFilter2FixedPropertiesList,
-            ConversionGoalFilter3FixedPropertiesList,
-          ),
-        ),
-      ),
-      kind: S.optional(S.String),
-      limit: S.optional(S.NullOr(S.Number)),
-      math: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1Math,
-            ConversionGoalFilter2Math,
-            ConversionGoalFilter3Math,
-          ),
-        ),
-      ),
-      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-      math_hogql: S.optional(S.NullOr(S.String)),
-      math_multiplier: S.optional(S.NullOr(S.Number)),
-      math_property: S.optional(S.NullOr(S.String)),
-      math_property_revenue_currency: S.optional(
-        S.NullOr(RevenueCurrencyPropertyConfig),
-      ),
-      math_property_type: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-      orderBy: S.optional(S.NullOr(ConversionGoalFilter1OrderByList)),
-      properties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1PropertiesList,
-            ConversionGoalFilter2PropertiesList,
-            ConversionGoalFilter3PropertiesList,
-          ),
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1ResponseMap,
-            ConversionGoalFilter2ResponseMap,
-            ConversionGoalFilter3ResponseMap,
-          ),
-        ),
-      ),
-      schema_map: S.optional(
-        S.Union(
-          ConversionGoalFilter1SchemaMapMap,
-          ConversionGoalFilter2SchemaMapMap,
-          ConversionGoalFilter3SchemaMapMap,
-        ),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Union(S.Number, S.String)),
-      distinct_id_field: S.optional(S.String),
-      dw_source_type: S.optional(S.NullOr(S.String)),
-      id_field: S.optional(S.String),
-      table_name: S.optional(S.String),
-      timestamp_field: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsTableQueryDraftConversionGoal",
-  }) as any as S.Schema<MarketingAnalyticsTableQueryDraftConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryDraftConversionGoal>;
 
 export type MarketingAnalyticsDrillDownLevel =
   | "channel"
@@ -20579,42 +14216,13 @@ export const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryOrderByItemList,
 ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByList>;
 
-export interface MarketingAnalyticsTableQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
+export type MarketingAnalyticsTableQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
 export const MarketingAnalyticsTableQueryPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(PropertyOperator)),
-      type: S.optional(S.String),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsTableQueryPropertiesItem",
-  }) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
 
 export type MarketingAnalyticsTableQueryPropertiesList =
   Array<MarketingAnalyticsTableQueryPropertiesItem>;
@@ -20662,39 +14270,11 @@ export const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface MarketingAnalyticsTableQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type MarketingAnalyticsTableQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const MarketingAnalyticsTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsTableQueryResponseWarningsItem",
-  }) as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsTableQueryResponseWarningsList =
   Array<MarketingAnalyticsTableQueryResponseWarningsItem>;
@@ -20851,185 +14431,27 @@ export const MarketingAnalyticsTableQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingAnalyticsTableQuery",
 }) as any as S.Schema<MarketingAnalyticsTableQuery>;
 
-export interface MarketingAnalyticsAggregatedQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
+export type MarketingAnalyticsAggregatedQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
 export const MarketingAnalyticsAggregatedQueryConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionId: S.optional(S.Number),
-      customEventName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsAggregatedQueryConversionGoal",
-  }) as any as S.Schema<MarketingAnalyticsAggregatedQueryConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryConversionGoal>;
 
 /** Draft conversion goal that can be set in the UI without saving */
-export interface MarketingAnalyticsAggregatedQueryDraftConversionGoal {
-  conversion_goal_id?: string;
-  conversion_goal_name?: string;
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | ConversionGoalFilter1FixedPropertiesList
-    | ConversionGoalFilter2FixedPropertiesList
-    | ConversionGoalFilter3FixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | ConversionGoalFilter1Math
-    | ConversionGoalFilter2Math
-    | ConversionGoalFilter3Math
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: ConversionGoalFilter1OrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | ConversionGoalFilter1PropertiesList
-    | ConversionGoalFilter2PropertiesList
-    | ConversionGoalFilter3PropertiesList
-    | null;
-  response?:
-    | ConversionGoalFilter1ResponseMap
-    | ConversionGoalFilter2ResponseMap
-    | ConversionGoalFilter3ResponseMap
-    | null;
-  schema_map?:
-    | ConversionGoalFilter1SchemaMapMap
-    | ConversionGoalFilter2SchemaMapMap
-    | ConversionGoalFilter3SchemaMapMap;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
+export type MarketingAnalyticsAggregatedQueryDraftConversionGoal =
+  | ConversionGoalFilter1
+  | ConversionGoalFilter2
+  | ConversionGoalFilter3;
 export const MarketingAnalyticsAggregatedQueryDraftConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversion_goal_id: S.optional(S.String),
-      conversion_goal_name: S.optional(S.String),
-      custom_name: S.optional(S.NullOr(S.String)),
-      event: S.optional(S.NullOr(S.String)),
-      fixedProperties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1FixedPropertiesList,
-            ConversionGoalFilter2FixedPropertiesList,
-            ConversionGoalFilter3FixedPropertiesList,
-          ),
-        ),
-      ),
-      kind: S.optional(S.String),
-      limit: S.optional(S.NullOr(S.Number)),
-      math: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1Math,
-            ConversionGoalFilter2Math,
-            ConversionGoalFilter3Math,
-          ),
-        ),
-      ),
-      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-      math_hogql: S.optional(S.NullOr(S.String)),
-      math_multiplier: S.optional(S.NullOr(S.Number)),
-      math_property: S.optional(S.NullOr(S.String)),
-      math_property_revenue_currency: S.optional(
-        S.NullOr(RevenueCurrencyPropertyConfig),
-      ),
-      math_property_type: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-      orderBy: S.optional(S.NullOr(ConversionGoalFilter1OrderByList)),
-      properties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1PropertiesList,
-            ConversionGoalFilter2PropertiesList,
-            ConversionGoalFilter3PropertiesList,
-          ),
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1ResponseMap,
-            ConversionGoalFilter2ResponseMap,
-            ConversionGoalFilter3ResponseMap,
-          ),
-        ),
-      ),
-      schema_map: S.optional(
-        S.Union(
-          ConversionGoalFilter1SchemaMapMap,
-          ConversionGoalFilter2SchemaMapMap,
-          ConversionGoalFilter3SchemaMapMap,
-        ),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Union(S.Number, S.String)),
-      distinct_id_field: S.optional(S.String),
-      dw_source_type: S.optional(S.NullOr(S.String)),
-      id_field: S.optional(S.String),
-      table_name: S.optional(S.String),
-      timestamp_field: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsAggregatedQueryDraftConversionGoal",
-  }) as any as S.Schema<MarketingAnalyticsAggregatedQueryDraftConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryDraftConversionGoal>;
 
-export interface MarketingAnalyticsAggregatedQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
+export type MarketingAnalyticsAggregatedQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
 export const MarketingAnalyticsAggregatedQueryPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(PropertyOperator)),
-      type: S.optional(S.String),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsAggregatedQueryPropertiesItem",
-  }) as any as S.Schema<MarketingAnalyticsAggregatedQueryPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryPropertiesItem>;
 
 export type MarketingAnalyticsAggregatedQueryPropertiesList =
   Array<MarketingAnalyticsAggregatedQueryPropertiesItem>;
@@ -21061,39 +14483,11 @@ export const MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesLi
     DataWarehouseSourceUsage,
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface MarketingAnalyticsAggregatedQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type MarketingAnalyticsAggregatedQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const MarketingAnalyticsAggregatedQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "MarketingAnalyticsAggregatedQueryResponseWarningsItem",
-  }) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsAggregatedQueryResponseWarningsList =
   Array<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
@@ -21226,148 +14620,19 @@ export const MarketingAnalyticsAggregatedQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingAnalyticsAggregatedQuery",
 }) as any as S.Schema<MarketingAnalyticsAggregatedQuery>;
 
-export interface NonIntegratedConversionsTableQueryConversionGoal {
-  actionId?: number;
-  customEventName?: string;
-}
+export type NonIntegratedConversionsTableQueryConversionGoal =
+  | ActionConversionGoal
+  | CustomEventConversionGoal;
 export const NonIntegratedConversionsTableQueryConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionId: S.optional(S.Number),
-      customEventName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NonIntegratedConversionsTableQueryConversionGoal",
-  }) as any as S.Schema<NonIntegratedConversionsTableQueryConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryConversionGoal>;
 
 /** Draft conversion goal that can be set in the UI without saving */
-export interface NonIntegratedConversionsTableQueryDraftConversionGoal {
-  conversion_goal_id?: string;
-  conversion_goal_name?: string;
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | ConversionGoalFilter1FixedPropertiesList
-    | ConversionGoalFilter2FixedPropertiesList
-    | ConversionGoalFilter3FixedPropertiesList
-    | null;
-  kind?: string;
-  limit?: number | null;
-  math?:
-    | ConversionGoalFilter1Math
-    | ConversionGoalFilter2Math
-    | ConversionGoalFilter3Math
-    | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?: ConversionGoalFilter1OrderByList | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | ConversionGoalFilter1PropertiesList
-    | ConversionGoalFilter2PropertiesList
-    | ConversionGoalFilter3PropertiesList
-    | null;
-  response?:
-    | ConversionGoalFilter1ResponseMap
-    | ConversionGoalFilter2ResponseMap
-    | ConversionGoalFilter3ResponseMap
-    | null;
-  schema_map?:
-    | ConversionGoalFilter1SchemaMapMap
-    | ConversionGoalFilter2SchemaMapMap
-    | ConversionGoalFilter3SchemaMapMap;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  id?: number | string;
-  distinct_id_field?: string;
-  dw_source_type?: string | null;
-  id_field?: string;
-  table_name?: string;
-  timestamp_field?: string;
-}
+export type NonIntegratedConversionsTableQueryDraftConversionGoal =
+  | ConversionGoalFilter1
+  | ConversionGoalFilter2
+  | ConversionGoalFilter3;
 export const NonIntegratedConversionsTableQueryDraftConversionGoal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversion_goal_id: S.optional(S.String),
-      conversion_goal_name: S.optional(S.String),
-      custom_name: S.optional(S.NullOr(S.String)),
-      event: S.optional(S.NullOr(S.String)),
-      fixedProperties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1FixedPropertiesList,
-            ConversionGoalFilter2FixedPropertiesList,
-            ConversionGoalFilter3FixedPropertiesList,
-          ),
-        ),
-      ),
-      kind: S.optional(S.String),
-      limit: S.optional(S.NullOr(S.Number)),
-      math: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1Math,
-            ConversionGoalFilter2Math,
-            ConversionGoalFilter3Math,
-          ),
-        ),
-      ),
-      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-      math_hogql: S.optional(S.NullOr(S.String)),
-      math_multiplier: S.optional(S.NullOr(S.Number)),
-      math_property: S.optional(S.NullOr(S.String)),
-      math_property_revenue_currency: S.optional(
-        S.NullOr(RevenueCurrencyPropertyConfig),
-      ),
-      math_property_type: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-      orderBy: S.optional(S.NullOr(ConversionGoalFilter1OrderByList)),
-      properties: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1PropertiesList,
-            ConversionGoalFilter2PropertiesList,
-            ConversionGoalFilter3PropertiesList,
-          ),
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          S.Union(
-            ConversionGoalFilter1ResponseMap,
-            ConversionGoalFilter2ResponseMap,
-            ConversionGoalFilter3ResponseMap,
-          ),
-        ),
-      ),
-      schema_map: S.optional(
-        S.Union(
-          ConversionGoalFilter1SchemaMapMap,
-          ConversionGoalFilter2SchemaMapMap,
-          ConversionGoalFilter3SchemaMapMap,
-        ),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Union(S.Number, S.String)),
-      distinct_id_field: S.optional(S.String),
-      dw_source_type: S.optional(S.NullOr(S.String)),
-      id_field: S.optional(S.String),
-      table_name: S.optional(S.String),
-      timestamp_field: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NonIntegratedConversionsTableQueryDraftConversionGoal",
-  }) as any as S.Schema<NonIntegratedConversionsTableQueryDraftConversionGoal>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryDraftConversionGoal>;
 
 export type NonIntegratedConversionsTableQueryOrderByItemItem =
   | string
@@ -21389,42 +14654,13 @@ export const NonIntegratedConversionsTableQueryOrderByList =
     NonIntegratedConversionsTableQueryOrderByItemList,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryOrderByList>;
 
-export interface NonIntegratedConversionsTableQueryPropertiesItem {
-  key?: string;
-  label?: string | null;
-  operator?: PropertyOperator | null;
-  /** Event properties */
-  type?: string;
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | null;
-  cohort_name?: string | null;
-}
+export type NonIntegratedConversionsTableQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter;
 export const NonIntegratedConversionsTableQueryPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(PropertyOperator)),
-      type: S.optional(S.String),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "NonIntegratedConversionsTableQueryPropertiesItem",
-  }) as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesItem>;
 
 export type NonIntegratedConversionsTableQueryPropertiesList =
   Array<NonIntegratedConversionsTableQueryPropertiesItem>;
@@ -21475,39 +14711,11 @@ export const NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesL
     DataWarehouseSourceUsage,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface NonIntegratedConversionsTableQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type NonIntegratedConversionsTableQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const NonIntegratedConversionsTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "NonIntegratedConversionsTableQueryResponseWarningsItem",
-  }) as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsItem>;
 
 export type NonIntegratedConversionsTableQueryResponseWarningsList =
   Array<NonIntegratedConversionsTableQueryResponseWarningsItem>;
@@ -21735,39 +14943,11 @@ export const ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<ErrorTrackingQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface ErrorTrackingQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const ErrorTrackingQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-).annotate({
-  identifier: "ErrorTrackingQueryResponseWarningsItem",
-}) as any as S.Schema<ErrorTrackingQueryResponseWarningsItem>;
+export type ErrorTrackingQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const ErrorTrackingQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingQueryResponseWarningsItem>;
 
 export type ErrorTrackingQueryResponseWarningsList =
   Array<ErrorTrackingQueryResponseWarningsItem>;
@@ -21937,39 +15117,11 @@ export const ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesL
     DataWarehouseSourceUsage,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface ErrorTrackingIssueCorrelationQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "ErrorTrackingIssueCorrelationQueryResponseWarningsItem",
-  }) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseWarningsList =
   Array<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
@@ -22311,86 +15463,32 @@ export const ExperimentTrendsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentTrendsQuery",
 }) as any as S.Schema<ExperimentTrendsQuery>;
 
-export interface TracesQueryPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const TracesQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "TracesQueryPropertiesItem",
-}) as any as S.Schema<TracesQueryPropertiesItem>;
+export type TracesQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const TracesQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryPropertiesItem>;
 
 export type TracesQueryPropertiesList = Array<TracesQueryPropertiesItem>;
 export const TracesQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -22419,38 +15517,11 @@ export const TracesQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<TracesQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface TracesQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const TracesQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "TracesQueryResponseWarningsItem",
-}) as any as S.Schema<TracesQueryResponseWarningsItem>;
+export type TracesQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const TracesQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryResponseWarningsItem>;
 
 export type TracesQueryResponseWarningsList =
   Array<TracesQueryResponseWarningsItem>;
@@ -22557,86 +15628,32 @@ export const TracesQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TracesQuery" }) as any as S.Schema<TracesQuery>;
 
-export interface TraceQueryPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const TraceQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "TraceQueryPropertiesItem",
-}) as any as S.Schema<TraceQueryPropertiesItem>;
+export type TraceQueryPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const TraceQueryPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryPropertiesItem>;
 
 export type TraceQueryPropertiesList = Array<TraceQueryPropertiesItem>;
 export const TraceQueryPropertiesList = /*@__PURE__*/ S.Array(
@@ -22665,38 +15682,11 @@ export const TraceQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<TraceQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface TraceQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const TraceQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "TraceQueryResponseWarningsItem",
-}) as any as S.Schema<TraceQueryResponseWarningsItem>;
+export type TraceQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const TraceQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryResponseWarningsItem>;
 
 export type TraceQueryResponseWarningsList =
   Array<TraceQueryResponseWarningsItem>;
@@ -22805,38 +15795,11 @@ export const SessionQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<SessionQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface SessionQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const SessionQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "SessionQueryResponseWarningsItem",
-}) as any as S.Schema<SessionQueryResponseWarningsItem>;
+export type SessionQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const SessionQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionQueryResponseWarningsItem>;
 
 export type SessionQueryResponseWarningsList =
   Array<SessionQueryResponseWarningsItem>;
@@ -22992,39 +15955,11 @@ export const EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface EndpointsUsageTableQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
+export type EndpointsUsageTableQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
 export const EndpointsUsageTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      schema_name: S.optional(S.String),
-      source_id: S.optional(S.NullOr(S.String)),
-      source_type: S.optional(S.String),
-      status: S.optional(S.String),
-      table_name: S.optional(S.String),
-      type: S.optional(S.String),
-      resources: S.optional(AccessControlFilterWarningResourcesList),
-    }),
-  ).annotate({
-    identifier: "EndpointsUsageTableQueryResponseWarningsItem",
-  }) as any as S.Schema<EndpointsUsageTableQueryResponseWarningsItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EndpointsUsageTableQueryResponseWarningsItem>;
 
 export type EndpointsUsageTableQueryResponseWarningsList =
   Array<EndpointsUsageTableQueryResponseWarningsItem>;
@@ -23179,38 +16114,11 @@ export const AccountsQueryResponseUsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<AccountsQueryResponseUsedDataWarehouseSourcesList>;
 
-export interface AccountsQueryResponseWarningsItem {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Name of the ExternalDataSchema responsible for syncing the table */
-  schema_name?: string;
-  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
-  source_id?: string | null;
-  /** Source type, e.g. "Stripe", "Hubspot" */
-  source_type?: string;
-  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
-  status?: string;
-  /** Name of the warehouse table the warning refers to */
-  table_name?: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources?: AccessControlFilterWarningResourcesList;
-}
-export const AccountsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.optional(S.String),
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.optional(S.String),
-    status: S.optional(S.String),
-    table_name: S.optional(S.String),
-    type: S.optional(S.String),
-    resources: S.optional(AccessControlFilterWarningResourcesList),
-  }),
-).annotate({
-  identifier: "AccountsQueryResponseWarningsItem",
-}) as any as S.Schema<AccountsQueryResponseWarningsItem>;
+export type AccountsQueryResponseWarningsItem =
+  | DataWarehouseSyncWarning
+  | AccessControlFilterWarning;
+export const AccountsQueryResponseWarningsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountsQueryResponseWarningsItem>;
 
 export type AccountsQueryResponseWarningsList =
   Array<AccountsQueryResponseWarningsItem>;
@@ -23331,541 +16239,42 @@ export const AccountsQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountsQuery" }) as any as S.Schema<AccountsQuery>;
 
 /** Source of the events */
-export interface DataTableNodeSource {
-  custom_name?: string | null;
-  /** The event or `null` for all events. */
-  event?: string | null;
-  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
-  fixedProperties?:
-    | EventsNodeFixedPropertiesList
-    | EventsQueryFixedPropertiesList
-    | PersonsNodeFixedPropertiesList
-    | ActorsQueryFixedPropertiesList
-    | SessionsQueryFixedPropertiesList
-    | null;
-  kind?: string;
-  /** Number of rows to return */
-  limit?: number | null;
-  math?: EventsNodeMath | null;
-  math_group_type_index?: MathGroupTypeIndex | null;
-  math_hogql?: string | null;
-  math_multiplier?: number | null;
-  math_property?: string | null;
-  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
-  math_property_type?: string | null;
-  /** Client provided name of the query */
-  name?: string | null;
-  optionalInFunnel?: boolean | null;
-  /** Columns to order by */
-  orderBy?:
-    | EventsNodeOrderByList
-    | EventsQueryOrderByList
-    | ActorsQueryOrderByList
-    | GroupsQueryOrderByList
-    | WebOverviewQueryOrderByList
-    | WebStatsTableQueryOrderByList
-    | WebExternalClicksTableQueryOrderByList
-    | WebGoalsQueryOrderByList
-    | WebVitalsQueryOrderByList
-    | WebVitalsPathBreakdownQueryOrderByList
-    | SessionsQueryOrderByList
-    | MarketingAnalyticsTableQueryOrderByList
-    | NonIntegratedConversionsTableQueryOrderByList
-    | ErrorTrackingOrderBy
-    | EndpointsUsageTableQueryOrderByList
-    | AccountsQueryOrderByList
-    | null;
-  /** Properties configurable in the interface */
-  properties?:
-    | EventsNodePropertiesList
-    | EventsQueryPropertiesList
-    | PersonsNodePropertiesList
-    | ActorsQueryProperties
-    | GroupsQueryPropertiesList
-    | WebOverviewQueryPropertiesList
-    | WebStatsTableQueryPropertiesList
-    | WebExternalClicksTableQueryPropertiesList
-    | WebGoalsQueryPropertiesList
-    | WebVitalsQueryPropertiesList
-    | WebVitalsPathBreakdownQueryPropertiesList
-    | SessionsQueryPropertiesList
-    | RevenueAnalyticsGrossRevenueQueryPropertiesList
-    | RevenueAnalyticsMetricsQueryPropertiesList
-    | RevenueAnalyticsMRRQueryPropertiesList
-    | RevenueAnalyticsOverviewQueryPropertiesList
-    | RevenueAnalyticsTopCustomersQueryPropertiesList
-    | MarketingAnalyticsTableQueryPropertiesList
-    | MarketingAnalyticsAggregatedQueryPropertiesList
-    | NonIntegratedConversionsTableQueryPropertiesList
-    | TracesQueryPropertiesList
-    | TraceQueryPropertiesList
-    | null;
-  response?:
-    | EventsNodeResponseMap
-    | EventsQueryResponse
-    | PersonsNodeResponseMap
-    | ActorsQueryResponse
-    | GroupsQueryResponse
-    | HogQLQueryResponse
-    | WebOverviewQueryResponse
-    | WebStatsTableQueryResponse
-    | WebExternalClicksTableQueryResponse
-    | WebGoalsQueryResponse
-    | WebVitalsPathBreakdownQueryResponse
-    | SessionAttributionExplorerQueryResponse
-    | SessionsQueryResponse
-    | RevenueAnalyticsGrossRevenueQueryResponse
-    | RevenueAnalyticsMetricsQueryResponse
-    | RevenueAnalyticsMRRQueryResponse
-    | RevenueAnalyticsOverviewQueryResponse
-    | RevenueAnalyticsTopCustomersQueryResponse
-    | RevenueExampleEventsQueryResponse
-    | RevenueExampleDataWarehouseTablesQueryResponse
-    | MarketingAnalyticsTableQueryResponse
-    | MarketingAnalyticsAggregatedQueryResponse
-    | NonIntegratedConversionsTableQueryResponse
-    | ErrorTrackingQueryResponse
-    | ErrorTrackingIssueCorrelationQueryResponse
-    | ExperimentFunnelsQueryResponse
-    | ExperimentTrendsQueryResponse
-    | TracesQueryResponse
-    | TraceQueryResponse
-    | SessionQueryResponse
-    | EndpointsUsageTableQueryResponse
-    | AccountsQueryResponse
-    | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  /** Show events matching a given action */
-  actionId?: number | null;
-  /** Show events matching action steps directly, used when no actionId is provided (e.g. previewing unsaved actions). Ignored if actionId is set. */
-  actionSteps?: EventsQueryActionStepsList | null;
-  /** Only fetch events that happened after this timestamp */
-  after?: string | null;
-  /** Only fetch events that happened before this timestamp */
-  before?: string | null;
-  /** Filter to events matching any of these event names */
-  events?:
-    | EventsQueryEventsList
-    | ErrorTrackingIssueCorrelationQueryEventsList
-    | null;
-  /** Filter test accounts */
-  filterTestAccounts?: boolean | null;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  /** Number of rows to skip before returning rows */
-  offset?: number | null;
-  /** Show events for a given person */
-  personId?: string | null;
-  /** Return a limited set of data. Required. */
-  select?:
-    | EventsQuerySelectList
-    | ActorsQuerySelectList
-    | GroupsQuerySelectList
-    | SessionsQuerySelectList
-    | MarketingAnalyticsTableQuerySelectList
-    | MarketingAnalyticsAggregatedQuerySelectList
-    | NonIntegratedConversionsTableQuerySelectList
-    | AccountsQuerySelectList
-    | null;
-  /** source for querying events for insights */
-  source?: InsightActorsQuery | ActorsQuerySource | WebVitalsQuerySource | null;
-  tags?: QueryLogTags | null;
-  /** HogQL filters to apply on returned data */
-  where?: EventsQueryWhereList | SessionsQueryWhereList | null;
-  cohort?: number | null;
-  distinctId?: string | null;
-  search?: string | null;
-  group_type_index?: number;
-  /** Optional id of a direct-query-capable external data source to run against instead of ClickHouse — a pure-direct source, or a synced source with direct query enabled. */
-  connectionId?: string | null;
-  explain?: boolean | null;
-  filters?: HogQLFilters | Filters | null;
-  query?: string;
-  /** Run the selected connection query directly without translating it through HogQL first */
-  sendRawQuery?: boolean | null;
-  /** Constant values that can be referenced with the {placeholder} syntax in the query */
-  values?: HogQLQueryValuesMap | null;
-  /** Variables to be substituted into the query */
-  variables?: HogQLQueryVariablesMap | null;
-  /** Groups aggregation - not used in Web Analytics but required for type compatibility */
-  aggregation_group_type_index?: number | null;
-  /** Compare to date range */
-  compareFilter?: CompareFilter | null;
-  conversionGoal?:
-    | WebOverviewQueryConversionGoal
-    | WebStatsTableQueryConversionGoal
-    | WebExternalClicksTableQueryConversionGoal
-    | WebGoalsQueryConversionGoal
-    | WebVitalsQueryConversionGoal
-    | WebVitalsPathBreakdownQueryConversionGoal
-    | MarketingAnalyticsTableQueryConversionGoal
-    | MarketingAnalyticsAggregatedQueryConversionGoal
-    | NonIntegratedConversionsTableQueryConversionGoal
-    | null;
-  /** Colors used in the insight's visualization - not used in Web Analytics but required for type compatibility */
-  dataColorTheme?: number | null;
-  /** Date range to filter results. */
-  dateRange?: DateRange | null;
-  doPathCleaning?: boolean | null;
-  includeRevenue?: boolean | null;
-  /** Interval for date range calculation (affects date_to rounding for hour vs day ranges) */
-  interval?: IntervalType | SimpleIntervalType | null;
-  sampling?: WebAnalyticsSampling | null;
-  /** Sampling rate */
-  samplingFactor?: number | null;
-  useSessionsTable?: boolean | null;
-  /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
-  useWebAnalyticsPrecompute?: boolean | null;
-  breakdownBy?: WebStatsBreakdown | EndpointsUsageBreakdown;
-  includeAvgTimeOnPage?: boolean | null;
-  includeBounceRate?: boolean | null;
-  includeHost?: boolean | null;
-  includeScrollDepth?: boolean | null;
-  stripQueryParams?: boolean | null;
-  metric?: WebVitalsMetric;
-  percentile?: WebVitalsPercentile;
-  thresholds?: WebVitalsPathBreakdownQueryThresholdsList;
-  groupBy?:
-    | SessionAttributionExplorerQueryGroupByList
-    | RevenueAnalyticsTopCustomersGroupBy;
-  /** Event property filters - filters sessions that contain events matching these properties */
-  eventProperties?: SessionsQueryEventPropertiesList | null;
-  breakdown?:
-    | RevenueAnalyticsGrossRevenueQueryBreakdownList
-    | RevenueAnalyticsMetricsQueryBreakdownList
-    | RevenueAnalyticsMRRQueryBreakdownList;
-  /** Draft conversion goal that can be set in the UI without saving */
-  draftConversionGoal?:
-    | MarketingAnalyticsTableQueryDraftConversionGoal
-    | MarketingAnalyticsAggregatedQueryDraftConversionGoal
-    | NonIntegratedConversionsTableQueryDraftConversionGoal
-    | null;
-  /** Drill-down hierarchy level: channel, source, or campaign (default) */
-  drillDownLevel?: MarketingAnalyticsDrillDownLevel | null;
-  /** Filter by integration type */
-  integrationFilter?: IntegrationFilter | null;
-  assignee?: ErrorTrackingIssueAssignee | null;
-  filterGroup?: PropertyGroupFilter | null;
-  groupKey?: string | null;
-  groupTypeIndex?: number | null;
-  /** Filter to a specific error tracking issue by ID. */
-  issueId?: string | null;
-  /** Sort direction. */
-  orderDirection?: OrderDirection2 | null;
-  /** Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery. The backend caps the list at 50 entries; extras are dropped silently. */
-  pendingFingerprintIssueStateUpdates?: ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList | null;
-  /** Free-text search across exception type, message, and stack frames. */
-  searchQuery?: string | null;
-  /** Filter by issue status. */
-  status?: ErrorTrackingQueryStatus | null;
-  useQueryV2?: boolean | null;
-  useQueryV3?: boolean | null;
-  volumeResolution?: number;
-  withAggregations?: boolean | null;
-  withFirstEvent?: boolean | null;
-  withLastEvent?: boolean | null;
-  experiment_id?: number | null;
-  fingerprint?: string | null;
-  funnels_query?: FunnelsQuery;
-  uuid?: string | null;
-  count_query?: TrendsQuery;
-  exposure_query?: TrendsQuery | null;
-  filterSupportTraces?: boolean | null;
-  /** Include stored sentiment evaluation results for returned traces and direct generation events. */
-  includeSentiment?: boolean | null;
-  /** Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias. */
-  randomOrder?: boolean | null;
-  searchTerm?: string | null;
-  showColumnConfigurator?: boolean | null;
-  traceId?: string;
-  sessionId?: string;
-  /** Filter to specific endpoints by name */
-  endpointNames?: EndpointsUsageTableQueryEndpointNamesList | null;
-  /** Filter by materialization type */
-  materializationType?: MaterializationType | null;
-  /** Match accounts with no active relationship of any definition. */
-  allRolesUnassigned?: boolean | null;
-  /** Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the "My accounts" shortcut (the current user's id) and the shareable "Assigned to" filter — the ids are explicit so a shared URL resolves identically for every viewer. */
-  assignedToUserIds?: AccountsQueryAssignedToUserIdsList | null;
-  /** Optional HogQL boolean expression AND-ed into the WHERE clause. Used by the overview tile click-to-filter affordance. */
-  filterExpression?: string | null;
-  /** Aggregation expressions evaluated against the filtered account set; one value per metric is returned in `metricsResults`. When `metrics` is set without a `select`, the runner skips the regular row fetch and returns only the aggregated values. */
-  metrics?: AccountsQueryMetricsList | null;
-  tagNames?: AccountsQueryTagNamesList | null;
-}
-export const DataTableNodeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeFixedPropertiesList,
-          EventsQueryFixedPropertiesList,
-          PersonsNodeFixedPropertiesList,
-          ActorsQueryFixedPropertiesList,
-          SessionsQueryFixedPropertiesList,
-        ),
-      ),
-    ),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(S.NullOr(EventsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(
-      S.NullOr(RevenueCurrencyPropertyConfig),
-    ),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeOrderByList,
-          EventsQueryOrderByList,
-          ActorsQueryOrderByList,
-          GroupsQueryOrderByList,
-          WebOverviewQueryOrderByList,
-          WebStatsTableQueryOrderByList,
-          WebExternalClicksTableQueryOrderByList,
-          WebGoalsQueryOrderByList,
-          WebVitalsQueryOrderByList,
-          WebVitalsPathBreakdownQueryOrderByList,
-          SessionsQueryOrderByList,
-          MarketingAnalyticsTableQueryOrderByList,
-          NonIntegratedConversionsTableQueryOrderByList,
-          ErrorTrackingOrderBy,
-          EndpointsUsageTableQueryOrderByList,
-          AccountsQueryOrderByList,
-        ),
-      ),
-    ),
-    properties: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodePropertiesList,
-          EventsQueryPropertiesList,
-          PersonsNodePropertiesList,
-          ActorsQueryProperties,
-          GroupsQueryPropertiesList,
-          WebOverviewQueryPropertiesList,
-          WebStatsTableQueryPropertiesList,
-          WebExternalClicksTableQueryPropertiesList,
-          WebGoalsQueryPropertiesList,
-          WebVitalsQueryPropertiesList,
-          WebVitalsPathBreakdownQueryPropertiesList,
-          SessionsQueryPropertiesList,
-          RevenueAnalyticsGrossRevenueQueryPropertiesList,
-          RevenueAnalyticsMetricsQueryPropertiesList,
-          RevenueAnalyticsMRRQueryPropertiesList,
-          RevenueAnalyticsOverviewQueryPropertiesList,
-          RevenueAnalyticsTopCustomersQueryPropertiesList,
-          MarketingAnalyticsTableQueryPropertiesList,
-          MarketingAnalyticsAggregatedQueryPropertiesList,
-          NonIntegratedConversionsTableQueryPropertiesList,
-          TracesQueryPropertiesList,
-          TraceQueryPropertiesList,
-        ),
-      ),
-    ),
-    response: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsNodeResponseMap,
-          EventsQueryResponse,
-          PersonsNodeResponseMap,
-          ActorsQueryResponse,
-          GroupsQueryResponse,
-          HogQLQueryResponse,
-          WebOverviewQueryResponse,
-          WebStatsTableQueryResponse,
-          WebExternalClicksTableQueryResponse,
-          WebGoalsQueryResponse,
-          WebVitalsPathBreakdownQueryResponse,
-          SessionAttributionExplorerQueryResponse,
-          SessionsQueryResponse,
-          RevenueAnalyticsGrossRevenueQueryResponse,
-          RevenueAnalyticsMetricsQueryResponse,
-          RevenueAnalyticsMRRQueryResponse,
-          RevenueAnalyticsOverviewQueryResponse,
-          RevenueAnalyticsTopCustomersQueryResponse,
-          RevenueExampleEventsQueryResponse,
-          RevenueExampleDataWarehouseTablesQueryResponse,
-          MarketingAnalyticsTableQueryResponse,
-          MarketingAnalyticsAggregatedQueryResponse,
-          NonIntegratedConversionsTableQueryResponse,
-          ErrorTrackingQueryResponse,
-          ErrorTrackingIssueCorrelationQueryResponse,
-          ExperimentFunnelsQueryResponse,
-          ExperimentTrendsQueryResponse,
-          TracesQueryResponse,
-          TraceQueryResponse,
-          SessionQueryResponse,
-          EndpointsUsageTableQueryResponse,
-          AccountsQueryResponse,
-        ),
-      ),
-    ),
-    version: S.optional(S.NullOr(S.Number)),
-    actionId: S.optional(S.NullOr(S.Number)),
-    actionSteps: S.optional(S.NullOr(EventsQueryActionStepsList)),
-    after: S.optional(S.NullOr(S.String)),
-    before: S.optional(S.NullOr(S.String)),
-    events: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsQueryEventsList,
-          ErrorTrackingIssueCorrelationQueryEventsList,
-        ),
-      ),
-    ),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    offset: S.optional(S.NullOr(S.Number)),
-    personId: S.optional(S.NullOr(S.String)),
-    select: S.optional(
-      S.NullOr(
-        S.Union(
-          EventsQuerySelectList,
-          ActorsQuerySelectList,
-          GroupsQuerySelectList,
-          SessionsQuerySelectList,
-          MarketingAnalyticsTableQuerySelectList,
-          MarketingAnalyticsAggregatedQuerySelectList,
-          NonIntegratedConversionsTableQuerySelectList,
-          AccountsQuerySelectList,
-        ),
-      ),
-    ),
-    source: S.optional(
-      S.NullOr(
-        S.Union(InsightActorsQuery, ActorsQuerySource, WebVitalsQuerySource),
-      ),
-    ),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    where: S.optional(
-      S.NullOr(S.Union(EventsQueryWhereList, SessionsQueryWhereList)),
-    ),
-    cohort: S.optional(S.NullOr(S.Number)),
-    distinctId: S.optional(S.NullOr(S.String)),
-    search: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.Number),
-    connectionId: S.optional(S.NullOr(S.String)),
-    explain: S.optional(S.NullOr(S.Boolean)),
-    filters: S.optional(S.NullOr(S.Union(HogQLFilters, Filters))),
-    query: S.optional(S.String),
-    sendRawQuery: S.optional(S.NullOr(S.Boolean)),
-    values: S.optional(S.NullOr(HogQLQueryValuesMap)),
-    variables: S.optional(S.NullOr(HogQLQueryVariablesMap)),
-    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-    compareFilter: S.optional(S.NullOr(CompareFilter)),
-    conversionGoal: S.optional(
-      S.NullOr(
-        S.Union(
-          WebOverviewQueryConversionGoal,
-          WebStatsTableQueryConversionGoal,
-          WebExternalClicksTableQueryConversionGoal,
-          WebGoalsQueryConversionGoal,
-          WebVitalsQueryConversionGoal,
-          WebVitalsPathBreakdownQueryConversionGoal,
-          MarketingAnalyticsTableQueryConversionGoal,
-          MarketingAnalyticsAggregatedQueryConversionGoal,
-          NonIntegratedConversionsTableQueryConversionGoal,
-        ),
-      ),
-    ),
-    dataColorTheme: S.optional(S.NullOr(S.Number)),
-    dateRange: S.optional(S.NullOr(DateRange)),
-    doPathCleaning: S.optional(S.NullOr(S.Boolean)),
-    includeRevenue: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(S.Union(IntervalType, SimpleIntervalType))),
-    sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
-    samplingFactor: S.optional(S.NullOr(S.Number)),
-    useSessionsTable: S.optional(S.NullOr(S.Boolean)),
-    useWebAnalyticsPrecompute: S.optional(S.NullOr(S.Boolean)),
-    breakdownBy: S.optional(
-      S.Union(WebStatsBreakdown, EndpointsUsageBreakdown),
-    ),
-    includeAvgTimeOnPage: S.optional(S.NullOr(S.Boolean)),
-    includeBounceRate: S.optional(S.NullOr(S.Boolean)),
-    includeHost: S.optional(S.NullOr(S.Boolean)),
-    includeScrollDepth: S.optional(S.NullOr(S.Boolean)),
-    stripQueryParams: S.optional(S.NullOr(S.Boolean)),
-    metric: S.optional(WebVitalsMetric),
-    percentile: S.optional(WebVitalsPercentile),
-    thresholds: S.optional(WebVitalsPathBreakdownQueryThresholdsList),
-    groupBy: S.optional(
-      S.Union(
-        SessionAttributionExplorerQueryGroupByList,
-        RevenueAnalyticsTopCustomersGroupBy,
-      ),
-    ),
-    eventProperties: S.optional(S.NullOr(SessionsQueryEventPropertiesList)),
-    breakdown: S.optional(
-      S.Union(
-        RevenueAnalyticsGrossRevenueQueryBreakdownList,
-        RevenueAnalyticsMetricsQueryBreakdownList,
-        RevenueAnalyticsMRRQueryBreakdownList,
-      ),
-    ),
-    draftConversionGoal: S.optional(
-      S.NullOr(
-        S.Union(
-          MarketingAnalyticsTableQueryDraftConversionGoal,
-          MarketingAnalyticsAggregatedQueryDraftConversionGoal,
-          NonIntegratedConversionsTableQueryDraftConversionGoal,
-        ),
-      ),
-    ),
-    drillDownLevel: S.optional(S.NullOr(MarketingAnalyticsDrillDownLevel)),
-    integrationFilter: S.optional(S.NullOr(IntegrationFilter)),
-    assignee: S.optional(S.NullOr(ErrorTrackingIssueAssignee)),
-    filterGroup: S.optional(S.NullOr(PropertyGroupFilter)),
-    groupKey: S.optional(S.NullOr(S.String)),
-    groupTypeIndex: S.optional(S.NullOr(S.Number)),
-    issueId: S.optional(S.NullOr(S.String)),
-    orderDirection: S.optional(S.NullOr(OrderDirection2)),
-    pendingFingerprintIssueStateUpdates: S.optional(
-      S.NullOr(ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList),
-    ),
-    searchQuery: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(ErrorTrackingQueryStatus)),
-    useQueryV2: S.optional(S.NullOr(S.Boolean)),
-    useQueryV3: S.optional(S.NullOr(S.Boolean)),
-    volumeResolution: S.optional(S.Number),
-    withAggregations: S.optional(S.NullOr(S.Boolean)),
-    withFirstEvent: S.optional(S.NullOr(S.Boolean)),
-    withLastEvent: S.optional(S.NullOr(S.Boolean)),
-    experiment_id: S.optional(S.NullOr(S.Number)),
-    fingerprint: S.optional(S.NullOr(S.String)),
-    funnels_query: S.optional(FunnelsQuery),
-    uuid: S.optional(S.NullOr(S.String)),
-    count_query: S.optional(TrendsQuery),
-    exposure_query: S.optional(S.NullOr(TrendsQuery)),
-    filterSupportTraces: S.optional(S.NullOr(S.Boolean)),
-    includeSentiment: S.optional(S.NullOr(S.Boolean)),
-    randomOrder: S.optional(S.NullOr(S.Boolean)),
-    searchTerm: S.optional(S.NullOr(S.String)),
-    showColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
-    traceId: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    endpointNames: S.optional(
-      S.NullOr(EndpointsUsageTableQueryEndpointNamesList),
-    ),
-    materializationType: S.optional(S.NullOr(MaterializationType)),
-    allRolesUnassigned: S.optional(S.NullOr(S.Boolean)),
-    assignedToUserIds: S.optional(S.NullOr(AccountsQueryAssignedToUserIdsList)),
-    filterExpression: S.optional(S.NullOr(S.String)),
-    metrics: S.optional(S.NullOr(AccountsQueryMetricsList)),
-    tagNames: S.optional(S.NullOr(AccountsQueryTagNamesList)),
-  }),
-).annotate({
-  identifier: "DataTableNodeSource",
-}) as any as S.Schema<DataTableNodeSource>;
+export type DataTableNodeSource =
+  | EventsNode
+  | EventsQuery
+  | PersonsNode
+  | ActorsQuery
+  | GroupsQuery
+  | HogQLQuery
+  | WebOverviewQuery
+  | WebStatsTableQuery
+  | WebExternalClicksTableQuery
+  | WebGoalsQuery
+  | WebVitalsQuery
+  | WebVitalsPathBreakdownQuery
+  | SessionAttributionExplorerQuery
+  | SessionsQuery
+  | RevenueAnalyticsGrossRevenueQuery
+  | RevenueAnalyticsMetricsQuery
+  | RevenueAnalyticsMRRQuery
+  | RevenueAnalyticsOverviewQuery
+  | RevenueAnalyticsTopCustomersQuery
+  | RevenueExampleEventsQuery
+  | RevenueExampleDataWarehouseTablesQuery
+  | MarketingAnalyticsTableQuery
+  | MarketingAnalyticsAggregatedQuery
+  | NonIntegratedConversionsTableQuery
+  | ErrorTrackingQuery
+  | ErrorTrackingIssueCorrelationQuery
+  | ExperimentFunnelsQuery
+  | ExperimentTrendsQuery
+  | TracesQuery
+  | TraceQuery
+  | SessionQuery
+  | EndpointsUsageTableQuery
+  | AccountsQuery;
+export const DataTableNodeSource =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataTableNodeSource>;
 
 export interface DataTableNode {
   /** Can the user click on column headers to sort the table? (default: true) */
@@ -24362,165 +16771,13 @@ export const HogQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogQuery" }) as any as S.Schema<HogQuery>;
 
 /** The query definition for this insight. The `kind` field determines the query type: - `InsightVizNode` — product analytics (trends, funnels, retention, paths, stickiness, lifecycle) - `DataVisualizationNode` — SQL insights using HogQL - `DataTableNode` — raw data tables - `HogQuery` — Hog language queries */
-export interface InsightQuerySchema {
-  /** Query is embedded inside another bordered component */
-  embedded?: boolean | null;
-  /** Show with most visual options enabled. Used in insight scene. */
-  full?: boolean | null;
-  hidePersonsModal?: boolean | null;
-  hideTooltipOnScroll?: boolean | null;
-  kind?: string;
-  showCorrelationTable?: boolean | null;
-  showFilters?: boolean | null;
-  showHeader?: boolean | null;
-  showLastComputation?: boolean | null;
-  showLastComputationRefresh?: boolean | null;
-  showResults?: boolean | null;
-  showTable?: boolean | null;
-  /** Source of the events */
-  source?: InsightVizNodeSource | DataTableNodeSource | HogQLQuery;
-  suppressSessionAnalysisWarning?: boolean | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-  vizSpecificOptions?: VizSpecificOptions | null;
-  /** Can the user click on column headers to sort the table? (default: true) */
-  allowSorting?: boolean | null;
-  /** Columns shown in the table, unless the `source` provides them. */
-  columns?: DataTableNodeColumnsList | null;
-  /** Context for the table, used by components like ColumnConfigurator */
-  context?: DataTableNodeViewPropsContext | null;
-  /** Context key for universal column configuration (e.g., "survey:123") */
-  contextKey?: string | null;
-  /** Default columns to use when resetting column configuration */
-  defaultColumns?: DataTableNodeDefaultColumnsList | null;
-  /** Can expand row to show raw event data (default: true) */
-  expandable?: boolean | null;
-  /** Columns that aren't shown in the table, even if in columns or returned data */
-  hiddenColumns?: DataTableNodeHiddenColumnsList | null;
-  /** Columns that are sticky when scrolling horizontally */
-  pinnedColumns?: DataTableNodePinnedColumnsList | null;
-  /** Link properties via the URL (default: false) */
-  propertiesViaUrl?: boolean | null;
-  response?: DataTableNodeResponse | HogQueryResponse | null;
-  /** Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative ("X ago"). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources. */
-  showAbsoluteTime?: boolean | null;
-  /** Show the kebab menu at the end of the row */
-  showActions?: boolean | null;
-  /** Show a button to configure the table's columns if possible */
-  showColumnConfigurator?: boolean | null;
-  /** Show count of total and filtered results */
-  showCount?: boolean | null;
-  /** Show date range selector */
-  showDateRange?: boolean | null;
-  /** Show the time it takes to run a query */
-  showElapsedTime?: boolean | null;
-  /** Include an event filter above the table (EventsNode only) */
-  showEventFilter?: boolean | null;
-  /** Include an events filter above the table to filter by multiple events (EventsQuery only) */
-  showEventsFilter?: boolean | null;
-  /** Show the export button */
-  showExport?: boolean | null;
-  /** Include a HogQL query editor above HogQL tables */
-  showHogQLEditor?: boolean | null;
-  /** Show a button to open the current query as a new insight. (default: true) */
-  showOpenEditorButton?: boolean | null;
-  /** Show a button to configure and persist the table's default columns if possible */
-  showPersistentColumnConfigurator?: boolean | null;
-  /** Include a property filter above the table */
-  showPropertyFilter?: DataTableNodeShowPropertyFilter | null;
-  /** Show a recording column for events with session recordings */
-  showRecordingColumn?: boolean | null;
-  /** Show a reload button */
-  showReload?: boolean | null;
-  /** Show a results table */
-  showResultsTable?: boolean | null;
-  /** Show saved filters feature for this table (requires uniqueKey) */
-  showSavedFilters?: boolean | null;
-  /** Shows a list of saved queries */
-  showSavedQueries?: boolean | null;
-  /** Include a free text search field (PersonsNode only) */
-  showSearch?: boolean | null;
-  /** Show actors query options and back to source */
-  showSourceQueryOptions?: boolean | null;
-  /** Show table views feature for this table (requires uniqueKey) */
-  showTableViews?: boolean | null;
-  /** Show filter to exclude test accounts */
-  showTestAccountFilters?: boolean | null;
-  /** Show a detailed query timing breakdown */
-  showTimings?: boolean | null;
-  tags?: QueryLogTags | null;
-  chartSettings?: ChartSettings | null;
-  display?: ChartDisplayType | null;
-  tableSettings?: TableSettings | null;
-  code?: string | null;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-}
-export const InsightQuerySchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    embedded: S.optional(S.NullOr(S.Boolean)),
-    full: S.optional(S.NullOr(S.Boolean)),
-    hidePersonsModal: S.optional(S.NullOr(S.Boolean)),
-    hideTooltipOnScroll: S.optional(S.NullOr(S.Boolean)),
-    kind: S.optional(S.String),
-    showCorrelationTable: S.optional(S.NullOr(S.Boolean)),
-    showFilters: S.optional(S.NullOr(S.Boolean)),
-    showHeader: S.optional(S.NullOr(S.Boolean)),
-    showLastComputation: S.optional(S.NullOr(S.Boolean)),
-    showLastComputationRefresh: S.optional(S.NullOr(S.Boolean)),
-    showResults: S.optional(S.NullOr(S.Boolean)),
-    showTable: S.optional(S.NullOr(S.Boolean)),
-    source: S.optional(
-      S.Union(InsightVizNodeSource, DataTableNodeSource, HogQLQuery),
-    ),
-    suppressSessionAnalysisWarning: S.optional(S.NullOr(S.Boolean)),
-    version: S.optional(S.NullOr(S.Number)),
-    vizSpecificOptions: S.optional(S.NullOr(VizSpecificOptions)),
-    allowSorting: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(DataTableNodeColumnsList)),
-    context: S.optional(S.NullOr(DataTableNodeViewPropsContext)),
-    contextKey: S.optional(S.NullOr(S.String)),
-    defaultColumns: S.optional(S.NullOr(DataTableNodeDefaultColumnsList)),
-    expandable: S.optional(S.NullOr(S.Boolean)),
-    hiddenColumns: S.optional(S.NullOr(DataTableNodeHiddenColumnsList)),
-    pinnedColumns: S.optional(S.NullOr(DataTableNodePinnedColumnsList)),
-    propertiesViaUrl: S.optional(S.NullOr(S.Boolean)),
-    response: S.optional(
-      S.NullOr(S.Union(DataTableNodeResponse, HogQueryResponse)),
-    ),
-    showAbsoluteTime: S.optional(S.NullOr(S.Boolean)),
-    showActions: S.optional(S.NullOr(S.Boolean)),
-    showColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
-    showCount: S.optional(S.NullOr(S.Boolean)),
-    showDateRange: S.optional(S.NullOr(S.Boolean)),
-    showElapsedTime: S.optional(S.NullOr(S.Boolean)),
-    showEventFilter: S.optional(S.NullOr(S.Boolean)),
-    showEventsFilter: S.optional(S.NullOr(S.Boolean)),
-    showExport: S.optional(S.NullOr(S.Boolean)),
-    showHogQLEditor: S.optional(S.NullOr(S.Boolean)),
-    showOpenEditorButton: S.optional(S.NullOr(S.Boolean)),
-    showPersistentColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
-    showPropertyFilter: S.optional(S.NullOr(DataTableNodeShowPropertyFilter)),
-    showRecordingColumn: S.optional(S.NullOr(S.Boolean)),
-    showReload: S.optional(S.NullOr(S.Boolean)),
-    showResultsTable: S.optional(S.NullOr(S.Boolean)),
-    showSavedFilters: S.optional(S.NullOr(S.Boolean)),
-    showSavedQueries: S.optional(S.NullOr(S.Boolean)),
-    showSearch: S.optional(S.NullOr(S.Boolean)),
-    showSourceQueryOptions: S.optional(S.NullOr(S.Boolean)),
-    showTableViews: S.optional(S.NullOr(S.Boolean)),
-    showTestAccountFilters: S.optional(S.NullOr(S.Boolean)),
-    showTimings: S.optional(S.NullOr(S.Boolean)),
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    chartSettings: S.optional(S.NullOr(ChartSettings)),
-    display: S.optional(S.NullOr(ChartDisplayType)),
-    tableSettings: S.optional(S.NullOr(TableSettings)),
-    code: S.optional(S.NullOr(S.String)),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-  }),
-).annotate({
-  identifier: "InsightQuerySchema",
-}) as any as S.Schema<InsightQuerySchema>;
+export type InsightQuerySchema =
+  | InsightVizNode
+  | DataTableNode
+  | DataVisualizationNode
+  | HogQuery;
+export const InsightQuerySchema =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<InsightQuerySchema>;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
 export type InsightOutputDashboardsList = Array<number>;
@@ -24582,86 +16839,32 @@ export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputAlertsList>;
 
-export interface DashboardFilterPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const DashboardFilterPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "DashboardFilterPropertiesItem",
-}) as any as S.Schema<DashboardFilterPropertiesItem>;
+export type DashboardFilterPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const DashboardFilterPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
 
 export type DashboardFilterPropertiesList =
   Array<DashboardFilterPropertiesItem>;
@@ -24694,86 +16897,32 @@ export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardFilter",
 }) as any as S.Schema<DashboardFilter>;
 
-export interface TileFiltersPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
-  /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
-export const TileFiltersPropertiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-    type: S.optional(
-      S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-    ),
-    value: S.optional(
-      S.NullOr(
-        S.Union(
-          EventPropertyFilterValue,
-          PersonPropertyFilterValue,
-          PersonMetadataPropertyFilterValue,
-          ElementPropertyFilterValue,
-          EventMetadataPropertyFilterValue,
-          SessionPropertyFilterValue,
-          S.Number,
-          RecordingPropertyFilterValue,
-          LogEntryPropertyFilterValue,
-          GroupPropertyFilterValue,
-          FeaturePropertyFilterValue,
-          FlagPropertyFilterValue,
-          HogQLPropertyFilterValue,
-          DataWarehousePropertyFilterValue,
-          DataWarehousePersonPropertyFilterValue,
-          ErrorTrackingIssueFilterValue,
-          LogPropertyFilterValue,
-          MetricPropertyFilterValue,
-          SpanPropertyFilterValue,
-          RevenueAnalyticsPropertyFilterValue,
-          AccountCustomPropertyFilterValue,
-          WorkflowVariablePropertyFilterValue,
-        ),
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "TileFiltersPropertiesItem",
-}) as any as S.Schema<TileFiltersPropertiesItem>;
+export type TileFiltersPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const TileFiltersPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TileFiltersPropertiesItem>;
 
 export type TileFiltersPropertiesList = Array<TileFiltersPropertiesItem>;
 export const TileFiltersPropertiesList = /*@__PURE__*/ S.Array(
@@ -25399,122 +17548,16 @@ export const LogsListWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetConfig",
 }) as any as S.Schema<LogsListWidgetConfig>;
 
-export interface DashboardWidgetConfig {
-  /** Null or omitted means all time (the survey's full lifetime). */
-  dateRange?: WidgetDateRange | null;
-  filterTestAccounts?: boolean | null;
-  widgetFilters?:
-    | ActivityEventsListWidgetConfigWidgetFiltersMap
-    | ErrorTrackingListWidgetConfigWidgetFiltersMap
-    | SessionReplayListWidgetConfigWidgetFiltersMap
-    | null;
-  /** Maximum number of events to return. */
-  limit?: number;
-  /** Limit the feed to a single event name. Omit or null for all events. */
-  eventName?: string | null;
-  /** Event and person property filters, matching Activity > Explore events. */
-  properties?: ActivityEventsListWidgetConfigPropertiesList | null;
-  /** Issue ranking column. */
-  orderBy?:
-    | ErrorTrackingListWidgetConfigOrderBy
-    | (string & {})
-    | SessionReplayListWidgetConfigOrderBy
-    | (string & {})
-    | ExperimentsListWidgetConfigOrderBy
-    | (string & {})
-    | LogsListWidgetConfigOrderBy
-    | (string & {});
-  /** Sort direction for orderBy. */
-  orderDirection?:
-    | ErrorTrackingListWidgetConfigOrderDirection
-    | (string & {})
-    | SessionReplayListWidgetConfigOrderDirection
-    | (string & {})
-    | ExperimentsListWidgetConfigOrderDirection
-    | (string & {});
-  /** Issue status filter. */
-  status?:
-    | ErrorTrackingListWidgetConfigStatus
-    | (string & {})
-    | ExperimentsListWidgetConfigStatus
-    | (string & {});
-  /** Filter by assignee ({type: user|role, id}). Omit for any assignee. */
-  assignee?: WidgetAssigneeFilter | null;
-  /** short_id of a saved session replay filter to refine the recordings shown. When set, the saved filter owns the date range and property filters; only orderBy, orderDirection, and limit still apply. Combine with collectionId to filter within a collection. */
-  savedFilterId?: string | null;
-  /** short_id of a session replay collection to scope the widget to its pinned recordings. Combine with savedFilterId or property filters to narrow within the collection; orderBy, orderDirection, and limit still apply. */
-  collectionId?: string | null;
-  /** Filter by creator (user id). Omit for any creator. */
-  createdBy?: number | null;
-  /** Experiment to show results for. Null until the user picks one in the widget settings. */
-  experimentId?: number | null;
-  /** Survey to show performance stats and recent responses for. Null until the user picks one. */
-  surveyId?: string | null;
-  /** Only show logs at these severity levels. Empty shows all levels. */
-  severityLevels?: LogsListWidgetConfigSeverityLevelsList;
-  /** Only show logs from these services. Empty shows all services. */
-  serviceNames?: LogsListWidgetConfigServiceNamesList;
-  /** Wrap long log lines instead of truncating them to a single row. */
-  wrapLines?: boolean;
-  /** Render log timestamps in UTC or in each viewer's local timezone. */
-  timezone?: LogsListWidgetConfigTimezone | (string & {});
-  /** short_id of a saved logs view to use as the source. When set, the saved view owns the date range, severity, service, and property filters; only orderBy and limit still apply. */
-  savedViewId?: string | null;
-}
-export const DashboardWidgetConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(S.NullOr(WidgetDateRange)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    widgetFilters: S.optional(
-      S.NullOr(
-        S.Union(
-          ActivityEventsListWidgetConfigWidgetFiltersMap,
-          ErrorTrackingListWidgetConfigWidgetFiltersMap,
-          SessionReplayListWidgetConfigWidgetFiltersMap,
-        ),
-      ),
-    ),
-    limit: S.optional(S.Number),
-    eventName: S.optional(S.NullOr(S.String)),
-    properties: S.optional(
-      S.NullOr(ActivityEventsListWidgetConfigPropertiesList),
-    ),
-    orderBy: S.optional(
-      S.Union(
-        ErrorTrackingListWidgetConfigOrderBy,
-        SessionReplayListWidgetConfigOrderBy,
-        ExperimentsListWidgetConfigOrderBy,
-        LogsListWidgetConfigOrderBy,
-      ),
-    ),
-    orderDirection: S.optional(
-      S.Union(
-        ErrorTrackingListWidgetConfigOrderDirection,
-        SessionReplayListWidgetConfigOrderDirection,
-        ExperimentsListWidgetConfigOrderDirection,
-      ),
-    ),
-    status: S.optional(
-      S.Union(
-        ErrorTrackingListWidgetConfigStatus,
-        ExperimentsListWidgetConfigStatus,
-      ),
-    ),
-    assignee: S.optional(S.NullOr(WidgetAssigneeFilter)),
-    savedFilterId: S.optional(S.NullOr(S.String)),
-    collectionId: S.optional(S.NullOr(S.String)),
-    createdBy: S.optional(S.NullOr(S.Number)),
-    experimentId: S.optional(S.NullOr(S.Number)),
-    surveyId: S.optional(S.NullOr(S.String)),
-    severityLevels: S.optional(LogsListWidgetConfigSeverityLevelsList),
-    serviceNames: S.optional(LogsListWidgetConfigServiceNamesList),
-    wrapLines: S.optional(S.Boolean),
-    timezone: S.optional(LogsListWidgetConfigTimezone),
-    savedViewId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardWidgetConfig",
-}) as any as S.Schema<DashboardWidgetConfig>;
+export type DashboardWidgetConfig =
+  | ActivityEventsListWidgetConfig
+  | ErrorTrackingListWidgetConfig
+  | SessionReplayListWidgetConfig
+  | ExperimentsListWidgetConfig
+  | ExperimentResultsWidgetConfig
+  | SurveyResultsWidgetConfig
+  | LogsListWidgetConfig;
+export const DashboardWidgetConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardWidgetConfig>;
 
 export type DashboardWidgetDashboardTilesList = Array<DashboardTileBasic>;
 export const DashboardWidgetDashboardTilesList = /*@__PURE__*/ S.Array(
@@ -26802,67 +18845,16 @@ export const LogsListWidgetUpdateRequestOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetUpdateRequestOpenApi",
 }) as any as S.Schema<LogsListWidgetUpdateRequestOpenApi>;
 
-export interface UpdateDashboardWidgetRequest {
-  /** ID of the widget tile to update. Use dashboard-get to look up widget tile IDs. */
-  tile_id: number;
-  /** New display name for the widget. Empty string or null clears it; omit to leave unchanged. */
-  name?: string | null;
-  /** New markdown description for the widget. Omit to leave unchanged. */
-  description?: string;
-  widget_type:
-    | ActivityEventsListWidgetTypeEnum
-    | (string & {})
-    | ErrorTrackingListWidgetTypeEnum
-    | (string & {})
-    | SessionReplayListWidgetTypeEnum
-    | (string & {})
-    | ExperimentsListWidgetTypeEnum
-    | (string & {})
-    | ExperimentResultsWidgetTypeEnum
-    | (string & {})
-    | SurveyResultsWidgetTypeEnum
-    | (string & {})
-    | LogsListWidgetTypeEnum
-    | (string & {});
-  /** New configuration for the recent events widget. Omit to leave unchanged. */
-  config?:
-    | ActivityEventsListWidgetConfig
-    | ErrorTrackingListWidgetConfig
-    | SessionReplayListWidgetConfig
-    | ExperimentsListWidgetConfig
-    | ExperimentResultsWidgetConfig
-    | SurveyResultsWidgetConfig
-    | LogsListWidgetConfig;
-}
-export const UpdateDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tile_id: S.Number,
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    widget_type: S.Union(
-      ActivityEventsListWidgetTypeEnum,
-      ErrorTrackingListWidgetTypeEnum,
-      SessionReplayListWidgetTypeEnum,
-      ExperimentsListWidgetTypeEnum,
-      ExperimentResultsWidgetTypeEnum,
-      SurveyResultsWidgetTypeEnum,
-      LogsListWidgetTypeEnum,
-    ),
-    config: S.optional(
-      S.Union(
-        ActivityEventsListWidgetConfig,
-        ErrorTrackingListWidgetConfig,
-        SessionReplayListWidgetConfig,
-        ExperimentsListWidgetConfig,
-        ExperimentResultsWidgetConfig,
-        SurveyResultsWidgetConfig,
-        LogsListWidgetConfig,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardWidgetRequest",
-}) as any as S.Schema<UpdateDashboardWidgetRequest>;
+export type UpdateDashboardWidgetRequest =
+  | ActivityEventsListWidgetUpdateRequestOpenApi
+  | ErrorTrackingListWidgetUpdateRequestOpenApi
+  | SessionReplayListWidgetUpdateRequestOpenApi
+  | ExperimentsListWidgetUpdateRequestOpenApi
+  | ExperimentResultsWidgetUpdateRequestOpenApi
+  | SurveyResultsWidgetUpdateRequestOpenApi
+  | LogsListWidgetUpdateRequestOpenApi;
+export const UpdateDashboardWidgetRequest =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDashboardWidgetRequest>;
 
 /** Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1–10 per request). */
 export type DashboardsUpdateWidgetsBatchRequestWidgetsList =
@@ -27122,59 +19114,16 @@ export const LogsListWidgetCatalogEntryOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetCatalogEntryOpenApi",
 }) as any as S.Schema<LogsListWidgetCatalogEntryOpenApi>;
 
-export interface WidgetCatalogEntry {
-  widget_type:
-    | ActivityEventsListWidgetTypeEnum
-    | ErrorTrackingListWidgetTypeEnum
-    | SessionReplayListWidgetTypeEnum
-    | ExperimentsListWidgetTypeEnum
-    | ExperimentResultsWidgetTypeEnum
-    | SurveyResultsWidgetTypeEnum
-    | LogsListWidgetTypeEnum;
-  group_id: string;
-  group_label: string;
-  label: string;
-  description: string;
-  /** OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas). */
-  config_schema:
-    | ActivityEventsListWidgetConfig
-    | ErrorTrackingListWidgetConfig
-    | SessionReplayListWidgetConfig
-    | ExperimentsListWidgetConfig
-    | ExperimentResultsWidgetConfig
-    | SurveyResultsWidgetConfig
-    | LogsListWidgetConfig;
-  required_product_access?: string | null;
-}
-export const WidgetCatalogEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    widget_type: S.Union(
-      ActivityEventsListWidgetTypeEnum,
-      ErrorTrackingListWidgetTypeEnum,
-      SessionReplayListWidgetTypeEnum,
-      ExperimentsListWidgetTypeEnum,
-      ExperimentResultsWidgetTypeEnum,
-      SurveyResultsWidgetTypeEnum,
-      LogsListWidgetTypeEnum,
-    ),
-    group_id: S.String,
-    group_label: S.String,
-    label: S.String,
-    description: S.String,
-    config_schema: S.Union(
-      ActivityEventsListWidgetConfig,
-      ErrorTrackingListWidgetConfig,
-      SessionReplayListWidgetConfig,
-      ExperimentsListWidgetConfig,
-      ExperimentResultsWidgetConfig,
-      SurveyResultsWidgetConfig,
-      LogsListWidgetConfig,
-    ),
-    required_product_access: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WidgetCatalogEntry",
-}) as any as S.Schema<WidgetCatalogEntry>;
+export type WidgetCatalogEntry =
+  | ActivityEventsListWidgetCatalogEntryOpenApi
+  | ErrorTrackingListWidgetCatalogEntryOpenApi
+  | SessionReplayListWidgetCatalogEntryOpenApi
+  | ExperimentsListWidgetCatalogEntryOpenApi
+  | ExperimentResultsWidgetCatalogEntryOpenApi
+  | SurveyResultsWidgetCatalogEntryOpenApi
+  | LogsListWidgetCatalogEntryOpenApi;
+export const WidgetCatalogEntry =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<WidgetCatalogEntry>;
 
 /** Registered dashboard widget types available when dashboard-widgets is enabled. */
 export type WidgetCatalogResponseResultsList = Array<WidgetCatalogEntry>;
@@ -27421,68 +19370,16 @@ export const LogsListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetAddRequestOpenApi",
 }) as any as S.Schema<LogsListWidgetAddRequestOpenApi>;
 
-export interface AddDashboardWidgetRequest {
-  /** Optional custom display name for the widget tile. */
-  name?: string | null;
-  /** Optional markdown description shown when show_description is enabled. */
-  description?: string;
-  /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
-  /** Whether to show the description on the dashboard tile. */
-  show_description?: boolean;
-  widget_type:
-    | ActivityEventsListWidgetTypeEnum
-    | (string & {})
-    | ErrorTrackingListWidgetTypeEnum
-    | (string & {})
-    | SessionReplayListWidgetTypeEnum
-    | (string & {})
-    | ExperimentsListWidgetTypeEnum
-    | (string & {})
-    | ExperimentResultsWidgetTypeEnum
-    | (string & {})
-    | SurveyResultsWidgetTypeEnum
-    | (string & {})
-    | LogsListWidgetTypeEnum
-    | (string & {});
-  /** Configuration for the recent events widget. */
-  config:
-    | ActivityEventsListWidgetConfig
-    | ErrorTrackingListWidgetConfig
-    | SessionReplayListWidgetConfig
-    | ExperimentsListWidgetConfig
-    | ExperimentResultsWidgetConfig
-    | SurveyResultsWidgetConfig
-    | LogsListWidgetConfig;
-}
-export const AddDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    layouts: S.optional(WidgetTileLayoutsOpenApi),
-    show_description: S.optional(S.Boolean),
-    widget_type: S.Union(
-      ActivityEventsListWidgetTypeEnum,
-      ErrorTrackingListWidgetTypeEnum,
-      SessionReplayListWidgetTypeEnum,
-      ExperimentsListWidgetTypeEnum,
-      ExperimentResultsWidgetTypeEnum,
-      SurveyResultsWidgetTypeEnum,
-      LogsListWidgetTypeEnum,
-    ),
-    config: S.Union(
-      ActivityEventsListWidgetConfig,
-      ErrorTrackingListWidgetConfig,
-      SessionReplayListWidgetConfig,
-      ExperimentsListWidgetConfig,
-      ExperimentResultsWidgetConfig,
-      SurveyResultsWidgetConfig,
-      LogsListWidgetConfig,
-    ),
-  }),
-).annotate({
-  identifier: "AddDashboardWidgetRequest",
-}) as any as S.Schema<AddDashboardWidgetRequest>;
+export type AddDashboardWidgetRequest =
+  | ActivityEventsListWidgetAddRequestOpenApi
+  | ErrorTrackingListWidgetAddRequestOpenApi
+  | SessionReplayListWidgetAddRequestOpenApi
+  | ExperimentsListWidgetAddRequestOpenApi
+  | ExperimentResultsWidgetAddRequestOpenApi
+  | SurveyResultsWidgetAddRequestOpenApi
+  | LogsListWidgetAddRequestOpenApi;
+export const AddDashboardWidgetRequest =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AddDashboardWidgetRequest>;
 
 /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
 export type DashboardsWidgetsBatchCreateRequestWidgetsList =

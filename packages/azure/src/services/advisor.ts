@@ -351,9 +351,7 @@ export interface ConfigurationsCreateInResourceGroupRequest {
   /** The name of the Azure resource group. */
   resourceGroup: string;
   /** Advisor configuration name. Value must be 'default' */
-  configurationName:
-    | ConfigurationsCreateInResourceGroupRequestConfigurationName
-    | (string & {});
+  configurationName: ConfigurationsCreateInResourceGroupRequestConfigurationName;
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
@@ -413,9 +411,7 @@ export interface ConfigurationsCreateInSubscriptionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
   /** Advisor configuration name. Value must be 'default' */
-  configurationName:
-    | ConfigurationsCreateInSubscriptionRequestConfigurationName
-    | (string & {});
+  configurationName: ConfigurationsCreateInSubscriptionRequestConfigurationName;
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
@@ -634,7 +630,7 @@ export const PredictionRequestPropertiesPredictionType = /*@__PURE__*/ S.String;
 /** Properties given for the predictor. */
 export interface PredictionRequestProperties {
   /** Type of the prediction. */
-  predictionType?: PredictionRequestPropertiesPredictionType | (string & {});
+  predictionType?: PredictionRequestPropertiesPredictionType;
   /** Extended properties are arguments specific for each prediction type. */
   extendedProperties?: unknown;
 }

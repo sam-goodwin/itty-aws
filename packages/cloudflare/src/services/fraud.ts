@@ -192,7 +192,7 @@ export const UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
 
 export interface UpdateRequestAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
-  kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind | (string & {});
+  kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind;
   /** HTTP status codes to match against the origin response. */
   statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
 }
@@ -224,7 +224,7 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
 
 export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
-  kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind | (string & {});
+  kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind;
   /** HTTP status codes to match against the origin response. */
   statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
 }

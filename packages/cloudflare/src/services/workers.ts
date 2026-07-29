@@ -450,7 +450,7 @@ export interface ScriptsSecretsBulkUpdateRequestSecretsSecretText {
   /** The secret value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsBulkUpdateRequestSecretsSecretTextType | (string & {});
+  type: ScriptsSecretsBulkUpdateRequestSecretsSecretTextType;
 }
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretText =
   /*@__PURE__*/ S.suspend(() =>
@@ -503,7 +503,7 @@ export interface ScriptsSecretsBulkUpdateRequestSecretsSecretKey {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType | (string & {});
+  type: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType;
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -526,50 +526,16 @@ export const ScriptsSecretsBulkUpdateRequestSecretsSecretKey =
     identifier: "ScriptsSecretsBulkUpdateRequestSecretsSecretKey",
   }) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecretsSecretKey>;
 
-export interface ScriptsSecretsBulkUpdateRequestSecrets {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsSecretsBulkUpdateRequestSecretsSecretTextType
-    | (string & {})
-    | ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType
-    | (string & {});
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?:
-    | ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat
-    | (string & {});
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsBulkUpdateRequestSecrets = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      text: S.optional(S.String),
-      type: S.Union(
-        ScriptsSecretsBulkUpdateRequestSecretsSecretTextType,
-        ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
-      ),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat),
-      usages: S.optional(
-        ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-).annotate({
-  identifier: "ScriptsSecretsBulkUpdateRequestSecrets",
-}) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecrets>;
+export type ScriptsSecretsBulkUpdateRequestSecrets =
+  | ScriptsSecretsBulkUpdateRequestSecretsSecretText
+  | ScriptsSecretsBulkUpdateRequestSecretsSecretKey;
+export const ScriptsSecretsBulkUpdateRequestSecrets =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export type ScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;
@@ -698,43 +664,15 @@ export const ScriptsSecretsBulkUpdateResultSecretKey = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsSecretsBulkUpdateResultSecretKey",
 }) as any as S.Schema<ScriptsSecretsBulkUpdateResultSecretKey>;
 
-export interface ScriptsSecretsBulkUpdateResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsSecretsBulkUpdateResultSecretTextType
-    | ScriptsSecretsBulkUpdateResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsSecretsBulkUpdateResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsSecretsBulkUpdateResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsBulkUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.optional(S.String),
-    type: S.Union(
-      ScriptsSecretsBulkUpdateResultSecretTextType,
-      ScriptsSecretsBulkUpdateResultSecretKeyType,
-    ),
-    algorithm: S.optional(S.Unknown),
-    format: S.optional(ScriptsSecretsBulkUpdateResultSecretKeyFormat),
-    usages: S.optional(ScriptsSecretsBulkUpdateResultSecretKeyUsagesList),
-    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsBulkUpdateResult",
-}) as any as S.Schema<ScriptsSecretsBulkUpdateResult>;
+export type ScriptsSecretsBulkUpdateResult =
+  | ScriptsSecretsBulkUpdateResultSecretText
+  | ScriptsSecretsBulkUpdateResultSecretKey;
+export const ScriptsSecretsBulkUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "text", "type"],
+    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+  ]),
+);
 
 export type BulkUpdateScriptSecretsResponse = ScriptsSecretsBulkUpdateResult;
 export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1434,7 +1372,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAIType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemAIType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAI =
   /*@__PURE__*/ S.suspend(() =>
@@ -1457,9 +1395,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAISearch {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemAISearchType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemAISearchType;
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string;
 }
@@ -1486,9 +1422,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace {
   /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -1512,9 +1446,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine =
   /*@__PURE__*/ S.suspend(() =>
@@ -1535,7 +1467,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemAssets =
   /*@__PURE__*/ S.suspend(() =>
@@ -1555,7 +1487,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemBrowser =
   /*@__PURE__*/ S.suspend(() =>
@@ -1577,7 +1509,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemD1 {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemD1Type | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemD1Type;
   /** Identifier of the D1 database to bind to. */
   id?: string;
 }
@@ -1604,9 +1536,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDataBlob {
   /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemDataBlobType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemDataBlobType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemDataBlob =
   /*@__PURE__*/ S.suspend(() =>
@@ -1692,9 +1622,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace {
   /** The name of the dispatch namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType;
   /** Outbound worker. */
   outbound?: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound;
 }
@@ -1721,9 +1649,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamesp
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType;
   /** The exported class name of the Durable Object. */
   className?: string;
   /** The dispatch namespace the Durable Object script belongs to. */
@@ -1764,9 +1690,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemHyperdrive {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemHyperdrive =
   /*@__PURE__*/ S.suspend(() =>
@@ -1787,7 +1711,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemInherit {
   /** The name of the inherited binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemInheritType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string;
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
@@ -1813,7 +1737,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemImagesType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemImagesType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemImages =
   /*@__PURE__*/ S.suspend(() =>
@@ -1835,7 +1759,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemJson {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemJsonType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemJsonType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemJson =
   /*@__PURE__*/ S.suspend(() =>
@@ -1859,9 +1783,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemKVNamespace {
   /** Namespace identifier tag. */
   namespaceId: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemKVNamespace =
   /*@__PURE__*/ S.suspend(() =>
@@ -1882,7 +1804,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemMediaType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemMediaType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemMedia =
   /*@__PURE__*/ S.suspend(() =>
@@ -1905,9 +1827,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate =
   /*@__PURE__*/ S.suspend(() =>
@@ -1931,9 +1851,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemPlainText {
   /** The text value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemPlainTextType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemPlainTextType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemPlainText =
   /*@__PURE__*/ S.suspend(() =>
@@ -1957,9 +1875,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemPipelines {
   /** Name of the Pipeline to bind to. */
   pipeline: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemPipelinesType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemPipelinesType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemPipelines =
   /*@__PURE__*/ S.suspend(() =>
@@ -1982,7 +1898,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemQueue {
   /** Name of the Queue to bind to. */
   queueName: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemQueueType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemQueueType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemQueue =
   /*@__PURE__*/ S.suspend(() =>
@@ -2029,9 +1945,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemRatelimit {
   /** The rate limit configuration. */
   simple: BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemRatelimitType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemRatelimitType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -2063,9 +1977,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemR2Bucket {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemR2BucketType;
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?:
     | BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction
@@ -2096,9 +2008,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretText {
   /** The secret value to use. */
   text: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretTextType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemSecretTextType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretText =
   /*@__PURE__*/ S.suspend(() =>
@@ -2134,9 +2044,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemSendEmailType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemSendEmailType;
   /** List of allowed destination addresses. */
   allowedDestinationAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList;
   /** List of allowed sender addresses. */
@@ -2177,7 +2085,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemService {
   /** Name of Worker to bind to. */
   service: string;
   /** The kind of resource that the binding provides. */
-  type: BetaWorkersVersionsCreateRequestBindingsItemServiceType | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemServiceType;
   /** Entrypoint to invoke on the target Worker. */
   entrypoint?: string;
   /** Optional environment if the Worker utilizes one. */
@@ -2207,9 +2115,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemTextBlob {
   /** The name of the file containing the text content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemTextBlobType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemTextBlobType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemTextBlob =
   /*@__PURE__*/ S.suspend(() =>
@@ -2233,9 +2139,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVectorize {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemVectorizeType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemVectorizeType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVectorize =
   /*@__PURE__*/ S.suspend(() =>
@@ -2257,9 +2161,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -2284,9 +2186,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret 
   /** ID of the store containing the secret. */
   storeId: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret =
   /*@__PURE__*/ S.suspend(() =>
@@ -2312,9 +2212,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemFlagship {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemFlagshipType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemFlagshipType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemFlagship =
   /*@__PURE__*/ S.suspend(() =>
@@ -2372,9 +2270,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretKey {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType;
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
@@ -2406,9 +2302,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemWorkflowType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemWorkflowType;
   /** Name of the Workflow to bind to. */
   workflowName: string;
   /** Class name of the Workflow. Should only be provided if the Workflow belongs to this script. */
@@ -2440,9 +2334,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemWasmModule {
   /** The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers. */
   part: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemWasmModule =
   /*@__PURE__*/ S.suspend(() =>
@@ -2466,9 +2358,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVPCService {
   /** Identifier of the VPC service to bind to. */
   serviceId: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItemVPCService =
   /*@__PURE__*/ S.suspend(() =>
@@ -2490,9 +2380,7 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType
-    | (string & {});
+  type: BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType;
   /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
   networkId?: string;
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
@@ -2510,273 +2398,96 @@ export const BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork>;
 
-export interface BetaWorkersVersionsCreateRequestBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateRequestBindingsItemAIType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemAISearchType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemAssetsType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemBrowserType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemD1Type
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemDataBlobType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemInheritType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemImagesType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemJsonType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemMediaType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemPlainTextType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemPipelinesType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemQueueType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemRatelimitType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretTextType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemSendEmailType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemServiceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemTextBlobType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemVectorizeType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemFlagshipType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemWorkflowType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType
-    | (string & {});
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?:
-    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction
-    | (string & {});
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?:
-    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat
-    | (string & {});
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type BetaWorkersVersionsCreateRequestBindingsItem =
+  | BetaWorkersVersionsCreateRequestBindingsItemAI
+  | BetaWorkersVersionsCreateRequestBindingsItemAISearch
+  | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace
+  | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine
+  | BetaWorkersVersionsCreateRequestBindingsItemAssets
+  | BetaWorkersVersionsCreateRequestBindingsItemBrowser
+  | BetaWorkersVersionsCreateRequestBindingsItemD1
+  | BetaWorkersVersionsCreateRequestBindingsItemDataBlob
+  | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace
+  | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespace
+  | BetaWorkersVersionsCreateRequestBindingsItemHyperdrive
+  | BetaWorkersVersionsCreateRequestBindingsItemInherit
+  | BetaWorkersVersionsCreateRequestBindingsItemImages
+  | BetaWorkersVersionsCreateRequestBindingsItemJson
+  | BetaWorkersVersionsCreateRequestBindingsItemKVNamespace
+  | BetaWorkersVersionsCreateRequestBindingsItemMedia
+  | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate
+  | BetaWorkersVersionsCreateRequestBindingsItemPlainText
+  | BetaWorkersVersionsCreateRequestBindingsItemPipelines
+  | BetaWorkersVersionsCreateRequestBindingsItemQueue
+  | BetaWorkersVersionsCreateRequestBindingsItemRatelimit
+  | BetaWorkersVersionsCreateRequestBindingsItemR2Bucket
+  | BetaWorkersVersionsCreateRequestBindingsItemSecretText
+  | BetaWorkersVersionsCreateRequestBindingsItemSendEmail
+  | BetaWorkersVersionsCreateRequestBindingsItemService
+  | BetaWorkersVersionsCreateRequestBindingsItemTextBlob
+  | BetaWorkersVersionsCreateRequestBindingsItemVectorize
+  | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata
+  | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret
+  | BetaWorkersVersionsCreateRequestBindingsItemFlagship
+  | BetaWorkersVersionsCreateRequestBindingsItemSecretKey
+  | BetaWorkersVersionsCreateRequestBindingsItemWorkflow
+  | BetaWorkersVersionsCreateRequestBindingsItemWasmModule
+  | BetaWorkersVersionsCreateRequestBindingsItemVPCService
+  | BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork;
 export const BetaWorkersVersionsCreateRequestBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        BetaWorkersVersionsCreateRequestBindingsItemAIType,
-        BetaWorkersVersionsCreateRequestBindingsItemAISearchType,
-        BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType,
-        BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType,
-        BetaWorkersVersionsCreateRequestBindingsItemAssetsType,
-        BetaWorkersVersionsCreateRequestBindingsItemBrowserType,
-        BetaWorkersVersionsCreateRequestBindingsItemD1Type,
-        BetaWorkersVersionsCreateRequestBindingsItemDataBlobType,
-        BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType,
-        BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType,
-        BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType,
-        BetaWorkersVersionsCreateRequestBindingsItemInheritType,
-        BetaWorkersVersionsCreateRequestBindingsItemImagesType,
-        BetaWorkersVersionsCreateRequestBindingsItemJsonType,
-        BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType,
-        BetaWorkersVersionsCreateRequestBindingsItemMediaType,
-        BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType,
-        BetaWorkersVersionsCreateRequestBindingsItemPlainTextType,
-        BetaWorkersVersionsCreateRequestBindingsItemPipelinesType,
-        BetaWorkersVersionsCreateRequestBindingsItemQueueType,
-        BetaWorkersVersionsCreateRequestBindingsItemRatelimitType,
-        BetaWorkersVersionsCreateRequestBindingsItemR2BucketType,
-        BetaWorkersVersionsCreateRequestBindingsItemSecretTextType,
-        BetaWorkersVersionsCreateRequestBindingsItemSendEmailType,
-        BetaWorkersVersionsCreateRequestBindingsItemServiceType,
-        BetaWorkersVersionsCreateRequestBindingsItemTextBlobType,
-        BetaWorkersVersionsCreateRequestBindingsItemVectorizeType,
-        BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType,
-        BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType,
-        BetaWorkersVersionsCreateRequestBindingsItemFlagshipType,
-        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType,
-        BetaWorkersVersionsCreateRequestBindingsItemWorkflowType,
-        BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType,
-        BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType,
-        BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateRequestBindingsItem",
-  }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateRequestBindingsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItem>;
@@ -3106,61 +2817,24 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
       "BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations>;
 
-export interface BetaWorkersVersionsCreateRequestMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type BetaWorkersVersionsCreateRequestMigrations =
+  | BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration
+  | BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsCreateRequestMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateRequestMigrations",
-  }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export interface BetaWorkersVersionsCreateRequestModulesItem {
   /** The base64-encoded module content. */
@@ -3220,7 +2894,7 @@ export const BetaWorkersVersionsCreateRequestPlacementModeMode =
 
 export interface BetaWorkersVersionsCreateRequestPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode: BetaWorkersVersionsCreateRequestPlacementModeMode | (string & {});
+  mode: BetaWorkersVersionsCreateRequestPlacementModeMode;
 }
 export const BetaWorkersVersionsCreateRequestPlacementMode =
   /*@__PURE__*/ S.suspend(() =>
@@ -3276,7 +2950,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase4Mode =
 
 export interface BetaWorkersVersionsCreateRequestPlacementCase4 {
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase4Mode | (string & {});
+  mode: BetaWorkersVersionsCreateRequestPlacementCase4Mode;
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
@@ -3298,7 +2972,7 @@ export interface BetaWorkersVersionsCreateRequestPlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase5Mode | (string & {});
+  mode: BetaWorkersVersionsCreateRequestPlacementCase5Mode;
 }
 export const BetaWorkersVersionsCreateRequestPlacementCase5 =
   /*@__PURE__*/ S.suspend(() =>
@@ -3318,7 +2992,7 @@ export interface BetaWorkersVersionsCreateRequestPlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase6Mode | (string & {});
+  mode: BetaWorkersVersionsCreateRequestPlacementCase6Mode;
 }
 export const BetaWorkersVersionsCreateRequestPlacementCase6 =
   /*@__PURE__*/ S.suspend(() =>
@@ -3375,24 +3049,14 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost>;
 
-export interface BetaWorkersVersionsCreateRequestPlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHostname
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateRequestPlacementCase7TargetItem",
-  }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
   Array<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
@@ -3403,7 +3067,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
 
 export interface BetaWorkersVersionsCreateRequestPlacementCase7 {
   /** Targeted placement mode. */
-  mode: BetaWorkersVersionsCreateRequestPlacementCase7Mode | (string & {});
+  mode: BetaWorkersVersionsCreateRequestPlacementCase7Mode;
   /** Array of placement targets (currently limited to single target). */
   target: BetaWorkersVersionsCreateRequestPlacementCase7TargetList;
 }
@@ -3417,50 +3081,28 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7 =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase7",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7>;
 
-export interface BetaWorkersVersionsCreateRequestPlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | BetaWorkersVersionsCreateRequestPlacementModeMode
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestPlacementCase4Mode
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestPlacementCase5Mode
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestPlacementCase6Mode
-    | (string & {})
-    | BetaWorkersVersionsCreateRequestPlacementCase7Mode
-    | (string & {});
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: BetaWorkersVersionsCreateRequestPlacementCase7TargetList;
-}
+export type BetaWorkersVersionsCreateRequestPlacement =
+  | BetaWorkersVersionsCreateRequestPlacementMode
+  | BetaWorkersVersionsCreateRequestPlacementRegion
+  | BetaWorkersVersionsCreateRequestPlacementHostname
+  | BetaWorkersVersionsCreateRequestPlacementHost
+  | BetaWorkersVersionsCreateRequestPlacementCase4
+  | BetaWorkersVersionsCreateRequestPlacementCase5
+  | BetaWorkersVersionsCreateRequestPlacementCase6
+  | BetaWorkersVersionsCreateRequestPlacementCase7;
 export const BetaWorkersVersionsCreateRequestPlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          BetaWorkersVersionsCreateRequestPlacementModeMode,
-          BetaWorkersVersionsCreateRequestPlacementCase4Mode,
-          BetaWorkersVersionsCreateRequestPlacementCase5Mode,
-          BetaWorkersVersionsCreateRequestPlacementCase6Mode,
-          BetaWorkersVersionsCreateRequestPlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        BetaWorkersVersionsCreateRequestPlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateRequestPlacement",
-  }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateRequestUsageModel =
   | "standard"
@@ -4684,234 +4326,96 @@ export const BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork =
     identifier: "BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork>;
 
-export interface BetaWorkersVersionsCreateResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsCreateResponseBindingsItemAIType
-    | BetaWorkersVersionsCreateResponseBindingsItemAISearchType
-    | BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType
-    | BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType
-    | BetaWorkersVersionsCreateResponseBindingsItemAssetsType
-    | BetaWorkersVersionsCreateResponseBindingsItemBrowserType
-    | BetaWorkersVersionsCreateResponseBindingsItemD1Type
-    | BetaWorkersVersionsCreateResponseBindingsItemDataBlobType
-    | BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceType
-    | BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespaceType
-    | BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType
-    | BetaWorkersVersionsCreateResponseBindingsItemInheritType
-    | BetaWorkersVersionsCreateResponseBindingsItemImagesType
-    | BetaWorkersVersionsCreateResponseBindingsItemJsonType
-    | BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType
-    | BetaWorkersVersionsCreateResponseBindingsItemMediaType
-    | BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType
-    | BetaWorkersVersionsCreateResponseBindingsItemPlainTextType
-    | BetaWorkersVersionsCreateResponseBindingsItemPipelinesType
-    | BetaWorkersVersionsCreateResponseBindingsItemQueueType
-    | BetaWorkersVersionsCreateResponseBindingsItemRatelimitType
-    | BetaWorkersVersionsCreateResponseBindingsItemR2BucketType
-    | BetaWorkersVersionsCreateResponseBindingsItemSecretTextType
-    | BetaWorkersVersionsCreateResponseBindingsItemSendEmailType
-    | BetaWorkersVersionsCreateResponseBindingsItemServiceType
-    | BetaWorkersVersionsCreateResponseBindingsItemTextBlobType
-    | BetaWorkersVersionsCreateResponseBindingsItemVectorizeType
-    | BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType
-    | BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType
-    | BetaWorkersVersionsCreateResponseBindingsItemFlagshipType
-    | BetaWorkersVersionsCreateResponseBindingsItemSecretKeyType
-    | BetaWorkersVersionsCreateResponseBindingsItemWorkflowType
-    | BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType
-    | BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType
-    | BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: BetaWorkersVersionsCreateResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: BetaWorkersVersionsCreateResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type BetaWorkersVersionsCreateResponseBindingsItem =
+  | BetaWorkersVersionsCreateResponseBindingsItemAI
+  | BetaWorkersVersionsCreateResponseBindingsItemAISearch
+  | BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace
+  | BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine
+  | BetaWorkersVersionsCreateResponseBindingsItemAssets
+  | BetaWorkersVersionsCreateResponseBindingsItemBrowser
+  | BetaWorkersVersionsCreateResponseBindingsItemD1
+  | BetaWorkersVersionsCreateResponseBindingsItemDataBlob
+  | BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespace
+  | BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace
+  | BetaWorkersVersionsCreateResponseBindingsItemHyperdrive
+  | BetaWorkersVersionsCreateResponseBindingsItemInherit
+  | BetaWorkersVersionsCreateResponseBindingsItemImages
+  | BetaWorkersVersionsCreateResponseBindingsItemJson
+  | BetaWorkersVersionsCreateResponseBindingsItemKVNamespace
+  | BetaWorkersVersionsCreateResponseBindingsItemMedia
+  | BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate
+  | BetaWorkersVersionsCreateResponseBindingsItemPlainText
+  | BetaWorkersVersionsCreateResponseBindingsItemPipelines
+  | BetaWorkersVersionsCreateResponseBindingsItemQueue
+  | BetaWorkersVersionsCreateResponseBindingsItemRatelimit
+  | BetaWorkersVersionsCreateResponseBindingsItemR2Bucket
+  | BetaWorkersVersionsCreateResponseBindingsItemSecretText
+  | BetaWorkersVersionsCreateResponseBindingsItemSendEmail
+  | BetaWorkersVersionsCreateResponseBindingsItemService
+  | BetaWorkersVersionsCreateResponseBindingsItemTextBlob
+  | BetaWorkersVersionsCreateResponseBindingsItemVectorize
+  | BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata
+  | BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret
+  | BetaWorkersVersionsCreateResponseBindingsItemFlagship
+  | BetaWorkersVersionsCreateResponseBindingsItemSecretKey
+  | BetaWorkersVersionsCreateResponseBindingsItemWorkflow
+  | BetaWorkersVersionsCreateResponseBindingsItemWasmModule
+  | BetaWorkersVersionsCreateResponseBindingsItemVPCService
+  | BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork;
 export const BetaWorkersVersionsCreateResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        BetaWorkersVersionsCreateResponseBindingsItemAIType,
-        BetaWorkersVersionsCreateResponseBindingsItemAISearchType,
-        BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType,
-        BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType,
-        BetaWorkersVersionsCreateResponseBindingsItemAssetsType,
-        BetaWorkersVersionsCreateResponseBindingsItemBrowserType,
-        BetaWorkersVersionsCreateResponseBindingsItemD1Type,
-        BetaWorkersVersionsCreateResponseBindingsItemDataBlobType,
-        BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceType,
-        BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespaceType,
-        BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType,
-        BetaWorkersVersionsCreateResponseBindingsItemInheritType,
-        BetaWorkersVersionsCreateResponseBindingsItemImagesType,
-        BetaWorkersVersionsCreateResponseBindingsItemJsonType,
-        BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType,
-        BetaWorkersVersionsCreateResponseBindingsItemMediaType,
-        BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType,
-        BetaWorkersVersionsCreateResponseBindingsItemPlainTextType,
-        BetaWorkersVersionsCreateResponseBindingsItemPipelinesType,
-        BetaWorkersVersionsCreateResponseBindingsItemQueueType,
-        BetaWorkersVersionsCreateResponseBindingsItemRatelimitType,
-        BetaWorkersVersionsCreateResponseBindingsItemR2BucketType,
-        BetaWorkersVersionsCreateResponseBindingsItemSecretTextType,
-        BetaWorkersVersionsCreateResponseBindingsItemSendEmailType,
-        BetaWorkersVersionsCreateResponseBindingsItemServiceType,
-        BetaWorkersVersionsCreateResponseBindingsItemTextBlobType,
-        BetaWorkersVersionsCreateResponseBindingsItemVectorizeType,
-        BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType,
-        BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType,
-        BetaWorkersVersionsCreateResponseBindingsItemFlagshipType,
-        BetaWorkersVersionsCreateResponseBindingsItemSecretKeyType,
-        BetaWorkersVersionsCreateResponseBindingsItemWorkflowType,
-        BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType,
-        BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType,
-        BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseBindingsItem",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateResponseBindingsList =
   Array<BetaWorkersVersionsCreateResponseBindingsItem>;
@@ -5242,61 +4746,24 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
       "BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface BetaWorkersVersionsCreateResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type BetaWorkersVersionsCreateResponseMigrations =
+  | BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration
+  | BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsCreateResponseMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseMigrations",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export interface BetaWorkersVersionsCreateResponseModulesItem {
   /** The base64-encoded module content. */
@@ -5511,24 +4978,14 @@ export const BetaWorkersVersionsCreateResponsePlacementCase7TargetItemHost =
     identifier: "BetaWorkersVersionsCreateResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase7TargetItemHost>;
 
-export interface BetaWorkersVersionsCreateResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type BetaWorkersVersionsCreateResponsePlacementCase7TargetItem =
+  | BetaWorkersVersionsCreateResponsePlacementCase7TargetItemRegion
+  | BetaWorkersVersionsCreateResponsePlacementCase7TargetItemHostname
+  | BetaWorkersVersionsCreateResponsePlacementCase7TargetItemHost;
 export const BetaWorkersVersionsCreateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type BetaWorkersVersionsCreateResponsePlacementCase7TargetList =
   Array<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
@@ -5553,45 +5010,28 @@ export const BetaWorkersVersionsCreateResponsePlacementCase7 =
     identifier: "BetaWorkersVersionsCreateResponsePlacementCase7",
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase7>;
 
-export interface BetaWorkersVersionsCreateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | BetaWorkersVersionsCreateResponsePlacementModeMode
-    | BetaWorkersVersionsCreateResponsePlacementCase4Mode
-    | BetaWorkersVersionsCreateResponsePlacementCase5Mode
-    | BetaWorkersVersionsCreateResponsePlacementCase6Mode
-    | BetaWorkersVersionsCreateResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: BetaWorkersVersionsCreateResponsePlacementCase7TargetList;
-}
+export type BetaWorkersVersionsCreateResponsePlacement =
+  | BetaWorkersVersionsCreateResponsePlacementMode
+  | BetaWorkersVersionsCreateResponsePlacementRegion
+  | BetaWorkersVersionsCreateResponsePlacementHostname
+  | BetaWorkersVersionsCreateResponsePlacementHost
+  | BetaWorkersVersionsCreateResponsePlacementCase4
+  | BetaWorkersVersionsCreateResponsePlacementCase5
+  | BetaWorkersVersionsCreateResponsePlacementCase6
+  | BetaWorkersVersionsCreateResponsePlacementCase7;
 export const BetaWorkersVersionsCreateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          BetaWorkersVersionsCreateResponsePlacementModeMode,
-          BetaWorkersVersionsCreateResponsePlacementCase4Mode,
-          BetaWorkersVersionsCreateResponsePlacementCase5Mode,
-          BetaWorkersVersionsCreateResponsePlacementCase6Mode,
-          BetaWorkersVersionsCreateResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        BetaWorkersVersionsCreateResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponsePlacement",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateResponseUsageModel =
   | "standard"
@@ -5712,7 +5152,7 @@ export interface ObservabilityDestinationsCreateRequestConfiguration {
   logpushDataset:
     | ObservabilityDestinationsCreateRequestConfigurationLogpushDataset
     | (string & {});
-  type: ObservabilityDestinationsCreateRequestConfigurationType | (string & {});
+  type: ObservabilityDestinationsCreateRequestConfigurationType;
   url: string;
 }
 export const ObservabilityDestinationsCreateRequestConfiguration =
@@ -5930,9 +5370,7 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemCase0 {
     | ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind;
 }
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -6008,9 +5446,7 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersOb
     | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6033,59 +5469,16 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObserv
       "ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityQueriesCreateRequestParametersFiltersItem {
-  filterCombination?:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityQueriesCreateRequestParametersFiltersItem =
+  | ObservabilityQueriesCreateRequestParametersFiltersItemCase0
+  | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesCreateRequestParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind,
-          ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityQueriesCreateRequestParametersFiltersItem",
-  }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityQueriesCreateRequestParametersFiltersList =
   Array<ObservabilityQueriesCreateRequestParametersFiltersItem>;
@@ -6491,51 +5884,16 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObser
       "ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityQueriesCreateResponseParametersFiltersItem {
-  filterCombination?: ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination;
-  filters?: ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind
-    | ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafKind;
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafOperation;
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityQueriesCreateResponseParametersFiltersItem =
+  | ObservabilityQueriesCreateResponseParametersFiltersItemCase0
+  | ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesCreateResponseParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind,
-          ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityQueriesCreateResponseParametersFiltersItem",
-  }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityQueriesCreateResponseParametersFiltersList =
   Array<ObservabilityQueriesCreateResponseParametersFiltersItem>;
@@ -6871,9 +6229,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  kind:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -6950,9 +6306,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -6975,60 +6329,16 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
       "ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem {
-  filterCombination?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind
-    | (string & {})
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind,
-          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem",
-  }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList =
   Array<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
@@ -7047,9 +6357,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  kind:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -7126,9 +6434,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWor
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -7151,59 +6457,16 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkers
       "ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItem {
-  filterCombination?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
+  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0
+  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind,
-          ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilitySharedQueriesCreateRequestParametersFiltersItem",
-  }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersList =
   Array<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
@@ -7642,7 +6905,7 @@ export interface CreateScriptDeploymentRequest {
   scriptName: string;
   /** If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed. */
   force?: boolean;
-  strategy: ScriptsDeploymentsCreateRequestStrategy | (string & {});
+  strategy: ScriptsDeploymentsCreateRequestStrategy;
   versions: ScriptsDeploymentsCreateRequestVersionsList;
   annotations?: ScriptsDeploymentsCreateRequestAnnotations;
 }
@@ -7733,1109 +6996,1489 @@ export const CreateScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptDeploymentResponse",
 }) as any as S.Schema<CreateScriptDeploymentResponse>;
 
+export interface PutScriptMetadataAnnotations {
+  workersMessage?: string;
+  workersTag?: string;
+}
+export const PutScriptMetadataAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workersMessage: S.optional(S.String.pipe(T.Body("workers_message"))),
+    workersTag: S.optional(S.String.pipe(T.Body("workers_tag"))),
+  }),
+).annotate({
+  identifier: "PutScriptMetadataAnnotations",
+}) as any as S.Schema<PutScriptMetadataAnnotations>;
+
+export type PutScriptAssetsConfigHtmlHandling =
+  | "auto-trailing-slash"
+  | "force-trailing-slash"
+  | "drop-trailing-slash"
+  | "none";
+export const PutScriptAssetsConfigHtmlHandling = /*@__PURE__*/ S.String;
+
+export type PutScriptAssetsConfigNotFoundHandling =
+  | "none"
+  | "404-page"
+  | "single-page-application";
+export const PutScriptAssetsConfigNotFoundHandling = /*@__PURE__*/ S.String;
+
 export type PutScriptMetadataStringList = Array<string>;
 export const PutScriptMetadataStringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PutScriptMetadataStringList>;
 
-/** JSON-encoded metadata about the uploaded parts and Worker configuration. See https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
+export type PutScriptAssetsConfigRunWorkerFirst =
+  | PutScriptMetadataStringList
+  | boolean;
+export const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
+
+export interface PutScriptAssetsConfig {
+  headers?: string;
+  redirects?: string;
+  htmlHandling?: PutScriptAssetsConfigHtmlHandling | (string & {});
+  notFoundHandling?: PutScriptAssetsConfigNotFoundHandling | (string & {});
+  runWorkerFirst?: PutScriptAssetsConfigRunWorkerFirst;
+  serveDirectly?: boolean;
+}
+export const PutScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    headers: S.optional(S.String),
+    redirects: S.optional(S.String),
+    htmlHandling: S.optional(
+      PutScriptAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
+    ),
+    notFoundHandling: S.optional(
+      PutScriptAssetsConfigNotFoundHandling.pipe(T.Body("not_found_handling")),
+    ),
+    runWorkerFirst: S.optional(
+      PutScriptAssetsConfigRunWorkerFirst.pipe(T.Body("run_worker_first")),
+    ),
+    serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
+  }),
+).annotate({
+  identifier: "PutScriptAssetsConfig",
+}) as any as S.Schema<PutScriptAssetsConfig>;
+
+export interface PutScriptMetadataAssets {
+  config?: PutScriptAssetsConfig;
+  jwt?: string;
+}
+export const PutScriptMetadataAssets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: S.optional(PutScriptAssetsConfig),
+    jwt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutScriptMetadataAssets",
+}) as any as S.Schema<PutScriptMetadataAssets>;
+
+export type PutScriptBindingAiType = "ai";
+export const PutScriptBindingAiType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingAi {
+  name: string;
+  type: PutScriptBindingAiType;
+}
+export const PutScriptBindingAi = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingAiType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingAi",
+}) as any as S.Schema<PutScriptBindingAi>;
+
+export type PutScriptBindingAiSearchType = "ai_search";
+export const PutScriptBindingAiSearchType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingAiSearch {
+  instanceName: string;
+  name: string;
+  namespace?: string;
+  type: PutScriptBindingAiSearchType;
+}
+export const PutScriptBindingAiSearch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceName: S.String.pipe(T.Body("instance_name")),
+    name: S.String,
+    namespace: S.optional(S.String),
+    type: PutScriptBindingAiSearchType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingAiSearch",
+}) as any as S.Schema<PutScriptBindingAiSearch>;
+
+export type PutScriptBindingAiSearchNamespaceType = "ai_search_namespace";
+export const PutScriptBindingAiSearchNamespaceType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingAiSearchNamespace {
+  name: string;
+  namespace: string;
+  type: PutScriptBindingAiSearchNamespaceType;
+}
+export const PutScriptBindingAiSearchNamespace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    namespace: S.String,
+    type: PutScriptBindingAiSearchNamespaceType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingAiSearchNamespace",
+}) as any as S.Schema<PutScriptBindingAiSearchNamespace>;
+
+export type PutScriptBindingAnalyticsEngineType = "analytics_engine";
+export const PutScriptBindingAnalyticsEngineType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingAnalyticsEngine {
+  dataset: string;
+  name: string;
+  type: PutScriptBindingAnalyticsEngineType;
+}
+export const PutScriptBindingAnalyticsEngine = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataset: S.String,
+    name: S.String,
+    type: PutScriptBindingAnalyticsEngineType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingAnalyticsEngine",
+}) as any as S.Schema<PutScriptBindingAnalyticsEngine>;
+
+export type PutScriptBindingAssetsType = "assets";
+export const PutScriptBindingAssetsType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingAssets {
+  name: string;
+  type: PutScriptBindingAssetsType;
+}
+export const PutScriptBindingAssets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingAssetsType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingAssets",
+}) as any as S.Schema<PutScriptBindingAssets>;
+
+export type PutScriptBindingBrowserType = "browser";
+export const PutScriptBindingBrowserType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingBrowser {
+  name: string;
+  type: PutScriptBindingBrowserType;
+}
+export const PutScriptBindingBrowser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingBrowserType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingBrowser",
+}) as any as S.Schema<PutScriptBindingBrowser>;
+
+export type PutScriptBindingD1Type = "d1";
+export const PutScriptBindingD1Type = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingD1 {
+  databaseId: string;
+  name: string;
+  id?: string;
+  type: PutScriptBindingD1Type;
+}
+export const PutScriptBindingD1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    databaseId: S.String.pipe(T.Body("database_id")),
+    name: S.String,
+    id: S.optional(S.String),
+    type: PutScriptBindingD1Type,
+  }),
+).annotate({
+  identifier: "PutScriptBindingD1",
+}) as any as S.Schema<PutScriptBindingD1>;
+
+export type PutScriptBindingDataBlobType = "data_blob";
+export const PutScriptBindingDataBlobType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingDataBlob {
+  name: string;
+  part: string;
+  type: PutScriptBindingDataBlobType;
+}
+export const PutScriptBindingDataBlob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    part: S.String,
+    type: PutScriptBindingDataBlobType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingDataBlob",
+}) as any as S.Schema<PutScriptBindingDataBlob>;
+
+export interface PutScriptBindingDispatchNamespaceOutboundParam {
+  name: string;
+}
+export const PutScriptBindingDispatchNamespaceOutboundParam =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "PutScriptBindingDispatchNamespaceOutboundParam",
+  }) as any as S.Schema<PutScriptBindingDispatchNamespaceOutboundParam>;
+
+export type PutScriptBindingDispatchNamespaceOutboundParamsList =
+  Array<PutScriptBindingDispatchNamespaceOutboundParam>;
+export const PutScriptBindingDispatchNamespaceOutboundParamsList =
+  /*@__PURE__*/ S.Array(
+    PutScriptBindingDispatchNamespaceOutboundParam,
+  ) as any as S.Schema<PutScriptBindingDispatchNamespaceOutboundParamsList>;
+
+export interface PutScriptBindingDispatchNamespaceOutboundWorker {
+  entrypoint?: string;
+  environment?: string;
+  service?: string;
+}
+export const PutScriptBindingDispatchNamespaceOutboundWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
+      service: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PutScriptBindingDispatchNamespaceOutboundWorker",
+  }) as any as S.Schema<PutScriptBindingDispatchNamespaceOutboundWorker>;
+
+export interface PutScriptBindingDispatchNamespaceOutbound {
+  params?: PutScriptBindingDispatchNamespaceOutboundParamsList;
+  worker?: PutScriptBindingDispatchNamespaceOutboundWorker;
+}
+export const PutScriptBindingDispatchNamespaceOutbound =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(PutScriptBindingDispatchNamespaceOutboundParamsList),
+      worker: S.optional(PutScriptBindingDispatchNamespaceOutboundWorker),
+    }),
+  ).annotate({
+    identifier: "PutScriptBindingDispatchNamespaceOutbound",
+  }) as any as S.Schema<PutScriptBindingDispatchNamespaceOutbound>;
+
+export type PutScriptBindingDispatchNamespaceType = "dispatch_namespace";
+export const PutScriptBindingDispatchNamespaceType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingDispatchNamespace {
+  name: string;
+  namespace: string;
+  outbound?: PutScriptBindingDispatchNamespaceOutbound;
+  type: PutScriptBindingDispatchNamespaceType;
+}
+export const PutScriptBindingDispatchNamespace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    namespace: S.String,
+    outbound: S.optional(PutScriptBindingDispatchNamespaceOutbound),
+    type: PutScriptBindingDispatchNamespaceType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingDispatchNamespace",
+}) as any as S.Schema<PutScriptBindingDispatchNamespace>;
+
+export type PutScriptBindingDurableObjectNamespaceType =
+  "durable_object_namespace";
+export const PutScriptBindingDurableObjectNamespaceType =
+  /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingDurableObjectNamespace {
+  name: string;
+  className: string;
+  dispatchNamespace?: string;
+  environment?: string;
+  namespaceId?: string;
+  scriptName?: string;
+  type: PutScriptBindingDurableObjectNamespaceType;
+}
+export const PutScriptBindingDurableObjectNamespace = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      className: S.String.pipe(T.Body("class_name")),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
+      ),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      type: PutScriptBindingDurableObjectNamespaceType,
+    }),
+).annotate({
+  identifier: "PutScriptBindingDurableObjectNamespace",
+}) as any as S.Schema<PutScriptBindingDurableObjectNamespace>;
+
+export type PutScriptBindingHyperdriveType = "hyperdrive";
+export const PutScriptBindingHyperdriveType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingHyperdrive {
+  id: string;
+  name: string;
+  type: PutScriptBindingHyperdriveType;
+}
+export const PutScriptBindingHyperdrive = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    type: PutScriptBindingHyperdriveType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingHyperdrive",
+}) as any as S.Schema<PutScriptBindingHyperdrive>;
+
+export type PutScriptBindingInheritType = "inherit";
+export const PutScriptBindingInheritType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingInherit {
+  name: string;
+  oldName?: string;
+  versionId?: string;
+  type: PutScriptBindingInheritType;
+}
+export const PutScriptBindingInherit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    oldName: S.optional(S.String.pipe(T.Body("old_name"))),
+    versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+    type: PutScriptBindingInheritType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingInherit",
+}) as any as S.Schema<PutScriptBindingInherit>;
+
+export type PutScriptBindingImagesType = "images";
+export const PutScriptBindingImagesType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingImages {
+  name: string;
+  type: PutScriptBindingImagesType;
+}
+export const PutScriptBindingImages = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingImagesType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingImages",
+}) as any as S.Schema<PutScriptBindingImages>;
+
+export type PutScriptBindingJsonType = "json";
+export const PutScriptBindingJsonType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingJson {
+  json: unknown;
+  name: string;
+  type: PutScriptBindingJsonType;
+}
+export const PutScriptBindingJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    json: S.Unknown,
+    name: S.String,
+    type: PutScriptBindingJsonType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingJson",
+}) as any as S.Schema<PutScriptBindingJson>;
+
+export type PutScriptBindingKvNamespaceType = "kv_namespace";
+export const PutScriptBindingKvNamespaceType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingKvNamespace {
+  name: string;
+  namespaceId: string;
+  type: PutScriptBindingKvNamespaceType;
+}
+export const PutScriptBindingKvNamespace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    namespaceId: S.String.pipe(T.Body("namespace_id")),
+    type: PutScriptBindingKvNamespaceType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingKvNamespace",
+}) as any as S.Schema<PutScriptBindingKvNamespace>;
+
+export type PutScriptBindingMediaType = "media";
+export const PutScriptBindingMediaType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingMedia {
+  name: string;
+  type: PutScriptBindingMediaType;
+}
+export const PutScriptBindingMedia = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingMediaType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingMedia",
+}) as any as S.Schema<PutScriptBindingMedia>;
+
+export type PutScriptBindingMtlsCertificateType = "mtls_certificate";
+export const PutScriptBindingMtlsCertificateType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingMtlsCertificate {
+  certificateId: string;
+  name: string;
+  type: PutScriptBindingMtlsCertificateType;
+}
+export const PutScriptBindingMtlsCertificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    certificateId: S.String.pipe(T.Body("certificate_id")),
+    name: S.String,
+    type: PutScriptBindingMtlsCertificateType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingMtlsCertificate",
+}) as any as S.Schema<PutScriptBindingMtlsCertificate>;
+
+export type PutScriptBindingPlainTextType = "plain_text";
+export const PutScriptBindingPlainTextType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingPlainText {
+  name: string;
+  text: string;
+  type: PutScriptBindingPlainTextType;
+}
+export const PutScriptBindingPlainText = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    text: S.String,
+    type: PutScriptBindingPlainTextType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingPlainText",
+}) as any as S.Schema<PutScriptBindingPlainText>;
+
+export type PutScriptBindingPipelinesType = "pipelines";
+export const PutScriptBindingPipelinesType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingPipelines {
+  name: string;
+  pipeline: string;
+  type: PutScriptBindingPipelinesType;
+}
+export const PutScriptBindingPipelines = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    pipeline: S.String,
+    type: PutScriptBindingPipelinesType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingPipelines",
+}) as any as S.Schema<PutScriptBindingPipelines>;
+
+export type PutScriptBindingQueueType = "queue";
+export const PutScriptBindingQueueType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingQueue {
+  name: string;
+  queueName: string;
+  type: PutScriptBindingQueueType;
+}
+export const PutScriptBindingQueue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    queueName: S.String.pipe(T.Body("queue_name")),
+    type: PutScriptBindingQueueType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingQueue",
+}) as any as S.Schema<PutScriptBindingQueue>;
+
+export interface PutScriptBindingRatelimitSimple {
+  limit: number;
+  period: number;
+  mitigationTimeout?: number;
+}
+export const PutScriptBindingRatelimitSimple = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    limit: S.Number,
+    period: S.Number,
+    mitigationTimeout: S.optional(S.Number.pipe(T.Body("mitigation_timeout"))),
+  }),
+).annotate({
+  identifier: "PutScriptBindingRatelimitSimple",
+}) as any as S.Schema<PutScriptBindingRatelimitSimple>;
+
+export type PutScriptBindingRatelimitType = "ratelimit";
+export const PutScriptBindingRatelimitType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingRatelimit {
+  name: string;
+  namespaceId: string;
+  simple: PutScriptBindingRatelimitSimple;
+  type: PutScriptBindingRatelimitType;
+}
+export const PutScriptBindingRatelimit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    namespaceId: S.String.pipe(T.Body("namespace_id")),
+    simple: PutScriptBindingRatelimitSimple,
+    type: PutScriptBindingRatelimitType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingRatelimit",
+}) as any as S.Schema<PutScriptBindingRatelimit>;
+
+export type PutScriptBindingR2BucketJurisdiction =
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
+export const PutScriptBindingR2BucketJurisdiction = /*@__PURE__*/ S.String;
+
+export type PutScriptBindingR2BucketType = "r2_bucket";
+export const PutScriptBindingR2BucketType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingR2Bucket {
+  bucketName: string;
+  name: string;
+  jurisdiction?: PutScriptBindingR2BucketJurisdiction | (string & {});
+  type: PutScriptBindingR2BucketType;
+}
+export const PutScriptBindingR2Bucket = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucketName: S.String.pipe(T.Body("bucket_name")),
+    name: S.String,
+    jurisdiction: S.optional(PutScriptBindingR2BucketJurisdiction),
+    type: PutScriptBindingR2BucketType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingR2Bucket",
+}) as any as S.Schema<PutScriptBindingR2Bucket>;
+
+export type PutScriptBindingSecretTextType = "secret_text";
+export const PutScriptBindingSecretTextType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingSecretText {
+  name: string;
+  text: string;
+  type: PutScriptBindingSecretTextType;
+}
+export const PutScriptBindingSecretText = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    text: S.String,
+    type: PutScriptBindingSecretTextType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingSecretText",
+}) as any as S.Schema<PutScriptBindingSecretText>;
+
+export type PutScriptBindingSendEmailType = "send_email";
+export const PutScriptBindingSendEmailType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingSendEmail {
+  name: string;
+  allowedDestinationAddresses?: PutScriptMetadataStringList;
+  allowedSenderAddresses?: PutScriptMetadataStringList;
+  destinationAddress?: string;
+  type: PutScriptBindingSendEmailType;
+}
+export const PutScriptBindingSendEmail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    allowedDestinationAddresses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("allowed_destination_addresses")),
+    ),
+    allowedSenderAddresses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("allowed_sender_addresses")),
+    ),
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    type: PutScriptBindingSendEmailType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingSendEmail",
+}) as any as S.Schema<PutScriptBindingSendEmail>;
+
+export type PutScriptBindingServiceType = "service";
+export const PutScriptBindingServiceType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingService {
+  name: string;
+  service: string;
+  entrypoint?: string;
+  environment?: string;
+  type: PutScriptBindingServiceType;
+}
+export const PutScriptBindingService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    service: S.String,
+    entrypoint: S.optional(S.String),
+    environment: S.optional(S.String),
+    type: PutScriptBindingServiceType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingService",
+}) as any as S.Schema<PutScriptBindingService>;
+
+export type PutScriptBindingTextBlobType = "text_blob";
+export const PutScriptBindingTextBlobType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingTextBlob {
+  name: string;
+  part: string;
+  type: PutScriptBindingTextBlobType;
+}
+export const PutScriptBindingTextBlob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    part: S.String,
+    type: PutScriptBindingTextBlobType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingTextBlob",
+}) as any as S.Schema<PutScriptBindingTextBlob>;
+
+export type PutScriptBindingVectorizeType = "vectorize";
+export const PutScriptBindingVectorizeType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingVectorize {
+  indexName: string;
+  name: string;
+  type: PutScriptBindingVectorizeType;
+}
+export const PutScriptBindingVectorize = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    indexName: S.String.pipe(T.Body("index_name")),
+    name: S.String,
+    type: PutScriptBindingVectorizeType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingVectorize",
+}) as any as S.Schema<PutScriptBindingVectorize>;
+
+export type PutScriptBindingVersionMetadataType = "version_metadata";
+export const PutScriptBindingVersionMetadataType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingVersionMetadata {
+  name: string;
+  type: PutScriptBindingVersionMetadataType;
+}
+export const PutScriptBindingVersionMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingVersionMetadataType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingVersionMetadata",
+}) as any as S.Schema<PutScriptBindingVersionMetadata>;
+
+export type PutScriptBindingSecretsStoreSecretType = "secrets_store_secret";
+export const PutScriptBindingSecretsStoreSecretType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingSecretsStoreSecret {
+  name: string;
+  secretName: string;
+  storeId: string;
+  type: PutScriptBindingSecretsStoreSecretType;
+}
+export const PutScriptBindingSecretsStoreSecret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    secretName: S.String.pipe(T.Body("secret_name")),
+    storeId: S.String.pipe(T.Body("store_id")),
+    type: PutScriptBindingSecretsStoreSecretType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingSecretsStoreSecret",
+}) as any as S.Schema<PutScriptBindingSecretsStoreSecret>;
+
+export type PutScriptBindingFlagshipType = "flagship";
+export const PutScriptBindingFlagshipType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingFlagship {
+  appId: string;
+  name: string;
+  type: PutScriptBindingFlagshipType;
+}
+export const PutScriptBindingFlagship = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.Body("app_id")),
+    name: S.String,
+    type: PutScriptBindingFlagshipType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingFlagship",
+}) as any as S.Schema<PutScriptBindingFlagship>;
+
+export type PutScriptBindingSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
+export const PutScriptBindingSecretKeyFormat = /*@__PURE__*/ S.String;
+
+export type PutScriptBindingSecretKeyUsage =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
+export const PutScriptBindingSecretKeyUsage = /*@__PURE__*/ S.String;
+
+export type PutScriptBindingSecretKeyUsagesList = Array<
+  PutScriptBindingSecretKeyUsage | (string & {})
+>;
+export const PutScriptBindingSecretKeyUsagesList = /*@__PURE__*/ S.Array(
+  PutScriptBindingSecretKeyUsage,
+) as any as S.Schema<PutScriptBindingSecretKeyUsagesList>;
+
+export type PutScriptBindingSecretKeyType = "secret_key";
+export const PutScriptBindingSecretKeyType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingSecretKey {
+  algorithm: unknown;
+  format: PutScriptBindingSecretKeyFormat | (string & {});
+  name: string;
+  usages: PutScriptBindingSecretKeyUsagesList;
+  keyBase64?: string;
+  keyJwk?: unknown;
+  type: PutScriptBindingSecretKeyType;
+}
+export const PutScriptBindingSecretKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    algorithm: S.Unknown,
+    format: PutScriptBindingSecretKeyFormat,
+    name: S.String,
+    usages: PutScriptBindingSecretKeyUsagesList,
+    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+    type: PutScriptBindingSecretKeyType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingSecretKey",
+}) as any as S.Schema<PutScriptBindingSecretKey>;
+
+export type PutScriptBindingWorkflowType = "workflow";
+export const PutScriptBindingWorkflowType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingWorkflow {
+  name: string;
+  workflowName: string;
+  className: string;
+  scriptName?: string;
+  type: PutScriptBindingWorkflowType;
+}
+export const PutScriptBindingWorkflow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    workflowName: S.String.pipe(T.Body("workflow_name")),
+    className: S.String.pipe(T.Body("class_name")),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    type: PutScriptBindingWorkflowType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingWorkflow",
+}) as any as S.Schema<PutScriptBindingWorkflow>;
+
+export type PutScriptBindingWasmModuleType = "wasm_module";
+export const PutScriptBindingWasmModuleType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingWasmModule {
+  name: string;
+  part: string;
+  type: PutScriptBindingWasmModuleType;
+}
+export const PutScriptBindingWasmModule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    part: S.String,
+    type: PutScriptBindingWasmModuleType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingWasmModule",
+}) as any as S.Schema<PutScriptBindingWasmModule>;
+
+export type PutScriptBindingVpcServiceType = "vpc_service";
+export const PutScriptBindingVpcServiceType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingVpcService {
+  name: string;
+  serviceId: string;
+  type: PutScriptBindingVpcServiceType;
+}
+export const PutScriptBindingVpcService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    serviceId: S.String.pipe(T.Body("service_id")),
+    type: PutScriptBindingVpcServiceType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingVpcService",
+}) as any as S.Schema<PutScriptBindingVpcService>;
+
+export type PutScriptBindingVpcNetworkType = "vpc_network";
+export const PutScriptBindingVpcNetworkType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingVpcNetwork {
+  name: string;
+  networkId?: string;
+  tunnelId?: string;
+  type: PutScriptBindingVpcNetworkType;
+}
+export const PutScriptBindingVpcNetwork = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+    type: PutScriptBindingVpcNetworkType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingVpcNetwork",
+}) as any as S.Schema<PutScriptBindingVpcNetwork>;
+
+export type PutScriptBindingWorkerLoaderType = "worker_loader";
+export const PutScriptBindingWorkerLoaderType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingWorkerLoader {
+  name: string;
+  type: PutScriptBindingWorkerLoaderType;
+}
+export const PutScriptBindingWorkerLoader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingWorkerLoaderType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingWorkerLoader",
+}) as any as S.Schema<PutScriptBindingWorkerLoader>;
+
+export type PutScriptBindingArtifactsType = "artifacts";
+export const PutScriptBindingArtifactsType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingArtifacts {
+  name: string;
+  namespace: string;
+  type: PutScriptBindingArtifactsType;
+}
+export const PutScriptBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    namespace: S.String,
+    type: PutScriptBindingArtifactsType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingArtifacts",
+}) as any as S.Schema<PutScriptBindingArtifacts>;
+
+export type PutScriptBinding =
+  | PutScriptBindingAi
+  | PutScriptBindingAiSearch
+  | PutScriptBindingAiSearchNamespace
+  | PutScriptBindingAnalyticsEngine
+  | PutScriptBindingAssets
+  | PutScriptBindingBrowser
+  | PutScriptBindingD1
+  | PutScriptBindingDataBlob
+  | PutScriptBindingDispatchNamespace
+  | PutScriptBindingDurableObjectNamespace
+  | PutScriptBindingHyperdrive
+  | PutScriptBindingInherit
+  | PutScriptBindingImages
+  | PutScriptBindingJson
+  | PutScriptBindingKvNamespace
+  | PutScriptBindingMedia
+  | PutScriptBindingMtlsCertificate
+  | PutScriptBindingPlainText
+  | PutScriptBindingPipelines
+  | PutScriptBindingQueue
+  | PutScriptBindingRatelimit
+  | PutScriptBindingR2Bucket
+  | PutScriptBindingSecretText
+  | PutScriptBindingSendEmail
+  | PutScriptBindingService
+  | PutScriptBindingTextBlob
+  | PutScriptBindingVectorize
+  | PutScriptBindingVersionMetadata
+  | PutScriptBindingSecretsStoreSecret
+  | PutScriptBindingFlagship
+  | PutScriptBindingSecretKey
+  | PutScriptBindingWorkflow
+  | PutScriptBindingWasmModule
+  | PutScriptBindingVpcService
+  | PutScriptBindingVpcNetwork
+  | PutScriptBindingWorkerLoader
+  | PutScriptBindingArtifacts;
+export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "type"],
+    ["instanceName", "name", "namespace", "type"],
+    ["name", "namespace", "type"],
+    ["dataset", "name", "type"],
+    ["name", "type"],
+    ["name", "type"],
+    ["databaseId", "name", "id", "type"],
+    ["name", "part", "type"],
+    ["name", "namespace", "outbound", "type"],
+    [
+      "name",
+      "className",
+      "dispatchNamespace",
+      "environment",
+      "namespaceId",
+      "scriptName",
+      "type",
+    ],
+    ["id", "name", "type"],
+    ["name", "oldName", "versionId", "type"],
+    ["name", "type"],
+    ["json", "name", "type"],
+    ["name", "namespaceId", "type"],
+    ["name", "type"],
+    ["certificateId", "name", "type"],
+    ["name", "text", "type"],
+    ["name", "pipeline", "type"],
+    ["name", "queueName", "type"],
+    ["name", "namespaceId", "simple", "type"],
+    ["bucketName", "name", "jurisdiction", "type"],
+    ["name", "text", "type"],
+    [
+      "name",
+      "allowedDestinationAddresses",
+      "allowedSenderAddresses",
+      "destinationAddress",
+      "type",
+    ],
+    ["name", "service", "entrypoint", "environment", "type"],
+    ["name", "part", "type"],
+    ["indexName", "name", "type"],
+    ["name", "type"],
+    ["name", "secretName", "storeId", "type"],
+    ["appId", "name", "type"],
+    ["algorithm", "format", "name", "usages", "keyBase64", "keyJwk", "type"],
+    ["name", "workflowName", "className", "scriptName", "type"],
+    ["name", "part", "type"],
+    ["name", "serviceId", "type"],
+    ["name", "networkId", "tunnelId", "type"],
+    ["name", "type"],
+    ["name", "namespace", "type"],
+  ]),
+);
+
+export type PutScriptMetadataBindingsList = Array<PutScriptBinding>;
+export const PutScriptMetadataBindingsList = /*@__PURE__*/ S.Array(
+  PutScriptBinding,
+) as any as S.Schema<PutScriptMetadataBindingsList>;
+
+export interface PutScriptContainer {
+  className: string;
+}
+export const PutScriptContainer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    className: S.String.pipe(T.Body("class_name")),
+  }),
+).annotate({
+  identifier: "PutScriptContainer",
+}) as any as S.Schema<PutScriptContainer>;
+
+export type PutScriptMetadataContainersList = Array<PutScriptContainer>;
+export const PutScriptMetadataContainersList = /*@__PURE__*/ S.Array(
+  PutScriptContainer,
+) as any as S.Schema<PutScriptMetadataContainersList>;
+
+export interface PutScriptMetadataLimits {
+  cpuMs?: number;
+  subrequests?: number;
+}
+export const PutScriptMetadataLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+    subrequests: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PutScriptMetadataLimits",
+}) as any as S.Schema<PutScriptMetadataLimits>;
+
+export interface PutScriptMigrationRenamedClass {
+  from?: string;
+  to?: string;
+}
+export const PutScriptMigrationRenamedClass = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    from: S.optional(S.String),
+    to: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutScriptMigrationRenamedClass",
+}) as any as S.Schema<PutScriptMigrationRenamedClass>;
+
+export type PutScriptMigrationRenamedClassesList =
+  Array<PutScriptMigrationRenamedClass>;
+export const PutScriptMigrationRenamedClassesList = /*@__PURE__*/ S.Array(
+  PutScriptMigrationRenamedClass,
+) as any as S.Schema<PutScriptMigrationRenamedClassesList>;
+
+export interface PutScriptMigrationTransferredClass {
+  from?: string;
+  fromScript?: string;
+  to?: string;
+}
+export const PutScriptMigrationTransferredClass = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    from: S.optional(S.String),
+    fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
+    to: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutScriptMigrationTransferredClass",
+}) as any as S.Schema<PutScriptMigrationTransferredClass>;
+
+export type PutScriptMigrationTransferredClassesList =
+  Array<PutScriptMigrationTransferredClass>;
+export const PutScriptMigrationTransferredClassesList = /*@__PURE__*/ S.Array(
+  PutScriptMigrationTransferredClass,
+) as any as S.Schema<PutScriptMigrationTransferredClassesList>;
+
+export interface PutScriptSingleStepMigration {
+  deletedClasses?: PutScriptMetadataStringList;
+  newClasses?: PutScriptMetadataStringList;
+  newSqliteClasses?: PutScriptMetadataStringList;
+  newTag?: string;
+  oldTag?: string;
+  renamedClasses?: PutScriptMigrationRenamedClassesList;
+  transferredClasses?: PutScriptMigrationTransferredClassesList;
+}
+export const PutScriptSingleStepMigration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deletedClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("deleted_classes")),
+    ),
+    newClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("new_classes")),
+    ),
+    newSqliteClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("new_sqlite_classes")),
+    ),
+    newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+    oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+    renamedClasses: S.optional(
+      PutScriptMigrationRenamedClassesList.pipe(T.Body("renamed_classes")),
+    ),
+    transferredClasses: S.optional(
+      PutScriptMigrationTransferredClassesList.pipe(
+        T.Body("transferred_classes"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptSingleStepMigration",
+}) as any as S.Schema<PutScriptSingleStepMigration>;
+
+export interface PutScriptMigrationStep {
+  deletedClasses?: PutScriptMetadataStringList;
+  newClasses?: PutScriptMetadataStringList;
+  newSqliteClasses?: PutScriptMetadataStringList;
+  renamedClasses?: PutScriptMigrationRenamedClassesList;
+  transferredClasses?: PutScriptMigrationTransferredClassesList;
+}
+export const PutScriptMigrationStep = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deletedClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("deleted_classes")),
+    ),
+    newClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("new_classes")),
+    ),
+    newSqliteClasses: S.optional(
+      PutScriptMetadataStringList.pipe(T.Body("new_sqlite_classes")),
+    ),
+    renamedClasses: S.optional(
+      PutScriptMigrationRenamedClassesList.pipe(T.Body("renamed_classes")),
+    ),
+    transferredClasses: S.optional(
+      PutScriptMigrationTransferredClassesList.pipe(
+        T.Body("transferred_classes"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptMigrationStep",
+}) as any as S.Schema<PutScriptMigrationStep>;
+
+export type PutScriptMigrationStepsList = Array<PutScriptMigrationStep>;
+export const PutScriptMigrationStepsList = /*@__PURE__*/ S.Array(
+  PutScriptMigrationStep,
+) as any as S.Schema<PutScriptMigrationStepsList>;
+
+export interface PutScriptMultipleStepMigrations {
+  newTag?: string;
+  oldTag?: string;
+  steps?: PutScriptMigrationStepsList;
+}
+export const PutScriptMultipleStepMigrations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+    oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+    steps: S.optional(PutScriptMigrationStepsList),
+  }),
+).annotate({
+  identifier: "PutScriptMultipleStepMigrations",
+}) as any as S.Schema<PutScriptMultipleStepMigrations>;
+
+export type PutScriptMetadataMigrations =
+  | PutScriptSingleStepMigration
+  | PutScriptMultipleStepMigrations;
+export const PutScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "deletedClasses",
+      "newClasses",
+      "newSqliteClasses",
+      "newTag",
+      "oldTag",
+      "renamedClasses",
+      "transferredClasses",
+    ],
+    ["newTag", "oldTag", "steps"],
+  ]),
+);
+
+export interface PutScriptObservabilityLogs {
+  enabled: boolean;
+  invocationLogs: boolean;
+  destinations?: PutScriptMetadataStringList;
+  headSamplingRate?: number | null;
+  persist?: boolean;
+}
+export const PutScriptObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+    destinations: S.optional(PutScriptMetadataStringList),
+    headSamplingRate: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+    ),
+    persist: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PutScriptObservabilityLogs",
+}) as any as S.Schema<PutScriptObservabilityLogs>;
+
+export type PutScriptObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept";
+export const PutScriptObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PutScriptObservabilityTraces {
+  destinations?: PutScriptMetadataStringList;
+  enabled?: boolean;
+  headSamplingRate?: number | null;
+  persist?: boolean;
+  propagationPolicy?:
+    | PutScriptObservabilityTracesPropagationPolicy
+    | (string & {});
+}
+export const PutScriptObservabilityTraces = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinations: S.optional(PutScriptMetadataStringList),
+    enabled: S.optional(S.Boolean),
+    headSamplingRate: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+    ),
+    persist: S.optional(S.Boolean),
+    propagationPolicy: S.optional(
+      PutScriptObservabilityTracesPropagationPolicy.pipe(
+        T.Body("propagation_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptObservabilityTraces",
+}) as any as S.Schema<PutScriptObservabilityTraces>;
+
+export interface PutScriptMetadataObservability {
+  enabled: boolean;
+  headSamplingRate?: number | null;
+  logs?: PutScriptObservabilityLogs | null;
+  traces?: PutScriptObservabilityTraces | null;
+}
+export const PutScriptMetadataObservability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    headSamplingRate: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("head_sampling_rate")),
+    ),
+    logs: S.optional(S.NullOr(PutScriptObservabilityLogs)),
+    traces: S.optional(S.NullOr(PutScriptObservabilityTraces)),
+  }),
+).annotate({
+  identifier: "PutScriptMetadataObservability",
+}) as any as S.Schema<PutScriptMetadataObservability>;
+
+export type PutScriptPlacementSmartMode = "smart";
+export const PutScriptPlacementSmartMode = /*@__PURE__*/ S.String;
+
+export interface PutScriptPlacementSmart {
+  mode: PutScriptPlacementSmartMode;
+}
+export const PutScriptPlacementSmart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: PutScriptPlacementSmartMode,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementSmart",
+}) as any as S.Schema<PutScriptPlacementSmart>;
+
+export interface PutScriptPlacementRegion {
+  region: string;
+}
+export const PutScriptPlacementRegion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementRegion",
+}) as any as S.Schema<PutScriptPlacementRegion>;
+
+export interface PutScriptPlacementHostname {
+  hostname: string;
+}
+export const PutScriptPlacementHostname = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostname: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementHostname",
+}) as any as S.Schema<PutScriptPlacementHostname>;
+
+export interface PutScriptPlacementHost {
+  host: string;
+}
+export const PutScriptPlacementHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementHost",
+}) as any as S.Schema<PutScriptPlacementHost>;
+
+export type PutScriptPlacementTargetedMode = "targeted";
+export const PutScriptPlacementTargetedMode = /*@__PURE__*/ S.String;
+
+export interface PutScriptPlacementTargetedRegion {
+  mode: PutScriptPlacementTargetedMode;
+  region: string;
+}
+export const PutScriptPlacementTargetedRegion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: PutScriptPlacementTargetedMode,
+    region: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetedRegion",
+}) as any as S.Schema<PutScriptPlacementTargetedRegion>;
+
+export interface PutScriptPlacementTargetedHostname {
+  hostname: string;
+  mode: PutScriptPlacementTargetedMode;
+}
+export const PutScriptPlacementTargetedHostname = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostname: S.String,
+    mode: PutScriptPlacementTargetedMode,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetedHostname",
+}) as any as S.Schema<PutScriptPlacementTargetedHostname>;
+
+export interface PutScriptPlacementTargetedHost {
+  host: string;
+  mode: PutScriptPlacementTargetedMode;
+}
+export const PutScriptPlacementTargetedHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.String,
+    mode: PutScriptPlacementTargetedMode,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetedHost",
+}) as any as S.Schema<PutScriptPlacementTargetedHost>;
+
+export interface PutScriptPlacementTargetRegion {
+  region: string;
+}
+export const PutScriptPlacementTargetRegion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetRegion",
+}) as any as S.Schema<PutScriptPlacementTargetRegion>;
+
+export interface PutScriptPlacementTargetHostname {
+  hostname: string;
+}
+export const PutScriptPlacementTargetHostname = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostname: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetHostname",
+}) as any as S.Schema<PutScriptPlacementTargetHostname>;
+
+export interface PutScriptPlacementTargetHost {
+  host: string;
+}
+export const PutScriptPlacementTargetHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.String,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetHost",
+}) as any as S.Schema<PutScriptPlacementTargetHost>;
+
+export type PutScriptPlacementTarget =
+  | PutScriptPlacementTargetRegion
+  | PutScriptPlacementTargetHostname
+  | PutScriptPlacementTargetHost;
+export const PutScriptPlacementTarget = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["region"], ["hostname"], ["host"]]),
+);
+
+export type PutScriptPlacementTargetsList = Array<PutScriptPlacementTarget>;
+export const PutScriptPlacementTargetsList = /*@__PURE__*/ S.Array(
+  PutScriptPlacementTarget,
+) as any as S.Schema<PutScriptPlacementTargetsList>;
+
+export interface PutScriptPlacementTargetedList {
+  mode: PutScriptPlacementTargetedMode;
+  target: PutScriptPlacementTargetsList;
+}
+export const PutScriptPlacementTargetedList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: PutScriptPlacementTargetedMode,
+    target: PutScriptPlacementTargetsList,
+  }),
+).annotate({
+  identifier: "PutScriptPlacementTargetedList",
+}) as any as S.Schema<PutScriptPlacementTargetedList>;
+
+export type PutScriptMetadataPlacement =
+  | PutScriptPlacementSmart
+  | PutScriptPlacementRegion
+  | PutScriptPlacementHostname
+  | PutScriptPlacementHost
+  | PutScriptPlacementTargetedRegion
+  | PutScriptPlacementTargetedHostname
+  | PutScriptPlacementTargetedHost
+  | PutScriptPlacementTargetedList;
+export const PutScriptMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["mode"],
+    ["region"],
+    ["hostname"],
+    ["host"],
+    ["mode", "region"],
+    ["hostname", "mode"],
+    ["host", "mode"],
+    ["mode", "target"],
+  ]),
+);
+
+export interface PutScriptTailConsumer {
+  service: string;
+  environment?: string;
+  namespace?: string;
+}
+export const PutScriptTailConsumer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    service: S.String,
+    environment: S.optional(S.String),
+    namespace: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutScriptTailConsumer",
+}) as any as S.Schema<PutScriptTailConsumer>;
+
+export type PutScriptMetadataTailConsumersList = Array<PutScriptTailConsumer>;
+export const PutScriptMetadataTailConsumersList = /*@__PURE__*/ S.Array(
+  PutScriptTailConsumer,
+) as any as S.Schema<PutScriptMetadataTailConsumersList>;
+
+export type PutScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
+export const PutScriptMetadataUsageModel = /*@__PURE__*/ S.String;
+
+export interface PutScriptMetadataCache {
+  enabled?: boolean;
+  crossVersionCache?: boolean;
+}
+export const PutScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    crossVersionCache: S.optional(
+      S.Boolean.pipe(T.Body("cross_version_cache")),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptMetadataCache",
+}) as any as S.Schema<PutScriptMetadataCache>;
+
 export interface PutScriptMetadata {
-  annotations?: unknown;
-  assets?: unknown;
-  bindings?: unknown;
+  annotations?: PutScriptMetadataAnnotations;
+  assets?: PutScriptMetadataAssets;
+  bindings?: PutScriptMetadataBindingsList;
   bodyPart?: string;
-  cache?: unknown;
   compatibilityDate?: string;
   compatibilityFlags?: PutScriptMetadataStringList;
-  containers?: unknown;
+  containers?: PutScriptMetadataContainersList;
   keepAssets?: boolean;
   keepBindings?: PutScriptMetadataStringList;
-  limits?: unknown;
+  limits?: PutScriptMetadataLimits;
   logpush?: boolean;
   mainModule?: string;
-  migrations?: unknown;
-  observability?: unknown;
-  placement?: unknown;
+  migrations?: PutScriptMetadataMigrations;
+  observability?: PutScriptMetadataObservability;
+  placement?: PutScriptMetadataPlacement;
   tags?: PutScriptMetadataStringList;
-  tailConsumers?: unknown;
-  usageModel?: string;
+  tailConsumers?: PutScriptMetadataTailConsumersList | null;
+  usageModel?: PutScriptMetadataUsageModel | (string & {});
+  cacheOptions?: PutScriptMetadataCache;
 }
 export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotations: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
-    assets: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
-    bindings: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
+    annotations: S.optional(PutScriptMetadataAnnotations),
+    assets: S.optional(PutScriptMetadataAssets),
+    bindings: S.optional(PutScriptMetadataBindingsList),
     bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
-    cache: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
     compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
     compatibilityFlags: S.optional(
       PutScriptMetadataStringList.pipe(T.Body("compatibility_flags")),
     ),
-    containers: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
+    containers: S.optional(PutScriptMetadataContainersList),
     keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
     keepBindings: S.optional(
       PutScriptMetadataStringList.pipe(T.Body("keep_bindings")),
     ),
-    limits: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
+    limits: S.optional(PutScriptMetadataLimits),
     logpush: S.optional(S.Boolean),
     mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-    migrations: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
-    observability: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
-    placement: S.optional(
-      S.Unknown.pipe(
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
-      ),
-    ),
+    migrations: S.optional(PutScriptMetadataMigrations),
+    observability: S.optional(PutScriptMetadataObservability),
+    placement: S.optional(PutScriptMetadataPlacement),
     tags: S.optional(PutScriptMetadataStringList),
     tailConsumers: S.optional(
-      S.Unknown.pipe(
+      S.NullOr(PutScriptMetadataTailConsumersList).pipe(
         T.Body("tail_consumers"),
-        T.KeyDictionary({
-          abrLevel: "abr_level",
-          allowedDestinationAddresses: "allowed_destination_addresses",
-          allowedSenderAddresses: "allowed_sender_addresses",
-          appId: "app_id",
-          authorEmail: "author_email",
-          authorId: "author_id",
-          bodyPart: "body_part",
-          bucketName: "bucket_name",
-          bytesRead: "bytes_read",
-          cache: "cache_options",
-          capnpSchema: "capnp_schema",
-          certId: "cert_id",
-          certificateId: "certificate_id",
-          className: "class_name",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          contentBase64: "content_base64",
-          contentType: "content_type",
-          cpuMs: "cpu_ms",
-          createdOn: "created_on",
-          crossAccountGrant: "cross_account_grant",
-          crossVersionCache: "cross_version_cache",
-          databaseId: "database_id",
-          defaultUsageModel: "default_usage_model",
-          deletedClasses: "deleted_classes",
-          deliveryDelay: "delivery_delay",
-          destinationAddress: "destination_address",
-          destinationConf: "destination_conf",
-          dispatchNamespace: "dispatch_namespace",
-          documentationUrl: "documentation_url",
-          enableTimer: "enable_timer",
-          entryPoint: "entry_point",
-          environmentIsDefault: "environment_is_default",
-          environmentName: "environment_name",
-          errorMessage: "error_message",
-          exchangeUrl: "exchange_url",
-          expiresAt: "expires_at",
-          fromScript: "from_script",
-          greenCompute: "green_compute",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          headSamplingRate: "head_sampling_rate",
-          htmlHandling: "html_handling",
-          indexName: "index_name",
-          instanceName: "instance_name",
-          invocationLogs: "invocation_logs",
-          keepAssets: "keep_assets",
-          keepBindings: "keep_bindings",
-          keyBase64: "key_base64",
-          keyJwk: "key_jwk",
-          lastAnalyzedAt: "last_analyzed_at",
-          lastComplete: "last_complete",
-          lastDeployedFrom: "last_deployed_from",
-          lastError: "last_error",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          minimalMode: "minimal_mode",
-          mitigationTimeout: "mitigation_timeout",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          namespaceId: "namespace_id",
-          networkId: "network_id",
-          newClasses: "new_classes",
-          newSqliteClasses: "new_sqlite_classes",
-          newTag: "new_tag",
-          notFoundHandling: "not_found_handling",
-          oldName: "old_name",
-          oldTag: "old_tag",
-          perPage: "per_page",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          previewToken: "preview_token",
-          previewsEnabled: "previews_enabled",
-          propagationPolicy: "propagation_policy",
-          queueName: "queue_name",
-          renamedClasses: "renamed_classes",
-          resultInfo: "result_info",
-          rowsRead: "rows_read",
-          runWorkerFirst: "run_worker_first",
-          scriptName: "script_name",
-          scriptRuntime: "script_runtime",
-          secretName: "secret_name",
-          serveDirectly: "serve_directly",
-          serviceId: "service_id",
-          serviceName: "service_name",
-          startupTimeMs: "startup_time_ms",
-          storeId: "store_id",
-          streamingTailConsumers: "streaming_tail_consumers",
-          tailConsumers: "tail_consumers",
-          tailUrl: "tail_url",
-          totalCount: "total_count",
-          transferredClasses: "transferred_classes",
-          tunnelId: "tunnel_id",
-          usageModel: "usage_model",
-          versionId: "version_id",
-          versionTags: "version_tags",
-          workersDev: "workers_dev",
-          workflowName: "workflow_name",
-          zoneId: "zone_id",
-          zoneName: "zone_name",
-        }),
       ),
     ),
-    usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+    usageModel: S.optional(
+      PutScriptMetadataUsageModel.pipe(T.Body("usage_model")),
+    ),
+    cacheOptions: S.optional(
+      PutScriptMetadataCache.pipe(T.Body("cache_options")),
+    ),
   }),
 ).annotate({
   identifier: "PutScriptMetadata",
@@ -8878,25 +8521,16 @@ export const CreateScriptEdgePreviewWranglerSessionConfigRoutes =
     identifier: "CreateScriptEdgePreviewWranglerSessionConfigRoutes",
   }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutes>;
 
-export interface CreateScriptEdgePreviewWranglerSessionConfig {
-  /** Route the preview through workers.dev. */
-  workersDev?: boolean;
-  minimalMode?: boolean;
-  /** Routes to serve the preview on. */
-  routes?: CreateScriptEdgePreviewWranglerSessionConfigRoutesList;
-}
+export type CreateScriptEdgePreviewWranglerSessionConfig =
+  | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
+  | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
 export const CreateScriptEdgePreviewWranglerSessionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workersDev: S.optional(S.Boolean.pipe(T.Body("workers_dev"))),
-      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
-      routes: S.optional(
-        CreateScriptEdgePreviewWranglerSessionConfigRoutesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateScriptEdgePreviewWranglerSessionConfig",
-  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfig>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["workersDev", "minimalMode"],
+      ["routes", "minimalMode"],
+    ]),
+  );
 
 export interface CreateScriptEdgePreviewRequest {
   /** Identifier. */
@@ -9047,7 +8681,7 @@ export interface CreateScriptVersionRequest {
   /** Name of the script. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit | (string & {});
+  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit;
 }
 export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10110,234 +9744,96 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetwork =
     identifier: "ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetwork",
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetwork>;
 
-export interface ScriptsVersionsCreateResponseResourcesBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsVersionsCreateResponseResourcesBindingsItemAIType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemAISearchType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespaceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngineType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemAssetsType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemBrowserType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemD1Type
-    | ScriptsVersionsCreateResponseResourcesBindingsItemDataBlobType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespaceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemHyperdriveType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemInheritType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemImagesType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemJsonType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespaceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemMediaType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificateType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemPlainTextType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemPipelinesType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemQueueType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemSecretTextType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemServiceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemTextBlobType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemVectorizeType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadataType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecretType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemFlagshipType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemWorkflowType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemWasmModuleType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemVPCServiceType
-    | ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type ScriptsVersionsCreateResponseResourcesBindingsItem =
+  | ScriptsVersionsCreateResponseResourcesBindingsItemAI
+  | ScriptsVersionsCreateResponseResourcesBindingsItemAISearch
+  | ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespace
+  | ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngine
+  | ScriptsVersionsCreateResponseResourcesBindingsItemAssets
+  | ScriptsVersionsCreateResponseResourcesBindingsItemBrowser
+  | ScriptsVersionsCreateResponseResourcesBindingsItemD1
+  | ScriptsVersionsCreateResponseResourcesBindingsItemDataBlob
+  | ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespace
+  | ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespace
+  | ScriptsVersionsCreateResponseResourcesBindingsItemHyperdrive
+  | ScriptsVersionsCreateResponseResourcesBindingsItemInherit
+  | ScriptsVersionsCreateResponseResourcesBindingsItemImages
+  | ScriptsVersionsCreateResponseResourcesBindingsItemJson
+  | ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespace
+  | ScriptsVersionsCreateResponseResourcesBindingsItemMedia
+  | ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificate
+  | ScriptsVersionsCreateResponseResourcesBindingsItemPlainText
+  | ScriptsVersionsCreateResponseResourcesBindingsItemPipelines
+  | ScriptsVersionsCreateResponseResourcesBindingsItemQueue
+  | ScriptsVersionsCreateResponseResourcesBindingsItemRatelimit
+  | ScriptsVersionsCreateResponseResourcesBindingsItemR2Bucket
+  | ScriptsVersionsCreateResponseResourcesBindingsItemSecretText
+  | ScriptsVersionsCreateResponseResourcesBindingsItemSendEmail
+  | ScriptsVersionsCreateResponseResourcesBindingsItemService
+  | ScriptsVersionsCreateResponseResourcesBindingsItemTextBlob
+  | ScriptsVersionsCreateResponseResourcesBindingsItemVectorize
+  | ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadata
+  | ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecret
+  | ScriptsVersionsCreateResponseResourcesBindingsItemFlagship
+  | ScriptsVersionsCreateResponseResourcesBindingsItemSecretKey
+  | ScriptsVersionsCreateResponseResourcesBindingsItemWorkflow
+  | ScriptsVersionsCreateResponseResourcesBindingsItemWasmModule
+  | ScriptsVersionsCreateResponseResourcesBindingsItemVPCService
+  | ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetwork;
 export const ScriptsVersionsCreateResponseResourcesBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        ScriptsVersionsCreateResponseResourcesBindingsItemAIType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemAISearchType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemAISearchNamespaceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemAnalyticsEngineType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemAssetsType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemBrowserType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemD1Type,
-        ScriptsVersionsCreateResponseResourcesBindingsItemDataBlobType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemDurableObjectNamespaceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemHyperdriveType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemInheritType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemImagesType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemJsonType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemKVNamespaceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemMediaType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemMTLSCertificateType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemPlainTextType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemPipelinesType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemQueueType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemSecretTextType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemServiceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemTextBlobType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemVectorizeType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemVersionMetadataType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemSecretsStoreSecretType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemFlagshipType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemWorkflowType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemWasmModuleType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemVPCServiceType,
-        ScriptsVersionsCreateResponseResourcesBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsVersionsCreateResponseResourcesBindingsItem",
-  }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type ScriptsVersionsCreateResponseResourcesBindingsList =
   Array<ScriptsVersionsCreateResponseResourcesBindingsItem>;
@@ -11430,7 +10926,7 @@ export interface GetBetaWorkerVersionRequest {
   /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
   versionId: string;
   /** Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size. */
-  include?: BetaWorkersVersionsGetRequestInclude | (string & {});
+  include?: BetaWorkersVersionsGetRequestInclude;
 }
 export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12576,234 +12072,96 @@ export const BetaWorkersVersionsGetResponseBindingsItemVPCNetwork =
     identifier: "BetaWorkersVersionsGetResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCNetwork>;
 
-export interface BetaWorkersVersionsGetResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsGetResponseBindingsItemAIType
-    | BetaWorkersVersionsGetResponseBindingsItemAISearchType
-    | BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType
-    | BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType
-    | BetaWorkersVersionsGetResponseBindingsItemAssetsType
-    | BetaWorkersVersionsGetResponseBindingsItemBrowserType
-    | BetaWorkersVersionsGetResponseBindingsItemD1Type
-    | BetaWorkersVersionsGetResponseBindingsItemDataBlobType
-    | BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType
-    | BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespaceType
-    | BetaWorkersVersionsGetResponseBindingsItemHyperdriveType
-    | BetaWorkersVersionsGetResponseBindingsItemInheritType
-    | BetaWorkersVersionsGetResponseBindingsItemImagesType
-    | BetaWorkersVersionsGetResponseBindingsItemJsonType
-    | BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType
-    | BetaWorkersVersionsGetResponseBindingsItemMediaType
-    | BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType
-    | BetaWorkersVersionsGetResponseBindingsItemPlainTextType
-    | BetaWorkersVersionsGetResponseBindingsItemPipelinesType
-    | BetaWorkersVersionsGetResponseBindingsItemQueueType
-    | BetaWorkersVersionsGetResponseBindingsItemRatelimitType
-    | BetaWorkersVersionsGetResponseBindingsItemR2BucketType
-    | BetaWorkersVersionsGetResponseBindingsItemSecretTextType
-    | BetaWorkersVersionsGetResponseBindingsItemSendEmailType
-    | BetaWorkersVersionsGetResponseBindingsItemServiceType
-    | BetaWorkersVersionsGetResponseBindingsItemTextBlobType
-    | BetaWorkersVersionsGetResponseBindingsItemVectorizeType
-    | BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType
-    | BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecretType
-    | BetaWorkersVersionsGetResponseBindingsItemFlagshipType
-    | BetaWorkersVersionsGetResponseBindingsItemSecretKeyType
-    | BetaWorkersVersionsGetResponseBindingsItemWorkflowType
-    | BetaWorkersVersionsGetResponseBindingsItemWasmModuleType
-    | BetaWorkersVersionsGetResponseBindingsItemVPCServiceType
-    | BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: BetaWorkersVersionsGetResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type BetaWorkersVersionsGetResponseBindingsItem =
+  | BetaWorkersVersionsGetResponseBindingsItemAI
+  | BetaWorkersVersionsGetResponseBindingsItemAISearch
+  | BetaWorkersVersionsGetResponseBindingsItemAISearchNamespace
+  | BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine
+  | BetaWorkersVersionsGetResponseBindingsItemAssets
+  | BetaWorkersVersionsGetResponseBindingsItemBrowser
+  | BetaWorkersVersionsGetResponseBindingsItemD1
+  | BetaWorkersVersionsGetResponseBindingsItemDataBlob
+  | BetaWorkersVersionsGetResponseBindingsItemDispatchNamespace
+  | BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace
+  | BetaWorkersVersionsGetResponseBindingsItemHyperdrive
+  | BetaWorkersVersionsGetResponseBindingsItemInherit
+  | BetaWorkersVersionsGetResponseBindingsItemImages
+  | BetaWorkersVersionsGetResponseBindingsItemJson
+  | BetaWorkersVersionsGetResponseBindingsItemKVNamespace
+  | BetaWorkersVersionsGetResponseBindingsItemMedia
+  | BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate
+  | BetaWorkersVersionsGetResponseBindingsItemPlainText
+  | BetaWorkersVersionsGetResponseBindingsItemPipelines
+  | BetaWorkersVersionsGetResponseBindingsItemQueue
+  | BetaWorkersVersionsGetResponseBindingsItemRatelimit
+  | BetaWorkersVersionsGetResponseBindingsItemR2Bucket
+  | BetaWorkersVersionsGetResponseBindingsItemSecretText
+  | BetaWorkersVersionsGetResponseBindingsItemSendEmail
+  | BetaWorkersVersionsGetResponseBindingsItemService
+  | BetaWorkersVersionsGetResponseBindingsItemTextBlob
+  | BetaWorkersVersionsGetResponseBindingsItemVectorize
+  | BetaWorkersVersionsGetResponseBindingsItemVersionMetadata
+  | BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecret
+  | BetaWorkersVersionsGetResponseBindingsItemFlagship
+  | BetaWorkersVersionsGetResponseBindingsItemSecretKey
+  | BetaWorkersVersionsGetResponseBindingsItemWorkflow
+  | BetaWorkersVersionsGetResponseBindingsItemWasmModule
+  | BetaWorkersVersionsGetResponseBindingsItemVPCService
+  | BetaWorkersVersionsGetResponseBindingsItemVPCNetwork;
 export const BetaWorkersVersionsGetResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        BetaWorkersVersionsGetResponseBindingsItemAIType,
-        BetaWorkersVersionsGetResponseBindingsItemAISearchType,
-        BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType,
-        BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType,
-        BetaWorkersVersionsGetResponseBindingsItemAssetsType,
-        BetaWorkersVersionsGetResponseBindingsItemBrowserType,
-        BetaWorkersVersionsGetResponseBindingsItemD1Type,
-        BetaWorkersVersionsGetResponseBindingsItemDataBlobType,
-        BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType,
-        BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespaceType,
-        BetaWorkersVersionsGetResponseBindingsItemHyperdriveType,
-        BetaWorkersVersionsGetResponseBindingsItemInheritType,
-        BetaWorkersVersionsGetResponseBindingsItemImagesType,
-        BetaWorkersVersionsGetResponseBindingsItemJsonType,
-        BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType,
-        BetaWorkersVersionsGetResponseBindingsItemMediaType,
-        BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType,
-        BetaWorkersVersionsGetResponseBindingsItemPlainTextType,
-        BetaWorkersVersionsGetResponseBindingsItemPipelinesType,
-        BetaWorkersVersionsGetResponseBindingsItemQueueType,
-        BetaWorkersVersionsGetResponseBindingsItemRatelimitType,
-        BetaWorkersVersionsGetResponseBindingsItemR2BucketType,
-        BetaWorkersVersionsGetResponseBindingsItemSecretTextType,
-        BetaWorkersVersionsGetResponseBindingsItemSendEmailType,
-        BetaWorkersVersionsGetResponseBindingsItemServiceType,
-        BetaWorkersVersionsGetResponseBindingsItemTextBlobType,
-        BetaWorkersVersionsGetResponseBindingsItemVectorizeType,
-        BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType,
-        BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecretType,
-        BetaWorkersVersionsGetResponseBindingsItemFlagshipType,
-        BetaWorkersVersionsGetResponseBindingsItemSecretKeyType,
-        BetaWorkersVersionsGetResponseBindingsItemWorkflowType,
-        BetaWorkersVersionsGetResponseBindingsItemWasmModuleType,
-        BetaWorkersVersionsGetResponseBindingsItemVPCServiceType,
-        BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseBindingsItem",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type BetaWorkersVersionsGetResponseBindingsList =
   Array<BetaWorkersVersionsGetResponseBindingsItem>;
@@ -13132,61 +12490,24 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
       "BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface BetaWorkersVersionsGetResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
-export const BetaWorkersVersionsGetResponseMigrations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deletedClasses: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseMigrations",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseMigrations>;
+export type BetaWorkersVersionsGetResponseMigrations =
+  | BetaWorkersVersionsGetResponseMigrationsSingleStepMigration
+  | BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations;
+export const BetaWorkersVersionsGetResponseMigrations =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export interface BetaWorkersVersionsGetResponseModulesItem {
   /** The base64-encoded module content. */
@@ -13399,24 +12720,14 @@ export const BetaWorkersVersionsGetResponsePlacementCase7TargetItemHost =
     identifier: "BetaWorkersVersionsGetResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase7TargetItemHost>;
 
-export interface BetaWorkersVersionsGetResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type BetaWorkersVersionsGetResponsePlacementCase7TargetItem =
+  | BetaWorkersVersionsGetResponsePlacementCase7TargetItemRegion
+  | BetaWorkersVersionsGetResponsePlacementCase7TargetItemHostname
+  | BetaWorkersVersionsGetResponsePlacementCase7TargetItemHost;
 export const BetaWorkersVersionsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type BetaWorkersVersionsGetResponsePlacementCase7TargetList =
   Array<BetaWorkersVersionsGetResponsePlacementCase7TargetItem>;
@@ -13441,45 +12752,28 @@ export const BetaWorkersVersionsGetResponsePlacementCase7 =
     identifier: "BetaWorkersVersionsGetResponsePlacementCase7",
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase7>;
 
-export interface BetaWorkersVersionsGetResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | BetaWorkersVersionsGetResponsePlacementModeMode
-    | BetaWorkersVersionsGetResponsePlacementCase4Mode
-    | BetaWorkersVersionsGetResponsePlacementCase5Mode
-    | BetaWorkersVersionsGetResponsePlacementCase6Mode
-    | BetaWorkersVersionsGetResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: BetaWorkersVersionsGetResponsePlacementCase7TargetList;
-}
-export const BetaWorkersVersionsGetResponsePlacement = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          BetaWorkersVersionsGetResponsePlacementModeMode,
-          BetaWorkersVersionsGetResponsePlacementCase4Mode,
-          BetaWorkersVersionsGetResponsePlacementCase5Mode,
-          BetaWorkersVersionsGetResponsePlacementCase6Mode,
-          BetaWorkersVersionsGetResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        BetaWorkersVersionsGetResponsePlacementCase7TargetList,
-      ),
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponsePlacement",
-}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacement>;
+export type BetaWorkersVersionsGetResponsePlacement =
+  | BetaWorkersVersionsGetResponsePlacementMode
+  | BetaWorkersVersionsGetResponsePlacementRegion
+  | BetaWorkersVersionsGetResponsePlacementHostname
+  | BetaWorkersVersionsGetResponsePlacementHost
+  | BetaWorkersVersionsGetResponsePlacementCase4
+  | BetaWorkersVersionsGetResponsePlacementCase5
+  | BetaWorkersVersionsGetResponsePlacementCase6
+  | BetaWorkersVersionsGetResponsePlacementCase7;
+export const BetaWorkersVersionsGetResponsePlacement =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsGetResponseUsageModel =
   | "standard"
@@ -13861,52 +13155,16 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemW
       "ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem {
-  filterCombination?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination;
-  filters?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind
-    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind;
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation;
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
+    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0
+    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind,
-          ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem",
-  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
@@ -14967,84 +14225,48 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1 =
       "ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1",
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1>;
 
-export interface ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers {
-  eventType:
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventType;
-  requestId: string;
-  scriptName: string;
-  durableObjectId?: string;
-  entrypoint?: string;
-  event?:
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap;
-  executionModel?:
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel;
-  outcome?: string;
-  preview?:
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Preview
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Preview;
-  scriptVersion?:
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ScriptVersion
-    | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ScriptVersion;
-  spanId?: string;
-  traceId?: string;
-  truncated?: boolean;
-  cpuTimeMs?: number;
-  wallTimeMs?: number;
-  diagnosticsChannelEvents?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList;
-  dispatchNamespace?: string;
-}
+export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
+  | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0
+  | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1;
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventType: S.Union(
-        ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType,
-        ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventType,
-      ),
-      requestId: S.String,
-      scriptName: S.String,
-      durableObjectId: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      event: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap,
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap,
-        ),
-      ),
-      executionModel: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel,
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel,
-        ),
-      ),
-      outcome: S.optional(S.String),
-      preview: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Preview,
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Preview,
-        ),
-      ),
-      scriptVersion: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ScriptVersion,
-          ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ScriptVersion,
-        ),
-      ),
-      spanId: S.optional(S.String),
-      traceId: S.optional(S.String),
-      truncated: S.optional(S.Boolean),
-      cpuTimeMs: S.optional(S.Number),
-      wallTimeMs: S.optional(S.Number),
-      diagnosticsChannelEvents: S.optional(
-        ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList,
-      ),
-      dispatchNamespace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers",
-  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
@@ -15594,85 +14816,48 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
       "ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1",
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1>;
 
-export interface ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers {
-  eventType:
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventType;
-  requestId: string;
-  scriptName: string;
-  durableObjectId?: string;
-  entrypoint?: string;
-  event?:
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap;
-  executionModel?:
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel;
-  outcome?: string;
-  preview?:
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0Preview
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1Preview;
-  scriptVersion?:
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ScriptVersion
-    | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ScriptVersion;
-  spanId?: string;
-  traceId?: string;
-  truncated?: boolean;
-  cpuTimeMs?: number;
-  wallTimeMs?: number;
-  diagnosticsChannelEvents?: ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList;
-  dispatchNamespace?: string;
-}
+export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
+  | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0
+  | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventType: S.Union(
-        ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType,
-        ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventType,
-      ),
-      requestId: S.String,
-      scriptName: S.String,
-      durableObjectId: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      event: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap,
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap,
-        ),
-      ),
-      executionModel: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel,
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel,
-        ),
-      ),
-      outcome: S.optional(S.String),
-      preview: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0Preview,
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1Preview,
-        ),
-      ),
-      scriptVersion: S.optional(
-        S.Union(
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ScriptVersion,
-          ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ScriptVersion,
-        ),
-      ),
-      spanId: S.optional(S.String),
-      traceId: S.optional(S.String),
-      truncated: S.optional(S.Boolean),
-      cpuTimeMs: S.optional(S.Number),
-      wallTimeMs: S.optional(S.Number),
-      diagnosticsChannelEvents: S.optional(
-        ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList,
-      ),
-      dispatchNamespace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers",
-  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilitySharedQueriesGetResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
@@ -17180,234 +16365,96 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork =
       "ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork>;
 
-export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngineType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1Type
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlobType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespaceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemInheritType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespaceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificateType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainTextType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelinesType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueueType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemServiceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflowType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType
-    | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearch
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngine
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespace
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdrive
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemInherit
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemJson
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespace
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificate
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelines
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueue
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimit
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2Bucket
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmail
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemService
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorize
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKey
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflow
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService
+  | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngineType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1Type,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlobType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespaceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemInheritType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespaceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificateType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainTextType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelinesType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueueType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemServiceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflowType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType,
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsList =
   Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
@@ -17766,61 +16813,24 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
       "ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface ScriptsScriptAndVersionSettingsGetResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type ScriptsScriptAndVersionSettingsGetResponseMigrations =
+  | ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration
+  | ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseMigrations",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
@@ -18092,25 +17102,14 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemH
       "ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemHost>;
 
-export interface ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
+    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemRegion
+    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemHostname
+    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList =
   Array<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
@@ -18136,45 +17135,28 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7 =
     identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacementCase7",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7>;
 
-export interface ScriptsScriptAndVersionSettingsGetResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode
-    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase4Mode
-    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode
-    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode
-    | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList;
-}
+export type ScriptsScriptAndVersionSettingsGetResponsePlacement =
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementMode
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementRegion
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementHostname
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementHost
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementCase4
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementCase5
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementCase6
+  | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode,
-          ScriptsScriptAndVersionSettingsGetResponsePlacementCase4Mode,
-          ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode,
-          ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode,
-          ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacement",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsGetResponseTagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseTagsList =
@@ -18404,43 +17386,15 @@ export const ScriptsSecretsGetResultSecretKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSecretsGetResultSecretKey",
 }) as any as S.Schema<ScriptsSecretsGetResultSecretKey>;
 
-export interface ScriptsSecretsGetResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsSecretsGetResultSecretTextType
-    | ScriptsSecretsGetResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsSecretsGetResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsSecretsGetResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.optional(S.String),
-    type: S.Union(
-      ScriptsSecretsGetResultSecretTextType,
-      ScriptsSecretsGetResultSecretKeyType,
-    ),
-    algorithm: S.optional(S.Unknown),
-    format: S.optional(ScriptsSecretsGetResultSecretKeyFormat),
-    usages: S.optional(ScriptsSecretsGetResultSecretKeyUsagesList),
-    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsGetResult",
-}) as any as S.Schema<ScriptsSecretsGetResult>;
+export type ScriptsSecretsGetResult =
+  | ScriptsSecretsGetResultSecretText
+  | ScriptsSecretsGetResultSecretKey;
+export const ScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "text", "type"],
+    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+  ]),
+);
 
 export type GetScriptSecretResponse = ScriptsSecretsGetResult;
 export const GetScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
@@ -19770,234 +18724,96 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemVPCNetwork =
     identifier: "ScriptsVersionsGetResponseResourcesBindingsItemVPCNetwork",
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemVPCNetwork>;
 
-export interface ScriptsVersionsGetResponseResourcesBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsVersionsGetResponseResourcesBindingsItemAIType
-    | ScriptsVersionsGetResponseResourcesBindingsItemAISearchType
-    | ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespaceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngineType
-    | ScriptsVersionsGetResponseResourcesBindingsItemAssetsType
-    | ScriptsVersionsGetResponseResourcesBindingsItemBrowserType
-    | ScriptsVersionsGetResponseResourcesBindingsItemD1Type
-    | ScriptsVersionsGetResponseResourcesBindingsItemDataBlobType
-    | ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespaceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemHyperdriveType
-    | ScriptsVersionsGetResponseResourcesBindingsItemInheritType
-    | ScriptsVersionsGetResponseResourcesBindingsItemImagesType
-    | ScriptsVersionsGetResponseResourcesBindingsItemJsonType
-    | ScriptsVersionsGetResponseResourcesBindingsItemKVNamespaceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemMediaType
-    | ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificateType
-    | ScriptsVersionsGetResponseResourcesBindingsItemPlainTextType
-    | ScriptsVersionsGetResponseResourcesBindingsItemPipelinesType
-    | ScriptsVersionsGetResponseResourcesBindingsItemQueueType
-    | ScriptsVersionsGetResponseResourcesBindingsItemRatelimitType
-    | ScriptsVersionsGetResponseResourcesBindingsItemR2BucketType
-    | ScriptsVersionsGetResponseResourcesBindingsItemSecretTextType
-    | ScriptsVersionsGetResponseResourcesBindingsItemSendEmailType
-    | ScriptsVersionsGetResponseResourcesBindingsItemServiceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemTextBlobType
-    | ScriptsVersionsGetResponseResourcesBindingsItemVectorizeType
-    | ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadataType
-    | ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecretType
-    | ScriptsVersionsGetResponseResourcesBindingsItemFlagshipType
-    | ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyType
-    | ScriptsVersionsGetResponseResourcesBindingsItemWorkflowType
-    | ScriptsVersionsGetResponseResourcesBindingsItemWasmModuleType
-    | ScriptsVersionsGetResponseResourcesBindingsItemVPCServiceType
-    | ScriptsVersionsGetResponseResourcesBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: ScriptsVersionsGetResponseResourcesBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type ScriptsVersionsGetResponseResourcesBindingsItem =
+  | ScriptsVersionsGetResponseResourcesBindingsItemAI
+  | ScriptsVersionsGetResponseResourcesBindingsItemAISearch
+  | ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespace
+  | ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngine
+  | ScriptsVersionsGetResponseResourcesBindingsItemAssets
+  | ScriptsVersionsGetResponseResourcesBindingsItemBrowser
+  | ScriptsVersionsGetResponseResourcesBindingsItemD1
+  | ScriptsVersionsGetResponseResourcesBindingsItemDataBlob
+  | ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespace
+  | ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespace
+  | ScriptsVersionsGetResponseResourcesBindingsItemHyperdrive
+  | ScriptsVersionsGetResponseResourcesBindingsItemInherit
+  | ScriptsVersionsGetResponseResourcesBindingsItemImages
+  | ScriptsVersionsGetResponseResourcesBindingsItemJson
+  | ScriptsVersionsGetResponseResourcesBindingsItemKVNamespace
+  | ScriptsVersionsGetResponseResourcesBindingsItemMedia
+  | ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificate
+  | ScriptsVersionsGetResponseResourcesBindingsItemPlainText
+  | ScriptsVersionsGetResponseResourcesBindingsItemPipelines
+  | ScriptsVersionsGetResponseResourcesBindingsItemQueue
+  | ScriptsVersionsGetResponseResourcesBindingsItemRatelimit
+  | ScriptsVersionsGetResponseResourcesBindingsItemR2Bucket
+  | ScriptsVersionsGetResponseResourcesBindingsItemSecretText
+  | ScriptsVersionsGetResponseResourcesBindingsItemSendEmail
+  | ScriptsVersionsGetResponseResourcesBindingsItemService
+  | ScriptsVersionsGetResponseResourcesBindingsItemTextBlob
+  | ScriptsVersionsGetResponseResourcesBindingsItemVectorize
+  | ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadata
+  | ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecret
+  | ScriptsVersionsGetResponseResourcesBindingsItemFlagship
+  | ScriptsVersionsGetResponseResourcesBindingsItemSecretKey
+  | ScriptsVersionsGetResponseResourcesBindingsItemWorkflow
+  | ScriptsVersionsGetResponseResourcesBindingsItemWasmModule
+  | ScriptsVersionsGetResponseResourcesBindingsItemVPCService
+  | ScriptsVersionsGetResponseResourcesBindingsItemVPCNetwork;
 export const ScriptsVersionsGetResponseResourcesBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        ScriptsVersionsGetResponseResourcesBindingsItemAIType,
-        ScriptsVersionsGetResponseResourcesBindingsItemAISearchType,
-        ScriptsVersionsGetResponseResourcesBindingsItemAISearchNamespaceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemAnalyticsEngineType,
-        ScriptsVersionsGetResponseResourcesBindingsItemAssetsType,
-        ScriptsVersionsGetResponseResourcesBindingsItemBrowserType,
-        ScriptsVersionsGetResponseResourcesBindingsItemD1Type,
-        ScriptsVersionsGetResponseResourcesBindingsItemDataBlobType,
-        ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemDurableObjectNamespaceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemHyperdriveType,
-        ScriptsVersionsGetResponseResourcesBindingsItemInheritType,
-        ScriptsVersionsGetResponseResourcesBindingsItemImagesType,
-        ScriptsVersionsGetResponseResourcesBindingsItemJsonType,
-        ScriptsVersionsGetResponseResourcesBindingsItemKVNamespaceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemMediaType,
-        ScriptsVersionsGetResponseResourcesBindingsItemMTLSCertificateType,
-        ScriptsVersionsGetResponseResourcesBindingsItemPlainTextType,
-        ScriptsVersionsGetResponseResourcesBindingsItemPipelinesType,
-        ScriptsVersionsGetResponseResourcesBindingsItemQueueType,
-        ScriptsVersionsGetResponseResourcesBindingsItemRatelimitType,
-        ScriptsVersionsGetResponseResourcesBindingsItemR2BucketType,
-        ScriptsVersionsGetResponseResourcesBindingsItemSecretTextType,
-        ScriptsVersionsGetResponseResourcesBindingsItemSendEmailType,
-        ScriptsVersionsGetResponseResourcesBindingsItemServiceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemTextBlobType,
-        ScriptsVersionsGetResponseResourcesBindingsItemVectorizeType,
-        ScriptsVersionsGetResponseResourcesBindingsItemVersionMetadataType,
-        ScriptsVersionsGetResponseResourcesBindingsItemSecretsStoreSecretType,
-        ScriptsVersionsGetResponseResourcesBindingsItemFlagshipType,
-        ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyType,
-        ScriptsVersionsGetResponseResourcesBindingsItemWorkflowType,
-        ScriptsVersionsGetResponseResourcesBindingsItemWasmModuleType,
-        ScriptsVersionsGetResponseResourcesBindingsItemVPCServiceType,
-        ScriptsVersionsGetResponseResourcesBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsVersionsGetResponseResourcesBindingsItem",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type ScriptsVersionsGetResponseResourcesBindingsList =
   Array<ScriptsVersionsGetResponseResourcesBindingsItem>;
@@ -20284,9 +19100,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCas
     | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -20363,9 +19177,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWor
     | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -20388,59 +19200,16 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkers
       "ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
+  | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0
+  | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind,
-          ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList =
   Array<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
@@ -20458,7 +19227,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0 {
     | ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0Kind | (string & {});
+  kind: ObservabilityTelemetryKeysRequestFiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -20533,9 +19302,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilit
     | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -20558,59 +19325,16 @@ export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFil
       "ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryKeysRequestFiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryKeysRequestFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryKeysRequestFiltersItem =
+  | ObservabilityTelemetryKeysRequestFiltersItemCase0
+  | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryKeysRequestFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryKeysRequestFiltersItemCase0Kind,
-          ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryKeysRequestFiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryKeysRequestFiltersList =
   Array<ObservabilityTelemetryKeysRequestFiltersItem>;
@@ -22330,234 +21054,96 @@ export const BetaWorkersVersionsListResultItemBindingsItemVPCNetwork =
     identifier: "BetaWorkersVersionsListResultItemBindingsItemVPCNetwork",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCNetwork>;
 
-export interface BetaWorkersVersionsListResultItemBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | BetaWorkersVersionsListResultItemBindingsItemAIType
-    | BetaWorkersVersionsListResultItemBindingsItemAISearchType
-    | BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType
-    | BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType
-    | BetaWorkersVersionsListResultItemBindingsItemAssetsType
-    | BetaWorkersVersionsListResultItemBindingsItemBrowserType
-    | BetaWorkersVersionsListResultItemBindingsItemD1Type
-    | BetaWorkersVersionsListResultItemBindingsItemDataBlobType
-    | BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceType
-    | BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespaceType
-    | BetaWorkersVersionsListResultItemBindingsItemHyperdriveType
-    | BetaWorkersVersionsListResultItemBindingsItemInheritType
-    | BetaWorkersVersionsListResultItemBindingsItemImagesType
-    | BetaWorkersVersionsListResultItemBindingsItemJsonType
-    | BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType
-    | BetaWorkersVersionsListResultItemBindingsItemMediaType
-    | BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType
-    | BetaWorkersVersionsListResultItemBindingsItemPlainTextType
-    | BetaWorkersVersionsListResultItemBindingsItemPipelinesType
-    | BetaWorkersVersionsListResultItemBindingsItemQueueType
-    | BetaWorkersVersionsListResultItemBindingsItemRatelimitType
-    | BetaWorkersVersionsListResultItemBindingsItemR2BucketType
-    | BetaWorkersVersionsListResultItemBindingsItemSecretTextType
-    | BetaWorkersVersionsListResultItemBindingsItemSendEmailType
-    | BetaWorkersVersionsListResultItemBindingsItemServiceType
-    | BetaWorkersVersionsListResultItemBindingsItemTextBlobType
-    | BetaWorkersVersionsListResultItemBindingsItemVectorizeType
-    | BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType
-    | BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType
-    | BetaWorkersVersionsListResultItemBindingsItemFlagshipType
-    | BetaWorkersVersionsListResultItemBindingsItemSecretKeyType
-    | BetaWorkersVersionsListResultItemBindingsItemWorkflowType
-    | BetaWorkersVersionsListResultItemBindingsItemWasmModuleType
-    | BetaWorkersVersionsListResultItemBindingsItemVPCServiceType
-    | BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: BetaWorkersVersionsListResultItemBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type BetaWorkersVersionsListResultItemBindingsItem =
+  | BetaWorkersVersionsListResultItemBindingsItemAI
+  | BetaWorkersVersionsListResultItemBindingsItemAISearch
+  | BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace
+  | BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine
+  | BetaWorkersVersionsListResultItemBindingsItemAssets
+  | BetaWorkersVersionsListResultItemBindingsItemBrowser
+  | BetaWorkersVersionsListResultItemBindingsItemD1
+  | BetaWorkersVersionsListResultItemBindingsItemDataBlob
+  | BetaWorkersVersionsListResultItemBindingsItemDispatchNamespace
+  | BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace
+  | BetaWorkersVersionsListResultItemBindingsItemHyperdrive
+  | BetaWorkersVersionsListResultItemBindingsItemInherit
+  | BetaWorkersVersionsListResultItemBindingsItemImages
+  | BetaWorkersVersionsListResultItemBindingsItemJson
+  | BetaWorkersVersionsListResultItemBindingsItemKVNamespace
+  | BetaWorkersVersionsListResultItemBindingsItemMedia
+  | BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate
+  | BetaWorkersVersionsListResultItemBindingsItemPlainText
+  | BetaWorkersVersionsListResultItemBindingsItemPipelines
+  | BetaWorkersVersionsListResultItemBindingsItemQueue
+  | BetaWorkersVersionsListResultItemBindingsItemRatelimit
+  | BetaWorkersVersionsListResultItemBindingsItemR2Bucket
+  | BetaWorkersVersionsListResultItemBindingsItemSecretText
+  | BetaWorkersVersionsListResultItemBindingsItemSendEmail
+  | BetaWorkersVersionsListResultItemBindingsItemService
+  | BetaWorkersVersionsListResultItemBindingsItemTextBlob
+  | BetaWorkersVersionsListResultItemBindingsItemVectorize
+  | BetaWorkersVersionsListResultItemBindingsItemVersionMetadata
+  | BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret
+  | BetaWorkersVersionsListResultItemBindingsItemFlagship
+  | BetaWorkersVersionsListResultItemBindingsItemSecretKey
+  | BetaWorkersVersionsListResultItemBindingsItemWorkflow
+  | BetaWorkersVersionsListResultItemBindingsItemWasmModule
+  | BetaWorkersVersionsListResultItemBindingsItemVPCService
+  | BetaWorkersVersionsListResultItemBindingsItemVPCNetwork;
 export const BetaWorkersVersionsListResultItemBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        BetaWorkersVersionsListResultItemBindingsItemAIType,
-        BetaWorkersVersionsListResultItemBindingsItemAISearchType,
-        BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType,
-        BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType,
-        BetaWorkersVersionsListResultItemBindingsItemAssetsType,
-        BetaWorkersVersionsListResultItemBindingsItemBrowserType,
-        BetaWorkersVersionsListResultItemBindingsItemD1Type,
-        BetaWorkersVersionsListResultItemBindingsItemDataBlobType,
-        BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceType,
-        BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespaceType,
-        BetaWorkersVersionsListResultItemBindingsItemHyperdriveType,
-        BetaWorkersVersionsListResultItemBindingsItemInheritType,
-        BetaWorkersVersionsListResultItemBindingsItemImagesType,
-        BetaWorkersVersionsListResultItemBindingsItemJsonType,
-        BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType,
-        BetaWorkersVersionsListResultItemBindingsItemMediaType,
-        BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType,
-        BetaWorkersVersionsListResultItemBindingsItemPlainTextType,
-        BetaWorkersVersionsListResultItemBindingsItemPipelinesType,
-        BetaWorkersVersionsListResultItemBindingsItemQueueType,
-        BetaWorkersVersionsListResultItemBindingsItemRatelimitType,
-        BetaWorkersVersionsListResultItemBindingsItemR2BucketType,
-        BetaWorkersVersionsListResultItemBindingsItemSecretTextType,
-        BetaWorkersVersionsListResultItemBindingsItemSendEmailType,
-        BetaWorkersVersionsListResultItemBindingsItemServiceType,
-        BetaWorkersVersionsListResultItemBindingsItemTextBlobType,
-        BetaWorkersVersionsListResultItemBindingsItemVectorizeType,
-        BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType,
-        BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType,
-        BetaWorkersVersionsListResultItemBindingsItemFlagshipType,
-        BetaWorkersVersionsListResultItemBindingsItemSecretKeyType,
-        BetaWorkersVersionsListResultItemBindingsItemWorkflowType,
-        BetaWorkersVersionsListResultItemBindingsItemWasmModuleType,
-        BetaWorkersVersionsListResultItemBindingsItemVPCServiceType,
-        BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemBindingsItem",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type BetaWorkersVersionsListResultItemBindingsList =
   Array<BetaWorkersVersionsListResultItemBindingsItem>;
@@ -22888,61 +21474,24 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
       "BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations>;
 
-export interface BetaWorkersVersionsListResultItemMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type BetaWorkersVersionsListResultItemMigrations =
+  | BetaWorkersVersionsListResultItemMigrationsSingleStepMigration
+  | BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsListResultItemMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemMigrations",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export interface BetaWorkersVersionsListResultItemModulesItem {
   /** The base64-encoded module content. */
@@ -23157,24 +21706,14 @@ export const BetaWorkersVersionsListResultItemPlacementCase7TargetItemHost =
     identifier: "BetaWorkersVersionsListResultItemPlacementCase7TargetItemHost",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase7TargetItemHost>;
 
-export interface BetaWorkersVersionsListResultItemPlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type BetaWorkersVersionsListResultItemPlacementCase7TargetItem =
+  | BetaWorkersVersionsListResultItemPlacementCase7TargetItemRegion
+  | BetaWorkersVersionsListResultItemPlacementCase7TargetItemHostname
+  | BetaWorkersVersionsListResultItemPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsListResultItemPlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemPlacementCase7TargetItem",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type BetaWorkersVersionsListResultItemPlacementCase7TargetList =
   Array<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
@@ -23199,45 +21738,28 @@ export const BetaWorkersVersionsListResultItemPlacementCase7 =
     identifier: "BetaWorkersVersionsListResultItemPlacementCase7",
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase7>;
 
-export interface BetaWorkersVersionsListResultItemPlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | BetaWorkersVersionsListResultItemPlacementModeMode
-    | BetaWorkersVersionsListResultItemPlacementCase4Mode
-    | BetaWorkersVersionsListResultItemPlacementCase5Mode
-    | BetaWorkersVersionsListResultItemPlacementCase6Mode
-    | BetaWorkersVersionsListResultItemPlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: BetaWorkersVersionsListResultItemPlacementCase7TargetList;
-}
+export type BetaWorkersVersionsListResultItemPlacement =
+  | BetaWorkersVersionsListResultItemPlacementMode
+  | BetaWorkersVersionsListResultItemPlacementRegion
+  | BetaWorkersVersionsListResultItemPlacementHostname
+  | BetaWorkersVersionsListResultItemPlacementHost
+  | BetaWorkersVersionsListResultItemPlacementCase4
+  | BetaWorkersVersionsListResultItemPlacementCase5
+  | BetaWorkersVersionsListResultItemPlacementCase6
+  | BetaWorkersVersionsListResultItemPlacementCase7;
 export const BetaWorkersVersionsListResultItemPlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          BetaWorkersVersionsListResultItemPlacementModeMode,
-          BetaWorkersVersionsListResultItemPlacementCase4Mode,
-          BetaWorkersVersionsListResultItemPlacementCase5Mode,
-          BetaWorkersVersionsListResultItemPlacementCase6Mode,
-          BetaWorkersVersionsListResultItemPlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        BetaWorkersVersionsListResultItemPlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemPlacement",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsListResultItemUsageModel =
   | "standard"
@@ -23821,51 +22343,16 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObser
       "ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityQueriesListResultItemParametersFiltersItem {
-  filterCombination?: ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination;
-  filters?: ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind
-    | ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafKind;
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafOperation;
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityQueriesListResultItemParametersFiltersItem =
+  | ObservabilityQueriesListResultItemParametersFiltersItemCase0
+  | ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesListResultItemParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind,
-          ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityQueriesListResultItemParametersFiltersItem",
-  }) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityQueriesListResultItemParametersFiltersList =
   Array<ObservabilityQueriesListResultItemParametersFiltersItem>;
@@ -24661,24 +23148,14 @@ export const ScriptsListResultItemPlacementCase7TargetItemHost =
     identifier: "ScriptsListResultItemPlacementCase7TargetItemHost",
   }) as any as S.Schema<ScriptsListResultItemPlacementCase7TargetItemHost>;
 
-export interface ScriptsListResultItemPlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type ScriptsListResultItemPlacementCase7TargetItem =
+  | ScriptsListResultItemPlacementCase7TargetItemRegion
+  | ScriptsListResultItemPlacementCase7TargetItemHostname
+  | ScriptsListResultItemPlacementCase7TargetItemHost;
 export const ScriptsListResultItemPlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScriptsListResultItemPlacementCase7TargetItem",
-  }) as any as S.Schema<ScriptsListResultItemPlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type ScriptsListResultItemPlacementCase7TargetList =
   Array<ScriptsListResultItemPlacementCase7TargetItem>;
@@ -24714,67 +23191,27 @@ export const ScriptsListResultItemPlacementCase7 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemPlacementCase7",
 }) as any as S.Schema<ScriptsListResultItemPlacementCase7>;
 
-export interface ScriptsListResultItemPlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | ScriptsListResultItemPlacementCase0Mode
-    | ScriptsListResultItemPlacementCase4Mode
-    | ScriptsListResultItemPlacementCase5Mode
-    | ScriptsListResultItemPlacementCase6Mode
-    | ScriptsListResultItemPlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | ScriptsListResultItemPlacementCase0Status
-    | ScriptsListResultItemPlacementCase1Status
-    | ScriptsListResultItemPlacementCase2Status
-    | ScriptsListResultItemPlacementCase3Status
-    | ScriptsListResultItemPlacementCase4Status
-    | ScriptsListResultItemPlacementCase5Status
-    | ScriptsListResultItemPlacementCase6Status
-    | ScriptsListResultItemPlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: ScriptsListResultItemPlacementCase7TargetList;
-}
-export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(
-      S.Union(
-        ScriptsListResultItemPlacementCase0Mode,
-        ScriptsListResultItemPlacementCase4Mode,
-        ScriptsListResultItemPlacementCase5Mode,
-        ScriptsListResultItemPlacementCase6Mode,
-        ScriptsListResultItemPlacementCase7Mode,
-      ),
-    ),
-    lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(
-      S.Union(
-        ScriptsListResultItemPlacementCase0Status,
-        ScriptsListResultItemPlacementCase1Status,
-        ScriptsListResultItemPlacementCase2Status,
-        ScriptsListResultItemPlacementCase3Status,
-        ScriptsListResultItemPlacementCase4Status,
-        ScriptsListResultItemPlacementCase5Status,
-        ScriptsListResultItemPlacementCase6Status,
-        ScriptsListResultItemPlacementCase7Status,
-      ),
-    ),
-    region: S.optional(S.String),
-    hostname: S.optional(S.String),
-    host: S.optional(S.String),
-    target: S.optional(ScriptsListResultItemPlacementCase7TargetList),
-  }),
-).annotate({
-  identifier: "ScriptsListResultItemPlacement",
-}) as any as S.Schema<ScriptsListResultItemPlacement>;
+export type ScriptsListResultItemPlacement =
+  | ScriptsListResultItemPlacementCase0
+  | ScriptsListResultItemPlacementCase1
+  | ScriptsListResultItemPlacementCase2
+  | ScriptsListResultItemPlacementCase3
+  | ScriptsListResultItemPlacementCase4
+  | ScriptsListResultItemPlacementCase5
+  | ScriptsListResultItemPlacementCase6
+  | ScriptsListResultItemPlacementCase7;
+export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["mode", "lastAnalyzedAt", "status"],
+    ["region", "lastAnalyzedAt", "status"],
+    ["hostname", "lastAnalyzedAt", "status"],
+    ["host", "lastAnalyzedAt", "status"],
+    ["mode", "region", "lastAnalyzedAt", "status"],
+    ["hostname", "mode", "lastAnalyzedAt", "status"],
+    ["host", "mode", "lastAnalyzedAt", "status"],
+    ["mode", "target", "lastAnalyzedAt", "status"],
+  ]),
+);
 
 export type ScriptsListResultItemPlacementMode = "smart" | "targeted";
 export const ScriptsListResultItemPlacementMode = /*@__PURE__*/ S.String;
@@ -25064,43 +23501,15 @@ export const ScriptsSecretsListResultItemSecretKey = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsSecretsListResultItemSecretKey",
 }) as any as S.Schema<ScriptsSecretsListResultItemSecretKey>;
 
-export interface ScriptsSecretsListResultItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsSecretsListResultItemSecretTextType
-    | ScriptsSecretsListResultItemSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsSecretsListResultItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsSecretsListResultItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.optional(S.String),
-    type: S.Union(
-      ScriptsSecretsListResultItemSecretTextType,
-      ScriptsSecretsListResultItemSecretKeyType,
-    ),
-    algorithm: S.optional(S.Unknown),
-    format: S.optional(ScriptsSecretsListResultItemSecretKeyFormat),
-    usages: S.optional(ScriptsSecretsListResultItemSecretKeyUsagesList),
-    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsListResultItem",
-}) as any as S.Schema<ScriptsSecretsListResultItem>;
+export type ScriptsSecretsListResultItem =
+  | ScriptsSecretsListResultItemSecretText
+  | ScriptsSecretsListResultItemSecretKey;
+export const ScriptsSecretsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "text", "type"],
+    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+  ]),
+);
 
 export type ScriptsSecretsListResultList = Array<ScriptsSecretsListResultItem>;
 export const ScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
@@ -25298,9 +23707,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersIte
     | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -25377,9 +23784,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersIte
     | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -25402,60 +23807,16 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWor
       "ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
+  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0
+  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind,
-          ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList =
   Array<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
@@ -25473,9 +23834,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0 {
     | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -25550,9 +23909,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservab
     | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -25575,59 +23932,16 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilit
       "ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryLiveTailRequestFiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryLiveTailRequestFiltersItem =
+  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0
+  | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryLiveTailRequestFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind,
-          ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryLiveTailRequestFiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryLiveTailRequestFiltersList =
   Array<ObservabilityTelemetryLiveTailRequestFiltersItem>;
@@ -26233,7 +24547,7 @@ export const ObservabilityDestinationsUpdateRequestConfigurationType =
 
 export interface ObservabilityDestinationsUpdateRequestConfiguration {
   headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap;
-  type: ObservabilityDestinationsUpdateRequestConfigurationType | (string & {});
+  type: ObservabilityDestinationsUpdateRequestConfigurationType;
   url: string;
 }
 export const ObservabilityDestinationsUpdateRequestConfiguration =
@@ -27442,234 +25756,96 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork =
       "ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork>;
 
-export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItem {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespaceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemServiceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType
-    | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType;
-  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
-  instanceName?: string;
-  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
-  namespace?: string;
-  /** The name of the dataset to bind to. */
-  dataset?: string;
-  /** Identifier of the D1 database to bind to. */
-  databaseId?: string;
-  /** Identifier of the D1 database to bind to. */
-  id?: string;
-  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
-  part?: string;
-  /** Outbound worker. */
-  outbound?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound;
-  /** The exported class name of the Durable Object. */
-  className?: string;
-  /** The dispatch namespace the Durable Object script belongs to. */
-  dispatchNamespace?: string;
-  /** The environment of the script_name to bind to. */
-  environment?: string;
-  /** Namespace identifier tag. */
-  namespaceId?: string;
-  /** The script where the Durable Object is defined, if it is external to this Worker. */
-  scriptName?: string;
-  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
-  oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
-  versionId?: string;
-  /** JSON data to use. */
-  json?: unknown;
-  /** Identifier of the certificate to bind to. */
-  certificateId?: string;
-  /** The text value to use. */
-  text?: string;
-  /** Name of the Pipeline to bind to. */
-  pipeline?: string;
-  /** Name of the Queue to bind to. */
-  queueName?: string;
-  /** The rate limit configuration. */
-  simple?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitSimple;
-  /** R2 bucket to bind to. */
-  bucketName?: string;
-  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
-  jurisdiction?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction;
-  /** List of allowed destination addresses. */
-  allowedDestinationAddresses?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList;
-  /** List of allowed sender addresses. */
-  allowedSenderAddresses?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList;
-  /** Destination address for the email. */
-  destinationAddress?: string;
-  /** Name of Worker to bind to. */
-  service?: string;
-  /** Entrypoint to invoke on the target Worker. */
-  entrypoint?: string;
-  /** Name of the Vectorize index to bind to. */
-  indexName?: string;
-  /** Name of the secret in the store. */
-  secretName?: string;
-  /** ID of the store containing the secret. */
-  storeId?: string;
-  /** ID of the Flagship app to bind to for feature flag evaluation. */
-  appId?: string;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-  /** Name of the Workflow to bind to. */
-  workflowName?: string;
-  /** Identifier of the VPC service to bind to. */
-  serviceId?: string;
-  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
-  networkId?: string;
-  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
-  tunnelId?: string;
-}
+export type ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespace
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmail
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemService
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService
+  | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.Union(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespaceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemServiceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType,
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType,
-      ),
-      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
-      namespace: S.optional(S.String),
-      dataset: S.optional(S.String),
-      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
-      id: S.optional(S.String),
-      part: S.optional(S.String),
-      outbound: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound,
-      ),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(
-        S.String.pipe(T.Body("dispatch_namespace")),
-      ),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-      json: S.optional(S.Unknown),
-      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
-      text: S.optional(S.String),
-      pipeline: S.optional(S.String),
-      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-      simple: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitSimple,
-      ),
-      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
-      jurisdiction: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction,
-      ),
-      allowedDestinationAddresses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(
-        S.String.pipe(T.Body("destination_address")),
-      ),
-      service: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
-      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
-      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-      appId: S.optional(S.String.pipe(T.Body("app_id"))),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat,
-      ),
-      usages: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList,
-      ),
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
+      [
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
+      ],
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "networkId", "tunnelId"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsList =
   Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
@@ -28028,61 +26204,24 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
       "ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations>;
 
-export interface ScriptsScriptAndVersionSettingsEditResponseMigrations {
-  /** A list of classes to delete Durable Object namespaces from. */
-  deletedClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList;
-  /** A list of classes to create Durable Object namespaces from. */
-  newClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList;
-  /** A list of classes to create Durable Object namespaces with SQLite from. */
-  newSqliteClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList;
-  /** Tag to set as the latest migration tag. */
-  newTag?: string;
-  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
-  oldTag?: string;
-  /** A list of classes with Durable Object namespaces that were renamed. */
-  renamedClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList;
-  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
-  transferredClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList;
-  /** Migrations to apply in order. */
-  steps?: ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList;
-}
+export type ScriptsScriptAndVersionSettingsEditResponseMigrations =
+  | ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration
+  | ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-      steps: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseMigrations",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrations>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "deletedClasses",
+        "newClasses",
+        "newSqliteClasses",
+        "newTag",
+        "oldTag",
+        "renamedClasses",
+        "transferredClasses",
+      ],
+      ["newTag", "oldTag", "steps"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
   Array<string>;
@@ -28355,25 +26494,14 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem
       "ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItemHost>;
 
-export interface ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem =
+    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItemRegion
+    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItemHostname
+    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList =
   Array<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
@@ -28399,45 +26527,28 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7 =
     identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacementCase7",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7>;
 
-export interface ScriptsScriptAndVersionSettingsEditResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode
-    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase4Mode
-    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode
-    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode
-    | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList;
-}
+export type ScriptsScriptAndVersionSettingsEditResponsePlacement =
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementMode
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementRegion
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementHostname
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementHost
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementCase4
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementCase5
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementCase6
+  | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode,
-          ScriptsScriptAndVersionSettingsEditResponsePlacementCase4Mode,
-          ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode,
-          ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode,
-          ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacement",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacement>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsEditResponseTagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseTagsList =
@@ -29003,7 +27114,7 @@ export interface PutScriptRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
-  bindingsInherit?: ScriptsUpdateRequestBindingsInherit | (string & {});
+  bindingsInherit?: ScriptsUpdateRequestBindingsInherit;
   metadata: PutScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */
   files?: (File | Blob)[];
@@ -29520,24 +27631,14 @@ export const ScriptsUpdateResponsePlacementCase7TargetItemHost =
     identifier: "ScriptsUpdateResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<ScriptsUpdateResponsePlacementCase7TargetItemHost>;
 
-export interface ScriptsUpdateResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type ScriptsUpdateResponsePlacementCase7TargetItem =
+  | ScriptsUpdateResponsePlacementCase7TargetItemRegion
+  | ScriptsUpdateResponsePlacementCase7TargetItemHostname
+  | ScriptsUpdateResponsePlacementCase7TargetItemHost;
 export const ScriptsUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScriptsUpdateResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<ScriptsUpdateResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type ScriptsUpdateResponsePlacementCase7TargetList =
   Array<ScriptsUpdateResponsePlacementCase7TargetItem>;
@@ -29573,67 +27674,27 @@ export const ScriptsUpdateResponsePlacementCase7 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase7",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase7>;
 
-export interface ScriptsUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | ScriptsUpdateResponsePlacementCase0Mode
-    | ScriptsUpdateResponsePlacementCase4Mode
-    | ScriptsUpdateResponsePlacementCase5Mode
-    | ScriptsUpdateResponsePlacementCase6Mode
-    | ScriptsUpdateResponsePlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | ScriptsUpdateResponsePlacementCase0Status
-    | ScriptsUpdateResponsePlacementCase1Status
-    | ScriptsUpdateResponsePlacementCase2Status
-    | ScriptsUpdateResponsePlacementCase3Status
-    | ScriptsUpdateResponsePlacementCase4Status
-    | ScriptsUpdateResponsePlacementCase5Status
-    | ScriptsUpdateResponsePlacementCase6Status
-    | ScriptsUpdateResponsePlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: ScriptsUpdateResponsePlacementCase7TargetList;
-}
-export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(
-      S.Union(
-        ScriptsUpdateResponsePlacementCase0Mode,
-        ScriptsUpdateResponsePlacementCase4Mode,
-        ScriptsUpdateResponsePlacementCase5Mode,
-        ScriptsUpdateResponsePlacementCase6Mode,
-        ScriptsUpdateResponsePlacementCase7Mode,
-      ),
-    ),
-    lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(
-      S.Union(
-        ScriptsUpdateResponsePlacementCase0Status,
-        ScriptsUpdateResponsePlacementCase1Status,
-        ScriptsUpdateResponsePlacementCase2Status,
-        ScriptsUpdateResponsePlacementCase3Status,
-        ScriptsUpdateResponsePlacementCase4Status,
-        ScriptsUpdateResponsePlacementCase5Status,
-        ScriptsUpdateResponsePlacementCase6Status,
-        ScriptsUpdateResponsePlacementCase7Status,
-      ),
-    ),
-    region: S.optional(S.String),
-    hostname: S.optional(S.String),
-    host: S.optional(S.String),
-    target: S.optional(ScriptsUpdateResponsePlacementCase7TargetList),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacement",
-}) as any as S.Schema<ScriptsUpdateResponsePlacement>;
+export type ScriptsUpdateResponsePlacement =
+  | ScriptsUpdateResponsePlacementCase0
+  | ScriptsUpdateResponsePlacementCase1
+  | ScriptsUpdateResponsePlacementCase2
+  | ScriptsUpdateResponsePlacementCase3
+  | ScriptsUpdateResponsePlacementCase4
+  | ScriptsUpdateResponsePlacementCase5
+  | ScriptsUpdateResponsePlacementCase6
+  | ScriptsUpdateResponsePlacementCase7;
+export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["mode", "lastAnalyzedAt", "status"],
+    ["region", "lastAnalyzedAt", "status"],
+    ["hostname", "lastAnalyzedAt", "status"],
+    ["host", "lastAnalyzedAt", "status"],
+    ["mode", "region", "lastAnalyzedAt", "status"],
+    ["hostname", "mode", "lastAnalyzedAt", "status"],
+    ["host", "mode", "lastAnalyzedAt", "status"],
+    ["mode", "target", "lastAnalyzedAt", "status"],
+  ]),
+);
 
 export type ScriptsUpdateResponsePlacementMode = "smart" | "targeted";
 export const ScriptsUpdateResponsePlacementMode = /*@__PURE__*/ S.String;
@@ -30217,24 +28278,14 @@ export const ScriptsContentUpdateResponsePlacementCase7TargetItemHost =
     identifier: "ScriptsContentUpdateResponsePlacementCase7TargetItemHost",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase7TargetItemHost>;
 
-export interface ScriptsContentUpdateResponsePlacementCase7TargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
+export type ScriptsContentUpdateResponsePlacementCase7TargetItem =
+  | ScriptsContentUpdateResponsePlacementCase7TargetItemRegion
+  | ScriptsContentUpdateResponsePlacementCase7TargetItemHostname
+  | ScriptsContentUpdateResponsePlacementCase7TargetItemHost;
 export const ScriptsContentUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScriptsContentUpdateResponsePlacementCase7TargetItem",
-  }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase7TargetItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["region"], ["hostname"], ["host"]]),
+  );
 
 export type ScriptsContentUpdateResponsePlacementCase7TargetList =
   Array<ScriptsContentUpdateResponsePlacementCase7TargetItem>;
@@ -30272,68 +28323,28 @@ export const ScriptsContentUpdateResponsePlacementCase7 =
     identifier: "ScriptsContentUpdateResponsePlacementCase7",
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase7>;
 
-export interface ScriptsContentUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?:
-    | ScriptsContentUpdateResponsePlacementCase0Mode
-    | ScriptsContentUpdateResponsePlacementCase4Mode
-    | ScriptsContentUpdateResponsePlacementCase5Mode
-    | ScriptsContentUpdateResponsePlacementCase6Mode
-    | ScriptsContentUpdateResponsePlacementCase7Mode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?:
-    | ScriptsContentUpdateResponsePlacementCase0Status
-    | ScriptsContentUpdateResponsePlacementCase1Status
-    | ScriptsContentUpdateResponsePlacementCase2Status
-    | ScriptsContentUpdateResponsePlacementCase3Status
-    | ScriptsContentUpdateResponsePlacementCase4Status
-    | ScriptsContentUpdateResponsePlacementCase5Status
-    | ScriptsContentUpdateResponsePlacementCase6Status
-    | ScriptsContentUpdateResponsePlacementCase7Status;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: ScriptsContentUpdateResponsePlacementCase7TargetList;
-}
-export const ScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: S.optional(
-        S.Union(
-          ScriptsContentUpdateResponsePlacementCase0Mode,
-          ScriptsContentUpdateResponsePlacementCase4Mode,
-          ScriptsContentUpdateResponsePlacementCase5Mode,
-          ScriptsContentUpdateResponsePlacementCase6Mode,
-          ScriptsContentUpdateResponsePlacementCase7Mode,
-        ),
-      ),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.Union(
-          ScriptsContentUpdateResponsePlacementCase0Status,
-          ScriptsContentUpdateResponsePlacementCase1Status,
-          ScriptsContentUpdateResponsePlacementCase2Status,
-          ScriptsContentUpdateResponsePlacementCase3Status,
-          ScriptsContentUpdateResponsePlacementCase4Status,
-          ScriptsContentUpdateResponsePlacementCase5Status,
-          ScriptsContentUpdateResponsePlacementCase6Status,
-          ScriptsContentUpdateResponsePlacementCase7Status,
-        ),
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(ScriptsContentUpdateResponsePlacementCase7TargetList),
-    }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacement",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacement>;
+export type ScriptsContentUpdateResponsePlacement =
+  | ScriptsContentUpdateResponsePlacementCase0
+  | ScriptsContentUpdateResponsePlacementCase1
+  | ScriptsContentUpdateResponsePlacementCase2
+  | ScriptsContentUpdateResponsePlacementCase3
+  | ScriptsContentUpdateResponsePlacementCase4
+  | ScriptsContentUpdateResponsePlacementCase5
+  | ScriptsContentUpdateResponsePlacementCase6
+  | ScriptsContentUpdateResponsePlacementCase7;
+export const ScriptsContentUpdateResponsePlacement =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type ScriptsContentUpdateResponsePlacementMode = "smart" | "targeted";
 export const ScriptsContentUpdateResponsePlacementMode = /*@__PURE__*/ S.String;
@@ -30718,43 +28729,15 @@ export const ScriptsSecretsUpdateResultSecretKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSecretsUpdateResultSecretKey",
 }) as any as S.Schema<ScriptsSecretsUpdateResultSecretKey>;
 
-export interface ScriptsSecretsUpdateResult {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type:
-    | ScriptsSecretsUpdateResultSecretTextType
-    | ScriptsSecretsUpdateResultSecretKeyType;
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: ScriptsSecretsUpdateResultSecretKeyFormat;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: ScriptsSecretsUpdateResultSecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.optional(S.String),
-    type: S.Union(
-      ScriptsSecretsUpdateResultSecretTextType,
-      ScriptsSecretsUpdateResultSecretKeyType,
-    ),
-    algorithm: S.optional(S.Unknown),
-    format: S.optional(ScriptsSecretsUpdateResultSecretKeyFormat),
-    usages: S.optional(ScriptsSecretsUpdateResultSecretKeyUsagesList),
-    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsUpdateResult",
-}) as any as S.Schema<ScriptsSecretsUpdateResult>;
+export type ScriptsSecretsUpdateResult =
+  | ScriptsSecretsUpdateResultSecretText
+  | ScriptsSecretsUpdateResultSecretKey;
+export const ScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "text", "type"],
+    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+  ]),
+);
 
 export type PutScriptSecretResponse = ScriptsSecretsUpdateResult;
 export const PutScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
@@ -30938,9 +28921,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Fil
     | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -31017,9 +28998,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Fil
     | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -31042,60 +29021,16 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
       "ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind,
-          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList =
   Array<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
@@ -31114,9 +29049,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0 {
     | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -31192,9 +29125,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersO
     | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -31217,59 +29148,16 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObser
       "ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryQueryRequestParametersFiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryQueryRequestParametersFiltersItem =
+  | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0
+  | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind,
-          ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryRequestParametersFiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersList =
   Array<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
@@ -31723,52 +29611,16 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWor
       "ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem {
-  filterCombination?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination;
-  filters?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind
-    | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind;
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation;
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
+  | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0
+  | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind,
-          ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
@@ -32826,84 +30678,48 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1 =
       "ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1",
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1>;
 
-export interface ObservabilityTelemetryQueryResponseEventsEventsItemWorkers {
-  eventType:
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventType;
-  requestId: string;
-  scriptName: string;
-  durableObjectId?: string;
-  entrypoint?: string;
-  event?:
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap;
-  executionModel?:
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel;
-  outcome?: string;
-  preview?:
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Preview
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Preview;
-  scriptVersion?:
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ScriptVersion
-    | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ScriptVersion;
-  spanId?: string;
-  traceId?: string;
-  truncated?: boolean;
-  cpuTimeMs?: number;
-  wallTimeMs?: number;
-  diagnosticsChannelEvents?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList;
-  dispatchNamespace?: string;
-}
+export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
+  | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0
+  | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventType: S.Union(
-        ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType,
-        ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventType,
-      ),
-      requestId: S.String,
-      scriptName: S.String,
-      durableObjectId: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      event: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap,
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap,
-        ),
-      ),
-      executionModel: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel,
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel,
-        ),
-      ),
-      outcome: S.optional(S.String),
-      preview: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Preview,
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Preview,
-        ),
-      ),
-      scriptVersion: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ScriptVersion,
-          ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ScriptVersion,
-        ),
-      ),
-      spanId: S.optional(S.String),
-      traceId: S.optional(S.String),
-      truncated: S.optional(S.Boolean),
-      cpuTimeMs: S.optional(S.Number),
-      wallTimeMs: S.optional(S.Number),
-      diagnosticsChannelEvents: S.optional(
-        ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList,
-      ),
-      dispatchNamespace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryResponseEventsEventsItemWorkers",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkers>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
@@ -33455,85 +31271,48 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1
       "ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1",
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1>;
 
-export interface ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers {
-  eventType:
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventType;
-  requestId: string;
-  scriptName: string;
-  durableObjectId?: string;
-  entrypoint?: string;
-  event?:
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap;
-  executionModel?:
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel;
-  outcome?: string;
-  preview?:
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0Preview
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1Preview;
-  scriptVersion?:
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ScriptVersion
-    | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ScriptVersion;
-  spanId?: string;
-  traceId?: string;
-  truncated?: boolean;
-  cpuTimeMs?: number;
-  wallTimeMs?: number;
-  diagnosticsChannelEvents?: ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList;
-  dispatchNamespace?: string;
-}
+export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
+  | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0
+  | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1;
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventType: S.Union(
-        ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType,
-        ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventType,
-      ),
-      requestId: S.String,
-      scriptName: S.String,
-      durableObjectId: S.optional(S.String),
-      entrypoint: S.optional(S.String),
-      event: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap,
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap,
-        ),
-      ),
-      executionModel: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel,
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel,
-        ),
-      ),
-      outcome: S.optional(S.String),
-      preview: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0Preview,
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1Preview,
-        ),
-      ),
-      scriptVersion: S.optional(
-        S.Union(
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ScriptVersion,
-          ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ScriptVersion,
-        ),
-      ),
-      spanId: S.optional(S.String),
-      traceId: S.optional(S.String),
-      truncated: S.optional(S.Boolean),
-      cpuTimeMs: S.optional(S.Number),
-      wallTimeMs: S.optional(S.Number),
-      diagnosticsChannelEvents: S.optional(
-        ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList,
-      ),
-      dispatchNamespace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilityTelemetryQueryResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
@@ -34408,9 +32187,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemC
     | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  kind:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {});
+  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -34487,9 +32264,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemW
     | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -34512,60 +32287,16 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorke
       "ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
+  | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
+  | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind,
-          ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList =
   Array<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
@@ -34583,7 +32314,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0 {
     | ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination
     | (string & {});
   filters: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList;
-  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0Kind | (string & {});
+  kind: ObservabilityTelemetryValuesRequestFiltersItemCase0Kind;
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -34658,9 +32389,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabil
     | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType
     | (string & {});
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
+  kind?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind;
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
@@ -34683,59 +32412,16 @@ export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityF
       "ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export interface ObservabilityTelemetryValuesRequestFiltersItem {
-  filterCombination?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination
-    | (string & {});
-  filters?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList;
-  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
-  kind?:
-    | ObservabilityTelemetryValuesRequestFiltersItemCase0Kind
-    | (string & {})
-    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
-    | (string & {});
-  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
-  key?: string;
-  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
-  operation?:
-    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation
-    | (string & {});
-  /** Data type of the filter field. Must match the actual type of the key being filtered. */
-  type?:
-    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType
-    | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
-  value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
-}
+export type ObservabilityTelemetryValuesRequestFiltersItem =
+  | ObservabilityTelemetryValuesRequestFiltersItemCase0
+  | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryValuesRequestFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterCombination: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination,
-      ),
-      filters: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList,
-      ),
-      kind: S.optional(
-        S.Union(
-          ObservabilityTelemetryValuesRequestFiltersItemCase0Kind,
-          ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind,
-        ),
-      ),
-      key: S.optional(S.String),
-      operation: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation,
-      ),
-      type: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType,
-      ),
-      value: S.optional(
-        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryValuesRequestFiltersItem",
-  }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItem>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["filterCombination", "filters", "kind"],
+      ["key", "operation", "type", "kind", "value"],
+    ]),
+  );
 
 export type ObservabilityTelemetryValuesRequestFiltersList =
   Array<ObservabilityTelemetryValuesRequestFiltersItem>;

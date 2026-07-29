@@ -29,7 +29,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name: string;
   /** Type of ExtendedLocation. */
-  type: ExtendedLocationType | (string & {});
+  type: ExtendedLocationType;
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -457,9 +457,7 @@ export const AkriConnectorTemplateRuntimeConfigurationType =
 /** AkriConnectorTemplateRuntimeConfiguration properties. */
 export interface AkriConnectorTemplateRuntimeConfiguration {
   /** Runtime configuration type for the Connector template. */
-  runtimeConfigurationType:
-    | AkriConnectorTemplateRuntimeConfigurationType
-    | (string & {});
+  runtimeConfigurationType: AkriConnectorTemplateRuntimeConfigurationType;
 }
 export const AkriConnectorTemplateRuntimeConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -531,7 +529,7 @@ export const AkriConnectorsMqttAuthenticationMethod = /*@__PURE__*/ S.String;
 /** AkriConnectorsMqttAuthentication properties. */
 export interface AkriConnectorsMqttAuthentication {
   /** The authentication method for the MQTT connection. */
-  method: AkriConnectorsMqttAuthenticationMethod | (string & {});
+  method: AkriConnectorsMqttAuthenticationMethod;
 }
 export const AkriConnectorsMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -570,7 +568,7 @@ export interface AkriConnectorsMqttConnectionConfiguration {
   /** Host of the Broker in the form of <hostname>:<port>. */
   host?: string;
   /** The protocol to use for the connection. Currently only `mqtt` is supported. */
-  protocol?: AkriConnectorsMqttProtocolType | (string & {});
+  protocol?: AkriConnectorsMqttProtocolType;
   /** KeepAlive for connection in seconds. */
   keepAliveSeconds?: number;
   /** The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack. */
@@ -3529,9 +3527,7 @@ export interface DataflowSourceOperationSettings {
   /** Reference to the resource in Azure Device Registry where the data in the endpoint originates from. */
   assetRef?: string;
   /** Content is a JSON Schema. Allowed: JSON Schema/draft-7. */
-  serializationFormat?:
-    | DataflowSourceOperationSettingsSerializationFormat
-    | (string & {});
+  serializationFormat?: DataflowSourceOperationSettingsSerializationFormat;
   /** Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match. */
   schemaRef?: string;
   /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
@@ -3614,7 +3610,7 @@ export const DataflowBuiltInTransformationFilterInputsList =
 /** Dataflow BuiltIn Transformation filter properties */
 export interface DataflowBuiltInTransformationFilter {
   /** The type of dataflow operation. */
-  type?: DataflowBuiltInTransformationFilterType | (string & {});
+  type?: DataflowBuiltInTransformationFilterType;
   /** A user provided optional description of the filter. */
   description?: string;
   /** List of fields for filtering in JSON path expression. */

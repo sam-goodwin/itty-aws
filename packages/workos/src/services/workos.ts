@@ -315,24 +315,11 @@ export const AgentAdminControllerValidateCredentialRequestBodyCase1 =
   }) as any as S.Schema<AgentAdminControllerValidateCredentialRequestBodyCase1>;
 
 /** The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`. */
-export interface AgentAdminControllerValidateCredentialRequestBody {
-  /** The kind of credential being validated — an agent API key or an agent access token. */
-  type: string;
-  /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
-  credential: string;
-  /** When provided, the access token's `aud` claim is verified against this value. Tokens issued for a different resource are rejected. */
-  audience?: string;
-}
+export type AgentAdminControllerValidateCredentialRequestBody =
+  | AgentAdminControllerValidateCredentialRequestBodyCase0
+  | AgentAdminControllerValidateCredentialRequestBodyCase1;
 export const AgentAdminControllerValidateCredentialRequestBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      credential: S.String,
-      audience: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentAdminControllerValidateCredentialRequestBody",
-  }) as any as S.Schema<AgentAdminControllerValidateCredentialRequestBody>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentAdminControllerValidateCredentialRequestBody>;
 
 export interface AgentAdminControllerValidateCredentialRequest {
   body: AgentAdminControllerValidateCredentialRequestBody;
@@ -440,21 +427,9 @@ export const ApiKeyOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiKeyOwnerCase1>;
 
 /** The entity that owns the API Key. */
-export interface ApiKeyOwner {
-  /** The type of the API Key owner. */
-  type: string;
-  /** Unique identifier of the API Key owner. */
-  id: string;
-  /** Unique identifier of the organization the API Key can access. */
-  organization_id?: string;
-}
-export const ApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-    organization_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiKeyOwner" }) as any as S.Schema<ApiKeyOwner>;
+export type ApiKeyOwner = ApiKeyOwnerCase0 | ApiKeyOwnerCase1;
+export const ApiKeyOwner =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
 export type ApiKeyPermissionsList = Array<string>;
@@ -757,51 +732,11 @@ export const CreateM2MApplicationDto = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateM2MApplicationDto",
 }) as any as S.Schema<CreateM2MApplicationDto>;
 
-export interface ApplicationsControllerCreateRequestBody {
-  /** The name of the application. */
-  name?: string;
-  /** The type of application to create. */
-  application_type?: string;
-  /** A description for the application. */
-  description?: string | null;
-  /** The OAuth scopes granted to the application. */
-  scopes?:
-    | CreateOAuthApplicationDtoScopesList
-    | CreateM2MApplicationDtoScopesList
-    | null;
-  /** Redirect URIs for the application. */
-  redirect_uris?: CreateOAuthApplicationDtoRedirectUrisList | null;
-  /** Whether the application uses PKCE (Proof Key for Code Exchange). */
-  uses_pkce?: boolean | null;
-  /** Whether this is a first-party application. Third-party applications require an organization_id. */
-  is_first_party?: boolean;
-  /** The organization ID this application belongs to. Required when is_first_party is false. */
-  organization_id?: string | null;
-}
-export const ApplicationsControllerCreateRequestBody = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      application_type: S.optional(S.String),
-      description: S.optional(S.NullOr(S.String)),
-      scopes: S.optional(
-        S.NullOr(
-          S.Union(
-            CreateOAuthApplicationDtoScopesList,
-            CreateM2MApplicationDtoScopesList,
-          ),
-        ),
-      ),
-      redirect_uris: S.optional(
-        S.NullOr(CreateOAuthApplicationDtoRedirectUrisList),
-      ),
-      uses_pkce: S.optional(S.NullOr(S.Boolean)),
-      is_first_party: S.optional(S.Boolean),
-      organization_id: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "ApplicationsControllerCreateRequestBody",
-}) as any as S.Schema<ApplicationsControllerCreateRequestBody>;
+export type ApplicationsControllerCreateRequestBody =
+  | CreateOAuthApplicationDto
+  | CreateM2MApplicationDto;
+export const ApplicationsControllerCreateRequestBody =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ApplicationsControllerCreateRequestBody>;
 
 export interface ApplicationsControllerCreateRequest {
   body: ApplicationsControllerCreateRequestBody;
@@ -5604,25 +5539,11 @@ export const DataIntegrationAccessTokenResponseCase1 = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationAccessTokenResponseCase1",
 }) as any as S.Schema<DataIntegrationAccessTokenResponseCase1>;
 
-export interface DataIntegrationAccessTokenResponse {
-  /** Indicates whether the access token is valid and ready for use, or if reauthorization is required. */
-  active: boolean;
-  /** The [access token](/reference/pipes/access-token) object, present when `active` is `true`. */
-  access_token?: DataIntegrationAccessTokenResponseCase0AccessToken;
-  /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
-  error?: DataIntegrationAccessTokenResponseCase1Error;
-}
-export const DataIntegrationAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    access_token: S.optional(
-      DataIntegrationAccessTokenResponseCase0AccessToken,
-    ),
-    error: S.optional(DataIntegrationAccessTokenResponseCase1Error),
-  }),
-).annotate({
-  identifier: "DataIntegrationAccessTokenResponse",
-}) as any as S.Schema<DataIntegrationAccessTokenResponse>;
+export type DataIntegrationAccessTokenResponse =
+  | DataIntegrationAccessTokenResponseCase0
+  | DataIntegrationAccessTokenResponseCase1;
+export const DataIntegrationAccessTokenResponse =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataIntegrationAccessTokenResponse>;
 
 export type DataIntegrationsControllerGetUserlandUserTokenResponse =
   DataIntegrationAccessTokenResponse;
@@ -5863,30 +5784,12 @@ export const DataIntegrationCredentialsResponseCase2 = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationCredentialsResponseCase2",
 }) as any as S.Schema<DataIntegrationCredentialsResponseCase2>;
 
-export interface DataIntegrationCredentialsResponse {
-  /** Indicates credentials are available. */
-  active: boolean;
-  /** The credential object containing the vended secret. */
-  credential?:
-    | DataIntegrationCredentialsResponseCase0Credential
-    | DataIntegrationCredentialsResponseCase1Credential;
-  /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
-  error?: DataIntegrationCredentialsResponseCase2Error;
-}
-export const DataIntegrationCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    credential: S.optional(
-      S.Union(
-        DataIntegrationCredentialsResponseCase0Credential,
-        DataIntegrationCredentialsResponseCase1Credential,
-      ),
-    ),
-    error: S.optional(DataIntegrationCredentialsResponseCase2Error),
-  }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponse",
-}) as any as S.Schema<DataIntegrationCredentialsResponse>;
+export type DataIntegrationCredentialsResponse =
+  | DataIntegrationCredentialsResponseCase0
+  | DataIntegrationCredentialsResponseCase1
+  | DataIntegrationCredentialsResponseCase2;
+export const DataIntegrationCredentialsResponse =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataIntegrationCredentialsResponse>;
 
 export type DataIntegrationsControllerVendCredentialsResponse =
   DataIntegrationCredentialsResponse;
@@ -11794,77 +11697,19 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase9 =
     identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase9",
   }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase9>;
 
-export interface UserlandSessionsControllerAuthenticate0RequestBody {
-  /** The client ID of the application. */
-  client_id: string;
-  /** The client secret of the application. May be omitted by public clients that authenticate through other means, such as a PKCE `code_verifier`. */
-  client_secret?: string | Redacted.Redacted<string>;
-  grant_type: string;
-  /** The authorization code received from the redirect. */
-  code?: string;
-  /** The PKCE code verifier used to derive the code challenge passed to the authorization URL. */
-  code_verifier?: string;
-  /** An invitation token to accept during authentication. */
-  invitation_token?: string;
-  /** The IP address of the user's request. */
-  ip_address?: string;
-  /** A unique identifier for the device. */
-  device_id?: string;
-  /** The user agent string from the user's browser. */
-  user_agent?: string;
-  /** An optional Radar signals ID to correlate client-side signals with this authentication attempt. */
-  signals_id?: string;
-  /** The user's email address. */
-  email?: string;
-  /** The user's password. */
-  password?: string | Redacted.Redacted<string>;
-  /** The ID of an existing Radar authentication attempt to associate with this authentication. */
-  radar_auth_attempt_id?: string;
-  /** The refresh token to exchange for new tokens. */
-  refresh_token?: string | Redacted.Redacted<string>;
-  /** The ID of the organization to scope the session to. */
-  organization_id?: string;
-  /** The pending authentication token from a previous authentication attempt. */
-  pending_authentication_token?: string;
-  /** The ID of the MFA authentication challenge. */
-  authentication_challenge_id?: string;
-  /** The ID of the Radar email challenge being verified. */
-  radar_challenge_id?: string;
-  /** The ID of the Radar SMS verification being confirmed. */
-  verification_id?: string;
-  /** The phone number the Radar SMS challenge was sent to. */
-  phone_number?: string;
-  /** The device verification code. */
-  device_code?: string;
-}
+export type UserlandSessionsControllerAuthenticate0RequestBody =
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase0
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase1
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase2
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase3
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase4
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase5
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase6
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase7
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase8
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase9;
 export const UserlandSessionsControllerAuthenticate0RequestBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      client_id: S.String,
-      client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      grant_type: S.String,
-      code: S.optional(S.String),
-      code_verifier: S.optional(S.String),
-      invitation_token: S.optional(S.String),
-      ip_address: S.optional(S.String),
-      device_id: S.optional(S.String),
-      user_agent: S.optional(S.String),
-      signals_id: S.optional(S.String),
-      email: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      radar_auth_attempt_id: S.optional(S.String),
-      refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      organization_id: S.optional(S.String),
-      pending_authentication_token: S.optional(S.String),
-      authentication_challenge_id: S.optional(S.String),
-      radar_challenge_id: S.optional(S.String),
-      verification_id: S.optional(S.String),
-      phone_number: S.optional(S.String),
-      device_code: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandSessionsControllerAuthenticate0RequestBody",
-  }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBody>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBody>;
 
 export interface UserlandSessionsControllerAuthenticate0Request {
   body: UserlandSessionsControllerAuthenticate0RequestBody;

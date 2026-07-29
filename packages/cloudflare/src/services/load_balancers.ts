@@ -189,7 +189,7 @@ export interface BulkPatchPoolsRequest {
   /** Identifier. */
   accountId: string;
   /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
-  notificationEmail?: PoolsBulkEditRequestNotificationEmail | (string & {});
+  notificationEmail?: PoolsBulkEditRequestNotificationEmail;
 }
 export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1982,7 +1982,7 @@ export interface PoolsCreateRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy;
 }
 export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6573,7 +6573,7 @@ export interface PoolsEditRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy;
 }
 export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8426,7 +8426,7 @@ export interface PoolsUpdateRequestLoadShedding {
   /** The percent of existing sessions to shed from the pool, according to the session policy. */
   sessionPercent?: number;
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
+  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy;
 }
 export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

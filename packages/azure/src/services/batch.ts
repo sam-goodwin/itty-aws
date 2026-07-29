@@ -909,7 +909,7 @@ export const IPRuleAction = /*@__PURE__*/ S.String;
 /** Rule to filter client IP address. */
 export interface IPRule {
   /** Action when client IP address is matched. */
-  action: IPRuleAction | (string & {});
+  action: IPRuleAction;
   /** IPv4 address, or IPv4 address range in CIDR format. */
   value: string;
 }
@@ -2217,7 +2217,7 @@ export interface LocationCheckNameAvailabilityRequest {
   /** The name to check for availability */
   name: string;
   /** The resource type. */
-  type: ResourceType | (string & {});
+  type: ResourceType;
 }
 export const LocationCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3248,7 +3248,7 @@ export const DiffDiskPlacement = /*@__PURE__*/ S.String;
 /** Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine. */
 export interface DiffDiskSettings {
   /** This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. */
-  placement?: DiffDiskPlacement | (string & {});
+  placement?: DiffDiskPlacement;
 }
 export const DiffDiskSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

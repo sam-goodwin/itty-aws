@@ -3238,7 +3238,7 @@ export interface StorageSyncServicesCheckNameAvailabilityRequest {
   /** The name to check for availability */
   name: string;
   /** The resource type. Must be set to Microsoft.StorageSync/storageSyncServices */
-  type: Type | (string & {});
+  type: Type;
 }
 export const StorageSyncServicesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>

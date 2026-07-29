@@ -10101,7 +10101,7 @@ export interface GetRecordingsRecordingRequest {
   perPage?: number;
   /** The search query string. You can search using the meeting ID or title. */
   search?: string;
-  sortBy?: RecordingsGetRecordingsRequestSortBy | (string & {});
+  sortBy?: RecordingsGetRecordingsRequestSortBy;
   sortOrder?: RecordingsGetRecordingsRequestSortOrder | (string & {});
   /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
@@ -14900,7 +14900,7 @@ export const RecordingsStartRecordingsRequestInteractiveConfigType =
 
 export interface RecordingsStartRecordingsRequestInteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
-  type?: RecordingsStartRecordingsRequestInteractiveConfigType | (string & {});
+  type?: RecordingsStartRecordingsRequestInteractiveConfigType;
 }
 export const RecordingsStartRecordingsRequestInteractiveConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -15421,9 +15421,7 @@ export interface RecordingsStartTrackRecordingRequestLayersValue {
   /** A file name prefix to apply for files generated from this layer */
   fileNamePrefix?: string;
   /** Media kind to record. Track recording currently supports audio only. */
-  mediaKind?:
-    | RecordingsStartTrackRecordingRequestLayersValueMediaKind
-    | (string & {});
+  mediaKind?: RecordingsStartTrackRecordingRequestLayersValueMediaKind;
 }
 export const RecordingsStartTrackRecordingRequestLayersValue =
   /*@__PURE__*/ S.suspend(() =>

@@ -1139,149 +1139,65 @@ export const AccountTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountTagsGetResultZone",
 }) as any as S.Schema<AccountTagsGetResultZone>;
 
-export interface AccountTagsGetResult {
-  /** Identifies the unique resource. */
-  id: string;
-  /** ETag identifier for optimistic concurrency control. Formatted as "v1:<hash>" where */
-  etag: string;
-  /** Human-readable name of the resource. */
-  name: string;
-  /** Contains key-value pairs of tags. */
-  tags:
-    | AccountTagsGetResultAccessApplicationTagsMap
-    | AccountTagsGetResultAccessApplicationPolicyTagsMap
-    | AccountTagsGetResultAccessGroupTagsMap
-    | AccountTagsGetResultAccountTagsMap
-    | AccountTagsGetResultAIGatewayTagsMap
-    | AccountTagsGetResultAlertingPolicyTagsMap
-    | AccountTagsGetResultAlertingWebhookTagsMap
-    | AccountTagsGetResultAPIGatewayOperationTagsMap
-    | AccountTagsGetResultCloudflaredTunnelTagsMap
-    | AccountTagsGetResultCustomCertificateTagsMap
-    | AccountTagsGetResultCustomHostnameTagsMap
-    | AccountTagsGetResultD1DatabaseTagsMap
-    | AccountTagsGetResultDNSRecordTagsMap
-    | AccountTagsGetResultDurableObjectNamespaceTagsMap
-    | AccountTagsGetResultGatewayListTagsMap
-    | AccountTagsGetResultGatewayRuleTagsMap
-    | AccountTagsGetResultImageTagsMap
-    | AccountTagsGetResultKVNamespaceTagsMap
-    | AccountTagsGetResultManagedClientCertificateTagsMap
-    | AccountTagsGetResultQueueTagsMap
-    | AccountTagsGetResultR2BucketTagsMap
-    | AccountTagsGetResultResourceShareTagsMap
-    | AccountTagsGetResultStreamLiveInputTagsMap
-    | AccountTagsGetResultStreamVideoTagsMap
-    | AccountTagsGetResultWorkerTagsMap
-    | AccountTagsGetResultWorkerVersionTagsMap
-    | AccountTagsGetResultZoneTagsMap;
-  type:
-    | AccountTagsGetResultAccessApplicationType
-    | AccountTagsGetResultAccessApplicationPolicyType
-    | AccountTagsGetResultAccessGroupType
-    | AccountTagsGetResultAccountType
-    | AccountTagsGetResultAIGatewayType
-    | AccountTagsGetResultAlertingPolicyType
-    | AccountTagsGetResultAlertingWebhookType
-    | AccountTagsGetResultAPIGatewayOperationType
-    | AccountTagsGetResultCloudflaredTunnelType
-    | AccountTagsGetResultCustomCertificateType
-    | AccountTagsGetResultCustomHostnameType
-    | AccountTagsGetResultD1DatabaseType
-    | AccountTagsGetResultDNSRecordType
-    | AccountTagsGetResultDurableObjectNamespaceType
-    | AccountTagsGetResultGatewayListType
-    | AccountTagsGetResultGatewayRuleType
-    | AccountTagsGetResultImageType
-    | AccountTagsGetResultKVNamespaceType
-    | AccountTagsGetResultManagedClientCertificateType
-    | AccountTagsGetResultQueueType
-    | AccountTagsGetResultR2BucketType
-    | AccountTagsGetResultResourceShareType
-    | AccountTagsGetResultStreamLiveInputType
-    | AccountTagsGetResultStreamVideoType
-    | AccountTagsGetResultWorkerType
-    | AccountTagsGetResultWorkerVersionType
-    | AccountTagsGetResultZoneType;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
-  /** Zone ID is required only for zone-level resources */
-  zoneId?: string;
-  /** Worker ID is required only for worker_version resources */
-  workerId?: string;
-}
-export const AccountTagsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: S.Union(
-      AccountTagsGetResultAccessApplicationTagsMap,
-      AccountTagsGetResultAccessApplicationPolicyTagsMap,
-      AccountTagsGetResultAccessGroupTagsMap,
-      AccountTagsGetResultAccountTagsMap,
-      AccountTagsGetResultAIGatewayTagsMap,
-      AccountTagsGetResultAlertingPolicyTagsMap,
-      AccountTagsGetResultAlertingWebhookTagsMap,
-      AccountTagsGetResultAPIGatewayOperationTagsMap,
-      AccountTagsGetResultCloudflaredTunnelTagsMap,
-      AccountTagsGetResultCustomCertificateTagsMap,
-      AccountTagsGetResultCustomHostnameTagsMap,
-      AccountTagsGetResultD1DatabaseTagsMap,
-      AccountTagsGetResultDNSRecordTagsMap,
-      AccountTagsGetResultDurableObjectNamespaceTagsMap,
-      AccountTagsGetResultGatewayListTagsMap,
-      AccountTagsGetResultGatewayRuleTagsMap,
-      AccountTagsGetResultImageTagsMap,
-      AccountTagsGetResultKVNamespaceTagsMap,
-      AccountTagsGetResultManagedClientCertificateTagsMap,
-      AccountTagsGetResultQueueTagsMap,
-      AccountTagsGetResultR2BucketTagsMap,
-      AccountTagsGetResultResourceShareTagsMap,
-      AccountTagsGetResultStreamLiveInputTagsMap,
-      AccountTagsGetResultStreamVideoTagsMap,
-      AccountTagsGetResultWorkerTagsMap,
-      AccountTagsGetResultWorkerVersionTagsMap,
-      AccountTagsGetResultZoneTagsMap,
-    ),
-    type: S.Union(
-      AccountTagsGetResultAccessApplicationType,
-      AccountTagsGetResultAccessApplicationPolicyType,
-      AccountTagsGetResultAccessGroupType,
-      AccountTagsGetResultAccountType,
-      AccountTagsGetResultAIGatewayType,
-      AccountTagsGetResultAlertingPolicyType,
-      AccountTagsGetResultAlertingWebhookType,
-      AccountTagsGetResultAPIGatewayOperationType,
-      AccountTagsGetResultCloudflaredTunnelType,
-      AccountTagsGetResultCustomCertificateType,
-      AccountTagsGetResultCustomHostnameType,
-      AccountTagsGetResultD1DatabaseType,
-      AccountTagsGetResultDNSRecordType,
-      AccountTagsGetResultDurableObjectNamespaceType,
-      AccountTagsGetResultGatewayListType,
-      AccountTagsGetResultGatewayRuleType,
-      AccountTagsGetResultImageType,
-      AccountTagsGetResultKVNamespaceType,
-      AccountTagsGetResultManagedClientCertificateType,
-      AccountTagsGetResultQueueType,
-      AccountTagsGetResultR2BucketType,
-      AccountTagsGetResultResourceShareType,
-      AccountTagsGetResultStreamLiveInputType,
-      AccountTagsGetResultStreamVideoType,
-      AccountTagsGetResultWorkerType,
-      AccountTagsGetResultWorkerVersionType,
-      AccountTagsGetResultZoneType,
-    ),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResult",
-}) as any as S.Schema<AccountTagsGetResult>;
+export type AccountTagsGetResult =
+  | AccountTagsGetResultAccessApplication
+  | AccountTagsGetResultAccessApplicationPolicy
+  | AccountTagsGetResultAccessGroup
+  | AccountTagsGetResultAccount
+  | AccountTagsGetResultAIGateway
+  | AccountTagsGetResultAlertingPolicy
+  | AccountTagsGetResultAlertingWebhook
+  | AccountTagsGetResultAPIGatewayOperation
+  | AccountTagsGetResultCloudflaredTunnel
+  | AccountTagsGetResultCustomCertificate
+  | AccountTagsGetResultCustomHostname
+  | AccountTagsGetResultD1Database
+  | AccountTagsGetResultDNSRecord
+  | AccountTagsGetResultDurableObjectNamespace
+  | AccountTagsGetResultGatewayList
+  | AccountTagsGetResultGatewayRule
+  | AccountTagsGetResultImage
+  | AccountTagsGetResultKVNamespace
+  | AccountTagsGetResultManagedClientCertificate
+  | AccountTagsGetResultQueue
+  | AccountTagsGetResultR2Bucket
+  | AccountTagsGetResultResourceShare
+  | AccountTagsGetResultStreamLiveInput
+  | AccountTagsGetResultStreamVideo
+  | AccountTagsGetResultWorker
+  | AccountTagsGetResultWorkerVersion
+  | AccountTagsGetResultZone;
+export const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "workerId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+  ]),
+);
 
 export type GetAccountTagResponse = AccountTagsGetResult;
 export const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2284,149 +2200,65 @@ export const ZoneTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTagsGetResultZone",
 }) as any as S.Schema<ZoneTagsGetResultZone>;
 
-export interface ZoneTagsGetResult {
-  /** Identifies the unique resource. */
-  id: string;
-  /** ETag identifier for optimistic concurrency control. Formatted as "v1:<hash>" where */
-  etag: string;
-  /** Human-readable name of the resource. */
-  name: string;
-  /** Contains key-value pairs of tags. */
-  tags:
-    | ZoneTagsGetResultAccessApplicationTagsMap
-    | ZoneTagsGetResultAccessApplicationPolicyTagsMap
-    | ZoneTagsGetResultAccessGroupTagsMap
-    | ZoneTagsGetResultAccountTagsMap
-    | ZoneTagsGetResultAIGatewayTagsMap
-    | ZoneTagsGetResultAlertingPolicyTagsMap
-    | ZoneTagsGetResultAlertingWebhookTagsMap
-    | ZoneTagsGetResultAPIGatewayOperationTagsMap
-    | ZoneTagsGetResultCloudflaredTunnelTagsMap
-    | ZoneTagsGetResultCustomCertificateTagsMap
-    | ZoneTagsGetResultCustomHostnameTagsMap
-    | ZoneTagsGetResultD1DatabaseTagsMap
-    | ZoneTagsGetResultDNSRecordTagsMap
-    | ZoneTagsGetResultDurableObjectNamespaceTagsMap
-    | ZoneTagsGetResultGatewayListTagsMap
-    | ZoneTagsGetResultGatewayRuleTagsMap
-    | ZoneTagsGetResultImageTagsMap
-    | ZoneTagsGetResultKVNamespaceTagsMap
-    | ZoneTagsGetResultManagedClientCertificateTagsMap
-    | ZoneTagsGetResultQueueTagsMap
-    | ZoneTagsGetResultR2BucketTagsMap
-    | ZoneTagsGetResultResourceShareTagsMap
-    | ZoneTagsGetResultStreamLiveInputTagsMap
-    | ZoneTagsGetResultStreamVideoTagsMap
-    | ZoneTagsGetResultWorkerTagsMap
-    | ZoneTagsGetResultWorkerVersionTagsMap
-    | ZoneTagsGetResultZoneTagsMap;
-  type:
-    | ZoneTagsGetResultAccessApplicationType
-    | ZoneTagsGetResultAccessApplicationPolicyType
-    | ZoneTagsGetResultAccessGroupType
-    | ZoneTagsGetResultAccountType
-    | ZoneTagsGetResultAIGatewayType
-    | ZoneTagsGetResultAlertingPolicyType
-    | ZoneTagsGetResultAlertingWebhookType
-    | ZoneTagsGetResultAPIGatewayOperationType
-    | ZoneTagsGetResultCloudflaredTunnelType
-    | ZoneTagsGetResultCustomCertificateType
-    | ZoneTagsGetResultCustomHostnameType
-    | ZoneTagsGetResultD1DatabaseType
-    | ZoneTagsGetResultDNSRecordType
-    | ZoneTagsGetResultDurableObjectNamespaceType
-    | ZoneTagsGetResultGatewayListType
-    | ZoneTagsGetResultGatewayRuleType
-    | ZoneTagsGetResultImageType
-    | ZoneTagsGetResultKVNamespaceType
-    | ZoneTagsGetResultManagedClientCertificateType
-    | ZoneTagsGetResultQueueType
-    | ZoneTagsGetResultR2BucketType
-    | ZoneTagsGetResultResourceShareType
-    | ZoneTagsGetResultStreamLiveInputType
-    | ZoneTagsGetResultStreamVideoType
-    | ZoneTagsGetResultWorkerType
-    | ZoneTagsGetResultWorkerVersionType
-    | ZoneTagsGetResultZoneType;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
-  /** Zone ID is required only for zone-level resources */
-  zoneId?: string;
-  /** Worker ID is required only for worker_version resources */
-  workerId?: string;
-}
-export const ZoneTagsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: S.Union(
-      ZoneTagsGetResultAccessApplicationTagsMap,
-      ZoneTagsGetResultAccessApplicationPolicyTagsMap,
-      ZoneTagsGetResultAccessGroupTagsMap,
-      ZoneTagsGetResultAccountTagsMap,
-      ZoneTagsGetResultAIGatewayTagsMap,
-      ZoneTagsGetResultAlertingPolicyTagsMap,
-      ZoneTagsGetResultAlertingWebhookTagsMap,
-      ZoneTagsGetResultAPIGatewayOperationTagsMap,
-      ZoneTagsGetResultCloudflaredTunnelTagsMap,
-      ZoneTagsGetResultCustomCertificateTagsMap,
-      ZoneTagsGetResultCustomHostnameTagsMap,
-      ZoneTagsGetResultD1DatabaseTagsMap,
-      ZoneTagsGetResultDNSRecordTagsMap,
-      ZoneTagsGetResultDurableObjectNamespaceTagsMap,
-      ZoneTagsGetResultGatewayListTagsMap,
-      ZoneTagsGetResultGatewayRuleTagsMap,
-      ZoneTagsGetResultImageTagsMap,
-      ZoneTagsGetResultKVNamespaceTagsMap,
-      ZoneTagsGetResultManagedClientCertificateTagsMap,
-      ZoneTagsGetResultQueueTagsMap,
-      ZoneTagsGetResultR2BucketTagsMap,
-      ZoneTagsGetResultResourceShareTagsMap,
-      ZoneTagsGetResultStreamLiveInputTagsMap,
-      ZoneTagsGetResultStreamVideoTagsMap,
-      ZoneTagsGetResultWorkerTagsMap,
-      ZoneTagsGetResultWorkerVersionTagsMap,
-      ZoneTagsGetResultZoneTagsMap,
-    ),
-    type: S.Union(
-      ZoneTagsGetResultAccessApplicationType,
-      ZoneTagsGetResultAccessApplicationPolicyType,
-      ZoneTagsGetResultAccessGroupType,
-      ZoneTagsGetResultAccountType,
-      ZoneTagsGetResultAIGatewayType,
-      ZoneTagsGetResultAlertingPolicyType,
-      ZoneTagsGetResultAlertingWebhookType,
-      ZoneTagsGetResultAPIGatewayOperationType,
-      ZoneTagsGetResultCloudflaredTunnelType,
-      ZoneTagsGetResultCustomCertificateType,
-      ZoneTagsGetResultCustomHostnameType,
-      ZoneTagsGetResultD1DatabaseType,
-      ZoneTagsGetResultDNSRecordType,
-      ZoneTagsGetResultDurableObjectNamespaceType,
-      ZoneTagsGetResultGatewayListType,
-      ZoneTagsGetResultGatewayRuleType,
-      ZoneTagsGetResultImageType,
-      ZoneTagsGetResultKVNamespaceType,
-      ZoneTagsGetResultManagedClientCertificateType,
-      ZoneTagsGetResultQueueType,
-      ZoneTagsGetResultR2BucketType,
-      ZoneTagsGetResultResourceShareType,
-      ZoneTagsGetResultStreamLiveInputType,
-      ZoneTagsGetResultStreamVideoType,
-      ZoneTagsGetResultWorkerType,
-      ZoneTagsGetResultWorkerVersionType,
-      ZoneTagsGetResultZoneType,
-    ),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResult",
-}) as any as S.Schema<ZoneTagsGetResult>;
+export type ZoneTagsGetResult =
+  | ZoneTagsGetResultAccessApplication
+  | ZoneTagsGetResultAccessApplicationPolicy
+  | ZoneTagsGetResultAccessGroup
+  | ZoneTagsGetResultAccount
+  | ZoneTagsGetResultAIGateway
+  | ZoneTagsGetResultAlertingPolicy
+  | ZoneTagsGetResultAlertingWebhook
+  | ZoneTagsGetResultAPIGatewayOperation
+  | ZoneTagsGetResultCloudflaredTunnel
+  | ZoneTagsGetResultCustomCertificate
+  | ZoneTagsGetResultCustomHostname
+  | ZoneTagsGetResultD1Database
+  | ZoneTagsGetResultDNSRecord
+  | ZoneTagsGetResultDurableObjectNamespace
+  | ZoneTagsGetResultGatewayList
+  | ZoneTagsGetResultGatewayRule
+  | ZoneTagsGetResultImage
+  | ZoneTagsGetResultKVNamespace
+  | ZoneTagsGetResultManagedClientCertificate
+  | ZoneTagsGetResultQueue
+  | ZoneTagsGetResultR2Bucket
+  | ZoneTagsGetResultResourceShare
+  | ZoneTagsGetResultStreamLiveInput
+  | ZoneTagsGetResultStreamVideo
+  | ZoneTagsGetResultWorker
+  | ZoneTagsGetResultWorkerVersion
+  | ZoneTagsGetResultZone;
+export const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "workerId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+  ]),
+);
 
 export type GetZoneTagResponse = ZoneTagsGetResult;
 export const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3494,147 +3326,65 @@ export const ListResultItemZone = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemZone",
 }) as any as S.Schema<ListResultItemZone>;
 
-export interface ListResultItem {
-  /** Identifies the unique resource. */
-  id: string;
-  /** ETag identifier for optimistic concurrency control. Formatted as "v1:<hash>" where */
-  etag: string;
-  /** Human-readable name of the resource. */
-  name: string;
-  /** Contains key-value pairs of tags. */
-  tags:
-    | ListResultItemAccessApplicationTagsMap
-    | ListResultItemAccessApplicationPolicyTagsMap
-    | ListResultItemAccessGroupTagsMap
-    | ListResultItemAccountTagsMap
-    | ListResultItemAIGatewayTagsMap
-    | ListResultItemAlertingPolicyTagsMap
-    | ListResultItemAlertingWebhookTagsMap
-    | ListResultItemAPIGatewayOperationTagsMap
-    | ListResultItemCloudflaredTunnelTagsMap
-    | ListResultItemCustomCertificateTagsMap
-    | ListResultItemCustomHostnameTagsMap
-    | ListResultItemD1DatabaseTagsMap
-    | ListResultItemDNSRecordTagsMap
-    | ListResultItemDurableObjectNamespaceTagsMap
-    | ListResultItemGatewayListTagsMap
-    | ListResultItemGatewayRuleTagsMap
-    | ListResultItemImageTagsMap
-    | ListResultItemKVNamespaceTagsMap
-    | ListResultItemManagedClientCertificateTagsMap
-    | ListResultItemQueueTagsMap
-    | ListResultItemR2BucketTagsMap
-    | ListResultItemResourceShareTagsMap
-    | ListResultItemStreamLiveInputTagsMap
-    | ListResultItemStreamVideoTagsMap
-    | ListResultItemWorkerTagsMap
-    | ListResultItemWorkerVersionTagsMap
-    | ListResultItemZoneTagsMap;
-  type:
-    | ListResultItemAccessApplicationType
-    | ListResultItemAccessApplicationPolicyType
-    | ListResultItemAccessGroupType
-    | ListResultItemAccountType
-    | ListResultItemAIGatewayType
-    | ListResultItemAlertingPolicyType
-    | ListResultItemAlertingWebhookType
-    | ListResultItemAPIGatewayOperationType
-    | ListResultItemCloudflaredTunnelType
-    | ListResultItemCustomCertificateType
-    | ListResultItemCustomHostnameType
-    | ListResultItemD1DatabaseType
-    | ListResultItemDNSRecordType
-    | ListResultItemDurableObjectNamespaceType
-    | ListResultItemGatewayListType
-    | ListResultItemGatewayRuleType
-    | ListResultItemImageType
-    | ListResultItemKVNamespaceType
-    | ListResultItemManagedClientCertificateType
-    | ListResultItemQueueType
-    | ListResultItemR2BucketType
-    | ListResultItemResourceShareType
-    | ListResultItemStreamLiveInputType
-    | ListResultItemStreamVideoType
-    | ListResultItemWorkerType
-    | ListResultItemWorkerVersionType
-    | ListResultItemZoneType;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
-  /** Zone ID is required only for zone-level resources */
-  zoneId?: string;
-  /** Worker ID is required only for worker_version resources */
-  workerId?: string;
-}
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: S.Union(
-      ListResultItemAccessApplicationTagsMap,
-      ListResultItemAccessApplicationPolicyTagsMap,
-      ListResultItemAccessGroupTagsMap,
-      ListResultItemAccountTagsMap,
-      ListResultItemAIGatewayTagsMap,
-      ListResultItemAlertingPolicyTagsMap,
-      ListResultItemAlertingWebhookTagsMap,
-      ListResultItemAPIGatewayOperationTagsMap,
-      ListResultItemCloudflaredTunnelTagsMap,
-      ListResultItemCustomCertificateTagsMap,
-      ListResultItemCustomHostnameTagsMap,
-      ListResultItemD1DatabaseTagsMap,
-      ListResultItemDNSRecordTagsMap,
-      ListResultItemDurableObjectNamespaceTagsMap,
-      ListResultItemGatewayListTagsMap,
-      ListResultItemGatewayRuleTagsMap,
-      ListResultItemImageTagsMap,
-      ListResultItemKVNamespaceTagsMap,
-      ListResultItemManagedClientCertificateTagsMap,
-      ListResultItemQueueTagsMap,
-      ListResultItemR2BucketTagsMap,
-      ListResultItemResourceShareTagsMap,
-      ListResultItemStreamLiveInputTagsMap,
-      ListResultItemStreamVideoTagsMap,
-      ListResultItemWorkerTagsMap,
-      ListResultItemWorkerVersionTagsMap,
-      ListResultItemZoneTagsMap,
-    ),
-    type: S.Union(
-      ListResultItemAccessApplicationType,
-      ListResultItemAccessApplicationPolicyType,
-      ListResultItemAccessGroupType,
-      ListResultItemAccountType,
-      ListResultItemAIGatewayType,
-      ListResultItemAlertingPolicyType,
-      ListResultItemAlertingWebhookType,
-      ListResultItemAPIGatewayOperationType,
-      ListResultItemCloudflaredTunnelType,
-      ListResultItemCustomCertificateType,
-      ListResultItemCustomHostnameType,
-      ListResultItemD1DatabaseType,
-      ListResultItemDNSRecordType,
-      ListResultItemDurableObjectNamespaceType,
-      ListResultItemGatewayListType,
-      ListResultItemGatewayRuleType,
-      ListResultItemImageType,
-      ListResultItemKVNamespaceType,
-      ListResultItemManagedClientCertificateType,
-      ListResultItemQueueType,
-      ListResultItemR2BucketType,
-      ListResultItemResourceShareType,
-      ListResultItemStreamLiveInputType,
-      ListResultItemStreamVideoType,
-      ListResultItemWorkerType,
-      ListResultItemWorkerVersionType,
-      ListResultItemZoneType,
-    ),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-  }),
-).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+export type ListResultItem =
+  | ListResultItemAccessApplication
+  | ListResultItemAccessApplicationPolicy
+  | ListResultItemAccessGroup
+  | ListResultItemAccount
+  | ListResultItemAIGateway
+  | ListResultItemAlertingPolicy
+  | ListResultItemAlertingWebhook
+  | ListResultItemAPIGatewayOperation
+  | ListResultItemCloudflaredTunnel
+  | ListResultItemCustomCertificate
+  | ListResultItemCustomHostname
+  | ListResultItemD1Database
+  | ListResultItemDNSRecord
+  | ListResultItemDurableObjectNamespace
+  | ListResultItemGatewayList
+  | ListResultItemGatewayRule
+  | ListResultItemImage
+  | ListResultItemKVNamespace
+  | ListResultItemManagedClientCertificate
+  | ListResultItemQueue
+  | ListResultItemR2Bucket
+  | ListResultItemResourceShare
+  | ListResultItemStreamLiveInput
+  | ListResultItemStreamVideo
+  | ListResultItemWorker
+  | ListResultItemWorkerVersion
+  | ListResultItemZone;
+export const ListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "workerId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+  ]),
+);
 
 export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
@@ -4811,149 +4561,65 @@ export const AccountTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountTagsUpdateResultZone",
 }) as any as S.Schema<AccountTagsUpdateResultZone>;
 
-export interface AccountTagsUpdateResult {
-  /** Identifies the unique resource. */
-  id: string;
-  /** ETag identifier for optimistic concurrency control. Formatted as "v1:<hash>" where */
-  etag: string;
-  /** Human-readable name of the resource. */
-  name: string;
-  /** Contains key-value pairs of tags. */
-  tags:
-    | AccountTagsUpdateResultAccessApplicationTagsMap
-    | AccountTagsUpdateResultAccessApplicationPolicyTagsMap
-    | AccountTagsUpdateResultAccessGroupTagsMap
-    | AccountTagsUpdateResultAccountTagsMap
-    | AccountTagsUpdateResultAIGatewayTagsMap
-    | AccountTagsUpdateResultAlertingPolicyTagsMap
-    | AccountTagsUpdateResultAlertingWebhookTagsMap
-    | AccountTagsUpdateResultAPIGatewayOperationTagsMap
-    | AccountTagsUpdateResultCloudflaredTunnelTagsMap
-    | AccountTagsUpdateResultCustomCertificateTagsMap
-    | AccountTagsUpdateResultCustomHostnameTagsMap
-    | AccountTagsUpdateResultD1DatabaseTagsMap
-    | AccountTagsUpdateResultDNSRecordTagsMap
-    | AccountTagsUpdateResultDurableObjectNamespaceTagsMap
-    | AccountTagsUpdateResultGatewayListTagsMap
-    | AccountTagsUpdateResultGatewayRuleTagsMap
-    | AccountTagsUpdateResultImageTagsMap
-    | AccountTagsUpdateResultKVNamespaceTagsMap
-    | AccountTagsUpdateResultManagedClientCertificateTagsMap
-    | AccountTagsUpdateResultQueueTagsMap
-    | AccountTagsUpdateResultR2BucketTagsMap
-    | AccountTagsUpdateResultResourceShareTagsMap
-    | AccountTagsUpdateResultStreamLiveInputTagsMap
-    | AccountTagsUpdateResultStreamVideoTagsMap
-    | AccountTagsUpdateResultWorkerTagsMap
-    | AccountTagsUpdateResultWorkerVersionTagsMap
-    | AccountTagsUpdateResultZoneTagsMap;
-  type:
-    | AccountTagsUpdateResultAccessApplicationType
-    | AccountTagsUpdateResultAccessApplicationPolicyType
-    | AccountTagsUpdateResultAccessGroupType
-    | AccountTagsUpdateResultAccountType
-    | AccountTagsUpdateResultAIGatewayType
-    | AccountTagsUpdateResultAlertingPolicyType
-    | AccountTagsUpdateResultAlertingWebhookType
-    | AccountTagsUpdateResultAPIGatewayOperationType
-    | AccountTagsUpdateResultCloudflaredTunnelType
-    | AccountTagsUpdateResultCustomCertificateType
-    | AccountTagsUpdateResultCustomHostnameType
-    | AccountTagsUpdateResultD1DatabaseType
-    | AccountTagsUpdateResultDNSRecordType
-    | AccountTagsUpdateResultDurableObjectNamespaceType
-    | AccountTagsUpdateResultGatewayListType
-    | AccountTagsUpdateResultGatewayRuleType
-    | AccountTagsUpdateResultImageType
-    | AccountTagsUpdateResultKVNamespaceType
-    | AccountTagsUpdateResultManagedClientCertificateType
-    | AccountTagsUpdateResultQueueType
-    | AccountTagsUpdateResultR2BucketType
-    | AccountTagsUpdateResultResourceShareType
-    | AccountTagsUpdateResultStreamLiveInputType
-    | AccountTagsUpdateResultStreamVideoType
-    | AccountTagsUpdateResultWorkerType
-    | AccountTagsUpdateResultWorkerVersionType
-    | AccountTagsUpdateResultZoneType;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
-  /** Zone ID is required only for zone-level resources */
-  zoneId?: string;
-  /** Worker ID is required only for worker_version resources */
-  workerId?: string;
-}
-export const AccountTagsUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: S.Union(
-      AccountTagsUpdateResultAccessApplicationTagsMap,
-      AccountTagsUpdateResultAccessApplicationPolicyTagsMap,
-      AccountTagsUpdateResultAccessGroupTagsMap,
-      AccountTagsUpdateResultAccountTagsMap,
-      AccountTagsUpdateResultAIGatewayTagsMap,
-      AccountTagsUpdateResultAlertingPolicyTagsMap,
-      AccountTagsUpdateResultAlertingWebhookTagsMap,
-      AccountTagsUpdateResultAPIGatewayOperationTagsMap,
-      AccountTagsUpdateResultCloudflaredTunnelTagsMap,
-      AccountTagsUpdateResultCustomCertificateTagsMap,
-      AccountTagsUpdateResultCustomHostnameTagsMap,
-      AccountTagsUpdateResultD1DatabaseTagsMap,
-      AccountTagsUpdateResultDNSRecordTagsMap,
-      AccountTagsUpdateResultDurableObjectNamespaceTagsMap,
-      AccountTagsUpdateResultGatewayListTagsMap,
-      AccountTagsUpdateResultGatewayRuleTagsMap,
-      AccountTagsUpdateResultImageTagsMap,
-      AccountTagsUpdateResultKVNamespaceTagsMap,
-      AccountTagsUpdateResultManagedClientCertificateTagsMap,
-      AccountTagsUpdateResultQueueTagsMap,
-      AccountTagsUpdateResultR2BucketTagsMap,
-      AccountTagsUpdateResultResourceShareTagsMap,
-      AccountTagsUpdateResultStreamLiveInputTagsMap,
-      AccountTagsUpdateResultStreamVideoTagsMap,
-      AccountTagsUpdateResultWorkerTagsMap,
-      AccountTagsUpdateResultWorkerVersionTagsMap,
-      AccountTagsUpdateResultZoneTagsMap,
-    ),
-    type: S.Union(
-      AccountTagsUpdateResultAccessApplicationType,
-      AccountTagsUpdateResultAccessApplicationPolicyType,
-      AccountTagsUpdateResultAccessGroupType,
-      AccountTagsUpdateResultAccountType,
-      AccountTagsUpdateResultAIGatewayType,
-      AccountTagsUpdateResultAlertingPolicyType,
-      AccountTagsUpdateResultAlertingWebhookType,
-      AccountTagsUpdateResultAPIGatewayOperationType,
-      AccountTagsUpdateResultCloudflaredTunnelType,
-      AccountTagsUpdateResultCustomCertificateType,
-      AccountTagsUpdateResultCustomHostnameType,
-      AccountTagsUpdateResultD1DatabaseType,
-      AccountTagsUpdateResultDNSRecordType,
-      AccountTagsUpdateResultDurableObjectNamespaceType,
-      AccountTagsUpdateResultGatewayListType,
-      AccountTagsUpdateResultGatewayRuleType,
-      AccountTagsUpdateResultImageType,
-      AccountTagsUpdateResultKVNamespaceType,
-      AccountTagsUpdateResultManagedClientCertificateType,
-      AccountTagsUpdateResultQueueType,
-      AccountTagsUpdateResultR2BucketType,
-      AccountTagsUpdateResultResourceShareType,
-      AccountTagsUpdateResultStreamLiveInputType,
-      AccountTagsUpdateResultStreamVideoType,
-      AccountTagsUpdateResultWorkerType,
-      AccountTagsUpdateResultWorkerVersionType,
-      AccountTagsUpdateResultZoneType,
-    ),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResult",
-}) as any as S.Schema<AccountTagsUpdateResult>;
+export type AccountTagsUpdateResult =
+  | AccountTagsUpdateResultAccessApplication
+  | AccountTagsUpdateResultAccessApplicationPolicy
+  | AccountTagsUpdateResultAccessGroup
+  | AccountTagsUpdateResultAccount
+  | AccountTagsUpdateResultAIGateway
+  | AccountTagsUpdateResultAlertingPolicy
+  | AccountTagsUpdateResultAlertingWebhook
+  | AccountTagsUpdateResultAPIGatewayOperation
+  | AccountTagsUpdateResultCloudflaredTunnel
+  | AccountTagsUpdateResultCustomCertificate
+  | AccountTagsUpdateResultCustomHostname
+  | AccountTagsUpdateResultD1Database
+  | AccountTagsUpdateResultDNSRecord
+  | AccountTagsUpdateResultDurableObjectNamespace
+  | AccountTagsUpdateResultGatewayList
+  | AccountTagsUpdateResultGatewayRule
+  | AccountTagsUpdateResultImage
+  | AccountTagsUpdateResultKVNamespace
+  | AccountTagsUpdateResultManagedClientCertificate
+  | AccountTagsUpdateResultQueue
+  | AccountTagsUpdateResultR2Bucket
+  | AccountTagsUpdateResultResourceShare
+  | AccountTagsUpdateResultStreamLiveInput
+  | AccountTagsUpdateResultStreamVideo
+  | AccountTagsUpdateResultWorker
+  | AccountTagsUpdateResultWorkerVersion
+  | AccountTagsUpdateResultZone;
+export const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "workerId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+  ]),
+);
 
 export type PutAccountTagResponse = AccountTagsUpdateResult;
 export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5999,149 +5665,65 @@ export const ZoneTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTagsUpdateResultZone",
 }) as any as S.Schema<ZoneTagsUpdateResultZone>;
 
-export interface ZoneTagsUpdateResult {
-  /** Identifies the unique resource. */
-  id: string;
-  /** ETag identifier for optimistic concurrency control. Formatted as "v1:<hash>" where */
-  etag: string;
-  /** Human-readable name of the resource. */
-  name: string;
-  /** Contains key-value pairs of tags. */
-  tags:
-    | ZoneTagsUpdateResultAccessApplicationTagsMap
-    | ZoneTagsUpdateResultAccessApplicationPolicyTagsMap
-    | ZoneTagsUpdateResultAccessGroupTagsMap
-    | ZoneTagsUpdateResultAccountTagsMap
-    | ZoneTagsUpdateResultAIGatewayTagsMap
-    | ZoneTagsUpdateResultAlertingPolicyTagsMap
-    | ZoneTagsUpdateResultAlertingWebhookTagsMap
-    | ZoneTagsUpdateResultAPIGatewayOperationTagsMap
-    | ZoneTagsUpdateResultCloudflaredTunnelTagsMap
-    | ZoneTagsUpdateResultCustomCertificateTagsMap
-    | ZoneTagsUpdateResultCustomHostnameTagsMap
-    | ZoneTagsUpdateResultD1DatabaseTagsMap
-    | ZoneTagsUpdateResultDNSRecordTagsMap
-    | ZoneTagsUpdateResultDurableObjectNamespaceTagsMap
-    | ZoneTagsUpdateResultGatewayListTagsMap
-    | ZoneTagsUpdateResultGatewayRuleTagsMap
-    | ZoneTagsUpdateResultImageTagsMap
-    | ZoneTagsUpdateResultKVNamespaceTagsMap
-    | ZoneTagsUpdateResultManagedClientCertificateTagsMap
-    | ZoneTagsUpdateResultQueueTagsMap
-    | ZoneTagsUpdateResultR2BucketTagsMap
-    | ZoneTagsUpdateResultResourceShareTagsMap
-    | ZoneTagsUpdateResultStreamLiveInputTagsMap
-    | ZoneTagsUpdateResultStreamVideoTagsMap
-    | ZoneTagsUpdateResultWorkerTagsMap
-    | ZoneTagsUpdateResultWorkerVersionTagsMap
-    | ZoneTagsUpdateResultZoneTagsMap;
-  type:
-    | ZoneTagsUpdateResultAccessApplicationType
-    | ZoneTagsUpdateResultAccessApplicationPolicyType
-    | ZoneTagsUpdateResultAccessGroupType
-    | ZoneTagsUpdateResultAccountType
-    | ZoneTagsUpdateResultAIGatewayType
-    | ZoneTagsUpdateResultAlertingPolicyType
-    | ZoneTagsUpdateResultAlertingWebhookType
-    | ZoneTagsUpdateResultAPIGatewayOperationType
-    | ZoneTagsUpdateResultCloudflaredTunnelType
-    | ZoneTagsUpdateResultCustomCertificateType
-    | ZoneTagsUpdateResultCustomHostnameType
-    | ZoneTagsUpdateResultD1DatabaseType
-    | ZoneTagsUpdateResultDNSRecordType
-    | ZoneTagsUpdateResultDurableObjectNamespaceType
-    | ZoneTagsUpdateResultGatewayListType
-    | ZoneTagsUpdateResultGatewayRuleType
-    | ZoneTagsUpdateResultImageType
-    | ZoneTagsUpdateResultKVNamespaceType
-    | ZoneTagsUpdateResultManagedClientCertificateType
-    | ZoneTagsUpdateResultQueueType
-    | ZoneTagsUpdateResultR2BucketType
-    | ZoneTagsUpdateResultResourceShareType
-    | ZoneTagsUpdateResultStreamLiveInputType
-    | ZoneTagsUpdateResultStreamVideoType
-    | ZoneTagsUpdateResultWorkerType
-    | ZoneTagsUpdateResultWorkerVersionType
-    | ZoneTagsUpdateResultZoneType;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
-  /** Zone ID is required only for zone-level resources */
-  zoneId?: string;
-  /** Worker ID is required only for worker_version resources */
-  workerId?: string;
-}
-export const ZoneTagsUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: S.Union(
-      ZoneTagsUpdateResultAccessApplicationTagsMap,
-      ZoneTagsUpdateResultAccessApplicationPolicyTagsMap,
-      ZoneTagsUpdateResultAccessGroupTagsMap,
-      ZoneTagsUpdateResultAccountTagsMap,
-      ZoneTagsUpdateResultAIGatewayTagsMap,
-      ZoneTagsUpdateResultAlertingPolicyTagsMap,
-      ZoneTagsUpdateResultAlertingWebhookTagsMap,
-      ZoneTagsUpdateResultAPIGatewayOperationTagsMap,
-      ZoneTagsUpdateResultCloudflaredTunnelTagsMap,
-      ZoneTagsUpdateResultCustomCertificateTagsMap,
-      ZoneTagsUpdateResultCustomHostnameTagsMap,
-      ZoneTagsUpdateResultD1DatabaseTagsMap,
-      ZoneTagsUpdateResultDNSRecordTagsMap,
-      ZoneTagsUpdateResultDurableObjectNamespaceTagsMap,
-      ZoneTagsUpdateResultGatewayListTagsMap,
-      ZoneTagsUpdateResultGatewayRuleTagsMap,
-      ZoneTagsUpdateResultImageTagsMap,
-      ZoneTagsUpdateResultKVNamespaceTagsMap,
-      ZoneTagsUpdateResultManagedClientCertificateTagsMap,
-      ZoneTagsUpdateResultQueueTagsMap,
-      ZoneTagsUpdateResultR2BucketTagsMap,
-      ZoneTagsUpdateResultResourceShareTagsMap,
-      ZoneTagsUpdateResultStreamLiveInputTagsMap,
-      ZoneTagsUpdateResultStreamVideoTagsMap,
-      ZoneTagsUpdateResultWorkerTagsMap,
-      ZoneTagsUpdateResultWorkerVersionTagsMap,
-      ZoneTagsUpdateResultZoneTagsMap,
-    ),
-    type: S.Union(
-      ZoneTagsUpdateResultAccessApplicationType,
-      ZoneTagsUpdateResultAccessApplicationPolicyType,
-      ZoneTagsUpdateResultAccessGroupType,
-      ZoneTagsUpdateResultAccountType,
-      ZoneTagsUpdateResultAIGatewayType,
-      ZoneTagsUpdateResultAlertingPolicyType,
-      ZoneTagsUpdateResultAlertingWebhookType,
-      ZoneTagsUpdateResultAPIGatewayOperationType,
-      ZoneTagsUpdateResultCloudflaredTunnelType,
-      ZoneTagsUpdateResultCustomCertificateType,
-      ZoneTagsUpdateResultCustomHostnameType,
-      ZoneTagsUpdateResultD1DatabaseType,
-      ZoneTagsUpdateResultDNSRecordType,
-      ZoneTagsUpdateResultDurableObjectNamespaceType,
-      ZoneTagsUpdateResultGatewayListType,
-      ZoneTagsUpdateResultGatewayRuleType,
-      ZoneTagsUpdateResultImageType,
-      ZoneTagsUpdateResultKVNamespaceType,
-      ZoneTagsUpdateResultManagedClientCertificateType,
-      ZoneTagsUpdateResultQueueType,
-      ZoneTagsUpdateResultR2BucketType,
-      ZoneTagsUpdateResultResourceShareType,
-      ZoneTagsUpdateResultStreamLiveInputType,
-      ZoneTagsUpdateResultStreamVideoType,
-      ZoneTagsUpdateResultWorkerType,
-      ZoneTagsUpdateResultWorkerVersionType,
-      ZoneTagsUpdateResultZoneType,
-    ),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResult",
-}) as any as S.Schema<ZoneTagsUpdateResult>;
+export type ZoneTagsUpdateResult =
+  | ZoneTagsUpdateResultAccessApplication
+  | ZoneTagsUpdateResultAccessApplicationPolicy
+  | ZoneTagsUpdateResultAccessGroup
+  | ZoneTagsUpdateResultAccount
+  | ZoneTagsUpdateResultAIGateway
+  | ZoneTagsUpdateResultAlertingPolicy
+  | ZoneTagsUpdateResultAlertingWebhook
+  | ZoneTagsUpdateResultAPIGatewayOperation
+  | ZoneTagsUpdateResultCloudflaredTunnel
+  | ZoneTagsUpdateResultCustomCertificate
+  | ZoneTagsUpdateResultCustomHostname
+  | ZoneTagsUpdateResultD1Database
+  | ZoneTagsUpdateResultDNSRecord
+  | ZoneTagsUpdateResultDurableObjectNamespace
+  | ZoneTagsUpdateResultGatewayList
+  | ZoneTagsUpdateResultGatewayRule
+  | ZoneTagsUpdateResultImage
+  | ZoneTagsUpdateResultKVNamespace
+  | ZoneTagsUpdateResultManagedClientCertificate
+  | ZoneTagsUpdateResultQueue
+  | ZoneTagsUpdateResultR2Bucket
+  | ZoneTagsUpdateResultResourceShare
+  | ZoneTagsUpdateResultStreamLiveInput
+  | ZoneTagsUpdateResultStreamVideo
+  | ZoneTagsUpdateResultWorker
+  | ZoneTagsUpdateResultWorkerVersion
+  | ZoneTagsUpdateResultZone;
+export const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type"],
+    ["id", "etag", "name", "tags", "type", "workerId"],
+    ["id", "etag", "name", "tags", "type", "zoneId"],
+  ]),
+);
 
 export type PutZoneTagResponse = ZoneTagsUpdateResult;
 export const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>

@@ -11,6 +11,8 @@
  * them. Anything tied to Cloudflare's response envelope lives here.
  */
 import { makeAnnotation } from "@distilled.cloud/core/trait";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
+import type * as Stream from "effect/Stream";
 
 export {
   Body,
@@ -88,3 +90,24 @@ export const envelopePayloadSymbol = Symbol.for(
  */
 export const EnvelopePayload = () =>
   makeAnnotation(envelopePayloadSymbol, true);
+
+export const binaryResponseBodySymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/binary-response-body",
+);
+
+/**
+ * Marks the output member that receives the raw HTTP response body as a
+ * lazy byte stream (raw object GETs — no envelope, no JSON). A response
+ * with a member carrying this trait is decoded from the response's
+ * headers and stream without consuming the body as text; error statuses
+ * still take the normal envelope/error path. This mirrors
+ * `com.cloudflare.protocols#binaryResponseBody` in the Smithy models.
+ */
+export const BinaryResponseBody = () =>
+  makeAnnotation(binaryResponseBodySymbol, true);
+
+/** The TS type of a `BinaryResponseBody()` member. */
+export type BinaryResponseBody = Stream.Stream<
+  Uint8Array,
+  HttpClientError.HttpClientError
+>;

@@ -183,26 +183,18 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
       "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation",
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation>;
 
-export interface EntitlementsGetResponseCustomEntitlementsItemAllocation {
-  type:
-    | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType
-    | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType
-    | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType;
-  value?: number | boolean | unknown;
-}
+export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
 export const EntitlementsGetResponseCustomEntitlementsItemAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType,
-        EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType,
-        EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType,
-      ),
-      value: S.optional(S.Union(S.Number, S.Boolean, S.Unknown)),
-    }),
-  ).annotate({
-    identifier: "EntitlementsGetResponseCustomEntitlementsItemAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocation>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export interface EntitlementsGetResponseCustomEntitlementsItemFeature {
   key: string;

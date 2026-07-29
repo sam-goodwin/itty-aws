@@ -21,6 +21,8 @@ const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
 const FORM_DATA_FILE_TRAIT = "com.cloudflare.protocols#formDataFile";
+const BINARY_RESPONSE_BODY_TRAIT =
+  "com.cloudflare.protocols#binaryResponseBody";
 const KEY_DICTIONARY_TRAIT = "com.cloudflare.protocols#keyDictionary";
 const DEEP_QUERY_TRAIT = "com.cloudflare.protocols#deepQuery";
 
@@ -50,6 +52,14 @@ const makeCfSpec = (
       binding: "file",
       pipe: "T.FormDataFile()",
       tsType: "(File | Blob)[]",
+    },
+    {
+      // Raw object GET body — delivered by the protocol as a lazy byte
+      // stream instead of a decoded JSON payload.
+      trait: BINARY_RESPONSE_BODY_TRAIT,
+      binding: "binaryBody",
+      pipe: "T.BinaryResponseBody()",
+      tsType: "T.BinaryResponseBody",
     },
   ],
 

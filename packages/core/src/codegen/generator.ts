@@ -432,15 +432,18 @@ export const generateService = (
    * TS reference with direction-aware enum openness. Any reference inside a
    * request-reachable shape re-opens the enum inline — including shapes
    * shared with responses (a value you can SEND must accept undocumented
-   * members, and response runtime is open regardless). Only references
-   * inside pure response/error shapes stay the plain closed alias.
+   * members, and response runtime is open regardless). References inside
+   * pure response/error shapes stay the plain closed alias, and so do
+   * SINGLE-value enums (they are discriminant literals like
+   * `type: "ai"`, not open value sets — v0 parity).
    */
   const tsRefAt = (target: string, ownerId: string): string => {
     const base = tsRef(target);
     if (!requestReachable.has(ownerId)) return base;
-    const kind = shapes[target]?.type;
-    if (kind === "enum") return `${base} | (string & {})`;
-    if (kind === "intEnum") return `${base} | (number & {})`;
+    const d = shapes[target];
+    if (Object.keys(d?.members ?? {}).length < 2) return base;
+    if (d?.type === "enum") return `${base} | (string & {})`;
+    if (d?.type === "intEnum") return `${base} | (number & {})`;
     return base;
   };
 
@@ -555,111 +558,6 @@ export const generateService = (
     opIoShapes.add(op.def.__input);
     opIoShapes.add(op.def.__output);
   }
-
-  /**
-   * Object-variant union → ONE merged struct (v0 parity), both directions.
-   *
-   * A union of object variants forces an `in`-guard on every member access
-   * (reads) and exact-arm construction (writes). When EVERY arm is a
-   * structure, emit the union of all arms' members instead — a member
-   * keeps its exact type when all arms agree, becomes a union of the
-   * arms' types when they differ, and is optional unless required in
-   * EVERY arm. Wire names are preserved. True mixed-kind unions (any
-   * scalar/array/enum arm) stay real unions. Returns undefined when the
-   * union doesn't qualify.
-   */
-  const mergedResponseUnion = (
-    id: string,
-    d: any,
-    selfIdx: number,
-    name: string,
-  ): string[] | undefined => {
-    const caseTargets: string[] = Object.values(d.members ?? {}).map(
-      (m: any) => m.target,
-    );
-    if (caseTargets.length === 0) return undefined;
-    if (!caseTargets.every((t) => shapes[t]?.type === "structure")) {
-      return undefined;
-    }
-    const arms = caseTargets.map((t) => memberInfos(shapes[t]));
-    const byName = new Map<
-      string,
-      {
-        first: EmittedMember;
-        targets: string[];
-        presentIn: number;
-        requiredIn: number;
-        nullable: boolean;
-        doc: string | undefined;
-      }
-    >();
-    for (const arm of arms) {
-      for (const m of arm) {
-        let e = byName.get(m.tsName);
-        if (!e) {
-          e = {
-            first: m,
-            targets: [],
-            presentIn: 0,
-            requiredIn: 0,
-            nullable: false,
-            doc: undefined,
-          };
-          byName.set(m.tsName, e);
-        }
-        e.presentIn++;
-        if (m.required) e.requiredIn++;
-        if (m.nullable) e.nullable = true;
-        if (!e.targets.includes(m.target)) e.targets.push(m.target);
-        if (e.doc === undefined) e.doc = m.doc;
-      }
-    }
-    const fields: string[] = [];
-    const structMembers: string[] = [];
-    for (const [tsName, e] of byName) {
-      const required =
-        e.presentIn === arms.length && e.requiredIn === arms.length;
-      const info: EmittedMember = {
-        ...e.first,
-        required,
-        nullable: e.nullable,
-        doc: e.doc,
-      };
-      const tsType =
-        e.targets.length === 1
-          ? (memberTsTypeOf(info, tsRef) ?? tsRefAt(e.targets[0]!, id))
-          : e.targets.map((t) => tsRefAt(t, id)).join(" | ");
-      fields.push(
-        ...interfaceField({
-          name: tsName,
-          optional: !required,
-          doc: e.doc,
-          type: `${tsType}${e.nullable ? " | null" : ""}`,
-        }),
-      );
-      let expr =
-        e.targets.length === 1
-          ? ref(e.targets[0]!, selfIdx)
-          : `S.Union(${e.targets.map((t) => ref(t, selfIdx)).join(", ")})`;
-      if (e.nullable) expr = `S.NullOr(${expr})`;
-      const pipes = memberPipes(info);
-      if (pipes.length) expr = `${expr}.pipe(${pipes.join(", ")})`;
-      if (!required) expr = `S.optional(${expr})`;
-      structMembers.push(`  ${q(tsName)}: ${expr},`);
-    }
-    return [
-      interfaceDecl(name, fields),
-      suspendConst({
-        name,
-        pure,
-        multiline: true,
-        annotateIdentifier: true,
-        expr: structMembers.length
-          ? `S.Struct({\n${structMembers.join("\n")}\n})`
-          : `S.Struct({})`,
-      }),
-    ];
-  };
 
   // 3. Validate pagination traits: a paginated op must actually carry its
   //    token on the input and its items member on the output, else it
@@ -868,15 +766,6 @@ export const generateService = (
         `export const ${name} = ${pure}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "union") {
-      // Response-only object-variant unions merge into one struct — see
-      // mergedResponseUnion. Checked before the provider's union emission
-      // so every SDK (cloudflare docs pipeline, openapi oneOf responses)
-      // gets the consuming-side merge.
-      const merged = mergedResponseUnion(id, d, i, name);
-      if (merged) {
-        out.push(...merged);
-        return;
-      }
       const caseTargets = Object.values(d.members ?? {}).map(
         (m: any) => m.target,
       );

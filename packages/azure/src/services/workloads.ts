@@ -6224,7 +6224,7 @@ export interface SAPSizingRecommendationsRequest {
   /** The database type. */
   databaseType: SAPDatabaseType | (string & {});
   /** The DB scale method. */
-  dbScaleMethod?: DatabaseScaleMethod | (string & {});
+  dbScaleMethod?: DatabaseScaleMethod;
   /** The high availability type. */
   highAvailabilityType?: HighAvailabilityType | (string & {});
 }
@@ -7385,7 +7385,7 @@ export interface SapVirtualInstancesInvokeSizingRecommendationsRequest {
   /** The database type. */
   databaseType: SAPDatabaseType | (string & {});
   /** The DB scale method. */
-  dbScaleMethod?: SAPDatabaseScaleMethod | (string & {});
+  dbScaleMethod?: SAPDatabaseScaleMethod;
   /** The high availability type. */
   highAvailabilityType?: SAPHighAvailabilityType | (string & {});
 }

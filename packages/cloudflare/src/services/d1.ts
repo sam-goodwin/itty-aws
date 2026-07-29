@@ -301,7 +301,7 @@ export interface ExportDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Specifies that you will poll this endpoint until the export completes */
-  outputFormat: DatabaseExportRequestOutputFormat | (string & {});
+  outputFormat: DatabaseExportRequestOutputFormat;
   /** To poll an in-progress export, provide the current bookmark (returned by your first polling response) */
   currentBookmark?: string;
   dumpOptions?: DatabaseExportRequestDumpOptions;

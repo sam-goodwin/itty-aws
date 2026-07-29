@@ -451,61 +451,11 @@ export const GroupActiveUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupActiveUserResponse",
 }) as any as S.Schema<GroupActiveUserResponse>;
 
-export interface GroupUserResponse {
-  /** Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user. */
-  id: string;
-  /** String enum that indicates the user's organization membership status: ACTIVE (member), PENDING (invited), `INVITATION_EXPIRED` (invitation expired), or `INVITATION_REJECTED` (invitation declined). */
-  orgMembershipStatus:
-    | GroupPendingUserResponseOrgMembershipStatus
-    | GroupActiveUserResponseOrgMembershipStatus;
-  /** One or more project-level roles assigned to the MongoDB Cloud user. */
-  roles: GroupPendingUserResponseRolesList | GroupActiveUserResponseRolesList;
-  /** Email address that represents the username of the MongoDB Cloud user. */
-  username: string;
-  /** Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users. */
-  invitationCreatedAt?: string;
-  /** Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations. */
-  invitationExpiresAt?: string | null;
-  /** Username of the MongoDB Cloud user who sent the invitation to join the organization. */
-  inviterUsername?: string;
-  /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
-  country?: string;
-  /** Date and time when MongoDB Cloud created the current account. This value is in the ISO 8601 timestamp format in UTC. */
-  createdAt?: string;
-  /** First or given name that belongs to the MongoDB Cloud user. */
-  firstName?: string;
-  /** Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC. */
-  lastAuth?: string;
-  /** Last name, family name, or surname that belongs to the MongoDB Cloud user. */
-  lastName?: string;
-  /** Mobile phone number that belongs to the MongoDB Cloud user. */
-  mobileNumber?: string;
-}
-export const GroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    orgMembershipStatus: S.Union(
-      GroupPendingUserResponseOrgMembershipStatus,
-      GroupActiveUserResponseOrgMembershipStatus,
-    ),
-    roles: S.Union(
-      GroupPendingUserResponseRolesList,
-      GroupActiveUserResponseRolesList,
-    ),
-    username: S.String,
-    invitationCreatedAt: S.optional(S.String),
-    invitationExpiresAt: S.optional(S.NullOr(S.String)),
-    inviterUsername: S.optional(S.String),
-    country: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    firstName: S.optional(S.String),
-    lastAuth: S.optional(S.String),
-    lastName: S.optional(S.String),
-    mobileNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupUserResponse",
-}) as any as S.Schema<GroupUserResponse>;
+export type GroupUserResponse =
+  | GroupPendingUserResponse
+  | GroupActiveUserResponse;
+export const GroupUserResponse =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupUserResponse>;
 
 /** One or more project-level roles to assign the MongoDB Cloud user. */
 export type AddGroupUsersRequestRolesList = Array<string>;
@@ -741,67 +691,9 @@ export const OrgActiveUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrgActiveUserResponse",
 }) as any as S.Schema<OrgActiveUserResponse>;
 
-export interface OrgUserResponse {
-  /** Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user. */
-  id: string;
-  /** String enum that indicates the user's organization membership status: ACTIVE (member), PENDING (invited), `INVITATION_EXPIRED` (invitation expired), or `INVITATION_REJECTED` (invitation declined). */
-  orgMembershipStatus:
-    | OrgPendingUserResponseOrgMembershipStatus
-    | OrgActiveUserResponseOrgMembershipStatus;
-  roles: OrgUserRolesResponse;
-  /** List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. */
-  teamIds?:
-    | OrgPendingUserResponseTeamIdsList
-    | OrgActiveUserResponseTeamIdsList;
-  /** Email address that represents the username of the MongoDB Cloud user. */
-  username: string;
-  /** Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users. */
-  invitationCreatedAt?: string;
-  /** Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations. */
-  invitationExpiresAt?: string | null;
-  /** Username of the MongoDB Cloud user who sent the invitation to join the organization. */
-  inviterUsername?: string;
-  /** Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format. */
-  country?: string;
-  /** Date and time when MongoDB Cloud created the current account. This value is in the ISO 8601 timestamp format in UTC. */
-  createdAt?: string;
-  /** First or given name that belongs to the MongoDB Cloud user. */
-  firstName?: string;
-  /** Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC. */
-  lastAuth?: string;
-  /** Last name, family name, or surname that belongs to the MongoDB Cloud user. */
-  lastName?: string;
-  /** Mobile phone number that belongs to the MongoDB Cloud user. */
-  mobileNumber?: string;
-}
-export const OrgUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    orgMembershipStatus: S.Union(
-      OrgPendingUserResponseOrgMembershipStatus,
-      OrgActiveUserResponseOrgMembershipStatus,
-    ),
-    roles: OrgUserRolesResponse,
-    teamIds: S.optional(
-      S.Union(
-        OrgPendingUserResponseTeamIdsList,
-        OrgActiveUserResponseTeamIdsList,
-      ),
-    ),
-    username: S.String,
-    invitationCreatedAt: S.optional(S.String),
-    invitationExpiresAt: S.optional(S.NullOr(S.String)),
-    inviterUsername: S.optional(S.String),
-    country: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    firstName: S.optional(S.String),
-    lastAuth: S.optional(S.String),
-    lastName: S.optional(S.String),
-    mobileNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrgUserResponse",
-}) as any as S.Schema<OrgUserResponse>;
+export type OrgUserResponse = OrgPendingUserResponse | OrgActiveUserResponse;
+export const OrgUserResponse =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<OrgUserResponse>;
 
 /** Organization-level role. */
 export type AddOrgUserRoleRequestOrgRole =
@@ -1066,75 +958,12 @@ export const CloudProviderAccessGCPServiceAccount = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CloudProviderAccessGCPServiceAccount>;
 
 /** Cloud provider access role. */
-export interface CloudProviderAccessRole {
-  /** Human-readable label that identifies the cloud provider of the role. */
-  providerName:
-    | CloudProviderAccessAWSIAMRoleProviderName
-    | CloudProviderAccessAzureServicePrincipalProviderName
-    | CloudProviderAccessGCPServiceAccountProviderName;
-  /** Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role. */
-  atlasAWSAccountArn?: string;
-  /** Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account. */
-  atlasAssumedRoleExternalId?: string;
-  /** Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  authorizedDate?: string;
-  /** Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  createdDate?: string;
-  /** List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role. */
-  featureUsages?:
-    | CloudProviderAccessAWSIAMRoleFeatureUsagesList
-    | CloudProviderAccessAzureServicePrincipalFeatureUsagesList
-    | CloudProviderAccessGCPServiceAccountFeatureUsagesList;
-  /** Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. */
-  iamAssumedRoleArn?: string;
-  /** Unique 24-hexadecimal digit string that identifies the role. */
-  roleId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the role. */
-  _id?: string;
-  /** Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. */
-  atlasAzureAppId?: string;
-  /** Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  lastUpdatedDate?: string;
-  /** UUID string that identifies the Azure Service Principal. */
-  servicePrincipalId?: string;
-  /** UUID String that identifies the Azure Active Directory Tenant ID. */
-  tenantId?: string;
-  /** Email address for the Google Service Account created by Atlas. */
-  gcpServiceAccountForAtlas?: string;
-  /** Provision status of the service account. */
-  status?: CloudProviderAccessGCPServiceAccountStatus;
-}
-export const CloudProviderAccessRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerName: S.Union(
-      CloudProviderAccessAWSIAMRoleProviderName,
-      CloudProviderAccessAzureServicePrincipalProviderName,
-      CloudProviderAccessGCPServiceAccountProviderName,
-    ),
-    atlasAWSAccountArn: S.optional(S.String),
-    atlasAssumedRoleExternalId: S.optional(S.String),
-    authorizedDate: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    featureUsages: S.optional(
-      S.Union(
-        CloudProviderAccessAWSIAMRoleFeatureUsagesList,
-        CloudProviderAccessAzureServicePrincipalFeatureUsagesList,
-        CloudProviderAccessGCPServiceAccountFeatureUsagesList,
-      ),
-    ),
-    iamAssumedRoleArn: S.optional(S.String),
-    roleId: S.optional(S.String),
-    _id: S.optional(S.String),
-    atlasAzureAppId: S.optional(S.String),
-    lastUpdatedDate: S.optional(S.String),
-    servicePrincipalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    gcpServiceAccountForAtlas: S.optional(S.String),
-    status: S.optional(CloudProviderAccessGCPServiceAccountStatus),
-  }),
-).annotate({
-  identifier: "CloudProviderAccessRole",
-}) as any as S.Schema<CloudProviderAccessRole>;
+export type CloudProviderAccessRole =
+  | CloudProviderAccessAWSIAMRole
+  | CloudProviderAccessAzureServicePrincipal
+  | CloudProviderAccessGCPServiceAccount;
+export const CloudProviderAccessRole =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<CloudProviderAccessRole>;
 
 export interface CancelGroupClusterBackupRestoreJobRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -1645,97 +1474,11 @@ export const FederationOidcWorkloadIdentityProvider = /*@__PURE__*/ S.suspend(
   identifier: "FederationOidcWorkloadIdentityProvider",
 }) as any as S.Schema<FederationOidcWorkloadIdentityProvider>;
 
-export interface FederationOidcIdentityProvider {
-  /** List that contains the domains associated with the identity provider. */
-  associatedDomains?: FederationOidcWorkforceIdentityProviderAssociatedDomainsList;
-  /** List that contains the connected organization configurations associated with the identity provider. */
-  associatedOrgs?:
-    | FederationOidcWorkforceIdentityProviderAssociatedOrgsList
-    | FederationOidcWorkloadIdentityProviderAssociatedOrgsList;
-  /** Identifier of the intended recipient of the token. */
-  audience?: string | null;
-  /** Indicates whether authorization is granted based on group membership or user ID. */
-  authorizationType?:
-    | FederationOidcWorkforceIdentityProviderAuthorizationType
-    | FederationOidcWorkloadIdentityProviderAuthorizationType;
-  /** Client identifier that is assigned to an application by the Identity Provider. */
-  clientId?: string | null;
-  /** Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  createdAt?: string;
-  /** The description of the identity provider. */
-  description?: string | null;
-  /** Human-readable label that identifies the identity provider. */
-  displayName?: string;
-  /** Identifier of the claim which contains IdP Group IDs in the token. */
-  groupsClaim?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies the identity provider. */
-  id: string;
-  /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
-  idpType?:
-    | FederationOidcWorkforceIdentityProviderIdpType
-    | FederationOidcWorkloadIdentityProviderIdpType;
-  /** Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. */
-  issuerUri?: string;
-  /** Legacy 20-hexadecimal digit string that identifies the identity provider. */
-  oktaIdpId: string | null;
-  /** String enum that indicates the protocol of the identity provider. Either SAML or OIDC. */
-  protocol?:
-    | FederationOidcWorkforceIdentityProviderProtocol
-    | FederationOidcWorkloadIdentityProviderProtocol;
-  /** Scopes that MongoDB applications will request from the authorization endpoint. */
-  requestedScopes?: FederationOidcWorkforceIdentityProviderRequestedScopesList;
-  /** Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updatedAt?: string | null;
-  /** Identifier of the claim which contains the user ID in the token. */
-  userClaim?: string;
-}
-export const FederationOidcIdentityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    associatedDomains: S.optional(
-      FederationOidcWorkforceIdentityProviderAssociatedDomainsList,
-    ),
-    associatedOrgs: S.optional(
-      S.Union(
-        FederationOidcWorkforceIdentityProviderAssociatedOrgsList,
-        FederationOidcWorkloadIdentityProviderAssociatedOrgsList,
-      ),
-    ),
-    audience: S.optional(S.NullOr(S.String)),
-    authorizationType: S.optional(
-      S.Union(
-        FederationOidcWorkforceIdentityProviderAuthorizationType,
-        FederationOidcWorkloadIdentityProviderAuthorizationType,
-      ),
-    ),
-    clientId: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    displayName: S.optional(S.String),
-    groupsClaim: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    idpType: S.optional(
-      S.Union(
-        FederationOidcWorkforceIdentityProviderIdpType,
-        FederationOidcWorkloadIdentityProviderIdpType,
-      ),
-    ),
-    issuerUri: S.optional(S.String),
-    oktaIdpId: S.NullOr(S.String),
-    protocol: S.optional(
-      S.Union(
-        FederationOidcWorkforceIdentityProviderProtocol,
-        FederationOidcWorkloadIdentityProviderProtocol,
-      ),
-    ),
-    requestedScopes: S.optional(
-      FederationOidcWorkforceIdentityProviderRequestedScopesList,
-    ),
-    updatedAt: S.optional(S.NullOr(S.String)),
-    userClaim: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FederationOidcIdentityProvider",
-}) as any as S.Schema<FederationOidcIdentityProvider>;
+export type FederationOidcIdentityProvider =
+  | FederationOidcWorkforceIdentityProvider
+  | FederationOidcWorkloadIdentityProvider;
+export const FederationOidcIdentityProvider =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FederationOidcIdentityProvider>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type CreateGroupRequestLinksList = Array<Link>;
@@ -3047,54 +2790,13 @@ export const TenantHardwareSpec20240805 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantHardwareSpec20240805>;
 
 /** Hardware specifications for all electable nodes deployed in the region. Electable nodes can become the primary and can enable local reads. If you don't specify this option, MongoDB Cloud deploys no electable nodes to the region. */
-export interface HardwareSpec20240805 {
-  /** Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware. You can set different IOPS values on different shards when provisioned IOPS are supported. Change this parameter if you: - set `replicationSpecs[n].regionConfigs[m].providerName` to `AWS`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` to `M30` or greater (not including `Mxx_NVME` tiers). - set `replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType` to `PROVISIONED`. The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets. - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1. */
-  diskIOPS?: number;
-  /** Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity. This value must be equal for all shards and node types. This value is not configurable on M0/M2/M5 clusters. MongoDB Cloud requires this parameter if you set `replicationSpecs`. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value. The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. */
-  diskSizeGB?: number;
-  /** Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type. */
-  diskThroughput?: number;
-  /** Type of storage you want to attach to your AWS-provisioned cluster. - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size. - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. - `HIGH_PERFORMANCE` volume types use IO2 EBS volumes and must fall within the allowable IOPS range for the selected volume size. NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
-  ebsVolumeType?: AWSHardwareSpec20240805EbsVolumeType | (string & {});
-  /** Hardware specification for the instance sizes in this region in this shard. Each instance size has a default storage and memory capacity. Electable nodes and read-only nodes (known as "base nodes") within a single shard must use the same instance size. Analytics nodes can scale independently from base nodes within a shard. Both base nodes and analytics nodes can scale independently from their equivalents in other shards. */
-  instanceSize?:
-    | AWSHardwareSpec20240805InstanceSize
-    | (string & {})
-    | AzureHardwareSpec20240805InstanceSize
-    | (string & {})
-    | GCPHardwareSpec20240805InstanceSize
-    | (string & {})
-    | TenantHardwareSpec20240805InstanceSize
-    | (string & {});
-  /** Number of nodes of the given type for MongoDB Cloud to deploy to the region. */
-  nodeCount?: number;
-  /** The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes. */
-  effectiveInstanceSize?:
-    | TenantHardwareSpec20240805EffectiveInstanceSize
-    | (string & {});
-}
-export const HardwareSpec20240805 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskIOPS: S.optional(S.Number),
-    diskSizeGB: S.optional(S.Number),
-    diskThroughput: S.optional(S.Number),
-    ebsVolumeType: S.optional(AWSHardwareSpec20240805EbsVolumeType),
-    instanceSize: S.optional(
-      S.Union(
-        AWSHardwareSpec20240805InstanceSize,
-        AzureHardwareSpec20240805InstanceSize,
-        GCPHardwareSpec20240805InstanceSize,
-        TenantHardwareSpec20240805InstanceSize,
-      ),
-    ),
-    nodeCount: S.optional(S.Number),
-    effectiveInstanceSize: S.optional(
-      TenantHardwareSpec20240805EffectiveInstanceSize,
-    ),
-  }),
-).annotate({
-  identifier: "HardwareSpec20240805",
-}) as any as S.Schema<HardwareSpec20240805>;
+export type HardwareSpec20240805 =
+  | AWSHardwareSpec20240805
+  | AzureHardwareSpec20240805
+  | GCPHardwareSpec20240805
+  | TenantHardwareSpec20240805;
+export const HardwareSpec20240805 =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HardwareSpec20240805>;
 
 /** Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`. */
 export type AWSRegionConfig20240805ProviderName =
@@ -3437,44 +3139,12 @@ export const AdvancedAutoScalingSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvancedAutoScalingSettings>;
 
 /** The current hardware specifications for read only nodes in the region. */
-export interface DedicatedHardwareSpec20240805 {
-  /** Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware. You can set different IOPS values on different shards when provisioned IOPS are supported. Change this parameter if you: - set `replicationSpecs[n].regionConfigs[m].providerName` to `AWS`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` to `M30` or greater (not including `Mxx_NVME` tiers). - set `replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType` to `PROVISIONED`. The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets. - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1. */
-  diskIOPS?: number;
-  /** Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity. This value must be equal for all shards and node types. This value is not configurable on M0/M2/M5 clusters. MongoDB Cloud requires this parameter if you set `replicationSpecs`. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value. The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. */
-  diskSizeGB?: number;
-  /** Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type. */
-  diskThroughput?: number;
-  /** Type of storage you want to attach to your AWS-provisioned cluster. - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size. - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. - `HIGH_PERFORMANCE` volume types use IO2 EBS volumes and must fall within the allowable IOPS range for the selected volume size. NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
-  ebsVolumeType?: AWSHardwareSpec20240805EbsVolumeType | (string & {});
-  /** Hardware specification for the instance sizes in this region in this shard. Each instance size has a default storage and memory capacity. Electable nodes and read-only nodes (known as "base nodes") within a single shard must use the same instance size. Analytics nodes can scale independently from base nodes within a shard. Both base nodes and analytics nodes can scale independently from their equivalents in other shards. */
-  instanceSize?:
-    | AWSHardwareSpec20240805InstanceSize
-    | (string & {})
-    | AzureHardwareSpec20240805InstanceSize
-    | (string & {})
-    | GCPHardwareSpec20240805InstanceSize
-    | (string & {});
-  /** Number of nodes of the given type for MongoDB Cloud to deploy to the region. */
-  nodeCount?: number;
-}
-export const DedicatedHardwareSpec20240805 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskIOPS: S.optional(S.Number),
-    diskSizeGB: S.optional(S.Number),
-    diskThroughput: S.optional(S.Number),
-    ebsVolumeType: S.optional(AWSHardwareSpec20240805EbsVolumeType),
-    instanceSize: S.optional(
-      S.Union(
-        AWSHardwareSpec20240805InstanceSize,
-        AzureHardwareSpec20240805InstanceSize,
-        GCPHardwareSpec20240805InstanceSize,
-      ),
-    ),
-    nodeCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DedicatedHardwareSpec20240805",
-}) as any as S.Schema<DedicatedHardwareSpec20240805>;
+export type DedicatedHardwareSpec20240805 =
+  | AWSHardwareSpec20240805
+  | AzureHardwareSpec20240805
+  | GCPHardwareSpec20240805;
+export const DedicatedHardwareSpec20240805 =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DedicatedHardwareSpec20240805>;
 
 /** Details that explain how MongoDB Cloud replicates data in one region on the specified MongoDB database. */
 export interface AWSRegionConfig20240805 {
@@ -4137,72 +3807,13 @@ export const TenantRegionConfig20240805 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantRegionConfig20240805>;
 
 /** Cloud service provider on which MongoDB Cloud provisions the hosts. */
-export interface CloudRegionConfig20240805 {
-  electableSpecs?: HardwareSpec20240805;
-  /** Precedence is given to this region when a primary election occurs. If your `regionConfigs` has only `readOnlySpecs`, `analyticsSpecs`, or both, set this value to `0`. If you have multiple `regionConfigs` objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`. **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively. */
-  priority?: number;
-  /** Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`. */
-  providerName?:
-    | AWSRegionConfig20240805ProviderName
-    | (string & {})
-    | AzureRegionConfig20240805ProviderName
-    | (string & {})
-    | GCPRegionConfig20240805ProviderName
-    | (string & {})
-    | TenantRegionConfig20240805ProviderName
-    | (string & {});
-  /** Physical location of your MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. The region name is only returned in the response for single-region clusters. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. It assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To limit a new VPC peering connection to one Classless Inter-Domain Routing (CIDR) block and region, create the connection first. Deploy the cluster after the connection starts. GCP Clusters and Multi-region clusters require one VPC peering connection for each region. MongoDB nodes can use only the peering connection that resides in the same region as the nodes to communicate with the peered VPC. */
-  regionName?:
-    | AWSRegionConfig20240805RegionName
-    | AzureRegionConfig20240805RegionName
-    | GCPRegionConfig20240805RegionName
-    | TenantRegionConfig20240805RegionName;
-  analyticsAutoScaling?: AdvancedAutoScalingSettings;
-  analyticsSpecs?: DedicatedHardwareSpec20240805;
-  autoScaling?: AdvancedAutoScalingSettings;
-  effectiveAnalyticsSpecs?: DedicatedHardwareSpec20240805;
-  effectiveElectableSpecs?: DedicatedHardwareSpec20240805;
-  effectiveReadOnlySpecs?: DedicatedHardwareSpec20240805;
-  readOnlySpecs?: DedicatedHardwareSpec20240805;
-  /** Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when `providerName` is `TENANT` and `electableSpecs.instanceSize` is `M0`, `M2` or `M5`. Please note that using an `instanceSize` of `M2` or `M5` will create a Flex cluster instead. Support for the `instanceSize` of `M2` or `M5` will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. */
-  backingProviderName?:
-    | TenantRegionConfig20240805BackingProviderName
-    | (string & {});
-}
-export const CloudRegionConfig20240805 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    electableSpecs: S.optional(HardwareSpec20240805),
-    priority: S.optional(S.Number),
-    providerName: S.optional(
-      S.Union(
-        AWSRegionConfig20240805ProviderName,
-        AzureRegionConfig20240805ProviderName,
-        GCPRegionConfig20240805ProviderName,
-        TenantRegionConfig20240805ProviderName,
-      ),
-    ),
-    regionName: S.optional(
-      S.Union(
-        AWSRegionConfig20240805RegionName,
-        AzureRegionConfig20240805RegionName,
-        GCPRegionConfig20240805RegionName,
-        TenantRegionConfig20240805RegionName,
-      ),
-    ),
-    analyticsAutoScaling: S.optional(AdvancedAutoScalingSettings),
-    analyticsSpecs: S.optional(DedicatedHardwareSpec20240805),
-    autoScaling: S.optional(AdvancedAutoScalingSettings),
-    effectiveAnalyticsSpecs: S.optional(DedicatedHardwareSpec20240805),
-    effectiveElectableSpecs: S.optional(DedicatedHardwareSpec20240805),
-    effectiveReadOnlySpecs: S.optional(DedicatedHardwareSpec20240805),
-    readOnlySpecs: S.optional(DedicatedHardwareSpec20240805),
-    backingProviderName: S.optional(
-      TenantRegionConfig20240805BackingProviderName,
-    ),
-  }),
-).annotate({
-  identifier: "CloudRegionConfig20240805",
-}) as any as S.Schema<CloudRegionConfig20240805>;
+export type CloudRegionConfig20240805 =
+  | AWSRegionConfig20240805
+  | AzureRegionConfig20240805
+  | GCPRegionConfig20240805
+  | TenantRegionConfig20240805;
+export const CloudRegionConfig20240805 =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<CloudRegionConfig20240805>;
 
 /** Hardware specifications for nodes set for a given region. Each `regionConfigs` object must be unique by region and cloud provider within the `replicationSpec`. Each `regionConfigs` object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each `regionConfigs` object must have either an `analyticsSpecs` object, `electableSpecs` object, or `readOnlySpecs` object. Tenant clusters only require `electableSpecs`. Dedicated clusters can specify any of these specifications, but must have at least one `electableSpecs` object within a `replicationSpec`. **Example:** If you set `replicationSpecs[n].regionConfigs[m].analyticsSpecs.instanceSize` : `M30`, set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M30` if you have electable nodes and `replicationSpecs[n].regionConfigs[m].readOnlySpecs.instanceSize` : `M30` if you have read-only nodes. */
 export type ReplicationSpec20240805RegionConfigsList =
@@ -7192,59 +6803,12 @@ export const AWSCloudProviderContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AWSCloudProviderContainer>;
 
 /** Collection of settings that configures the network container for a virtual private connection on Amazon Web Services. */
-export interface CloudProviderContainer {
-  /** Unique 24-hexadecimal digit string that identifies the network peering container. */
-  id?: string;
-  /** Cloud service provider that serves the requested network peering containers. */
-  providerName?:
-    | AzureCloudProviderContainerProviderName
-    | GCPCloudProviderContainerProviderName
-    | AWSCloudProviderContainerProviderName;
-  /** Flag that indicates whether MongoDB Cloud clusters exist in the specified network peering container. */
-  provisioned?: boolean;
-  /** IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project. These CIDR blocks must fall within the ranges reserved per RFC 1918. AWS and Azure further limit the block to between the `/24` and `/21` ranges. To modify the CIDR block, the target project cannot have: - Any M10 or greater clusters - Any other VPC peering connections You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project. **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets. */
-  atlasCidrBlock?: string;
-  /** Unique string that identifies the Azure subscription in which the MongoDB Cloud VNet resides. */
-  azureSubscriptionId?: string;
-  /** Azure region to which MongoDB Cloud deployed this network peering container. */
-  region?: AzureCloudProviderContainerRegion;
-  /** Unique string that identifies the Azure VNet in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container. */
-  vnetName?: string;
-  /** Unique string that identifies the GCP project in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container. */
-  gcpProjectId?: string;
-  /** Human-readable label that identifies the network in which MongoDB Cloud clusters in this network peering container exist. MongoDB Cloud returns **null** if no clusters exist in this network peering container. */
-  networkName?: string;
-  /** List of GCP regions to which you want to deploy this MongoDB Cloud network peering container. In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects. */
-  regions?: GCPCloudProviderContainerRegionsList;
-  /** Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container. */
-  regionName?: AWSCloudProviderContainerRegionName;
-  /** Unique string that identifies the MongoDB Cloud VPC on AWS. */
-  vpcId?: string;
-}
-export const CloudProviderContainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    providerName: S.optional(
-      S.Union(
-        AzureCloudProviderContainerProviderName,
-        GCPCloudProviderContainerProviderName,
-        AWSCloudProviderContainerProviderName,
-      ),
-    ),
-    provisioned: S.optional(S.Boolean),
-    atlasCidrBlock: S.optional(S.String),
-    azureSubscriptionId: S.optional(S.String),
-    region: S.optional(AzureCloudProviderContainerRegion),
-    vnetName: S.optional(S.String),
-    gcpProjectId: S.optional(S.String),
-    networkName: S.optional(S.String),
-    regions: S.optional(GCPCloudProviderContainerRegionsList),
-    regionName: S.optional(AWSCloudProviderContainerRegionName),
-    vpcId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudProviderContainer",
-}) as any as S.Schema<CloudProviderContainer>;
+export type CloudProviderContainer =
+  | AzureCloudProviderContainer
+  | GCPCloudProviderContainer
+  | AWSCloudProviderContainer;
+export const CloudProviderContainer =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<CloudProviderContainer>;
 
 /** Human-readable label that identifies the privilege action. */
 export type DatabasePrivilegeActionAction =
@@ -8678,91 +8242,17 @@ export const DataLakeGoogleCloudStorageStore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataLakeGoogleCloudStorageStore>;
 
 /** Group of settings that define where the data is stored. */
-export interface DataLakeStoreSettings {
-  /** Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster. */
-  name?: string;
-  provider: string;
-  /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
-  additionalStorageClasses?: DataLakeS3StoreSettingsAdditionalStorageClassesList;
-  /** Human-readable label that identifies the AWS S3 bucket. This label must exactly match the name of an S3 bucket that the data lake can access with the configured AWS Identity and Access Management (IAM) credentials. */
-  bucket?: string;
-  /** The delimiter that separates **databases.[n].collections.[n].dataSources.[n].path** segments in the data store. MongoDB Cloud uses the delimiter to efficiently traverse S3 buckets with a hierarchical directory structure. You can specify any character supported by the S3 object keys as the delimiter. For example, you can specify an underscore (_) or a plus sign (+) or multiple characters, such as double underscores (__) as the delimiter. If omitted, defaults to `/`. */
-  delimiter?: string;
-  /** Flag that indicates whether to use S3 tags on the files in the given path as additional partition attributes. If set to `true`, data lake adds the S3 tags as additional partition attributes and adds new top-level BSON elements associating each tag to each document. */
-  includeTags?: boolean;
-  /** Prefix that MongoDB Cloud applies when searching for files in the S3 bucket. The data store prepends the value of prefix to the **databases.[n].collections.[n].dataSources.[n].path** to create the full path for files to ingest. If omitted, MongoDB Cloud searches all files from the root of the S3 bucket. */
-  prefix?: string;
-  /** Flag that indicates whether the bucket is public. If set to `true`, MongoDB Cloud doesn't use the configured AWS Identity and Access Management (IAM) role to access the S3 bucket. If set to `false`, the configured AWS IAM role must include permissions to access the S3 bucket. */
-  public?: boolean;
-  /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
-  region?:
-    | DataLakeS3StoreSettingsRegion
-    | (string & {})
-    | DataLakeDLSAWSStoreRegion
-    | (string & {})
-    | DataLakeDLSAzureStoreRegion
-    | (string & {})
-    | DataLakeDLSGCPStoreRegion
-    | (string & {})
-    | DataLakeAzureBlobStoreRegion
-    | (string & {})
-    | DataLakeGoogleCloudStorageStoreRegion
-    | (string & {});
-  /** Human-readable label of the MongoDB Cloud cluster on which the store is based. */
-  clusterName?: string;
-  /** Unique 24-hexadecimal digit string that identifies the project. */
-  projectId?: string;
-  readConcern?: DataLakeAtlasStoreReadConcern;
-  readPreference?: DataLakeAtlasStoreReadPreference;
-  /** Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only. */
-  allowInsecure?: boolean;
-  /** Default format that Data Lake assumes if it encounters a file without an extension while searching the `storeName`. If omitted, Data Lake attempts to detect the file type by processing a few bytes of the file. The specified format only applies to the URLs specified in the **databases.[n].collections.[n].dataSources** object. */
-  defaultFormat?: string;
-  /** Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication. */
-  urls?: DataLakeHTTPStoreUrlsList;
-  /** Human-readable label that identifies the name of the container. */
-  containerName?: string;
-  /** Replacement Delimiter. */
-  replacementDelimiter?: string;
-  /** Service URL. */
-  serviceURL?: string;
-}
-export const DataLakeStoreSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    provider: S.String,
-    additionalStorageClasses: S.optional(
-      DataLakeS3StoreSettingsAdditionalStorageClassesList,
-    ),
-    bucket: S.optional(S.String),
-    delimiter: S.optional(S.String),
-    includeTags: S.optional(S.Boolean),
-    prefix: S.optional(S.String),
-    public: S.optional(S.Boolean),
-    region: S.optional(
-      S.Union(
-        DataLakeS3StoreSettingsRegion,
-        DataLakeDLSAWSStoreRegion,
-        DataLakeDLSAzureStoreRegion,
-        DataLakeDLSGCPStoreRegion,
-        DataLakeAzureBlobStoreRegion,
-        DataLakeGoogleCloudStorageStoreRegion,
-      ),
-    ),
-    clusterName: S.optional(S.String),
-    projectId: S.optional(S.String),
-    readConcern: S.optional(DataLakeAtlasStoreReadConcern),
-    readPreference: S.optional(DataLakeAtlasStoreReadPreference),
-    allowInsecure: S.optional(S.Boolean),
-    defaultFormat: S.optional(S.String),
-    urls: S.optional(DataLakeHTTPStoreUrlsList),
-    containerName: S.optional(S.String),
-    replacementDelimiter: S.optional(S.String),
-    serviceURL: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataLakeStoreSettings",
-}) as any as S.Schema<DataLakeStoreSettings>;
+export type DataLakeStoreSettings =
+  | DataLakeS3StoreSettings
+  | DataLakeDLSAWSStore
+  | DataLakeDLSAzureStore
+  | DataLakeDLSGCPStore
+  | DataLakeAtlasStoreInstance
+  | DataLakeHTTPStore
+  | DataLakeAzureBlobStore
+  | DataLakeGoogleCloudStorageStore;
+export const DataLakeStoreSettings =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataLakeStoreSettings>;
 
 /** Array that contains the data stores for the data lake. */
 export type DataLakeStorageStoresList = Array<DataLakeStoreSettings>;
@@ -9818,116 +9308,18 @@ export const MicrosoftTeams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MicrosoftTeams" }) as any as S.Schema<MicrosoftTeams>;
 
 /** Collection of settings that describe third-party integrations. */
-export interface ThirdPartyIntegration {
-  /** Integration id. */
-  id?: string | null;
-  /** PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. */
-  region?: PagerDutyRegion | DatadogRegion | OpsGenieRegion;
-  /** Service key associated with your PagerDuty account. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  serviceKey?: string;
-  /** Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. */
-  type?:
-    | PagerDutyType
-    | SlackType
-    | DatadogType
-    | NewRelicType
-    | OpsGenieType
-    | VictorOpsType
-    | WebhookType
-    | PrometheusType
-    | MicrosoftTeamsType;
-  /** Key that allows MongoDB Cloud to access your Slack account. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must be initially configured, or updated from a legacy integration, through the Atlas third-party service integrations page. Legacy tokens will soon no longer be supported. */
-  apiToken?: string | Redacted.Redacted<string>;
-  /** Name of the Slack channel to which MongoDB Cloud sends alert notifications. */
-  channelName?: string | null;
-  /** Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration. */
-  teamName?: string;
-  /** Key that allows MongoDB Cloud to access your Datadog account. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Toggle sending collection latency metrics that includes database names and collection names and latency metrics on reads, writes, commands, and transactions. */
-  sendCollectionLatencyMetrics?: boolean;
-  /** Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size. */
-  sendDatabaseMetrics?: boolean;
-  /** Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps. */
-  sendQueryStatsMetrics?: boolean;
-  /** Toggle sending user provided group and cluster resource tags with the Datadog metrics. */
-  sendUserProvidedResourceTags?: boolean;
-  /** Unique 40-hexadecimal digit string that identifies your New Relic account. */
-  accountId?: string;
-  /** Unique 40-hexadecimal digit string that identifies your New Relic license. **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. */
-  licenseKey?: string;
-  /** Query key used to access your New Relic account. */
-  readToken?: string;
-  /** Insert key associated with your New Relic account. */
-  writeToken?: string;
-  /** Routing key associated with your Splunk On-Call account. */
-  routingKey?: string;
-  /** HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with `Content-Type: application/json`. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead. */
-  bodyTemplate?: string;
-  /** HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. `{"X-Custom-Header": "static-value", "X-Alert-Id": "${id}"}`). Placeholders may reference any alert-view field plus `${eventType}`; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead. */
-  headersTemplate?: string;
-  /** An optional field returned if your webhook is configured with a secret. **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. */
-  secret?: string | Redacted.Redacted<string>;
-  /** Endpoint web address to which MongoDB Cloud sends notifications. **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted. */
-  url?: string;
-  /** Flag that indicates whether someone has activated the Prometheus integration. */
-  enabled?: boolean;
-  /** Password needed to allow MongoDB Cloud to access your Prometheus account. */
-  password?: string | Redacted.Redacted<string>;
-  /** Toggle sending user provided group and cluster resource tags with the Prometheus metrics. */
-  sendUserProvidedResourceTagsEnabled?: boolean;
-  /** Desired method to discover the Prometheus service. */
-  serviceDiscovery?: PrometheusServiceDiscovery;
-  /** Human-readable label that identifies your Prometheus incoming webhook. */
-  username?: string;
-  /** Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications. **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. */
-  microsoftTeamsWebhookUrl?: string;
-}
-export const ThirdPartyIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    region: S.optional(S.Union(PagerDutyRegion, DatadogRegion, OpsGenieRegion)),
-    serviceKey: S.optional(S.String),
-    type: S.optional(
-      S.Union(
-        PagerDutyType,
-        SlackType,
-        DatadogType,
-        NewRelicType,
-        OpsGenieType,
-        VictorOpsType,
-        WebhookType,
-        PrometheusType,
-        MicrosoftTeamsType,
-      ),
-    ),
-    apiToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    channelName: S.optional(S.NullOr(S.String)),
-    teamName: S.optional(S.String),
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    sendCollectionLatencyMetrics: S.optional(S.Boolean),
-    sendDatabaseMetrics: S.optional(S.Boolean),
-    sendQueryStatsMetrics: S.optional(S.Boolean),
-    sendUserProvidedResourceTags: S.optional(S.Boolean),
-    accountId: S.optional(S.String),
-    licenseKey: S.optional(S.String),
-    readToken: S.optional(S.String),
-    writeToken: S.optional(S.String),
-    routingKey: S.optional(S.String),
-    bodyTemplate: S.optional(S.String),
-    headersTemplate: S.optional(S.String),
-    secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    url: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    sendUserProvidedResourceTagsEnabled: S.optional(S.Boolean),
-    serviceDiscovery: S.optional(PrometheusServiceDiscovery),
-    username: S.optional(S.String),
-    microsoftTeamsWebhookUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ThirdPartyIntegration",
-}) as any as S.Schema<ThirdPartyIntegration>;
+export type ThirdPartyIntegration =
+  | PagerDuty
+  | Slack
+  | Datadog
+  | NewRelic
+  | OpsGenie
+  | VictorOps
+  | Webhook
+  | Prometheus
+  | MicrosoftTeams;
+export const ThirdPartyIntegration =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ThirdPartyIntegration>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedIntegrationViewResultsList = Array<ThirdPartyIntegration>;
@@ -10568,93 +9960,15 @@ export const AzureLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureLogIntegrationResponse>;
 
 /** Response schema for log integration operations. */
-export interface LogIntegrationResponse {
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes:
-    | S3LogIntegrationResponseLogTypesList
-    | DatadogLogIntegrationResponseLogTypesList
-    | GcsLogIntegrationResponseLogTypesList
-    | OtelLogIntegrationResponseLogTypesList
-    | SplunkLogIntegrationResponseLogTypesList
-    | AzureLogIntegrationResponseLogTypesList;
-  /** Type of log integration. Identifies which service will receive the exported logs. This value cannot be modified after the integration is created. */
-  type:
-    | S3LogIntegrationResponseType
-    | DatadogLogIntegrationResponseType
-    | GcsLogIntegrationResponseType
-    | OtelLogIntegrationResponseType
-    | SplunkLogIntegrationResponseType
-    | AzureLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName?: string;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath?: string;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: DatadogLogIntegrationResponseRegion;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId?: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: OtelLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-}
-export const LogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logTypes: S.Union(
-      S3LogIntegrationResponseLogTypesList,
-      DatadogLogIntegrationResponseLogTypesList,
-      GcsLogIntegrationResponseLogTypesList,
-      OtelLogIntegrationResponseLogTypesList,
-      SplunkLogIntegrationResponseLogTypesList,
-      AzureLogIntegrationResponseLogTypesList,
-    ),
-    type: S.Union(
-      S3LogIntegrationResponseType,
-      DatadogLogIntegrationResponseType,
-      GcsLogIntegrationResponseType,
-      OtelLogIntegrationResponseType,
-      SplunkLogIntegrationResponseType,
-      AzureLogIntegrationResponseType,
-    ),
-    bucketName: S.optional(S.String),
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    prefixPath: S.optional(S.String),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(DatadogLogIntegrationResponseRegion),
-    roleId: S.optional(S.String),
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      OtelLogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogIntegrationResponse",
-}) as any as S.Schema<LogIntegrationResponse>;
+export type LogIntegrationResponse =
+  | S3LogIntegrationResponse
+  | DatadogLogIntegrationResponse
+  | GcsLogIntegrationResponse
+  | OtelLogIntegrationResponse
+  | SplunkLogIntegrationResponse
+  | AzureLogIntegrationResponse;
+export const LogIntegrationResponse =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LogIntegrationResponse>;
 
 /** Cloud service provider that serves the requested network peering connection. */
 export type CreateGroupPeerRequestProviderName = "AWS" | "AZURE" | "GCP";
@@ -10869,90 +10183,12 @@ export const GCPNetworkPeeringConnectionSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "GCPNetworkPeeringConnectionSettings",
 }) as any as S.Schema<GCPNetworkPeeringConnectionSettings>;
 
-export interface BaseNetworkPeeringConnectionSettings {
-  /** Amazon Web Services (AWS) region where the Virtual Peering Connection (VPC) that you peered with the MongoDB Cloud VPC resides. The resource returns `null` if your VPC and the MongoDB Cloud VPC reside in the same region. */
-  accepterRegionName?: string;
-  /** Unique twelve-digit string that identifies the Amazon Web Services (AWS) account that owns the VPC that you peered with the MongoDB Cloud VPC. */
-  awsAccountId?: string;
-  /** Unique string that identifies the peering connection on AWS. */
-  connectionId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection. */
-  containerId: string;
-  /** Type of error that can be returned when requesting an Amazon Web Services (AWS) peering connection. The resource returns `null` if the request succeeded. */
-  errorStateName?: AwsNetworkPeeringConnectionSettingsErrorStateName;
-  /** Unique 24-hexadecimal digit string that identifies the network peering connection. */
-  id?: string;
-  /** Cloud service provider that serves the requested network peering connection. */
-  providerName?:
-    | AwsNetworkPeeringConnectionSettingsProviderName
-    | AzureNetworkPeeringConnectionSettingsProviderName
-    | GCPNetworkPeeringConnectionSettingsProviderName;
-  /** Internet Protocol (IP) addresses expressed in Classless Inter-Domain Routing (CIDR) notation of the VPC's subnet that you want to peer with the MongoDB Cloud VPC. */
-  routeTableCidrBlock?: string;
-  /** State of the network peering connection at the time you made the request. */
-  statusName?: AwsNetworkPeeringConnectionSettingsStatusName;
-  /** Unique string that identifies the VPC on Amazon Web Services (AWS) that you want to peer with the MongoDB Cloud VPC. */
-  vpcId?: string;
-  /** Unique string that identifies the Azure AD directory in which the VNet peered with the MongoDB Cloud VNet resides. */
-  azureDirectoryId?: string;
-  /** Unique string that identifies the Azure subscription in which the VNet you peered with the MongoDB Cloud VNet resides. */
-  azureSubscriptionId?: string;
-  /** Error message returned when a requested Azure network peering resource returns `"status" : "FAILED"`. The resource returns `null` if the request succeeded. */
-  errorState?: string;
-  /** Human-readable label that identifies the resource group in which the VNet to peer with the MongoDB Cloud VNet resides. */
-  resourceGroupName?: string;
-  /** State of the network peering connection at the time you made the request. */
-  status?:
-    | AzureNetworkPeeringConnectionSettingsStatus
-    | GCPNetworkPeeringConnectionSettingsStatus;
-  /** Human-readable label that identifies the VNet that you want to peer with the MongoDB Cloud VNet. */
-  vnetName?: string;
-  /** Details of the error returned when requesting a GCP network peering resource. The resource returns `null` if the request succeeded. */
-  errorMessage?: string;
-  /** Human-readable label that identifies the GCP project that contains the network that you want to peer with the MongoDB Cloud VPC. */
-  gcpProjectId?: string;
-  /** Human-readable label that identifies the network to peer with the MongoDB Cloud VPC. */
-  networkName?: string;
-}
-export const BaseNetworkPeeringConnectionSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accepterRegionName: S.optional(S.String),
-      awsAccountId: S.optional(S.String),
-      connectionId: S.optional(S.String),
-      containerId: S.String,
-      errorStateName: S.optional(
-        AwsNetworkPeeringConnectionSettingsErrorStateName,
-      ),
-      id: S.optional(S.String),
-      providerName: S.optional(
-        S.Union(
-          AwsNetworkPeeringConnectionSettingsProviderName,
-          AzureNetworkPeeringConnectionSettingsProviderName,
-          GCPNetworkPeeringConnectionSettingsProviderName,
-        ),
-      ),
-      routeTableCidrBlock: S.optional(S.String),
-      statusName: S.optional(AwsNetworkPeeringConnectionSettingsStatusName),
-      vpcId: S.optional(S.String),
-      azureDirectoryId: S.optional(S.String),
-      azureSubscriptionId: S.optional(S.String),
-      errorState: S.optional(S.String),
-      resourceGroupName: S.optional(S.String),
-      status: S.optional(
-        S.Union(
-          AzureNetworkPeeringConnectionSettingsStatus,
-          GCPNetworkPeeringConnectionSettingsStatus,
-        ),
-      ),
-      vnetName: S.optional(S.String),
-      errorMessage: S.optional(S.String),
-      gcpProjectId: S.optional(S.String),
-      networkName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BaseNetworkPeeringConnectionSettings",
-}) as any as S.Schema<BaseNetworkPeeringConnectionSettings>;
+export type BaseNetworkPeeringConnectionSettings =
+  | AwsNetworkPeeringConnectionSettings
+  | AzureNetworkPeeringConnectionSettings
+  | GCPNetworkPeeringConnectionSettings;
+export const BaseNetworkPeeringConnectionSettings =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<BaseNetworkPeeringConnectionSettings>;
 
 /** Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service. */
 export type CreateGroupPrivateEndpointEndpointServiceRequestProviderName =
@@ -17376,136 +16612,12 @@ export const FederationSamlIdentityProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "FederationSamlIdentityProvider",
 }) as any as S.Schema<FederationSamlIdentityProvider>;
 
-export interface FederationIdentityProvider {
-  /** URL that points to where to send the SAML response. */
-  acsUrl?: string | null;
-  /** List that contains the domains associated with the identity provider. */
-  associatedDomains?:
-    | FederationSamlIdentityProviderAssociatedDomainsList
-    | FederationOidcWorkforceIdentityProviderAssociatedDomainsList;
-  /** List that contains the connected organization configurations associated with the identity provider. */
-  associatedOrgs?:
-    | FederationSamlIdentityProviderAssociatedOrgsList
-    | FederationOidcWorkforceIdentityProviderAssociatedOrgsList
-    | FederationOidcWorkloadIdentityProviderAssociatedOrgsList;
-  /** Unique string that identifies the intended audience of the SAML assertion. */
-  audienceUri?: string | null;
-  /** Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  createdAt?: string;
-  /** The description of the identity provider. */
-  description?: string | null;
-  /** Human-readable label that identifies the identity provider. */
-  displayName?: string;
-  /** Unique 24-hexadecimal digit string that identifies the identity provider. */
-  id: string;
-  /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
-  idpType?:
-    | FederationSamlIdentityProviderIdpType
-    | FederationOidcWorkforceIdentityProviderIdpType
-    | FederationOidcWorkloadIdentityProviderIdpType;
-  /** Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. */
-  issuerUri?: string;
-  /** Legacy 20-hexadecimal digit string that identifies the identity provider. */
-  oktaIdpId: string | null;
-  pemFileInfo?: PemFileInfo | null;
-  /** String enum that indicates the protocol of the identity provider. Either SAML or OIDC. */
-  protocol?:
-    | FederationSamlIdentityProviderProtocol
-    | FederationOidcWorkforceIdentityProviderProtocol
-    | FederationOidcWorkloadIdentityProviderProtocol;
-  /** SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request. */
-  requestBinding?: FederationSamlIdentityProviderRequestBinding;
-  /** Signature algorithm that Federated Authentication uses to encrypt the identity provider signature. */
-  responseSignatureAlgorithm?: FederationSamlIdentityProviderResponseSignatureAlgorithm;
-  /** Custom SSO URL for the identity provider. */
-  slug?: string | null;
-  /** Flag that indicates whether the identity provider has SSO debug enabled. */
-  ssoDebugEnabled?: boolean;
-  /** URL that points to the receiver of the SAML authentication request. */
-  ssoUrl?: string;
-  /** String enum that indicates whether the identity provider is active. */
-  status?: FederationSamlIdentityProviderStatus;
-  /** Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updatedAt?: string | null;
-  /** Identifier of the intended recipient of the token. */
-  audience?: string | null;
-  /** Indicates whether authorization is granted based on group membership or user ID. */
-  authorizationType?:
-    | FederationOidcWorkforceIdentityProviderAuthorizationType
-    | FederationOidcWorkloadIdentityProviderAuthorizationType;
-  /** Client identifier that is assigned to an application by the Identity Provider. */
-  clientId?: string | null;
-  /** Identifier of the claim which contains IdP Group IDs in the token. */
-  groupsClaim?: string | null;
-  /** Scopes that MongoDB applications will request from the authorization endpoint. */
-  requestedScopes?: FederationOidcWorkforceIdentityProviderRequestedScopesList;
-  /** Identifier of the claim which contains the user ID in the token. */
-  userClaim?: string;
-}
-export const FederationIdentityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acsUrl: S.optional(S.NullOr(S.String)),
-    associatedDomains: S.optional(
-      S.Union(
-        FederationSamlIdentityProviderAssociatedDomainsList,
-        FederationOidcWorkforceIdentityProviderAssociatedDomainsList,
-      ),
-    ),
-    associatedOrgs: S.optional(
-      S.Union(
-        FederationSamlIdentityProviderAssociatedOrgsList,
-        FederationOidcWorkforceIdentityProviderAssociatedOrgsList,
-        FederationOidcWorkloadIdentityProviderAssociatedOrgsList,
-      ),
-    ),
-    audienceUri: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    displayName: S.optional(S.String),
-    id: S.String,
-    idpType: S.optional(
-      S.Union(
-        FederationSamlIdentityProviderIdpType,
-        FederationOidcWorkforceIdentityProviderIdpType,
-        FederationOidcWorkloadIdentityProviderIdpType,
-      ),
-    ),
-    issuerUri: S.optional(S.String),
-    oktaIdpId: S.NullOr(S.String),
-    pemFileInfo: S.optional(S.NullOr(PemFileInfo)),
-    protocol: S.optional(
-      S.Union(
-        FederationSamlIdentityProviderProtocol,
-        FederationOidcWorkforceIdentityProviderProtocol,
-        FederationOidcWorkloadIdentityProviderProtocol,
-      ),
-    ),
-    requestBinding: S.optional(FederationSamlIdentityProviderRequestBinding),
-    responseSignatureAlgorithm: S.optional(
-      FederationSamlIdentityProviderResponseSignatureAlgorithm,
-    ),
-    slug: S.optional(S.NullOr(S.String)),
-    ssoDebugEnabled: S.optional(S.Boolean),
-    ssoUrl: S.optional(S.String),
-    status: S.optional(FederationSamlIdentityProviderStatus),
-    updatedAt: S.optional(S.NullOr(S.String)),
-    audience: S.optional(S.NullOr(S.String)),
-    authorizationType: S.optional(
-      S.Union(
-        FederationOidcWorkforceIdentityProviderAuthorizationType,
-        FederationOidcWorkloadIdentityProviderAuthorizationType,
-      ),
-    ),
-    clientId: S.optional(S.NullOr(S.String)),
-    groupsClaim: S.optional(S.NullOr(S.String)),
-    requestedScopes: S.optional(
-      FederationOidcWorkforceIdentityProviderRequestedScopesList,
-    ),
-    userClaim: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FederationIdentityProvider",
-}) as any as S.Schema<FederationIdentityProvider>;
+export type FederationIdentityProvider =
+  | FederationSamlIdentityProvider
+  | FederationOidcWorkforceIdentityProvider
+  | FederationOidcWorkloadIdentityProvider;
+export const FederationIdentityProvider =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FederationIdentityProvider>;
 
 export interface GetFederationSettingIdentityProviderMetadataRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -19673,135 +18785,23 @@ export const WebhookNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhookNotification>;
 
 /** One target that MongoDB Cloud sends notifications when an alert triggers. */
-export interface AlertsNotificationRootForGroup {
-  /** Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when `"notifications.[n].typeName" : "DATADOG"`. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  datadogApiKey?: string;
-  /** Datadog region that indicates which API Uniform Resource Locator (URL) to use. The resource requires this parameter when `"notifications.[n].typeName" : "DATADOG"`. */
-  datadogRegion?: DatadogNotificationDatadogRegion;
-  /** Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification. */
-  delayMin?: number;
-  /** The id of the associated integration, the credentials of which to use for requests. */
-  integrationId?: string;
-  /** Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert. PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services. */
-  intervalMin?: number;
-  /** The `notifierId` is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials. */
-  notifierId?: string;
-  /** Human-readable label that displays the alert notification type. */
-  typeName:
-    | DatadogNotificationTypeName
-    | EmailNotificationTypeName
-    | GroupNotificationTypeName
-    | HipChatNotificationTypeName
-    | MicrosoftTeamsNotificationTypeName
-    | OpsGenieNotificationTypeName
-    | OrgNotificationTypeName
-    | PagerDutyNotificationTypeName
-    | SlackNotificationTypeName
-    | SMSNotificationTypeName
-    | TeamNotificationTypeName
-    | UserNotificationTypeName
-    | VictorOpsNotificationTypeName
-    | WebhookNotificationTypeName;
-  /** Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including: - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`) - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`) - MongoDB Cloud users with specific organization roles (`"notifications.[n].typeName" : "ORG"`) - MongoDB Cloud teams (`"notifications.[n].typeName" : "TEAM"`) To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter. */
-  emailAddress?: string;
-  /** Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set: - `"notifications.[n].typeName" : "ORG"` - `"notifications.[n].typeName" : "GROUP"` - `"notifications.[n].typeName" : "USER"` */
-  emailEnabled?: boolean;
-  /** List that contains the one or more project roles that receive the configured alert. This parameter is available when `"notifications.[n].typeName" : "GROUP"` or `"notifications.[n].typeName" : "ORG"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role. */
-  roles?: GroupNotificationRolesList | OrgNotificationRolesList;
-  /** Flag that indicates whether MongoDB Cloud should send text message notifications. The resource requires this parameter when one of the following values have been set: - `"notifications.[n].typeName" : "ORG"` - `"notifications.[n].typeName" : "GROUP"` - `"notifications.[n].typeName" : "USER"` */
-  smsEnabled?: boolean;
-  /** HipChat API token that MongoDB Cloud needs to send alert notifications to HipChat. The resource requires this parameter when `"notifications.[n].typeName" : "HIP_CHAT"`". If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes it. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  notificationToken?: string;
-  /** HipChat API room name to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "HIP_CHAT"`". */
-  roomName?: string;
-  /** Microsoft Teams Webhook Uniform Resource Locator (URL) that MongoDB Cloud needs to send this notification via Microsoft Teams. The resource requires this parameter when `"notifications.[n].typeName" : "MICROSOFT_TEAMS"`. If the URL later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it. **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. */
-  microsoftTeamsWebhookUrl?: string;
-  /** API Key that MongoDB Cloud needs to send this notification via OpsGenie. The resource requires this parameter when `"notifications.[n].typeName" : "OPS_GENIE"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  opsGenieApiKey?: string;
-  /** OpsGenie region that indicates which API Uniform Resource Locator (URL) to use. */
-  opsGenieRegion?: OpsGenieNotificationOpsGenieRegion;
-  /** PagerDuty region that indicates which API Uniform Resource Locator (URL) to use. */
-  region?: PagerDutyNotificationRegion;
-  /** PagerDuty service key that MongoDB Cloud needs to send notifications via PagerDuty. The resource requires this parameter when `"notifications.[n].typeName" : "PAGER_DUTY"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  serviceKey?: string;
-  /** Slack API token or Bot token that MongoDB Cloud needs to send alert notifications via Slack. The resource requires this parameter when `"notifications.[n].typeName" : "SLACK"`. If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes the token. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  apiToken?: string | Redacted.Redacted<string>;
-  /** Name of the Slack channel to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "SLACK"`. */
-  channelName?: string;
-  /** Mobile phone number to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "SMS"`. */
-  mobileNumber?: string;
-  /** Unique 24-hexadecimal digit string that identifies one MongoDB Cloud team. The resource requires this parameter when `"notifications.[n].typeName" : "TEAM"`. */
-  teamId?: string;
-  /** Name of the MongoDB Cloud team that receives this notification. The resource requires this parameter when `"notifications.[n].typeName" : "TEAM"`. */
-  teamName?: string;
-  /** MongoDB Cloud username of the person to whom MongoDB Cloud sends notifications. Specify only MongoDB Cloud users who belong to the project that owns the alert configuration. The resource requires this parameter when `"notifications.[n].typeName" : "USER"`. */
-  username?: string;
-  /** API key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it. **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you: * View or edit the alert through the Atlas UI. * Query the alert for the notification through the Atlas Administration API. */
-  victorOpsApiKey?: string;
-  /** Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it. */
-  victorOpsRoutingKey?: string;
-  /** Template, using ${field} interpolation, that renders the HTTP body MongoDB Cloud sends with each webhook notification. Must render valid JSON. When unset, MongoDB Cloud sends its default JSON payload. */
-  webhookBodyTemplate?: string;
-  /** Template, using ${field} interpolation, that renders the HTTP headers MongoDB Cloud sends with each webhook notification. Must render a JSON object mapping header name to header value. The webhook secret and the signature header are NOT exposed to templates. */
-  webhookHeadersTemplate?: string;
-  /** Authentication secret for a webhook-based alert. Atlas returns this value if you set `notifications.[n].typeName` :`WEBHOOK` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhook secret either on the Integrations page, or with the Integrations API **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. */
-  webhookSecret?: string;
-  /** Target URL for a webhook-based alert. Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhook URL either on the Integrations page, or with the Integrations API **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted. */
-  webhookUrl?: string;
-}
-export const AlertsNotificationRootForGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datadogApiKey: S.optional(S.String),
-    datadogRegion: S.optional(DatadogNotificationDatadogRegion),
-    delayMin: S.optional(S.Number),
-    integrationId: S.optional(S.String),
-    intervalMin: S.optional(S.Number),
-    notifierId: S.optional(S.String),
-    typeName: S.Union(
-      DatadogNotificationTypeName,
-      EmailNotificationTypeName,
-      GroupNotificationTypeName,
-      HipChatNotificationTypeName,
-      MicrosoftTeamsNotificationTypeName,
-      OpsGenieNotificationTypeName,
-      OrgNotificationTypeName,
-      PagerDutyNotificationTypeName,
-      SlackNotificationTypeName,
-      SMSNotificationTypeName,
-      TeamNotificationTypeName,
-      UserNotificationTypeName,
-      VictorOpsNotificationTypeName,
-      WebhookNotificationTypeName,
-    ),
-    emailAddress: S.optional(S.String),
-    emailEnabled: S.optional(S.Boolean),
-    roles: S.optional(
-      S.Union(GroupNotificationRolesList, OrgNotificationRolesList),
-    ),
-    smsEnabled: S.optional(S.Boolean),
-    notificationToken: S.optional(S.String),
-    roomName: S.optional(S.String),
-    microsoftTeamsWebhookUrl: S.optional(S.String),
-    opsGenieApiKey: S.optional(S.String),
-    opsGenieRegion: S.optional(OpsGenieNotificationOpsGenieRegion),
-    region: S.optional(PagerDutyNotificationRegion),
-    serviceKey: S.optional(S.String),
-    apiToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    channelName: S.optional(S.String),
-    mobileNumber: S.optional(S.String),
-    teamId: S.optional(S.String),
-    teamName: S.optional(S.String),
-    username: S.optional(S.String),
-    victorOpsApiKey: S.optional(S.String),
-    victorOpsRoutingKey: S.optional(S.String),
-    webhookBodyTemplate: S.optional(S.String),
-    webhookHeadersTemplate: S.optional(S.String),
-    webhookSecret: S.optional(S.String),
-    webhookUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlertsNotificationRootForGroup",
-}) as any as S.Schema<AlertsNotificationRootForGroup>;
+export type AlertsNotificationRootForGroup =
+  | DatadogNotification
+  | EmailNotification
+  | GroupNotification
+  | HipChatNotification
+  | MicrosoftTeamsNotification
+  | OpsGenieNotification
+  | OrgNotification
+  | PagerDutyNotification
+  | SlackNotification
+  | SMSNotification
+  | TeamNotification
+  | UserNotification
+  | VictorOpsNotification
+  | WebhookNotification;
+export const AlertsNotificationRootForGroup =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AlertsNotificationRootForGroup>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type DefaultAlertConfigViewForNdsGroupNotificationsList =
@@ -20108,48 +19108,12 @@ export const TimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in the app services. */
-export interface AppServiceMetricThreshold {
-  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
-  metricName: string;
-  /** MongoDB Cloud computes the current metric value as an average. */
-  mode?:
-    | RawMetricThresholdViewMode
-    | DataMetricThresholdViewMode
-    | TimeMetricThresholdViewMode;
-  /** Comparison operator to apply when checking the current metric value. */
-  operator?:
-    | RawMetricThresholdViewOperator
-    | DataMetricThresholdViewOperator
-    | TimeMetricThresholdViewOperator;
-  /** Value of metric that, when exceeded, triggers an alert. */
-  threshold?: number;
-  units?: RawMetricUnits | DataMetricUnits | TimeMetricUnits;
-}
-export const AppServiceMetricThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(
-      S.Union(
-        RawMetricThresholdViewMode,
-        DataMetricThresholdViewMode,
-        TimeMetricThresholdViewMode,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        RawMetricThresholdViewOperator,
-        DataMetricThresholdViewOperator,
-        TimeMetricThresholdViewOperator,
-      ),
-    ),
-    threshold: S.optional(S.Number),
-    units: S.optional(
-      S.Union(RawMetricUnits, DataMetricUnits, TimeMetricUnits),
-    ),
-  }),
-).annotate({
-  identifier: "AppServiceMetricThreshold",
-}) as any as S.Schema<AppServiceMetricThreshold>;
+export type AppServiceMetricThreshold =
+  | RawMetricThresholdView
+  | DataMetricThresholdView
+  | TimeMetricThresholdView;
+export const AppServiceMetricThreshold =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AppServiceMetricThreshold>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type AppServiceMetricAlertConfigViewForNdsGroupNotificationsList =
@@ -26652,685 +25616,169 @@ export const FtsJvmCurrentMemoryDataMetricThresholdView =
   }) as any as S.Schema<FtsJvmCurrentMemoryDataMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about mongod host. */
-export interface HostMetricThreshold {
-  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
-  metricName: string;
-  /** MongoDB Cloud computes the current metric value as an average. */
-  mode?:
-    | AssertRegularRawMetricThresholdViewMode
-    | AssertWarningRawMetricThresholdViewMode
-    | AssertMsgRawMetricThresholdViewMode
-    | AssertUserRawMetricThresholdViewMode
-    | OpCounterCmdRawMetricThresholdViewMode
-    | OpCounterQueryRawMetricThresholdViewMode
-    | OpCounterUpdateRawMetricThresholdViewMode
-    | OpCounterDeleteRawMetricThresholdViewMode
-    | OpCounterTtlDeletedRawMetricThresholdViewMode
-    | OpCounterInsertRawMetricThresholdViewMode
-    | OpCounterGetMoreRawMetricThresholdViewMode
-    | OpCounterReplCmdRawMetricThresholdViewMode
-    | OpCounterReplUpdateRawMetricThresholdViewMode
-    | OpCounterReplDeleteRawMetricThresholdViewMode
-    | OpCounterReplInsertRawMetricThresholdViewMode
-    | FtsMemoryResidentDataMetricThresholdViewMode
-    | FtsMemoryVirtualDataMetricThresholdViewMode
-    | FtsMemoryMappedDataMetricThresholdViewMode
-    | FtsProcessCpuUserRawMetricThresholdViewMode
-    | FtsProcessCpuKernelRawMetricThresholdViewMode
-    | NormalizedFtsProcessCpuUserRawMetricThresholdViewMode
-    | NormalizedFtsProcessCpuKernelRawMetricThresholdViewMode
-    | SystemMemoryPercentUsedRawMetricThresholdViewMode
-    | MemoryResidentDataMetricThresholdViewMode
-    | MemoryVirtualDataMetricThresholdViewMode
-    | MemoryMappedDataMetricThresholdViewMode
-    | ComputedMemoryDataMetricThresholdViewMode
-    | IndexCountersBtreeAccessesRawMetricThresholdViewMode
-    | IndexCountersBtreeHitsRawMetricThresholdViewMode
-    | IndexCountersBtreeMissesRawMetricThresholdViewMode
-    | IndexCountersBtreeMissRatioRawMetricThresholdViewMode
-    | GlobalLockPercentageRawMetricThresholdViewMode
-    | TimeMetricThresholdViewMode
-    | ConnectionsRawMetricThresholdViewMode
-    | ConnectionsMaxRawMetricThresholdViewMode
-    | ConnectionsPercentRawMetricThresholdViewMode
-    | GlobalAccessesNotInMemoryRawMetricThresholdViewMode
-    | GlobalPageFaultExceptionsThrownRawMetricThresholdViewMode
-    | GlobalLockCurrentQueueTotalRawMetricThresholdViewMode
-    | GlobalLockCurrentQueueReadersRawMetricThresholdViewMode
-    | GlobalLockCurrentQueueWritersRawMetricThresholdViewMode
-    | CursorsTotalOpenRawMetricThresholdViewMode
-    | CursorsTotalTimedOutRawMetricThresholdViewMode
-    | CursorsTotalClientCursorsSizeRawMetricThresholdViewMode
-    | NetworkBytesInDataMetricThresholdViewMode
-    | NetworkBytesOutDataMetricThresholdViewMode
-    | NetworkNumRequestsRawMetricThresholdViewMode
-    | OplogMasterTimeTimeMetricThresholdViewMode
-    | OplogMasterTimeEstimatedTtlTimeMetricThresholdViewMode
-    | OplogSlaveLagMasterTimeTimeMetricThresholdViewMode
-    | OplogMasterLagTimeDiffTimeMetricThresholdViewMode
-    | OplogRateGbPerHourDataMetricThresholdViewMode
-    | ExtraInfoPageFaultsRawMetricThresholdViewMode
-    | DbStorageTotalDataMetricThresholdViewMode
-    | DbDataSizeTotalDataMetricThresholdViewMode
-    | DbDataSizeTotalWoSystemDataMetricThresholdViewMode
-    | DbIndexSizeTotalDataMetricThresholdViewMode
-    | JournalingCommitsInWriteLockRawMetricThresholdViewMode
-    | JournalingMbDataMetricThresholdViewMode
-    | JournalingWriteDataFilesMbDataMetricThresholdViewMode
-    | TicketsAvailableReadsRawMetricThresholdViewMode
-    | TicketsAvailableWritesRawMetricThresholdViewMode
-    | CacheUsageDirtyDataMetricThresholdViewMode
-    | CacheUsageUsedDataMetricThresholdViewMode
-    | CacheBytesReadIntoDataMetricThresholdViewMode
-    | CacheBytesWrittenFromDataMetricThresholdViewMode
-    | NormalizedSystemCpuUserRawMetricThresholdViewMode
-    | NormalizedSystemCpuStealRawMetricThresholdViewMode
-    | DiskPartitionSpaceUsedDataRawMetricThresholdViewMode
-    | DiskPartitionSpaceUsedIndexRawMetricThresholdViewMode
-    | DiskPartitionSpaceUsedJournalRawMetricThresholdViewMode
-    | DiskPartitionReadIopsDataRawMetricThresholdViewMode
-    | DiskPartitionReadIopsIndexRawMetricThresholdViewMode
-    | DiskPartitionReadIopsJournalRawMetricThresholdViewMode
-    | DiskPartitionWriteIopsDataRawMetricThresholdViewMode
-    | DiskPartitionWriteIopsIndexRawMetricThresholdViewMode
-    | DiskPartitionWriteIopsJournalRawMetricThresholdViewMode
-    | DiskPartitionReadLatencyDataTimeMetricThresholdViewMode
-    | DiskPartitionReadLatencyIndexTimeMetricThresholdViewMode
-    | DiskPartitionReadLatencyJournalTimeMetricThresholdViewMode
-    | DiskPartitionWriteLatencyDataTimeMetricThresholdViewMode
-    | DiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode
-    | DiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode
-    | DiskPartitionQueueDepthDataRawMetricThresholdViewMode
-    | DiskPartitionQueueDepthIndexRawMetricThresholdViewMode
-    | DiskPartitionQueueDepthJournalRawMetricThresholdViewMode
-    | FtsDiskUtilizationDataMetricThresholdViewMode
-    | MuninCpuUserRawMetricThresholdViewMode
-    | MuninCpuNiceRawMetricThresholdViewMode
-    | MuninCpuSystemRawMetricThresholdViewMode
-    | MuninCpuIowaitRawMetricThresholdViewMode
-    | MuninCpuIrqRawMetricThresholdViewMode
-    | MuninCpuSoftirqRawMetricThresholdViewMode
-    | MuninCpuStealRawMetricThresholdViewMode
-    | DocumentReturnedRawMetricThresholdViewMode
-    | DocumentInsertedRawMetricThresholdViewMode
-    | DocumentUpdatedRawMetricThresholdViewMode
-    | DocumentDeletedRawMetricThresholdViewMode
-    | OperationsScanAndOrderRawMetricThresholdViewMode
-    | QueryExecutorScannedRawMetricThresholdViewMode
-    | QueryExecutorScannedObjectsRawMetricThresholdViewMode
-    | OperationThrottlingRejectedOperationsRawMetricThresholdViewMode
-    | QuerySpillToDiskDuringSortRawMetricThresholdViewMode
-    | OperationsQueriesKilledRawMetricThresholdViewMode
-    | QueryTargetingScannedPerReturnedRawMetricThresholdViewMode
-    | QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewMode
-    | AvgReadExecutionTimeTimeMetricThresholdViewMode
-    | AvgWriteExecutionTimeTimeMetricThresholdViewMode
-    | AvgCommandExecutionTimeTimeMetricThresholdViewMode
-    | LogicalSizeDataMetricThresholdViewMode
-    | RestartsInLastHourRawMetricThresholdViewMode
-    | SystemMemoryUsedDataMetricThresholdViewMode
-    | SystemMemoryAvailableDataMetricThresholdViewMode
-    | SwapUsageUsedDataMetricThresholdViewMode
-    | SwapUsageFreeDataMetricThresholdViewMode
-    | SystemNetworkInDataMetricThresholdViewMode
-    | SystemNetworkOutDataMetricThresholdViewMode
-    | MaxNormalizedSystemCpuUserRawMetricThresholdViewMode
-    | MaxNormalizedSystemCpuStealRawMetricThresholdViewMode
-    | MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewMode
-    | MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewMode
-    | MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewMode
-    | MaxDiskPartitionReadIopsDataRawMetricThresholdViewMode
-    | MaxDiskPartitionReadIopsIndexRawMetricThresholdViewMode
-    | MaxDiskPartitionReadIopsJournalRawMetricThresholdViewMode
-    | MaxDiskPartitionWriteIopsDataRawMetricThresholdViewMode
-    | MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewMode
-    | MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewMode
-    | MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewMode
-    | MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewMode
-    | MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewMode
-    | MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewMode
-    | MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode
-    | MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode
-    | MaxDiskPartitionQueueDepthDataRawMetricThresholdViewMode
-    | MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewMode
-    | MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewMode
-    | MaxSystemMemoryPercentUsedRawMetricThresholdViewMode
-    | MaxSystemMemoryUsedDataMetricThresholdViewMode
-    | MaxSystemMemoryAvailableDataMetricThresholdViewMode
-    | MaxSwapUsageUsedDataMetricThresholdViewMode
-    | MaxSwapUsageFreeDataMetricThresholdViewMode
-    | MaxSystemNetworkInDataMetricThresholdViewMode
-    | MaxSystemNetworkOutDataMetricThresholdViewMode
-    | SearchIndexSizeDataMetricThresholdViewMode
-    | SearchMaxFieldsIndexedRawMetricThresholdViewMode
-    | SearchProcessThrottlingRawMetricThresholdViewMode
-    | SearchNumberOfFieldsInIndexRawMetricThresholdViewMode
-    | SearchMaxNgramFieldsIndexedRawMetricThresholdViewMode
-    | SearchReplicationLagTimeMetricThresholdViewMode
-    | NumberMetricThresholdViewMode
-    | SearchOpCounterInsertRawMetricThresholdViewMode
-    | SearchOpCounterDeleteRawMetricThresholdViewMode
-    | SearchOpCounterUpdateRawMetricThresholdViewMode
-    | SearchOpCounterGetMoreRawMetricThresholdViewMode
-    | SearchNumberOfQueriesTotalRawMetricThresholdViewMode
-    | SearchNumberOfQueriesErrorRawMetricThresholdViewMode
-    | SearchNumberOfQueriesSuccessRawMetricThresholdViewMode
-    | FtsJvmMaxMemoryDataMetricThresholdViewMode
-    | FtsJvmCurrentMemoryDataMetricThresholdViewMode;
-  /** Comparison operator to apply when checking the current metric value. */
-  operator?:
-    | AssertRegularRawMetricThresholdViewOperator
-    | AssertWarningRawMetricThresholdViewOperator
-    | AssertMsgRawMetricThresholdViewOperator
-    | AssertUserRawMetricThresholdViewOperator
-    | OpCounterCmdRawMetricThresholdViewOperator
-    | OpCounterQueryRawMetricThresholdViewOperator
-    | OpCounterUpdateRawMetricThresholdViewOperator
-    | OpCounterDeleteRawMetricThresholdViewOperator
-    | OpCounterTtlDeletedRawMetricThresholdViewOperator
-    | OpCounterInsertRawMetricThresholdViewOperator
-    | OpCounterGetMoreRawMetricThresholdViewOperator
-    | OpCounterReplCmdRawMetricThresholdViewOperator
-    | OpCounterReplUpdateRawMetricThresholdViewOperator
-    | OpCounterReplDeleteRawMetricThresholdViewOperator
-    | OpCounterReplInsertRawMetricThresholdViewOperator
-    | FtsMemoryResidentDataMetricThresholdViewOperator
-    | FtsMemoryVirtualDataMetricThresholdViewOperator
-    | FtsMemoryMappedDataMetricThresholdViewOperator
-    | FtsProcessCpuUserRawMetricThresholdViewOperator
-    | FtsProcessCpuKernelRawMetricThresholdViewOperator
-    | NormalizedFtsProcessCpuUserRawMetricThresholdViewOperator
-    | NormalizedFtsProcessCpuKernelRawMetricThresholdViewOperator
-    | SystemMemoryPercentUsedRawMetricThresholdViewOperator
-    | MemoryResidentDataMetricThresholdViewOperator
-    | MemoryVirtualDataMetricThresholdViewOperator
-    | MemoryMappedDataMetricThresholdViewOperator
-    | ComputedMemoryDataMetricThresholdViewOperator
-    | IndexCountersBtreeAccessesRawMetricThresholdViewOperator
-    | IndexCountersBtreeHitsRawMetricThresholdViewOperator
-    | IndexCountersBtreeMissesRawMetricThresholdViewOperator
-    | IndexCountersBtreeMissRatioRawMetricThresholdViewOperator
-    | GlobalLockPercentageRawMetricThresholdViewOperator
-    | TimeMetricThresholdViewOperator
-    | ConnectionsRawMetricThresholdViewOperator
-    | ConnectionsMaxRawMetricThresholdViewOperator
-    | ConnectionsPercentRawMetricThresholdViewOperator
-    | GlobalAccessesNotInMemoryRawMetricThresholdViewOperator
-    | GlobalPageFaultExceptionsThrownRawMetricThresholdViewOperator
-    | GlobalLockCurrentQueueTotalRawMetricThresholdViewOperator
-    | GlobalLockCurrentQueueReadersRawMetricThresholdViewOperator
-    | GlobalLockCurrentQueueWritersRawMetricThresholdViewOperator
-    | CursorsTotalOpenRawMetricThresholdViewOperator
-    | CursorsTotalTimedOutRawMetricThresholdViewOperator
-    | CursorsTotalClientCursorsSizeRawMetricThresholdViewOperator
-    | NetworkBytesInDataMetricThresholdViewOperator
-    | NetworkBytesOutDataMetricThresholdViewOperator
-    | NetworkNumRequestsRawMetricThresholdViewOperator
-    | OplogMasterTimeTimeMetricThresholdViewOperator
-    | OplogMasterTimeEstimatedTtlTimeMetricThresholdViewOperator
-    | OplogSlaveLagMasterTimeTimeMetricThresholdViewOperator
-    | OplogMasterLagTimeDiffTimeMetricThresholdViewOperator
-    | OplogRateGbPerHourDataMetricThresholdViewOperator
-    | ExtraInfoPageFaultsRawMetricThresholdViewOperator
-    | DbStorageTotalDataMetricThresholdViewOperator
-    | DbDataSizeTotalDataMetricThresholdViewOperator
-    | DbDataSizeTotalWoSystemDataMetricThresholdViewOperator
-    | DbIndexSizeTotalDataMetricThresholdViewOperator
-    | JournalingCommitsInWriteLockRawMetricThresholdViewOperator
-    | JournalingMbDataMetricThresholdViewOperator
-    | JournalingWriteDataFilesMbDataMetricThresholdViewOperator
-    | TicketsAvailableReadsRawMetricThresholdViewOperator
-    | TicketsAvailableWritesRawMetricThresholdViewOperator
-    | CacheUsageDirtyDataMetricThresholdViewOperator
-    | CacheUsageUsedDataMetricThresholdViewOperator
-    | CacheBytesReadIntoDataMetricThresholdViewOperator
-    | CacheBytesWrittenFromDataMetricThresholdViewOperator
-    | NormalizedSystemCpuUserRawMetricThresholdViewOperator
-    | NormalizedSystemCpuStealRawMetricThresholdViewOperator
-    | DiskPartitionSpaceUsedDataRawMetricThresholdViewOperator
-    | DiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator
-    | DiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator
-    | DiskPartitionReadIopsDataRawMetricThresholdViewOperator
-    | DiskPartitionReadIopsIndexRawMetricThresholdViewOperator
-    | DiskPartitionReadIopsJournalRawMetricThresholdViewOperator
-    | DiskPartitionWriteIopsDataRawMetricThresholdViewOperator
-    | DiskPartitionWriteIopsIndexRawMetricThresholdViewOperator
-    | DiskPartitionWriteIopsJournalRawMetricThresholdViewOperator
-    | DiskPartitionReadLatencyDataTimeMetricThresholdViewOperator
-    | DiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator
-    | DiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator
-    | DiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator
-    | DiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator
-    | DiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator
-    | DiskPartitionQueueDepthDataRawMetricThresholdViewOperator
-    | DiskPartitionQueueDepthIndexRawMetricThresholdViewOperator
-    | DiskPartitionQueueDepthJournalRawMetricThresholdViewOperator
-    | FtsDiskUtilizationDataMetricThresholdViewOperator
-    | MuninCpuUserRawMetricThresholdViewOperator
-    | MuninCpuNiceRawMetricThresholdViewOperator
-    | MuninCpuSystemRawMetricThresholdViewOperator
-    | MuninCpuIowaitRawMetricThresholdViewOperator
-    | MuninCpuIrqRawMetricThresholdViewOperator
-    | MuninCpuSoftirqRawMetricThresholdViewOperator
-    | MuninCpuStealRawMetricThresholdViewOperator
-    | DocumentReturnedRawMetricThresholdViewOperator
-    | DocumentInsertedRawMetricThresholdViewOperator
-    | DocumentUpdatedRawMetricThresholdViewOperator
-    | DocumentDeletedRawMetricThresholdViewOperator
-    | OperationsScanAndOrderRawMetricThresholdViewOperator
-    | QueryExecutorScannedRawMetricThresholdViewOperator
-    | QueryExecutorScannedObjectsRawMetricThresholdViewOperator
-    | OperationThrottlingRejectedOperationsRawMetricThresholdViewOperator
-    | QuerySpillToDiskDuringSortRawMetricThresholdViewOperator
-    | OperationsQueriesKilledRawMetricThresholdViewOperator
-    | QueryTargetingScannedPerReturnedRawMetricThresholdViewOperator
-    | QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewOperator
-    | AvgReadExecutionTimeTimeMetricThresholdViewOperator
-    | AvgWriteExecutionTimeTimeMetricThresholdViewOperator
-    | AvgCommandExecutionTimeTimeMetricThresholdViewOperator
-    | LogicalSizeDataMetricThresholdViewOperator
-    | RestartsInLastHourRawMetricThresholdViewOperator
-    | SystemMemoryUsedDataMetricThresholdViewOperator
-    | SystemMemoryAvailableDataMetricThresholdViewOperator
-    | SwapUsageUsedDataMetricThresholdViewOperator
-    | SwapUsageFreeDataMetricThresholdViewOperator
-    | SystemNetworkInDataMetricThresholdViewOperator
-    | SystemNetworkOutDataMetricThresholdViewOperator
-    | MaxNormalizedSystemCpuUserRawMetricThresholdViewOperator
-    | MaxNormalizedSystemCpuStealRawMetricThresholdViewOperator
-    | MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewOperator
-    | MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator
-    | MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator
-    | MaxDiskPartitionReadIopsDataRawMetricThresholdViewOperator
-    | MaxDiskPartitionReadIopsIndexRawMetricThresholdViewOperator
-    | MaxDiskPartitionReadIopsJournalRawMetricThresholdViewOperator
-    | MaxDiskPartitionWriteIopsDataRawMetricThresholdViewOperator
-    | MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewOperator
-    | MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewOperator
-    | MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewOperator
-    | MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator
-    | MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator
-    | MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator
-    | MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator
-    | MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator
-    | MaxDiskPartitionQueueDepthDataRawMetricThresholdViewOperator
-    | MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewOperator
-    | MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewOperator
-    | MaxSystemMemoryPercentUsedRawMetricThresholdViewOperator
-    | MaxSystemMemoryUsedDataMetricThresholdViewOperator
-    | MaxSystemMemoryAvailableDataMetricThresholdViewOperator
-    | MaxSwapUsageUsedDataMetricThresholdViewOperator
-    | MaxSwapUsageFreeDataMetricThresholdViewOperator
-    | MaxSystemNetworkInDataMetricThresholdViewOperator
-    | MaxSystemNetworkOutDataMetricThresholdViewOperator
-    | SearchIndexSizeDataMetricThresholdViewOperator
-    | SearchMaxFieldsIndexedRawMetricThresholdViewOperator
-    | SearchProcessThrottlingRawMetricThresholdViewOperator
-    | SearchNumberOfFieldsInIndexRawMetricThresholdViewOperator
-    | SearchMaxNgramFieldsIndexedRawMetricThresholdViewOperator
-    | SearchReplicationLagTimeMetricThresholdViewOperator
-    | NumberMetricThresholdViewOperator
-    | SearchOpCounterInsertRawMetricThresholdViewOperator
-    | SearchOpCounterDeleteRawMetricThresholdViewOperator
-    | SearchOpCounterUpdateRawMetricThresholdViewOperator
-    | SearchOpCounterGetMoreRawMetricThresholdViewOperator
-    | SearchNumberOfQueriesTotalRawMetricThresholdViewOperator
-    | SearchNumberOfQueriesErrorRawMetricThresholdViewOperator
-    | SearchNumberOfQueriesSuccessRawMetricThresholdViewOperator
-    | FtsJvmMaxMemoryDataMetricThresholdViewOperator
-    | FtsJvmCurrentMemoryDataMetricThresholdViewOperator;
-  /** Value of metric that, when exceeded, triggers an alert. */
-  threshold?: number;
-  units?:
-    | RawMetricUnits
-    | DataMetricUnits
-    | TimeMetricUnits
-    | NumberMetricUnits;
-}
-export const HostMetricThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(
-      S.Union(
-        AssertRegularRawMetricThresholdViewMode,
-        AssertWarningRawMetricThresholdViewMode,
-        AssertMsgRawMetricThresholdViewMode,
-        AssertUserRawMetricThresholdViewMode,
-        OpCounterCmdRawMetricThresholdViewMode,
-        OpCounterQueryRawMetricThresholdViewMode,
-        OpCounterUpdateRawMetricThresholdViewMode,
-        OpCounterDeleteRawMetricThresholdViewMode,
-        OpCounterTtlDeletedRawMetricThresholdViewMode,
-        OpCounterInsertRawMetricThresholdViewMode,
-        OpCounterGetMoreRawMetricThresholdViewMode,
-        OpCounterReplCmdRawMetricThresholdViewMode,
-        OpCounterReplUpdateRawMetricThresholdViewMode,
-        OpCounterReplDeleteRawMetricThresholdViewMode,
-        OpCounterReplInsertRawMetricThresholdViewMode,
-        FtsMemoryResidentDataMetricThresholdViewMode,
-        FtsMemoryVirtualDataMetricThresholdViewMode,
-        FtsMemoryMappedDataMetricThresholdViewMode,
-        FtsProcessCpuUserRawMetricThresholdViewMode,
-        FtsProcessCpuKernelRawMetricThresholdViewMode,
-        NormalizedFtsProcessCpuUserRawMetricThresholdViewMode,
-        NormalizedFtsProcessCpuKernelRawMetricThresholdViewMode,
-        SystemMemoryPercentUsedRawMetricThresholdViewMode,
-        MemoryResidentDataMetricThresholdViewMode,
-        MemoryVirtualDataMetricThresholdViewMode,
-        MemoryMappedDataMetricThresholdViewMode,
-        ComputedMemoryDataMetricThresholdViewMode,
-        IndexCountersBtreeAccessesRawMetricThresholdViewMode,
-        IndexCountersBtreeHitsRawMetricThresholdViewMode,
-        IndexCountersBtreeMissesRawMetricThresholdViewMode,
-        IndexCountersBtreeMissRatioRawMetricThresholdViewMode,
-        GlobalLockPercentageRawMetricThresholdViewMode,
-        TimeMetricThresholdViewMode,
-        ConnectionsRawMetricThresholdViewMode,
-        ConnectionsMaxRawMetricThresholdViewMode,
-        ConnectionsPercentRawMetricThresholdViewMode,
-        GlobalAccessesNotInMemoryRawMetricThresholdViewMode,
-        GlobalPageFaultExceptionsThrownRawMetricThresholdViewMode,
-        GlobalLockCurrentQueueTotalRawMetricThresholdViewMode,
-        GlobalLockCurrentQueueReadersRawMetricThresholdViewMode,
-        GlobalLockCurrentQueueWritersRawMetricThresholdViewMode,
-        CursorsTotalOpenRawMetricThresholdViewMode,
-        CursorsTotalTimedOutRawMetricThresholdViewMode,
-        CursorsTotalClientCursorsSizeRawMetricThresholdViewMode,
-        NetworkBytesInDataMetricThresholdViewMode,
-        NetworkBytesOutDataMetricThresholdViewMode,
-        NetworkNumRequestsRawMetricThresholdViewMode,
-        OplogMasterTimeTimeMetricThresholdViewMode,
-        OplogMasterTimeEstimatedTtlTimeMetricThresholdViewMode,
-        OplogSlaveLagMasterTimeTimeMetricThresholdViewMode,
-        OplogMasterLagTimeDiffTimeMetricThresholdViewMode,
-        OplogRateGbPerHourDataMetricThresholdViewMode,
-        ExtraInfoPageFaultsRawMetricThresholdViewMode,
-        DbStorageTotalDataMetricThresholdViewMode,
-        DbDataSizeTotalDataMetricThresholdViewMode,
-        DbDataSizeTotalWoSystemDataMetricThresholdViewMode,
-        DbIndexSizeTotalDataMetricThresholdViewMode,
-        JournalingCommitsInWriteLockRawMetricThresholdViewMode,
-        JournalingMbDataMetricThresholdViewMode,
-        JournalingWriteDataFilesMbDataMetricThresholdViewMode,
-        TicketsAvailableReadsRawMetricThresholdViewMode,
-        TicketsAvailableWritesRawMetricThresholdViewMode,
-        CacheUsageDirtyDataMetricThresholdViewMode,
-        CacheUsageUsedDataMetricThresholdViewMode,
-        CacheBytesReadIntoDataMetricThresholdViewMode,
-        CacheBytesWrittenFromDataMetricThresholdViewMode,
-        NormalizedSystemCpuUserRawMetricThresholdViewMode,
-        NormalizedSystemCpuStealRawMetricThresholdViewMode,
-        DiskPartitionSpaceUsedDataRawMetricThresholdViewMode,
-        DiskPartitionSpaceUsedIndexRawMetricThresholdViewMode,
-        DiskPartitionSpaceUsedJournalRawMetricThresholdViewMode,
-        DiskPartitionReadIopsDataRawMetricThresholdViewMode,
-        DiskPartitionReadIopsIndexRawMetricThresholdViewMode,
-        DiskPartitionReadIopsJournalRawMetricThresholdViewMode,
-        DiskPartitionWriteIopsDataRawMetricThresholdViewMode,
-        DiskPartitionWriteIopsIndexRawMetricThresholdViewMode,
-        DiskPartitionWriteIopsJournalRawMetricThresholdViewMode,
-        DiskPartitionReadLatencyDataTimeMetricThresholdViewMode,
-        DiskPartitionReadLatencyIndexTimeMetricThresholdViewMode,
-        DiskPartitionReadLatencyJournalTimeMetricThresholdViewMode,
-        DiskPartitionWriteLatencyDataTimeMetricThresholdViewMode,
-        DiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode,
-        DiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode,
-        DiskPartitionQueueDepthDataRawMetricThresholdViewMode,
-        DiskPartitionQueueDepthIndexRawMetricThresholdViewMode,
-        DiskPartitionQueueDepthJournalRawMetricThresholdViewMode,
-        FtsDiskUtilizationDataMetricThresholdViewMode,
-        MuninCpuUserRawMetricThresholdViewMode,
-        MuninCpuNiceRawMetricThresholdViewMode,
-        MuninCpuSystemRawMetricThresholdViewMode,
-        MuninCpuIowaitRawMetricThresholdViewMode,
-        MuninCpuIrqRawMetricThresholdViewMode,
-        MuninCpuSoftirqRawMetricThresholdViewMode,
-        MuninCpuStealRawMetricThresholdViewMode,
-        DocumentReturnedRawMetricThresholdViewMode,
-        DocumentInsertedRawMetricThresholdViewMode,
-        DocumentUpdatedRawMetricThresholdViewMode,
-        DocumentDeletedRawMetricThresholdViewMode,
-        OperationsScanAndOrderRawMetricThresholdViewMode,
-        QueryExecutorScannedRawMetricThresholdViewMode,
-        QueryExecutorScannedObjectsRawMetricThresholdViewMode,
-        OperationThrottlingRejectedOperationsRawMetricThresholdViewMode,
-        QuerySpillToDiskDuringSortRawMetricThresholdViewMode,
-        OperationsQueriesKilledRawMetricThresholdViewMode,
-        QueryTargetingScannedPerReturnedRawMetricThresholdViewMode,
-        QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewMode,
-        AvgReadExecutionTimeTimeMetricThresholdViewMode,
-        AvgWriteExecutionTimeTimeMetricThresholdViewMode,
-        AvgCommandExecutionTimeTimeMetricThresholdViewMode,
-        LogicalSizeDataMetricThresholdViewMode,
-        RestartsInLastHourRawMetricThresholdViewMode,
-        SystemMemoryUsedDataMetricThresholdViewMode,
-        SystemMemoryAvailableDataMetricThresholdViewMode,
-        SwapUsageUsedDataMetricThresholdViewMode,
-        SwapUsageFreeDataMetricThresholdViewMode,
-        SystemNetworkInDataMetricThresholdViewMode,
-        SystemNetworkOutDataMetricThresholdViewMode,
-        MaxNormalizedSystemCpuUserRawMetricThresholdViewMode,
-        MaxNormalizedSystemCpuStealRawMetricThresholdViewMode,
-        MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewMode,
-        MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewMode,
-        MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewMode,
-        MaxDiskPartitionReadIopsDataRawMetricThresholdViewMode,
-        MaxDiskPartitionReadIopsIndexRawMetricThresholdViewMode,
-        MaxDiskPartitionReadIopsJournalRawMetricThresholdViewMode,
-        MaxDiskPartitionWriteIopsDataRawMetricThresholdViewMode,
-        MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewMode,
-        MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewMode,
-        MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewMode,
-        MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewMode,
-        MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewMode,
-        MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewMode,
-        MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode,
-        MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode,
-        MaxDiskPartitionQueueDepthDataRawMetricThresholdViewMode,
-        MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewMode,
-        MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewMode,
-        MaxSystemMemoryPercentUsedRawMetricThresholdViewMode,
-        MaxSystemMemoryUsedDataMetricThresholdViewMode,
-        MaxSystemMemoryAvailableDataMetricThresholdViewMode,
-        MaxSwapUsageUsedDataMetricThresholdViewMode,
-        MaxSwapUsageFreeDataMetricThresholdViewMode,
-        MaxSystemNetworkInDataMetricThresholdViewMode,
-        MaxSystemNetworkOutDataMetricThresholdViewMode,
-        SearchIndexSizeDataMetricThresholdViewMode,
-        SearchMaxFieldsIndexedRawMetricThresholdViewMode,
-        SearchProcessThrottlingRawMetricThresholdViewMode,
-        SearchNumberOfFieldsInIndexRawMetricThresholdViewMode,
-        SearchMaxNgramFieldsIndexedRawMetricThresholdViewMode,
-        SearchReplicationLagTimeMetricThresholdViewMode,
-        NumberMetricThresholdViewMode,
-        SearchOpCounterInsertRawMetricThresholdViewMode,
-        SearchOpCounterDeleteRawMetricThresholdViewMode,
-        SearchOpCounterUpdateRawMetricThresholdViewMode,
-        SearchOpCounterGetMoreRawMetricThresholdViewMode,
-        SearchNumberOfQueriesTotalRawMetricThresholdViewMode,
-        SearchNumberOfQueriesErrorRawMetricThresholdViewMode,
-        SearchNumberOfQueriesSuccessRawMetricThresholdViewMode,
-        FtsJvmMaxMemoryDataMetricThresholdViewMode,
-        FtsJvmCurrentMemoryDataMetricThresholdViewMode,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        AssertRegularRawMetricThresholdViewOperator,
-        AssertWarningRawMetricThresholdViewOperator,
-        AssertMsgRawMetricThresholdViewOperator,
-        AssertUserRawMetricThresholdViewOperator,
-        OpCounterCmdRawMetricThresholdViewOperator,
-        OpCounterQueryRawMetricThresholdViewOperator,
-        OpCounterUpdateRawMetricThresholdViewOperator,
-        OpCounterDeleteRawMetricThresholdViewOperator,
-        OpCounterTtlDeletedRawMetricThresholdViewOperator,
-        OpCounterInsertRawMetricThresholdViewOperator,
-        OpCounterGetMoreRawMetricThresholdViewOperator,
-        OpCounterReplCmdRawMetricThresholdViewOperator,
-        OpCounterReplUpdateRawMetricThresholdViewOperator,
-        OpCounterReplDeleteRawMetricThresholdViewOperator,
-        OpCounterReplInsertRawMetricThresholdViewOperator,
-        FtsMemoryResidentDataMetricThresholdViewOperator,
-        FtsMemoryVirtualDataMetricThresholdViewOperator,
-        FtsMemoryMappedDataMetricThresholdViewOperator,
-        FtsProcessCpuUserRawMetricThresholdViewOperator,
-        FtsProcessCpuKernelRawMetricThresholdViewOperator,
-        NormalizedFtsProcessCpuUserRawMetricThresholdViewOperator,
-        NormalizedFtsProcessCpuKernelRawMetricThresholdViewOperator,
-        SystemMemoryPercentUsedRawMetricThresholdViewOperator,
-        MemoryResidentDataMetricThresholdViewOperator,
-        MemoryVirtualDataMetricThresholdViewOperator,
-        MemoryMappedDataMetricThresholdViewOperator,
-        ComputedMemoryDataMetricThresholdViewOperator,
-        IndexCountersBtreeAccessesRawMetricThresholdViewOperator,
-        IndexCountersBtreeHitsRawMetricThresholdViewOperator,
-        IndexCountersBtreeMissesRawMetricThresholdViewOperator,
-        IndexCountersBtreeMissRatioRawMetricThresholdViewOperator,
-        GlobalLockPercentageRawMetricThresholdViewOperator,
-        TimeMetricThresholdViewOperator,
-        ConnectionsRawMetricThresholdViewOperator,
-        ConnectionsMaxRawMetricThresholdViewOperator,
-        ConnectionsPercentRawMetricThresholdViewOperator,
-        GlobalAccessesNotInMemoryRawMetricThresholdViewOperator,
-        GlobalPageFaultExceptionsThrownRawMetricThresholdViewOperator,
-        GlobalLockCurrentQueueTotalRawMetricThresholdViewOperator,
-        GlobalLockCurrentQueueReadersRawMetricThresholdViewOperator,
-        GlobalLockCurrentQueueWritersRawMetricThresholdViewOperator,
-        CursorsTotalOpenRawMetricThresholdViewOperator,
-        CursorsTotalTimedOutRawMetricThresholdViewOperator,
-        CursorsTotalClientCursorsSizeRawMetricThresholdViewOperator,
-        NetworkBytesInDataMetricThresholdViewOperator,
-        NetworkBytesOutDataMetricThresholdViewOperator,
-        NetworkNumRequestsRawMetricThresholdViewOperator,
-        OplogMasterTimeTimeMetricThresholdViewOperator,
-        OplogMasterTimeEstimatedTtlTimeMetricThresholdViewOperator,
-        OplogSlaveLagMasterTimeTimeMetricThresholdViewOperator,
-        OplogMasterLagTimeDiffTimeMetricThresholdViewOperator,
-        OplogRateGbPerHourDataMetricThresholdViewOperator,
-        ExtraInfoPageFaultsRawMetricThresholdViewOperator,
-        DbStorageTotalDataMetricThresholdViewOperator,
-        DbDataSizeTotalDataMetricThresholdViewOperator,
-        DbDataSizeTotalWoSystemDataMetricThresholdViewOperator,
-        DbIndexSizeTotalDataMetricThresholdViewOperator,
-        JournalingCommitsInWriteLockRawMetricThresholdViewOperator,
-        JournalingMbDataMetricThresholdViewOperator,
-        JournalingWriteDataFilesMbDataMetricThresholdViewOperator,
-        TicketsAvailableReadsRawMetricThresholdViewOperator,
-        TicketsAvailableWritesRawMetricThresholdViewOperator,
-        CacheUsageDirtyDataMetricThresholdViewOperator,
-        CacheUsageUsedDataMetricThresholdViewOperator,
-        CacheBytesReadIntoDataMetricThresholdViewOperator,
-        CacheBytesWrittenFromDataMetricThresholdViewOperator,
-        NormalizedSystemCpuUserRawMetricThresholdViewOperator,
-        NormalizedSystemCpuStealRawMetricThresholdViewOperator,
-        DiskPartitionSpaceUsedDataRawMetricThresholdViewOperator,
-        DiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator,
-        DiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator,
-        DiskPartitionReadIopsDataRawMetricThresholdViewOperator,
-        DiskPartitionReadIopsIndexRawMetricThresholdViewOperator,
-        DiskPartitionReadIopsJournalRawMetricThresholdViewOperator,
-        DiskPartitionWriteIopsDataRawMetricThresholdViewOperator,
-        DiskPartitionWriteIopsIndexRawMetricThresholdViewOperator,
-        DiskPartitionWriteIopsJournalRawMetricThresholdViewOperator,
-        DiskPartitionReadLatencyDataTimeMetricThresholdViewOperator,
-        DiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator,
-        DiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator,
-        DiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator,
-        DiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator,
-        DiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator,
-        DiskPartitionQueueDepthDataRawMetricThresholdViewOperator,
-        DiskPartitionQueueDepthIndexRawMetricThresholdViewOperator,
-        DiskPartitionQueueDepthJournalRawMetricThresholdViewOperator,
-        FtsDiskUtilizationDataMetricThresholdViewOperator,
-        MuninCpuUserRawMetricThresholdViewOperator,
-        MuninCpuNiceRawMetricThresholdViewOperator,
-        MuninCpuSystemRawMetricThresholdViewOperator,
-        MuninCpuIowaitRawMetricThresholdViewOperator,
-        MuninCpuIrqRawMetricThresholdViewOperator,
-        MuninCpuSoftirqRawMetricThresholdViewOperator,
-        MuninCpuStealRawMetricThresholdViewOperator,
-        DocumentReturnedRawMetricThresholdViewOperator,
-        DocumentInsertedRawMetricThresholdViewOperator,
-        DocumentUpdatedRawMetricThresholdViewOperator,
-        DocumentDeletedRawMetricThresholdViewOperator,
-        OperationsScanAndOrderRawMetricThresholdViewOperator,
-        QueryExecutorScannedRawMetricThresholdViewOperator,
-        QueryExecutorScannedObjectsRawMetricThresholdViewOperator,
-        OperationThrottlingRejectedOperationsRawMetricThresholdViewOperator,
-        QuerySpillToDiskDuringSortRawMetricThresholdViewOperator,
-        OperationsQueriesKilledRawMetricThresholdViewOperator,
-        QueryTargetingScannedPerReturnedRawMetricThresholdViewOperator,
-        QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewOperator,
-        AvgReadExecutionTimeTimeMetricThresholdViewOperator,
-        AvgWriteExecutionTimeTimeMetricThresholdViewOperator,
-        AvgCommandExecutionTimeTimeMetricThresholdViewOperator,
-        LogicalSizeDataMetricThresholdViewOperator,
-        RestartsInLastHourRawMetricThresholdViewOperator,
-        SystemMemoryUsedDataMetricThresholdViewOperator,
-        SystemMemoryAvailableDataMetricThresholdViewOperator,
-        SwapUsageUsedDataMetricThresholdViewOperator,
-        SwapUsageFreeDataMetricThresholdViewOperator,
-        SystemNetworkInDataMetricThresholdViewOperator,
-        SystemNetworkOutDataMetricThresholdViewOperator,
-        MaxNormalizedSystemCpuUserRawMetricThresholdViewOperator,
-        MaxNormalizedSystemCpuStealRawMetricThresholdViewOperator,
-        MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewOperator,
-        MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator,
-        MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator,
-        MaxDiskPartitionReadIopsDataRawMetricThresholdViewOperator,
-        MaxDiskPartitionReadIopsIndexRawMetricThresholdViewOperator,
-        MaxDiskPartitionReadIopsJournalRawMetricThresholdViewOperator,
-        MaxDiskPartitionWriteIopsDataRawMetricThresholdViewOperator,
-        MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewOperator,
-        MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewOperator,
-        MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewOperator,
-        MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator,
-        MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator,
-        MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator,
-        MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator,
-        MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator,
-        MaxDiskPartitionQueueDepthDataRawMetricThresholdViewOperator,
-        MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewOperator,
-        MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewOperator,
-        MaxSystemMemoryPercentUsedRawMetricThresholdViewOperator,
-        MaxSystemMemoryUsedDataMetricThresholdViewOperator,
-        MaxSystemMemoryAvailableDataMetricThresholdViewOperator,
-        MaxSwapUsageUsedDataMetricThresholdViewOperator,
-        MaxSwapUsageFreeDataMetricThresholdViewOperator,
-        MaxSystemNetworkInDataMetricThresholdViewOperator,
-        MaxSystemNetworkOutDataMetricThresholdViewOperator,
-        SearchIndexSizeDataMetricThresholdViewOperator,
-        SearchMaxFieldsIndexedRawMetricThresholdViewOperator,
-        SearchProcessThrottlingRawMetricThresholdViewOperator,
-        SearchNumberOfFieldsInIndexRawMetricThresholdViewOperator,
-        SearchMaxNgramFieldsIndexedRawMetricThresholdViewOperator,
-        SearchReplicationLagTimeMetricThresholdViewOperator,
-        NumberMetricThresholdViewOperator,
-        SearchOpCounterInsertRawMetricThresholdViewOperator,
-        SearchOpCounterDeleteRawMetricThresholdViewOperator,
-        SearchOpCounterUpdateRawMetricThresholdViewOperator,
-        SearchOpCounterGetMoreRawMetricThresholdViewOperator,
-        SearchNumberOfQueriesTotalRawMetricThresholdViewOperator,
-        SearchNumberOfQueriesErrorRawMetricThresholdViewOperator,
-        SearchNumberOfQueriesSuccessRawMetricThresholdViewOperator,
-        FtsJvmMaxMemoryDataMetricThresholdViewOperator,
-        FtsJvmCurrentMemoryDataMetricThresholdViewOperator,
-      ),
-    ),
-    threshold: S.optional(S.Number),
-    units: S.optional(
-      S.Union(
-        RawMetricUnits,
-        DataMetricUnits,
-        TimeMetricUnits,
-        NumberMetricUnits,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "HostMetricThreshold",
-}) as any as S.Schema<HostMetricThreshold>;
+export type HostMetricThreshold =
+  | AssertRegularRawMetricThresholdView
+  | AssertWarningRawMetricThresholdView
+  | AssertMsgRawMetricThresholdView
+  | AssertUserRawMetricThresholdView
+  | OpCounterCmdRawMetricThresholdView
+  | OpCounterQueryRawMetricThresholdView
+  | OpCounterUpdateRawMetricThresholdView
+  | OpCounterDeleteRawMetricThresholdView
+  | OpCounterTtlDeletedRawMetricThresholdView
+  | OpCounterInsertRawMetricThresholdView
+  | OpCounterGetMoreRawMetricThresholdView
+  | OpCounterReplCmdRawMetricThresholdView
+  | OpCounterReplUpdateRawMetricThresholdView
+  | OpCounterReplDeleteRawMetricThresholdView
+  | OpCounterReplInsertRawMetricThresholdView
+  | FtsMemoryResidentDataMetricThresholdView
+  | FtsMemoryVirtualDataMetricThresholdView
+  | FtsMemoryMappedDataMetricThresholdView
+  | FtsProcessCpuUserRawMetricThresholdView
+  | FtsProcessCpuKernelRawMetricThresholdView
+  | NormalizedFtsProcessCpuUserRawMetricThresholdView
+  | NormalizedFtsProcessCpuKernelRawMetricThresholdView
+  | SystemMemoryPercentUsedRawMetricThresholdView
+  | MemoryResidentDataMetricThresholdView
+  | MemoryVirtualDataMetricThresholdView
+  | MemoryMappedDataMetricThresholdView
+  | ComputedMemoryDataMetricThresholdView
+  | IndexCountersBtreeAccessesRawMetricThresholdView
+  | IndexCountersBtreeHitsRawMetricThresholdView
+  | IndexCountersBtreeMissesRawMetricThresholdView
+  | IndexCountersBtreeMissRatioRawMetricThresholdView
+  | GlobalLockPercentageRawMetricThresholdView
+  | TimeMetricThresholdView
+  | ConnectionsRawMetricThresholdView
+  | ConnectionsMaxRawMetricThresholdView
+  | ConnectionsPercentRawMetricThresholdView
+  | GlobalAccessesNotInMemoryRawMetricThresholdView
+  | GlobalPageFaultExceptionsThrownRawMetricThresholdView
+  | GlobalLockCurrentQueueTotalRawMetricThresholdView
+  | GlobalLockCurrentQueueReadersRawMetricThresholdView
+  | GlobalLockCurrentQueueWritersRawMetricThresholdView
+  | CursorsTotalOpenRawMetricThresholdView
+  | CursorsTotalTimedOutRawMetricThresholdView
+  | CursorsTotalClientCursorsSizeRawMetricThresholdView
+  | NetworkBytesInDataMetricThresholdView
+  | NetworkBytesOutDataMetricThresholdView
+  | NetworkNumRequestsRawMetricThresholdView
+  | OplogMasterTimeTimeMetricThresholdView
+  | OplogMasterTimeEstimatedTtlTimeMetricThresholdView
+  | OplogSlaveLagMasterTimeTimeMetricThresholdView
+  | OplogMasterLagTimeDiffTimeMetricThresholdView
+  | OplogRateGbPerHourDataMetricThresholdView
+  | ExtraInfoPageFaultsRawMetricThresholdView
+  | DbStorageTotalDataMetricThresholdView
+  | DbDataSizeTotalDataMetricThresholdView
+  | DbDataSizeTotalWoSystemDataMetricThresholdView
+  | DbIndexSizeTotalDataMetricThresholdView
+  | JournalingCommitsInWriteLockRawMetricThresholdView
+  | JournalingMbDataMetricThresholdView
+  | JournalingWriteDataFilesMbDataMetricThresholdView
+  | TicketsAvailableReadsRawMetricThresholdView
+  | TicketsAvailableWritesRawMetricThresholdView
+  | CacheUsageDirtyDataMetricThresholdView
+  | CacheUsageUsedDataMetricThresholdView
+  | CacheBytesReadIntoDataMetricThresholdView
+  | CacheBytesWrittenFromDataMetricThresholdView
+  | NormalizedSystemCpuUserRawMetricThresholdView
+  | NormalizedSystemCpuStealRawMetricThresholdView
+  | DiskPartitionSpaceUsedDataRawMetricThresholdView
+  | DiskPartitionSpaceUsedIndexRawMetricThresholdView
+  | DiskPartitionSpaceUsedJournalRawMetricThresholdView
+  | DiskPartitionReadIopsDataRawMetricThresholdView
+  | DiskPartitionReadIopsIndexRawMetricThresholdView
+  | DiskPartitionReadIopsJournalRawMetricThresholdView
+  | DiskPartitionWriteIopsDataRawMetricThresholdView
+  | DiskPartitionWriteIopsIndexRawMetricThresholdView
+  | DiskPartitionWriteIopsJournalRawMetricThresholdView
+  | DiskPartitionReadLatencyDataTimeMetricThresholdView
+  | DiskPartitionReadLatencyIndexTimeMetricThresholdView
+  | DiskPartitionReadLatencyJournalTimeMetricThresholdView
+  | DiskPartitionWriteLatencyDataTimeMetricThresholdView
+  | DiskPartitionWriteLatencyIndexTimeMetricThresholdView
+  | DiskPartitionWriteLatencyJournalTimeMetricThresholdView
+  | DiskPartitionQueueDepthDataRawMetricThresholdView
+  | DiskPartitionQueueDepthIndexRawMetricThresholdView
+  | DiskPartitionQueueDepthJournalRawMetricThresholdView
+  | FtsDiskUtilizationDataMetricThresholdView
+  | MuninCpuUserRawMetricThresholdView
+  | MuninCpuNiceRawMetricThresholdView
+  | MuninCpuSystemRawMetricThresholdView
+  | MuninCpuIowaitRawMetricThresholdView
+  | MuninCpuIrqRawMetricThresholdView
+  | MuninCpuSoftirqRawMetricThresholdView
+  | MuninCpuStealRawMetricThresholdView
+  | DocumentReturnedRawMetricThresholdView
+  | DocumentInsertedRawMetricThresholdView
+  | DocumentUpdatedRawMetricThresholdView
+  | DocumentDeletedRawMetricThresholdView
+  | OperationsScanAndOrderRawMetricThresholdView
+  | QueryExecutorScannedRawMetricThresholdView
+  | QueryExecutorScannedObjectsRawMetricThresholdView
+  | OperationThrottlingRejectedOperationsRawMetricThresholdView
+  | QuerySpillToDiskDuringSortRawMetricThresholdView
+  | OperationsQueriesKilledRawMetricThresholdView
+  | QueryTargetingScannedPerReturnedRawMetricThresholdView
+  | QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView
+  | AvgReadExecutionTimeTimeMetricThresholdView
+  | AvgWriteExecutionTimeTimeMetricThresholdView
+  | AvgCommandExecutionTimeTimeMetricThresholdView
+  | LogicalSizeDataMetricThresholdView
+  | RestartsInLastHourRawMetricThresholdView
+  | SystemMemoryUsedDataMetricThresholdView
+  | SystemMemoryAvailableDataMetricThresholdView
+  | SwapUsageUsedDataMetricThresholdView
+  | SwapUsageFreeDataMetricThresholdView
+  | SystemNetworkInDataMetricThresholdView
+  | SystemNetworkOutDataMetricThresholdView
+  | MaxNormalizedSystemCpuUserRawMetricThresholdView
+  | MaxNormalizedSystemCpuStealRawMetricThresholdView
+  | MaxDiskPartitionSpaceUsedDataRawMetricThresholdView
+  | MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView
+  | MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView
+  | MaxDiskPartitionReadIopsDataRawMetricThresholdView
+  | MaxDiskPartitionReadIopsIndexRawMetricThresholdView
+  | MaxDiskPartitionReadIopsJournalRawMetricThresholdView
+  | MaxDiskPartitionWriteIopsDataRawMetricThresholdView
+  | MaxDiskPartitionWriteIopsIndexRawMetricThresholdView
+  | MaxDiskPartitionWriteIopsJournalRawMetricThresholdView
+  | MaxDiskPartitionReadLatencyDataTimeMetricThresholdView
+  | MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView
+  | MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView
+  | MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView
+  | MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView
+  | MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView
+  | MaxDiskPartitionQueueDepthDataRawMetricThresholdView
+  | MaxDiskPartitionQueueDepthIndexRawMetricThresholdView
+  | MaxDiskPartitionQueueDepthJournalRawMetricThresholdView
+  | MaxSystemMemoryPercentUsedRawMetricThresholdView
+  | MaxSystemMemoryUsedDataMetricThresholdView
+  | MaxSystemMemoryAvailableDataMetricThresholdView
+  | MaxSwapUsageUsedDataMetricThresholdView
+  | MaxSwapUsageFreeDataMetricThresholdView
+  | MaxSystemNetworkInDataMetricThresholdView
+  | MaxSystemNetworkOutDataMetricThresholdView
+  | SearchIndexSizeDataMetricThresholdView
+  | SearchMaxFieldsIndexedRawMetricThresholdView
+  | SearchProcessThrottlingRawMetricThresholdView
+  | SearchNumberOfFieldsInIndexRawMetricThresholdView
+  | SearchMaxNgramFieldsIndexedRawMetricThresholdView
+  | SearchReplicationLagTimeMetricThresholdView
+  | NumberMetricThresholdView
+  | SearchOpCounterInsertRawMetricThresholdView
+  | SearchOpCounterDeleteRawMetricThresholdView
+  | SearchOpCounterUpdateRawMetricThresholdView
+  | SearchOpCounterGetMoreRawMetricThresholdView
+  | SearchNumberOfQueriesTotalRawMetricThresholdView
+  | SearchNumberOfQueriesErrorRawMetricThresholdView
+  | SearchNumberOfQueriesSuccessRawMetricThresholdView
+  | FtsJvmMaxMemoryDataMetricThresholdView
+  | FtsJvmCurrentMemoryDataMetricThresholdView;
+export const HostMetricThreshold =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HostMetricThreshold>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type HostMetricAlertConfigViewForNdsGroupNotificationsList =
@@ -28478,113 +26926,26 @@ export const ServerlessConnectionPercentageRawMetricThresholdView =
   }) as any as S.Schema<ServerlessConnectionPercentageRawMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database. */
-export interface ServerlessMetricThreshold {
-  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
-  metricName: string;
-  /** MongoDB Cloud computes the current metric value as an average. */
-  mode?:
-    | ServerlessAVGCommandExecutionTimeMetricThresholdViewMode
-    | ServerlessAVGWriteExecutionTimeMetricThresholdViewMode
-    | TimeMetricThresholdViewMode
-    | ServerlessTotalWriteUnitsRPUMetricThresholdViewMode
-    | RPUMetricThresholdViewMode
-    | ServerlessOpCounterUpdateRawMetricThresholdViewMode
-    | ServerlessOpCounterQueryRawMetricThresholdViewMode
-    | ServerlessOpCounterInsertRawMetricThresholdViewMode
-    | ServerlessOpCounterGetMoreRawMetricThresholdViewMode
-    | ServerlessOpCounterDeleteRawMetricThresholdViewMode
-    | ServerlessOpCounterCDMRawMetricThresholdViewMode
-    | ServerlessNetworkNumRequestRawMetricThresholdViewMode
-    | ServerlessNetworkBytesOutDataMetricThresholdViewMode
-    | ServerlessNetworkBytesInDataMetricThresholdViewMode
-    | DataMetricThresholdViewMode
-    | ServerlessConnectionPercentageRawMetricThresholdViewMode
-    | RawMetricThresholdViewMode;
-  /** Comparison operator to apply when checking the current metric value. */
-  operator?:
-    | ServerlessAVGCommandExecutionTimeMetricThresholdViewOperator
-    | ServerlessAVGWriteExecutionTimeMetricThresholdViewOperator
-    | TimeMetricThresholdViewOperator
-    | ServerlessTotalWriteUnitsRPUMetricThresholdViewOperator
-    | RPUMetricThresholdViewOperator
-    | ServerlessOpCounterUpdateRawMetricThresholdViewOperator
-    | ServerlessOpCounterQueryRawMetricThresholdViewOperator
-    | ServerlessOpCounterInsertRawMetricThresholdViewOperator
-    | ServerlessOpCounterGetMoreRawMetricThresholdViewOperator
-    | ServerlessOpCounterDeleteRawMetricThresholdViewOperator
-    | ServerlessOpCounterCDMRawMetricThresholdViewOperator
-    | ServerlessNetworkNumRequestRawMetricThresholdViewOperator
-    | ServerlessNetworkBytesOutDataMetricThresholdViewOperator
-    | ServerlessNetworkBytesInDataMetricThresholdViewOperator
-    | DataMetricThresholdViewOperator
-    | ServerlessConnectionPercentageRawMetricThresholdViewOperator
-    | RawMetricThresholdViewOperator;
-  /** Value of metric that, when exceeded, triggers an alert. */
-  threshold?: number;
-  units?:
-    | TimeMetricUnits
-    | ServerlessMetricUnits
-    | RawMetricUnits
-    | DataMetricUnits;
-}
-export const ServerlessMetricThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(
-      S.Union(
-        ServerlessAVGCommandExecutionTimeMetricThresholdViewMode,
-        ServerlessAVGWriteExecutionTimeMetricThresholdViewMode,
-        TimeMetricThresholdViewMode,
-        ServerlessTotalWriteUnitsRPUMetricThresholdViewMode,
-        RPUMetricThresholdViewMode,
-        ServerlessOpCounterUpdateRawMetricThresholdViewMode,
-        ServerlessOpCounterQueryRawMetricThresholdViewMode,
-        ServerlessOpCounterInsertRawMetricThresholdViewMode,
-        ServerlessOpCounterGetMoreRawMetricThresholdViewMode,
-        ServerlessOpCounterDeleteRawMetricThresholdViewMode,
-        ServerlessOpCounterCDMRawMetricThresholdViewMode,
-        ServerlessNetworkNumRequestRawMetricThresholdViewMode,
-        ServerlessNetworkBytesOutDataMetricThresholdViewMode,
-        ServerlessNetworkBytesInDataMetricThresholdViewMode,
-        DataMetricThresholdViewMode,
-        ServerlessConnectionPercentageRawMetricThresholdViewMode,
-        RawMetricThresholdViewMode,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        ServerlessAVGCommandExecutionTimeMetricThresholdViewOperator,
-        ServerlessAVGWriteExecutionTimeMetricThresholdViewOperator,
-        TimeMetricThresholdViewOperator,
-        ServerlessTotalWriteUnitsRPUMetricThresholdViewOperator,
-        RPUMetricThresholdViewOperator,
-        ServerlessOpCounterUpdateRawMetricThresholdViewOperator,
-        ServerlessOpCounterQueryRawMetricThresholdViewOperator,
-        ServerlessOpCounterInsertRawMetricThresholdViewOperator,
-        ServerlessOpCounterGetMoreRawMetricThresholdViewOperator,
-        ServerlessOpCounterDeleteRawMetricThresholdViewOperator,
-        ServerlessOpCounterCDMRawMetricThresholdViewOperator,
-        ServerlessNetworkNumRequestRawMetricThresholdViewOperator,
-        ServerlessNetworkBytesOutDataMetricThresholdViewOperator,
-        ServerlessNetworkBytesInDataMetricThresholdViewOperator,
-        DataMetricThresholdViewOperator,
-        ServerlessConnectionPercentageRawMetricThresholdViewOperator,
-        RawMetricThresholdViewOperator,
-      ),
-    ),
-    threshold: S.optional(S.Number),
-    units: S.optional(
-      S.Union(
-        TimeMetricUnits,
-        ServerlessMetricUnits,
-        RawMetricUnits,
-        DataMetricUnits,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "ServerlessMetricThreshold",
-}) as any as S.Schema<ServerlessMetricThreshold>;
+export type ServerlessMetricThreshold =
+  | ServerlessAVGCommandExecutionTimeMetricThresholdView
+  | ServerlessAVGWriteExecutionTimeMetricThresholdView
+  | TimeMetricThresholdView
+  | ServerlessTotalWriteUnitsRPUMetricThresholdView
+  | RPUMetricThresholdView
+  | ServerlessOpCounterUpdateRawMetricThresholdView
+  | ServerlessOpCounterQueryRawMetricThresholdView
+  | ServerlessOpCounterInsertRawMetricThresholdView
+  | ServerlessOpCounterGetMoreRawMetricThresholdView
+  | ServerlessOpCounterDeleteRawMetricThresholdView
+  | ServerlessOpCounterCDMRawMetricThresholdView
+  | ServerlessNetworkNumRequestRawMetricThresholdView
+  | ServerlessNetworkBytesOutDataMetricThresholdView
+  | ServerlessNetworkBytesInDataMetricThresholdView
+  | DataMetricThresholdView
+  | ServerlessConnectionPercentageRawMetricThresholdView
+  | RawMetricThresholdView;
+export const ServerlessMetricThreshold =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ServerlessMetricThreshold>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ServerlessMetricAlertConfigViewForNdsGroupNotificationsList =
@@ -29096,96 +27457,24 @@ export const FlexAVGCommandExecutionTimeMetricThresholdView =
   }) as any as S.Schema<FlexAVGCommandExecutionTimeMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database. */
-export interface FlexClusterMetricThreshold {
-  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
-  metricName: string;
-  /** MongoDB Cloud computes the current metric value as an average. */
-  mode?:
-    | RawMetricThresholdViewMode
-    | FlexConnectionPercentRawMetricThresholdViewMode
-    | DataMetricThresholdViewMode
-    | FlexNetworkBytesInDataMetricThresholdViewMode
-    | FlexNetworkBytesOutDataMetricThresholdViewMode
-    | FlexNetworkNumRequestsRawMetricThresholdViewMode
-    | FlexOpCounterCMDRawMetricThresholdViewMode
-    | FlexOpCounterDeleteRawMetricThresholdViewMode
-    | FlexOpCounterInsertRawMetricThresholdViewMode
-    | FlexOpCounterQueryRawMetricThresholdViewMode
-    | FlexOpCounterUpdateRawMetricThresholdViewMode
-    | FlexOpCounterGetMoreRawMetricThresholdViewMode
-    | TimeMetricThresholdViewMode
-    | FlexAVGWriteExecutionTimeMetricThresholdViewMode
-    | FlexAVGCommandExecutionTimeMetricThresholdViewMode;
-  /** Comparison operator to apply when checking the current metric value. */
-  operator?:
-    | RawMetricThresholdViewOperator
-    | FlexConnectionPercentRawMetricThresholdViewOperator
-    | DataMetricThresholdViewOperator
-    | FlexNetworkBytesInDataMetricThresholdViewOperator
-    | FlexNetworkBytesOutDataMetricThresholdViewOperator
-    | FlexNetworkNumRequestsRawMetricThresholdViewOperator
-    | FlexOpCounterCMDRawMetricThresholdViewOperator
-    | FlexOpCounterDeleteRawMetricThresholdViewOperator
-    | FlexOpCounterInsertRawMetricThresholdViewOperator
-    | FlexOpCounterQueryRawMetricThresholdViewOperator
-    | FlexOpCounterUpdateRawMetricThresholdViewOperator
-    | FlexOpCounterGetMoreRawMetricThresholdViewOperator
-    | TimeMetricThresholdViewOperator
-    | FlexAVGWriteExecutionTimeMetricThresholdViewOperator
-    | FlexAVGCommandExecutionTimeMetricThresholdViewOperator;
-  /** Value of metric that, when exceeded, triggers an alert. */
-  threshold?: number;
-  units?: RawMetricUnits | DataMetricUnits | TimeMetricUnits;
-}
-export const FlexClusterMetricThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(
-      S.Union(
-        RawMetricThresholdViewMode,
-        FlexConnectionPercentRawMetricThresholdViewMode,
-        DataMetricThresholdViewMode,
-        FlexNetworkBytesInDataMetricThresholdViewMode,
-        FlexNetworkBytesOutDataMetricThresholdViewMode,
-        FlexNetworkNumRequestsRawMetricThresholdViewMode,
-        FlexOpCounterCMDRawMetricThresholdViewMode,
-        FlexOpCounterDeleteRawMetricThresholdViewMode,
-        FlexOpCounterInsertRawMetricThresholdViewMode,
-        FlexOpCounterQueryRawMetricThresholdViewMode,
-        FlexOpCounterUpdateRawMetricThresholdViewMode,
-        FlexOpCounterGetMoreRawMetricThresholdViewMode,
-        TimeMetricThresholdViewMode,
-        FlexAVGWriteExecutionTimeMetricThresholdViewMode,
-        FlexAVGCommandExecutionTimeMetricThresholdViewMode,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        RawMetricThresholdViewOperator,
-        FlexConnectionPercentRawMetricThresholdViewOperator,
-        DataMetricThresholdViewOperator,
-        FlexNetworkBytesInDataMetricThresholdViewOperator,
-        FlexNetworkBytesOutDataMetricThresholdViewOperator,
-        FlexNetworkNumRequestsRawMetricThresholdViewOperator,
-        FlexOpCounterCMDRawMetricThresholdViewOperator,
-        FlexOpCounterDeleteRawMetricThresholdViewOperator,
-        FlexOpCounterInsertRawMetricThresholdViewOperator,
-        FlexOpCounterQueryRawMetricThresholdViewOperator,
-        FlexOpCounterUpdateRawMetricThresholdViewOperator,
-        FlexOpCounterGetMoreRawMetricThresholdViewOperator,
-        TimeMetricThresholdViewOperator,
-        FlexAVGWriteExecutionTimeMetricThresholdViewOperator,
-        FlexAVGCommandExecutionTimeMetricThresholdViewOperator,
-      ),
-    ),
-    threshold: S.optional(S.Number),
-    units: S.optional(
-      S.Union(RawMetricUnits, DataMetricUnits, TimeMetricUnits),
-    ),
-  }),
-).annotate({
-  identifier: "FlexClusterMetricThreshold",
-}) as any as S.Schema<FlexClusterMetricThreshold>;
+export type FlexClusterMetricThreshold =
+  | RawMetricThresholdView
+  | FlexConnectionPercentRawMetricThresholdView
+  | DataMetricThresholdView
+  | FlexNetworkBytesInDataMetricThresholdView
+  | FlexNetworkBytesOutDataMetricThresholdView
+  | FlexNetworkNumRequestsRawMetricThresholdView
+  | FlexOpCounterCMDRawMetricThresholdView
+  | FlexOpCounterDeleteRawMetricThresholdView
+  | FlexOpCounterInsertRawMetricThresholdView
+  | FlexOpCounterQueryRawMetricThresholdView
+  | FlexOpCounterUpdateRawMetricThresholdView
+  | FlexOpCounterGetMoreRawMetricThresholdView
+  | TimeMetricThresholdView
+  | FlexAVGWriteExecutionTimeMetricThresholdView
+  | FlexAVGCommandExecutionTimeMetricThresholdView;
+export const FlexClusterMetricThreshold =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FlexClusterMetricThreshold>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type FlexMetricAlertConfigViewForNdsGroupNotificationsList =
@@ -29422,50 +27711,13 @@ export const DLQRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DLQRawMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in stream processors. */
-export interface StreamProcessorMetricThreshold {
-  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
-  metricName: string;
-  /** MongoDB Cloud computes the current metric value as an average. */
-  mode?:
-    | KafkaRawMetricThresholdViewMode
-    | TimeMetricThresholdViewMode
-    | DLQRawMetricThresholdViewMode
-    | RawMetricThresholdViewMode;
-  /** Comparison operator to apply when checking the current metric value. */
-  operator?:
-    | KafkaRawMetricThresholdViewOperator
-    | TimeMetricThresholdViewOperator
-    | DLQRawMetricThresholdViewOperator
-    | RawMetricThresholdViewOperator;
-  /** Value of metric that, when exceeded, triggers an alert. */
-  threshold?: number;
-  units?: RawMetricUnits | TimeMetricUnits;
-}
-export const StreamProcessorMetricThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(
-      S.Union(
-        KafkaRawMetricThresholdViewMode,
-        TimeMetricThresholdViewMode,
-        DLQRawMetricThresholdViewMode,
-        RawMetricThresholdViewMode,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        KafkaRawMetricThresholdViewOperator,
-        TimeMetricThresholdViewOperator,
-        DLQRawMetricThresholdViewOperator,
-        RawMetricThresholdViewOperator,
-      ),
-    ),
-    threshold: S.optional(S.Number),
-    units: S.optional(S.Union(RawMetricUnits, TimeMetricUnits)),
-  }),
-).annotate({
-  identifier: "StreamProcessorMetricThreshold",
-}) as any as S.Schema<StreamProcessorMetricThreshold>;
+export type StreamProcessorMetricThreshold =
+  | KafkaRawMetricThresholdView
+  | TimeMetricThresholdView
+  | DLQRawMetricThresholdView
+  | RawMetricThresholdView;
+export const StreamProcessorMetricThreshold =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<StreamProcessorMetricThreshold>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList =
@@ -29523,227 +27775,27 @@ export const StreamProcessorMetricAlertConfigViewForNdsGroup =
     identifier: "StreamProcessorMetricAlertConfigViewForNdsGroup",
   }) as any as S.Schema<StreamProcessorMetricAlertConfigViewForNdsGroup>;
 
-export interface GroupAlertsConfig {
-  /** Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  created?: string;
-  /** Flag that indicates whether someone enabled this alert configuration for the specified project. */
-  enabled?: boolean;
-  /** Incident that triggered this alert. */
-  eventTypeName:
-    | DefaultAlertConfigViewForNdsGroupEventTypeName
-    | AppServiceEventTypeViewAlertableNoThreshold
-    | AppServiceEventTypeViewAlertableWithThreshold
-    | BillingEventTypeViewAlertableWithThreshold
-    | ClusterEventTypeViewForNdsGroupAlertable
-    | CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold
-    | EncryptionKeyEventTypeViewAlertable
-    | HostEventTypeViewForNdsGroupAlertable
-    | HostMetricEventTypeViewAlertable
-    | MongotuneEventTypeViewAlertable
-    | NDSAutoScalingAuditTypeViewAlertable
-    | NDSX509UserAuthenticationEventTypeViewAlertable
-    | ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold
-    | ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold
-    | ServerlessEventTypeViewAlertable
-    | FlexMetricEventTypeViewAlertable
-    | StreamProcessorEventTypeViewAlertableNoThreshold
-    | StreamProcessorEventTypeViewAlertableWithThreshold;
-  /** Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration. */
-  groupId?: string;
-  /** Unique 24-hexadecimal digit string that identifies this alert configuration. */
-  id?: string;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?:
-    | DefaultAlertConfigViewForNdsGroupLinksList
-    | AppServiceAlertConfigViewForNdsGroupLinksList
-    | AppServiceMetricAlertConfigViewForNdsGroupLinksList
-    | BillingThresholdAlertConfigViewForNdsGroupLinksList
-    | ClusterAlertConfigViewForNdsGroupLinksList
-    | CpsBackupThresholdAlertConfigViewForNdsGroupLinksList
-    | EncryptionKeyAlertConfigViewForNdsGroupLinksList
-    | HostAlertConfigViewForNdsGroupLinksList
-    | HostMetricAlertConfigViewForNdsGroupLinksList
-    | MongotuneAlertConfigViewForNdsGroupLinksList
-    | NDSAutoscalingAlertConfigViewForNdsGroupLinksList
-    | NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList
-    | ReplicaSetAlertConfigViewForNdsGroupLinksList
-    | ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList
-    | ServerlessMetricAlertConfigViewForNdsGroupLinksList
-    | FlexMetricAlertConfigViewForNdsGroupLinksList
-    | StreamProcessorAlertConfigViewForNdsGroupLinksList
-    | StreamProcessorMetricAlertConfigViewForNdsGroupLinksList;
-  /** Matching conditions for target resources. */
-  matchers?:
-    | DefaultAlertConfigViewForNdsGroupMatchersList
-    | AppServiceAlertConfigViewForNdsGroupMatchersList
-    | AppServiceMetricAlertConfigViewForNdsGroupMatchersList
-    | BillingThresholdAlertConfigViewForNdsGroupMatchersList
-    | ClusterAlertConfigViewForNdsGroupMatchersList
-    | CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList
-    | EncryptionKeyAlertConfigViewForNdsGroupMatchersList
-    | HostAlertConfigViewForNdsGroupMatchersList
-    | HostMetricAlertConfigViewForNdsGroupMatchersList
-    | MongotuneAlertConfigViewForNdsGroupMatchersList
-    | NDSAutoscalingAlertConfigViewForNdsGroupMatchersList
-    | NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList
-    | ReplicaSetAlertConfigViewForNdsGroupMatchersList
-    | ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList
-    | ServerlessMetricAlertConfigViewForNdsGroupMatchersList
-    | FlexMetricAlertConfigViewForNdsGroupMatchersList
-    | StreamProcessorAlertConfigViewForNdsGroupMatchersList
-    | StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList;
-  /** List that contains the targets that MongoDB Cloud sends notifications. */
-  notifications:
-    | DefaultAlertConfigViewForNdsGroupNotificationsList
-    | AppServiceAlertConfigViewForNdsGroupNotificationsList
-    | AppServiceMetricAlertConfigViewForNdsGroupNotificationsList
-    | BillingThresholdAlertConfigViewForNdsGroupNotificationsList
-    | ClusterAlertConfigViewForNdsGroupNotificationsList
-    | CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList
-    | EncryptionKeyAlertConfigViewForNdsGroupNotificationsList
-    | HostAlertConfigViewForNdsGroupNotificationsList
-    | HostMetricAlertConfigViewForNdsGroupNotificationsList
-    | MongotuneAlertConfigViewForNdsGroupNotificationsList
-    | NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList
-    | NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList
-    | ReplicaSetAlertConfigViewForNdsGroupNotificationsList
-    | ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList
-    | ServerlessMetricAlertConfigViewForNdsGroupNotificationsList
-    | FlexMetricAlertConfigViewForNdsGroupNotificationsList
-    | StreamProcessorAlertConfigViewForNdsGroupNotificationsList
-    | StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList;
-  severityOverride?: EventSeverity;
-  /** Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updated?: string;
-  metricThreshold?:
-    | AppServiceMetricThreshold
-    | HostMetricThreshold
-    | ServerlessMetricThreshold
-    | FlexClusterMetricThreshold
-    | StreamProcessorMetricThreshold;
-  threshold?:
-    | GreaterThanRawThreshold
-    | GreaterThanTimeThreshold
-    | GreaterThanDaysThresholdView
-    | LessThanDaysThresholdView
-    | AlertsThresholdInteger
-    | StreamProcessorMetricThreshold;
-}
-export const GroupAlertsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    eventTypeName: S.Union(
-      DefaultAlertConfigViewForNdsGroupEventTypeName,
-      AppServiceEventTypeViewAlertableNoThreshold,
-      AppServiceEventTypeViewAlertableWithThreshold,
-      BillingEventTypeViewAlertableWithThreshold,
-      ClusterEventTypeViewForNdsGroupAlertable,
-      CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold,
-      EncryptionKeyEventTypeViewAlertable,
-      HostEventTypeViewForNdsGroupAlertable,
-      HostMetricEventTypeViewAlertable,
-      MongotuneEventTypeViewAlertable,
-      NDSAutoScalingAuditTypeViewAlertable,
-      NDSX509UserAuthenticationEventTypeViewAlertable,
-      ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold,
-      ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold,
-      ServerlessEventTypeViewAlertable,
-      FlexMetricEventTypeViewAlertable,
-      StreamProcessorEventTypeViewAlertableNoThreshold,
-      StreamProcessorEventTypeViewAlertableWithThreshold,
-    ),
-    groupId: S.optional(S.String),
-    id: S.optional(S.String),
-    links: S.optional(
-      S.Union(
-        DefaultAlertConfigViewForNdsGroupLinksList,
-        AppServiceAlertConfigViewForNdsGroupLinksList,
-        AppServiceMetricAlertConfigViewForNdsGroupLinksList,
-        BillingThresholdAlertConfigViewForNdsGroupLinksList,
-        ClusterAlertConfigViewForNdsGroupLinksList,
-        CpsBackupThresholdAlertConfigViewForNdsGroupLinksList,
-        EncryptionKeyAlertConfigViewForNdsGroupLinksList,
-        HostAlertConfigViewForNdsGroupLinksList,
-        HostMetricAlertConfigViewForNdsGroupLinksList,
-        MongotuneAlertConfigViewForNdsGroupLinksList,
-        NDSAutoscalingAlertConfigViewForNdsGroupLinksList,
-        NDSX509UserAuthenticationAlertConfigViewForNdsGroupLinksList,
-        ReplicaSetAlertConfigViewForNdsGroupLinksList,
-        ReplicaSetThresholdAlertConfigViewForNdsGroupLinksList,
-        ServerlessMetricAlertConfigViewForNdsGroupLinksList,
-        FlexMetricAlertConfigViewForNdsGroupLinksList,
-        StreamProcessorAlertConfigViewForNdsGroupLinksList,
-        StreamProcessorMetricAlertConfigViewForNdsGroupLinksList,
-      ),
-    ),
-    matchers: S.optional(
-      S.Union(
-        DefaultAlertConfigViewForNdsGroupMatchersList,
-        AppServiceAlertConfigViewForNdsGroupMatchersList,
-        AppServiceMetricAlertConfigViewForNdsGroupMatchersList,
-        BillingThresholdAlertConfigViewForNdsGroupMatchersList,
-        ClusterAlertConfigViewForNdsGroupMatchersList,
-        CpsBackupThresholdAlertConfigViewForNdsGroupMatchersList,
-        EncryptionKeyAlertConfigViewForNdsGroupMatchersList,
-        HostAlertConfigViewForNdsGroupMatchersList,
-        HostMetricAlertConfigViewForNdsGroupMatchersList,
-        MongotuneAlertConfigViewForNdsGroupMatchersList,
-        NDSAutoscalingAlertConfigViewForNdsGroupMatchersList,
-        NDSX509UserAuthenticationAlertConfigViewForNdsGroupMatchersList,
-        ReplicaSetAlertConfigViewForNdsGroupMatchersList,
-        ReplicaSetThresholdAlertConfigViewForNdsGroupMatchersList,
-        ServerlessMetricAlertConfigViewForNdsGroupMatchersList,
-        FlexMetricAlertConfigViewForNdsGroupMatchersList,
-        StreamProcessorAlertConfigViewForNdsGroupMatchersList,
-        StreamProcessorMetricAlertConfigViewForNdsGroupMatchersList,
-      ),
-    ),
-    notifications: S.Union(
-      DefaultAlertConfigViewForNdsGroupNotificationsList,
-      AppServiceAlertConfigViewForNdsGroupNotificationsList,
-      AppServiceMetricAlertConfigViewForNdsGroupNotificationsList,
-      BillingThresholdAlertConfigViewForNdsGroupNotificationsList,
-      ClusterAlertConfigViewForNdsGroupNotificationsList,
-      CpsBackupThresholdAlertConfigViewForNdsGroupNotificationsList,
-      EncryptionKeyAlertConfigViewForNdsGroupNotificationsList,
-      HostAlertConfigViewForNdsGroupNotificationsList,
-      HostMetricAlertConfigViewForNdsGroupNotificationsList,
-      MongotuneAlertConfigViewForNdsGroupNotificationsList,
-      NDSAutoscalingAlertConfigViewForNdsGroupNotificationsList,
-      NDSX509UserAuthenticationAlertConfigViewForNdsGroupNotificationsList,
-      ReplicaSetAlertConfigViewForNdsGroupNotificationsList,
-      ReplicaSetThresholdAlertConfigViewForNdsGroupNotificationsList,
-      ServerlessMetricAlertConfigViewForNdsGroupNotificationsList,
-      FlexMetricAlertConfigViewForNdsGroupNotificationsList,
-      StreamProcessorAlertConfigViewForNdsGroupNotificationsList,
-      StreamProcessorMetricAlertConfigViewForNdsGroupNotificationsList,
-    ),
-    severityOverride: S.optional(EventSeverity),
-    updated: S.optional(S.String),
-    metricThreshold: S.optional(
-      S.Union(
-        AppServiceMetricThreshold,
-        HostMetricThreshold,
-        ServerlessMetricThreshold,
-        FlexClusterMetricThreshold,
-        StreamProcessorMetricThreshold,
-      ),
-    ),
-    threshold: S.optional(
-      S.Union(
-        GreaterThanRawThreshold,
-        GreaterThanTimeThreshold,
-        GreaterThanDaysThresholdView,
-        LessThanDaysThresholdView,
-        AlertsThresholdInteger,
-        StreamProcessorMetricThreshold,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "GroupAlertsConfig",
-}) as any as S.Schema<GroupAlertsConfig>;
+export type GroupAlertsConfig =
+  | DefaultAlertConfigViewForNdsGroup
+  | AppServiceAlertConfigViewForNdsGroup
+  | AppServiceMetricAlertConfigViewForNdsGroup
+  | BillingThresholdAlertConfigViewForNdsGroup
+  | ClusterAlertConfigViewForNdsGroup
+  | CpsBackupThresholdAlertConfigViewForNdsGroup
+  | EncryptionKeyAlertConfigViewForNdsGroup
+  | HostAlertConfigViewForNdsGroup
+  | HostMetricAlertConfigViewForNdsGroup
+  | MongotuneAlertConfigViewForNdsGroup
+  | NDSAutoscalingAlertConfigViewForNdsGroup
+  | NDSX509UserAuthenticationAlertConfigViewForNdsGroup
+  | ReplicaSetAlertConfigViewForNdsGroup
+  | ReplicaSetThresholdAlertConfigViewForNdsGroup
+  | ServerlessMetricAlertConfigViewForNdsGroup
+  | FlexMetricAlertConfigViewForNdsGroup
+  | StreamProcessorAlertConfigViewForNdsGroup
+  | StreamProcessorMetricAlertConfigViewForNdsGroup;
+export const GroupAlertsConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupAlertsConfig>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAlertConfigViewResultsList = Array<GroupAlertsConfig>;
@@ -30751,141 +28803,17 @@ export const DefaultAlertViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultAlertViewForNdsGroup",
 }) as any as S.Schema<DefaultAlertViewForNdsGroup>;
 
-export interface AlertViewForNdsGroup {
-  /** Date and time until which this alert has been acknowledged. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert. - To acknowledge this alert forever, set the parameter value to 100 years in the future. - To unacknowledge a previously acknowledged alert, do not set this parameter value. */
-  acknowledgedUntil?: string;
-  /** Comment that a MongoDB Cloud user submitted when acknowledging the alert. */
-  acknowledgementComment?: string;
-  /** MongoDB Cloud username of the person who acknowledged the alert. The response returns this parameter if a MongoDB Cloud user previously acknowledged this alert. */
-  acknowledgingUsername?: string;
-  /** Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert. */
-  alertConfigId: string;
-  /** Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  created: string;
-  /** Incident that triggered this alert. */
-  eventTypeName:
-    | AppServiceEventTypeViewAlertable
-    | ClusterEventTypeViewForNdsGroupAlertable
-    | HostEventTypeViewForNdsGroupAlertable
-    | FlexMetricEventTypeViewAlertable
-    | HostMetricEventTypeViewAlertable
-    | ReplicaSetEventTypeViewForNdsGroupAlertable
-    | DefaultAlertViewForNdsGroupEventTypeName;
-  /** Unique 24-hexadecimal digit string that identifies the project that owns this alert. */
-  groupId?: string;
-  /** Unique 24-hexadecimal digit string that identifies this alert. */
-  id: string;
-  /** Date and time that any notifications were last sent for this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert. */
-  lastNotified?: string;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?:
-    | AppServiceAlertViewLinksList
-    | ClusterAlertViewForNdsGroupLinksList
-    | HostAlertViewForNdsGroupLinksList
-    | FlexMetricAlertLinksList
-    | HostMetricAlertLinksList
-    | ReplicaSetAlertViewForNdsGroupLinksList
-    | StreamProcessorAlertViewForNdsGroupLinksList
-    | DefaultAlertViewForNdsGroupLinksList;
-  /** Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies. */
-  orgId?: string;
-  /** Date and time that this alert changed to `"status" : "CLOSED"`. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once `"status" : "CLOSED"`. */
-  resolved?: string;
-  /** State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved. */
-  status:
-    | AppServiceAlertViewStatus
-    | ClusterAlertViewForNdsGroupStatus
-    | HostAlertViewForNdsGroupStatus
-    | FlexMetricAlertStatus
-    | HostMetricAlertStatus
-    | ReplicaSetAlertViewForNdsGroupStatus
-    | StreamProcessorAlertViewForNdsGroupStatus
-    | DefaultAlertViewForNdsGroupStatus;
-  /** Date and time when someone last updated this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updated: string;
-  /** Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters. */
-  clusterName?: string;
-  /** Hostname and port of the host to which this alert applies. The resource returns this parameter for alerts of events impacting hosts or replica sets. */
-  hostnameAndPort?: string;
-  /** Name of the replica set to which this alert applies. The response returns this parameter for alerts of events impacting backups, hosts, or replica sets. */
-  replicaSetName?: string;
-  currentValue?: HostMetricValue;
-  /** Name of the metric against which Atlas checks the configured alert condition. */
-  metricName?: string;
-  /** List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state. */
-  nonRunningHostIds?: ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList;
-  /** Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters. */
-  parentClusterId?: string;
-  /** The name of the Stream Processing Workspace to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processing Workspaces. */
-  instanceName?: string;
-  /** The error message associated with the Stream Processor to which this alert applies. */
-  processorErrorMsg?: string;
-  /** The name of the Stream Processor to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processors. */
-  processorName?: string;
-  /** The state of the Stream Processor to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processors. */
-  processorState?: string;
-}
-export const AlertViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acknowledgedUntil: S.optional(S.String),
-    acknowledgementComment: S.optional(S.String),
-    acknowledgingUsername: S.optional(S.String),
-    alertConfigId: S.String,
-    created: S.String,
-    eventTypeName: S.Union(
-      AppServiceEventTypeViewAlertable,
-      ClusterEventTypeViewForNdsGroupAlertable,
-      HostEventTypeViewForNdsGroupAlertable,
-      FlexMetricEventTypeViewAlertable,
-      HostMetricEventTypeViewAlertable,
-      ReplicaSetEventTypeViewForNdsGroupAlertable,
-      DefaultAlertViewForNdsGroupEventTypeName,
-    ),
-    groupId: S.optional(S.String),
-    id: S.String,
-    lastNotified: S.optional(S.String),
-    links: S.optional(
-      S.Union(
-        AppServiceAlertViewLinksList,
-        ClusterAlertViewForNdsGroupLinksList,
-        HostAlertViewForNdsGroupLinksList,
-        FlexMetricAlertLinksList,
-        HostMetricAlertLinksList,
-        ReplicaSetAlertViewForNdsGroupLinksList,
-        StreamProcessorAlertViewForNdsGroupLinksList,
-        DefaultAlertViewForNdsGroupLinksList,
-      ),
-    ),
-    orgId: S.optional(S.String),
-    resolved: S.optional(S.String),
-    status: S.Union(
-      AppServiceAlertViewStatus,
-      ClusterAlertViewForNdsGroupStatus,
-      HostAlertViewForNdsGroupStatus,
-      FlexMetricAlertStatus,
-      HostMetricAlertStatus,
-      ReplicaSetAlertViewForNdsGroupStatus,
-      StreamProcessorAlertViewForNdsGroupStatus,
-      DefaultAlertViewForNdsGroupStatus,
-    ),
-    updated: S.String,
-    clusterName: S.optional(S.String),
-    hostnameAndPort: S.optional(S.String),
-    replicaSetName: S.optional(S.String),
-    currentValue: S.optional(HostMetricValue),
-    metricName: S.optional(S.String),
-    nonRunningHostIds: S.optional(
-      ReplicaSetAlertViewForNdsGroupNonRunningHostIdsList,
-    ),
-    parentClusterId: S.optional(S.String),
-    instanceName: S.optional(S.String),
-    processorErrorMsg: S.optional(S.String),
-    processorName: S.optional(S.String),
-    processorState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlertViewForNdsGroup",
-}) as any as S.Schema<AlertViewForNdsGroup>;
+export type AlertViewForNdsGroup =
+  | AppServiceAlertView
+  | ClusterAlertViewForNdsGroup
+  | HostAlertViewForNdsGroup
+  | FlexMetricAlert
+  | HostMetricAlert
+  | ReplicaSetAlertViewForNdsGroup
+  | StreamProcessorAlertViewForNdsGroup
+  | DefaultAlertViewForNdsGroup;
+export const AlertViewForNdsGroup =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AlertViewForNdsGroup>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedAlertViewResultsList = Array<AlertViewForNdsGroup>;
@@ -33624,53 +31552,11 @@ export const AWSKMSEARPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AWSKMSEARPrivateEndpoint>;
 
 /** Encryption At Rest Private Endpoint. */
-export interface EARPrivateEndpoint {
-  /** Human-readable label that identifies the cloud provider for the Encryption At Rest private endpoint. */
-  cloudProvider?:
-    | AzureKeyVaultEARPrivateEndpointCloudProvider
-    | AWSKMSEARPrivateEndpointCloudProvider;
-  /** Error message for failures associated with the Encryption At Rest private endpoint. */
-  errorMessage?: string;
-  /** Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. */
-  id?: string;
-  /** Connection name of the Azure Private Endpoint. */
-  privateEndpointConnectionName?: string;
-  /** Cloud provider region in which the Encryption At Rest private endpoint is located. */
-  regionName?:
-    | AzureKeyVaultEARPrivateEndpointRegionName
-    | AWSKMSEARPrivateEndpointRegionName;
-  /** State of the Encryption At Rest private endpoint. */
-  status?:
-    | AzureKeyVaultEARPrivateEndpointStatus
-    | AWSKMSEARPrivateEndpointStatus;
-}
-export const EARPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudProvider: S.optional(
-      S.Union(
-        AzureKeyVaultEARPrivateEndpointCloudProvider,
-        AWSKMSEARPrivateEndpointCloudProvider,
-      ),
-    ),
-    errorMessage: S.optional(S.String),
-    id: S.optional(S.String),
-    privateEndpointConnectionName: S.optional(S.String),
-    regionName: S.optional(
-      S.Union(
-        AzureKeyVaultEARPrivateEndpointRegionName,
-        AWSKMSEARPrivateEndpointRegionName,
-      ),
-    ),
-    status: S.optional(
-      S.Union(
-        AzureKeyVaultEARPrivateEndpointStatus,
-        AWSKMSEARPrivateEndpointStatus,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "EARPrivateEndpoint",
-}) as any as S.Schema<EARPrivateEndpoint>;
+export type EARPrivateEndpoint =
+  | AzureKeyVaultEARPrivateEndpoint
+  | AWSKMSEARPrivateEndpoint;
+export const EARPrivateEndpoint =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EARPrivateEndpoint>;
 
 export interface GetGroupEventRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -44684,261 +42570,36 @@ export const AtlasResourcePolicyAuditForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AtlasResourcePolicyAuditForNdsGroup",
 }) as any as S.Schema<AtlasResourcePolicyAuditForNdsGroup>;
 
-export interface EventViewForNdsGroup {
-  /** Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the `userId` parameter. */
-  apiKeyId?: string;
-  /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  created: string;
-  /** Unique identifier of event type. */
-  eventTypeName:
-    | DefaultEventViewForNdsGroupEventTypeName
-    | AlertAuditTypeView
-    | AlertConfigAuditTypeView
-    | ApiUserEventTypeViewForNdsGroup
-    | ServiceAccountEventTypeViewForNdsGroup
-    | AutomationConfigEventTypeView
-    | AppServiceEventTypeView
-    | BillingEventTypeViewForNdsGroup
-    | ClusterEventTypeViewForNdsGroup
-    | DataExplorerAccessedEventTypeView
-    | DataExplorerEventTypeView
-    | FTSIndexAuditTypeView
-    | HostEventTypeViewForNdsGroup
-    | HostMetricEventTypeView
-    | NDSAuditTypeViewForNdsGroup
-    | NDSAutoScalingAuditTypeViewForNdsGroup
-    | NDSServerlessInstanceAuditTypeView
-    | NDSTenantEndpointAuditTypeView
-    | ReplicaSetEventTypeViewForNdsGroup
-    | SearchDeploymentAuditTypeView
-    | TeamEventTypeViewForNdsGroup
-    | UserEventTypeViewForNdsGroup
-    | ResourceEventTypeView
-    | StreamsEventTypeViewForNdsGroup
-    | StreamProcessorEventTypeViewForNdsGroup
-    | ChartsAuditTypeView
-    | AtlasResourcePolicyAuditForNdsGroupEventTypeName;
-  /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
-  groupId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the event. */
-  id: string;
-  /** Flag that indicates whether a MongoDB employee triggered the specified event. */
-  isGlobalAdmin?: boolean;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?:
-    | DefaultEventViewForNdsGroupLinksList
-    | AlertAuditLinksList
-    | AlertConfigAuditLinksList
-    | ApiUserEventViewForNdsGroupLinksList
-    | ServiceAccountGroupEventsLinksList
-    | AutomationConfigEventViewLinksList
-    | AppServiceEventViewLinksList
-    | BillingEventViewForNdsGroupLinksList
-    | ClusterEventViewForNdsGroupLinksList
-    | DataExplorerAccessedEventViewLinksList
-    | DataExplorerEventLinksList
-    | FTSIndexAuditViewLinksList
-    | HostEventViewForNdsGroupLinksList
-    | HostMetricEventLinksList
-    | NDSAuditViewForNdsGroupLinksList
-    | NDSAutoScalingAuditViewForNdsGroupLinksList
-    | NDSServerlessInstanceAuditViewLinksList
-    | NDSTenantEndpointAuditViewLinksList
-    | ForNdsGroupLinksList
-    | SearchDeploymentAuditViewLinksList
-    | TeamEventViewForNdsGroupLinksList
-    | UserEventViewForNdsGroupLinksList
-    | ResourceEventViewForNdsGroupLinksList
-    | StreamsEventViewForNdsGroupLinksList
-    | StreamProcessorEventViewForNdsGroupLinksList
-    | ChartsAuditLinksList
-    | AtlasResourcePolicyAuditForNdsGroupLinksList;
-  /** Unique 24-hexadecimal digit string that identifies the organization to which these events apply. */
-  orgId?: string;
-  /** Public part of the API key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter. */
-  publicKey?: string;
-  raw?: Raw;
-  /** IPv4 or IPv6 address from which the user triggered this event. */
-  remoteAddress?: string;
-  /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
-  userId?: string;
-  /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
-  username?: string;
-  /** Unique 24-hexadecimal digit string that identifies the alert associated with the event. */
-  alertId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the alert configuration associated with the `alertId`. */
-  alertConfigId?: string;
-  /** Public part of the API key that this event targets. */
-  targetPublicKey?: string | null;
-  /** Entry in the list of source host addresses that the API key accepts and this event targets. */
-  whitelistEntry?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies of the invoice associated with the event. */
-  invoiceId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event. */
-  paymentId?: string;
-  /** Human-readable label of the shard associated with the event. */
-  shardName?: string;
-  /** Human-readable label of the collection on which the event occurred. The resource returns this parameter when the `eventTypeName` includes `DATA_EXPLORER`. */
-  collection?: string;
-  /** Human-readable label of the database on which this incident occurred. The resource returns this parameter when `"eventTypeName" : "DATA_EXPLORER"` or `"eventTypeName" : "DATA_EXPLORER_CRUD"`. */
-  database?: string;
-  /** Action that the database attempted to execute when the event triggered. The response returns this parameter when `eventTypeName" : "DATA_EXPLORER"`. */
-  opType?: string;
-  /** Unique 24-hexadecimal digit string that identifies the Data Explorer session associated with the event. */
-  sessionId?: string;
-  /** Desk location of MongoDB employee associated with the event. */
-  deskLocation?: string;
-  /** Identifier of MongoDB employee associated with the event. */
-  employeeIdentifier?: string;
-  /** IANA port on which the MongoDB process listens for requests. */
-  port?: number;
-  /** Human-readable label of the replica set associated with the event. */
-  replicaSetName?: string | null;
-  currentValue?: HostMetricValue;
-  /** Human-readable label of the metric associated with the `alertId`. This field may change type of `currentValue` field. */
-  metricName?: string;
-  /** The username of the MongoDB User that was created, deleted, or edited. */
-  dbUserUsername?: string;
-  /** Unique 24-hexadecimal digit string that identifies the endpoint associated with this event. */
-  endpointId?: string;
-  /** Unique identification string that the cloud provider uses to identify the private endpoint. */
-  providerEndpointId?: string;
-  /** Fully qualified domain name (FQDN) of the host associated with the event. */
-  hostname?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies the organization team associated with this event. */
-  teamId?: string;
-  /** Email address for the console user that this event targets. The resource returns this parameter when `"eventTypeName" : "USER"`. */
-  targetUsername?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies the resource associated with the event. */
-  resourceId?: string;
-  /** Unique identifier of resource type. */
-  resourceType?: string;
-  /** Name of the stream processing workspace associated with the event. */
-  instanceName?: string;
-  /** Error message linked to the stream processor associated with the event. */
-  processorErrorMsg?: string;
-  /** Name of the stream processor associated with the event. */
-  processorName?: string;
-  /** State of the stream processor associated with the event. */
-  processorState?: string;
-  /** Unique 24-hexadecimal character string that identifies the resource policy. */
-  resourcePolicyId?: string;
-  /** String representation of the violated resource policy ids. */
-  violatedPolicies?: AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList;
-  /** Resource policy action taken by the user and evaluated against the currently active policies. */
-  violationAction?: string;
-}
-export const EventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeyId: S.optional(S.String),
-    created: S.String,
-    eventTypeName: S.Union(
-      DefaultEventViewForNdsGroupEventTypeName,
-      AlertAuditTypeView,
-      AlertConfigAuditTypeView,
-      ApiUserEventTypeViewForNdsGroup,
-      ServiceAccountEventTypeViewForNdsGroup,
-      AutomationConfigEventTypeView,
-      AppServiceEventTypeView,
-      BillingEventTypeViewForNdsGroup,
-      ClusterEventTypeViewForNdsGroup,
-      DataExplorerAccessedEventTypeView,
-      DataExplorerEventTypeView,
-      FTSIndexAuditTypeView,
-      HostEventTypeViewForNdsGroup,
-      HostMetricEventTypeView,
-      NDSAuditTypeViewForNdsGroup,
-      NDSAutoScalingAuditTypeViewForNdsGroup,
-      NDSServerlessInstanceAuditTypeView,
-      NDSTenantEndpointAuditTypeView,
-      ReplicaSetEventTypeViewForNdsGroup,
-      SearchDeploymentAuditTypeView,
-      TeamEventTypeViewForNdsGroup,
-      UserEventTypeViewForNdsGroup,
-      ResourceEventTypeView,
-      StreamsEventTypeViewForNdsGroup,
-      StreamProcessorEventTypeViewForNdsGroup,
-      ChartsAuditTypeView,
-      AtlasResourcePolicyAuditForNdsGroupEventTypeName,
-    ),
-    groupId: S.optional(S.String),
-    id: S.String,
-    isGlobalAdmin: S.optional(S.Boolean),
-    links: S.optional(
-      S.Union(
-        DefaultEventViewForNdsGroupLinksList,
-        AlertAuditLinksList,
-        AlertConfigAuditLinksList,
-        ApiUserEventViewForNdsGroupLinksList,
-        ServiceAccountGroupEventsLinksList,
-        AutomationConfigEventViewLinksList,
-        AppServiceEventViewLinksList,
-        BillingEventViewForNdsGroupLinksList,
-        ClusterEventViewForNdsGroupLinksList,
-        DataExplorerAccessedEventViewLinksList,
-        DataExplorerEventLinksList,
-        FTSIndexAuditViewLinksList,
-        HostEventViewForNdsGroupLinksList,
-        HostMetricEventLinksList,
-        NDSAuditViewForNdsGroupLinksList,
-        NDSAutoScalingAuditViewForNdsGroupLinksList,
-        NDSServerlessInstanceAuditViewLinksList,
-        NDSTenantEndpointAuditViewLinksList,
-        ForNdsGroupLinksList,
-        SearchDeploymentAuditViewLinksList,
-        TeamEventViewForNdsGroupLinksList,
-        UserEventViewForNdsGroupLinksList,
-        ResourceEventViewForNdsGroupLinksList,
-        StreamsEventViewForNdsGroupLinksList,
-        StreamProcessorEventViewForNdsGroupLinksList,
-        ChartsAuditLinksList,
-        AtlasResourcePolicyAuditForNdsGroupLinksList,
-      ),
-    ),
-    orgId: S.optional(S.String),
-    publicKey: S.optional(S.String),
-    raw: S.optional(Raw),
-    remoteAddress: S.optional(S.String),
-    userId: S.optional(S.String),
-    username: S.optional(S.String),
-    alertId: S.optional(S.String),
-    alertConfigId: S.optional(S.String),
-    targetPublicKey: S.optional(S.NullOr(S.String)),
-    whitelistEntry: S.optional(S.NullOr(S.String)),
-    invoiceId: S.optional(S.String),
-    paymentId: S.optional(S.String),
-    shardName: S.optional(S.String),
-    collection: S.optional(S.String),
-    database: S.optional(S.String),
-    opType: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    deskLocation: S.optional(S.String),
-    employeeIdentifier: S.optional(S.String),
-    port: S.optional(S.Number),
-    replicaSetName: S.optional(S.NullOr(S.String)),
-    currentValue: S.optional(HostMetricValue),
-    metricName: S.optional(S.String),
-    dbUserUsername: S.optional(S.String),
-    endpointId: S.optional(S.String),
-    providerEndpointId: S.optional(S.String),
-    hostname: S.optional(S.NullOr(S.String)),
-    teamId: S.optional(S.String),
-    targetUsername: S.optional(S.NullOr(S.String)),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    instanceName: S.optional(S.String),
-    processorErrorMsg: S.optional(S.String),
-    processorName: S.optional(S.String),
-    processorState: S.optional(S.String),
-    resourcePolicyId: S.optional(S.String),
-    violatedPolicies: S.optional(
-      AtlasResourcePolicyAuditForNdsGroupViolatedPoliciesList,
-    ),
-    violationAction: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventViewForNdsGroup",
-}) as any as S.Schema<EventViewForNdsGroup>;
+export type EventViewForNdsGroup =
+  | DefaultEventViewForNdsGroup
+  | AlertAudit
+  | AlertConfigAudit
+  | ApiUserEventViewForNdsGroup
+  | ServiceAccountGroupEvents
+  | AutomationConfigEventView
+  | AppServiceEventView
+  | BillingEventViewForNdsGroup
+  | ClusterEventViewForNdsGroup
+  | DataExplorerAccessedEventView
+  | DataExplorerEvent
+  | FTSIndexAuditView
+  | HostEventViewForNdsGroup
+  | HostMetricEvent
+  | NDSAuditViewForNdsGroup
+  | NDSAutoScalingAuditViewForNdsGroup
+  | NDSServerlessInstanceAuditView
+  | NDSTenantEndpointAuditView
+  | ForNdsGroup
+  | SearchDeploymentAuditView
+  | TeamEventViewForNdsGroup
+  | UserEventViewForNdsGroup
+  | ResourceEventViewForNdsGroup
+  | StreamsEventViewForNdsGroup
+  | StreamProcessorEventViewForNdsGroup
+  | ChartsAudit
+  | AtlasResourcePolicyAuditForNdsGroup;
+export const EventViewForNdsGroup =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventViewForNdsGroup>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type GroupPaginatedEventViewResultsList = Array<EventViewForNdsGroup>;
@@ -48225,140 +45886,21 @@ export const AtlasResourcePolicyAuditForOrg = /*@__PURE__*/ S.suspend(() =>
   identifier: "AtlasResourcePolicyAuditForOrg",
 }) as any as S.Schema<AtlasResourcePolicyAuditForOrg>;
 
-export interface EventViewForOrg {
-  /** Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the `userId` parameter. */
-  apiKeyId?: string;
-  /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  created: string;
-  /** Unique identifier of event type. */
-  eventTypeName:
-    | DefaultEventViewForOrgEventTypeName
-    | AlertAuditTypeView
-    | AlertConfigAuditTypeView
-    | ApiUserEventTypeViewForOrg
-    | ServiceAccountEventTypeViewForOrg
-    | BillingEventTypeViewForOrg
-    | NDSAuditTypeViewForOrg
-    | OrgEventTypeViewForOrg
-    | TeamEventTypeView
-    | UserEventTypeViewForOrg
-    | ResourceEventTypeViewForOrg
-    | AtlasResourcePolicyAuditForOrgEventTypeName;
-  /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
-  groupId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the event. */
-  id: string;
-  /** Flag that indicates whether a MongoDB employee triggered the specified event. */
-  isGlobalAdmin?: boolean;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?:
-    | DefaultEventViewForOrgLinksList
-    | AlertAuditLinksList
-    | AlertConfigAuditLinksList
-    | ApiUserEventViewForOrgLinksList
-    | ServiceAccountOrgEventsLinksList
-    | BillingEventViewForOrgLinksList
-    | NDSAuditViewForOrgLinksList
-    | OrgEventViewForOrgLinksList
-    | TeamEventLinksList
-    | UserEventViewForOrgLinksList
-    | ResourceEventViewForOrgLinksList
-    | AtlasResourcePolicyAuditForOrgLinksList;
-  /** Unique 24-hexadecimal digit string that identifies the organization to which these events apply. */
-  orgId?: string;
-  /** Public part of the API key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter. */
-  publicKey?: string;
-  raw?: Raw;
-  /** IPv4 or IPv6 address from which the user triggered this event. */
-  remoteAddress?: string;
-  /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
-  userId?: string;
-  /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
-  username?: string;
-  /** Unique 24-hexadecimal digit string that identifies the alert associated with the event. */
-  alertId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the alert configuration associated with the `alertId`. */
-  alertConfigId?: string;
-  /** Public part of the API key that this event targets. */
-  targetPublicKey?: string | null;
-  /** Entry in the list of source host addresses that the API key accepts and this event targets. */
-  whitelistEntry?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies of the invoice associated with the event. */
-  invoiceId?: string;
-  /** Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event. */
-  paymentId?: string;
-  /** The username of the MongoDB User that was created, deleted, or edited. */
-  dbUserUsername?: string;
-  /** Unique 24-hexadecimal digit string that identifies the organization team associated with this event. */
-  teamId?: string;
-  /** Email address for the console user that this event targets. The resource returns this parameter when `"eventTypeName" : "USER"`. */
-  targetUsername?: string | null;
-  /** Unique 24-hexadecimal digit string that identifies the resource associated with the event. */
-  resourceId?: string;
-  /** Unique identifier of resource type. */
-  resourceType?: string;
-  /** Unique 24-hexadecimal character string that identifies the resource policy. */
-  resourcePolicyId?: string;
-}
-export const EventViewForOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeyId: S.optional(S.String),
-    created: S.String,
-    eventTypeName: S.Union(
-      DefaultEventViewForOrgEventTypeName,
-      AlertAuditTypeView,
-      AlertConfigAuditTypeView,
-      ApiUserEventTypeViewForOrg,
-      ServiceAccountEventTypeViewForOrg,
-      BillingEventTypeViewForOrg,
-      NDSAuditTypeViewForOrg,
-      OrgEventTypeViewForOrg,
-      TeamEventTypeView,
-      UserEventTypeViewForOrg,
-      ResourceEventTypeViewForOrg,
-      AtlasResourcePolicyAuditForOrgEventTypeName,
-    ),
-    groupId: S.optional(S.String),
-    id: S.String,
-    isGlobalAdmin: S.optional(S.Boolean),
-    links: S.optional(
-      S.Union(
-        DefaultEventViewForOrgLinksList,
-        AlertAuditLinksList,
-        AlertConfigAuditLinksList,
-        ApiUserEventViewForOrgLinksList,
-        ServiceAccountOrgEventsLinksList,
-        BillingEventViewForOrgLinksList,
-        NDSAuditViewForOrgLinksList,
-        OrgEventViewForOrgLinksList,
-        TeamEventLinksList,
-        UserEventViewForOrgLinksList,
-        ResourceEventViewForOrgLinksList,
-        AtlasResourcePolicyAuditForOrgLinksList,
-      ),
-    ),
-    orgId: S.optional(S.String),
-    publicKey: S.optional(S.String),
-    raw: S.optional(Raw),
-    remoteAddress: S.optional(S.String),
-    userId: S.optional(S.String),
-    username: S.optional(S.String),
-    alertId: S.optional(S.String),
-    alertConfigId: S.optional(S.String),
-    targetPublicKey: S.optional(S.NullOr(S.String)),
-    whitelistEntry: S.optional(S.NullOr(S.String)),
-    invoiceId: S.optional(S.String),
-    paymentId: S.optional(S.String),
-    dbUserUsername: S.optional(S.String),
-    teamId: S.optional(S.String),
-    targetUsername: S.optional(S.NullOr(S.String)),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    resourcePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventViewForOrg",
-}) as any as S.Schema<EventViewForOrg>;
+export type EventViewForOrg =
+  | DefaultEventViewForOrg
+  | AlertAudit
+  | AlertConfigAudit
+  | ApiUserEventViewForOrg
+  | ServiceAccountOrgEvents
+  | BillingEventViewForOrg
+  | NDSAuditViewForOrg
+  | OrgEventViewForOrg
+  | TeamEvent
+  | UserEventViewForOrg
+  | ResourceEventViewForOrg
+  | AtlasResourcePolicyAuditForOrg;
+export const EventViewForOrg =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventViewForOrg>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type OrgPaginatedEventViewResultsList = Array<EventViewForOrg>;
@@ -53091,47 +50633,11 @@ export const VectorSearchIndexDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorSearchIndexDefinition>;
 
 /** The index definition to update the search index to. */
-export interface UpdateGroupClusterSearchIndexRequestDefinition {
-  /** Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves making the following changes to the text in fields: - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization) MongoDB Cloud uses the process you select to build the Atlas Search index. */
-  analyzer?: TextSearchIndexDefinitionAnalyzer | (string & {});
-  /** List of user-defined methods to convert database field text into searchable words. */
-  analyzers?: TextSearchIndexDefinitionAnalyzersList;
-  mappings?: SearchMappings;
-  /** Number of index partitions. Allowed values are [1, 2, 4]. */
-  numPartitions?: number;
-  /** Method applied to identify words when searching this index. */
-  searchAnalyzer?: TextSearchIndexDefinitionSearchAnalyzer | (string & {});
-  /** Sort definition for the index. When defined, the index will be pre-sorted on the specified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options. The `order` field is required (1=ascending, -1=descending).The `noData` field is optional and controls how missing values are sorted(default: "lowest"). */
-  sort?: unknown;
-  /** Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search. Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields. */
-  storedSource?: unknown;
-  /** Rule sets that map words to their synonyms in this index. */
-  synonyms?: TextSearchIndexDefinitionSynonymsList;
-  /** Type sets for the index. */
-  typeSets?: TextSearchIndexDefinitionTypeSetsList;
-  /** Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also. */
-  fields?: VectorSearchIndexDefinitionFieldsList;
-  /** Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested. */
-  nestedRoot?: string;
-}
+export type UpdateGroupClusterSearchIndexRequestDefinition =
+  | TextSearchIndexDefinition
+  | VectorSearchIndexDefinition;
 export const UpdateGroupClusterSearchIndexRequestDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      analyzer: S.optional(TextSearchIndexDefinitionAnalyzer),
-      analyzers: S.optional(TextSearchIndexDefinitionAnalyzersList),
-      mappings: S.optional(SearchMappings),
-      numPartitions: S.optional(S.Number),
-      searchAnalyzer: S.optional(TextSearchIndexDefinitionSearchAnalyzer),
-      sort: S.optional(S.Unknown),
-      storedSource: S.optional(S.Unknown),
-      synonyms: S.optional(TextSearchIndexDefinitionSynonymsList),
-      typeSets: S.optional(TextSearchIndexDefinitionTypeSetsList),
-      fields: S.optional(VectorSearchIndexDefinitionFieldsList),
-      nestedRoot: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGroupClusterSearchIndexRequestDefinition",
-  }) as any as S.Schema<UpdateGroupClusterSearchIndexRequestDefinition>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateGroupClusterSearchIndexRequestDefinition>;
 
 export interface UpdateGroupClusterSearchIndexRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -53169,47 +50675,11 @@ export const UpdateGroupClusterSearchIndexRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateGroupClusterSearchIndexRequest>;
 
 /** The index definition to update the search index to. */
-export interface UpdateGroupClusterSearchIndexByNameRequestDefinition {
-  /** Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves making the following changes to the text in fields: - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization) MongoDB Cloud uses the process you select to build the Atlas Search index. */
-  analyzer?: TextSearchIndexDefinitionAnalyzer | (string & {});
-  /** List of user-defined methods to convert database field text into searchable words. */
-  analyzers?: TextSearchIndexDefinitionAnalyzersList;
-  mappings?: SearchMappings;
-  /** Number of index partitions. Allowed values are [1, 2, 4]. */
-  numPartitions?: number;
-  /** Method applied to identify words when searching this index. */
-  searchAnalyzer?: TextSearchIndexDefinitionSearchAnalyzer | (string & {});
-  /** Sort definition for the index. When defined, the index will be pre-sorted on the specified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options. The `order` field is required (1=ascending, -1=descending).The `noData` field is optional and controls how missing values are sorted(default: "lowest"). */
-  sort?: unknown;
-  /** Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search. Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields. */
-  storedSource?: unknown;
-  /** Rule sets that map words to their synonyms in this index. */
-  synonyms?: TextSearchIndexDefinitionSynonymsList;
-  /** Type sets for the index. */
-  typeSets?: TextSearchIndexDefinitionTypeSetsList;
-  /** Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also. */
-  fields?: VectorSearchIndexDefinitionFieldsList;
-  /** Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested. */
-  nestedRoot?: string;
-}
+export type UpdateGroupClusterSearchIndexByNameRequestDefinition =
+  | TextSearchIndexDefinition
+  | VectorSearchIndexDefinition;
 export const UpdateGroupClusterSearchIndexByNameRequestDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      analyzer: S.optional(TextSearchIndexDefinitionAnalyzer),
-      analyzers: S.optional(TextSearchIndexDefinitionAnalyzersList),
-      mappings: S.optional(SearchMappings),
-      numPartitions: S.optional(S.Number),
-      searchAnalyzer: S.optional(TextSearchIndexDefinitionSearchAnalyzer),
-      sort: S.optional(S.Unknown),
-      storedSource: S.optional(S.Unknown),
-      synonyms: S.optional(TextSearchIndexDefinitionSynonymsList),
-      typeSets: S.optional(TextSearchIndexDefinitionTypeSetsList),
-      fields: S.optional(VectorSearchIndexDefinitionFieldsList),
-      nestedRoot: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGroupClusterSearchIndexByNameRequestDefinition",
-  }) as any as S.Schema<UpdateGroupClusterSearchIndexByNameRequestDefinition>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateGroupClusterSearchIndexByNameRequestDefinition>;
 
 export interface UpdateGroupClusterSearchIndexByNameRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55738,98 +53208,14 @@ export const ClusterFlexProviderSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterFlexProviderSettings>;
 
 /** Group of cloud provider settings that configure the provisioned MongoDB hosts. */
-export interface ClusterProviderSettings {
-  providerName: string;
-  autoScaling?:
-    | CloudProviderAWSAutoScaling
-    | CloudProviderAzureAutoScaling
-    | CloudProviderGCPAutoScaling
-    | ClusterFreeAutoScaling;
-  /** Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform. */
-  diskIOPS?: number;
-  /** Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled. */
-  encryptEBSVolume?: boolean;
-  /** Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. */
-  instanceSizeName?:
-    | AWSCloudProviderSettingsInstanceSizeName
-    | (string & {})
-    | AzureCloudProviderSettingsInstanceSizeName
-    | (string & {})
-    | CloudGCPProviderSettingsInstanceSizeName
-    | (string & {})
-    | ClusterFreeProviderSettingsInstanceSizeName
-    | (string & {})
-    | ClusterFlexProviderSettingsInstanceSizeName
-    | (string & {});
-  /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
-  regionName?:
-    | AWSCloudProviderSettingsRegionName
-    | (string & {})
-    | AzureCloudProviderSettingsRegionName
-    | (string & {})
-    | CloudGCPProviderSettingsRegionName
-    | (string & {})
-    | string;
-  /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
-  volumeType?: AWSCloudProviderSettingsVolumeType | (string & {});
-  /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
-  diskTypeName?: AzureCloudProviderSettingsDiskTypeName | (string & {});
-  /** Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when `providerSettings.providerName` is `TENANT` and `providerSetting.instanceSizeName` is `M0`, `M2` or `M5`. Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. */
-  backingProviderName?:
-    | ClusterFreeProviderSettingsBackingProviderName
-    | (string & {})
-    | ClusterFlexProviderSettingsBackingProviderName
-    | (string & {});
-  /** The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes. */
-  effectiveInstanceSizeName?:
-    | ClusterFreeProviderSettingsEffectiveInstanceSizeName
-    | (string & {});
-}
-export const ClusterProviderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerName: S.String,
-    autoScaling: S.optional(
-      S.Union(
-        CloudProviderAWSAutoScaling,
-        CloudProviderAzureAutoScaling,
-        CloudProviderGCPAutoScaling,
-        ClusterFreeAutoScaling,
-      ),
-    ),
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    instanceSizeName: S.optional(
-      S.Union(
-        AWSCloudProviderSettingsInstanceSizeName,
-        AzureCloudProviderSettingsInstanceSizeName,
-        CloudGCPProviderSettingsInstanceSizeName,
-        ClusterFreeProviderSettingsInstanceSizeName,
-        ClusterFlexProviderSettingsInstanceSizeName,
-      ),
-    ),
-    regionName: S.optional(
-      S.Union(
-        AWSCloudProviderSettingsRegionName,
-        AzureCloudProviderSettingsRegionName,
-        CloudGCPProviderSettingsRegionName,
-        S.String,
-      ),
-    ),
-    volumeType: S.optional(AWSCloudProviderSettingsVolumeType),
-    diskTypeName: S.optional(AzureCloudProviderSettingsDiskTypeName),
-    backingProviderName: S.optional(
-      S.Union(
-        ClusterFreeProviderSettingsBackingProviderName,
-        ClusterFlexProviderSettingsBackingProviderName,
-      ),
-    ),
-    effectiveInstanceSizeName: S.optional(
-      ClusterFreeProviderSettingsEffectiveInstanceSizeName,
-    ),
-  }),
-).annotate({
-  identifier: "ClusterProviderSettings",
-}) as any as S.Schema<ClusterProviderSettings>;
+export type ClusterProviderSettings =
+  | AWSCloudProviderSettings
+  | AzureCloudProviderSettings
+  | CloudGCPProviderSettings
+  | ClusterFreeProviderSettings
+  | ClusterFlexProviderSettings;
+export const ClusterProviderSettings =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ClusterProviderSettings>;
 
 /** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
 export type UpgradeGroupClusterTenantUpgradeRequestReplicaSetScalingStrategy =

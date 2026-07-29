@@ -632,7 +632,7 @@ export interface ListConnectionsRequest {
   /** Excludes connections whose URL contains one of the URL-encoded URLs separated by commas. */
   excludeUrls?: string;
   /** Export the list of connections as a file, limited to 50000 entries. */
-  export?: ConnectionsListRequestExport | (string & {});
+  export?: ConnectionsListRequestExport;
   /** Includes connections that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** The field used to sort returned connections. */
@@ -793,7 +793,7 @@ export interface ListCookiesRequest {
   /** Filters the returned cookies that match the specified domain attribute */
   domain?: string;
   /** Export the list of cookies as a file, limited to 50000 entries. */
-  export?: CookiesListRequestExport | (string & {});
+  export?: CookiesListRequestExport;
   /** Includes cookies that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** Filters the returned cookies that are set with HttpOnly */
@@ -1018,7 +1018,7 @@ export interface ListScriptsRequest {
   /** Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas. */
   excludeUrls?: string;
   /** Export the list of scripts as a file, limited to 50000 entries. */
-  export?: ScriptsListRequestExport | (string & {});
+  export?: ScriptsListRequestExport;
   /** Includes scripts that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
   /** The field used to sort returned scripts. */

@@ -1328,7 +1328,7 @@ export interface LookUpResourceIdPostRequest {
   /** The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type. */
   identifier?: string;
   /** The type of resource. */
-  type?: LookUpResourceIdPostRequestType | (string & {});
+  type?: LookUpResourceIdPostRequestType;
 }
 export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -5981,7 +5981,7 @@ export interface ContainerServiceNetworkProfileInput {
   /** Network plugin used for building the Kubernetes network. */
   networkPlugin?: NetworkPlugin | (string & {});
   /** The mode the network plugin should use. */
-  networkPluginMode?: NetworkPluginMode | (string & {});
+  networkPluginMode?: NetworkPluginMode;
   /** Network policy used for building the Kubernetes network. */
   networkPolicy?: NetworkPolicy | (string & {});
   /** The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'. */
@@ -7407,7 +7407,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes | (string & {});
+  type?: ExtendedLocationTypes;
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11016,7 +11016,7 @@ export interface SnapshotPropertiesInput {
   /** CreationData to be used to specify the source agent pool resource ID to create this snapshot. */
   creationData?: CreationData;
   /** The type of a snapshot. The default is NodePool. */
-  snapshotType?: SnapshotPropertiesInputSnapshotType | (string & {});
+  snapshotType?: SnapshotPropertiesInputSnapshotType;
 }
 export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

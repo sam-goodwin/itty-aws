@@ -26,7 +26,7 @@ export interface AccountsCheckNameAvailabilityRequest {
   /** The Data Lake Analytics name to check availability for. */
   name: string;
   /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeAnalytics/accounts */
-  type: AccountsCheckNameAvailabilityRequestType | (string & {});
+  type: AccountsCheckNameAvailabilityRequestType;
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>

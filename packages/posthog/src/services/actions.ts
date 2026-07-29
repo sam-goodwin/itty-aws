@@ -229,46 +229,14 @@ export const ExistencePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExistencePropertyFilter",
 }) as any as S.Schema<ExistencePropertyFilter>;
 
-export interface ActionStepPropertyFilter {
-  /** Key of the property you're filtering on. For example `email` or `$current_url`. */
-  key?: string;
-  /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum | (string & {});
-  /** String value to match against. */
-  value?: string | number | ArrayPropertyFilterValueList;
-  /** String comparison operator. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
-  operator?:
-    | StringMatchOperatorEnum
-    | (string & {})
-    | NumericPropertyFilterOperatorEnum
-    | (string & {})
-    | ArrayPropertyFilterOperatorEnum
-    | (string & {})
-    | DateOperatorEnum
-    | (string & {})
-    | ExistenceOperatorEnum
-    | (string & {});
-}
-export const ActionStepPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyFilterTypeEnum),
-    value: S.optional(
-      S.Union(S.String, S.Number, ArrayPropertyFilterValueList),
-    ),
-    operator: S.optional(
-      S.Union(
-        StringMatchOperatorEnum,
-        NumericPropertyFilterOperatorEnum,
-        ArrayPropertyFilterOperatorEnum,
-        DateOperatorEnum,
-        ExistenceOperatorEnum,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "ActionStepPropertyFilter",
-}) as any as S.Schema<ActionStepPropertyFilter>;
+export type ActionStepPropertyFilter =
+  | StringPropertyFilter
+  | NumericPropertyFilter
+  | ArrayPropertyFilter
+  | DatePropertyFilter
+  | ExistencePropertyFilter;
+export const ActionStepPropertyFilter =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ActionStepPropertyFilter>;
 
 /** Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person). */
 export type ActionStepJSONInputPropertiesList = Array<ActionStepPropertyFilter>;

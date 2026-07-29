@@ -130,7 +130,7 @@ export const ExtendedLocationType = /*@__PURE__*/ S.String;
 /** Extended location pointing to the underlying infrastructure */
 export interface ExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
-  type?: ExtendedLocationType | (string & {});
+  type?: ExtendedLocationType;
   /** ARM Id of the extended location. */
   name?: string;
 }
@@ -1334,7 +1334,7 @@ export interface NetworkProfile {
   /** Profile of the HA Proxy load balancer. */
   loadBalancerProfile?: NetworkProfileLoadBalancerProfile;
   /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
-  networkPolicy?: NetworkProfileNetworkPolicy | (string & {});
+  networkPolicy?: NetworkProfileNetworkPolicy;
   /** A CIDR notation IP Address range from which to assign pod IPs. */
   podCidr?: string;
 }
@@ -2633,9 +2633,7 @@ export const VirtualNetworksCreateOrUpdateRequestExtendedLocationType =
 /** Extended location pointing to the underlying infrastructure */
 export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
-  type?:
-    | VirtualNetworksCreateOrUpdateRequestExtendedLocationType
-    | (string & {});
+  type?: VirtualNetworksCreateOrUpdateRequestExtendedLocationType;
   /** ARM Id of the extended location. */
   name?: string;
 }

@@ -118,7 +118,7 @@ export interface RpSku {
   /** The name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier: RpSkuTier | (string & {});
+  tier: RpSkuTier;
 }
 export const RpSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

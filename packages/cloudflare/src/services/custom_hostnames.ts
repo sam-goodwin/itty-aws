@@ -204,7 +204,7 @@ export interface CreateRequestSsl {
   /** SSL specific settings. */
   settings?: CreateRequestSslSettings;
   /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
-  type?: CreateRequestSslType | (string & {});
+  type?: CreateRequestSslType;
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
@@ -1970,7 +1970,7 @@ export interface EditRequestSsl {
   /** SSL specific settings. */
   settings?: EditRequestSslSettings;
   /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
-  type?: EditRequestSslType | (string & {});
+  type?: EditRequestSslType;
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }

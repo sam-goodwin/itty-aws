@@ -612,7 +612,7 @@ export interface NetworkRuleSetIpRule {
   /** Name of the IP filter rule. */
   filterName: string;
   /** IP Filter Action */
-  action?: NetworkRuleSetIpRuleAction | (string & {});
+  action?: NetworkRuleSetIpRuleAction;
   /** A string that contains the IP address range in CIDR notation for the rule. */
   ipMask: string;
 }
@@ -1153,7 +1153,7 @@ export interface FallbackRouteProperties {
   /** The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique. */
   name?: string;
   /** The source to which the routing rule is to be applied to. For example, DeviceMessages */
-  source: FallbackRoutePropertiesSource | (string & {});
+  source: FallbackRoutePropertiesSource;
   /** The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language */
   condition?: string;
   /** The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed. */

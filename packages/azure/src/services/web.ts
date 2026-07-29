@@ -1773,7 +1773,7 @@ export const FunctionsDeploymentStorageAuthentication = /*@__PURE__*/ S.suspend(
 /** Storage for deployed package used by the function app. */
 export interface FunctionsDeploymentStorage {
   /** Property to select Azure Storage type. Available options: blobContainer. */
-  type?: FunctionsDeploymentStorageType | (string & {});
+  type?: FunctionsDeploymentStorageType;
   /** Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>. */
   value?: string;
   /** Authentication method to access the storage account for deployment. */
@@ -16949,9 +16949,7 @@ export interface StaticSitesCreateOrUpdateBasicAuthRequest {
   /** Name of the static site. */
   name: string;
   /** name of the basic auth entry. */
-  basicAuthName:
-    | StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName
-    | (string & {});
+  basicAuthName: StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName;
   /** StaticSiteBasicAuthPropertiesARMResource resource specific properties */
   properties?: StaticSiteBasicAuthPropertiesARMResourcePropertiesInput;
   /** Kind of resource. */
@@ -18392,7 +18390,7 @@ export interface StaticSitesGetBasicAuthRequest {
   /** Name of the static site. */
   name: string;
   /** name of the basic auth entry. */
-  basicAuthName: StaticSitesGetBasicAuthRequestBasicAuthName | (string & {});
+  basicAuthName: StaticSitesGetBasicAuthRequestBasicAuthName;
 }
 export const StaticSitesGetBasicAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29628,7 +29626,7 @@ export const OpenIdConnectClientCredentialMethod = /*@__PURE__*/ S.String;
 /** The authentication client credentials of the custom Open ID Connect provider. */
 export interface OpenIdConnectClientCredential {
   /** The method that should be used to authenticate the user. */
-  method?: OpenIdConnectClientCredentialMethod | (string & {});
+  method?: OpenIdConnectClientCredentialMethod;
   /** The app setting that contains the client secret for the custom Open ID Connect provider. */
   clientSecretSettingName?: string;
 }
@@ -49184,7 +49182,7 @@ export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
 /** Open authentication access policy defined by user. */
 export interface OpenAuthenticationAccessPolicy {
   /** Type of provider for OAuth. */
-  type?: OpenAuthenticationProviderType | (string & {});
+  type?: OpenAuthenticationProviderType;
   /** The access policy claims. */
   claims?: OpenAuthenticationAccessPolicyClaimsList;
 }

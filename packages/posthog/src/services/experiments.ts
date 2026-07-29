@@ -417,67 +417,16 @@ export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
     identifier: "FeatureFlagFilterPropertyFlagEvaluatesSchema",
   }) as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
 
-export interface FeatureFlagFilterPropertySchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
-  type?:
-    | PropertyGroupTypeEnum
-    | FeatureFlagFilterPropertyCohortInSchemaTypeEnum
-    | FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
-  group_type_index?: number | null;
-  /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
-  value?:
-    | unknown
-    | string
-    | FeatureFlagFilterPropertyMultiContainsSchemaValueList;
-  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
-  operator?:
-    | FeatureFlagFilterPropertyGenericSchemaOperatorEnum
-    | ExistenceOperatorEnum
-    | DateOperatorEnum
-    | FeatureFlagFilterPropertySemverSchemaOperatorEnum
-    | FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum
-    | FeatureFlagFilterPropertyCohortInSchemaOperatorEnum
-    | FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
-}
-export const FeatureFlagFilterPropertySchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(
-      S.Union(
-        PropertyGroupTypeEnum,
-        FeatureFlagFilterPropertyCohortInSchemaTypeEnum,
-        FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum,
-      ),
-    ),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    value: S.optional(
-      S.Union(
-        S.Unknown,
-        S.String,
-        FeatureFlagFilterPropertyMultiContainsSchemaValueList,
-      ),
-    ),
-    operator: S.optional(
-      S.Union(
-        FeatureFlagFilterPropertyGenericSchemaOperatorEnum,
-        ExistenceOperatorEnum,
-        DateOperatorEnum,
-        FeatureFlagFilterPropertySemverSchemaOperatorEnum,
-        FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum,
-        FeatureFlagFilterPropertyCohortInSchemaOperatorEnum,
-        FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertySchema",
-}) as any as S.Schema<FeatureFlagFilterPropertySchema>;
+export type FeatureFlagFilterPropertySchema =
+  | FeatureFlagFilterPropertyGenericSchema
+  | FeatureFlagFilterPropertyExistsSchema
+  | FeatureFlagFilterPropertyDateSchema
+  | FeatureFlagFilterPropertySemverSchema
+  | FeatureFlagFilterPropertyMultiContainsSchema
+  | FeatureFlagFilterPropertyCohortInSchema
+  | FeatureFlagFilterPropertyFlagEvaluatesSchema;
+export const FeatureFlagFilterPropertySchema =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList =
@@ -1610,94 +1559,32 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowVariablePropertyFilter",
 }) as any as S.Schema<WorkflowVariablePropertyFilter>;
 
-export interface ExperimentApiExposureConfigPropertiesItem {
-  /** The key should be the flag ID */
-  key?: string | Key10 | (string & {}) | RecordingPropertyFilterKey;
-  label?: string | null;
-  /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | (string & {}) | string | null;
-  /** Event properties */
-  type?:
-    | string
-    | LogPropertyFilterType
-    | (string & {})
-    | SpanPropertyFilterType
-    | (string & {});
-  /** The value can be true, false, or a variant name */
-  value?:
-    | EventPropertyFilterValue
-    | PersonPropertyFilterValue
-    | PersonMetadataPropertyFilterValue
-    | ElementPropertyFilterValue
-    | EventMetadataPropertyFilterValue
-    | SessionPropertyFilterValue
-    | number
-    | RecordingPropertyFilterValue
-    | LogEntryPropertyFilterValue
-    | GroupPropertyFilterValue
-    | FeaturePropertyFilterValue
-    | FlagPropertyFilterValue
-    | HogQLPropertyFilterValue
-    | DataWarehousePropertyFilterValue
-    | DataWarehousePersonPropertyFilterValue
-    | ErrorTrackingIssueFilterValue
-    | LogPropertyFilterValue
-    | MetricPropertyFilterValue
-    | SpanPropertyFilterValue
-    | RevenueAnalyticsPropertyFilterValue
-    | AccountCustomPropertyFilterValue
-    | WorkflowVariablePropertyFilterValue
-    | null;
-  cohort_name?: string | null;
-  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
-  group_type_index?: number | null;
-}
+export type ExperimentApiExposureConfigPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | PersonMetadataPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | MetricPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
+  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
 export const ExperimentApiExposureConfigPropertiesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
-      label: S.optional(S.NullOr(S.String)),
-      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
-      type: S.optional(
-        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
-      ),
-      value: S.optional(
-        S.NullOr(
-          S.Union(
-            EventPropertyFilterValue,
-            PersonPropertyFilterValue,
-            PersonMetadataPropertyFilterValue,
-            ElementPropertyFilterValue,
-            EventMetadataPropertyFilterValue,
-            SessionPropertyFilterValue,
-            S.Number,
-            RecordingPropertyFilterValue,
-            LogEntryPropertyFilterValue,
-            GroupPropertyFilterValue,
-            FeaturePropertyFilterValue,
-            FlagPropertyFilterValue,
-            HogQLPropertyFilterValue,
-            DataWarehousePropertyFilterValue,
-            DataWarehousePersonPropertyFilterValue,
-            ErrorTrackingIssueFilterValue,
-            LogPropertyFilterValue,
-            MetricPropertyFilterValue,
-            SpanPropertyFilterValue,
-            RevenueAnalyticsPropertyFilterValue,
-            AccountCustomPropertyFilterValue,
-            WorkflowVariablePropertyFilterValue,
-          ),
-        ),
-      ),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_key_names: S.optional(
-        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
-      ),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "ExperimentApiExposureConfigPropertiesItem",
-  }) as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
 
 /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
 export type ExperimentApiExposureConfigPropertiesList =

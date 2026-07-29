@@ -2096,7 +2096,7 @@ export interface DataBoundariesGetScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesGetScopeRequestDefault | (string & {});
+  default: DataBoundariesGetScopeRequestDefault;
 }
 export const DataBoundariesGetScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2216,7 +2216,7 @@ export const DataBoundariesGetTenantRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetTenantRequest {
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesGetTenantRequestDefault | (string & {});
+  default: DataBoundariesGetTenantRequestDefault;
 }
 export const DataBoundariesGetTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2262,7 +2262,7 @@ export const DataBoundariesPutRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesPutRequest {
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesPutRequestDefault | (string & {});
+  default: DataBoundariesPutRequestDefault;
   /** Data boundary properties */
   properties?: DataBoundaryProperties;
 }
@@ -4774,7 +4774,7 @@ export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedServiceIdentityInput {
   /** Type of the managed identity. */
-  type?: ManagedServiceIdentityType | (string & {});
+  type?: ManagedServiceIdentityType;
   /** The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity. */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
@@ -16854,7 +16854,7 @@ export interface ResourceLinksListAtSourceScopeRequest {
   /** The fully qualified ID of the scope for getting the resource links. For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup. */
   scope: string;
   /** The filter to apply when getting resource links. To get links only at the specified scope (not below the scope), use Filter.atScope(). */
-  _filter?: ResourceLinksListAtSourceScopeRequestFilter | (string & {});
+  _filter?: ResourceLinksListAtSourceScopeRequestFilter;
 }
 export const ResourceLinksListAtSourceScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -17215,7 +17215,7 @@ export const ExtendedLocationType = /*@__PURE__*/ S.String;
 /** Resource extended location. */
 export interface ExtendedLocation {
   /** The extended location type. */
-  type?: ExtendedLocationType | (string & {});
+  type?: ExtendedLocationType;
   /** The extended location name. */
   name?: string;
 }
@@ -19932,7 +19932,7 @@ export interface TemplateSpecsGetRequest {
   /** Name of the Template Spec. */
   templateSpecName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsGetRequestExpand | (string & {});
+  _expand?: TemplateSpecsGetRequestExpand;
 }
 export const TemplateSpecsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20046,7 +20046,7 @@ export interface TemplateSpecsGetBuiltInRequest {
   /** Name of the Template Spec. */
   templateSpecName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsGetBuiltInRequestExpand | (string & {});
+  _expand?: TemplateSpecsGetBuiltInRequestExpand;
 }
 export const TemplateSpecsGetBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20161,7 +20161,7 @@ export const TemplateSpecsListBuiltInsRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsListBuiltInsRequest {
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListBuiltInsRequestExpand | (string & {});
+  _expand?: TemplateSpecsListBuiltInsRequestExpand;
 }
 export const TemplateSpecsListBuiltInsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20292,7 +20292,7 @@ export interface TemplateSpecsListByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListByResourceGroupRequestExpand | (string & {});
+  _expand?: TemplateSpecsListByResourceGroupRequestExpand;
 }
 export const TemplateSpecsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -20322,7 +20322,7 @@ export interface TemplateSpecsListBySubscriptionRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListBySubscriptionRequestExpand | (string & {});
+  _expand?: TemplateSpecsListBySubscriptionRequestExpand;
 }
 export const TemplateSpecsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>

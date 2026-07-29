@@ -297,9 +297,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType
-    | (string & {});
+  type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType;
   /** Environment variable value. */
   value: string;
 }
@@ -319,9 +317,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType 
   /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType
-    | (string & {});
+  type: ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType;
   /** Secret value. */
   value: string;
 }
@@ -336,27 +332,16 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText =
       "ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType
-    | (string & {})
-    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType
-    | (string & {});
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
+  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -839,9 +824,7 @@ export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextTyp
   /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType
-    | (string & {});
+  type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType;
   /** Environment variable value. */
   value: string;
 }
@@ -862,9 +845,7 @@ export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextTy
   /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType
-    | (string & {});
+  type: ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType;
   /** Secret value. */
   value: string;
 }
@@ -879,27 +860,16 @@ export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType
-    | (string & {})
-    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType
-    | (string & {});
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
+  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;
@@ -1567,25 +1537,16 @@ export const ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText =
     identifier: "ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText>;
 
-export interface ProjectsCreateResponseCanonicalDeploymentEnvVars {
-  type:
-    | ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType
-    | ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsCreateResponseCanonicalDeploymentEnvVars =
+  | ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText
+  | ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretText;
 export const ProjectsCreateResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType,
-        ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseCanonicalDeploymentEnvVars",
-  }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsCreateResponseCanonicalDeploymentEnvironment =
   | "preview"
@@ -1901,25 +1862,16 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText =
       "ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsCreateResponseDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType
-    | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVars =
+  | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -2429,25 +2381,16 @@ export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText 
       "ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsCreateResponseDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType
-    | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsCreateResponseDeploymentConfigsProductionEnvVars =
+  | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsCreateResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -3319,25 +3262,16 @@ export const ProjectsDeploymentsCreateResponseEnvVarsSecretText =
     identifier: "ProjectsDeploymentsCreateResponseEnvVarsSecretText",
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseEnvVarsSecretText>;
 
-export interface ProjectsDeploymentsCreateResponseEnvVars {
-  type:
-    | ProjectsDeploymentsCreateResponseEnvVarsPlainTextType
-    | ProjectsDeploymentsCreateResponseEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsCreateResponseEnvVars = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.Union(
-        ProjectsDeploymentsCreateResponseEnvVarsPlainTextType,
-        ProjectsDeploymentsCreateResponseEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsDeploymentsCreateResponseEnvVars",
-}) as any as S.Schema<ProjectsDeploymentsCreateResponseEnvVars>;
+export type ProjectsDeploymentsCreateResponseEnvVars =
+  | ProjectsDeploymentsCreateResponseEnvVarsPlainText
+  | ProjectsDeploymentsCreateResponseEnvVarsSecretText;
+export const ProjectsDeploymentsCreateResponseEnvVars =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsDeploymentsCreateResponseEnvironment =
   | "preview"
@@ -3974,25 +3908,16 @@ export const ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText =
     identifier: "ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText",
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText>;
 
-export interface ProjectsGetResponseCanonicalDeploymentEnvVars {
-  type:
-    | ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType
-    | ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsGetResponseCanonicalDeploymentEnvVars =
+  | ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText
+  | ProjectsGetResponseCanonicalDeploymentEnvVarsSecretText;
 export const ProjectsGetResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType,
-        ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseCanonicalDeploymentEnvVars",
-  }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsGetResponseCanonicalDeploymentEnvironment =
   | "preview"
@@ -4306,25 +4231,16 @@ export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText =
     identifier: "ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsGetResponseDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType
-    | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsGetResponseDeploymentConfigsPreviewEnvVars =
+  | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsGetResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -4829,25 +4745,16 @@ export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsGetResponseDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType
-    | ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsGetResponseDeploymentConfigsProductionEnvVars =
+  | ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsGetResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsGetResponseDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -5677,25 +5584,16 @@ export const ProjectsDeploymentsGetResponseEnvVarsSecretText =
     identifier: "ProjectsDeploymentsGetResponseEnvVarsSecretText",
   }) as any as S.Schema<ProjectsDeploymentsGetResponseEnvVarsSecretText>;
 
-export interface ProjectsDeploymentsGetResponseEnvVars {
-  type:
-    | ProjectsDeploymentsGetResponseEnvVarsPlainTextType
-    | ProjectsDeploymentsGetResponseEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsGetResponseEnvVars = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.Union(
-        ProjectsDeploymentsGetResponseEnvVarsPlainTextType,
-        ProjectsDeploymentsGetResponseEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsDeploymentsGetResponseEnvVars",
-}) as any as S.Schema<ProjectsDeploymentsGetResponseEnvVars>;
+export type ProjectsDeploymentsGetResponseEnvVars =
+  | ProjectsDeploymentsGetResponseEnvVarsPlainText
+  | ProjectsDeploymentsGetResponseEnvVarsSecretText;
+export const ProjectsDeploymentsGetResponseEnvVars =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsDeploymentsGetResponseEnvironment =
   | "preview"
@@ -6305,25 +6203,16 @@ export const ProjectsDeploymentsListResultItemEnvVarsSecretText =
     identifier: "ProjectsDeploymentsListResultItemEnvVarsSecretText",
   }) as any as S.Schema<ProjectsDeploymentsListResultItemEnvVarsSecretText>;
 
-export interface ProjectsDeploymentsListResultItemEnvVars {
-  type:
-    | ProjectsDeploymentsListResultItemEnvVarsPlainTextType
-    | ProjectsDeploymentsListResultItemEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsListResultItemEnvVars = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.Union(
-        ProjectsDeploymentsListResultItemEnvVarsPlainTextType,
-        ProjectsDeploymentsListResultItemEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsDeploymentsListResultItemEnvVars",
-}) as any as S.Schema<ProjectsDeploymentsListResultItemEnvVars>;
+export type ProjectsDeploymentsListResultItemEnvVars =
+  | ProjectsDeploymentsListResultItemEnvVarsPlainText
+  | ProjectsDeploymentsListResultItemEnvVarsSecretText;
+export const ProjectsDeploymentsListResultItemEnvVars =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsDeploymentsListResultItemEnvironment =
   | "preview"
@@ -6903,25 +6792,16 @@ export const ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText =
     identifier: "ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText",
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText>;
 
-export interface ProjectsListResultItemCanonicalDeploymentEnvVars {
-  type:
-    | ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType
-    | ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsListResultItemCanonicalDeploymentEnvVars =
+  | ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText
+  | ProjectsListResultItemCanonicalDeploymentEnvVarsSecretText;
 export const ProjectsListResultItemCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType,
-        ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemCanonicalDeploymentEnvVars",
-  }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsListResultItemCanonicalDeploymentEnvironment =
   | "preview"
@@ -7237,25 +7117,16 @@ export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText =
       "ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsListResultItemDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType
-    | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsListResultItemDeploymentConfigsPreviewEnvVars =
+  | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsListResultItemDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -7765,25 +7636,16 @@ export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText 
       "ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsListResultItemDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType
-    | ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsListResultItemDeploymentConfigsProductionEnvVars =
+  | ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsListResultItemDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsListResultItemDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -8645,9 +8507,7 @@ export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText {
-  type:
-    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType
-    | (string & {});
+  type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType;
   /** Environment variable value. */
   value: string;
 }
@@ -8667,9 +8527,7 @@ export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText {
-  type:
-    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType
-    | (string & {});
+  type: ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType;
   /** Secret value. */
   value: string;
 }
@@ -8683,27 +8541,16 @@ export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText =
     identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType
-    | (string & {})
-    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType
-    | (string & {});
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
+  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -9182,9 +9029,7 @@ export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType 
   /*@__PURE__*/ S.String;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText {
-  type:
-    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType
-    | (string & {});
+  type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType;
   /** Environment variable value. */
   value: string;
 }
@@ -9205,9 +9050,7 @@ export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType
   /*@__PURE__*/ S.String;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText {
-  type:
-    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType
-    | (string & {});
+  type: ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType;
   /** Secret value. */
   value: string;
 }
@@ -9222,27 +9065,16 @@ export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsEditRequestDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType
-    | (string & {})
-    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType
-    | (string & {});
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsEditRequestDeploymentConfigsProductionEnvVars =
+  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsEditRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditRequestDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export interface ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;
@@ -9908,25 +9740,16 @@ export const ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText =
     identifier: "ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText>;
 
-export interface ProjectsEditResponseCanonicalDeploymentEnvVars {
-  type:
-    | ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType
-    | ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsEditResponseCanonicalDeploymentEnvVars =
+  | ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText
+  | ProjectsEditResponseCanonicalDeploymentEnvVarsSecretText;
 export const ProjectsEditResponseCanonicalDeploymentEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType,
-        ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseCanonicalDeploymentEnvVars",
-  }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsEditResponseCanonicalDeploymentEnvironment =
   | "preview"
@@ -10240,25 +10063,16 @@ export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText =
     identifier: "ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export interface ProjectsEditResponseDeploymentConfigsPreviewEnvVars {
-  type:
-    | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType
-    | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsEditResponseDeploymentConfigsPreviewEnvVars =
+  | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText
+  | ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretText;
 export const ProjectsEditResponseDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType,
-        ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsPreviewEnvVars",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -10764,25 +10578,16 @@ export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText>;
 
-export interface ProjectsEditResponseDeploymentConfigsProductionEnvVars {
-  type:
-    | ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType
-    | ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsEditResponseDeploymentConfigsProductionEnvVars =
+  | ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText
+  | ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretText;
 export const ProjectsEditResponseDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType,
-        ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsEditResponseDeploymentConfigsProductionEnvVars",
-  }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -11778,25 +11583,16 @@ export const ProjectsDeploymentsRetryResponseEnvVarsSecretText =
     identifier: "ProjectsDeploymentsRetryResponseEnvVarsSecretText",
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseEnvVarsSecretText>;
 
-export interface ProjectsDeploymentsRetryResponseEnvVars {
-  type:
-    | ProjectsDeploymentsRetryResponseEnvVarsPlainTextType
-    | ProjectsDeploymentsRetryResponseEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
-export const ProjectsDeploymentsRetryResponseEnvVars = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.Union(
-        ProjectsDeploymentsRetryResponseEnvVarsPlainTextType,
-        ProjectsDeploymentsRetryResponseEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsDeploymentsRetryResponseEnvVars",
-}) as any as S.Schema<ProjectsDeploymentsRetryResponseEnvVars>;
+export type ProjectsDeploymentsRetryResponseEnvVars =
+  | ProjectsDeploymentsRetryResponseEnvVarsPlainText
+  | ProjectsDeploymentsRetryResponseEnvVarsSecretText;
+export const ProjectsDeploymentsRetryResponseEnvVars =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsDeploymentsRetryResponseEnvironment =
   | "preview"
@@ -12202,25 +11998,16 @@ export const ProjectsDeploymentsRollbackResponseEnvVarsSecretText =
     identifier: "ProjectsDeploymentsRollbackResponseEnvVarsSecretText",
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseEnvVarsSecretText>;
 
-export interface ProjectsDeploymentsRollbackResponseEnvVars {
-  type:
-    | ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType
-    | ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType;
-  /** Environment variable value. */
-  value: string;
-}
+export type ProjectsDeploymentsRollbackResponseEnvVars =
+  | ProjectsDeploymentsRollbackResponseEnvVarsPlainText
+  | ProjectsDeploymentsRollbackResponseEnvVarsSecretText;
 export const ProjectsDeploymentsRollbackResponseEnvVars =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.Union(
-        ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType,
-        ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ProjectsDeploymentsRollbackResponseEnvVars",
-  }) as any as S.Schema<ProjectsDeploymentsRollbackResponseEnvVars>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "value"],
+      ["type", "value"],
+    ]),
+  );
 
 export type ProjectsDeploymentsRollbackResponseEnvironment =
   | "preview"

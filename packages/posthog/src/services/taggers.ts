@@ -76,27 +76,9 @@ export const HogTaggerConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogTaggerConfig",
 }) as any as S.Schema<HogTaggerConfig>;
 
-export interface TaggerConfig {
-  /** Prompt instructing the LLM how to tag generations */
-  prompt?: string;
-  /** Available tags the LLM can assign */
-  tags?: LLMTaggerConfigTagsList | HogTaggerConfigTagsList;
-  /** Minimum number of tags to apply */
-  min_tags?: number;
-  /** Maximum number of tags to apply (null = no limit) */
-  max_tags?: number | null;
-  /** Hog source code to classify a generation into tags. */
-  source?: string;
-}
-export const TaggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.optional(S.String),
-    tags: S.optional(S.Union(LLMTaggerConfigTagsList, HogTaggerConfigTagsList)),
-    min_tags: S.optional(S.Number),
-    max_tags: S.optional(S.NullOr(S.Number)),
-    source: S.optional(S.String),
-  }),
-).annotate({ identifier: "TaggerConfig" }) as any as S.Schema<TaggerConfig>;
+export type TaggerConfig = LLMTaggerConfig | HogTaggerConfig;
+export const TaggerConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TaggerConfig>;
 
 export type TaggerConditionPropertiesItemMap = {
   [key: string]: unknown | undefined;

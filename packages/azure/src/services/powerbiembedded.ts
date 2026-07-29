@@ -143,9 +143,9 @@ export const AzureSkuTier = /*@__PURE__*/ S.String;
 
 export interface AzureSku {
   /** SKU name */
-  name: AzureSkuName | (string & {});
+  name: AzureSkuName;
   /** SKU tier */
-  tier: AzureSkuTier | (string & {});
+  tier: AzureSkuTier;
 }
 export const AzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

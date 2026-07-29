@@ -1392,12 +1392,17 @@ export const awsSpec = (
     return names;
   })();
 
-  /** The inline open arm for an enum-targeted reference, if any. */
+  /**
+   * The inline open arm for an enum-targeted reference, if any.
+   * Single-value enums stay closed — they are discriminant literals,
+   * not open value sets (v0 parity).
+   */
   const openEnumArm = (target: string): string | undefined => {
-    const t = shapes[target]?.type;
-    return t === "enum"
+    const d = shapes[target];
+    if (Object.keys(d?.members ?? {}).length < 2) return undefined;
+    return d?.type === "enum"
       ? "(string & {})"
-      : t === "intEnum"
+      : d?.type === "intEnum"
         ? "(number & {})"
         : undefined;
   };

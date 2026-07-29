@@ -191,37 +191,19 @@ export const DirectoryServicesCreateRequestHostInfraHostnameHost =
     identifier: "DirectoryServicesCreateRequestHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraHostnameHost>;
 
-export interface DirectoryServicesCreateRequestHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesCreateRequestHostInfraIPv4HostNetwork
-    | DirectoryServicesCreateRequestHostInfraIPv6HostNetwork
-    | DirectoryServicesCreateRequestHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4: S.optional(S.String),
-    network: S.optional(
-      S.Union(
-        DirectoryServicesCreateRequestHostInfraIPv4HostNetwork,
-        DirectoryServicesCreateRequestHostInfraIPv6HostNetwork,
-        DirectoryServicesCreateRequestHostInfraDualStackHostNetwork,
-      ),
-    ),
-    ipv6: S.optional(S.String),
-    hostname: S.optional(S.String),
-    resolverNetwork: S.optional(
-      DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork.pipe(
-        T.Body("resolver_network"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "DirectoryServicesCreateRequestHost",
-}) as any as S.Schema<DirectoryServicesCreateRequestHost>;
+export type DirectoryServicesCreateRequestHost =
+  | DirectoryServicesCreateRequestHostInfraIPv4Host
+  | DirectoryServicesCreateRequestHostInfraIPv6Host
+  | DirectoryServicesCreateRequestHostInfraDualStackHost
+  | DirectoryServicesCreateRequestHostInfraHostnameHost;
+export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesCreateRequestType = "tcp" | "http";
 export const DirectoryServicesCreateRequestType = /*@__PURE__*/ S.String;
@@ -422,38 +404,20 @@ export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnam
       "DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesCreateResultInfraHTTPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
+  | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateResultInfraHTTPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesCreateResultInfraHTTPServiceConfigType =
   | "tcp"
@@ -641,38 +605,20 @@ export const DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostname
       "DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesCreateResultInfraTCPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesCreateResultInfraTCPServiceConfigHost =
+  | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesCreateResultInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateResultInfraTCPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesCreateResultInfraTCPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesCreateResultInfraTCPServiceConfigType =
   | "tcp"
@@ -736,58 +682,35 @@ export const DirectoryServicesCreateResultInfraTCPServiceConfig =
     identifier: "DirectoryServicesCreateResultInfraTCPServiceConfig",
   }) as any as S.Schema<DirectoryServicesCreateResultInfraTCPServiceConfig>;
 
-export interface DirectoryServicesCreateResult {
-  host:
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigHost
-    | DirectoryServicesCreateResultInfraTCPServiceConfigHost;
-  name: string;
-  type:
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigType
-    | DirectoryServicesCreateResultInfraTCPServiceConfigType;
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  serviceId?: string;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?:
-    | DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings
-    | DirectoryServicesCreateResultInfraTCPServiceConfigTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol;
-  tcpPort?: number;
-}
-export const DirectoryServicesCreateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.Union(
-      DirectoryServicesCreateResultInfraHTTPServiceConfigHost,
-      DirectoryServicesCreateResultInfraTCPServiceConfigHost,
-    ),
-    name: S.String,
-    type: S.Union(
-      DirectoryServicesCreateResultInfraHTTPServiceConfigType,
-      DirectoryServicesCreateResultInfraTCPServiceConfigType,
-    ),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.Union(
-        DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings,
-        DirectoryServicesCreateResultInfraTCPServiceConfigTlsSettings,
-      ).pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol.pipe(
-        T.Body("app_protocol"),
-      ),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesCreateResult",
-}) as any as S.Schema<DirectoryServicesCreateResult>;
+export type DirectoryServicesCreateResult =
+  | DirectoryServicesCreateResultInfraHTTPServiceConfig
+  | DirectoryServicesCreateResultInfraTCPServiceConfig;
+export const DirectoryServicesCreateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export type CreateDirectoryServiceResponse = DirectoryServicesCreateResult;
 export const CreateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -978,38 +901,20 @@ export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHo
       "DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesGetResultInfraHTTPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesGetResultInfraHTTPServiceConfigHost =
+  | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesGetResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesGetResultInfraHTTPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesGetResultInfraHTTPServiceConfigType =
   | "tcp"
@@ -1196,38 +1101,20 @@ export const DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHos
       "DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesGetResultInfraTCPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesGetResultInfraTCPServiceConfigHost =
+  | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesGetResultInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesGetResultInfraTCPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesGetResultInfraTCPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesGetResultInfraTCPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesGetResultInfraTCPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesGetResultInfraTCPServiceConfigType =
   | "tcp"
@@ -1291,58 +1178,35 @@ export const DirectoryServicesGetResultInfraTCPServiceConfig =
     identifier: "DirectoryServicesGetResultInfraTCPServiceConfig",
   }) as any as S.Schema<DirectoryServicesGetResultInfraTCPServiceConfig>;
 
-export interface DirectoryServicesGetResult {
-  host:
-    | DirectoryServicesGetResultInfraHTTPServiceConfigHost
-    | DirectoryServicesGetResultInfraTCPServiceConfigHost;
-  name: string;
-  type:
-    | DirectoryServicesGetResultInfraHTTPServiceConfigType
-    | DirectoryServicesGetResultInfraTCPServiceConfigType;
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  serviceId?: string;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?:
-    | DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings
-    | DirectoryServicesGetResultInfraTCPServiceConfigTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol;
-  tcpPort?: number;
-}
-export const DirectoryServicesGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.Union(
-      DirectoryServicesGetResultInfraHTTPServiceConfigHost,
-      DirectoryServicesGetResultInfraTCPServiceConfigHost,
-    ),
-    name: S.String,
-    type: S.Union(
-      DirectoryServicesGetResultInfraHTTPServiceConfigType,
-      DirectoryServicesGetResultInfraTCPServiceConfigType,
-    ),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.Union(
-        DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings,
-        DirectoryServicesGetResultInfraTCPServiceConfigTlsSettings,
-      ).pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol.pipe(
-        T.Body("app_protocol"),
-      ),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesGetResult",
-}) as any as S.Schema<DirectoryServicesGetResult>;
+export type DirectoryServicesGetResult =
+  | DirectoryServicesGetResultInfraHTTPServiceConfig
+  | DirectoryServicesGetResultInfraTCPServiceConfig;
+export const DirectoryServicesGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export type GetDirectoryServiceResponse = DirectoryServicesGetResult;
 export const GetDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1515,38 +1379,20 @@ export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostn
       "DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesListResultItemInfraHTTPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
+  | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesListResultItemInfraHTTPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesListResultItemInfraHTTPServiceConfigType =
   | "tcp"
@@ -1734,38 +1580,20 @@ export const DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostna
       "DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesListResultItemInfraTCPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesListResultItemInfraTCPServiceConfigHost =
+  | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesListResultItemInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesListResultItemInfraTCPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesListResultItemInfraTCPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesListResultItemInfraTCPServiceConfigType =
   | "tcp"
@@ -1830,58 +1658,35 @@ export const DirectoryServicesListResultItemInfraTCPServiceConfig =
     identifier: "DirectoryServicesListResultItemInfraTCPServiceConfig",
   }) as any as S.Schema<DirectoryServicesListResultItemInfraTCPServiceConfig>;
 
-export interface DirectoryServicesListResultItem {
-  host:
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigHost
-    | DirectoryServicesListResultItemInfraTCPServiceConfigHost;
-  name: string;
-  type:
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigType
-    | DirectoryServicesListResultItemInfraTCPServiceConfigType;
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  serviceId?: string;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?:
-    | DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings
-    | DirectoryServicesListResultItemInfraTCPServiceConfigTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol;
-  tcpPort?: number;
-}
-export const DirectoryServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.Union(
-      DirectoryServicesListResultItemInfraHTTPServiceConfigHost,
-      DirectoryServicesListResultItemInfraTCPServiceConfigHost,
-    ),
-    name: S.String,
-    type: S.Union(
-      DirectoryServicesListResultItemInfraHTTPServiceConfigType,
-      DirectoryServicesListResultItemInfraTCPServiceConfigType,
-    ),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.Union(
-        DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings,
-        DirectoryServicesListResultItemInfraTCPServiceConfigTlsSettings,
-      ).pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol.pipe(
-        T.Body("app_protocol"),
-      ),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesListResultItem",
-}) as any as S.Schema<DirectoryServicesListResultItem>;
+export type DirectoryServicesListResultItem =
+  | DirectoryServicesListResultItemInfraHTTPServiceConfig
+  | DirectoryServicesListResultItemInfraTCPServiceConfig;
+export const DirectoryServicesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export type DirectoryServicesListResultList =
   Array<DirectoryServicesListResultItem>;
@@ -2027,37 +1832,19 @@ export const DirectoryServicesUpdateRequestHostInfraHostnameHost =
     identifier: "DirectoryServicesUpdateRequestHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraHostnameHost>;
 
-export interface DirectoryServicesUpdateRequestHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork
-    | DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork
-    | DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4: S.optional(S.String),
-    network: S.optional(
-      S.Union(
-        DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork,
-        DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork,
-        DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork,
-      ),
-    ),
-    ipv6: S.optional(S.String),
-    hostname: S.optional(S.String),
-    resolverNetwork: S.optional(
-      DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork.pipe(
-        T.Body("resolver_network"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "DirectoryServicesUpdateRequestHost",
-}) as any as S.Schema<DirectoryServicesUpdateRequestHost>;
+export type DirectoryServicesUpdateRequestHost =
+  | DirectoryServicesUpdateRequestHostInfraIPv4Host
+  | DirectoryServicesUpdateRequestHostInfraIPv6Host
+  | DirectoryServicesUpdateRequestHostInfraDualStackHost
+  | DirectoryServicesUpdateRequestHostInfraHostnameHost;
+export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesUpdateRequestType = "tcp" | "http";
 export const DirectoryServicesUpdateRequestType = /*@__PURE__*/ S.String;
@@ -2257,38 +2044,20 @@ export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnam
       "DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesUpdateResultInfraHTTPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
+  | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesUpdateResultInfraHTTPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesUpdateResultInfraHTTPServiceConfigType =
   | "tcp"
@@ -2476,38 +2245,20 @@ export const DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostname
       "DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHost>;
 
-export interface DirectoryServicesUpdateResultInfraTCPServiceConfigHost {
-  ipv4?: string;
-  network?:
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv4HostNetwork
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv6HostNetwork
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraDualStackHostNetwork;
-  ipv6?: string;
-  hostname?: string;
-  resolverNetwork?: DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
+export type DirectoryServicesUpdateResultInfraTCPServiceConfigHost =
+  | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv4Host
+  | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv6Host
+  | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraDualStackHost
+  | DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesUpdateResultInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.optional(S.String),
-      network: S.optional(
-        S.Union(
-          DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv4HostNetwork,
-          DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraIPv6HostNetwork,
-          DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraDualStackHostNetwork,
-        ),
-      ),
-      ipv6: S.optional(S.String),
-      hostname: S.optional(S.String),
-      resolverNetwork: S.optional(
-        DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesUpdateResultInfraTCPServiceConfigHost",
-  }) as any as S.Schema<DirectoryServicesUpdateResultInfraTCPServiceConfigHost>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesUpdateResultInfraTCPServiceConfigType =
   | "tcp"
@@ -2571,58 +2322,35 @@ export const DirectoryServicesUpdateResultInfraTCPServiceConfig =
     identifier: "DirectoryServicesUpdateResultInfraTCPServiceConfig",
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraTCPServiceConfig>;
 
-export interface DirectoryServicesUpdateResult {
-  host:
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigHost
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigHost;
-  name: string;
-  type:
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigType
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigType;
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  serviceId?: string;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?:
-    | DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings
-    | DirectoryServicesUpdateResultInfraTCPServiceConfigTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol;
-  tcpPort?: number;
-}
-export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.Union(
-      DirectoryServicesUpdateResultInfraHTTPServiceConfigHost,
-      DirectoryServicesUpdateResultInfraTCPServiceConfigHost,
-    ),
-    name: S.String,
-    type: S.Union(
-      DirectoryServicesUpdateResultInfraHTTPServiceConfigType,
-      DirectoryServicesUpdateResultInfraTCPServiceConfigType,
-    ),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.Union(
-        DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings,
-        DirectoryServicesUpdateResultInfraTCPServiceConfigTlsSettings,
-      ).pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol.pipe(
-        T.Body("app_protocol"),
-      ),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesUpdateResult",
-}) as any as S.Schema<DirectoryServicesUpdateResult>;
+export type DirectoryServicesUpdateResult =
+  | DirectoryServicesUpdateResultInfraHTTPServiceConfig
+  | DirectoryServicesUpdateResultInfraTCPServiceConfig;
+export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export type UpdateDirectoryServiceResponse = DirectoryServicesUpdateResult;
 export const UpdateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>

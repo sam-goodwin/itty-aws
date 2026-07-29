@@ -76,7 +76,7 @@ export interface CustomLocationProperties {
   /** Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions. */
   hostResourceId?: string;
   /** Type of host the Custom Locations is referencing (Kubernetes, etc...). */
-  hostType?: CustomLocationPropertiesHostType | (string & {});
+  hostType?: CustomLocationPropertiesHostType;
   /** Kubernetes namespace that will be created on the specified cluster. */
   namespace?: string;
   /** Provisioning State for the Custom Location. */

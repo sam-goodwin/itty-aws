@@ -6547,7 +6547,7 @@ export interface ScalingPlanPropertiesInput {
   /** Timezone of the scaling plan. */
   timeZone: string;
   /** HostPool type for desktop. */
-  hostPoolType?: ScalingPlanPropertiesInputHostPoolType | (string & {});
+  hostPoolType?: ScalingPlanPropertiesInputHostPoolType;
   /** Exclusion tag for scaling plan. */
   exclusionTag?: string;
   /** List of ScalingPlanPooledSchedule definitions. */

@@ -309,9 +309,9 @@ export const SettingNames = /*@__PURE__*/ S.String;
 /** Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied. */
 export interface AdditionalUnattendContent {
   /** The pass name. Currently, the only allowable value is OobeSystem. */
-  passName?: AdditionalUnattendContentPassName | (string & {});
+  passName?: AdditionalUnattendContentPassName;
   /** The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup. */
-  componentName?: AdditionalUnattendContentComponentName | (string & {});
+  componentName?: AdditionalUnattendContentComponentName;
   /** Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon. */
   settingName?: SettingNames | (string & {});
   /** Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted. */
@@ -734,7 +734,7 @@ export const DiffDiskPlacement = /*@__PURE__*/ S.String;
 /** Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk. */
 export interface DiffDiskSettings {
   /** Specifies the ephemeral disk settings for operating system disk. */
-  option?: DiffDiskOptions | (string & {});
+  option?: DiffDiskOptions;
   /** Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. */
   placement?: DiffDiskPlacement | (string & {});
 }
@@ -1333,7 +1333,7 @@ export interface VirtualMachineScaleSetNetworkProfile {
   /** The list of network configurations. */
   networkInterfaceConfigurations?: VirtualMachineScaleSetNetworkProfileNetworkInterfaceConfigurationsList;
   /** specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible' */
-  networkApiVersion?: NetworkApiVersion | (string & {});
+  networkApiVersion?: NetworkApiVersion;
 }
 export const VirtualMachineScaleSetNetworkProfile = /*@__PURE__*/ S.suspend(
   () =>

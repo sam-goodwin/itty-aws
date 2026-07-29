@@ -5998,7 +5998,7 @@ export interface PoolPropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType: LicenseType | (string & {});
+  licenseType: LicenseType;
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
   localAdministrator: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
@@ -6541,7 +6541,7 @@ export interface PoolUpdatePropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName?: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType?: LicenseType | (string & {});
+  licenseType?: LicenseType;
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
   localAdministrator?: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
@@ -9907,9 +9907,9 @@ export interface SchedulePropertiesInput {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type: ScheduledType | (string & {});
+  type: ScheduledType;
   /** The frequency of this scheduled task. */
-  frequency: ScheduledFrequency | (string & {});
+  frequency: ScheduledFrequency;
   /** The target time to trigger the action. The format is HH:MM. */
   time: string;
   /** The IANA timezone id at which the schedule should execute. */
@@ -10228,9 +10228,9 @@ export interface ScheduleUpdateProperties {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type?: ScheduledType | (string & {});
+  type?: ScheduledType;
   /** The frequency of this scheduled task. */
-  frequency?: ScheduledFrequency | (string & {});
+  frequency?: ScheduledFrequency;
   /** The target time to trigger the action. The format is HH:MM. */
   time?: string;
   /** The IANA timezone id at which the schedule should execute. */

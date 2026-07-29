@@ -4860,7 +4860,7 @@ export interface ApplicationGatewayPrivateEndpointConnectionPropertiesInputPriva
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const ApplicationGatewayPrivateEndpointConnectionPropertiesInputPrivateEndpointExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -15098,7 +15098,7 @@ export interface AzureFirewallsCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const AzureFirewallsCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -18148,7 +18148,7 @@ export const ConnectionMonitorEndpointFilterItemType = /*@__PURE__*/ S.String;
 /** Describes the connection monitor endpoint filter item. */
 export interface ConnectionMonitorEndpointFilterItem {
   /** The type of item included in the filter. Currently only 'AgentAddress' is supported. */
-  type?: ConnectionMonitorEndpointFilterItemType | (string & {});
+  type?: ConnectionMonitorEndpointFilterItemType;
   /** The address of the filter item. */
   address?: string;
 }
@@ -18171,7 +18171,7 @@ export const ConnectionMonitorEndpointFilterItemsList = /*@__PURE__*/ S.Array(
 /** Describes the connection monitor endpoint filter. */
 export interface ConnectionMonitorEndpointFilter {
   /** The behavior of the endpoint filter. Currently only 'Include' is supported. */
-  type?: ConnectionMonitorEndpointFilterType | (string & {});
+  type?: ConnectionMonitorEndpointFilterType;
   /** List of items in the filter. */
   items?: ConnectionMonitorEndpointFilterItemsList;
 }
@@ -18552,7 +18552,7 @@ export const ConnectionMonitorWorkspaceSettings = /*@__PURE__*/ S.suspend(() =>
 /** Describes a connection monitor output destination. */
 export interface ConnectionMonitorOutput {
   /** Connection monitor output destination type. Currently, only "Workspace" is supported. */
-  type?: ConnectionMonitorOutputType | (string & {});
+  type?: ConnectionMonitorOutputType;
   /** Describes the settings for producing output into a log analytics workspace. */
   workspaceSettings?: ConnectionMonitorWorkspaceSettings;
 }
@@ -20481,7 +20481,7 @@ export interface CustomIPPrefixesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const CustomIPPrefixesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -21213,9 +21213,7 @@ export interface DdosDetectionRulePropertiesFormat {
     | DdosDetectionRulePropertiesFormatProvisioningState
     | (string & {});
   /** The detection mode for the DDoS detection rule. */
-  detectionMode?:
-    | DdosDetectionRulePropertiesFormatDetectionMode
-    | (string & {});
+  detectionMode?: DdosDetectionRulePropertiesFormatDetectionMode;
   /** The traffic detection rule details. */
   trafficDetectionRule?: TrafficDetectionRule;
 }
@@ -36487,7 +36485,7 @@ export const CommonRetentionPolicyParameters_5 = /*@__PURE__*/ S.suspend(() =>
 /** Parameters that define the flow log format. */
 export interface CommonFlowLogFormatParameters_5 {
   /** The file type of flow log. */
-  type?: CommonFlowLogFormatParametersType | (string & {});
+  type?: CommonFlowLogFormatParametersType;
   /** The version (revision) of the flow log. */
   version?: number;
 }
@@ -38643,7 +38641,7 @@ export interface CommonPublicIPAddressInputExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const CommonPublicIPAddressInputExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -39023,7 +39021,7 @@ export interface CommonFrontendIPConfigurationPropertiesFormatInputPublicIPAddre
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const CommonFrontendIPConfigurationPropertiesFormatInputPublicIPAddressExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -47700,7 +47698,7 @@ export interface LoadBalancersCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const LoadBalancersCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -48040,7 +48038,7 @@ export interface LoadBalancersGetRequest {
   /** Expands referenced resources. */
   _expand?: string;
   /** Controls verbosity of the returned load balancer resource. When set to 'Reduced', read-only back-reference collections (e.g., rules referencing frontendIPConfigurations) are omitted from the response. */
-  detailLevel?: LoadBalancersGetRequestDetailLevel | (string & {});
+  detailLevel?: LoadBalancersGetRequestDetailLevel;
 }
 export const LoadBalancersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51858,7 +51856,7 @@ export interface CommonPrivateLinkServiceInputExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const CommonPrivateLinkServiceInputExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -52007,7 +52005,7 @@ export interface NetworkInterfacesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -61527,7 +61525,7 @@ export const HTTPConfigurationValidStatusCodesList = /*@__PURE__*/ S.Array(
 /** HTTP configuration of the connectivity check. */
 export interface HTTPConfiguration {
   /** HTTP method. */
-  method?: HTTPConfigurationMethod | (string & {});
+  method?: HTTPConfigurationMethod;
   /** List of HTTP headers. */
   headers?: HTTPConfigurationHeadersList;
   /** Valid status codes. */
@@ -66344,7 +66342,7 @@ export interface PrivateEndpointsCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const PrivateEndpointsCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -66729,7 +66727,7 @@ export interface PrivateLinkServicesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const PrivateLinkServicesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -67375,7 +67373,7 @@ export interface PublicIPAddressesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const PublicIPAddressesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -68410,7 +68408,7 @@ export interface PublicIPPrefixesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const PublicIPPrefixesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -70168,9 +70166,7 @@ export interface RouteFilterRulePropertiesFormat {
   /** Access to be allowed or denied. */
   access: RouteFilterRulePropertiesFormatAccess | (string & {});
   /** The rule type of the rule. */
-  routeFilterRuleType:
-    | RouteFilterRulePropertiesFormatRouteFilterRuleType
-    | (string & {});
+  routeFilterRuleType: RouteFilterRulePropertiesFormatRouteFilterRuleType;
   /** The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']. */
   communities: RouteFilterRulePropertiesFormatCommunitiesList;
   /** Provisioning states of a resource. */
@@ -80488,7 +80484,7 @@ export interface ServiceGatewayPropertiesFormatInputVirtualNetworkExtendedLocati
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const ServiceGatewayPropertiesFormatInputVirtualNetworkExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -80632,9 +80628,9 @@ export const ServiceGatewaySkuTier = /*@__PURE__*/ S.String;
 /** SKU of a service gateway. */
 export interface ServiceGatewaySku {
   /** Name of a service gateway SKU. */
-  name?: ServiceGatewaySkuName | (string & {});
+  name?: ServiceGatewaySkuName;
   /** Tier of a service gateway SKU. */
-  tier?: ServiceGatewaySkuTier | (string & {});
+  tier?: ServiceGatewaySkuTier;
 }
 export const ServiceGatewaySku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87556,7 +87552,7 @@ export interface VipSwapCreateRequest {
   /** The name of the cloud service. */
   resourceName: string;
   /** The name of the singleton resource. */
-  singletonResource: VipSwapCreateRequestSingletonResource | (string & {});
+  singletonResource: VipSwapCreateRequestSingletonResource;
   /** Swap resource properties */
   properties?: SwapResourceProperties;
 }
@@ -87596,7 +87592,7 @@ export interface VipSwapGetRequest {
   /** The name of the cloud service. */
   resourceName: string;
   /** The name of the singleton resource. */
-  singletonResource: VipSwapGetRequestSingletonResource | (string & {});
+  singletonResource: VipSwapGetRequestSingletonResource;
 }
 export const VipSwapGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -89165,7 +89161,7 @@ export interface HubIPConfigurationPropertiesFormatInputPublicIPAddressExtendedL
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const HubIPConfigurationPropertiesFormatInputPublicIPAddressExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -98808,7 +98804,7 @@ export interface VirtualNetworkGatewayInputExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const VirtualNetworkGatewayInputExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -101532,7 +101528,7 @@ export interface VirtualNetworkGatewaysCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const VirtualNetworkGatewaysCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -103028,9 +103024,7 @@ export interface VirtualNetworkGatewaysInvokePrepareMigrationRequest {
   /** The name of the virtual network gateway. */
   virtualNetworkGatewayName: string;
   /** MigrationType for the virtual network gateway. */
-  migrationType:
-    | VirtualNetworkGatewaysInvokePrepareMigrationRequestMigrationType
-    | (string & {});
+  migrationType: VirtualNetworkGatewaysInvokePrepareMigrationRequestMigrationType;
   /** Resource url that needs to be passed in to migration. */
   resourceUrl?: string;
 }
@@ -104213,9 +104207,7 @@ export interface VirtualNetworkPeeringsCreateOrUpdateRequest {
   /** The name of the virtual network peering. */
   virtualNetworkPeeringName: string;
   /** Parameter indicates the intention to sync the peering with the current address space on the remote vNet after it's updated. */
-  syncRemoteAddressSpace?:
-    | VirtualNetworkPeeringsCreateOrUpdateRequestSyncRemoteAddressSpace
-    | (string & {});
+  syncRemoteAddressSpace?: VirtualNetworkPeeringsCreateOrUpdateRequestSyncRemoteAddressSpace;
   /** Resource ID. */
   id?: string;
   /** Name of the resource. */
@@ -104482,7 +104474,7 @@ export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: CommonExtendedLocationTypes | (string & {});
+  type?: CommonExtendedLocationTypes;
 }
 export const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>

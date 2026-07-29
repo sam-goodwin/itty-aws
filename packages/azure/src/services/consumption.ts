@@ -573,7 +573,7 @@ export interface BudgetComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: BudgetOperatorType | (string & {});
+  operator: BudgetOperatorType;
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
@@ -721,7 +721,7 @@ export const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
 /** The properties of the budget. */
 export interface BudgetPropertiesInput {
   /** The category of the budget, whether the budget tracks cost or usage. */
-  category: CategoryType | (string & {});
+  category: CategoryType;
   /** The total amount of cost to track with the budget */
   amount: number;
   /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */

@@ -2979,7 +2979,7 @@ export interface PatchOauthClientRequest {
   /** URL that points to a terms of service document. */
   tosUri?: string;
   /** Promote the OAuth client from private to public visibility. Only `public` is accepted; demotion to `private` is not supported. Promotion requires a non-empty client name, logo URI, verified client URI host, and at least one non-identity scope. */
-  visibility?: OauthClientsUpdateRequestVisibility | (string & {});
+  visibility?: OauthClientsUpdateRequestVisibility;
 }
 export const PatchOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

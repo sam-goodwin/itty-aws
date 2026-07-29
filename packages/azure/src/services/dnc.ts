@@ -1008,7 +1008,7 @@ export interface OrchestratorInstanceServiceCreateRequest {
   /** Location of the resource. */
   location?: string;
   /** The kind of workbook. Choices are user and shared. */
-  kind: OrchestratorInstanceServiceCreateRequestKind | (string & {});
+  kind: OrchestratorInstanceServiceCreateRequestKind;
   /** The identity of the orchestrator */
   identity?: OrchestratorIdentityInput;
   /** The resource tags. */

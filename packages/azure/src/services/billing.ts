@@ -12005,7 +12005,7 @@ export interface PoliciesGetByCustomerRequest {
   /** The ID that uniquely identifies a customer. */
   customerName: string;
   /** Service-defined resource names such as 'default' which are reserved resource names. */
-  policyName: PoliciesGetByCustomerRequestPolicyName | (string & {});
+  policyName: PoliciesGetByCustomerRequestPolicyName;
 }
 export const PoliciesGetByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14919,7 +14919,7 @@ export interface Commitment {
   currencyCode?: string;
   amount?: number;
   /** Commitment grain. */
-  grain?: CommitmentGrain | (string & {});
+  grain?: CommitmentGrain;
 }
 export const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14963,7 +14963,7 @@ export interface PurchaseRequestProperties {
   /** Represents the Savings plan term in ISO 8601 format. */
   term?: SavingsPlanTerm | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly purchases. */
-  billingPlan?: BillingPlan | (string & {});
+  billingPlan?: BillingPlan;
   /** Type of the Applied Scope. */
   appliedScopeType?: AppliedScopeType | (string & {});
   /** Commitment towards the benefit. */

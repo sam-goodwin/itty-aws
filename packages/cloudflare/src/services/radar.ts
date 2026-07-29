@@ -13310,9 +13310,7 @@ export interface DirectiveRobotsTxtTopUserAgentRequest {
   /** Array of names used to label the series in the response. */
   name?: RobotsTxtTopUserAgentsDirectiveRequestNameList;
   /** Filters results by user agent category. */
-  userAgentCategory?:
-    | RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory
-    | (string & {});
+  userAgentCategory?: RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory;
 }
 export const DirectiveRobotsTxtTopUserAgentRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -20931,9 +20929,7 @@ export interface DomainCategoriesRobotsTxtTopRequest {
   /** Array of names used to label the series in the response. */
   name?: RobotsTxtTopDomainCategoriesRequestNameList;
   /** Filters results by user agent category. */
-  userAgentCategory?:
-    | RobotsTxtTopDomainCategoriesRequestUserAgentCategory
-    | (string & {});
+  userAgentCategory?: RobotsTxtTopDomainCategoriesRequestUserAgentCategory;
 }
 export const DomainCategoriesRobotsTxtTopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48832,7 +48828,7 @@ export interface ListBotsRequest {
   /** Filters results by bot operator. */
   botOperator?: string;
   /** Filters results by bot verification status. */
-  botVerificationStatus?: BotsListRequestBotVerificationStatus | (string & {});
+  botVerificationStatus?: BotsListRequestBotVerificationStatus;
   /** Format in which results will be returned. */
   format?: BotsListRequestFormat | (string & {});
   /** Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed. */
@@ -70865,7 +70861,7 @@ export const AgentReadinessSummaryRequestNameList = /*@__PURE__*/ S.Array(
 
 export interface SummaryAgentReadinessRequest {
   /** Specifies the agent readiness data dimension by which to group the results. */
-  dimension: AgentReadinessSummaryRequestDimension | (string & {});
+  dimension: AgentReadinessSummaryRequestDimension;
   /** Filters results by the specified date. */
   date?: string;
   /** Filters results by domain category. */
@@ -71734,9 +71730,8 @@ export const BotsSummaryRequestBotOperatorList = /*@__PURE__*/ S.Array(
 export type BotsSummaryRequestBotVerificationStatus = "VERIFIED";
 export const BotsSummaryRequestBotVerificationStatus = /*@__PURE__*/ S.String;
 
-export type BotsSummaryRequestBotVerificationStatusList = Array<
-  BotsSummaryRequestBotVerificationStatus | (string & {})
->;
+export type BotsSummaryRequestBotVerificationStatusList =
+  Array<BotsSummaryRequestBotVerificationStatus>;
 export const BotsSummaryRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsSummaryRequestBotVerificationStatus,
@@ -73328,7 +73323,7 @@ export const PostQuantumOriginSummaryRequestNameList = /*@__PURE__*/ S.Array(
 
 export interface SummaryPostQuantumOriginRequest {
   /** Specifies the origin post-quantum data dimension by which to group the results. */
-  dimension: PostQuantumOriginSummaryRequestDimension | (string & {});
+  dimension: PostQuantumOriginSummaryRequestDimension;
   /** End of the date range (inclusive). */
   dateEnd?: PostQuantumOriginSummaryRequestDateEndList;
   /** Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters). */
@@ -83520,9 +83515,8 @@ export type BotsTimeseriesRequestBotVerificationStatus = "VERIFIED";
 export const BotsTimeseriesRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
-export type BotsTimeseriesRequestBotVerificationStatusList = Array<
-  BotsTimeseriesRequestBotVerificationStatus | (string & {})
->;
+export type BotsTimeseriesRequestBotVerificationStatusList =
+  Array<BotsTimeseriesRequestBotVerificationStatus>;
 export const BotsTimeseriesRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsTimeseriesRequestBotVerificationStatus,
@@ -85330,9 +85324,8 @@ export type BotsTimeseriesGroupsRequestBotVerificationStatus = "VERIFIED";
 export const BotsTimeseriesGroupsRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
-export type BotsTimeseriesGroupsRequestBotVerificationStatusList = Array<
-  BotsTimeseriesGroupsRequestBotVerificationStatus | (string & {})
->;
+export type BotsTimeseriesGroupsRequestBotVerificationStatusList =
+  Array<BotsTimeseriesGroupsRequestBotVerificationStatus>;
 export const BotsTimeseriesGroupsRequestBotVerificationStatusList =
   /*@__PURE__*/ S.Array(
     BotsTimeseriesGroupsRequestBotVerificationStatus,
@@ -86898,86 +86891,34 @@ export const CtTimeseriesGroupsResponseSerie0Case7 = /*@__PURE__*/ S.suspend(
   identifier: "CtTimeseriesGroupsResponseSerie0Case7",
 }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Case7>;
 
-export interface CtTimeseriesGroupsResponseSerie0 {
-  timestamps?: CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList;
-  rfc6962?: CtTimeseriesGroupsResponseSerie0Case1Rfc6962List;
-  static?: CtTimeseriesGroupsResponseSerie0Case1StaticList;
-  gt121d?: CtTimeseriesGroupsResponseSerie0Case2Gt121dList;
-  gt16dLte31d?: CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList;
-  gt31dLte91d?: CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList;
-  gt3dLte16d?: CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList;
-  gt91dLte121d?: CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList;
-  lte3d?: CtTimeseriesGroupsResponseSerie0Case2Lte3dList;
-  CERTIFICATE?: CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList;
-  PRECERTIFICATE?: CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList;
-  EXPIRED?: CtTimeseriesGroupsResponseSerie0Case4EXPIREDList;
-  VALID?: CtTimeseriesGroupsResponseSerie0Case4VALIDList;
-  NEGATIVE?: CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList;
-  POSITIVE?: CtTimeseriesGroupsResponseSerie0Case5POSITIVEList;
-  DSA?: CtTimeseriesGroupsResponseSerie0Case6DSAList;
-  ECDSA?: CtTimeseriesGroupsResponseSerie0Case6ECDSAList;
-  RSA?: CtTimeseriesGroupsResponseSerie0Case6RSAList;
-  domain?: CtTimeseriesGroupsResponseSerie0Case7DomainList;
-  extended?: CtTimeseriesGroupsResponseSerie0Case7ExtendedList;
-  organization?: CtTimeseriesGroupsResponseSerie0Case7OrganizationList;
-  unknown?: CtTimeseriesGroupsResponseSerie0Case7UnknownList;
-}
-export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamps: S.optional(
-      CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList,
-    ),
-    rfc6962: S.optional(CtTimeseriesGroupsResponseSerie0Case1Rfc6962List),
-    static: S.optional(CtTimeseriesGroupsResponseSerie0Case1StaticList),
-    gt121d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Gt121dList.pipe(T.Body("gt_121d")),
-    ),
-    gt16dLte31d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Gt16dLte31dList.pipe(
-        T.Body("gt_16d_lte_31d"),
-      ),
-    ),
-    gt31dLte91d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Gt31dLte91dList.pipe(
-        T.Body("gt_31d_lte_91d"),
-      ),
-    ),
-    gt3dLte16d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Gt3dLte16dList.pipe(
-        T.Body("gt_3d_lte_16d"),
-      ),
-    ),
-    gt91dLte121d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Gt91dLte121dList.pipe(
-        T.Body("gt_91d_lte_121d"),
-      ),
-    ),
-    lte3d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case2Lte3dList.pipe(T.Body("lte_3d")),
-    ),
-    CERTIFICATE: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case3CERTIFICATEList,
-    ),
-    PRECERTIFICATE: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case3PRECERTIFICATEList,
-    ),
-    EXPIRED: S.optional(CtTimeseriesGroupsResponseSerie0Case4EXPIREDList),
-    VALID: S.optional(CtTimeseriesGroupsResponseSerie0Case4VALIDList),
-    NEGATIVE: S.optional(CtTimeseriesGroupsResponseSerie0Case5NEGATIVEList),
-    POSITIVE: S.optional(CtTimeseriesGroupsResponseSerie0Case5POSITIVEList),
-    DSA: S.optional(CtTimeseriesGroupsResponseSerie0Case6DSAList),
-    ECDSA: S.optional(CtTimeseriesGroupsResponseSerie0Case6ECDSAList),
-    RSA: S.optional(CtTimeseriesGroupsResponseSerie0Case6RSAList),
-    domain: S.optional(CtTimeseriesGroupsResponseSerie0Case7DomainList),
-    extended: S.optional(CtTimeseriesGroupsResponseSerie0Case7ExtendedList),
-    organization: S.optional(
-      CtTimeseriesGroupsResponseSerie0Case7OrganizationList,
-    ),
-    unknown: S.optional(CtTimeseriesGroupsResponseSerie0Case7UnknownList),
-  }),
-).annotate({
-  identifier: "CtTimeseriesGroupsResponseSerie0",
-}) as any as S.Schema<CtTimeseriesGroupsResponseSerie0>;
+export type CtTimeseriesGroupsResponseSerie0 =
+  | CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55
+  | CtTimeseriesGroupsResponseSerie0Case1
+  | CtTimeseriesGroupsResponseSerie0Case2
+  | CtTimeseriesGroupsResponseSerie0Case3
+  | CtTimeseriesGroupsResponseSerie0Case4
+  | CtTimeseriesGroupsResponseSerie0Case5
+  | CtTimeseriesGroupsResponseSerie0Case6
+  | CtTimeseriesGroupsResponseSerie0Case7;
+export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["timestamps"],
+    ["rfc6962", "static"],
+    [
+      "gt121d",
+      "gt16dLte31d",
+      "gt31dLte91d",
+      "gt3dLte16d",
+      "gt91dLte121d",
+      "lte3d",
+    ],
+    ["CERTIFICATE", "PRECERTIFICATE"],
+    ["EXPIRED", "VALID"],
+    ["NEGATIVE", "POSITIVE"],
+    ["DSA", "ECDSA", "RSA"],
+    ["domain", "extended", "organization", "unknown"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesGroupsCtResponse {
@@ -87412,7 +87353,7 @@ export const PostQuantumOriginTimeseriesGroupsRequestNameList =
 
 export interface TimeseriesGroupsPostQuantumOriginRequest {
   /** Specifies the origin post-quantum data dimension by which to group the results. */
-  dimension: PostQuantumOriginTimeseriesGroupsRequestDimension | (string & {});
+  dimension: PostQuantumOriginTimeseriesGroupsRequestDimension;
   /** End of the date range (inclusive). */
   dateEnd?: PostQuantumOriginTimeseriesGroupsRequestDateEndList;
   /** Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters). */

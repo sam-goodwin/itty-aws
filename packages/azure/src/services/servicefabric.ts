@@ -1899,7 +1899,7 @@ export interface Notification {
   /** Indicates if the notification is enabled. */
   isEnabled: boolean;
   /** The category of notification. */
-  notificationCategory: NotificationNotificationCategory | (string & {});
+  notificationCategory: NotificationNotificationCategory;
   /** The level of notification. */
   notificationLevel: NotificationNotificationLevel | (string & {});
   /** List of targets that subscribe to the notification. */

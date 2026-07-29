@@ -56,9 +56,7 @@ export interface BackupShortTermRetentionPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be default. */
-  policyName:
-    | BackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName
-    | (string & {});
+  policyName: BackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: BackupShortTermRetentionPolicyProperties;
 }
@@ -167,9 +165,7 @@ export interface BackupShortTermRetentionPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be default. */
-  policyName:
-    | BackupShortTermRetentionPoliciesGetRequestPolicyName
-    | (string & {});
+  policyName: BackupShortTermRetentionPoliciesGetRequestPolicyName;
 }
 export const BackupShortTermRetentionPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -311,9 +307,7 @@ export interface BackupShortTermRetentionPoliciesUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be default. */
-  policyName:
-    | BackupShortTermRetentionPoliciesUpdateRequestPolicyName
-    | (string & {});
+  policyName: BackupShortTermRetentionPoliciesUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: BackupShortTermRetentionPolicyProperties;
 }
@@ -2048,9 +2042,7 @@ export interface DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName;
   /** Properties of an Advanced Threat Protection state. */
   properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
@@ -2141,9 +2133,7 @@ export interface DatabaseAdvancedThreatProtectionSettingsGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | DatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: DatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName;
 }
 export const DatabaseAdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3222,9 +3212,7 @@ export interface DatabaseBlobAuditingPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | DatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: DatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: DatabaseBlobAuditingPolicyProperties;
 }
@@ -3295,9 +3283,7 @@ export interface DatabaseBlobAuditingPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | DatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: DatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const DatabaseBlobAuditingPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3753,9 +3739,7 @@ export interface DatabaseEncryptionProtectorsRevalidateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the encryption protector to be updated. */
-  encryptionProtectorName:
-    | DatabaseEncryptionProtectorsRevalidateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: DatabaseEncryptionProtectorsRevalidateRequestEncryptionProtectorName;
 }
 export const DatabaseEncryptionProtectorsRevalidateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3801,9 +3785,7 @@ export interface DatabaseEncryptionProtectorsRevertRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the encryption protector to be updated. */
-  encryptionProtectorName:
-    | DatabaseEncryptionProtectorsRevertRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: DatabaseEncryptionProtectorsRevertRequestEncryptionProtectorName;
 }
 export const DatabaseEncryptionProtectorsRevertRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5665,9 +5647,7 @@ export interface DatabaseSecurityAlertPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | DatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: DatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Properties of a security alert policy. */
   properties?: DatabaseSecurityAlertPoliciesCreateOrUpdateRequestProperties;
 }
@@ -5794,9 +5774,7 @@ export interface DatabaseSecurityAlertPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | DatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: DatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
 }
 export const DatabaseSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6797,12 +6775,8 @@ export interface DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateReques
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName;
   /** Resource properties. */
   properties?: DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputProperties;
 }
@@ -6927,12 +6901,8 @@ export interface DatabaseSqlVulnerabilityAssessmentBaselinesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestBaselineName;
 }
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7003,9 +6973,7 @@ export interface DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabili
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName;
 }
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7100,9 +7068,7 @@ export interface DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName;
 }
 export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7186,12 +7152,8 @@ export interface DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRe
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** Resource properties. */
@@ -7307,12 +7269,8 @@ export interface DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
 }
@@ -7370,12 +7328,8 @@ export interface DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
 }
@@ -7454,12 +7408,8 @@ export interface DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRe
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestVulnerabilityAssessmentName;
+  baselineName: DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestBaselineName;
 }
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7558,9 +7508,7 @@ export interface DatabaseSqlVulnerabilityAssessmentScanResultGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName;
   /** The scan id of the SQL Vulnerability Assessment scan to retrieve result from. */
   scanId: string;
   /** The scan result id of the specific result to retrieve. */
@@ -7902,9 +7850,7 @@ export interface DatabaseSqlVulnerabilityAssessmentScanResultListByScanRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName;
   /** The scan id of the SQL Vulnerability Assessment scan to retrieve result from. */
   scanId: string;
 }
@@ -8000,9 +7946,7 @@ export interface DatabaseSqlVulnerabilityAssessmentScansGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -8170,9 +8114,7 @@ export interface DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAs
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName;
 }
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8265,9 +8207,7 @@ export interface DatabaseSqlVulnerabilityAssessmentsSettingsGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseSqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseSqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName;
 }
 export const DatabaseSqlVulnerabilityAssessmentsSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9341,9 +9281,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReque
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -9433,9 +9371,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequest {
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -9497,9 +9433,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselinesGetRequest {
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -9577,9 +9511,7 @@ export interface DatabaseVulnerabilityAssessmentScansExportRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9663,9 +9595,7 @@ export interface DatabaseVulnerabilityAssessmentScansGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9792,9 +9722,7 @@ export interface DatabaseVulnerabilityAssessmentScansInitiateScanRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -9843,9 +9771,7 @@ export interface DatabaseVulnerabilityAssessmentScansListByDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName;
 }
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9990,9 +9916,7 @@ export interface DatabaseVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: DatabaseVulnerabilityAssessmentProperties;
 }
@@ -10060,9 +9984,7 @@ export interface DatabaseVulnerabilityAssessmentsDeleteRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const DatabaseVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10108,9 +10030,7 @@ export interface DatabaseVulnerabilityAssessmentsGetRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | DatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: DatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const DatabaseVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10278,9 +10198,7 @@ export interface DataMaskingPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the database for which the data masking policy applies. */
-  dataMaskingPolicyName:
-    | DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName;
   /** Resource properties. */
   properties?: DataMaskingPolicyPropertiesInput;
 }
@@ -10382,9 +10300,7 @@ export interface DataMaskingPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the database for which the data masking policy applies. */
-  dataMaskingPolicyName:
-    | DataMaskingPoliciesGetRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingPoliciesGetRequestDataMaskingPolicyName;
 }
 export const DataMaskingPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10511,9 +10427,7 @@ export interface DataMaskingRulesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the database for which the data masking policy applies. */
-  dataMaskingPolicyName:
-    | DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName;
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
   /** Resource properties. */
@@ -10650,9 +10564,7 @@ export interface DataMaskingRulesListByDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the database for which the data masking policy applies. */
-  dataMaskingPolicyName:
-    | DataMaskingRulesListByDatabaseRequestDataMaskingPolicyName
-    | (string & {});
+  dataMaskingPolicyName: DataMaskingRulesListByDatabaseRequestDataMaskingPolicyName;
 }
 export const DataMaskingRulesListByDatabaseRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10745,9 +10657,7 @@ export interface DataWarehouseUserActivitiesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The activity name of the data warehouse. */
-  dataWarehouseUserActivityName:
-    | DataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName
-    | (string & {});
+  dataWarehouseUserActivityName: DataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName;
 }
 export const DataWarehouseUserActivitiesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -13157,9 +13067,7 @@ export interface EncryptionProtectorsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | EncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: EncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName;
   /** Resource properties. */
   properties?: EncryptionProtectorPropertiesInput;
 }
@@ -13267,9 +13175,7 @@ export interface EncryptionProtectorsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | EncryptionProtectorsGetRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: EncryptionProtectorsGetRequestEncryptionProtectorName;
 }
 export const EncryptionProtectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13412,9 +13318,7 @@ export interface EncryptionProtectorsRevalidateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | EncryptionProtectorsRevalidateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: EncryptionProtectorsRevalidateRequestEncryptionProtectorName;
 }
 export const EncryptionProtectorsRevalidateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -13659,9 +13563,7 @@ export interface ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ExtendedDatabaseBlobAuditingPolicyProperties;
 }
@@ -13729,9 +13631,7 @@ export interface ExtendedDatabaseBlobAuditingPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedDatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedDatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const ExtendedDatabaseBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13937,9 +13837,7 @@ export interface ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
@@ -14004,9 +13902,7 @@ export interface ExtendedServerBlobAuditingPoliciesGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ExtendedServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ExtendedServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const ExtendedServerBlobAuditingPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15255,9 +15151,7 @@ export interface GeoBackupPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the Geo backup policy. This should always be 'Default'. */
-  geoBackupPolicyName:
-    | GeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName
-    | (string & {});
+  geoBackupPolicyName: GeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName;
   /** Resource properties. */
   properties?: GeoBackupPolicyPropertiesInput;
 }
@@ -15350,9 +15244,7 @@ export interface GeoBackupPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the Geo backup policy. This should always be 'Default'. */
-  geoBackupPolicyName:
-    | GeoBackupPoliciesGetRequestGeoBackupPolicyName
-    | (string & {});
+  geoBackupPolicyName: GeoBackupPoliciesGetRequestGeoBackupPolicyName;
 }
 export const GeoBackupPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19046,9 +18938,9 @@ export const JobStepActionSource = /*@__PURE__*/ S.String;
 /** The action to be executed by a job step. */
 export interface JobStepAction {
   /** Type of action being executed by the job step. */
-  type?: JobStepActionType | (string & {});
+  type?: JobStepActionType;
   /** The source of the action to execute. */
-  source?: JobStepActionSource | (string & {});
+  source?: JobStepActionSource;
   /** The action value, for example the text of the T-SQL script to execute. */
   value: string;
 }
@@ -19067,7 +18959,7 @@ export const JobStepOutputType = /*@__PURE__*/ S.String;
 /** The output configuration of a job step. */
 export interface JobStepOutput {
   /** The output destination type. */
-  type?: JobStepOutputType | (string & {});
+  type?: JobStepOutputType;
   /** Universally Unique Identifier */
   subscriptionId?: string;
   /** The output destination resource group. */
@@ -20127,9 +20019,7 @@ export interface LedgerDigestUploadsCreateOrUpdateRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | LedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: LedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads;
   /** Resource properties. */
   properties?: LedgerDigestUploadsProperties;
 }
@@ -20195,9 +20085,7 @@ export interface LedgerDigestUploadsDisableRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | LedgerDigestUploadsDisableRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: LedgerDigestUploadsDisableRequestLedgerDigestUploads;
 }
 export const LedgerDigestUploadsDisableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20256,9 +20144,7 @@ export interface LedgerDigestUploadsGetRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | LedgerDigestUploadsGetRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: LedgerDigestUploadsGetRequestLedgerDigestUploads;
 }
 export const LedgerDigestUploadsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22614,9 +22500,7 @@ export interface LongTermRetentionPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be Default. */
-  policyName:
-    | LongTermRetentionPoliciesCreateOrUpdateRequestPolicyName
-    | (string & {});
+  policyName: LongTermRetentionPoliciesCreateOrUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: LongTermRetentionPolicyProperties;
 }
@@ -22682,7 +22566,7 @@ export interface LongTermRetentionPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be Default. */
-  policyName: LongTermRetentionPoliciesGetRequestPolicyName | (string & {});
+  policyName: LongTermRetentionPoliciesGetRequestPolicyName;
 }
 export const LongTermRetentionPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23096,9 +22980,7 @@ export interface ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. */
-  policyName:
-    | ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName
-    | (string & {});
+  policyName: ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: ManagedBackupShortTermRetentionPolicyProperties;
 }
@@ -23166,9 +23048,7 @@ export interface ManagedBackupShortTermRetentionPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. */
-  policyName:
-    | ManagedBackupShortTermRetentionPoliciesGetRequestPolicyName
-    | (string & {});
+  policyName: ManagedBackupShortTermRetentionPoliciesGetRequestPolicyName;
 }
 export const ManagedBackupShortTermRetentionPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23313,9 +23193,7 @@ export interface ManagedBackupShortTermRetentionPoliciesUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. */
-  policyName:
-    | ManagedBackupShortTermRetentionPoliciesUpdateRequestPolicyName
-    | (string & {});
+  policyName: ManagedBackupShortTermRetentionPoliciesUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: ManagedBackupShortTermRetentionPolicyProperties;
 }
@@ -23398,9 +23276,7 @@ export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRe
   /** The name of the database. */
   databaseName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName;
   /** Properties of an Advanced Threat Protection state. */
   properties?: ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
@@ -23492,9 +23368,7 @@ export interface ManagedDatabaseAdvancedThreatProtectionSettingsGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ManagedDatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ManagedDatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName;
 }
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -24467,9 +24341,7 @@ export interface ManagedDatabaseRestoreDetailsGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the restore details to retrieve. */
-  restoreDetailsName:
-    | ManagedDatabaseRestoreDetailsGetRequestRestoreDetailsName
-    | (string & {});
+  restoreDetailsName: ManagedDatabaseRestoreDetailsGetRequestRestoreDetailsName;
 }
 export const ManagedDatabaseRestoreDetailsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -25343,9 +25215,7 @@ export interface ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Resource properties. */
   properties?: SecurityAlertPolicyPropertiesInput;
 }
@@ -25465,9 +25335,7 @@ export interface ManagedDatabaseSecurityAlertPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ManagedDatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ManagedDatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
 }
 export const ManagedDatabaseSecurityAlertPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -25822,9 +25690,7 @@ export interface ManagedDatabaseSensitivityLabelsCreateOrUpdateRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | ManagedDatabaseSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: ManagedDatabaseSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource;
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
@@ -25942,9 +25808,7 @@ export interface ManagedDatabaseSensitivityLabelsDeleteRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | ManagedDatabaseSensitivityLabelsDeleteRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: ManagedDatabaseSensitivityLabelsDeleteRequestSensitivityLabelSource;
 }
 export const ManagedDatabaseSensitivityLabelsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -25999,9 +25863,7 @@ export interface ManagedDatabaseSensitivityLabelsDisableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | ManagedDatabaseSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: ManagedDatabaseSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource;
 }
 export const ManagedDatabaseSensitivityLabelsDisableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -26056,9 +25918,7 @@ export interface ManagedDatabaseSensitivityLabelsEnableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | ManagedDatabaseSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: ManagedDatabaseSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource;
 }
 export const ManagedDatabaseSensitivityLabelsEnableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27012,9 +26872,7 @@ export interface ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName:
-    | ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequestTdeName
-    | (string & {});
+  tdeName: ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequestTdeName;
   /** Resource properties. */
   properties?: ManagedTransparentDataEncryptionProperties;
 }
@@ -27083,9 +26941,7 @@ export interface ManagedDatabaseTransparentDataEncryptionGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName:
-    | ManagedDatabaseTransparentDataEncryptionGetRequestTdeName
-    | (string & {});
+  tdeName: ManagedDatabaseTransparentDataEncryptionGetRequestTdeName;
 }
 export const ManagedDatabaseTransparentDataEncryptionGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27233,9 +27089,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpda
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -27325,9 +27179,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteReques
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -27391,9 +27243,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequest {
   /** The name of the database for which the vulnerability assessment rule baseline is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule). */
@@ -27472,9 +27322,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentScansExportRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -27544,9 +27392,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentScansGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -27614,9 +27460,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequest 
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
@@ -27667,9 +27511,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseReques
   /** The name of the database. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName;
 }
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27736,9 +27578,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: DatabaseVulnerabilityAssessmentProperties;
 }
@@ -27806,9 +27646,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentsDeleteRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const ManagedDatabaseVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27854,9 +27692,7 @@ export interface ManagedDatabaseVulnerabilityAssessmentsGetRequest {
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedDatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedDatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const ManagedDatabaseVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27974,9 +27810,7 @@ export const ManagedInstanceAdministratorPropertiesAdministratorType =
 /** The properties of a managed instance administrator. */
 export interface ManagedInstanceAdministratorProperties {
   /** Type of the managed instance administrator. */
-  administratorType:
-    | ManagedInstanceAdministratorPropertiesAdministratorType
-    | (string & {});
+  administratorType: ManagedInstanceAdministratorPropertiesAdministratorType;
   /** Login name of the managed instance administrator. */
   login: string;
   /** Universally Unique Identifier */
@@ -28004,9 +27838,7 @@ export interface ManagedInstanceAdministratorsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
-  administratorName:
-    | ManagedInstanceAdministratorsCreateOrUpdateRequestAdministratorName
-    | (string & {});
+  administratorName: ManagedInstanceAdministratorsCreateOrUpdateRequestAdministratorName;
   /** Resource properties. */
   properties?: ManagedInstanceAdministratorProperties;
 }
@@ -28070,9 +27902,7 @@ export interface ManagedInstanceAdministratorsDeleteRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
-  administratorName:
-    | ManagedInstanceAdministratorsDeleteRequestAdministratorName
-    | (string & {});
+  administratorName: ManagedInstanceAdministratorsDeleteRequestAdministratorName;
 }
 export const ManagedInstanceAdministratorsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -28114,9 +27944,7 @@ export interface ManagedInstanceAdministratorsGetRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
-  administratorName:
-    | ManagedInstanceAdministratorsGetRequestAdministratorName
-    | (string & {});
+  administratorName: ManagedInstanceAdministratorsGetRequestAdministratorName;
 }
 export const ManagedInstanceAdministratorsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -28269,9 +28097,7 @@ export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRe
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName;
   /** Properties of an Advanced Threat Protection state. */
   properties?: ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
@@ -28360,9 +28186,7 @@ export interface ManagedInstanceAdvancedThreatProtectionSettingsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ManagedInstanceAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ManagedInstanceAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName;
 }
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -28553,9 +28377,7 @@ export interface ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequest 
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName
-    | (string & {});
+  authenticationName: ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName;
   /** Resource properties. */
   properties?: ManagedInstanceAzureADOnlyAuthProperties;
 }
@@ -28622,9 +28444,7 @@ export interface ManagedInstanceAzureADOnlyAuthenticationsDeleteRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ManagedInstanceAzureADOnlyAuthenticationsDeleteRequestAuthenticationName
-    | (string & {});
+  authenticationName: ManagedInstanceAzureADOnlyAuthenticationsDeleteRequestAuthenticationName;
 }
 export const ManagedInstanceAzureADOnlyAuthenticationsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -28667,9 +28487,7 @@ export interface ManagedInstanceAzureADOnlyAuthenticationsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ManagedInstanceAzureADOnlyAuthenticationsGetRequestAuthenticationName
-    | (string & {});
+  authenticationName: ManagedInstanceAzureADOnlyAuthenticationsGetRequestAuthenticationName;
 }
 export const ManagedInstanceAzureADOnlyAuthenticationsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -28901,7 +28719,7 @@ export interface ManagedInstanceDtcsCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the managed instance DTC. */
-  dtcName: ManagedInstanceDtcsCreateOrUpdateRequestDtcName | (string & {});
+  dtcName: ManagedInstanceDtcsCreateOrUpdateRequestDtcName;
   /** Resource properties. */
   properties?: ManagedInstanceDtcPropertiesInput;
 }
@@ -29008,7 +28826,7 @@ export interface ManagedInstanceDtcsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the managed instance DTC. */
-  dtcName: ManagedInstanceDtcsGetRequestDtcName | (string & {});
+  dtcName: ManagedInstanceDtcsGetRequestDtcName;
 }
 export const ManagedInstanceDtcsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29168,9 +28986,7 @@ export interface ManagedInstanceEncryptionProtectorsCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | ManagedInstanceEncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: ManagedInstanceEncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName;
   /** Resource properties. */
   properties?: ManagedInstanceEncryptionProtectorPropertiesInput;
 }
@@ -29271,9 +29087,7 @@ export interface ManagedInstanceEncryptionProtectorsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | ManagedInstanceEncryptionProtectorsGetRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: ManagedInstanceEncryptionProtectorsGetRequestEncryptionProtectorName;
 }
 export const ManagedInstanceEncryptionProtectorsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -29417,9 +29231,7 @@ export interface ManagedInstanceEncryptionProtectorsRevalidateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the encryption protector to be retrieved. */
-  encryptionProtectorName:
-    | ManagedInstanceEncryptionProtectorsRevalidateRequestEncryptionProtectorName
-    | (string & {});
+  encryptionProtectorName: ManagedInstanceEncryptionProtectorsRevalidateRequestEncryptionProtectorName;
 }
 export const ManagedInstanceEncryptionProtectorsRevalidateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -29783,9 +29595,7 @@ export interface ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be Default. */
-  policyName:
-    | ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequestPolicyName
-    | (string & {});
+  policyName: ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: ManagedInstanceLongTermRetentionPolicyProperties;
 }
@@ -29854,9 +29664,7 @@ export interface ManagedInstanceLongTermRetentionPoliciesDeleteRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be Default. */
-  policyName:
-    | ManagedInstanceLongTermRetentionPoliciesDeleteRequestPolicyName
-    | (string & {});
+  policyName: ManagedInstanceLongTermRetentionPoliciesDeleteRequestPolicyName;
 }
 export const ManagedInstanceLongTermRetentionPoliciesDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -29921,9 +29729,7 @@ export interface ManagedInstanceLongTermRetentionPoliciesGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The policy name. Should always be Default. */
-  policyName:
-    | ManagedInstanceLongTermRetentionPoliciesGetRequestPolicyName
-    | (string & {});
+  policyName: ManagedInstanceLongTermRetentionPoliciesGetRequestPolicyName;
 }
 export const ManagedInstanceLongTermRetentionPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -31006,9 +30812,7 @@ export const ManagedInstanceExternalAdministratorPrincipalType =
 /** Properties of a active directory administrator. */
 export interface ManagedInstanceExternalAdministrator {
   /** Type of the sever administrator. */
-  administratorType?:
-    | ManagedInstanceExternalAdministratorAdministratorType
-    | (string & {});
+  administratorType?: ManagedInstanceExternalAdministratorAdministratorType;
   /** Principal Type of the sever administrator. */
   principalType?:
     | ManagedInstanceExternalAdministratorPrincipalType
@@ -33224,9 +33028,7 @@ export interface ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: ManagedInstanceVulnerabilityAssessmentProperties;
 }
@@ -33291,9 +33093,7 @@ export interface ManagedInstanceVulnerabilityAssessmentsDeleteRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedInstanceVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedInstanceVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const ManagedInstanceVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -33336,9 +33136,7 @@ export interface ManagedInstanceVulnerabilityAssessmentsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ManagedInstanceVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ManagedInstanceVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const ManagedInstanceVulnerabilityAssessmentsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -33499,9 +33297,7 @@ export interface ManagedLedgerDigestUploadsCreateOrUpdateRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | ManagedLedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: ManagedLedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads;
   /** Resource properties. */
   properties?: ManagedLedgerDigestUploadsProperties;
 }
@@ -33568,9 +33364,7 @@ export interface ManagedLedgerDigestUploadsDisableRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | ManagedLedgerDigestUploadsDisableRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: ManagedLedgerDigestUploadsDisableRequestLedgerDigestUploads;
 }
 export const ManagedLedgerDigestUploadsDisableRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -33633,9 +33427,7 @@ export interface ManagedLedgerDigestUploadsGetRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
-  ledgerDigestUploads:
-    | ManagedLedgerDigestUploadsGetRequestLedgerDigestUploads
-    | (string & {});
+  ledgerDigestUploads: ManagedLedgerDigestUploadsGetRequestLedgerDigestUploads;
 }
 export const ManagedLedgerDigestUploadsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -33776,9 +33568,7 @@ export interface ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicie
   managedInstanceName: string;
   restorableDroppedDatabaseId: string;
   /** The policy name. */
-  policyName:
-    | ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName
-    | (string & {});
+  policyName: ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: ManagedBackupShortTermRetentionPolicyProperties;
 }
@@ -33847,9 +33637,7 @@ export interface ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicie
   managedInstanceName: string;
   restorableDroppedDatabaseId: string;
   /** The policy name. */
-  policyName:
-    | ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetRequestPolicyName
-    | (string & {});
+  policyName: ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetRequestPolicyName;
 }
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -33970,9 +33758,7 @@ export interface ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicie
   managedInstanceName: string;
   restorableDroppedDatabaseId: string;
   /** The policy name. */
-  policyName:
-    | ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateRequestPolicyName
-    | (string & {});
+  policyName: ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateRequestPolicyName;
   /** Resource properties. */
   properties?: ManagedBackupShortTermRetentionPolicyProperties;
 }
@@ -34381,9 +34167,7 @@ export interface ManagedServerSecurityAlertPoliciesCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Properties of a security alert policy. */
   properties?: ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestProperties;
 }
@@ -34508,9 +34292,7 @@ export interface ManagedServerSecurityAlertPoliciesGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ManagedServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ManagedServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
 }
 export const ManagedServerSecurityAlertPoliciesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -35491,9 +35273,7 @@ export interface PrivateLinkServiceConnectionStateProperty {
   /** The private link service connection description. */
   description: string;
   /** The actions required for private link service connection. */
-  actionsRequired?:
-    | PrivateLinkServiceConnectionStateActionsRequire
-    | (string & {});
+  actionsRequired?: PrivateLinkServiceConnectionStateActionsRequire;
 }
 export const PrivateLinkServiceConnectionStateProperty =
   /*@__PURE__*/ S.suspend(() =>
@@ -37697,9 +37477,7 @@ export interface SensitivityLabelsCreateOrUpdateRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource;
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
@@ -37778,9 +37556,7 @@ export interface SensitivityLabelsDeleteRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SensitivityLabelsDeleteRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SensitivityLabelsDeleteRequestSensitivityLabelSource;
 }
 export const SensitivityLabelsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37833,9 +37609,7 @@ export interface SensitivityLabelsDisableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SensitivityLabelsDisableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SensitivityLabelsDisableRecommendationRequestSensitivityLabelSource;
 }
 export const SensitivityLabelsDisableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -37890,9 +37664,7 @@ export interface SensitivityLabelsEnableRecommendationRequest {
   /** The name of the column. */
   columnName: string;
   /** The source of the sensitivity label. */
-  sensitivityLabelSource:
-    | SensitivityLabelsEnableRecommendationRequestSensitivityLabelSource
-    | (string & {});
+  sensitivityLabelSource: SensitivityLabelsEnableRecommendationRequestSensitivityLabelSource;
 }
 export const SensitivityLabelsEnableRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38251,9 +38023,7 @@ export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName;
   /** Properties of an Advanced Threat Protection state. */
   properties?: ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
@@ -38340,9 +38110,7 @@ export interface ServerAdvancedThreatProtectionSettingsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName:
-    | ServerAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName
-    | (string & {});
+  advancedThreatProtectionName: ServerAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName;
 }
 export const ServerAdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38983,9 +38751,7 @@ export const AdministratorPropertiesInputAdministratorType =
 /** Properties of a active directory administrator. */
 export interface AdministratorPropertiesInput {
   /** Type of the sever administrator. */
-  administratorType?:
-    | AdministratorPropertiesInputAdministratorType
-    | (string & {});
+  administratorType?: AdministratorPropertiesInputAdministratorType;
   /** Login name of the server administrator. */
   login: string;
   /** Universally Unique Identifier */
@@ -39014,9 +38780,7 @@ export interface ServerAzureADAdministratorsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server active directory administrator. */
-  administratorName:
-    | ServerAzureADAdministratorsCreateOrUpdateRequestAdministratorName
-    | (string & {});
+  administratorName: ServerAzureADAdministratorsCreateOrUpdateRequestAdministratorName;
   /** Resource properties. */
   properties?: AdministratorPropertiesInput;
 }
@@ -39110,9 +38874,7 @@ export interface ServerAzureADAdministratorsDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server active directory administrator. */
-  administratorName:
-    | ServerAzureADAdministratorsDeleteRequestAdministratorName
-    | (string & {});
+  administratorName: ServerAzureADAdministratorsDeleteRequestAdministratorName;
 }
 export const ServerAzureADAdministratorsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -39155,9 +38917,7 @@ export interface ServerAzureADAdministratorsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server active directory administrator. */
-  administratorName:
-    | ServerAzureADAdministratorsGetRequestAdministratorName
-    | (string & {});
+  administratorName: ServerAzureADAdministratorsGetRequestAdministratorName;
 }
 export const ServerAzureADAdministratorsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -39304,9 +39064,7 @@ export interface ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName
-    | (string & {});
+  authenticationName: ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName;
   /** Resource properties. */
   properties?: AzureADOnlyAuthProperties;
 }
@@ -39371,9 +39129,7 @@ export interface ServerAzureADOnlyAuthenticationsDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ServerAzureADOnlyAuthenticationsDeleteRequestAuthenticationName
-    | (string & {});
+  authenticationName: ServerAzureADOnlyAuthenticationsDeleteRequestAuthenticationName;
 }
 export const ServerAzureADOnlyAuthenticationsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -39416,9 +39172,7 @@ export interface ServerAzureADOnlyAuthenticationsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of server azure active directory only authentication. */
-  authenticationName:
-    | ServerAzureADOnlyAuthenticationsGetRequestAuthenticationName
-    | (string & {});
+  authenticationName: ServerAzureADOnlyAuthenticationsGetRequestAuthenticationName;
 }
 export const ServerAzureADOnlyAuthenticationsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -39611,9 +39365,7 @@ export interface ServerBlobAuditingPoliciesCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName;
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
@@ -39678,9 +39430,7 @@ export interface ServerBlobAuditingPoliciesGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the blob auditing policy. */
-  blobAuditingPolicyName:
-    | ServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName
-    | (string & {});
+  blobAuditingPolicyName: ServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName;
 }
 export const ServerBlobAuditingPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -39847,9 +39597,7 @@ export interface ServerConfigurationOptionsCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the server configuration option. */
-  serverConfigurationOptionName:
-    | ServerConfigurationOptionsCreateOrUpdateRequestServerConfigurationOptionName
-    | (string & {});
+  serverConfigurationOptionName: ServerConfigurationOptionsCreateOrUpdateRequestServerConfigurationOptionName;
   /** Resource properties. */
   properties?: ServerConfigurationOptionProperties;
 }
@@ -39914,9 +39662,7 @@ export interface ServerConfigurationOptionsGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** The name of the server configuration option. */
-  serverConfigurationOptionName:
-    | ServerConfigurationOptionsGetRequestServerConfigurationOptionName
-    | (string & {});
+  serverConfigurationOptionName: ServerConfigurationOptionsGetRequestServerConfigurationOptionName;
 }
 export const ServerConfigurationOptionsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -40076,9 +39822,7 @@ export interface ServerConnectionPoliciesCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the connection policy. */
-  connectionPolicyName:
-    | ServerConnectionPoliciesCreateOrUpdateRequestConnectionPolicyName
-    | (string & {});
+  connectionPolicyName: ServerConnectionPoliciesCreateOrUpdateRequestConnectionPolicyName;
   /** Resource properties. */
   properties?: ServerConnectionPolicyProperties;
 }
@@ -40148,9 +39892,7 @@ export interface ServerConnectionPoliciesGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the connection policy. */
-  connectionPolicyName:
-    | ServerConnectionPoliciesGetRequestConnectionPolicyName
-    | (string & {});
+  connectionPolicyName: ServerConnectionPoliciesGetRequestConnectionPolicyName;
 }
 export const ServerConnectionPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40325,9 +40067,7 @@ export interface ServerDevOpsAuditSettingsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  devOpsAuditingSettingsName:
-    | ServerDevOpsAuditSettingsCreateOrUpdateRequestDevOpsAuditingSettingsName
-    | (string & {});
+  devOpsAuditingSettingsName: ServerDevOpsAuditSettingsCreateOrUpdateRequestDevOpsAuditingSettingsName;
   /** Resource properties. */
   properties?: ServerDevOpsAuditSettingsProperties;
 }
@@ -40391,9 +40131,7 @@ export interface ServerDevOpsAuditSettingsGetRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  devOpsAuditingSettingsName:
-    | ServerDevOpsAuditSettingsGetRequestDevOpsAuditingSettingsName
-    | (string & {});
+  devOpsAuditingSettingsName: ServerDevOpsAuditSettingsGetRequestDevOpsAuditingSettingsName;
 }
 export const ServerDevOpsAuditSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41222,7 +40960,7 @@ export interface ServersCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   name: string;
-  type: ServersCheckNameAvailabilityRequestType | (string & {});
+  type: ServersCheckNameAvailabilityRequestType;
 }
 export const ServersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41313,9 +41051,7 @@ export const ServerExternalAdministratorPrincipalType = /*@__PURE__*/ S.String;
 /** Properties of a active directory administrator. */
 export interface ServerExternalAdministrator {
   /** Type of the sever administrator. */
-  administratorType?:
-    | ServerExternalAdministratorAdministratorType
-    | (string & {});
+  administratorType?: ServerExternalAdministratorAdministratorType;
   /** Principal Type of the sever administrator. */
   principalType?: ServerExternalAdministratorPrincipalType | (string & {});
   /** Login name of the server administrator. */
@@ -41846,9 +41582,7 @@ export interface ServerSecurityAlertPoliciesCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName;
   /** Properties of a security alert policy. */
   properties?: ServerSecurityAlertPoliciesCreateOrUpdateRequestProperties;
 }
@@ -41972,9 +41706,7 @@ export interface ServerSecurityAlertPoliciesGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the security alert policy. */
-  securityAlertPolicyName:
-    | ServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName
-    | (string & {});
+  securityAlertPolicyName: ServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName;
 }
 export const ServerSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43470,9 +43202,7 @@ export interface ServerVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
@@ -43537,9 +43267,7 @@ export interface ServerVulnerabilityAssessmentsDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const ServerVulnerabilityAssessmentsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -43582,9 +43310,7 @@ export interface ServerVulnerabilityAssessmentsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | ServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: ServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName;
 }
 export const ServerVulnerabilityAssessmentsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43850,16 +43576,10 @@ export interface SqlVulnerabilityAssessmentBaselineGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentBaselineGetRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentBaselineGetRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentBaselineGetRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentBaselineGetRequestBaselineName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentBaselineGetRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentBaselineGetRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentBaselineGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -43936,13 +43656,9 @@ export interface SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessm
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44020,16 +43736,10 @@ export interface SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestSystemDatabaseName;
   /** Resource properties. */
   properties?: DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputProperties;
 }
@@ -44111,13 +43821,9 @@ export interface SqlVulnerabilityAssessmentExecuteScanExecuteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentExecuteScanExecuteRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentExecuteScanExecuteRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentExecuteScanExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44174,18 +43880,12 @@ export interface SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestSystemDatabaseName;
   /** Resource properties. */
   properties?: DatabaseSqlVulnerabilityAssessmentRuleBaselineInputProperties;
 }
@@ -44273,18 +43973,12 @@ export interface SqlVulnerabilityAssessmentRuleBaselineGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentRuleBaselineGetRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentRuleBaselineGetRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentRuleBaselineGetRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentRuleBaselineGetRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentRuleBaselineGetRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentRuleBaselineGetRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentRuleBaselineGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44367,16 +44061,10 @@ export interface SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestBaselineName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44456,18 +44144,12 @@ export interface SqlVulnerabilityAssessmentRuleBaselinesDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
-  baselineName:
-    | SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName;
+  baselineName: SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName;
   /** The vulnerability assessment rule ID. */
   ruleId: string;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentRuleBaselinesDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44524,17 +44206,13 @@ export interface SqlVulnerabilityAssessmentScanResultGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName;
   /** The scan id of the SQL Vulnerability Assessment scan to retrieve result from. */
   scanId: string;
   /** The scan result id of the specific result to retrieve. */
   scanResultId: string;
   /** The SQL vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentScanResultGetRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentScanResultGetRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentScanResultGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44607,15 +44285,11 @@ export interface SqlVulnerabilityAssessmentScanResultListByScanRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName;
   /** The scan id of the SQL Vulnerability Assessment scan to retrieve result from. */
   scanId: string;
   /** The SQL vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentScanResultListByScanRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentScanResultListByScanRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentScanResultListByScanRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44688,14 +44362,10 @@ export interface SqlVulnerabilityAssessmentScansGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName;
   scanId: string;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentScansGetRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentScansGetRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentScansGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44767,13 +44437,9 @@ export interface SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessment
   /** The name of the server. */
   serverName: string;
   /** The name of the vulnerability assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName;
   /** The vulnerability assessment system database name. */
-  systemDatabaseName:
-    | SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestSystemDatabaseName
-    | (string & {});
+  systemDatabaseName: SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestSystemDatabaseName;
 }
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44841,9 +44507,7 @@ export interface SqlVulnerabilityAssessmentsDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName;
 }
 export const SqlVulnerabilityAssessmentsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -44886,9 +44550,7 @@ export interface SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequestVulnerabilityAssessmentName;
   /** Resource properties. */
   properties?: SqlVulnerabilityAssessmentPolicyProperties;
 }
@@ -44953,9 +44615,7 @@ export interface SqlVulnerabilityAssessmentsSettingsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the SQL Vulnerability Assessment. */
-  vulnerabilityAssessmentName:
-    | SqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName
-    | (string & {});
+  vulnerabilityAssessmentName: SqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName;
 }
 export const SqlVulnerabilityAssessmentsSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -45138,9 +44798,7 @@ export interface StartStopManagedInstanceSchedulesCreateOrUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** Name of the managed instance Start/Stop schedule. */
-  startStopScheduleName:
-    | StartStopManagedInstanceSchedulesCreateOrUpdateRequestStartStopScheduleName
-    | (string & {});
+  startStopScheduleName: StartStopManagedInstanceSchedulesCreateOrUpdateRequestStartStopScheduleName;
   /** Resource properties. */
   properties?: StartStopManagedInstanceSchedulePropertiesInput;
 }
@@ -45239,9 +44897,7 @@ export interface StartStopManagedInstanceSchedulesDeleteRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** Name of the managed instance Start/Stop schedule. */
-  startStopScheduleName:
-    | StartStopManagedInstanceSchedulesDeleteRequestStartStopScheduleName
-    | (string & {});
+  startStopScheduleName: StartStopManagedInstanceSchedulesDeleteRequestStartStopScheduleName;
 }
 export const StartStopManagedInstanceSchedulesDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -45284,9 +44940,7 @@ export interface StartStopManagedInstanceSchedulesGetRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** Name of the managed instance Start/Stop schedule. */
-  startStopScheduleName:
-    | StartStopManagedInstanceSchedulesGetRequestStartStopScheduleName
-    | (string & {});
+  startStopScheduleName: StartStopManagedInstanceSchedulesGetRequestStartStopScheduleName;
 }
 export const StartStopManagedInstanceSchedulesGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -47909,9 +47563,7 @@ export interface TransparentDataEncryptionsCreateOrUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName:
-    | TransparentDataEncryptionsCreateOrUpdateRequestTdeName
-    | (string & {});
+  tdeName: TransparentDataEncryptionsCreateOrUpdateRequestTdeName;
   /** Resource properties. */
   properties?: TransparentDataEncryptionProperties;
 }
@@ -47977,7 +47629,7 @@ export interface TransparentDataEncryptionsGetRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName: TransparentDataEncryptionsGetRequestTdeName | (string & {});
+  tdeName: TransparentDataEncryptionsGetRequestTdeName;
 }
 export const TransparentDataEncryptionsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -48118,7 +47770,7 @@ export interface TransparentDataEncryptionsResumeRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName: TransparentDataEncryptionsResumeRequestTdeName | (string & {});
+  tdeName: TransparentDataEncryptionsResumeRequestTdeName;
 }
 export const TransparentDataEncryptionsResumeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -48179,7 +47831,7 @@ export interface TransparentDataEncryptionsSuspendRequest {
   /** The name of the database. */
   databaseName: string;
   /** The name of the transparent data encryption configuration. */
-  tdeName: TransparentDataEncryptionsSuspendRequestTdeName | (string & {});
+  tdeName: TransparentDataEncryptionsSuspendRequestTdeName;
 }
 export const TransparentDataEncryptionsSuspendRequest = /*@__PURE__*/ S.suspend(
   () =>

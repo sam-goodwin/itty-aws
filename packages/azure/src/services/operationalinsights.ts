@@ -260,7 +260,7 @@ export interface ClusterSku {
   /** The capacity reservation level in Gigabytes for this cluster. */
   capacity?: number | null;
   /** The SKU (tier) of a cluster. */
-  name?: ClusterSkuNameEnum | (string & {});
+  name?: ClusterSkuNameEnum;
 }
 export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4969,7 +4969,7 @@ export interface RuleDefinition {
   /** The start time (UTC) when Summary rule execution starts. */
   binStartTime?: string;
   /** The time cursor used in Summary rules bins processing, e.g. TimeGenerated. */
-  timeSelector?: TimeSelectorEnum | (string & {});
+  timeSelector?: TimeSelectorEnum;
   /** The destination table used for the Summary rule results. */
   destinationTable?: string;
 }
@@ -4987,7 +4987,7 @@ export const RuleDefinition = /*@__PURE__*/ S.suspend(() =>
 /** Summary rule properties. */
 export interface SummaryLogsPropertiesInput {
   /** SummaryRules rule type: User. */
-  ruleType?: RuleTypeEnum | (string & {});
+  ruleType?: RuleTypeEnum;
   /** The display name of the Summary rule. */
   displayName?: string;
   /** The description of the Summary rule. */

@@ -573,9 +573,8 @@ export const PreferencesInputStorageAccountAccessTierPreferencesItem =
   /*@__PURE__*/ S.String;
 
 /** Preferences related to the Access Tier of storage accounts. */
-export type PreferencesInputStorageAccountAccessTierPreferencesList = Array<
-  PreferencesInputStorageAccountAccessTierPreferencesItem | (string & {})
->;
+export type PreferencesInputStorageAccountAccessTierPreferencesList =
+  Array<PreferencesInputStorageAccountAccessTierPreferencesItem>;
 export const PreferencesInputStorageAccountAccessTierPreferencesList =
   /*@__PURE__*/ S.Array(
     PreferencesInputStorageAccountAccessTierPreferencesItem,
@@ -2777,9 +2776,7 @@ export interface ServiceValidateInputsRequest {
   /** The name of Azure region. */
   location: string;
   /** Identify the nature of validation. */
-  validationCategory:
-    | ServiceValidateInputsRequestValidationCategory
-    | (string & {});
+  validationCategory: ServiceValidateInputsRequestValidationCategory;
   /** List of request details contain validationType and its request as key and value respectively. */
   individualRequestDetails: ServiceValidateInputsRequestIndividualRequestDetailsList;
 }
@@ -2886,9 +2883,7 @@ export interface ServiceValidateInputsByResourceGroupRequest {
   /** The name of Azure region. */
   location: string;
   /** Identify the nature of validation. */
-  validationCategory:
-    | ServiceValidateInputsByResourceGroupRequestValidationCategory
-    | (string & {});
+  validationCategory: ServiceValidateInputsByResourceGroupRequestValidationCategory;
   /** List of request details contain validationType and its request as key and value respectively. */
   individualRequestDetails: ServiceValidateInputsByResourceGroupRequestIndividualRequestDetailsList;
 }

@@ -888,9 +888,7 @@ export interface PlaywrightQuotasGetRequest {
   /** The name of the Azure region. */
   location: string;
   /** The name of the PlaywrightQuota */
-  playwrightQuotaName:
-    | PlaywrightQuotasGetRequestPlaywrightQuotaName
-    | (string & {});
+  playwrightQuotaName: PlaywrightQuotasGetRequestPlaywrightQuotaName;
 }
 export const PlaywrightQuotasGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1063,7 +1061,7 @@ export interface PlaywrightWorkspaceQuotasGetRequest {
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
   /** The name of the PlaywrightWorkspaceQuota */
-  quotaName: PlaywrightWorkspaceQuotasGetRequestQuotaName | (string & {});
+  quotaName: PlaywrightWorkspaceQuotasGetRequestQuotaName;
 }
 export const PlaywrightWorkspaceQuotasGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

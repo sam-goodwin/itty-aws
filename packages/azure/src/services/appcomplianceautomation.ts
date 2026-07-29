@@ -2612,7 +2612,7 @@ export interface WebhookPropertiesInput {
   /** webhook payload url */
   payloadUrl?: string;
   /** content type */
-  contentType?: ContentType | (string & {});
+  contentType?: ContentType;
   /** webhook secret token. If not set, this field value is null; otherwise, please set a string value. */
   webhookKey?: string;
   /** whether to update webhookKey. */

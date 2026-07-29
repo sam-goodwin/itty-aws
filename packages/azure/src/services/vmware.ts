@@ -2817,7 +2817,7 @@ export const LicenseKind = /*@__PURE__*/ S.String;
 /** The properties of a license */
 export interface LicensePropertiesInput {
   /** License kind */
-  kind: LicenseKind | (string & {});
+  kind: LicenseKind;
 }
 export const LicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2835,7 +2835,7 @@ export interface LicensesCreateOrUpdateRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesCreateOrUpdateRequestLicenseName | (string & {});
+  licenseName: LicensesCreateOrUpdateRequestLicenseName;
   /** The resource-specific properties for this resource. */
   properties?: LicensePropertiesInput;
 }
@@ -2913,7 +2913,7 @@ export interface LicensesDeleteRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesDeleteRequestLicenseName | (string & {});
+  licenseName: LicensesDeleteRequestLicenseName;
 }
 export const LicensesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2951,7 +2951,7 @@ export interface LicensesGetRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesGetRequestLicenseName | (string & {});
+  licenseName: LicensesGetRequestLicenseName;
 }
 export const LicensesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3006,7 +3006,7 @@ export interface LicensesGetPropertiesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
   /** Name of the license. */
-  licenseName: LicensesGetPropertiesRequestLicenseName | (string & {});
+  licenseName: LicensesGetPropertiesRequestLicenseName;
 }
 export const LicensesGetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4410,7 +4410,7 @@ export const VcfLicenseKind = /*@__PURE__*/ S.String;
 /** A VMware Cloud Foundation license */
 export interface VcfLicenseInput {
   /** License kind */
-  kind: VcfLicenseKind | (string & {});
+  kind: VcfLicenseKind;
 }
 export const VcfLicenseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

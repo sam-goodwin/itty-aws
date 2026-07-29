@@ -3162,284 +3162,137 @@ export const SettingsGetResultWebsocket = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetResultWebsocket",
 }) as any as S.Schema<SettingsGetResultWebsocket>;
 
-export interface SettingsGetResult {
-  /** ID of the zone setting. */
-  id?:
-    | SettingsGetResultZeroRTTId
-    | SettingsGetResultAdvancedDDoSId
-    | SettingsGetResultZonesCacheRulesAegisId
-    | SettingsGetResultAlwaysOnlineId
-    | SettingsGetResultZonesSchemasAlwaysUseHTTPSId
-    | SettingsGetResultZonesSchemasAutomaticHTTPSRewritesId
-    | SettingsGetResultBrotliId
-    | SettingsGetResultZonesSchemasBrowserCacheTTLId
-    | SettingsGetResultZonesSchemasBrowserCheckId
-    | SettingsGetResultZonesSchemasCacheLevelId
-    | SettingsGetResultChallengeTTLId
-    | SettingsGetResultZonesChinaNetworkEnabledId
-    | SettingsGetResultZonesContentConverterId
-    | SettingsGetResultCiphersId
-    | SettingsGetResultZonesCNAMEFlatteningId
-    | SettingsGetResultDevelopmentModeId
-    | SettingsGetResultEarlyHintsId
-    | SettingsGetResultZonesSchemasEdgeCacheTTLId
-    | SettingsGetResultZonesSchemasEmailObfuscationId
-    | SettingsGetResultH2PrioritizationId
-    | SettingsGetResultHotlinkProtectionId
-    | SettingsGetResultHTTP2Id
-    | SettingsGetResultHTTP3Id
-    | SettingsGetResultImageResizingId
-    | SettingsGetResultZonesSchemasIPGeolocationId
-    | SettingsGetResultIPV6Id
-    | SettingsGetResultZonesMaxUploadId
-    | SettingsGetResultMinTLSVersionId
-    | SettingsGetResultZonesSchemasMirageId
-    | SettingsGetResultNELId
-    | SettingsGetResultZonesSchemasOpportunisticEncryptionId
-    | SettingsGetResultOpportunisticOnionId
-    | SettingsGetResultOrangeToOrangeId
-    | SettingsGetResultZonesSchemasOriginErrorPagePassThruId
-    | SettingsGetResultZonesCacheRulesOriginH2MaxStreamsId
-    | SettingsGetResultZonesCacheRulesOriginMaxHTTPVersionId
-    | SettingsGetResultZonesSchemasPolishId
-    | SettingsGetResultPrefetchPreloadId
-    | SettingsGetResultZonesPrivacyPassId
-    | SettingsGetResultProxyReadTimeoutId
-    | SettingsGetResultPseudoIPV4Id
-    | SettingsGetResultZonesRedirectsForAITrainingId
-    | SettingsGetResultZonesReplaceInsecureJSId
-    | SettingsGetResultZonesSchemasResponseBufferingId
-    | SettingsGetResultZonesSchemasRocketLoaderId
-    | SettingsGetResultZonesSchemasAutomaticPlatformOptimizationId
-    | SettingsGetResultZonesSearchForAgentsId
-    | SettingsGetResultSecurityHeadersId
-    | SettingsGetResultZonesSchemasSecurityLevelId
-    | SettingsGetResultServerSideExcludesId
-    | SettingsGetResultZonesSha1SupportId
-    | SettingsGetResultZonesSchemasSortQueryStringForCacheId
-    | SettingsGetResultZonesSchemasSSLId
-    | SettingsGetResultSSLRecommenderId
-    | SettingsGetResultZonesTLS12OnlyId
-    | SettingsGetResultTLS13Id
-    | SettingsGetResultTLSClientAuthId
-    | SettingsGetResultZonesTransformationsId
-    | SettingsGetResultZonesTransformationsAllowedOriginsId
-    | SettingsGetResultZonesSchemasTrueClientIPHeaderId
-    | SettingsGetResultZonesSchemasWAFId
-    | SettingsGetResultWebPId
-    | SettingsGetResultWebsocketId;
-  /** Current value of the zone setting. */
-  value?:
-    | SettingsGetResultZeroRTTValue
-    | SettingsGetResultAdvancedDDoSValue
-    | SettingsGetResultZonesCacheRulesAegisValue
-    | SettingsGetResultAlwaysOnlineValue
-    | SettingsGetResultZonesSchemasAlwaysUseHTTPSValue
-    | SettingsGetResultZonesSchemasAutomaticHTTPSRewritesValue
-    | SettingsGetResultBrotliValue
-    | number
-    | SettingsGetResultZonesSchemasBrowserCheckValue
-    | SettingsGetResultZonesSchemasCacheLevelValue
-    | SettingsGetResultChallengeTTLValue
-    | SettingsGetResultZonesChinaNetworkEnabledValue
-    | SettingsGetResultZonesContentConverterValue
-    | SettingsGetResultCiphersValueList
-    | SettingsGetResultZonesCNAMEFlatteningValue
-    | SettingsGetResultDevelopmentModeValue
-    | SettingsGetResultEarlyHintsValue
-    | SettingsGetResultZonesSchemasEdgeCacheTTLValue
-    | SettingsGetResultZonesSchemasEmailObfuscationValue
-    | SettingsGetResultH2PrioritizationValue
-    | SettingsGetResultHotlinkProtectionValue
-    | SettingsGetResultHTTP2Value
-    | SettingsGetResultHTTP3Value
-    | SettingsGetResultImageResizingValue
-    | SettingsGetResultZonesSchemasIPGeolocationValue
-    | SettingsGetResultIPV6Value
-    | SettingsGetResultZonesMaxUploadValue
-    | SettingsGetResultMinTLSVersionValue
-    | SettingsGetResultZonesSchemasMirageValue
-    | SettingsGetResultNELValue
-    | SettingsGetResultZonesSchemasOpportunisticEncryptionValue
-    | SettingsGetResultOpportunisticOnionValue
-    | SettingsGetResultOrangeToOrangeValue
-    | SettingsGetResultZonesSchemasOriginErrorPagePassThruValue
-    | SettingsGetResultZonesCacheRulesOriginMaxHTTPVersionValue
-    | SettingsGetResultZonesSchemasPolishValue
-    | SettingsGetResultPrefetchPreloadValue
-    | SettingsGetResultZonesPrivacyPassValue
-    | SettingsGetResultPseudoIPV4Value
-    | SettingsGetResultZonesRedirectsForAITrainingValue
-    | SettingsGetResultZonesReplaceInsecureJSValue
-    | SettingsGetResultZonesSchemasResponseBufferingValue
-    | SettingsGetResultZonesSchemasRocketLoaderValue
-    | SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValue
-    | SettingsGetResultZonesSearchForAgentsValue
-    | SettingsGetResultSecurityHeadersValue
-    | SettingsGetResultZonesSchemasSecurityLevelValue
-    | SettingsGetResultServerSideExcludesValue
-    | SettingsGetResultZonesSha1SupportValue
-    | SettingsGetResultZonesSchemasSortQueryStringForCacheValue
-    | SettingsGetResultZonesSchemasSSLValue
-    | SettingsGetResultZonesTLS12OnlyValue
-    | SettingsGetResultTLS13Value
-    | SettingsGetResultTLSClientAuthValue
-    | SettingsGetResultZonesTransformationsValue
-    | string
-    | SettingsGetResultZonesSchemasTrueClientIPHeaderValue
-    | SettingsGetResultZonesSchemasWAFValue
-    | SettingsGetResultWebPValue
-    | SettingsGetResultWebsocketValue;
-  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
-  editable?: boolean;
-  /** last time this setting was modified. */
-  modifiedOn?: string;
-  /** Value of the zone setting. */
-  timeRemaining?: number;
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(
-      S.Union(
-        SettingsGetResultZeroRTTId,
-        SettingsGetResultAdvancedDDoSId,
-        SettingsGetResultZonesCacheRulesAegisId,
-        SettingsGetResultAlwaysOnlineId,
-        SettingsGetResultZonesSchemasAlwaysUseHTTPSId,
-        SettingsGetResultZonesSchemasAutomaticHTTPSRewritesId,
-        SettingsGetResultBrotliId,
-        SettingsGetResultZonesSchemasBrowserCacheTTLId,
-        SettingsGetResultZonesSchemasBrowserCheckId,
-        SettingsGetResultZonesSchemasCacheLevelId,
-        SettingsGetResultChallengeTTLId,
-        SettingsGetResultZonesChinaNetworkEnabledId,
-        SettingsGetResultZonesContentConverterId,
-        SettingsGetResultCiphersId,
-        SettingsGetResultZonesCNAMEFlatteningId,
-        SettingsGetResultDevelopmentModeId,
-        SettingsGetResultEarlyHintsId,
-        SettingsGetResultZonesSchemasEdgeCacheTTLId,
-        SettingsGetResultZonesSchemasEmailObfuscationId,
-        SettingsGetResultH2PrioritizationId,
-        SettingsGetResultHotlinkProtectionId,
-        SettingsGetResultHTTP2Id,
-        SettingsGetResultHTTP3Id,
-        SettingsGetResultImageResizingId,
-        SettingsGetResultZonesSchemasIPGeolocationId,
-        SettingsGetResultIPV6Id,
-        SettingsGetResultZonesMaxUploadId,
-        SettingsGetResultMinTLSVersionId,
-        SettingsGetResultZonesSchemasMirageId,
-        SettingsGetResultNELId,
-        SettingsGetResultZonesSchemasOpportunisticEncryptionId,
-        SettingsGetResultOpportunisticOnionId,
-        SettingsGetResultOrangeToOrangeId,
-        SettingsGetResultZonesSchemasOriginErrorPagePassThruId,
-        SettingsGetResultZonesCacheRulesOriginH2MaxStreamsId,
-        SettingsGetResultZonesCacheRulesOriginMaxHTTPVersionId,
-        SettingsGetResultZonesSchemasPolishId,
-        SettingsGetResultPrefetchPreloadId,
-        SettingsGetResultZonesPrivacyPassId,
-        SettingsGetResultProxyReadTimeoutId,
-        SettingsGetResultPseudoIPV4Id,
-        SettingsGetResultZonesRedirectsForAITrainingId,
-        SettingsGetResultZonesReplaceInsecureJSId,
-        SettingsGetResultZonesSchemasResponseBufferingId,
-        SettingsGetResultZonesSchemasRocketLoaderId,
-        SettingsGetResultZonesSchemasAutomaticPlatformOptimizationId,
-        SettingsGetResultZonesSearchForAgentsId,
-        SettingsGetResultSecurityHeadersId,
-        SettingsGetResultZonesSchemasSecurityLevelId,
-        SettingsGetResultServerSideExcludesId,
-        SettingsGetResultZonesSha1SupportId,
-        SettingsGetResultZonesSchemasSortQueryStringForCacheId,
-        SettingsGetResultZonesSchemasSSLId,
-        SettingsGetResultSSLRecommenderId,
-        SettingsGetResultZonesTLS12OnlyId,
-        SettingsGetResultTLS13Id,
-        SettingsGetResultTLSClientAuthId,
-        SettingsGetResultZonesTransformationsId,
-        SettingsGetResultZonesTransformationsAllowedOriginsId,
-        SettingsGetResultZonesSchemasTrueClientIPHeaderId,
-        SettingsGetResultZonesSchemasWAFId,
-        SettingsGetResultWebPId,
-        SettingsGetResultWebsocketId,
-      ),
-    ),
-    value: S.optional(
-      S.Union(
-        SettingsGetResultZeroRTTValue,
-        SettingsGetResultAdvancedDDoSValue,
-        SettingsGetResultZonesCacheRulesAegisValue,
-        SettingsGetResultAlwaysOnlineValue,
-        SettingsGetResultZonesSchemasAlwaysUseHTTPSValue,
-        SettingsGetResultZonesSchemasAutomaticHTTPSRewritesValue,
-        SettingsGetResultBrotliValue,
-        S.Number,
-        SettingsGetResultZonesSchemasBrowserCheckValue,
-        SettingsGetResultZonesSchemasCacheLevelValue,
-        SettingsGetResultChallengeTTLValue,
-        SettingsGetResultZonesChinaNetworkEnabledValue,
-        SettingsGetResultZonesContentConverterValue,
-        SettingsGetResultCiphersValueList,
-        SettingsGetResultZonesCNAMEFlatteningValue,
-        SettingsGetResultDevelopmentModeValue,
-        SettingsGetResultEarlyHintsValue,
-        SettingsGetResultZonesSchemasEdgeCacheTTLValue,
-        SettingsGetResultZonesSchemasEmailObfuscationValue,
-        SettingsGetResultH2PrioritizationValue,
-        SettingsGetResultHotlinkProtectionValue,
-        SettingsGetResultHTTP2Value,
-        SettingsGetResultHTTP3Value,
-        SettingsGetResultImageResizingValue,
-        SettingsGetResultZonesSchemasIPGeolocationValue,
-        SettingsGetResultIPV6Value,
-        SettingsGetResultZonesMaxUploadValue,
-        SettingsGetResultMinTLSVersionValue,
-        SettingsGetResultZonesSchemasMirageValue,
-        SettingsGetResultNELValue,
-        SettingsGetResultZonesSchemasOpportunisticEncryptionValue,
-        SettingsGetResultOpportunisticOnionValue,
-        SettingsGetResultOrangeToOrangeValue,
-        SettingsGetResultZonesSchemasOriginErrorPagePassThruValue,
-        SettingsGetResultZonesCacheRulesOriginMaxHTTPVersionValue,
-        SettingsGetResultZonesSchemasPolishValue,
-        SettingsGetResultPrefetchPreloadValue,
-        SettingsGetResultZonesPrivacyPassValue,
-        SettingsGetResultPseudoIPV4Value,
-        SettingsGetResultZonesRedirectsForAITrainingValue,
-        SettingsGetResultZonesReplaceInsecureJSValue,
-        SettingsGetResultZonesSchemasResponseBufferingValue,
-        SettingsGetResultZonesSchemasRocketLoaderValue,
-        SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValue,
-        SettingsGetResultZonesSearchForAgentsValue,
-        SettingsGetResultSecurityHeadersValue,
-        SettingsGetResultZonesSchemasSecurityLevelValue,
-        SettingsGetResultServerSideExcludesValue,
-        SettingsGetResultZonesSha1SupportValue,
-        SettingsGetResultZonesSchemasSortQueryStringForCacheValue,
-        SettingsGetResultZonesSchemasSSLValue,
-        SettingsGetResultZonesTLS12OnlyValue,
-        SettingsGetResultTLS13Value,
-        SettingsGetResultTLSClientAuthValue,
-        SettingsGetResultZonesTransformationsValue,
-        S.String,
-        SettingsGetResultZonesSchemasTrueClientIPHeaderValue,
-        SettingsGetResultZonesSchemasWAFValue,
-        SettingsGetResultWebPValue,
-        SettingsGetResultWebsocketValue,
-      ),
-    ),
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsGetResult",
-}) as any as S.Schema<SettingsGetResult>;
+export type SettingsGetResult =
+  | SettingsGetResultZeroRTT
+  | SettingsGetResultAdvancedDDoS
+  | SettingsGetResultZonesCacheRulesAegis
+  | SettingsGetResultAlwaysOnline
+  | SettingsGetResultZonesSchemasAlwaysUseHTTPS
+  | SettingsGetResultZonesSchemasAutomaticHTTPSRewrites
+  | SettingsGetResultBrotli
+  | SettingsGetResultZonesSchemasBrowserCacheTTL
+  | SettingsGetResultZonesSchemasBrowserCheck
+  | SettingsGetResultZonesSchemasCacheLevel
+  | SettingsGetResultChallengeTTL
+  | SettingsGetResultZonesChinaNetworkEnabled
+  | SettingsGetResultZonesContentConverter
+  | SettingsGetResultCiphers
+  | SettingsGetResultZonesCNAMEFlattening
+  | SettingsGetResultDevelopmentMode
+  | SettingsGetResultEarlyHints
+  | SettingsGetResultZonesSchemasEdgeCacheTTL
+  | SettingsGetResultZonesSchemasEmailObfuscation
+  | SettingsGetResultH2Prioritization
+  | SettingsGetResultHotlinkProtection
+  | SettingsGetResultHTTP2
+  | SettingsGetResultHTTP3
+  | SettingsGetResultImageResizing
+  | SettingsGetResultZonesSchemasIPGeolocation
+  | SettingsGetResultIPV6
+  | SettingsGetResultZonesMaxUpload
+  | SettingsGetResultMinTLSVersion
+  | SettingsGetResultZonesSchemasMirage
+  | SettingsGetResultNEL
+  | SettingsGetResultZonesSchemasOpportunisticEncryption
+  | SettingsGetResultOpportunisticOnion
+  | SettingsGetResultOrangeToOrange
+  | SettingsGetResultZonesSchemasOriginErrorPagePassThru
+  | SettingsGetResultZonesCacheRulesOriginH2MaxStreams
+  | SettingsGetResultZonesCacheRulesOriginMaxHTTPVersion
+  | SettingsGetResultZonesSchemasPolish
+  | SettingsGetResultPrefetchPreload
+  | SettingsGetResultZonesPrivacyPass
+  | SettingsGetResultProxyReadTimeout
+  | SettingsGetResultPseudoIPV4
+  | SettingsGetResultZonesRedirectsForAITraining
+  | SettingsGetResultZonesReplaceInsecureJS
+  | SettingsGetResultZonesSchemasResponseBuffering
+  | SettingsGetResultZonesSchemasRocketLoader
+  | SettingsGetResultZonesSchemasAutomaticPlatformOptimization
+  | SettingsGetResultZonesSearchForAgents
+  | SettingsGetResultSecurityHeaders
+  | SettingsGetResultZonesSchemasSecurityLevel
+  | SettingsGetResultServerSideExcludes
+  | SettingsGetResultZonesSha1Support
+  | SettingsGetResultZonesSchemasSortQueryStringForCache
+  | SettingsGetResultZonesSchemasSSL
+  | SettingsGetResultSSLRecommender
+  | SettingsGetResultZonesTLS12Only
+  | SettingsGetResultTLS13
+  | SettingsGetResultTLSClientAuth
+  | SettingsGetResultZonesTransformations
+  | SettingsGetResultZonesTransformationsAllowedOrigins
+  | SettingsGetResultZonesSchemasTrueClientIPHeader
+  | SettingsGetResultZonesSchemasWAF
+  | SettingsGetResultWebP
+  | SettingsGetResultWebsocket;
+export const SettingsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "enabled"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+  ]),
+);
 
 export type GetSettingResponse = SettingsGetResult;
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6520,284 +6373,137 @@ export const SettingsEditResultWebsocket = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsEditResultWebsocket",
 }) as any as S.Schema<SettingsEditResultWebsocket>;
 
-export interface SettingsEditResult {
-  /** ID of the zone setting. */
-  id?:
-    | SettingsEditResultZeroRTTId
-    | SettingsEditResultAdvancedDDoSId
-    | SettingsEditResultZonesCacheRulesAegisId
-    | SettingsEditResultAlwaysOnlineId
-    | SettingsEditResultZonesSchemasAlwaysUseHTTPSId
-    | SettingsEditResultZonesSchemasAutomaticHTTPSRewritesId
-    | SettingsEditResultBrotliId
-    | SettingsEditResultZonesSchemasBrowserCacheTTLId
-    | SettingsEditResultZonesSchemasBrowserCheckId
-    | SettingsEditResultZonesSchemasCacheLevelId
-    | SettingsEditResultChallengeTTLId
-    | SettingsEditResultZonesChinaNetworkEnabledId
-    | SettingsEditResultZonesContentConverterId
-    | SettingsEditResultCiphersId
-    | SettingsEditResultZonesCNAMEFlatteningId
-    | SettingsEditResultDevelopmentModeId
-    | SettingsEditResultEarlyHintsId
-    | SettingsEditResultZonesSchemasEdgeCacheTTLId
-    | SettingsEditResultZonesSchemasEmailObfuscationId
-    | SettingsEditResultH2PrioritizationId
-    | SettingsEditResultHotlinkProtectionId
-    | SettingsEditResultHTTP2Id
-    | SettingsEditResultHTTP3Id
-    | SettingsEditResultImageResizingId
-    | SettingsEditResultZonesSchemasIPGeolocationId
-    | SettingsEditResultIPV6Id
-    | SettingsEditResultZonesMaxUploadId
-    | SettingsEditResultMinTLSVersionId
-    | SettingsEditResultZonesSchemasMirageId
-    | SettingsEditResultNELId
-    | SettingsEditResultZonesSchemasOpportunisticEncryptionId
-    | SettingsEditResultOpportunisticOnionId
-    | SettingsEditResultOrangeToOrangeId
-    | SettingsEditResultZonesSchemasOriginErrorPagePassThruId
-    | SettingsEditResultZonesCacheRulesOriginH2MaxStreamsId
-    | SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionId
-    | SettingsEditResultZonesSchemasPolishId
-    | SettingsEditResultPrefetchPreloadId
-    | SettingsEditResultZonesPrivacyPassId
-    | SettingsEditResultProxyReadTimeoutId
-    | SettingsEditResultPseudoIPV4Id
-    | SettingsEditResultZonesRedirectsForAITrainingId
-    | SettingsEditResultZonesReplaceInsecureJSId
-    | SettingsEditResultZonesSchemasResponseBufferingId
-    | SettingsEditResultZonesSchemasRocketLoaderId
-    | SettingsEditResultZonesSchemasAutomaticPlatformOptimizationId
-    | SettingsEditResultZonesSearchForAgentsId
-    | SettingsEditResultSecurityHeadersId
-    | SettingsEditResultZonesSchemasSecurityLevelId
-    | SettingsEditResultServerSideExcludesId
-    | SettingsEditResultZonesSha1SupportId
-    | SettingsEditResultZonesSchemasSortQueryStringForCacheId
-    | SettingsEditResultZonesSchemasSSLId
-    | SettingsEditResultSSLRecommenderId
-    | SettingsEditResultZonesTLS12OnlyId
-    | SettingsEditResultTLS13Id
-    | SettingsEditResultTLSClientAuthId
-    | SettingsEditResultZonesTransformationsId
-    | SettingsEditResultZonesTransformationsAllowedOriginsId
-    | SettingsEditResultZonesSchemasTrueClientIPHeaderId
-    | SettingsEditResultZonesSchemasWAFId
-    | SettingsEditResultWebPId
-    | SettingsEditResultWebsocketId;
-  /** Current value of the zone setting. */
-  value?:
-    | SettingsEditResultZeroRTTValue
-    | SettingsEditResultAdvancedDDoSValue
-    | SettingsEditResultZonesCacheRulesAegisValue
-    | SettingsEditResultAlwaysOnlineValue
-    | SettingsEditResultZonesSchemasAlwaysUseHTTPSValue
-    | SettingsEditResultZonesSchemasAutomaticHTTPSRewritesValue
-    | SettingsEditResultBrotliValue
-    | number
-    | SettingsEditResultZonesSchemasBrowserCheckValue
-    | SettingsEditResultZonesSchemasCacheLevelValue
-    | SettingsEditResultChallengeTTLValue
-    | SettingsEditResultZonesChinaNetworkEnabledValue
-    | SettingsEditResultZonesContentConverterValue
-    | SettingsEditResultCiphersValueList
-    | SettingsEditResultZonesCNAMEFlatteningValue
-    | SettingsEditResultDevelopmentModeValue
-    | SettingsEditResultEarlyHintsValue
-    | SettingsEditResultZonesSchemasEdgeCacheTTLValue
-    | SettingsEditResultZonesSchemasEmailObfuscationValue
-    | SettingsEditResultH2PrioritizationValue
-    | SettingsEditResultHotlinkProtectionValue
-    | SettingsEditResultHTTP2Value
-    | SettingsEditResultHTTP3Value
-    | SettingsEditResultImageResizingValue
-    | SettingsEditResultZonesSchemasIPGeolocationValue
-    | SettingsEditResultIPV6Value
-    | SettingsEditResultZonesMaxUploadValue
-    | SettingsEditResultMinTLSVersionValue
-    | SettingsEditResultZonesSchemasMirageValue
-    | SettingsEditResultNELValue
-    | SettingsEditResultZonesSchemasOpportunisticEncryptionValue
-    | SettingsEditResultOpportunisticOnionValue
-    | SettingsEditResultOrangeToOrangeValue
-    | SettingsEditResultZonesSchemasOriginErrorPagePassThruValue
-    | SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionValue
-    | SettingsEditResultZonesSchemasPolishValue
-    | SettingsEditResultPrefetchPreloadValue
-    | SettingsEditResultZonesPrivacyPassValue
-    | SettingsEditResultPseudoIPV4Value
-    | SettingsEditResultZonesRedirectsForAITrainingValue
-    | SettingsEditResultZonesReplaceInsecureJSValue
-    | SettingsEditResultZonesSchemasResponseBufferingValue
-    | SettingsEditResultZonesSchemasRocketLoaderValue
-    | SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue
-    | SettingsEditResultZonesSearchForAgentsValue
-    | SettingsEditResultSecurityHeadersValue
-    | SettingsEditResultZonesSchemasSecurityLevelValue
-    | SettingsEditResultServerSideExcludesValue
-    | SettingsEditResultZonesSha1SupportValue
-    | SettingsEditResultZonesSchemasSortQueryStringForCacheValue
-    | SettingsEditResultZonesSchemasSSLValue
-    | SettingsEditResultZonesTLS12OnlyValue
-    | SettingsEditResultTLS13Value
-    | SettingsEditResultTLSClientAuthValue
-    | SettingsEditResultZonesTransformationsValue
-    | string
-    | SettingsEditResultZonesSchemasTrueClientIPHeaderValue
-    | SettingsEditResultZonesSchemasWAFValue
-    | SettingsEditResultWebPValue
-    | SettingsEditResultWebsocketValue;
-  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
-  editable?: boolean;
-  /** last time this setting was modified. */
-  modifiedOn?: string;
-  /** Value of the zone setting. */
-  timeRemaining?: number;
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsEditResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(
-      S.Union(
-        SettingsEditResultZeroRTTId,
-        SettingsEditResultAdvancedDDoSId,
-        SettingsEditResultZonesCacheRulesAegisId,
-        SettingsEditResultAlwaysOnlineId,
-        SettingsEditResultZonesSchemasAlwaysUseHTTPSId,
-        SettingsEditResultZonesSchemasAutomaticHTTPSRewritesId,
-        SettingsEditResultBrotliId,
-        SettingsEditResultZonesSchemasBrowserCacheTTLId,
-        SettingsEditResultZonesSchemasBrowserCheckId,
-        SettingsEditResultZonesSchemasCacheLevelId,
-        SettingsEditResultChallengeTTLId,
-        SettingsEditResultZonesChinaNetworkEnabledId,
-        SettingsEditResultZonesContentConverterId,
-        SettingsEditResultCiphersId,
-        SettingsEditResultZonesCNAMEFlatteningId,
-        SettingsEditResultDevelopmentModeId,
-        SettingsEditResultEarlyHintsId,
-        SettingsEditResultZonesSchemasEdgeCacheTTLId,
-        SettingsEditResultZonesSchemasEmailObfuscationId,
-        SettingsEditResultH2PrioritizationId,
-        SettingsEditResultHotlinkProtectionId,
-        SettingsEditResultHTTP2Id,
-        SettingsEditResultHTTP3Id,
-        SettingsEditResultImageResizingId,
-        SettingsEditResultZonesSchemasIPGeolocationId,
-        SettingsEditResultIPV6Id,
-        SettingsEditResultZonesMaxUploadId,
-        SettingsEditResultMinTLSVersionId,
-        SettingsEditResultZonesSchemasMirageId,
-        SettingsEditResultNELId,
-        SettingsEditResultZonesSchemasOpportunisticEncryptionId,
-        SettingsEditResultOpportunisticOnionId,
-        SettingsEditResultOrangeToOrangeId,
-        SettingsEditResultZonesSchemasOriginErrorPagePassThruId,
-        SettingsEditResultZonesCacheRulesOriginH2MaxStreamsId,
-        SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionId,
-        SettingsEditResultZonesSchemasPolishId,
-        SettingsEditResultPrefetchPreloadId,
-        SettingsEditResultZonesPrivacyPassId,
-        SettingsEditResultProxyReadTimeoutId,
-        SettingsEditResultPseudoIPV4Id,
-        SettingsEditResultZonesRedirectsForAITrainingId,
-        SettingsEditResultZonesReplaceInsecureJSId,
-        SettingsEditResultZonesSchemasResponseBufferingId,
-        SettingsEditResultZonesSchemasRocketLoaderId,
-        SettingsEditResultZonesSchemasAutomaticPlatformOptimizationId,
-        SettingsEditResultZonesSearchForAgentsId,
-        SettingsEditResultSecurityHeadersId,
-        SettingsEditResultZonesSchemasSecurityLevelId,
-        SettingsEditResultServerSideExcludesId,
-        SettingsEditResultZonesSha1SupportId,
-        SettingsEditResultZonesSchemasSortQueryStringForCacheId,
-        SettingsEditResultZonesSchemasSSLId,
-        SettingsEditResultSSLRecommenderId,
-        SettingsEditResultZonesTLS12OnlyId,
-        SettingsEditResultTLS13Id,
-        SettingsEditResultTLSClientAuthId,
-        SettingsEditResultZonesTransformationsId,
-        SettingsEditResultZonesTransformationsAllowedOriginsId,
-        SettingsEditResultZonesSchemasTrueClientIPHeaderId,
-        SettingsEditResultZonesSchemasWAFId,
-        SettingsEditResultWebPId,
-        SettingsEditResultWebsocketId,
-      ),
-    ),
-    value: S.optional(
-      S.Union(
-        SettingsEditResultZeroRTTValue,
-        SettingsEditResultAdvancedDDoSValue,
-        SettingsEditResultZonesCacheRulesAegisValue,
-        SettingsEditResultAlwaysOnlineValue,
-        SettingsEditResultZonesSchemasAlwaysUseHTTPSValue,
-        SettingsEditResultZonesSchemasAutomaticHTTPSRewritesValue,
-        SettingsEditResultBrotliValue,
-        S.Number,
-        SettingsEditResultZonesSchemasBrowserCheckValue,
-        SettingsEditResultZonesSchemasCacheLevelValue,
-        SettingsEditResultChallengeTTLValue,
-        SettingsEditResultZonesChinaNetworkEnabledValue,
-        SettingsEditResultZonesContentConverterValue,
-        SettingsEditResultCiphersValueList,
-        SettingsEditResultZonesCNAMEFlatteningValue,
-        SettingsEditResultDevelopmentModeValue,
-        SettingsEditResultEarlyHintsValue,
-        SettingsEditResultZonesSchemasEdgeCacheTTLValue,
-        SettingsEditResultZonesSchemasEmailObfuscationValue,
-        SettingsEditResultH2PrioritizationValue,
-        SettingsEditResultHotlinkProtectionValue,
-        SettingsEditResultHTTP2Value,
-        SettingsEditResultHTTP3Value,
-        SettingsEditResultImageResizingValue,
-        SettingsEditResultZonesSchemasIPGeolocationValue,
-        SettingsEditResultIPV6Value,
-        SettingsEditResultZonesMaxUploadValue,
-        SettingsEditResultMinTLSVersionValue,
-        SettingsEditResultZonesSchemasMirageValue,
-        SettingsEditResultNELValue,
-        SettingsEditResultZonesSchemasOpportunisticEncryptionValue,
-        SettingsEditResultOpportunisticOnionValue,
-        SettingsEditResultOrangeToOrangeValue,
-        SettingsEditResultZonesSchemasOriginErrorPagePassThruValue,
-        SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionValue,
-        SettingsEditResultZonesSchemasPolishValue,
-        SettingsEditResultPrefetchPreloadValue,
-        SettingsEditResultZonesPrivacyPassValue,
-        SettingsEditResultPseudoIPV4Value,
-        SettingsEditResultZonesRedirectsForAITrainingValue,
-        SettingsEditResultZonesReplaceInsecureJSValue,
-        SettingsEditResultZonesSchemasResponseBufferingValue,
-        SettingsEditResultZonesSchemasRocketLoaderValue,
-        SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue,
-        SettingsEditResultZonesSearchForAgentsValue,
-        SettingsEditResultSecurityHeadersValue,
-        SettingsEditResultZonesSchemasSecurityLevelValue,
-        SettingsEditResultServerSideExcludesValue,
-        SettingsEditResultZonesSha1SupportValue,
-        SettingsEditResultZonesSchemasSortQueryStringForCacheValue,
-        SettingsEditResultZonesSchemasSSLValue,
-        SettingsEditResultZonesTLS12OnlyValue,
-        SettingsEditResultTLS13Value,
-        SettingsEditResultTLSClientAuthValue,
-        SettingsEditResultZonesTransformationsValue,
-        S.String,
-        SettingsEditResultZonesSchemasTrueClientIPHeaderValue,
-        SettingsEditResultZonesSchemasWAFValue,
-        SettingsEditResultWebPValue,
-        SettingsEditResultWebsocketValue,
-      ),
-    ),
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsEditResult",
-}) as any as S.Schema<SettingsEditResult>;
+export type SettingsEditResult =
+  | SettingsEditResultZeroRTT
+  | SettingsEditResultAdvancedDDoS
+  | SettingsEditResultZonesCacheRulesAegis
+  | SettingsEditResultAlwaysOnline
+  | SettingsEditResultZonesSchemasAlwaysUseHTTPS
+  | SettingsEditResultZonesSchemasAutomaticHTTPSRewrites
+  | SettingsEditResultBrotli
+  | SettingsEditResultZonesSchemasBrowserCacheTTL
+  | SettingsEditResultZonesSchemasBrowserCheck
+  | SettingsEditResultZonesSchemasCacheLevel
+  | SettingsEditResultChallengeTTL
+  | SettingsEditResultZonesChinaNetworkEnabled
+  | SettingsEditResultZonesContentConverter
+  | SettingsEditResultCiphers
+  | SettingsEditResultZonesCNAMEFlattening
+  | SettingsEditResultDevelopmentMode
+  | SettingsEditResultEarlyHints
+  | SettingsEditResultZonesSchemasEdgeCacheTTL
+  | SettingsEditResultZonesSchemasEmailObfuscation
+  | SettingsEditResultH2Prioritization
+  | SettingsEditResultHotlinkProtection
+  | SettingsEditResultHTTP2
+  | SettingsEditResultHTTP3
+  | SettingsEditResultImageResizing
+  | SettingsEditResultZonesSchemasIPGeolocation
+  | SettingsEditResultIPV6
+  | SettingsEditResultZonesMaxUpload
+  | SettingsEditResultMinTLSVersion
+  | SettingsEditResultZonesSchemasMirage
+  | SettingsEditResultNEL
+  | SettingsEditResultZonesSchemasOpportunisticEncryption
+  | SettingsEditResultOpportunisticOnion
+  | SettingsEditResultOrangeToOrange
+  | SettingsEditResultZonesSchemasOriginErrorPagePassThru
+  | SettingsEditResultZonesCacheRulesOriginH2MaxStreams
+  | SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion
+  | SettingsEditResultZonesSchemasPolish
+  | SettingsEditResultPrefetchPreload
+  | SettingsEditResultZonesPrivacyPass
+  | SettingsEditResultProxyReadTimeout
+  | SettingsEditResultPseudoIPV4
+  | SettingsEditResultZonesRedirectsForAITraining
+  | SettingsEditResultZonesReplaceInsecureJS
+  | SettingsEditResultZonesSchemasResponseBuffering
+  | SettingsEditResultZonesSchemasRocketLoader
+  | SettingsEditResultZonesSchemasAutomaticPlatformOptimization
+  | SettingsEditResultZonesSearchForAgents
+  | SettingsEditResultSecurityHeaders
+  | SettingsEditResultZonesSchemasSecurityLevel
+  | SettingsEditResultServerSideExcludes
+  | SettingsEditResultZonesSha1Support
+  | SettingsEditResultZonesSchemasSortQueryStringForCache
+  | SettingsEditResultZonesSchemasSSL
+  | SettingsEditResultSSLRecommender
+  | SettingsEditResultZonesTLS12Only
+  | SettingsEditResultTLS13
+  | SettingsEditResultTLSClientAuth
+  | SettingsEditResultZonesTransformations
+  | SettingsEditResultZonesTransformationsAllowedOrigins
+  | SettingsEditResultZonesSchemasTrueClientIPHeader
+  | SettingsEditResultZonesSchemasWAF
+  | SettingsEditResultWebP
+  | SettingsEditResultWebsocket;
+export const SettingsEditResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "enabled"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+  ]),
+);
 
 export type PatchSettingResponse = SettingsEditResult;
 export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7213,7 +6919,7 @@ export const SettingsBulkEditRequestBodyItemZeroRTTValue =
 
 export interface SettingsBulkEditRequestBodyItemZeroRTT {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZeroRTTId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZeroRTTId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZeroRTTValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7243,7 +6949,7 @@ export const SettingsBulkEditRequestBodyItemAdvancedDDoSValue =
 
 export interface SettingsBulkEditRequestBodyItemAdvancedDDoS {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemAdvancedDDoSId | (string & {});
+  id: SettingsBulkEditRequestBodyItemAdvancedDDoSId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemAdvancedDDoSValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7285,7 +6991,7 @@ export const SettingsBulkEditRequestBodyItemZonesCacheRulesAegisValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesCacheRulesAegis {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId;
   /** Last time this setting was modified. */
   modifiedOn?: string;
   /** Value of the zone setting. */
@@ -7314,7 +7020,7 @@ export const SettingsBulkEditRequestBodyItemAlwaysOnlineValue =
 
 export interface SettingsBulkEditRequestBodyItemAlwaysOnline {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemAlwaysOnlineId | (string & {});
+  id: SettingsBulkEditRequestBodyItemAlwaysOnlineId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemAlwaysOnlineValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7347,9 +7053,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPS {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue
@@ -7383,9 +7087,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesVa
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewrites {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue
@@ -7418,7 +7120,7 @@ export const SettingsBulkEditRequestBodyItemBrotliValue =
 
 export interface SettingsBulkEditRequestBodyItemBrotli {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemBrotliId | (string & {});
+  id: SettingsBulkEditRequestBodyItemBrotliId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemBrotliValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7445,9 +7147,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTL {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId;
   /** Current value of the zone setting. */
   value: number;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7480,7 +7180,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheck {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue
@@ -7516,7 +7216,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasCacheLevel {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue
@@ -7562,7 +7262,7 @@ export const SettingsBulkEditRequestBodyItemChallengeTTLValue =
 
 export interface SettingsBulkEditRequestBodyItemChallengeTTL {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemChallengeTTLId | (string & {});
+  id: SettingsBulkEditRequestBodyItemChallengeTTLId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemChallengeTTLValue | (number & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7595,7 +7295,7 @@ export const SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue
@@ -7630,7 +7330,7 @@ export const SettingsBulkEditRequestBodyItemZonesContentConverterValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesContentConverter {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesContentConverterId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesContentConverterId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesContentConverterValue
@@ -7663,7 +7363,7 @@ export const SettingsBulkEditRequestBodyItemCiphersValueList =
 
 export interface SettingsBulkEditRequestBodyItemCiphers {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemCiphersId | (string & {});
+  id: SettingsBulkEditRequestBodyItemCiphersId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemCiphersValueList;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7696,7 +7396,7 @@ export const SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesCNAMEFlattening {
   /** How to flatten the cname destination. */
-  id: SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue
@@ -7729,7 +7429,7 @@ export const SettingsBulkEditRequestBodyItemDevelopmentModeValue =
 
 export interface SettingsBulkEditRequestBodyItemDevelopmentMode {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemDevelopmentModeId | (string & {});
+  id: SettingsBulkEditRequestBodyItemDevelopmentModeId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemDevelopmentModeValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7762,7 +7462,7 @@ export const SettingsBulkEditRequestBodyItemEarlyHintsValue =
 
 export interface SettingsBulkEditRequestBodyItemEarlyHints {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemEarlyHintsId | (string & {});
+  id: SettingsBulkEditRequestBodyItemEarlyHintsId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemEarlyHintsValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7814,7 +7514,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTL {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue
@@ -7849,9 +7549,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscation {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue
@@ -7887,7 +7585,7 @@ export const SettingsBulkEditRequestBodyItemH2PrioritizationValue =
 
 export interface SettingsBulkEditRequestBodyItemH2Prioritization {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemH2PrioritizationId | (string & {});
+  id: SettingsBulkEditRequestBodyItemH2PrioritizationId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemH2PrioritizationValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7920,7 +7618,7 @@ export const SettingsBulkEditRequestBodyItemHotlinkProtectionValue =
 
 export interface SettingsBulkEditRequestBodyItemHotlinkProtection {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemHotlinkProtectionId | (string & {});
+  id: SettingsBulkEditRequestBodyItemHotlinkProtectionId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemHotlinkProtectionValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7948,7 +7646,7 @@ export const SettingsBulkEditRequestBodyItemHTTP2Value = /*@__PURE__*/ S.String;
 
 export interface SettingsBulkEditRequestBodyItemHTTP2 {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemHTTP2Id | (string & {});
+  id: SettingsBulkEditRequestBodyItemHTTP2Id;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemHTTP2Value | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -7976,7 +7674,7 @@ export const SettingsBulkEditRequestBodyItemHTTP3Value = /*@__PURE__*/ S.String;
 
 export interface SettingsBulkEditRequestBodyItemHTTP3 {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemHTTP3Id | (string & {});
+  id: SettingsBulkEditRequestBodyItemHTTP3Id;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemHTTP3Value | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8009,9 +7707,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocation {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue
@@ -8041,7 +7737,7 @@ export const SettingsBulkEditRequestBodyItemIPV6Value = /*@__PURE__*/ S.String;
 
 export interface SettingsBulkEditRequestBodyItemIPV6 {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemIPV6Id | (string & {});
+  id: SettingsBulkEditRequestBodyItemIPV6Id;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemIPV6Value | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8088,7 +7784,7 @@ export const SettingsBulkEditRequestBodyItemZonesMaxUploadValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesMaxUpload {
   /** identifier of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesMaxUploadId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesMaxUploadId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesMaxUploadValue | (number & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8122,7 +7818,7 @@ export const SettingsBulkEditRequestBodyItemMinTLSVersionValue =
 
 export interface SettingsBulkEditRequestBodyItemMinTLSVersion {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemMinTLSVersionId | (string & {});
+  id: SettingsBulkEditRequestBodyItemMinTLSVersionId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemMinTLSVersionValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8154,7 +7850,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasMirageValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasMirage {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasMirageId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasMirageId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSchemasMirageValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8191,7 +7887,7 @@ export const SettingsBulkEditRequestBodyItemNELValue = /*@__PURE__*/ S.suspend(
 
 export interface SettingsBulkEditRequestBodyItemNEL {
   /** Zone setting identifier. */
-  id: SettingsBulkEditRequestBodyItemNELId | (string & {});
+  id: SettingsBulkEditRequestBodyItemNELId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemNELValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8222,9 +7918,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionV
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryption {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue
@@ -8261,7 +7955,7 @@ export const SettingsBulkEditRequestBodyItemOpportunisticOnionValue =
 
 export interface SettingsBulkEditRequestBodyItemOpportunisticOnion {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemOpportunisticOnionId | (string & {});
+  id: SettingsBulkEditRequestBodyItemOpportunisticOnionId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemOpportunisticOnionValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8292,7 +7986,7 @@ export const SettingsBulkEditRequestBodyItemOrangeToOrangeValue =
 
 export interface SettingsBulkEditRequestBodyItemOrangeToOrange {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemOrangeToOrangeId | (string & {});
+  id: SettingsBulkEditRequestBodyItemOrangeToOrangeId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemOrangeToOrangeValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8324,9 +8018,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruV
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThru {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue
@@ -8357,9 +8049,7 @@ export const SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId 
 
 export interface SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreams {
   /** Value of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId;
   /** Last time this setting was modified. */
   modifiedOn?: string;
   /** Value of the Origin H2 Max Streams Setting. */
@@ -8389,9 +8079,7 @@ export const SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionV
 
 export interface SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersion {
   /** Value of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId;
   /** Last time this setting was modified. */
   modifiedOn?: string;
   /** Value of the Origin Max HTTP Version Setting. */
@@ -8426,7 +8114,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasPolishValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasPolish {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasPolishId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasPolishId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSchemasPolishValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8457,7 +8145,7 @@ export const SettingsBulkEditRequestBodyItemPrefetchPreloadValue =
 
 export interface SettingsBulkEditRequestBodyItemPrefetchPreload {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemPrefetchPreloadId | (string & {});
+  id: SettingsBulkEditRequestBodyItemPrefetchPreloadId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemPrefetchPreloadValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8487,7 +8175,7 @@ export const SettingsBulkEditRequestBodyItemZonesPrivacyPassValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesPrivacyPass {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesPrivacyPassId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesPrivacyPassId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesPrivacyPassValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8514,7 +8202,7 @@ export const SettingsBulkEditRequestBodyItemProxyReadTimeoutId =
 
 export interface SettingsBulkEditRequestBodyItemProxyReadTimeout {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemProxyReadTimeoutId | (string & {});
+  id: SettingsBulkEditRequestBodyItemProxyReadTimeoutId;
   /** Current value of the zone setting. */
   value: number;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8547,7 +8235,7 @@ export const SettingsBulkEditRequestBodyItemPseudoIPV4Value =
 
 export interface SettingsBulkEditRequestBodyItemPseudoIPV4 {
   /** Value of the Pseudo IPv4 setting. */
-  id: SettingsBulkEditRequestBodyItemPseudoIPV4Id | (string & {});
+  id: SettingsBulkEditRequestBodyItemPseudoIPV4Id;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemPseudoIPV4Value | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8580,9 +8268,7 @@ export const SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue
@@ -8617,7 +8303,7 @@ export const SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue
@@ -8652,9 +8338,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasResponseBuffering {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue
@@ -8689,7 +8373,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasRocketLoader {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue
@@ -8755,9 +8439,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimiz
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimization {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8792,7 +8474,7 @@ export const SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSearchForAgents {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSearchForAgentsId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSearchForAgentsId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue
@@ -8866,7 +8548,7 @@ export const SettingsBulkEditRequestBodyItemSecurityHeadersValue =
 
 export interface SettingsBulkEditRequestBodyItemSecurityHeaders {
   /** ID of the zone's security header. */
-  id: SettingsBulkEditRequestBodyItemSecurityHeadersId | (string & {});
+  id: SettingsBulkEditRequestBodyItemSecurityHeadersId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemSecurityHeadersValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8903,9 +8585,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevel {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue
@@ -8940,7 +8620,7 @@ export const SettingsBulkEditRequestBodyItemServerSideExcludesValue =
 
 export interface SettingsBulkEditRequestBodyItemServerSideExcludes {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemServerSideExcludesId | (string & {});
+  id: SettingsBulkEditRequestBodyItemServerSideExcludesId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemServerSideExcludesValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -8970,7 +8650,7 @@ export const SettingsBulkEditRequestBodyItemZonesSha1SupportValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSha1Support {
   /** Zone setting identifier. */
-  id: SettingsBulkEditRequestBodyItemZonesSha1SupportId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSha1SupportId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSha1SupportValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9002,9 +8682,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheV
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCache {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue
@@ -9042,7 +8720,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasSSLValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasSSL {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasSSLId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasSSLId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSchemasSSLValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9068,7 +8746,7 @@ export const SettingsBulkEditRequestBodyItemSSLRecommenderId =
 
 export interface SettingsBulkEditRequestBodyItemSSLRecommender {
   /** Enrollment value for SSL/TLS Recommender. */
-  id?: SettingsBulkEditRequestBodyItemSSLRecommenderId | (string & {});
+  id?: SettingsBulkEditRequestBodyItemSSLRecommenderId;
   /** ssl-recommender enrollment setting. */
   enabled?: boolean;
 }
@@ -9092,7 +8770,7 @@ export const SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesTLS12Only {
   /** Zone setting identifier. */
-  id: SettingsBulkEditRequestBodyItemZonesTLS12OnlyId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesTLS12OnlyId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9120,7 +8798,7 @@ export const SettingsBulkEditRequestBodyItemTLS13Value = /*@__PURE__*/ S.String;
 
 export interface SettingsBulkEditRequestBodyItemTLS13 {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemTLS13Id | (string & {});
+  id: SettingsBulkEditRequestBodyItemTLS13Id;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemTLS13Value | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9150,7 +8828,7 @@ export const SettingsBulkEditRequestBodyItemTLSClientAuthValue =
 
 export interface SettingsBulkEditRequestBodyItemTLSClientAuth {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemTLSClientAuthId | (string & {});
+  id: SettingsBulkEditRequestBodyItemTLSClientAuthId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemTLSClientAuthValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9182,9 +8860,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue 
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeader {
   /** ID of the zone setting. */
-  id:
-    | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId
-    | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId;
   /** Current value of the zone setting. */
   value:
     | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue
@@ -9216,7 +8892,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasWAFValue =
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasWAF {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemZonesSchemasWAFId | (string & {});
+  id: SettingsBulkEditRequestBodyItemZonesSchemasWAFId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemZonesSchemasWAFValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9244,7 +8920,7 @@ export const SettingsBulkEditRequestBodyItemWebPValue = /*@__PURE__*/ S.String;
 
 export interface SettingsBulkEditRequestBodyItemWebP {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemWebPId | (string & {});
+  id: SettingsBulkEditRequestBodyItemWebPId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemWebPValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9273,7 +8949,7 @@ export const SettingsBulkEditRequestBodyItemWebsocketValue =
 
 export interface SettingsBulkEditRequestBodyItemWebsocket {
   /** ID of the zone setting. */
-  id: SettingsBulkEditRequestBodyItemWebsocketId | (string & {});
+  id: SettingsBulkEditRequestBodyItemWebsocketId;
   /** Current value of the zone setting. */
   value: SettingsBulkEditRequestBodyItemWebsocketValue | (string & {});
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
@@ -9293,383 +8969,131 @@ export const SettingsBulkEditRequestBodyItemWebsocket = /*@__PURE__*/ S.suspend(
   identifier: "SettingsBulkEditRequestBodyItemWebsocket",
 }) as any as S.Schema<SettingsBulkEditRequestBodyItemWebsocket>;
 
-export interface SettingsBulkEditRequestBodyItem {
-  /** ID of the zone setting. */
-  id?:
-    | SettingsBulkEditRequestBodyItemZeroRTTId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemAdvancedDDoSId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemAlwaysOnlineId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemBrotliId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemChallengeTTLId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesContentConverterId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemCiphersId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemDevelopmentModeId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemEarlyHintsId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemH2PrioritizationId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHotlinkProtectionId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHTTP2Id
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHTTP3Id
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemIPV6Id
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesMaxUploadId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemMinTLSVersionId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasMirageId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemNELId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemOpportunisticOnionId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemOrangeToOrangeId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasPolishId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemPrefetchPreloadId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesPrivacyPassId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemProxyReadTimeoutId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemPseudoIPV4Id
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSearchForAgentsId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemSecurityHeadersId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemServerSideExcludesId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSha1SupportId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasSSLId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemSSLRecommenderId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesTLS12OnlyId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemTLS13Id
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemTLSClientAuthId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasWAFId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemWebPId
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemWebsocketId
-    | (string & {});
-  /** Current value of the zone setting. */
-  value?:
-    | SettingsBulkEditRequestBodyItemZeroRTTValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemAdvancedDDoSValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesAegisValue
-    | SettingsBulkEditRequestBodyItemAlwaysOnlineValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemBrotliValue
-    | (string & {})
-    | number
-    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemChallengeTTLValue
-    | (number & {})
-    | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesContentConverterValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemCiphersValueList
-    | SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemDevelopmentModeValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemEarlyHintsValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue
-    | (number & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemH2PrioritizationValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHotlinkProtectionValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHTTP2Value
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemHTTP3Value
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemIPV6Value
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesMaxUploadValue
-    | (number & {})
-    | SettingsBulkEditRequestBodyItemMinTLSVersionValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasMirageValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemNELValue
-    | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemOpportunisticOnionValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemOrangeToOrangeValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasPolishValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemPrefetchPreloadValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesPrivacyPassValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemPseudoIPV4Value
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue
-    | SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemSecurityHeadersValue
-    | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemServerSideExcludesValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSha1SupportValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasSSLValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemTLS13Value
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemTLSClientAuthValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemZonesSchemasWAFValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemWebPValue
-    | (string & {})
-    | SettingsBulkEditRequestBodyItemWebsocketValue
-    | (string & {});
-  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
-  editable?: boolean;
-  /** last time this setting was modified. */
-  modifiedOn?: string;
-  /** Value of the zone setting. */
-  timeRemaining?: number;
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(
-      S.Union(
-        SettingsBulkEditRequestBodyItemZeroRTTId,
-        SettingsBulkEditRequestBodyItemAdvancedDDoSId,
-        SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId,
-        SettingsBulkEditRequestBodyItemAlwaysOnlineId,
-        SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId,
-        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId,
-        SettingsBulkEditRequestBodyItemBrotliId,
-        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId,
-        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId,
-        SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId,
-        SettingsBulkEditRequestBodyItemChallengeTTLId,
-        SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId,
-        SettingsBulkEditRequestBodyItemZonesContentConverterId,
-        SettingsBulkEditRequestBodyItemCiphersId,
-        SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId,
-        SettingsBulkEditRequestBodyItemDevelopmentModeId,
-        SettingsBulkEditRequestBodyItemEarlyHintsId,
-        SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId,
-        SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId,
-        SettingsBulkEditRequestBodyItemH2PrioritizationId,
-        SettingsBulkEditRequestBodyItemHotlinkProtectionId,
-        SettingsBulkEditRequestBodyItemHTTP2Id,
-        SettingsBulkEditRequestBodyItemHTTP3Id,
-        SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId,
-        SettingsBulkEditRequestBodyItemIPV6Id,
-        SettingsBulkEditRequestBodyItemZonesMaxUploadId,
-        SettingsBulkEditRequestBodyItemMinTLSVersionId,
-        SettingsBulkEditRequestBodyItemZonesSchemasMirageId,
-        SettingsBulkEditRequestBodyItemNELId,
-        SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId,
-        SettingsBulkEditRequestBodyItemOpportunisticOnionId,
-        SettingsBulkEditRequestBodyItemOrangeToOrangeId,
-        SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId,
-        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId,
-        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId,
-        SettingsBulkEditRequestBodyItemZonesSchemasPolishId,
-        SettingsBulkEditRequestBodyItemPrefetchPreloadId,
-        SettingsBulkEditRequestBodyItemZonesPrivacyPassId,
-        SettingsBulkEditRequestBodyItemProxyReadTimeoutId,
-        SettingsBulkEditRequestBodyItemPseudoIPV4Id,
-        SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId,
-        SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId,
-        SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId,
-        SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId,
-        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId,
-        SettingsBulkEditRequestBodyItemZonesSearchForAgentsId,
-        SettingsBulkEditRequestBodyItemSecurityHeadersId,
-        SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId,
-        SettingsBulkEditRequestBodyItemServerSideExcludesId,
-        SettingsBulkEditRequestBodyItemZonesSha1SupportId,
-        SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId,
-        SettingsBulkEditRequestBodyItemZonesSchemasSSLId,
-        SettingsBulkEditRequestBodyItemSSLRecommenderId,
-        SettingsBulkEditRequestBodyItemZonesTLS12OnlyId,
-        SettingsBulkEditRequestBodyItemTLS13Id,
-        SettingsBulkEditRequestBodyItemTLSClientAuthId,
-        SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId,
-        SettingsBulkEditRequestBodyItemZonesSchemasWAFId,
-        SettingsBulkEditRequestBodyItemWebPId,
-        SettingsBulkEditRequestBodyItemWebsocketId,
-      ),
-    ),
-    value: S.optional(
-      S.Union(
-        SettingsBulkEditRequestBodyItemZeroRTTValue,
-        SettingsBulkEditRequestBodyItemAdvancedDDoSValue,
-        SettingsBulkEditRequestBodyItemZonesCacheRulesAegisValue,
-        SettingsBulkEditRequestBodyItemAlwaysOnlineValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue,
-        SettingsBulkEditRequestBodyItemBrotliValue,
-        S.Number,
-        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue,
-        SettingsBulkEditRequestBodyItemChallengeTTLValue,
-        SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue,
-        SettingsBulkEditRequestBodyItemZonesContentConverterValue,
-        SettingsBulkEditRequestBodyItemCiphersValueList,
-        SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue,
-        SettingsBulkEditRequestBodyItemDevelopmentModeValue,
-        SettingsBulkEditRequestBodyItemEarlyHintsValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue,
-        SettingsBulkEditRequestBodyItemH2PrioritizationValue,
-        SettingsBulkEditRequestBodyItemHotlinkProtectionValue,
-        SettingsBulkEditRequestBodyItemHTTP2Value,
-        SettingsBulkEditRequestBodyItemHTTP3Value,
-        SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue,
-        SettingsBulkEditRequestBodyItemIPV6Value,
-        SettingsBulkEditRequestBodyItemZonesMaxUploadValue,
-        SettingsBulkEditRequestBodyItemMinTLSVersionValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasMirageValue,
-        SettingsBulkEditRequestBodyItemNELValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue,
-        SettingsBulkEditRequestBodyItemOpportunisticOnionValue,
-        SettingsBulkEditRequestBodyItemOrangeToOrangeValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue,
-        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasPolishValue,
-        SettingsBulkEditRequestBodyItemPrefetchPreloadValue,
-        SettingsBulkEditRequestBodyItemZonesPrivacyPassValue,
-        SettingsBulkEditRequestBodyItemPseudoIPV4Value,
-        SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue,
-        SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue,
-        SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue,
-        SettingsBulkEditRequestBodyItemSecurityHeadersValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue,
-        SettingsBulkEditRequestBodyItemServerSideExcludesValue,
-        SettingsBulkEditRequestBodyItemZonesSha1SupportValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasSSLValue,
-        SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue,
-        SettingsBulkEditRequestBodyItemTLS13Value,
-        SettingsBulkEditRequestBodyItemTLSClientAuthValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue,
-        SettingsBulkEditRequestBodyItemZonesSchemasWAFValue,
-        SettingsBulkEditRequestBodyItemWebPValue,
-        SettingsBulkEditRequestBodyItemWebsocketValue,
-      ),
-    ),
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItem",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItem>;
+export type SettingsBulkEditRequestBodyItem =
+  | SettingsBulkEditRequestBodyItemZeroRTT
+  | SettingsBulkEditRequestBodyItemAdvancedDDoS
+  | SettingsBulkEditRequestBodyItemZonesCacheRulesAegis
+  | SettingsBulkEditRequestBodyItemAlwaysOnline
+  | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPS
+  | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewrites
+  | SettingsBulkEditRequestBodyItemBrotli
+  | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTL
+  | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheck
+  | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevel
+  | SettingsBulkEditRequestBodyItemChallengeTTL
+  | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled
+  | SettingsBulkEditRequestBodyItemZonesContentConverter
+  | SettingsBulkEditRequestBodyItemCiphers
+  | SettingsBulkEditRequestBodyItemZonesCNAMEFlattening
+  | SettingsBulkEditRequestBodyItemDevelopmentMode
+  | SettingsBulkEditRequestBodyItemEarlyHints
+  | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTL
+  | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscation
+  | SettingsBulkEditRequestBodyItemH2Prioritization
+  | SettingsBulkEditRequestBodyItemHotlinkProtection
+  | SettingsBulkEditRequestBodyItemHTTP2
+  | SettingsBulkEditRequestBodyItemHTTP3
+  | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocation
+  | SettingsBulkEditRequestBodyItemIPV6
+  | SettingsBulkEditRequestBodyItemZonesMaxUpload
+  | SettingsBulkEditRequestBodyItemMinTLSVersion
+  | SettingsBulkEditRequestBodyItemZonesSchemasMirage
+  | SettingsBulkEditRequestBodyItemNEL
+  | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryption
+  | SettingsBulkEditRequestBodyItemOpportunisticOnion
+  | SettingsBulkEditRequestBodyItemOrangeToOrange
+  | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThru
+  | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreams
+  | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersion
+  | SettingsBulkEditRequestBodyItemZonesSchemasPolish
+  | SettingsBulkEditRequestBodyItemPrefetchPreload
+  | SettingsBulkEditRequestBodyItemZonesPrivacyPass
+  | SettingsBulkEditRequestBodyItemProxyReadTimeout
+  | SettingsBulkEditRequestBodyItemPseudoIPV4
+  | SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining
+  | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS
+  | SettingsBulkEditRequestBodyItemZonesSchemasResponseBuffering
+  | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoader
+  | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimization
+  | SettingsBulkEditRequestBodyItemZonesSearchForAgents
+  | SettingsBulkEditRequestBodyItemSecurityHeaders
+  | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevel
+  | SettingsBulkEditRequestBodyItemServerSideExcludes
+  | SettingsBulkEditRequestBodyItemZonesSha1Support
+  | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCache
+  | SettingsBulkEditRequestBodyItemZonesSchemasSSL
+  | SettingsBulkEditRequestBodyItemSSLRecommender
+  | SettingsBulkEditRequestBodyItemZonesTLS12Only
+  | SettingsBulkEditRequestBodyItemTLS13
+  | SettingsBulkEditRequestBodyItemTLSClientAuth
+  | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeader
+  | SettingsBulkEditRequestBodyItemZonesSchemasWAF
+  | SettingsBulkEditRequestBodyItemWebP
+  | SettingsBulkEditRequestBodyItemWebsocket;
+export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "enabled"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+  ]),
+);
 
 export type SettingsBulkEditRequestBodyList =
   Array<SettingsBulkEditRequestBodyItem>;
@@ -11721,280 +11145,135 @@ export const SettingsBulkEditResultItemWebsocket = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsBulkEditResultItemWebsocket",
 }) as any as S.Schema<SettingsBulkEditResultItemWebsocket>;
 
-export interface SettingsBulkEditResultItem {
-  /** ID of the zone setting. */
-  id?:
-    | SettingsBulkEditResultItemZeroRTTId
-    | SettingsBulkEditResultItemAdvancedDDoSId
-    | SettingsBulkEditResultItemZonesCacheRulesAegisId
-    | SettingsBulkEditResultItemAlwaysOnlineId
-    | SettingsBulkEditResultItemZonesSchemasAlwaysUseHTTPSId
-    | SettingsBulkEditResultItemZonesSchemasAutomaticHTTPSRewritesId
-    | SettingsBulkEditResultItemBrotliId
-    | SettingsBulkEditResultItemZonesSchemasBrowserCacheTTLId
-    | SettingsBulkEditResultItemZonesSchemasBrowserCheckId
-    | SettingsBulkEditResultItemZonesSchemasCacheLevelId
-    | SettingsBulkEditResultItemChallengeTTLId
-    | SettingsBulkEditResultItemCiphersId
-    | SettingsBulkEditResultItemZonesContentConverterId
-    | SettingsBulkEditResultItemZonesCNAMEFlatteningId
-    | SettingsBulkEditResultItemDevelopmentModeId
-    | SettingsBulkEditResultItemEarlyHintsId
-    | SettingsBulkEditResultItemZonesSchemasEdgeCacheTTLId
-    | SettingsBulkEditResultItemZonesSchemasEmailObfuscationId
-    | SettingsBulkEditResultItemH2PrioritizationId
-    | SettingsBulkEditResultItemHotlinkProtectionId
-    | SettingsBulkEditResultItemHTTP2Id
-    | SettingsBulkEditResultItemHTTP3Id
-    | SettingsBulkEditResultItemImageResizingId
-    | SettingsBulkEditResultItemZonesSchemasIPGeolocationId
-    | SettingsBulkEditResultItemIPV6Id
-    | SettingsBulkEditResultItemZonesMaxUploadId
-    | SettingsBulkEditResultItemMinTLSVersionId
-    | SettingsBulkEditResultItemZonesSchemasMirageId
-    | SettingsBulkEditResultItemNELId
-    | SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionId
-    | SettingsBulkEditResultItemOpportunisticOnionId
-    | SettingsBulkEditResultItemOrangeToOrangeId
-    | SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruId
-    | SettingsBulkEditResultItemZonesCacheRulesOriginH2MaxStreamsId
-    | SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionId
-    | SettingsBulkEditResultItemZonesSchemasPolishId
-    | SettingsBulkEditResultItemPrefetchPreloadId
-    | SettingsBulkEditResultItemZonesPrivacyPassId
-    | SettingsBulkEditResultItemProxyReadTimeoutId
-    | SettingsBulkEditResultItemPseudoIPV4Id
-    | SettingsBulkEditResultItemZonesRedirectsForAITrainingId
-    | SettingsBulkEditResultItemZonesReplaceInsecureJSId
-    | SettingsBulkEditResultItemZonesSchemasResponseBufferingId
-    | SettingsBulkEditResultItemZonesSchemasRocketLoaderId
-    | SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationId
-    | SettingsBulkEditResultItemZonesSearchForAgentsId
-    | SettingsBulkEditResultItemSecurityHeadersId
-    | SettingsBulkEditResultItemZonesSchemasSecurityLevelId
-    | SettingsBulkEditResultItemServerSideExcludesId
-    | SettingsBulkEditResultItemZonesSha1SupportId
-    | SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheId
-    | SettingsBulkEditResultItemZonesSchemasSSLId
-    | SettingsBulkEditResultItemSSLRecommenderId
-    | SettingsBulkEditResultItemZonesTLS12OnlyId
-    | SettingsBulkEditResultItemTLS13Id
-    | SettingsBulkEditResultItemTLSClientAuthId
-    | SettingsBulkEditResultItemZonesTransformationsId
-    | SettingsBulkEditResultItemZonesTransformationsAllowedOriginsId
-    | SettingsBulkEditResultItemZonesSchemasTrueClientIPHeaderId
-    | SettingsBulkEditResultItemZonesSchemasWAFId
-    | SettingsBulkEditResultItemWebPId
-    | SettingsBulkEditResultItemWebsocketId;
-  /** Current value of the zone setting. */
-  value?:
-    | SettingsBulkEditResultItemZeroRTTValue
-    | SettingsBulkEditResultItemAdvancedDDoSValue
-    | SettingsBulkEditResultItemZonesCacheRulesAegisValue
-    | SettingsBulkEditResultItemAlwaysOnlineValue
-    | SettingsBulkEditResultItemZonesSchemasAlwaysUseHTTPSValue
-    | SettingsBulkEditResultItemZonesSchemasAutomaticHTTPSRewritesValue
-    | SettingsBulkEditResultItemBrotliValue
-    | number
-    | SettingsBulkEditResultItemZonesSchemasBrowserCheckValue
-    | SettingsBulkEditResultItemZonesSchemasCacheLevelValue
-    | SettingsBulkEditResultItemChallengeTTLValue
-    | SettingsBulkEditResultItemCiphersValueList
-    | SettingsBulkEditResultItemZonesContentConverterValue
-    | SettingsBulkEditResultItemZonesCNAMEFlatteningValue
-    | SettingsBulkEditResultItemDevelopmentModeValue
-    | SettingsBulkEditResultItemEarlyHintsValue
-    | SettingsBulkEditResultItemZonesSchemasEdgeCacheTTLValue
-    | SettingsBulkEditResultItemZonesSchemasEmailObfuscationValue
-    | SettingsBulkEditResultItemH2PrioritizationValue
-    | SettingsBulkEditResultItemHotlinkProtectionValue
-    | SettingsBulkEditResultItemHTTP2Value
-    | SettingsBulkEditResultItemHTTP3Value
-    | SettingsBulkEditResultItemImageResizingValue
-    | SettingsBulkEditResultItemZonesSchemasIPGeolocationValue
-    | SettingsBulkEditResultItemIPV6Value
-    | SettingsBulkEditResultItemZonesMaxUploadValue
-    | SettingsBulkEditResultItemMinTLSVersionValue
-    | SettingsBulkEditResultItemZonesSchemasMirageValue
-    | SettingsBulkEditResultItemNELValue
-    | SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionValue
-    | SettingsBulkEditResultItemOpportunisticOnionValue
-    | SettingsBulkEditResultItemOrangeToOrangeValue
-    | SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruValue
-    | SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionValue
-    | SettingsBulkEditResultItemZonesSchemasPolishValue
-    | SettingsBulkEditResultItemPrefetchPreloadValue
-    | SettingsBulkEditResultItemZonesPrivacyPassValue
-    | SettingsBulkEditResultItemPseudoIPV4Value
-    | SettingsBulkEditResultItemZonesRedirectsForAITrainingValue
-    | SettingsBulkEditResultItemZonesReplaceInsecureJSValue
-    | SettingsBulkEditResultItemZonesSchemasResponseBufferingValue
-    | SettingsBulkEditResultItemZonesSchemasRocketLoaderValue
-    | SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue
-    | SettingsBulkEditResultItemZonesSearchForAgentsValue
-    | SettingsBulkEditResultItemSecurityHeadersValue
-    | SettingsBulkEditResultItemZonesSchemasSecurityLevelValue
-    | SettingsBulkEditResultItemServerSideExcludesValue
-    | SettingsBulkEditResultItemZonesSha1SupportValue
-    | SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheValue
-    | SettingsBulkEditResultItemZonesSchemasSSLValue
-    | SettingsBulkEditResultItemZonesTLS12OnlyValue
-    | SettingsBulkEditResultItemTLS13Value
-    | SettingsBulkEditResultItemTLSClientAuthValue
-    | SettingsBulkEditResultItemZonesTransformationsValue
-    | string
-    | SettingsBulkEditResultItemZonesSchemasTrueClientIPHeaderValue
-    | SettingsBulkEditResultItemZonesSchemasWAFValue
-    | SettingsBulkEditResultItemWebPValue
-    | SettingsBulkEditResultItemWebsocketValue;
-  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
-  editable?: boolean;
-  /** last time this setting was modified. */
-  modifiedOn?: string;
-  /** Value of the zone setting. */
-  timeRemaining?: number;
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(
-      S.Union(
-        SettingsBulkEditResultItemZeroRTTId,
-        SettingsBulkEditResultItemAdvancedDDoSId,
-        SettingsBulkEditResultItemZonesCacheRulesAegisId,
-        SettingsBulkEditResultItemAlwaysOnlineId,
-        SettingsBulkEditResultItemZonesSchemasAlwaysUseHTTPSId,
-        SettingsBulkEditResultItemZonesSchemasAutomaticHTTPSRewritesId,
-        SettingsBulkEditResultItemBrotliId,
-        SettingsBulkEditResultItemZonesSchemasBrowserCacheTTLId,
-        SettingsBulkEditResultItemZonesSchemasBrowserCheckId,
-        SettingsBulkEditResultItemZonesSchemasCacheLevelId,
-        SettingsBulkEditResultItemChallengeTTLId,
-        SettingsBulkEditResultItemCiphersId,
-        SettingsBulkEditResultItemZonesContentConverterId,
-        SettingsBulkEditResultItemZonesCNAMEFlatteningId,
-        SettingsBulkEditResultItemDevelopmentModeId,
-        SettingsBulkEditResultItemEarlyHintsId,
-        SettingsBulkEditResultItemZonesSchemasEdgeCacheTTLId,
-        SettingsBulkEditResultItemZonesSchemasEmailObfuscationId,
-        SettingsBulkEditResultItemH2PrioritizationId,
-        SettingsBulkEditResultItemHotlinkProtectionId,
-        SettingsBulkEditResultItemHTTP2Id,
-        SettingsBulkEditResultItemHTTP3Id,
-        SettingsBulkEditResultItemImageResizingId,
-        SettingsBulkEditResultItemZonesSchemasIPGeolocationId,
-        SettingsBulkEditResultItemIPV6Id,
-        SettingsBulkEditResultItemZonesMaxUploadId,
-        SettingsBulkEditResultItemMinTLSVersionId,
-        SettingsBulkEditResultItemZonesSchemasMirageId,
-        SettingsBulkEditResultItemNELId,
-        SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionId,
-        SettingsBulkEditResultItemOpportunisticOnionId,
-        SettingsBulkEditResultItemOrangeToOrangeId,
-        SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruId,
-        SettingsBulkEditResultItemZonesCacheRulesOriginH2MaxStreamsId,
-        SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionId,
-        SettingsBulkEditResultItemZonesSchemasPolishId,
-        SettingsBulkEditResultItemPrefetchPreloadId,
-        SettingsBulkEditResultItemZonesPrivacyPassId,
-        SettingsBulkEditResultItemProxyReadTimeoutId,
-        SettingsBulkEditResultItemPseudoIPV4Id,
-        SettingsBulkEditResultItemZonesRedirectsForAITrainingId,
-        SettingsBulkEditResultItemZonesReplaceInsecureJSId,
-        SettingsBulkEditResultItemZonesSchemasResponseBufferingId,
-        SettingsBulkEditResultItemZonesSchemasRocketLoaderId,
-        SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationId,
-        SettingsBulkEditResultItemZonesSearchForAgentsId,
-        SettingsBulkEditResultItemSecurityHeadersId,
-        SettingsBulkEditResultItemZonesSchemasSecurityLevelId,
-        SettingsBulkEditResultItemServerSideExcludesId,
-        SettingsBulkEditResultItemZonesSha1SupportId,
-        SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheId,
-        SettingsBulkEditResultItemZonesSchemasSSLId,
-        SettingsBulkEditResultItemSSLRecommenderId,
-        SettingsBulkEditResultItemZonesTLS12OnlyId,
-        SettingsBulkEditResultItemTLS13Id,
-        SettingsBulkEditResultItemTLSClientAuthId,
-        SettingsBulkEditResultItemZonesTransformationsId,
-        SettingsBulkEditResultItemZonesTransformationsAllowedOriginsId,
-        SettingsBulkEditResultItemZonesSchemasTrueClientIPHeaderId,
-        SettingsBulkEditResultItemZonesSchemasWAFId,
-        SettingsBulkEditResultItemWebPId,
-        SettingsBulkEditResultItemWebsocketId,
-      ),
-    ),
-    value: S.optional(
-      S.Union(
-        SettingsBulkEditResultItemZeroRTTValue,
-        SettingsBulkEditResultItemAdvancedDDoSValue,
-        SettingsBulkEditResultItemZonesCacheRulesAegisValue,
-        SettingsBulkEditResultItemAlwaysOnlineValue,
-        SettingsBulkEditResultItemZonesSchemasAlwaysUseHTTPSValue,
-        SettingsBulkEditResultItemZonesSchemasAutomaticHTTPSRewritesValue,
-        SettingsBulkEditResultItemBrotliValue,
-        S.Number,
-        SettingsBulkEditResultItemZonesSchemasBrowserCheckValue,
-        SettingsBulkEditResultItemZonesSchemasCacheLevelValue,
-        SettingsBulkEditResultItemChallengeTTLValue,
-        SettingsBulkEditResultItemCiphersValueList,
-        SettingsBulkEditResultItemZonesContentConverterValue,
-        SettingsBulkEditResultItemZonesCNAMEFlatteningValue,
-        SettingsBulkEditResultItemDevelopmentModeValue,
-        SettingsBulkEditResultItemEarlyHintsValue,
-        SettingsBulkEditResultItemZonesSchemasEdgeCacheTTLValue,
-        SettingsBulkEditResultItemZonesSchemasEmailObfuscationValue,
-        SettingsBulkEditResultItemH2PrioritizationValue,
-        SettingsBulkEditResultItemHotlinkProtectionValue,
-        SettingsBulkEditResultItemHTTP2Value,
-        SettingsBulkEditResultItemHTTP3Value,
-        SettingsBulkEditResultItemImageResizingValue,
-        SettingsBulkEditResultItemZonesSchemasIPGeolocationValue,
-        SettingsBulkEditResultItemIPV6Value,
-        SettingsBulkEditResultItemZonesMaxUploadValue,
-        SettingsBulkEditResultItemMinTLSVersionValue,
-        SettingsBulkEditResultItemZonesSchemasMirageValue,
-        SettingsBulkEditResultItemNELValue,
-        SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionValue,
-        SettingsBulkEditResultItemOpportunisticOnionValue,
-        SettingsBulkEditResultItemOrangeToOrangeValue,
-        SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruValue,
-        SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionValue,
-        SettingsBulkEditResultItemZonesSchemasPolishValue,
-        SettingsBulkEditResultItemPrefetchPreloadValue,
-        SettingsBulkEditResultItemZonesPrivacyPassValue,
-        SettingsBulkEditResultItemPseudoIPV4Value,
-        SettingsBulkEditResultItemZonesRedirectsForAITrainingValue,
-        SettingsBulkEditResultItemZonesReplaceInsecureJSValue,
-        SettingsBulkEditResultItemZonesSchemasResponseBufferingValue,
-        SettingsBulkEditResultItemZonesSchemasRocketLoaderValue,
-        SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue,
-        SettingsBulkEditResultItemZonesSearchForAgentsValue,
-        SettingsBulkEditResultItemSecurityHeadersValue,
-        SettingsBulkEditResultItemZonesSchemasSecurityLevelValue,
-        SettingsBulkEditResultItemServerSideExcludesValue,
-        SettingsBulkEditResultItemZonesSha1SupportValue,
-        SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheValue,
-        SettingsBulkEditResultItemZonesSchemasSSLValue,
-        SettingsBulkEditResultItemZonesTLS12OnlyValue,
-        SettingsBulkEditResultItemTLS13Value,
-        SettingsBulkEditResultItemTLSClientAuthValue,
-        SettingsBulkEditResultItemZonesTransformationsValue,
-        S.String,
-        SettingsBulkEditResultItemZonesSchemasTrueClientIPHeaderValue,
-        SettingsBulkEditResultItemZonesSchemasWAFValue,
-        SettingsBulkEditResultItemWebPValue,
-        SettingsBulkEditResultItemWebsocketValue,
-      ),
-    ),
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItem",
-}) as any as S.Schema<SettingsBulkEditResultItem>;
+export type SettingsBulkEditResultItem =
+  | SettingsBulkEditResultItemZeroRTT
+  | SettingsBulkEditResultItemAdvancedDDoS
+  | SettingsBulkEditResultItemZonesCacheRulesAegis
+  | SettingsBulkEditResultItemAlwaysOnline
+  | SettingsBulkEditResultItemZonesSchemasAlwaysUseHTTPS
+  | SettingsBulkEditResultItemZonesSchemasAutomaticHTTPSRewrites
+  | SettingsBulkEditResultItemBrotli
+  | SettingsBulkEditResultItemZonesSchemasBrowserCacheTTL
+  | SettingsBulkEditResultItemZonesSchemasBrowserCheck
+  | SettingsBulkEditResultItemZonesSchemasCacheLevel
+  | SettingsBulkEditResultItemChallengeTTL
+  | SettingsBulkEditResultItemCiphers
+  | SettingsBulkEditResultItemZonesContentConverter
+  | SettingsBulkEditResultItemZonesCNAMEFlattening
+  | SettingsBulkEditResultItemDevelopmentMode
+  | SettingsBulkEditResultItemEarlyHints
+  | SettingsBulkEditResultItemZonesSchemasEdgeCacheTTL
+  | SettingsBulkEditResultItemZonesSchemasEmailObfuscation
+  | SettingsBulkEditResultItemH2Prioritization
+  | SettingsBulkEditResultItemHotlinkProtection
+  | SettingsBulkEditResultItemHTTP2
+  | SettingsBulkEditResultItemHTTP3
+  | SettingsBulkEditResultItemImageResizing
+  | SettingsBulkEditResultItemZonesSchemasIPGeolocation
+  | SettingsBulkEditResultItemIPV6
+  | SettingsBulkEditResultItemZonesMaxUpload
+  | SettingsBulkEditResultItemMinTLSVersion
+  | SettingsBulkEditResultItemZonesSchemasMirage
+  | SettingsBulkEditResultItemNEL
+  | SettingsBulkEditResultItemZonesSchemasOpportunisticEncryption
+  | SettingsBulkEditResultItemOpportunisticOnion
+  | SettingsBulkEditResultItemOrangeToOrange
+  | SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThru
+  | SettingsBulkEditResultItemZonesCacheRulesOriginH2MaxStreams
+  | SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersion
+  | SettingsBulkEditResultItemZonesSchemasPolish
+  | SettingsBulkEditResultItemPrefetchPreload
+  | SettingsBulkEditResultItemZonesPrivacyPass
+  | SettingsBulkEditResultItemProxyReadTimeout
+  | SettingsBulkEditResultItemPseudoIPV4
+  | SettingsBulkEditResultItemZonesRedirectsForAITraining
+  | SettingsBulkEditResultItemZonesReplaceInsecureJS
+  | SettingsBulkEditResultItemZonesSchemasResponseBuffering
+  | SettingsBulkEditResultItemZonesSchemasRocketLoader
+  | SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimization
+  | SettingsBulkEditResultItemZonesSearchForAgents
+  | SettingsBulkEditResultItemSecurityHeaders
+  | SettingsBulkEditResultItemZonesSchemasSecurityLevel
+  | SettingsBulkEditResultItemServerSideExcludes
+  | SettingsBulkEditResultItemZonesSha1Support
+  | SettingsBulkEditResultItemZonesSchemasSortQueryStringForCache
+  | SettingsBulkEditResultItemZonesSchemasSSL
+  | SettingsBulkEditResultItemSSLRecommender
+  | SettingsBulkEditResultItemZonesTLS12Only
+  | SettingsBulkEditResultItemTLS13
+  | SettingsBulkEditResultItemTLSClientAuth
+  | SettingsBulkEditResultItemZonesTransformations
+  | SettingsBulkEditResultItemZonesTransformationsAllowedOrigins
+  | SettingsBulkEditResultItemZonesSchemasTrueClientIPHeader
+  | SettingsBulkEditResultItemZonesSchemasWAF
+  | SettingsBulkEditResultItemWebP
+  | SettingsBulkEditResultItemWebsocket;
+export const SettingsBulkEditResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "enabled"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+  ]),
+);
 
 export type SettingsBulkEditResultList = Array<SettingsBulkEditResultItem>;
 export const SettingsBulkEditResultList = /*@__PURE__*/ S.Array(
@@ -14002,280 +13281,135 @@ export const SettingsListResultItemWebsocket = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsListResultItemWebsocket",
 }) as any as S.Schema<SettingsListResultItemWebsocket>;
 
-export interface SettingsListResultItem {
-  /** ID of the zone setting. */
-  id?:
-    | SettingsListResultItemZeroRTTId
-    | SettingsListResultItemAdvancedDDoSId
-    | SettingsListResultItemZonesCacheRulesAegisId
-    | SettingsListResultItemAlwaysOnlineId
-    | SettingsListResultItemZonesSchemasAlwaysUseHTTPSId
-    | SettingsListResultItemZonesSchemasAutomaticHTTPSRewritesId
-    | SettingsListResultItemBrotliId
-    | SettingsListResultItemZonesSchemasBrowserCacheTTLId
-    | SettingsListResultItemZonesSchemasBrowserCheckId
-    | SettingsListResultItemZonesSchemasCacheLevelId
-    | SettingsListResultItemChallengeTTLId
-    | SettingsListResultItemCiphersId
-    | SettingsListResultItemZonesContentConverterId
-    | SettingsListResultItemZonesCNAMEFlatteningId
-    | SettingsListResultItemDevelopmentModeId
-    | SettingsListResultItemEarlyHintsId
-    | SettingsListResultItemZonesSchemasEdgeCacheTTLId
-    | SettingsListResultItemZonesSchemasEmailObfuscationId
-    | SettingsListResultItemH2PrioritizationId
-    | SettingsListResultItemHotlinkProtectionId
-    | SettingsListResultItemHTTP2Id
-    | SettingsListResultItemHTTP3Id
-    | SettingsListResultItemImageResizingId
-    | SettingsListResultItemZonesSchemasIPGeolocationId
-    | SettingsListResultItemIPV6Id
-    | SettingsListResultItemZonesMaxUploadId
-    | SettingsListResultItemMinTLSVersionId
-    | SettingsListResultItemZonesSchemasMirageId
-    | SettingsListResultItemNELId
-    | SettingsListResultItemZonesSchemasOpportunisticEncryptionId
-    | SettingsListResultItemOpportunisticOnionId
-    | SettingsListResultItemOrangeToOrangeId
-    | SettingsListResultItemZonesSchemasOriginErrorPagePassThruId
-    | SettingsListResultItemZonesCacheRulesOriginH2MaxStreamsId
-    | SettingsListResultItemZonesCacheRulesOriginMaxHTTPVersionId
-    | SettingsListResultItemZonesSchemasPolishId
-    | SettingsListResultItemPrefetchPreloadId
-    | SettingsListResultItemZonesPrivacyPassId
-    | SettingsListResultItemProxyReadTimeoutId
-    | SettingsListResultItemPseudoIPV4Id
-    | SettingsListResultItemZonesRedirectsForAITrainingId
-    | SettingsListResultItemZonesReplaceInsecureJSId
-    | SettingsListResultItemZonesSchemasResponseBufferingId
-    | SettingsListResultItemZonesSchemasRocketLoaderId
-    | SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationId
-    | SettingsListResultItemZonesSearchForAgentsId
-    | SettingsListResultItemSecurityHeadersId
-    | SettingsListResultItemZonesSchemasSecurityLevelId
-    | SettingsListResultItemServerSideExcludesId
-    | SettingsListResultItemZonesSha1SupportId
-    | SettingsListResultItemZonesSchemasSortQueryStringForCacheId
-    | SettingsListResultItemZonesSchemasSSLId
-    | SettingsListResultItemSSLRecommenderId
-    | SettingsListResultItemZonesTLS12OnlyId
-    | SettingsListResultItemTLS13Id
-    | SettingsListResultItemTLSClientAuthId
-    | SettingsListResultItemZonesTransformationsId
-    | SettingsListResultItemZonesTransformationsAllowedOriginsId
-    | SettingsListResultItemZonesSchemasTrueClientIPHeaderId
-    | SettingsListResultItemZonesSchemasWAFId
-    | SettingsListResultItemWebPId
-    | SettingsListResultItemWebsocketId;
-  /** Current value of the zone setting. */
-  value?:
-    | SettingsListResultItemZeroRTTValue
-    | SettingsListResultItemAdvancedDDoSValue
-    | SettingsListResultItemZonesCacheRulesAegisValue
-    | SettingsListResultItemAlwaysOnlineValue
-    | SettingsListResultItemZonesSchemasAlwaysUseHTTPSValue
-    | SettingsListResultItemZonesSchemasAutomaticHTTPSRewritesValue
-    | SettingsListResultItemBrotliValue
-    | number
-    | SettingsListResultItemZonesSchemasBrowserCheckValue
-    | SettingsListResultItemZonesSchemasCacheLevelValue
-    | SettingsListResultItemChallengeTTLValue
-    | SettingsListResultItemCiphersValueList
-    | SettingsListResultItemZonesContentConverterValue
-    | SettingsListResultItemZonesCNAMEFlatteningValue
-    | SettingsListResultItemDevelopmentModeValue
-    | SettingsListResultItemEarlyHintsValue
-    | SettingsListResultItemZonesSchemasEdgeCacheTTLValue
-    | SettingsListResultItemZonesSchemasEmailObfuscationValue
-    | SettingsListResultItemH2PrioritizationValue
-    | SettingsListResultItemHotlinkProtectionValue
-    | SettingsListResultItemHTTP2Value
-    | SettingsListResultItemHTTP3Value
-    | SettingsListResultItemImageResizingValue
-    | SettingsListResultItemZonesSchemasIPGeolocationValue
-    | SettingsListResultItemIPV6Value
-    | SettingsListResultItemZonesMaxUploadValue
-    | SettingsListResultItemMinTLSVersionValue
-    | SettingsListResultItemZonesSchemasMirageValue
-    | SettingsListResultItemNELValue
-    | SettingsListResultItemZonesSchemasOpportunisticEncryptionValue
-    | SettingsListResultItemOpportunisticOnionValue
-    | SettingsListResultItemOrangeToOrangeValue
-    | SettingsListResultItemZonesSchemasOriginErrorPagePassThruValue
-    | SettingsListResultItemZonesCacheRulesOriginMaxHTTPVersionValue
-    | SettingsListResultItemZonesSchemasPolishValue
-    | SettingsListResultItemPrefetchPreloadValue
-    | SettingsListResultItemZonesPrivacyPassValue
-    | SettingsListResultItemPseudoIPV4Value
-    | SettingsListResultItemZonesRedirectsForAITrainingValue
-    | SettingsListResultItemZonesReplaceInsecureJSValue
-    | SettingsListResultItemZonesSchemasResponseBufferingValue
-    | SettingsListResultItemZonesSchemasRocketLoaderValue
-    | SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationValue
-    | SettingsListResultItemZonesSearchForAgentsValue
-    | SettingsListResultItemSecurityHeadersValue
-    | SettingsListResultItemZonesSchemasSecurityLevelValue
-    | SettingsListResultItemServerSideExcludesValue
-    | SettingsListResultItemZonesSha1SupportValue
-    | SettingsListResultItemZonesSchemasSortQueryStringForCacheValue
-    | SettingsListResultItemZonesSchemasSSLValue
-    | SettingsListResultItemZonesTLS12OnlyValue
-    | SettingsListResultItemTLS13Value
-    | SettingsListResultItemTLSClientAuthValue
-    | SettingsListResultItemZonesTransformationsValue
-    | string
-    | SettingsListResultItemZonesSchemasTrueClientIPHeaderValue
-    | SettingsListResultItemZonesSchemasWAFValue
-    | SettingsListResultItemWebPValue
-    | SettingsListResultItemWebsocketValue;
-  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
-  editable?: boolean;
-  /** last time this setting was modified. */
-  modifiedOn?: string;
-  /** Value of the zone setting. */
-  timeRemaining?: number;
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(
-      S.Union(
-        SettingsListResultItemZeroRTTId,
-        SettingsListResultItemAdvancedDDoSId,
-        SettingsListResultItemZonesCacheRulesAegisId,
-        SettingsListResultItemAlwaysOnlineId,
-        SettingsListResultItemZonesSchemasAlwaysUseHTTPSId,
-        SettingsListResultItemZonesSchemasAutomaticHTTPSRewritesId,
-        SettingsListResultItemBrotliId,
-        SettingsListResultItemZonesSchemasBrowserCacheTTLId,
-        SettingsListResultItemZonesSchemasBrowserCheckId,
-        SettingsListResultItemZonesSchemasCacheLevelId,
-        SettingsListResultItemChallengeTTLId,
-        SettingsListResultItemCiphersId,
-        SettingsListResultItemZonesContentConverterId,
-        SettingsListResultItemZonesCNAMEFlatteningId,
-        SettingsListResultItemDevelopmentModeId,
-        SettingsListResultItemEarlyHintsId,
-        SettingsListResultItemZonesSchemasEdgeCacheTTLId,
-        SettingsListResultItemZonesSchemasEmailObfuscationId,
-        SettingsListResultItemH2PrioritizationId,
-        SettingsListResultItemHotlinkProtectionId,
-        SettingsListResultItemHTTP2Id,
-        SettingsListResultItemHTTP3Id,
-        SettingsListResultItemImageResizingId,
-        SettingsListResultItemZonesSchemasIPGeolocationId,
-        SettingsListResultItemIPV6Id,
-        SettingsListResultItemZonesMaxUploadId,
-        SettingsListResultItemMinTLSVersionId,
-        SettingsListResultItemZonesSchemasMirageId,
-        SettingsListResultItemNELId,
-        SettingsListResultItemZonesSchemasOpportunisticEncryptionId,
-        SettingsListResultItemOpportunisticOnionId,
-        SettingsListResultItemOrangeToOrangeId,
-        SettingsListResultItemZonesSchemasOriginErrorPagePassThruId,
-        SettingsListResultItemZonesCacheRulesOriginH2MaxStreamsId,
-        SettingsListResultItemZonesCacheRulesOriginMaxHTTPVersionId,
-        SettingsListResultItemZonesSchemasPolishId,
-        SettingsListResultItemPrefetchPreloadId,
-        SettingsListResultItemZonesPrivacyPassId,
-        SettingsListResultItemProxyReadTimeoutId,
-        SettingsListResultItemPseudoIPV4Id,
-        SettingsListResultItemZonesRedirectsForAITrainingId,
-        SettingsListResultItemZonesReplaceInsecureJSId,
-        SettingsListResultItemZonesSchemasResponseBufferingId,
-        SettingsListResultItemZonesSchemasRocketLoaderId,
-        SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationId,
-        SettingsListResultItemZonesSearchForAgentsId,
-        SettingsListResultItemSecurityHeadersId,
-        SettingsListResultItemZonesSchemasSecurityLevelId,
-        SettingsListResultItemServerSideExcludesId,
-        SettingsListResultItemZonesSha1SupportId,
-        SettingsListResultItemZonesSchemasSortQueryStringForCacheId,
-        SettingsListResultItemZonesSchemasSSLId,
-        SettingsListResultItemSSLRecommenderId,
-        SettingsListResultItemZonesTLS12OnlyId,
-        SettingsListResultItemTLS13Id,
-        SettingsListResultItemTLSClientAuthId,
-        SettingsListResultItemZonesTransformationsId,
-        SettingsListResultItemZonesTransformationsAllowedOriginsId,
-        SettingsListResultItemZonesSchemasTrueClientIPHeaderId,
-        SettingsListResultItemZonesSchemasWAFId,
-        SettingsListResultItemWebPId,
-        SettingsListResultItemWebsocketId,
-      ),
-    ),
-    value: S.optional(
-      S.Union(
-        SettingsListResultItemZeroRTTValue,
-        SettingsListResultItemAdvancedDDoSValue,
-        SettingsListResultItemZonesCacheRulesAegisValue,
-        SettingsListResultItemAlwaysOnlineValue,
-        SettingsListResultItemZonesSchemasAlwaysUseHTTPSValue,
-        SettingsListResultItemZonesSchemasAutomaticHTTPSRewritesValue,
-        SettingsListResultItemBrotliValue,
-        S.Number,
-        SettingsListResultItemZonesSchemasBrowserCheckValue,
-        SettingsListResultItemZonesSchemasCacheLevelValue,
-        SettingsListResultItemChallengeTTLValue,
-        SettingsListResultItemCiphersValueList,
-        SettingsListResultItemZonesContentConverterValue,
-        SettingsListResultItemZonesCNAMEFlatteningValue,
-        SettingsListResultItemDevelopmentModeValue,
-        SettingsListResultItemEarlyHintsValue,
-        SettingsListResultItemZonesSchemasEdgeCacheTTLValue,
-        SettingsListResultItemZonesSchemasEmailObfuscationValue,
-        SettingsListResultItemH2PrioritizationValue,
-        SettingsListResultItemHotlinkProtectionValue,
-        SettingsListResultItemHTTP2Value,
-        SettingsListResultItemHTTP3Value,
-        SettingsListResultItemImageResizingValue,
-        SettingsListResultItemZonesSchemasIPGeolocationValue,
-        SettingsListResultItemIPV6Value,
-        SettingsListResultItemZonesMaxUploadValue,
-        SettingsListResultItemMinTLSVersionValue,
-        SettingsListResultItemZonesSchemasMirageValue,
-        SettingsListResultItemNELValue,
-        SettingsListResultItemZonesSchemasOpportunisticEncryptionValue,
-        SettingsListResultItemOpportunisticOnionValue,
-        SettingsListResultItemOrangeToOrangeValue,
-        SettingsListResultItemZonesSchemasOriginErrorPagePassThruValue,
-        SettingsListResultItemZonesCacheRulesOriginMaxHTTPVersionValue,
-        SettingsListResultItemZonesSchemasPolishValue,
-        SettingsListResultItemPrefetchPreloadValue,
-        SettingsListResultItemZonesPrivacyPassValue,
-        SettingsListResultItemPseudoIPV4Value,
-        SettingsListResultItemZonesRedirectsForAITrainingValue,
-        SettingsListResultItemZonesReplaceInsecureJSValue,
-        SettingsListResultItemZonesSchemasResponseBufferingValue,
-        SettingsListResultItemZonesSchemasRocketLoaderValue,
-        SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationValue,
-        SettingsListResultItemZonesSearchForAgentsValue,
-        SettingsListResultItemSecurityHeadersValue,
-        SettingsListResultItemZonesSchemasSecurityLevelValue,
-        SettingsListResultItemServerSideExcludesValue,
-        SettingsListResultItemZonesSha1SupportValue,
-        SettingsListResultItemZonesSchemasSortQueryStringForCacheValue,
-        SettingsListResultItemZonesSchemasSSLValue,
-        SettingsListResultItemZonesTLS12OnlyValue,
-        SettingsListResultItemTLS13Value,
-        SettingsListResultItemTLSClientAuthValue,
-        SettingsListResultItemZonesTransformationsValue,
-        S.String,
-        SettingsListResultItemZonesSchemasTrueClientIPHeaderValue,
-        SettingsListResultItemZonesSchemasWAFValue,
-        SettingsListResultItemWebPValue,
-        SettingsListResultItemWebsocketValue,
-      ),
-    ),
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsListResultItem",
-}) as any as S.Schema<SettingsListResultItem>;
+export type SettingsListResultItem =
+  | SettingsListResultItemZeroRTT
+  | SettingsListResultItemAdvancedDDoS
+  | SettingsListResultItemZonesCacheRulesAegis
+  | SettingsListResultItemAlwaysOnline
+  | SettingsListResultItemZonesSchemasAlwaysUseHTTPS
+  | SettingsListResultItemZonesSchemasAutomaticHTTPSRewrites
+  | SettingsListResultItemBrotli
+  | SettingsListResultItemZonesSchemasBrowserCacheTTL
+  | SettingsListResultItemZonesSchemasBrowserCheck
+  | SettingsListResultItemZonesSchemasCacheLevel
+  | SettingsListResultItemChallengeTTL
+  | SettingsListResultItemCiphers
+  | SettingsListResultItemZonesContentConverter
+  | SettingsListResultItemZonesCNAMEFlattening
+  | SettingsListResultItemDevelopmentMode
+  | SettingsListResultItemEarlyHints
+  | SettingsListResultItemZonesSchemasEdgeCacheTTL
+  | SettingsListResultItemZonesSchemasEmailObfuscation
+  | SettingsListResultItemH2Prioritization
+  | SettingsListResultItemHotlinkProtection
+  | SettingsListResultItemHTTP2
+  | SettingsListResultItemHTTP3
+  | SettingsListResultItemImageResizing
+  | SettingsListResultItemZonesSchemasIPGeolocation
+  | SettingsListResultItemIPV6
+  | SettingsListResultItemZonesMaxUpload
+  | SettingsListResultItemMinTLSVersion
+  | SettingsListResultItemZonesSchemasMirage
+  | SettingsListResultItemNEL
+  | SettingsListResultItemZonesSchemasOpportunisticEncryption
+  | SettingsListResultItemOpportunisticOnion
+  | SettingsListResultItemOrangeToOrange
+  | SettingsListResultItemZonesSchemasOriginErrorPagePassThru
+  | SettingsListResultItemZonesCacheRulesOriginH2MaxStreams
+  | SettingsListResultItemZonesCacheRulesOriginMaxHTTPVersion
+  | SettingsListResultItemZonesSchemasPolish
+  | SettingsListResultItemPrefetchPreload
+  | SettingsListResultItemZonesPrivacyPass
+  | SettingsListResultItemProxyReadTimeout
+  | SettingsListResultItemPseudoIPV4
+  | SettingsListResultItemZonesRedirectsForAITraining
+  | SettingsListResultItemZonesReplaceInsecureJS
+  | SettingsListResultItemZonesSchemasResponseBuffering
+  | SettingsListResultItemZonesSchemasRocketLoader
+  | SettingsListResultItemZonesSchemasAutomaticPlatformOptimization
+  | SettingsListResultItemZonesSearchForAgents
+  | SettingsListResultItemSecurityHeaders
+  | SettingsListResultItemZonesSchemasSecurityLevel
+  | SettingsListResultItemServerSideExcludes
+  | SettingsListResultItemZonesSha1Support
+  | SettingsListResultItemZonesSchemasSortQueryStringForCache
+  | SettingsListResultItemZonesSchemasSSL
+  | SettingsListResultItemSSLRecommender
+  | SettingsListResultItemZonesTLS12Only
+  | SettingsListResultItemTLS13
+  | SettingsListResultItemTLSClientAuth
+  | SettingsListResultItemZonesTransformations
+  | SettingsListResultItemZonesTransformationsAllowedOrigins
+  | SettingsListResultItemZonesSchemasTrueClientIPHeader
+  | SettingsListResultItemZonesSchemasWAF
+  | SettingsListResultItemWebP
+  | SettingsListResultItemWebsocket;
+export const SettingsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "modifiedOn", "value"],
+    ["id", "modifiedOn", "value"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "enabled"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+    ["id", "value", "editable", "modifiedOn"],
+  ]),
+);
 
 export type SettingsListResultList = Array<SettingsListResultItem>;
 export const SettingsListResultList = /*@__PURE__*/ S.Array(

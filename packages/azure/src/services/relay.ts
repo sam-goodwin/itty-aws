@@ -870,9 +870,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** SKU of the namespace. */
 export interface Sku {
   /** Name of this SKU. */
-  name: SkuName | (string & {});
+  name: SkuName;
   /** The tier of this SKU. */
-  tier?: SkuTier | (string & {});
+  tier?: SkuTier;
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1119,7 +1119,7 @@ export interface NWRuleSetIpRules {
   /** IP Mask */
   ipMask?: string;
   /** The IP Filter Action */
-  action?: NetworkRuleIPAction | (string & {});
+  action?: NetworkRuleIPAction;
 }
 export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

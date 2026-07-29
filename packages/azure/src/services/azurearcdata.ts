@@ -1193,7 +1193,7 @@ export interface DataControllersPutDataControllerRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
+  type?: ExtendedLocationType;
 }
 export const DataControllersPutDataControllerRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -1718,7 +1718,7 @@ export interface PostgresInstancesCreateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
+  type?: ExtendedLocationType;
 }
 export const PostgresInstancesCreateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -1791,7 +1791,7 @@ export interface PostgresInstanceSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
-  tier?: PostgresInstanceSkuTier | (string & {});
+  tier?: PostgresInstanceSkuTier;
 }
 export const PostgresInstanceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2630,7 +2630,7 @@ export interface SqlManagedInstancesCreateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
+  type?: ExtendedLocationType;
 }
 export const SqlManagedInstancesCreateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -2653,7 +2653,7 @@ export const SqlManagedInstanceSkuTier = /*@__PURE__*/ S.String;
 /** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
 export interface SqlManagedInstanceSku {
   /** The name of the SKU. */
-  name: SqlManagedInstanceSkuName | (string & {});
+  name: SqlManagedInstanceSkuName;
   /** The pricing tier for the instance. */
   tier?: SqlManagedInstanceSkuTier | (string & {});
   /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
@@ -6523,7 +6523,7 @@ export const SqlServerEsuLicensePropertiesInputScopeType =
 /** Properties of SQL Server ESU license. */
 export interface SqlServerEsuLicensePropertiesInput {
   /** SQL Server ESU license type. */
-  billingPlan: SqlServerEsuLicensePropertiesInputBillingPlan | (string & {});
+  billingPlan: SqlServerEsuLicensePropertiesInputBillingPlan;
   /** The SQL Server version the license covers. */
   version: SqlServerEsuLicensePropertiesInputVersion | (string & {});
   /** The number of total cores of the license covers. */
@@ -6920,9 +6920,7 @@ export const SqlServerEsuLicenseUpdatePropertiesInputScopeType =
 /** Properties of update SqlServerEsuLicense. */
 export interface SqlServerEsuLicenseUpdatePropertiesInput {
   /** SQL Server ESU license type. */
-  billingPlan?:
-    | SqlServerEsuLicenseUpdatePropertiesInputBillingPlan
-    | (string & {});
+  billingPlan?: SqlServerEsuLicenseUpdatePropertiesInputBillingPlan;
   /** The SQL Server version the license covers. */
   version?: SqlServerEsuLicenseUpdatePropertiesInputVersion | (string & {});
   /** The number of total cores of the license covers. */
@@ -9836,9 +9834,7 @@ export interface SqlServerLicensePropertiesInput {
   /** The number of total cores of the license covers. */
   physicalCores: number;
   /** This property represents the choice between SQL Server Core and ESU licenses. */
-  licenseCategory:
-    | SqlServerLicensePropertiesInputLicenseCategory
-    | (string & {});
+  licenseCategory: SqlServerLicensePropertiesInputLicenseCategory;
   /** The activation state of the license. */
   activationState:
     | SqlServerLicensePropertiesInputActivationState
@@ -10250,9 +10246,7 @@ export interface SqlServerLicenseUpdatePropertiesInput {
   /** The number of total cores of the license covers. */
   physicalCores?: number;
   /** This property represents the choice between SQL Server Core and ESU licenses. */
-  licenseCategory?:
-    | SqlServerLicenseUpdatePropertiesInputLicenseCategory
-    | (string & {});
+  licenseCategory?: SqlServerLicenseUpdatePropertiesInputLicenseCategory;
   /** The activation state of the license. */
   activationState?:
     | SqlServerLicenseUpdatePropertiesInputActivationState

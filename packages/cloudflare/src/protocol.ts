@@ -71,6 +71,7 @@ import {
   UnknownCloudflareError,
 } from "./errors.ts";
 import {
+  binaryResponseBodySymbol,
   envelopePayloadRootSymbol,
   envelopePayloadSymbol,
   resultInfoSymbol,
@@ -261,6 +262,16 @@ const camelizeKeys = (v: unknown): unknown => {
 };
 
 /**
+ * Whether an output member's AST expects a number — used to convert
+ * header-projected values (headers arrive as strings; e.g.
+ * `content-length`).
+ */
+const wantsNumber = (ast: AST.AST): boolean =>
+  ast._tag === "NumberKeyword" ||
+  (ast._tag === "UnionType" &&
+    (ast as { types?: readonly AST.AST[] }).types?.some(wantsNumber) === true);
+
+/**
  * Build a decode implementation. `resultInfo: true` (the paginated protocol)
  * additionally maps the envelope's top-level `result_info` onto the output
  * member marked with `T.ResultInfo()`, camelCased.
@@ -277,6 +288,36 @@ const makeDecode =
     readonly errors: ReadonlyArray<unknown>;
   }) =>
     Effect.gen(function* () {
+      // Raw binary response: when an output member carries
+      // `BinaryResponseBody()`, a successful response is decoded from the
+      // response headers plus the body as a lazy byte stream — the body is
+      // never consumed as text. Error statuses (JSON envelopes) fall
+      // through to the normal path below.
+      if (response.status < 400) {
+        const props = getProps(outputAst);
+        const binary = props.find((p) =>
+          hasPropAnn(p, binaryResponseBodySymbol),
+        );
+        if (binary !== undefined) {
+          const result: Record<string, unknown> = {};
+          for (const prop of props) {
+            const key = String(prop.name);
+            if (prop === binary) {
+              result[key] = response.stream;
+            } else if (hasPropAnn(prop, headerSymbol)) {
+              const v =
+                response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+              if (v !== undefined) {
+                result[key] = wantsNumber(prop.type) ? Number(v) : v;
+              }
+            } else if (hasPropAnn(prop, responseCodeSymbol)) {
+              result[key] = response.status;
+            }
+          }
+          return result;
+        }
+      }
+
       // Read as text and parse tolerantly — Cloudflare answers some errors
       // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
       const text = (yield* response.text.pipe(Effect.orDie)) ?? "";

@@ -1855,9 +1855,7 @@ export interface CapabilityHostPropertiesInput {
   /** List of AI services connections. */
   aiServicesConnections?: CapabilityHostPropertiesInputAiServicesConnectionsList | null;
   /** Kind of this capability host. */
-  capabilityHostKind?:
-    | CapabilityHostPropertiesInputCapabilityHostKind
-    | (string & {});
+  capabilityHostKind?: CapabilityHostPropertiesInputCapabilityHostKind;
   /** Customer subnet info to help set up this capability host. */
   customerSubnet?: string | null;
   /** List of Storage connections. */
@@ -7046,7 +7044,7 @@ export interface Webhook {
   /** Send callback on a specified notification event */
   eventType?: string | null;
   /** [Required] Specifies the type of service to send a callback */
-  webhookType: WebhookType | (string & {});
+  webhookType: WebhookType;
 }
 export const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8551,7 +8549,7 @@ export const NodesValueType = /*@__PURE__*/ S.String;
 /** Abstract Nodes definition */
 export interface Nodes {
   /** [Required] Type of the Nodes value */
-  nodesValueType: NodesValueType | (string & {});
+  nodesValueType: NodesValueType;
 }
 export const Nodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13329,7 +13327,7 @@ export interface QuotaBaseProperties {
   /** The maximum permitted quota of the resource. */
   limit?: number;
   /** An enum describing the unit of quota measurement. */
-  unit?: QuotaUnit | (string & {});
+  unit?: QuotaUnit;
 }
 export const QuotaBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

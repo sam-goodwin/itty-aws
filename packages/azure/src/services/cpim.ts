@@ -98,7 +98,7 @@ export interface B2CResourceSKU {
   /** The name of the SKU for the tenant. */
   name?: B2CResourceSKUName | (string & {});
   /** The tier of the tenant. */
-  tier?: B2CResourceSKUTier | (string & {});
+  tier?: B2CResourceSKUTier;
 }
 export const B2CResourceSKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

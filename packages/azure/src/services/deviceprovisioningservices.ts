@@ -866,7 +866,7 @@ export const IotDpsSkuInfoInputName = /*@__PURE__*/ S.String;
 /** List of possible provisioning service SKUs. */
 export interface IotDpsSkuInfoInput {
   /** Sku name. */
-  name?: IotDpsSkuInfoInputName | (string & {});
+  name?: IotDpsSkuInfoInputName;
   /** The number of units to provision */
   capacity?: number;
 }

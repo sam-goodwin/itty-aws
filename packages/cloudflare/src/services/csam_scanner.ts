@@ -134,7 +134,7 @@ export interface PatchCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
   /** The feature identifier. */
-  id?: EditRequestId | (string & {});
+  id?: EditRequestId;
   /** Writable CSAM Scanner feature configuration values. */
   value?: EditRequestValue;
 }

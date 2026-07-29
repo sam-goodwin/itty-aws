@@ -63,7 +63,7 @@ export interface CapabilityHostPropertiesInput {
   /** List of AI services connections. */
   aiServicesConnections?: CapabilityHostPropertiesInputAiServicesConnectionsList | null;
   /** Kind of this capability host. */
-  capabilityHostKind?: CapabilityHostKind | (string & {});
+  capabilityHostKind?: CapabilityHostKind;
   /** Customer subnet info to help set up this capability host. */
   customerSubnet?: string | null;
   /** List of connection names from those available in the account or project to be used as a storage resource. */
@@ -3046,7 +3046,7 @@ export const ApplicationTrafficRoutingPolicyRulesList = /*@__PURE__*/ S.Array(
 /** Type representing an application traffic policy as a property of an agentic application. */
 export interface ApplicationTrafficRoutingPolicy {
   /** Methodology used to route traffic to the application's deployments. */
-  protocol?: TrafficRoutingProtocol | (string & {});
+  protocol?: TrafficRoutingProtocol;
   /** Gets or sets the collection of traffic routing rules. */
   rules?: ApplicationTrafficRoutingPolicyRulesList | null;
 }

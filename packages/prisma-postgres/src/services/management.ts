@@ -1599,22 +1599,18 @@ export const GetV1DatabasesResponseDataItemSourceCase2 =
     identifier: "GetV1DatabasesResponseDataItemSourceCase2",
   }) as any as S.Schema<GetV1DatabasesResponseDataItemSourceCase2>;
 
-export interface GetV1DatabasesResponseDataItemSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type GetV1DatabasesResponseDataItemSource =
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const GetV1DatabasesResponseDataItemSource = /*@__PURE__*/ S.suspend(
   () =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetV1DatabasesResponseDataItemSource",
-}) as any as S.Schema<GetV1DatabasesResponseDataItemSource>;
+    S.Union([
+      GetV1DatabasesResponseDataItemSourceCase0,
+      GetV1DatabasesResponseDataItemSourceCase1,
+      GetV1DatabasesResponseDataItemSourceCase2,
+    ]),
+) as any as S.Schema<GetV1DatabasesResponseDataItemSource>;
 
 export interface GetV1DatabasesResponseDataItem {
   id: string;
@@ -1927,22 +1923,18 @@ export const GetV1DatabasesByDatabaseIdResponseDataSourceCase2 =
     identifier: "GetV1DatabasesByDatabaseIdResponseDataSourceCase2",
   }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSourceCase2>;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataSource =
+  | GetV1DatabasesByDatabaseIdResponseDataSourceCase0
+  | GetV1DatabasesByDatabaseIdResponseDataSourceCase1
+  | GetV1DatabasesByDatabaseIdResponseDataSourceCase2;
 export const GetV1DatabasesByDatabaseIdResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataSource",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSource>;
+    S.Union([
+      GetV1DatabasesByDatabaseIdResponseDataSourceCase0,
+      GetV1DatabasesByDatabaseIdResponseDataSourceCase1,
+      GetV1DatabasesByDatabaseIdResponseDataSourceCase2,
+    ]),
+  ) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSource>;
 
 export interface GetV1DatabasesByDatabaseIdResponseData {
   id: string;
@@ -3575,22 +3567,18 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2 =
     identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2",
   }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2>;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemSource =
+  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0
+  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1
+  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemSource",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSource>;
+    S.Union([
+      GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0,
+      GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1,
+      GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2,
+    ]),
+  ) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSource>;
 
 export interface GetV1ProjectsByProjectIdDatabasesResponseDataItem {
   id: string;
@@ -4783,22 +4771,18 @@ export const PatchV1DatabasesByDatabaseIdResponseDataSourceCase2 =
     identifier: "PatchV1DatabasesByDatabaseIdResponseDataSourceCase2",
   }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSourceCase2>;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataSource =
+  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase0
+  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase1
+  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase2;
 export const PatchV1DatabasesByDatabaseIdResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataSource",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSource>;
+    S.Union([
+      PatchV1DatabasesByDatabaseIdResponseDataSourceCase0,
+      PatchV1DatabasesByDatabaseIdResponseDataSourceCase1,
+      PatchV1DatabasesByDatabaseIdResponseDataSourceCase2,
+    ]),
+  ) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSource>;
 
 export interface PatchV1DatabasesByDatabaseIdResponseData {
   id: string;
@@ -5868,22 +5852,17 @@ export const PostV1DatabasesRequestSourceCase2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostV1DatabasesRequestSourceCase2>;
 
 /** Source to create the database from. Omit to create an empty database. */
-export interface PostV1DatabasesRequestSource {
-  type: string;
-  /** ID of the database the backup belongs to */
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PostV1DatabasesRequestSource =
+  | PostV1DatabasesRequestSourceCase0
+  | PostV1DatabasesRequestSourceCase1
+  | PostV1DatabasesRequestSourceCase2;
 export const PostV1DatabasesRequestSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    databaseId: S.optional(S.String),
-    backupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostV1DatabasesRequestSource",
-}) as any as S.Schema<PostV1DatabasesRequestSource>;
+  S.Union([
+    PostV1DatabasesRequestSourceCase0,
+    PostV1DatabasesRequestSourceCase1,
+    PostV1DatabasesRequestSourceCase2,
+  ]),
+) as any as S.Schema<PostV1DatabasesRequestSource>;
 
 export interface PostV1DatabasesRequest {
   /** ID of the project to create the database in */
@@ -6137,21 +6116,17 @@ export const PostV1DatabasesResponseDataSourceCase2 = /*@__PURE__*/ S.suspend(
   identifier: "PostV1DatabasesResponseDataSourceCase2",
 }) as any as S.Schema<PostV1DatabasesResponseDataSourceCase2>;
 
-export interface PostV1DatabasesResponseDataSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PostV1DatabasesResponseDataSource =
+  | PostV1DatabasesResponseDataSourceCase0
+  | PostV1DatabasesResponseDataSourceCase1
+  | PostV1DatabasesResponseDataSourceCase2;
 export const PostV1DatabasesResponseDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    databaseId: S.optional(S.String),
-    backupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataSource",
-}) as any as S.Schema<PostV1DatabasesResponseDataSource>;
+  S.Union([
+    PostV1DatabasesResponseDataSourceCase0,
+    PostV1DatabasesResponseDataSourceCase1,
+    PostV1DatabasesResponseDataSourceCase2,
+  ]),
+) as any as S.Schema<PostV1DatabasesResponseDataSource>;
 
 export interface PostV1DatabasesResponseData {
   id: string;
@@ -7184,22 +7159,18 @@ export const PostV1ProjectsResponseDataDatabaseSourceCase2 =
     identifier: "PostV1ProjectsResponseDataDatabaseSourceCase2",
   }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSourceCase2>;
 
-export interface PostV1ProjectsResponseDataDatabaseSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PostV1ProjectsResponseDataDatabaseSource =
+  | PostV1ProjectsResponseDataDatabaseSourceCase0
+  | PostV1ProjectsResponseDataDatabaseSourceCase1
+  | PostV1ProjectsResponseDataDatabaseSourceCase2;
 export const PostV1ProjectsResponseDataDatabaseSource = /*@__PURE__*/ S.suspend(
   () =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PostV1ProjectsResponseDataDatabaseSource",
-}) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSource>;
+    S.Union([
+      PostV1ProjectsResponseDataDatabaseSourceCase0,
+      PostV1ProjectsResponseDataDatabaseSourceCase1,
+      PostV1ProjectsResponseDataDatabaseSourceCase2,
+    ]),
+) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSource>;
 
 export type PostV1ProjectsResponseDataDatabaseApiKeysItemKind =
   | "postgres"
@@ -7606,23 +7577,18 @@ export const PostV1ProjectsByProjectIdDatabasesRequestSourceCase2 =
     identifier: "PostV1ProjectsByProjectIdDatabasesRequestSourceCase2",
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSourceCase2>;
 
-export interface PostV1ProjectsByProjectIdDatabasesRequestSource {
-  type: string;
-  /** ID of the database the backup belongs to */
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesRequestSource =
+  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase0
+  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase1
+  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesRequestSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesRequestSource",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSource>;
+    S.Union([
+      PostV1ProjectsByProjectIdDatabasesRequestSourceCase0,
+      PostV1ProjectsByProjectIdDatabasesRequestSourceCase1,
+      PostV1ProjectsByProjectIdDatabasesRequestSourceCase2,
+    ]),
+  ) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSource>;
 
 export interface PostV1ProjectsByProjectIdDatabasesRequest {
   projectId: string;
@@ -7891,22 +7857,18 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2 =
     identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2",
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2>;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataSource {
-  type: string;
-  databaseId?: string;
-  /** ID of the backup to restore from */
-  backupId?: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataSource =
+  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0
+  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1
+  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.optional(S.String),
-      backupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataSource",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSource>;
+    S.Union([
+      PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0,
+      PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1,
+      PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2,
+    ]),
+  ) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSource>;
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind =
   | "postgres"

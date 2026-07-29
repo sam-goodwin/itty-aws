@@ -1669,7 +1669,7 @@ export interface MHSMPrivateLinkServiceConnectionState {
   /** The reason for approval or rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired | (string & {});
+  actionsRequired?: ActionsRequired;
 }
 export const MHSMPrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(
   () =>
@@ -3454,7 +3454,7 @@ export interface PrivateLinkServiceConnectionState {
   /** The reason for approval or rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired | (string & {});
+  actionsRequired?: ActionsRequired;
 }
 export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4352,7 +4352,7 @@ export interface VaultsCheckNameAvailabilityRequest {
   /** The vault name. */
   name: string;
   /** The type of resource, Microsoft.KeyVault/vaults */
-  type: VaultsCheckNameAvailabilityRequestType | (string & {});
+  type: VaultsCheckNameAvailabilityRequestType;
 }
 export const VaultsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4410,7 +4410,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** SKU details */
 export interface Sku {
   /** SKU family name */
-  family: SkuFamily | (string & {});
+  family: SkuFamily;
   /** SKU name to specify whether the key vault is a standard vault or a premium vault. */
   name: SkuName | (string & {});
 }
@@ -5044,7 +5044,7 @@ export interface VaultsListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The filter to apply on the operation. */
-  _filter: VaultsListRequestFilter | (string & {});
+  _filter: VaultsListRequestFilter;
   /** Maximum number of results to return. */
   _top?: number;
 }

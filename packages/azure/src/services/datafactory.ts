@@ -331,7 +331,7 @@ export const LinkedServiceReferenceParametersMap = /*@__PURE__*/ S.Record(
 /** Linked service reference type. */
 export interface LinkedServiceReference {
   /** Linked service reference type. */
-  type: Type | (string & {});
+  type: Type;
   /** Reference LinkedService name. */
   referenceName: string;
   /** Arguments for LinkedService. */
@@ -366,7 +366,7 @@ export interface MapperConnection {
   /** Type of the linked service e.g.: AzureBlobFS. */
   linkedServiceType?: string;
   /** Type of connection via linked service or dataset. */
-  type: ConnectionType | (string & {});
+  type: ConnectionType;
   /** A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported. */
   isInlineDataset?: boolean;
   /** List of name/value pairs for connection properties. */
@@ -421,7 +421,7 @@ export interface MapperConnectionReference {
   /** Name of the connection */
   connectionName?: string;
   /** Type of connection via linked service or dataset. */
-  type?: ConnectionType | (string & {});
+  type?: ConnectionType;
 }
 export const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1459,7 +1459,7 @@ export const IntegrationRuntimeReferenceParametersMap = /*@__PURE__*/ S.Record(
 /** Integration runtime reference type. */
 export interface IntegrationRuntimeReference {
   /** Type of integration runtime. */
-  type: IntegrationRuntimeReferenceType | (string & {});
+  type: IntegrationRuntimeReferenceType;
   /** Reference integration runtime name. */
   referenceName: string;
   /** Arguments for integration runtime. */

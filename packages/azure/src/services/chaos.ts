@@ -708,7 +708,7 @@ export const FilterType = /*@__PURE__*/ S.String;
 /** Model that represents available filter types that can be applied to a targets list. */
 export interface ChaosTargetFilter {
   /** Chaos target filter discriminator type */
-  type: FilterType | (string & {});
+  type: FilterType;
 }
 export const ChaosTargetFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

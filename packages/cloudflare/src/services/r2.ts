@@ -158,6 +158,14 @@ export class NoSuchBucket extends T.applyErrorMatchers(
   [{ code: 10006 }],
 ) {}
 
+export class NoSuchKey extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NoSuchKey>()("NoSuchKey", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404, message: { includes: "specified key does not exist" } }],
+) {}
+
 export class QueueNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
     code: S.Number,
@@ -446,9 +454,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
-  vendor:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor
-    | (string & {});
+  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor;
   /** Custom S3-compatible endpoint that must use https://. */
   endpoint?: string;
   keys?: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList;
@@ -502,9 +508,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
-  vendor:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor
-    | (string & {});
+  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor;
   keys?: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList;
   pathPrefix?: string;
 }
@@ -558,9 +562,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret;
-  vendor:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor
-    | (string & {});
+  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction
     | (string & {});
@@ -585,61 +587,17 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema =
     identifier: "SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema",
   }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema>;
 
-export interface SuperSlurperJobsCreateRequestSource {
-  bucket: string;
-  secret:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret
-    | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret;
-  vendor:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor
-    | (string & {})
-    | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor
-    | (string & {})
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor
-    | (string & {});
-  /** Custom S3-compatible endpoint that must use https://. */
-  endpoint?: string;
-  keys?:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList
-    | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList;
-  pathPrefix?: string;
-  region?: string;
-  jurisdiction?:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction
-    | (string & {});
-}
-export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.String,
-    secret: S.Union(
-      SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
-      SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret,
-      SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret,
-    ),
-    vendor: S.Union(
-      SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor,
-      SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor,
-      SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor,
-    ),
-    endpoint: S.optional(S.String),
-    keys: S.optional(
-      S.Union(
-        SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList,
-        SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList,
-        SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList,
-      ),
-    ),
-    pathPrefix: S.optional(S.String),
-    region: S.optional(S.String),
-    jurisdiction: S.optional(
-      SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction,
-    ),
-  }),
-).annotate({
-  identifier: "SuperSlurperJobsCreateRequestSource",
-}) as any as S.Schema<SuperSlurperJobsCreateRequestSource>;
+export type SuperSlurperJobsCreateRequestSource =
+  | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema
+  | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema
+  | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema;
+export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["bucket", "secret", "vendor", "endpoint", "keys", "pathPrefix", "region"],
+    ["bucket", "secret", "vendor", "keys", "pathPrefix"],
+    ["bucket", "secret", "vendor", "jurisdiction", "keys", "pathPrefix"],
+  ]),
+);
 
 export interface SuperSlurperJobsCreateRequestTargetSecret {
   accessKeyId: string;
@@ -665,9 +623,7 @@ export const SuperSlurperJobsCreateRequestTargetJurisdiction =
 export interface SuperSlurperJobsCreateRequestTarget {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestTargetSecret;
-  vendor:
-    | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor
-    | (string & {});
+  vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestTargetJurisdiction
     | (string & {});
@@ -1680,27 +1636,16 @@ export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditio
       "BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition>;
 
-export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition {
-  maxAge?: number;
-  type:
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType;
-  date?: string;
-}
+export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
+    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
+    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAge: S.optional(S.Number),
-      type: S.Union(
-        BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType,
-        BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition",
-  }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
@@ -1757,27 +1702,16 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCond
       "BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition>;
 
-export interface BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition {
-  maxAge?: number;
-  type:
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType;
-  date?: string;
-}
+export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
+    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
+    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAge: S.optional(S.Number),
-      type: S.Union(
-        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType,
-        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition",
-  }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess";
@@ -1955,28 +1889,14 @@ export const BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondit
       "BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition",
   }) as any as S.Schema<BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition>;
 
-export interface BucketsLocksGetResponseRulesItemCondition {
-  maxAgeSeconds?: number;
-  type:
-    | BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType
-    | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType
-    | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType;
-  date?: string;
-}
+export type BucketsLocksGetResponseRulesItemCondition =
+  | BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition
+  | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition
+  | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksGetResponseRulesItemCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAgeSeconds: S.optional(S.Number),
-      type: S.Union(
-        BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType,
-        BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType,
-        BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BucketsLocksGetResponseRulesItemCondition",
-  }) as any as S.Schema<BucketsLocksGetResponseRulesItemCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]]),
+  );
 
 export interface BucketsLocksGetResponseRulesItem {
   /** Unique identifier for this rule. */
@@ -2062,9 +1982,58 @@ export const GetBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketObjectRequest",
 }) as any as S.Schema<GetBucketObjectRequest>;
 
-export interface GetBucketObjectResponse {}
+export type GetBucketObjectResponseCfR2StorageClass =
+  | "Standard"
+  | "InfrequentAccess";
+export const GetBucketObjectResponseCfR2StorageClass = /*@__PURE__*/ S.String;
+
+export interface GetBucketObjectResponse {
+  /** Raw object body as an Effect Stream. */
+  body: T.BinaryResponseBody;
+  /** Entity tag of the object (raw hex digest). */
+  etag?: string;
+  /** MIME type of the object. */
+  contentType?: string;
+  /** Object size in bytes. */
+  contentLength?: number;
+  /** Content encoding of the object (e.g. `gzip`). */
+  contentEncoding?: string;
+  /** Content disposition header for the object. */
+  contentDisposition?: string;
+  /** Content language of the object. */
+  contentLanguage?: string;
+  /** Byte range returned (set when the request used `Range`). */
+  contentRange?: string;
+  /** Cache-Control directives associated with the object. */
+  cacheControl?: string;
+  /** Expiration date of the object. */
+  expires?: string;
+  /** When the object was last modified (RFC 7231 date). */
+  lastModified?: string;
+  /** Storage class of the object (`Standard` or `InfrequentAccess`). */
+  cfR2StorageClass?: GetBucketObjectResponseCfR2StorageClass;
+}
 export const GetBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({
+    body: S.Unknown.pipe(T.BinaryResponseBody()),
+    etag: S.optional(S.String.pipe(T.Header())),
+    contentType: S.optional(S.String.pipe(T.Header("content-type"))),
+    contentLength: S.optional(S.Number.pipe(T.Header("content-length"))),
+    contentEncoding: S.optional(S.String.pipe(T.Header("content-encoding"))),
+    contentDisposition: S.optional(
+      S.String.pipe(T.Header("content-disposition")),
+    ),
+    contentLanguage: S.optional(S.String.pipe(T.Header("content-language"))),
+    contentRange: S.optional(S.String.pipe(T.Header("content-range"))),
+    cacheControl: S.optional(S.String.pipe(T.Header("cache-control"))),
+    expires: S.optional(S.String.pipe(T.Header())),
+    lastModified: S.optional(S.String.pipe(T.Header("last-modified"))),
+    cfR2StorageClass: S.optional(
+      GetBucketObjectResponseCfR2StorageClass.pipe(
+        T.Header("cf-r2-storage-class"),
+      ),
+    ),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketObjectResponse",
 }) as any as S.Schema<GetBucketObjectResponse>;
@@ -2304,46 +2273,17 @@ export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchema =
     identifier: "SuperSlurperJobsGetResponseSourceR2SourceResponseSchema",
   }) as any as S.Schema<SuperSlurperJobsGetResponseSourceR2SourceResponseSchema>;
 
-export interface SuperSlurperJobsGetResponseSource {
-  bucket?: string;
-  endpoint?: string;
-  keys?:
-    | SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList
-    | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList
-    | SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList;
-  pathPrefix?: string;
-  vendor?:
-    | SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor
-    | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor
-    | SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor;
-  jurisdiction?: SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction;
-}
-export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-    endpoint: S.optional(S.String),
-    keys: S.optional(
-      S.Union(
-        SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList,
-        SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList,
-        SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList,
-      ),
-    ),
-    pathPrefix: S.optional(S.String),
-    vendor: S.optional(
-      S.Union(
-        SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor,
-        SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor,
-        SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor,
-      ),
-    ),
-    jurisdiction: S.optional(
-      SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction,
-    ),
-  }),
-).annotate({
-  identifier: "SuperSlurperJobsGetResponseSource",
-}) as any as S.Schema<SuperSlurperJobsGetResponseSource>;
+export type SuperSlurperJobsGetResponseSource =
+  | SuperSlurperJobsGetResponseSourceS3SourceResponseSchema
+  | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema
+  | SuperSlurperJobsGetResponseSourceR2SourceResponseSchema;
+export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
+    ["bucket", "keys", "pathPrefix", "vendor"],
+    ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
+  ]),
+);
 
 export type SuperSlurperJobsGetResponseStatus =
   | "running"
@@ -3052,7 +2992,7 @@ export interface ListBucketsRequest {
   /** Bucket names to filter by. Only buckets with this phrase in their name will be returned. */
   nameContains?: string;
   /** Field to order buckets by. */
-  order?: BucketsListRequestOrder | (string & {});
+  order?: BucketsListRequestOrder;
   /** Maximum number of buckets to return in a single call. */
   perPage?: number;
   /** Bucket name to start searching after. Buckets are ordered lexicographically. */
@@ -3370,47 +3310,18 @@ export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchema =
     identifier: "SuperSlurperJobsListResultItemSourceR2SourceResponseSchema",
   }) as any as S.Schema<SuperSlurperJobsListResultItemSourceR2SourceResponseSchema>;
 
-export interface SuperSlurperJobsListResultItemSource {
-  bucket?: string;
-  endpoint?: string;
-  keys?:
-    | SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList
-    | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList
-    | SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList;
-  pathPrefix?: string;
-  vendor?:
-    | SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor
-    | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor
-    | SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor;
-  jurisdiction?: SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction;
-}
-export const SuperSlurperJobsListResultItemSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bucket: S.optional(S.String),
-      endpoint: S.optional(S.String),
-      keys: S.optional(
-        S.Union(
-          SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList,
-          SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList,
-          SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList,
-        ),
-      ),
-      pathPrefix: S.optional(S.String),
-      vendor: S.optional(
-        S.Union(
-          SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor,
-          SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor,
-          SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor,
-        ),
-      ),
-      jurisdiction: S.optional(
-        SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction,
-      ),
-    }),
-).annotate({
-  identifier: "SuperSlurperJobsListResultItemSource",
-}) as any as S.Schema<SuperSlurperJobsListResultItemSource>;
+export type SuperSlurperJobsListResultItemSource =
+  | SuperSlurperJobsListResultItemSourceS3SourceResponseSchema
+  | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema
+  | SuperSlurperJobsListResultItemSourceR2SourceResponseSchema;
+export const SuperSlurperJobsListResultItemSource =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
+      ["bucket", "keys", "pathPrefix", "vendor"],
+      ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
+    ]),
+  );
 
 export type SuperSlurperJobsListResultItemStatus =
   | "running"
@@ -3960,9 +3871,7 @@ export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransiti
 
 export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition {
   maxAge: number;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType
-    | (string & {});
+  type: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType;
 }
 export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -3998,9 +3907,7 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition {
   maxAge: number;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType
-    | (string & {});
+  type: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType;
 }
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4020,9 +3927,7 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition {
   date: string;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType
-    | (string & {});
+  type: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType;
 }
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4035,29 +3940,16 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
       "BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition>;
 
-export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition {
-  maxAge?: number;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType
-    | (string & {})
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType
-    | (string & {});
-  date?: string;
-}
+export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
+    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
+    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAge: S.optional(S.Number),
-      type: S.Union(
-        BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType,
-        BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition",
-  }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
@@ -4081,9 +3973,7 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
 
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition {
   maxAge: number;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType
-    | (string & {});
+  type: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType;
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4103,9 +3993,7 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
 
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition {
   date: string;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType
-    | (string & {});
+  type: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType;
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4118,29 +4006,16 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
       "BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition>;
 
-export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition {
-  maxAge?: number;
-  type:
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType
-    | (string & {})
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType
-    | (string & {});
-  date?: string;
-}
+export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
+    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAge: S.optional(S.Number),
-      type: S.Union(
-        BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType,
-        BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition",
-  }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess";
@@ -4150,9 +4025,7 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemSt
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition;
-  storageClass:
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass
-    | (string & {});
+  storageClass: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass;
 }
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4267,9 +4140,7 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionTy
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition {
   maxAgeSeconds: number;
-  type:
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType
-    | (string & {});
+  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType;
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4289,9 +4160,7 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionT
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition {
   date: string;
-  type:
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType
-    | (string & {});
+  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType;
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4310,9 +4179,7 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCond
   /*@__PURE__*/ S.String;
 
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition {
-  type:
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType
-    | (string & {});
+  type: BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType;
 }
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -4324,31 +4191,14 @@ export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCond
       "BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition",
   }) as any as S.Schema<BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition>;
 
-export interface BucketsLocksUpdateRequestRulesItemCondition {
-  maxAgeSeconds?: number;
-  type:
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType
-    | (string & {})
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType
-    | (string & {})
-    | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType
-    | (string & {});
-  date?: string;
-}
+export type BucketsLocksUpdateRequestRulesItemCondition =
+  | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition
+  | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition
+  | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksUpdateRequestRulesItemCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxAgeSeconds: S.optional(S.Number),
-      type: S.Union(
-        BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType,
-        BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateConditionType,
-        BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteConditionType,
-      ),
-      date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BucketsLocksUpdateRequestRulesItemCondition",
-  }) as any as S.Schema<BucketsLocksUpdateRequestRulesItemCondition>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]]),
+  );
 
 export interface BucketsLocksUpdateRequestRulesItem {
   /** Unique identifier for this rule. */
@@ -4429,9 +4279,7 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyAws {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?:
-    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {});
+  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4451,9 +4299,7 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?:
-    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {});
+  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
@@ -4470,27 +4316,16 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyGcs =
     identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyGcs",
   }) as any as S.Schema<BucketsSippyUpdateRequestDestinationR2EnableSippyGcs>;
 
-export interface BucketsSippyUpdateRequestDestination {
-  /** ID of a Cloudflare API token. */
-  accessKeyId?: string;
-  provider?:
-    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {});
-  /** Value of a Cloudflare API token. */
-  secretAccessKey?: string;
-}
-export const BucketsSippyUpdateRequestDestination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      provider: S.optional(
-        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
-      ),
-      secretAccessKey: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BucketsSippyUpdateRequestDestination",
-}) as any as S.Schema<BucketsSippyUpdateRequestDestination>;
+export type BucketsSippyUpdateRequestDestination =
+  | BucketsSippyUpdateRequestDestinationR2EnableSippyAws
+  | BucketsSippyUpdateRequestDestinationR2EnableSippyGcs;
+export const BucketsSippyUpdateRequestDestination =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["accessKeyId", "provider", "secretAccessKey"],
+      ["accessKeyId", "provider", "secretAccessKey"],
+    ]),
+  );
 
 export type BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider = "aws";
 export const BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider =
@@ -4501,9 +4336,7 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   accessKeyId?: string;
   /** Name of the AWS S3 bucket. */
   bucket?: string;
-  provider?:
-    | BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider
-    | (string & {});
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider;
   /** Name of the AWS availability zone. */
   region?: string;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
@@ -4535,9 +4368,7 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyGcs {
   clientEmail?: string;
   /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
   privateKey?: string;
-  provider?:
-    | BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider
-    | (string & {});
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider;
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
@@ -4562,9 +4393,7 @@ export interface BucketsSippyUpdateRequestSourceR2EnableSippyS3 {
   accessKeyId?: string;
   /** URL to the S3-compatible API of the bucket. */
   bucketUrl?: string;
-  provider?:
-    | BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider
-    | (string & {});
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
   secretAccessKey?: string;
 }
@@ -4582,49 +4411,17 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyS3 =
     identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyS3",
   }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyS3>;
 
-export interface BucketsSippyUpdateRequestSource {
-  /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
-  accessKeyId?: string;
-  /** Name of the AWS S3 bucket. */
-  bucket?: string;
-  provider?:
-    | BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider
-    | (string & {})
-    | BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider
-    | (string & {})
-    | BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider
-    | (string & {});
-  /** Name of the AWS availability zone. */
-  region?: string;
-  /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
-  secretAccessKey?: string;
-  /** Client email of an IAM credential (ideally scoped to a single GCS bucket). */
-  clientEmail?: string;
-  /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
-  privateKey?: string;
-  /** URL to the S3-compatible API of the bucket. */
-  bucketUrl?: string;
-}
-export const BucketsSippyUpdateRequestSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.optional(S.String),
-    bucket: S.optional(S.String),
-    provider: S.optional(
-      S.Union(
-        BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider,
-        BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider,
-        BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider,
-      ),
-    ),
-    region: S.optional(S.String),
-    secretAccessKey: S.optional(S.String),
-    clientEmail: S.optional(S.String),
-    privateKey: S.optional(S.String),
-    bucketUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BucketsSippyUpdateRequestSource",
-}) as any as S.Schema<BucketsSippyUpdateRequestSource>;
+export type BucketsSippyUpdateRequestSource =
+  | BucketsSippyUpdateRequestSourceR2EnableSippyAws
+  | BucketsSippyUpdateRequestSourceR2EnableSippyGcs
+  | BucketsSippyUpdateRequestSourceR2EnableSippyS3;
+export const BucketsSippyUpdateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accessKeyId", "bucket", "provider", "region", "secretAccessKey"],
+    ["bucket", "clientEmail", "privateKey", "provider"],
+    ["accessKeyId", "bucketUrl", "provider", "secretAccessKey"],
+  ]),
+);
 
 export type BucketsSippyUpdateRequestCfR2Jurisdiction =
   | "default"
@@ -4792,23 +4589,16 @@ export const SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSour
       "SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema",
   }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema>;
 
-export interface SuperSlurperConnectivityPrecheckSourceRequestSecret {
-  accessKeyId?: string;
-  secretAccessKey?: string;
-  clientEmail?: string;
-  privateKey?: string;
-}
+export type SuperSlurperConnectivityPrecheckSourceRequestSecret =
+  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema
+  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema;
 export const SuperSlurperConnectivityPrecheckSourceRequestSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      secretAccessKey: S.optional(S.String),
-      clientEmail: S.optional(S.String),
-      privateKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SuperSlurperConnectivityPrecheckSourceRequestSecret",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecret>;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["accessKeyId", "secretAccessKey"],
+      ["clientEmail", "privateKey"],
+    ]),
+  );
 
 export type SuperSlurperConnectivityPrecheckSourceRequestVendorEnum =
   | "s3"
@@ -4932,7 +4722,7 @@ export interface TargetSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
   secret: SuperSlurperConnectivityPrecheckTargetRequestSecret;
-  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
+  vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor;
   jurisdiction?:
     | SuperSlurperConnectivityPrecheckTargetRequestJurisdiction
     | (string & {});
@@ -5568,7 +5358,11 @@ export const getBucketLock: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetBucketObjectError = CloudflareOpError;
+export type GetBucketObjectError =
+  | NoSuchBucket
+  | InvalidRoute
+  | NoSuchKey
+  | CloudflareOpError;
 /** Retrieves an object from an R2 bucket. Returns the object body along with metadata headers. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
 export const getBucketObject: API.OperationMethod<
   GetBucketObjectRequest,
@@ -5578,7 +5372,13 @@ export const getBucketObject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketObjectRequest,
   output: GetBucketObjectResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    NoSuchBucket,
+    InvalidRoute,
+    NoSuchKey,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

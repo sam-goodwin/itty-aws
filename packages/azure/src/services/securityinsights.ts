@@ -2476,7 +2476,7 @@ export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorDefinitionKind | (string & {});
+  kind: DataConnectorDefinitionKind;
   /** Etag of the azure resource */
   etag?: string;
 }
@@ -6035,7 +6035,7 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SecurityMLAnalyticsSettingsKind | (string & {});
+  kind: SecurityMLAnalyticsSettingsKind;
   /** Etag of the azure resource */
   etag?: string;
 }
@@ -7639,7 +7639,7 @@ export interface ThreatIntelligenceIndicatorCreateRequest {
   /** Threat intelligence indicator name field. */
   name: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind | (string & {});
+  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
   /** Threat Intelligence Entity properties */
@@ -7703,7 +7703,7 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind | (string & {});
+  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
   /** Threat Intelligence Entity properties */
@@ -8181,7 +8181,7 @@ export interface ThreatIntelligenceIndicatorReplaceTagsRequest {
   /** Threat intelligence indicator name field. */
   name: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind | (string & {});
+  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
   /** Threat Intelligence Entity properties */

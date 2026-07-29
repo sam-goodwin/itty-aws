@@ -236,7 +236,7 @@ export interface PoolsCheckNameAvailabilityRequest {
   /** The name of the resource. */
   name: string;
   /** The type of resource that is used as the scope of the availability check. */
-  type: DevOpsInfrastructureResourceType | (string & {});
+  type: DevOpsInfrastructureResourceType;
 }
 export const PoolsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

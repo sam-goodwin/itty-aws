@@ -194,7 +194,7 @@ export const ExtensionsCreateRequestIdentityType = /*@__PURE__*/ S.String;
 /** Identity for the resource. */
 export interface ExtensionsCreateRequestIdentity {
   /** The identity type. */
-  type?: ExtensionsCreateRequestIdentityType | (string & {});
+  type?: ExtensionsCreateRequestIdentityType;
 }
 export const ExtensionsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4046,7 +4046,7 @@ export interface SourceControlConfigurationsCreateOrUpdateRequestProperties {
   /** Instance name of the operator - identifying the specific configuration. */
   operatorInstanceName?: string;
   /** Type of the operator */
-  operatorType?: OperatorTypeDefinition | (string & {});
+  operatorType?: OperatorTypeDefinition;
   /** Any Parameters for the Operator instance in string format. */
   operatorParams?: string;
   /** Name-value pairs of protected configuration settings for the configuration */

@@ -1173,9 +1173,8 @@ export type SmartDataActions = "Read";
 export const SmartDataActions = /*@__PURE__*/ S.String;
 
 /** The actions that are permitted to be performed on FHIR resources for the application. */
-export type SmartIdentityProviderApplicationAllowedDataActionsList = Array<
-  SmartDataActions | (string & {})
->;
+export type SmartIdentityProviderApplicationAllowedDataActionsList =
+  Array<SmartDataActions>;
 export const SmartIdentityProviderApplicationAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     SmartDataActions,

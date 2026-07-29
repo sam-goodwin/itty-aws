@@ -1230,113 +1230,12 @@ export const TaskRunResumeRequestSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskRunResumeRequestSchema",
 }) as any as S.Schema<TaskRunResumeRequestSchema>;
 
-export interface TaskRunCreateRequestSchema {
-  /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
-  imported_mcp_servers?:
-    | ClaudeTaskRunCreateSchemaImportedMcpServersList
-    | CodexTaskRunCreateSchemaImportedMcpServersList
-    | null;
-  /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
-  relayed_mcp_servers?:
-    | ClaudeTaskRunCreateSchemaRelayedMcpServersList
-    | CodexTaskRunCreateSchemaRelayedMcpServersList
-    | null;
-  /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
-  mode?: TaskExecutionModeEnum | (string & {});
-  /** Git branch to checkout in the sandbox */
-  branch?: string | null;
-  /** ID of a previous run to resume from. Must belong to the same task. */
-  resume_from_run_id?: string;
-  /** Initial or follow-up user message to include in the run prompt. */
-  pending_user_message?: string;
-  /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
-  pending_user_artifact_ids?:
-    | ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList
-    | CodexTaskRunCreateSchemaPendingUserArtifactIdsList;
-  /** Optional sandbox environment to apply for this cloud run. */
-  sandbox_environment_id?: string;
-  /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
-  custom_image_id?: string;
-  /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
-  pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
-  /** When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. */
-  auto_publish?: boolean | null;
-  /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
-  run_source?: RunSourceEnum | (string & {});
-  /** Optional signal report identifier when this run was started from Inbox. */
-  signal_report_id?: string;
-  /** Agent runtime adapter to launch for this run. Must be 'claude' for Claude runtimes. * `claude` - claude */
-  runtime_adapter?:
-    | ClaudeRuntimeAdapterEnum
-    | (string & {})
-    | CodexRuntimeAdapterEnum
-    | (string & {});
-  /** LLM model identifier to run in the Claude runtime. */
-  model?: string;
-  /** Reasoning effort to request for models that expose an effort control. * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-  reasoning_effort?: ReasoningEffortEnum | (string & {});
-  /** Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
-  github_user_token?: string;
-  /** Initial permission mode for Claude runtimes. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
-  initial_permission_mode?:
-    | InitialPermissionModeEnum
-    | (string & {})
-    | CodexTaskRunCreateSchemaInitialPermissionModeEnum
-    | (string & {});
-  /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
-  rtk_enabled?: boolean | null;
-}
-export const TaskRunCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imported_mcp_servers: S.optional(
-      S.NullOr(
-        S.Union(
-          ClaudeTaskRunCreateSchemaImportedMcpServersList,
-          CodexTaskRunCreateSchemaImportedMcpServersList,
-        ),
-      ),
-    ),
-    relayed_mcp_servers: S.optional(
-      S.NullOr(
-        S.Union(
-          ClaudeTaskRunCreateSchemaRelayedMcpServersList,
-          CodexTaskRunCreateSchemaRelayedMcpServersList,
-        ),
-      ),
-    ),
-    mode: S.optional(TaskExecutionModeEnum),
-    branch: S.optional(S.NullOr(S.String)),
-    resume_from_run_id: S.optional(S.String),
-    pending_user_message: S.optional(S.String),
-    pending_user_artifact_ids: S.optional(
-      S.Union(
-        ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList,
-        CodexTaskRunCreateSchemaPendingUserArtifactIdsList,
-      ),
-    ),
-    sandbox_environment_id: S.optional(S.String),
-    custom_image_id: S.optional(S.String),
-    pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
-    auto_publish: S.optional(S.NullOr(S.Boolean)),
-    run_source: S.optional(RunSourceEnum),
-    signal_report_id: S.optional(S.String),
-    runtime_adapter: S.optional(
-      S.Union(ClaudeRuntimeAdapterEnum, CodexRuntimeAdapterEnum),
-    ),
-    model: S.optional(S.String),
-    reasoning_effort: S.optional(ReasoningEffortEnum),
-    github_user_token: S.optional(S.String),
-    initial_permission_mode: S.optional(
-      S.Union(
-        InitialPermissionModeEnum,
-        CodexTaskRunCreateSchemaInitialPermissionModeEnum,
-      ),
-    ),
-    rtk_enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "TaskRunCreateRequestSchema",
-}) as any as S.Schema<TaskRunCreateRequestSchema>;
+export type TaskRunCreateRequestSchema =
+  | ClaudeTaskRunCreateSchema
+  | CodexTaskRunCreateSchema
+  | TaskRunResumeRequestSchema;
+export const TaskRunCreateRequestSchema =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TaskRunCreateRequestSchema>;
 
 export interface TasksRunCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

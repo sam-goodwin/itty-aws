@@ -96,29 +96,15 @@ export const AiSearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchRequestFiltersCase1",
 }) as any as S.Schema<AiSearchRequestFiltersCase1>;
 
-export interface AiSearchRequestFilters {
-  key?: string;
-  type:
-    | AiSearchRequestFiltersCase0Type
-    | (string & {})
-    | AiSearchRequestFiltersCase1Type
-    | (string & {});
-  value?: AiSearchRequestFiltersCase0Value;
-  filters?: AiSearchRequestFiltersCase1FiltersList;
-}
-export const AiSearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.Union(
-      AiSearchRequestFiltersCase0Type,
-      AiSearchRequestFiltersCase1Type,
-    ),
-    value: S.optional(AiSearchRequestFiltersCase0Value),
-    filters: S.optional(AiSearchRequestFiltersCase1FiltersList),
-  }),
-).annotate({
-  identifier: "AiSearchRequestFilters",
-}) as any as S.Schema<AiSearchRequestFilters>;
+export type AiSearchRequestFilters =
+  | AiSearchRequestFiltersCase0
+  | AiSearchRequestFiltersCase1;
+export const AiSearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["key", "type", "value"],
+    ["filters", "type"],
+  ]),
+);
 
 export type AiSearchRequestModel =
   | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -578,26 +564,15 @@ export const SearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRequestFiltersCase1",
 }) as any as S.Schema<SearchRequestFiltersCase1>;
 
-export interface SearchRequestFilters {
-  key?: string;
-  type:
-    | SearchRequestFiltersCase0Type
-    | (string & {})
-    | SearchRequestFiltersCase1Type
-    | (string & {});
-  value?: SearchRequestFiltersCase0Value;
-  filters?: SearchRequestFiltersCase1FiltersList;
-}
-export const SearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.Union(SearchRequestFiltersCase0Type, SearchRequestFiltersCase1Type),
-    value: S.optional(SearchRequestFiltersCase0Value),
-    filters: S.optional(SearchRequestFiltersCase1FiltersList),
-  }),
-).annotate({
-  identifier: "SearchRequestFilters",
-}) as any as S.Schema<SearchRequestFilters>;
+export type SearchRequestFilters =
+  | SearchRequestFiltersCase0
+  | SearchRequestFiltersCase1;
+export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["key", "type", "value"],
+    ["filters", "type"],
+  ]),
+);
 
 export interface SearchRequestRankingOptions {
   ranker?: string;

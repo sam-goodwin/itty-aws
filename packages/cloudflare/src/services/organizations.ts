@@ -889,9 +889,8 @@ export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestResourceScopeNotItem = "organizations";
 export const LogsAuditListRequestResourceScopeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestResourceScopeNotList = Array<
-  LogsAuditListRequestResourceScopeNotItem | (string & {})
->;
+export type LogsAuditListRequestResourceScopeNotList =
+  Array<LogsAuditListRequestResourceScopeNotItem>;
 export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
   LogsAuditListRequestResourceScopeNotItem,
 ) as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
@@ -1817,7 +1816,7 @@ export interface OrganizationAccountsGetRequest {
   direction?: OrganizationAccountsGetRequestDirection | (string & {});
   name?: OrganizationAccountsGetRequestName;
   /** Field to order results by. Currently supported values: `account_name`. */
-  orderBy?: OrganizationAccountsGetRequestOrderBy | (string & {});
+  orderBy?: OrganizationAccountsGetRequestOrderBy;
   /** The amount of items to return. Defaults to 10. */
   pageSize?: number;
   /** An opaque token returned from the last list response that when */

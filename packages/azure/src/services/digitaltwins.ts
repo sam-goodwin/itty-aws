@@ -26,7 +26,7 @@ export interface DigitalTwinsCheckNameAvailabilityRequest {
   /** Resource name. */
   name: string;
   /** The type of resource, for instance Microsoft.DigitalTwins/digitalTwinsInstances. */
-  type: DigitalTwinsCheckNameAvailabilityRequestType | (string & {});
+  type: DigitalTwinsCheckNameAvailabilityRequestType;
 }
 export const DigitalTwinsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1643,9 +1643,7 @@ export const TimeSeriesDatabaseConnectionPropertiesInputConnectionType =
 /** Properties of a time series database connection resource. */
 export interface TimeSeriesDatabaseConnectionPropertiesInput {
   /** The type of time series connection resource. */
-  connectionType:
-    | TimeSeriesDatabaseConnectionPropertiesInputConnectionType
-    | (string & {});
+  connectionType: TimeSeriesDatabaseConnectionPropertiesInputConnectionType;
   /** Managed identity properties for the time series database connection resource. */
   identity?: ManagedIdentityReference | null;
 }

@@ -15881,7 +15881,7 @@ export interface NetworkFabricsCommitConfigurationRequest {
   /** Commit stage Action to be performed. */
   commitStage?: CommitStage | (string & {});
   /** Commit configuration Policy. Supported policy is StageCEConfiguration, which indicates to prepare the configuration for the CE device type. */
-  commitPolicy?: CommitConfigurationPolicy | (string & {});
+  commitPolicy?: CommitConfigurationPolicy;
   /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
   devices?: NetworkFabricsCommitConfigurationRequestDevicesList;
 }
